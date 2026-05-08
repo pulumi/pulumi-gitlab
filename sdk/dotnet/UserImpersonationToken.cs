@@ -25,7 +25,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new GitLab.Index.UserImpersonationToken("this", new()
+    ///     var @this = new GitLab.UserImpersonationToken("this", new()
     ///     {
     ///         UserId = 12345,
     ///         Name = "token_name",

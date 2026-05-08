@@ -222,63 +222,63 @@ export interface ProjectPullMirrorState {
     /**
      * Authentication password or token for the remote repository.
      */
-    authPassword?: pulumi.Input<string>;
+    authPassword?: pulumi.Input<string | undefined>;
     /**
      * Authentication username for the remote repository.
      */
-    authUser?: pulumi.Input<string>;
+    authUser?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable the pull mirror. Defaults to `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Last error message from the mirror operation.
      */
-    lastError?: pulumi.Input<string>;
+    lastError?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of the last successful mirror update.
      */
-    lastSuccessfulUpdateAt?: pulumi.Input<string>;
+    lastSuccessfulUpdateAt?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of the last mirror update attempt.
      */
-    lastUpdateAt?: pulumi.Input<string>;
+    lastUpdateAt?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the last mirror update started.
      */
-    lastUpdateStartedAt?: pulumi.Input<string>;
+    lastUpdateStartedAt?: pulumi.Input<string | undefined>;
     /**
      * Regular expression for branches to mirror. Requires GitLab Premium or Ultimate. Cannot be used with `onlyMirrorProtectedBranches`.
      */
-    mirrorBranchRegex?: pulumi.Input<string>;
+    mirrorBranchRegex?: pulumi.Input<string | undefined>;
     /**
      * The ID of the pull mirror. This ID is set by GitLab.
      */
-    mirrorId?: pulumi.Input<number>;
+    mirrorId?: pulumi.Input<number | undefined>;
     /**
      * Overwrite diverged branches on the target project.
      */
-    mirrorOverwritesDivergedBranches?: pulumi.Input<boolean>;
+    mirrorOverwritesDivergedBranches?: pulumi.Input<boolean | undefined>;
     /**
      * Trigger CI/CD pipelines when the mirror updates.
      */
-    mirrorTriggerBuilds?: pulumi.Input<boolean>;
+    mirrorTriggerBuilds?: pulumi.Input<boolean | undefined>;
     /**
      * Mirror only protected branches. Cannot be used with `mirrorBranchRegex`.
      */
-    onlyMirrorProtectedBranches?: pulumi.Input<boolean>;
+    onlyMirrorProtectedBranches?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or URL-encoded path of the project owned by the authenticated user.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Current status of the mirror update.
      */
-    updateStatus?: pulumi.Input<string>;
+    updateStatus?: pulumi.Input<string | undefined>;
     /**
      * The URL of the remote repository to mirror from. While the API call allows including username and password as basic authentication in the URL, this resourcedoes not for security and idempotency reasons. Use `authUser` and `authPassword` instead.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -288,31 +288,31 @@ export interface ProjectPullMirrorArgs {
     /**
      * Authentication password or token for the remote repository.
      */
-    authPassword?: pulumi.Input<string>;
+    authPassword?: pulumi.Input<string | undefined>;
     /**
      * Authentication username for the remote repository.
      */
-    authUser?: pulumi.Input<string>;
+    authUser?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable the pull mirror. Defaults to `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Regular expression for branches to mirror. Requires GitLab Premium or Ultimate. Cannot be used with `onlyMirrorProtectedBranches`.
      */
-    mirrorBranchRegex?: pulumi.Input<string>;
+    mirrorBranchRegex?: pulumi.Input<string | undefined>;
     /**
      * Overwrite diverged branches on the target project.
      */
-    mirrorOverwritesDivergedBranches?: pulumi.Input<boolean>;
+    mirrorOverwritesDivergedBranches?: pulumi.Input<boolean | undefined>;
     /**
      * Trigger CI/CD pipelines when the mirror updates.
      */
-    mirrorTriggerBuilds?: pulumi.Input<boolean>;
+    mirrorTriggerBuilds?: pulumi.Input<boolean | undefined>;
     /**
      * Mirror only protected branches. Cannot be used with `mirrorBranchRegex`.
      */
-    onlyMirrorProtectedBranches?: pulumi.Input<boolean>;
+    onlyMirrorProtectedBranches?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or URL-encoded path of the project owned by the authenticated user.
      */

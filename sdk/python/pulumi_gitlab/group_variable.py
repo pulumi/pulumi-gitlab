@@ -22,13 +22,13 @@ class GroupVariableArgs:
                  group: pulumi.Input[_builtins.str],
                  key: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 masked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 raw: Optional[pulumi.Input[_builtins.bool]] = None,
-                 variable_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 masked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 raw: pulumi.Input[Optional[_builtins.bool]] = None,
+                 variable_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GroupVariable resource.
 
@@ -99,102 +99,102 @@ class GroupVariableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the variable.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentScope")
-    def environment_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         """
         return pulumi.get(self, "environment_scope")
 
     @environment_scope.setter
-    def environment_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def hidden(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hidden(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         """
         return pulumi.get(self, "hidden")
 
     @hidden.setter
-    def hidden(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hidden(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hidden", value)
 
     @_builtins.property
     @pulumi.getter
-    def masked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def masked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         """
         return pulumi.get(self, "masked")
 
     @masked.setter
-    def masked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def masked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "masked", value)
 
     @_builtins.property
     @pulumi.getter
-    def protected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         """
         return pulumi.get(self, "protected")
 
     @protected.setter
-    def protected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected", value)
 
     @_builtins.property
     @pulumi.getter
-    def raw(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def raw(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
         """
         return pulumi.get(self, "raw")
 
     @raw.setter
-    def raw(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def raw(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "raw", value)
 
     @_builtins.property
     @pulumi.getter(name="variableType")
-    def variable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def variable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of a variable. Valid values are: `env_var`, `file`.
         """
         return pulumi.get(self, "variable_type")
 
     @variable_type.setter
-    def variable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def variable_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "variable_type", value)
 
 
 @pulumi.input_type
 class _GroupVariableState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 masked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 raw: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 masked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 raw: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupVariable resources.
 
@@ -232,122 +232,122 @@ class _GroupVariableState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the variable.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentScope")
-    def environment_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         """
         return pulumi.get(self, "environment_scope")
 
     @environment_scope.setter
-    def environment_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name or id of the group.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter
-    def hidden(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hidden(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         """
         return pulumi.get(self, "hidden")
 
     @hidden.setter
-    def hidden(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hidden(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hidden", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the variable.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def masked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def masked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         """
         return pulumi.get(self, "masked")
 
     @masked.setter
-    def masked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def masked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "masked", value)
 
     @_builtins.property
     @pulumi.getter
-    def protected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         """
         return pulumi.get(self, "protected")
 
     @protected.setter
-    def protected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected", value)
 
     @_builtins.property
     @pulumi.getter
-    def raw(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def raw(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
         """
         return pulumi.get(self, "raw")
 
     @raw.setter
-    def raw(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def raw(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "raw", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the variable.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
     @_builtins.property
     @pulumi.getter(name="variableType")
-    def variable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def variable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of a variable. Valid values are: `env_var`, `file`.
         """
         return pulumi.get(self, "variable_type")
 
     @variable_type.setter
-    def variable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def variable_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "variable_type", value)
 
 
@@ -357,16 +357,16 @@ class GroupVariable(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 masked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 raw: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 masked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 raw: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `GroupVariable` resource allows creating a GitLab group level variables.
@@ -438,16 +438,16 @@ class GroupVariable(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 masked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 raw: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 masked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 raw: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -483,16 +483,16 @@ class GroupVariable(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            environment_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            group: Optional[pulumi.Input[_builtins.str]] = None,
-            hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            masked: Optional[pulumi.Input[_builtins.bool]] = None,
-            protected: Optional[pulumi.Input[_builtins.bool]] = None,
-            raw: Optional[pulumi.Input[_builtins.bool]] = None,
-            value: Optional[pulumi.Input[_builtins.str]] = None,
-            variable_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'GroupVariable':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            masked: pulumi.Input[Optional[_builtins.bool]] = None,
+            protected: pulumi.Input[Optional[_builtins.bool]] = None,
+            raw: pulumi.Input[Optional[_builtins.bool]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None,
+            variable_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupVariable':
         """
         Get an existing GroupVariable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

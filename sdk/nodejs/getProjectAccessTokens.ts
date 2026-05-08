@@ -78,5 +78,5 @@ export interface GetProjectAccessTokensOutputArgs {
     /**
      * List all project access token that match the specified state. Valid values are `active`, `inactive`. Returns all project access token if not set.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }

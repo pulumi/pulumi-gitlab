@@ -23,7 +23,7 @@ class PipelineScheduleVariableArgs:
                  pipeline_schedule_id: pulumi.Input[_builtins.int],
                  project: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 variable_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 variable_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PipelineScheduleVariable resource.
 
@@ -90,25 +90,25 @@ class PipelineScheduleVariableArgs:
 
     @_builtins.property
     @pulumi.getter(name="variableType")
-    def variable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def variable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
         """
         return pulumi.get(self, "variable_type")
 
     @variable_type.setter
-    def variable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def variable_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "variable_type", value)
 
 
 @pulumi.input_type
 class _PipelineScheduleVariableState:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_schedule_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_schedule_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PipelineScheduleVariable resources.
 
@@ -131,62 +131,62 @@ class _PipelineScheduleVariableState:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the variable.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineScheduleId")
-    def pipeline_schedule_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pipeline_schedule_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The id of the pipeline schedule.
         """
         return pulumi.get(self, "pipeline_schedule_id")
 
     @pipeline_schedule_id.setter
-    def pipeline_schedule_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pipeline_schedule_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pipeline_schedule_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the project to add the schedule to.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Value of the variable.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
     @_builtins.property
     @pulumi.getter(name="variableType")
-    def variable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def variable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of a variable. Available types are: `env_var`, `file`. Default is `env_var`.
         """
         return pulumi.get(self, "variable_type")
 
     @variable_type.setter
-    def variable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def variable_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "variable_type", value)
 
 
@@ -196,11 +196,11 @@ class PipelineScheduleVariable(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_schedule_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_schedule_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `PipelineScheduleVariable` resource manages the lifecycle of a variable for a pipeline schedule.
@@ -303,11 +303,11 @@ class PipelineScheduleVariable(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_schedule_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_schedule_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -340,11 +340,11 @@ class PipelineScheduleVariable(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            pipeline_schedule_id: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            value: Optional[pulumi.Input[_builtins.str]] = None,
-            variable_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'PipelineScheduleVariable':
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline_schedule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None,
+            variable_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'PipelineScheduleVariable':
         """
         Get an existing PipelineScheduleVariable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

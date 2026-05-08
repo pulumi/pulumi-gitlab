@@ -194,55 +194,55 @@ export interface GroupAccessTokenState {
     /**
      * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * True if the token is active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Time the token has been created, RFC3339 format.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the group access token.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * When the token will expire, YYYY-MM-DD format.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the group.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * The name of the group access token.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * True if the token is revoked.
      */
-    revoked?: pulumi.Input<boolean>;
+    revoked?: pulumi.Input<boolean | undefined>;
     /**
      * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
      */
-    rotationConfiguration?: pulumi.Input<inputs.GroupAccessTokenRotationConfiguration>;
+    rotationConfiguration?: pulumi.Input<inputs.GroupAccessTokenRotationConfiguration | undefined>;
     /**
      * The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The token of the group access token. **Note**: the token is not available for imported resources.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The userId associated to the token.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
     /**
      * Wether to validate if the expiration date is in the future.
      */
-    validatePastExpirationDate?: pulumi.Input<boolean>;
+    validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -252,15 +252,15 @@ export interface GroupAccessTokenArgs {
     /**
      * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * The description of the group access token.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * When the token will expire, YYYY-MM-DD format.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the group.
      */
@@ -268,11 +268,11 @@ export interface GroupAccessTokenArgs {
     /**
      * The name of the group access token.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
      */
-    rotationConfiguration?: pulumi.Input<inputs.GroupAccessTokenRotationConfiguration>;
+    rotationConfiguration?: pulumi.Input<inputs.GroupAccessTokenRotationConfiguration | undefined>;
     /**
      * The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
      */
@@ -280,5 +280,5 @@ export interface GroupAccessTokenArgs {
     /**
      * Wether to validate if the expiration date is in the future.
      */
-    validatePastExpirationDate?: pulumi.Input<boolean>;
+    validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }

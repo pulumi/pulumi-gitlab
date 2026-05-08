@@ -88,9 +88,9 @@ export interface GetProjectBranchesOutputArgs {
     /**
      * Regex pattern to filter the returned branches by name.
      */
-    regex?: pulumi.Input<string>;
+    regex?: pulumi.Input<string | undefined>;
     /**
      * A search string to filter branches by name.
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
 }

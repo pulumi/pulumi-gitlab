@@ -43,9 +43,9 @@ class RunnerControllerInstanceScopeArgs:
 @pulumi.input_type
 class _RunnerControllerInstanceScopeState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 runner_controller_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 runner_controller_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RunnerControllerInstanceScope resources.
 
@@ -62,38 +62,38 @@ class _RunnerControllerInstanceScopeState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the scope was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="runnerControllerId")
-    def runner_controller_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def runner_controller_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the runner controller.
         """
         return pulumi.get(self, "runner_controller_id")
 
     @runner_controller_id.setter
-    def runner_controller_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def runner_controller_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "runner_controller_id", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the scope was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -103,7 +103,7 @@ class RunnerControllerInstanceScope(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 runner_controller_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 runner_controller_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The `RunnerControllerInstanceScope` resource manages the instance-level scope of a runner controller.
@@ -122,7 +122,7 @@ class RunnerControllerInstanceScope(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        example = gitlab.RunnerControllerInstanceScope("example", runner_controller_id=example_gitlab_runner_controller["id"])
+        example = gitlab.RunnerControllerInstanceScope("example", runner_controller_id=int(example_gitlab_runner_controller["id"]))
         ```
 
 
@@ -153,7 +153,7 @@ class RunnerControllerInstanceScope(pulumi.CustomResource):
         import pulumi
         import pulumi_gitlab as gitlab
 
-        example = gitlab.RunnerControllerInstanceScope("example", runner_controller_id=example_gitlab_runner_controller["id"])
+        example = gitlab.RunnerControllerInstanceScope("example", runner_controller_id=int(example_gitlab_runner_controller["id"]))
         ```
 
 
@@ -172,7 +172,7 @@ class RunnerControllerInstanceScope(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 runner_controller_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 runner_controller_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -197,9 +197,9 @@ class RunnerControllerInstanceScope(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            runner_controller_id: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'RunnerControllerInstanceScope':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            runner_controller_id: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'RunnerControllerInstanceScope':
         """
         Get an existing RunnerControllerInstanceScope resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

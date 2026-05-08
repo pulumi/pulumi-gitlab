@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sample = new GitLab.Index.ComplianceFramework("sample", new()
+    ///     var sample = new GitLab.ComplianceFramework("sample", new()
     ///     {
     ///         NamespacePath = "top-level-group",
     ///         Name = "HIPAA",

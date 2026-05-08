@@ -22,9 +22,9 @@ __all__ = ['ProjectPagesSettingsArgs', 'ProjectPagesSettings']
 class ProjectPagesSettingsArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
-                 force_https: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_unique_domain_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None):
+                 force_https: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_unique_domain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectPagesSettings resource.
 
@@ -55,50 +55,50 @@ class ProjectPagesSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="forceHttps")
-    def force_https(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_https(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
         """
         return pulumi.get(self, "force_https")
 
     @force_https.setter
-    def force_https(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_https(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_https", value)
 
     @_builtins.property
     @pulumi.getter(name="isUniqueDomainEnabled")
-    def is_unique_domain_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_unique_domain_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean indicating if a unique domain is enabled.
         """
         return pulumi.get(self, "is_unique_domain_enabled")
 
     @is_unique_domain_enabled.setter
-    def is_unique_domain_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_unique_domain_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_unique_domain_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
-    def keep_settings_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_settings_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
         """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @keep_settings_on_destroy.setter
-    def keep_settings_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_settings_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_settings_on_destroy", value)
 
 
 @pulumi.input_type
 class _ProjectPagesSettingsState:
     def __init__(__self__, *,
-                 deployments: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectPagesSettingsDeploymentArgs']]]] = None,
-                 force_https: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_unique_domain_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 deployments: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectPagesSettingsDeploymentArgs']]]] = None,
+                 force_https: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_unique_domain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectPagesSettings resources.
 
@@ -124,74 +124,74 @@ class _ProjectPagesSettingsState:
 
     @_builtins.property
     @pulumi.getter
-    def deployments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectPagesSettingsDeploymentArgs']]]]:
+    def deployments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectPagesSettingsDeploymentArgs']]]]:
         """
         List of current active deployments.
         """
         return pulumi.get(self, "deployments")
 
     @deployments.setter
-    def deployments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectPagesSettingsDeploymentArgs']]]]):
+    def deployments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectPagesSettingsDeploymentArgs']]]]):
         pulumi.set(self, "deployments", value)
 
     @_builtins.property
     @pulumi.getter(name="forceHttps")
-    def force_https(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_https(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
         """
         return pulumi.get(self, "force_https")
 
     @force_https.setter
-    def force_https(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_https(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_https", value)
 
     @_builtins.property
     @pulumi.getter(name="isUniqueDomainEnabled")
-    def is_unique_domain_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_unique_domain_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean indicating if a unique domain is enabled.
         """
         return pulumi.get(self, "is_unique_domain_enabled")
 
     @is_unique_domain_enabled.setter
-    def is_unique_domain_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_unique_domain_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_unique_domain_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
-    def keep_settings_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_settings_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
         """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @keep_settings_on_destroy.setter
-    def keep_settings_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_settings_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_settings_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID or path.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL to access the project pages.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -201,10 +201,10 @@ class ProjectPagesSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 force_https: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_unique_domain_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 force_https: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_unique_domain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectPagesSettings` resource manages project pages settings in GitLab.
@@ -280,10 +280,10 @@ class ProjectPagesSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 force_https: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_unique_domain_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 force_https: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_unique_domain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -311,12 +311,12 @@ class ProjectPagesSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            deployments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectPagesSettingsDeploymentArgs', 'ProjectPagesSettingsDeploymentArgsDict']]]]] = None,
-            force_https: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_unique_domain_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectPagesSettings':
+            deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectPagesSettingsDeploymentArgs', 'ProjectPagesSettingsDeploymentArgsDict']]]]] = None,
+            force_https: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_unique_domain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectPagesSettings':
         """
         Get an existing ProjectPagesSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

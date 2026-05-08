@@ -95,7 +95,7 @@ def get_instance_deploy_keys(public: Optional[_builtins.bool] = None,
         deploy_keys=pulumi.get(__ret__, 'deploy_keys'),
         id=pulumi.get(__ret__, 'id'),
         public=pulumi.get(__ret__, 'public'))
-def get_instance_deploy_keys_output(public: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_instance_deploy_keys_output(public: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceDeployKeysResult]:
     """
     The `get_instance_deploy_keys` data source allows to retrieve a list of deploy keys for a GitLab instance.

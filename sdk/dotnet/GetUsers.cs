@@ -30,14 +30,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetUsers.Invoke(new()
+        ///     var example = GitLab.GetUsers.Invoke(new()
         ///     {
         ///         Sort = "desc",
         ///         OrderBy = "name",
         ///         CreatedBefore = "2019-01-01",
         ///     });
         /// 
-        ///     var example_two = GitLab.Index.GetUsers.Invoke(new()
+        ///     var example_two = GitLab.GetUsers.Invoke(new()
         ///     {
         ///         Search = "username",
         ///     });
@@ -67,14 +67,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetUsers.Invoke(new()
+        ///     var example = GitLab.GetUsers.Invoke(new()
         ///     {
         ///         Sort = "desc",
         ///         OrderBy = "name",
         ///         CreatedBefore = "2019-01-01",
         ///     });
         /// 
-        ///     var example_two = GitLab.Index.GetUsers.Invoke(new()
+        ///     var example_two = GitLab.GetUsers.Invoke(new()
         ///     {
         ///         Search = "username",
         ///     });
@@ -104,14 +104,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetUsers.Invoke(new()
+        ///     var example = GitLab.GetUsers.Invoke(new()
         ///     {
         ///         Sort = "desc",
         ///         OrderBy = "name",
         ///         CreatedBefore = "2019-01-01",
         ///     });
         /// 
-        ///     var example_two = GitLab.Index.GetUsers.Invoke(new()
+        ///     var example_two = GitLab.GetUsers.Invoke(new()
         ///     {
         ///         Search = "username",
         ///     });

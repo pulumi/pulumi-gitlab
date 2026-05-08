@@ -26,12 +26,12 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var byProjectId = GitLab.Index.GetProjectApprovalRules.Invoke(new()
+        ///     var byProjectId = GitLab.GetProjectApprovalRules.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///     });
         /// 
-        ///     var byProjectPath = GitLab.Index.GetProjectApprovalRules.Invoke(new()
+        ///     var byProjectPath = GitLab.GetProjectApprovalRules.Invoke(new()
         ///     {
         ///         Project = "my-group/my-project",
         ///     });
@@ -57,12 +57,12 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var byProjectId = GitLab.Index.GetProjectApprovalRules.Invoke(new()
+        ///     var byProjectId = GitLab.GetProjectApprovalRules.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///     });
         /// 
-        ///     var byProjectPath = GitLab.Index.GetProjectApprovalRules.Invoke(new()
+        ///     var byProjectPath = GitLab.GetProjectApprovalRules.Invoke(new()
         ///     {
         ///         Project = "my-group/my-project",
         ///     });
@@ -88,12 +88,12 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var byProjectId = GitLab.Index.GetProjectApprovalRules.Invoke(new()
+        ///     var byProjectId = GitLab.GetProjectApprovalRules.Invoke(new()
         ///     {
         ///         Project = "12345",
         ///     });
         /// 
-        ///     var byProjectPath = GitLab.Index.GetProjectApprovalRules.Invoke(new()
+        ///     var byProjectPath = GitLab.GetProjectApprovalRules.Invoke(new()
         ///     {
         ///         Project = "my-group/my-project",
         ///     });

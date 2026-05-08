@@ -24,10 +24,10 @@ class GroupServiceAccountAccessTokenArgs:
                  group: pulumi.Input[_builtins.str],
                  scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  user_id: pulumi.Input[_builtins.int],
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_configuration: Optional[pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs']] = None,
-                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_configuration: pulumi.Input[Optional['GroupServiceAccountAccessTokenRotationConfigurationArgs']] = None,
+                 validate_past_expiration_date: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GroupServiceAccountAccessToken resource.
 
@@ -89,67 +89,67 @@ class GroupServiceAccountAccessTokenArgs:
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the personal access token.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="rotationConfiguration")
-    def rotation_configuration(self) -> Optional[pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs']]:
+    def rotation_configuration(self) -> pulumi.Input[Optional['GroupServiceAccountAccessTokenRotationConfigurationArgs']]:
         """
         The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         """
         return pulumi.get(self, "rotation_configuration")
 
     @rotation_configuration.setter
-    def rotation_configuration(self, value: Optional[pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs']]):
+    def rotation_configuration(self, value: pulumi.Input[Optional['GroupServiceAccountAccessTokenRotationConfigurationArgs']]):
         pulumi.set(self, "rotation_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="validatePastExpirationDate")
-    def validate_past_expiration_date(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def validate_past_expiration_date(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wether to validate if the expiration date is in the future.
         """
         return pulumi.get(self, "validate_past_expiration_date")
 
     @validate_past_expiration_date.setter
-    def validate_past_expiration_date(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def validate_past_expiration_date(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "validate_past_expiration_date", value)
 
 
 @pulumi.input_type
 class _GroupServiceAccountAccessTokenState:
     def __init__(__self__, *,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 revoked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rotation_configuration: Optional[pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs']] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 revoked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rotation_configuration: pulumi.Input[Optional['GroupServiceAccountAccessTokenRotationConfigurationArgs']] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 validate_past_expiration_date: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GroupServiceAccountAccessToken resources.
 
@@ -190,134 +190,134 @@ class _GroupServiceAccountAccessTokenState:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the token is active.
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time the token has been created, RFC3339 format.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of the group containing the service account. Must be a top level group.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the personal access token.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def revoked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def revoked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the token is revoked.
         """
         return pulumi.get(self, "revoked")
 
     @revoked.setter
-    def revoked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def revoked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "revoked", value)
 
     @_builtins.property
     @pulumi.getter(name="rotationConfiguration")
-    def rotation_configuration(self) -> Optional[pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs']]:
+    def rotation_configuration(self) -> pulumi.Input[Optional['GroupServiceAccountAccessTokenRotationConfigurationArgs']]:
         """
         The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         """
         return pulumi.get(self, "rotation_configuration")
 
     @rotation_configuration.setter
-    def rotation_configuration(self, value: Optional[pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs']]):
+    def rotation_configuration(self, value: pulumi.Input[Optional['GroupServiceAccountAccessTokenRotationConfigurationArgs']]):
         pulumi.set(self, "rotation_configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The scopes of the group service account access token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`. If `self_rotate` is included, you must also provide either `expires_at` or `rotation_configuration`.
         """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scopes", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The token of the group service account access token. **Note**: the token is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a service account user.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="validatePastExpirationDate")
-    def validate_past_expiration_date(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def validate_past_expiration_date(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wether to validate if the expiration date is in the future.
         """
         return pulumi.get(self, "validate_past_expiration_date")
 
     @validate_past_expiration_date.setter
-    def validate_past_expiration_date(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def validate_past_expiration_date(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "validate_past_expiration_date", value)
 
 
@@ -327,13 +327,13 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_configuration: Optional[pulumi.Input[Union['GroupServiceAccountAccessTokenRotationConfigurationArgs', 'GroupServiceAccountAccessTokenRotationConfigurationArgsDict']]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_configuration: pulumi.Input[Optional[Union['GroupServiceAccountAccessTokenRotationConfigurationArgs', 'GroupServiceAccountAccessTokenRotationConfigurationArgsDict']]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 validate_past_expiration_date: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The `GroupServiceAccountAccessToken` resource manages the lifecycle of a group service account access token.
@@ -366,27 +366,27 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
             username="example-username")
         # To assign the service account to a group
         example_membership = gitlab.GroupMembership("example_membership",
-            group_id=example.id,
-            user_id=example_sa.service_account_id,
+            group_id=example.id.apply(lambda x: int(x)),
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             access_level="developer",
             expires_at="2020-03-14")
         # The service account access token with no expiry
         example_sa_token_no_expiry = gitlab.GroupServiceAccountAccessToken("example_sa_token_no_expiry",
             group=example.id,
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example service account access token",
             scopes=["api"])
         # The service account access token with expires at
         example_sa_token_expires_at = gitlab.GroupServiceAccountAccessToken("example_sa_token_expires_at",
             group=example.id,
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example service account access token",
             expires_at="2020-03-14",
             scopes=["api"])
         # The service account access token with rotation configuration
         example_sa_token_rotation_configuration = gitlab.GroupServiceAccountAccessToken("example_sa_token_rotation_configuration",
             group=example.id,
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example service account access token",
             rotation_configuration={
                 "rotate_before_days": 2,
@@ -456,27 +456,27 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
             username="example-username")
         # To assign the service account to a group
         example_membership = gitlab.GroupMembership("example_membership",
-            group_id=example.id,
-            user_id=example_sa.service_account_id,
+            group_id=example.id.apply(lambda x: int(x)),
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             access_level="developer",
             expires_at="2020-03-14")
         # The service account access token with no expiry
         example_sa_token_no_expiry = gitlab.GroupServiceAccountAccessToken("example_sa_token_no_expiry",
             group=example.id,
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example service account access token",
             scopes=["api"])
         # The service account access token with expires at
         example_sa_token_expires_at = gitlab.GroupServiceAccountAccessToken("example_sa_token_expires_at",
             group=example.id,
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example service account access token",
             expires_at="2020-03-14",
             scopes=["api"])
         # The service account access token with rotation configuration
         example_sa_token_rotation_configuration = gitlab.GroupServiceAccountAccessToken("example_sa_token_rotation_configuration",
             group=example.id,
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example service account access token",
             rotation_configuration={
                 "rotate_before_days": 2,
@@ -514,13 +514,13 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_configuration: Optional[pulumi.Input[Union['GroupServiceAccountAccessTokenRotationConfigurationArgs', 'GroupServiceAccountAccessTokenRotationConfigurationArgsDict']]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_configuration: pulumi.Input[Optional[Union['GroupServiceAccountAccessTokenRotationConfigurationArgs', 'GroupServiceAccountAccessTokenRotationConfigurationArgsDict']]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 validate_past_expiration_date: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -559,17 +559,17 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active: Optional[pulumi.Input[_builtins.bool]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-            group: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            revoked: Optional[pulumi.Input[_builtins.bool]] = None,
-            rotation_configuration: Optional[pulumi.Input[Union['GroupServiceAccountAccessTokenRotationConfigurationArgs', 'GroupServiceAccountAccessTokenRotationConfigurationArgsDict']]] = None,
-            scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            token: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.int]] = None,
-            validate_past_expiration_date: Optional[pulumi.Input[_builtins.bool]] = None) -> 'GroupServiceAccountAccessToken':
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            revoked: pulumi.Input[Optional[_builtins.bool]] = None,
+            rotation_configuration: pulumi.Input[Optional[Union['GroupServiceAccountAccessTokenRotationConfigurationArgs', 'GroupServiceAccountAccessTokenRotationConfigurationArgsDict']]] = None,
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.int]] = None,
+            validate_past_expiration_date: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GroupServiceAccountAccessToken':
         """
         Get an existing GroupServiceAccountAccessToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

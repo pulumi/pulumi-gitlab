@@ -22,10 +22,10 @@ __all__ = ['GroupIssueBoardArgs', 'GroupIssueBoard']
 class GroupIssueBoardArgs:
     def __init__(__self__, *,
                  group: pulumi.Input[_builtins.str],
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]] = None,
-                 milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]] = None,
+                 milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GroupIssueBoard resource.
 
@@ -59,61 +59,61 @@ class GroupIssueBoardArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of label names which the board should be scoped to.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]]:
+    def lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]]:
         """
         The list of issue board lists.
         """
         return pulumi.get(self, "lists")
 
     @lists.setter
-    def lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]]):
+    def lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]]):
         pulumi.set(self, "lists", value)
 
     @_builtins.property
     @pulumi.getter(name="milestoneId")
-    def milestone_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def milestone_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The milestone the board should be scoped to.
         """
         return pulumi.get(self, "milestone_id")
 
     @milestone_id.setter
-    def milestone_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def milestone_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "milestone_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the board.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _GroupIssueBoardState:
     def __init__(__self__, *,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]] = None,
-                 milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]] = None,
+                 milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupIssueBoard resources.
 
@@ -136,62 +136,62 @@ class _GroupIssueBoardState:
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of the group owned by the authenticated user.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of label names which the board should be scoped to.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]]:
+    def lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]]:
         """
         The list of issue board lists.
         """
         return pulumi.get(self, "lists")
 
     @lists.setter
-    def lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]]):
+    def lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupIssueBoardListArgs']]]]):
         pulumi.set(self, "lists", value)
 
     @_builtins.property
     @pulumi.getter(name="milestoneId")
-    def milestone_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def milestone_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The milestone the board should be scoped to.
         """
         return pulumi.get(self, "milestone_id")
 
     @milestone_id.setter
-    def milestone_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def milestone_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "milestone_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the board.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -201,11 +201,11 @@ class GroupIssueBoard(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]]] = None,
-                 milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]]] = None,
+                 milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `GroupIssueBoard` resource manages the lifecycle of an issue board in a group.
@@ -276,11 +276,11 @@ class GroupIssueBoard(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]]] = None,
-                 milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]]] = None,
+                 milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -307,11 +307,11 @@ class GroupIssueBoard(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]]] = None,
-            milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'GroupIssueBoard':
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]]] = None,
+            milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupIssueBoard':
         """
         Get an existing GroupIssueBoard resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

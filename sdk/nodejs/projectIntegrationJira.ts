@@ -228,83 +228,83 @@ export interface ProjectIntegrationJiraState {
     /**
      * Whether the integration is active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
      */
-    apiUrl?: pulumi.Input<string>;
+    apiUrl?: pulumi.Input<string | undefined>;
     /**
      * Enable comments inside Jira issues on each GitLab event (commit / merge request)
      */
-    commentOnEventEnabled?: pulumi.Input<boolean>;
+    commentOnEventEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for commit events
      */
-    commitEvents?: pulumi.Input<boolean>;
+    commitEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The ISO8601 date/time that this integration was activated at in UTC.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Enable viewing Jira issues in GitLab.
      */
-    issuesEnabled?: pulumi.Input<boolean>;
+    issuesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
      */
-    jiraAuthType?: pulumi.Input<number>;
+    jiraAuthType?: pulumi.Input<number | undefined>;
     /**
      * Prefix to match Jira issue keys.
      */
-    jiraIssuePrefix?: pulumi.Input<string>;
+    jiraIssuePrefix?: pulumi.Input<string | undefined>;
     /**
      * Regular expression to match Jira issue keys.
      */
-    jiraIssueRegex?: pulumi.Input<string>;
+    jiraIssueRegex?: pulumi.Input<string | undefined>;
     /**
      * Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
      */
-    jiraIssueTransitionAutomatic?: pulumi.Input<boolean>;
+    jiraIssueTransitionAutomatic?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      */
-    jiraIssueTransitionId?: pulumi.Input<string>;
+    jiraIssueTransitionId?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for merge request events
      */
-    mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * ID of the project you want to activate integration on.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      */
-    projectKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    projectKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Title of the integration.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * The ISO8601 date/time that this integration was last updated at in UTC.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether or not to inherit default settings. Defaults to false.
      */
-    useInheritedSettings?: pulumi.Input<boolean>;
+    useInheritedSettings?: pulumi.Input<boolean | undefined>;
     /**
      * The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -314,43 +314,43 @@ export interface ProjectIntegrationJiraArgs {
     /**
      * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
      */
-    apiUrl?: pulumi.Input<string>;
+    apiUrl?: pulumi.Input<string | undefined>;
     /**
      * Enable comments inside Jira issues on each GitLab event (commit / merge request)
      */
-    commentOnEventEnabled?: pulumi.Input<boolean>;
+    commentOnEventEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for commit events
      */
-    commitEvents?: pulumi.Input<boolean>;
+    commitEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable viewing Jira issues in GitLab.
      */
-    issuesEnabled?: pulumi.Input<boolean>;
+    issuesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
      */
-    jiraAuthType?: pulumi.Input<number>;
+    jiraAuthType?: pulumi.Input<number | undefined>;
     /**
      * Prefix to match Jira issue keys.
      */
-    jiraIssuePrefix?: pulumi.Input<string>;
+    jiraIssuePrefix?: pulumi.Input<string | undefined>;
     /**
      * Regular expression to match Jira issue keys.
      */
-    jiraIssueRegex?: pulumi.Input<string>;
+    jiraIssueRegex?: pulumi.Input<string | undefined>;
     /**
      * Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
      */
-    jiraIssueTransitionAutomatic?: pulumi.Input<boolean>;
+    jiraIssueTransitionAutomatic?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
      */
-    jiraIssueTransitionId?: pulumi.Input<string>;
+    jiraIssueTransitionId?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for merge request events
      */
-    mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
      */
@@ -362,7 +362,7 @@ export interface ProjectIntegrationJiraArgs {
     /**
      * Keys of Jira projects. When issuesEnabled is true, this setting specifies which Jira projects to view issues from in GitLab.
      */
-    projectKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    projectKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
      */
@@ -370,9 +370,9 @@ export interface ProjectIntegrationJiraArgs {
     /**
      * Indicates whether or not to inherit default settings. Defaults to false.
      */
-    useInheritedSettings?: pulumi.Input<boolean>;
+    useInheritedSettings?: pulumi.Input<boolean | undefined>;
     /**
      * The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.RunnerControllerRunnerScope("example", {
- *     runnerControllerId: exampleGitlabRunnerController.id,
+ *     runnerControllerId: Number(exampleGitlabRunnerController.id),
  *     runnerId: 42,
  * });
  * ```
@@ -114,19 +114,19 @@ export interface RunnerControllerRunnerScopeState {
     /**
      * The time the scope was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the runner controller.
      */
-    runnerControllerId?: pulumi.Input<number>;
+    runnerControllerId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the instance-level runner to scope the controller to.
      */
-    runnerId?: pulumi.Input<number>;
+    runnerId?: pulumi.Input<number | undefined>;
     /**
      * The time the scope was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**

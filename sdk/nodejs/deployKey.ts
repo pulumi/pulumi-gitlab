@@ -149,27 +149,27 @@ export interface DeployKeyState {
     /**
      * Allow this deploy key to be used to push changes to the project. Defaults to `false`.
      */
-    canPush?: pulumi.Input<boolean>;
+    canPush?: pulumi.Input<boolean | undefined>;
     /**
      * The id of the project deploy key.
      */
-    deployKeyId?: pulumi.Input<number>;
+    deployKeyId?: pulumi.Input<number | undefined>;
     /**
      * Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The public ssh key body.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The name or id of the project to add the deploy key to.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A title to describe the deploy key with.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,11 +179,11 @@ export interface DeployKeyArgs {
     /**
      * Allow this deploy key to be used to push changes to the project. Defaults to `false`.
      */
-    canPush?: pulumi.Input<boolean>;
+    canPush?: pulumi.Input<boolean | undefined>;
     /**
      * Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The public ssh key body.
      */

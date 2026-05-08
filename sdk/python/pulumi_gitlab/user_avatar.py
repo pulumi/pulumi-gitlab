@@ -21,8 +21,8 @@ class UserAvatarArgs:
     def __init__(__self__, *,
                  avatar: pulumi.Input[_builtins.str],
                  user_id: pulumi.Input[_builtins.int],
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None):
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserAvatar resource.
 
@@ -64,37 +64,37 @@ class UserAvatarArgs:
 
     @_builtins.property
     @pulumi.getter(name="avatarHash")
-    def avatar_hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar_hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hash of the avatar image.  This is used to track changes to the avatar image if the image contents change but the image name remains the same. Use `filesha256("path/to/avatar.png")` whenever possible.
         """
         return pulumi.get(self, "avatar_hash")
 
     @avatar_hash.setter
-    def avatar_hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar_hash", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token of the user. If this field is omitted, a GitLab token with administrator scope is required to manage the avatar for the specified user. **Note**: the token is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
 
 @pulumi.input_type
 class _UserAvatarState:
     def __init__(__self__, *,
-                 avatar: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 avatar: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering UserAvatar resources.
 
@@ -117,62 +117,62 @@ class _UserAvatarState:
 
     @_builtins.property
     @pulumi.getter
-    def avatar(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path to the avatar image to upload. **Note**: the avatar is not available for imported resources.
         """
         return pulumi.get(self, "avatar")
 
     @avatar.setter
-    def avatar(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar", value)
 
     @_builtins.property
     @pulumi.getter(name="avatarHash")
-    def avatar_hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar_hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hash of the avatar image.  This is used to track changes to the avatar image if the image contents change but the image name remains the same. Use `filesha256("path/to/avatar.png")` whenever possible.
         """
         return pulumi.get(self, "avatar_hash")
 
     @avatar_hash.setter
-    def avatar_hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar_hash", value)
 
     @_builtins.property
     @pulumi.getter(name="avatarUrl")
-    def avatar_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the avatar image.
         """
         return pulumi.get(self, "avatar_url")
 
     @avatar_url.setter
-    def avatar_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access token of the user. If this field is omitted, a GitLab token with administrator scope is required to manage the avatar for the specified user. **Note**: the token is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the user.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -182,10 +182,10 @@ class UserAvatar(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 avatar: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 avatar: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The `UserAvatar` resource allows users to manage the lifecycle of a user avatar.
@@ -265,10 +265,10 @@ class UserAvatar(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 avatar: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 avatar: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -299,11 +299,11 @@ class UserAvatar(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            avatar: Optional[pulumi.Input[_builtins.str]] = None,
-            avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-            avatar_url: Optional[pulumi.Input[_builtins.str]] = None,
-            token: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'UserAvatar':
+            avatar: pulumi.Input[Optional[_builtins.str]] = None,
+            avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            avatar_url: pulumi.Input[Optional[_builtins.str]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'UserAvatar':
         """
         Get an existing UserAvatar resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -98,7 +98,7 @@ export interface GetProjectApprovalRulesOutputArgs {
     /**
      * A list of project approval rules, as defined below.
      */
-    approvalRules?: pulumi.Input<pulumi.Input<inputs.GetProjectApprovalRulesApprovalRuleArgs>[]>;
+    approvalRules?: pulumi.Input<pulumi.Input<inputs.GetProjectApprovalRulesApprovalRuleArgs>[] | undefined>;
     /**
      * The ID or path with namespace that identifies the project.
      */

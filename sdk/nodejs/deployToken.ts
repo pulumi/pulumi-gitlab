@@ -136,35 +136,35 @@ export interface DeployTokenState {
     /**
      * The id of the deploy token.
      */
-    deployTokenId?: pulumi.Input<number>;
+    deployTokenId?: pulumi.Input<number | undefined>;
     /**
      * Time the token will expire it, RFC3339 format. Will not expire per default.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The name or id of the group to add the deploy token to.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * A name to describe the deploy token with.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name or id of the project to add the deploy token to.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -174,19 +174,19 @@ export interface DeployTokenArgs {
     /**
      * Time the token will expire it, RFC3339 format. Will not expire per default.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The name or id of the group to add the deploy token to.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * A name to describe the deploy token with.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name or id of the project to add the deploy token to.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The scopes of the deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
      */
@@ -194,5 +194,5 @@ export interface DeployTokenArgs {
     /**
      * A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

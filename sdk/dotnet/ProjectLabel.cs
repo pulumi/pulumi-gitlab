@@ -24,12 +24,12 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.Project("example", new()
+    ///     var example = new GitLab.Project("example", new()
     ///     {
     ///         Name = "project",
     ///     });
     /// 
-    ///     var fixme = new GitLab.Index.ProjectLabel("fixme", new()
+    ///     var fixme = new GitLab.ProjectLabel("fixme", new()
     ///     {
     ///         Project = example.Id,
     ///         Name = "fixme",
@@ -38,7 +38,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Scoped label
-    ///     var devopsCreate = new GitLab.Index.ProjectLabel("devops_create", new()
+    ///     var devopsCreate = new GitLab.ProjectLabel("devops_create", new()
     ///     {
     ///         Project = example.Id,
     ///         Name = "devops::create",

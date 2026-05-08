@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *     fullPath: "mygroup",
  * });
  * const groupProjects = mygroup.then(mygroup => gitlab.getProjects({
- *     groupId: mygroup.id,
+ *     groupId: Number(mygroup.id),
  *     orderBy: "name",
  *     includeSubgroups: true,
  *     withShared: false,
@@ -282,7 +282,7 @@ export interface GetProjectsResult {
  *     fullPath: "mygroup",
  * });
  * const groupProjects = mygroup.then(mygroup => gitlab.getProjects({
- *     groupId: mygroup.id,
+ *     groupId: Number(mygroup.id),
  *     orderBy: "name",
  *     includeSubgroups: true,
  *     withShared: false,
@@ -330,89 +330,89 @@ export interface GetProjectsOutputArgs {
     /**
      * Limit by archived status.
      */
-    archived?: pulumi.Input<boolean>;
+    archived?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
      */
-    includeSubgroups?: pulumi.Input<boolean>;
+    includeSubgroups?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
      */
-    maxQueryablePages?: pulumi.Input<number>;
+    maxQueryablePages?: pulumi.Input<number | undefined>;
     /**
      * Limit by projects that the current user is a member of.
      */
-    membership?: pulumi.Input<boolean>;
+    membership?: pulumi.Input<boolean | undefined>;
     /**
      * Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `groupId`.
      */
-    minAccessLevel?: pulumi.Input<number>;
+    minAccessLevel?: pulumi.Input<number | undefined>;
     /**
      * Return projects ordered ordered by: `id`, `name`, `path`, `createdAt`, `updatedAt`, `lastActivityAt`, `similarity`, `repositorySize`, `storageSize`, `packagesSize`, `wikiSize`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
     /**
      * Limit by projects owned by the current user.
      */
-    owned?: pulumi.Input<boolean>;
+    owned?: pulumi.Input<boolean | undefined>;
     /**
      * The first page to begin the query on.
      */
-    page?: pulumi.Input<number>;
+    page?: pulumi.Input<number | undefined>;
     /**
      * The number of results to return per page.
      */
-    perPage?: pulumi.Input<number>;
+    perPage?: pulumi.Input<number | undefined>;
     /**
      * Return list of authorized projects matching the search criteria.
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
     /**
      * Return only the ID, URL, name, and path of each project.
      */
-    simple?: pulumi.Input<boolean>;
+    simple?: pulumi.Input<boolean | undefined>;
     /**
      * Return projects sorted in `asc` or `desc` order. Default is `desc`.
      */
-    sort?: pulumi.Input<string>;
+    sort?: pulumi.Input<string | undefined>;
     /**
      * Limit by projects starred by the current user.
      */
-    starred?: pulumi.Input<boolean>;
+    starred?: pulumi.Input<boolean | undefined>;
     /**
      * Include project statistics. Cannot be used with `groupId`.
      */
-    statistics?: pulumi.Input<boolean>;
+    statistics?: pulumi.Input<boolean | undefined>;
     /**
      * Limit by projects that have all of the given topics.
      */
-    topics?: pulumi.Input<pulumi.Input<string>[]>;
+    topics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Limit by visibility `public`, `internal`, or `private`.
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
     /**
      * Include custom attributes in response *(admins only)*.
      */
-    withCustomAttributes?: pulumi.Input<boolean>;
+    withCustomAttributes?: pulumi.Input<boolean | undefined>;
     /**
      * Limit by projects with issues feature enabled. Default is `false`.
      */
-    withIssuesEnabled?: pulumi.Input<boolean>;
+    withIssuesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Limit by projects with merge requests feature enabled. Default is `false`.
      */
-    withMergeRequestsEnabled?: pulumi.Input<boolean>;
+    withMergeRequestsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Limit by projects which use the given programming language. Cannot be used with `groupId`.
      */
-    withProgrammingLanguage?: pulumi.Input<string>;
+    withProgrammingLanguage?: pulumi.Input<string | undefined>;
     /**
      * Include projects shared to this group. Default is `true`. Needs `groupId`.
      */
-    withShared?: pulumi.Input<boolean>;
+    withShared?: pulumi.Input<boolean | undefined>;
 }

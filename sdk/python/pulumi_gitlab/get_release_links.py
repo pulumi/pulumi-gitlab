@@ -109,8 +109,8 @@ def get_release_links(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         release_links=pulumi.get(__ret__, 'release_links'),
         tag_name=pulumi.get(__ret__, 'tag_name'))
-def get_release_links_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                             tag_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_release_links_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                             tag_name: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReleaseLinksResult]:
     """
     The `get_release_links` data source allows get details of release links.

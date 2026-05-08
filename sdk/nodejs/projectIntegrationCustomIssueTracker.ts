@@ -147,31 +147,31 @@ export interface ProjectIntegrationCustomIssueTrackerState {
     /**
      * Whether the integration is active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The ISO8601 date/time that this integration was activated at in UTC.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The URL to view an issue in the external issue tracker. Must contain :id.
      */
-    issuesUrl?: pulumi.Input<string>;
+    issuesUrl?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project for the custom issue tracker.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URL to the project in the external issue tracker.
      */
-    projectUrl?: pulumi.Input<string>;
+    projectUrl?: pulumi.Input<string | undefined>;
     /**
      * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The ISO8601 date/time that this integration was last updated at in UTC.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**

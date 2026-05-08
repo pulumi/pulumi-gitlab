@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example Usage
-    ///     var example = new GitLab.Index.GroupDeployToken("example", new()
+    ///     var example = new GitLab.GroupDeployToken("example", new()
     ///     {
     ///         Group = "example/deploying",
     ///         Name = "Example group deploy token",
@@ -39,11 +39,11 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var example_two = new GitLab.Index.GroupDeployToken("example-two", new()
+    ///     var example_two = new GitLab.GroupDeployToken("example-two", new()
     ///     {
     ///         Group = "12345678",
     ///         Name = "Example group deploy token expires in 24h",
-    ///         ExpiresAt = Std.Index.Timestamp.Invoke().Apply(invoke =&gt; Std.Index.Timeadd.Invoke(new()
+    ///         ExpiresAt = Std.Timestamp.Invoke().Apply(invoke =&gt; Std.Timeadd.Invoke(new()
     ///         {
     ///             Duration = invoke.Result,
     ///             Timestamp = "24h",

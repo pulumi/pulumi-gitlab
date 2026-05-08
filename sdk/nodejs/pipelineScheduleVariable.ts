@@ -140,23 +140,23 @@ export interface PipelineScheduleVariableState {
     /**
      * Name of the variable.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The id of the pipeline schedule.
      */
-    pipelineScheduleId?: pulumi.Input<number>;
+    pipelineScheduleId?: pulumi.Input<number | undefined>;
     /**
      * The id of the project to add the schedule to.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Value of the variable.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
      */
-    variableType?: pulumi.Input<string>;
+    variableType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -182,5 +182,5 @@ export interface PipelineScheduleVariableArgs {
     /**
      * The type of a variable. Available types are: `envVar`, `file`. Default is `envVar`.
      */
-    variableType?: pulumi.Input<string>;
+    variableType?: pulumi.Input<string | undefined>;
 }

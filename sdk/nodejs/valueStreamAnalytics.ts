@@ -159,19 +159,19 @@ export interface ValueStreamAnalyticsState {
     /**
      * Full path of the group the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
      */
-    groupFullPath?: pulumi.Input<string>;
+    groupFullPath?: pulumi.Input<string | undefined>;
     /**
      * The name of the value stream
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Full path of the project the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
      */
-    projectFullPath?: pulumi.Input<string>;
+    projectFullPath?: pulumi.Input<string | undefined>;
     /**
      * Stages of the value stream
      */
-    stages?: pulumi.Input<pulumi.Input<inputs.ValueStreamAnalyticsStage>[]>;
+    stages?: pulumi.Input<pulumi.Input<inputs.ValueStreamAnalyticsStage>[] | undefined>;
 }
 
 /**
@@ -181,15 +181,15 @@ export interface ValueStreamAnalyticsArgs {
     /**
      * Full path of the group the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
      */
-    groupFullPath?: pulumi.Input<string>;
+    groupFullPath?: pulumi.Input<string | undefined>;
     /**
      * The name of the value stream
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Full path of the project the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
      */
-    projectFullPath?: pulumi.Input<string>;
+    projectFullPath?: pulumi.Input<string | undefined>;
     /**
      * Stages of the value stream
      */

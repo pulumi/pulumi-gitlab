@@ -239,9 +239,9 @@ def get_repository_file(file_path: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         ref=pulumi.get(__ret__, 'ref'),
         size=pulumi.get(__ret__, 'size'))
-def get_repository_file_output(file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                               project: Optional[pulumi.Input[_builtins.str]] = None,
-                               ref: Optional[pulumi.Input[_builtins.str]] = None,
+def get_repository_file_output(file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                               project: pulumi.Input[Optional[_builtins.str]] = None,
+                               ref: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryFileResult]:
     """
     The `RepositoryFile` data source allows details of a file in a repository to be retrieved.

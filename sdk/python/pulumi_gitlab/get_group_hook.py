@@ -371,8 +371,8 @@ def get_group_hook(group: Optional[_builtins.str] = None,
         url=pulumi.get(__ret__, 'url'),
         vulnerability_events=pulumi.get(__ret__, 'vulnerability_events'),
         wiki_page_events=pulumi.get(__ret__, 'wiki_page_events'))
-def get_group_hook_output(group: Optional[pulumi.Input[_builtins.str]] = None,
-                          hook_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_group_hook_output(group: pulumi.Input[Optional[_builtins.str]] = None,
+                          hook_id: pulumi.Input[Optional[_builtins.int]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupHookResult]:
     """
     The `GroupHook` data source allows to retrieve details about a hook in a group.

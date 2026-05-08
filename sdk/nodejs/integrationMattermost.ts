@@ -246,95 +246,95 @@ export interface IntegrationMattermostState {
     /**
      * Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
      */
-    branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string | undefined>;
     /**
      * The name of the channel to receive confidential issue events notifications.
      */
-    confidentialIssueChannel?: pulumi.Input<string>;
+    confidentialIssueChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for confidential issues events.
      */
-    confidentialIssuesEvents?: pulumi.Input<boolean>;
+    confidentialIssuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive confidential note events notifications.
      */
-    confidentialNoteChannel?: pulumi.Input<string>;
+    confidentialNoteChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for confidential note events.
      */
-    confidentialNoteEvents?: pulumi.Input<boolean>;
+    confidentialNoteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive issue events notifications.
      */
-    issueChannel?: pulumi.Input<string>;
+    issueChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for issues events.
      */
-    issuesEvents?: pulumi.Input<boolean>;
+    issuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive merge request events notifications.
      */
-    mergeRequestChannel?: pulumi.Input<string>;
+    mergeRequestChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for merge requests events.
      */
-    mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive note events notifications.
      */
-    noteChannel?: pulumi.Input<string>;
+    noteChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for note events.
      */
-    noteEvents?: pulumi.Input<boolean>;
+    noteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Send notifications for broken pipelines.
      */
-    notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
+    notifyOnlyBrokenPipelines?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive pipeline events notifications.
      */
-    pipelineChannel?: pulumi.Input<string>;
+    pipelineChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for pipeline events.
      */
-    pipelineEvents?: pulumi.Input<boolean>;
+    pipelineEvents?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the project you want to activate integration on.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the channel to receive push events notifications.
      */
-    pushChannel?: pulumi.Input<string>;
+    pushChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for push events.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive tag push events notifications.
      */
-    tagPushChannel?: pulumi.Input<string>;
+    tagPushChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for tag push events.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Username to use.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
      */
-    webhook?: pulumi.Input<string>;
+    webhook?: pulumi.Input<string | undefined>;
     /**
      * The name of the channel to receive wiki page events notifications.
      */
-    wikiPageChannel?: pulumi.Input<string>;
+    wikiPageChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for wiki page events.
      */
-    wikiPageEvents?: pulumi.Input<boolean>;
+    wikiPageEvents?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -344,59 +344,59 @@ export interface IntegrationMattermostArgs {
     /**
      * Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
      */
-    branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string | undefined>;
     /**
      * The name of the channel to receive confidential issue events notifications.
      */
-    confidentialIssueChannel?: pulumi.Input<string>;
+    confidentialIssueChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for confidential issues events.
      */
-    confidentialIssuesEvents?: pulumi.Input<boolean>;
+    confidentialIssuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive confidential note events notifications.
      */
-    confidentialNoteChannel?: pulumi.Input<string>;
+    confidentialNoteChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for confidential note events.
      */
-    confidentialNoteEvents?: pulumi.Input<boolean>;
+    confidentialNoteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive issue events notifications.
      */
-    issueChannel?: pulumi.Input<string>;
+    issueChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for issues events.
      */
-    issuesEvents?: pulumi.Input<boolean>;
+    issuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive merge request events notifications.
      */
-    mergeRequestChannel?: pulumi.Input<string>;
+    mergeRequestChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for merge requests events.
      */
-    mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive note events notifications.
      */
-    noteChannel?: pulumi.Input<string>;
+    noteChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for note events.
      */
-    noteEvents?: pulumi.Input<boolean>;
+    noteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Send notifications for broken pipelines.
      */
-    notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
+    notifyOnlyBrokenPipelines?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive pipeline events notifications.
      */
-    pipelineChannel?: pulumi.Input<string>;
+    pipelineChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for pipeline events.
      */
-    pipelineEvents?: pulumi.Input<boolean>;
+    pipelineEvents?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the project you want to activate integration on.
      */
@@ -404,23 +404,23 @@ export interface IntegrationMattermostArgs {
     /**
      * The name of the channel to receive push events notifications.
      */
-    pushChannel?: pulumi.Input<string>;
+    pushChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for push events.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive tag push events notifications.
      */
-    tagPushChannel?: pulumi.Input<string>;
+    tagPushChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for tag push events.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Username to use.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
      */
@@ -428,9 +428,9 @@ export interface IntegrationMattermostArgs {
     /**
      * The name of the channel to receive wiki page events notifications.
      */
-    wikiPageChannel?: pulumi.Input<string>;
+    wikiPageChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for wiki page events.
      */
-    wikiPageEvents?: pulumi.Input<boolean>;
+    wikiPageEvents?: pulumi.Input<boolean | undefined>;
 }

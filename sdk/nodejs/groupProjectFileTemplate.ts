@@ -30,11 +30,11 @@ import * as utilities from "./utilities";
  *     name: "template project",
  *     description: "contains file templates",
  *     visibilityLevel: "public",
- *     namespaceId: foo.id,
+ *     namespaceId: foo.id.apply(x =>Number(x)),
  * });
  * const templateLink = new gitlab.GroupProjectFileTemplate("template_link", {
- *     groupId: foo.id,
- *     fileTemplateProjectId: bar.id,
+ *     groupId: foo.id.apply(x =>Number(x)),
+ *     fileTemplateProjectId: bar.id.apply(x =>Number(x)),
  * });
  * ```
  */
@@ -116,12 +116,12 @@ export interface GroupProjectFileTemplateState {
      * The ID of the project that will be used for file templates. This project must be the direct
      * 			child of the project defined by the group_id
      */
-    fileTemplateProjectId?: pulumi.Input<number>;
+    fileTemplateProjectId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the group that will use the file template project. This group must be the direct
      *             parent of the project defined by project_id
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
 }
 
 /**

@@ -118,15 +118,15 @@ export interface ProjectCustomAttributeState {
     /**
      * Key for the Custom Attribute.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The id of the project.
      */
-    project?: pulumi.Input<number>;
+    project?: pulumi.Input<number | undefined>;
     /**
      * Value for the Custom Attribute.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -33,7 +33,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var branchProtect = new GitLab.Index.BranchProtection("BranchProtect", new()
+    ///     var branchProtect = new GitLab.BranchProtection("BranchProtect", new()
     ///     {
     ///         Project = "12345",
     ///         Branch = "BranchProtected",
@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Example using dynamic block
-    ///     var main = new GitLab.Index.BranchProtection("main", new()
+    ///     var main = new GitLab.BranchProtection("main", new()
     ///     {
     ///         AllowedToPushes = new[]
     ///         {
@@ -100,7 +100,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Example with admin push access level
-    ///     var adminPush = new GitLab.Index.BranchProtection("admin_push", new()
+    ///     var adminPush = new GitLab.BranchProtection("admin_push", new()
     ///     {
     ///         Project = "12345",
     ///         Branch = "admin-protected",

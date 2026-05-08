@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new GitLab.Index.GroupMembership("test", new()
+    ///     var test = new GitLab.GroupMembership("test", new()
     ///     {
     ///         GroupId = 12345,
     ///         UserId = 1337,

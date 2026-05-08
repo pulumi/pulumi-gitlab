@@ -22,7 +22,7 @@ class ProjectFreezePeriodArgs:
                  freeze_end: pulumi.Input[_builtins.str],
                  freeze_start: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
-                 cron_timezone: Optional[pulumi.Input[_builtins.str]] = None):
+                 cron_timezone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectFreezePeriod resource.
 
@@ -75,24 +75,24 @@ class ProjectFreezePeriodArgs:
 
     @_builtins.property
     @pulumi.getter(name="cronTimezone")
-    def cron_timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron_timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timezone.
         """
         return pulumi.get(self, "cron_timezone")
 
     @cron_timezone.setter
-    def cron_timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron_timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_timezone", value)
 
 
 @pulumi.input_type
 class _ProjectFreezePeriodState:
     def __init__(__self__, *,
-                 cron_timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 freeze_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 freeze_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 cron_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 freeze_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 freeze_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectFreezePeriod resources.
 
@@ -112,50 +112,50 @@ class _ProjectFreezePeriodState:
 
     @_builtins.property
     @pulumi.getter(name="cronTimezone")
-    def cron_timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron_timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timezone.
         """
         return pulumi.get(self, "cron_timezone")
 
     @cron_timezone.setter
-    def cron_timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron_timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="freezeEnd")
-    def freeze_end(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def freeze_end(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         End of the Freeze Period in cron format (for example, `0 2 * * *`).
         """
         return pulumi.get(self, "freeze_end")
 
     @freeze_end.setter
-    def freeze_end(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def freeze_end(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "freeze_end", value)
 
     @_builtins.property
     @pulumi.getter(name="freezeStart")
-    def freeze_start(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def freeze_start(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Start of the Freeze Period in cron format (for example, `0 1 * * *`).
         """
         return pulumi.get(self, "freeze_start")
 
     @freeze_start.setter
-    def freeze_start(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def freeze_start(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "freeze_start", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or path of the project to add the freeze period to.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -165,10 +165,10 @@ class ProjectFreezePeriod(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cron_timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 freeze_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 freeze_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 cron_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 freeze_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 freeze_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectFreezePeriod` resource manages the lifecycle of a freeze period for a project.
@@ -260,10 +260,10 @@ class ProjectFreezePeriod(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cron_timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 freeze_end: Optional[pulumi.Input[_builtins.str]] = None,
-                 freeze_start: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 cron_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 freeze_end: pulumi.Input[Optional[_builtins.str]] = None,
+                 freeze_start: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -293,10 +293,10 @@ class ProjectFreezePeriod(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cron_timezone: Optional[pulumi.Input[_builtins.str]] = None,
-            freeze_end: Optional[pulumi.Input[_builtins.str]] = None,
-            freeze_start: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectFreezePeriod':
+            cron_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            freeze_end: pulumi.Input[Optional[_builtins.str]] = None,
+            freeze_start: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectFreezePeriod':
         """
         Get an existing ProjectFreezePeriod resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -134,7 +134,7 @@ def get_group_ids(group: Optional[_builtins.str] = None,
         group_graphql_id=pulumi.get(__ret__, 'group_graphql_id'),
         group_id=pulumi.get(__ret__, 'group_id'),
         id=pulumi.get(__ret__, 'id'))
-def get_group_ids_output(group: Optional[pulumi.Input[_builtins.str]] = None,
+def get_group_ids_output(group: pulumi.Input[Optional[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupIdsResult]:
     """
     The `get_group_ids` data source identification information for a given group, allowing a user to translate a full path or ID into the GraphQL ID of the group.

@@ -25,14 +25,14 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a project
-    ///     var example = new GitLab.Index.Project("example", new()
+    ///     var example = new GitLab.Project("example", new()
     ///     {
     ///         Name = "example",
     ///         Description = "An example project",
     ///     });
     /// 
     ///     // Create a release
-    ///     var exampleRelease = new GitLab.Index.Release("example", new()
+    ///     var exampleRelease = new GitLab.Release("example", new()
     ///     {
     ///         Project = example.Id,
     ///         Name = "test-release",

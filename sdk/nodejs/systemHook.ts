@@ -150,35 +150,35 @@ export interface SystemHookState {
     /**
      * The date and time the hook was created in ISO8601 format.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Do SSL verification when triggering the hook.
      */
-    enableSslVerification?: pulumi.Input<boolean>;
+    enableSslVerification?: pulumi.Input<boolean | undefined>;
     /**
      * Trigger hook on merge requests events.
      */
-    mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
      * When true, the hook fires on push events.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Trigger hook on repository update events.
      */
-    repositoryUpdateEvents?: pulumi.Input<boolean>;
+    repositoryUpdateEvents?: pulumi.Input<boolean | undefined>;
     /**
      * When true, the hook fires on new tags being pushed.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The hook URL.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -188,27 +188,27 @@ export interface SystemHookArgs {
     /**
      * Do SSL verification when triggering the hook.
      */
-    enableSslVerification?: pulumi.Input<boolean>;
+    enableSslVerification?: pulumi.Input<boolean | undefined>;
     /**
      * Trigger hook on merge requests events.
      */
-    mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
      * When true, the hook fires on push events.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Trigger hook on repository update events.
      */
-    repositoryUpdateEvents?: pulumi.Input<boolean>;
+    repositoryUpdateEvents?: pulumi.Input<boolean | undefined>;
     /**
      * When true, the hook fires on new tags being pushed.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The hook URL.
      */

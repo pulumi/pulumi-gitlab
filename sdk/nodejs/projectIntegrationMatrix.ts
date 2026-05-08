@@ -204,67 +204,67 @@ export interface ProjectIntegrationMatrixState {
     /**
      * Branches to send notifications for. Valid options are: `all`, `default`, `protected`, `defaultAndProtected`. The default value is "default"
      */
-    branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for confidential issue events.
      */
-    confidentialIssuesEvents?: pulumi.Input<boolean>;
+    confidentialIssuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for confidential note events.
      */
-    confidentialNoteEvents?: pulumi.Input<boolean>;
+    confidentialNoteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Custom hostname of the Matrix server. The default value is "https://matrix.org".
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for issue events.
      */
-    issuesEvents?: pulumi.Input<boolean>;
+    issuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for merge request events.
      */
-    mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for note events.
      */
-    noteEvents?: pulumi.Input<boolean>;
+    noteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Send notifications for broken pipelines.
      */
-    notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
+    notifyOnlyBrokenPipelines?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for pipeline events.
      */
-    pipelineEvents?: pulumi.Input<boolean>;
+    pipelineEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or full path of the project to integrate with Matrix.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for push events.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier for the target room (in the format `!qPKKM111FFKKsfoCVy:matrix.org`).
      */
-    room?: pulumi.Input<string>;
+    room?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for tag push events.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The Matrix access token (for example, syt-zyx57W2v1u123ew11).
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to inherit the default settings. Defaults to `false`.
      */
-    useInheritedSettings?: pulumi.Input<boolean>;
+    useInheritedSettings?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for wiki page events.
      */
-    wikiPageEvents?: pulumi.Input<boolean>;
+    wikiPageEvents?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -274,39 +274,39 @@ export interface ProjectIntegrationMatrixArgs {
     /**
      * Branches to send notifications for. Valid options are: `all`, `default`, `protected`, `defaultAndProtected`. The default value is "default"
      */
-    branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for confidential issue events.
      */
-    confidentialIssuesEvents?: pulumi.Input<boolean>;
+    confidentialIssuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for confidential note events.
      */
-    confidentialNoteEvents?: pulumi.Input<boolean>;
+    confidentialNoteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Custom hostname of the Matrix server. The default value is "https://matrix.org".
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for issue events.
      */
-    issuesEvents?: pulumi.Input<boolean>;
+    issuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for merge request events.
      */
-    mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for note events.
      */
-    noteEvents?: pulumi.Input<boolean>;
+    noteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Send notifications for broken pipelines.
      */
-    notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
+    notifyOnlyBrokenPipelines?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for pipeline events.
      */
-    pipelineEvents?: pulumi.Input<boolean>;
+    pipelineEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or full path of the project to integrate with Matrix.
      */
@@ -314,7 +314,7 @@ export interface ProjectIntegrationMatrixArgs {
     /**
      * Enable notifications for push events.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier for the target room (in the format `!qPKKM111FFKKsfoCVy:matrix.org`).
      */
@@ -322,7 +322,7 @@ export interface ProjectIntegrationMatrixArgs {
     /**
      * Enable notifications for tag push events.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The Matrix access token (for example, syt-zyx57W2v1u123ew11).
      */
@@ -330,9 +330,9 @@ export interface ProjectIntegrationMatrixArgs {
     /**
      * Indicates whether to inherit the default settings. Defaults to `false`.
      */
-    useInheritedSettings?: pulumi.Input<boolean>;
+    useInheritedSettings?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for wiki page events.
      */
-    wikiPageEvents?: pulumi.Input<boolean>;
+    wikiPageEvents?: pulumi.Input<boolean | undefined>;
 }

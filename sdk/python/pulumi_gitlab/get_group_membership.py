@@ -141,10 +141,10 @@ def get_group_membership(access_level: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         inherited=pulumi.get(__ret__, 'inherited'),
         members=pulumi.get(__ret__, 'members'))
-def get_group_membership_output(access_level: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                full_path: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                group_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                inherited: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_group_membership_output(access_level: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                full_path: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                group_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                inherited: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupMembershipResult]:
     """
     The `GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.

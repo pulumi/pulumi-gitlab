@@ -134,17 +134,17 @@ export interface GetGroupsOutputArgs {
     /**
      * Order the groups' list by `id`, `name`, `path`, or `similarity`. (Requires administrator privileges)
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
     /**
      * Search groups by name or path.
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
     /**
      * Sort groups' list in asc or desc order. (Requires administrator privileges)
      */
-    sort?: pulumi.Input<string>;
+    sort?: pulumi.Input<string | undefined>;
     /**
      * Limit to top level groups, excluding all subgroups.
      */
-    topLevelOnly?: pulumi.Input<boolean>;
+    topLevelOnly?: pulumi.Input<boolean | undefined>;
 }

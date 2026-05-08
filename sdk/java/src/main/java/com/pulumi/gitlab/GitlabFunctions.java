@@ -237,8 +237,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -279,8 +279,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -321,8 +321,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -363,8 +363,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -405,8 +405,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -446,8 +446,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetArtifactFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -518,8 +518,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetArtifactFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -590,8 +590,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetArtifactFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -662,8 +662,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetArtifactFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -734,8 +734,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetArtifactFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -852,8 +852,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetClusterAgentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -895,8 +895,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetClusterAgentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -938,8 +938,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetClusterAgentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -981,8 +981,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetClusterAgentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1024,8 +1024,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetClusterAgentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1067,8 +1067,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetClusterAgentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1109,8 +1109,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetClusterAgentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1151,8 +1151,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetClusterAgentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1193,8 +1193,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetClusterAgentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1235,8 +1235,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetClusterAgentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1277,8 +1277,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetComplianceFrameworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1320,8 +1320,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetComplianceFrameworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1363,8 +1363,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetComplianceFrameworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1406,8 +1406,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetComplianceFrameworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1449,8 +1449,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetComplianceFrameworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1491,8 +1491,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1530,8 +1530,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1569,8 +1569,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1608,8 +1608,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1647,8 +1647,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1686,8 +1686,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1725,8 +1725,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1828,8 +1828,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupAccessTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1870,8 +1870,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupAccessTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1912,8 +1912,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupAccessTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1954,8 +1954,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupAccessTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1996,8 +1996,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupAccessTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2043,8 +2043,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupBillableMemberMembershipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2091,8 +2091,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupBillableMemberMembershipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2139,8 +2139,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupBillableMemberMembershipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2187,8 +2187,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupBillableMemberMembershipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2235,8 +2235,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupBillableMemberMembershipsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2390,8 +2390,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GroupArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2443,8 +2443,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GroupArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2496,8 +2496,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GroupArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2549,8 +2549,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GroupArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2602,8 +2602,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GroupArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2936,8 +2936,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupSubgroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2979,8 +2979,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupSubgroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3022,8 +3022,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupSubgroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3065,8 +3065,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupSubgroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3108,8 +3108,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupSubgroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3151,8 +3151,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3201,8 +3201,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3251,8 +3251,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3301,8 +3301,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3351,8 +3351,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3401,8 +3401,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupVariablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3449,8 +3449,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupVariablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3497,8 +3497,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupVariablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3545,8 +3545,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupVariablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3593,8 +3593,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupVariablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3645,8 +3645,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3696,8 +3696,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3747,8 +3747,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3798,8 +3798,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3849,8 +3849,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3900,8 +3900,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3951,8 +3951,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4077,8 +4077,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetInstanceServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4121,8 +4121,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetInstanceServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4165,8 +4165,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetInstanceServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4209,8 +4209,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetInstanceServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4253,8 +4253,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetInstanceServiceAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4295,8 +4295,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetInstanceVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4337,8 +4337,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetInstanceVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4379,8 +4379,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetInstanceVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4421,8 +4421,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetInstanceVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4463,8 +4463,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetInstanceVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4504,8 +4504,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4543,8 +4543,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4582,8 +4582,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4621,8 +4621,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4660,8 +4660,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4699,8 +4699,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4738,8 +4738,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4778,8 +4778,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetMemberRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4820,8 +4820,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetMemberRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4862,8 +4862,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetMemberRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4904,8 +4904,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetMemberRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4946,8 +4946,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetMemberRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4987,8 +4987,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5026,8 +5026,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5065,8 +5065,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5104,8 +5104,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5143,8 +5143,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5182,8 +5182,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5221,8 +5221,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5261,8 +5261,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetPipelineScheduleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5304,8 +5304,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetPipelineScheduleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5347,8 +5347,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetPipelineScheduleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5390,8 +5390,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetPipelineScheduleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5433,8 +5433,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetPipelineScheduleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5476,8 +5476,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetPipelineSchedulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5518,8 +5518,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetPipelineSchedulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5560,8 +5560,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetPipelineSchedulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5602,8 +5602,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetPipelineSchedulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5644,8 +5644,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetPipelineSchedulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5794,8 +5794,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectApprovalRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5840,8 +5840,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectApprovalRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5886,8 +5886,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectApprovalRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5932,8 +5932,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectApprovalRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5978,8 +5978,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectApprovalRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6071,8 +6071,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.ProjectArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6120,8 +6120,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.ProjectArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6169,8 +6169,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.ProjectArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6218,8 +6218,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.ProjectArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6267,8 +6267,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.ProjectArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6315,8 +6315,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectHookArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6363,8 +6363,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectHookArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6411,8 +6411,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectHookArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6459,8 +6459,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectHookArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6507,8 +6507,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectHookArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6555,8 +6555,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectHooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6602,8 +6602,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectHooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6649,8 +6649,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectHooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6696,8 +6696,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectHooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6743,8 +6743,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectHooksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6791,8 +6791,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.ProjectArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6842,8 +6842,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.ProjectArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6893,8 +6893,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.ProjectArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6944,8 +6944,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.ProjectArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6995,8 +6995,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.ProjectArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7045,8 +7045,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectIssueArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7094,8 +7094,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectIssueArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7143,8 +7143,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectIssueArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7192,8 +7192,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectIssueArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7241,8 +7241,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectIssueArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7289,8 +7289,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectIssueLabelEventsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7332,8 +7332,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectIssueLabelEventsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7375,8 +7375,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectIssueLabelEventsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7418,8 +7418,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectIssueLabelEventsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7461,8 +7461,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectIssueLabelEventsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7505,8 +7505,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectIssuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7553,8 +7553,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectIssuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7601,8 +7601,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectIssuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7649,8 +7649,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectIssuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7697,8 +7697,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectArgs;
      * import com.pulumi.gitlab.inputs.GetProjectIssuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7744,8 +7744,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectLabelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7794,8 +7794,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectLabelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7844,8 +7844,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectLabelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7894,8 +7894,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectLabelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7944,8 +7944,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectLabelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7994,8 +7994,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectLabelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8036,8 +8036,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectLabelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8078,8 +8078,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectLabelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8120,8 +8120,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectLabelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8162,8 +8162,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectLabelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8268,8 +8268,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectMergeRequestArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8317,8 +8317,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectMergeRequestArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8366,8 +8366,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectMergeRequestArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8415,8 +8415,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectMergeRequestArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8464,8 +8464,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectMergeRequestArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8513,8 +8513,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectMergeRequestsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8564,8 +8564,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectMergeRequestsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8615,8 +8615,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectMergeRequestsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8666,8 +8666,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectMergeRequestsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8717,8 +8717,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectMergeRequestsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9092,8 +9092,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectSecureFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9140,8 +9140,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectSecureFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9188,8 +9188,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectSecureFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9236,8 +9236,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectSecureFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9284,8 +9284,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectSecureFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9422,8 +9422,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9472,8 +9472,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9522,8 +9522,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9572,8 +9572,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9622,8 +9622,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectVariableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9672,8 +9672,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectVariablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9720,8 +9720,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectVariablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9768,8 +9768,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectVariablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9816,8 +9816,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectVariablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9864,8 +9864,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetProjectVariablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9917,8 +9917,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupArgs;
      * import com.pulumi.gitlab.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9978,8 +9978,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupArgs;
      * import com.pulumi.gitlab.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10039,8 +10039,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupArgs;
      * import com.pulumi.gitlab.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10100,8 +10100,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupArgs;
      * import com.pulumi.gitlab.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10161,8 +10161,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupArgs;
      * import com.pulumi.gitlab.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10222,8 +10222,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupArgs;
      * import com.pulumi.gitlab.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10283,8 +10283,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetGroupArgs;
      * import com.pulumi.gitlab.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10339,8 +10339,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetReleaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10383,8 +10383,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetReleaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10427,8 +10427,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetReleaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10471,8 +10471,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetReleaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10515,8 +10515,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetReleaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10649,8 +10649,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRepositoryFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10693,8 +10693,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRepositoryFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10737,8 +10737,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRepositoryFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10781,8 +10781,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRepositoryFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10825,8 +10825,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRepositoryFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10869,8 +10869,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRepositoryTreeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10914,8 +10914,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRepositoryTreeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10959,8 +10959,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRepositoryTreeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11004,8 +11004,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRepositoryTreeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11049,8 +11049,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRepositoryTreeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11098,8 +11098,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnerControllerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11144,8 +11144,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnerControllerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11190,8 +11190,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnerControllerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11236,8 +11236,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnerControllerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11282,8 +11282,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnerControllerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11328,8 +11328,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnerControllerScopesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11374,8 +11374,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnerControllerScopesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11420,8 +11420,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnerControllerScopesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11466,8 +11466,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnerControllerScopesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11512,8 +11512,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnerControllerScopesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11557,8 +11557,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11600,8 +11600,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11643,8 +11643,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11686,8 +11686,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11729,8 +11729,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11772,8 +11772,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11815,8 +11815,8 @@ public final class GitlabFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11857,8 +11857,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.UserRunnerArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11913,8 +11913,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.UserRunnerArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11969,8 +11969,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.UserRunnerArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12025,8 +12025,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.UserRunnerArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12081,8 +12081,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.UserRunnerArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12137,8 +12137,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.UserRunnerArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12193,8 +12193,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.UserRunnerArgs;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetRunnersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12250,8 +12250,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
      * import com.pulumi.gitlab.RepositoryFile;
      * import com.pulumi.gitlab.RepositoryFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12315,8 +12315,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
      * import com.pulumi.gitlab.RepositoryFile;
      * import com.pulumi.gitlab.RepositoryFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12380,8 +12380,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
      * import com.pulumi.gitlab.RepositoryFile;
      * import com.pulumi.gitlab.RepositoryFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12445,8 +12445,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
      * import com.pulumi.gitlab.RepositoryFile;
      * import com.pulumi.gitlab.RepositoryFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12510,8 +12510,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
      * import com.pulumi.gitlab.RepositoryFile;
      * import com.pulumi.gitlab.RepositoryFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12575,8 +12575,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
      * import com.pulumi.gitlab.RepositoryFile;
      * import com.pulumi.gitlab.RepositoryFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12640,8 +12640,8 @@ public final class GitlabFunctions {
      * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
      * import com.pulumi.gitlab.RepositoryFile;
      * import com.pulumi.gitlab.RepositoryFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12874,8 +12874,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12926,8 +12926,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12978,8 +12978,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13030,8 +13030,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13082,8 +13082,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13134,8 +13134,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13186,8 +13186,8 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

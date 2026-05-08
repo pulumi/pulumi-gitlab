@@ -26,13 +26,13 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Index.Project("foo", new()
+    ///     var foo = new GitLab.Project("foo", new()
     ///     {
     ///         Name = "Example",
     ///         Description = "My example project",
     ///     });
     /// 
-    ///     var fooProjectLevelMrApprovals = new GitLab.Index.ProjectLevelMrApprovals("foo", new()
+    ///     var fooProjectLevelMrApprovals = new GitLab.ProjectLevelMrApprovals("foo", new()
     ///     {
     ///         Project = foo.Id,
     ///         ResetApprovalsOnPush = true,

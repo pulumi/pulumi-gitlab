@@ -266,111 +266,111 @@ export interface GroupIntegrationMattermostState {
     /**
      * Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
      */
-    branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string | undefined>;
     /**
      * Default channel to use if no other channel is configured.
      */
-    channel?: pulumi.Input<string>;
+    channel?: pulumi.Input<string | undefined>;
     /**
      * The name of the channel to receive confidential issue events notifications.
      */
-    confidentialIssueChannel?: pulumi.Input<string>;
+    confidentialIssueChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for confidential issues events.
      */
-    confidentialIssuesEvents?: pulumi.Input<boolean>;
+    confidentialIssuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive confidential note events notifications.
      */
-    confidentialNoteChannel?: pulumi.Input<string>;
+    confidentialNoteChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for confidential note events.
      */
-    confidentialNoteEvents?: pulumi.Input<boolean>;
+    confidentialNoteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or full path of the group to integrate with Mattermost.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * The name of the channel to receive issue events notifications.
      */
-    issueChannel?: pulumi.Input<string>;
+    issueChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for issues events.
      */
-    issuesEvents?: pulumi.Input<boolean>;
+    issuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Labels to send notifications for. Leave blank to receive notifications for all events.
      */
-    labelsToBeNotified?: pulumi.Input<string>;
+    labelsToBeNotified?: pulumi.Input<string | undefined>;
     /**
      * Labels to be notified for. Valid values are `matchAny`, `matchAll`.
      */
-    labelsToBeNotifiedBehavior?: pulumi.Input<string>;
+    labelsToBeNotifiedBehavior?: pulumi.Input<string | undefined>;
     /**
      * The name of the channel to receive merge request events notifications.
      */
-    mergeRequestChannel?: pulumi.Input<string>;
+    mergeRequestChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for merge requests events.
      */
-    mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive note events notifications.
      */
-    noteChannel?: pulumi.Input<string>;
+    noteChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for note events.
      */
-    noteEvents?: pulumi.Input<boolean>;
+    noteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Send notifications for broken pipelines.
      */
-    notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
+    notifyOnlyBrokenPipelines?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive pipeline events notifications.
      */
-    pipelineChannel?: pulumi.Input<string>;
+    pipelineChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for pipeline events.
      */
-    pipelineEvents?: pulumi.Input<boolean>;
+    pipelineEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive push events notifications.
      */
-    pushChannel?: pulumi.Input<string>;
+    pushChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for push events.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive tag push events notifications.
      */
-    tagPushChannel?: pulumi.Input<string>;
+    tagPushChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for tag push events.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Inherit settings from parent group.
      */
-    useInheritedSettings?: pulumi.Input<boolean>;
+    useInheritedSettings?: pulumi.Input<boolean | undefined>;
     /**
      * Mattermost notifications username.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Mattermost notifications webhook (for example, http://mattermost.example.com/hooks/...).
      */
-    webhook?: pulumi.Input<string>;
+    webhook?: pulumi.Input<string | undefined>;
     /**
      * The name of the channel to receive wiki page events notifications.
      */
-    wikiPageChannel?: pulumi.Input<string>;
+    wikiPageChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for wiki page events.
      */
-    wikiPageEvents?: pulumi.Input<boolean>;
+    wikiPageEvents?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -380,27 +380,27 @@ export interface GroupIntegrationMattermostArgs {
     /**
      * Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
      */
-    branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string | undefined>;
     /**
      * Default channel to use if no other channel is configured.
      */
-    channel?: pulumi.Input<string>;
+    channel?: pulumi.Input<string | undefined>;
     /**
      * The name of the channel to receive confidential issue events notifications.
      */
-    confidentialIssueChannel?: pulumi.Input<string>;
+    confidentialIssueChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for confidential issues events.
      */
-    confidentialIssuesEvents?: pulumi.Input<boolean>;
+    confidentialIssuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive confidential note events notifications.
      */
-    confidentialNoteChannel?: pulumi.Input<string>;
+    confidentialNoteChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for confidential note events.
      */
-    confidentialNoteEvents?: pulumi.Input<boolean>;
+    confidentialNoteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or full path of the group to integrate with Mattermost.
      */
@@ -408,71 +408,71 @@ export interface GroupIntegrationMattermostArgs {
     /**
      * The name of the channel to receive issue events notifications.
      */
-    issueChannel?: pulumi.Input<string>;
+    issueChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for issues events.
      */
-    issuesEvents?: pulumi.Input<boolean>;
+    issuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Labels to send notifications for. Leave blank to receive notifications for all events.
      */
-    labelsToBeNotified?: pulumi.Input<string>;
+    labelsToBeNotified?: pulumi.Input<string | undefined>;
     /**
      * Labels to be notified for. Valid values are `matchAny`, `matchAll`.
      */
-    labelsToBeNotifiedBehavior?: pulumi.Input<string>;
+    labelsToBeNotifiedBehavior?: pulumi.Input<string | undefined>;
     /**
      * The name of the channel to receive merge request events notifications.
      */
-    mergeRequestChannel?: pulumi.Input<string>;
+    mergeRequestChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for merge requests events.
      */
-    mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive note events notifications.
      */
-    noteChannel?: pulumi.Input<string>;
+    noteChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for note events.
      */
-    noteEvents?: pulumi.Input<boolean>;
+    noteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Send notifications for broken pipelines.
      */
-    notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
+    notifyOnlyBrokenPipelines?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive pipeline events notifications.
      */
-    pipelineChannel?: pulumi.Input<string>;
+    pipelineChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for pipeline events.
      */
-    pipelineEvents?: pulumi.Input<boolean>;
+    pipelineEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive push events notifications.
      */
-    pushChannel?: pulumi.Input<string>;
+    pushChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for push events.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive tag push events notifications.
      */
-    tagPushChannel?: pulumi.Input<string>;
+    tagPushChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for tag push events.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Inherit settings from parent group.
      */
-    useInheritedSettings?: pulumi.Input<boolean>;
+    useInheritedSettings?: pulumi.Input<boolean | undefined>;
     /**
      * Mattermost notifications username.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Mattermost notifications webhook (for example, http://mattermost.example.com/hooks/...).
      */
@@ -480,9 +480,9 @@ export interface GroupIntegrationMattermostArgs {
     /**
      * The name of the channel to receive wiki page events notifications.
      */
-    wikiPageChannel?: pulumi.Input<string>;
+    wikiPageChannel?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for wiki page events.
      */
-    wikiPageEvents?: pulumi.Input<boolean>;
+    wikiPageEvents?: pulumi.Input<boolean | undefined>;
 }

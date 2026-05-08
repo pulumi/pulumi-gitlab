@@ -151,31 +151,31 @@ export interface GroupLdapLinkState {
     /**
      * The CN of the LDAP group to link with. Required if `filter` is not provided.
      */
-    cn?: pulumi.Input<string>;
+    cn?: pulumi.Input<string | undefined>;
     /**
      * The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or URL-encoded path of the group
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
-    groupAccess?: pulumi.Input<string>;
+    groupAccess?: pulumi.Input<string | undefined>;
     /**
      * The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
      */
-    ldapProvider?: pulumi.Input<string>;
+    ldapProvider?: pulumi.Input<string | undefined>;
     /**
      * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `groupAccess` must match the base role used to create the custom role. To remove a custom role and revert to a base role, set this value to `0`.
      */
-    memberRoleId?: pulumi.Input<number>;
+    memberRoleId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -185,15 +185,15 @@ export interface GroupLdapLinkArgs {
     /**
      * The CN of the LDAP group to link with. Required if `filter` is not provided.
      */
-    cn?: pulumi.Input<string>;
+    cn?: pulumi.Input<string | undefined>;
     /**
      * The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or URL-encoded path of the group
      */
@@ -209,5 +209,5 @@ export interface GroupLdapLinkArgs {
     /**
      * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `groupAccess` must match the base role used to create the custom role. To remove a custom role and revert to a base role, set this value to `0`.
      */
-    memberRoleId?: pulumi.Input<number>;
+    memberRoleId?: pulumi.Input<number | undefined>;
 }

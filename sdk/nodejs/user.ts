@@ -194,59 +194,59 @@ export interface UserState {
     /**
      * Boolean, defaults to false. Whether to allow the user to create groups.
      */
-    canCreateGroup?: pulumi.Input<boolean>;
+    canCreateGroup?: pulumi.Input<boolean | undefined>;
     /**
      * The e-mail address of the user.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Set user password to a random value
      */
-    forceRandomPassword?: pulumi.Input<boolean>;
+    forceRandomPassword?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean, defaults to false.  Whether to enable administrative privileges
      */
-    isAdmin?: pulumi.Input<boolean>;
+    isAdmin?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
      */
-    isExternal?: pulumi.Input<boolean>;
+    isExternal?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the user.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user's namespace.
      */
-    namespaceId?: pulumi.Input<number>;
+    namespaceId?: pulumi.Input<number | undefined>;
     /**
      * The note associated to the user.
      */
-    note?: pulumi.Input<string>;
+    note?: pulumi.Input<string | undefined>;
     /**
      * The password of the user.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Integer, defaults to 0.  Number of projects user can create.
      */
-    projectsLimit?: pulumi.Input<number>;
+    projectsLimit?: pulumi.Input<number | undefined>;
     /**
      * Boolean, defaults to false. Send user password reset link.
      */
-    resetPassword?: pulumi.Input<boolean>;
+    resetPassword?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean, defaults to true. Whether to skip confirmation.
      */
-    skipConfirmation?: pulumi.Input<boolean>;
+    skipConfirmation?: pulumi.Input<boolean | undefined>;
     /**
      * String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The username of the user.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -256,7 +256,7 @@ export interface UserArgs {
     /**
      * Boolean, defaults to false. Whether to allow the user to create groups.
      */
-    canCreateGroup?: pulumi.Input<boolean>;
+    canCreateGroup?: pulumi.Input<boolean | undefined>;
     /**
      * The e-mail address of the user.
      */
@@ -264,47 +264,47 @@ export interface UserArgs {
     /**
      * Set user password to a random value
      */
-    forceRandomPassword?: pulumi.Input<boolean>;
+    forceRandomPassword?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean, defaults to false.  Whether to enable administrative privileges
      */
-    isAdmin?: pulumi.Input<boolean>;
+    isAdmin?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
      */
-    isExternal?: pulumi.Input<boolean>;
+    isExternal?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the user.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user's namespace.
      */
-    namespaceId?: pulumi.Input<number>;
+    namespaceId?: pulumi.Input<number | undefined>;
     /**
      * The note associated to the user.
      */
-    note?: pulumi.Input<string>;
+    note?: pulumi.Input<string | undefined>;
     /**
      * The password of the user.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Integer, defaults to 0.  Number of projects user can create.
      */
-    projectsLimit?: pulumi.Input<number>;
+    projectsLimit?: pulumi.Input<number | undefined>;
     /**
      * Boolean, defaults to false. Send user password reset link.
      */
-    resetPassword?: pulumi.Input<boolean>;
+    resetPassword?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean, defaults to true. Whether to skip confirmation.
      */
-    skipConfirmation?: pulumi.Input<boolean>;
+    skipConfirmation?: pulumi.Input<boolean | undefined>;
     /**
      * String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The username of the user.
      */

@@ -115,23 +115,23 @@ export interface GroupIssueBoardState {
     /**
      * The ID or URL-encoded path of the group owned by the authenticated user.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * The list of label names which the board should be scoped to.
      */
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of issue board lists.
      */
-    lists?: pulumi.Input<pulumi.Input<inputs.GroupIssueBoardList>[]>;
+    lists?: pulumi.Input<pulumi.Input<inputs.GroupIssueBoardList>[] | undefined>;
     /**
      * The milestone the board should be scoped to.
      */
-    milestoneId?: pulumi.Input<number>;
+    milestoneId?: pulumi.Input<number | undefined>;
     /**
      * The name of the board.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -145,17 +145,17 @@ export interface GroupIssueBoardArgs {
     /**
      * The list of label names which the board should be scoped to.
      */
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of issue board lists.
      */
-    lists?: pulumi.Input<pulumi.Input<inputs.GroupIssueBoardList>[]>;
+    lists?: pulumi.Input<pulumi.Input<inputs.GroupIssueBoardList>[] | undefined>;
     /**
      * The milestone the board should be scoped to.
      */
-    milestoneId?: pulumi.Input<number>;
+    milestoneId?: pulumi.Input<number | undefined>;
     /**
      * The name of the board.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

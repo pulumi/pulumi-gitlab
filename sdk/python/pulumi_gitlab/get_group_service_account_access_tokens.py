@@ -113,8 +113,8 @@ def get_group_service_account_access_tokens(group: Optional[_builtins.str] = Non
         group=pulumi.get(__ret__, 'group'),
         id=pulumi.get(__ret__, 'id'),
         service_account_id=pulumi.get(__ret__, 'service_account_id'))
-def get_group_service_account_access_tokens_output(group: Optional[pulumi.Input[_builtins.str]] = None,
-                                                   service_account_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_group_service_account_access_tokens_output(group: pulumi.Input[Optional[_builtins.str]] = None,
+                                                   service_account_id: pulumi.Input[Optional[_builtins.int]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupServiceAccountAccessTokensResult]:
     """
     The `get_group_service_account_access_tokens` data source allows to retrieve all access tokens for a group service account.

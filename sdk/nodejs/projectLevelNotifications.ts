@@ -223,79 +223,79 @@ export interface ProjectLevelNotificationsState {
     /**
      * Enable notifications for closed issues. Can only be used when `level` is `custom`.
      */
-    closeIssue?: pulumi.Input<boolean>;
+    closeIssue?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for closed merge requests. Can only be used when `level` is `custom`.
      */
-    closeMergeRequest?: pulumi.Input<boolean>;
+    closeMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for failed pipelines. Can only be used when `level` is `custom`.
      */
-    failedPipeline?: pulumi.Input<boolean>;
+    failedPipeline?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for fixed pipelines. Can only be used when `level` is `custom`.
      */
-    fixedPipeline?: pulumi.Input<boolean>;
+    fixedPipeline?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for due issues. Can only be used when `level` is `custom`.
      */
-    issueDue?: pulumi.Input<boolean>;
+    issueDue?: pulumi.Input<boolean | undefined>;
     /**
      * The level of the notification. Valid values are: `disabled`, `participating`, `watch`, `global`, `mention`, `custom`.
      */
-    level?: pulumi.Input<string>;
+    level?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for merged merge requests. Can only be used when `level` is `custom`.
      */
-    mergeMergeRequest?: pulumi.Input<boolean>;
+    mergeMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for merged merge requests when the pipeline succeeds. Can only be used when `level` is `custom`.
      */
-    mergeWhenPipelineSucceeds?: pulumi.Input<boolean>;
+    mergeWhenPipelineSucceeds?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for moved projects. Can only be used when `level` is `custom`.
      */
-    movedProject?: pulumi.Input<boolean>;
+    movedProject?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for new issues. Can only be used when `level` is `custom`.
      */
-    newIssue?: pulumi.Input<boolean>;
+    newIssue?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for new merge requests. Can only be used when `level` is `custom`.
      */
-    newMergeRequest?: pulumi.Input<boolean>;
+    newMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for new notes on merge requests. Can only be used when `level` is `custom`.
      */
-    newNote?: pulumi.Input<boolean>;
+    newNote?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or URL-encoded path of a project where notifications will be configured.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for push to merge request branches. Can only be used when `level` is `custom`.
      */
-    pushToMergeRequest?: pulumi.Input<boolean>;
+    pushToMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for issue reassignments. Can only be used when `level` is `custom`.
      */
-    reassignIssue?: pulumi.Input<boolean>;
+    reassignIssue?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for merge request reassignments. Can only be used when `level` is `custom`.
      */
-    reassignMergeRequest?: pulumi.Input<boolean>;
+    reassignMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for reopened issues. Can only be used when `level` is `custom`.
      */
-    reopenIssue?: pulumi.Input<boolean>;
+    reopenIssue?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for reopened merge requests. Can only be used when `level` is `custom`.
      */
-    reopenMergeRequest?: pulumi.Input<boolean>;
+    reopenMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for successful pipelines. Can only be used when `level` is `custom`.
      */
-    successPipeline?: pulumi.Input<boolean>;
+    successPipeline?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -305,51 +305,51 @@ export interface ProjectLevelNotificationsArgs {
     /**
      * Enable notifications for closed issues. Can only be used when `level` is `custom`.
      */
-    closeIssue?: pulumi.Input<boolean>;
+    closeIssue?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for closed merge requests. Can only be used when `level` is `custom`.
      */
-    closeMergeRequest?: pulumi.Input<boolean>;
+    closeMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for failed pipelines. Can only be used when `level` is `custom`.
      */
-    failedPipeline?: pulumi.Input<boolean>;
+    failedPipeline?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for fixed pipelines. Can only be used when `level` is `custom`.
      */
-    fixedPipeline?: pulumi.Input<boolean>;
+    fixedPipeline?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for due issues. Can only be used when `level` is `custom`.
      */
-    issueDue?: pulumi.Input<boolean>;
+    issueDue?: pulumi.Input<boolean | undefined>;
     /**
      * The level of the notification. Valid values are: `disabled`, `participating`, `watch`, `global`, `mention`, `custom`.
      */
-    level?: pulumi.Input<string>;
+    level?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for merged merge requests. Can only be used when `level` is `custom`.
      */
-    mergeMergeRequest?: pulumi.Input<boolean>;
+    mergeMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for merged merge requests when the pipeline succeeds. Can only be used when `level` is `custom`.
      */
-    mergeWhenPipelineSucceeds?: pulumi.Input<boolean>;
+    mergeWhenPipelineSucceeds?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for moved projects. Can only be used when `level` is `custom`.
      */
-    movedProject?: pulumi.Input<boolean>;
+    movedProject?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for new issues. Can only be used when `level` is `custom`.
      */
-    newIssue?: pulumi.Input<boolean>;
+    newIssue?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for new merge requests. Can only be used when `level` is `custom`.
      */
-    newMergeRequest?: pulumi.Input<boolean>;
+    newMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for new notes on merge requests. Can only be used when `level` is `custom`.
      */
-    newNote?: pulumi.Input<boolean>;
+    newNote?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or URL-encoded path of a project where notifications will be configured.
      */
@@ -357,25 +357,25 @@ export interface ProjectLevelNotificationsArgs {
     /**
      * Enable notifications for push to merge request branches. Can only be used when `level` is `custom`.
      */
-    pushToMergeRequest?: pulumi.Input<boolean>;
+    pushToMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for issue reassignments. Can only be used when `level` is `custom`.
      */
-    reassignIssue?: pulumi.Input<boolean>;
+    reassignIssue?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for merge request reassignments. Can only be used when `level` is `custom`.
      */
-    reassignMergeRequest?: pulumi.Input<boolean>;
+    reassignMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for reopened issues. Can only be used when `level` is `custom`.
      */
-    reopenIssue?: pulumi.Input<boolean>;
+    reopenIssue?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for reopened merge requests. Can only be used when `level` is `custom`.
      */
-    reopenMergeRequest?: pulumi.Input<boolean>;
+    reopenMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for successful pipelines. Can only be used when `level` is `custom`.
      */
-    successPipeline?: pulumi.Input<boolean>;
+    successPipeline?: pulumi.Input<boolean | undefined>;
 }

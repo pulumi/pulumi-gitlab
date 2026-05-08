@@ -107,8 +107,8 @@ def get_project_approval_rules(approval_rules: Optional[Sequence[Union['GetProje
         approval_rules=pulumi.get(__ret__, 'approval_rules'),
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'))
-def get_project_approval_rules_output(approval_rules: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectApprovalRulesApprovalRuleArgs', 'GetProjectApprovalRulesApprovalRuleArgsDict']]]]] = None,
-                                      project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_approval_rules_output(approval_rules: pulumi.Input[Optional[Optional[Sequence[Union['GetProjectApprovalRulesApprovalRuleArgs', 'GetProjectApprovalRulesApprovalRuleArgsDict']]]]] = None,
+                                      project: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectApprovalRulesResult]:
     """
     The `get_project_approval_rules` data source retrieves all approval rules of a given project.

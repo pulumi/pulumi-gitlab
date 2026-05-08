@@ -123,8 +123,8 @@ def get_group_service_account(group: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         service_account_id=pulumi.get(__ret__, 'service_account_id'),
         username=pulumi.get(__ret__, 'username'))
-def get_group_service_account_output(group: Optional[pulumi.Input[_builtins.str]] = None,
-                                     service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_group_service_account_output(group: pulumi.Input[Optional[_builtins.str]] = None,
+                                     service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupServiceAccountResult]:
     """
     The `GroupServiceAccount` data source retrieves information about a GitLab service account in a group.

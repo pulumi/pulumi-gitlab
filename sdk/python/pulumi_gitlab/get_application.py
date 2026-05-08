@@ -127,7 +127,7 @@ def get_application(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         redirect_url=pulumi.get(__ret__, 'redirect_url'))
-def get_application_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_application_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationResult]:
     """
     The `Application` data source retrieves information about a gitlab application.

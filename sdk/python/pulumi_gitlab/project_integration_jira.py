@@ -22,19 +22,19 @@ class ProjectIntegrationJiraArgs:
                  password: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str],
-                 api_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment_on_event_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 jira_auth_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 jira_issue_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_issue_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_issue_transition_automatic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 jira_issue_transition_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_inherited_settings: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment_on_event_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jira_auth_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 jira_issue_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_issue_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_issue_transition_automatic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jira_issue_transition_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_inherited_settings: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectIntegrationJira resource.
 
@@ -123,184 +123,184 @@ class ProjectIntegrationJiraArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiUrl")
-    def api_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
         """
         return pulumi.get(self, "api_url")
 
     @api_url.setter
-    def api_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_url", value)
 
     @_builtins.property
     @pulumi.getter(name="commentOnEventEnabled")
-    def comment_on_event_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def comment_on_event_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable comments inside Jira issues on each GitLab event (commit / merge request)
         """
         return pulumi.get(self, "comment_on_event_enabled")
 
     @comment_on_event_enabled.setter
-    def comment_on_event_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def comment_on_event_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "comment_on_event_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="commitEvents")
-    def commit_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def commit_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for commit events
         """
         return pulumi.get(self, "commit_events")
 
     @commit_events.setter
-    def commit_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def commit_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "commit_events", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesEnabled")
-    def issues_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def issues_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable viewing Jira issues in GitLab.
         """
         return pulumi.get(self, "issues_enabled")
 
     @issues_enabled.setter
-    def issues_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def issues_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "issues_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraAuthType")
-    def jira_auth_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def jira_auth_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
         """
         return pulumi.get(self, "jira_auth_type")
 
     @jira_auth_type.setter
-    def jira_auth_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def jira_auth_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "jira_auth_type", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraIssuePrefix")
-    def jira_issue_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jira_issue_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix to match Jira issue keys.
         """
         return pulumi.get(self, "jira_issue_prefix")
 
     @jira_issue_prefix.setter
-    def jira_issue_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jira_issue_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jira_issue_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraIssueRegex")
-    def jira_issue_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jira_issue_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Regular expression to match Jira issue keys.
         """
         return pulumi.get(self, "jira_issue_regex")
 
     @jira_issue_regex.setter
-    def jira_issue_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jira_issue_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jira_issue_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraIssueTransitionAutomatic")
-    def jira_issue_transition_automatic(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def jira_issue_transition_automatic(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
         """
         return pulumi.get(self, "jira_issue_transition_automatic")
 
     @jira_issue_transition_automatic.setter
-    def jira_issue_transition_automatic(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def jira_issue_transition_automatic(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "jira_issue_transition_automatic", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraIssueTransitionId")
-    def jira_issue_transition_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jira_issue_transition_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         """
         return pulumi.get(self, "jira_issue_transition_id")
 
     @jira_issue_transition_id.setter
-    def jira_issue_transition_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jira_issue_transition_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jira_issue_transition_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEvents")
-    def merge_requests_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_requests_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for merge request events
         """
         return pulumi.get(self, "merge_requests_events")
 
     @merge_requests_events.setter
-    def merge_requests_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_requests_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_requests_events", value)
 
     @_builtins.property
     @pulumi.getter(name="projectKeys")
-    def project_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def project_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         """
         return pulumi.get(self, "project_keys")
 
     @project_keys.setter
-    def project_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def project_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "project_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="useInheritedSettings")
-    def use_inherited_settings(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_inherited_settings(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether or not to inherit default settings. Defaults to false.
         """
         return pulumi.get(self, "use_inherited_settings")
 
     @use_inherited_settings.setter
-    def use_inherited_settings(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_inherited_settings(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_inherited_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
 @pulumi.input_type
 class _ProjectIntegrationJiraState:
     def __init__(__self__, *,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment_on_event_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 issues_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 jira_auth_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 jira_issue_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_issue_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_issue_transition_automatic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 jira_issue_transition_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_inherited_settings: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment_on_event_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 issues_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jira_auth_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 jira_issue_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_issue_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_issue_transition_automatic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jira_issue_transition_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_inherited_settings: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectIntegrationJira resources.
 
@@ -368,242 +368,242 @@ class _ProjectIntegrationJiraState:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the integration is active.
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="apiUrl")
-    def api_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
         """
         return pulumi.get(self, "api_url")
 
     @api_url.setter
-    def api_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_url", value)
 
     @_builtins.property
     @pulumi.getter(name="commentOnEventEnabled")
-    def comment_on_event_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def comment_on_event_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable comments inside Jira issues on each GitLab event (commit / merge request)
         """
         return pulumi.get(self, "comment_on_event_enabled")
 
     @comment_on_event_enabled.setter
-    def comment_on_event_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def comment_on_event_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "comment_on_event_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="commitEvents")
-    def commit_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def commit_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for commit events
         """
         return pulumi.get(self, "commit_events")
 
     @commit_events.setter
-    def commit_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def commit_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "commit_events", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ISO8601 date/time that this integration was activated at in UTC.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesEnabled")
-    def issues_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def issues_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable viewing Jira issues in GitLab.
         """
         return pulumi.get(self, "issues_enabled")
 
     @issues_enabled.setter
-    def issues_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def issues_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "issues_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraAuthType")
-    def jira_auth_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def jira_auth_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
         """
         return pulumi.get(self, "jira_auth_type")
 
     @jira_auth_type.setter
-    def jira_auth_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def jira_auth_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "jira_auth_type", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraIssuePrefix")
-    def jira_issue_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jira_issue_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix to match Jira issue keys.
         """
         return pulumi.get(self, "jira_issue_prefix")
 
     @jira_issue_prefix.setter
-    def jira_issue_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jira_issue_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jira_issue_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraIssueRegex")
-    def jira_issue_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jira_issue_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Regular expression to match Jira issue keys.
         """
         return pulumi.get(self, "jira_issue_regex")
 
     @jira_issue_regex.setter
-    def jira_issue_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jira_issue_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jira_issue_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraIssueTransitionAutomatic")
-    def jira_issue_transition_automatic(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def jira_issue_transition_automatic(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
         """
         return pulumi.get(self, "jira_issue_transition_automatic")
 
     @jira_issue_transition_automatic.setter
-    def jira_issue_transition_automatic(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def jira_issue_transition_automatic(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "jira_issue_transition_automatic", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraIssueTransitionId")
-    def jira_issue_transition_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jira_issue_transition_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         """
         return pulumi.get(self, "jira_issue_transition_id")
 
     @jira_issue_transition_id.setter
-    def jira_issue_transition_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jira_issue_transition_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jira_issue_transition_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEvents")
-    def merge_requests_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_requests_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for merge request events
         """
         return pulumi.get(self, "merge_requests_events")
 
     @merge_requests_events.setter
-    def merge_requests_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_requests_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_requests_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the project you want to activate integration on.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="projectKeys")
-    def project_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def project_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         """
         return pulumi.get(self, "project_keys")
 
     @project_keys.setter
-    def project_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def project_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "project_keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Title of the integration.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ISO8601 date/time that this integration was last updated at in UTC.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="useInheritedSettings")
-    def use_inherited_settings(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_inherited_settings(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether or not to inherit default settings. Defaults to false.
         """
         return pulumi.get(self, "use_inherited_settings")
 
     @use_inherited_settings.setter
-    def use_inherited_settings(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_inherited_settings(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_inherited_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -613,22 +613,22 @@ class ProjectIntegrationJira(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment_on_event_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 jira_auth_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 jira_issue_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_issue_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_issue_transition_automatic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 jira_issue_transition_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_inherited_settings: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment_on_event_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jira_auth_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 jira_issue_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_issue_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_issue_transition_automatic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jira_issue_transition_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_inherited_settings: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectIntegrationJira` resource manages the lifecycle of a project integration with Jira.
@@ -740,22 +740,22 @@ class ProjectIntegrationJira(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment_on_event_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 jira_auth_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 jira_issue_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_issue_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_issue_transition_automatic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 jira_issue_transition_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_inherited_settings: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment_on_event_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jira_auth_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 jira_issue_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_issue_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_issue_transition_automatic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jira_issue_transition_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_inherited_settings: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -803,26 +803,26 @@ class ProjectIntegrationJira(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active: Optional[pulumi.Input[_builtins.bool]] = None,
-            api_url: Optional[pulumi.Input[_builtins.str]] = None,
-            comment_on_event_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            commit_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            issues_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            jira_auth_type: Optional[pulumi.Input[_builtins.int]] = None,
-            jira_issue_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            jira_issue_regex: Optional[pulumi.Input[_builtins.str]] = None,
-            jira_issue_transition_automatic: Optional[pulumi.Input[_builtins.bool]] = None,
-            jira_issue_transition_id: Optional[pulumi.Input[_builtins.str]] = None,
-            merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            project_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            title: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            use_inherited_settings: Optional[pulumi.Input[_builtins.bool]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectIntegrationJira':
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            api_url: pulumi.Input[Optional[_builtins.str]] = None,
+            comment_on_event_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            commit_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            issues_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            jira_auth_type: pulumi.Input[Optional[_builtins.int]] = None,
+            jira_issue_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            jira_issue_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            jira_issue_transition_automatic: pulumi.Input[Optional[_builtins.bool]] = None,
+            jira_issue_transition_id: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            use_inherited_settings: pulumi.Input[Optional[_builtins.bool]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectIntegrationJira':
         """
         Get an existing ProjectIntegrationJira resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

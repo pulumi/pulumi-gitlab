@@ -22,12 +22,12 @@ __all__ = ['ProjectIssueBoardArgs', 'ProjectIssueBoard']
 class ProjectIssueBoardArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
-                 assignee_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]]] = None,
-                 milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 assignee_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]]] = None,
+                 milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ProjectIssueBoard resource.
 
@@ -67,87 +67,87 @@ class ProjectIssueBoardArgs:
 
     @_builtins.property
     @pulumi.getter(name="assigneeId")
-    def assignee_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def assignee_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The assignee the board should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "assignee_id")
 
     @assignee_id.setter
-    def assignee_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def assignee_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "assignee_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of label names which the board should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]]]:
+    def lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]]]:
         """
         The list of issue board lists
         """
         return pulumi.get(self, "lists")
 
     @lists.setter
-    def lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]]]):
+    def lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]]]):
         pulumi.set(self, "lists", value)
 
     @_builtins.property
     @pulumi.getter(name="milestoneId")
-    def milestone_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def milestone_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The milestone the board should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "milestone_id")
 
     @milestone_id.setter
-    def milestone_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def milestone_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "milestone_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the board.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The weight range from 0 to 9, to which the board should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
 @pulumi.input_type
 class _ProjectIssueBoardState:
     def __init__(__self__, *,
-                 assignee_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]]] = None,
-                 milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 assignee_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]]] = None,
+                 milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProjectIssueBoard resources.
 
@@ -176,86 +176,86 @@ class _ProjectIssueBoardState:
 
     @_builtins.property
     @pulumi.getter(name="assigneeId")
-    def assignee_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def assignee_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The assignee the board should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "assignee_id")
 
     @assignee_id.setter
-    def assignee_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def assignee_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "assignee_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of label names which the board should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]]]:
+    def lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]]]:
         """
         The list of issue board lists
         """
         return pulumi.get(self, "lists")
 
     @lists.setter
-    def lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]]]):
+    def lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectIssueBoardListArgs']]]]):
         pulumi.set(self, "lists", value)
 
     @_builtins.property
     @pulumi.getter(name="milestoneId")
-    def milestone_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def milestone_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The milestone the board should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "milestone_id")
 
     @milestone_id.setter
-    def milestone_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def milestone_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "milestone_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the board.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or full path of the project maintained by the authenticated user.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The weight range from 0 to 9, to which the board should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
@@ -265,13 +265,13 @@ class ProjectIssueBoard(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignee_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]]] = None,
-                 milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 assignee_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]]] = None,
+                 milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The `ProjectIssueBoard` resource manages the lifecycle of a Project Issue Board.
@@ -297,7 +297,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
             password="example1$$$")
         example_project_membership = gitlab.ProjectMembership("example",
             project=example.id,
-            user_id=example_user.id,
+            user_id=example_user.id.apply(lambda x: int(x)),
             access_level="developer")
         example_project_milestone = gitlab.ProjectMilestone("example",
             project=example.id,
@@ -307,7 +307,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
             name="Test Issue Board",
             lists=[
                 {
-                    "assignee_id": example_user.id,
+                    "assignee_id": example_user.id.apply(lambda x: int(x)),
                 },
                 {
                     "milestone_id": example_project_milestone.milestone_id,
@@ -319,7 +319,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
             name="Test Issue Board with list syntax",
             lists=[
                 {
-                    "assignee_id": example_user.id,
+                    "assignee_id": example_user.id.apply(lambda x: int(x)),
                 },
                 {
                     "milestone_id": example_project_milestone.milestone_id,
@@ -383,7 +383,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
             password="example1$$$")
         example_project_membership = gitlab.ProjectMembership("example",
             project=example.id,
-            user_id=example_user.id,
+            user_id=example_user.id.apply(lambda x: int(x)),
             access_level="developer")
         example_project_milestone = gitlab.ProjectMilestone("example",
             project=example.id,
@@ -393,7 +393,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
             name="Test Issue Board",
             lists=[
                 {
-                    "assignee_id": example_user.id,
+                    "assignee_id": example_user.id.apply(lambda x: int(x)),
                 },
                 {
                     "milestone_id": example_project_milestone.milestone_id,
@@ -405,7 +405,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
             name="Test Issue Board with list syntax",
             lists=[
                 {
-                    "assignee_id": example_user.id,
+                    "assignee_id": example_user.id.apply(lambda x: int(x)),
                 },
                 {
                     "milestone_id": example_project_milestone.milestone_id,
@@ -444,13 +444,13 @@ class ProjectIssueBoard(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignee_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]]] = None,
-                 milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 assignee_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]]] = None,
+                 milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -479,13 +479,13 @@ class ProjectIssueBoard(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assignee_id: Optional[pulumi.Input[_builtins.int]] = None,
-            labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]]] = None,
-            milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            weight: Optional[pulumi.Input[_builtins.int]] = None) -> 'ProjectIssueBoard':
+            assignee_id: pulumi.Input[Optional[_builtins.int]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]]] = None,
+            milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> 'ProjectIssueBoard':
         """
         Get an existing ProjectIssueBoard resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

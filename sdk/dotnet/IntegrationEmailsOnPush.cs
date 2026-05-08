@@ -27,14 +27,14 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This resource is deprecated and will be removed in version 19.0. Use gitlab_project_integration_emails_on_push instead.
-    ///     var awesomeProject = new GitLab.Index.Project("awesome_project", new()
+    ///     var awesomeProject = new GitLab.Project("awesome_project", new()
     ///     {
     ///         Name = "awesome_project",
     ///         Description = "My awesome project.",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var emails = new GitLab.Index.IntegrationEmailsOnPush("emails", new()
+    ///     var emails = new GitLab.IntegrationEmailsOnPush("emails", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         Recipients = "myrecipient@example.com myotherrecipient@example.com",

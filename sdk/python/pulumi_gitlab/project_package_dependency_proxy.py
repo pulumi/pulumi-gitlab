@@ -20,10 +20,10 @@ __all__ = ['ProjectPackageDependencyProxyArgs', 'ProjectPackageDependencyProxy']
 class ProjectPackageDependencyProxyArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maven_external_registry_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven_external_registry_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven_external_registry_username: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maven_external_registry_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven_external_registry_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven_external_registry_username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectPackageDependencyProxy resource.
 
@@ -57,61 +57,61 @@ class ProjectPackageDependencyProxyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the dependency proxy is enabled for packages.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="mavenExternalRegistryPassword")
-    def maven_external_registry_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maven_external_registry_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password to authenticate with the external Maven registry. Must be set together with `maven_external_registry_username`. Cannot be imported.
         """
         return pulumi.get(self, "maven_external_registry_password")
 
     @maven_external_registry_password.setter
-    def maven_external_registry_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maven_external_registry_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maven_external_registry_password", value)
 
     @_builtins.property
     @pulumi.getter(name="mavenExternalRegistryUrl")
-    def maven_external_registry_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maven_external_registry_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the external Maven registry.
         """
         return pulumi.get(self, "maven_external_registry_url")
 
     @maven_external_registry_url.setter
-    def maven_external_registry_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maven_external_registry_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maven_external_registry_url", value)
 
     @_builtins.property
     @pulumi.getter(name="mavenExternalRegistryUsername")
-    def maven_external_registry_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maven_external_registry_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username to authenticate with the external Maven registry. Must be set together with `maven_external_registry_password`.
         """
         return pulumi.get(self, "maven_external_registry_username")
 
     @maven_external_registry_username.setter
-    def maven_external_registry_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maven_external_registry_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maven_external_registry_username", value)
 
 
 @pulumi.input_type
 class _ProjectPackageDependencyProxyState:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maven_external_registry_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven_external_registry_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven_external_registry_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maven_external_registry_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven_external_registry_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven_external_registry_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectPackageDependencyProxy resources.
 
@@ -134,62 +134,62 @@ class _ProjectPackageDependencyProxyState:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the dependency proxy is enabled for packages.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="mavenExternalRegistryPassword")
-    def maven_external_registry_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maven_external_registry_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password to authenticate with the external Maven registry. Must be set together with `maven_external_registry_username`. Cannot be imported.
         """
         return pulumi.get(self, "maven_external_registry_password")
 
     @maven_external_registry_password.setter
-    def maven_external_registry_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maven_external_registry_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maven_external_registry_password", value)
 
     @_builtins.property
     @pulumi.getter(name="mavenExternalRegistryUrl")
-    def maven_external_registry_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maven_external_registry_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the external Maven registry.
         """
         return pulumi.get(self, "maven_external_registry_url")
 
     @maven_external_registry_url.setter
-    def maven_external_registry_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maven_external_registry_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maven_external_registry_url", value)
 
     @_builtins.property
     @pulumi.getter(name="mavenExternalRegistryUsername")
-    def maven_external_registry_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maven_external_registry_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username to authenticate with the external Maven registry. Must be set together with `maven_external_registry_password`.
         """
         return pulumi.get(self, "maven_external_registry_username")
 
     @maven_external_registry_username.setter
-    def maven_external_registry_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maven_external_registry_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maven_external_registry_username", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of the project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -199,11 +199,11 @@ class ProjectPackageDependencyProxy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maven_external_registry_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven_external_registry_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven_external_registry_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maven_external_registry_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven_external_registry_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven_external_registry_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectPackageDependencyProxy` resource allows managing the project-level package dependency proxy for Maven packages.
@@ -322,11 +322,11 @@ class ProjectPackageDependencyProxy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maven_external_registry_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven_external_registry_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven_external_registry_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maven_external_registry_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven_external_registry_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven_external_registry_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -355,11 +355,11 @@ class ProjectPackageDependencyProxy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            maven_external_registry_password: Optional[pulumi.Input[_builtins.str]] = None,
-            maven_external_registry_url: Optional[pulumi.Input[_builtins.str]] = None,
-            maven_external_registry_username: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectPackageDependencyProxy':
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            maven_external_registry_password: pulumi.Input[Optional[_builtins.str]] = None,
+            maven_external_registry_url: pulumi.Input[Optional[_builtins.str]] = None,
+            maven_external_registry_username: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectPackageDependencyProxy':
         """
         Get an existing ProjectPackageDependencyProxy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

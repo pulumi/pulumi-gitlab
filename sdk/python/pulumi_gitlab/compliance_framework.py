@@ -22,9 +22,9 @@ class ComplianceFrameworkArgs:
                  color: pulumi.Input[_builtins.str],
                  description: pulumi.Input[_builtins.str],
                  namespace_path: pulumi.Input[_builtins.str],
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_configuration_full_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_configuration_full_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ComplianceFramework resource.
 
@@ -83,51 +83,51 @@ class ComplianceFrameworkArgs:
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set this compliance framework as the default framework for the group. Default: `false`
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name for the compliance framework.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineConfigurationFullPath")
-    def pipeline_configuration_full_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pipeline_configuration_full_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
         """
         return pulumi.get(self, "pipeline_configuration_full_path")
 
     @pipeline_configuration_full_path.setter
-    def pipeline_configuration_full_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pipeline_configuration_full_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pipeline_configuration_full_path", value)
 
 
 @pulumi.input_type
 class _ComplianceFrameworkState:
     def __init__(__self__, *,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 framework_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_configuration_full_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 framework_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_configuration_full_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ComplianceFramework resources.
 
@@ -156,86 +156,86 @@ class _ComplianceFrameworkState:
 
     @_builtins.property
     @pulumi.getter
-    def color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         New color representation of the compliance framework in hex format. e.g. #FCA121.
         """
         return pulumi.get(self, "color")
 
     @color.setter
-    def color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "color", value)
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set this compliance framework as the default framework for the group. Default: `false`
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description for the compliance framework.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="frameworkId")
-    def framework_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def framework_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Globally unique ID of the compliance framework.
         """
         return pulumi.get(self, "framework_id")
 
     @framework_id.setter
-    def framework_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def framework_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "framework_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name for the compliance framework.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namespacePath")
-    def namespace_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full path of the namespace to add the compliance framework to.
         """
         return pulumi.get(self, "namespace_path")
 
     @namespace_path.setter
-    def namespace_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_path", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineConfigurationFullPath")
-    def pipeline_configuration_full_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pipeline_configuration_full_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
         """
         return pulumi.get(self, "pipeline_configuration_full_path")
 
     @pipeline_configuration_full_path.setter
-    def pipeline_configuration_full_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pipeline_configuration_full_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pipeline_configuration_full_path", value)
 
 
@@ -245,12 +245,12 @@ class ComplianceFramework(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_configuration_full_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_configuration_full_path: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ComplianceFramework` resource manages the lifecycle of a compliance framework on top-level groups.
@@ -360,12 +360,12 @@ class ComplianceFramework(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 color: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_configuration_full_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 color: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_configuration_full_path: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -398,13 +398,13 @@ class ComplianceFramework(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            color: Optional[pulumi.Input[_builtins.str]] = None,
-            default: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            framework_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_path: Optional[pulumi.Input[_builtins.str]] = None,
-            pipeline_configuration_full_path: Optional[pulumi.Input[_builtins.str]] = None) -> 'ComplianceFramework':
+            color: pulumi.Input[Optional[_builtins.str]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            framework_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_path: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline_configuration_full_path: pulumi.Input[Optional[_builtins.str]] = None) -> 'ComplianceFramework':
         """
         Get an existing ComplianceFramework resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -172,47 +172,47 @@ export interface UserImpersonationTokenState {
     /**
      * True if the token is active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Time the token has been created, RFC3339 format.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Expiration date of the impersonation token in ISO format (YYYY-MM-DD).
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * True as the token is always an impersonation token.
      */
-    impersonation?: pulumi.Input<boolean>;
+    impersonation?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the impersonation token.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * True if the token is revoked.
      */
-    revoked?: pulumi.Input<boolean>;
+    revoked?: pulumi.Input<boolean | undefined>;
     /**
      * Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The token of the user impersonation token. **Note**: the token is not available for imported resources.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * ID of the impersonation token.
      */
-    tokenId?: pulumi.Input<number>;
+    tokenId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the user.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
     /**
      * Wether to validate if the expiration date is in the future.
      */
-    validatePastExpirationDate?: pulumi.Input<boolean>;
+    validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -226,7 +226,7 @@ export interface UserImpersonationTokenArgs {
     /**
      * The name of the impersonation token.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Array of scopes of the impersonation token. valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`
      */
@@ -238,5 +238,5 @@ export interface UserImpersonationTokenArgs {
     /**
      * Wether to validate if the expiration date is in the future.
      */
-    validatePastExpirationDate?: pulumi.Input<boolean>;
+    validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }

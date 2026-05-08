@@ -21,15 +21,15 @@ class InstanceClusterArgs:
     def __init__(__self__, *,
                  kubernetes_api_url: pulumi.Input[_builtins.str],
                  kubernetes_token: pulumi.Input[_builtins.str],
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environment_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_authorization_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 management_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environment_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_authorization_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 management_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceCluster resource.
 
@@ -92,131 +92,131 @@ class InstanceClusterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base domain of the cluster.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentScope")
-    def environment_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The associated environment to the cluster. Defaults to `*`.
         """
         return pulumi.get(self, "environment_scope")
 
     @environment_scope.setter
-    def environment_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesAuthorizationType")
-    def kubernetes_authorization_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubernetes_authorization_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
         """
         return pulumi.get(self, "kubernetes_authorization_type")
 
     @kubernetes_authorization_type.setter
-    def kubernetes_authorization_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubernetes_authorization_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubernetes_authorization_type", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesCaCert")
-    def kubernetes_ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubernetes_ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TLS certificate (needed if API is using a self-signed TLS certificate).
         """
         return pulumi.get(self, "kubernetes_ca_cert")
 
     @kubernetes_ca_cert.setter
-    def kubernetes_ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubernetes_ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubernetes_ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesNamespace")
-    def kubernetes_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubernetes_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique namespace related to the instance.
         """
         return pulumi.get(self, "kubernetes_namespace")
 
     @kubernetes_namespace.setter
-    def kubernetes_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubernetes_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubernetes_namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
         """
         return pulumi.get(self, "managed")
 
     @managed.setter
-    def managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "managed", value)
 
     @_builtins.property
     @pulumi.getter(name="managementProjectId")
-    def management_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def management_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the management project for the cluster.
         """
         return pulumi.get(self, "management_project_id")
 
     @management_project_id.setter
-    def management_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def management_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "management_project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _InstanceClusterState:
     def __init__(__self__, *,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environment_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_api_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_authorization_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 management_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environment_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_authorization_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 management_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceCluster resources.
 
@@ -269,182 +269,182 @@ class _InstanceClusterState:
 
     @_builtins.property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster type.
         """
         return pulumi.get(self, "cluster_type")
 
     @cluster_type.setter
-    def cluster_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create time.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base domain of the cluster.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if cluster is active or not. Defaults to `true`. This attribute cannot be read.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentScope")
-    def environment_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The associated environment to the cluster. Defaults to `*`.
         """
         return pulumi.get(self, "environment_scope")
 
     @environment_scope.setter
-    def environment_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesApiUrl")
-    def kubernetes_api_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubernetes_api_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL to access the Kubernetes API.
         """
         return pulumi.get(self, "kubernetes_api_url")
 
     @kubernetes_api_url.setter
-    def kubernetes_api_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubernetes_api_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubernetes_api_url", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesAuthorizationType")
-    def kubernetes_authorization_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubernetes_authorization_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster authorization type. Valid values are `rbac`, `abac`, `unknown_authorization`. Defaults to `rbac`.
         """
         return pulumi.get(self, "kubernetes_authorization_type")
 
     @kubernetes_authorization_type.setter
-    def kubernetes_authorization_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubernetes_authorization_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubernetes_authorization_type", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesCaCert")
-    def kubernetes_ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubernetes_ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TLS certificate (needed if API is using a self-signed TLS certificate).
         """
         return pulumi.get(self, "kubernetes_ca_cert")
 
     @kubernetes_ca_cert.setter
-    def kubernetes_ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubernetes_ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubernetes_ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesNamespace")
-    def kubernetes_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubernetes_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique namespace related to the instance.
         """
         return pulumi.get(self, "kubernetes_namespace")
 
     @kubernetes_namespace.setter
-    def kubernetes_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubernetes_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubernetes_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesToken")
-    def kubernetes_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubernetes_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The token to authenticate against Kubernetes. This attribute cannot be read.
         """
         return pulumi.get(self, "kubernetes_token")
 
     @kubernetes_token.setter
-    def kubernetes_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubernetes_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubernetes_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if cluster is managed by gitlab or not. Defaults to `true`. This attribute cannot be read.
         """
         return pulumi.get(self, "managed")
 
     @managed.setter
-    def managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "managed", value)
 
     @_builtins.property
     @pulumi.getter(name="managementProjectId")
-    def management_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def management_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the management project for the cluster.
         """
         return pulumi.get(self, "management_project_id")
 
     @management_project_id.setter
-    def management_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def management_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "management_project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="platformType")
-    def platform_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Platform type.
         """
         return pulumi.get(self, "platform_type")
 
     @platform_type.setter
-    def platform_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform_type", value)
 
     @_builtins.property
     @pulumi.getter(name="providerType")
-    def provider_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provider_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provider type.
         """
         return pulumi.get(self, "provider_type")
 
     @provider_type.setter
-    def provider_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provider_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provider_type", value)
 
 
@@ -454,17 +454,17 @@ class InstanceCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environment_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_api_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_authorization_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 management_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environment_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_authorization_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 management_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `InstanceCluster` resource manages the lifecycle of an instance cluster.
@@ -579,17 +579,17 @@ class InstanceCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environment_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_api_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_authorization_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 management_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environment_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_authorization_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 management_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -630,21 +630,21 @@ class InstanceCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            environment_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            kubernetes_api_url: Optional[pulumi.Input[_builtins.str]] = None,
-            kubernetes_authorization_type: Optional[pulumi.Input[_builtins.str]] = None,
-            kubernetes_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            kubernetes_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            kubernetes_token: Optional[pulumi.Input[_builtins.str]] = None,
-            managed: Optional[pulumi.Input[_builtins.bool]] = None,
-            management_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            platform_type: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceCluster':
+            cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            environment_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes_api_url: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes_authorization_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes_token: pulumi.Input[Optional[_builtins.str]] = None,
+            managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            management_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            platform_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceCluster':
         """
         Get an existing InstanceCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

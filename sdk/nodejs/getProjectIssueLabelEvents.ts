@@ -112,7 +112,7 @@ export interface GetProjectIssueLabelEventsOutputArgs {
     /**
      * Number of pages to return. Default is 1.
      */
-    pagesReturned?: pulumi.Input<number>;
+    pagesReturned?: pulumi.Input<number | undefined>;
     /**
      * The ID or full path of the project.
      */

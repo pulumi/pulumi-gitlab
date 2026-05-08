@@ -154,35 +154,35 @@ export interface ProjectMirrorState {
     /**
      * Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
      */
-    authMethod?: pulumi.Input<string>;
+    authMethod?: pulumi.Input<string | undefined>;
     /**
      * Determines if the mirror is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Determines if divergent refs are skipped.
      */
-    keepDivergentRefs?: pulumi.Input<boolean>;
+    keepDivergentRefs?: pulumi.Input<boolean | undefined>;
     /**
      * Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
      */
-    mirrorBranchRegex?: pulumi.Input<string>;
+    mirrorBranchRegex?: pulumi.Input<string | undefined>;
     /**
      * Mirror ID.
      */
-    mirrorId?: pulumi.Input<number>;
+    mirrorId?: pulumi.Input<number | undefined>;
     /**
      * Determines if only protected branches are mirrored.
      */
-    onlyProtectedBranches?: pulumi.Input<boolean>;
+    onlyProtectedBranches?: pulumi.Input<boolean | undefined>;
     /**
      * The id of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -192,23 +192,23 @@ export interface ProjectMirrorArgs {
     /**
      * Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
      */
-    authMethod?: pulumi.Input<string>;
+    authMethod?: pulumi.Input<string | undefined>;
     /**
      * Determines if the mirror is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Determines if divergent refs are skipped.
      */
-    keepDivergentRefs?: pulumi.Input<boolean>;
+    keepDivergentRefs?: pulumi.Input<boolean | undefined>;
     /**
      * Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
      */
-    mirrorBranchRegex?: pulumi.Input<string>;
+    mirrorBranchRegex?: pulumi.Input<string | undefined>;
     /**
      * Determines if only protected branches are mirrored.
      */
-    onlyProtectedBranches?: pulumi.Input<boolean>;
+    onlyProtectedBranches?: pulumi.Input<boolean | undefined>;
     /**
      * The id of the project.
      */

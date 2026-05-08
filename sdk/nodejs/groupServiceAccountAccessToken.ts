@@ -39,22 +39,22 @@ import * as utilities from "./utilities";
  * });
  * // To assign the service account to a group
  * const exampleMembership = new gitlab.GroupMembership("example_membership", {
- *     groupId: example.id,
- *     userId: exampleSa.serviceAccountId,
+ *     groupId: example.id.apply(x =>Number(x)),
+ *     userId: exampleSa.serviceAccountId.apply(x =>Number(x)),
  *     accessLevel: "developer",
  *     expiresAt: "2020-03-14",
  * });
  * // The service account access token with no expiry
  * const exampleSaTokenNoExpiry = new gitlab.GroupServiceAccountAccessToken("example_sa_token_no_expiry", {
  *     group: example.id,
- *     userId: exampleSa.serviceAccountId,
+ *     userId: exampleSa.serviceAccountId.apply(x =>Number(x)),
  *     name: "Example service account access token",
  *     scopes: ["api"],
  * });
  * // The service account access token with expires at
  * const exampleSaTokenExpiresAt = new gitlab.GroupServiceAccountAccessToken("example_sa_token_expires_at", {
  *     group: example.id,
- *     userId: exampleSa.serviceAccountId,
+ *     userId: exampleSa.serviceAccountId.apply(x =>Number(x)),
  *     name: "Example service account access token",
  *     expiresAt: "2020-03-14",
  *     scopes: ["api"],
@@ -62,7 +62,7 @@ import * as utilities from "./utilities";
  * // The service account access token with rotation configuration
  * const exampleSaTokenRotationConfiguration = new gitlab.GroupServiceAccountAccessToken("example_sa_token_rotation_configuration", {
  *     group: example.id,
- *     userId: exampleSa.serviceAccountId,
+ *     userId: exampleSa.serviceAccountId.apply(x =>Number(x)),
  *     name: "Example service account access token",
  *     rotationConfiguration: {
  *         rotateBeforeDays: 2,
@@ -219,47 +219,47 @@ export interface GroupServiceAccountAccessTokenState {
     /**
      * True if the token is active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Time the token has been created, RFC3339 format.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The ID or URL-encoded path of the group containing the service account. Must be a top level group.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * The name of the personal access token.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * True if the token is revoked.
      */
-    revoked?: pulumi.Input<boolean>;
+    revoked?: pulumi.Input<boolean | undefined>;
     /**
      * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
      */
-    rotationConfiguration?: pulumi.Input<inputs.GroupServiceAccountAccessTokenRotationConfiguration>;
+    rotationConfiguration?: pulumi.Input<inputs.GroupServiceAccountAccessTokenRotationConfiguration | undefined>;
     /**
      * The scopes of the group service account access token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`. If `selfRotate` is included, you must also provide either `expiresAt` or `rotationConfiguration`.
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The token of the group service account access token. **Note**: the token is not available for imported resources.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The ID of a service account user.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
     /**
      * Wether to validate if the expiration date is in the future.
      */
-    validatePastExpirationDate?: pulumi.Input<boolean>;
+    validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -269,7 +269,7 @@ export interface GroupServiceAccountAccessTokenArgs {
     /**
      * The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The ID or URL-encoded path of the group containing the service account. Must be a top level group.
      */
@@ -277,11 +277,11 @@ export interface GroupServiceAccountAccessTokenArgs {
     /**
      * The name of the personal access token.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
      */
-    rotationConfiguration?: pulumi.Input<inputs.GroupServiceAccountAccessTokenRotationConfiguration>;
+    rotationConfiguration?: pulumi.Input<inputs.GroupServiceAccountAccessTokenRotationConfiguration | undefined>;
     /**
      * The scopes of the group service account access token. Valid values are: `api`, `readUser`, `readApi`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `sudo`, `adminMode`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `selfRotate`, `readServicePing`. If `selfRotate` is included, you must also provide either `expiresAt` or `rotationConfiguration`.
      */
@@ -293,5 +293,5 @@ export interface GroupServiceAccountAccessTokenArgs {
     /**
      * Wether to validate if the expiration date is in the future.
      */
-    validatePastExpirationDate?: pulumi.Input<boolean>;
+    validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }

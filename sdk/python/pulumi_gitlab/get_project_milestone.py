@@ -238,8 +238,8 @@ def get_project_milestone(milestone_id: Optional[_builtins.int] = None,
         title=pulumi.get(__ret__, 'title'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         web_url=pulumi.get(__ret__, 'web_url'))
-def get_project_milestone_output(milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-                                 project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_milestone_output(milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+                                 project: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectMilestoneResult]:
     """
     The `ProjectMilestone` data source allows get details of a project milestone.

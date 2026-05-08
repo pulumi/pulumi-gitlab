@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new GitLab.Index.ProjectMembership("test", new()
+    ///     var test = new GitLab.ProjectMembership("test", new()
     ///     {
     ///         Project = "12345",
     ///         UserId = 1337,
     ///         AccessLevel = "guest",
     ///     });
     /// 
-    ///     var example = new GitLab.Index.ProjectMembership("example", new()
+    ///     var example = new GitLab.ProjectMembership("example", new()
     ///     {
     ///         Project = "67890",
     ///         UserId = 1234,

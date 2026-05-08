@@ -21,7 +21,7 @@ class ProjectCicdCatalogArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool],
                  project: pulumi.Input[_builtins.str],
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None):
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectCicdCatalog resource.
 
@@ -60,23 +60,23 @@ class ProjectCicdCatalogArgs:
 
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
-    def keep_settings_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_settings_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
         """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @keep_settings_on_destroy.setter
-    def keep_settings_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_settings_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_settings_on_destroy", value)
 
 
 @pulumi.input_type
 class _ProjectCicdCatalogState:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectCicdCatalog resources.
 
@@ -93,38 +93,38 @@ class _ProjectCicdCatalogState:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the project should be enabled as a CI/CD Catalog resource.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
-    def keep_settings_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_settings_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
         """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @keep_settings_on_destroy.setter
-    def keep_settings_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_settings_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_settings_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of the project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -134,9 +134,9 @@ class ProjectCicdCatalog(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectCicdCatalog` resource allows users to manage the lifecycle of a CI/CD Catalog project.
@@ -233,9 +233,9 @@ class ProjectCicdCatalog(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -262,9 +262,9 @@ class ProjectCicdCatalog(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectCicdCatalog':
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectCicdCatalog':
         """
         Get an existing ProjectCicdCatalog resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

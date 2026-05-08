@@ -103,7 +103,7 @@ def get_project_hooks(project: Optional[_builtins.str] = None,
         hooks=pulumi.get(__ret__, 'hooks'),
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'))
-def get_project_hooks_output(project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_hooks_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectHooksResult]:
     """
     The `get_project_hooks` data source allows to retrieve details about hooks in a project.

@@ -131,7 +131,7 @@ def get_runner_controller(id: Optional[_builtins.int] = None,
         id=pulumi.get(__ret__, 'id'),
         state=pulumi.get(__ret__, 'state'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_runner_controller_output(id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_runner_controller_output(id: pulumi.Input[Optional[_builtins.int]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRunnerControllerResult]:
     """
     The `RunnerController` data source retrieves details about a single runner controller.

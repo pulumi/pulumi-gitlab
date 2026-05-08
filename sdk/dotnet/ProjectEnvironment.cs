@@ -29,21 +29,21 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new GitLab.Index.Group("this", new()
+    ///     var @this = new GitLab.Group("this", new()
     ///     {
     ///         Name = "example",
     ///         Path = "example",
     ///         Description = "An example group",
     ///     });
     /// 
-    ///     var thisProject = new GitLab.Index.Project("this", new()
+    ///     var thisProject = new GitLab.Project("this", new()
     ///     {
     ///         Name = "example",
     ///         NamespaceId = @this.Id,
     ///         InitializeWithReadme = true,
     ///     });
     /// 
-    ///     var thisProjectEnvironment = new GitLab.Index.ProjectEnvironment("this", new()
+    ///     var thisProjectEnvironment = new GitLab.ProjectEnvironment("this", new()
     ///     {
     ///         Project = thisProject.Id,
     ///         Name = "example",

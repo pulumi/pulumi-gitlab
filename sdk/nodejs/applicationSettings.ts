@@ -2021,1297 +2021,1297 @@ export interface ApplicationSettingsState {
     /**
      * If set, abuse reports are sent to this address. Abuse reports are always available in the Admin Area.
      */
-    abuseNotificationEmail?: pulumi.Input<string>;
+    abuseNotificationEmail?: pulumi.Input<string | undefined>;
     /**
      * Require administrators to enable Admin Mode by re-authenticating for administrative tasks.
      */
-    adminMode?: pulumi.Input<boolean>;
+    adminMode?: pulumi.Input<boolean | undefined>;
     /**
      * Where to redirect users after logout.
      */
-    afterSignOutPath?: pulumi.Input<string>;
+    afterSignOutPath?: pulumi.Input<string | undefined>;
     /**
      * Text shown to the user after signing up.
      */
-    afterSignUpText?: pulumi.Input<string>;
+    afterSignUpText?: pulumi.Input<string | undefined>;
     /**
      * API key for Akismet spam protection.
      */
-    akismetApiKey?: pulumi.Input<string>;
+    akismetApiKey?: pulumi.Input<string | undefined>;
     /**
      * (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
      */
-    akismetEnabled?: pulumi.Input<boolean>;
+    akismetEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set to true to allow users to delete their accounts. Premium and Ultimate only.
      */
-    allowAccountDeletion?: pulumi.Input<boolean>;
+    allowAccountDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * Set to true to allow group owners to manage LDAP.
      */
-    allowGroupOwnersToManageLdap?: pulumi.Input<boolean>;
+    allowGroupOwnersToManageLdap?: pulumi.Input<boolean | undefined>;
     /**
      * Allow requests to the local network from system hooks.
      */
-    allowLocalRequestsFromSystemHooks?: pulumi.Input<boolean>;
+    allowLocalRequestsFromSystemHooks?: pulumi.Input<boolean | undefined>;
     /**
      * Allow requests to the local network from web hooks and services.
      */
-    allowLocalRequestsFromWebHooksAndServices?: pulumi.Input<boolean>;
+    allowLocalRequestsFromWebHooksAndServices?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether users assigned up to the Guest role can create groups and personal projects.
      */
-    allowProjectCreationForGuestAndBelow?: pulumi.Input<boolean>;
+    allowProjectCreationForGuestAndBelow?: pulumi.Input<boolean | undefined>;
     /**
      * Allow using a registration token to create a runner.
      */
-    allowRunnerRegistrationToken?: pulumi.Input<boolean>;
+    allowRunnerRegistrationToken?: pulumi.Input<boolean | undefined>;
     /**
      * Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
      */
-    archiveBuildsInHumanReadable?: pulumi.Input<string>;
+    archiveBuildsInHumanReadable?: pulumi.Input<string | undefined>;
     /**
      * Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
      */
-    asciidocMaxIncludes?: pulumi.Input<number>;
+    asciidocMaxIncludes?: pulumi.Input<number | undefined>;
     /**
      * Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
      */
-    assetProxyAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    assetProxyAllowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (If enabled, requires: asset*proxy*url) Enable proxying of assets. GitLab restart is required to apply changes.
      */
-    assetProxyEnabled?: pulumi.Input<boolean>;
+    assetProxyEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Shared secret with the asset proxy server. GitLab restart is required to apply changes.
      */
-    assetProxySecretKey?: pulumi.Input<string>;
+    assetProxySecretKey?: pulumi.Input<string | undefined>;
     /**
      * URL of the asset proxy server. GitLab restart is required to apply changes.
      */
-    assetProxyUrl?: pulumi.Input<string>;
+    assetProxyUrl?: pulumi.Input<string | undefined>;
     /**
      * By default, we write to the authorizedKeys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
      */
-    authorizedKeysEnabled?: pulumi.Input<boolean>;
+    authorizedKeysEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Self-managed, Ultimate only.
      */
-    autoBanUserOnExcessiveProjectsDownload?: pulumi.Input<boolean>;
+    autoBanUserOnExcessiveProjectsDownload?: pulumi.Input<boolean | undefined>;
     /**
      * Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
      */
-    autoDevopsDomain?: pulumi.Input<string>;
+    autoDevopsDomain?: pulumi.Input<string | undefined>;
     /**
      * Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
      */
-    autoDevopsEnabled?: pulumi.Input<boolean>;
+    autoDevopsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enabling this permits automatic allocation of purchased storage in a namespace.
      */
-    automaticPurchasedStorageAllocation?: pulumi.Input<boolean>;
+    automaticPurchasedStorageAllocation?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum simultaneous Direct Transfer batches to process.
      */
-    bulkImportConcurrentPipelineBatchLimit?: pulumi.Input<number>;
+    bulkImportConcurrentPipelineBatchLimit?: pulumi.Input<number | undefined>;
     /**
      * Enable migrating GitLab groups by direct transfer.
      */
-    bulkImportEnabled?: pulumi.Input<boolean>;
+    bulkImportEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum download file size when importing from source GitLab instances by direct transfer.
      */
-    bulkImportMaxDownloadFileSize?: pulumi.Input<number>;
+    bulkImportMaxDownloadFileSize?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether users can create top-level groups.
      */
-    canCreateGroup?: pulumi.Input<boolean>;
+    canCreateGroup?: pulumi.Input<boolean | undefined>;
     /**
      * Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
      */
-    checkNamespacePlan?: pulumi.Input<boolean>;
+    checkNamespacePlan?: pulumi.Input<boolean | undefined>;
     /**
      * Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
      */
-    ciJobLiveTraceEnabled?: pulumi.Input<boolean>;
+    ciJobLiveTraceEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum number of includes per pipeline.
      */
-    ciMaxIncludes?: pulumi.Input<number>;
+    ciMaxIncludes?: pulumi.Input<number | undefined>;
     /**
      * The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
      */
-    ciMaxTotalYamlSizeBytes?: pulumi.Input<number>;
+    ciMaxTotalYamlSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * Custom hostname (for private commit emails).
      */
-    commitEmailHostname?: pulumi.Input<string>;
+    commitEmailHostname?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of simultaneous import jobs for the Bitbucket Cloud importer.
      */
-    concurrentBitbucketImportJobsLimit?: pulumi.Input<number>;
+    concurrentBitbucketImportJobsLimit?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of simultaneous import jobs for the Bitbucket Server importer.
      */
-    concurrentBitbucketServerImportJobsLimit?: pulumi.Input<number>;
+    concurrentBitbucketServerImportJobsLimit?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of simultaneous import jobs for the GitHub importer.
      */
-    concurrentGithubImportJobsLimit?: pulumi.Input<number>;
+    concurrentGithubImportJobsLimit?: pulumi.Input<number | undefined>;
     /**
      * Enable cleanup policies for all projects.
      */
-    containerExpirationPoliciesEnableHistoricEntries?: pulumi.Input<boolean>;
+    containerExpirationPoliciesEnableHistoricEntries?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum number of tags that can be deleted in a single execution of cleanup policies.
      */
-    containerRegistryCleanupTagsServiceMaxListSize?: pulumi.Input<number>;
+    containerRegistryCleanupTagsServiceMaxListSize?: pulumi.Input<number | undefined>;
     /**
      * The maximum time, in seconds, that the cleanup process can take to delete a batch of tags for cleanup policies.
      */
-    containerRegistryDeleteTagsServiceTimeout?: pulumi.Input<number>;
+    containerRegistryDeleteTagsServiceTimeout?: pulumi.Input<number | undefined>;
     /**
      * Caching during the execution of cleanup policies.
      */
-    containerRegistryExpirationPoliciesCaching?: pulumi.Input<boolean>;
+    containerRegistryExpirationPoliciesCaching?: pulumi.Input<boolean | undefined>;
     /**
      * Number of workers for cleanup policies.
      */
-    containerRegistryExpirationPoliciesWorkerCapacity?: pulumi.Input<number>;
+    containerRegistryExpirationPoliciesWorkerCapacity?: pulumi.Input<number | undefined>;
     /**
      * Container Registry token duration in minutes.
      */
-    containerRegistryTokenExpireDelay?: pulumi.Input<number>;
+    containerRegistryTokenExpireDelay?: pulumi.Input<number | undefined>;
     /**
      * Enable automatic deactivation of dormant users.
      */
-    deactivateDormantUsers?: pulumi.Input<boolean>;
+    deactivateDormantUsers?: pulumi.Input<boolean | undefined>;
     /**
      * Length of time (in days) after which a user is considered dormant.
      */
-    deactivateDormantUsersPeriod?: pulumi.Input<number>;
+    deactivateDormantUsersPeriod?: pulumi.Input<number | undefined>;
     /**
      * Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
      */
-    decompressArchiveFileTimeout?: pulumi.Input<number>;
+    decompressArchiveFileTimeout?: pulumi.Input<number | undefined>;
     /**
      * Set the default expiration time for each job’s artifacts.
      */
-    defaultArtifactsExpireIn?: pulumi.Input<string>;
+    defaultArtifactsExpireIn?: pulumi.Input<string | undefined>;
     /**
      * Instance-level custom initial branch name
      */
-    defaultBranchName?: pulumi.Input<string>;
+    defaultBranchName?: pulumi.Input<string | undefined>;
     /**
      * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
      *
      * @deprecated Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
      */
-    defaultBranchProtection?: pulumi.Input<number>;
+    defaultBranchProtection?: pulumi.Input<number | undefined>;
     /**
      * The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
      */
-    defaultBranchProtectionDefaults?: pulumi.Input<inputs.ApplicationSettingsDefaultBranchProtectionDefaults>;
+    defaultBranchProtectionDefaults?: pulumi.Input<inputs.ApplicationSettingsDefaultBranchProtectionDefaults | undefined>;
     /**
      * Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
      */
-    defaultCiConfigPath?: pulumi.Input<string>;
+    defaultCiConfigPath?: pulumi.Input<string | undefined>;
     /**
      * What visibility level new groups receive. Can take private, internal and public as a parameter.
      */
-    defaultGroupVisibility?: pulumi.Input<string>;
+    defaultGroupVisibility?: pulumi.Input<string | undefined>;
     /**
      * Default preferred language for users who are not logged in.
      */
-    defaultPreferredLanguage?: pulumi.Input<string>;
+    defaultPreferredLanguage?: pulumi.Input<string | undefined>;
     /**
      * Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
      */
-    defaultProjectCreation?: pulumi.Input<number>;
+    defaultProjectCreation?: pulumi.Input<number | undefined>;
     /**
      * What visibility level new projects receive. Can take private, internal and public as a parameter.
      */
-    defaultProjectVisibility?: pulumi.Input<string>;
+    defaultProjectVisibility?: pulumi.Input<string | undefined>;
     /**
      * Project limit per user.
      */
-    defaultProjectsLimit?: pulumi.Input<number>;
+    defaultProjectsLimit?: pulumi.Input<number | undefined>;
     /**
      * What visibility level new snippets receive. Can take private, internal and public as a parameter.
      */
-    defaultSnippetVisibility?: pulumi.Input<string>;
+    defaultSnippetVisibility?: pulumi.Input<string | undefined>;
     /**
      * Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
      */
-    defaultSyntaxHighlightingTheme?: pulumi.Input<number>;
+    defaultSyntaxHighlightingTheme?: pulumi.Input<number | undefined>;
     /**
      * Enable inactive project deletion feature.
      */
-    deleteInactiveProjects?: pulumi.Input<boolean>;
+    deleteInactiveProjects?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Self-managed, Premium and Ultimate only.
      */
-    deleteUnconfirmedUsers?: pulumi.Input<boolean>;
+    deleteUnconfirmedUsers?: pulumi.Input<boolean | undefined>;
     /**
      * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
      */
-    deletionAdjournedPeriod?: pulumi.Input<number>;
+    deletionAdjournedPeriod?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
      */
-    diagramsnetEnabled?: pulumi.Input<boolean>;
+    diagramsnetEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Diagrams.net instance URL for integration.
      */
-    diagramsnetUrl?: pulumi.Input<string>;
+    diagramsnetUrl?: pulumi.Input<string | undefined>;
     /**
      * Maximum files in a diff.
      */
-    diffMaxFiles?: pulumi.Input<number>;
+    diffMaxFiles?: pulumi.Input<number | undefined>;
     /**
      * Maximum lines in a diff.
      */
-    diffMaxLines?: pulumi.Input<number>;
+    diffMaxLines?: pulumi.Input<number | undefined>;
     /**
      * Maximum diff patch size, in bytes.
      */
-    diffMaxPatchBytes?: pulumi.Input<number>;
+    diffMaxPatchBytes?: pulumi.Input<number | undefined>;
     /**
      * Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
      */
-    disableAdminOauthScopes?: pulumi.Input<boolean>;
+    disableAdminOauthScopes?: pulumi.Input<boolean | undefined>;
     /**
      * Disable display of RSS/Atom and calendar feed tokens.
      */
-    disableFeedToken?: pulumi.Input<boolean>;
+    disableFeedToken?: pulumi.Input<boolean | undefined>;
     /**
      * Prevent editing approval rules in projects and merge requests.
      */
-    disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean>;
+    disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      */
-    disablePersonalAccessTokens?: pulumi.Input<boolean>;
+    disablePersonalAccessTokens?: pulumi.Input<boolean | undefined>;
     /**
      * Disabled OAuth sign-in sources.
      */
-    disabledOauthSignInSources?: pulumi.Input<pulumi.Input<string>[]>;
+    disabledOauthSignInSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enforce DNS rebinding attack protection.
      */
-    dnsRebindingProtectionEnabled?: pulumi.Input<boolean>;
+    dnsRebindingProtectionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Force people to use only corporate emails for sign-up. Null means there is no restriction.
      */
-    domainAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    domainAllowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (If enabled, requires: domain_denylist) Allows blocking sign-ups from emails from specific domains.
      */
-    domainDenylistEnabled?: pulumi.Input<boolean>;
+    domainDenylistEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
      */
-    domainDenylists?: pulumi.Input<pulumi.Input<string>[]>;
+    domainDenylists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Maximum downstream pipeline trigger rate.
      */
-    downstreamPipelineTriggerLimitPerProjectUserSha?: pulumi.Input<number>;
+    downstreamPipelineTriggerLimitPerProjectUserSha?: pulumi.Input<number | undefined>;
     /**
      * The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
      */
-    dsaKeyRestriction?: pulumi.Input<number>;
+    dsaKeyRestriction?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether GitLab Duo features are enabled for this instance. Self-managed, Premium and Ultimate only.
      */
-    duoFeaturesEnabled?: pulumi.Input<boolean>;
+    duoFeaturesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
      */
-    ecdsaKeyRestriction?: pulumi.Input<number>;
+    ecdsaKeyRestriction?: pulumi.Input<number | undefined>;
     /**
      * The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
      */
-    ecdsaSkKeyRestriction?: pulumi.Input<number>;
+    ecdsaSkKeyRestriction?: pulumi.Input<number | undefined>;
     /**
      * The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
      */
-    ed25519KeyRestriction?: pulumi.Input<number>;
+    ed25519KeyRestriction?: pulumi.Input<number | undefined>;
     /**
      * The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
      */
-    ed25519SkKeyRestriction?: pulumi.Input<number>;
+    ed25519SkKeyRestriction?: pulumi.Input<number | undefined>;
     /**
      * AWS IAM access key ID.
      */
-    eksAccessKeyId?: pulumi.Input<string>;
+    eksAccessKeyId?: pulumi.Input<string | undefined>;
     /**
      * Amazon account ID.
      */
-    eksAccountId?: pulumi.Input<string>;
+    eksAccountId?: pulumi.Input<string | undefined>;
     /**
      * Enable integration with Amazon EKS.
      */
-    eksIntegrationEnabled?: pulumi.Input<boolean>;
+    eksIntegrationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * AWS IAM secret access key.
      */
-    eksSecretAccessKey?: pulumi.Input<string>;
+    eksSecretAccessKey?: pulumi.Input<string | undefined>;
     /**
      * Enable the use of AWS hosted Elasticsearch.
      */
-    elasticsearchAws?: pulumi.Input<boolean>;
+    elasticsearchAws?: pulumi.Input<boolean | undefined>;
     /**
      * AWS IAM access key.
      */
-    elasticsearchAwsAccessKey?: pulumi.Input<string>;
+    elasticsearchAwsAccessKey?: pulumi.Input<string | undefined>;
     /**
      * The AWS region the Elasticsearch domain is configured.
      */
-    elasticsearchAwsRegion?: pulumi.Input<string>;
+    elasticsearchAwsRegion?: pulumi.Input<string | undefined>;
     /**
      * AWS IAM secret access key.
      */
-    elasticsearchAwsSecretAccessKey?: pulumi.Input<string>;
+    elasticsearchAwsSecretAccessKey?: pulumi.Input<string | undefined>;
     /**
      * Maximum size of text fields to index by Elasticsearch. 0 value means no limit. This does not apply to repository and wiki indexing.
      */
-    elasticsearchIndexedFieldLengthLimit?: pulumi.Input<number>;
+    elasticsearchIndexedFieldLengthLimit?: pulumi.Input<number | undefined>;
     /**
      * Maximum size of repository and wiki files that are indexed by Elasticsearch.
      */
-    elasticsearchIndexedFileSizeLimitKb?: pulumi.Input<number>;
+    elasticsearchIndexedFileSizeLimitKb?: pulumi.Input<number | undefined>;
     /**
      * Enable Elasticsearch indexing.
      */
-    elasticsearchIndexing?: pulumi.Input<boolean>;
+    elasticsearchIndexing?: pulumi.Input<boolean | undefined>;
     /**
      * Limit Elasticsearch to index certain namespaces and projects.
      */
-    elasticsearchLimitIndexing?: pulumi.Input<boolean>;
+    elasticsearchLimitIndexing?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum concurrency of Elasticsearch bulk requests per indexing operation. This only applies to repository indexing operations.
      */
-    elasticsearchMaxBulkConcurrency?: pulumi.Input<number>;
+    elasticsearchMaxBulkConcurrency?: pulumi.Input<number | undefined>;
     /**
      * Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
      */
-    elasticsearchMaxBulkSizeMb?: pulumi.Input<number>;
+    elasticsearchMaxBulkSizeMb?: pulumi.Input<number | undefined>;
     /**
      * Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
      */
-    elasticsearchMaxCodeIndexingConcurrency?: pulumi.Input<number>;
+    elasticsearchMaxCodeIndexingConcurrency?: pulumi.Input<number | undefined>;
     /**
      * The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
-    elasticsearchNamespaceIds?: pulumi.Input<pulumi.Input<number>[]>;
+    elasticsearchNamespaceIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The password of your Elasticsearch instance.
      */
-    elasticsearchPassword?: pulumi.Input<string>;
+    elasticsearchPassword?: pulumi.Input<string | undefined>;
     /**
      * The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
-    elasticsearchProjectIds?: pulumi.Input<pulumi.Input<number>[]>;
+    elasticsearchProjectIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
      */
-    elasticsearchRequeueWorkers?: pulumi.Input<boolean>;
+    elasticsearchRequeueWorkers?: pulumi.Input<boolean | undefined>;
     /**
      * Enable Elasticsearch search.
      */
-    elasticsearchSearch?: pulumi.Input<boolean>;
+    elasticsearchSearch?: pulumi.Input<boolean | undefined>;
     /**
      * The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
      */
-    elasticsearchUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    elasticsearchUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The username of your Elasticsearch instance.
      */
-    elasticsearchUsername?: pulumi.Input<string>;
+    elasticsearchUsername?: pulumi.Input<string | undefined>;
     /**
      * Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
      */
-    elasticsearchWorkerNumberOfShards?: pulumi.Input<number>;
+    elasticsearchWorkerNumberOfShards?: pulumi.Input<number | undefined>;
     /**
      * Additional text added to the bottom of every email for legal/auditing/compliance reasons.
      */
-    emailAdditionalText?: pulumi.Input<string>;
+    emailAdditionalText?: pulumi.Input<string | undefined>;
     /**
      * Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.
      */
-    emailAuthorInBody?: pulumi.Input<boolean>;
+    emailAuthorInBody?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
      */
-    emailConfirmationSetting?: pulumi.Input<string>;
+    emailConfirmationSetting?: pulumi.Input<string | undefined>;
     /**
      * Show the external redirect page that warns you about user-generated content in GitLab Pages.
      */
-    enableArtifactExternalRedirectWarningPage?: pulumi.Input<boolean>;
+    enableArtifactExternalRedirectWarningPage?: pulumi.Input<boolean | undefined>;
     /**
      * Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
      */
-    enabledGitAccessProtocol?: pulumi.Input<string>;
+    enabledGitAccessProtocol?: pulumi.Input<string | undefined>;
     /**
      * Enabling this permits enforcement of namespace storage limits.
      */
-    enforceNamespaceStorageLimit?: pulumi.Input<boolean>;
+    enforceNamespaceStorageLimit?: pulumi.Input<boolean | undefined>;
     /**
      * (If enabled, requires: terms) Enforce application ToS to all users.
      */
-    enforceTerms?: pulumi.Input<boolean>;
+    enforceTerms?: pulumi.Input<boolean | undefined>;
     /**
      * (If enabled, requires: external*auth*client_key) The certificate to use to authenticate with the external authorization service.
      */
-    externalAuthClientCert?: pulumi.Input<string>;
+    externalAuthClientCert?: pulumi.Input<string | undefined>;
     /**
      * Private key for the certificate when authentication is required for the external authorization service, this is encrypted when stored.
      */
-    externalAuthClientKey?: pulumi.Input<string>;
+    externalAuthClientKey?: pulumi.Input<string | undefined>;
     /**
      * Passphrase to use for the private key when authenticating with the external service this is encrypted when stored.
      */
-    externalAuthClientKeyPass?: pulumi.Input<string>;
+    externalAuthClientKeyPass?: pulumi.Input<string | undefined>;
     /**
      * The default classification label to use when requesting authorization and no classification label has been specified on the project.
      */
-    externalAuthorizationServiceDefaultLabel?: pulumi.Input<string>;
+    externalAuthorizationServiceDefaultLabel?: pulumi.Input<string | undefined>;
     /**
      * (If enabled, requires: external*authorization*service*default*label, external*authorization*service*timeout and external*authorization*service*url) Enable using an external authorization service for accessing projects.
      */
-    externalAuthorizationServiceEnabled?: pulumi.Input<boolean>;
+    externalAuthorizationServiceEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The timeout after which an authorization request is aborted, in seconds. When a request times out, access is denied to the user. (min: 0.001, max: 10, step: 0.001).
      */
-    externalAuthorizationServiceTimeout?: pulumi.Input<number>;
+    externalAuthorizationServiceTimeout?: pulumi.Input<number | undefined>;
     /**
      * URL to which authorization requests are directed.
      */
-    externalAuthorizationServiceUrl?: pulumi.Input<string>;
+    externalAuthorizationServiceUrl?: pulumi.Input<string | undefined>;
     /**
      * How long to wait for a response from the pipeline validation service. Assumes OK if it times out.
      */
-    externalPipelineValidationServiceTimeout?: pulumi.Input<number>;
+    externalPipelineValidationServiceTimeout?: pulumi.Input<number | undefined>;
     /**
      * Optional. Token to include as the X-Gitlab-Token header in requests to the URL in external*pipeline*validation*service*url.
      */
-    externalPipelineValidationServiceToken?: pulumi.Input<string>;
+    externalPipelineValidationServiceToken?: pulumi.Input<string | undefined>;
     /**
      * URL to use for pipeline validation requests.
      */
-    externalPipelineValidationServiceUrl?: pulumi.Input<string>;
+    externalPipelineValidationServiceUrl?: pulumi.Input<string | undefined>;
     /**
      * Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
      */
-    failedLoginAttemptsUnlockPeriodInMinutes?: pulumi.Input<number>;
+    failedLoginAttemptsUnlockPeriodInMinutes?: pulumi.Input<number | undefined>;
     /**
      * The ID of a project to load custom file templates from.
      */
-    fileTemplateProjectId?: pulumi.Input<number>;
+    fileTemplateProjectId?: pulumi.Input<number | undefined>;
     /**
      * Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
      */
-    firstDayOfWeek?: pulumi.Input<number>;
+    firstDayOfWeek?: pulumi.Input<number | undefined>;
     /**
      * Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
      */
-    geoNodeAllowedIps?: pulumi.Input<string>;
+    geoNodeAllowedIps?: pulumi.Input<string | undefined>;
     /**
      * The amount of seconds after which a request to get a secondary node status times out.
      */
-    geoStatusTimeout?: pulumi.Input<number>;
+    geoStatusTimeout?: pulumi.Input<number | undefined>;
     /**
      * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
      */
-    gitRateLimitUsersAlertlists?: pulumi.Input<pulumi.Input<number>[]>;
+    gitRateLimitUsersAlertlists?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
      */
-    gitRateLimitUsersAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    gitRateLimitUsersAllowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
      */
-    gitTwoFactorSessionExpiry?: pulumi.Input<number>;
+    gitTwoFactorSessionExpiry?: pulumi.Input<number | undefined>;
     /**
      * Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to 0 to disable timeouts.
      */
-    gitalyTimeoutDefault?: pulumi.Input<number>;
+    gitalyTimeoutDefault?: pulumi.Input<number | undefined>;
     /**
      * Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and ‘failing fast’ can help maintain the stability of the GitLab instance. Set to 0 to disable timeouts.
      */
-    gitalyTimeoutFast?: pulumi.Input<number>;
+    gitalyTimeoutFast?: pulumi.Input<number | undefined>;
     /**
      * Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.
      */
-    gitalyTimeoutMedium?: pulumi.Input<number>;
+    gitalyTimeoutMedium?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the instance was provisioned for GitLab Dedicated.
      */
-    gitlabDedicatedInstance?: pulumi.Input<boolean>;
+    gitlabDedicatedInstance?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
      */
-    gitlabEnvironmentToolkitInstance?: pulumi.Input<boolean>;
+    gitlabEnvironmentToolkitInstance?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum number of Git operations per minute a user can perform.
      */
-    gitlabShellOperationLimit?: pulumi.Input<number>;
+    gitlabShellOperationLimit?: pulumi.Input<number | undefined>;
     /**
      * Enable Gitpod integration.
      */
-    gitpodEnabled?: pulumi.Input<boolean>;
+    gitpodEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Gitpod instance URL for integration.
      */
-    gitpodUrl?: pulumi.Input<string>;
+    gitpodUrl?: pulumi.Input<string | undefined>;
     /**
      * Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
      */
-    globallyAllowedIps?: pulumi.Input<string>;
+    globallyAllowedIps?: pulumi.Input<string | undefined>;
     /**
      * Enable Grafana.
      */
-    grafanaEnabled?: pulumi.Input<boolean>;
+    grafanaEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Grafana URL.
      */
-    grafanaUrl?: pulumi.Input<string>;
+    grafanaUrl?: pulumi.Input<string | undefined>;
     /**
      * Enable Gravatar.
      */
-    gravatarEnabled?: pulumi.Input<boolean>;
+    gravatarEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Prevent overrides of default branch protection.
      */
-    groupOwnersCanManageDefaultBranchProtection?: pulumi.Input<boolean>;
+    groupOwnersCanManageDefaultBranchProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Hide marketing-related entries from help.
      */
-    helpPageHideCommercialContent?: pulumi.Input<boolean>;
+    helpPageHideCommercialContent?: pulumi.Input<boolean | undefined>;
     /**
      * Alternate support URL for help page and help dropdown.
      */
-    helpPageSupportUrl?: pulumi.Input<string>;
+    helpPageSupportUrl?: pulumi.Input<string | undefined>;
     /**
      * Custom text displayed on the help page.
      */
-    helpPageText?: pulumi.Input<string>;
+    helpPageText?: pulumi.Input<string | undefined>;
     /**
      * GitLab server administrator information.
      */
-    helpText?: pulumi.Input<string>;
+    helpText?: pulumi.Input<string | undefined>;
     /**
      * Do not display offers from third parties in GitLab.
      */
-    hideThirdPartyOffers?: pulumi.Input<boolean>;
+    hideThirdPartyOffers?: pulumi.Input<boolean | undefined>;
     /**
      * Redirect to this URL when not logged in.
      */
-    homePageUrl?: pulumi.Input<string>;
+    homePageUrl?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
      */
-    housekeepingEnabled?: pulumi.Input<boolean>;
+    housekeepingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Number of Git pushes after which an incremental git-repack is run.
      */
-    housekeepingOptimizeRepositoryPeriod?: pulumi.Input<number>;
+    housekeepingOptimizeRepositoryPeriod?: pulumi.Input<number | undefined>;
     /**
      * Enable HTML emails.
      */
-    htmlEmailsEnabled?: pulumi.Input<boolean>;
+    htmlEmailsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
      */
-    importSources?: pulumi.Input<pulumi.Input<string>[]>;
+    importSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable in-product marketing emails.
      */
-    inProductMarketingEmailsEnabled?: pulumi.Input<boolean>;
+    inProductMarketingEmailsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
      */
-    inactiveProjectsDeleteAfterMonths?: pulumi.Input<number>;
+    inactiveProjectsDeleteAfterMonths?: pulumi.Input<number | undefined>;
     /**
      * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity.
      */
-    inactiveProjectsMinSizeMb?: pulumi.Input<number>;
+    inactiveProjectsMinSizeMb?: pulumi.Input<number | undefined>;
     /**
      * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
      */
-    inactiveProjectsSendWarningEmailAfterMonths?: pulumi.Input<number>;
+    inactiveProjectsSendWarningEmailAfterMonths?: pulumi.Input<number | undefined>;
     /**
      * Specifies retention period for inactive project and group access tokens. Default is 30.
      */
-    inactiveResourceAccessTokensDeleteAfterDays?: pulumi.Input<number>;
+    inactiveResourceAccessTokensDeleteAfterDays?: pulumi.Input<number | undefined>;
     /**
      * Whether or not optional metrics are enabled in Service Ping.
      */
-    includeOptionalMetricsInServicePing?: pulumi.Input<boolean>;
+    includeOptionalMetricsInServicePing?: pulumi.Input<boolean | undefined>;
     /**
      * Enable Invisible CAPTCHA spam detection during sign-up.
      */
-    invisibleCaptchaEnabled?: pulumi.Input<boolean>;
+    invisibleCaptchaEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Max number of issue creation requests per minute per user.
      */
-    issuesCreateLimit?: pulumi.Input<number>;
+    issuesCreateLimit?: pulumi.Input<number | undefined>;
     /**
      * ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
      */
-    jiraConnectApplicationKey?: pulumi.Input<string>;
+    jiraConnectApplicationKey?: pulumi.Input<string | undefined>;
     /**
      * URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
      */
-    jiraConnectProxyUrl?: pulumi.Input<string>;
+    jiraConnectProxyUrl?: pulumi.Input<string | undefined>;
     /**
      * Enable public key storage for the GitLab for Jira Cloud app.
      */
-    jiraConnectPublicKeyStorageEnabled?: pulumi.Input<boolean>;
+    jiraConnectPublicKeyStorageEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      */
-    keepLatestArtifact?: pulumi.Input<boolean>;
+    keepLatestArtifact?: pulumi.Input<boolean | undefined>;
     /**
      * (If enabled, requires: kroki_url) Enable Kroki integration.
      */
-    krokiEnabled?: pulumi.Input<boolean>;
+    krokiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration for formats supported by the Kroki instance.
      */
-    krokiFormats?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
+    krokiFormats?: pulumi.Input<{[key: string]: pulumi.Input<boolean>} | undefined>;
     /**
      * The Kroki instance URL for integration.
      */
-    krokiUrl?: pulumi.Input<string>;
+    krokiUrl?: pulumi.Input<string | undefined>;
     /**
      * Increase this value when any cached Markdown should be invalidated.
      */
-    localMarkdownVersion?: pulumi.Input<number>;
+    localMarkdownVersion?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
      */
-    lockDuoFeaturesEnabled?: pulumi.Input<boolean>;
+    lockDuoFeaturesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set to true to lock all memberships to LDAP. Premium and Ultimate only.
      */
-    lockMembershipsToLdap?: pulumi.Input<boolean>;
+    lockMembershipsToLdap?: pulumi.Input<boolean | undefined>;
     /**
      * Set to true to lock all memberships to SAML. Premium and Ultimate only.
      */
-    lockMembershipsToSaml?: pulumi.Input<boolean>;
+    lockMembershipsToSaml?: pulumi.Input<boolean | undefined>;
     /**
      * Enable Mailgun event receiver.
      */
-    mailgunEventsEnabled?: pulumi.Input<boolean>;
+    mailgunEventsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Mailgun HTTP webhook signing key for receiving events from webhook.
      */
-    mailgunSigningKey?: pulumi.Input<string>;
+    mailgunSigningKey?: pulumi.Input<string | undefined>;
     /**
      * When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
      */
-    maintenanceMode?: pulumi.Input<boolean>;
+    maintenanceMode?: pulumi.Input<boolean | undefined>;
     /**
      * Message displayed when instance is in maintenance mode.
      */
-    maintenanceModeMessage?: pulumi.Input<string>;
+    maintenanceModeMessage?: pulumi.Input<string | undefined>;
     /**
      * Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
      */
-    mavenPackageRequestsForwarding?: pulumi.Input<boolean>;
+    mavenPackageRequestsForwarding?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum artifacts size in MB.
      */
-    maxArtifactsSize?: pulumi.Input<number>;
+    maxArtifactsSize?: pulumi.Input<number | undefined>;
     /**
      * Limit attachment size in MB.
      */
-    maxAttachmentSize?: pulumi.Input<number>;
+    maxAttachmentSize?: pulumi.Input<number | undefined>;
     /**
      * Maximum decompressed archive size in bytes.
      */
-    maxDecompressedArchiveSize?: pulumi.Input<number>;
+    maxDecompressedArchiveSize?: pulumi.Input<number | undefined>;
     /**
      * Maximum export size in MB. 0 for unlimited.
      */
-    maxExportSize?: pulumi.Input<number>;
+    maxExportSize?: pulumi.Input<number | undefined>;
     /**
      * Maximum remote file size for imports from external object storages.
      */
-    maxImportRemoteFileSize?: pulumi.Input<number>;
+    maxImportRemoteFileSize?: pulumi.Input<number | undefined>;
     /**
      * Maximum import size in MB. 0 for unlimited.
      */
-    maxImportSize?: pulumi.Input<number>;
+    maxImportSize?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of sign-in attempts before locking out the user.
      */
-    maxLoginAttempts?: pulumi.Input<number>;
+    maxLoginAttempts?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories.
      */
-    maxNumberOfRepositoryDownloads?: pulumi.Input<number>;
+    maxNumberOfRepositoryDownloads?: pulumi.Input<number | undefined>;
     /**
      * Reporting time period (in seconds). Maximum: 864000 seconds (10 days).
      */
-    maxNumberOfRepositoryDownloadsWithinTimePeriod?: pulumi.Input<number>;
+    maxNumberOfRepositoryDownloadsWithinTimePeriod?: pulumi.Input<number | undefined>;
     /**
      * Maximum size of pages repositories in MB.
      */
-    maxPagesSize?: pulumi.Input<number>;
+    maxPagesSize?: pulumi.Input<number | undefined>;
     /**
      * Maximum allowable lifetime for access tokens in days.
      */
-    maxPersonalAccessTokenLifetime?: pulumi.Input<number>;
+    maxPersonalAccessTokenLifetime?: pulumi.Input<number | undefined>;
     /**
      * Maximum allowable lifetime for SSH keys in days.
      */
-    maxSshKeyLifetime?: pulumi.Input<number>;
+    maxSshKeyLifetime?: pulumi.Input<number | undefined>;
     /**
      * Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
      */
-    maxTerraformStateSizeBytes?: pulumi.Input<number>;
+    maxTerraformStateSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      */
-    metricsMethodCallThreshold?: pulumi.Input<number>;
+    metricsMethodCallThreshold?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether passwords require a minimum length. Premium and Ultimate only.
      */
-    minimumPasswordLength?: pulumi.Input<number>;
+    minimumPasswordLength?: pulumi.Input<number | undefined>;
     /**
      * Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
      */
-    mirrorAvailable?: pulumi.Input<boolean>;
+    mirrorAvailable?: pulumi.Input<boolean | undefined>;
     /**
      * Minimum capacity to be available before scheduling more mirrors preemptively.
      */
-    mirrorCapacityThreshold?: pulumi.Input<number>;
+    mirrorCapacityThreshold?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of mirrors that can be synchronizing at the same time.
      */
-    mirrorMaxCapacity?: pulumi.Input<number>;
+    mirrorMaxCapacity?: pulumi.Input<number | undefined>;
     /**
      * Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
      */
-    mirrorMaxDelay?: pulumi.Input<number>;
+    mirrorMaxDelay?: pulumi.Input<number | undefined>;
     /**
      * Enable sending notification if sign in from unknown IP address happens
      */
-    notifyOnUnknownSignIn?: pulumi.Input<boolean>;
+    notifyOnUnknownSignIn?: pulumi.Input<boolean | undefined>;
     /**
      * Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
      */
-    npmPackageRequestsForwarding?: pulumi.Input<boolean>;
+    npmPackageRequestsForwarding?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to skip metadata URL validation for the NuGet package.
      */
-    nugetSkipMetadataUrlValidation?: pulumi.Input<boolean>;
+    nugetSkipMetadataUrlValidation?: pulumi.Input<boolean | undefined>;
     /**
      * Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
      */
-    outboundLocalRequestsWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    outboundLocalRequestsWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
      */
-    packageMetadataPurlTypes?: pulumi.Input<pulumi.Input<number>[]>;
+    packageMetadataPurlTypes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Enable to allow anyone to pull from Package Registry visible and changeable.
      */
-    packageRegistryAllowAnyoneToPullOption?: pulumi.Input<boolean>;
+    packageRegistryAllowAnyoneToPullOption?: pulumi.Input<boolean | undefined>;
     /**
      * Number of workers assigned to the packages cleanup policies.
      */
-    packageRegistryCleanupPoliciesWorkerCapacity?: pulumi.Input<number>;
+    packageRegistryCleanupPoliciesWorkerCapacity?: pulumi.Input<number | undefined>;
     /**
      * Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
      */
-    pagesDomainVerificationEnabled?: pulumi.Input<boolean>;
+    pagesDomainVerificationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable authentication for Git over HTTP(S) via a GitLab account password.
      */
-    passwordAuthenticationEnabledForGit?: pulumi.Input<boolean>;
+    passwordAuthenticationEnabledForGit?: pulumi.Input<boolean | undefined>;
     /**
      * Enable authentication for the web interface via a GitLab account password.
      */
-    passwordAuthenticationEnabledForWeb?: pulumi.Input<boolean>;
+    passwordAuthenticationEnabledForWeb?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether passwords require at least one lowercase letter.
      */
-    passwordLowercaseRequired?: pulumi.Input<boolean>;
+    passwordLowercaseRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether passwords require at least one number.
      */
-    passwordNumberRequired?: pulumi.Input<boolean>;
+    passwordNumberRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether passwords require at least one symbol character.
      */
-    passwordSymbolRequired?: pulumi.Input<boolean>;
+    passwordSymbolRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether passwords require at least one uppercase letter.
      */
-    passwordUppercaseRequired?: pulumi.Input<boolean>;
+    passwordUppercaseRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Path of the group that is allowed to toggle the performance bar.
      */
-    performanceBarAllowedGroupPath?: pulumi.Input<string>;
+    performanceBarAllowedGroupPath?: pulumi.Input<string | undefined>;
     /**
      * Prefix for all generated personal access tokens.
      */
-    personalAccessTokenPrefix?: pulumi.Input<string>;
+    personalAccessTokenPrefix?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of pipeline creation requests per minute per user and commit.
      */
-    pipelineLimitPerProjectUserSha?: pulumi.Input<number>;
+    pipelineLimitPerProjectUserSha?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: plantuml_url) Enable PlantUML integration.
      */
-    plantumlEnabled?: pulumi.Input<boolean>;
+    plantumlEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The PlantUML instance URL for integration.
      */
-    plantumlUrl?: pulumi.Input<string>;
+    plantumlUrl?: pulumi.Input<string | undefined>;
     /**
      * Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
      */
-    pollingIntervalMultiplier?: pulumi.Input<number>;
+    pollingIntervalMultiplier?: pulumi.Input<number | undefined>;
     /**
      * Prevent approval by merge request creator (author).
      */
-    preventMergeRequestsAuthorApproval?: pulumi.Input<boolean>;
+    preventMergeRequestsAuthorApproval?: pulumi.Input<boolean | undefined>;
     /**
      * Prevent approval by committers to merge requests.
      */
-    preventMergeRequestsCommittersApproval?: pulumi.Input<boolean>;
+    preventMergeRequestsCommittersApproval?: pulumi.Input<boolean | undefined>;
     /**
      * Enable project export.
      */
-    projectExportEnabled?: pulumi.Input<boolean>;
+    projectExportEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum authenticated requests to /project/:id/jobs per minute.
      */
-    projectJobsApiRateLimit?: pulumi.Input<number>;
+    projectJobsApiRateLimit?: pulumi.Input<number | undefined>;
     /**
      * Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
      */
-    projectsApiRateLimitUnauthenticated?: pulumi.Input<number>;
+    projectsApiRateLimitUnauthenticated?: pulumi.Input<number | undefined>;
     /**
      * Enable Prometheus metrics.
      */
-    prometheusMetricsEnabled?: pulumi.Input<boolean>;
+    prometheusMetricsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * CI/CD variables are protected by default.
      */
-    protectedCiVariables?: pulumi.Input<boolean>;
+    protectedCiVariables?: pulumi.Input<boolean | undefined>;
     /**
      * Number of changes (branches or tags) in a single push to determine whether individual push events or bulk push events are created. Bulk push events are created if it surpasses that value.
      */
-    pushEventActivitiesLimit?: pulumi.Input<number>;
+    pushEventActivitiesLimit?: pulumi.Input<number | undefined>;
     /**
      * Number of changes (branches or tags) in a single push to determine whether webhooks and services fire or not. Webhooks and services aren’t submitted if it surpasses that value.
      */
-    pushEventHooksLimit?: pulumi.Input<number>;
+    pushEventHooksLimit?: pulumi.Input<number | undefined>;
     /**
      * Use pypi.org as a default remote repository when the package is not found in the GitLab Package Registry for PyPI.
      */
-    pypiPackageRequestsForwarding?: pulumi.Input<boolean>;
+    pypiPackageRequestsForwarding?: pulumi.Input<boolean | undefined>;
     /**
      * When rate limiting is enabled via the throttle_* settings, send this plain text response when a rate limit is exceeded. ‘Retry later’ is sent if this is blank.
      */
-    rateLimitingResponseText?: pulumi.Input<string>;
+    rateLimitingResponseText?: pulumi.Input<string | undefined>;
     /**
      * Max number of requests per minute for each raw path. To disable throttling set to 0.
      */
-    rawBlobRequestLimit?: pulumi.Input<number>;
+    rawBlobRequestLimit?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
      */
-    recaptchaEnabled?: pulumi.Input<boolean>;
+    recaptchaEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Private key for reCAPTCHA.
      */
-    recaptchaPrivateKey?: pulumi.Input<string>;
+    recaptchaPrivateKey?: pulumi.Input<string | undefined>;
     /**
      * Site key for reCAPTCHA.
      */
-    recaptchaSiteKey?: pulumi.Input<string>;
+    recaptchaSiteKey?: pulumi.Input<string | undefined>;
     /**
      * Maximum push size (MB).
      */
-    receiveMaxInputSize?: pulumi.Input<number>;
+    receiveMaxInputSize?: pulumi.Input<number | undefined>;
     /**
      * Enable receptive mode for GitLab Agents for Kubernetes.
      */
-    receptiveClusterAgentsEnabled?: pulumi.Input<boolean>;
+    receptiveClusterAgentsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable Remember me setting.
      */
-    rememberMeEnabled?: pulumi.Input<boolean>;
+    rememberMeEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
      */
-    repositoryChecksEnabled?: pulumi.Input<boolean>;
+    repositoryChecksEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Size limit per repository (MB).
      */
-    repositorySizeLimit?: pulumi.Input<number>;
+    repositorySizeLimit?: pulumi.Input<number | undefined>;
     /**
      * Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
      */
-    repositoryStoragesWeighted?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    repositoryStoragesWeighted?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
     /**
      * When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
      */
-    requireAdminApprovalAfterUserSignup?: pulumi.Input<boolean>;
+    requireAdminApprovalAfterUserSignup?: pulumi.Input<boolean | undefined>;
     /**
      * Allow administrators to require 2FA for all administrators on the instance.
      */
-    requireAdminTwoFactorAuthentication?: pulumi.Input<boolean>;
+    requireAdminTwoFactorAuthentication?: pulumi.Input<boolean | undefined>;
     /**
      * When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
      */
-    requirePersonalAccessTokenExpiry?: pulumi.Input<boolean>;
+    requirePersonalAccessTokenExpiry?: pulumi.Input<boolean | undefined>;
     /**
      * (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
      */
-    requireTwoFactorAuthentication?: pulumi.Input<boolean>;
+    requireTwoFactorAuthentication?: pulumi.Input<boolean | undefined>;
     /**
      * Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
      */
-    restrictedVisibilityLevels?: pulumi.Input<pulumi.Input<string>[]>;
+    restrictedVisibilityLevels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
      */
-    rsaKeyRestriction?: pulumi.Input<number>;
+    rsaKeyRestriction?: pulumi.Input<number | undefined>;
     /**
      * Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
      */
-    searchRateLimit?: pulumi.Input<number>;
+    searchRateLimit?: pulumi.Input<number | undefined>;
     /**
      * Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
      */
-    searchRateLimitUnauthenticated?: pulumi.Input<number>;
+    searchRateLimitUnauthenticated?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of active merge request approval policies per security policy project. Maximum: 20
      */
-    securityApprovalPoliciesLimit?: pulumi.Input<number>;
+    securityApprovalPoliciesLimit?: pulumi.Input<number | undefined>;
     /**
      * Whether to look up merge request approval policy approval groups globally or within project hierarchies.
      */
-    securityPolicyGlobalGroupApproversEnabled?: pulumi.Input<boolean>;
+    securityPolicyGlobalGroupApproversEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Public security contact information.
      */
-    securityTxtContent?: pulumi.Input<string>;
+    securityTxtContent?: pulumi.Input<string | undefined>;
     /**
      * Send confirmation email on sign-up.
      */
-    sendUserConfirmationEmail?: pulumi.Input<boolean>;
+    sendUserConfirmationEmail?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to indicate if token expiry date can be optional for service account users
      */
-    serviceAccessTokensExpirationEnforced?: pulumi.Input<boolean>;
+    serviceAccessTokensExpirationEnforced?: pulumi.Input<boolean | undefined>;
     /**
      * Session duration in minutes. GitLab restart is required to apply changes.
      */
-    sessionExpireDelay?: pulumi.Input<number>;
+    sessionExpireDelay?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
      */
-    sharedRunnersEnabled?: pulumi.Input<boolean>;
+    sharedRunnersEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
      */
-    sharedRunnersMinutes?: pulumi.Input<number>;
+    sharedRunnersMinutes?: pulumi.Input<number | undefined>;
     /**
      * Shared runners text.
      */
-    sharedRunnersText?: pulumi.Input<string>;
+    sharedRunnersText?: pulumi.Input<string | undefined>;
     /**
      * The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
      */
-    sidekiqJobLimiterCompressionThresholdBytes?: pulumi.Input<number>;
+    sidekiqJobLimiterCompressionThresholdBytes?: pulumi.Input<number | undefined>;
     /**
      * The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
      */
-    sidekiqJobLimiterLimitBytes?: pulumi.Input<number>;
+    sidekiqJobLimiterLimitBytes?: pulumi.Input<number | undefined>;
     /**
      * track or compress. Sets the behavior for Sidekiq job size limits.
      */
-    sidekiqJobLimiterMode?: pulumi.Input<string>;
+    sidekiqJobLimiterMode?: pulumi.Input<string | undefined>;
     /**
      * Text on the login page.
      */
-    signInText?: pulumi.Input<string>;
+    signInText?: pulumi.Input<string | undefined>;
     /**
      * Enable registration.
      */
-    signupEnabled?: pulumi.Input<boolean>;
+    signupEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable Silent admin exports.
      */
-    silentAdminExportsEnabled?: pulumi.Input<boolean>;
+    silentAdminExportsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable Silent mode.
      */
-    silentModeEnabled?: pulumi.Input<boolean>;
+    silentModeEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
      */
-    slackAppEnabled?: pulumi.Input<boolean>;
+    slackAppEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The app ID of the Slack-app.
      */
-    slackAppId?: pulumi.Input<string>;
+    slackAppId?: pulumi.Input<string | undefined>;
     /**
      * The app secret of the Slack-app.
      */
-    slackAppSecret?: pulumi.Input<string>;
+    slackAppSecret?: pulumi.Input<string | undefined>;
     /**
      * The signing secret of the Slack-app.
      */
-    slackAppSigningSecret?: pulumi.Input<string>;
+    slackAppSigningSecret?: pulumi.Input<string | undefined>;
     /**
      * The verification token of the Slack-app.
      */
-    slackAppVerificationToken?: pulumi.Input<string>;
+    slackAppVerificationToken?: pulumi.Input<string | undefined>;
     /**
      * Max snippet content size in bytes.
      */
-    snippetSizeLimit?: pulumi.Input<number>;
+    snippetSizeLimit?: pulumi.Input<number | undefined>;
     /**
      * The Snowplow site name / application ID. (for example, gitlab)
      */
-    snowplowAppId?: pulumi.Input<string>;
+    snowplowAppId?: pulumi.Input<string | undefined>;
     /**
      * The Snowplow collector hostname. (for example, snowplow.trx.gitlab.net)
      */
-    snowplowCollectorHostname?: pulumi.Input<string>;
+    snowplowCollectorHostname?: pulumi.Input<string | undefined>;
     /**
      * The Snowplow cookie domain. (for example, .gitlab.com)
      */
-    snowplowCookieDomain?: pulumi.Input<string>;
+    snowplowCookieDomain?: pulumi.Input<string | undefined>;
     /**
      * The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
      */
-    snowplowDatabaseCollectorHostname?: pulumi.Input<string>;
+    snowplowDatabaseCollectorHostname?: pulumi.Input<string | undefined>;
     /**
      * Enable snowplow tracking.
      */
-    snowplowEnabled?: pulumi.Input<boolean>;
+    snowplowEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
      */
-    sourcegraphEnabled?: pulumi.Input<boolean>;
+    sourcegraphEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Blocks Sourcegraph from being loaded on private and internal projects.
      */
-    sourcegraphPublicOnly?: pulumi.Input<boolean>;
+    sourcegraphPublicOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The Sourcegraph instance URL for integration.
      */
-    sourcegraphUrl?: pulumi.Input<string>;
+    sourcegraphUrl?: pulumi.Input<string | undefined>;
     /**
      * API key used by GitLab for accessing the Spam Check service endpoint.
      */
-    spamCheckApiKey?: pulumi.Input<string>;
+    spamCheckApiKey?: pulumi.Input<string | undefined>;
     /**
      * Enables spam checking using external Spam Check API endpoint.
      */
-    spamCheckEndpointEnabled?: pulumi.Input<boolean>;
+    spamCheckEndpointEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
      */
-    spamCheckEndpointUrl?: pulumi.Input<string>;
+    spamCheckEndpointUrl?: pulumi.Input<string | undefined>;
     /**
      * Authentication token for the external storage linked in static*objects*external*storage*url.
      */
-    staticObjectsExternalStorageAuthToken?: pulumi.Input<string>;
+    staticObjectsExternalStorageAuthToken?: pulumi.Input<string | undefined>;
     /**
      * URL to an external storage for repository static objects.
      */
-    staticObjectsExternalStorageUrl?: pulumi.Input<string>;
+    staticObjectsExternalStorageUrl?: pulumi.Input<string | undefined>;
     /**
      * Enable pipeline suggestion banner.
      */
-    suggestPipelineEnabled?: pulumi.Input<boolean>;
+    suggestPipelineEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
      */
-    terminalMaxSessionTime?: pulumi.Input<number>;
+    terminalMaxSessionTime?: pulumi.Input<number | undefined>;
     /**
      * (Required by: enforce_terms) Markdown content for the ToS.
      */
-    terms?: pulumi.Input<string>;
+    terms?: pulumi.Input<string | undefined>;
     /**
      * (If enabled, requires: throttle*authenticated*api*period*in*seconds and throttle*authenticated*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      */
-    throttleAuthenticatedApiEnabled?: pulumi.Input<boolean>;
+    throttleAuthenticatedApiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Rate limit period (in seconds).
      */
-    throttleAuthenticatedApiPeriodInSeconds?: pulumi.Input<number>;
+    throttleAuthenticatedApiPeriodInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Maximum requests per period per user.
      */
-    throttleAuthenticatedApiRequestsPerPeriod?: pulumi.Input<number>;
+    throttleAuthenticatedApiRequestsPerPeriod?: pulumi.Input<number | undefined>;
     /**
      * Enable authenticated Git LFS request rate limit.
      */
-    throttleAuthenticatedGitLfsEnabled?: pulumi.Input<boolean>;
+    throttleAuthenticatedGitLfsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Rate limit period (in seconds).
      */
-    throttleAuthenticatedGitLfsPeriodInSeconds?: pulumi.Input<number>;
+    throttleAuthenticatedGitLfsPeriodInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Maximum requests per period per user.
      */
-    throttleAuthenticatedGitLfsRequestsPerPeriod?: pulumi.Input<number>;
+    throttleAuthenticatedGitLfsRequestsPerPeriod?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
      */
-    throttleAuthenticatedPackagesApiEnabled?: pulumi.Input<boolean>;
+    throttleAuthenticatedPackagesApiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Rate limit period (in seconds). View Package Registry rate limits for more details.
      */
-    throttleAuthenticatedPackagesApiPeriodInSeconds?: pulumi.Input<number>;
+    throttleAuthenticatedPackagesApiPeriodInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Maximum requests per period per user. View Package Registry rate limits for more details.
      */
-    throttleAuthenticatedPackagesApiRequestsPerPeriod?: pulumi.Input<number>;
+    throttleAuthenticatedPackagesApiRequestsPerPeriod?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: throttle*authenticated*web*period*in*seconds and throttle*authenticated*web*requests*per*period) Enable authenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      */
-    throttleAuthenticatedWebEnabled?: pulumi.Input<boolean>;
+    throttleAuthenticatedWebEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Rate limit period (in seconds).
      */
-    throttleAuthenticatedWebPeriodInSeconds?: pulumi.Input<number>;
+    throttleAuthenticatedWebPeriodInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Maximum requests per period per user.
      */
-    throttleAuthenticatedWebRequestsPerPeriod?: pulumi.Input<number>;
+    throttleAuthenticatedWebRequestsPerPeriod?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      */
-    throttleUnauthenticatedApiEnabled?: pulumi.Input<boolean>;
+    throttleUnauthenticatedApiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Rate limit period in seconds.
      */
-    throttleUnauthenticatedApiPeriodInSeconds?: pulumi.Input<number>;
+    throttleUnauthenticatedApiPeriodInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Max requests per period per IP.
      */
-    throttleUnauthenticatedApiRequestsPerPeriod?: pulumi.Input<number>;
+    throttleUnauthenticatedApiRequestsPerPeriod?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
      */
-    throttleUnauthenticatedPackagesApiEnabled?: pulumi.Input<boolean>;
+    throttleUnauthenticatedPackagesApiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Rate limit period (in seconds). View Package Registry rate limits for more details.
      */
-    throttleUnauthenticatedPackagesApiPeriodInSeconds?: pulumi.Input<number>;
+    throttleUnauthenticatedPackagesApiPeriodInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Maximum requests per period per user. View Package Registry rate limits for more details.
      */
-    throttleUnauthenticatedPackagesApiRequestsPerPeriod?: pulumi.Input<number>;
+    throttleUnauthenticatedPackagesApiRequestsPerPeriod?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      */
-    throttleUnauthenticatedWebEnabled?: pulumi.Input<boolean>;
+    throttleUnauthenticatedWebEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Rate limit period in seconds.
      */
-    throttleUnauthenticatedWebPeriodInSeconds?: pulumi.Input<number>;
+    throttleUnauthenticatedWebPeriodInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Max requests per period per IP.
      */
-    throttleUnauthenticatedWebRequestsPerPeriod?: pulumi.Input<number>;
+    throttleUnauthenticatedWebRequestsPerPeriod?: pulumi.Input<number | undefined>;
     /**
      * Limit display of time tracking units to hours.
      */
-    timeTrackingLimitToHours?: pulumi.Input<boolean>;
+    timeTrackingLimitToHours?: pulumi.Input<boolean | undefined>;
     /**
      * Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.
      */
-    twoFactorGracePeriod?: pulumi.Input<number>;
+    twoFactorGracePeriod?: pulumi.Input<number | undefined>;
     /**
      * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Self-managed, Premium and Ultimate only.
      */
-    unconfirmedUsersDeleteAfterDays?: pulumi.Input<number>;
+    unconfirmedUsersDeleteAfterDays?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
      */
-    uniqueIpsLimitEnabled?: pulumi.Input<boolean>;
+    uniqueIpsLimitEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum number of IPs per user.
      */
-    uniqueIpsLimitPerUser?: pulumi.Input<number>;
+    uniqueIpsLimitPerUser?: pulumi.Input<number | undefined>;
     /**
      * How many seconds an IP is counted towards the limit.
      */
-    uniqueIpsLimitTimeWindow?: pulumi.Input<number>;
+    uniqueIpsLimitTimeWindow?: pulumi.Input<number | undefined>;
     /**
      * Fetch GitLab Runner release version data from GitLab.com.
      */
-    updateRunnerVersionsEnabled?: pulumi.Input<boolean>;
+    updateRunnerVersionsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Disable user profile name changes.
      */
-    updatingNameDisabledForUsers?: pulumi.Input<boolean>;
+    updatingNameDisabledForUsers?: pulumi.Input<boolean | undefined>;
     /**
      * Every week GitLab reports license usage back to GitLab, Inc.
      */
-    usagePingEnabled?: pulumi.Input<boolean>;
+    usagePingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
      */
-    useClickhouseForAnalytics?: pulumi.Input<boolean>;
+    useClickhouseForAnalytics?: pulumi.Input<boolean | undefined>;
     /**
      * Send an email to users upon account deactivation.
      */
-    userDeactivationEmailsEnabled?: pulumi.Input<boolean>;
+    userDeactivationEmailsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Newly registered users are external by default.
      */
-    userDefaultExternal?: pulumi.Input<boolean>;
+    userDefaultExternal?: pulumi.Input<boolean | undefined>;
     /**
      * Specify an email address regex pattern to identify default internal users.
      */
-    userDefaultInternalRegex?: pulumi.Input<string>;
+    userDefaultInternalRegex?: pulumi.Input<string | undefined>;
     /**
      * Newly created users have private profile by default.
      */
-    userDefaultsToPrivateProfile?: pulumi.Input<boolean>;
+    userDefaultsToPrivateProfile?: pulumi.Input<boolean | undefined>;
     /**
      * Allow users to register any application to use GitLab as an OAuth provider.
      */
-    userOauthApplications?: pulumi.Input<boolean>;
+    userOauthApplications?: pulumi.Input<boolean | undefined>;
     /**
      * When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
      */
-    userShowAddSshKeyMessage?: pulumi.Input<boolean>;
+    userShowAddSshKeyMessage?: pulumi.Input<boolean | undefined>;
     /**
      * List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
      */
-    validRunnerRegistrars?: pulumi.Input<pulumi.Input<string>[]>;
+    validRunnerRegistrars?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Let GitLab inform you when an update is available.
      */
-    versionCheckEnabled?: pulumi.Input<boolean>;
+    versionCheckEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
      */
-    webIdeClientsidePreviewEnabled?: pulumi.Input<boolean>;
+    webIdeClientsidePreviewEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * What's new variant, possible values: all*tiers, current*tier, and disabled.
      */
-    whatsNewVariant?: pulumi.Input<string>;
+    whatsNewVariant?: pulumi.Input<string | undefined>;
     /**
      * Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
      */
-    wikiPageMaxContentBytes?: pulumi.Input<number>;
+    wikiPageMaxContentBytes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -3321,1287 +3321,1287 @@ export interface ApplicationSettingsArgs {
     /**
      * If set, abuse reports are sent to this address. Abuse reports are always available in the Admin Area.
      */
-    abuseNotificationEmail?: pulumi.Input<string>;
+    abuseNotificationEmail?: pulumi.Input<string | undefined>;
     /**
      * Require administrators to enable Admin Mode by re-authenticating for administrative tasks.
      */
-    adminMode?: pulumi.Input<boolean>;
+    adminMode?: pulumi.Input<boolean | undefined>;
     /**
      * Where to redirect users after logout.
      */
-    afterSignOutPath?: pulumi.Input<string>;
+    afterSignOutPath?: pulumi.Input<string | undefined>;
     /**
      * Text shown to the user after signing up.
      */
-    afterSignUpText?: pulumi.Input<string>;
+    afterSignUpText?: pulumi.Input<string | undefined>;
     /**
      * API key for Akismet spam protection.
      */
-    akismetApiKey?: pulumi.Input<string>;
+    akismetApiKey?: pulumi.Input<string | undefined>;
     /**
      * (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
      */
-    akismetEnabled?: pulumi.Input<boolean>;
+    akismetEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set to true to allow users to delete their accounts. Premium and Ultimate only.
      */
-    allowAccountDeletion?: pulumi.Input<boolean>;
+    allowAccountDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * Set to true to allow group owners to manage LDAP.
      */
-    allowGroupOwnersToManageLdap?: pulumi.Input<boolean>;
+    allowGroupOwnersToManageLdap?: pulumi.Input<boolean | undefined>;
     /**
      * Allow requests to the local network from system hooks.
      */
-    allowLocalRequestsFromSystemHooks?: pulumi.Input<boolean>;
+    allowLocalRequestsFromSystemHooks?: pulumi.Input<boolean | undefined>;
     /**
      * Allow requests to the local network from web hooks and services.
      */
-    allowLocalRequestsFromWebHooksAndServices?: pulumi.Input<boolean>;
+    allowLocalRequestsFromWebHooksAndServices?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether users assigned up to the Guest role can create groups and personal projects.
      */
-    allowProjectCreationForGuestAndBelow?: pulumi.Input<boolean>;
+    allowProjectCreationForGuestAndBelow?: pulumi.Input<boolean | undefined>;
     /**
      * Allow using a registration token to create a runner.
      */
-    allowRunnerRegistrationToken?: pulumi.Input<boolean>;
+    allowRunnerRegistrationToken?: pulumi.Input<boolean | undefined>;
     /**
      * Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
      */
-    archiveBuildsInHumanReadable?: pulumi.Input<string>;
+    archiveBuildsInHumanReadable?: pulumi.Input<string | undefined>;
     /**
      * Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
      */
-    asciidocMaxIncludes?: pulumi.Input<number>;
+    asciidocMaxIncludes?: pulumi.Input<number | undefined>;
     /**
      * Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
      */
-    assetProxyAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    assetProxyAllowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (If enabled, requires: asset*proxy*url) Enable proxying of assets. GitLab restart is required to apply changes.
      */
-    assetProxyEnabled?: pulumi.Input<boolean>;
+    assetProxyEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Shared secret with the asset proxy server. GitLab restart is required to apply changes.
      */
-    assetProxySecretKey?: pulumi.Input<string>;
+    assetProxySecretKey?: pulumi.Input<string | undefined>;
     /**
      * URL of the asset proxy server. GitLab restart is required to apply changes.
      */
-    assetProxyUrl?: pulumi.Input<string>;
+    assetProxyUrl?: pulumi.Input<string | undefined>;
     /**
      * By default, we write to the authorizedKeys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
      */
-    authorizedKeysEnabled?: pulumi.Input<boolean>;
+    authorizedKeysEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Self-managed, Ultimate only.
      */
-    autoBanUserOnExcessiveProjectsDownload?: pulumi.Input<boolean>;
+    autoBanUserOnExcessiveProjectsDownload?: pulumi.Input<boolean | undefined>;
     /**
      * Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
      */
-    autoDevopsDomain?: pulumi.Input<string>;
+    autoDevopsDomain?: pulumi.Input<string | undefined>;
     /**
      * Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
      */
-    autoDevopsEnabled?: pulumi.Input<boolean>;
+    autoDevopsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enabling this permits automatic allocation of purchased storage in a namespace.
      */
-    automaticPurchasedStorageAllocation?: pulumi.Input<boolean>;
+    automaticPurchasedStorageAllocation?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum simultaneous Direct Transfer batches to process.
      */
-    bulkImportConcurrentPipelineBatchLimit?: pulumi.Input<number>;
+    bulkImportConcurrentPipelineBatchLimit?: pulumi.Input<number | undefined>;
     /**
      * Enable migrating GitLab groups by direct transfer.
      */
-    bulkImportEnabled?: pulumi.Input<boolean>;
+    bulkImportEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum download file size when importing from source GitLab instances by direct transfer.
      */
-    bulkImportMaxDownloadFileSize?: pulumi.Input<number>;
+    bulkImportMaxDownloadFileSize?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether users can create top-level groups.
      */
-    canCreateGroup?: pulumi.Input<boolean>;
+    canCreateGroup?: pulumi.Input<boolean | undefined>;
     /**
      * Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
      */
-    checkNamespacePlan?: pulumi.Input<boolean>;
+    checkNamespacePlan?: pulumi.Input<boolean | undefined>;
     /**
      * Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
      */
-    ciJobLiveTraceEnabled?: pulumi.Input<boolean>;
+    ciJobLiveTraceEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum number of includes per pipeline.
      */
-    ciMaxIncludes?: pulumi.Input<number>;
+    ciMaxIncludes?: pulumi.Input<number | undefined>;
     /**
      * The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
      */
-    ciMaxTotalYamlSizeBytes?: pulumi.Input<number>;
+    ciMaxTotalYamlSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * Custom hostname (for private commit emails).
      */
-    commitEmailHostname?: pulumi.Input<string>;
+    commitEmailHostname?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of simultaneous import jobs for the Bitbucket Cloud importer.
      */
-    concurrentBitbucketImportJobsLimit?: pulumi.Input<number>;
+    concurrentBitbucketImportJobsLimit?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of simultaneous import jobs for the Bitbucket Server importer.
      */
-    concurrentBitbucketServerImportJobsLimit?: pulumi.Input<number>;
+    concurrentBitbucketServerImportJobsLimit?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of simultaneous import jobs for the GitHub importer.
      */
-    concurrentGithubImportJobsLimit?: pulumi.Input<number>;
+    concurrentGithubImportJobsLimit?: pulumi.Input<number | undefined>;
     /**
      * Enable cleanup policies for all projects.
      */
-    containerExpirationPoliciesEnableHistoricEntries?: pulumi.Input<boolean>;
+    containerExpirationPoliciesEnableHistoricEntries?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum number of tags that can be deleted in a single execution of cleanup policies.
      */
-    containerRegistryCleanupTagsServiceMaxListSize?: pulumi.Input<number>;
+    containerRegistryCleanupTagsServiceMaxListSize?: pulumi.Input<number | undefined>;
     /**
      * The maximum time, in seconds, that the cleanup process can take to delete a batch of tags for cleanup policies.
      */
-    containerRegistryDeleteTagsServiceTimeout?: pulumi.Input<number>;
+    containerRegistryDeleteTagsServiceTimeout?: pulumi.Input<number | undefined>;
     /**
      * Caching during the execution of cleanup policies.
      */
-    containerRegistryExpirationPoliciesCaching?: pulumi.Input<boolean>;
+    containerRegistryExpirationPoliciesCaching?: pulumi.Input<boolean | undefined>;
     /**
      * Number of workers for cleanup policies.
      */
-    containerRegistryExpirationPoliciesWorkerCapacity?: pulumi.Input<number>;
+    containerRegistryExpirationPoliciesWorkerCapacity?: pulumi.Input<number | undefined>;
     /**
      * Container Registry token duration in minutes.
      */
-    containerRegistryTokenExpireDelay?: pulumi.Input<number>;
+    containerRegistryTokenExpireDelay?: pulumi.Input<number | undefined>;
     /**
      * Enable automatic deactivation of dormant users.
      */
-    deactivateDormantUsers?: pulumi.Input<boolean>;
+    deactivateDormantUsers?: pulumi.Input<boolean | undefined>;
     /**
      * Length of time (in days) after which a user is considered dormant.
      */
-    deactivateDormantUsersPeriod?: pulumi.Input<number>;
+    deactivateDormantUsersPeriod?: pulumi.Input<number | undefined>;
     /**
      * Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
      */
-    decompressArchiveFileTimeout?: pulumi.Input<number>;
+    decompressArchiveFileTimeout?: pulumi.Input<number | undefined>;
     /**
      * Set the default expiration time for each job’s artifacts.
      */
-    defaultArtifactsExpireIn?: pulumi.Input<string>;
+    defaultArtifactsExpireIn?: pulumi.Input<string | undefined>;
     /**
      * Instance-level custom initial branch name
      */
-    defaultBranchName?: pulumi.Input<string>;
+    defaultBranchName?: pulumi.Input<string | undefined>;
     /**
      * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
      *
      * @deprecated Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
      */
-    defaultBranchProtection?: pulumi.Input<number>;
+    defaultBranchProtection?: pulumi.Input<number | undefined>;
     /**
      * The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
      */
-    defaultBranchProtectionDefaults?: pulumi.Input<inputs.ApplicationSettingsDefaultBranchProtectionDefaults>;
+    defaultBranchProtectionDefaults?: pulumi.Input<inputs.ApplicationSettingsDefaultBranchProtectionDefaults | undefined>;
     /**
      * Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
      */
-    defaultCiConfigPath?: pulumi.Input<string>;
+    defaultCiConfigPath?: pulumi.Input<string | undefined>;
     /**
      * What visibility level new groups receive. Can take private, internal and public as a parameter.
      */
-    defaultGroupVisibility?: pulumi.Input<string>;
+    defaultGroupVisibility?: pulumi.Input<string | undefined>;
     /**
      * Default preferred language for users who are not logged in.
      */
-    defaultPreferredLanguage?: pulumi.Input<string>;
+    defaultPreferredLanguage?: pulumi.Input<string | undefined>;
     /**
      * Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
      */
-    defaultProjectCreation?: pulumi.Input<number>;
+    defaultProjectCreation?: pulumi.Input<number | undefined>;
     /**
      * What visibility level new projects receive. Can take private, internal and public as a parameter.
      */
-    defaultProjectVisibility?: pulumi.Input<string>;
+    defaultProjectVisibility?: pulumi.Input<string | undefined>;
     /**
      * Project limit per user.
      */
-    defaultProjectsLimit?: pulumi.Input<number>;
+    defaultProjectsLimit?: pulumi.Input<number | undefined>;
     /**
      * What visibility level new snippets receive. Can take private, internal and public as a parameter.
      */
-    defaultSnippetVisibility?: pulumi.Input<string>;
+    defaultSnippetVisibility?: pulumi.Input<string | undefined>;
     /**
      * Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
      */
-    defaultSyntaxHighlightingTheme?: pulumi.Input<number>;
+    defaultSyntaxHighlightingTheme?: pulumi.Input<number | undefined>;
     /**
      * Enable inactive project deletion feature.
      */
-    deleteInactiveProjects?: pulumi.Input<boolean>;
+    deleteInactiveProjects?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Self-managed, Premium and Ultimate only.
      */
-    deleteUnconfirmedUsers?: pulumi.Input<boolean>;
+    deleteUnconfirmedUsers?: pulumi.Input<boolean | undefined>;
     /**
      * The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
      */
-    deletionAdjournedPeriod?: pulumi.Input<number>;
+    deletionAdjournedPeriod?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
      */
-    diagramsnetEnabled?: pulumi.Input<boolean>;
+    diagramsnetEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Diagrams.net instance URL for integration.
      */
-    diagramsnetUrl?: pulumi.Input<string>;
+    diagramsnetUrl?: pulumi.Input<string | undefined>;
     /**
      * Maximum files in a diff.
      */
-    diffMaxFiles?: pulumi.Input<number>;
+    diffMaxFiles?: pulumi.Input<number | undefined>;
     /**
      * Maximum lines in a diff.
      */
-    diffMaxLines?: pulumi.Input<number>;
+    diffMaxLines?: pulumi.Input<number | undefined>;
     /**
      * Maximum diff patch size, in bytes.
      */
-    diffMaxPatchBytes?: pulumi.Input<number>;
+    diffMaxPatchBytes?: pulumi.Input<number | undefined>;
     /**
      * Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
      */
-    disableAdminOauthScopes?: pulumi.Input<boolean>;
+    disableAdminOauthScopes?: pulumi.Input<boolean | undefined>;
     /**
      * Disable display of RSS/Atom and calendar feed tokens.
      */
-    disableFeedToken?: pulumi.Input<boolean>;
+    disableFeedToken?: pulumi.Input<boolean | undefined>;
     /**
      * Prevent editing approval rules in projects and merge requests.
      */
-    disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean>;
+    disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      */
-    disablePersonalAccessTokens?: pulumi.Input<boolean>;
+    disablePersonalAccessTokens?: pulumi.Input<boolean | undefined>;
     /**
      * Disabled OAuth sign-in sources.
      */
-    disabledOauthSignInSources?: pulumi.Input<pulumi.Input<string>[]>;
+    disabledOauthSignInSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enforce DNS rebinding attack protection.
      */
-    dnsRebindingProtectionEnabled?: pulumi.Input<boolean>;
+    dnsRebindingProtectionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Force people to use only corporate emails for sign-up. Null means there is no restriction.
      */
-    domainAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    domainAllowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (If enabled, requires: domain_denylist) Allows blocking sign-ups from emails from specific domains.
      */
-    domainDenylistEnabled?: pulumi.Input<boolean>;
+    domainDenylistEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
      */
-    domainDenylists?: pulumi.Input<pulumi.Input<string>[]>;
+    domainDenylists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Maximum downstream pipeline trigger rate.
      */
-    downstreamPipelineTriggerLimitPerProjectUserSha?: pulumi.Input<number>;
+    downstreamPipelineTriggerLimitPerProjectUserSha?: pulumi.Input<number | undefined>;
     /**
      * The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
      */
-    dsaKeyRestriction?: pulumi.Input<number>;
+    dsaKeyRestriction?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether GitLab Duo features are enabled for this instance. Self-managed, Premium and Ultimate only.
      */
-    duoFeaturesEnabled?: pulumi.Input<boolean>;
+    duoFeaturesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
      */
-    ecdsaKeyRestriction?: pulumi.Input<number>;
+    ecdsaKeyRestriction?: pulumi.Input<number | undefined>;
     /**
      * The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
      */
-    ecdsaSkKeyRestriction?: pulumi.Input<number>;
+    ecdsaSkKeyRestriction?: pulumi.Input<number | undefined>;
     /**
      * The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
      */
-    ed25519KeyRestriction?: pulumi.Input<number>;
+    ed25519KeyRestriction?: pulumi.Input<number | undefined>;
     /**
      * The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
      */
-    ed25519SkKeyRestriction?: pulumi.Input<number>;
+    ed25519SkKeyRestriction?: pulumi.Input<number | undefined>;
     /**
      * AWS IAM access key ID.
      */
-    eksAccessKeyId?: pulumi.Input<string>;
+    eksAccessKeyId?: pulumi.Input<string | undefined>;
     /**
      * Amazon account ID.
      */
-    eksAccountId?: pulumi.Input<string>;
+    eksAccountId?: pulumi.Input<string | undefined>;
     /**
      * Enable integration with Amazon EKS.
      */
-    eksIntegrationEnabled?: pulumi.Input<boolean>;
+    eksIntegrationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * AWS IAM secret access key.
      */
-    eksSecretAccessKey?: pulumi.Input<string>;
+    eksSecretAccessKey?: pulumi.Input<string | undefined>;
     /**
      * Enable the use of AWS hosted Elasticsearch.
      */
-    elasticsearchAws?: pulumi.Input<boolean>;
+    elasticsearchAws?: pulumi.Input<boolean | undefined>;
     /**
      * AWS IAM access key.
      */
-    elasticsearchAwsAccessKey?: pulumi.Input<string>;
+    elasticsearchAwsAccessKey?: pulumi.Input<string | undefined>;
     /**
      * The AWS region the Elasticsearch domain is configured.
      */
-    elasticsearchAwsRegion?: pulumi.Input<string>;
+    elasticsearchAwsRegion?: pulumi.Input<string | undefined>;
     /**
      * AWS IAM secret access key.
      */
-    elasticsearchAwsSecretAccessKey?: pulumi.Input<string>;
+    elasticsearchAwsSecretAccessKey?: pulumi.Input<string | undefined>;
     /**
      * Maximum size of text fields to index by Elasticsearch. 0 value means no limit. This does not apply to repository and wiki indexing.
      */
-    elasticsearchIndexedFieldLengthLimit?: pulumi.Input<number>;
+    elasticsearchIndexedFieldLengthLimit?: pulumi.Input<number | undefined>;
     /**
      * Maximum size of repository and wiki files that are indexed by Elasticsearch.
      */
-    elasticsearchIndexedFileSizeLimitKb?: pulumi.Input<number>;
+    elasticsearchIndexedFileSizeLimitKb?: pulumi.Input<number | undefined>;
     /**
      * Enable Elasticsearch indexing.
      */
-    elasticsearchIndexing?: pulumi.Input<boolean>;
+    elasticsearchIndexing?: pulumi.Input<boolean | undefined>;
     /**
      * Limit Elasticsearch to index certain namespaces and projects.
      */
-    elasticsearchLimitIndexing?: pulumi.Input<boolean>;
+    elasticsearchLimitIndexing?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum concurrency of Elasticsearch bulk requests per indexing operation. This only applies to repository indexing operations.
      */
-    elasticsearchMaxBulkConcurrency?: pulumi.Input<number>;
+    elasticsearchMaxBulkConcurrency?: pulumi.Input<number | undefined>;
     /**
      * Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
      */
-    elasticsearchMaxBulkSizeMb?: pulumi.Input<number>;
+    elasticsearchMaxBulkSizeMb?: pulumi.Input<number | undefined>;
     /**
      * Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
      */
-    elasticsearchMaxCodeIndexingConcurrency?: pulumi.Input<number>;
+    elasticsearchMaxCodeIndexingConcurrency?: pulumi.Input<number | undefined>;
     /**
      * The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
-    elasticsearchNamespaceIds?: pulumi.Input<pulumi.Input<number>[]>;
+    elasticsearchNamespaceIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The password of your Elasticsearch instance.
      */
-    elasticsearchPassword?: pulumi.Input<string>;
+    elasticsearchPassword?: pulumi.Input<string | undefined>;
     /**
      * The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
      */
-    elasticsearchProjectIds?: pulumi.Input<pulumi.Input<number>[]>;
+    elasticsearchProjectIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
      */
-    elasticsearchRequeueWorkers?: pulumi.Input<boolean>;
+    elasticsearchRequeueWorkers?: pulumi.Input<boolean | undefined>;
     /**
      * Enable Elasticsearch search.
      */
-    elasticsearchSearch?: pulumi.Input<boolean>;
+    elasticsearchSearch?: pulumi.Input<boolean | undefined>;
     /**
      * The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
      */
-    elasticsearchUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    elasticsearchUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The username of your Elasticsearch instance.
      */
-    elasticsearchUsername?: pulumi.Input<string>;
+    elasticsearchUsername?: pulumi.Input<string | undefined>;
     /**
      * Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
      */
-    elasticsearchWorkerNumberOfShards?: pulumi.Input<number>;
+    elasticsearchWorkerNumberOfShards?: pulumi.Input<number | undefined>;
     /**
      * Additional text added to the bottom of every email for legal/auditing/compliance reasons.
      */
-    emailAdditionalText?: pulumi.Input<string>;
+    emailAdditionalText?: pulumi.Input<string | undefined>;
     /**
      * Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.
      */
-    emailAuthorInBody?: pulumi.Input<boolean>;
+    emailAuthorInBody?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
      */
-    emailConfirmationSetting?: pulumi.Input<string>;
+    emailConfirmationSetting?: pulumi.Input<string | undefined>;
     /**
      * Show the external redirect page that warns you about user-generated content in GitLab Pages.
      */
-    enableArtifactExternalRedirectWarningPage?: pulumi.Input<boolean>;
+    enableArtifactExternalRedirectWarningPage?: pulumi.Input<boolean | undefined>;
     /**
      * Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
      */
-    enabledGitAccessProtocol?: pulumi.Input<string>;
+    enabledGitAccessProtocol?: pulumi.Input<string | undefined>;
     /**
      * Enabling this permits enforcement of namespace storage limits.
      */
-    enforceNamespaceStorageLimit?: pulumi.Input<boolean>;
+    enforceNamespaceStorageLimit?: pulumi.Input<boolean | undefined>;
     /**
      * (If enabled, requires: terms) Enforce application ToS to all users.
      */
-    enforceTerms?: pulumi.Input<boolean>;
+    enforceTerms?: pulumi.Input<boolean | undefined>;
     /**
      * (If enabled, requires: external*auth*client_key) The certificate to use to authenticate with the external authorization service.
      */
-    externalAuthClientCert?: pulumi.Input<string>;
+    externalAuthClientCert?: pulumi.Input<string | undefined>;
     /**
      * Private key for the certificate when authentication is required for the external authorization service, this is encrypted when stored.
      */
-    externalAuthClientKey?: pulumi.Input<string>;
+    externalAuthClientKey?: pulumi.Input<string | undefined>;
     /**
      * Passphrase to use for the private key when authenticating with the external service this is encrypted when stored.
      */
-    externalAuthClientKeyPass?: pulumi.Input<string>;
+    externalAuthClientKeyPass?: pulumi.Input<string | undefined>;
     /**
      * The default classification label to use when requesting authorization and no classification label has been specified on the project.
      */
-    externalAuthorizationServiceDefaultLabel?: pulumi.Input<string>;
+    externalAuthorizationServiceDefaultLabel?: pulumi.Input<string | undefined>;
     /**
      * (If enabled, requires: external*authorization*service*default*label, external*authorization*service*timeout and external*authorization*service*url) Enable using an external authorization service for accessing projects.
      */
-    externalAuthorizationServiceEnabled?: pulumi.Input<boolean>;
+    externalAuthorizationServiceEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The timeout after which an authorization request is aborted, in seconds. When a request times out, access is denied to the user. (min: 0.001, max: 10, step: 0.001).
      */
-    externalAuthorizationServiceTimeout?: pulumi.Input<number>;
+    externalAuthorizationServiceTimeout?: pulumi.Input<number | undefined>;
     /**
      * URL to which authorization requests are directed.
      */
-    externalAuthorizationServiceUrl?: pulumi.Input<string>;
+    externalAuthorizationServiceUrl?: pulumi.Input<string | undefined>;
     /**
      * How long to wait for a response from the pipeline validation service. Assumes OK if it times out.
      */
-    externalPipelineValidationServiceTimeout?: pulumi.Input<number>;
+    externalPipelineValidationServiceTimeout?: pulumi.Input<number | undefined>;
     /**
      * Optional. Token to include as the X-Gitlab-Token header in requests to the URL in external*pipeline*validation*service*url.
      */
-    externalPipelineValidationServiceToken?: pulumi.Input<string>;
+    externalPipelineValidationServiceToken?: pulumi.Input<string | undefined>;
     /**
      * URL to use for pipeline validation requests.
      */
-    externalPipelineValidationServiceUrl?: pulumi.Input<string>;
+    externalPipelineValidationServiceUrl?: pulumi.Input<string | undefined>;
     /**
      * Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
      */
-    failedLoginAttemptsUnlockPeriodInMinutes?: pulumi.Input<number>;
+    failedLoginAttemptsUnlockPeriodInMinutes?: pulumi.Input<number | undefined>;
     /**
      * The ID of a project to load custom file templates from.
      */
-    fileTemplateProjectId?: pulumi.Input<number>;
+    fileTemplateProjectId?: pulumi.Input<number | undefined>;
     /**
      * Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
      */
-    firstDayOfWeek?: pulumi.Input<number>;
+    firstDayOfWeek?: pulumi.Input<number | undefined>;
     /**
      * Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
      */
-    geoNodeAllowedIps?: pulumi.Input<string>;
+    geoNodeAllowedIps?: pulumi.Input<string | undefined>;
     /**
      * The amount of seconds after which a request to get a secondary node status times out.
      */
-    geoStatusTimeout?: pulumi.Input<number>;
+    geoStatusTimeout?: pulumi.Input<number | undefined>;
     /**
      * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
      */
-    gitRateLimitUsersAlertlists?: pulumi.Input<pulumi.Input<number>[]>;
+    gitRateLimitUsersAlertlists?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
      */
-    gitRateLimitUsersAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    gitRateLimitUsersAllowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
      */
-    gitTwoFactorSessionExpiry?: pulumi.Input<number>;
+    gitTwoFactorSessionExpiry?: pulumi.Input<number | undefined>;
     /**
      * Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to 0 to disable timeouts.
      */
-    gitalyTimeoutDefault?: pulumi.Input<number>;
+    gitalyTimeoutDefault?: pulumi.Input<number | undefined>;
     /**
      * Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and ‘failing fast’ can help maintain the stability of the GitLab instance. Set to 0 to disable timeouts.
      */
-    gitalyTimeoutFast?: pulumi.Input<number>;
+    gitalyTimeoutFast?: pulumi.Input<number | undefined>;
     /**
      * Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.
      */
-    gitalyTimeoutMedium?: pulumi.Input<number>;
+    gitalyTimeoutMedium?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of Git operations per minute a user can perform.
      */
-    gitlabShellOperationLimit?: pulumi.Input<number>;
+    gitlabShellOperationLimit?: pulumi.Input<number | undefined>;
     /**
      * Enable Gitpod integration.
      */
-    gitpodEnabled?: pulumi.Input<boolean>;
+    gitpodEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Gitpod instance URL for integration.
      */
-    gitpodUrl?: pulumi.Input<string>;
+    gitpodUrl?: pulumi.Input<string | undefined>;
     /**
      * Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
      */
-    globallyAllowedIps?: pulumi.Input<string>;
+    globallyAllowedIps?: pulumi.Input<string | undefined>;
     /**
      * Enable Grafana.
      */
-    grafanaEnabled?: pulumi.Input<boolean>;
+    grafanaEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Grafana URL.
      */
-    grafanaUrl?: pulumi.Input<string>;
+    grafanaUrl?: pulumi.Input<string | undefined>;
     /**
      * Enable Gravatar.
      */
-    gravatarEnabled?: pulumi.Input<boolean>;
+    gravatarEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Prevent overrides of default branch protection.
      */
-    groupOwnersCanManageDefaultBranchProtection?: pulumi.Input<boolean>;
+    groupOwnersCanManageDefaultBranchProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Hide marketing-related entries from help.
      */
-    helpPageHideCommercialContent?: pulumi.Input<boolean>;
+    helpPageHideCommercialContent?: pulumi.Input<boolean | undefined>;
     /**
      * Alternate support URL for help page and help dropdown.
      */
-    helpPageSupportUrl?: pulumi.Input<string>;
+    helpPageSupportUrl?: pulumi.Input<string | undefined>;
     /**
      * Custom text displayed on the help page.
      */
-    helpPageText?: pulumi.Input<string>;
+    helpPageText?: pulumi.Input<string | undefined>;
     /**
      * GitLab server administrator information.
      */
-    helpText?: pulumi.Input<string>;
+    helpText?: pulumi.Input<string | undefined>;
     /**
      * Do not display offers from third parties in GitLab.
      */
-    hideThirdPartyOffers?: pulumi.Input<boolean>;
+    hideThirdPartyOffers?: pulumi.Input<boolean | undefined>;
     /**
      * Redirect to this URL when not logged in.
      */
-    homePageUrl?: pulumi.Input<string>;
+    homePageUrl?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
      */
-    housekeepingEnabled?: pulumi.Input<boolean>;
+    housekeepingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Number of Git pushes after which an incremental git-repack is run.
      */
-    housekeepingOptimizeRepositoryPeriod?: pulumi.Input<number>;
+    housekeepingOptimizeRepositoryPeriod?: pulumi.Input<number | undefined>;
     /**
      * Enable HTML emails.
      */
-    htmlEmailsEnabled?: pulumi.Input<boolean>;
+    htmlEmailsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
      */
-    importSources?: pulumi.Input<pulumi.Input<string>[]>;
+    importSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable in-product marketing emails.
      */
-    inProductMarketingEmailsEnabled?: pulumi.Input<boolean>;
+    inProductMarketingEmailsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
      */
-    inactiveProjectsDeleteAfterMonths?: pulumi.Input<number>;
+    inactiveProjectsDeleteAfterMonths?: pulumi.Input<number | undefined>;
     /**
      * If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity.
      */
-    inactiveProjectsMinSizeMb?: pulumi.Input<number>;
+    inactiveProjectsMinSizeMb?: pulumi.Input<number | undefined>;
     /**
      * If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
      */
-    inactiveProjectsSendWarningEmailAfterMonths?: pulumi.Input<number>;
+    inactiveProjectsSendWarningEmailAfterMonths?: pulumi.Input<number | undefined>;
     /**
      * Specifies retention period for inactive project and group access tokens. Default is 30.
      */
-    inactiveResourceAccessTokensDeleteAfterDays?: pulumi.Input<number>;
+    inactiveResourceAccessTokensDeleteAfterDays?: pulumi.Input<number | undefined>;
     /**
      * Whether or not optional metrics are enabled in Service Ping.
      */
-    includeOptionalMetricsInServicePing?: pulumi.Input<boolean>;
+    includeOptionalMetricsInServicePing?: pulumi.Input<boolean | undefined>;
     /**
      * Enable Invisible CAPTCHA spam detection during sign-up.
      */
-    invisibleCaptchaEnabled?: pulumi.Input<boolean>;
+    invisibleCaptchaEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Max number of issue creation requests per minute per user.
      */
-    issuesCreateLimit?: pulumi.Input<number>;
+    issuesCreateLimit?: pulumi.Input<number | undefined>;
     /**
      * ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
      */
-    jiraConnectApplicationKey?: pulumi.Input<string>;
+    jiraConnectApplicationKey?: pulumi.Input<string | undefined>;
     /**
      * URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
      */
-    jiraConnectProxyUrl?: pulumi.Input<string>;
+    jiraConnectProxyUrl?: pulumi.Input<string | undefined>;
     /**
      * Enable public key storage for the GitLab for Jira Cloud app.
      */
-    jiraConnectPublicKeyStorageEnabled?: pulumi.Input<boolean>;
+    jiraConnectPublicKeyStorageEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
      */
-    keepLatestArtifact?: pulumi.Input<boolean>;
+    keepLatestArtifact?: pulumi.Input<boolean | undefined>;
     /**
      * (If enabled, requires: kroki_url) Enable Kroki integration.
      */
-    krokiEnabled?: pulumi.Input<boolean>;
+    krokiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration for formats supported by the Kroki instance.
      */
-    krokiFormats?: pulumi.Input<{[key: string]: pulumi.Input<boolean>}>;
+    krokiFormats?: pulumi.Input<{[key: string]: pulumi.Input<boolean>} | undefined>;
     /**
      * The Kroki instance URL for integration.
      */
-    krokiUrl?: pulumi.Input<string>;
+    krokiUrl?: pulumi.Input<string | undefined>;
     /**
      * Increase this value when any cached Markdown should be invalidated.
      */
-    localMarkdownVersion?: pulumi.Input<number>;
+    localMarkdownVersion?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
      */
-    lockDuoFeaturesEnabled?: pulumi.Input<boolean>;
+    lockDuoFeaturesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set to true to lock all memberships to LDAP. Premium and Ultimate only.
      */
-    lockMembershipsToLdap?: pulumi.Input<boolean>;
+    lockMembershipsToLdap?: pulumi.Input<boolean | undefined>;
     /**
      * Set to true to lock all memberships to SAML. Premium and Ultimate only.
      */
-    lockMembershipsToSaml?: pulumi.Input<boolean>;
+    lockMembershipsToSaml?: pulumi.Input<boolean | undefined>;
     /**
      * Enable Mailgun event receiver.
      */
-    mailgunEventsEnabled?: pulumi.Input<boolean>;
+    mailgunEventsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Mailgun HTTP webhook signing key for receiving events from webhook.
      */
-    mailgunSigningKey?: pulumi.Input<string>;
+    mailgunSigningKey?: pulumi.Input<string | undefined>;
     /**
      * When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
      */
-    maintenanceMode?: pulumi.Input<boolean>;
+    maintenanceMode?: pulumi.Input<boolean | undefined>;
     /**
      * Message displayed when instance is in maintenance mode.
      */
-    maintenanceModeMessage?: pulumi.Input<string>;
+    maintenanceModeMessage?: pulumi.Input<string | undefined>;
     /**
      * Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
      */
-    mavenPackageRequestsForwarding?: pulumi.Input<boolean>;
+    mavenPackageRequestsForwarding?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum artifacts size in MB.
      */
-    maxArtifactsSize?: pulumi.Input<number>;
+    maxArtifactsSize?: pulumi.Input<number | undefined>;
     /**
      * Limit attachment size in MB.
      */
-    maxAttachmentSize?: pulumi.Input<number>;
+    maxAttachmentSize?: pulumi.Input<number | undefined>;
     /**
      * Maximum decompressed archive size in bytes.
      */
-    maxDecompressedArchiveSize?: pulumi.Input<number>;
+    maxDecompressedArchiveSize?: pulumi.Input<number | undefined>;
     /**
      * Maximum export size in MB. 0 for unlimited.
      */
-    maxExportSize?: pulumi.Input<number>;
+    maxExportSize?: pulumi.Input<number | undefined>;
     /**
      * Maximum remote file size for imports from external object storages.
      */
-    maxImportRemoteFileSize?: pulumi.Input<number>;
+    maxImportRemoteFileSize?: pulumi.Input<number | undefined>;
     /**
      * Maximum import size in MB. 0 for unlimited.
      */
-    maxImportSize?: pulumi.Input<number>;
+    maxImportSize?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of sign-in attempts before locking out the user.
      */
-    maxLoginAttempts?: pulumi.Input<number>;
+    maxLoginAttempts?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories.
      */
-    maxNumberOfRepositoryDownloads?: pulumi.Input<number>;
+    maxNumberOfRepositoryDownloads?: pulumi.Input<number | undefined>;
     /**
      * Reporting time period (in seconds). Maximum: 864000 seconds (10 days).
      */
-    maxNumberOfRepositoryDownloadsWithinTimePeriod?: pulumi.Input<number>;
+    maxNumberOfRepositoryDownloadsWithinTimePeriod?: pulumi.Input<number | undefined>;
     /**
      * Maximum size of pages repositories in MB.
      */
-    maxPagesSize?: pulumi.Input<number>;
+    maxPagesSize?: pulumi.Input<number | undefined>;
     /**
      * Maximum allowable lifetime for access tokens in days.
      */
-    maxPersonalAccessTokenLifetime?: pulumi.Input<number>;
+    maxPersonalAccessTokenLifetime?: pulumi.Input<number | undefined>;
     /**
      * Maximum allowable lifetime for SSH keys in days.
      */
-    maxSshKeyLifetime?: pulumi.Input<number>;
+    maxSshKeyLifetime?: pulumi.Input<number | undefined>;
     /**
      * Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
      */
-    maxTerraformStateSizeBytes?: pulumi.Input<number>;
+    maxTerraformStateSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      */
-    metricsMethodCallThreshold?: pulumi.Input<number>;
+    metricsMethodCallThreshold?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether passwords require a minimum length. Premium and Ultimate only.
      */
-    minimumPasswordLength?: pulumi.Input<number>;
+    minimumPasswordLength?: pulumi.Input<number | undefined>;
     /**
      * Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
      */
-    mirrorAvailable?: pulumi.Input<boolean>;
+    mirrorAvailable?: pulumi.Input<boolean | undefined>;
     /**
      * Minimum capacity to be available before scheduling more mirrors preemptively.
      */
-    mirrorCapacityThreshold?: pulumi.Input<number>;
+    mirrorCapacityThreshold?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of mirrors that can be synchronizing at the same time.
      */
-    mirrorMaxCapacity?: pulumi.Input<number>;
+    mirrorMaxCapacity?: pulumi.Input<number | undefined>;
     /**
      * Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
      */
-    mirrorMaxDelay?: pulumi.Input<number>;
+    mirrorMaxDelay?: pulumi.Input<number | undefined>;
     /**
      * Enable sending notification if sign in from unknown IP address happens
      */
-    notifyOnUnknownSignIn?: pulumi.Input<boolean>;
+    notifyOnUnknownSignIn?: pulumi.Input<boolean | undefined>;
     /**
      * Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
      */
-    npmPackageRequestsForwarding?: pulumi.Input<boolean>;
+    npmPackageRequestsForwarding?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether to skip metadata URL validation for the NuGet package.
      */
-    nugetSkipMetadataUrlValidation?: pulumi.Input<boolean>;
+    nugetSkipMetadataUrlValidation?: pulumi.Input<boolean | undefined>;
     /**
      * Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
      */
-    outboundLocalRequestsWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    outboundLocalRequestsWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
      */
-    packageMetadataPurlTypes?: pulumi.Input<pulumi.Input<number>[]>;
+    packageMetadataPurlTypes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Enable to allow anyone to pull from Package Registry visible and changeable.
      */
-    packageRegistryAllowAnyoneToPullOption?: pulumi.Input<boolean>;
+    packageRegistryAllowAnyoneToPullOption?: pulumi.Input<boolean | undefined>;
     /**
      * Number of workers assigned to the packages cleanup policies.
      */
-    packageRegistryCleanupPoliciesWorkerCapacity?: pulumi.Input<number>;
+    packageRegistryCleanupPoliciesWorkerCapacity?: pulumi.Input<number | undefined>;
     /**
      * Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
      */
-    pagesDomainVerificationEnabled?: pulumi.Input<boolean>;
+    pagesDomainVerificationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable authentication for Git over HTTP(S) via a GitLab account password.
      */
-    passwordAuthenticationEnabledForGit?: pulumi.Input<boolean>;
+    passwordAuthenticationEnabledForGit?: pulumi.Input<boolean | undefined>;
     /**
      * Enable authentication for the web interface via a GitLab account password.
      */
-    passwordAuthenticationEnabledForWeb?: pulumi.Input<boolean>;
+    passwordAuthenticationEnabledForWeb?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether passwords require at least one lowercase letter.
      */
-    passwordLowercaseRequired?: pulumi.Input<boolean>;
+    passwordLowercaseRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether passwords require at least one number.
      */
-    passwordNumberRequired?: pulumi.Input<boolean>;
+    passwordNumberRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether passwords require at least one symbol character.
      */
-    passwordSymbolRequired?: pulumi.Input<boolean>;
+    passwordSymbolRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether passwords require at least one uppercase letter.
      */
-    passwordUppercaseRequired?: pulumi.Input<boolean>;
+    passwordUppercaseRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Path of the group that is allowed to toggle the performance bar.
      */
-    performanceBarAllowedGroupPath?: pulumi.Input<string>;
+    performanceBarAllowedGroupPath?: pulumi.Input<string | undefined>;
     /**
      * Prefix for all generated personal access tokens.
      */
-    personalAccessTokenPrefix?: pulumi.Input<string>;
+    personalAccessTokenPrefix?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of pipeline creation requests per minute per user and commit.
      */
-    pipelineLimitPerProjectUserSha?: pulumi.Input<number>;
+    pipelineLimitPerProjectUserSha?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: plantuml_url) Enable PlantUML integration.
      */
-    plantumlEnabled?: pulumi.Input<boolean>;
+    plantumlEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The PlantUML instance URL for integration.
      */
-    plantumlUrl?: pulumi.Input<string>;
+    plantumlUrl?: pulumi.Input<string | undefined>;
     /**
      * Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
      */
-    pollingIntervalMultiplier?: pulumi.Input<number>;
+    pollingIntervalMultiplier?: pulumi.Input<number | undefined>;
     /**
      * Prevent approval by merge request creator (author).
      */
-    preventMergeRequestsAuthorApproval?: pulumi.Input<boolean>;
+    preventMergeRequestsAuthorApproval?: pulumi.Input<boolean | undefined>;
     /**
      * Prevent approval by committers to merge requests.
      */
-    preventMergeRequestsCommittersApproval?: pulumi.Input<boolean>;
+    preventMergeRequestsCommittersApproval?: pulumi.Input<boolean | undefined>;
     /**
      * Enable project export.
      */
-    projectExportEnabled?: pulumi.Input<boolean>;
+    projectExportEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum authenticated requests to /project/:id/jobs per minute.
      */
-    projectJobsApiRateLimit?: pulumi.Input<number>;
+    projectJobsApiRateLimit?: pulumi.Input<number | undefined>;
     /**
      * Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
      */
-    projectsApiRateLimitUnauthenticated?: pulumi.Input<number>;
+    projectsApiRateLimitUnauthenticated?: pulumi.Input<number | undefined>;
     /**
      * Enable Prometheus metrics.
      */
-    prometheusMetricsEnabled?: pulumi.Input<boolean>;
+    prometheusMetricsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * CI/CD variables are protected by default.
      */
-    protectedCiVariables?: pulumi.Input<boolean>;
+    protectedCiVariables?: pulumi.Input<boolean | undefined>;
     /**
      * Number of changes (branches or tags) in a single push to determine whether individual push events or bulk push events are created. Bulk push events are created if it surpasses that value.
      */
-    pushEventActivitiesLimit?: pulumi.Input<number>;
+    pushEventActivitiesLimit?: pulumi.Input<number | undefined>;
     /**
      * Number of changes (branches or tags) in a single push to determine whether webhooks and services fire or not. Webhooks and services aren’t submitted if it surpasses that value.
      */
-    pushEventHooksLimit?: pulumi.Input<number>;
+    pushEventHooksLimit?: pulumi.Input<number | undefined>;
     /**
      * Use pypi.org as a default remote repository when the package is not found in the GitLab Package Registry for PyPI.
      */
-    pypiPackageRequestsForwarding?: pulumi.Input<boolean>;
+    pypiPackageRequestsForwarding?: pulumi.Input<boolean | undefined>;
     /**
      * When rate limiting is enabled via the throttle_* settings, send this plain text response when a rate limit is exceeded. ‘Retry later’ is sent if this is blank.
      */
-    rateLimitingResponseText?: pulumi.Input<string>;
+    rateLimitingResponseText?: pulumi.Input<string | undefined>;
     /**
      * Max number of requests per minute for each raw path. To disable throttling set to 0.
      */
-    rawBlobRequestLimit?: pulumi.Input<number>;
+    rawBlobRequestLimit?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
      */
-    recaptchaEnabled?: pulumi.Input<boolean>;
+    recaptchaEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Private key for reCAPTCHA.
      */
-    recaptchaPrivateKey?: pulumi.Input<string>;
+    recaptchaPrivateKey?: pulumi.Input<string | undefined>;
     /**
      * Site key for reCAPTCHA.
      */
-    recaptchaSiteKey?: pulumi.Input<string>;
+    recaptchaSiteKey?: pulumi.Input<string | undefined>;
     /**
      * Maximum push size (MB).
      */
-    receiveMaxInputSize?: pulumi.Input<number>;
+    receiveMaxInputSize?: pulumi.Input<number | undefined>;
     /**
      * Enable receptive mode for GitLab Agents for Kubernetes.
      */
-    receptiveClusterAgentsEnabled?: pulumi.Input<boolean>;
+    receptiveClusterAgentsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable Remember me setting.
      */
-    rememberMeEnabled?: pulumi.Input<boolean>;
+    rememberMeEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
      */
-    repositoryChecksEnabled?: pulumi.Input<boolean>;
+    repositoryChecksEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Size limit per repository (MB).
      */
-    repositorySizeLimit?: pulumi.Input<number>;
+    repositorySizeLimit?: pulumi.Input<number | undefined>;
     /**
      * Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
      */
-    repositoryStoragesWeighted?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    repositoryStoragesWeighted?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
     /**
      * When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
      */
-    requireAdminApprovalAfterUserSignup?: pulumi.Input<boolean>;
+    requireAdminApprovalAfterUserSignup?: pulumi.Input<boolean | undefined>;
     /**
      * Allow administrators to require 2FA for all administrators on the instance.
      */
-    requireAdminTwoFactorAuthentication?: pulumi.Input<boolean>;
+    requireAdminTwoFactorAuthentication?: pulumi.Input<boolean | undefined>;
     /**
      * When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
      */
-    requirePersonalAccessTokenExpiry?: pulumi.Input<boolean>;
+    requirePersonalAccessTokenExpiry?: pulumi.Input<boolean | undefined>;
     /**
      * (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
      */
-    requireTwoFactorAuthentication?: pulumi.Input<boolean>;
+    requireTwoFactorAuthentication?: pulumi.Input<boolean | undefined>;
     /**
      * Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
      */
-    restrictedVisibilityLevels?: pulumi.Input<pulumi.Input<string>[]>;
+    restrictedVisibilityLevels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
      */
-    rsaKeyRestriction?: pulumi.Input<number>;
+    rsaKeyRestriction?: pulumi.Input<number | undefined>;
     /**
      * Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
      */
-    searchRateLimit?: pulumi.Input<number>;
+    searchRateLimit?: pulumi.Input<number | undefined>;
     /**
      * Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
      */
-    searchRateLimitUnauthenticated?: pulumi.Input<number>;
+    searchRateLimitUnauthenticated?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of active merge request approval policies per security policy project. Maximum: 20
      */
-    securityApprovalPoliciesLimit?: pulumi.Input<number>;
+    securityApprovalPoliciesLimit?: pulumi.Input<number | undefined>;
     /**
      * Whether to look up merge request approval policy approval groups globally or within project hierarchies.
      */
-    securityPolicyGlobalGroupApproversEnabled?: pulumi.Input<boolean>;
+    securityPolicyGlobalGroupApproversEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Public security contact information.
      */
-    securityTxtContent?: pulumi.Input<string>;
+    securityTxtContent?: pulumi.Input<string | undefined>;
     /**
      * Send confirmation email on sign-up.
      */
-    sendUserConfirmationEmail?: pulumi.Input<boolean>;
+    sendUserConfirmationEmail?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to indicate if token expiry date can be optional for service account users
      */
-    serviceAccessTokensExpirationEnforced?: pulumi.Input<boolean>;
+    serviceAccessTokensExpirationEnforced?: pulumi.Input<boolean | undefined>;
     /**
      * Session duration in minutes. GitLab restart is required to apply changes.
      */
-    sessionExpireDelay?: pulumi.Input<number>;
+    sessionExpireDelay?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
      */
-    sharedRunnersEnabled?: pulumi.Input<boolean>;
+    sharedRunnersEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
      */
-    sharedRunnersMinutes?: pulumi.Input<number>;
+    sharedRunnersMinutes?: pulumi.Input<number | undefined>;
     /**
      * Shared runners text.
      */
-    sharedRunnersText?: pulumi.Input<string>;
+    sharedRunnersText?: pulumi.Input<string | undefined>;
     /**
      * The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
      */
-    sidekiqJobLimiterCompressionThresholdBytes?: pulumi.Input<number>;
+    sidekiqJobLimiterCompressionThresholdBytes?: pulumi.Input<number | undefined>;
     /**
      * The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
      */
-    sidekiqJobLimiterLimitBytes?: pulumi.Input<number>;
+    sidekiqJobLimiterLimitBytes?: pulumi.Input<number | undefined>;
     /**
      * track or compress. Sets the behavior for Sidekiq job size limits.
      */
-    sidekiqJobLimiterMode?: pulumi.Input<string>;
+    sidekiqJobLimiterMode?: pulumi.Input<string | undefined>;
     /**
      * Text on the login page.
      */
-    signInText?: pulumi.Input<string>;
+    signInText?: pulumi.Input<string | undefined>;
     /**
      * Enable registration.
      */
-    signupEnabled?: pulumi.Input<boolean>;
+    signupEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable Silent admin exports.
      */
-    silentAdminExportsEnabled?: pulumi.Input<boolean>;
+    silentAdminExportsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable Silent mode.
      */
-    silentModeEnabled?: pulumi.Input<boolean>;
+    silentModeEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
      */
-    slackAppEnabled?: pulumi.Input<boolean>;
+    slackAppEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The app ID of the Slack-app.
      */
-    slackAppId?: pulumi.Input<string>;
+    slackAppId?: pulumi.Input<string | undefined>;
     /**
      * The app secret of the Slack-app.
      */
-    slackAppSecret?: pulumi.Input<string>;
+    slackAppSecret?: pulumi.Input<string | undefined>;
     /**
      * The signing secret of the Slack-app.
      */
-    slackAppSigningSecret?: pulumi.Input<string>;
+    slackAppSigningSecret?: pulumi.Input<string | undefined>;
     /**
      * The verification token of the Slack-app.
      */
-    slackAppVerificationToken?: pulumi.Input<string>;
+    slackAppVerificationToken?: pulumi.Input<string | undefined>;
     /**
      * Max snippet content size in bytes.
      */
-    snippetSizeLimit?: pulumi.Input<number>;
+    snippetSizeLimit?: pulumi.Input<number | undefined>;
     /**
      * The Snowplow site name / application ID. (for example, gitlab)
      */
-    snowplowAppId?: pulumi.Input<string>;
+    snowplowAppId?: pulumi.Input<string | undefined>;
     /**
      * The Snowplow collector hostname. (for example, snowplow.trx.gitlab.net)
      */
-    snowplowCollectorHostname?: pulumi.Input<string>;
+    snowplowCollectorHostname?: pulumi.Input<string | undefined>;
     /**
      * The Snowplow cookie domain. (for example, .gitlab.com)
      */
-    snowplowCookieDomain?: pulumi.Input<string>;
+    snowplowCookieDomain?: pulumi.Input<string | undefined>;
     /**
      * The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
      */
-    snowplowDatabaseCollectorHostname?: pulumi.Input<string>;
+    snowplowDatabaseCollectorHostname?: pulumi.Input<string | undefined>;
     /**
      * Enable snowplow tracking.
      */
-    snowplowEnabled?: pulumi.Input<boolean>;
+    snowplowEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
      */
-    sourcegraphEnabled?: pulumi.Input<boolean>;
+    sourcegraphEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Blocks Sourcegraph from being loaded on private and internal projects.
      */
-    sourcegraphPublicOnly?: pulumi.Input<boolean>;
+    sourcegraphPublicOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The Sourcegraph instance URL for integration.
      */
-    sourcegraphUrl?: pulumi.Input<string>;
+    sourcegraphUrl?: pulumi.Input<string | undefined>;
     /**
      * API key used by GitLab for accessing the Spam Check service endpoint.
      */
-    spamCheckApiKey?: pulumi.Input<string>;
+    spamCheckApiKey?: pulumi.Input<string | undefined>;
     /**
      * Enables spam checking using external Spam Check API endpoint.
      */
-    spamCheckEndpointEnabled?: pulumi.Input<boolean>;
+    spamCheckEndpointEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
      */
-    spamCheckEndpointUrl?: pulumi.Input<string>;
+    spamCheckEndpointUrl?: pulumi.Input<string | undefined>;
     /**
      * Authentication token for the external storage linked in static*objects*external*storage*url.
      */
-    staticObjectsExternalStorageAuthToken?: pulumi.Input<string>;
+    staticObjectsExternalStorageAuthToken?: pulumi.Input<string | undefined>;
     /**
      * URL to an external storage for repository static objects.
      */
-    staticObjectsExternalStorageUrl?: pulumi.Input<string>;
+    staticObjectsExternalStorageUrl?: pulumi.Input<string | undefined>;
     /**
      * Enable pipeline suggestion banner.
      */
-    suggestPipelineEnabled?: pulumi.Input<boolean>;
+    suggestPipelineEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
      */
-    terminalMaxSessionTime?: pulumi.Input<number>;
+    terminalMaxSessionTime?: pulumi.Input<number | undefined>;
     /**
      * (Required by: enforce_terms) Markdown content for the ToS.
      */
-    terms?: pulumi.Input<string>;
+    terms?: pulumi.Input<string | undefined>;
     /**
      * (If enabled, requires: throttle*authenticated*api*period*in*seconds and throttle*authenticated*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      */
-    throttleAuthenticatedApiEnabled?: pulumi.Input<boolean>;
+    throttleAuthenticatedApiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Rate limit period (in seconds).
      */
-    throttleAuthenticatedApiPeriodInSeconds?: pulumi.Input<number>;
+    throttleAuthenticatedApiPeriodInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Maximum requests per period per user.
      */
-    throttleAuthenticatedApiRequestsPerPeriod?: pulumi.Input<number>;
+    throttleAuthenticatedApiRequestsPerPeriod?: pulumi.Input<number | undefined>;
     /**
      * Enable authenticated Git LFS request rate limit.
      */
-    throttleAuthenticatedGitLfsEnabled?: pulumi.Input<boolean>;
+    throttleAuthenticatedGitLfsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Rate limit period (in seconds).
      */
-    throttleAuthenticatedGitLfsPeriodInSeconds?: pulumi.Input<number>;
+    throttleAuthenticatedGitLfsPeriodInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Maximum requests per period per user.
      */
-    throttleAuthenticatedGitLfsRequestsPerPeriod?: pulumi.Input<number>;
+    throttleAuthenticatedGitLfsRequestsPerPeriod?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
      */
-    throttleAuthenticatedPackagesApiEnabled?: pulumi.Input<boolean>;
+    throttleAuthenticatedPackagesApiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Rate limit period (in seconds). View Package Registry rate limits for more details.
      */
-    throttleAuthenticatedPackagesApiPeriodInSeconds?: pulumi.Input<number>;
+    throttleAuthenticatedPackagesApiPeriodInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Maximum requests per period per user. View Package Registry rate limits for more details.
      */
-    throttleAuthenticatedPackagesApiRequestsPerPeriod?: pulumi.Input<number>;
+    throttleAuthenticatedPackagesApiRequestsPerPeriod?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: throttle*authenticated*web*period*in*seconds and throttle*authenticated*web*requests*per*period) Enable authenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      */
-    throttleAuthenticatedWebEnabled?: pulumi.Input<boolean>;
+    throttleAuthenticatedWebEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Rate limit period (in seconds).
      */
-    throttleAuthenticatedWebPeriodInSeconds?: pulumi.Input<number>;
+    throttleAuthenticatedWebPeriodInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Maximum requests per period per user.
      */
-    throttleAuthenticatedWebRequestsPerPeriod?: pulumi.Input<number>;
+    throttleAuthenticatedWebRequestsPerPeriod?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      */
-    throttleUnauthenticatedApiEnabled?: pulumi.Input<boolean>;
+    throttleUnauthenticatedApiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Rate limit period in seconds.
      */
-    throttleUnauthenticatedApiPeriodInSeconds?: pulumi.Input<number>;
+    throttleUnauthenticatedApiPeriodInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Max requests per period per IP.
      */
-    throttleUnauthenticatedApiRequestsPerPeriod?: pulumi.Input<number>;
+    throttleUnauthenticatedApiRequestsPerPeriod?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
      */
-    throttleUnauthenticatedPackagesApiEnabled?: pulumi.Input<boolean>;
+    throttleUnauthenticatedPackagesApiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Rate limit period (in seconds). View Package Registry rate limits for more details.
      */
-    throttleUnauthenticatedPackagesApiPeriodInSeconds?: pulumi.Input<number>;
+    throttleUnauthenticatedPackagesApiPeriodInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Maximum requests per period per user. View Package Registry rate limits for more details.
      */
-    throttleUnauthenticatedPackagesApiRequestsPerPeriod?: pulumi.Input<number>;
+    throttleUnauthenticatedPackagesApiRequestsPerPeriod?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      */
-    throttleUnauthenticatedWebEnabled?: pulumi.Input<boolean>;
+    throttleUnauthenticatedWebEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Rate limit period in seconds.
      */
-    throttleUnauthenticatedWebPeriodInSeconds?: pulumi.Input<number>;
+    throttleUnauthenticatedWebPeriodInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Max requests per period per IP.
      */
-    throttleUnauthenticatedWebRequestsPerPeriod?: pulumi.Input<number>;
+    throttleUnauthenticatedWebRequestsPerPeriod?: pulumi.Input<number | undefined>;
     /**
      * Limit display of time tracking units to hours.
      */
-    timeTrackingLimitToHours?: pulumi.Input<boolean>;
+    timeTrackingLimitToHours?: pulumi.Input<boolean | undefined>;
     /**
      * Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.
      */
-    twoFactorGracePeriod?: pulumi.Input<number>;
+    twoFactorGracePeriod?: pulumi.Input<number | undefined>;
     /**
      * Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Self-managed, Premium and Ultimate only.
      */
-    unconfirmedUsersDeleteAfterDays?: pulumi.Input<number>;
+    unconfirmedUsersDeleteAfterDays?: pulumi.Input<number | undefined>;
     /**
      * (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
      */
-    uniqueIpsLimitEnabled?: pulumi.Input<boolean>;
+    uniqueIpsLimitEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum number of IPs per user.
      */
-    uniqueIpsLimitPerUser?: pulumi.Input<number>;
+    uniqueIpsLimitPerUser?: pulumi.Input<number | undefined>;
     /**
      * How many seconds an IP is counted towards the limit.
      */
-    uniqueIpsLimitTimeWindow?: pulumi.Input<number>;
+    uniqueIpsLimitTimeWindow?: pulumi.Input<number | undefined>;
     /**
      * Fetch GitLab Runner release version data from GitLab.com.
      */
-    updateRunnerVersionsEnabled?: pulumi.Input<boolean>;
+    updateRunnerVersionsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Disable user profile name changes.
      */
-    updatingNameDisabledForUsers?: pulumi.Input<boolean>;
+    updatingNameDisabledForUsers?: pulumi.Input<boolean | undefined>;
     /**
      * Every week GitLab reports license usage back to GitLab, Inc.
      */
-    usagePingEnabled?: pulumi.Input<boolean>;
+    usagePingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
      */
-    useClickhouseForAnalytics?: pulumi.Input<boolean>;
+    useClickhouseForAnalytics?: pulumi.Input<boolean | undefined>;
     /**
      * Send an email to users upon account deactivation.
      */
-    userDeactivationEmailsEnabled?: pulumi.Input<boolean>;
+    userDeactivationEmailsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Newly registered users are external by default.
      */
-    userDefaultExternal?: pulumi.Input<boolean>;
+    userDefaultExternal?: pulumi.Input<boolean | undefined>;
     /**
      * Specify an email address regex pattern to identify default internal users.
      */
-    userDefaultInternalRegex?: pulumi.Input<string>;
+    userDefaultInternalRegex?: pulumi.Input<string | undefined>;
     /**
      * Newly created users have private profile by default.
      */
-    userDefaultsToPrivateProfile?: pulumi.Input<boolean>;
+    userDefaultsToPrivateProfile?: pulumi.Input<boolean | undefined>;
     /**
      * Allow users to register any application to use GitLab as an OAuth provider.
      */
-    userOauthApplications?: pulumi.Input<boolean>;
+    userOauthApplications?: pulumi.Input<boolean | undefined>;
     /**
      * When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
      */
-    userShowAddSshKeyMessage?: pulumi.Input<boolean>;
+    userShowAddSshKeyMessage?: pulumi.Input<boolean | undefined>;
     /**
      * List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
      */
-    validRunnerRegistrars?: pulumi.Input<pulumi.Input<string>[]>;
+    validRunnerRegistrars?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Let GitLab inform you when an update is available.
      */
-    versionCheckEnabled?: pulumi.Input<boolean>;
+    versionCheckEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
      */
-    webIdeClientsidePreviewEnabled?: pulumi.Input<boolean>;
+    webIdeClientsidePreviewEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * What's new variant, possible values: all*tiers, current*tier, and disabled.
      */
-    whatsNewVariant?: pulumi.Input<string>;
+    whatsNewVariant?: pulumi.Input<string | undefined>;
     /**
      * Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
      */
-    wikiPageMaxContentBytes?: pulumi.Input<number>;
+    wikiPageMaxContentBytes?: pulumi.Input<number | undefined>;
 }

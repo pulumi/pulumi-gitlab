@@ -179,27 +179,27 @@ export interface ProjectIssueLinkState {
     /**
      * The internal ID of a project's issue.
      */
-    issueIid?: pulumi.Input<number>;
+    issueIid?: pulumi.Input<number | undefined>;
     /**
      * ID of an issue relationship.
      */
-    issueLinkId?: pulumi.Input<number>;
+    issueLinkId?: pulumi.Input<number | undefined>;
     /**
      * Type of the relationship. Valid values are `relatesTo`, `blocks`, `isBlockedBy`.
      */
-    linkType?: pulumi.Input<string>;
+    linkType?: pulumi.Input<string | undefined>;
     /**
      * The ID or URL-encoded path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The internal ID of the target issue.
      */
-    targetIssueIid?: pulumi.Input<number>;
+    targetIssueIid?: pulumi.Input<number | undefined>;
     /**
      * The ID or URL-encoded path of the target project.
      */
-    targetProjectId?: pulumi.Input<string>;
+    targetProjectId?: pulumi.Input<string | undefined>;
 }
 
 /**

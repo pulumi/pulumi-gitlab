@@ -23,8 +23,8 @@ class TagProtectionArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  tag: pulumi.Input[_builtins.str],
-                 allowed_to_creates: Optional[pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]] = None,
-                 create_access_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_to_creates: pulumi.Input[Optional[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]] = None,
+                 create_access_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TagProtection resource.
 
@@ -66,36 +66,36 @@ class TagProtectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedToCreates")
-    def allowed_to_creates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]]:
+    def allowed_to_creates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]]:
         """
         Array of access levels/user(s)/group(s) allowed to create protected tags.
         """
         return pulumi.get(self, "allowed_to_creates")
 
     @allowed_to_creates.setter
-    def allowed_to_creates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]]):
+    def allowed_to_creates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]]):
         pulumi.set(self, "allowed_to_creates", value)
 
     @_builtins.property
     @pulumi.getter(name="createAccessLevel")
-    def create_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "create_access_level")
 
     @create_access_level.setter
-    def create_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_access_level", value)
 
 
 @pulumi.input_type
 class _TagProtectionState:
     def __init__(__self__, *,
-                 allowed_to_creates: Optional[pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]] = None,
-                 create_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_to_creates: pulumi.Input[Optional[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]] = None,
+                 create_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TagProtection resources.
 
@@ -115,50 +115,50 @@ class _TagProtectionState:
 
     @_builtins.property
     @pulumi.getter(name="allowedToCreates")
-    def allowed_to_creates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]]:
+    def allowed_to_creates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]]:
         """
         Array of access levels/user(s)/group(s) allowed to create protected tags.
         """
         return pulumi.get(self, "allowed_to_creates")
 
     @allowed_to_creates.setter
-    def allowed_to_creates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]]):
+    def allowed_to_creates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TagProtectionAllowedToCreateArgs']]]]):
         pulumi.set(self, "allowed_to_creates", value)
 
     @_builtins.property
     @pulumi.getter(name="createAccessLevel")
-    def create_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "create_access_level")
 
     @create_access_level.setter
-    def create_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_access_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the tag or wildcard.
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag", value)
 
 
@@ -168,10 +168,10 @@ class TagProtection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_to_creates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagProtectionAllowedToCreateArgs', 'TagProtectionAllowedToCreateArgsDict']]]]] = None,
-                 create_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None,
+                 allowed_to_creates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagProtectionAllowedToCreateArgs', 'TagProtectionAllowedToCreateArgsDict']]]]] = None,
+                 create_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `TagProtection` resource manages the lifecycle of a tag protection.
@@ -287,10 +287,10 @@ class TagProtection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_to_creates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagProtectionAllowedToCreateArgs', 'TagProtectionAllowedToCreateArgsDict']]]]] = None,
-                 create_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None,
+                 allowed_to_creates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagProtectionAllowedToCreateArgs', 'TagProtectionAllowedToCreateArgsDict']]]]] = None,
+                 create_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -318,10 +318,10 @@ class TagProtection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allowed_to_creates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TagProtectionAllowedToCreateArgs', 'TagProtectionAllowedToCreateArgsDict']]]]] = None,
-            create_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            tag: Optional[pulumi.Input[_builtins.str]] = None) -> 'TagProtection':
+            allowed_to_creates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagProtectionAllowedToCreateArgs', 'TagProtectionAllowedToCreateArgsDict']]]]] = None,
+            create_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            tag: pulumi.Input[Optional[_builtins.str]] = None) -> 'TagProtection':
         """
         Get an existing TagProtection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

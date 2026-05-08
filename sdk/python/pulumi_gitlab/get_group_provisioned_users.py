@@ -180,14 +180,14 @@ def get_group_provisioned_users(active: Optional[_builtins.bool] = None,
         provisioned_users=pulumi.get(__ret__, 'provisioned_users'),
         search=pulumi.get(__ret__, 'search'),
         username=pulumi.get(__ret__, 'username'))
-def get_group_provisioned_users_output(active: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                       blocked: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                       created_after: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       created_before: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       id: Optional[pulumi.Input[_builtins.str]] = None,
-                                       provisioned_users: Optional[pulumi.Input[Optional[Sequence[Union['GetGroupProvisionedUsersProvisionedUserArgs', 'GetGroupProvisionedUsersProvisionedUserArgsDict']]]]] = None,
-                                       search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       username: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_group_provisioned_users_output(active: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                       blocked: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                       created_after: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       created_before: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       id: pulumi.Input[Optional[_builtins.str]] = None,
+                                       provisioned_users: pulumi.Input[Optional[Optional[Sequence[Union['GetGroupProvisionedUsersProvisionedUserArgs', 'GetGroupProvisionedUsersProvisionedUserArgsDict']]]]] = None,
+                                       search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       username: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupProvisionedUsersResult]:
     """
     The `get_group_provisioned_users` data source retrieves details of the provisioned users in a given group.

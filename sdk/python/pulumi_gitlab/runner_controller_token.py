@@ -20,7 +20,7 @@ __all__ = ['RunnerControllerTokenArgs', 'RunnerControllerToken']
 class RunnerControllerTokenArgs:
     def __init__(__self__, *,
                  runner_controller_id: pulumi.Input[_builtins.int],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RunnerControllerToken resource.
 
@@ -45,25 +45,25 @@ class RunnerControllerTokenArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the runner controller token.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _RunnerControllerTokenState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 runner_controller_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 runner_controller_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RunnerControllerToken resources.
 
@@ -86,62 +86,62 @@ class _RunnerControllerTokenState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the token was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the runner controller token.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="runnerControllerId")
-    def runner_controller_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def runner_controller_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the runner controller.
         """
         return pulumi.get(self, "runner_controller_id")
 
     @runner_controller_id.setter
-    def runner_controller_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def runner_controller_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "runner_controller_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The token value. **Note**: the token is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the token was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -151,8 +151,8 @@ class RunnerControllerToken(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 runner_controller_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 runner_controller_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The `RunnerControllerToken` resource manages the lifecycle of a runner controller token.
@@ -170,7 +170,7 @@ class RunnerControllerToken(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.RunnerControllerToken("example",
-            runner_controller_id=example_gitlab_runner_controller["id"],
+            runner_controller_id=int(example_gitlab_runner_controller["id"]),
             description="My controller token")
         ```
 
@@ -202,7 +202,7 @@ class RunnerControllerToken(pulumi.CustomResource):
         import pulumi_gitlab as gitlab
 
         example = gitlab.RunnerControllerToken("example",
-            runner_controller_id=example_gitlab_runner_controller["id"],
+            runner_controller_id=int(example_gitlab_runner_controller["id"]),
             description="My controller token")
         ```
 
@@ -222,8 +222,8 @@ class RunnerControllerToken(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 runner_controller_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 runner_controller_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -252,11 +252,11 @@ class RunnerControllerToken(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            runner_controller_id: Optional[pulumi.Input[_builtins.int]] = None,
-            token: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'RunnerControllerToken':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            runner_controller_id: pulumi.Input[Optional[_builtins.int]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'RunnerControllerToken':
         """
         Get an existing RunnerControllerToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

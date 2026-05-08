@@ -169,43 +169,43 @@ export interface IntegrationJenkinsState {
     /**
      * Whether the integration is active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Enable SSL verification. Defaults to `true` (enabled).
      */
-    enableSslVerification?: pulumi.Input<boolean>;
+    enableSslVerification?: pulumi.Input<boolean | undefined>;
     /**
      * Jenkins URL like `http://jenkins.example.com`
      */
-    jenkinsUrl?: pulumi.Input<string>;
+    jenkinsUrl?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for merge request events.
      */
-    mergeRequestEvents?: pulumi.Input<boolean>;
+    mergeRequestEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Password for authentication with the Jenkins server, if authentication is required by the server.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * ID of the project you want to activate integration on.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URL-friendly project name. Example: `myProjectName`.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for push events.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for tag push events.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Username for authentication with the Jenkins server, if authentication is required by the server.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -215,7 +215,7 @@ export interface IntegrationJenkinsArgs {
     /**
      * Enable SSL verification. Defaults to `true` (enabled).
      */
-    enableSslVerification?: pulumi.Input<boolean>;
+    enableSslVerification?: pulumi.Input<boolean | undefined>;
     /**
      * Jenkins URL like `http://jenkins.example.com`
      */
@@ -223,11 +223,11 @@ export interface IntegrationJenkinsArgs {
     /**
      * Enable notifications for merge request events.
      */
-    mergeRequestEvents?: pulumi.Input<boolean>;
+    mergeRequestEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Password for authentication with the Jenkins server, if authentication is required by the server.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * ID of the project you want to activate integration on.
      */
@@ -239,13 +239,13 @@ export interface IntegrationJenkinsArgs {
     /**
      * Enable notifications for push events.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for tag push events.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Username for authentication with the Jenkins server, if authentication is required by the server.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

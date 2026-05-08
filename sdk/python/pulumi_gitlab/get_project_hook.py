@@ -380,8 +380,8 @@ def get_project_hook(hook_id: Optional[_builtins.int] = None,
         url=pulumi.get(__ret__, 'url'),
         vulnerability_events=pulumi.get(__ret__, 'vulnerability_events'),
         wiki_page_events=pulumi.get(__ret__, 'wiki_page_events'))
-def get_project_hook_output(hook_id: Optional[pulumi.Input[_builtins.int]] = None,
-                            project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_hook_output(hook_id: pulumi.Input[Optional[_builtins.int]] = None,
+                            project: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectHookResult]:
     """
     The `ProjectHook` data source retrieves details about a hook in a project.

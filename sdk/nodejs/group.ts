@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * const exampleProject = new gitlab.Project("example", {
  *     name: "example",
  *     description: "An example project",
- *     namespaceId: example.id,
+ *     namespaceId: example.id.apply(x =>Number(x)),
  * });
  * // Group with custom push rules
  * const example_two = new gitlab.Group("example-two", {
@@ -395,165 +395,165 @@ export interface GroupState {
     /**
      * Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
      */
-    allowMergeOnSkippedPipeline?: pulumi.Input<boolean>;
+    allowMergeOnSkippedPipeline?: pulumi.Input<boolean | undefined>;
     /**
      * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
      */
-    allowedEmailDomainsLists?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedEmailDomainsLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Default to Auto DevOps pipeline for all projects within this group.
      */
-    autoDevopsEnabled?: pulumi.Input<boolean>;
+    autoDevopsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      */
-    avatar?: pulumi.Input<string>;
+    avatar?: pulumi.Input<string | undefined>;
     /**
      * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
-    avatarHash?: pulumi.Input<string>;
+    avatarHash?: pulumi.Input<string | undefined>;
     /**
      * The URL of the avatar image.
      */
-    avatarUrl?: pulumi.Input<string>;
+    avatarUrl?: pulumi.Input<string | undefined>;
     /**
      * Initial default branch name.
      */
-    defaultBranch?: pulumi.Input<string>;
+    defaultBranch?: pulumi.Input<string | undefined>;
     /**
      * See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      *
      * @deprecated Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead.
      */
-    defaultBranchProtection?: pulumi.Input<number>;
+    defaultBranchProtection?: pulumi.Input<number | undefined>;
     /**
      * The default branch protection defaults
      */
-    defaultBranchProtectionDefaults?: pulumi.Input<inputs.GroupDefaultBranchProtectionDefaults>;
+    defaultBranchProtectionDefaults?: pulumi.Input<inputs.GroupDefaultBranchProtectionDefaults | undefined>;
     /**
      * The group's description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable email notifications.
      */
-    emailsEnabled?: pulumi.Input<boolean>;
+    emailsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      */
-    extraSharedRunnersMinutesLimit?: pulumi.Input<number>;
+    extraSharedRunnersMinutesLimit?: pulumi.Input<number | undefined>;
     /**
      * The full name of the group.
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * The full path of the group.
      */
-    fullPath?: pulumi.Input<string>;
+    fullPath?: pulumi.Input<string | undefined>;
     /**
      * A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
      */
-    ipRestrictionRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRestrictionRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable/disable Large File Storage (LFS) for the projects in this group.
      */
-    lfsEnabled?: pulumi.Input<boolean>;
+    lfsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum file size in megabytes for individual job artifacts.
      */
-    maxArtifactsSize?: pulumi.Input<number>;
+    maxArtifactsSize?: pulumi.Input<number | undefined>;
     /**
      * Users cannot be added to projects in this group.
      */
-    membershipLock?: pulumi.Input<boolean>;
+    membershipLock?: pulumi.Input<boolean | undefined>;
     /**
      * Disable the capability of a group from getting mentioned.
      */
-    mentionsDisabled?: pulumi.Input<boolean>;
+    mentionsDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
      */
-    onlyAllowMergeIfAllDiscussionsAreResolved?: pulumi.Input<boolean>;
+    onlyAllowMergeIfAllDiscussionsAreResolved?: pulumi.Input<boolean | undefined>;
     /**
      * Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
      */
-    onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
+    onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean | undefined>;
     /**
      * Id of the parent group (creates a nested group).
      */
-    parentId?: pulumi.Input<number>;
+    parentId?: pulumi.Input<number | undefined>;
     /**
      * The path of the group.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
      */
-    permanentlyRemoveOnDelete?: pulumi.Input<boolean>;
+    permanentlyRemoveOnDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      */
-    preventForkingOutsideGroup?: pulumi.Input<boolean>;
+    preventForkingOutsideGroup?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
      */
-    preventSharingGroupsOutsideHierarchy?: pulumi.Input<boolean>;
+    preventSharingGroupsOutsideHierarchy?: pulumi.Input<boolean | undefined>;
     /**
      * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
      */
-    projectCreationLevel?: pulumi.Input<string>;
+    projectCreationLevel?: pulumi.Input<string | undefined>;
     /**
      * Push rules for the group.
      */
-    pushRules?: pulumi.Input<inputs.GroupPushRules>;
+    pushRules?: pulumi.Input<inputs.GroupPushRules | undefined>;
     /**
      * Allow users to request member access.
      */
-    requestAccessEnabled?: pulumi.Input<boolean>;
+    requestAccessEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Require all users in this group to setup Two-factor authentication.
      */
-    requireTwoFactorAuthentication?: pulumi.Input<boolean>;
+    requireTwoFactorAuthentication?: pulumi.Input<boolean | undefined>;
     /**
      * The group level registration token to use during runner setup.
      */
-    runnersToken?: pulumi.Input<string>;
+    runnersToken?: pulumi.Input<string | undefined>;
     /**
      * Prevent sharing a project with another group within this group.
      */
-    shareWithGroupLock?: pulumi.Input<boolean>;
+    shareWithGroupLock?: pulumi.Input<boolean | undefined>;
     /**
      * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
      */
-    sharedRunnersMinutesLimit?: pulumi.Input<number>;
+    sharedRunnersMinutesLimit?: pulumi.Input<number | undefined>;
     /**
      * Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
      */
-    sharedRunnersSetting?: pulumi.Input<string>;
+    sharedRunnersSetting?: pulumi.Input<string | undefined>;
     /**
      * Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
      */
-    subgroupCreationLevel?: pulumi.Input<string>;
+    subgroupCreationLevel?: pulumi.Input<string | undefined>;
     /**
      * Defaults to 48. Time before Two-factor authentication is enforced (in hours).
      */
-    twoFactorGracePeriod?: pulumi.Input<number>;
+    twoFactorGracePeriod?: pulumi.Input<number | undefined>;
     /**
      * The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
      */
-    visibilityLevel?: pulumi.Input<string>;
+    visibilityLevel?: pulumi.Input<string | undefined>;
     /**
      * Web URL of the group.
      */
-    webUrl?: pulumi.Input<string>;
+    webUrl?: pulumi.Input<string | undefined>;
     /**
      * The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
      */
-    wikiAccessLevel?: pulumi.Input<string>;
+    wikiAccessLevel?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -563,85 +563,85 @@ export interface GroupArgs {
     /**
      * Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
      */
-    allowMergeOnSkippedPipeline?: pulumi.Input<boolean>;
+    allowMergeOnSkippedPipeline?: pulumi.Input<boolean | undefined>;
     /**
      * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
      */
-    allowedEmailDomainsLists?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedEmailDomainsLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Default to Auto DevOps pipeline for all projects within this group.
      */
-    autoDevopsEnabled?: pulumi.Input<boolean>;
+    autoDevopsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      */
-    avatar?: pulumi.Input<string>;
+    avatar?: pulumi.Input<string | undefined>;
     /**
      * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
-    avatarHash?: pulumi.Input<string>;
+    avatarHash?: pulumi.Input<string | undefined>;
     /**
      * Initial default branch name.
      */
-    defaultBranch?: pulumi.Input<string>;
+    defaultBranch?: pulumi.Input<string | undefined>;
     /**
      * See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      *
      * @deprecated Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead.
      */
-    defaultBranchProtection?: pulumi.Input<number>;
+    defaultBranchProtection?: pulumi.Input<number | undefined>;
     /**
      * The default branch protection defaults
      */
-    defaultBranchProtectionDefaults?: pulumi.Input<inputs.GroupDefaultBranchProtectionDefaults>;
+    defaultBranchProtectionDefaults?: pulumi.Input<inputs.GroupDefaultBranchProtectionDefaults | undefined>;
     /**
      * The group's description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable email notifications.
      */
-    emailsEnabled?: pulumi.Input<boolean>;
+    emailsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      */
-    extraSharedRunnersMinutesLimit?: pulumi.Input<number>;
+    extraSharedRunnersMinutesLimit?: pulumi.Input<number | undefined>;
     /**
      * A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
      */
-    ipRestrictionRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRestrictionRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable/disable Large File Storage (LFS) for the projects in this group.
      */
-    lfsEnabled?: pulumi.Input<boolean>;
+    lfsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum file size in megabytes for individual job artifacts.
      */
-    maxArtifactsSize?: pulumi.Input<number>;
+    maxArtifactsSize?: pulumi.Input<number | undefined>;
     /**
      * Users cannot be added to projects in this group.
      */
-    membershipLock?: pulumi.Input<boolean>;
+    membershipLock?: pulumi.Input<boolean | undefined>;
     /**
      * Disable the capability of a group from getting mentioned.
      */
-    mentionsDisabled?: pulumi.Input<boolean>;
+    mentionsDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
      */
-    onlyAllowMergeIfAllDiscussionsAreResolved?: pulumi.Input<boolean>;
+    onlyAllowMergeIfAllDiscussionsAreResolved?: pulumi.Input<boolean | undefined>;
     /**
      * Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
      */
-    onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
+    onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean | undefined>;
     /**
      * Id of the parent group (creates a nested group).
      */
-    parentId?: pulumi.Input<number>;
+    parentId?: pulumi.Input<number | undefined>;
     /**
      * The path of the group.
      */
@@ -649,57 +649,57 @@ export interface GroupArgs {
     /**
      * Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
      */
-    permanentlyRemoveOnDelete?: pulumi.Input<boolean>;
+    permanentlyRemoveOnDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
      */
-    preventForkingOutsideGroup?: pulumi.Input<boolean>;
+    preventForkingOutsideGroup?: pulumi.Input<boolean | undefined>;
     /**
      * Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
      */
-    preventSharingGroupsOutsideHierarchy?: pulumi.Input<boolean>;
+    preventSharingGroupsOutsideHierarchy?: pulumi.Input<boolean | undefined>;
     /**
      * Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
      */
-    projectCreationLevel?: pulumi.Input<string>;
+    projectCreationLevel?: pulumi.Input<string | undefined>;
     /**
      * Push rules for the group.
      */
-    pushRules?: pulumi.Input<inputs.GroupPushRules>;
+    pushRules?: pulumi.Input<inputs.GroupPushRules | undefined>;
     /**
      * Allow users to request member access.
      */
-    requestAccessEnabled?: pulumi.Input<boolean>;
+    requestAccessEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Require all users in this group to setup Two-factor authentication.
      */
-    requireTwoFactorAuthentication?: pulumi.Input<boolean>;
+    requireTwoFactorAuthentication?: pulumi.Input<boolean | undefined>;
     /**
      * Prevent sharing a project with another group within this group.
      */
-    shareWithGroupLock?: pulumi.Input<boolean>;
+    shareWithGroupLock?: pulumi.Input<boolean | undefined>;
     /**
      * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
      */
-    sharedRunnersMinutesLimit?: pulumi.Input<number>;
+    sharedRunnersMinutesLimit?: pulumi.Input<number | undefined>;
     /**
      * Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
      */
-    sharedRunnersSetting?: pulumi.Input<string>;
+    sharedRunnersSetting?: pulumi.Input<string | undefined>;
     /**
      * Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
      */
-    subgroupCreationLevel?: pulumi.Input<string>;
+    subgroupCreationLevel?: pulumi.Input<string | undefined>;
     /**
      * Defaults to 48. Time before Two-factor authentication is enforced (in hours).
      */
-    twoFactorGracePeriod?: pulumi.Input<number>;
+    twoFactorGracePeriod?: pulumi.Input<number | undefined>;
     /**
      * The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
      */
-    visibilityLevel?: pulumi.Input<string>;
+    visibilityLevel?: pulumi.Input<string | undefined>;
     /**
      * The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
      */
-    wikiAccessLevel?: pulumi.Input<string>;
+    wikiAccessLevel?: pulumi.Input<string | undefined>;
 }

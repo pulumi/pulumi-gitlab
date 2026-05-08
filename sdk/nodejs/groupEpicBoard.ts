@@ -133,15 +133,15 @@ export interface GroupEpicBoardState {
     /**
      * The ID or URL-encoded path of the group owned by the authenticated user.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * The list of epic board lists.
      */
-    lists?: pulumi.Input<pulumi.Input<inputs.GroupEpicBoardList>[]>;
+    lists?: pulumi.Input<pulumi.Input<inputs.GroupEpicBoardList>[] | undefined>;
     /**
      * The name of the board.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -155,9 +155,9 @@ export interface GroupEpicBoardArgs {
     /**
      * The list of epic board lists.
      */
-    lists?: pulumi.Input<pulumi.Input<inputs.GroupEpicBoardList>[]>;
+    lists?: pulumi.Input<pulumi.Input<inputs.GroupEpicBoardList>[] | undefined>;
     /**
      * The name of the board.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

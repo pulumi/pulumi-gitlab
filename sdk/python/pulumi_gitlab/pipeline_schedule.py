@@ -25,10 +25,10 @@ class PipelineScheduleArgs:
                  description: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  ref: pulumi.Input[_builtins.str],
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cron_timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]] = None,
-                 take_ownership: Optional[pulumi.Input[_builtins.bool]] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cron_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]] = None,
+                 take_ownership: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a PipelineSchedule resource.
 
@@ -104,66 +104,66 @@ class PipelineScheduleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="cronTimezone")
-    def cron_timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron_timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timezone.
         """
         return pulumi.get(self, "cron_timezone")
 
     @cron_timezone.setter
-    def cron_timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron_timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_timezone", value)
 
     @_builtins.property
     @pulumi.getter
-    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]]:
+    def inputs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]]:
         """
         List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
         """
         return pulumi.get(self, "inputs")
 
     @inputs.setter
-    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]]):
+    def inputs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]]):
         pulumi.set(self, "inputs", value)
 
     @_builtins.property
     @pulumi.getter(name="takeOwnership")
-    def take_ownership(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def take_ownership(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
         """
         return pulumi.get(self, "take_ownership")
 
     @take_ownership.setter
-    def take_ownership(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def take_ownership(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "take_ownership", value)
 
 
 @pulumi.input_type
 class _PipelineScheduleState:
     def __init__(__self__, *,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cron: Optional[pulumi.Input[_builtins.str]] = None,
-                 cron_timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.int]] = None,
-                 pipeline_schedule_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 take_ownership: Optional[pulumi.Input[_builtins.bool]] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cron: pulumi.Input[Optional[_builtins.str]] = None,
+                 cron_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.int]] = None,
+                 pipeline_schedule_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 take_ownership: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering PipelineSchedule resources.
 
@@ -201,122 +201,122 @@ class _PipelineScheduleState:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter
-    def cron(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cron (e.g. `0 1 * * *`).
         """
         return pulumi.get(self, "cron")
 
     @cron.setter
-    def cron(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron", value)
 
     @_builtins.property
     @pulumi.getter(name="cronTimezone")
-    def cron_timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron_timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timezone.
         """
         return pulumi.get(self, "cron_timezone")
 
     @cron_timezone.setter
-    def cron_timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron_timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_timezone", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the pipeline schedule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]]:
+    def inputs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]]:
         """
         List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
         """
         return pulumi.get(self, "inputs")
 
     @inputs.setter
-    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]]):
+    def inputs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineScheduleInputArgs']]]]):
         pulumi.set(self, "inputs", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the user that owns the pipeline schedule.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineScheduleId")
-    def pipeline_schedule_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pipeline_schedule_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The pipeline schedule id.
         """
         return pulumi.get(self, "pipeline_schedule_id")
 
     @pipeline_schedule_id.setter
-    def pipeline_schedule_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pipeline_schedule_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pipeline_schedule_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name or id of the project to add the schedule to.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
         """
         return pulumi.get(self, "ref")
 
     @ref.setter
-    def ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ref", value)
 
     @_builtins.property
     @pulumi.getter(name="takeOwnership")
-    def take_ownership(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def take_ownership(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
         """
         return pulumi.get(self, "take_ownership")
 
     @take_ownership.setter
-    def take_ownership(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def take_ownership(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "take_ownership", value)
 
 
@@ -326,14 +326,14 @@ class PipelineSchedule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cron: Optional[pulumi.Input[_builtins.str]] = None,
-                 cron_timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 take_ownership: Optional[pulumi.Input[_builtins.bool]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cron: pulumi.Input[Optional[_builtins.str]] = None,
+                 cron_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 take_ownership: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The `PipelineSchedule` resource manages the lifecycle of a scheduled pipeline.
@@ -449,14 +449,14 @@ class PipelineSchedule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cron: Optional[pulumi.Input[_builtins.str]] = None,
-                 cron_timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 take_ownership: Optional[pulumi.Input[_builtins.bool]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cron: pulumi.Input[Optional[_builtins.str]] = None,
+                 cron_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 take_ownership: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -494,16 +494,16 @@ class PipelineSchedule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active: Optional[pulumi.Input[_builtins.bool]] = None,
-            cron: Optional[pulumi.Input[_builtins.str]] = None,
-            cron_timezone: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]]] = None,
-            owner: Optional[pulumi.Input[_builtins.int]] = None,
-            pipeline_schedule_id: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            ref: Optional[pulumi.Input[_builtins.str]] = None,
-            take_ownership: Optional[pulumi.Input[_builtins.bool]] = None) -> 'PipelineSchedule':
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            cron: pulumi.Input[Optional[_builtins.str]] = None,
+            cron_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            inputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]]] = None,
+            owner: pulumi.Input[Optional[_builtins.int]] = None,
+            pipeline_schedule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            ref: pulumi.Input[Optional[_builtins.str]] = None,
+            take_ownership: pulumi.Input[Optional[_builtins.bool]] = None) -> 'PipelineSchedule':
         """
         Get an existing PipelineSchedule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -246,61 +246,61 @@ export interface GetUsersOutputArgs {
     /**
      * Filter users that are active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Filter users that are blocked.
      */
-    blocked?: pulumi.Input<boolean>;
+    blocked?: pulumi.Input<boolean | undefined>;
     /**
      * Search for users created after a specific date. (Requires administrator privileges)
      */
-    createdAfter?: pulumi.Input<string>;
+    createdAfter?: pulumi.Input<string | undefined>;
     /**
      * Search for users created before a specific date. (Requires administrator privileges)
      */
-    createdBefore?: pulumi.Input<string>;
+    createdBefore?: pulumi.Input<string | undefined>;
     /**
      * Filters only non external users.
      */
-    excludeExternal?: pulumi.Input<boolean>;
+    excludeExternal?: pulumi.Input<boolean | undefined>;
     /**
      * Filters only non internal users.
      */
-    excludeInternal?: pulumi.Input<boolean>;
+    excludeInternal?: pulumi.Input<boolean | undefined>;
     /**
      * Lookup users by external provider. (Requires administrator privileges)
      */
-    externProvider?: pulumi.Input<string>;
+    externProvider?: pulumi.Input<string | undefined>;
     /**
      * Lookup users by external UID. (Requires administrator privileges)
      */
-    externUid?: pulumi.Input<string>;
+    externUid?: pulumi.Input<string | undefined>;
     /**
      * Filters only external users.
      */
-    external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean | undefined>;
     /**
      * Filters only regular users that are not bot or internal users.
      */
-    humans?: pulumi.Input<boolean>;
+    humans?: pulumi.Input<boolean | undefined>;
     /**
      * Order the users' list by `id`, `name`, `username`, `createdAt` or `updatedAt`. (Requires administrator privileges)
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
     /**
      * Search users by username, name or email.
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
     /**
      * Sort users' list in asc or desc order. (Requires administrator privileges)
      */
-    sort?: pulumi.Input<string>;
+    sort?: pulumi.Input<string | undefined>;
     /**
      * Get a single user with a specific username.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Filters user without project bots.
      */
-    withoutProjectBots?: pulumi.Input<boolean>;
+    withoutProjectBots?: pulumi.Input<boolean | undefined>;
 }

@@ -21,7 +21,7 @@ class ProjectSecureFileArgs:
     def __init__(__self__, *,
                  content: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectSecureFile resource.
 
@@ -60,28 +60,28 @@ class ProjectSecureFileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the secure file, unique per project
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _ProjectSecureFileState:
     def __init__(__self__, *,
-                 checksum: Optional[pulumi.Input[_builtins.str]] = None,
-                 checksum_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 secure_file_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 checksum: pulumi.Input[Optional[_builtins.str]] = None,
+                 checksum_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 secure_file_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProjectSecureFile resources.
 
@@ -113,98 +113,98 @@ class _ProjectSecureFileState:
 
     @_builtins.property
     @pulumi.getter
-    def checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The checksum of the file
         """
         return pulumi.get(self, "checksum")
 
     @checksum.setter
-    def checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checksum", value)
 
     @_builtins.property
     @pulumi.getter(name="checksumAlgorithm")
-    def checksum_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checksum_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The checksum algorithm used
         """
         return pulumi.get(self, "checksum_algorithm")
 
     @checksum_algorithm.setter
-    def checksum_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checksum_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checksum_algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The contents of the secure file
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the secure file was uploaded
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the secure file will expire
         """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the secure file, unique per project
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or full path of the project to environment is created for.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="secureFileId")
-    def secure_file_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secure_file_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The id of the secure file in gitlab
         """
         return pulumi.get(self, "secure_file_id")
 
     @secure_file_id.setter
-    def secure_file_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secure_file_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secure_file_id", value)
 
 
@@ -214,9 +214,9 @@ class ProjectSecureFile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectSecureFile` resource allows users to manage the lifecycle of a secure file in gitlab.
@@ -236,7 +236,7 @@ class ProjectSecureFile(pulumi.CustomResource):
             description="An example group")
         this_project = gitlab.Project("this",
             name="example",
-            namespace_id=this.id,
+            namespace_id=this.id.apply(lambda x: int(x)),
             initialize_with_readme=True)
         this_project_secure_file = gitlab.ProjectSecureFile("this",
             name="my-secure-file",
@@ -292,7 +292,7 @@ class ProjectSecureFile(pulumi.CustomResource):
             description="An example group")
         this_project = gitlab.Project("this",
             name="example",
-            namespace_id=this.id,
+            namespace_id=this.id.apply(lambda x: int(x)),
             initialize_with_readme=True)
         this_project_secure_file = gitlab.ProjectSecureFile("this",
             name="my-secure-file",
@@ -333,9 +333,9 @@ class ProjectSecureFile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -369,14 +369,14 @@ class ProjectSecureFile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            checksum: Optional[pulumi.Input[_builtins.str]] = None,
-            checksum_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            content: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            secure_file_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'ProjectSecureFile':
+            checksum: pulumi.Input[Optional[_builtins.str]] = None,
+            checksum_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            secure_file_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'ProjectSecureFile':
         """
         Get an existing ProjectSecureFile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

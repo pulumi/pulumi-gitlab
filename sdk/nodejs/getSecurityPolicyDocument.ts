@@ -128,5 +128,5 @@ export interface GetSecurityPolicyDocumentOutputArgs {
     /**
      * Scan execution policy configuration. Multiple policies can be specified.
      */
-    scanExecutionPolicies?: pulumi.Input<pulumi.Input<inputs.GetSecurityPolicyDocumentScanExecutionPolicyArgs>[]>;
+    scanExecutionPolicies?: pulumi.Input<pulumi.Input<inputs.GetSecurityPolicyDocumentScanExecutionPolicyArgs>[] | undefined>;
 }

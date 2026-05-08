@@ -22,9 +22,9 @@ __all__ = ['ValueStreamAnalyticsArgs', 'ValueStreamAnalytics']
 class ValueStreamAnalyticsArgs:
     def __init__(__self__, *,
                  stages: pulumi.Input[Sequence[pulumi.Input['ValueStreamAnalyticsStageArgs']]],
-                 group_full_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_full_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_full_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_full_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ValueStreamAnalytics resource.
 
@@ -55,48 +55,48 @@ class ValueStreamAnalyticsArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupFullPath")
-    def group_full_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_full_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
         """
         return pulumi.get(self, "group_full_path")
 
     @group_full_path.setter
-    def group_full_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_full_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_full_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the value stream
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectFullPath")
-    def project_full_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_full_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full path of the project the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
         """
         return pulumi.get(self, "project_full_path")
 
     @project_full_path.setter
-    def project_full_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_full_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_full_path", value)
 
 
 @pulumi.input_type
 class _ValueStreamAnalyticsState:
     def __init__(__self__, *,
-                 group_full_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_full_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 stages: Optional[pulumi.Input[Sequence[pulumi.Input['ValueStreamAnalyticsStageArgs']]]] = None):
+                 group_full_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_full_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 stages: pulumi.Input[Optional[Sequence[pulumi.Input['ValueStreamAnalyticsStageArgs']]]] = None):
         """
         Input properties used for looking up and filtering ValueStreamAnalytics resources.
 
@@ -116,50 +116,50 @@ class _ValueStreamAnalyticsState:
 
     @_builtins.property
     @pulumi.getter(name="groupFullPath")
-    def group_full_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_full_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
         """
         return pulumi.get(self, "group_full_path")
 
     @group_full_path.setter
-    def group_full_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_full_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_full_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the value stream
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectFullPath")
-    def project_full_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_full_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full path of the project the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
         """
         return pulumi.get(self, "project_full_path")
 
     @project_full_path.setter
-    def project_full_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_full_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_full_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def stages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ValueStreamAnalyticsStageArgs']]]]:
+    def stages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ValueStreamAnalyticsStageArgs']]]]:
         """
         Stages of the value stream
         """
         return pulumi.get(self, "stages")
 
     @stages.setter
-    def stages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ValueStreamAnalyticsStageArgs']]]]):
+    def stages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ValueStreamAnalyticsStageArgs']]]]):
         pulumi.set(self, "stages", value)
 
 
@@ -169,10 +169,10 @@ class ValueStreamAnalytics(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_full_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_full_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 stages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict']]]]] = None,
+                 group_full_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_full_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict']]]]] = None,
                  __props__=None):
         """
         The `ValueStreamAnalytics` resource manages the lifecycle of value stream analytics.
@@ -338,10 +338,10 @@ class ValueStreamAnalytics(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_full_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_full_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 stages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict']]]]] = None,
+                 group_full_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_full_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -367,10 +367,10 @@ class ValueStreamAnalytics(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group_full_path: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_full_path: Optional[pulumi.Input[_builtins.str]] = None,
-            stages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict']]]]] = None) -> 'ValueStreamAnalytics':
+            group_full_path: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_full_path: pulumi.Input[Optional[_builtins.str]] = None,
+            stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict']]]]] = None) -> 'ValueStreamAnalytics':
         """
         Get an existing ValueStreamAnalytics resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

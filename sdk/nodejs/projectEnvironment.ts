@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * });
  * const thisProject = new gitlab.Project("this", {
  *     name: "example",
- *     namespaceId: _this.id,
+ *     namespaceId: _this.id.apply(x =>Number(x)),
  *     initializeWithReadme: true,
  * });
  * const thisProjectEnvironment = new gitlab.ProjectEnvironment("this", {
@@ -199,63 +199,63 @@ export interface ProjectEnvironmentState {
     /**
      * The ISO8601 date/time that this environment will be automatically stopped at in UTC.
      */
-    autoStopAt?: pulumi.Input<string>;
+    autoStopAt?: pulumi.Input<string | undefined>;
     /**
      * The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
      */
-    autoStopSetting?: pulumi.Input<string>;
+    autoStopSetting?: pulumi.Input<string | undefined>;
     /**
      * The cluster agent to associate with this environment.
      */
-    clusterAgentId?: pulumi.Input<number>;
+    clusterAgentId?: pulumi.Input<number | undefined>;
     /**
      * The ISO8601 date/time that this environment was created at in UTC.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the environment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Place to link to for this environment.
      */
-    externalUrl?: pulumi.Input<string>;
+    externalUrl?: pulumi.Input<string | undefined>;
     /**
      * The Flux resource path to associate with this environment.
      */
-    fluxResourcePath?: pulumi.Input<string>;
+    fluxResourcePath?: pulumi.Input<string | undefined>;
     /**
      * The Kubernetes namespace to associate with this environment.
      */
-    kubernetesNamespace?: pulumi.Input<string>;
+    kubernetesNamespace?: pulumi.Input<string | undefined>;
     /**
      * The name of the environment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project to environment is created for.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * State the environment is in. Valid values are `available`, `stopped`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
      */
-    stopBeforeDestroy?: pulumi.Input<boolean>;
+    stopBeforeDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
     /**
      * The ISO8601 date/time that this environment was last updated at in UTC.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -265,31 +265,31 @@ export interface ProjectEnvironmentArgs {
     /**
      * The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
      */
-    autoStopSetting?: pulumi.Input<string>;
+    autoStopSetting?: pulumi.Input<string | undefined>;
     /**
      * The cluster agent to associate with this environment.
      */
-    clusterAgentId?: pulumi.Input<number>;
+    clusterAgentId?: pulumi.Input<number | undefined>;
     /**
      * The description of the environment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Place to link to for this environment.
      */
-    externalUrl?: pulumi.Input<string>;
+    externalUrl?: pulumi.Input<string | undefined>;
     /**
      * The Flux resource path to associate with this environment.
      */
-    fluxResourcePath?: pulumi.Input<string>;
+    fluxResourcePath?: pulumi.Input<string | undefined>;
     /**
      * The Kubernetes namespace to associate with this environment.
      */
-    kubernetesNamespace?: pulumi.Input<string>;
+    kubernetesNamespace?: pulumi.Input<string | undefined>;
     /**
      * The name of the environment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project to environment is created for.
      */
@@ -297,9 +297,9 @@ export interface ProjectEnvironmentArgs {
     /**
      * Determines whether the environment is attempted to be stopped before the environment is deleted. If `autoStopSetting` is set to `withAction`, this will perform a force stop.
      */
-    stopBeforeDestroy?: pulumi.Input<boolean>;
+    stopBeforeDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }

@@ -209,51 +209,51 @@ export interface UserRunnerState {
     /**
      * The access level of the runner. Valid values are: `notProtected`, `refProtected`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Description of the runner.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the group that the runner is created in. Required if runner*type is group*type.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * Specifies if the runner should be locked for the current project.
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * Free-form maintenance notes for the runner (1024 characters)
      */
-    maintenanceNote?: pulumi.Input<string>;
+    maintenanceNote?: pulumi.Input<string | undefined>;
     /**
      * Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
      */
-    maximumTimeout?: pulumi.Input<number>;
+    maximumTimeout?: pulumi.Input<number | undefined>;
     /**
      * Specifies if the runner should ignore new jobs.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project that the runner is created in. Required if runner*type is project*type.
      */
-    projectId?: pulumi.Input<number>;
+    projectId?: pulumi.Input<number | undefined>;
     /**
      * The scope of the runner. Valid values are: `instanceType`, `groupType`, `projectType`.
      */
-    runnerType?: pulumi.Input<string>;
+    runnerType?: pulumi.Input<string | undefined>;
     /**
      * A list of runner tags.
      */
-    tagLists?: pulumi.Input<pulumi.Input<string>[]>;
+    tagLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The authentication token to use when setting up a new runner with this configuration. This value cannot be imported.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Specifies if the runner should handle untagged jobs.
      */
-    untagged?: pulumi.Input<boolean>;
+    untagged?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -263,35 +263,35 @@ export interface UserRunnerArgs {
     /**
      * The access level of the runner. Valid values are: `notProtected`, `refProtected`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Description of the runner.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the group that the runner is created in. Required if runner*type is group*type.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * Specifies if the runner should be locked for the current project.
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * Free-form maintenance notes for the runner (1024 characters)
      */
-    maintenanceNote?: pulumi.Input<string>;
+    maintenanceNote?: pulumi.Input<string | undefined>;
     /**
      * Maximum timeout that limits the amount of time (in seconds) that runners can run jobs. Must be at least 600 (10 minutes).
      */
-    maximumTimeout?: pulumi.Input<number>;
+    maximumTimeout?: pulumi.Input<number | undefined>;
     /**
      * Specifies if the runner should ignore new jobs.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project that the runner is created in. Required if runner*type is project*type.
      */
-    projectId?: pulumi.Input<number>;
+    projectId?: pulumi.Input<number | undefined>;
     /**
      * The scope of the runner. Valid values are: `instanceType`, `groupType`, `projectType`.
      */
@@ -299,9 +299,9 @@ export interface UserRunnerArgs {
     /**
      * A list of runner tags.
      */
-    tagLists?: pulumi.Input<pulumi.Input<string>[]>;
+    tagLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies if the runner should handle untagged jobs.
      */
-    untagged?: pulumi.Input<boolean>;
+    untagged?: pulumi.Input<boolean | undefined>;
 }

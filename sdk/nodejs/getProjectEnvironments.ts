@@ -124,7 +124,7 @@ export interface GetProjectEnvironmentsOutputArgs {
     /**
      * Return the environment with this name. Mutually exclusive with search.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project.
      */
@@ -132,9 +132,9 @@ export interface GetProjectEnvironmentsOutputArgs {
     /**
      * Return list of environments matching the search criteria. Mutually exclusive with name. Must be at least 3 characters long.
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
     /**
      * List all environments that match the specified state. Valid values are `available`, `stopping`, `stopped`. Returns all environments if not set.
      */
-    states?: pulumi.Input<string>;
+    states?: pulumi.Input<string | undefined>;
 }

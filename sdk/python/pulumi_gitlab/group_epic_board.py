@@ -22,8 +22,8 @@ __all__ = ['GroupEpicBoardArgs', 'GroupEpicBoard']
 class GroupEpicBoardArgs:
     def __init__(__self__, *,
                  group: pulumi.Input[_builtins.str],
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GroupEpicBoard resource.
 
@@ -51,35 +51,35 @@ class GroupEpicBoardArgs:
 
     @_builtins.property
     @pulumi.getter
-    def lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]]:
+    def lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]]:
         """
         The list of epic board lists.
         """
         return pulumi.get(self, "lists")
 
     @lists.setter
-    def lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]]):
+    def lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]]):
         pulumi.set(self, "lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the board.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _GroupEpicBoardState:
     def __init__(__self__, *,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupEpicBoard resources.
 
@@ -96,38 +96,38 @@ class _GroupEpicBoardState:
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of the group owned by the authenticated user.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter
-    def lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]]:
+    def lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]]:
         """
         The list of epic board lists.
         """
         return pulumi.get(self, "lists")
 
     @lists.setter
-    def lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]]):
+    def lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupEpicBoardListArgs']]]]):
         pulumi.set(self, "lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the board.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -137,9 +137,9 @@ class GroupEpicBoard(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupEpicBoardListArgs', 'GroupEpicBoardListArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupEpicBoardListArgs', 'GroupEpicBoardListArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `GroupEpicBoard` resource manages the lifecycle of a epic board in a group.
@@ -260,9 +260,9 @@ class GroupEpicBoard(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupEpicBoardListArgs', 'GroupEpicBoardListArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupEpicBoardListArgs', 'GroupEpicBoardListArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -287,9 +287,9 @@ class GroupEpicBoard(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group: Optional[pulumi.Input[_builtins.str]] = None,
-            lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupEpicBoardListArgs', 'GroupEpicBoardListArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'GroupEpicBoard':
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupEpicBoardListArgs', 'GroupEpicBoardListArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupEpicBoard':
         """
         Get an existing GroupEpicBoard resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

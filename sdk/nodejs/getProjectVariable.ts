@@ -138,7 +138,7 @@ export interface GetProjectVariableOutputArgs {
     /**
      * The environment scope of the variable. Defaults to all environment (`*`).
      */
-    environmentScope?: pulumi.Input<string>;
+    environmentScope?: pulumi.Input<string | undefined>;
     /**
      * The name of the variable.
      */

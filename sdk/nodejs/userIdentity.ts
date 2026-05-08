@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *     isExternal: true,
  * });
  * const exampleUserIdentity = new gitlab.UserIdentity("example", {
- *     userId: example.id,
+ *     userId: example.id.apply(x =>Number(x)),
  *     externalProvider: "google",
  *     externalUid: "1234567890",
  * });
@@ -130,15 +130,15 @@ export interface UserIdentityState {
     /**
      * The external provider name.
      */
-    externalProvider?: pulumi.Input<string>;
+    externalProvider?: pulumi.Input<string | undefined>;
     /**
      * A specific external authentication provider UID.
      */
-    externalUid?: pulumi.Input<string>;
+    externalUid?: pulumi.Input<string | undefined>;
     /**
      * The GitLab ID of the user.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 /**

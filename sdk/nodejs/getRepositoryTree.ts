@@ -122,7 +122,7 @@ export interface GetRepositoryTreeOutputArgs {
     /**
      * The path inside repository. Used to get content of subdirectories.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project owned by the authenticated user.
      */
@@ -130,7 +130,7 @@ export interface GetRepositoryTreeOutputArgs {
     /**
      * Boolean value used to get a recursive tree (false by default).
      */
-    recursive?: pulumi.Input<boolean>;
+    recursive?: pulumi.Input<boolean | undefined>;
     /**
      * The name of a repository branch or tag.
      */

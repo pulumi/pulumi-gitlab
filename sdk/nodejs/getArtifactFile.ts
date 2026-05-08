@@ -190,7 +190,7 @@ export interface GetArtifactFileOutputArgs {
     /**
      * Maximum bytes to read from the artifact. Defaults to 10MB (10485760 bytes).
      */
-    maxSizeBytes?: pulumi.Input<number>;
+    maxSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * The ID or URL-encoded path of the project.
      */

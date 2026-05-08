@@ -366,7 +366,7 @@ def get_projects(archived: Optional[_builtins.bool] = None,
 
     # List projects within a group tree
     mygroup = gitlab.get_group(full_path="mygroup")
-    group_projects = gitlab.get_projects(group_id=mygroup.id,
+    group_projects = gitlab.get_projects(group_id=output(mygroup.id).apply(lambda x: int(x)),
         order_by="name",
         include_subgroups=True,
         with_shared=False)
@@ -450,28 +450,28 @@ def get_projects(archived: Optional[_builtins.bool] = None,
         with_merge_requests_enabled=pulumi.get(__ret__, 'with_merge_requests_enabled'),
         with_programming_language=pulumi.get(__ret__, 'with_programming_language'),
         with_shared=pulumi.get(__ret__, 'with_shared'))
-def get_projects_output(archived: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        group_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                        include_subgroups: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        max_queryable_pages: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                        membership: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        min_access_level: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                        order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        owned: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        page: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                        per_page: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                        search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        simple: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        sort: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        starred: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        statistics: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        topics: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                        visibility: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        with_custom_attributes: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        with_issues_enabled: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        with_merge_requests_enabled: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        with_programming_language: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        with_shared: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_projects_output(archived: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        group_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                        include_subgroups: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        max_queryable_pages: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                        membership: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        min_access_level: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                        order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        owned: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        page: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                        per_page: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                        search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        simple: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        sort: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        starred: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        statistics: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        topics: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                        visibility: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        with_custom_attributes: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        with_issues_enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        with_merge_requests_enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        with_programming_language: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        with_shared: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectsResult]:
     """
     The `get_projects` data source allows details of multiple projects to be retrieved. Optionally filtered by the set attributes.
@@ -490,7 +490,7 @@ def get_projects_output(archived: Optional[pulumi.Input[Optional[_builtins.bool]
 
     # List projects within a group tree
     mygroup = gitlab.get_group(full_path="mygroup")
-    group_projects = gitlab.get_projects(group_id=mygroup.id,
+    group_projects = gitlab.get_projects(group_id=output(mygroup.id).apply(lambda x: int(x)),
         order_by="name",
         include_subgroups=True,
         with_shared=False)

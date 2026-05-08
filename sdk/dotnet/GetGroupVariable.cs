@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.Index.GetGroupVariable.Invoke(new()
+        ///     var foo = GitLab.GetGroupVariable.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         Key = "foo",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var bar = GitLab.Index.GetGroupVariable.Invoke(new()
+        ///     var bar = GitLab.GetGroupVariable.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         Key = "bar",
@@ -61,14 +61,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.Index.GetGroupVariable.Invoke(new()
+        ///     var foo = GitLab.GetGroupVariable.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         Key = "foo",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var bar = GitLab.Index.GetGroupVariable.Invoke(new()
+        ///     var bar = GitLab.GetGroupVariable.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         Key = "bar",
@@ -96,14 +96,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.Index.GetGroupVariable.Invoke(new()
+        ///     var foo = GitLab.GetGroupVariable.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         Key = "foo",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var bar = GitLab.Index.GetGroupVariable.Invoke(new()
+        ///     var bar = GitLab.GetGroupVariable.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         Key = "bar",

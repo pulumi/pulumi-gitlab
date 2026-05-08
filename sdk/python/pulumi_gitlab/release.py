@@ -23,13 +23,13 @@ class ReleaseArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  tag_name: pulumi.Input[_builtins.str],
-                 assets: Optional[pulumi.Input['ReleaseAssetsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 milestones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 released_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 assets: pulumi.Input[Optional['ReleaseAssetsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 milestones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 released_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Release resource.
 
@@ -86,109 +86,109 @@ class ReleaseArgs:
 
     @_builtins.property
     @pulumi.getter
-    def assets(self) -> Optional[pulumi.Input['ReleaseAssetsArgs']]:
+    def assets(self) -> pulumi.Input[Optional['ReleaseAssetsArgs']]:
         """
         The release assets.
         """
         return pulumi.get(self, "assets")
 
     @assets.setter
-    def assets(self, value: Optional[pulumi.Input['ReleaseAssetsArgs']]):
+    def assets(self, value: pulumi.Input[Optional['ReleaseAssetsArgs']]):
         pulumi.set(self, "assets", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the release. You can use Markdown.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def milestones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def milestones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The title of each milestone the release is associated with. GitLab Premium customers can specify group milestones.
         """
         return pulumi.get(self, "milestones")
 
     @milestones.setter
-    def milestones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def milestones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "milestones", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the release.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If a tag specified in tag*name doesn't exist, the release is created from ref and tagged with tag*name. It can be a commit SHA, another tag name, or a branch name.
         """
         return pulumi.get(self, "ref")
 
     @ref.setter
-    def ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ref", value)
 
     @_builtins.property
     @pulumi.getter(name="releasedAt")
-    def released_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def released_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date and time for the release. Defaults to the current time. Expected in ISO 8601 format (2019-03-15T08:00:00Z). Only provide this field if creating an upcoming or historical release.
         """
         return pulumi.get(self, "released_at")
 
     @released_at.setter
-    def released_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def released_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "released_at", value)
 
     @_builtins.property
     @pulumi.getter(name="tagMessage")
-    def tag_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Message to use if creating a new annotated tag.
         """
         return pulumi.get(self, "tag_message")
 
     @tag_message.setter
-    def tag_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_message", value)
 
 
 @pulumi.input_type
 class _ReleaseState:
     def __init__(__self__, *,
-                 assets: Optional[pulumi.Input['ReleaseAssetsArgs']] = None,
-                 author: Optional[pulumi.Input['ReleaseAuthorArgs']] = None,
-                 commit: Optional[pulumi.Input['ReleaseCommitArgs']] = None,
-                 commit_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 description_html: Optional[pulumi.Input[_builtins.str]] = None,
-                 links: Optional[pulumi.Input['ReleaseLinksArgs']] = None,
-                 milestones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 released_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 upcoming_release: Optional[pulumi.Input[_builtins.bool]] = None):
+                 assets: pulumi.Input[Optional['ReleaseAssetsArgs']] = None,
+                 author: pulumi.Input[Optional['ReleaseAuthorArgs']] = None,
+                 commit: pulumi.Input[Optional['ReleaseCommitArgs']] = None,
+                 commit_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 description_html: pulumi.Input[Optional[_builtins.str]] = None,
+                 links: pulumi.Input[Optional['ReleaseLinksArgs']] = None,
+                 milestones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 released_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 upcoming_release: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Release resources.
 
@@ -247,206 +247,206 @@ class _ReleaseState:
 
     @_builtins.property
     @pulumi.getter
-    def assets(self) -> Optional[pulumi.Input['ReleaseAssetsArgs']]:
+    def assets(self) -> pulumi.Input[Optional['ReleaseAssetsArgs']]:
         """
         The release assets.
         """
         return pulumi.get(self, "assets")
 
     @assets.setter
-    def assets(self, value: Optional[pulumi.Input['ReleaseAssetsArgs']]):
+    def assets(self, value: pulumi.Input[Optional['ReleaseAssetsArgs']]):
         pulumi.set(self, "assets", value)
 
     @_builtins.property
     @pulumi.getter
-    def author(self) -> Optional[pulumi.Input['ReleaseAuthorArgs']]:
+    def author(self) -> pulumi.Input[Optional['ReleaseAuthorArgs']]:
         """
         The author of the release.
         """
         return pulumi.get(self, "author")
 
     @author.setter
-    def author(self, value: Optional[pulumi.Input['ReleaseAuthorArgs']]):
+    def author(self, value: pulumi.Input[Optional['ReleaseAuthorArgs']]):
         pulumi.set(self, "author", value)
 
     @_builtins.property
     @pulumi.getter
-    def commit(self) -> Optional[pulumi.Input['ReleaseCommitArgs']]:
+    def commit(self) -> pulumi.Input[Optional['ReleaseCommitArgs']]:
         """
         The release commit.
         """
         return pulumi.get(self, "commit")
 
     @commit.setter
-    def commit(self, value: Optional[pulumi.Input['ReleaseCommitArgs']]):
+    def commit(self, value: pulumi.Input[Optional['ReleaseCommitArgs']]):
         pulumi.set(self, "commit", value)
 
     @_builtins.property
     @pulumi.getter(name="commitPath")
-    def commit_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the commit
         """
         return pulumi.get(self, "commit_path")
 
     @commit_path.setter
-    def commit_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_path", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date and time the release was created. In ISO 8601 format (2019-03-15T08:00:00Z).
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the release. You can use Markdown.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="descriptionHtml")
-    def description_html(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description_html(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         HTML rendered Markdown of the release description.
         """
         return pulumi.get(self, "description_html")
 
     @description_html.setter
-    def description_html(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description_html(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description_html", value)
 
     @_builtins.property
     @pulumi.getter
-    def links(self) -> Optional[pulumi.Input['ReleaseLinksArgs']]:
+    def links(self) -> pulumi.Input[Optional['ReleaseLinksArgs']]:
         """
         Links of the release
         """
         return pulumi.get(self, "links")
 
     @links.setter
-    def links(self, value: Optional[pulumi.Input['ReleaseLinksArgs']]):
+    def links(self, value: pulumi.Input[Optional['ReleaseLinksArgs']]):
         pulumi.set(self, "links", value)
 
     @_builtins.property
     @pulumi.getter
-    def milestones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def milestones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The title of each milestone the release is associated with. GitLab Premium customers can specify group milestones.
         """
         return pulumi.get(self, "milestones")
 
     @milestones.setter
-    def milestones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def milestones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "milestones", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the release.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or full path of the project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If a tag specified in tag*name doesn't exist, the release is created from ref and tagged with tag*name. It can be a commit SHA, another tag name, or a branch name.
         """
         return pulumi.get(self, "ref")
 
     @ref.setter
-    def ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ref", value)
 
     @_builtins.property
     @pulumi.getter(name="releasedAt")
-    def released_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def released_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date and time for the release. Defaults to the current time. Expected in ISO 8601 format (2019-03-15T08:00:00Z). Only provide this field if creating an upcoming or historical release.
         """
         return pulumi.get(self, "released_at")
 
     @released_at.setter
-    def released_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def released_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "released_at", value)
 
     @_builtins.property
     @pulumi.getter(name="tagMessage")
-    def tag_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Message to use if creating a new annotated tag.
         """
         return pulumi.get(self, "tag_message")
 
     @tag_message.setter
-    def tag_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_message", value)
 
     @_builtins.property
     @pulumi.getter(name="tagName")
-    def tag_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag where the release is created from.
         """
         return pulumi.get(self, "tag_name")
 
     @tag_name.setter
-    def tag_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_name", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPath")
-    def tag_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the tag.
         """
         return pulumi.get(self, "tag_path")
 
     @tag_path.setter
-    def tag_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_path", value)
 
     @_builtins.property
     @pulumi.getter(name="upcomingRelease")
-    def upcoming_release(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upcoming_release(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the release_at attribute is set to a future date.
         """
         return pulumi.get(self, "upcoming_release")
 
     @upcoming_release.setter
-    def upcoming_release(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upcoming_release(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upcoming_release", value)
 
 
@@ -456,15 +456,15 @@ class Release(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assets: Optional[pulumi.Input[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 milestones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 released_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 assets: pulumi.Input[Optional[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 milestones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 released_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `Release` resource manages the lifecycle of releases in gitlab.
@@ -573,15 +573,15 @@ class Release(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assets: Optional[pulumi.Input[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 milestones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 released_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 assets: pulumi.Input[Optional[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 milestones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 released_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -622,23 +622,23 @@ class Release(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assets: Optional[pulumi.Input[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict']]] = None,
-            author: Optional[pulumi.Input[Union['ReleaseAuthorArgs', 'ReleaseAuthorArgsDict']]] = None,
-            commit: Optional[pulumi.Input[Union['ReleaseCommitArgs', 'ReleaseCommitArgsDict']]] = None,
-            commit_path: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            description_html: Optional[pulumi.Input[_builtins.str]] = None,
-            links: Optional[pulumi.Input[Union['ReleaseLinksArgs', 'ReleaseLinksArgsDict']]] = None,
-            milestones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            ref: Optional[pulumi.Input[_builtins.str]] = None,
-            released_at: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_message: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_name: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_path: Optional[pulumi.Input[_builtins.str]] = None,
-            upcoming_release: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Release':
+            assets: pulumi.Input[Optional[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict']]] = None,
+            author: pulumi.Input[Optional[Union['ReleaseAuthorArgs', 'ReleaseAuthorArgsDict']]] = None,
+            commit: pulumi.Input[Optional[Union['ReleaseCommitArgs', 'ReleaseCommitArgsDict']]] = None,
+            commit_path: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            description_html: pulumi.Input[Optional[_builtins.str]] = None,
+            links: pulumi.Input[Optional[Union['ReleaseLinksArgs', 'ReleaseLinksArgsDict']]] = None,
+            milestones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            ref: pulumi.Input[Optional[_builtins.str]] = None,
+            released_at: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_message: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_path: pulumi.Input[Optional[_builtins.str]] = None,
+            upcoming_release: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Release':
         """
         Get an existing Release resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -9,131 +9,131 @@ export interface ApplicationSettingsDefaultBranchProtectionDefaults {
     /**
      * Allow force push for all users with push access.
      */
-    allowForcePush?: pulumi.Input<boolean>;
+    allowForcePush?: pulumi.Input<boolean | undefined>;
     /**
      * An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
      */
-    allowedToMerges?: pulumi.Input<pulumi.Input<number>[]>;
+    allowedToMerges?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
      */
-    allowedToPushes?: pulumi.Input<pulumi.Input<number>[]>;
+    allowedToPushes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Require code owner approval before merging.
      */
-    codeOwnerApprovalRequired?: pulumi.Input<boolean>;
+    codeOwnerApprovalRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Allow developers to initial push.
      */
-    developerCanInitialPush?: pulumi.Input<boolean>;
+    developerCanInitialPush?: pulumi.Input<boolean | undefined>;
 }
 
 export interface BranchCommit {
     /**
      * The email of the author.
      */
-    authorEmail?: pulumi.Input<string>;
+    authorEmail?: pulumi.Input<string | undefined>;
     /**
      * The name of the author.
      */
-    authorName?: pulumi.Input<string>;
+    authorName?: pulumi.Input<string | undefined>;
     /**
      * The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
      */
-    authoredDate?: pulumi.Input<string>;
+    authoredDate?: pulumi.Input<string | undefined>;
     /**
      * The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
      */
-    committedDate?: pulumi.Input<string>;
+    committedDate?: pulumi.Input<string | undefined>;
     /**
      * The email of the user that committed.
      */
-    committerEmail?: pulumi.Input<string>;
+    committerEmail?: pulumi.Input<string | undefined>;
     /**
      * The name of the user that committed.
      */
-    committerName?: pulumi.Input<string>;
+    committerName?: pulumi.Input<string | undefined>;
     /**
      * The unique id assigned to the commit by Gitlab.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The commit message
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * The id of the parents of the commit
      */
-    parentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    parentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The short id assigned to the commit by Gitlab.
      */
-    shortId?: pulumi.Input<string>;
+    shortId?: pulumi.Input<string | undefined>;
     /**
      * The title of the commit
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 export interface BranchProtectionAllowedToMerge {
     /**
      * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Readable description of access level.
      */
-    accessLevelDescription?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 export interface BranchProtectionAllowedToPush {
     /**
      * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Readable description of access level.
      */
-    accessLevelDescription?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
      */
-    deployKeyId?: pulumi.Input<number>;
+    deployKeyId?: pulumi.Input<number | undefined>;
     /**
      * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 export interface BranchProtectionAllowedToUnprotect {
     /**
      * Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Readable description of access level.
      */
-    accessLevelDescription?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 export interface GetGroupProvisionedUsersProvisionedUser {
@@ -243,103 +243,103 @@ export interface GetGroupProvisionedUsersProvisionedUserArgs {
     /**
      * The avatar URL of the provisioned user.
      */
-    avatarUrl?: pulumi.Input<string>;
+    avatarUrl?: pulumi.Input<string | undefined>;
     /**
      * The bio of the provisioned user.
      */
-    bio?: pulumi.Input<string>;
+    bio?: pulumi.Input<string | undefined>;
     /**
      * Whether the provisioned user is a bot.
      */
-    bot?: pulumi.Input<boolean>;
+    bot?: pulumi.Input<boolean | undefined>;
     /**
      * The confirmation date of the provisioned user.
      */
-    confirmedAt?: pulumi.Input<string>;
+    confirmedAt?: pulumi.Input<string | undefined>;
     /**
      * The creation date of the provisioned user.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The email of the provisioned user.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Whether the provisioned user is external.
      */
-    external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the provisioned user.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The job title of the provisioned user.
      */
-    jobTitle?: pulumi.Input<string>;
+    jobTitle?: pulumi.Input<string | undefined>;
     /**
      * The last activity date of the provisioned user.
      */
-    lastActivityOn?: pulumi.Input<string>;
+    lastActivityOn?: pulumi.Input<string | undefined>;
     /**
      * The last sign-in date of the provisioned user.
      */
-    lastSignInAt?: pulumi.Input<string>;
+    lastSignInAt?: pulumi.Input<string | undefined>;
     /**
      * The LinkedIn ID of the provisioned user.
      */
-    linkedin?: pulumi.Input<string>;
+    linkedin?: pulumi.Input<string | undefined>;
     /**
      * The location of the provisioned user.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the provisioned user.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization of the provisioned user.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * Whether the provisioned user has a private profile.
      */
-    privateProfile?: pulumi.Input<boolean>;
+    privateProfile?: pulumi.Input<boolean | undefined>;
     /**
      * The pronouns of the provisioned user.
      */
-    pronouns?: pulumi.Input<string>;
+    pronouns?: pulumi.Input<string | undefined>;
     /**
      * The public email of the provisioned user.
      */
-    publicEmail?: pulumi.Input<string>;
+    publicEmail?: pulumi.Input<string | undefined>;
     /**
      * The Skype ID of the provisioned user.
      */
-    skype?: pulumi.Input<string>;
+    skype?: pulumi.Input<string | undefined>;
     /**
      * The state of the provisioned user.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The Twitter ID of the provisioned user.
      */
-    twitter?: pulumi.Input<string>;
+    twitter?: pulumi.Input<string | undefined>;
     /**
      * Whether two-factor authentication is enabled for the provisioned user.
      */
-    twoFactorEnabled?: pulumi.Input<boolean>;
+    twoFactorEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The username of the provisioned user.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * The web URL of the provisioned user.
      */
-    webUrl?: pulumi.Input<string>;
+    webUrl?: pulumi.Input<string | undefined>;
     /**
      * The website URL of the provisioned user.
      */
-    websiteUrl?: pulumi.Input<string>;
+    websiteUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface GetProjectApprovalRulesApprovalRule {
@@ -389,43 +389,43 @@ export interface GetProjectApprovalRulesApprovalRuleArgs {
     /**
      * If true, applies the rule to all protected branches, ignoring the protected branches attribute.
      */
-    appliesToAllProtectedBranches?: pulumi.Input<boolean>;
+    appliesToAllProtectedBranches?: pulumi.Input<boolean | undefined>;
     /**
      * The number of approvals required for this rule.
      */
-    approvalsRequired?: pulumi.Input<number>;
+    approvalsRequired?: pulumi.Input<number | undefined>;
     /**
      * List of all approver IDs that are eligible to approve this rule.
      */
-    eligibleApproverIds?: pulumi.Input<pulumi.Input<number>[]>;
+    eligibleApproverIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * List of group IDs that are eligible to approve this rule.
      */
-    groupIds?: pulumi.Input<pulumi.Input<number>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The ID of the approval rule.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The name of the approval rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of protected branch IDs that this rule applies to.
      */
-    protectedBranchIds?: pulumi.Input<pulumi.Input<number>[]>;
+    protectedBranchIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The report type. Required when the rule type is `reportApprover`. The supported report types are `licenseScanning` and `codeCoverage`.
      */
-    reportType?: pulumi.Input<string>;
+    reportType?: pulumi.Input<string | undefined>;
     /**
      * The type of the approval rule. Can be `anyApprover`, `regular` or `reportApprover`.
      */
-    ruleType?: pulumi.Input<string>;
+    ruleType?: pulumi.Input<string | undefined>;
     /**
      * List of user IDs that are eligible to approve this rule.
      */
-    userIds?: pulumi.Input<pulumi.Input<number>[]>;
+    userIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 export interface GetProjectProtectedBranchMergeAccessLevel {
@@ -451,19 +451,19 @@ export interface GetProjectProtectedBranchMergeAccessLevelArgs {
     /**
      * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Readable description of access level.
      */
-    accessLevelDescription?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 export interface GetProjectProtectedBranchPushAccessLevel {
@@ -493,23 +493,23 @@ export interface GetProjectProtectedBranchPushAccessLevelArgs {
     /**
      * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Readable description of access level.
      */
-    accessLevelDescription?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
      */
-    deployKeyId?: pulumi.Input<number>;
+    deployKeyId?: pulumi.Input<number | undefined>;
     /**
      * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 export interface GetProjectProtectedBranchesProtectedBranch {
@@ -543,27 +543,27 @@ export interface GetProjectProtectedBranchesProtectedBranchArgs {
     /**
      * Whether force push is allowed.
      */
-    allowForcePush?: pulumi.Input<boolean>;
+    allowForcePush?: pulumi.Input<boolean | undefined>;
     /**
      * Reject code pushes that change files listed in the CODEOWNERS file.
      */
-    codeOwnerApprovalRequired?: pulumi.Input<boolean>;
+    codeOwnerApprovalRequired?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of this resource.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
      */
-    mergeAccessLevels?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs>[]>;
+    mergeAccessLevels?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs>[] | undefined>;
     /**
      * The name of the protected branch.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Array of access levels and user(s)/group(s) allowed to push to protected branch.
      */
-    pushAccessLevels?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs>[]>;
+    pushAccessLevels?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs>[] | undefined>;
 }
 
 export interface GetProjectProtectedBranchesProtectedBranchMergeAccessLevel {
@@ -589,19 +589,19 @@ export interface GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs 
     /**
      * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Readable description of access level.
      */
-    accessLevelDescription?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
@@ -631,23 +631,23 @@ export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs {
     /**
      * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Readable description of access level.
      */
-    accessLevelDescription?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
      */
-    deployKeyId?: pulumi.Input<number>;
+    deployKeyId?: pulumi.Input<number | undefined>;
     /**
      * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 export interface GetReleaseAssets {
@@ -669,15 +669,15 @@ export interface GetReleaseAssetsArgs {
     /**
      * The number of assets for a release
      */
-    count?: pulumi.Input<number>;
+    count?: pulumi.Input<number | undefined>;
     /**
      * The links for a release
      */
-    links?: pulumi.Input<pulumi.Input<inputs.GetReleaseAssetsLinkArgs>[]>;
+    links?: pulumi.Input<pulumi.Input<inputs.GetReleaseAssetsLinkArgs>[] | undefined>;
     /**
      * The sources for a release
      */
-    sources?: pulumi.Input<pulumi.Input<inputs.GetReleaseAssetsSourceArgs>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.GetReleaseAssetsSourceArgs>[] | undefined>;
 }
 
 export interface GetReleaseAssetsLink {
@@ -703,19 +703,19 @@ export interface GetReleaseAssetsLinkArgs {
     /**
      * The ID of the link
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The type of the link
      */
-    linkType?: pulumi.Input<string>;
+    linkType?: pulumi.Input<string | undefined>;
     /**
      * The name of the link
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL of the link
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface GetReleaseAssetsSource {
@@ -733,11 +733,11 @@ export interface GetReleaseAssetsSourceArgs {
     /**
      * The format of the source
      */
-    format?: pulumi.Input<string>;
+    format?: pulumi.Input<string | undefined>;
     /**
      * The URL of the source
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface GetSecurityPolicyDocumentScanExecutionPolicy {
@@ -779,7 +779,7 @@ export interface GetSecurityPolicyDocumentScanExecutionPolicyArgs {
     /**
      * Description of the scan execution policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the policy is enabled.
      */
@@ -791,7 +791,7 @@ export interface GetSecurityPolicyDocumentScanExecutionPolicyArgs {
     /**
      * Scope configuration to limit which projects the policy applies to.
      */
-    policyScope?: pulumi.Input<inputs.GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs>;
+    policyScope?: pulumi.Input<inputs.GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs | undefined>;
     /**
      * Rules that trigger the policy. At least one rule is required.
      */
@@ -799,7 +799,7 @@ export interface GetSecurityPolicyDocumentScanExecutionPolicyArgs {
     /**
      * Control whether users can use the skip-ci directive.
      */
-    skipCi?: pulumi.Input<inputs.GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs>;
+    skipCi?: pulumi.Input<inputs.GetSecurityPolicyDocumentScanExecutionPolicySkipCiArgs | undefined>;
 }
 
 export interface GetSecurityPolicyDocumentScanExecutionPolicyAction {
@@ -837,23 +837,23 @@ export interface GetSecurityPolicyDocumentScanExecutionPolicyActionArgs {
     /**
      * Scanner profile to use for DAST scans.
      */
-    scannerProfile?: pulumi.Input<string>;
+    scannerProfile?: pulumi.Input<string | undefined>;
     /**
      * Site profile to use for DAST scans.
      */
-    siteProfile?: pulumi.Input<string>;
+    siteProfile?: pulumi.Input<string | undefined>;
     /**
      * Tags to exclude from the scan.
      */
-    tagsToExcludes?: pulumi.Input<pulumi.Input<string>[]>;
+    tagsToExcludes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The template to use for the scan. Valid values: `default`, `latest`.
      */
-    template?: pulumi.Input<string>;
+    template?: pulumi.Input<string | undefined>;
     /**
      * Environment variables to pass to the scan job.
      */
-    variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    variables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface GetSecurityPolicyDocumentScanExecutionPolicyPolicyScope {
@@ -871,11 +871,11 @@ export interface GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeArgs {
     /**
      * Compliance framework names to scope the policy to.
      */
-    complianceFrameworks?: pulumi.Input<pulumi.Input<string>[]>;
+    complianceFrameworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Project scope configuration.
      */
-    projects?: pulumi.Input<inputs.GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs>;
+    projects?: pulumi.Input<inputs.GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsArgs | undefined>;
 }
 
 export interface GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects {
@@ -893,11 +893,11 @@ export interface GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjects
     /**
      * List of project IDs to exclude from this policy.
      */
-    excludings?: pulumi.Input<pulumi.Input<number>[]>;
+    excludings?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * List of project IDs to explicitly include in this policy.
      */
-    includings?: pulumi.Input<pulumi.Input<number>[]>;
+    includings?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 export interface GetSecurityPolicyDocumentScanExecutionPolicyRule {
@@ -931,23 +931,23 @@ export interface GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs {
     /**
      * Kubernetes agents configuration for agent-based policies.
      */
-    agents?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    agents?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Branches to exclude from the policy.
      */
-    branchExceptions?: pulumi.Input<pulumi.Input<string>[]>;
+    branchExceptions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of branches to match. Valid values: `all`, `protected`, `default`.
      */
-    branchType?: pulumi.Input<string>;
+    branchType?: pulumi.Input<string | undefined>;
     /**
      * Branch names or patterns to match.
      */
-    branches?: pulumi.Input<pulumi.Input<string>[]>;
+    branches?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Cron expression for schedule type rules (e.g., `*&#47;15 * * * *` for every 15 minutes).
      */
-    cadence?: pulumi.Input<string>;
+    cadence?: pulumi.Input<string | undefined>;
     /**
      * Type of rule. Valid values: `pipeline`, `schedule`, `agent`.
      */
@@ -983,38 +983,38 @@ export interface GroupDefaultBranchProtectionDefaults {
     /**
      * Allow force push for all users with push access.
      */
-    allowForcePush?: pulumi.Input<boolean>;
+    allowForcePush?: pulumi.Input<boolean | undefined>;
     /**
      * An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
      */
-    allowedToMerges?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedToMerges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
      */
-    allowedToPushes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedToPushes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Require code owner approval before merging.
      */
-    codeOwnerApprovalRequired?: pulumi.Input<boolean>;
+    codeOwnerApprovalRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Allow developers to initial push.
      */
-    developerCanInitialPush?: pulumi.Input<boolean>;
+    developerCanInitialPush?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GroupEpicBoardList {
     /**
      * The ID of the list.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The ID of the label the list should be scoped to.
      */
-    labelId?: pulumi.Input<number>;
+    labelId?: pulumi.Input<number | undefined>;
     /**
      * The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
 }
 
 export interface GroupHookCustomHeader {
@@ -1032,135 +1032,135 @@ export interface GroupIssueBoardList {
     /**
      * The ID of the list.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The ID of the label the list should be scoped to.
      */
-    labelId?: pulumi.Input<number>;
+    labelId?: pulumi.Input<number | undefined>;
     /**
      * The explicit position of the list within the board, zero based.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
 }
 
 export interface GroupProtectedEnvironmentApprovalRule {
     /**
      * Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Readable description of level of access.
      */
-    accessLevelDescription?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
      */
-    groupInheritanceType?: pulumi.Input<number>;
+    groupInheritanceType?: pulumi.Input<number | undefined>;
     /**
      * The unique ID of the Approval Rules object.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
      */
-    requiredApprovals?: pulumi.Input<number>;
+    requiredApprovals?: pulumi.Input<number | undefined>;
     /**
      * The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `accessLevel` and `groupId`.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 export interface GroupProtectedEnvironmentDeployAccessLevel {
     /**
      * Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Readable description of level of access.
      */
-    accessLevelDescription?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
      */
-    groupInheritanceType?: pulumi.Input<number>;
+    groupInheritanceType?: pulumi.Input<number | undefined>;
     /**
      * The unique ID of the Deploy Access Level object.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `accessLevel` and `groupId`.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 export interface GroupPushRules {
     /**
      * All commit author emails must match this regex, e.g. `@my-company.com$`.
      */
-    authorEmailRegex?: pulumi.Input<string>;
+    authorEmailRegex?: pulumi.Input<string | undefined>;
     /**
      * All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
      */
-    branchNameRegex?: pulumi.Input<string>;
+    branchNameRegex?: pulumi.Input<string | undefined>;
     /**
      * Only commits pushed using verified emails are allowed.
      */
-    commitCommitterCheck?: pulumi.Input<boolean>;
+    commitCommitterCheck?: pulumi.Input<boolean | undefined>;
     /**
      * Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
      */
-    commitCommitterNameCheck?: pulumi.Input<boolean>;
+    commitCommitterNameCheck?: pulumi.Input<boolean | undefined>;
     /**
      * No commit message is allowed to match this regex, for example `ssh\:\/\/`.
      */
-    commitMessageNegativeRegex?: pulumi.Input<string>;
+    commitMessageNegativeRegex?: pulumi.Input<string | undefined>;
     /**
      * All commit messages must match this regex, e.g. `Fixed \d+\..*`.
      */
-    commitMessageRegex?: pulumi.Input<string>;
+    commitMessageRegex?: pulumi.Input<string | undefined>;
     /**
      * Deny deleting a tag.
      */
-    denyDeleteTag?: pulumi.Input<boolean>;
+    denyDeleteTag?: pulumi.Input<boolean | undefined>;
     /**
      * Filenames matching the regular expression provided in this attribute are not allowed, for example, `(jar|exe)$`.
      */
-    fileNameRegex?: pulumi.Input<string>;
+    fileNameRegex?: pulumi.Input<string | undefined>;
     /**
      * Maximum file size (MB) allowed.
      */
-    maxFileSize?: pulumi.Input<number>;
+    maxFileSize?: pulumi.Input<number | undefined>;
     /**
      * Allows only GitLab users to author commits.
      */
-    memberCheck?: pulumi.Input<boolean>;
+    memberCheck?: pulumi.Input<boolean | undefined>;
     /**
      * GitLab will reject any files that are likely to contain secrets.
      */
-    preventSecrets?: pulumi.Input<boolean>;
+    preventSecrets?: pulumi.Input<boolean | undefined>;
     /**
      * Reject commit when it’s not DCO certified.
      */
-    rejectNonDcoCommits?: pulumi.Input<boolean>;
+    rejectNonDcoCommits?: pulumi.Input<boolean | undefined>;
     /**
      * Only commits signed through GPG are allowed.
      */
-    rejectUnsignedCommits?: pulumi.Input<boolean>;
+    rejectUnsignedCommits?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GroupServiceAccountAccessTokenRotationConfiguration {
     /**
      * The duration (in days) the new token should be valid for.
      */
-    expirationDays?: pulumi.Input<number>;
+    expirationDays?: pulumi.Input<number | undefined>;
     /**
      * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
      */
@@ -1171,14 +1171,14 @@ export interface GroupServiceAccountTimeouts {
     /**
      * How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
 }
 
 export interface InstanceServiceAccountTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
 }
 
 export interface PersonalAccessTokenRotationConfiguration {
@@ -1218,38 +1218,38 @@ export interface ProjectContainerExpirationPolicy {
     /**
      * The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
      */
-    cadence?: pulumi.Input<string>;
+    cadence?: pulumi.Input<string | undefined>;
     /**
      * If true, the policy is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The number of images to keep.
      */
-    keepN?: pulumi.Input<number>;
+    keepN?: pulumi.Input<number | undefined>;
     /**
      * The regular expression to match image names to delete.
      */
-    nameRegexDelete?: pulumi.Input<string>;
+    nameRegexDelete?: pulumi.Input<string | undefined>;
     /**
      * The regular expression to match image names to keep.
      */
-    nameRegexKeep?: pulumi.Input<string>;
+    nameRegexKeep?: pulumi.Input<string | undefined>;
     /**
      * The next time the policy will run.
      */
-    nextRunAt?: pulumi.Input<string>;
+    nextRunAt?: pulumi.Input<string | undefined>;
     /**
      * The number of days to keep images.
      */
-    olderThan?: pulumi.Input<string>;
+    olderThan?: pulumi.Input<string | undefined>;
 }
 
 export interface ProjectContainerTagProtectionTimeouts {
     /**
      * How long to wait for the container tag protection rule to be created. Defaults to 5 minutes.
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
 }
 
 export interface ProjectHookCustomHeader {
@@ -1267,417 +1267,417 @@ export interface ProjectIssueBoardList {
     /**
      * The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
      */
-    assigneeId?: pulumi.Input<number>;
+    assigneeId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the list
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The ID of the iteration the list should be scoped to. Requires a GitLab EE license.
      */
-    iterationId?: pulumi.Input<number>;
+    iterationId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the label the list should be scoped to. Requires a GitLab EE license.
      */
-    labelId?: pulumi.Input<number>;
+    labelId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
      */
-    milestoneId?: pulumi.Input<number>;
+    milestoneId?: pulumi.Input<number | undefined>;
     /**
      * The position of the list within the board. The position for the list is based on the its position in the `lists` array.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
 }
 
 export interface ProjectIssueTaskCompletionStatus {
     /**
      * The number of tasks that are completed.
      */
-    completedCount?: pulumi.Input<number>;
+    completedCount?: pulumi.Input<number | undefined>;
     /**
      * The number of tasks.
      */
-    count?: pulumi.Input<number>;
+    count?: pulumi.Input<number | undefined>;
 }
 
 export interface ProjectPagesSettingsDeployment {
     /**
      * Date the deployment was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The path prefix of the deployment when using parallel deployments.
      */
-    pathPrefix?: pulumi.Input<string>;
+    pathPrefix?: pulumi.Input<string | undefined>;
     /**
      * The root directory of the deployment.
      */
-    rootDirectory?: pulumi.Input<string>;
+    rootDirectory?: pulumi.Input<string | undefined>;
     /**
      * The URL of the deployment.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface ProjectProtectedEnvironmentApprovalRule {
     /**
      * Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Readable description of level of access.
      */
-    accessLevelDescription?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
      */
-    groupInheritanceType?: pulumi.Input<number>;
+    groupInheritanceType?: pulumi.Input<number | undefined>;
     /**
      * The unique ID of the Approval Rules object.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
      */
-    requiredApprovals?: pulumi.Input<number>;
+    requiredApprovals?: pulumi.Input<number | undefined>;
     /**
      * The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 export interface ProjectProtectedEnvironmentDeployAccessLevel {
     /**
      * Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Readable description of level of access.
      */
-    accessLevelDescription?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
      */
-    groupInheritanceType?: pulumi.Input<number>;
+    groupInheritanceType?: pulumi.Input<number | undefined>;
     /**
      * The unique ID of the Deploy Access Level object.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 export interface ProjectProtectedEnvironmentDeployAccessLevelsAttribute {
     /**
      * Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Readable description of level of access.
      */
-    accessLevelDescription?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
      */
-    groupInheritanceType?: pulumi.Input<number>;
+    groupInheritanceType?: pulumi.Input<number | undefined>;
     /**
      * The unique ID of the Deploy Access Level object.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 export interface ProjectPushRules {
     /**
      * All commit author emails must match this regex, e.g. `@my-company.com$`.
      */
-    authorEmailRegex?: pulumi.Input<string>;
+    authorEmailRegex?: pulumi.Input<string | undefined>;
     /**
      * All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
      */
-    branchNameRegex?: pulumi.Input<string>;
+    branchNameRegex?: pulumi.Input<string | undefined>;
     /**
      * Users can only push commits to this repository that were committed with one of their own verified emails.
      */
-    commitCommitterCheck?: pulumi.Input<boolean>;
+    commitCommitterCheck?: pulumi.Input<boolean | undefined>;
     /**
      * Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
      */
-    commitCommitterNameCheck?: pulumi.Input<boolean>;
+    commitCommitterNameCheck?: pulumi.Input<boolean | undefined>;
     /**
      * No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
      */
-    commitMessageNegativeRegex?: pulumi.Input<string>;
+    commitMessageNegativeRegex?: pulumi.Input<string | undefined>;
     /**
      * All commit messages must match this regex, e.g. `Fixed \d+\..*`.
      */
-    commitMessageRegex?: pulumi.Input<string>;
+    commitMessageRegex?: pulumi.Input<string | undefined>;
     /**
      * Deny deleting a tag.
      */
-    denyDeleteTag?: pulumi.Input<boolean>;
+    denyDeleteTag?: pulumi.Input<boolean | undefined>;
     /**
      * All committed filenames must not match this regex, e.g. `(jar|exe)$`.
      */
-    fileNameRegex?: pulumi.Input<string>;
+    fileNameRegex?: pulumi.Input<string | undefined>;
     /**
      * Maximum file size (MB).
      */
-    maxFileSize?: pulumi.Input<number>;
+    maxFileSize?: pulumi.Input<number | undefined>;
     /**
      * Restrict commits by author (email) to existing GitLab users.
      */
-    memberCheck?: pulumi.Input<boolean>;
+    memberCheck?: pulumi.Input<boolean | undefined>;
     /**
      * GitLab will reject any files that are likely to contain secrets.
      */
-    preventSecrets?: pulumi.Input<boolean>;
+    preventSecrets?: pulumi.Input<boolean | undefined>;
     /**
      * Reject commit when it's not DCO certified.
      */
-    rejectNonDcoCommits?: pulumi.Input<boolean>;
+    rejectNonDcoCommits?: pulumi.Input<boolean | undefined>;
     /**
      * Reject commit when it's not signed through GPG.
      */
-    rejectUnsignedCommits?: pulumi.Input<boolean>;
+    rejectUnsignedCommits?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ProjectTagCommit {
     /**
      * The email of the author.
      */
-    authorEmail?: pulumi.Input<string>;
+    authorEmail?: pulumi.Input<string | undefined>;
     /**
      * The name of the author.
      */
-    authorName?: pulumi.Input<string>;
+    authorName?: pulumi.Input<string | undefined>;
     /**
      * The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
      */
-    authoredDate?: pulumi.Input<string>;
+    authoredDate?: pulumi.Input<string | undefined>;
     /**
      * The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
      */
-    committedDate?: pulumi.Input<string>;
+    committedDate?: pulumi.Input<string | undefined>;
     /**
      * The email of the user that committed.
      */
-    committerEmail?: pulumi.Input<string>;
+    committerEmail?: pulumi.Input<string | undefined>;
     /**
      * The name of the user that committed.
      */
-    committerName?: pulumi.Input<string>;
+    committerName?: pulumi.Input<string | undefined>;
     /**
      * The unique id assigned to the commit by Gitlab.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The commit message
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * The id of the parents of the commit
      */
-    parentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    parentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The short id assigned to the commit by Gitlab.
      */
-    shortId?: pulumi.Input<string>;
+    shortId?: pulumi.Input<string | undefined>;
     /**
      * The title of the commit
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 export interface ProjectTagRelease {
     /**
      * The description of release.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the tag.
      */
-    tagName?: pulumi.Input<string>;
+    tagName?: pulumi.Input<string | undefined>;
 }
 
 export interface ReleaseAssets {
     /**
      * The total count of assets in this release.
      */
-    count?: pulumi.Input<number>;
+    count?: pulumi.Input<number | undefined>;
 }
 
 export interface ReleaseAuthor {
     /**
      * The url of the author's' user avatar.
      */
-    avatarUrl?: pulumi.Input<string>;
+    avatarUrl?: pulumi.Input<string | undefined>;
     /**
      * The ID of the author's user.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The name of the author.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The state of the author's user.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The username of the author.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * The url to the author's user profile.
      */
-    webUrl?: pulumi.Input<string>;
+    webUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface ReleaseCommit {
     /**
      * The email address of the commit author.
      */
-    authorEmail?: pulumi.Input<string>;
+    authorEmail?: pulumi.Input<string | undefined>;
     /**
      * The name of the commit author.
      */
-    authorName?: pulumi.Input<string>;
+    authorName?: pulumi.Input<string | undefined>;
     /**
      * The date and time the commit was authored. In ISO 8601 format (2019-03-15T08:00:00Z).
      */
-    authoredDate?: pulumi.Input<string>;
+    authoredDate?: pulumi.Input<string | undefined>;
     /**
      * The date and time the commit was made. In ISO 8601 format (2019-03-15T08:00:00Z).
      */
-    committedDate?: pulumi.Input<string>;
+    committedDate?: pulumi.Input<string | undefined>;
     /**
      * The email address of the committer.
      */
-    committerEmail?: pulumi.Input<string>;
+    committerEmail?: pulumi.Input<string | undefined>;
     /**
      * The name of the committer.
      */
-    committerName?: pulumi.Input<string>;
+    committerName?: pulumi.Input<string | undefined>;
     /**
      * The date and time the commit was created. In ISO 8601 format (2019-03-15T08:00:00Z).
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The git commit full SHA
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The commit message.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * The full SHA of any parent commits.
      */
-    parentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    parentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The git commit short SHA.
      */
-    shortId?: pulumi.Input<string>;
+    shortId?: pulumi.Input<string | undefined>;
     /**
      * The title of the commit.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 export interface ReleaseLinks {
     /**
      * URL of the release's closed issues.
      */
-    closedIssuesUrl?: pulumi.Input<string>;
+    closedIssuesUrl?: pulumi.Input<string | undefined>;
     /**
      * URL of the release's closed merge requests.
      */
-    closedMergeRequestsUrl?: pulumi.Input<string>;
+    closedMergeRequestsUrl?: pulumi.Input<string | undefined>;
     /**
      * URL of the release's edit page.
      */
-    editUrl?: pulumi.Input<string>;
+    editUrl?: pulumi.Input<string | undefined>;
     /**
      * URL of the release's merged merge requests.
      */
-    mergedMergeRequestsUrl?: pulumi.Input<string>;
+    mergedMergeRequestsUrl?: pulumi.Input<string | undefined>;
     /**
      * URL of the release's open issues.
      */
-    openedIssuesUrl?: pulumi.Input<string>;
+    openedIssuesUrl?: pulumi.Input<string | undefined>;
     /**
      * URL of the release's open merge requests.
      */
-    openedMergeRequestsUrl?: pulumi.Input<string>;
+    openedMergeRequestsUrl?: pulumi.Input<string | undefined>;
     /**
      * URL of the release.
      */
-    self?: pulumi.Input<string>;
+    self?: pulumi.Input<string | undefined>;
 }
 
 export interface TagProtectionAllowedToCreate {
     /**
      * Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Readable description of access level.
      */
-    accessLevelDescription?: pulumi.Input<string>;
+    accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`.
      */
-    deployKeyId?: pulumi.Input<number>;
+    deployKeyId?: pulumi.Input<number | undefined>;
     /**
      * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 export interface ValueStreamAnalyticsStage {
     /**
      * Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.
      */
-    custom?: pulumi.Input<boolean>;
+    custom?: pulumi.Input<boolean | undefined>;
     /**
      * End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
      */
-    endEventIdentifier?: pulumi.Input<string>;
+    endEventIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Label ID associated with the end event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
      */
-    endEventLabelId?: pulumi.Input<string>;
+    endEventLabelId?: pulumi.Input<string | undefined>;
     /**
      * Boolean whether the stage is hidden, GitLab provided default stages are hidden by default.
      */
-    hidden?: pulumi.Input<boolean>;
+    hidden?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the value stream stage.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the value stream stage.
      */
@@ -1685,9 +1685,9 @@ export interface ValueStreamAnalyticsStage {
     /**
      * Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
      */
-    startEventIdentifier?: pulumi.Input<string>;
+    startEventIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Label ID associated with the start event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
      */
-    startEventLabelId?: pulumi.Input<string>;
+    startEventLabelId?: pulumi.Input<string | undefined>;
 }

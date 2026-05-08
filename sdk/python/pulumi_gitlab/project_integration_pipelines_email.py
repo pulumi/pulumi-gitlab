@@ -21,8 +21,8 @@ class ProjectIntegrationPipelinesEmailArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  recipients: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None):
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectIntegrationPipelinesEmail resource.
 
@@ -64,36 +64,36 @@ class ProjectIntegrationPipelinesEmailArgs:
 
     @_builtins.property
     @pulumi.getter(name="branchesToBeNotified")
-    def branches_to_be_notified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branches_to_be_notified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Default is `default`.
         """
         return pulumi.get(self, "branches_to_be_notified")
 
     @branches_to_be_notified.setter
-    def branches_to_be_notified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branches_to_be_notified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branches_to_be_notified", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyOnlyBrokenPipelines")
-    def notify_only_broken_pipelines(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_only_broken_pipelines(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Notify only broken pipelines. Default is true.
         """
         return pulumi.get(self, "notify_only_broken_pipelines")
 
     @notify_only_broken_pipelines.setter
-    def notify_only_broken_pipelines(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_only_broken_pipelines(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_only_broken_pipelines", value)
 
 
 @pulumi.input_type
 class _ProjectIntegrationPipelinesEmailState:
     def __init__(__self__, *,
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 recipients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ProjectIntegrationPipelinesEmail resources.
 
@@ -113,50 +113,50 @@ class _ProjectIntegrationPipelinesEmailState:
 
     @_builtins.property
     @pulumi.getter(name="branchesToBeNotified")
-    def branches_to_be_notified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branches_to_be_notified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Default is `default`.
         """
         return pulumi.get(self, "branches_to_be_notified")
 
     @branches_to_be_notified.setter
-    def branches_to_be_notified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branches_to_be_notified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branches_to_be_notified", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyOnlyBrokenPipelines")
-    def notify_only_broken_pipelines(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_only_broken_pipelines(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Notify only broken pipelines. Default is true.
         """
         return pulumi.get(self, "notify_only_broken_pipelines")
 
     @notify_only_broken_pipelines.setter
-    def notify_only_broken_pipelines(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_only_broken_pipelines(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_only_broken_pipelines", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the project you want to activate integration on.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def recipients(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def recipients(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Email addresses where notifications are sent.
         """
         return pulumi.get(self, "recipients")
 
     @recipients.setter
-    def recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def recipients(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "recipients", value)
 
 
@@ -166,10 +166,10 @@ class ProjectIntegrationPipelinesEmail(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 recipients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         The `ProjectIntegrationPipelinesEmail` resource manages the lifecycle of a project integration with the Pipeline Emails Service.
@@ -269,10 +269,10 @@ class ProjectIntegrationPipelinesEmail(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 recipients: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 recipients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -300,10 +300,10 @@ class ProjectIntegrationPipelinesEmail(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-            notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            recipients: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ProjectIntegrationPipelinesEmail':
+            branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            recipients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ProjectIntegrationPipelinesEmail':
         """
         Get an existing ProjectIntegrationPipelinesEmail resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

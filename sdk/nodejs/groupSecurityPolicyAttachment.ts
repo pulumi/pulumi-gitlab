@@ -164,19 +164,19 @@ export interface GroupSecurityPolicyAttachmentState {
     /**
      * The ID or Full Path of the group which will have the security policy project assigned to it.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * The GraphQL ID of the group to which the security policty project will be attached.
      */
-    groupGraphqlId?: pulumi.Input<string>;
+    groupGraphqlId?: pulumi.Input<string | undefined>;
     /**
      * The ID or Full Path of the security policy project.
      */
-    policyProject?: pulumi.Input<string>;
+    policyProject?: pulumi.Input<string | undefined>;
     /**
      * The GraphQL ID of the security policy project.
      */
-    policyProjectGraphqlId?: pulumi.Input<string>;
+    policyProjectGraphqlId?: pulumi.Input<string | undefined>;
 }
 
 /**

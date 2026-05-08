@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.User("example", new()
+    ///     var example = new GitLab.User("example", new()
     ///     {
     ///         Name = "Example Foo",
     ///         Username = "example",
@@ -37,7 +37,7 @@ namespace Pulumi.GitLab
     ///         IsExternal = true,
     ///     });
     /// 
-    ///     var exampleUserIdentity = new GitLab.Index.UserIdentity("example", new()
+    ///     var exampleUserIdentity = new GitLab.UserIdentity("example", new()
     ///     {
     ///         UserId = example.Id,
     ///         ExternalProvider = "google",

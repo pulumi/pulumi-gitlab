@@ -58,10 +58,10 @@ class GroupSecurityPolicyAttachmentArgs:
 @pulumi.input_type
 class _GroupSecurityPolicyAttachmentState:
     def __init__(__self__, *,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_graphql_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_project_graphql_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_graphql_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_project_graphql_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupSecurityPolicyAttachment resources.
 
@@ -81,50 +81,50 @@ class _GroupSecurityPolicyAttachmentState:
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or Full Path of the group which will have the security policy project assigned to it.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter(name="groupGraphqlId")
-    def group_graphql_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_graphql_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GraphQL ID of the group to which the security policty project will be attached.
         """
         return pulumi.get(self, "group_graphql_id")
 
     @group_graphql_id.setter
-    def group_graphql_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_graphql_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_graphql_id", value)
 
     @_builtins.property
     @pulumi.getter(name="policyProject")
-    def policy_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or Full Path of the security policy project.
         """
         return pulumi.get(self, "policy_project")
 
     @policy_project.setter
-    def policy_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_project", value)
 
     @_builtins.property
     @pulumi.getter(name="policyProjectGraphqlId")
-    def policy_project_graphql_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_project_graphql_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GraphQL ID of the security policy project.
         """
         return pulumi.get(self, "policy_project_graphql_id")
 
     @policy_project_graphql_id.setter
-    def policy_project_graphql_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_project_graphql_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_project_graphql_id", value)
 
 
@@ -134,8 +134,8 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_project: Optional[pulumi.Input[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `GroupSecurityPolicyAttachment` resource allows to attach a security policy project to a group.
@@ -305,8 +305,8 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_project: Optional[pulumi.Input[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -334,10 +334,10 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group: Optional[pulumi.Input[_builtins.str]] = None,
-            group_graphql_id: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_project: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_project_graphql_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'GroupSecurityPolicyAttachment':
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            group_graphql_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_project: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_project_graphql_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupSecurityPolicyAttachment':
         """
         Get an existing GroupSecurityPolicyAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

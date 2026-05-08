@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var bar = new GitLab.Index.InstanceCluster("bar", new()
+    ///     var bar = new GitLab.InstanceCluster("bar", new()
     ///     {
     ///         Name = "bar-cluster",
     ///         Domain = "example.com",

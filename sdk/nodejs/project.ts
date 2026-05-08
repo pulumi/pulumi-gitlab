@@ -822,499 +822,499 @@ export interface ProjectState {
     /**
      * Set to true if you want to treat skipped pipelines as if they finished with success.
      */
-    allowMergeOnSkippedPipeline?: pulumi.Input<boolean>;
+    allowMergeOnSkippedPipeline?: pulumi.Input<boolean | undefined>;
     /**
      * Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
      */
-    allowPipelineTriggerApproveDeployment?: pulumi.Input<boolean>;
+    allowPipelineTriggerApproveDeployment?: pulumi.Input<boolean | undefined>;
     /**
      * Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    analyticsAccessLevel?: pulumi.Input<string>;
+    analyticsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
      *
      * @deprecated Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
      */
-    approvalsBeforeMerge?: pulumi.Input<number>;
+    approvalsBeforeMerge?: pulumi.Input<number | undefined>;
     /**
      * Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
      */
-    archiveOnDestroy?: pulumi.Input<boolean>;
+    archiveOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
      */
-    archived?: pulumi.Input<boolean>;
+    archived?: pulumi.Input<boolean | undefined>;
     /**
      * Auto-cancel pending pipelines. This isn't a boolean, but enabled/disabled.
      */
-    autoCancelPendingPipelines?: pulumi.Input<string>;
+    autoCancelPendingPipelines?: pulumi.Input<string | undefined>;
     /**
      * Auto Deploy strategy. Valid values are `continuous`, `manual`, `timedIncremental`.
      */
-    autoDevopsDeployStrategy?: pulumi.Input<string>;
+    autoDevopsDeployStrategy?: pulumi.Input<string | undefined>;
     /**
      * Enable Auto DevOps for this project.
      */
-    autoDevopsEnabled?: pulumi.Input<boolean>;
+    autoDevopsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
      */
-    autoDuoCodeReviewEnabled?: pulumi.Input<boolean>;
+    autoDuoCodeReviewEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set whether auto-closing referenced issues on default branch.
      */
-    autocloseReferencedIssues?: pulumi.Input<boolean>;
+    autocloseReferencedIssues?: pulumi.Input<boolean | undefined>;
     /**
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      */
-    avatar?: pulumi.Input<string>;
+    avatar?: pulumi.Input<string | undefined>;
     /**
      * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
-    avatarHash?: pulumi.Input<string>;
+    avatarHash?: pulumi.Input<string | undefined>;
     /**
      * The URL of the avatar image.
      */
-    avatarUrl?: pulumi.Input<string>;
+    avatarUrl?: pulumi.Input<string | undefined>;
     /**
      * Branches to fork (empty for all branches).
      */
-    branches?: pulumi.Input<string>;
+    branches?: pulumi.Input<string | undefined>;
     /**
      * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      */
-    buildGitStrategy?: pulumi.Input<string>;
+    buildGitStrategy?: pulumi.Input<string | undefined>;
     /**
      * The maximum amount of time, in seconds, that a job can run.
      */
-    buildTimeout?: pulumi.Input<number>;
+    buildTimeout?: pulumi.Input<number | undefined>;
     /**
      * Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    buildsAccessLevel?: pulumi.Input<string>;
+    buildsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Custom Path to CI config file.
      */
-    ciConfigPath?: pulumi.Input<string>;
+    ciConfigPath?: pulumi.Input<string | undefined>;
     /**
      * Default number of revisions for shallow cloning.
      */
-    ciDefaultGitDepth?: pulumi.Input<number>;
+    ciDefaultGitDepth?: pulumi.Input<number | undefined>;
     /**
      * Pipelines older than the configured time are deleted.
      */
-    ciDeletePipelinesInSeconds?: pulumi.Input<number>;
+    ciDeletePipelinesInSeconds?: pulumi.Input<number | undefined>;
     /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
-    ciForwardDeploymentEnabled?: pulumi.Input<boolean>;
+    ciForwardDeploymentEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Allow job retries even if the deployment job is outdated.
      */
-    ciForwardDeploymentRollbackAllowed?: pulumi.Input<boolean>;
+    ciForwardDeploymentRollbackAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
      */
-    ciIdTokenSubClaimComponents?: pulumi.Input<pulumi.Input<string>[]>;
+    ciIdTokenSubClaimComponents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      */
-    ciPipelineVariablesMinimumOverrideRole?: pulumi.Input<string>;
+    ciPipelineVariablesMinimumOverrideRole?: pulumi.Input<string | undefined>;
     /**
      * Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
      */
-    ciPushRepositoryForJobTokenAllowed?: pulumi.Input<boolean>;
+    ciPushRepositoryForJobTokenAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */
-    ciRestrictPipelineCancellationRole?: pulumi.Input<string>;
+    ciRestrictPipelineCancellationRole?: pulumi.Input<string | undefined>;
     /**
      * Use separate caches for protected branches.
      */
-    ciSeparatedCaches?: pulumi.Input<boolean>;
+    ciSeparatedCaches?: pulumi.Input<boolean | undefined>;
     /**
      * Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
      */
-    containerExpirationPolicy?: pulumi.Input<inputs.ProjectContainerExpirationPolicy>;
+    containerExpirationPolicy?: pulumi.Input<inputs.ProjectContainerExpirationPolicy | undefined>;
     /**
      * Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
      */
-    containerRegistryAccessLevel?: pulumi.Input<string>;
+    containerRegistryAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      *
      * @deprecated Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      */
-    containerRegistryEnabled?: pulumi.Input<boolean>;
+    containerRegistryEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The default branch for the project.
      */
-    defaultBranch?: pulumi.Input<string>;
+    defaultBranch?: pulumi.Input<string | undefined>;
     /**
      * A description of the project.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable email notifications.
      */
-    emailsEnabled?: pulumi.Input<boolean>;
+    emailsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the project is empty.
      */
-    emptyRepo?: pulumi.Input<boolean>;
+    emptyRepo?: pulumi.Input<boolean | undefined>;
     /**
      * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    environmentsAccessLevel?: pulumi.Input<string>;
+    environmentsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * The classification label for the project.
      */
-    externalAuthorizationClassificationLabel?: pulumi.Input<string>;
+    externalAuthorizationClassificationLabel?: pulumi.Input<string | undefined>;
     /**
      * Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    featureFlagsAccessLevel?: pulumi.Input<string>;
+    featureFlagsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
      */
-    forkedFromProjectId?: pulumi.Input<number>;
+    forkedFromProjectId?: pulumi.Input<number | undefined>;
     /**
      * Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    forkingAccessLevel?: pulumi.Input<string>;
+    forkingAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable group runners for this project.
      */
-    groupRunnersEnabled?: pulumi.Input<boolean>;
+    groupRunnersEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
      */
-    groupWithProjectTemplatesId?: pulumi.Input<number>;
+    groupWithProjectTemplatesId?: pulumi.Input<number | undefined>;
     /**
      * URL that can be provided to `git clone` to clone the
      */
-    httpUrlToRepo?: pulumi.Input<string>;
+    httpUrlToRepo?: pulumi.Input<string | undefined>;
     /**
      * Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      */
-    importUrl?: pulumi.Input<string>;
+    importUrl?: pulumi.Input<string | undefined>;
     /**
      * The password for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
      */
-    importUrlPassword?: pulumi.Input<string>;
+    importUrlPassword?: pulumi.Input<string | undefined>;
     /**
      * The username for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
      */
-    importUrlUsername?: pulumi.Input<string>;
+    importUrlUsername?: pulumi.Input<string | undefined>;
     /**
      * Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    infrastructureAccessLevel?: pulumi.Input<string>;
+    infrastructureAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
      */
-    initializeWithReadme?: pulumi.Input<boolean>;
+    initializeWithReadme?: pulumi.Input<boolean | undefined>;
     /**
      * Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    issuesAccessLevel?: pulumi.Input<string>;
+    issuesAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
      *
      * @deprecated Use `issuesAccessLevel` instead. To be removed in 19.0.
      */
-    issuesEnabled?: pulumi.Input<boolean>;
+    issuesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the template for new issues in the project.
      */
-    issuesTemplate?: pulumi.Input<string>;
+    issuesTemplate?: pulumi.Input<string | undefined>;
     /**
      * Disable or enable the ability to keep the latest artifact for this project.
      */
-    keepLatestArtifact?: pulumi.Input<boolean>;
+    keepLatestArtifact?: pulumi.Input<boolean | undefined>;
     /**
      * Enable LFS for the project.
      */
-    lfsEnabled?: pulumi.Input<boolean>;
+    lfsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum file size in megabytes for individual job artifacts.
      */
-    maxArtifactsSize?: pulumi.Input<number>;
+    maxArtifactsSize?: pulumi.Input<number | undefined>;
     /**
      * Template used to create merge commit message in merge requests.
      */
-    mergeCommitTemplate?: pulumi.Input<string>;
+    mergeCommitTemplate?: pulumi.Input<string | undefined>;
     /**
      * Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
      */
-    mergeMethod?: pulumi.Input<string>;
+    mergeMethod?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable merge pipelines.
      */
-    mergePipelinesEnabled?: pulumi.Input<boolean>;
+    mergePipelinesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
      */
-    mergeRequestTitleRegex?: pulumi.Input<string>;
+    mergeRequestTitleRegex?: pulumi.Input<string | undefined>;
     /**
      * Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
      */
-    mergeRequestTitleRegexDescription?: pulumi.Input<string>;
+    mergeRequestTitleRegexDescription?: pulumi.Input<string | undefined>;
     /**
      * Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    mergeRequestsAccessLevel?: pulumi.Input<string>;
+    mergeRequestsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
      *
      * @deprecated Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
      */
-    mergeRequestsEnabled?: pulumi.Input<boolean>;
+    mergeRequestsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the template for new merge requests in the project.
      */
-    mergeRequestsTemplate?: pulumi.Input<string>;
+    mergeRequestsTemplate?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
      */
-    mergeTrainsEnabled?: pulumi.Input<boolean>;
+    mergeTrainsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
      */
-    mergeTrainsSkipTrainAllowed?: pulumi.Input<boolean>;
+    mergeTrainsSkipTrainAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
      *
      * @deprecated To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
      */
-    mirror?: pulumi.Input<boolean>;
+    mirror?: pulumi.Input<boolean | undefined>;
     /**
      * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
      *
      * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
      */
-    mirrorOverwritesDivergedBranches?: pulumi.Input<boolean>;
+    mirrorOverwritesDivergedBranches?: pulumi.Input<boolean | undefined>;
     /**
      * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
      *
      * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
      */
-    mirrorTriggerBuilds?: pulumi.Input<boolean>;
+    mirrorTriggerBuilds?: pulumi.Input<boolean | undefined>;
     /**
      * Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
      */
-    modelExperimentsAccessLevel?: pulumi.Input<string>;
+    modelExperimentsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
      */
-    modelRegistryAccessLevel?: pulumi.Input<string>;
+    modelRegistryAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    monitorAccessLevel?: pulumi.Input<string>;
+    monitorAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * For forked projects, target merge requests to this project. If false, the target will be the upstream project.
      */
-    mrDefaultTargetSelf?: pulumi.Input<boolean>;
+    mrDefaultTargetSelf?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the project.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace (group or user) of the project. Defaults to your user.
      */
-    namespaceId?: pulumi.Input<number>;
+    namespaceId?: pulumi.Input<number | undefined>;
     /**
      * Set to true if you want allow merges only if all discussions are resolved.
      */
-    onlyAllowMergeIfAllDiscussionsAreResolved?: pulumi.Input<boolean>;
+    onlyAllowMergeIfAllDiscussionsAreResolved?: pulumi.Input<boolean | undefined>;
     /**
      * Set to true if you want allow merges only if a pipeline succeeds.
      */
-    onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
+    onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean | undefined>;
     /**
      * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
      *
      * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
      */
-    onlyMirrorProtectedBranches?: pulumi.Input<boolean>;
+    onlyMirrorProtectedBranches?: pulumi.Input<boolean | undefined>;
     /**
      * Enable packages repository for the project.
      */
-    packagesEnabled?: pulumi.Input<boolean>;
+    packagesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
      */
-    pagesAccessLevel?: pulumi.Input<string>;
+    pagesAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * The path of the repository.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * The path of the repository with namespace.
      */
-    pathWithNamespace?: pulumi.Input<string>;
+    pathWithNamespace?: pulumi.Input<string | undefined>;
     /**
      * Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
      */
-    permanentlyDeleteOnDestroy?: pulumi.Input<boolean>;
+    permanentlyDeleteOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
      *
      * @deprecated Use `buildsAccessLevel` instead. To be removed in 19.0.
      */
-    pipelinesEnabled?: pulumi.Input<boolean>;
+    pipelinesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      */
-    preReceiveSecretDetectionEnabled?: pulumi.Input<boolean>;
+    preReceiveSecretDetectionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
      */
-    preventMergeWithoutJiraIssue?: pulumi.Input<boolean>;
+    preventMergeWithoutJiraIssue?: pulumi.Input<boolean | undefined>;
     /**
      * Show link to create/view merge request when pushing from the command line
      */
-    printingMergeRequestLinkEnabled?: pulumi.Input<boolean>;
+    printingMergeRequestLinkEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * If true, jobs can be viewed by non-project members.
      *
      * @deprecated The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
      */
-    publicBuilds?: pulumi.Input<boolean>;
+    publicBuilds?: pulumi.Input<boolean | undefined>;
     /**
      * If true, jobs can be viewed by non-project members.
      */
-    publicJobs?: pulumi.Input<boolean>;
+    publicJobs?: pulumi.Input<boolean | undefined>;
     /**
      * Push rules for the project.
      */
-    pushRules?: pulumi.Input<inputs.ProjectPushRules>;
+    pushRules?: pulumi.Input<inputs.ProjectPushRules | undefined>;
     /**
      * Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    releasesAccessLevel?: pulumi.Input<string>;
+    releasesAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable `Delete source branch` option by default for all new merge requests.
      */
-    removeSourceBranchAfterMerge?: pulumi.Input<boolean>;
+    removeSourceBranchAfterMerge?: pulumi.Input<boolean | undefined>;
     /**
      * Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    repositoryAccessLevel?: pulumi.Input<string>;
+    repositoryAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Which storage shard the repository is on. (administrator only)
      */
-    repositoryStorage?: pulumi.Input<string>;
+    repositoryStorage?: pulumi.Input<string | undefined>;
     /**
      * Allow users to request member access.
      */
-    requestAccessEnabled?: pulumi.Input<boolean>;
+    requestAccessEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    requirementsAccessLevel?: pulumi.Input<string>;
+    requirementsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Automatically resolve merge request diffs discussions on lines changed with a push.
      */
-    resolveOutdatedDiffDiscussions?: pulumi.Input<boolean>;
+    resolveOutdatedDiffDiscussions?: pulumi.Input<boolean | undefined>;
     /**
      * The default resource group process mode for the project.
      */
-    resourceGroupDefaultProcessMode?: pulumi.Input<string>;
+    resourceGroupDefaultProcessMode?: pulumi.Input<string | undefined>;
     /**
      * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
      *
      * @deprecated Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
      */
-    restrictUserDefinedVariables?: pulumi.Input<boolean>;
+    restrictUserDefinedVariables?: pulumi.Input<boolean | undefined>;
     /**
      * Registration token to use during runner setup.
      */
-    runnersToken?: pulumi.Input<string>;
+    runnersToken?: pulumi.Input<string | undefined>;
     /**
      * Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    securityAndComplianceAccessLevel?: pulumi.Input<string>;
+    securityAndComplianceAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable shared runners for this project.
      */
-    sharedRunnersEnabled?: pulumi.Input<boolean>;
+    sharedRunnersEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * If `true`, the default behavior to wait for the default branch protection to be created is skipped.
      * This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
      * There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
      * This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
      */
-    skipWaitForDefaultBranchProtection?: pulumi.Input<boolean>;
+    skipWaitForDefaultBranchProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    snippetsAccessLevel?: pulumi.Input<string>;
+    snippetsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
      *
      * @deprecated Use `snippetsAccessLevel` instead. To be removed in 19.0.
      */
-    snippetsEnabled?: pulumi.Input<boolean>;
+    snippetsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Template used to create squash commit message in merge requests.
      */
-    squashCommitTemplate?: pulumi.Input<string>;
+    squashCommitTemplate?: pulumi.Input<string | undefined>;
     /**
      * Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `defaultOn` (Encourage), or `defaultOff` (Allow). The default value is `defaultOff` (Allow).
      */
-    squashOption?: pulumi.Input<string>;
+    squashOption?: pulumi.Input<string | undefined>;
     /**
      * URL that can be provided to `git clone` to clone the
      */
-    sshUrlToRepo?: pulumi.Input<string>;
+    sshUrlToRepo?: pulumi.Input<string | undefined>;
     /**
      * The commit message used to apply merge request suggestions.
      */
-    suggestionCommitMessage?: pulumi.Input<string>;
+    suggestionCommitMessage?: pulumi.Input<string | undefined>;
     /**
      * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
      *
      * @deprecated Use `topics` instead. To be removed in 19.0.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
      */
-    templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string | undefined>;
     /**
      * When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`. See `gitlab.GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
      */
-    templateProjectId?: pulumi.Input<number>;
+    templateProjectId?: pulumi.Input<number | undefined>;
     /**
      * The list of topics for the project.
      */
-    topics?: pulumi.Input<pulumi.Input<string>[]>;
+    topics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
      * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
      */
-    useCustomTemplate?: pulumi.Input<boolean>;
+    useCustomTemplate?: pulumi.Input<boolean | undefined>;
     /**
      * Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
      */
-    visibilityLevel?: pulumi.Input<string>;
+    visibilityLevel?: pulumi.Input<string | undefined>;
     /**
      * URL that can be used to find the project in a browser.
      */
-    webUrl?: pulumi.Input<string>;
+    webUrl?: pulumi.Input<string | undefined>;
     /**
      * Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    wikiAccessLevel?: pulumi.Input<string>;
+    wikiAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
      *
      * @deprecated Use `wikiAccessLevel` instead. To be removed in 19.0.
      */
-    wikiEnabled?: pulumi.Input<boolean>;
+    wikiEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1324,469 +1324,469 @@ export interface ProjectArgs {
     /**
      * Set to true if you want to treat skipped pipelines as if they finished with success.
      */
-    allowMergeOnSkippedPipeline?: pulumi.Input<boolean>;
+    allowMergeOnSkippedPipeline?: pulumi.Input<boolean | undefined>;
     /**
      * Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
      */
-    allowPipelineTriggerApproveDeployment?: pulumi.Input<boolean>;
+    allowPipelineTriggerApproveDeployment?: pulumi.Input<boolean | undefined>;
     /**
      * Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    analyticsAccessLevel?: pulumi.Input<string>;
+    analyticsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
      *
      * @deprecated Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
      */
-    approvalsBeforeMerge?: pulumi.Input<number>;
+    approvalsBeforeMerge?: pulumi.Input<number | undefined>;
     /**
      * Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
      */
-    archiveOnDestroy?: pulumi.Input<boolean>;
+    archiveOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
      */
-    archived?: pulumi.Input<boolean>;
+    archived?: pulumi.Input<boolean | undefined>;
     /**
      * Auto-cancel pending pipelines. This isn't a boolean, but enabled/disabled.
      */
-    autoCancelPendingPipelines?: pulumi.Input<string>;
+    autoCancelPendingPipelines?: pulumi.Input<string | undefined>;
     /**
      * Auto Deploy strategy. Valid values are `continuous`, `manual`, `timedIncremental`.
      */
-    autoDevopsDeployStrategy?: pulumi.Input<string>;
+    autoDevopsDeployStrategy?: pulumi.Input<string | undefined>;
     /**
      * Enable Auto DevOps for this project.
      */
-    autoDevopsEnabled?: pulumi.Input<boolean>;
+    autoDevopsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
      */
-    autoDuoCodeReviewEnabled?: pulumi.Input<boolean>;
+    autoDuoCodeReviewEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set whether auto-closing referenced issues on default branch.
      */
-    autocloseReferencedIssues?: pulumi.Input<boolean>;
+    autocloseReferencedIssues?: pulumi.Input<boolean | undefined>;
     /**
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      */
-    avatar?: pulumi.Input<string>;
+    avatar?: pulumi.Input<string | undefined>;
     /**
      * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
-    avatarHash?: pulumi.Input<string>;
+    avatarHash?: pulumi.Input<string | undefined>;
     /**
      * Branches to fork (empty for all branches).
      */
-    branches?: pulumi.Input<string>;
+    branches?: pulumi.Input<string | undefined>;
     /**
      * The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
      */
-    buildGitStrategy?: pulumi.Input<string>;
+    buildGitStrategy?: pulumi.Input<string | undefined>;
     /**
      * The maximum amount of time, in seconds, that a job can run.
      */
-    buildTimeout?: pulumi.Input<number>;
+    buildTimeout?: pulumi.Input<number | undefined>;
     /**
      * Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    buildsAccessLevel?: pulumi.Input<string>;
+    buildsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Custom Path to CI config file.
      */
-    ciConfigPath?: pulumi.Input<string>;
+    ciConfigPath?: pulumi.Input<string | undefined>;
     /**
      * Default number of revisions for shallow cloning.
      */
-    ciDefaultGitDepth?: pulumi.Input<number>;
+    ciDefaultGitDepth?: pulumi.Input<number | undefined>;
     /**
      * Pipelines older than the configured time are deleted.
      */
-    ciDeletePipelinesInSeconds?: pulumi.Input<number>;
+    ciDeletePipelinesInSeconds?: pulumi.Input<number | undefined>;
     /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
-    ciForwardDeploymentEnabled?: pulumi.Input<boolean>;
+    ciForwardDeploymentEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Allow job retries even if the deployment job is outdated.
      */
-    ciForwardDeploymentRollbackAllowed?: pulumi.Input<boolean>;
+    ciForwardDeploymentRollbackAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
      */
-    ciIdTokenSubClaimComponents?: pulumi.Input<pulumi.Input<string>[]>;
+    ciIdTokenSubClaimComponents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
      */
-    ciPipelineVariablesMinimumOverrideRole?: pulumi.Input<string>;
+    ciPipelineVariablesMinimumOverrideRole?: pulumi.Input<string | undefined>;
     /**
      * Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
      */
-    ciPushRepositoryForJobTokenAllowed?: pulumi.Input<boolean>;
+    ciPushRepositoryForJobTokenAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
      */
-    ciRestrictPipelineCancellationRole?: pulumi.Input<string>;
+    ciRestrictPipelineCancellationRole?: pulumi.Input<string | undefined>;
     /**
      * Use separate caches for protected branches.
      */
-    ciSeparatedCaches?: pulumi.Input<boolean>;
+    ciSeparatedCaches?: pulumi.Input<boolean | undefined>;
     /**
      * Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
      */
-    containerExpirationPolicy?: pulumi.Input<inputs.ProjectContainerExpirationPolicy>;
+    containerExpirationPolicy?: pulumi.Input<inputs.ProjectContainerExpirationPolicy | undefined>;
     /**
      * Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
      */
-    containerRegistryAccessLevel?: pulumi.Input<string>;
+    containerRegistryAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      *
      * @deprecated Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
      */
-    containerRegistryEnabled?: pulumi.Input<boolean>;
+    containerRegistryEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The default branch for the project.
      */
-    defaultBranch?: pulumi.Input<string>;
+    defaultBranch?: pulumi.Input<string | undefined>;
     /**
      * A description of the project.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable email notifications.
      */
-    emailsEnabled?: pulumi.Input<boolean>;
+    emailsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    environmentsAccessLevel?: pulumi.Input<string>;
+    environmentsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * The classification label for the project.
      */
-    externalAuthorizationClassificationLabel?: pulumi.Input<string>;
+    externalAuthorizationClassificationLabel?: pulumi.Input<string | undefined>;
     /**
      * Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    featureFlagsAccessLevel?: pulumi.Input<string>;
+    featureFlagsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
      */
-    forkedFromProjectId?: pulumi.Input<number>;
+    forkedFromProjectId?: pulumi.Input<number | undefined>;
     /**
      * Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    forkingAccessLevel?: pulumi.Input<string>;
+    forkingAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable group runners for this project.
      */
-    groupRunnersEnabled?: pulumi.Input<boolean>;
+    groupRunnersEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
      */
-    groupWithProjectTemplatesId?: pulumi.Input<number>;
+    groupWithProjectTemplatesId?: pulumi.Input<number | undefined>;
     /**
      * Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      */
-    importUrl?: pulumi.Input<string>;
+    importUrl?: pulumi.Input<string | undefined>;
     /**
      * The password for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
      */
-    importUrlPassword?: pulumi.Input<string>;
+    importUrlPassword?: pulumi.Input<string | undefined>;
     /**
      * The username for the `importUrl`. The value of this field is used to construct a valid `importUrl` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
      */
-    importUrlUsername?: pulumi.Input<string>;
+    importUrlUsername?: pulumi.Input<string | undefined>;
     /**
      * Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    infrastructureAccessLevel?: pulumi.Input<string>;
+    infrastructureAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
      */
-    initializeWithReadme?: pulumi.Input<boolean>;
+    initializeWithReadme?: pulumi.Input<boolean | undefined>;
     /**
      * Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    issuesAccessLevel?: pulumi.Input<string>;
+    issuesAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
      *
      * @deprecated Use `issuesAccessLevel` instead. To be removed in 19.0.
      */
-    issuesEnabled?: pulumi.Input<boolean>;
+    issuesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the template for new issues in the project.
      */
-    issuesTemplate?: pulumi.Input<string>;
+    issuesTemplate?: pulumi.Input<string | undefined>;
     /**
      * Disable or enable the ability to keep the latest artifact for this project.
      */
-    keepLatestArtifact?: pulumi.Input<boolean>;
+    keepLatestArtifact?: pulumi.Input<boolean | undefined>;
     /**
      * Enable LFS for the project.
      */
-    lfsEnabled?: pulumi.Input<boolean>;
+    lfsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum file size in megabytes for individual job artifacts.
      */
-    maxArtifactsSize?: pulumi.Input<number>;
+    maxArtifactsSize?: pulumi.Input<number | undefined>;
     /**
      * Template used to create merge commit message in merge requests.
      */
-    mergeCommitTemplate?: pulumi.Input<string>;
+    mergeCommitTemplate?: pulumi.Input<string | undefined>;
     /**
      * Set the merge method. Valid values are `merge`, `rebaseMerge`, `ff`.
      */
-    mergeMethod?: pulumi.Input<string>;
+    mergeMethod?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable merge pipelines.
      */
-    mergePipelinesEnabled?: pulumi.Input<boolean>;
+    mergePipelinesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set the regex pattern that merge request titles must match. Use `mergeRequestTitleRegexDescription` to provide a hint to the user.
      */
-    mergeRequestTitleRegex?: pulumi.Input<string>;
+    mergeRequestTitleRegex?: pulumi.Input<string | undefined>;
     /**
      * Set the description shown to users when a merge request title does not match `mergeRequestTitleRegex`.
      */
-    mergeRequestTitleRegexDescription?: pulumi.Input<string>;
+    mergeRequestTitleRegexDescription?: pulumi.Input<string | undefined>;
     /**
      * Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    mergeRequestsAccessLevel?: pulumi.Input<string>;
+    mergeRequestsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
      *
      * @deprecated Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
      */
-    mergeRequestsEnabled?: pulumi.Input<boolean>;
+    mergeRequestsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the template for new merge requests in the project.
      */
-    mergeRequestsTemplate?: pulumi.Input<string>;
+    mergeRequestsTemplate?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
      */
-    mergeTrainsEnabled?: pulumi.Input<boolean>;
+    mergeTrainsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
      */
-    mergeTrainsSkipTrainAllowed?: pulumi.Input<boolean>;
+    mergeTrainsSkipTrainAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
      *
      * @deprecated To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
      */
-    mirror?: pulumi.Input<boolean>;
+    mirror?: pulumi.Input<boolean | undefined>;
     /**
      * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
      *
      * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
      */
-    mirrorOverwritesDivergedBranches?: pulumi.Input<boolean>;
+    mirrorOverwritesDivergedBranches?: pulumi.Input<boolean | undefined>;
     /**
      * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
      *
      * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
      */
-    mirrorTriggerBuilds?: pulumi.Input<boolean>;
+    mirrorTriggerBuilds?: pulumi.Input<boolean | undefined>;
     /**
      * Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
      */
-    modelExperimentsAccessLevel?: pulumi.Input<string>;
+    modelExperimentsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
      */
-    modelRegistryAccessLevel?: pulumi.Input<string>;
+    modelRegistryAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    monitorAccessLevel?: pulumi.Input<string>;
+    monitorAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * For forked projects, target merge requests to this project. If false, the target will be the upstream project.
      */
-    mrDefaultTargetSelf?: pulumi.Input<boolean>;
+    mrDefaultTargetSelf?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the project.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace (group or user) of the project. Defaults to your user.
      */
-    namespaceId?: pulumi.Input<number>;
+    namespaceId?: pulumi.Input<number | undefined>;
     /**
      * Set to true if you want allow merges only if all discussions are resolved.
      */
-    onlyAllowMergeIfAllDiscussionsAreResolved?: pulumi.Input<boolean>;
+    onlyAllowMergeIfAllDiscussionsAreResolved?: pulumi.Input<boolean | undefined>;
     /**
      * Set to true if you want allow merges only if a pipeline succeeds.
      */
-    onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean>;
+    onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean | undefined>;
     /**
      * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
      *
      * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
      */
-    onlyMirrorProtectedBranches?: pulumi.Input<boolean>;
+    onlyMirrorProtectedBranches?: pulumi.Input<boolean | undefined>;
     /**
      * Enable packages repository for the project.
      */
-    packagesEnabled?: pulumi.Input<boolean>;
+    packagesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
      */
-    pagesAccessLevel?: pulumi.Input<string>;
+    pagesAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * The path of the repository.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
      */
-    permanentlyDeleteOnDestroy?: pulumi.Input<boolean>;
+    permanentlyDeleteOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
      *
      * @deprecated Use `buildsAccessLevel` instead. To be removed in 19.0.
      */
-    pipelinesEnabled?: pulumi.Input<boolean>;
+    pipelinesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      */
-    preReceiveSecretDetectionEnabled?: pulumi.Input<boolean>;
+    preReceiveSecretDetectionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
      */
-    preventMergeWithoutJiraIssue?: pulumi.Input<boolean>;
+    preventMergeWithoutJiraIssue?: pulumi.Input<boolean | undefined>;
     /**
      * Show link to create/view merge request when pushing from the command line
      */
-    printingMergeRequestLinkEnabled?: pulumi.Input<boolean>;
+    printingMergeRequestLinkEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * If true, jobs can be viewed by non-project members.
      *
      * @deprecated The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
      */
-    publicBuilds?: pulumi.Input<boolean>;
+    publicBuilds?: pulumi.Input<boolean | undefined>;
     /**
      * If true, jobs can be viewed by non-project members.
      */
-    publicJobs?: pulumi.Input<boolean>;
+    publicJobs?: pulumi.Input<boolean | undefined>;
     /**
      * Push rules for the project.
      */
-    pushRules?: pulumi.Input<inputs.ProjectPushRules>;
+    pushRules?: pulumi.Input<inputs.ProjectPushRules | undefined>;
     /**
      * Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    releasesAccessLevel?: pulumi.Input<string>;
+    releasesAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable `Delete source branch` option by default for all new merge requests.
      */
-    removeSourceBranchAfterMerge?: pulumi.Input<boolean>;
+    removeSourceBranchAfterMerge?: pulumi.Input<boolean | undefined>;
     /**
      * Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    repositoryAccessLevel?: pulumi.Input<string>;
+    repositoryAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Which storage shard the repository is on. (administrator only)
      */
-    repositoryStorage?: pulumi.Input<string>;
+    repositoryStorage?: pulumi.Input<string | undefined>;
     /**
      * Allow users to request member access.
      */
-    requestAccessEnabled?: pulumi.Input<boolean>;
+    requestAccessEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    requirementsAccessLevel?: pulumi.Input<string>;
+    requirementsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Automatically resolve merge request diffs discussions on lines changed with a push.
      */
-    resolveOutdatedDiffDiscussions?: pulumi.Input<boolean>;
+    resolveOutdatedDiffDiscussions?: pulumi.Input<boolean | undefined>;
     /**
      * The default resource group process mode for the project.
      */
-    resourceGroupDefaultProcessMode?: pulumi.Input<string>;
+    resourceGroupDefaultProcessMode?: pulumi.Input<string | undefined>;
     /**
      * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
      *
      * @deprecated Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
      */
-    restrictUserDefinedVariables?: pulumi.Input<boolean>;
+    restrictUserDefinedVariables?: pulumi.Input<boolean | undefined>;
     /**
      * Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    securityAndComplianceAccessLevel?: pulumi.Input<string>;
+    securityAndComplianceAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable shared runners for this project.
      */
-    sharedRunnersEnabled?: pulumi.Input<boolean>;
+    sharedRunnersEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * If `true`, the default behavior to wait for the default branch protection to be created is skipped.
      * This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
      * There is currently no known way to determine if the default branch protection is disabled on an instance-level for non-admin users.
      * This attribute is only used during resource creation, thus changes are suppressed and the attribute cannot be imported.
      */
-    skipWaitForDefaultBranchProtection?: pulumi.Input<boolean>;
+    skipWaitForDefaultBranchProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    snippetsAccessLevel?: pulumi.Input<string>;
+    snippetsAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
      *
      * @deprecated Use `snippetsAccessLevel` instead. To be removed in 19.0.
      */
-    snippetsEnabled?: pulumi.Input<boolean>;
+    snippetsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Template used to create squash commit message in merge requests.
      */
-    squashCommitTemplate?: pulumi.Input<string>;
+    squashCommitTemplate?: pulumi.Input<string | undefined>;
     /**
      * Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `defaultOn` (Encourage), or `defaultOff` (Allow). The default value is `defaultOff` (Allow).
      */
-    squashOption?: pulumi.Input<string>;
+    squashOption?: pulumi.Input<string | undefined>;
     /**
      * The commit message used to apply merge request suggestions.
      */
-    suggestionCommitMessage?: pulumi.Input<string>;
+    suggestionCommitMessage?: pulumi.Input<string | undefined>;
     /**
      * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
      *
      * @deprecated Use `topics` instead. To be removed in 19.0.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
      */
-    templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string | undefined>;
     /**
      * When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `templateName`. See `gitlab.GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
      */
-    templateProjectId?: pulumi.Input<number>;
+    templateProjectId?: pulumi.Input<number | undefined>;
     /**
      * The list of topics for the project.
      */
-    topics?: pulumi.Input<pulumi.Input<string>[]>;
+    topics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
      * 	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
      */
-    useCustomTemplate?: pulumi.Input<boolean>;
+    useCustomTemplate?: pulumi.Input<boolean | undefined>;
     /**
      * Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
      */
-    visibilityLevel?: pulumi.Input<string>;
+    visibilityLevel?: pulumi.Input<string | undefined>;
     /**
      * Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
      */
-    wikiAccessLevel?: pulumi.Input<string>;
+    wikiAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
      *
      * @deprecated Use `wikiAccessLevel` instead. To be removed in 19.0.
      */
-    wikiEnabled?: pulumi.Input<boolean>;
+    wikiEnabled?: pulumi.Input<boolean | undefined>;
 }

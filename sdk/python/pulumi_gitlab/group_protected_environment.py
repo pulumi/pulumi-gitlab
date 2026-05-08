@@ -24,7 +24,7 @@ class GroupProtectedEnvironmentArgs:
                  deploy_access_levels: pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]],
                  environment: pulumi.Input[_builtins.str],
                  group: pulumi.Input[_builtins.str],
-                 approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]] = None):
+                 approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]] = None):
         """
         The set of arguments for constructing a GroupProtectedEnvironment resource.
 
@@ -77,24 +77,24 @@ class GroupProtectedEnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="approvalRules")
-    def approval_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]]:
+    def approval_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]]:
         """
         Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
         """
         return pulumi.get(self, "approval_rules")
 
     @approval_rules.setter
-    def approval_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]]):
+    def approval_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]]):
         pulumi.set(self, "approval_rules", value)
 
 
 @pulumi.input_type
 class _GroupProtectedEnvironmentState:
     def __init__(__self__, *,
-                 approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]] = None,
-                 deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None):
+                 approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]] = None,
+                 deploy_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupProtectedEnvironment resources.
 
@@ -114,50 +114,50 @@ class _GroupProtectedEnvironmentState:
 
     @_builtins.property
     @pulumi.getter(name="approvalRules")
-    def approval_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]]:
+    def approval_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]]:
         """
         Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
         """
         return pulumi.get(self, "approval_rules")
 
     @approval_rules.setter
-    def approval_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]]):
+    def approval_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupProtectedEnvironmentApprovalRuleArgs']]]]):
         pulumi.set(self, "approval_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="deployAccessLevels")
-    def deploy_access_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]]]:
+    def deploy_access_levels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]]]:
         """
         Array of access levels allowed to deploy, with each described by a hash. Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
         """
         return pulumi.get(self, "deploy_access_levels")
 
     @deploy_access_levels.setter
-    def deploy_access_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]]]):
+    def deploy_access_levels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupProtectedEnvironmentDeployAccessLevelArgs']]]]):
         pulumi.set(self, "deploy_access_levels", value)
 
     @_builtins.property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
         """
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or full path of the group which the protected environment is created against.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
 
@@ -167,10 +167,10 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict']]]]] = None,
-                 deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict']]]]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
+                 approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict']]]]] = None,
+                 deploy_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict']]]]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `GroupProtectedEnvironment` resource manages the lifecycle of a protected environment in a group.
@@ -246,10 +246,10 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict']]]]] = None,
-                 deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict']]]]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
+                 approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict']]]]] = None,
+                 deploy_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict']]]]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -279,10 +279,10 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            approval_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict']]]]] = None,
-            deploy_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict']]]]] = None,
-            environment: Optional[pulumi.Input[_builtins.str]] = None,
-            group: Optional[pulumi.Input[_builtins.str]] = None) -> 'GroupProtectedEnvironment':
+            approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict']]]]] = None,
+            deploy_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict']]]]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupProtectedEnvironment':
         """
         Get an existing GroupProtectedEnvironment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

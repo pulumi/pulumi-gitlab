@@ -173,12 +173,12 @@ def get_project_milestones(iids: Optional[Sequence[_builtins.int]] = None,
         search=pulumi.get(__ret__, 'search'),
         state=pulumi.get(__ret__, 'state'),
         title=pulumi.get(__ret__, 'title'))
-def get_project_milestones_output(iids: Optional[pulumi.Input[Optional[Sequence[_builtins.int]]]] = None,
-                                  include_parent_milestones: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                  project: Optional[pulumi.Input[_builtins.str]] = None,
-                                  search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  state: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  title: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_project_milestones_output(iids: pulumi.Input[Optional[Optional[Sequence[_builtins.int]]]] = None,
+                                  include_parent_milestones: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                                  search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  state: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  title: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectMilestonesResult]:
     """
     The `get_project_milestones` data source allows get details of a project milestones.

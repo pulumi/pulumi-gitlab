@@ -23,8 +23,8 @@ class BranchArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  ref: pulumi.Input[_builtins.str],
-                 keep_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 keep_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Branch resource.
 
@@ -66,44 +66,44 @@ class BranchArgs:
 
     @_builtins.property
     @pulumi.getter(name="keepOnDestroy")
-    def keep_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
         """
         return pulumi.get(self, "keep_on_destroy")
 
     @keep_on_destroy.setter
-    def keep_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for this branch.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _BranchState:
     def __init__(__self__, *,
-                 can_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commits: Optional[pulumi.Input[Sequence[pulumi.Input['BranchCommitArgs']]]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 developer_can_merge: Optional[pulumi.Input[_builtins.bool]] = None,
-                 developer_can_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 can_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commits: pulumi.Input[Optional[Sequence[pulumi.Input['BranchCommitArgs']]]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 developer_can_merge: pulumi.Input[Optional[_builtins.bool]] = None,
+                 developer_can_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Branch resources.
 
@@ -147,146 +147,146 @@ class _BranchState:
 
     @_builtins.property
     @pulumi.getter(name="canPush")
-    def can_push(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_push(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Bool, true if you can push to the branch.
         """
         return pulumi.get(self, "can_push")
 
     @can_push.setter
-    def can_push(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_push(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_push", value)
 
     @_builtins.property
     @pulumi.getter
-    def commits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BranchCommitArgs']]]]:
+    def commits(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BranchCommitArgs']]]]:
         """
         The commit associated with the branch ref.
         """
         return pulumi.get(self, "commits")
 
     @commits.setter
-    def commits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BranchCommitArgs']]]]):
+    def commits(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BranchCommitArgs']]]]):
         pulumi.set(self, "commits", value)
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Bool, true if branch is the default branch for the project.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter(name="developerCanMerge")
-    def developer_can_merge(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def developer_can_merge(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Bool, true if developer level access allows to merge branch.
         """
         return pulumi.get(self, "developer_can_merge")
 
     @developer_can_merge.setter
-    def developer_can_merge(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def developer_can_merge(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "developer_can_merge", value)
 
     @_builtins.property
     @pulumi.getter(name="developerCanPush")
-    def developer_can_push(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def developer_can_push(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Bool, true if developer level access allows git push.
         """
         return pulumi.get(self, "developer_can_push")
 
     @developer_can_push.setter
-    def developer_can_push(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def developer_can_push(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "developer_can_push", value)
 
     @_builtins.property
     @pulumi.getter(name="keepOnDestroy")
-    def keep_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
         """
         return pulumi.get(self, "keep_on_destroy")
 
     @keep_on_destroy.setter
-    def keep_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def merged(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merged(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Bool, true if the branch has been merged into its parent.
         """
         return pulumi.get(self, "merged")
 
     @merged.setter
-    def merged(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merged(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merged", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for this branch.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or full path of the project which the branch is created against.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def protected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Bool, true if branch has branch protection.
         """
         return pulumi.get(self, "protected")
 
     @protected.setter
-    def protected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected", value)
 
     @_builtins.property
     @pulumi.getter
-    def ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ref which the branch is created from.
         """
         return pulumi.get(self, "ref")
 
     @ref.setter
-    def ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ref", value)
 
     @_builtins.property
     @pulumi.getter(name="webUrl")
-    def web_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def web_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The url of the created branch (https).
         """
         return pulumi.get(self, "web_url")
 
     @web_url.setter
-    def web_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def web_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "web_url", value)
 
 
@@ -296,10 +296,10 @@ class Branch(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 keep_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 ref: Optional[pulumi.Input[_builtins.str]] = None,
+                 keep_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `Branch` resource manages the lifecycle of a repository branch.
@@ -318,7 +318,7 @@ class Branch(pulumi.CustomResource):
         example = gitlab.Project("example",
             name="example",
             description="An example project",
-            namespace_id=example_gitlab_group["id"])
+            namespace_id=int(example_gitlab_group["id"]))
         example_branch = gitlab.Branch("example",
             name="example",
             ref="main",
@@ -368,7 +368,7 @@ class Branch(pulumi.CustomResource):
         example = gitlab.Project("example",
             name="example",
             description="An example project",
-            namespace_id=example_gitlab_group["id"])
+            namespace_id=int(example_gitlab_group["id"]))
         example_branch = gitlab.Branch("example",
             name="example",
             ref="main",
@@ -403,10 +403,10 @@ class Branch(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 keep_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 ref: Optional[pulumi.Input[_builtins.str]] = None,
+                 keep_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -442,18 +442,18 @@ class Branch(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            can_push: Optional[pulumi.Input[_builtins.bool]] = None,
-            commits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchCommitArgs', 'BranchCommitArgsDict']]]]] = None,
-            default: Optional[pulumi.Input[_builtins.bool]] = None,
-            developer_can_merge: Optional[pulumi.Input[_builtins.bool]] = None,
-            developer_can_push: Optional[pulumi.Input[_builtins.bool]] = None,
-            keep_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            merged: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            protected: Optional[pulumi.Input[_builtins.bool]] = None,
-            ref: Optional[pulumi.Input[_builtins.str]] = None,
-            web_url: Optional[pulumi.Input[_builtins.str]] = None) -> 'Branch':
+            can_push: pulumi.Input[Optional[_builtins.bool]] = None,
+            commits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchCommitArgs', 'BranchCommitArgsDict']]]]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            developer_can_merge: pulumi.Input[Optional[_builtins.bool]] = None,
+            developer_can_push: pulumi.Input[Optional[_builtins.bool]] = None,
+            keep_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            merged: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protected: pulumi.Input[Optional[_builtins.bool]] = None,
+            ref: pulumi.Input[Optional[_builtins.str]] = None,
+            web_url: pulumi.Input[Optional[_builtins.str]] = None) -> 'Branch':
         """
         Get an existing Branch resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

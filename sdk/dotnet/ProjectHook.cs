@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.ProjectHook("example", new()
+    ///     var example = new GitLab.ProjectHook("example", new()
     ///     {
     ///         Project = "example/hooked",
     ///         Url = "https://example.com/hook/example",
@@ -38,7 +38,7 @@ namespace Pulumi.GitLab
     /// 
     ///     // Using Custom Headers
     ///     // Values of headers can't be imported
-    ///     var customHeaders = new GitLab.Index.ProjectHook("custom_headers", new()
+    ///     var customHeaders = new GitLab.ProjectHook("custom_headers", new()
     ///     {
     ///         Project = "example/hooked",
     ///         Url = "https://example.com/hook/example",

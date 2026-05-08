@@ -134,19 +134,19 @@ export interface GroupSamlLinkState {
     /**
      * Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * The ID or path of the group to add the SAML Group Link to.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
      */
-    memberRoleId?: pulumi.Input<number>;
+    memberRoleId?: pulumi.Input<number | undefined>;
     /**
      * The name of the SAML group.
      */
-    samlGroupName?: pulumi.Input<string>;
+    samlGroupName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -164,7 +164,7 @@ export interface GroupSamlLinkArgs {
     /**
      * The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `accessLevel` must match the base role used to create the custom role.
      */
-    memberRoleId?: pulumi.Input<number>;
+    memberRoleId?: pulumi.Input<number | undefined>;
     /**
      * The name of the SAML group.
      */

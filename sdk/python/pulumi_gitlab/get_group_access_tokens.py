@@ -102,7 +102,7 @@ def get_group_access_tokens(group: Optional[_builtins.str] = None,
         access_tokens=pulumi.get(__ret__, 'access_tokens'),
         group=pulumi.get(__ret__, 'group'),
         id=pulumi.get(__ret__, 'id'))
-def get_group_access_tokens_output(group: Optional[pulumi.Input[_builtins.str]] = None,
+def get_group_access_tokens_output(group: pulumi.Input[Optional[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupAccessTokensResult]:
     """
     The `gitlab_access_tokens` data source allows to retrieve all group-level access tokens.

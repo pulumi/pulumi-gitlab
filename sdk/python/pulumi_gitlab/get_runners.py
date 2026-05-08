@@ -162,10 +162,10 @@ def get_runners(paused: Optional[_builtins.bool] = None,
         status=pulumi.get(__ret__, 'status'),
         tag_lists=pulumi.get(__ret__, 'tag_lists'),
         type=pulumi.get(__ret__, 'type'))
-def get_runners_output(paused: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                       status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       tag_lists: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                       type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_runners_output(paused: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                       status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       tag_lists: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                       type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRunnersResult]:
     """
     The `get_runners` data source retrieves information about all gitlab runners.

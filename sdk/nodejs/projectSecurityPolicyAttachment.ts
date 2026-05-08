@@ -160,19 +160,19 @@ export interface ProjectSecurityPolicyAttachmentState {
     /**
      * The ID or Full Path of the security policy project.
      */
-    policyProject?: pulumi.Input<string>;
+    policyProject?: pulumi.Input<string | undefined>;
     /**
      * The GraphQL ID of the security policy project.
      */
-    policyProjectGraphqlId?: pulumi.Input<string>;
+    policyProjectGraphqlId?: pulumi.Input<string | undefined>;
     /**
      * The ID or Full Path of the project which will have the security policy project assigned to it.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The GraphQL ID of the project to which the security policty project will be attached.
      */
-    projectGraphqlId?: pulumi.Input<string>;
+    projectGraphqlId?: pulumi.Input<string | undefined>;
 }
 
 /**

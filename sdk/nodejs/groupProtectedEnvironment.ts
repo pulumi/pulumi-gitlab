@@ -118,19 +118,19 @@ export interface GroupProtectedEnvironmentState {
     /**
      * Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
      */
-    approvalRules?: pulumi.Input<pulumi.Input<inputs.GroupProtectedEnvironmentApprovalRule>[]>;
+    approvalRules?: pulumi.Input<pulumi.Input<inputs.GroupProtectedEnvironmentApprovalRule>[] | undefined>;
     /**
      * Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      */
-    deployAccessLevels?: pulumi.Input<pulumi.Input<inputs.GroupProtectedEnvironmentDeployAccessLevel>[]>;
+    deployAccessLevels?: pulumi.Input<pulumi.Input<inputs.GroupProtectedEnvironmentDeployAccessLevel>[] | undefined>;
     /**
      * The deployment tier of the environment.  Valid values are `production`, `staging`, `testing`, `development`, `other`.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the group which the protected environment is created against.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -140,7 +140,7 @@ export interface GroupProtectedEnvironmentArgs {
     /**
      * Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
      */
-    approvalRules?: pulumi.Input<pulumi.Input<inputs.GroupProtectedEnvironmentApprovalRule>[]>;
+    approvalRules?: pulumi.Input<pulumi.Input<inputs.GroupProtectedEnvironmentApprovalRule>[] | undefined>;
     /**
      * Array of access levels allowed to deploy, with each described by a hash. Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
      */

@@ -126,27 +126,27 @@ export interface GetProjectMembershipOutputArgs {
      *
      * @deprecated Use `project` instead. Will be removed in 19.0.
      */
-    fullPath?: pulumi.Input<string>;
+    fullPath?: pulumi.Input<string | undefined>;
     /**
      * Return all project members including members through ancestor groups
      */
-    inherited?: pulumi.Input<boolean>;
+    inherited?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or full path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project. Use `project` instead. Will be removed in 19.0.
      *
      * @deprecated Use `project` instead. Will be removed in 19.0.
      */
-    projectId?: pulumi.Input<number>;
+    projectId?: pulumi.Input<number | undefined>;
     /**
      * A query string to search for members
      */
-    query?: pulumi.Input<string>;
+    query?: pulumi.Input<string | undefined>;
     /**
      * List of user ids to filter members by
      */
-    userIds?: pulumi.Input<pulumi.Input<number>[]>;
+    userIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }

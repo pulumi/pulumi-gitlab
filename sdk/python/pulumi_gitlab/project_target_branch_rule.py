@@ -73,9 +73,9 @@ class ProjectTargetBranchRuleArgs:
 @pulumi.input_type
 class _ProjectTargetBranchRuleState:
     def __init__(__self__, *,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_branch_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_branch_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_branch_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_branch_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectTargetBranchRule resources.
 
@@ -92,38 +92,38 @@ class _ProjectTargetBranchRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of the project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceBranchPattern")
-    def source_branch_pattern(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_branch_pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A pattern matching the branch name for which the merge request should have a default target branch configured.
         """
         return pulumi.get(self, "source_branch_pattern")
 
     @source_branch_pattern.setter
-    def source_branch_pattern(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_branch_pattern(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_branch_pattern", value)
 
     @_builtins.property
     @pulumi.getter(name="targetBranchName")
-    def target_branch_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_branch_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the branch to which the merge request should be addressed.
         """
         return pulumi.get(self, "target_branch_name")
 
     @target_branch_name.setter
-    def target_branch_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_branch_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_branch_name", value)
 
 
@@ -133,9 +133,9 @@ class ProjectTargetBranchRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_branch_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_branch_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_branch_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_branch_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectTargetBranchRule` resource manages default target branch rules when creating merge requests.
@@ -238,9 +238,9 @@ class ProjectTargetBranchRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_branch_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_branch_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_branch_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_branch_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -269,9 +269,9 @@ class ProjectTargetBranchRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            source_branch_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-            target_branch_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectTargetBranchRule':
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            source_branch_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+            target_branch_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectTargetBranchRule':
         """
         Get an existing ProjectTargetBranchRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

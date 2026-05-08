@@ -140,39 +140,39 @@ export interface PagesDomainState {
     /**
      * Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
      */
-    autoSslEnabled?: pulumi.Input<boolean>;
+    autoSslEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The certificate in PEM format with intermediates following in most specific to least specific order.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The custom domain indicated by the user.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Whether the certificate is expired.
      */
-    expired?: pulumi.Input<boolean>;
+    expired?: pulumi.Input<boolean | undefined>;
     /**
      * The certificate key in PEM format.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The ID or Namespace path of the project owned by the authenticated user.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URL for the given domain.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * The verification code for the domain.
      */
-    verificationCode?: pulumi.Input<string>;
+    verificationCode?: pulumi.Input<string | undefined>;
     /**
      * The certificate data.
      */
-    verified?: pulumi.Input<boolean>;
+    verified?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -182,11 +182,11 @@ export interface PagesDomainArgs {
     /**
      * Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
      */
-    autoSslEnabled?: pulumi.Input<boolean>;
+    autoSslEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The certificate in PEM format with intermediates following in most specific to least specific order.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The custom domain indicated by the user.
      */
@@ -194,11 +194,11 @@ export interface PagesDomainArgs {
     /**
      * Whether the certificate is expired.
      */
-    expired?: pulumi.Input<boolean>;
+    expired?: pulumi.Input<boolean | undefined>;
     /**
      * The certificate key in PEM format.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The ID or Namespace path of the project owned by the authenticated user.
      */

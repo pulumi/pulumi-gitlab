@@ -120,27 +120,27 @@ export interface TopicState {
     /**
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      */
-    avatar?: pulumi.Input<string>;
+    avatar?: pulumi.Input<string | undefined>;
     /**
      * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
-    avatarHash?: pulumi.Input<string>;
+    avatarHash?: pulumi.Input<string | undefined>;
     /**
      * The URL of the avatar image.
      */
-    avatarUrl?: pulumi.Input<string>;
+    avatarUrl?: pulumi.Input<string | undefined>;
     /**
      * A text describing the topic.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The topic's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The topic's description.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -150,19 +150,19 @@ export interface TopicArgs {
     /**
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      */
-    avatar?: pulumi.Input<string>;
+    avatar?: pulumi.Input<string | undefined>;
     /**
      * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
-    avatarHash?: pulumi.Input<string>;
+    avatarHash?: pulumi.Input<string | undefined>;
     /**
      * A text describing the topic.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The topic's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The topic's description.
      */

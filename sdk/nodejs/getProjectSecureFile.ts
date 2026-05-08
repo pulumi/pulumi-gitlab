@@ -136,7 +136,7 @@ export interface GetProjectSecureFileOutputArgs {
     /**
      * The name for the secure file, unique per project
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project the secure file resides.
      */
@@ -144,5 +144,5 @@ export interface GetProjectSecureFileOutputArgs {
     /**
      * The id of the secure file in gitlab
      */
-    secureFileId?: pulumi.Input<number>;
+    secureFileId?: pulumi.Input<number | undefined>;
 }

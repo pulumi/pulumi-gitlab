@@ -114,11 +114,11 @@ export interface GetProjectMilestonesOutputArgs {
     /**
      * Return only the milestones having the given `iid` (Note: ignored if `includeParentMilestones` is set as `true`).
      */
-    iids?: pulumi.Input<pulumi.Input<number>[]>;
+    iids?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Include group milestones from parent group and its ancestors.
      */
-    includeParentMilestones?: pulumi.Input<boolean>;
+    includeParentMilestones?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or URL-encoded path of the project owned by the authenticated user.
      */
@@ -126,13 +126,13 @@ export interface GetProjectMilestonesOutputArgs {
     /**
      * Return only milestones with a title or description matching the provided string.
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
     /**
      * Return only `active` or `closed` milestones.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Return only the milestones having the given `title`.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }

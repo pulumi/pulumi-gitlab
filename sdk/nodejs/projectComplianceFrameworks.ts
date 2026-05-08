@@ -127,11 +127,11 @@ export interface ProjectComplianceFrameworksState {
     /**
      * Globally unique IDs of the compliance frameworks to assign to the project.
      */
-    complianceFrameworkIds?: pulumi.Input<pulumi.Input<string>[]>;
+    complianceFrameworkIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID or full path of the project to change the compliance frameworks of.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**

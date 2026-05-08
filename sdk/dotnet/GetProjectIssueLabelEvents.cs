@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetProjectIssueLabelEvents.Invoke(new()
+        ///     var example = GitLab.GetProjectIssueLabelEvents.Invoke(new()
         ///     {
         ///         Project = "my-group/my-project",
         ///         IssueIid = 42,
@@ -53,7 +53,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetProjectIssueLabelEvents.Invoke(new()
+        ///     var example = GitLab.GetProjectIssueLabelEvents.Invoke(new()
         ///     {
         ///         Project = "my-group/my-project",
         ///         IssueIid = 42,
@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetProjectIssueLabelEvents.Invoke(new()
+        ///     var example = GitLab.GetProjectIssueLabelEvents.Invoke(new()
         ///     {
         ///         Project = "my-group/my-project",
         ///         IssueIid = 42,

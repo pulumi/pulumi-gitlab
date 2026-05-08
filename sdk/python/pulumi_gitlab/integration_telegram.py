@@ -31,8 +31,8 @@ class IntegrationTelegramArgs:
                  tag_push_events: pulumi.Input[_builtins.bool],
                  token: pulumi.Input[_builtins.str],
                  wiki_page_events: pulumi.Input[_builtins.bool],
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None):
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a IntegrationTelegram resource.
 
@@ -214,46 +214,46 @@ class IntegrationTelegramArgs:
 
     @_builtins.property
     @pulumi.getter(name="branchesToBeNotified")
-    def branches_to_be_notified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branches_to_be_notified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
         """
         return pulumi.get(self, "branches_to_be_notified")
 
     @branches_to_be_notified.setter
-    def branches_to_be_notified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branches_to_be_notified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branches_to_be_notified", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyOnlyBrokenPipelines")
-    def notify_only_broken_pipelines(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_only_broken_pipelines(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Send notifications for broken pipelines.
         """
         return pulumi.get(self, "notify_only_broken_pipelines")
 
     @notify_only_broken_pipelines.setter
-    def notify_only_broken_pipelines(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_only_broken_pipelines(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_only_broken_pipelines", value)
 
 
 @pulumi.input_type
 class _IntegrationTelegramState:
     def __init__(__self__, *,
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipeline_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 room: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 room: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering IntegrationTelegram resources.
 
@@ -303,170 +303,170 @@ class _IntegrationTelegramState:
 
     @_builtins.property
     @pulumi.getter(name="branchesToBeNotified")
-    def branches_to_be_notified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branches_to_be_notified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`.
         """
         return pulumi.get(self, "branches_to_be_notified")
 
     @branches_to_be_notified.setter
-    def branches_to_be_notified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branches_to_be_notified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branches_to_be_notified", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialIssuesEvents")
-    def confidential_issues_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confidential_issues_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for confidential issues events.
         """
         return pulumi.get(self, "confidential_issues_events")
 
     @confidential_issues_events.setter
-    def confidential_issues_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confidential_issues_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confidential_issues_events", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialNoteEvents")
-    def confidential_note_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confidential_note_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for confidential note events.
         """
         return pulumi.get(self, "confidential_note_events")
 
     @confidential_note_events.setter
-    def confidential_note_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confidential_note_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confidential_note_events", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesEvents")
-    def issues_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def issues_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for issues events.
         """
         return pulumi.get(self, "issues_events")
 
     @issues_events.setter
-    def issues_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def issues_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "issues_events", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEvents")
-    def merge_requests_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_requests_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for merge requests events.
         """
         return pulumi.get(self, "merge_requests_events")
 
     @merge_requests_events.setter
-    def merge_requests_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_requests_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_requests_events", value)
 
     @_builtins.property
     @pulumi.getter(name="noteEvents")
-    def note_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def note_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for note events.
         """
         return pulumi.get(self, "note_events")
 
     @note_events.setter
-    def note_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def note_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "note_events", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyOnlyBrokenPipelines")
-    def notify_only_broken_pipelines(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_only_broken_pipelines(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Send notifications for broken pipelines.
         """
         return pulumi.get(self, "notify_only_broken_pipelines")
 
     @notify_only_broken_pipelines.setter
-    def notify_only_broken_pipelines(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_only_broken_pipelines(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_only_broken_pipelines", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineEvents")
-    def pipeline_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pipeline_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for pipeline events.
         """
         return pulumi.get(self, "pipeline_events")
 
     @pipeline_events.setter
-    def pipeline_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pipeline_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pipeline_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or full path of the project to integrate with Telegram.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for push events.
         """
         return pulumi.get(self, "push_events")
 
     @push_events.setter
-    def push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "push_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def room(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def room(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier for the target chat or the username of the target channel (in the format `@channelusername`)
         """
         return pulumi.get(self, "room")
 
     @room.setter
-    def room(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def room(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "room", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tag_push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for tag push events.
         """
         return pulumi.get(self, "tag_push_events")
 
     @tag_push_events.setter
-    def tag_push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tag_push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tag_push_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Telegram bot token.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter(name="wikiPageEvents")
-    def wiki_page_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wiki_page_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for wiki page events.
         """
         return pulumi.get(self, "wiki_page_events")
 
     @wiki_page_events.setter
-    def wiki_page_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wiki_page_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wiki_page_events", value)
 
 
@@ -476,20 +476,20 @@ class IntegrationTelegram(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipeline_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 room: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None,
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 room: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The `IntegrationTelegram` resource manages the lifecycle of a project integration with Telegram.
@@ -623,20 +623,20 @@ class IntegrationTelegram(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipeline_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 room: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None,
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 room: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -696,20 +696,20 @@ class IntegrationTelegram(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-            confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None,
-            pipeline_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            room: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            token: Optional[pulumi.Input[_builtins.str]] = None,
-            wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None) -> 'IntegrationTelegram':
+            branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+            confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+            pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            room: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None) -> 'IntegrationTelegram':
         """
         Get an existing IntegrationTelegram resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -145,23 +145,23 @@ export interface ClusterAgentState {
     /**
      * The ID of the agent.
      */
-    agentId?: pulumi.Input<number>;
+    agentId?: pulumi.Input<number | undefined>;
     /**
      * The ISO8601 datetime when the agent was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user who created the agent.
      */
-    createdByUserId?: pulumi.Input<number>;
+    createdByUserId?: pulumi.Input<number | undefined>;
     /**
      * The Name of the agent.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * ID or full path of the project maintained by the authenticated user.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -171,7 +171,7 @@ export interface ClusterAgentArgs {
     /**
      * The Name of the agent.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * ID or full path of the project maintained by the authenticated user.
      */

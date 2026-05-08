@@ -176,43 +176,43 @@ export interface PipelineScheduleState {
     /**
      * The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The cron (e.g. `0 1 * * *`).
      */
-    cron?: pulumi.Input<string>;
+    cron?: pulumi.Input<string | undefined>;
     /**
      * The timezone.
      */
-    cronTimezone?: pulumi.Input<string>;
+    cronTimezone?: pulumi.Input<string | undefined>;
     /**
      * The description of the pipeline schedule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
      */
-    inputs?: pulumi.Input<pulumi.Input<inputs.PipelineScheduleInput>[]>;
+    inputs?: pulumi.Input<pulumi.Input<inputs.PipelineScheduleInput>[] | undefined>;
     /**
      * The ID of the user that owns the pipeline schedule.
      */
-    owner?: pulumi.Input<number>;
+    owner?: pulumi.Input<number | undefined>;
     /**
      * The pipeline schedule id.
      */
-    pipelineScheduleId?: pulumi.Input<number>;
+    pipelineScheduleId?: pulumi.Input<number | undefined>;
     /**
      * The name or id of the project to add the schedule to.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
      */
-    ref?: pulumi.Input<string>;
+    ref?: pulumi.Input<string | undefined>;
     /**
      * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
      */
-    takeOwnership?: pulumi.Input<boolean>;
+    takeOwnership?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -222,7 +222,7 @@ export interface PipelineScheduleArgs {
     /**
      * The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The cron (e.g. `0 1 * * *`).
      */
@@ -230,7 +230,7 @@ export interface PipelineScheduleArgs {
     /**
      * The timezone.
      */
-    cronTimezone?: pulumi.Input<string>;
+    cronTimezone?: pulumi.Input<string | undefined>;
     /**
      * The description of the pipeline schedule.
      */
@@ -238,7 +238,7 @@ export interface PipelineScheduleArgs {
     /**
      * List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
      */
-    inputs?: pulumi.Input<pulumi.Input<inputs.PipelineScheduleInput>[]>;
+    inputs?: pulumi.Input<pulumi.Input<inputs.PipelineScheduleInput>[] | undefined>;
     /**
      * The name or id of the project to add the schedule to.
      */
@@ -250,5 +250,5 @@ export interface PipelineScheduleArgs {
     /**
      * When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
      */
-    takeOwnership?: pulumi.Input<boolean>;
+    takeOwnership?: pulumi.Input<boolean | undefined>;
 }

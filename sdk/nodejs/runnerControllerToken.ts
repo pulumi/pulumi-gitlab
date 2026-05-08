@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = new gitlab.RunnerControllerToken("example", {
- *     runnerControllerId: exampleGitlabRunnerController.id,
+ *     runnerControllerId: Number(exampleGitlabRunnerController.id),
  *     description: "My controller token",
  * });
  * ```
@@ -117,23 +117,23 @@ export interface RunnerControllerTokenState {
     /**
      * The time the token was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the runner controller token.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the runner controller.
      */
-    runnerControllerId?: pulumi.Input<number>;
+    runnerControllerId?: pulumi.Input<number | undefined>;
     /**
      * The token value. **Note**: the token is not available for imported resources.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The time the token was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -143,7 +143,7 @@ export interface RunnerControllerTokenArgs {
     /**
      * The description of the runner controller token.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the runner controller.
      */

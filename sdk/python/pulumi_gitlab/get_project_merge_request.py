@@ -215,8 +215,8 @@ def get_project_merge_request(iid: Optional[_builtins.int] = None,
         id=pulumi.get(__ret__, 'id'),
         iid=pulumi.get(__ret__, 'iid'),
         project=pulumi.get(__ret__, 'project'))
-def get_project_merge_request_output(iid: Optional[pulumi.Input[_builtins.int]] = None,
-                                     project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_merge_request_output(iid: pulumi.Input[Optional[_builtins.int]] = None,
+                                     project: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectMergeRequestResult]:
     """
     The `get_project_merge_request` data source retrieves

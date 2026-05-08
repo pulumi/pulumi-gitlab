@@ -23,7 +23,7 @@ class ProjectIntegrationRedmineArgs:
                  new_issue_url: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  project_url: pulumi.Input[_builtins.str],
-                 use_inherited_settings: Optional[pulumi.Input[_builtins.bool]] = None):
+                 use_inherited_settings: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectIntegrationRedmine resource.
 
@@ -90,25 +90,25 @@ class ProjectIntegrationRedmineArgs:
 
     @_builtins.property
     @pulumi.getter(name="useInheritedSettings")
-    def use_inherited_settings(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_inherited_settings(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether or not to inherit default settings. Defaults to false.
         """
         return pulumi.get(self, "use_inherited_settings")
 
     @use_inherited_settings.setter
-    def use_inherited_settings(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_inherited_settings(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_inherited_settings", value)
 
 
 @pulumi.input_type
 class _ProjectIntegrationRedmineState:
     def __init__(__self__, *,
-                 issues_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_issue_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_inherited_settings: Optional[pulumi.Input[_builtins.bool]] = None):
+                 issues_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_issue_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_inherited_settings: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectIntegrationRedmine resources.
 
@@ -131,62 +131,62 @@ class _ProjectIntegrationRedmineState:
 
     @_builtins.property
     @pulumi.getter(name="issuesUrl")
-    def issues_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issues_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL to the Redmine project issue to link to this GitLab project.
         """
         return pulumi.get(self, "issues_url")
 
     @issues_url.setter
-    def issues_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issues_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issues_url", value)
 
     @_builtins.property
     @pulumi.getter(name="newIssueUrl")
-    def new_issue_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def new_issue_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL to use to create a new issue in the Redmine project linked to this GitLab project.
         """
         return pulumi.get(self, "new_issue_url")
 
     @new_issue_url.setter
-    def new_issue_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def new_issue_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "new_issue_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the project you want to activate integration on.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="projectUrl")
-    def project_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL to the Redmine project to link to this GitLab project.
         """
         return pulumi.get(self, "project_url")
 
     @project_url.setter
-    def project_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_url", value)
 
     @_builtins.property
     @pulumi.getter(name="useInheritedSettings")
-    def use_inherited_settings(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_inherited_settings(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether or not to inherit default settings. Defaults to false.
         """
         return pulumi.get(self, "use_inherited_settings")
 
     @use_inherited_settings.setter
-    def use_inherited_settings(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_inherited_settings(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_inherited_settings", value)
 
 
@@ -196,11 +196,11 @@ class ProjectIntegrationRedmine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 issues_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_issue_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_inherited_settings: Optional[pulumi.Input[_builtins.bool]] = None,
+                 issues_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_issue_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_inherited_settings: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The `ProjectIntegrationRedmine` resource manages the lifecycle of a project integration with Redmine.
@@ -305,11 +305,11 @@ class ProjectIntegrationRedmine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 issues_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_issue_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_inherited_settings: Optional[pulumi.Input[_builtins.bool]] = None,
+                 issues_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_issue_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_inherited_settings: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -342,11 +342,11 @@ class ProjectIntegrationRedmine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            issues_url: Optional[pulumi.Input[_builtins.str]] = None,
-            new_issue_url: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            project_url: Optional[pulumi.Input[_builtins.str]] = None,
-            use_inherited_settings: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ProjectIntegrationRedmine':
+            issues_url: pulumi.Input[Optional[_builtins.str]] = None,
+            new_issue_url: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_url: pulumi.Input[Optional[_builtins.str]] = None,
+            use_inherited_settings: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ProjectIntegrationRedmine':
         """
         Get an existing ProjectIntegrationRedmine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

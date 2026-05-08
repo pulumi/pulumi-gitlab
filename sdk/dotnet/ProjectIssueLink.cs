@@ -25,7 +25,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a project
-    ///     var example = new GitLab.Index.Project("example", new()
+    ///     var example = new GitLab.Project("example", new()
     ///     {
     ///         Name = "example",
     ///         Description = "An example project",
@@ -33,21 +33,21 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Create source issue
-    ///     var source = new GitLab.Index.ProjectIssue("source", new()
+    ///     var source = new GitLab.ProjectIssue("source", new()
     ///     {
     ///         Project = example.Id,
     ///         Title = "Source Issue",
     ///     });
     /// 
     ///     // Create target issue
-    ///     var target = new GitLab.Index.ProjectIssue("target", new()
+    ///     var target = new GitLab.ProjectIssue("target", new()
     ///     {
     ///         Project = example.Id,
     ///         Title = "Target Issue",
     ///     });
     /// 
     ///     // Link issues with "relates_to" link type (default)
-    ///     var relatesTo = new GitLab.Index.ProjectIssueLink("relates_to", new()
+    ///     var relatesTo = new GitLab.ProjectIssueLink("relates_to", new()
     ///     {
     ///         Project = example.Id,
     ///         IssueIid = source.Iid,
@@ -57,19 +57,19 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Cross-project linking example
-    ///     var otherProject = new GitLab.Index.Project("other_project", new()
+    ///     var otherProject = new GitLab.Project("other_project", new()
     ///     {
     ///         Name = "other_project",
     ///         Description = "Another project for cross-project linking",
     ///     });
     /// 
-    ///     var crossTarget = new GitLab.Index.ProjectIssue("cross_target", new()
+    ///     var crossTarget = new GitLab.ProjectIssue("cross_target", new()
     ///     {
     ///         Project = otherProject.Id,
     ///         Title = "Cross-Project Target Issue",
     ///     });
     /// 
-    ///     var crossProjectRelatesTo = new GitLab.Index.ProjectIssueLink("cross_project_relates_to", new()
+    ///     var crossProjectRelatesTo = new GitLab.ProjectIssueLink("cross_project_relates_to", new()
     ///     {
     ///         Project = example.Id,
     ///         IssueIid = source.Iid,

@@ -356,8 +356,8 @@ def get_group(full_path: Optional[_builtins.str] = None,
         visibility_level=pulumi.get(__ret__, 'visibility_level'),
         web_url=pulumi.get(__ret__, 'web_url'),
         wiki_access_level=pulumi.get(__ret__, 'wiki_access_level'))
-def get_group_output(full_path: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     group_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_group_output(full_path: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     group_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupResult]:
     """
     The `Group` data source allows details of a group to be retrieved by its id or full path.

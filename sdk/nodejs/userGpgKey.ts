@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * });
  * // Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
  * const exampleUserGpgKey = new gitlab.UserGpgKey("example", {
- *     userId: example.then(example => example.id),
+ *     userId: output(example.then(example => example.id)).apply(x =>Number(x)),
  *     key: `-----BEGIN PGP PUBLIC KEY BLOCK-----
  * ...
  * -----END PGP PUBLIC KEY BLOCK-----`,
@@ -135,19 +135,19 @@ export interface UserGpgKeyState {
     /**
      * The time when this key was created in GitLab.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The armored GPG public key.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The ID of the GPG key.
      */
-    keyId?: pulumi.Input<number>;
+    keyId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -161,5 +161,5 @@ export interface UserGpgKeyArgs {
     /**
      * The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }

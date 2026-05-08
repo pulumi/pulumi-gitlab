@@ -118,15 +118,15 @@ export interface GroupCustomAttributeState {
     /**
      * The id of the group.
      */
-    group?: pulumi.Input<number>;
+    group?: pulumi.Input<number | undefined>;
     /**
      * Key for the Custom Attribute.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Value for the Custom Attribute.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**

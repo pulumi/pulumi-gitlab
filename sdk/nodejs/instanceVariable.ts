@@ -140,31 +140,31 @@ export interface InstanceVariableState {
     /**
      * The description of the variable. Maximum of 255 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the variable.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
      */
-    masked?: pulumi.Input<boolean>;
+    masked?: pulumi.Input<boolean | undefined>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
-    protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
      */
-    raw?: pulumi.Input<boolean>;
+    raw?: pulumi.Input<boolean | undefined>;
     /**
      * The value of the variable.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
      */
-    variableType?: pulumi.Input<string>;
+    variableType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -174,7 +174,7 @@ export interface InstanceVariableArgs {
     /**
      * The description of the variable. Maximum of 255 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the variable.
      */
@@ -182,15 +182,15 @@ export interface InstanceVariableArgs {
     /**
      * If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
      */
-    masked?: pulumi.Input<boolean>;
+    masked?: pulumi.Input<boolean | undefined>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
      */
-    protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
      */
-    raw?: pulumi.Input<boolean>;
+    raw?: pulumi.Input<boolean | undefined>;
     /**
      * The value of the variable.
      */
@@ -198,5 +198,5 @@ export interface InstanceVariableArgs {
     /**
      * The type of a variable. Valid values are: `envVar`, `file`. Default is `envVar`.
      */
-    variableType?: pulumi.Input<string>;
+    variableType?: pulumi.Input<string | undefined>;
 }

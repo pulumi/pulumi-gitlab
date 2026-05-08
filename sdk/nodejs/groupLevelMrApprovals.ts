@@ -150,31 +150,31 @@ export interface GroupLevelMrApprovalsState {
     /**
      * Allow or prevent authors from self approving merge requests; `true` means authors can self approve.
      */
-    allowAuthorApproval?: pulumi.Input<boolean>;
+    allowAuthorApproval?: pulumi.Input<boolean | undefined>;
     /**
      * Allow or prevent committers from self approving merge requests.
      */
-    allowCommitterApproval?: pulumi.Input<boolean>;
+    allowCommitterApproval?: pulumi.Input<boolean | undefined>;
     /**
      * Allow or prevent overriding approvers per merge request.
      */
-    allowOverridesToApproverListPerMergeRequest?: pulumi.Input<boolean>;
+    allowOverridesToApproverListPerMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or URL-encoded path of the group.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
      */
-    keepSettingsOnDestroy?: pulumi.Input<boolean>;
+    keepSettingsOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Require approver to authenticate before adding the approval.
      */
-    requireReauthenticationToApprove?: pulumi.Input<boolean>;
+    requireReauthenticationToApprove?: pulumi.Input<boolean | undefined>;
     /**
      * Retain approval count on a new push.
      */
-    retainApprovalsOnPush?: pulumi.Input<boolean>;
+    retainApprovalsOnPush?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -184,15 +184,15 @@ export interface GroupLevelMrApprovalsArgs {
     /**
      * Allow or prevent authors from self approving merge requests; `true` means authors can self approve.
      */
-    allowAuthorApproval?: pulumi.Input<boolean>;
+    allowAuthorApproval?: pulumi.Input<boolean | undefined>;
     /**
      * Allow or prevent committers from self approving merge requests.
      */
-    allowCommitterApproval?: pulumi.Input<boolean>;
+    allowCommitterApproval?: pulumi.Input<boolean | undefined>;
     /**
      * Allow or prevent overriding approvers per merge request.
      */
-    allowOverridesToApproverListPerMergeRequest?: pulumi.Input<boolean>;
+    allowOverridesToApproverListPerMergeRequest?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or URL-encoded path of the group.
      */
@@ -200,13 +200,13 @@ export interface GroupLevelMrApprovalsArgs {
     /**
      * Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
      */
-    keepSettingsOnDestroy?: pulumi.Input<boolean>;
+    keepSettingsOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Require approver to authenticate before adding the approval.
      */
-    requireReauthenticationToApprove?: pulumi.Input<boolean>;
+    requireReauthenticationToApprove?: pulumi.Input<boolean | undefined>;
     /**
      * Retain approval count on a new push.
      */
-    retainApprovalsOnPush?: pulumi.Input<boolean>;
+    retainApprovalsOnPush?: pulumi.Input<boolean | undefined>;
 }

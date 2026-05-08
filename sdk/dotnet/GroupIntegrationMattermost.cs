@@ -24,14 +24,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.Group("example", new()
+    ///     var example = new GitLab.Group("example", new()
     ///     {
     ///         Name = "example-group",
     ///         Path = "example-group",
     ///         Description = "An example group",
     ///     });
     /// 
-    ///     var mattermost = new GitLab.Index.GroupIntegrationMattermost("mattermost", new()
+    ///     var mattermost = new GitLab.GroupIntegrationMattermost("mattermost", new()
     ///     {
     ///         Group = example.Id,
     ///         Webhook = "https://mattermost.example.com/hooks/...",

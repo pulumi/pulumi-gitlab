@@ -22,10 +22,10 @@ class GroupLdapLinkArgs:
                  group: pulumi.Input[_builtins.str],
                  group_access: pulumi.Input[_builtins.str],
                  ldap_provider: pulumi.Input[_builtins.str],
-                 cn: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 cn: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a GroupLdapLink resource.
 
@@ -87,63 +87,63 @@ class GroupLdapLinkArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CN of the LDAP group to link with. Required if `filter` is not provided.
         """
         return pulumi.get(self, "cn")
 
     @cn.setter
-    def cn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cn", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
         """
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="memberRoleId")
-    def member_role_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def member_role_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role. To remove a custom role and revert to a base role, set this value to `0`.
         """
         return pulumi.get(self, "member_role_id")
 
     @member_role_id.setter
-    def member_role_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def member_role_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "member_role_id", value)
 
 
 @pulumi.input_type
 class _GroupLdapLinkState:
     def __init__(__self__, *,
-                 cn: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 cn: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering GroupLdapLink resources.
 
@@ -172,86 +172,86 @@ class _GroupLdapLinkState:
 
     @_builtins.property
     @pulumi.getter
-    def cn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CN of the LDAP group to link with. Required if `filter` is not provided.
         """
         return pulumi.get(self, "cn")
 
     @cn.setter
-    def cn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cn", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The LDAP filter for the group. Required if `cn` is not provided. Requires GitLab Premium or above.
         """
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, then delete and replace an existing LDAP link if one exists. Will also remove an LDAP link if the parent group is not found.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of the group
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter(name="groupAccess")
-    def group_access(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "group_access")
 
     @group_access.setter
-    def group_access(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_access(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_access", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapProvider")
-    def ldap_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ldap_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the LDAP provider as stored in the GitLab database. Note that this is NOT the value of the `label` attribute as shown in the web UI. In most cases this will be `ldapmain` but you may use the [LDAP check rake task](https://docs.gitlab.com/administration/raketasks/ldap/#check) for receiving the LDAP server name: `LDAP: ... Server: ldapmain`
         """
         return pulumi.get(self, "ldap_provider")
 
     @ldap_provider.setter
-    def ldap_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ldap_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ldap_provider", value)
 
     @_builtins.property
     @pulumi.getter(name="memberRoleId")
-    def member_role_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def member_role_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `group_access` must match the base role used to create the custom role. To remove a custom role and revert to a base role, set this value to `0`.
         """
         return pulumi.get(self, "member_role_id")
 
     @member_role_id.setter
-    def member_role_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def member_role_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "member_role_id", value)
 
 
@@ -261,13 +261,13 @@ class GroupLdapLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cn: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 cn: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The `GroupLdapLink` resource manages the lifecycle of an LDAP integration with a group.
@@ -378,13 +378,13 @@ class GroupLdapLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cn: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 cn: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -417,13 +417,13 @@ class GroupLdapLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cn: Optional[pulumi.Input[_builtins.str]] = None,
-            filter: Optional[pulumi.Input[_builtins.str]] = None,
-            force: Optional[pulumi.Input[_builtins.bool]] = None,
-            group: Optional[pulumi.Input[_builtins.str]] = None,
-            group_access: Optional[pulumi.Input[_builtins.str]] = None,
-            ldap_provider: Optional[pulumi.Input[_builtins.str]] = None,
-            member_role_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'GroupLdapLink':
+            cn: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            group_access: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            member_role_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'GroupLdapLink':
         """
         Get an existing GroupLdapLink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

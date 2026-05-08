@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *     username: "example-user",
  * });
  * const exampleUserSshKey = new gitlab.UserSshKey("example", {
- *     userId: example.then(example => example.id),
+ *     userId: output(example.then(example => example.id)).apply(x =>Number(x)),
  *     title: "example-key",
  *     key: "ssh-ed25519 AAAA...",
  *     expiresAt: "2016-01-21T00:00:00.000Z",
@@ -137,27 +137,27 @@ export interface UserSshKeyState {
     /**
      * The time when this key was created in GitLab.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ssh key.
      */
-    keyId?: pulumi.Input<number>;
+    keyId?: pulumi.Input<number | undefined>;
     /**
      * The title of the ssh key.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -167,7 +167,7 @@ export interface UserSshKeyArgs {
     /**
      * The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The ssh key. The SSH key `comment` (trailing part) is optional and ignored for diffing, because GitLab overrides it with the username and GitLab hostname.
      */
@@ -179,5 +179,5 @@ export interface UserSshKeyArgs {
     /**
      * The ID or username of the user. If this field is omitted, this resource manages a SSH key for the current user. Otherwise, this resource manages a SSH key for the specified user, and an admin token is required.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }

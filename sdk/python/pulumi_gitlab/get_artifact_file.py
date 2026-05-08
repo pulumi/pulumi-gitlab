@@ -199,11 +199,11 @@ def get_artifact_file(artifact_path: Optional[_builtins.str] = None,
         max_size_bytes=pulumi.get(__ret__, 'max_size_bytes'),
         project=pulumi.get(__ret__, 'project'),
         ref=pulumi.get(__ret__, 'ref'))
-def get_artifact_file_output(artifact_path: Optional[pulumi.Input[_builtins.str]] = None,
-                             job: Optional[pulumi.Input[_builtins.str]] = None,
-                             max_size_bytes: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             project: Optional[pulumi.Input[_builtins.str]] = None,
-                             ref: Optional[pulumi.Input[_builtins.str]] = None,
+def get_artifact_file_output(artifact_path: pulumi.Input[Optional[_builtins.str]] = None,
+                             job: pulumi.Input[Optional[_builtins.str]] = None,
+                             max_size_bytes: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             project: pulumi.Input[Optional[_builtins.str]] = None,
+                             ref: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetArtifactFileResult]:
     """
     The `get_artifact_file` data source allows downloading a single artifact file from a specific job in the latest successful pipeline for a given reference (branch, tag, or commit).

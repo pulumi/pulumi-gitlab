@@ -138,23 +138,23 @@ export interface ProjectMembershipState {
     /**
      * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Expiration date for the project membership. Format: `YYYY-MM-DD`
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
      */
-    memberRoleId?: pulumi.Input<number>;
+    memberRoleId?: pulumi.Input<number | undefined>;
     /**
      * The ID or URL-encoded path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The id of the user.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -168,11 +168,11 @@ export interface ProjectMembershipArgs {
     /**
      * Expiration date for the project membership. Format: `YYYY-MM-DD`
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
      */
-    memberRoleId?: pulumi.Input<number>;
+    memberRoleId?: pulumi.Input<number | undefined>;
     /**
      * The ID or URL-encoded path of the project.
      */

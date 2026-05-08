@@ -21,327 +21,327 @@ __all__ = ['ApplicationSettingsArgs', 'ApplicationSettings']
 @pulumi.input_type
 class ApplicationSettingsArgs:
     def __init__(__self__, *,
-                 abuse_notification_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 after_sign_out_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 after_sign_up_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 akismet_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 akismet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_account_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_group_owners_to_manage_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_local_requests_from_system_hooks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_local_requests_from_web_hooks_and_services: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_project_creation_for_guest_and_below: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_runner_registration_token: Optional[pulumi.Input[_builtins.bool]] = None,
-                 archive_builds_in_human_readable: Optional[pulumi.Input[_builtins.str]] = None,
-                 asciidoc_max_includes: Optional[pulumi.Input[_builtins.int]] = None,
-                 asset_proxy_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 asset_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 asset_proxy_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 asset_proxy_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_keys_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_ban_user_on_excessive_projects_download: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_devops_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 automatic_purchased_storage_allocation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bulk_import_concurrent_pipeline_batch_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 bulk_import_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bulk_import_max_download_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 can_create_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 check_namespace_plan: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_job_live_trace_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_max_includes: Optional[pulumi.Input[_builtins.int]] = None,
-                 ci_max_total_yaml_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 commit_email_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 concurrent_bitbucket_import_jobs_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 concurrent_bitbucket_server_import_jobs_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 concurrent_github_import_jobs_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_registry_cleanup_tags_service_max_list_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_registry_delete_tags_service_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_registry_expiration_policies_caching: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_registry_expiration_policies_worker_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_registry_token_expire_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 deactivate_dormant_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deactivate_dormant_users_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 decompress_archive_file_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_artifacts_expire_in: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch_protection: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_branch_protection_defaults: Optional[pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']] = None,
-                 default_ci_config_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_group_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_preferred_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_project_creation: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_project_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_projects_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_snippet_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_syntax_highlighting_theme: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_inactive_projects: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_unconfirmed_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_adjourned_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 diagramsnet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 diagramsnet_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 diff_max_files: Optional[pulumi.Input[_builtins.int]] = None,
-                 diff_max_lines: Optional[pulumi.Input[_builtins.int]] = None,
-                 diff_max_patch_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 disable_admin_oauth_scopes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_feed_token: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_personal_access_tokens: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_rebinding_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 domain_denylist_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_denylists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 downstream_pipeline_trigger_limit_per_project_user_sha: Optional[pulumi.Input[_builtins.int]] = None,
-                 dsa_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 duo_features_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecdsa_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 ecdsa_sk_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 ed25519_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 ed25519_sk_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 eks_access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 eks_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 eks_integration_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 eks_secret_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_aws: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_aws_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_aws_secret_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_indexed_field_length_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_indexed_file_size_limit_kb: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_indexing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_limit_indexing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_max_code_indexing_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 elasticsearch_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 elasticsearch_requeue_workers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_search: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 elasticsearch_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_worker_number_of_shards: Optional[pulumi.Input[_builtins.int]] = None,
-                 email_additional_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_author_in_body: Optional[pulumi.Input[_builtins.bool]] = None,
-                 email_confirmation_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_artifact_external_redirect_warning_page: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_git_access_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_namespace_storage_limit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enforce_terms: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_auth_client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_auth_client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_auth_client_key_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_authorization_service_default_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_authorization_service_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_authorization_service_timeout: Optional[pulumi.Input[_builtins.float]] = None,
-                 external_authorization_service_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_pipeline_validation_service_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 external_pipeline_validation_service_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_pipeline_validation_service_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 failed_login_attempts_unlock_period_in_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_template_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 first_day_of_week: Optional[pulumi.Input[_builtins.int]] = None,
-                 geo_node_allowed_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 geo_status_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 git_rate_limit_users_alertlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 git_rate_limit_users_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 git_two_factor_session_expiry: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitaly_timeout_default: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitaly_timeout_fast: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitaly_timeout_medium: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitlab_shell_operation_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitpod_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gitpod_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 globally_allowed_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grafana_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 gravatar_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 help_page_hide_commercial_content: Optional[pulumi.Input[_builtins.bool]] = None,
-                 help_page_support_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 help_page_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 help_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 hide_third_party_offers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 home_page_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 housekeeping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 housekeeping_optimize_repository_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 html_emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 in_product_marketing_emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 inactive_projects_delete_after_months: Optional[pulumi.Input[_builtins.int]] = None,
-                 inactive_projects_min_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[_builtins.int]] = None,
-                 inactive_resource_access_tokens_delete_after_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 include_optional_metrics_in_service_ping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 invisible_captcha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_create_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 jira_connect_application_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_connect_proxy_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_connect_public_key_storage_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_latest_artifact: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kroki_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kroki_formats: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
-                 kroki_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_markdown_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 lock_duo_features_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lock_memberships_to_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lock_memberships_to_saml: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mailgun_events_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mailgun_signing_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintenance_mode_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_attachment_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_decompressed_archive_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_export_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_import_remote_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_import_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_login_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_number_of_repository_downloads: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_number_of_repository_downloads_within_time_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pages_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_personal_access_token_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_ssh_key_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_terraform_state_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_method_call_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_password_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 mirror_available: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_capacity_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 mirror_max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 mirror_max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 notify_on_unknown_sign_in: Optional[pulumi.Input[_builtins.bool]] = None,
-                 npm_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nuget_skip_metadata_url_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 package_metadata_purl_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 package_registry_allow_anyone_to_pull_option: Optional[pulumi.Input[_builtins.bool]] = None,
-                 package_registry_cleanup_policies_worker_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 pages_domain_verification_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_authentication_enabled_for_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_authentication_enabled_for_web: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_lowercase_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_number_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_symbol_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_uppercase_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 performance_bar_allowed_group_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 personal_access_token_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_limit_per_project_user_sha: Optional[pulumi.Input[_builtins.int]] = None,
-                 plantuml_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 plantuml_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 polling_interval_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
-                 prevent_merge_requests_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_merge_requests_committers_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_export_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_jobs_api_rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 projects_api_rate_limit_unauthenticated: Optional[pulumi.Input[_builtins.int]] = None,
-                 prometheus_metrics_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protected_ci_variables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_event_activities_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 push_event_hooks_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 pypi_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rate_limiting_response_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 raw_blob_request_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 recaptcha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 recaptcha_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 recaptcha_site_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 receive_max_input_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 receptive_cluster_agents_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remember_me_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_checks_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_size_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-                 require_admin_approval_after_user_signup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_admin_two_factor_authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_personal_access_token_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_two_factor_authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 restricted_visibility_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rsa_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 search_rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 search_rate_limit_unauthenticated: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_approval_policies_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_global_group_approvers_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_txt_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_user_confirmation_email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_access_tokens_expiration_enforced: Optional[pulumi.Input[_builtins.bool]] = None,
-                 session_expire_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shared_runners_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared_runners_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 sidekiq_job_limiter_compression_threshold_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 sidekiq_job_limiter_limit_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 sidekiq_job_limiter_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_in_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 signup_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 silent_admin_exports_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 silent_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slack_app_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slack_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slack_app_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 slack_app_signing_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 slack_app_verification_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 snippet_size_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 snowplow_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_collector_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_cookie_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_database_collector_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sourcegraph_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sourcegraph_public_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sourcegraph_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 spam_check_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 spam_check_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spam_check_endpoint_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_objects_external_storage_auth_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_objects_external_storage_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 suggest_pipeline_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 terminal_max_session_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 terms: Optional[pulumi.Input[_builtins.str]] = None,
-                 throttle_authenticated_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_git_lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_git_lfs_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_git_lfs_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_packages_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_packages_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_packages_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_web_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_web_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_web_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_unauthenticated_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_packages_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_unauthenticated_packages_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_packages_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_web_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_unauthenticated_web_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_web_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_tracking_limit_to_hours: Optional[pulumi.Input[_builtins.bool]] = None,
-                 two_factor_grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 unconfirmed_users_delete_after_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 unique_ips_limit_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unique_ips_limit_per_user: Optional[pulumi.Input[_builtins.int]] = None,
-                 unique_ips_limit_time_window: Optional[pulumi.Input[_builtins.int]] = None,
-                 update_runner_versions_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 updating_name_disabled_for_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 usage_ping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_clickhouse_for_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_deactivation_emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_default_external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_default_internal_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_defaults_to_private_profile: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_oauth_applications: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_show_add_ssh_key_message: Optional[pulumi.Input[_builtins.bool]] = None,
-                 valid_runner_registrars: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 version_check_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 web_ide_clientside_preview_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 whats_new_variant: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_page_max_content_bytes: Optional[pulumi.Input[_builtins.int]] = None):
+                 abuse_notification_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 after_sign_out_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 after_sign_up_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_group_owners_to_manage_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_local_requests_from_system_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_local_requests_from_web_hooks_and_services: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_project_creation_for_guest_and_below: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_runner_registration_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 archive_builds_in_human_readable: pulumi.Input[Optional[_builtins.str]] = None,
+                 asciidoc_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
+                 asset_proxy_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 asset_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 asset_proxy_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 asset_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_keys_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_ban_user_on_excessive_projects_download: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_devops_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 automatic_purchased_storage_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bulk_import_concurrent_pipeline_batch_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 bulk_import_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bulk_import_max_download_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 check_namespace_plan: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_job_live_trace_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
+                 ci_max_total_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 commit_email_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 concurrent_bitbucket_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_bitbucket_server_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_github_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_expiration_policies_enable_historic_entries: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_registry_cleanup_tags_service_max_list_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_registry_delete_tags_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_registry_expiration_policies_caching: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_registry_expiration_policies_worker_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_registry_token_expire_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 deactivate_dormant_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deactivate_dormant_users_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 decompress_archive_file_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_artifacts_expire_in: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_branch_protection_defaults: pulumi.Input[Optional['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']] = None,
+                 default_ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_group_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_preferred_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_project_creation: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_project_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_projects_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_snippet_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_syntax_highlighting_theme: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_inactive_projects: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_unconfirmed_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_adjourned_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 diagramsnet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 diagramsnet_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 diff_max_files: pulumi.Input[Optional[_builtins.int]] = None,
+                 diff_max_lines: pulumi.Input[Optional[_builtins.int]] = None,
+                 diff_max_patch_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 disable_admin_oauth_scopes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_feed_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_personal_access_tokens: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disabled_oauth_sign_in_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_rebinding_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 domain_denylist_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_denylists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 downstream_pipeline_trigger_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+                 dsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecdsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 ecdsa_sk_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 ed25519_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 ed25519_sk_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 eks_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 eks_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 eks_integration_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 eks_secret_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_aws: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_aws_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_aws_secret_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_indexed_field_length_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_indexed_file_size_limit_kb: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_indexing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_limit_indexing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_max_bulk_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_max_bulk_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_max_code_indexing_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_namespace_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 elasticsearch_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_project_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 elasticsearch_requeue_workers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_search: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 elasticsearch_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_worker_number_of_shards: pulumi.Input[Optional[_builtins.int]] = None,
+                 email_additional_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_author_in_body: pulumi.Input[Optional[_builtins.bool]] = None,
+                 email_confirmation_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_artifact_external_redirect_warning_page: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_git_access_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_namespace_storage_limit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enforce_terms: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_auth_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_auth_client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_auth_client_key_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_authorization_service_default_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_authorization_service_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_authorization_service_timeout: pulumi.Input[Optional[_builtins.float]] = None,
+                 external_authorization_service_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_pipeline_validation_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 external_pipeline_validation_service_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_pipeline_validation_service_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 failed_login_attempts_unlock_period_in_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_template_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 first_day_of_week: pulumi.Input[Optional[_builtins.int]] = None,
+                 geo_node_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 geo_status_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 git_rate_limit_users_alertlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 git_rate_limit_users_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 git_two_factor_session_expiry: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitaly_timeout_default: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitaly_timeout_fast: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitaly_timeout_medium: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitlab_shell_operation_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitpod_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gitpod_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 globally_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grafana_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 gravatar_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_owners_can_manage_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 help_page_hide_commercial_content: pulumi.Input[Optional[_builtins.bool]] = None,
+                 help_page_support_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 help_page_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 help_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 hide_third_party_offers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 home_page_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 housekeeping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 housekeeping_optimize_repository_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 html_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 import_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 in_product_marketing_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inactive_projects_delete_after_months: pulumi.Input[Optional[_builtins.int]] = None,
+                 inactive_projects_min_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 inactive_projects_send_warning_email_after_months: pulumi.Input[Optional[_builtins.int]] = None,
+                 inactive_resource_access_tokens_delete_after_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 include_optional_metrics_in_service_ping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 invisible_captcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 jira_connect_application_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_connect_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_connect_public_key_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kroki_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kroki_formats: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
+                 kroki_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_markdown_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 lock_duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_memberships_to_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_memberships_to_saml: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mailgun_events_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mailgun_signing_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maintenance_mode_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_attachment_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_decompressed_archive_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_import_remote_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_import_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_login_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_number_of_repository_downloads: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_number_of_repository_downloads_within_time_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_pages_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_personal_access_token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_ssh_key_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_terraform_state_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_method_call_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_password_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 mirror_available: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_capacity_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 mirror_max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 mirror_max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 notify_on_unknown_sign_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 npm_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nuget_skip_metadata_url_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 outbound_local_requests_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 package_metadata_purl_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 package_registry_allow_anyone_to_pull_option: pulumi.Input[Optional[_builtins.bool]] = None,
+                 package_registry_cleanup_policies_worker_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 pages_domain_verification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_authentication_enabled_for_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_authentication_enabled_for_web: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_lowercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_number_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_symbol_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_uppercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 performance_bar_allowed_group_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_access_token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+                 plantuml_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 plantuml_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 polling_interval_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
+                 prevent_merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_merge_requests_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_export_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_jobs_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 projects_api_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
+                 prometheus_metrics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protected_ci_variables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_event_activities_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 push_event_hooks_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 pypi_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rate_limiting_response_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 raw_blob_request_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 recaptcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 recaptcha_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 recaptcha_site_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 receive_max_input_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 receptive_cluster_agents_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remember_me_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_checks_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 repository_storages_weighted: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+                 require_admin_approval_after_user_signup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_admin_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_personal_access_token_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 restricted_visibility_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_approval_policies_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_global_group_approvers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_txt_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_user_confirmation_email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_access_tokens_expiration_enforced: pulumi.Input[Optional[_builtins.bool]] = None,
+                 session_expire_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shared_runners_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared_runners_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 sidekiq_job_limiter_compression_threshold_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 sidekiq_job_limiter_limit_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 sidekiq_job_limiter_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_in_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 signup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 silent_admin_exports_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 silent_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slack_app_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slack_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slack_app_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 slack_app_signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 slack_app_verification_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 snippet_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 snowplow_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_collector_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_cookie_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_database_collector_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sourcegraph_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sourcegraph_public_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sourcegraph_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 spam_check_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 spam_check_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spam_check_endpoint_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_objects_external_storage_auth_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_objects_external_storage_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 suggest_pipeline_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 terminal_max_session_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 terms: pulumi.Input[Optional[_builtins.str]] = None,
+                 throttle_authenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_git_lfs_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_lfs_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_tracking_limit_to_hours: pulumi.Input[Optional[_builtins.bool]] = None,
+                 two_factor_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 unconfirmed_users_delete_after_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 unique_ips_limit_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unique_ips_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 unique_ips_limit_time_window: pulumi.Input[Optional[_builtins.int]] = None,
+                 update_runner_versions_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updating_name_disabled_for_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 usage_ping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_clickhouse_for_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_deactivation_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_default_external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_default_internal_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_defaults_to_private_profile: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_oauth_applications: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_show_add_ssh_key_message: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valid_runner_registrars: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 version_check_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 web_ide_clientside_preview_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 whats_new_variant: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_page_max_content_bytes: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ApplicationSettings resource.
 
@@ -1315,4184 +1315,4184 @@ class ApplicationSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="abuseNotificationEmail")
-    def abuse_notification_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def abuse_notification_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set, abuse reports are sent to this address. Abuse reports are always available in the Admin Area.
         """
         return pulumi.get(self, "abuse_notification_email")
 
     @abuse_notification_email.setter
-    def abuse_notification_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def abuse_notification_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "abuse_notification_email", value)
 
     @_builtins.property
     @pulumi.getter(name="adminMode")
-    def admin_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Require administrators to enable Admin Mode by re-authenticating for administrative tasks.
         """
         return pulumi.get(self, "admin_mode")
 
     @admin_mode.setter
-    def admin_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="afterSignOutPath")
-    def after_sign_out_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def after_sign_out_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Where to redirect users after logout.
         """
         return pulumi.get(self, "after_sign_out_path")
 
     @after_sign_out_path.setter
-    def after_sign_out_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def after_sign_out_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "after_sign_out_path", value)
 
     @_builtins.property
     @pulumi.getter(name="afterSignUpText")
-    def after_sign_up_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def after_sign_up_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Text shown to the user after signing up.
         """
         return pulumi.get(self, "after_sign_up_text")
 
     @after_sign_up_text.setter
-    def after_sign_up_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def after_sign_up_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "after_sign_up_text", value)
 
     @_builtins.property
     @pulumi.getter(name="akismetApiKey")
-    def akismet_api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def akismet_api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API key for Akismet spam protection.
         """
         return pulumi.get(self, "akismet_api_key")
 
     @akismet_api_key.setter
-    def akismet_api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def akismet_api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "akismet_api_key", value)
 
     @_builtins.property
     @pulumi.getter(name="akismetEnabled")
-    def akismet_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def akismet_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
         """
         return pulumi.get(self, "akismet_enabled")
 
     @akismet_enabled.setter
-    def akismet_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def akismet_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "akismet_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="allowAccountDeletion")
-    def allow_account_deletion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_account_deletion(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to allow users to delete their accounts. Premium and Ultimate only.
         """
         return pulumi.get(self, "allow_account_deletion")
 
     @allow_account_deletion.setter
-    def allow_account_deletion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_account_deletion(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_account_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="allowGroupOwnersToManageLdap")
-    def allow_group_owners_to_manage_ldap(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_group_owners_to_manage_ldap(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to allow group owners to manage LDAP.
         """
         return pulumi.get(self, "allow_group_owners_to_manage_ldap")
 
     @allow_group_owners_to_manage_ldap.setter
-    def allow_group_owners_to_manage_ldap(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_group_owners_to_manage_ldap(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_group_owners_to_manage_ldap", value)
 
     @_builtins.property
     @pulumi.getter(name="allowLocalRequestsFromSystemHooks")
-    def allow_local_requests_from_system_hooks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_local_requests_from_system_hooks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow requests to the local network from system hooks.
         """
         return pulumi.get(self, "allow_local_requests_from_system_hooks")
 
     @allow_local_requests_from_system_hooks.setter
-    def allow_local_requests_from_system_hooks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_local_requests_from_system_hooks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_local_requests_from_system_hooks", value)
 
     @_builtins.property
     @pulumi.getter(name="allowLocalRequestsFromWebHooksAndServices")
-    def allow_local_requests_from_web_hooks_and_services(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_local_requests_from_web_hooks_and_services(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow requests to the local network from web hooks and services.
         """
         return pulumi.get(self, "allow_local_requests_from_web_hooks_and_services")
 
     @allow_local_requests_from_web_hooks_and_services.setter
-    def allow_local_requests_from_web_hooks_and_services(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_local_requests_from_web_hooks_and_services(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_local_requests_from_web_hooks_and_services", value)
 
     @_builtins.property
     @pulumi.getter(name="allowProjectCreationForGuestAndBelow")
-    def allow_project_creation_for_guest_and_below(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_project_creation_for_guest_and_below(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether users assigned up to the Guest role can create groups and personal projects.
         """
         return pulumi.get(self, "allow_project_creation_for_guest_and_below")
 
     @allow_project_creation_for_guest_and_below.setter
-    def allow_project_creation_for_guest_and_below(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_project_creation_for_guest_and_below(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_project_creation_for_guest_and_below", value)
 
     @_builtins.property
     @pulumi.getter(name="allowRunnerRegistrationToken")
-    def allow_runner_registration_token(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_runner_registration_token(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow using a registration token to create a runner.
         """
         return pulumi.get(self, "allow_runner_registration_token")
 
     @allow_runner_registration_token.setter
-    def allow_runner_registration_token(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_runner_registration_token(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_runner_registration_token", value)
 
     @_builtins.property
     @pulumi.getter(name="archiveBuildsInHumanReadable")
-    def archive_builds_in_human_readable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def archive_builds_in_human_readable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
         """
         return pulumi.get(self, "archive_builds_in_human_readable")
 
     @archive_builds_in_human_readable.setter
-    def archive_builds_in_human_readable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def archive_builds_in_human_readable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "archive_builds_in_human_readable", value)
 
     @_builtins.property
     @pulumi.getter(name="asciidocMaxIncludes")
-    def asciidoc_max_includes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def asciidoc_max_includes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
         """
         return pulumi.get(self, "asciidoc_max_includes")
 
     @asciidoc_max_includes.setter
-    def asciidoc_max_includes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def asciidoc_max_includes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "asciidoc_max_includes", value)
 
     @_builtins.property
     @pulumi.getter(name="assetProxyAllowlists")
-    def asset_proxy_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def asset_proxy_allowlists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
         """
         return pulumi.get(self, "asset_proxy_allowlists")
 
     @asset_proxy_allowlists.setter
-    def asset_proxy_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def asset_proxy_allowlists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "asset_proxy_allowlists", value)
 
     @_builtins.property
     @pulumi.getter(name="assetProxyEnabled")
-    def asset_proxy_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def asset_proxy_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: asset*proxy*url) Enable proxying of assets. GitLab restart is required to apply changes.
         """
         return pulumi.get(self, "asset_proxy_enabled")
 
     @asset_proxy_enabled.setter
-    def asset_proxy_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def asset_proxy_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "asset_proxy_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="assetProxySecretKey")
-    def asset_proxy_secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def asset_proxy_secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Shared secret with the asset proxy server. GitLab restart is required to apply changes.
         """
         return pulumi.get(self, "asset_proxy_secret_key")
 
     @asset_proxy_secret_key.setter
-    def asset_proxy_secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def asset_proxy_secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "asset_proxy_secret_key", value)
 
     @_builtins.property
     @pulumi.getter(name="assetProxyUrl")
-    def asset_proxy_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def asset_proxy_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the asset proxy server. GitLab restart is required to apply changes.
         """
         return pulumi.get(self, "asset_proxy_url")
 
     @asset_proxy_url.setter
-    def asset_proxy_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def asset_proxy_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "asset_proxy_url", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedKeysEnabled")
-    def authorized_keys_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def authorized_keys_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         By default, we write to the authorized_keys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
         """
         return pulumi.get(self, "authorized_keys_enabled")
 
     @authorized_keys_enabled.setter
-    def authorized_keys_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def authorized_keys_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "authorized_keys_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="autoBanUserOnExcessiveProjectsDownload")
-    def auto_ban_user_on_excessive_projects_download(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_ban_user_on_excessive_projects_download(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Self-managed, Ultimate only.
         """
         return pulumi.get(self, "auto_ban_user_on_excessive_projects_download")
 
     @auto_ban_user_on_excessive_projects_download.setter
-    def auto_ban_user_on_excessive_projects_download(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_ban_user_on_excessive_projects_download(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_ban_user_on_excessive_projects_download", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDevopsDomain")
-    def auto_devops_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_devops_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         """
         return pulumi.get(self, "auto_devops_domain")
 
     @auto_devops_domain.setter
-    def auto_devops_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_devops_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_devops_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDevopsEnabled")
-    def auto_devops_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_devops_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
         """
         return pulumi.get(self, "auto_devops_enabled")
 
     @auto_devops_enabled.setter
-    def auto_devops_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_devops_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_devops_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="automaticPurchasedStorageAllocation")
-    def automatic_purchased_storage_allocation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def automatic_purchased_storage_allocation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enabling this permits automatic allocation of purchased storage in a namespace.
         """
         return pulumi.get(self, "automatic_purchased_storage_allocation")
 
     @automatic_purchased_storage_allocation.setter
-    def automatic_purchased_storage_allocation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def automatic_purchased_storage_allocation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "automatic_purchased_storage_allocation", value)
 
     @_builtins.property
     @pulumi.getter(name="bulkImportConcurrentPipelineBatchLimit")
-    def bulk_import_concurrent_pipeline_batch_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bulk_import_concurrent_pipeline_batch_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum simultaneous Direct Transfer batches to process.
         """
         return pulumi.get(self, "bulk_import_concurrent_pipeline_batch_limit")
 
     @bulk_import_concurrent_pipeline_batch_limit.setter
-    def bulk_import_concurrent_pipeline_batch_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bulk_import_concurrent_pipeline_batch_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bulk_import_concurrent_pipeline_batch_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="bulkImportEnabled")
-    def bulk_import_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bulk_import_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable migrating GitLab groups by direct transfer.
         """
         return pulumi.get(self, "bulk_import_enabled")
 
     @bulk_import_enabled.setter
-    def bulk_import_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bulk_import_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bulk_import_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="bulkImportMaxDownloadFileSize")
-    def bulk_import_max_download_file_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bulk_import_max_download_file_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum download file size when importing from source GitLab instances by direct transfer.
         """
         return pulumi.get(self, "bulk_import_max_download_file_size")
 
     @bulk_import_max_download_file_size.setter
-    def bulk_import_max_download_file_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bulk_import_max_download_file_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bulk_import_max_download_file_size", value)
 
     @_builtins.property
     @pulumi.getter(name="canCreateGroup")
-    def can_create_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_create_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether users can create top-level groups.
         """
         return pulumi.get(self, "can_create_group")
 
     @can_create_group.setter
-    def can_create_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_create_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_create_group", value)
 
     @_builtins.property
     @pulumi.getter(name="checkNamespacePlan")
-    def check_namespace_plan(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def check_namespace_plan(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
         """
         return pulumi.get(self, "check_namespace_plan")
 
     @check_namespace_plan.setter
-    def check_namespace_plan(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def check_namespace_plan(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "check_namespace_plan", value)
 
     @_builtins.property
     @pulumi.getter(name="ciJobLiveTraceEnabled")
-    def ci_job_live_trace_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ci_job_live_trace_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
         """
         return pulumi.get(self, "ci_job_live_trace_enabled")
 
     @ci_job_live_trace_enabled.setter
-    def ci_job_live_trace_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ci_job_live_trace_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ci_job_live_trace_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ciMaxIncludes")
-    def ci_max_includes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ci_max_includes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of includes per pipeline.
         """
         return pulumi.get(self, "ci_max_includes")
 
     @ci_max_includes.setter
-    def ci_max_includes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ci_max_includes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ci_max_includes", value)
 
     @_builtins.property
     @pulumi.getter(name="ciMaxTotalYamlSizeBytes")
-    def ci_max_total_yaml_size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ci_max_total_yaml_size_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
         """
         return pulumi.get(self, "ci_max_total_yaml_size_bytes")
 
     @ci_max_total_yaml_size_bytes.setter
-    def ci_max_total_yaml_size_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ci_max_total_yaml_size_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ci_max_total_yaml_size_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="commitEmailHostname")
-    def commit_email_hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_email_hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom hostname (for private commit emails).
         """
         return pulumi.get(self, "commit_email_hostname")
 
     @commit_email_hostname.setter
-    def commit_email_hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_email_hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_email_hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="concurrentBitbucketImportJobsLimit")
-    def concurrent_bitbucket_import_jobs_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def concurrent_bitbucket_import_jobs_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of simultaneous import jobs for the Bitbucket Cloud importer.
         """
         return pulumi.get(self, "concurrent_bitbucket_import_jobs_limit")
 
     @concurrent_bitbucket_import_jobs_limit.setter
-    def concurrent_bitbucket_import_jobs_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def concurrent_bitbucket_import_jobs_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "concurrent_bitbucket_import_jobs_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="concurrentBitbucketServerImportJobsLimit")
-    def concurrent_bitbucket_server_import_jobs_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def concurrent_bitbucket_server_import_jobs_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of simultaneous import jobs for the Bitbucket Server importer.
         """
         return pulumi.get(self, "concurrent_bitbucket_server_import_jobs_limit")
 
     @concurrent_bitbucket_server_import_jobs_limit.setter
-    def concurrent_bitbucket_server_import_jobs_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def concurrent_bitbucket_server_import_jobs_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "concurrent_bitbucket_server_import_jobs_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="concurrentGithubImportJobsLimit")
-    def concurrent_github_import_jobs_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def concurrent_github_import_jobs_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of simultaneous import jobs for the GitHub importer.
         """
         return pulumi.get(self, "concurrent_github_import_jobs_limit")
 
     @concurrent_github_import_jobs_limit.setter
-    def concurrent_github_import_jobs_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def concurrent_github_import_jobs_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "concurrent_github_import_jobs_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="containerExpirationPoliciesEnableHistoricEntries")
-    def container_expiration_policies_enable_historic_entries(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def container_expiration_policies_enable_historic_entries(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable cleanup policies for all projects.
         """
         return pulumi.get(self, "container_expiration_policies_enable_historic_entries")
 
     @container_expiration_policies_enable_historic_entries.setter
-    def container_expiration_policies_enable_historic_entries(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def container_expiration_policies_enable_historic_entries(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "container_expiration_policies_enable_historic_entries", value)
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryCleanupTagsServiceMaxListSize")
-    def container_registry_cleanup_tags_service_max_list_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_registry_cleanup_tags_service_max_list_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of tags that can be deleted in a single execution of cleanup policies.
         """
         return pulumi.get(self, "container_registry_cleanup_tags_service_max_list_size")
 
     @container_registry_cleanup_tags_service_max_list_size.setter
-    def container_registry_cleanup_tags_service_max_list_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_registry_cleanup_tags_service_max_list_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_registry_cleanup_tags_service_max_list_size", value)
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryDeleteTagsServiceTimeout")
-    def container_registry_delete_tags_service_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_registry_delete_tags_service_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum time, in seconds, that the cleanup process can take to delete a batch of tags for cleanup policies.
         """
         return pulumi.get(self, "container_registry_delete_tags_service_timeout")
 
     @container_registry_delete_tags_service_timeout.setter
-    def container_registry_delete_tags_service_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_registry_delete_tags_service_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_registry_delete_tags_service_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryExpirationPoliciesCaching")
-    def container_registry_expiration_policies_caching(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def container_registry_expiration_policies_caching(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Caching during the execution of cleanup policies.
         """
         return pulumi.get(self, "container_registry_expiration_policies_caching")
 
     @container_registry_expiration_policies_caching.setter
-    def container_registry_expiration_policies_caching(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def container_registry_expiration_policies_caching(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "container_registry_expiration_policies_caching", value)
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryExpirationPoliciesWorkerCapacity")
-    def container_registry_expiration_policies_worker_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_registry_expiration_policies_worker_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers for cleanup policies.
         """
         return pulumi.get(self, "container_registry_expiration_policies_worker_capacity")
 
     @container_registry_expiration_policies_worker_capacity.setter
-    def container_registry_expiration_policies_worker_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_registry_expiration_policies_worker_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_registry_expiration_policies_worker_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryTokenExpireDelay")
-    def container_registry_token_expire_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_registry_token_expire_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Container Registry token duration in minutes.
         """
         return pulumi.get(self, "container_registry_token_expire_delay")
 
     @container_registry_token_expire_delay.setter
-    def container_registry_token_expire_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_registry_token_expire_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_registry_token_expire_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="deactivateDormantUsers")
-    def deactivate_dormant_users(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deactivate_dormant_users(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable automatic deactivation of dormant users.
         """
         return pulumi.get(self, "deactivate_dormant_users")
 
     @deactivate_dormant_users.setter
-    def deactivate_dormant_users(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deactivate_dormant_users(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deactivate_dormant_users", value)
 
     @_builtins.property
     @pulumi.getter(name="deactivateDormantUsersPeriod")
-    def deactivate_dormant_users_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deactivate_dormant_users_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Length of time (in days) after which a user is considered dormant.
         """
         return pulumi.get(self, "deactivate_dormant_users_period")
 
     @deactivate_dormant_users_period.setter
-    def deactivate_dormant_users_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deactivate_dormant_users_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deactivate_dormant_users_period", value)
 
     @_builtins.property
     @pulumi.getter(name="decompressArchiveFileTimeout")
-    def decompress_archive_file_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def decompress_archive_file_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
         """
         return pulumi.get(self, "decompress_archive_file_timeout")
 
     @decompress_archive_file_timeout.setter
-    def decompress_archive_file_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def decompress_archive_file_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "decompress_archive_file_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultArtifactsExpireIn")
-    def default_artifacts_expire_in(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_artifacts_expire_in(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the default expiration time for each job’s artifacts.
         """
         return pulumi.get(self, "default_artifacts_expire_in")
 
     @default_artifacts_expire_in.setter
-    def default_artifacts_expire_in(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_artifacts_expire_in(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_artifacts_expire_in", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranchName")
-    def default_branch_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_branch_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance-level custom initial branch name
         """
         return pulumi.get(self, "default_branch_name")
 
     @default_branch_name.setter
-    def default_branch_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_branch_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_branch_name", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranchProtection")
     @_utilities.deprecated("""Use `default_branch_protection_defaults` instead. To be removed in 19.0.""")
-    def default_branch_protection(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_branch_protection(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "default_branch_protection")
 
     @default_branch_protection.setter
-    def default_branch_protection(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_branch_protection(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_branch_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranchProtectionDefaults")
-    def default_branch_protection_defaults(self) -> Optional[pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']]:
+    def default_branch_protection_defaults(self) -> pulumi.Input[Optional['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']]:
         """
         The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         """
         return pulumi.get(self, "default_branch_protection_defaults")
 
     @default_branch_protection_defaults.setter
-    def default_branch_protection_defaults(self, value: Optional[pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']]):
+    def default_branch_protection_defaults(self, value: pulumi.Input[Optional['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']]):
         pulumi.set(self, "default_branch_protection_defaults", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultCiConfigPath")
-    def default_ci_config_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_ci_config_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         """
         return pulumi.get(self, "default_ci_config_path")
 
     @default_ci_config_path.setter
-    def default_ci_config_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_ci_config_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_ci_config_path", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultGroupVisibility")
-    def default_group_visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_group_visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         What visibility level new groups receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_group_visibility")
 
     @default_group_visibility.setter
-    def default_group_visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_group_visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_group_visibility", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPreferredLanguage")
-    def default_preferred_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_preferred_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default preferred language for users who are not logged in.
         """
         return pulumi.get(self, "default_preferred_language")
 
     @default_preferred_language.setter
-    def default_preferred_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_preferred_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_preferred_language", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultProjectCreation")
-    def default_project_creation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_project_creation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
         """
         return pulumi.get(self, "default_project_creation")
 
     @default_project_creation.setter
-    def default_project_creation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_project_creation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_project_creation", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultProjectVisibility")
-    def default_project_visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_project_visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         What visibility level new projects receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_project_visibility")
 
     @default_project_visibility.setter
-    def default_project_visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_project_visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_project_visibility", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultProjectsLimit")
-    def default_projects_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_projects_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Project limit per user.
         """
         return pulumi.get(self, "default_projects_limit")
 
     @default_projects_limit.setter
-    def default_projects_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_projects_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_projects_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSnippetVisibility")
-    def default_snippet_visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_snippet_visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         What visibility level new snippets receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_snippet_visibility")
 
     @default_snippet_visibility.setter
-    def default_snippet_visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_snippet_visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_snippet_visibility", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSyntaxHighlightingTheme")
-    def default_syntax_highlighting_theme(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_syntax_highlighting_theme(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
         """
         return pulumi.get(self, "default_syntax_highlighting_theme")
 
     @default_syntax_highlighting_theme.setter
-    def default_syntax_highlighting_theme(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_syntax_highlighting_theme(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_syntax_highlighting_theme", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteInactiveProjects")
-    def delete_inactive_projects(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_inactive_projects(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable inactive project deletion feature.
         """
         return pulumi.get(self, "delete_inactive_projects")
 
     @delete_inactive_projects.setter
-    def delete_inactive_projects(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_inactive_projects(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_inactive_projects", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteUnconfirmedUsers")
-    def delete_unconfirmed_users(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_unconfirmed_users(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Self-managed, Premium and Ultimate only.
         """
         return pulumi.get(self, "delete_unconfirmed_users")
 
     @delete_unconfirmed_users.setter
-    def delete_unconfirmed_users(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_unconfirmed_users(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_unconfirmed_users", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionAdjournedPeriod")
-    def deletion_adjourned_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deletion_adjourned_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         """
         return pulumi.get(self, "deletion_adjourned_period")
 
     @deletion_adjourned_period.setter
-    def deletion_adjourned_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deletion_adjourned_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deletion_adjourned_period", value)
 
     @_builtins.property
     @pulumi.getter(name="diagramsnetEnabled")
-    def diagramsnet_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def diagramsnet_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
         """
         return pulumi.get(self, "diagramsnet_enabled")
 
     @diagramsnet_enabled.setter
-    def diagramsnet_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def diagramsnet_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "diagramsnet_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="diagramsnetUrl")
-    def diagramsnet_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def diagramsnet_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Diagrams.net instance URL for integration.
         """
         return pulumi.get(self, "diagramsnet_url")
 
     @diagramsnet_url.setter
-    def diagramsnet_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def diagramsnet_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "diagramsnet_url", value)
 
     @_builtins.property
     @pulumi.getter(name="diffMaxFiles")
-    def diff_max_files(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def diff_max_files(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum files in a diff.
         """
         return pulumi.get(self, "diff_max_files")
 
     @diff_max_files.setter
-    def diff_max_files(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def diff_max_files(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "diff_max_files", value)
 
     @_builtins.property
     @pulumi.getter(name="diffMaxLines")
-    def diff_max_lines(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def diff_max_lines(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum lines in a diff.
         """
         return pulumi.get(self, "diff_max_lines")
 
     @diff_max_lines.setter
-    def diff_max_lines(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def diff_max_lines(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "diff_max_lines", value)
 
     @_builtins.property
     @pulumi.getter(name="diffMaxPatchBytes")
-    def diff_max_patch_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def diff_max_patch_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum diff patch size, in bytes.
         """
         return pulumi.get(self, "diff_max_patch_bytes")
 
     @diff_max_patch_bytes.setter
-    def diff_max_patch_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def diff_max_patch_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "diff_max_patch_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="disableAdminOauthScopes")
-    def disable_admin_oauth_scopes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_admin_oauth_scopes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
         """
         return pulumi.get(self, "disable_admin_oauth_scopes")
 
     @disable_admin_oauth_scopes.setter
-    def disable_admin_oauth_scopes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_admin_oauth_scopes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_admin_oauth_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="disableFeedToken")
-    def disable_feed_token(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_feed_token(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable display of RSS/Atom and calendar feed tokens.
         """
         return pulumi.get(self, "disable_feed_token")
 
     @disable_feed_token.setter
-    def disable_feed_token(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_feed_token(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_feed_token", value)
 
     @_builtins.property
     @pulumi.getter(name="disableOverridingApproversPerMergeRequest")
-    def disable_overriding_approvers_per_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_overriding_approvers_per_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevent editing approval rules in projects and merge requests.
         """
         return pulumi.get(self, "disable_overriding_approvers_per_merge_request")
 
     @disable_overriding_approvers_per_merge_request.setter
-    def disable_overriding_approvers_per_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_overriding_approvers_per_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_overriding_approvers_per_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="disablePersonalAccessTokens")
-    def disable_personal_access_tokens(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_personal_access_tokens(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
         """
         return pulumi.get(self, "disable_personal_access_tokens")
 
     @disable_personal_access_tokens.setter
-    def disable_personal_access_tokens(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_personal_access_tokens(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_personal_access_tokens", value)
 
     @_builtins.property
     @pulumi.getter(name="disabledOauthSignInSources")
-    def disabled_oauth_sign_in_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def disabled_oauth_sign_in_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Disabled OAuth sign-in sources.
         """
         return pulumi.get(self, "disabled_oauth_sign_in_sources")
 
     @disabled_oauth_sign_in_sources.setter
-    def disabled_oauth_sign_in_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def disabled_oauth_sign_in_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "disabled_oauth_sign_in_sources", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsRebindingProtectionEnabled")
-    def dns_rebinding_protection_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dns_rebinding_protection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enforce DNS rebinding attack protection.
         """
         return pulumi.get(self, "dns_rebinding_protection_enabled")
 
     @dns_rebinding_protection_enabled.setter
-    def dns_rebinding_protection_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dns_rebinding_protection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dns_rebinding_protection_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="domainAllowlists")
-    def domain_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domain_allowlists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Force people to use only corporate emails for sign-up. Null means there is no restriction.
         """
         return pulumi.get(self, "domain_allowlists")
 
     @domain_allowlists.setter
-    def domain_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domain_allowlists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_allowlists", value)
 
     @_builtins.property
     @pulumi.getter(name="domainDenylistEnabled")
-    def domain_denylist_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def domain_denylist_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: domain_denylist) Allows blocking sign-ups from emails from specific domains.
         """
         return pulumi.get(self, "domain_denylist_enabled")
 
     @domain_denylist_enabled.setter
-    def domain_denylist_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def domain_denylist_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "domain_denylist_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="domainDenylists")
-    def domain_denylists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domain_denylists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
         """
         return pulumi.get(self, "domain_denylists")
 
     @domain_denylists.setter
-    def domain_denylists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domain_denylists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_denylists", value)
 
     @_builtins.property
     @pulumi.getter(name="downstreamPipelineTriggerLimitPerProjectUserSha")
-    def downstream_pipeline_trigger_limit_per_project_user_sha(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def downstream_pipeline_trigger_limit_per_project_user_sha(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum downstream pipeline trigger rate.
         """
         return pulumi.get(self, "downstream_pipeline_trigger_limit_per_project_user_sha")
 
     @downstream_pipeline_trigger_limit_per_project_user_sha.setter
-    def downstream_pipeline_trigger_limit_per_project_user_sha(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def downstream_pipeline_trigger_limit_per_project_user_sha(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "downstream_pipeline_trigger_limit_per_project_user_sha", value)
 
     @_builtins.property
     @pulumi.getter(name="dsaKeyRestriction")
-    def dsa_key_restriction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dsa_key_restriction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
         """
         return pulumi.get(self, "dsa_key_restriction")
 
     @dsa_key_restriction.setter
-    def dsa_key_restriction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dsa_key_restriction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dsa_key_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="duoFeaturesEnabled")
-    def duo_features_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def duo_features_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether GitLab Duo features are enabled for this instance. Self-managed, Premium and Ultimate only.
         """
         return pulumi.get(self, "duo_features_enabled")
 
     @duo_features_enabled.setter
-    def duo_features_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def duo_features_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "duo_features_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ecdsaKeyRestriction")
-    def ecdsa_key_restriction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ecdsa_key_restriction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
         """
         return pulumi.get(self, "ecdsa_key_restriction")
 
     @ecdsa_key_restriction.setter
-    def ecdsa_key_restriction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ecdsa_key_restriction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ecdsa_key_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="ecdsaSkKeyRestriction")
-    def ecdsa_sk_key_restriction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ecdsa_sk_key_restriction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
         """
         return pulumi.get(self, "ecdsa_sk_key_restriction")
 
     @ecdsa_sk_key_restriction.setter
-    def ecdsa_sk_key_restriction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ecdsa_sk_key_restriction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ecdsa_sk_key_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="ed25519KeyRestriction")
-    def ed25519_key_restriction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ed25519_key_restriction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
         """
         return pulumi.get(self, "ed25519_key_restriction")
 
     @ed25519_key_restriction.setter
-    def ed25519_key_restriction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ed25519_key_restriction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ed25519_key_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="ed25519SkKeyRestriction")
-    def ed25519_sk_key_restriction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ed25519_sk_key_restriction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
         """
         return pulumi.get(self, "ed25519_sk_key_restriction")
 
     @ed25519_sk_key_restriction.setter
-    def ed25519_sk_key_restriction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ed25519_sk_key_restriction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ed25519_sk_key_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="eksAccessKeyId")
-    def eks_access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eks_access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS IAM access key ID.
         """
         return pulumi.get(self, "eks_access_key_id")
 
     @eks_access_key_id.setter
-    def eks_access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eks_access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eks_access_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="eksAccountId")
-    def eks_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eks_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Amazon account ID.
         """
         return pulumi.get(self, "eks_account_id")
 
     @eks_account_id.setter
-    def eks_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eks_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eks_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="eksIntegrationEnabled")
-    def eks_integration_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def eks_integration_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable integration with Amazon EKS.
         """
         return pulumi.get(self, "eks_integration_enabled")
 
     @eks_integration_enabled.setter
-    def eks_integration_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def eks_integration_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "eks_integration_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="eksSecretAccessKey")
-    def eks_secret_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eks_secret_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS IAM secret access key.
         """
         return pulumi.get(self, "eks_secret_access_key")
 
     @eks_secret_access_key.setter
-    def eks_secret_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eks_secret_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eks_secret_access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchAws")
-    def elasticsearch_aws(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def elasticsearch_aws(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable the use of AWS hosted Elasticsearch.
         """
         return pulumi.get(self, "elasticsearch_aws")
 
     @elasticsearch_aws.setter
-    def elasticsearch_aws(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def elasticsearch_aws(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "elasticsearch_aws", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchAwsAccessKey")
-    def elasticsearch_aws_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elasticsearch_aws_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS IAM access key.
         """
         return pulumi.get(self, "elasticsearch_aws_access_key")
 
     @elasticsearch_aws_access_key.setter
-    def elasticsearch_aws_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elasticsearch_aws_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elasticsearch_aws_access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchAwsRegion")
-    def elasticsearch_aws_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elasticsearch_aws_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AWS region the Elasticsearch domain is configured.
         """
         return pulumi.get(self, "elasticsearch_aws_region")
 
     @elasticsearch_aws_region.setter
-    def elasticsearch_aws_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elasticsearch_aws_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elasticsearch_aws_region", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchAwsSecretAccessKey")
-    def elasticsearch_aws_secret_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elasticsearch_aws_secret_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS IAM secret access key.
         """
         return pulumi.get(self, "elasticsearch_aws_secret_access_key")
 
     @elasticsearch_aws_secret_access_key.setter
-    def elasticsearch_aws_secret_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elasticsearch_aws_secret_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elasticsearch_aws_secret_access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchIndexedFieldLengthLimit")
-    def elasticsearch_indexed_field_length_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def elasticsearch_indexed_field_length_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum size of text fields to index by Elasticsearch. 0 value means no limit. This does not apply to repository and wiki indexing.
         """
         return pulumi.get(self, "elasticsearch_indexed_field_length_limit")
 
     @elasticsearch_indexed_field_length_limit.setter
-    def elasticsearch_indexed_field_length_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def elasticsearch_indexed_field_length_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "elasticsearch_indexed_field_length_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchIndexedFileSizeLimitKb")
-    def elasticsearch_indexed_file_size_limit_kb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def elasticsearch_indexed_file_size_limit_kb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum size of repository and wiki files that are indexed by Elasticsearch.
         """
         return pulumi.get(self, "elasticsearch_indexed_file_size_limit_kb")
 
     @elasticsearch_indexed_file_size_limit_kb.setter
-    def elasticsearch_indexed_file_size_limit_kb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def elasticsearch_indexed_file_size_limit_kb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "elasticsearch_indexed_file_size_limit_kb", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchIndexing")
-    def elasticsearch_indexing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def elasticsearch_indexing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Elasticsearch indexing.
         """
         return pulumi.get(self, "elasticsearch_indexing")
 
     @elasticsearch_indexing.setter
-    def elasticsearch_indexing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def elasticsearch_indexing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "elasticsearch_indexing", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchLimitIndexing")
-    def elasticsearch_limit_indexing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def elasticsearch_limit_indexing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Limit Elasticsearch to index certain namespaces and projects.
         """
         return pulumi.get(self, "elasticsearch_limit_indexing")
 
     @elasticsearch_limit_indexing.setter
-    def elasticsearch_limit_indexing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def elasticsearch_limit_indexing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "elasticsearch_limit_indexing", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchMaxBulkConcurrency")
-    def elasticsearch_max_bulk_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def elasticsearch_max_bulk_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum concurrency of Elasticsearch bulk requests per indexing operation. This only applies to repository indexing operations.
         """
         return pulumi.get(self, "elasticsearch_max_bulk_concurrency")
 
     @elasticsearch_max_bulk_concurrency.setter
-    def elasticsearch_max_bulk_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def elasticsearch_max_bulk_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "elasticsearch_max_bulk_concurrency", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchMaxBulkSizeMb")
-    def elasticsearch_max_bulk_size_mb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def elasticsearch_max_bulk_size_mb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
         """
         return pulumi.get(self, "elasticsearch_max_bulk_size_mb")
 
     @elasticsearch_max_bulk_size_mb.setter
-    def elasticsearch_max_bulk_size_mb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def elasticsearch_max_bulk_size_mb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "elasticsearch_max_bulk_size_mb", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchMaxCodeIndexingConcurrency")
-    def elasticsearch_max_code_indexing_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def elasticsearch_max_code_indexing_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
         """
         return pulumi.get(self, "elasticsearch_max_code_indexing_concurrency")
 
     @elasticsearch_max_code_indexing_concurrency.setter
-    def elasticsearch_max_code_indexing_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def elasticsearch_max_code_indexing_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "elasticsearch_max_code_indexing_concurrency", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchNamespaceIds")
-    def elasticsearch_namespace_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def elasticsearch_namespace_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         """
         return pulumi.get(self, "elasticsearch_namespace_ids")
 
     @elasticsearch_namespace_ids.setter
-    def elasticsearch_namespace_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def elasticsearch_namespace_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "elasticsearch_namespace_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchPassword")
-    def elasticsearch_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elasticsearch_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of your Elasticsearch instance.
         """
         return pulumi.get(self, "elasticsearch_password")
 
     @elasticsearch_password.setter
-    def elasticsearch_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elasticsearch_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elasticsearch_password", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchProjectIds")
-    def elasticsearch_project_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def elasticsearch_project_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         """
         return pulumi.get(self, "elasticsearch_project_ids")
 
     @elasticsearch_project_ids.setter
-    def elasticsearch_project_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def elasticsearch_project_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "elasticsearch_project_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchRequeueWorkers")
-    def elasticsearch_requeue_workers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def elasticsearch_requeue_workers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
         """
         return pulumi.get(self, "elasticsearch_requeue_workers")
 
     @elasticsearch_requeue_workers.setter
-    def elasticsearch_requeue_workers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def elasticsearch_requeue_workers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "elasticsearch_requeue_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchSearch")
-    def elasticsearch_search(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def elasticsearch_search(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Elasticsearch search.
         """
         return pulumi.get(self, "elasticsearch_search")
 
     @elasticsearch_search.setter
-    def elasticsearch_search(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def elasticsearch_search(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "elasticsearch_search", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchUrls")
-    def elasticsearch_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def elasticsearch_urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
         """
         return pulumi.get(self, "elasticsearch_urls")
 
     @elasticsearch_urls.setter
-    def elasticsearch_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def elasticsearch_urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "elasticsearch_urls", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchUsername")
-    def elasticsearch_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elasticsearch_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of your Elasticsearch instance.
         """
         return pulumi.get(self, "elasticsearch_username")
 
     @elasticsearch_username.setter
-    def elasticsearch_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elasticsearch_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elasticsearch_username", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchWorkerNumberOfShards")
-    def elasticsearch_worker_number_of_shards(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def elasticsearch_worker_number_of_shards(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
         """
         return pulumi.get(self, "elasticsearch_worker_number_of_shards")
 
     @elasticsearch_worker_number_of_shards.setter
-    def elasticsearch_worker_number_of_shards(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def elasticsearch_worker_number_of_shards(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "elasticsearch_worker_number_of_shards", value)
 
     @_builtins.property
     @pulumi.getter(name="emailAdditionalText")
-    def email_additional_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email_additional_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional text added to the bottom of every email for legal/auditing/compliance reasons.
         """
         return pulumi.get(self, "email_additional_text")
 
     @email_additional_text.setter
-    def email_additional_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email_additional_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email_additional_text", value)
 
     @_builtins.property
     @pulumi.getter(name="emailAuthorInBody")
-    def email_author_in_body(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def email_author_in_body(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.
         """
         return pulumi.get(self, "email_author_in_body")
 
     @email_author_in_body.setter
-    def email_author_in_body(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def email_author_in_body(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "email_author_in_body", value)
 
     @_builtins.property
     @pulumi.getter(name="emailConfirmationSetting")
-    def email_confirmation_setting(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email_confirmation_setting(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
         """
         return pulumi.get(self, "email_confirmation_setting")
 
     @email_confirmation_setting.setter
-    def email_confirmation_setting(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email_confirmation_setting(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email_confirmation_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="enableArtifactExternalRedirectWarningPage")
-    def enable_artifact_external_redirect_warning_page(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_artifact_external_redirect_warning_page(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Show the external redirect page that warns you about user-generated content in GitLab Pages.
         """
         return pulumi.get(self, "enable_artifact_external_redirect_warning_page")
 
     @enable_artifact_external_redirect_warning_page.setter
-    def enable_artifact_external_redirect_warning_page(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_artifact_external_redirect_warning_page(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_artifact_external_redirect_warning_page", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledGitAccessProtocol")
-    def enabled_git_access_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enabled_git_access_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
         """
         return pulumi.get(self, "enabled_git_access_protocol")
 
     @enabled_git_access_protocol.setter
-    def enabled_git_access_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enabled_git_access_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enabled_git_access_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="enforceNamespaceStorageLimit")
-    def enforce_namespace_storage_limit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enforce_namespace_storage_limit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enabling this permits enforcement of namespace storage limits.
         """
         return pulumi.get(self, "enforce_namespace_storage_limit")
 
     @enforce_namespace_storage_limit.setter
-    def enforce_namespace_storage_limit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enforce_namespace_storage_limit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce_namespace_storage_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="enforceTerms")
-    def enforce_terms(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enforce_terms(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: terms) Enforce application ToS to all users.
         """
         return pulumi.get(self, "enforce_terms")
 
     @enforce_terms.setter
-    def enforce_terms(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enforce_terms(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce_terms", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthClientCert")
-    def external_auth_client_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_auth_client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (If enabled, requires: external*auth*client_key) The certificate to use to authenticate with the external authorization service.
         """
         return pulumi.get(self, "external_auth_client_cert")
 
     @external_auth_client_cert.setter
-    def external_auth_client_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_auth_client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_auth_client_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthClientKey")
-    def external_auth_client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_auth_client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key for the certificate when authentication is required for the external authorization service, this is encrypted when stored.
         """
         return pulumi.get(self, "external_auth_client_key")
 
     @external_auth_client_key.setter
-    def external_auth_client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_auth_client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_auth_client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthClientKeyPass")
-    def external_auth_client_key_pass(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_auth_client_key_pass(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Passphrase to use for the private key when authenticating with the external service this is encrypted when stored.
         """
         return pulumi.get(self, "external_auth_client_key_pass")
 
     @external_auth_client_key_pass.setter
-    def external_auth_client_key_pass(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_auth_client_key_pass(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_auth_client_key_pass", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthorizationServiceDefaultLabel")
-    def external_authorization_service_default_label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_authorization_service_default_label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default classification label to use when requesting authorization and no classification label has been specified on the project.
         """
         return pulumi.get(self, "external_authorization_service_default_label")
 
     @external_authorization_service_default_label.setter
-    def external_authorization_service_default_label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_authorization_service_default_label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_authorization_service_default_label", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthorizationServiceEnabled")
-    def external_authorization_service_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def external_authorization_service_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: external*authorization*service*default*label, external*authorization*service*timeout and external*authorization*service*url) Enable using an external authorization service for accessing projects.
         """
         return pulumi.get(self, "external_authorization_service_enabled")
 
     @external_authorization_service_enabled.setter
-    def external_authorization_service_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def external_authorization_service_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "external_authorization_service_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthorizationServiceTimeout")
-    def external_authorization_service_timeout(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def external_authorization_service_timeout(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The timeout after which an authorization request is aborted, in seconds. When a request times out, access is denied to the user. (min: 0.001, max: 10, step: 0.001).
         """
         return pulumi.get(self, "external_authorization_service_timeout")
 
     @external_authorization_service_timeout.setter
-    def external_authorization_service_timeout(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def external_authorization_service_timeout(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "external_authorization_service_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthorizationServiceUrl")
-    def external_authorization_service_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_authorization_service_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to which authorization requests are directed.
         """
         return pulumi.get(self, "external_authorization_service_url")
 
     @external_authorization_service_url.setter
-    def external_authorization_service_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_authorization_service_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_authorization_service_url", value)
 
     @_builtins.property
     @pulumi.getter(name="externalPipelineValidationServiceTimeout")
-    def external_pipeline_validation_service_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def external_pipeline_validation_service_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long to wait for a response from the pipeline validation service. Assumes OK if it times out.
         """
         return pulumi.get(self, "external_pipeline_validation_service_timeout")
 
     @external_pipeline_validation_service_timeout.setter
-    def external_pipeline_validation_service_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def external_pipeline_validation_service_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "external_pipeline_validation_service_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="externalPipelineValidationServiceToken")
-    def external_pipeline_validation_service_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_pipeline_validation_service_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Token to include as the X-Gitlab-Token header in requests to the URL in external*pipeline*validation*service*url.
         """
         return pulumi.get(self, "external_pipeline_validation_service_token")
 
     @external_pipeline_validation_service_token.setter
-    def external_pipeline_validation_service_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_pipeline_validation_service_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_pipeline_validation_service_token", value)
 
     @_builtins.property
     @pulumi.getter(name="externalPipelineValidationServiceUrl")
-    def external_pipeline_validation_service_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_pipeline_validation_service_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to use for pipeline validation requests.
         """
         return pulumi.get(self, "external_pipeline_validation_service_url")
 
     @external_pipeline_validation_service_url.setter
-    def external_pipeline_validation_service_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_pipeline_validation_service_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_pipeline_validation_service_url", value)
 
     @_builtins.property
     @pulumi.getter(name="failedLoginAttemptsUnlockPeriodInMinutes")
-    def failed_login_attempts_unlock_period_in_minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failed_login_attempts_unlock_period_in_minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
         """
         return pulumi.get(self, "failed_login_attempts_unlock_period_in_minutes")
 
     @failed_login_attempts_unlock_period_in_minutes.setter
-    def failed_login_attempts_unlock_period_in_minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failed_login_attempts_unlock_period_in_minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failed_login_attempts_unlock_period_in_minutes", value)
 
     @_builtins.property
     @pulumi.getter(name="fileTemplateProjectId")
-    def file_template_project_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def file_template_project_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a project to load custom file templates from.
         """
         return pulumi.get(self, "file_template_project_id")
 
     @file_template_project_id.setter
-    def file_template_project_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def file_template_project_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "file_template_project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="firstDayOfWeek")
-    def first_day_of_week(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def first_day_of_week(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         """
         return pulumi.get(self, "first_day_of_week")
 
     @first_day_of_week.setter
-    def first_day_of_week(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def first_day_of_week(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "first_day_of_week", value)
 
     @_builtins.property
     @pulumi.getter(name="geoNodeAllowedIps")
-    def geo_node_allowed_ips(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def geo_node_allowed_ips(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
         """
         return pulumi.get(self, "geo_node_allowed_ips")
 
     @geo_node_allowed_ips.setter
-    def geo_node_allowed_ips(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def geo_node_allowed_ips(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "geo_node_allowed_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="geoStatusTimeout")
-    def geo_status_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def geo_status_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of seconds after which a request to get a secondary node status times out.
         """
         return pulumi.get(self, "geo_status_timeout")
 
     @geo_status_timeout.setter
-    def geo_status_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def geo_status_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "geo_status_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="gitRateLimitUsersAlertlists")
-    def git_rate_limit_users_alertlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def git_rate_limit_users_alertlists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
         """
         return pulumi.get(self, "git_rate_limit_users_alertlists")
 
     @git_rate_limit_users_alertlists.setter
-    def git_rate_limit_users_alertlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def git_rate_limit_users_alertlists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "git_rate_limit_users_alertlists", value)
 
     @_builtins.property
     @pulumi.getter(name="gitRateLimitUsersAllowlists")
-    def git_rate_limit_users_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def git_rate_limit_users_allowlists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
         """
         return pulumi.get(self, "git_rate_limit_users_allowlists")
 
     @git_rate_limit_users_allowlists.setter
-    def git_rate_limit_users_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def git_rate_limit_users_allowlists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "git_rate_limit_users_allowlists", value)
 
     @_builtins.property
     @pulumi.getter(name="gitTwoFactorSessionExpiry")
-    def git_two_factor_session_expiry(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def git_two_factor_session_expiry(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
         """
         return pulumi.get(self, "git_two_factor_session_expiry")
 
     @git_two_factor_session_expiry.setter
-    def git_two_factor_session_expiry(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def git_two_factor_session_expiry(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "git_two_factor_session_expiry", value)
 
     @_builtins.property
     @pulumi.getter(name="gitalyTimeoutDefault")
-    def gitaly_timeout_default(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gitaly_timeout_default(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to 0 to disable timeouts.
         """
         return pulumi.get(self, "gitaly_timeout_default")
 
     @gitaly_timeout_default.setter
-    def gitaly_timeout_default(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gitaly_timeout_default(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gitaly_timeout_default", value)
 
     @_builtins.property
     @pulumi.getter(name="gitalyTimeoutFast")
-    def gitaly_timeout_fast(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gitaly_timeout_fast(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and ‘failing fast’ can help maintain the stability of the GitLab instance. Set to 0 to disable timeouts.
         """
         return pulumi.get(self, "gitaly_timeout_fast")
 
     @gitaly_timeout_fast.setter
-    def gitaly_timeout_fast(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gitaly_timeout_fast(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gitaly_timeout_fast", value)
 
     @_builtins.property
     @pulumi.getter(name="gitalyTimeoutMedium")
-    def gitaly_timeout_medium(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gitaly_timeout_medium(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.
         """
         return pulumi.get(self, "gitaly_timeout_medium")
 
     @gitaly_timeout_medium.setter
-    def gitaly_timeout_medium(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gitaly_timeout_medium(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gitaly_timeout_medium", value)
 
     @_builtins.property
     @pulumi.getter(name="gitlabShellOperationLimit")
-    def gitlab_shell_operation_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gitlab_shell_operation_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of Git operations per minute a user can perform.
         """
         return pulumi.get(self, "gitlab_shell_operation_limit")
 
     @gitlab_shell_operation_limit.setter
-    def gitlab_shell_operation_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gitlab_shell_operation_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gitlab_shell_operation_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="gitpodEnabled")
-    def gitpod_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gitpod_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Gitpod integration.
         """
         return pulumi.get(self, "gitpod_enabled")
 
     @gitpod_enabled.setter
-    def gitpod_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gitpod_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gitpod_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="gitpodUrl")
-    def gitpod_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gitpod_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Gitpod instance URL for integration.
         """
         return pulumi.get(self, "gitpod_url")
 
     @gitpod_url.setter
-    def gitpod_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gitpod_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gitpod_url", value)
 
     @_builtins.property
     @pulumi.getter(name="globallyAllowedIps")
-    def globally_allowed_ips(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def globally_allowed_ips(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
         """
         return pulumi.get(self, "globally_allowed_ips")
 
     @globally_allowed_ips.setter
-    def globally_allowed_ips(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def globally_allowed_ips(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "globally_allowed_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaEnabled")
-    def grafana_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def grafana_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Grafana.
         """
         return pulumi.get(self, "grafana_enabled")
 
     @grafana_enabled.setter
-    def grafana_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def grafana_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "grafana_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaUrl")
-    def grafana_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grafana_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Grafana URL.
         """
         return pulumi.get(self, "grafana_url")
 
     @grafana_url.setter
-    def grafana_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grafana_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grafana_url", value)
 
     @_builtins.property
     @pulumi.getter(name="gravatarEnabled")
-    def gravatar_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gravatar_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Gravatar.
         """
         return pulumi.get(self, "gravatar_enabled")
 
     @gravatar_enabled.setter
-    def gravatar_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gravatar_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gravatar_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="groupOwnersCanManageDefaultBranchProtection")
-    def group_owners_can_manage_default_branch_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def group_owners_can_manage_default_branch_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevent overrides of default branch protection.
         """
         return pulumi.get(self, "group_owners_can_manage_default_branch_protection")
 
     @group_owners_can_manage_default_branch_protection.setter
-    def group_owners_can_manage_default_branch_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def group_owners_can_manage_default_branch_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "group_owners_can_manage_default_branch_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="helpPageHideCommercialContent")
-    def help_page_hide_commercial_content(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def help_page_hide_commercial_content(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Hide marketing-related entries from help.
         """
         return pulumi.get(self, "help_page_hide_commercial_content")
 
     @help_page_hide_commercial_content.setter
-    def help_page_hide_commercial_content(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def help_page_hide_commercial_content(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "help_page_hide_commercial_content", value)
 
     @_builtins.property
     @pulumi.getter(name="helpPageSupportUrl")
-    def help_page_support_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def help_page_support_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alternate support URL for help page and help dropdown.
         """
         return pulumi.get(self, "help_page_support_url")
 
     @help_page_support_url.setter
-    def help_page_support_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def help_page_support_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "help_page_support_url", value)
 
     @_builtins.property
     @pulumi.getter(name="helpPageText")
-    def help_page_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def help_page_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom text displayed on the help page.
         """
         return pulumi.get(self, "help_page_text")
 
     @help_page_text.setter
-    def help_page_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def help_page_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "help_page_text", value)
 
     @_builtins.property
     @pulumi.getter(name="helpText")
-    def help_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def help_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         GitLab server administrator information.
         """
         return pulumi.get(self, "help_text")
 
     @help_text.setter
-    def help_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def help_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "help_text", value)
 
     @_builtins.property
     @pulumi.getter(name="hideThirdPartyOffers")
-    def hide_third_party_offers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hide_third_party_offers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Do not display offers from third parties in GitLab.
         """
         return pulumi.get(self, "hide_third_party_offers")
 
     @hide_third_party_offers.setter
-    def hide_third_party_offers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hide_third_party_offers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hide_third_party_offers", value)
 
     @_builtins.property
     @pulumi.getter(name="homePageUrl")
-    def home_page_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def home_page_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Redirect to this URL when not logged in.
         """
         return pulumi.get(self, "home_page_url")
 
     @home_page_url.setter
-    def home_page_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def home_page_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "home_page_url", value)
 
     @_builtins.property
     @pulumi.getter(name="housekeepingEnabled")
-    def housekeeping_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def housekeeping_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
         """
         return pulumi.get(self, "housekeeping_enabled")
 
     @housekeeping_enabled.setter
-    def housekeeping_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def housekeeping_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "housekeeping_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="housekeepingOptimizeRepositoryPeriod")
-    def housekeeping_optimize_repository_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def housekeeping_optimize_repository_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of Git pushes after which an incremental git-repack is run.
         """
         return pulumi.get(self, "housekeeping_optimize_repository_period")
 
     @housekeeping_optimize_repository_period.setter
-    def housekeeping_optimize_repository_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def housekeeping_optimize_repository_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "housekeeping_optimize_repository_period", value)
 
     @_builtins.property
     @pulumi.getter(name="htmlEmailsEnabled")
-    def html_emails_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def html_emails_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable HTML emails.
         """
         return pulumi.get(self, "html_emails_enabled")
 
     @html_emails_enabled.setter
-    def html_emails_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def html_emails_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "html_emails_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="importSources")
-    def import_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def import_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         """
         return pulumi.get(self, "import_sources")
 
     @import_sources.setter
-    def import_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def import_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "import_sources", value)
 
     @_builtins.property
     @pulumi.getter(name="inProductMarketingEmailsEnabled")
-    def in_product_marketing_emails_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def in_product_marketing_emails_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable in-product marketing emails.
         """
         return pulumi.get(self, "in_product_marketing_emails_enabled")
 
     @in_product_marketing_emails_enabled.setter
-    def in_product_marketing_emails_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def in_product_marketing_emails_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "in_product_marketing_emails_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="inactiveProjectsDeleteAfterMonths")
-    def inactive_projects_delete_after_months(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def inactive_projects_delete_after_months(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
         """
         return pulumi.get(self, "inactive_projects_delete_after_months")
 
     @inactive_projects_delete_after_months.setter
-    def inactive_projects_delete_after_months(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def inactive_projects_delete_after_months(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "inactive_projects_delete_after_months", value)
 
     @_builtins.property
     @pulumi.getter(name="inactiveProjectsMinSizeMb")
-    def inactive_projects_min_size_mb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def inactive_projects_min_size_mb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity.
         """
         return pulumi.get(self, "inactive_projects_min_size_mb")
 
     @inactive_projects_min_size_mb.setter
-    def inactive_projects_min_size_mb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def inactive_projects_min_size_mb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "inactive_projects_min_size_mb", value)
 
     @_builtins.property
     @pulumi.getter(name="inactiveProjectsSendWarningEmailAfterMonths")
-    def inactive_projects_send_warning_email_after_months(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def inactive_projects_send_warning_email_after_months(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
         """
         return pulumi.get(self, "inactive_projects_send_warning_email_after_months")
 
     @inactive_projects_send_warning_email_after_months.setter
-    def inactive_projects_send_warning_email_after_months(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def inactive_projects_send_warning_email_after_months(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "inactive_projects_send_warning_email_after_months", value)
 
     @_builtins.property
     @pulumi.getter(name="inactiveResourceAccessTokensDeleteAfterDays")
-    def inactive_resource_access_tokens_delete_after_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def inactive_resource_access_tokens_delete_after_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies retention period for inactive project and group access tokens. Default is 30.
         """
         return pulumi.get(self, "inactive_resource_access_tokens_delete_after_days")
 
     @inactive_resource_access_tokens_delete_after_days.setter
-    def inactive_resource_access_tokens_delete_after_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def inactive_resource_access_tokens_delete_after_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "inactive_resource_access_tokens_delete_after_days", value)
 
     @_builtins.property
     @pulumi.getter(name="includeOptionalMetricsInServicePing")
-    def include_optional_metrics_in_service_ping(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_optional_metrics_in_service_ping(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not optional metrics are enabled in Service Ping.
         """
         return pulumi.get(self, "include_optional_metrics_in_service_ping")
 
     @include_optional_metrics_in_service_ping.setter
-    def include_optional_metrics_in_service_ping(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_optional_metrics_in_service_ping(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_optional_metrics_in_service_ping", value)
 
     @_builtins.property
     @pulumi.getter(name="invisibleCaptchaEnabled")
-    def invisible_captcha_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def invisible_captcha_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Invisible CAPTCHA spam detection during sign-up.
         """
         return pulumi.get(self, "invisible_captcha_enabled")
 
     @invisible_captcha_enabled.setter
-    def invisible_captcha_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def invisible_captcha_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "invisible_captcha_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesCreateLimit")
-    def issues_create_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def issues_create_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max number of issue creation requests per minute per user.
         """
         return pulumi.get(self, "issues_create_limit")
 
     @issues_create_limit.setter
-    def issues_create_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def issues_create_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "issues_create_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraConnectApplicationKey")
-    def jira_connect_application_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jira_connect_application_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
         """
         return pulumi.get(self, "jira_connect_application_key")
 
     @jira_connect_application_key.setter
-    def jira_connect_application_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jira_connect_application_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jira_connect_application_key", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraConnectProxyUrl")
-    def jira_connect_proxy_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jira_connect_proxy_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
         """
         return pulumi.get(self, "jira_connect_proxy_url")
 
     @jira_connect_proxy_url.setter
-    def jira_connect_proxy_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jira_connect_proxy_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jira_connect_proxy_url", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraConnectPublicKeyStorageEnabled")
-    def jira_connect_public_key_storage_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def jira_connect_public_key_storage_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable public key storage for the GitLab for Jira Cloud app.
         """
         return pulumi.get(self, "jira_connect_public_key_storage_enabled")
 
     @jira_connect_public_key_storage_enabled.setter
-    def jira_connect_public_key_storage_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def jira_connect_public_key_storage_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "jira_connect_public_key_storage_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="keepLatestArtifact")
-    def keep_latest_artifact(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_latest_artifact(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         """
         return pulumi.get(self, "keep_latest_artifact")
 
     @keep_latest_artifact.setter
-    def keep_latest_artifact(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_latest_artifact(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_latest_artifact", value)
 
     @_builtins.property
     @pulumi.getter(name="krokiEnabled")
-    def kroki_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def kroki_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: kroki_url) Enable Kroki integration.
         """
         return pulumi.get(self, "kroki_enabled")
 
     @kroki_enabled.setter
-    def kroki_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def kroki_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "kroki_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="krokiFormats")
-    def kroki_formats(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]]:
+    def kroki_formats(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]]:
         """
         Configuration for formats supported by the Kroki instance.
         """
         return pulumi.get(self, "kroki_formats")
 
     @kroki_formats.setter
-    def kroki_formats(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]]):
+    def kroki_formats(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]]):
         pulumi.set(self, "kroki_formats", value)
 
     @_builtins.property
     @pulumi.getter(name="krokiUrl")
-    def kroki_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kroki_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kroki instance URL for integration.
         """
         return pulumi.get(self, "kroki_url")
 
     @kroki_url.setter
-    def kroki_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kroki_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kroki_url", value)
 
     @_builtins.property
     @pulumi.getter(name="localMarkdownVersion")
-    def local_markdown_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def local_markdown_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Increase this value when any cached Markdown should be invalidated.
         """
         return pulumi.get(self, "local_markdown_version")
 
     @local_markdown_version.setter
-    def local_markdown_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def local_markdown_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "local_markdown_version", value)
 
     @_builtins.property
     @pulumi.getter(name="lockDuoFeaturesEnabled")
-    def lock_duo_features_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lock_duo_features_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
         """
         return pulumi.get(self, "lock_duo_features_enabled")
 
     @lock_duo_features_enabled.setter
-    def lock_duo_features_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lock_duo_features_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lock_duo_features_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="lockMembershipsToLdap")
-    def lock_memberships_to_ldap(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lock_memberships_to_ldap(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to lock all memberships to LDAP. Premium and Ultimate only.
         """
         return pulumi.get(self, "lock_memberships_to_ldap")
 
     @lock_memberships_to_ldap.setter
-    def lock_memberships_to_ldap(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lock_memberships_to_ldap(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lock_memberships_to_ldap", value)
 
     @_builtins.property
     @pulumi.getter(name="lockMembershipsToSaml")
-    def lock_memberships_to_saml(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lock_memberships_to_saml(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to lock all memberships to SAML. Premium and Ultimate only.
         """
         return pulumi.get(self, "lock_memberships_to_saml")
 
     @lock_memberships_to_saml.setter
-    def lock_memberships_to_saml(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lock_memberships_to_saml(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lock_memberships_to_saml", value)
 
     @_builtins.property
     @pulumi.getter(name="mailgunEventsEnabled")
-    def mailgun_events_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mailgun_events_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Mailgun event receiver.
         """
         return pulumi.get(self, "mailgun_events_enabled")
 
     @mailgun_events_enabled.setter
-    def mailgun_events_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mailgun_events_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mailgun_events_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="mailgunSigningKey")
-    def mailgun_signing_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mailgun_signing_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Mailgun HTTP webhook signing key for receiving events from webhook.
         """
         return pulumi.get(self, "mailgun_signing_key")
 
     @mailgun_signing_key.setter
-    def mailgun_signing_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mailgun_signing_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mailgun_signing_key", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceMode")
-    def maintenance_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def maintenance_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
         """
         return pulumi.get(self, "maintenance_mode")
 
     @maintenance_mode.setter
-    def maintenance_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def maintenance_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "maintenance_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceModeMessage")
-    def maintenance_mode_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_mode_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Message displayed when instance is in maintenance mode.
         """
         return pulumi.get(self, "maintenance_mode_message")
 
     @maintenance_mode_message.setter
-    def maintenance_mode_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_mode_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_mode_message", value)
 
     @_builtins.property
     @pulumi.getter(name="mavenPackageRequestsForwarding")
-    def maven_package_requests_forwarding(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def maven_package_requests_forwarding(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
         """
         return pulumi.get(self, "maven_package_requests_forwarding")
 
     @maven_package_requests_forwarding.setter
-    def maven_package_requests_forwarding(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def maven_package_requests_forwarding(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "maven_package_requests_forwarding", value)
 
     @_builtins.property
     @pulumi.getter(name="maxArtifactsSize")
-    def max_artifacts_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_artifacts_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum artifacts size in MB.
         """
         return pulumi.get(self, "max_artifacts_size")
 
     @max_artifacts_size.setter
-    def max_artifacts_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_artifacts_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_artifacts_size", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAttachmentSize")
-    def max_attachment_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_attachment_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Limit attachment size in MB.
         """
         return pulumi.get(self, "max_attachment_size")
 
     @max_attachment_size.setter
-    def max_attachment_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_attachment_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_attachment_size", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDecompressedArchiveSize")
-    def max_decompressed_archive_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_decompressed_archive_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum decompressed archive size in bytes.
         """
         return pulumi.get(self, "max_decompressed_archive_size")
 
     @max_decompressed_archive_size.setter
-    def max_decompressed_archive_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_decompressed_archive_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_decompressed_archive_size", value)
 
     @_builtins.property
     @pulumi.getter(name="maxExportSize")
-    def max_export_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_export_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum export size in MB. 0 for unlimited.
         """
         return pulumi.get(self, "max_export_size")
 
     @max_export_size.setter
-    def max_export_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_export_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_export_size", value)
 
     @_builtins.property
     @pulumi.getter(name="maxImportRemoteFileSize")
-    def max_import_remote_file_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_import_remote_file_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum remote file size for imports from external object storages.
         """
         return pulumi.get(self, "max_import_remote_file_size")
 
     @max_import_remote_file_size.setter
-    def max_import_remote_file_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_import_remote_file_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_import_remote_file_size", value)
 
     @_builtins.property
     @pulumi.getter(name="maxImportSize")
-    def max_import_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_import_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum import size in MB. 0 for unlimited.
         """
         return pulumi.get(self, "max_import_size")
 
     @max_import_size.setter
-    def max_import_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_import_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_import_size", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLoginAttempts")
-    def max_login_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_login_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of sign-in attempts before locking out the user.
         """
         return pulumi.get(self, "max_login_attempts")
 
     @max_login_attempts.setter
-    def max_login_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_login_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_login_attempts", value)
 
     @_builtins.property
     @pulumi.getter(name="maxNumberOfRepositoryDownloads")
-    def max_number_of_repository_downloads(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_number_of_repository_downloads(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories.
         """
         return pulumi.get(self, "max_number_of_repository_downloads")
 
     @max_number_of_repository_downloads.setter
-    def max_number_of_repository_downloads(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_number_of_repository_downloads(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_number_of_repository_downloads", value)
 
     @_builtins.property
     @pulumi.getter(name="maxNumberOfRepositoryDownloadsWithinTimePeriod")
-    def max_number_of_repository_downloads_within_time_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_number_of_repository_downloads_within_time_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Reporting time period (in seconds). Maximum: 864000 seconds (10 days).
         """
         return pulumi.get(self, "max_number_of_repository_downloads_within_time_period")
 
     @max_number_of_repository_downloads_within_time_period.setter
-    def max_number_of_repository_downloads_within_time_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_number_of_repository_downloads_within_time_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_number_of_repository_downloads_within_time_period", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPagesSize")
-    def max_pages_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_pages_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum size of pages repositories in MB.
         """
         return pulumi.get(self, "max_pages_size")
 
     @max_pages_size.setter
-    def max_pages_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_pages_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_pages_size", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPersonalAccessTokenLifetime")
-    def max_personal_access_token_lifetime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_personal_access_token_lifetime(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum allowable lifetime for access tokens in days.
         """
         return pulumi.get(self, "max_personal_access_token_lifetime")
 
     @max_personal_access_token_lifetime.setter
-    def max_personal_access_token_lifetime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_personal_access_token_lifetime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_personal_access_token_lifetime", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSshKeyLifetime")
-    def max_ssh_key_lifetime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_ssh_key_lifetime(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum allowable lifetime for SSH keys in days.
         """
         return pulumi.get(self, "max_ssh_key_lifetime")
 
     @max_ssh_key_lifetime.setter
-    def max_ssh_key_lifetime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_ssh_key_lifetime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_ssh_key_lifetime", value)
 
     @_builtins.property
     @pulumi.getter(name="maxTerraformStateSizeBytes")
-    def max_terraform_state_size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_terraform_state_size_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
         """
         return pulumi.get(self, "max_terraform_state_size_bytes")
 
     @max_terraform_state_size_bytes.setter
-    def max_terraform_state_size_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_terraform_state_size_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_terraform_state_size_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsMethodCallThreshold")
-    def metrics_method_call_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def metrics_method_call_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A method call is only tracked when it takes longer than the given amount of milliseconds.
         """
         return pulumi.get(self, "metrics_method_call_threshold")
 
     @metrics_method_call_threshold.setter
-    def metrics_method_call_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def metrics_method_call_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "metrics_method_call_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumPasswordLength")
-    def minimum_password_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_password_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Indicates whether passwords require a minimum length. Premium and Ultimate only.
         """
         return pulumi.get(self, "minimum_password_length")
 
     @minimum_password_length.setter
-    def minimum_password_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_password_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_password_length", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorAvailable")
-    def mirror_available(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mirror_available(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
         """
         return pulumi.get(self, "mirror_available")
 
     @mirror_available.setter
-    def mirror_available(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mirror_available(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mirror_available", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorCapacityThreshold")
-    def mirror_capacity_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mirror_capacity_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum capacity to be available before scheduling more mirrors preemptively.
         """
         return pulumi.get(self, "mirror_capacity_threshold")
 
     @mirror_capacity_threshold.setter
-    def mirror_capacity_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mirror_capacity_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mirror_capacity_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorMaxCapacity")
-    def mirror_max_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mirror_max_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of mirrors that can be synchronizing at the same time.
         """
         return pulumi.get(self, "mirror_max_capacity")
 
     @mirror_max_capacity.setter
-    def mirror_max_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mirror_max_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mirror_max_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorMaxDelay")
-    def mirror_max_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mirror_max_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
         """
         return pulumi.get(self, "mirror_max_delay")
 
     @mirror_max_delay.setter
-    def mirror_max_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mirror_max_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mirror_max_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyOnUnknownSignIn")
-    def notify_on_unknown_sign_in(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_on_unknown_sign_in(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable sending notification if sign in from unknown IP address happens
         """
         return pulumi.get(self, "notify_on_unknown_sign_in")
 
     @notify_on_unknown_sign_in.setter
-    def notify_on_unknown_sign_in(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_on_unknown_sign_in(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_on_unknown_sign_in", value)
 
     @_builtins.property
     @pulumi.getter(name="npmPackageRequestsForwarding")
-    def npm_package_requests_forwarding(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def npm_package_requests_forwarding(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
         """
         return pulumi.get(self, "npm_package_requests_forwarding")
 
     @npm_package_requests_forwarding.setter
-    def npm_package_requests_forwarding(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def npm_package_requests_forwarding(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "npm_package_requests_forwarding", value)
 
     @_builtins.property
     @pulumi.getter(name="nugetSkipMetadataUrlValidation")
-    def nuget_skip_metadata_url_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nuget_skip_metadata_url_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to skip metadata URL validation for the NuGet package.
         """
         return pulumi.get(self, "nuget_skip_metadata_url_validation")
 
     @nuget_skip_metadata_url_validation.setter
-    def nuget_skip_metadata_url_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nuget_skip_metadata_url_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nuget_skip_metadata_url_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="outboundLocalRequestsWhitelists")
-    def outbound_local_requests_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def outbound_local_requests_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
         """
         return pulumi.get(self, "outbound_local_requests_whitelists")
 
     @outbound_local_requests_whitelists.setter
-    def outbound_local_requests_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def outbound_local_requests_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "outbound_local_requests_whitelists", value)
 
     @_builtins.property
     @pulumi.getter(name="packageMetadataPurlTypes")
-    def package_metadata_purl_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def package_metadata_purl_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
         """
         return pulumi.get(self, "package_metadata_purl_types")
 
     @package_metadata_purl_types.setter
-    def package_metadata_purl_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def package_metadata_purl_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "package_metadata_purl_types", value)
 
     @_builtins.property
     @pulumi.getter(name="packageRegistryAllowAnyoneToPullOption")
-    def package_registry_allow_anyone_to_pull_option(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def package_registry_allow_anyone_to_pull_option(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable to allow anyone to pull from Package Registry visible and changeable.
         """
         return pulumi.get(self, "package_registry_allow_anyone_to_pull_option")
 
     @package_registry_allow_anyone_to_pull_option.setter
-    def package_registry_allow_anyone_to_pull_option(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def package_registry_allow_anyone_to_pull_option(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "package_registry_allow_anyone_to_pull_option", value)
 
     @_builtins.property
     @pulumi.getter(name="packageRegistryCleanupPoliciesWorkerCapacity")
-    def package_registry_cleanup_policies_worker_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def package_registry_cleanup_policies_worker_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers assigned to the packages cleanup policies.
         """
         return pulumi.get(self, "package_registry_cleanup_policies_worker_capacity")
 
     @package_registry_cleanup_policies_worker_capacity.setter
-    def package_registry_cleanup_policies_worker_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def package_registry_cleanup_policies_worker_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "package_registry_cleanup_policies_worker_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="pagesDomainVerificationEnabled")
-    def pages_domain_verification_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pages_domain_verification_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
         """
         return pulumi.get(self, "pages_domain_verification_enabled")
 
     @pages_domain_verification_enabled.setter
-    def pages_domain_verification_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pages_domain_verification_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pages_domain_verification_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordAuthenticationEnabledForGit")
-    def password_authentication_enabled_for_git(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_authentication_enabled_for_git(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable authentication for Git over HTTP(S) via a GitLab account password.
         """
         return pulumi.get(self, "password_authentication_enabled_for_git")
 
     @password_authentication_enabled_for_git.setter
-    def password_authentication_enabled_for_git(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_authentication_enabled_for_git(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_authentication_enabled_for_git", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordAuthenticationEnabledForWeb")
-    def password_authentication_enabled_for_web(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_authentication_enabled_for_web(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable authentication for the web interface via a GitLab account password.
         """
         return pulumi.get(self, "password_authentication_enabled_for_web")
 
     @password_authentication_enabled_for_web.setter
-    def password_authentication_enabled_for_web(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_authentication_enabled_for_web(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_authentication_enabled_for_web", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordLowercaseRequired")
-    def password_lowercase_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_lowercase_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether passwords require at least one lowercase letter.
         """
         return pulumi.get(self, "password_lowercase_required")
 
     @password_lowercase_required.setter
-    def password_lowercase_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_lowercase_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_lowercase_required", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordNumberRequired")
-    def password_number_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_number_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether passwords require at least one number.
         """
         return pulumi.get(self, "password_number_required")
 
     @password_number_required.setter
-    def password_number_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_number_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_number_required", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordSymbolRequired")
-    def password_symbol_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_symbol_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether passwords require at least one symbol character.
         """
         return pulumi.get(self, "password_symbol_required")
 
     @password_symbol_required.setter
-    def password_symbol_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_symbol_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_symbol_required", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordUppercaseRequired")
-    def password_uppercase_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_uppercase_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether passwords require at least one uppercase letter.
         """
         return pulumi.get(self, "password_uppercase_required")
 
     @password_uppercase_required.setter
-    def password_uppercase_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_uppercase_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_uppercase_required", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceBarAllowedGroupPath")
-    def performance_bar_allowed_group_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_bar_allowed_group_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path of the group that is allowed to toggle the performance bar.
         """
         return pulumi.get(self, "performance_bar_allowed_group_path")
 
     @performance_bar_allowed_group_path.setter
-    def performance_bar_allowed_group_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_bar_allowed_group_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_bar_allowed_group_path", value)
 
     @_builtins.property
     @pulumi.getter(name="personalAccessTokenPrefix")
-    def personal_access_token_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def personal_access_token_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix for all generated personal access tokens.
         """
         return pulumi.get(self, "personal_access_token_prefix")
 
     @personal_access_token_prefix.setter
-    def personal_access_token_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def personal_access_token_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "personal_access_token_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineLimitPerProjectUserSha")
-    def pipeline_limit_per_project_user_sha(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pipeline_limit_per_project_user_sha(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of pipeline creation requests per minute per user and commit.
         """
         return pulumi.get(self, "pipeline_limit_per_project_user_sha")
 
     @pipeline_limit_per_project_user_sha.setter
-    def pipeline_limit_per_project_user_sha(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pipeline_limit_per_project_user_sha(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pipeline_limit_per_project_user_sha", value)
 
     @_builtins.property
     @pulumi.getter(name="plantumlEnabled")
-    def plantuml_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def plantuml_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: plantuml_url) Enable PlantUML integration.
         """
         return pulumi.get(self, "plantuml_enabled")
 
     @plantuml_enabled.setter
-    def plantuml_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def plantuml_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "plantuml_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="plantumlUrl")
-    def plantuml_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plantuml_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PlantUML instance URL for integration.
         """
         return pulumi.get(self, "plantuml_url")
 
     @plantuml_url.setter
-    def plantuml_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plantuml_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plantuml_url", value)
 
     @_builtins.property
     @pulumi.getter(name="pollingIntervalMultiplier")
-    def polling_interval_multiplier(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def polling_interval_multiplier(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
         """
         return pulumi.get(self, "polling_interval_multiplier")
 
     @polling_interval_multiplier.setter
-    def polling_interval_multiplier(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def polling_interval_multiplier(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "polling_interval_multiplier", value)
 
     @_builtins.property
     @pulumi.getter(name="preventMergeRequestsAuthorApproval")
-    def prevent_merge_requests_author_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_merge_requests_author_approval(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevent approval by merge request creator (author).
         """
         return pulumi.get(self, "prevent_merge_requests_author_approval")
 
     @prevent_merge_requests_author_approval.setter
-    def prevent_merge_requests_author_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_merge_requests_author_approval(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_merge_requests_author_approval", value)
 
     @_builtins.property
     @pulumi.getter(name="preventMergeRequestsCommittersApproval")
-    def prevent_merge_requests_committers_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_merge_requests_committers_approval(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevent approval by committers to merge requests.
         """
         return pulumi.get(self, "prevent_merge_requests_committers_approval")
 
     @prevent_merge_requests_committers_approval.setter
-    def prevent_merge_requests_committers_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_merge_requests_committers_approval(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_merge_requests_committers_approval", value)
 
     @_builtins.property
     @pulumi.getter(name="projectExportEnabled")
-    def project_export_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def project_export_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable project export.
         """
         return pulumi.get(self, "project_export_enabled")
 
     @project_export_enabled.setter
-    def project_export_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def project_export_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "project_export_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="projectJobsApiRateLimit")
-    def project_jobs_api_rate_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def project_jobs_api_rate_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum authenticated requests to /project/:id/jobs per minute.
         """
         return pulumi.get(self, "project_jobs_api_rate_limit")
 
     @project_jobs_api_rate_limit.setter
-    def project_jobs_api_rate_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def project_jobs_api_rate_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "project_jobs_api_rate_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="projectsApiRateLimitUnauthenticated")
-    def projects_api_rate_limit_unauthenticated(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def projects_api_rate_limit_unauthenticated(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
         """
         return pulumi.get(self, "projects_api_rate_limit_unauthenticated")
 
     @projects_api_rate_limit_unauthenticated.setter
-    def projects_api_rate_limit_unauthenticated(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def projects_api_rate_limit_unauthenticated(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "projects_api_rate_limit_unauthenticated", value)
 
     @_builtins.property
     @pulumi.getter(name="prometheusMetricsEnabled")
-    def prometheus_metrics_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prometheus_metrics_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Prometheus metrics.
         """
         return pulumi.get(self, "prometheus_metrics_enabled")
 
     @prometheus_metrics_enabled.setter
-    def prometheus_metrics_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prometheus_metrics_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prometheus_metrics_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="protectedCiVariables")
-    def protected_ci_variables(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected_ci_variables(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         CI/CD variables are protected by default.
         """
         return pulumi.get(self, "protected_ci_variables")
 
     @protected_ci_variables.setter
-    def protected_ci_variables(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected_ci_variables(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected_ci_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEventActivitiesLimit")
-    def push_event_activities_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def push_event_activities_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of changes (branches or tags) in a single push to determine whether individual push events or bulk push events are created. Bulk push events are created if it surpasses that value.
         """
         return pulumi.get(self, "push_event_activities_limit")
 
     @push_event_activities_limit.setter
-    def push_event_activities_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def push_event_activities_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "push_event_activities_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEventHooksLimit")
-    def push_event_hooks_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def push_event_hooks_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of changes (branches or tags) in a single push to determine whether webhooks and services fire or not. Webhooks and services aren’t submitted if it surpasses that value.
         """
         return pulumi.get(self, "push_event_hooks_limit")
 
     @push_event_hooks_limit.setter
-    def push_event_hooks_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def push_event_hooks_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "push_event_hooks_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="pypiPackageRequestsForwarding")
-    def pypi_package_requests_forwarding(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pypi_package_requests_forwarding(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use pypi.org as a default remote repository when the package is not found in the GitLab Package Registry for PyPI.
         """
         return pulumi.get(self, "pypi_package_requests_forwarding")
 
     @pypi_package_requests_forwarding.setter
-    def pypi_package_requests_forwarding(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pypi_package_requests_forwarding(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pypi_package_requests_forwarding", value)
 
     @_builtins.property
     @pulumi.getter(name="rateLimitingResponseText")
-    def rate_limiting_response_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rate_limiting_response_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When rate limiting is enabled via the throttle_* settings, send this plain text response when a rate limit is exceeded. ‘Retry later’ is sent if this is blank.
         """
         return pulumi.get(self, "rate_limiting_response_text")
 
     @rate_limiting_response_text.setter
-    def rate_limiting_response_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rate_limiting_response_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rate_limiting_response_text", value)
 
     @_builtins.property
     @pulumi.getter(name="rawBlobRequestLimit")
-    def raw_blob_request_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def raw_blob_request_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max number of requests per minute for each raw path. To disable throttling set to 0.
         """
         return pulumi.get(self, "raw_blob_request_limit")
 
     @raw_blob_request_limit.setter
-    def raw_blob_request_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def raw_blob_request_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "raw_blob_request_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="recaptchaEnabled")
-    def recaptcha_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def recaptcha_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
         """
         return pulumi.get(self, "recaptcha_enabled")
 
     @recaptcha_enabled.setter
-    def recaptcha_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def recaptcha_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "recaptcha_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="recaptchaPrivateKey")
-    def recaptcha_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recaptcha_private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key for reCAPTCHA.
         """
         return pulumi.get(self, "recaptcha_private_key")
 
     @recaptcha_private_key.setter
-    def recaptcha_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recaptcha_private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recaptcha_private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="recaptchaSiteKey")
-    def recaptcha_site_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recaptcha_site_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Site key for reCAPTCHA.
         """
         return pulumi.get(self, "recaptcha_site_key")
 
     @recaptcha_site_key.setter
-    def recaptcha_site_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recaptcha_site_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recaptcha_site_key", value)
 
     @_builtins.property
     @pulumi.getter(name="receiveMaxInputSize")
-    def receive_max_input_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def receive_max_input_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum push size (MB).
         """
         return pulumi.get(self, "receive_max_input_size")
 
     @receive_max_input_size.setter
-    def receive_max_input_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def receive_max_input_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "receive_max_input_size", value)
 
     @_builtins.property
     @pulumi.getter(name="receptiveClusterAgentsEnabled")
-    def receptive_cluster_agents_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def receptive_cluster_agents_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable receptive mode for GitLab Agents for Kubernetes.
         """
         return pulumi.get(self, "receptive_cluster_agents_enabled")
 
     @receptive_cluster_agents_enabled.setter
-    def receptive_cluster_agents_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def receptive_cluster_agents_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "receptive_cluster_agents_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="rememberMeEnabled")
-    def remember_me_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remember_me_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Remember me setting.
         """
         return pulumi.get(self, "remember_me_enabled")
 
     @remember_me_enabled.setter
-    def remember_me_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remember_me_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remember_me_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryChecksEnabled")
-    def repository_checks_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def repository_checks_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
         """
         return pulumi.get(self, "repository_checks_enabled")
 
     @repository_checks_enabled.setter
-    def repository_checks_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def repository_checks_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "repository_checks_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="repositorySizeLimit")
-    def repository_size_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def repository_size_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size limit per repository (MB).
         """
         return pulumi.get(self, "repository_size_limit")
 
     @repository_size_limit.setter
-    def repository_size_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def repository_size_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "repository_size_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryStoragesWeighted")
-    def repository_storages_weighted(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]:
+    def repository_storages_weighted(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]:
         """
         Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         """
         return pulumi.get(self, "repository_storages_weighted")
 
     @repository_storages_weighted.setter
-    def repository_storages_weighted(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]):
+    def repository_storages_weighted(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "repository_storages_weighted", value)
 
     @_builtins.property
     @pulumi.getter(name="requireAdminApprovalAfterUserSignup")
-    def require_admin_approval_after_user_signup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_admin_approval_after_user_signup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
         """
         return pulumi.get(self, "require_admin_approval_after_user_signup")
 
     @require_admin_approval_after_user_signup.setter
-    def require_admin_approval_after_user_signup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_admin_approval_after_user_signup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_admin_approval_after_user_signup", value)
 
     @_builtins.property
     @pulumi.getter(name="requireAdminTwoFactorAuthentication")
-    def require_admin_two_factor_authentication(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_admin_two_factor_authentication(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow administrators to require 2FA for all administrators on the instance.
         """
         return pulumi.get(self, "require_admin_two_factor_authentication")
 
     @require_admin_two_factor_authentication.setter
-    def require_admin_two_factor_authentication(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_admin_two_factor_authentication(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_admin_two_factor_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="requirePersonalAccessTokenExpiry")
-    def require_personal_access_token_expiry(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_personal_access_token_expiry(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
         """
         return pulumi.get(self, "require_personal_access_token_expiry")
 
     @require_personal_access_token_expiry.setter
-    def require_personal_access_token_expiry(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_personal_access_token_expiry(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_personal_access_token_expiry", value)
 
     @_builtins.property
     @pulumi.getter(name="requireTwoFactorAuthentication")
-    def require_two_factor_authentication(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_two_factor_authentication(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
         """
         return pulumi.get(self, "require_two_factor_authentication")
 
     @require_two_factor_authentication.setter
-    def require_two_factor_authentication(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_two_factor_authentication(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_two_factor_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="restrictedVisibilityLevels")
-    def restricted_visibility_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def restricted_visibility_levels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
         """
         return pulumi.get(self, "restricted_visibility_levels")
 
     @restricted_visibility_levels.setter
-    def restricted_visibility_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def restricted_visibility_levels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "restricted_visibility_levels", value)
 
     @_builtins.property
     @pulumi.getter(name="rsaKeyRestriction")
-    def rsa_key_restriction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rsa_key_restriction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
         """
         return pulumi.get(self, "rsa_key_restriction")
 
     @rsa_key_restriction.setter
-    def rsa_key_restriction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rsa_key_restriction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rsa_key_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="searchRateLimit")
-    def search_rate_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def search_rate_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         """
         return pulumi.get(self, "search_rate_limit")
 
     @search_rate_limit.setter
-    def search_rate_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def search_rate_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "search_rate_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="searchRateLimitUnauthenticated")
-    def search_rate_limit_unauthenticated(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def search_rate_limit_unauthenticated(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
         """
         return pulumi.get(self, "search_rate_limit_unauthenticated")
 
     @search_rate_limit_unauthenticated.setter
-    def search_rate_limit_unauthenticated(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def search_rate_limit_unauthenticated(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "search_rate_limit_unauthenticated", value)
 
     @_builtins.property
     @pulumi.getter(name="securityApprovalPoliciesLimit")
-    def security_approval_policies_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def security_approval_policies_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of active merge request approval policies per security policy project. Maximum: 20
         """
         return pulumi.get(self, "security_approval_policies_limit")
 
     @security_approval_policies_limit.setter
-    def security_approval_policies_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def security_approval_policies_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "security_approval_policies_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyGlobalGroupApproversEnabled")
-    def security_policy_global_group_approvers_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def security_policy_global_group_approvers_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to look up merge request approval policy approval groups globally or within project hierarchies.
         """
         return pulumi.get(self, "security_policy_global_group_approvers_enabled")
 
     @security_policy_global_group_approvers_enabled.setter
-    def security_policy_global_group_approvers_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def security_policy_global_group_approvers_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "security_policy_global_group_approvers_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="securityTxtContent")
-    def security_txt_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_txt_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Public security contact information.
         """
         return pulumi.get(self, "security_txt_content")
 
     @security_txt_content.setter
-    def security_txt_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_txt_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_txt_content", value)
 
     @_builtins.property
     @pulumi.getter(name="sendUserConfirmationEmail")
-    def send_user_confirmation_email(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_user_confirmation_email(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Send confirmation email on sign-up.
         """
         return pulumi.get(self, "send_user_confirmation_email")
 
     @send_user_confirmation_email.setter
-    def send_user_confirmation_email(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_user_confirmation_email(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_user_confirmation_email", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccessTokensExpirationEnforced")
-    def service_access_tokens_expiration_enforced(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def service_access_tokens_expiration_enforced(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to indicate if token expiry date can be optional for service account users
         """
         return pulumi.get(self, "service_access_tokens_expiration_enforced")
 
     @service_access_tokens_expiration_enforced.setter
-    def service_access_tokens_expiration_enforced(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def service_access_tokens_expiration_enforced(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "service_access_tokens_expiration_enforced", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionExpireDelay")
-    def session_expire_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def session_expire_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Session duration in minutes. GitLab restart is required to apply changes.
         """
         return pulumi.get(self, "session_expire_delay")
 
     @session_expire_delay.setter
-    def session_expire_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def session_expire_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_expire_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersEnabled")
-    def shared_runners_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared_runners_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
         """
         return pulumi.get(self, "shared_runners_enabled")
 
     @shared_runners_enabled.setter
-    def shared_runners_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared_runners_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared_runners_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersMinutes")
-    def shared_runners_minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shared_runners_minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
         """
         return pulumi.get(self, "shared_runners_minutes")
 
     @shared_runners_minutes.setter
-    def shared_runners_minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shared_runners_minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shared_runners_minutes", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersText")
-    def shared_runners_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_runners_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Shared runners text.
         """
         return pulumi.get(self, "shared_runners_text")
 
     @shared_runners_text.setter
-    def shared_runners_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_runners_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_runners_text", value)
 
     @_builtins.property
     @pulumi.getter(name="sidekiqJobLimiterCompressionThresholdBytes")
-    def sidekiq_job_limiter_compression_threshold_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sidekiq_job_limiter_compression_threshold_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
         """
         return pulumi.get(self, "sidekiq_job_limiter_compression_threshold_bytes")
 
     @sidekiq_job_limiter_compression_threshold_bytes.setter
-    def sidekiq_job_limiter_compression_threshold_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sidekiq_job_limiter_compression_threshold_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sidekiq_job_limiter_compression_threshold_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="sidekiqJobLimiterLimitBytes")
-    def sidekiq_job_limiter_limit_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sidekiq_job_limiter_limit_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
         """
         return pulumi.get(self, "sidekiq_job_limiter_limit_bytes")
 
     @sidekiq_job_limiter_limit_bytes.setter
-    def sidekiq_job_limiter_limit_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sidekiq_job_limiter_limit_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sidekiq_job_limiter_limit_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="sidekiqJobLimiterMode")
-    def sidekiq_job_limiter_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sidekiq_job_limiter_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         track or compress. Sets the behavior for Sidekiq job size limits.
         """
         return pulumi.get(self, "sidekiq_job_limiter_mode")
 
     @sidekiq_job_limiter_mode.setter
-    def sidekiq_job_limiter_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sidekiq_job_limiter_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sidekiq_job_limiter_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="signInText")
-    def sign_in_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sign_in_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Text on the login page.
         """
         return pulumi.get(self, "sign_in_text")
 
     @sign_in_text.setter
-    def sign_in_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sign_in_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sign_in_text", value)
 
     @_builtins.property
     @pulumi.getter(name="signupEnabled")
-    def signup_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def signup_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable registration.
         """
         return pulumi.get(self, "signup_enabled")
 
     @signup_enabled.setter
-    def signup_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def signup_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "signup_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="silentAdminExportsEnabled")
-    def silent_admin_exports_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def silent_admin_exports_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Silent admin exports.
         """
         return pulumi.get(self, "silent_admin_exports_enabled")
 
     @silent_admin_exports_enabled.setter
-    def silent_admin_exports_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def silent_admin_exports_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "silent_admin_exports_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="silentModeEnabled")
-    def silent_mode_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def silent_mode_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Silent mode.
         """
         return pulumi.get(self, "silent_mode_enabled")
 
     @silent_mode_enabled.setter
-    def silent_mode_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def silent_mode_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "silent_mode_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="slackAppEnabled")
-    def slack_app_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def slack_app_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
         """
         return pulumi.get(self, "slack_app_enabled")
 
     @slack_app_enabled.setter
-    def slack_app_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def slack_app_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "slack_app_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="slackAppId")
-    def slack_app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slack_app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The app ID of the Slack-app.
         """
         return pulumi.get(self, "slack_app_id")
 
     @slack_app_id.setter
-    def slack_app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slack_app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slack_app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="slackAppSecret")
-    def slack_app_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slack_app_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The app secret of the Slack-app.
         """
         return pulumi.get(self, "slack_app_secret")
 
     @slack_app_secret.setter
-    def slack_app_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slack_app_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slack_app_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="slackAppSigningSecret")
-    def slack_app_signing_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slack_app_signing_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The signing secret of the Slack-app.
         """
         return pulumi.get(self, "slack_app_signing_secret")
 
     @slack_app_signing_secret.setter
-    def slack_app_signing_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slack_app_signing_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slack_app_signing_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="slackAppVerificationToken")
-    def slack_app_verification_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slack_app_verification_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The verification token of the Slack-app.
         """
         return pulumi.get(self, "slack_app_verification_token")
 
     @slack_app_verification_token.setter
-    def slack_app_verification_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slack_app_verification_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slack_app_verification_token", value)
 
     @_builtins.property
     @pulumi.getter(name="snippetSizeLimit")
-    def snippet_size_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def snippet_size_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max snippet content size in bytes.
         """
         return pulumi.get(self, "snippet_size_limit")
 
     @snippet_size_limit.setter
-    def snippet_size_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def snippet_size_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "snippet_size_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="snowplowAppId")
-    def snowplow_app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snowplow_app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Snowplow site name / application ID. (for example, gitlab)
         """
         return pulumi.get(self, "snowplow_app_id")
 
     @snowplow_app_id.setter
-    def snowplow_app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snowplow_app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snowplow_app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snowplowCollectorHostname")
-    def snowplow_collector_hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snowplow_collector_hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Snowplow collector hostname. (for example, snowplow.trx.gitlab.net)
         """
         return pulumi.get(self, "snowplow_collector_hostname")
 
     @snowplow_collector_hostname.setter
-    def snowplow_collector_hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snowplow_collector_hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snowplow_collector_hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="snowplowCookieDomain")
-    def snowplow_cookie_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snowplow_cookie_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Snowplow cookie domain. (for example, .gitlab.com)
         """
         return pulumi.get(self, "snowplow_cookie_domain")
 
     @snowplow_cookie_domain.setter
-    def snowplow_cookie_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snowplow_cookie_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snowplow_cookie_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="snowplowDatabaseCollectorHostname")
-    def snowplow_database_collector_hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snowplow_database_collector_hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
         """
         return pulumi.get(self, "snowplow_database_collector_hostname")
 
     @snowplow_database_collector_hostname.setter
-    def snowplow_database_collector_hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snowplow_database_collector_hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snowplow_database_collector_hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="snowplowEnabled")
-    def snowplow_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def snowplow_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable snowplow tracking.
         """
         return pulumi.get(self, "snowplow_enabled")
 
     @snowplow_enabled.setter
-    def snowplow_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def snowplow_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "snowplow_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcegraphEnabled")
-    def sourcegraph_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sourcegraph_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
         """
         return pulumi.get(self, "sourcegraph_enabled")
 
     @sourcegraph_enabled.setter
-    def sourcegraph_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sourcegraph_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sourcegraph_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcegraphPublicOnly")
-    def sourcegraph_public_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sourcegraph_public_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Blocks Sourcegraph from being loaded on private and internal projects.
         """
         return pulumi.get(self, "sourcegraph_public_only")
 
     @sourcegraph_public_only.setter
-    def sourcegraph_public_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sourcegraph_public_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sourcegraph_public_only", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcegraphUrl")
-    def sourcegraph_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sourcegraph_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Sourcegraph instance URL for integration.
         """
         return pulumi.get(self, "sourcegraph_url")
 
     @sourcegraph_url.setter
-    def sourcegraph_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sourcegraph_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sourcegraph_url", value)
 
     @_builtins.property
     @pulumi.getter(name="spamCheckApiKey")
-    def spam_check_api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spam_check_api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API key used by GitLab for accessing the Spam Check service endpoint.
         """
         return pulumi.get(self, "spam_check_api_key")
 
     @spam_check_api_key.setter
-    def spam_check_api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spam_check_api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spam_check_api_key", value)
 
     @_builtins.property
     @pulumi.getter(name="spamCheckEndpointEnabled")
-    def spam_check_endpoint_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def spam_check_endpoint_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables spam checking using external Spam Check API endpoint.
         """
         return pulumi.get(self, "spam_check_endpoint_enabled")
 
     @spam_check_endpoint_enabled.setter
-    def spam_check_endpoint_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def spam_check_endpoint_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "spam_check_endpoint_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="spamCheckEndpointUrl")
-    def spam_check_endpoint_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spam_check_endpoint_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
         """
         return pulumi.get(self, "spam_check_endpoint_url")
 
     @spam_check_endpoint_url.setter
-    def spam_check_endpoint_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spam_check_endpoint_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spam_check_endpoint_url", value)
 
     @_builtins.property
     @pulumi.getter(name="staticObjectsExternalStorageAuthToken")
-    def static_objects_external_storage_auth_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def static_objects_external_storage_auth_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authentication token for the external storage linked in static*objects*external*storage*url.
         """
         return pulumi.get(self, "static_objects_external_storage_auth_token")
 
     @static_objects_external_storage_auth_token.setter
-    def static_objects_external_storage_auth_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def static_objects_external_storage_auth_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "static_objects_external_storage_auth_token", value)
 
     @_builtins.property
     @pulumi.getter(name="staticObjectsExternalStorageUrl")
-    def static_objects_external_storage_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def static_objects_external_storage_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to an external storage for repository static objects.
         """
         return pulumi.get(self, "static_objects_external_storage_url")
 
     @static_objects_external_storage_url.setter
-    def static_objects_external_storage_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def static_objects_external_storage_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "static_objects_external_storage_url", value)
 
     @_builtins.property
     @pulumi.getter(name="suggestPipelineEnabled")
-    def suggest_pipeline_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def suggest_pipeline_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable pipeline suggestion banner.
         """
         return pulumi.get(self, "suggest_pipeline_enabled")
 
     @suggest_pipeline_enabled.setter
-    def suggest_pipeline_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def suggest_pipeline_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "suggest_pipeline_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="terminalMaxSessionTime")
-    def terminal_max_session_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def terminal_max_session_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
         """
         return pulumi.get(self, "terminal_max_session_time")
 
     @terminal_max_session_time.setter
-    def terminal_max_session_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def terminal_max_session_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "terminal_max_session_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def terms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def terms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Required by: enforce_terms) Markdown content for the ToS.
         """
         return pulumi.get(self, "terms")
 
     @terms.setter
-    def terms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def terms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "terms", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedApiEnabled")
-    def throttle_authenticated_api_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def throttle_authenticated_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: throttle*authenticated*api*period*in*seconds and throttle*authenticated*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         """
         return pulumi.get(self, "throttle_authenticated_api_enabled")
 
     @throttle_authenticated_api_enabled.setter
-    def throttle_authenticated_api_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def throttle_authenticated_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "throttle_authenticated_api_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedApiPeriodInSeconds")
-    def throttle_authenticated_api_period_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rate limit period (in seconds).
         """
         return pulumi.get(self, "throttle_authenticated_api_period_in_seconds")
 
     @throttle_authenticated_api_period_in_seconds.setter
-    def throttle_authenticated_api_period_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_api_period_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedApiRequestsPerPeriod")
-    def throttle_authenticated_api_requests_per_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum requests per period per user.
         """
         return pulumi.get(self, "throttle_authenticated_api_requests_per_period")
 
     @throttle_authenticated_api_requests_per_period.setter
-    def throttle_authenticated_api_requests_per_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_api_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedGitLfsEnabled")
-    def throttle_authenticated_git_lfs_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def throttle_authenticated_git_lfs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable authenticated Git LFS request rate limit.
         """
         return pulumi.get(self, "throttle_authenticated_git_lfs_enabled")
 
     @throttle_authenticated_git_lfs_enabled.setter
-    def throttle_authenticated_git_lfs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def throttle_authenticated_git_lfs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "throttle_authenticated_git_lfs_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedGitLfsPeriodInSeconds")
-    def throttle_authenticated_git_lfs_period_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_git_lfs_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rate limit period (in seconds).
         """
         return pulumi.get(self, "throttle_authenticated_git_lfs_period_in_seconds")
 
     @throttle_authenticated_git_lfs_period_in_seconds.setter
-    def throttle_authenticated_git_lfs_period_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_git_lfs_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_git_lfs_period_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedGitLfsRequestsPerPeriod")
-    def throttle_authenticated_git_lfs_requests_per_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_git_lfs_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum requests per period per user.
         """
         return pulumi.get(self, "throttle_authenticated_git_lfs_requests_per_period")
 
     @throttle_authenticated_git_lfs_requests_per_period.setter
-    def throttle_authenticated_git_lfs_requests_per_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_git_lfs_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_git_lfs_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedPackagesApiEnabled")
-    def throttle_authenticated_packages_api_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def throttle_authenticated_packages_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
         """
         return pulumi.get(self, "throttle_authenticated_packages_api_enabled")
 
     @throttle_authenticated_packages_api_enabled.setter
-    def throttle_authenticated_packages_api_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def throttle_authenticated_packages_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "throttle_authenticated_packages_api_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedPackagesApiPeriodInSeconds")
-    def throttle_authenticated_packages_api_period_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_packages_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rate limit period (in seconds). View Package Registry rate limits for more details.
         """
         return pulumi.get(self, "throttle_authenticated_packages_api_period_in_seconds")
 
     @throttle_authenticated_packages_api_period_in_seconds.setter
-    def throttle_authenticated_packages_api_period_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_packages_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_packages_api_period_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedPackagesApiRequestsPerPeriod")
-    def throttle_authenticated_packages_api_requests_per_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_packages_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum requests per period per user. View Package Registry rate limits for more details.
         """
         return pulumi.get(self, "throttle_authenticated_packages_api_requests_per_period")
 
     @throttle_authenticated_packages_api_requests_per_period.setter
-    def throttle_authenticated_packages_api_requests_per_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_packages_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_packages_api_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedWebEnabled")
-    def throttle_authenticated_web_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def throttle_authenticated_web_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: throttle*authenticated*web*period*in*seconds and throttle*authenticated*web*requests*per*period) Enable authenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         """
         return pulumi.get(self, "throttle_authenticated_web_enabled")
 
     @throttle_authenticated_web_enabled.setter
-    def throttle_authenticated_web_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def throttle_authenticated_web_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "throttle_authenticated_web_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedWebPeriodInSeconds")
-    def throttle_authenticated_web_period_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_web_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rate limit period (in seconds).
         """
         return pulumi.get(self, "throttle_authenticated_web_period_in_seconds")
 
     @throttle_authenticated_web_period_in_seconds.setter
-    def throttle_authenticated_web_period_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_web_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_web_period_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedWebRequestsPerPeriod")
-    def throttle_authenticated_web_requests_per_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_web_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum requests per period per user.
         """
         return pulumi.get(self, "throttle_authenticated_web_requests_per_period")
 
     @throttle_authenticated_web_requests_per_period.setter
-    def throttle_authenticated_web_requests_per_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_web_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_web_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedApiEnabled")
-    def throttle_unauthenticated_api_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def throttle_unauthenticated_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         """
         return pulumi.get(self, "throttle_unauthenticated_api_enabled")
 
     @throttle_unauthenticated_api_enabled.setter
-    def throttle_unauthenticated_api_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def throttle_unauthenticated_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "throttle_unauthenticated_api_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedApiPeriodInSeconds")
-    def throttle_unauthenticated_api_period_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_unauthenticated_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rate limit period in seconds.
         """
         return pulumi.get(self, "throttle_unauthenticated_api_period_in_seconds")
 
     @throttle_unauthenticated_api_period_in_seconds.setter
-    def throttle_unauthenticated_api_period_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_unauthenticated_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_unauthenticated_api_period_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedApiRequestsPerPeriod")
-    def throttle_unauthenticated_api_requests_per_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_unauthenticated_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max requests per period per IP.
         """
         return pulumi.get(self, "throttle_unauthenticated_api_requests_per_period")
 
     @throttle_unauthenticated_api_requests_per_period.setter
-    def throttle_unauthenticated_api_requests_per_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_unauthenticated_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_unauthenticated_api_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedPackagesApiEnabled")
-    def throttle_unauthenticated_packages_api_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def throttle_unauthenticated_packages_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
         """
         return pulumi.get(self, "throttle_unauthenticated_packages_api_enabled")
 
     @throttle_unauthenticated_packages_api_enabled.setter
-    def throttle_unauthenticated_packages_api_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def throttle_unauthenticated_packages_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "throttle_unauthenticated_packages_api_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedPackagesApiPeriodInSeconds")
-    def throttle_unauthenticated_packages_api_period_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_unauthenticated_packages_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rate limit period (in seconds). View Package Registry rate limits for more details.
         """
         return pulumi.get(self, "throttle_unauthenticated_packages_api_period_in_seconds")
 
     @throttle_unauthenticated_packages_api_period_in_seconds.setter
-    def throttle_unauthenticated_packages_api_period_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_unauthenticated_packages_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_unauthenticated_packages_api_period_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedPackagesApiRequestsPerPeriod")
-    def throttle_unauthenticated_packages_api_requests_per_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_unauthenticated_packages_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum requests per period per user. View Package Registry rate limits for more details.
         """
         return pulumi.get(self, "throttle_unauthenticated_packages_api_requests_per_period")
 
     @throttle_unauthenticated_packages_api_requests_per_period.setter
-    def throttle_unauthenticated_packages_api_requests_per_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_unauthenticated_packages_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_unauthenticated_packages_api_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedWebEnabled")
-    def throttle_unauthenticated_web_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def throttle_unauthenticated_web_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         """
         return pulumi.get(self, "throttle_unauthenticated_web_enabled")
 
     @throttle_unauthenticated_web_enabled.setter
-    def throttle_unauthenticated_web_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def throttle_unauthenticated_web_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "throttle_unauthenticated_web_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedWebPeriodInSeconds")
-    def throttle_unauthenticated_web_period_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_unauthenticated_web_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rate limit period in seconds.
         """
         return pulumi.get(self, "throttle_unauthenticated_web_period_in_seconds")
 
     @throttle_unauthenticated_web_period_in_seconds.setter
-    def throttle_unauthenticated_web_period_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_unauthenticated_web_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_unauthenticated_web_period_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedWebRequestsPerPeriod")
-    def throttle_unauthenticated_web_requests_per_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_unauthenticated_web_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max requests per period per IP.
         """
         return pulumi.get(self, "throttle_unauthenticated_web_requests_per_period")
 
     @throttle_unauthenticated_web_requests_per_period.setter
-    def throttle_unauthenticated_web_requests_per_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_unauthenticated_web_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_unauthenticated_web_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="timeTrackingLimitToHours")
-    def time_tracking_limit_to_hours(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def time_tracking_limit_to_hours(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Limit display of time tracking units to hours.
         """
         return pulumi.get(self, "time_tracking_limit_to_hours")
 
     @time_tracking_limit_to_hours.setter
-    def time_tracking_limit_to_hours(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def time_tracking_limit_to_hours(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "time_tracking_limit_to_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="twoFactorGracePeriod")
-    def two_factor_grace_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def two_factor_grace_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.
         """
         return pulumi.get(self, "two_factor_grace_period")
 
     @two_factor_grace_period.setter
-    def two_factor_grace_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def two_factor_grace_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "two_factor_grace_period", value)
 
     @_builtins.property
     @pulumi.getter(name="unconfirmedUsersDeleteAfterDays")
-    def unconfirmed_users_delete_after_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unconfirmed_users_delete_after_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Self-managed, Premium and Ultimate only.
         """
         return pulumi.get(self, "unconfirmed_users_delete_after_days")
 
     @unconfirmed_users_delete_after_days.setter
-    def unconfirmed_users_delete_after_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unconfirmed_users_delete_after_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unconfirmed_users_delete_after_days", value)
 
     @_builtins.property
     @pulumi.getter(name="uniqueIpsLimitEnabled")
-    def unique_ips_limit_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unique_ips_limit_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
         """
         return pulumi.get(self, "unique_ips_limit_enabled")
 
     @unique_ips_limit_enabled.setter
-    def unique_ips_limit_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unique_ips_limit_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unique_ips_limit_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="uniqueIpsLimitPerUser")
-    def unique_ips_limit_per_user(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unique_ips_limit_per_user(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of IPs per user.
         """
         return pulumi.get(self, "unique_ips_limit_per_user")
 
     @unique_ips_limit_per_user.setter
-    def unique_ips_limit_per_user(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unique_ips_limit_per_user(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unique_ips_limit_per_user", value)
 
     @_builtins.property
     @pulumi.getter(name="uniqueIpsLimitTimeWindow")
-    def unique_ips_limit_time_window(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unique_ips_limit_time_window(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How many seconds an IP is counted towards the limit.
         """
         return pulumi.get(self, "unique_ips_limit_time_window")
 
     @unique_ips_limit_time_window.setter
-    def unique_ips_limit_time_window(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unique_ips_limit_time_window(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unique_ips_limit_time_window", value)
 
     @_builtins.property
     @pulumi.getter(name="updateRunnerVersionsEnabled")
-    def update_runner_versions_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def update_runner_versions_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Fetch GitLab Runner release version data from GitLab.com.
         """
         return pulumi.get(self, "update_runner_versions_enabled")
 
     @update_runner_versions_enabled.setter
-    def update_runner_versions_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def update_runner_versions_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "update_runner_versions_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="updatingNameDisabledForUsers")
-    def updating_name_disabled_for_users(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def updating_name_disabled_for_users(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable user profile name changes.
         """
         return pulumi.get(self, "updating_name_disabled_for_users")
 
     @updating_name_disabled_for_users.setter
-    def updating_name_disabled_for_users(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def updating_name_disabled_for_users(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "updating_name_disabled_for_users", value)
 
     @_builtins.property
     @pulumi.getter(name="usagePingEnabled")
-    def usage_ping_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def usage_ping_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Every week GitLab reports license usage back to GitLab, Inc.
         """
         return pulumi.get(self, "usage_ping_enabled")
 
     @usage_ping_enabled.setter
-    def usage_ping_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def usage_ping_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "usage_ping_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="useClickhouseForAnalytics")
-    def use_clickhouse_for_analytics(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_clickhouse_for_analytics(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
         """
         return pulumi.get(self, "use_clickhouse_for_analytics")
 
     @use_clickhouse_for_analytics.setter
-    def use_clickhouse_for_analytics(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_clickhouse_for_analytics(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_clickhouse_for_analytics", value)
 
     @_builtins.property
     @pulumi.getter(name="userDeactivationEmailsEnabled")
-    def user_deactivation_emails_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def user_deactivation_emails_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Send an email to users upon account deactivation.
         """
         return pulumi.get(self, "user_deactivation_emails_enabled")
 
     @user_deactivation_emails_enabled.setter
-    def user_deactivation_emails_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def user_deactivation_emails_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "user_deactivation_emails_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="userDefaultExternal")
-    def user_default_external(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def user_default_external(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Newly registered users are external by default.
         """
         return pulumi.get(self, "user_default_external")
 
     @user_default_external.setter
-    def user_default_external(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def user_default_external(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "user_default_external", value)
 
     @_builtins.property
     @pulumi.getter(name="userDefaultInternalRegex")
-    def user_default_internal_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_default_internal_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify an email address regex pattern to identify default internal users.
         """
         return pulumi.get(self, "user_default_internal_regex")
 
     @user_default_internal_regex.setter
-    def user_default_internal_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_default_internal_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_default_internal_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="userDefaultsToPrivateProfile")
-    def user_defaults_to_private_profile(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def user_defaults_to_private_profile(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Newly created users have private profile by default.
         """
         return pulumi.get(self, "user_defaults_to_private_profile")
 
     @user_defaults_to_private_profile.setter
-    def user_defaults_to_private_profile(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def user_defaults_to_private_profile(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "user_defaults_to_private_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="userOauthApplications")
-    def user_oauth_applications(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def user_oauth_applications(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow users to register any application to use GitLab as an OAuth provider.
         """
         return pulumi.get(self, "user_oauth_applications")
 
     @user_oauth_applications.setter
-    def user_oauth_applications(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def user_oauth_applications(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "user_oauth_applications", value)
 
     @_builtins.property
     @pulumi.getter(name="userShowAddSshKeyMessage")
-    def user_show_add_ssh_key_message(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def user_show_add_ssh_key_message(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
         """
         return pulumi.get(self, "user_show_add_ssh_key_message")
 
     @user_show_add_ssh_key_message.setter
-    def user_show_add_ssh_key_message(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def user_show_add_ssh_key_message(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "user_show_add_ssh_key_message", value)
 
     @_builtins.property
     @pulumi.getter(name="validRunnerRegistrars")
-    def valid_runner_registrars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def valid_runner_registrars(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
         """
         return pulumi.get(self, "valid_runner_registrars")
 
     @valid_runner_registrars.setter
-    def valid_runner_registrars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def valid_runner_registrars(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "valid_runner_registrars", value)
 
     @_builtins.property
     @pulumi.getter(name="versionCheckEnabled")
-    def version_check_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def version_check_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Let GitLab inform you when an update is available.
         """
         return pulumi.get(self, "version_check_enabled")
 
     @version_check_enabled.setter
-    def version_check_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def version_check_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "version_check_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="webIdeClientsidePreviewEnabled")
-    def web_ide_clientside_preview_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def web_ide_clientside_preview_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
         """
         return pulumi.get(self, "web_ide_clientside_preview_enabled")
 
     @web_ide_clientside_preview_enabled.setter
-    def web_ide_clientside_preview_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def web_ide_clientside_preview_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "web_ide_clientside_preview_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="whatsNewVariant")
-    def whats_new_variant(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def whats_new_variant(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         What's new variant, possible values: all*tiers, current*tier, and disabled.
         """
         return pulumi.get(self, "whats_new_variant")
 
     @whats_new_variant.setter
-    def whats_new_variant(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def whats_new_variant(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "whats_new_variant", value)
 
     @_builtins.property
     @pulumi.getter(name="wikiPageMaxContentBytes")
-    def wiki_page_max_content_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def wiki_page_max_content_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
         """
         return pulumi.get(self, "wiki_page_max_content_bytes")
 
     @wiki_page_max_content_bytes.setter
-    def wiki_page_max_content_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def wiki_page_max_content_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "wiki_page_max_content_bytes", value)
 
 
 @pulumi.input_type
 class _ApplicationSettingsState:
     def __init__(__self__, *,
-                 abuse_notification_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 after_sign_out_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 after_sign_up_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 akismet_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 akismet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_account_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_group_owners_to_manage_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_local_requests_from_system_hooks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_local_requests_from_web_hooks_and_services: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_project_creation_for_guest_and_below: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_runner_registration_token: Optional[pulumi.Input[_builtins.bool]] = None,
-                 archive_builds_in_human_readable: Optional[pulumi.Input[_builtins.str]] = None,
-                 asciidoc_max_includes: Optional[pulumi.Input[_builtins.int]] = None,
-                 asset_proxy_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 asset_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 asset_proxy_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 asset_proxy_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_keys_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_ban_user_on_excessive_projects_download: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_devops_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 automatic_purchased_storage_allocation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bulk_import_concurrent_pipeline_batch_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 bulk_import_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bulk_import_max_download_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 can_create_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 check_namespace_plan: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_job_live_trace_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_max_includes: Optional[pulumi.Input[_builtins.int]] = None,
-                 ci_max_total_yaml_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 commit_email_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 concurrent_bitbucket_import_jobs_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 concurrent_bitbucket_server_import_jobs_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 concurrent_github_import_jobs_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_registry_cleanup_tags_service_max_list_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_registry_delete_tags_service_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_registry_expiration_policies_caching: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_registry_expiration_policies_worker_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_registry_token_expire_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 deactivate_dormant_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deactivate_dormant_users_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 decompress_archive_file_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_artifacts_expire_in: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch_protection: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_branch_protection_defaults: Optional[pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']] = None,
-                 default_ci_config_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_group_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_preferred_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_project_creation: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_project_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_projects_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_snippet_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_syntax_highlighting_theme: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_inactive_projects: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_unconfirmed_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_adjourned_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 diagramsnet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 diagramsnet_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 diff_max_files: Optional[pulumi.Input[_builtins.int]] = None,
-                 diff_max_lines: Optional[pulumi.Input[_builtins.int]] = None,
-                 diff_max_patch_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 disable_admin_oauth_scopes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_feed_token: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_personal_access_tokens: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_rebinding_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 domain_denylist_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_denylists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 downstream_pipeline_trigger_limit_per_project_user_sha: Optional[pulumi.Input[_builtins.int]] = None,
-                 dsa_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 duo_features_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecdsa_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 ecdsa_sk_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 ed25519_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 ed25519_sk_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 eks_access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 eks_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 eks_integration_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 eks_secret_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_aws: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_aws_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_aws_secret_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_indexed_field_length_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_indexed_file_size_limit_kb: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_indexing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_limit_indexing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_max_code_indexing_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 elasticsearch_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 elasticsearch_requeue_workers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_search: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 elasticsearch_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_worker_number_of_shards: Optional[pulumi.Input[_builtins.int]] = None,
-                 email_additional_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_author_in_body: Optional[pulumi.Input[_builtins.bool]] = None,
-                 email_confirmation_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_artifact_external_redirect_warning_page: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_git_access_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_namespace_storage_limit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enforce_terms: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_auth_client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_auth_client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_auth_client_key_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_authorization_service_default_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_authorization_service_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_authorization_service_timeout: Optional[pulumi.Input[_builtins.float]] = None,
-                 external_authorization_service_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_pipeline_validation_service_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 external_pipeline_validation_service_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_pipeline_validation_service_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 failed_login_attempts_unlock_period_in_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_template_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 first_day_of_week: Optional[pulumi.Input[_builtins.int]] = None,
-                 geo_node_allowed_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 geo_status_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 git_rate_limit_users_alertlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 git_rate_limit_users_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 git_two_factor_session_expiry: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitaly_timeout_default: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitaly_timeout_fast: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitaly_timeout_medium: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitlab_dedicated_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gitlab_environment_toolkit_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gitlab_shell_operation_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitpod_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gitpod_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 globally_allowed_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grafana_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 gravatar_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 help_page_hide_commercial_content: Optional[pulumi.Input[_builtins.bool]] = None,
-                 help_page_support_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 help_page_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 help_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 hide_third_party_offers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 home_page_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 housekeeping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 housekeeping_optimize_repository_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 html_emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 in_product_marketing_emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 inactive_projects_delete_after_months: Optional[pulumi.Input[_builtins.int]] = None,
-                 inactive_projects_min_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[_builtins.int]] = None,
-                 inactive_resource_access_tokens_delete_after_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 include_optional_metrics_in_service_ping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 invisible_captcha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_create_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 jira_connect_application_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_connect_proxy_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_connect_public_key_storage_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_latest_artifact: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kroki_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kroki_formats: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
-                 kroki_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_markdown_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 lock_duo_features_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lock_memberships_to_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lock_memberships_to_saml: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mailgun_events_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mailgun_signing_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintenance_mode_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_attachment_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_decompressed_archive_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_export_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_import_remote_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_import_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_login_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_number_of_repository_downloads: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_number_of_repository_downloads_within_time_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pages_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_personal_access_token_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_ssh_key_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_terraform_state_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_method_call_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_password_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 mirror_available: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_capacity_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 mirror_max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 mirror_max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 notify_on_unknown_sign_in: Optional[pulumi.Input[_builtins.bool]] = None,
-                 npm_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nuget_skip_metadata_url_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 package_metadata_purl_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 package_registry_allow_anyone_to_pull_option: Optional[pulumi.Input[_builtins.bool]] = None,
-                 package_registry_cleanup_policies_worker_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 pages_domain_verification_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_authentication_enabled_for_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_authentication_enabled_for_web: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_lowercase_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_number_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_symbol_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_uppercase_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 performance_bar_allowed_group_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 personal_access_token_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_limit_per_project_user_sha: Optional[pulumi.Input[_builtins.int]] = None,
-                 plantuml_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 plantuml_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 polling_interval_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
-                 prevent_merge_requests_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_merge_requests_committers_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_export_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_jobs_api_rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 projects_api_rate_limit_unauthenticated: Optional[pulumi.Input[_builtins.int]] = None,
-                 prometheus_metrics_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protected_ci_variables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_event_activities_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 push_event_hooks_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 pypi_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rate_limiting_response_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 raw_blob_request_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 recaptcha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 recaptcha_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 recaptcha_site_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 receive_max_input_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 receptive_cluster_agents_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remember_me_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_checks_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_size_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-                 require_admin_approval_after_user_signup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_admin_two_factor_authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_personal_access_token_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_two_factor_authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 restricted_visibility_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rsa_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 search_rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 search_rate_limit_unauthenticated: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_approval_policies_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_global_group_approvers_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_txt_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_user_confirmation_email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_access_tokens_expiration_enforced: Optional[pulumi.Input[_builtins.bool]] = None,
-                 session_expire_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shared_runners_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared_runners_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 sidekiq_job_limiter_compression_threshold_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 sidekiq_job_limiter_limit_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 sidekiq_job_limiter_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_in_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 signup_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 silent_admin_exports_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 silent_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slack_app_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slack_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slack_app_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 slack_app_signing_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 slack_app_verification_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 snippet_size_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 snowplow_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_collector_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_cookie_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_database_collector_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sourcegraph_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sourcegraph_public_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sourcegraph_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 spam_check_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 spam_check_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spam_check_endpoint_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_objects_external_storage_auth_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_objects_external_storage_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 suggest_pipeline_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 terminal_max_session_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 terms: Optional[pulumi.Input[_builtins.str]] = None,
-                 throttle_authenticated_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_git_lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_git_lfs_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_git_lfs_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_packages_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_packages_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_packages_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_web_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_web_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_web_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_unauthenticated_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_packages_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_unauthenticated_packages_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_packages_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_web_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_unauthenticated_web_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_web_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_tracking_limit_to_hours: Optional[pulumi.Input[_builtins.bool]] = None,
-                 two_factor_grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 unconfirmed_users_delete_after_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 unique_ips_limit_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unique_ips_limit_per_user: Optional[pulumi.Input[_builtins.int]] = None,
-                 unique_ips_limit_time_window: Optional[pulumi.Input[_builtins.int]] = None,
-                 update_runner_versions_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 updating_name_disabled_for_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 usage_ping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_clickhouse_for_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_deactivation_emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_default_external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_default_internal_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_defaults_to_private_profile: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_oauth_applications: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_show_add_ssh_key_message: Optional[pulumi.Input[_builtins.bool]] = None,
-                 valid_runner_registrars: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 version_check_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 web_ide_clientside_preview_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 whats_new_variant: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_page_max_content_bytes: Optional[pulumi.Input[_builtins.int]] = None):
+                 abuse_notification_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 after_sign_out_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 after_sign_up_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_group_owners_to_manage_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_local_requests_from_system_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_local_requests_from_web_hooks_and_services: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_project_creation_for_guest_and_below: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_runner_registration_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 archive_builds_in_human_readable: pulumi.Input[Optional[_builtins.str]] = None,
+                 asciidoc_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
+                 asset_proxy_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 asset_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 asset_proxy_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 asset_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_keys_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_ban_user_on_excessive_projects_download: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_devops_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 automatic_purchased_storage_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bulk_import_concurrent_pipeline_batch_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 bulk_import_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bulk_import_max_download_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 check_namespace_plan: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_job_live_trace_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
+                 ci_max_total_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 commit_email_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 concurrent_bitbucket_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_bitbucket_server_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_github_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_expiration_policies_enable_historic_entries: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_registry_cleanup_tags_service_max_list_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_registry_delete_tags_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_registry_expiration_policies_caching: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_registry_expiration_policies_worker_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_registry_token_expire_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 deactivate_dormant_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deactivate_dormant_users_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 decompress_archive_file_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_artifacts_expire_in: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_branch_protection_defaults: pulumi.Input[Optional['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']] = None,
+                 default_ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_group_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_preferred_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_project_creation: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_project_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_projects_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_snippet_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_syntax_highlighting_theme: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_inactive_projects: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_unconfirmed_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_adjourned_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 diagramsnet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 diagramsnet_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 diff_max_files: pulumi.Input[Optional[_builtins.int]] = None,
+                 diff_max_lines: pulumi.Input[Optional[_builtins.int]] = None,
+                 diff_max_patch_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 disable_admin_oauth_scopes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_feed_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_personal_access_tokens: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disabled_oauth_sign_in_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_rebinding_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 domain_denylist_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_denylists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 downstream_pipeline_trigger_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+                 dsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecdsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 ecdsa_sk_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 ed25519_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 ed25519_sk_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 eks_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 eks_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 eks_integration_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 eks_secret_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_aws: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_aws_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_aws_secret_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_indexed_field_length_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_indexed_file_size_limit_kb: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_indexing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_limit_indexing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_max_bulk_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_max_bulk_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_max_code_indexing_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_namespace_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 elasticsearch_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_project_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 elasticsearch_requeue_workers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_search: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 elasticsearch_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_worker_number_of_shards: pulumi.Input[Optional[_builtins.int]] = None,
+                 email_additional_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_author_in_body: pulumi.Input[Optional[_builtins.bool]] = None,
+                 email_confirmation_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_artifact_external_redirect_warning_page: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_git_access_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_namespace_storage_limit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enforce_terms: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_auth_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_auth_client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_auth_client_key_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_authorization_service_default_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_authorization_service_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_authorization_service_timeout: pulumi.Input[Optional[_builtins.float]] = None,
+                 external_authorization_service_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_pipeline_validation_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 external_pipeline_validation_service_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_pipeline_validation_service_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 failed_login_attempts_unlock_period_in_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_template_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 first_day_of_week: pulumi.Input[Optional[_builtins.int]] = None,
+                 geo_node_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 geo_status_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 git_rate_limit_users_alertlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 git_rate_limit_users_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 git_two_factor_session_expiry: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitaly_timeout_default: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitaly_timeout_fast: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitaly_timeout_medium: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitlab_dedicated_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gitlab_environment_toolkit_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gitlab_shell_operation_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitpod_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gitpod_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 globally_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grafana_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 gravatar_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_owners_can_manage_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 help_page_hide_commercial_content: pulumi.Input[Optional[_builtins.bool]] = None,
+                 help_page_support_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 help_page_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 help_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 hide_third_party_offers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 home_page_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 housekeeping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 housekeeping_optimize_repository_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 html_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 import_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 in_product_marketing_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inactive_projects_delete_after_months: pulumi.Input[Optional[_builtins.int]] = None,
+                 inactive_projects_min_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 inactive_projects_send_warning_email_after_months: pulumi.Input[Optional[_builtins.int]] = None,
+                 inactive_resource_access_tokens_delete_after_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 include_optional_metrics_in_service_ping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 invisible_captcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 jira_connect_application_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_connect_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_connect_public_key_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kroki_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kroki_formats: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
+                 kroki_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_markdown_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 lock_duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_memberships_to_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_memberships_to_saml: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mailgun_events_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mailgun_signing_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maintenance_mode_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_attachment_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_decompressed_archive_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_import_remote_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_import_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_login_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_number_of_repository_downloads: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_number_of_repository_downloads_within_time_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_pages_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_personal_access_token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_ssh_key_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_terraform_state_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_method_call_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_password_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 mirror_available: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_capacity_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 mirror_max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 mirror_max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 notify_on_unknown_sign_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 npm_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nuget_skip_metadata_url_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 outbound_local_requests_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 package_metadata_purl_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 package_registry_allow_anyone_to_pull_option: pulumi.Input[Optional[_builtins.bool]] = None,
+                 package_registry_cleanup_policies_worker_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 pages_domain_verification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_authentication_enabled_for_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_authentication_enabled_for_web: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_lowercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_number_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_symbol_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_uppercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 performance_bar_allowed_group_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_access_token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+                 plantuml_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 plantuml_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 polling_interval_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
+                 prevent_merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_merge_requests_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_export_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_jobs_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 projects_api_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
+                 prometheus_metrics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protected_ci_variables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_event_activities_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 push_event_hooks_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 pypi_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rate_limiting_response_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 raw_blob_request_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 recaptcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 recaptcha_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 recaptcha_site_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 receive_max_input_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 receptive_cluster_agents_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remember_me_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_checks_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 repository_storages_weighted: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+                 require_admin_approval_after_user_signup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_admin_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_personal_access_token_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 restricted_visibility_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_approval_policies_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_global_group_approvers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_txt_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_user_confirmation_email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_access_tokens_expiration_enforced: pulumi.Input[Optional[_builtins.bool]] = None,
+                 session_expire_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shared_runners_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared_runners_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 sidekiq_job_limiter_compression_threshold_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 sidekiq_job_limiter_limit_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 sidekiq_job_limiter_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_in_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 signup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 silent_admin_exports_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 silent_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slack_app_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slack_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slack_app_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 slack_app_signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 slack_app_verification_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 snippet_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 snowplow_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_collector_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_cookie_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_database_collector_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sourcegraph_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sourcegraph_public_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sourcegraph_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 spam_check_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 spam_check_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spam_check_endpoint_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_objects_external_storage_auth_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_objects_external_storage_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 suggest_pipeline_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 terminal_max_session_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 terms: pulumi.Input[Optional[_builtins.str]] = None,
+                 throttle_authenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_git_lfs_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_lfs_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_tracking_limit_to_hours: pulumi.Input[Optional[_builtins.bool]] = None,
+                 two_factor_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 unconfirmed_users_delete_after_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 unique_ips_limit_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unique_ips_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 unique_ips_limit_time_window: pulumi.Input[Optional[_builtins.int]] = None,
+                 update_runner_versions_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updating_name_disabled_for_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 usage_ping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_clickhouse_for_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_deactivation_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_default_external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_default_internal_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_defaults_to_private_profile: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_oauth_applications: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_show_add_ssh_key_message: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valid_runner_registrars: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 version_check_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 web_ide_clientside_preview_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 whats_new_variant: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_page_max_content_bytes: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ApplicationSettings resources.
 
@@ -6472,3879 +6472,3879 @@ class _ApplicationSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="abuseNotificationEmail")
-    def abuse_notification_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def abuse_notification_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set, abuse reports are sent to this address. Abuse reports are always available in the Admin Area.
         """
         return pulumi.get(self, "abuse_notification_email")
 
     @abuse_notification_email.setter
-    def abuse_notification_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def abuse_notification_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "abuse_notification_email", value)
 
     @_builtins.property
     @pulumi.getter(name="adminMode")
-    def admin_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Require administrators to enable Admin Mode by re-authenticating for administrative tasks.
         """
         return pulumi.get(self, "admin_mode")
 
     @admin_mode.setter
-    def admin_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="afterSignOutPath")
-    def after_sign_out_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def after_sign_out_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Where to redirect users after logout.
         """
         return pulumi.get(self, "after_sign_out_path")
 
     @after_sign_out_path.setter
-    def after_sign_out_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def after_sign_out_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "after_sign_out_path", value)
 
     @_builtins.property
     @pulumi.getter(name="afterSignUpText")
-    def after_sign_up_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def after_sign_up_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Text shown to the user after signing up.
         """
         return pulumi.get(self, "after_sign_up_text")
 
     @after_sign_up_text.setter
-    def after_sign_up_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def after_sign_up_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "after_sign_up_text", value)
 
     @_builtins.property
     @pulumi.getter(name="akismetApiKey")
-    def akismet_api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def akismet_api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API key for Akismet spam protection.
         """
         return pulumi.get(self, "akismet_api_key")
 
     @akismet_api_key.setter
-    def akismet_api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def akismet_api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "akismet_api_key", value)
 
     @_builtins.property
     @pulumi.getter(name="akismetEnabled")
-    def akismet_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def akismet_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
         """
         return pulumi.get(self, "akismet_enabled")
 
     @akismet_enabled.setter
-    def akismet_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def akismet_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "akismet_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="allowAccountDeletion")
-    def allow_account_deletion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_account_deletion(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to allow users to delete their accounts. Premium and Ultimate only.
         """
         return pulumi.get(self, "allow_account_deletion")
 
     @allow_account_deletion.setter
-    def allow_account_deletion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_account_deletion(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_account_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="allowGroupOwnersToManageLdap")
-    def allow_group_owners_to_manage_ldap(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_group_owners_to_manage_ldap(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to allow group owners to manage LDAP.
         """
         return pulumi.get(self, "allow_group_owners_to_manage_ldap")
 
     @allow_group_owners_to_manage_ldap.setter
-    def allow_group_owners_to_manage_ldap(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_group_owners_to_manage_ldap(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_group_owners_to_manage_ldap", value)
 
     @_builtins.property
     @pulumi.getter(name="allowLocalRequestsFromSystemHooks")
-    def allow_local_requests_from_system_hooks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_local_requests_from_system_hooks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow requests to the local network from system hooks.
         """
         return pulumi.get(self, "allow_local_requests_from_system_hooks")
 
     @allow_local_requests_from_system_hooks.setter
-    def allow_local_requests_from_system_hooks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_local_requests_from_system_hooks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_local_requests_from_system_hooks", value)
 
     @_builtins.property
     @pulumi.getter(name="allowLocalRequestsFromWebHooksAndServices")
-    def allow_local_requests_from_web_hooks_and_services(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_local_requests_from_web_hooks_and_services(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow requests to the local network from web hooks and services.
         """
         return pulumi.get(self, "allow_local_requests_from_web_hooks_and_services")
 
     @allow_local_requests_from_web_hooks_and_services.setter
-    def allow_local_requests_from_web_hooks_and_services(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_local_requests_from_web_hooks_and_services(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_local_requests_from_web_hooks_and_services", value)
 
     @_builtins.property
     @pulumi.getter(name="allowProjectCreationForGuestAndBelow")
-    def allow_project_creation_for_guest_and_below(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_project_creation_for_guest_and_below(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether users assigned up to the Guest role can create groups and personal projects.
         """
         return pulumi.get(self, "allow_project_creation_for_guest_and_below")
 
     @allow_project_creation_for_guest_and_below.setter
-    def allow_project_creation_for_guest_and_below(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_project_creation_for_guest_and_below(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_project_creation_for_guest_and_below", value)
 
     @_builtins.property
     @pulumi.getter(name="allowRunnerRegistrationToken")
-    def allow_runner_registration_token(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_runner_registration_token(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow using a registration token to create a runner.
         """
         return pulumi.get(self, "allow_runner_registration_token")
 
     @allow_runner_registration_token.setter
-    def allow_runner_registration_token(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_runner_registration_token(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_runner_registration_token", value)
 
     @_builtins.property
     @pulumi.getter(name="archiveBuildsInHumanReadable")
-    def archive_builds_in_human_readable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def archive_builds_in_human_readable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
         """
         return pulumi.get(self, "archive_builds_in_human_readable")
 
     @archive_builds_in_human_readable.setter
-    def archive_builds_in_human_readable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def archive_builds_in_human_readable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "archive_builds_in_human_readable", value)
 
     @_builtins.property
     @pulumi.getter(name="asciidocMaxIncludes")
-    def asciidoc_max_includes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def asciidoc_max_includes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
         """
         return pulumi.get(self, "asciidoc_max_includes")
 
     @asciidoc_max_includes.setter
-    def asciidoc_max_includes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def asciidoc_max_includes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "asciidoc_max_includes", value)
 
     @_builtins.property
     @pulumi.getter(name="assetProxyAllowlists")
-    def asset_proxy_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def asset_proxy_allowlists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
         """
         return pulumi.get(self, "asset_proxy_allowlists")
 
     @asset_proxy_allowlists.setter
-    def asset_proxy_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def asset_proxy_allowlists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "asset_proxy_allowlists", value)
 
     @_builtins.property
     @pulumi.getter(name="assetProxyEnabled")
-    def asset_proxy_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def asset_proxy_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: asset*proxy*url) Enable proxying of assets. GitLab restart is required to apply changes.
         """
         return pulumi.get(self, "asset_proxy_enabled")
 
     @asset_proxy_enabled.setter
-    def asset_proxy_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def asset_proxy_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "asset_proxy_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="assetProxySecretKey")
-    def asset_proxy_secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def asset_proxy_secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Shared secret with the asset proxy server. GitLab restart is required to apply changes.
         """
         return pulumi.get(self, "asset_proxy_secret_key")
 
     @asset_proxy_secret_key.setter
-    def asset_proxy_secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def asset_proxy_secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "asset_proxy_secret_key", value)
 
     @_builtins.property
     @pulumi.getter(name="assetProxyUrl")
-    def asset_proxy_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def asset_proxy_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the asset proxy server. GitLab restart is required to apply changes.
         """
         return pulumi.get(self, "asset_proxy_url")
 
     @asset_proxy_url.setter
-    def asset_proxy_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def asset_proxy_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "asset_proxy_url", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedKeysEnabled")
-    def authorized_keys_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def authorized_keys_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         By default, we write to the authorized_keys file to support Git over SSH without additional configuration. GitLab can be optimized to authenticate SSH keys via the database file. Only disable this if you have configured your OpenSSH server to use the AuthorizedKeysCommand.
         """
         return pulumi.get(self, "authorized_keys_enabled")
 
     @authorized_keys_enabled.setter
-    def authorized_keys_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def authorized_keys_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "authorized_keys_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="autoBanUserOnExcessiveProjectsDownload")
-    def auto_ban_user_on_excessive_projects_download(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_ban_user_on_excessive_projects_download(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Self-managed, Ultimate only.
         """
         return pulumi.get(self, "auto_ban_user_on_excessive_projects_download")
 
     @auto_ban_user_on_excessive_projects_download.setter
-    def auto_ban_user_on_excessive_projects_download(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_ban_user_on_excessive_projects_download(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_ban_user_on_excessive_projects_download", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDevopsDomain")
-    def auto_devops_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_devops_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         """
         return pulumi.get(self, "auto_devops_domain")
 
     @auto_devops_domain.setter
-    def auto_devops_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_devops_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_devops_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDevopsEnabled")
-    def auto_devops_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_devops_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
         """
         return pulumi.get(self, "auto_devops_enabled")
 
     @auto_devops_enabled.setter
-    def auto_devops_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_devops_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_devops_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="automaticPurchasedStorageAllocation")
-    def automatic_purchased_storage_allocation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def automatic_purchased_storage_allocation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enabling this permits automatic allocation of purchased storage in a namespace.
         """
         return pulumi.get(self, "automatic_purchased_storage_allocation")
 
     @automatic_purchased_storage_allocation.setter
-    def automatic_purchased_storage_allocation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def automatic_purchased_storage_allocation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "automatic_purchased_storage_allocation", value)
 
     @_builtins.property
     @pulumi.getter(name="bulkImportConcurrentPipelineBatchLimit")
-    def bulk_import_concurrent_pipeline_batch_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bulk_import_concurrent_pipeline_batch_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum simultaneous Direct Transfer batches to process.
         """
         return pulumi.get(self, "bulk_import_concurrent_pipeline_batch_limit")
 
     @bulk_import_concurrent_pipeline_batch_limit.setter
-    def bulk_import_concurrent_pipeline_batch_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bulk_import_concurrent_pipeline_batch_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bulk_import_concurrent_pipeline_batch_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="bulkImportEnabled")
-    def bulk_import_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bulk_import_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable migrating GitLab groups by direct transfer.
         """
         return pulumi.get(self, "bulk_import_enabled")
 
     @bulk_import_enabled.setter
-    def bulk_import_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bulk_import_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bulk_import_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="bulkImportMaxDownloadFileSize")
-    def bulk_import_max_download_file_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bulk_import_max_download_file_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum download file size when importing from source GitLab instances by direct transfer.
         """
         return pulumi.get(self, "bulk_import_max_download_file_size")
 
     @bulk_import_max_download_file_size.setter
-    def bulk_import_max_download_file_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bulk_import_max_download_file_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bulk_import_max_download_file_size", value)
 
     @_builtins.property
     @pulumi.getter(name="canCreateGroup")
-    def can_create_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_create_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether users can create top-level groups.
         """
         return pulumi.get(self, "can_create_group")
 
     @can_create_group.setter
-    def can_create_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_create_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_create_group", value)
 
     @_builtins.property
     @pulumi.getter(name="checkNamespacePlan")
-    def check_namespace_plan(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def check_namespace_plan(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
         """
         return pulumi.get(self, "check_namespace_plan")
 
     @check_namespace_plan.setter
-    def check_namespace_plan(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def check_namespace_plan(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "check_namespace_plan", value)
 
     @_builtins.property
     @pulumi.getter(name="ciJobLiveTraceEnabled")
-    def ci_job_live_trace_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ci_job_live_trace_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
         """
         return pulumi.get(self, "ci_job_live_trace_enabled")
 
     @ci_job_live_trace_enabled.setter
-    def ci_job_live_trace_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ci_job_live_trace_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ci_job_live_trace_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ciMaxIncludes")
-    def ci_max_includes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ci_max_includes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of includes per pipeline.
         """
         return pulumi.get(self, "ci_max_includes")
 
     @ci_max_includes.setter
-    def ci_max_includes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ci_max_includes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ci_max_includes", value)
 
     @_builtins.property
     @pulumi.getter(name="ciMaxTotalYamlSizeBytes")
-    def ci_max_total_yaml_size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ci_max_total_yaml_size_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
         """
         return pulumi.get(self, "ci_max_total_yaml_size_bytes")
 
     @ci_max_total_yaml_size_bytes.setter
-    def ci_max_total_yaml_size_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ci_max_total_yaml_size_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ci_max_total_yaml_size_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="commitEmailHostname")
-    def commit_email_hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_email_hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom hostname (for private commit emails).
         """
         return pulumi.get(self, "commit_email_hostname")
 
     @commit_email_hostname.setter
-    def commit_email_hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_email_hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_email_hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="concurrentBitbucketImportJobsLimit")
-    def concurrent_bitbucket_import_jobs_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def concurrent_bitbucket_import_jobs_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of simultaneous import jobs for the Bitbucket Cloud importer.
         """
         return pulumi.get(self, "concurrent_bitbucket_import_jobs_limit")
 
     @concurrent_bitbucket_import_jobs_limit.setter
-    def concurrent_bitbucket_import_jobs_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def concurrent_bitbucket_import_jobs_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "concurrent_bitbucket_import_jobs_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="concurrentBitbucketServerImportJobsLimit")
-    def concurrent_bitbucket_server_import_jobs_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def concurrent_bitbucket_server_import_jobs_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of simultaneous import jobs for the Bitbucket Server importer.
         """
         return pulumi.get(self, "concurrent_bitbucket_server_import_jobs_limit")
 
     @concurrent_bitbucket_server_import_jobs_limit.setter
-    def concurrent_bitbucket_server_import_jobs_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def concurrent_bitbucket_server_import_jobs_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "concurrent_bitbucket_server_import_jobs_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="concurrentGithubImportJobsLimit")
-    def concurrent_github_import_jobs_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def concurrent_github_import_jobs_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of simultaneous import jobs for the GitHub importer.
         """
         return pulumi.get(self, "concurrent_github_import_jobs_limit")
 
     @concurrent_github_import_jobs_limit.setter
-    def concurrent_github_import_jobs_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def concurrent_github_import_jobs_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "concurrent_github_import_jobs_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="containerExpirationPoliciesEnableHistoricEntries")
-    def container_expiration_policies_enable_historic_entries(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def container_expiration_policies_enable_historic_entries(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable cleanup policies for all projects.
         """
         return pulumi.get(self, "container_expiration_policies_enable_historic_entries")
 
     @container_expiration_policies_enable_historic_entries.setter
-    def container_expiration_policies_enable_historic_entries(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def container_expiration_policies_enable_historic_entries(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "container_expiration_policies_enable_historic_entries", value)
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryCleanupTagsServiceMaxListSize")
-    def container_registry_cleanup_tags_service_max_list_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_registry_cleanup_tags_service_max_list_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of tags that can be deleted in a single execution of cleanup policies.
         """
         return pulumi.get(self, "container_registry_cleanup_tags_service_max_list_size")
 
     @container_registry_cleanup_tags_service_max_list_size.setter
-    def container_registry_cleanup_tags_service_max_list_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_registry_cleanup_tags_service_max_list_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_registry_cleanup_tags_service_max_list_size", value)
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryDeleteTagsServiceTimeout")
-    def container_registry_delete_tags_service_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_registry_delete_tags_service_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum time, in seconds, that the cleanup process can take to delete a batch of tags for cleanup policies.
         """
         return pulumi.get(self, "container_registry_delete_tags_service_timeout")
 
     @container_registry_delete_tags_service_timeout.setter
-    def container_registry_delete_tags_service_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_registry_delete_tags_service_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_registry_delete_tags_service_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryExpirationPoliciesCaching")
-    def container_registry_expiration_policies_caching(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def container_registry_expiration_policies_caching(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Caching during the execution of cleanup policies.
         """
         return pulumi.get(self, "container_registry_expiration_policies_caching")
 
     @container_registry_expiration_policies_caching.setter
-    def container_registry_expiration_policies_caching(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def container_registry_expiration_policies_caching(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "container_registry_expiration_policies_caching", value)
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryExpirationPoliciesWorkerCapacity")
-    def container_registry_expiration_policies_worker_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_registry_expiration_policies_worker_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers for cleanup policies.
         """
         return pulumi.get(self, "container_registry_expiration_policies_worker_capacity")
 
     @container_registry_expiration_policies_worker_capacity.setter
-    def container_registry_expiration_policies_worker_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_registry_expiration_policies_worker_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_registry_expiration_policies_worker_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryTokenExpireDelay")
-    def container_registry_token_expire_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_registry_token_expire_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Container Registry token duration in minutes.
         """
         return pulumi.get(self, "container_registry_token_expire_delay")
 
     @container_registry_token_expire_delay.setter
-    def container_registry_token_expire_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_registry_token_expire_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_registry_token_expire_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="deactivateDormantUsers")
-    def deactivate_dormant_users(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deactivate_dormant_users(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable automatic deactivation of dormant users.
         """
         return pulumi.get(self, "deactivate_dormant_users")
 
     @deactivate_dormant_users.setter
-    def deactivate_dormant_users(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deactivate_dormant_users(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deactivate_dormant_users", value)
 
     @_builtins.property
     @pulumi.getter(name="deactivateDormantUsersPeriod")
-    def deactivate_dormant_users_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deactivate_dormant_users_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Length of time (in days) after which a user is considered dormant.
         """
         return pulumi.get(self, "deactivate_dormant_users_period")
 
     @deactivate_dormant_users_period.setter
-    def deactivate_dormant_users_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deactivate_dormant_users_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deactivate_dormant_users_period", value)
 
     @_builtins.property
     @pulumi.getter(name="decompressArchiveFileTimeout")
-    def decompress_archive_file_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def decompress_archive_file_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
         """
         return pulumi.get(self, "decompress_archive_file_timeout")
 
     @decompress_archive_file_timeout.setter
-    def decompress_archive_file_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def decompress_archive_file_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "decompress_archive_file_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultArtifactsExpireIn")
-    def default_artifacts_expire_in(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_artifacts_expire_in(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the default expiration time for each job’s artifacts.
         """
         return pulumi.get(self, "default_artifacts_expire_in")
 
     @default_artifacts_expire_in.setter
-    def default_artifacts_expire_in(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_artifacts_expire_in(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_artifacts_expire_in", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranchName")
-    def default_branch_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_branch_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance-level custom initial branch name
         """
         return pulumi.get(self, "default_branch_name")
 
     @default_branch_name.setter
-    def default_branch_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_branch_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_branch_name", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranchProtection")
     @_utilities.deprecated("""Use `default_branch_protection_defaults` instead. To be removed in 19.0.""")
-    def default_branch_protection(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_branch_protection(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "default_branch_protection")
 
     @default_branch_protection.setter
-    def default_branch_protection(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_branch_protection(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_branch_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranchProtectionDefaults")
-    def default_branch_protection_defaults(self) -> Optional[pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']]:
+    def default_branch_protection_defaults(self) -> pulumi.Input[Optional['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']]:
         """
         The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         """
         return pulumi.get(self, "default_branch_protection_defaults")
 
     @default_branch_protection_defaults.setter
-    def default_branch_protection_defaults(self, value: Optional[pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']]):
+    def default_branch_protection_defaults(self, value: pulumi.Input[Optional['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']]):
         pulumi.set(self, "default_branch_protection_defaults", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultCiConfigPath")
-    def default_ci_config_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_ci_config_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         """
         return pulumi.get(self, "default_ci_config_path")
 
     @default_ci_config_path.setter
-    def default_ci_config_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_ci_config_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_ci_config_path", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultGroupVisibility")
-    def default_group_visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_group_visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         What visibility level new groups receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_group_visibility")
 
     @default_group_visibility.setter
-    def default_group_visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_group_visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_group_visibility", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPreferredLanguage")
-    def default_preferred_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_preferred_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default preferred language for users who are not logged in.
         """
         return pulumi.get(self, "default_preferred_language")
 
     @default_preferred_language.setter
-    def default_preferred_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_preferred_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_preferred_language", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultProjectCreation")
-    def default_project_creation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_project_creation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default project creation protection. Can take: 0 (No one), 1 (Maintainers) or 2 (Developers + Maintainers).
         """
         return pulumi.get(self, "default_project_creation")
 
     @default_project_creation.setter
-    def default_project_creation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_project_creation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_project_creation", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultProjectVisibility")
-    def default_project_visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_project_visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         What visibility level new projects receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_project_visibility")
 
     @default_project_visibility.setter
-    def default_project_visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_project_visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_project_visibility", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultProjectsLimit")
-    def default_projects_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_projects_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Project limit per user.
         """
         return pulumi.get(self, "default_projects_limit")
 
     @default_projects_limit.setter
-    def default_projects_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_projects_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_projects_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSnippetVisibility")
-    def default_snippet_visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_snippet_visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         What visibility level new snippets receive. Can take private, internal and public as a parameter.
         """
         return pulumi.get(self, "default_snippet_visibility")
 
     @default_snippet_visibility.setter
-    def default_snippet_visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_snippet_visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_snippet_visibility", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSyntaxHighlightingTheme")
-    def default_syntax_highlighting_theme(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_syntax_highlighting_theme(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default syntax highlighting theme for users who are new or not signed in. See IDs of available themes (https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/themes.rb#L16)
         """
         return pulumi.get(self, "default_syntax_highlighting_theme")
 
     @default_syntax_highlighting_theme.setter
-    def default_syntax_highlighting_theme(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_syntax_highlighting_theme(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_syntax_highlighting_theme", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteInactiveProjects")
-    def delete_inactive_projects(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_inactive_projects(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable inactive project deletion feature.
         """
         return pulumi.get(self, "delete_inactive_projects")
 
     @delete_inactive_projects.setter
-    def delete_inactive_projects(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_inactive_projects(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_inactive_projects", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteUnconfirmedUsers")
-    def delete_unconfirmed_users(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_unconfirmed_users(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether users who have not confirmed their email should be deleted. When set to true, unconfirmed users are deleted after unconfirmed*users*delete*after*days days. Self-managed, Premium and Ultimate only.
         """
         return pulumi.get(self, "delete_unconfirmed_users")
 
     @delete_unconfirmed_users.setter
-    def delete_unconfirmed_users(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_unconfirmed_users(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_unconfirmed_users", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionAdjournedPeriod")
-    def deletion_adjourned_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deletion_adjourned_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of days to wait before deleting a project or group that is marked for deletion. Value must be between 1 and 90.
         """
         return pulumi.get(self, "deletion_adjourned_period")
 
     @deletion_adjourned_period.setter
-    def deletion_adjourned_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deletion_adjourned_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deletion_adjourned_period", value)
 
     @_builtins.property
     @pulumi.getter(name="diagramsnetEnabled")
-    def diagramsnet_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def diagramsnet_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires diagramsnet_url) Enable Diagrams.net integration.
         """
         return pulumi.get(self, "diagramsnet_enabled")
 
     @diagramsnet_enabled.setter
-    def diagramsnet_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def diagramsnet_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "diagramsnet_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="diagramsnetUrl")
-    def diagramsnet_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def diagramsnet_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Diagrams.net instance URL for integration.
         """
         return pulumi.get(self, "diagramsnet_url")
 
     @diagramsnet_url.setter
-    def diagramsnet_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def diagramsnet_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "diagramsnet_url", value)
 
     @_builtins.property
     @pulumi.getter(name="diffMaxFiles")
-    def diff_max_files(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def diff_max_files(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum files in a diff.
         """
         return pulumi.get(self, "diff_max_files")
 
     @diff_max_files.setter
-    def diff_max_files(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def diff_max_files(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "diff_max_files", value)
 
     @_builtins.property
     @pulumi.getter(name="diffMaxLines")
-    def diff_max_lines(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def diff_max_lines(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum lines in a diff.
         """
         return pulumi.get(self, "diff_max_lines")
 
     @diff_max_lines.setter
-    def diff_max_lines(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def diff_max_lines(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "diff_max_lines", value)
 
     @_builtins.property
     @pulumi.getter(name="diffMaxPatchBytes")
-    def diff_max_patch_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def diff_max_patch_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum diff patch size, in bytes.
         """
         return pulumi.get(self, "diff_max_patch_bytes")
 
     @diff_max_patch_bytes.setter
-    def diff_max_patch_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def diff_max_patch_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "diff_max_patch_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="disableAdminOauthScopes")
-    def disable_admin_oauth_scopes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_admin_oauth_scopes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
         """
         return pulumi.get(self, "disable_admin_oauth_scopes")
 
     @disable_admin_oauth_scopes.setter
-    def disable_admin_oauth_scopes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_admin_oauth_scopes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_admin_oauth_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="disableFeedToken")
-    def disable_feed_token(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_feed_token(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable display of RSS/Atom and calendar feed tokens.
         """
         return pulumi.get(self, "disable_feed_token")
 
     @disable_feed_token.setter
-    def disable_feed_token(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_feed_token(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_feed_token", value)
 
     @_builtins.property
     @pulumi.getter(name="disableOverridingApproversPerMergeRequest")
-    def disable_overriding_approvers_per_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_overriding_approvers_per_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevent editing approval rules in projects and merge requests.
         """
         return pulumi.get(self, "disable_overriding_approvers_per_merge_request")
 
     @disable_overriding_approvers_per_merge_request.setter
-    def disable_overriding_approvers_per_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_overriding_approvers_per_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_overriding_approvers_per_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="disablePersonalAccessTokens")
-    def disable_personal_access_tokens(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_personal_access_tokens(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
         """
         return pulumi.get(self, "disable_personal_access_tokens")
 
     @disable_personal_access_tokens.setter
-    def disable_personal_access_tokens(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_personal_access_tokens(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_personal_access_tokens", value)
 
     @_builtins.property
     @pulumi.getter(name="disabledOauthSignInSources")
-    def disabled_oauth_sign_in_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def disabled_oauth_sign_in_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Disabled OAuth sign-in sources.
         """
         return pulumi.get(self, "disabled_oauth_sign_in_sources")
 
     @disabled_oauth_sign_in_sources.setter
-    def disabled_oauth_sign_in_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def disabled_oauth_sign_in_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "disabled_oauth_sign_in_sources", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsRebindingProtectionEnabled")
-    def dns_rebinding_protection_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dns_rebinding_protection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enforce DNS rebinding attack protection.
         """
         return pulumi.get(self, "dns_rebinding_protection_enabled")
 
     @dns_rebinding_protection_enabled.setter
-    def dns_rebinding_protection_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dns_rebinding_protection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dns_rebinding_protection_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="domainAllowlists")
-    def domain_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domain_allowlists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Force people to use only corporate emails for sign-up. Null means there is no restriction.
         """
         return pulumi.get(self, "domain_allowlists")
 
     @domain_allowlists.setter
-    def domain_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domain_allowlists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_allowlists", value)
 
     @_builtins.property
     @pulumi.getter(name="domainDenylistEnabled")
-    def domain_denylist_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def domain_denylist_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: domain_denylist) Allows blocking sign-ups from emails from specific domains.
         """
         return pulumi.get(self, "domain_denylist_enabled")
 
     @domain_denylist_enabled.setter
-    def domain_denylist_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def domain_denylist_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "domain_denylist_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="domainDenylists")
-    def domain_denylists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domain_denylists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Users with email addresses that match these domains cannot sign up. Wildcards allowed. Use separate lines for multiple entries. Ex: domain.com, *.domain.com.
         """
         return pulumi.get(self, "domain_denylists")
 
     @domain_denylists.setter
-    def domain_denylists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domain_denylists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_denylists", value)
 
     @_builtins.property
     @pulumi.getter(name="downstreamPipelineTriggerLimitPerProjectUserSha")
-    def downstream_pipeline_trigger_limit_per_project_user_sha(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def downstream_pipeline_trigger_limit_per_project_user_sha(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum downstream pipeline trigger rate.
         """
         return pulumi.get(self, "downstream_pipeline_trigger_limit_per_project_user_sha")
 
     @downstream_pipeline_trigger_limit_per_project_user_sha.setter
-    def downstream_pipeline_trigger_limit_per_project_user_sha(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def downstream_pipeline_trigger_limit_per_project_user_sha(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "downstream_pipeline_trigger_limit_per_project_user_sha", value)
 
     @_builtins.property
     @pulumi.getter(name="dsaKeyRestriction")
-    def dsa_key_restriction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dsa_key_restriction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum allowed bit length of an uploaded DSA key. 0 means no restriction. -1 disables DSA keys.
         """
         return pulumi.get(self, "dsa_key_restriction")
 
     @dsa_key_restriction.setter
-    def dsa_key_restriction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dsa_key_restriction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dsa_key_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="duoFeaturesEnabled")
-    def duo_features_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def duo_features_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether GitLab Duo features are enabled for this instance. Self-managed, Premium and Ultimate only.
         """
         return pulumi.get(self, "duo_features_enabled")
 
     @duo_features_enabled.setter
-    def duo_features_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def duo_features_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "duo_features_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ecdsaKeyRestriction")
-    def ecdsa_key_restriction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ecdsa_key_restriction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum allowed curve size (in bits) of an uploaded ECDSA key. 0 means no restriction. -1 disables ECDSA keys.
         """
         return pulumi.get(self, "ecdsa_key_restriction")
 
     @ecdsa_key_restriction.setter
-    def ecdsa_key_restriction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ecdsa_key_restriction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ecdsa_key_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="ecdsaSkKeyRestriction")
-    def ecdsa_sk_key_restriction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ecdsa_sk_key_restriction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum allowed curve size (in bits) of an uploaded ECDSA*SK key. 0 means no restriction. -1 disables ECDSA*SK keys.
         """
         return pulumi.get(self, "ecdsa_sk_key_restriction")
 
     @ecdsa_sk_key_restriction.setter
-    def ecdsa_sk_key_restriction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ecdsa_sk_key_restriction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ecdsa_sk_key_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="ed25519KeyRestriction")
-    def ed25519_key_restriction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ed25519_key_restriction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum allowed curve size (in bits) of an uploaded ED25519 key. 0 means no restriction. -1 disables ED25519 keys.
         """
         return pulumi.get(self, "ed25519_key_restriction")
 
     @ed25519_key_restriction.setter
-    def ed25519_key_restriction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ed25519_key_restriction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ed25519_key_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="ed25519SkKeyRestriction")
-    def ed25519_sk_key_restriction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ed25519_sk_key_restriction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum allowed curve size (in bits) of an uploaded ED25519*SK key. 0 means no restriction. -1 disables ED25519*SK keys.
         """
         return pulumi.get(self, "ed25519_sk_key_restriction")
 
     @ed25519_sk_key_restriction.setter
-    def ed25519_sk_key_restriction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ed25519_sk_key_restriction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ed25519_sk_key_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="eksAccessKeyId")
-    def eks_access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eks_access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS IAM access key ID.
         """
         return pulumi.get(self, "eks_access_key_id")
 
     @eks_access_key_id.setter
-    def eks_access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eks_access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eks_access_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="eksAccountId")
-    def eks_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eks_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Amazon account ID.
         """
         return pulumi.get(self, "eks_account_id")
 
     @eks_account_id.setter
-    def eks_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eks_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eks_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="eksIntegrationEnabled")
-    def eks_integration_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def eks_integration_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable integration with Amazon EKS.
         """
         return pulumi.get(self, "eks_integration_enabled")
 
     @eks_integration_enabled.setter
-    def eks_integration_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def eks_integration_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "eks_integration_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="eksSecretAccessKey")
-    def eks_secret_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eks_secret_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS IAM secret access key.
         """
         return pulumi.get(self, "eks_secret_access_key")
 
     @eks_secret_access_key.setter
-    def eks_secret_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eks_secret_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eks_secret_access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchAws")
-    def elasticsearch_aws(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def elasticsearch_aws(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable the use of AWS hosted Elasticsearch.
         """
         return pulumi.get(self, "elasticsearch_aws")
 
     @elasticsearch_aws.setter
-    def elasticsearch_aws(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def elasticsearch_aws(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "elasticsearch_aws", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchAwsAccessKey")
-    def elasticsearch_aws_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elasticsearch_aws_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS IAM access key.
         """
         return pulumi.get(self, "elasticsearch_aws_access_key")
 
     @elasticsearch_aws_access_key.setter
-    def elasticsearch_aws_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elasticsearch_aws_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elasticsearch_aws_access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchAwsRegion")
-    def elasticsearch_aws_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elasticsearch_aws_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AWS region the Elasticsearch domain is configured.
         """
         return pulumi.get(self, "elasticsearch_aws_region")
 
     @elasticsearch_aws_region.setter
-    def elasticsearch_aws_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elasticsearch_aws_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elasticsearch_aws_region", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchAwsSecretAccessKey")
-    def elasticsearch_aws_secret_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elasticsearch_aws_secret_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS IAM secret access key.
         """
         return pulumi.get(self, "elasticsearch_aws_secret_access_key")
 
     @elasticsearch_aws_secret_access_key.setter
-    def elasticsearch_aws_secret_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elasticsearch_aws_secret_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elasticsearch_aws_secret_access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchIndexedFieldLengthLimit")
-    def elasticsearch_indexed_field_length_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def elasticsearch_indexed_field_length_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum size of text fields to index by Elasticsearch. 0 value means no limit. This does not apply to repository and wiki indexing.
         """
         return pulumi.get(self, "elasticsearch_indexed_field_length_limit")
 
     @elasticsearch_indexed_field_length_limit.setter
-    def elasticsearch_indexed_field_length_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def elasticsearch_indexed_field_length_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "elasticsearch_indexed_field_length_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchIndexedFileSizeLimitKb")
-    def elasticsearch_indexed_file_size_limit_kb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def elasticsearch_indexed_file_size_limit_kb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum size of repository and wiki files that are indexed by Elasticsearch.
         """
         return pulumi.get(self, "elasticsearch_indexed_file_size_limit_kb")
 
     @elasticsearch_indexed_file_size_limit_kb.setter
-    def elasticsearch_indexed_file_size_limit_kb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def elasticsearch_indexed_file_size_limit_kb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "elasticsearch_indexed_file_size_limit_kb", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchIndexing")
-    def elasticsearch_indexing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def elasticsearch_indexing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Elasticsearch indexing.
         """
         return pulumi.get(self, "elasticsearch_indexing")
 
     @elasticsearch_indexing.setter
-    def elasticsearch_indexing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def elasticsearch_indexing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "elasticsearch_indexing", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchLimitIndexing")
-    def elasticsearch_limit_indexing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def elasticsearch_limit_indexing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Limit Elasticsearch to index certain namespaces and projects.
         """
         return pulumi.get(self, "elasticsearch_limit_indexing")
 
     @elasticsearch_limit_indexing.setter
-    def elasticsearch_limit_indexing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def elasticsearch_limit_indexing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "elasticsearch_limit_indexing", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchMaxBulkConcurrency")
-    def elasticsearch_max_bulk_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def elasticsearch_max_bulk_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum concurrency of Elasticsearch bulk requests per indexing operation. This only applies to repository indexing operations.
         """
         return pulumi.get(self, "elasticsearch_max_bulk_concurrency")
 
     @elasticsearch_max_bulk_concurrency.setter
-    def elasticsearch_max_bulk_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def elasticsearch_max_bulk_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "elasticsearch_max_bulk_concurrency", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchMaxBulkSizeMb")
-    def elasticsearch_max_bulk_size_mb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def elasticsearch_max_bulk_size_mb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum size of Elasticsearch bulk indexing requests in MB. This only applies to repository indexing operations.
         """
         return pulumi.get(self, "elasticsearch_max_bulk_size_mb")
 
     @elasticsearch_max_bulk_size_mb.setter
-    def elasticsearch_max_bulk_size_mb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def elasticsearch_max_bulk_size_mb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "elasticsearch_max_bulk_size_mb", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchMaxCodeIndexingConcurrency")
-    def elasticsearch_max_code_indexing_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def elasticsearch_max_code_indexing_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum concurrency of Elasticsearch code indexing background jobs. This only applies to repository indexing operations. Premium and Ultimate only.
         """
         return pulumi.get(self, "elasticsearch_max_code_indexing_concurrency")
 
     @elasticsearch_max_code_indexing_concurrency.setter
-    def elasticsearch_max_code_indexing_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def elasticsearch_max_code_indexing_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "elasticsearch_max_code_indexing_concurrency", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchNamespaceIds")
-    def elasticsearch_namespace_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def elasticsearch_namespace_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The namespaces to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         """
         return pulumi.get(self, "elasticsearch_namespace_ids")
 
     @elasticsearch_namespace_ids.setter
-    def elasticsearch_namespace_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def elasticsearch_namespace_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "elasticsearch_namespace_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchPassword")
-    def elasticsearch_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elasticsearch_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of your Elasticsearch instance.
         """
         return pulumi.get(self, "elasticsearch_password")
 
     @elasticsearch_password.setter
-    def elasticsearch_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elasticsearch_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elasticsearch_password", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchProjectIds")
-    def elasticsearch_project_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def elasticsearch_project_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The projects to index via Elasticsearch if elasticsearch*limit*indexing is enabled.
         """
         return pulumi.get(self, "elasticsearch_project_ids")
 
     @elasticsearch_project_ids.setter
-    def elasticsearch_project_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def elasticsearch_project_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "elasticsearch_project_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchRequeueWorkers")
-    def elasticsearch_requeue_workers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def elasticsearch_requeue_workers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable automatic requeuing of indexing workers. This improves non-code indexing throughput by enqueuing Sidekiq jobs until all documents are processed. Premium and Ultimate only.
         """
         return pulumi.get(self, "elasticsearch_requeue_workers")
 
     @elasticsearch_requeue_workers.setter
-    def elasticsearch_requeue_workers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def elasticsearch_requeue_workers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "elasticsearch_requeue_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchSearch")
-    def elasticsearch_search(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def elasticsearch_search(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Elasticsearch search.
         """
         return pulumi.get(self, "elasticsearch_search")
 
     @elasticsearch_search.setter
-    def elasticsearch_search(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def elasticsearch_search(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "elasticsearch_search", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchUrls")
-    def elasticsearch_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def elasticsearch_urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The URL to use for connecting to Elasticsearch. Use a comma-separated list to support cluster (for example, http://localhost:9200, http://localhost:9201).
         """
         return pulumi.get(self, "elasticsearch_urls")
 
     @elasticsearch_urls.setter
-    def elasticsearch_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def elasticsearch_urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "elasticsearch_urls", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchUsername")
-    def elasticsearch_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elasticsearch_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of your Elasticsearch instance.
         """
         return pulumi.get(self, "elasticsearch_username")
 
     @elasticsearch_username.setter
-    def elasticsearch_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elasticsearch_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elasticsearch_username", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticsearchWorkerNumberOfShards")
-    def elasticsearch_worker_number_of_shards(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def elasticsearch_worker_number_of_shards(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of indexing worker shards. This improves non-code indexing throughput by enqueuing more parallel Sidekiq jobs. Premium and Ultimate only.
         """
         return pulumi.get(self, "elasticsearch_worker_number_of_shards")
 
     @elasticsearch_worker_number_of_shards.setter
-    def elasticsearch_worker_number_of_shards(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def elasticsearch_worker_number_of_shards(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "elasticsearch_worker_number_of_shards", value)
 
     @_builtins.property
     @pulumi.getter(name="emailAdditionalText")
-    def email_additional_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email_additional_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional text added to the bottom of every email for legal/auditing/compliance reasons.
         """
         return pulumi.get(self, "email_additional_text")
 
     @email_additional_text.setter
-    def email_additional_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email_additional_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email_additional_text", value)
 
     @_builtins.property
     @pulumi.getter(name="emailAuthorInBody")
-    def email_author_in_body(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def email_author_in_body(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Some email servers do not support overriding the email sender name. Enable this option to include the name of the author of the issue, merge request or comment in the email body instead.
         """
         return pulumi.get(self, "email_author_in_body")
 
     @email_author_in_body.setter
-    def email_author_in_body(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def email_author_in_body(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "email_author_in_body", value)
 
     @_builtins.property
     @pulumi.getter(name="emailConfirmationSetting")
-    def email_confirmation_setting(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email_confirmation_setting(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether users must confirm their email before sign in. Possible values are off, soft, and hard.
         """
         return pulumi.get(self, "email_confirmation_setting")
 
     @email_confirmation_setting.setter
-    def email_confirmation_setting(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email_confirmation_setting(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email_confirmation_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="enableArtifactExternalRedirectWarningPage")
-    def enable_artifact_external_redirect_warning_page(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_artifact_external_redirect_warning_page(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Show the external redirect page that warns you about user-generated content in GitLab Pages.
         """
         return pulumi.get(self, "enable_artifact_external_redirect_warning_page")
 
     @enable_artifact_external_redirect_warning_page.setter
-    def enable_artifact_external_redirect_warning_page(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_artifact_external_redirect_warning_page(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_artifact_external_redirect_warning_page", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledGitAccessProtocol")
-    def enabled_git_access_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enabled_git_access_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enabled protocols for Git access. Allowed values are: ssh, http, and nil to allow both protocols.
         """
         return pulumi.get(self, "enabled_git_access_protocol")
 
     @enabled_git_access_protocol.setter
-    def enabled_git_access_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enabled_git_access_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enabled_git_access_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="enforceNamespaceStorageLimit")
-    def enforce_namespace_storage_limit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enforce_namespace_storage_limit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enabling this permits enforcement of namespace storage limits.
         """
         return pulumi.get(self, "enforce_namespace_storage_limit")
 
     @enforce_namespace_storage_limit.setter
-    def enforce_namespace_storage_limit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enforce_namespace_storage_limit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce_namespace_storage_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="enforceTerms")
-    def enforce_terms(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enforce_terms(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: terms) Enforce application ToS to all users.
         """
         return pulumi.get(self, "enforce_terms")
 
     @enforce_terms.setter
-    def enforce_terms(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enforce_terms(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce_terms", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthClientCert")
-    def external_auth_client_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_auth_client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (If enabled, requires: external*auth*client_key) The certificate to use to authenticate with the external authorization service.
         """
         return pulumi.get(self, "external_auth_client_cert")
 
     @external_auth_client_cert.setter
-    def external_auth_client_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_auth_client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_auth_client_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthClientKey")
-    def external_auth_client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_auth_client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key for the certificate when authentication is required for the external authorization service, this is encrypted when stored.
         """
         return pulumi.get(self, "external_auth_client_key")
 
     @external_auth_client_key.setter
-    def external_auth_client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_auth_client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_auth_client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthClientKeyPass")
-    def external_auth_client_key_pass(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_auth_client_key_pass(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Passphrase to use for the private key when authenticating with the external service this is encrypted when stored.
         """
         return pulumi.get(self, "external_auth_client_key_pass")
 
     @external_auth_client_key_pass.setter
-    def external_auth_client_key_pass(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_auth_client_key_pass(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_auth_client_key_pass", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthorizationServiceDefaultLabel")
-    def external_authorization_service_default_label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_authorization_service_default_label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default classification label to use when requesting authorization and no classification label has been specified on the project.
         """
         return pulumi.get(self, "external_authorization_service_default_label")
 
     @external_authorization_service_default_label.setter
-    def external_authorization_service_default_label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_authorization_service_default_label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_authorization_service_default_label", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthorizationServiceEnabled")
-    def external_authorization_service_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def external_authorization_service_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: external*authorization*service*default*label, external*authorization*service*timeout and external*authorization*service*url) Enable using an external authorization service for accessing projects.
         """
         return pulumi.get(self, "external_authorization_service_enabled")
 
     @external_authorization_service_enabled.setter
-    def external_authorization_service_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def external_authorization_service_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "external_authorization_service_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthorizationServiceTimeout")
-    def external_authorization_service_timeout(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def external_authorization_service_timeout(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The timeout after which an authorization request is aborted, in seconds. When a request times out, access is denied to the user. (min: 0.001, max: 10, step: 0.001).
         """
         return pulumi.get(self, "external_authorization_service_timeout")
 
     @external_authorization_service_timeout.setter
-    def external_authorization_service_timeout(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def external_authorization_service_timeout(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "external_authorization_service_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthorizationServiceUrl")
-    def external_authorization_service_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_authorization_service_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to which authorization requests are directed.
         """
         return pulumi.get(self, "external_authorization_service_url")
 
     @external_authorization_service_url.setter
-    def external_authorization_service_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_authorization_service_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_authorization_service_url", value)
 
     @_builtins.property
     @pulumi.getter(name="externalPipelineValidationServiceTimeout")
-    def external_pipeline_validation_service_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def external_pipeline_validation_service_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long to wait for a response from the pipeline validation service. Assumes OK if it times out.
         """
         return pulumi.get(self, "external_pipeline_validation_service_timeout")
 
     @external_pipeline_validation_service_timeout.setter
-    def external_pipeline_validation_service_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def external_pipeline_validation_service_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "external_pipeline_validation_service_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="externalPipelineValidationServiceToken")
-    def external_pipeline_validation_service_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_pipeline_validation_service_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Token to include as the X-Gitlab-Token header in requests to the URL in external*pipeline*validation*service*url.
         """
         return pulumi.get(self, "external_pipeline_validation_service_token")
 
     @external_pipeline_validation_service_token.setter
-    def external_pipeline_validation_service_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_pipeline_validation_service_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_pipeline_validation_service_token", value)
 
     @_builtins.property
     @pulumi.getter(name="externalPipelineValidationServiceUrl")
-    def external_pipeline_validation_service_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_pipeline_validation_service_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to use for pipeline validation requests.
         """
         return pulumi.get(self, "external_pipeline_validation_service_url")
 
     @external_pipeline_validation_service_url.setter
-    def external_pipeline_validation_service_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_pipeline_validation_service_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_pipeline_validation_service_url", value)
 
     @_builtins.property
     @pulumi.getter(name="failedLoginAttemptsUnlockPeriodInMinutes")
-    def failed_login_attempts_unlock_period_in_minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failed_login_attempts_unlock_period_in_minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time period in minutes after which the user is unlocked when maximum number of failed sign-in attempts reached.
         """
         return pulumi.get(self, "failed_login_attempts_unlock_period_in_minutes")
 
     @failed_login_attempts_unlock_period_in_minutes.setter
-    def failed_login_attempts_unlock_period_in_minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failed_login_attempts_unlock_period_in_minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failed_login_attempts_unlock_period_in_minutes", value)
 
     @_builtins.property
     @pulumi.getter(name="fileTemplateProjectId")
-    def file_template_project_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def file_template_project_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a project to load custom file templates from.
         """
         return pulumi.get(self, "file_template_project_id")
 
     @file_template_project_id.setter
-    def file_template_project_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def file_template_project_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "file_template_project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="firstDayOfWeek")
-    def first_day_of_week(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def first_day_of_week(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         """
         return pulumi.get(self, "first_day_of_week")
 
     @first_day_of_week.setter
-    def first_day_of_week(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def first_day_of_week(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "first_day_of_week", value)
 
     @_builtins.property
     @pulumi.getter(name="geoNodeAllowedIps")
-    def geo_node_allowed_ips(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def geo_node_allowed_ips(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
         """
         return pulumi.get(self, "geo_node_allowed_ips")
 
     @geo_node_allowed_ips.setter
-    def geo_node_allowed_ips(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def geo_node_allowed_ips(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "geo_node_allowed_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="geoStatusTimeout")
-    def geo_status_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def geo_status_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of seconds after which a request to get a secondary node status times out.
         """
         return pulumi.get(self, "geo_status_timeout")
 
     @geo_status_timeout.setter
-    def geo_status_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def geo_status_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "geo_status_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="gitRateLimitUsersAlertlists")
-    def git_rate_limit_users_alertlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def git_rate_limit_users_alertlists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
         """
         return pulumi.get(self, "git_rate_limit_users_alertlists")
 
     @git_rate_limit_users_alertlists.setter
-    def git_rate_limit_users_alertlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def git_rate_limit_users_alertlists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "git_rate_limit_users_alertlists", value)
 
     @_builtins.property
     @pulumi.getter(name="gitRateLimitUsersAllowlists")
-    def git_rate_limit_users_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def git_rate_limit_users_allowlists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
         """
         return pulumi.get(self, "git_rate_limit_users_allowlists")
 
     @git_rate_limit_users_allowlists.setter
-    def git_rate_limit_users_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def git_rate_limit_users_allowlists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "git_rate_limit_users_allowlists", value)
 
     @_builtins.property
     @pulumi.getter(name="gitTwoFactorSessionExpiry")
-    def git_two_factor_session_expiry(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def git_two_factor_session_expiry(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
         """
         return pulumi.get(self, "git_two_factor_session_expiry")
 
     @git_two_factor_session_expiry.setter
-    def git_two_factor_session_expiry(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def git_two_factor_session_expiry(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "git_two_factor_session_expiry", value)
 
     @_builtins.property
     @pulumi.getter(name="gitalyTimeoutDefault")
-    def gitaly_timeout_default(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gitaly_timeout_default(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default Gitaly timeout, in seconds. This timeout is not enforced for Git fetch/push operations or Sidekiq jobs. Set to 0 to disable timeouts.
         """
         return pulumi.get(self, "gitaly_timeout_default")
 
     @gitaly_timeout_default.setter
-    def gitaly_timeout_default(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gitaly_timeout_default(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gitaly_timeout_default", value)
 
     @_builtins.property
     @pulumi.getter(name="gitalyTimeoutFast")
-    def gitaly_timeout_fast(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gitaly_timeout_fast(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Gitaly fast operation timeout, in seconds. Some Gitaly operations are expected to be fast. If they exceed this threshold, there may be a problem with a storage shard and ‘failing fast’ can help maintain the stability of the GitLab instance. Set to 0 to disable timeouts.
         """
         return pulumi.get(self, "gitaly_timeout_fast")
 
     @gitaly_timeout_fast.setter
-    def gitaly_timeout_fast(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gitaly_timeout_fast(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gitaly_timeout_fast", value)
 
     @_builtins.property
     @pulumi.getter(name="gitalyTimeoutMedium")
-    def gitaly_timeout_medium(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gitaly_timeout_medium(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Medium Gitaly timeout, in seconds. This should be a value between the Fast and the Default timeout. Set to 0 to disable timeouts.
         """
         return pulumi.get(self, "gitaly_timeout_medium")
 
     @gitaly_timeout_medium.setter
-    def gitaly_timeout_medium(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gitaly_timeout_medium(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gitaly_timeout_medium", value)
 
     @_builtins.property
     @pulumi.getter(name="gitlabDedicatedInstance")
-    def gitlab_dedicated_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gitlab_dedicated_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the instance was provisioned for GitLab Dedicated.
         """
         return pulumi.get(self, "gitlab_dedicated_instance")
 
     @gitlab_dedicated_instance.setter
-    def gitlab_dedicated_instance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gitlab_dedicated_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gitlab_dedicated_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="gitlabEnvironmentToolkitInstance")
-    def gitlab_environment_toolkit_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gitlab_environment_toolkit_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the instance was provisioned with the GitLab Environment Toolkit for Service Ping reporting.
         """
         return pulumi.get(self, "gitlab_environment_toolkit_instance")
 
     @gitlab_environment_toolkit_instance.setter
-    def gitlab_environment_toolkit_instance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gitlab_environment_toolkit_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gitlab_environment_toolkit_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="gitlabShellOperationLimit")
-    def gitlab_shell_operation_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gitlab_shell_operation_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of Git operations per minute a user can perform.
         """
         return pulumi.get(self, "gitlab_shell_operation_limit")
 
     @gitlab_shell_operation_limit.setter
-    def gitlab_shell_operation_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gitlab_shell_operation_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gitlab_shell_operation_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="gitpodEnabled")
-    def gitpod_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gitpod_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Gitpod integration.
         """
         return pulumi.get(self, "gitpod_enabled")
 
     @gitpod_enabled.setter
-    def gitpod_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gitpod_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gitpod_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="gitpodUrl")
-    def gitpod_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gitpod_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Gitpod instance URL for integration.
         """
         return pulumi.get(self, "gitpod_url")
 
     @gitpod_url.setter
-    def gitpod_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gitpod_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gitpod_url", value)
 
     @_builtins.property
     @pulumi.getter(name="globallyAllowedIps")
-    def globally_allowed_ips(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def globally_allowed_ips(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comma-separated list of IP addresses and CIDRs always allowed for inbound traffic. For example, 1.1.1.1, 2.2.2.0/24.
         """
         return pulumi.get(self, "globally_allowed_ips")
 
     @globally_allowed_ips.setter
-    def globally_allowed_ips(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def globally_allowed_ips(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "globally_allowed_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaEnabled")
-    def grafana_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def grafana_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Grafana.
         """
         return pulumi.get(self, "grafana_enabled")
 
     @grafana_enabled.setter
-    def grafana_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def grafana_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "grafana_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaUrl")
-    def grafana_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grafana_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Grafana URL.
         """
         return pulumi.get(self, "grafana_url")
 
     @grafana_url.setter
-    def grafana_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grafana_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grafana_url", value)
 
     @_builtins.property
     @pulumi.getter(name="gravatarEnabled")
-    def gravatar_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gravatar_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Gravatar.
         """
         return pulumi.get(self, "gravatar_enabled")
 
     @gravatar_enabled.setter
-    def gravatar_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gravatar_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gravatar_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="groupOwnersCanManageDefaultBranchProtection")
-    def group_owners_can_manage_default_branch_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def group_owners_can_manage_default_branch_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevent overrides of default branch protection.
         """
         return pulumi.get(self, "group_owners_can_manage_default_branch_protection")
 
     @group_owners_can_manage_default_branch_protection.setter
-    def group_owners_can_manage_default_branch_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def group_owners_can_manage_default_branch_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "group_owners_can_manage_default_branch_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="helpPageHideCommercialContent")
-    def help_page_hide_commercial_content(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def help_page_hide_commercial_content(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Hide marketing-related entries from help.
         """
         return pulumi.get(self, "help_page_hide_commercial_content")
 
     @help_page_hide_commercial_content.setter
-    def help_page_hide_commercial_content(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def help_page_hide_commercial_content(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "help_page_hide_commercial_content", value)
 
     @_builtins.property
     @pulumi.getter(name="helpPageSupportUrl")
-    def help_page_support_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def help_page_support_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alternate support URL for help page and help dropdown.
         """
         return pulumi.get(self, "help_page_support_url")
 
     @help_page_support_url.setter
-    def help_page_support_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def help_page_support_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "help_page_support_url", value)
 
     @_builtins.property
     @pulumi.getter(name="helpPageText")
-    def help_page_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def help_page_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom text displayed on the help page.
         """
         return pulumi.get(self, "help_page_text")
 
     @help_page_text.setter
-    def help_page_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def help_page_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "help_page_text", value)
 
     @_builtins.property
     @pulumi.getter(name="helpText")
-    def help_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def help_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         GitLab server administrator information.
         """
         return pulumi.get(self, "help_text")
 
     @help_text.setter
-    def help_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def help_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "help_text", value)
 
     @_builtins.property
     @pulumi.getter(name="hideThirdPartyOffers")
-    def hide_third_party_offers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hide_third_party_offers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Do not display offers from third parties in GitLab.
         """
         return pulumi.get(self, "hide_third_party_offers")
 
     @hide_third_party_offers.setter
-    def hide_third_party_offers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hide_third_party_offers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hide_third_party_offers", value)
 
     @_builtins.property
     @pulumi.getter(name="homePageUrl")
-    def home_page_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def home_page_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Redirect to this URL when not logged in.
         """
         return pulumi.get(self, "home_page_url")
 
     @home_page_url.setter
-    def home_page_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def home_page_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "home_page_url", value)
 
     @_builtins.property
     @pulumi.getter(name="housekeepingEnabled")
-    def housekeeping_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def housekeeping_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
         """
         return pulumi.get(self, "housekeeping_enabled")
 
     @housekeeping_enabled.setter
-    def housekeeping_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def housekeeping_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "housekeeping_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="housekeepingOptimizeRepositoryPeriod")
-    def housekeeping_optimize_repository_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def housekeeping_optimize_repository_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of Git pushes after which an incremental git-repack is run.
         """
         return pulumi.get(self, "housekeeping_optimize_repository_period")
 
     @housekeeping_optimize_repository_period.setter
-    def housekeeping_optimize_repository_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def housekeeping_optimize_repository_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "housekeeping_optimize_repository_period", value)
 
     @_builtins.property
     @pulumi.getter(name="htmlEmailsEnabled")
-    def html_emails_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def html_emails_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable HTML emails.
         """
         return pulumi.get(self, "html_emails_enabled")
 
     @html_emails_enabled.setter
-    def html_emails_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def html_emails_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "html_emails_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="importSources")
-    def import_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def import_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         """
         return pulumi.get(self, "import_sources")
 
     @import_sources.setter
-    def import_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def import_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "import_sources", value)
 
     @_builtins.property
     @pulumi.getter(name="inProductMarketingEmailsEnabled")
-    def in_product_marketing_emails_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def in_product_marketing_emails_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable in-product marketing emails.
         """
         return pulumi.get(self, "in_product_marketing_emails_enabled")
 
     @in_product_marketing_emails_enabled.setter
-    def in_product_marketing_emails_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def in_product_marketing_emails_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "in_product_marketing_emails_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="inactiveProjectsDeleteAfterMonths")
-    def inactive_projects_delete_after_months(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def inactive_projects_delete_after_months(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
         """
         return pulumi.get(self, "inactive_projects_delete_after_months")
 
     @inactive_projects_delete_after_months.setter
-    def inactive_projects_delete_after_months(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def inactive_projects_delete_after_months(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "inactive_projects_delete_after_months", value)
 
     @_builtins.property
     @pulumi.getter(name="inactiveProjectsMinSizeMb")
-    def inactive_projects_min_size_mb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def inactive_projects_min_size_mb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If delete*inactive*projects is true, the minimum repository size for projects to be checked for inactivity.
         """
         return pulumi.get(self, "inactive_projects_min_size_mb")
 
     @inactive_projects_min_size_mb.setter
-    def inactive_projects_min_size_mb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def inactive_projects_min_size_mb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "inactive_projects_min_size_mb", value)
 
     @_builtins.property
     @pulumi.getter(name="inactiveProjectsSendWarningEmailAfterMonths")
-    def inactive_projects_send_warning_email_after_months(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def inactive_projects_send_warning_email_after_months(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If delete*inactive*projects is true, sets the time (in months) to wait before emailing maintainers that the project is scheduled be deleted because it is inactive.
         """
         return pulumi.get(self, "inactive_projects_send_warning_email_after_months")
 
     @inactive_projects_send_warning_email_after_months.setter
-    def inactive_projects_send_warning_email_after_months(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def inactive_projects_send_warning_email_after_months(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "inactive_projects_send_warning_email_after_months", value)
 
     @_builtins.property
     @pulumi.getter(name="inactiveResourceAccessTokensDeleteAfterDays")
-    def inactive_resource_access_tokens_delete_after_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def inactive_resource_access_tokens_delete_after_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies retention period for inactive project and group access tokens. Default is 30.
         """
         return pulumi.get(self, "inactive_resource_access_tokens_delete_after_days")
 
     @inactive_resource_access_tokens_delete_after_days.setter
-    def inactive_resource_access_tokens_delete_after_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def inactive_resource_access_tokens_delete_after_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "inactive_resource_access_tokens_delete_after_days", value)
 
     @_builtins.property
     @pulumi.getter(name="includeOptionalMetricsInServicePing")
-    def include_optional_metrics_in_service_ping(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_optional_metrics_in_service_ping(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not optional metrics are enabled in Service Ping.
         """
         return pulumi.get(self, "include_optional_metrics_in_service_ping")
 
     @include_optional_metrics_in_service_ping.setter
-    def include_optional_metrics_in_service_ping(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_optional_metrics_in_service_ping(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_optional_metrics_in_service_ping", value)
 
     @_builtins.property
     @pulumi.getter(name="invisibleCaptchaEnabled")
-    def invisible_captcha_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def invisible_captcha_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Invisible CAPTCHA spam detection during sign-up.
         """
         return pulumi.get(self, "invisible_captcha_enabled")
 
     @invisible_captcha_enabled.setter
-    def invisible_captcha_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def invisible_captcha_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "invisible_captcha_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesCreateLimit")
-    def issues_create_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def issues_create_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max number of issue creation requests per minute per user.
         """
         return pulumi.get(self, "issues_create_limit")
 
     @issues_create_limit.setter
-    def issues_create_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def issues_create_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "issues_create_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraConnectApplicationKey")
-    def jira_connect_application_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jira_connect_application_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
         """
         return pulumi.get(self, "jira_connect_application_key")
 
     @jira_connect_application_key.setter
-    def jira_connect_application_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jira_connect_application_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jira_connect_application_key", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraConnectProxyUrl")
-    def jira_connect_proxy_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jira_connect_proxy_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
         """
         return pulumi.get(self, "jira_connect_proxy_url")
 
     @jira_connect_proxy_url.setter
-    def jira_connect_proxy_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jira_connect_proxy_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jira_connect_proxy_url", value)
 
     @_builtins.property
     @pulumi.getter(name="jiraConnectPublicKeyStorageEnabled")
-    def jira_connect_public_key_storage_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def jira_connect_public_key_storage_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable public key storage for the GitLab for Jira Cloud app.
         """
         return pulumi.get(self, "jira_connect_public_key_storage_enabled")
 
     @jira_connect_public_key_storage_enabled.setter
-    def jira_connect_public_key_storage_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def jira_connect_public_key_storage_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "jira_connect_public_key_storage_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="keepLatestArtifact")
-    def keep_latest_artifact(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_latest_artifact(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         """
         return pulumi.get(self, "keep_latest_artifact")
 
     @keep_latest_artifact.setter
-    def keep_latest_artifact(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_latest_artifact(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_latest_artifact", value)
 
     @_builtins.property
     @pulumi.getter(name="krokiEnabled")
-    def kroki_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def kroki_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: kroki_url) Enable Kroki integration.
         """
         return pulumi.get(self, "kroki_enabled")
 
     @kroki_enabled.setter
-    def kroki_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def kroki_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "kroki_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="krokiFormats")
-    def kroki_formats(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]]:
+    def kroki_formats(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]]:
         """
         Configuration for formats supported by the Kroki instance.
         """
         return pulumi.get(self, "kroki_formats")
 
     @kroki_formats.setter
-    def kroki_formats(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]]):
+    def kroki_formats(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]]):
         pulumi.set(self, "kroki_formats", value)
 
     @_builtins.property
     @pulumi.getter(name="krokiUrl")
-    def kroki_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kroki_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kroki instance URL for integration.
         """
         return pulumi.get(self, "kroki_url")
 
     @kroki_url.setter
-    def kroki_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kroki_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kroki_url", value)
 
     @_builtins.property
     @pulumi.getter(name="localMarkdownVersion")
-    def local_markdown_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def local_markdown_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Increase this value when any cached Markdown should be invalidated.
         """
         return pulumi.get(self, "local_markdown_version")
 
     @local_markdown_version.setter
-    def local_markdown_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def local_markdown_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "local_markdown_version", value)
 
     @_builtins.property
     @pulumi.getter(name="lockDuoFeaturesEnabled")
-    def lock_duo_features_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lock_duo_features_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. Self-managed, Premium and Ultimate only.
         """
         return pulumi.get(self, "lock_duo_features_enabled")
 
     @lock_duo_features_enabled.setter
-    def lock_duo_features_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lock_duo_features_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lock_duo_features_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="lockMembershipsToLdap")
-    def lock_memberships_to_ldap(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lock_memberships_to_ldap(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to lock all memberships to LDAP. Premium and Ultimate only.
         """
         return pulumi.get(self, "lock_memberships_to_ldap")
 
     @lock_memberships_to_ldap.setter
-    def lock_memberships_to_ldap(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lock_memberships_to_ldap(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lock_memberships_to_ldap", value)
 
     @_builtins.property
     @pulumi.getter(name="lockMembershipsToSaml")
-    def lock_memberships_to_saml(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lock_memberships_to_saml(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to lock all memberships to SAML. Premium and Ultimate only.
         """
         return pulumi.get(self, "lock_memberships_to_saml")
 
     @lock_memberships_to_saml.setter
-    def lock_memberships_to_saml(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lock_memberships_to_saml(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lock_memberships_to_saml", value)
 
     @_builtins.property
     @pulumi.getter(name="mailgunEventsEnabled")
-    def mailgun_events_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mailgun_events_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Mailgun event receiver.
         """
         return pulumi.get(self, "mailgun_events_enabled")
 
     @mailgun_events_enabled.setter
-    def mailgun_events_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mailgun_events_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mailgun_events_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="mailgunSigningKey")
-    def mailgun_signing_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mailgun_signing_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Mailgun HTTP webhook signing key for receiving events from webhook.
         """
         return pulumi.get(self, "mailgun_signing_key")
 
     @mailgun_signing_key.setter
-    def mailgun_signing_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mailgun_signing_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mailgun_signing_key", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceMode")
-    def maintenance_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def maintenance_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When instance is in maintenance mode, non-administrative users can sign in with read-only access and make read-only API requests.
         """
         return pulumi.get(self, "maintenance_mode")
 
     @maintenance_mode.setter
-    def maintenance_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def maintenance_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "maintenance_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceModeMessage")
-    def maintenance_mode_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_mode_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Message displayed when instance is in maintenance mode.
         """
         return pulumi.get(self, "maintenance_mode_message")
 
     @maintenance_mode_message.setter
-    def maintenance_mode_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_mode_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_mode_message", value)
 
     @_builtins.property
     @pulumi.getter(name="mavenPackageRequestsForwarding")
-    def maven_package_requests_forwarding(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def maven_package_requests_forwarding(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use repo.maven.apache.org as a default remote repository when the package is not found in the GitLab Package Registry for Maven. Premium and Ultimate only.
         """
         return pulumi.get(self, "maven_package_requests_forwarding")
 
     @maven_package_requests_forwarding.setter
-    def maven_package_requests_forwarding(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def maven_package_requests_forwarding(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "maven_package_requests_forwarding", value)
 
     @_builtins.property
     @pulumi.getter(name="maxArtifactsSize")
-    def max_artifacts_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_artifacts_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum artifacts size in MB.
         """
         return pulumi.get(self, "max_artifacts_size")
 
     @max_artifacts_size.setter
-    def max_artifacts_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_artifacts_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_artifacts_size", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAttachmentSize")
-    def max_attachment_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_attachment_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Limit attachment size in MB.
         """
         return pulumi.get(self, "max_attachment_size")
 
     @max_attachment_size.setter
-    def max_attachment_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_attachment_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_attachment_size", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDecompressedArchiveSize")
-    def max_decompressed_archive_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_decompressed_archive_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum decompressed archive size in bytes.
         """
         return pulumi.get(self, "max_decompressed_archive_size")
 
     @max_decompressed_archive_size.setter
-    def max_decompressed_archive_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_decompressed_archive_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_decompressed_archive_size", value)
 
     @_builtins.property
     @pulumi.getter(name="maxExportSize")
-    def max_export_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_export_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum export size in MB. 0 for unlimited.
         """
         return pulumi.get(self, "max_export_size")
 
     @max_export_size.setter
-    def max_export_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_export_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_export_size", value)
 
     @_builtins.property
     @pulumi.getter(name="maxImportRemoteFileSize")
-    def max_import_remote_file_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_import_remote_file_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum remote file size for imports from external object storages.
         """
         return pulumi.get(self, "max_import_remote_file_size")
 
     @max_import_remote_file_size.setter
-    def max_import_remote_file_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_import_remote_file_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_import_remote_file_size", value)
 
     @_builtins.property
     @pulumi.getter(name="maxImportSize")
-    def max_import_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_import_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum import size in MB. 0 for unlimited.
         """
         return pulumi.get(self, "max_import_size")
 
     @max_import_size.setter
-    def max_import_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_import_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_import_size", value)
 
     @_builtins.property
     @pulumi.getter(name="maxLoginAttempts")
-    def max_login_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_login_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of sign-in attempts before locking out the user.
         """
         return pulumi.get(self, "max_login_attempts")
 
     @max_login_attempts.setter
-    def max_login_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_login_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_login_attempts", value)
 
     @_builtins.property
     @pulumi.getter(name="maxNumberOfRepositoryDownloads")
-    def max_number_of_repository_downloads(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_number_of_repository_downloads(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of unique repositories a user can download in the specified time period before they are banned. Maximum: 10,000 repositories.
         """
         return pulumi.get(self, "max_number_of_repository_downloads")
 
     @max_number_of_repository_downloads.setter
-    def max_number_of_repository_downloads(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_number_of_repository_downloads(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_number_of_repository_downloads", value)
 
     @_builtins.property
     @pulumi.getter(name="maxNumberOfRepositoryDownloadsWithinTimePeriod")
-    def max_number_of_repository_downloads_within_time_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_number_of_repository_downloads_within_time_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Reporting time period (in seconds). Maximum: 864000 seconds (10 days).
         """
         return pulumi.get(self, "max_number_of_repository_downloads_within_time_period")
 
     @max_number_of_repository_downloads_within_time_period.setter
-    def max_number_of_repository_downloads_within_time_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_number_of_repository_downloads_within_time_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_number_of_repository_downloads_within_time_period", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPagesSize")
-    def max_pages_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_pages_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum size of pages repositories in MB.
         """
         return pulumi.get(self, "max_pages_size")
 
     @max_pages_size.setter
-    def max_pages_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_pages_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_pages_size", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPersonalAccessTokenLifetime")
-    def max_personal_access_token_lifetime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_personal_access_token_lifetime(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum allowable lifetime for access tokens in days.
         """
         return pulumi.get(self, "max_personal_access_token_lifetime")
 
     @max_personal_access_token_lifetime.setter
-    def max_personal_access_token_lifetime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_personal_access_token_lifetime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_personal_access_token_lifetime", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSshKeyLifetime")
-    def max_ssh_key_lifetime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_ssh_key_lifetime(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum allowable lifetime for SSH keys in days.
         """
         return pulumi.get(self, "max_ssh_key_lifetime")
 
     @max_ssh_key_lifetime.setter
-    def max_ssh_key_lifetime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_ssh_key_lifetime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_ssh_key_lifetime", value)
 
     @_builtins.property
     @pulumi.getter(name="maxTerraformStateSizeBytes")
-    def max_terraform_state_size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_terraform_state_size_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
         """
         return pulumi.get(self, "max_terraform_state_size_bytes")
 
     @max_terraform_state_size_bytes.setter
-    def max_terraform_state_size_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_terraform_state_size_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_terraform_state_size_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsMethodCallThreshold")
-    def metrics_method_call_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def metrics_method_call_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A method call is only tracked when it takes longer than the given amount of milliseconds.
         """
         return pulumi.get(self, "metrics_method_call_threshold")
 
     @metrics_method_call_threshold.setter
-    def metrics_method_call_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def metrics_method_call_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "metrics_method_call_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumPasswordLength")
-    def minimum_password_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minimum_password_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Indicates whether passwords require a minimum length. Premium and Ultimate only.
         """
         return pulumi.get(self, "minimum_password_length")
 
     @minimum_password_length.setter
-    def minimum_password_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minimum_password_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minimum_password_length", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorAvailable")
-    def mirror_available(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mirror_available(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
         """
         return pulumi.get(self, "mirror_available")
 
     @mirror_available.setter
-    def mirror_available(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mirror_available(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mirror_available", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorCapacityThreshold")
-    def mirror_capacity_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mirror_capacity_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum capacity to be available before scheduling more mirrors preemptively.
         """
         return pulumi.get(self, "mirror_capacity_threshold")
 
     @mirror_capacity_threshold.setter
-    def mirror_capacity_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mirror_capacity_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mirror_capacity_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorMaxCapacity")
-    def mirror_max_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mirror_max_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of mirrors that can be synchronizing at the same time.
         """
         return pulumi.get(self, "mirror_max_capacity")
 
     @mirror_max_capacity.setter
-    def mirror_max_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mirror_max_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mirror_max_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorMaxDelay")
-    def mirror_max_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mirror_max_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
         """
         return pulumi.get(self, "mirror_max_delay")
 
     @mirror_max_delay.setter
-    def mirror_max_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mirror_max_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mirror_max_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyOnUnknownSignIn")
-    def notify_on_unknown_sign_in(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_on_unknown_sign_in(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable sending notification if sign in from unknown IP address happens
         """
         return pulumi.get(self, "notify_on_unknown_sign_in")
 
     @notify_on_unknown_sign_in.setter
-    def notify_on_unknown_sign_in(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_on_unknown_sign_in(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_on_unknown_sign_in", value)
 
     @_builtins.property
     @pulumi.getter(name="npmPackageRequestsForwarding")
-    def npm_package_requests_forwarding(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def npm_package_requests_forwarding(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
         """
         return pulumi.get(self, "npm_package_requests_forwarding")
 
     @npm_package_requests_forwarding.setter
-    def npm_package_requests_forwarding(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def npm_package_requests_forwarding(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "npm_package_requests_forwarding", value)
 
     @_builtins.property
     @pulumi.getter(name="nugetSkipMetadataUrlValidation")
-    def nuget_skip_metadata_url_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nuget_skip_metadata_url_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to skip metadata URL validation for the NuGet package.
         """
         return pulumi.get(self, "nuget_skip_metadata_url_validation")
 
     @nuget_skip_metadata_url_validation.setter
-    def nuget_skip_metadata_url_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nuget_skip_metadata_url_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nuget_skip_metadata_url_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="outboundLocalRequestsWhitelists")
-    def outbound_local_requests_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def outbound_local_requests_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Define a list of trusted domains or IP addresses to which local requests are allowed when local requests for hooks and services are disabled.
         """
         return pulumi.get(self, "outbound_local_requests_whitelists")
 
     @outbound_local_requests_whitelists.setter
-    def outbound_local_requests_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def outbound_local_requests_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "outbound_local_requests_whitelists", value)
 
     @_builtins.property
     @pulumi.getter(name="packageMetadataPurlTypes")
-    def package_metadata_purl_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def package_metadata_purl_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         List of package registry metadata to sync. See the list of the available values (https://gitlab.com/gitlab-org/gitlab/-/blob/ace16c20d5da7c4928dd03fb139692638b557fe3/app/models/concerns/enums/package_metadata.rb#L5). Self-managed, Ultimate only.
         """
         return pulumi.get(self, "package_metadata_purl_types")
 
     @package_metadata_purl_types.setter
-    def package_metadata_purl_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def package_metadata_purl_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "package_metadata_purl_types", value)
 
     @_builtins.property
     @pulumi.getter(name="packageRegistryAllowAnyoneToPullOption")
-    def package_registry_allow_anyone_to_pull_option(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def package_registry_allow_anyone_to_pull_option(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable to allow anyone to pull from Package Registry visible and changeable.
         """
         return pulumi.get(self, "package_registry_allow_anyone_to_pull_option")
 
     @package_registry_allow_anyone_to_pull_option.setter
-    def package_registry_allow_anyone_to_pull_option(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def package_registry_allow_anyone_to_pull_option(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "package_registry_allow_anyone_to_pull_option", value)
 
     @_builtins.property
     @pulumi.getter(name="packageRegistryCleanupPoliciesWorkerCapacity")
-    def package_registry_cleanup_policies_worker_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def package_registry_cleanup_policies_worker_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers assigned to the packages cleanup policies.
         """
         return pulumi.get(self, "package_registry_cleanup_policies_worker_capacity")
 
     @package_registry_cleanup_policies_worker_capacity.setter
-    def package_registry_cleanup_policies_worker_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def package_registry_cleanup_policies_worker_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "package_registry_cleanup_policies_worker_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="pagesDomainVerificationEnabled")
-    def pages_domain_verification_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pages_domain_verification_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
         """
         return pulumi.get(self, "pages_domain_verification_enabled")
 
     @pages_domain_verification_enabled.setter
-    def pages_domain_verification_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pages_domain_verification_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pages_domain_verification_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordAuthenticationEnabledForGit")
-    def password_authentication_enabled_for_git(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_authentication_enabled_for_git(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable authentication for Git over HTTP(S) via a GitLab account password.
         """
         return pulumi.get(self, "password_authentication_enabled_for_git")
 
     @password_authentication_enabled_for_git.setter
-    def password_authentication_enabled_for_git(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_authentication_enabled_for_git(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_authentication_enabled_for_git", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordAuthenticationEnabledForWeb")
-    def password_authentication_enabled_for_web(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_authentication_enabled_for_web(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable authentication for the web interface via a GitLab account password.
         """
         return pulumi.get(self, "password_authentication_enabled_for_web")
 
     @password_authentication_enabled_for_web.setter
-    def password_authentication_enabled_for_web(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_authentication_enabled_for_web(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_authentication_enabled_for_web", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordLowercaseRequired")
-    def password_lowercase_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_lowercase_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether passwords require at least one lowercase letter.
         """
         return pulumi.get(self, "password_lowercase_required")
 
     @password_lowercase_required.setter
-    def password_lowercase_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_lowercase_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_lowercase_required", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordNumberRequired")
-    def password_number_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_number_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether passwords require at least one number.
         """
         return pulumi.get(self, "password_number_required")
 
     @password_number_required.setter
-    def password_number_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_number_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_number_required", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordSymbolRequired")
-    def password_symbol_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_symbol_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether passwords require at least one symbol character.
         """
         return pulumi.get(self, "password_symbol_required")
 
     @password_symbol_required.setter
-    def password_symbol_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_symbol_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_symbol_required", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordUppercaseRequired")
-    def password_uppercase_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_uppercase_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether passwords require at least one uppercase letter.
         """
         return pulumi.get(self, "password_uppercase_required")
 
     @password_uppercase_required.setter
-    def password_uppercase_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_uppercase_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_uppercase_required", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceBarAllowedGroupPath")
-    def performance_bar_allowed_group_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_bar_allowed_group_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path of the group that is allowed to toggle the performance bar.
         """
         return pulumi.get(self, "performance_bar_allowed_group_path")
 
     @performance_bar_allowed_group_path.setter
-    def performance_bar_allowed_group_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_bar_allowed_group_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_bar_allowed_group_path", value)
 
     @_builtins.property
     @pulumi.getter(name="personalAccessTokenPrefix")
-    def personal_access_token_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def personal_access_token_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix for all generated personal access tokens.
         """
         return pulumi.get(self, "personal_access_token_prefix")
 
     @personal_access_token_prefix.setter
-    def personal_access_token_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def personal_access_token_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "personal_access_token_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineLimitPerProjectUserSha")
-    def pipeline_limit_per_project_user_sha(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pipeline_limit_per_project_user_sha(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of pipeline creation requests per minute per user and commit.
         """
         return pulumi.get(self, "pipeline_limit_per_project_user_sha")
 
     @pipeline_limit_per_project_user_sha.setter
-    def pipeline_limit_per_project_user_sha(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pipeline_limit_per_project_user_sha(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pipeline_limit_per_project_user_sha", value)
 
     @_builtins.property
     @pulumi.getter(name="plantumlEnabled")
-    def plantuml_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def plantuml_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: plantuml_url) Enable PlantUML integration.
         """
         return pulumi.get(self, "plantuml_enabled")
 
     @plantuml_enabled.setter
-    def plantuml_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def plantuml_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "plantuml_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="plantumlUrl")
-    def plantuml_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plantuml_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PlantUML instance URL for integration.
         """
         return pulumi.get(self, "plantuml_url")
 
     @plantuml_url.setter
-    def plantuml_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plantuml_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plantuml_url", value)
 
     @_builtins.property
     @pulumi.getter(name="pollingIntervalMultiplier")
-    def polling_interval_multiplier(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def polling_interval_multiplier(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
         """
         return pulumi.get(self, "polling_interval_multiplier")
 
     @polling_interval_multiplier.setter
-    def polling_interval_multiplier(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def polling_interval_multiplier(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "polling_interval_multiplier", value)
 
     @_builtins.property
     @pulumi.getter(name="preventMergeRequestsAuthorApproval")
-    def prevent_merge_requests_author_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_merge_requests_author_approval(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevent approval by merge request creator (author).
         """
         return pulumi.get(self, "prevent_merge_requests_author_approval")
 
     @prevent_merge_requests_author_approval.setter
-    def prevent_merge_requests_author_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_merge_requests_author_approval(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_merge_requests_author_approval", value)
 
     @_builtins.property
     @pulumi.getter(name="preventMergeRequestsCommittersApproval")
-    def prevent_merge_requests_committers_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_merge_requests_committers_approval(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevent approval by committers to merge requests.
         """
         return pulumi.get(self, "prevent_merge_requests_committers_approval")
 
     @prevent_merge_requests_committers_approval.setter
-    def prevent_merge_requests_committers_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_merge_requests_committers_approval(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_merge_requests_committers_approval", value)
 
     @_builtins.property
     @pulumi.getter(name="projectExportEnabled")
-    def project_export_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def project_export_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable project export.
         """
         return pulumi.get(self, "project_export_enabled")
 
     @project_export_enabled.setter
-    def project_export_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def project_export_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "project_export_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="projectJobsApiRateLimit")
-    def project_jobs_api_rate_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def project_jobs_api_rate_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum authenticated requests to /project/:id/jobs per minute.
         """
         return pulumi.get(self, "project_jobs_api_rate_limit")
 
     @project_jobs_api_rate_limit.setter
-    def project_jobs_api_rate_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def project_jobs_api_rate_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "project_jobs_api_rate_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="projectsApiRateLimitUnauthenticated")
-    def projects_api_rate_limit_unauthenticated(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def projects_api_rate_limit_unauthenticated(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
         """
         return pulumi.get(self, "projects_api_rate_limit_unauthenticated")
 
     @projects_api_rate_limit_unauthenticated.setter
-    def projects_api_rate_limit_unauthenticated(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def projects_api_rate_limit_unauthenticated(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "projects_api_rate_limit_unauthenticated", value)
 
     @_builtins.property
     @pulumi.getter(name="prometheusMetricsEnabled")
-    def prometheus_metrics_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prometheus_metrics_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Prometheus metrics.
         """
         return pulumi.get(self, "prometheus_metrics_enabled")
 
     @prometheus_metrics_enabled.setter
-    def prometheus_metrics_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prometheus_metrics_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prometheus_metrics_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="protectedCiVariables")
-    def protected_ci_variables(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected_ci_variables(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         CI/CD variables are protected by default.
         """
         return pulumi.get(self, "protected_ci_variables")
 
     @protected_ci_variables.setter
-    def protected_ci_variables(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected_ci_variables(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected_ci_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEventActivitiesLimit")
-    def push_event_activities_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def push_event_activities_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of changes (branches or tags) in a single push to determine whether individual push events or bulk push events are created. Bulk push events are created if it surpasses that value.
         """
         return pulumi.get(self, "push_event_activities_limit")
 
     @push_event_activities_limit.setter
-    def push_event_activities_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def push_event_activities_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "push_event_activities_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEventHooksLimit")
-    def push_event_hooks_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def push_event_hooks_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of changes (branches or tags) in a single push to determine whether webhooks and services fire or not. Webhooks and services aren’t submitted if it surpasses that value.
         """
         return pulumi.get(self, "push_event_hooks_limit")
 
     @push_event_hooks_limit.setter
-    def push_event_hooks_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def push_event_hooks_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "push_event_hooks_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="pypiPackageRequestsForwarding")
-    def pypi_package_requests_forwarding(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pypi_package_requests_forwarding(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use pypi.org as a default remote repository when the package is not found in the GitLab Package Registry for PyPI.
         """
         return pulumi.get(self, "pypi_package_requests_forwarding")
 
     @pypi_package_requests_forwarding.setter
-    def pypi_package_requests_forwarding(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pypi_package_requests_forwarding(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pypi_package_requests_forwarding", value)
 
     @_builtins.property
     @pulumi.getter(name="rateLimitingResponseText")
-    def rate_limiting_response_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rate_limiting_response_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When rate limiting is enabled via the throttle_* settings, send this plain text response when a rate limit is exceeded. ‘Retry later’ is sent if this is blank.
         """
         return pulumi.get(self, "rate_limiting_response_text")
 
     @rate_limiting_response_text.setter
-    def rate_limiting_response_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rate_limiting_response_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rate_limiting_response_text", value)
 
     @_builtins.property
     @pulumi.getter(name="rawBlobRequestLimit")
-    def raw_blob_request_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def raw_blob_request_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max number of requests per minute for each raw path. To disable throttling set to 0.
         """
         return pulumi.get(self, "raw_blob_request_limit")
 
     @raw_blob_request_limit.setter
-    def raw_blob_request_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def raw_blob_request_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "raw_blob_request_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="recaptchaEnabled")
-    def recaptcha_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def recaptcha_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
         """
         return pulumi.get(self, "recaptcha_enabled")
 
     @recaptcha_enabled.setter
-    def recaptcha_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def recaptcha_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "recaptcha_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="recaptchaPrivateKey")
-    def recaptcha_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recaptcha_private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private key for reCAPTCHA.
         """
         return pulumi.get(self, "recaptcha_private_key")
 
     @recaptcha_private_key.setter
-    def recaptcha_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recaptcha_private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recaptcha_private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="recaptchaSiteKey")
-    def recaptcha_site_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recaptcha_site_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Site key for reCAPTCHA.
         """
         return pulumi.get(self, "recaptcha_site_key")
 
     @recaptcha_site_key.setter
-    def recaptcha_site_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recaptcha_site_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recaptcha_site_key", value)
 
     @_builtins.property
     @pulumi.getter(name="receiveMaxInputSize")
-    def receive_max_input_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def receive_max_input_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum push size (MB).
         """
         return pulumi.get(self, "receive_max_input_size")
 
     @receive_max_input_size.setter
-    def receive_max_input_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def receive_max_input_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "receive_max_input_size", value)
 
     @_builtins.property
     @pulumi.getter(name="receptiveClusterAgentsEnabled")
-    def receptive_cluster_agents_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def receptive_cluster_agents_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable receptive mode for GitLab Agents for Kubernetes.
         """
         return pulumi.get(self, "receptive_cluster_agents_enabled")
 
     @receptive_cluster_agents_enabled.setter
-    def receptive_cluster_agents_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def receptive_cluster_agents_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "receptive_cluster_agents_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="rememberMeEnabled")
-    def remember_me_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remember_me_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Remember me setting.
         """
         return pulumi.get(self, "remember_me_enabled")
 
     @remember_me_enabled.setter
-    def remember_me_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remember_me_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remember_me_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryChecksEnabled")
-    def repository_checks_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def repository_checks_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         GitLab periodically runs git fsck in all project and wiki repositories to look for silent disk corruption issues.
         """
         return pulumi.get(self, "repository_checks_enabled")
 
     @repository_checks_enabled.setter
-    def repository_checks_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def repository_checks_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "repository_checks_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="repositorySizeLimit")
-    def repository_size_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def repository_size_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size limit per repository (MB).
         """
         return pulumi.get(self, "repository_size_limit")
 
     @repository_size_limit.setter
-    def repository_size_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def repository_size_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "repository_size_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryStoragesWeighted")
-    def repository_storages_weighted(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]:
+    def repository_storages_weighted(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]:
         """
         Hash of names taken from gitlab.yml to weights. New projects are created in one of these stores, chosen by a weighted random selection.
         """
         return pulumi.get(self, "repository_storages_weighted")
 
     @repository_storages_weighted.setter
-    def repository_storages_weighted(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]):
+    def repository_storages_weighted(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "repository_storages_weighted", value)
 
     @_builtins.property
     @pulumi.getter(name="requireAdminApprovalAfterUserSignup")
-    def require_admin_approval_after_user_signup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_admin_approval_after_user_signup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, any user that signs up for an account using the registration form is placed under a Pending approval state and has to be explicitly approved by an administrator.
         """
         return pulumi.get(self, "require_admin_approval_after_user_signup")
 
     @require_admin_approval_after_user_signup.setter
-    def require_admin_approval_after_user_signup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_admin_approval_after_user_signup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_admin_approval_after_user_signup", value)
 
     @_builtins.property
     @pulumi.getter(name="requireAdminTwoFactorAuthentication")
-    def require_admin_two_factor_authentication(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_admin_two_factor_authentication(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow administrators to require 2FA for all administrators on the instance.
         """
         return pulumi.get(self, "require_admin_two_factor_authentication")
 
     @require_admin_two_factor_authentication.setter
-    def require_admin_two_factor_authentication(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_admin_two_factor_authentication(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_admin_two_factor_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="requirePersonalAccessTokenExpiry")
-    def require_personal_access_token_expiry(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_personal_access_token_expiry(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, users must set an expiration date when creating a group or project access token, or a personal access token owned by a non-service account.
         """
         return pulumi.get(self, "require_personal_access_token_expiry")
 
     @require_personal_access_token_expiry.setter
-    def require_personal_access_token_expiry(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_personal_access_token_expiry(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_personal_access_token_expiry", value)
 
     @_builtins.property
     @pulumi.getter(name="requireTwoFactorAuthentication")
-    def require_two_factor_authentication(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_two_factor_authentication(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
         """
         return pulumi.get(self, "require_two_factor_authentication")
 
     @require_two_factor_authentication.setter
-    def require_two_factor_authentication(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_two_factor_authentication(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_two_factor_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="restrictedVisibilityLevels")
-    def restricted_visibility_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def restricted_visibility_levels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
         """
         return pulumi.get(self, "restricted_visibility_levels")
 
     @restricted_visibility_levels.setter
-    def restricted_visibility_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def restricted_visibility_levels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "restricted_visibility_levels", value)
 
     @_builtins.property
     @pulumi.getter(name="rsaKeyRestriction")
-    def rsa_key_restriction(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rsa_key_restriction(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
         """
         return pulumi.get(self, "rsa_key_restriction")
 
     @rsa_key_restriction.setter
-    def rsa_key_restriction(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rsa_key_restriction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rsa_key_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="searchRateLimit")
-    def search_rate_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def search_rate_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         """
         return pulumi.get(self, "search_rate_limit")
 
     @search_rate_limit.setter
-    def search_rate_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def search_rate_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "search_rate_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="searchRateLimitUnauthenticated")
-    def search_rate_limit_unauthenticated(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def search_rate_limit_unauthenticated(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
         """
         return pulumi.get(self, "search_rate_limit_unauthenticated")
 
     @search_rate_limit_unauthenticated.setter
-    def search_rate_limit_unauthenticated(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def search_rate_limit_unauthenticated(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "search_rate_limit_unauthenticated", value)
 
     @_builtins.property
     @pulumi.getter(name="securityApprovalPoliciesLimit")
-    def security_approval_policies_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def security_approval_policies_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of active merge request approval policies per security policy project. Maximum: 20
         """
         return pulumi.get(self, "security_approval_policies_limit")
 
     @security_approval_policies_limit.setter
-    def security_approval_policies_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def security_approval_policies_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "security_approval_policies_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyGlobalGroupApproversEnabled")
-    def security_policy_global_group_approvers_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def security_policy_global_group_approvers_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to look up merge request approval policy approval groups globally or within project hierarchies.
         """
         return pulumi.get(self, "security_policy_global_group_approvers_enabled")
 
     @security_policy_global_group_approvers_enabled.setter
-    def security_policy_global_group_approvers_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def security_policy_global_group_approvers_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "security_policy_global_group_approvers_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="securityTxtContent")
-    def security_txt_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_txt_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Public security contact information.
         """
         return pulumi.get(self, "security_txt_content")
 
     @security_txt_content.setter
-    def security_txt_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_txt_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_txt_content", value)
 
     @_builtins.property
     @pulumi.getter(name="sendUserConfirmationEmail")
-    def send_user_confirmation_email(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_user_confirmation_email(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Send confirmation email on sign-up.
         """
         return pulumi.get(self, "send_user_confirmation_email")
 
     @send_user_confirmation_email.setter
-    def send_user_confirmation_email(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_user_confirmation_email(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_user_confirmation_email", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccessTokensExpirationEnforced")
-    def service_access_tokens_expiration_enforced(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def service_access_tokens_expiration_enforced(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to indicate if token expiry date can be optional for service account users
         """
         return pulumi.get(self, "service_access_tokens_expiration_enforced")
 
     @service_access_tokens_expiration_enforced.setter
-    def service_access_tokens_expiration_enforced(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def service_access_tokens_expiration_enforced(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "service_access_tokens_expiration_enforced", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionExpireDelay")
-    def session_expire_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def session_expire_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Session duration in minutes. GitLab restart is required to apply changes.
         """
         return pulumi.get(self, "session_expire_delay")
 
     @session_expire_delay.setter
-    def session_expire_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def session_expire_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_expire_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersEnabled")
-    def shared_runners_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared_runners_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
         """
         return pulumi.get(self, "shared_runners_enabled")
 
     @shared_runners_enabled.setter
-    def shared_runners_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared_runners_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared_runners_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersMinutes")
-    def shared_runners_minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shared_runners_minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
         """
         return pulumi.get(self, "shared_runners_minutes")
 
     @shared_runners_minutes.setter
-    def shared_runners_minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shared_runners_minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shared_runners_minutes", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersText")
-    def shared_runners_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_runners_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Shared runners text.
         """
         return pulumi.get(self, "shared_runners_text")
 
     @shared_runners_text.setter
-    def shared_runners_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_runners_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_runners_text", value)
 
     @_builtins.property
     @pulumi.getter(name="sidekiqJobLimiterCompressionThresholdBytes")
-    def sidekiq_job_limiter_compression_threshold_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sidekiq_job_limiter_compression_threshold_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold in bytes at which Sidekiq jobs are compressed before being stored in Redis.
         """
         return pulumi.get(self, "sidekiq_job_limiter_compression_threshold_bytes")
 
     @sidekiq_job_limiter_compression_threshold_bytes.setter
-    def sidekiq_job_limiter_compression_threshold_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sidekiq_job_limiter_compression_threshold_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sidekiq_job_limiter_compression_threshold_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="sidekiqJobLimiterLimitBytes")
-    def sidekiq_job_limiter_limit_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sidekiq_job_limiter_limit_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold in bytes at which Sidekiq jobs are rejected. 0 means do not reject any job.
         """
         return pulumi.get(self, "sidekiq_job_limiter_limit_bytes")
 
     @sidekiq_job_limiter_limit_bytes.setter
-    def sidekiq_job_limiter_limit_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sidekiq_job_limiter_limit_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sidekiq_job_limiter_limit_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="sidekiqJobLimiterMode")
-    def sidekiq_job_limiter_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sidekiq_job_limiter_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         track or compress. Sets the behavior for Sidekiq job size limits.
         """
         return pulumi.get(self, "sidekiq_job_limiter_mode")
 
     @sidekiq_job_limiter_mode.setter
-    def sidekiq_job_limiter_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sidekiq_job_limiter_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sidekiq_job_limiter_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="signInText")
-    def sign_in_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sign_in_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Text on the login page.
         """
         return pulumi.get(self, "sign_in_text")
 
     @sign_in_text.setter
-    def sign_in_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sign_in_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sign_in_text", value)
 
     @_builtins.property
     @pulumi.getter(name="signupEnabled")
-    def signup_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def signup_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable registration.
         """
         return pulumi.get(self, "signup_enabled")
 
     @signup_enabled.setter
-    def signup_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def signup_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "signup_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="silentAdminExportsEnabled")
-    def silent_admin_exports_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def silent_admin_exports_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Silent admin exports.
         """
         return pulumi.get(self, "silent_admin_exports_enabled")
 
     @silent_admin_exports_enabled.setter
-    def silent_admin_exports_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def silent_admin_exports_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "silent_admin_exports_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="silentModeEnabled")
-    def silent_mode_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def silent_mode_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Silent mode.
         """
         return pulumi.get(self, "silent_mode_enabled")
 
     @silent_mode_enabled.setter
-    def silent_mode_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def silent_mode_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "silent_mode_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="slackAppEnabled")
-    def slack_app_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def slack_app_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: slack*app*id, slack*app*secret and slack*app*secret) Enable Slack app.
         """
         return pulumi.get(self, "slack_app_enabled")
 
     @slack_app_enabled.setter
-    def slack_app_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def slack_app_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "slack_app_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="slackAppId")
-    def slack_app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slack_app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The app ID of the Slack-app.
         """
         return pulumi.get(self, "slack_app_id")
 
     @slack_app_id.setter
-    def slack_app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slack_app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slack_app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="slackAppSecret")
-    def slack_app_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slack_app_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The app secret of the Slack-app.
         """
         return pulumi.get(self, "slack_app_secret")
 
     @slack_app_secret.setter
-    def slack_app_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slack_app_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slack_app_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="slackAppSigningSecret")
-    def slack_app_signing_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slack_app_signing_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The signing secret of the Slack-app.
         """
         return pulumi.get(self, "slack_app_signing_secret")
 
     @slack_app_signing_secret.setter
-    def slack_app_signing_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slack_app_signing_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slack_app_signing_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="slackAppVerificationToken")
-    def slack_app_verification_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slack_app_verification_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The verification token of the Slack-app.
         """
         return pulumi.get(self, "slack_app_verification_token")
 
     @slack_app_verification_token.setter
-    def slack_app_verification_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slack_app_verification_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slack_app_verification_token", value)
 
     @_builtins.property
     @pulumi.getter(name="snippetSizeLimit")
-    def snippet_size_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def snippet_size_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max snippet content size in bytes.
         """
         return pulumi.get(self, "snippet_size_limit")
 
     @snippet_size_limit.setter
-    def snippet_size_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def snippet_size_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "snippet_size_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="snowplowAppId")
-    def snowplow_app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snowplow_app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Snowplow site name / application ID. (for example, gitlab)
         """
         return pulumi.get(self, "snowplow_app_id")
 
     @snowplow_app_id.setter
-    def snowplow_app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snowplow_app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snowplow_app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snowplowCollectorHostname")
-    def snowplow_collector_hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snowplow_collector_hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Snowplow collector hostname. (for example, snowplow.trx.gitlab.net)
         """
         return pulumi.get(self, "snowplow_collector_hostname")
 
     @snowplow_collector_hostname.setter
-    def snowplow_collector_hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snowplow_collector_hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snowplow_collector_hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="snowplowCookieDomain")
-    def snowplow_cookie_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snowplow_cookie_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Snowplow cookie domain. (for example, .gitlab.com)
         """
         return pulumi.get(self, "snowplow_cookie_domain")
 
     @snowplow_cookie_domain.setter
-    def snowplow_cookie_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snowplow_cookie_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snowplow_cookie_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="snowplowDatabaseCollectorHostname")
-    def snowplow_database_collector_hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snowplow_database_collector_hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Snowplow collector for database events hostname. (for example, db-snowplow.trx.gitlab.net)
         """
         return pulumi.get(self, "snowplow_database_collector_hostname")
 
     @snowplow_database_collector_hostname.setter
-    def snowplow_database_collector_hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snowplow_database_collector_hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snowplow_database_collector_hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="snowplowEnabled")
-    def snowplow_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def snowplow_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable snowplow tracking.
         """
         return pulumi.get(self, "snowplow_enabled")
 
     @snowplow_enabled.setter
-    def snowplow_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def snowplow_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "snowplow_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcegraphEnabled")
-    def sourcegraph_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sourcegraph_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables Sourcegraph integration. If enabled, requires sourcegraph_url.
         """
         return pulumi.get(self, "sourcegraph_enabled")
 
     @sourcegraph_enabled.setter
-    def sourcegraph_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sourcegraph_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sourcegraph_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcegraphPublicOnly")
-    def sourcegraph_public_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sourcegraph_public_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Blocks Sourcegraph from being loaded on private and internal projects.
         """
         return pulumi.get(self, "sourcegraph_public_only")
 
     @sourcegraph_public_only.setter
-    def sourcegraph_public_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sourcegraph_public_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sourcegraph_public_only", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcegraphUrl")
-    def sourcegraph_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sourcegraph_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Sourcegraph instance URL for integration.
         """
         return pulumi.get(self, "sourcegraph_url")
 
     @sourcegraph_url.setter
-    def sourcegraph_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sourcegraph_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sourcegraph_url", value)
 
     @_builtins.property
     @pulumi.getter(name="spamCheckApiKey")
-    def spam_check_api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spam_check_api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API key used by GitLab for accessing the Spam Check service endpoint.
         """
         return pulumi.get(self, "spam_check_api_key")
 
     @spam_check_api_key.setter
-    def spam_check_api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spam_check_api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spam_check_api_key", value)
 
     @_builtins.property
     @pulumi.getter(name="spamCheckEndpointEnabled")
-    def spam_check_endpoint_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def spam_check_endpoint_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables spam checking using external Spam Check API endpoint.
         """
         return pulumi.get(self, "spam_check_endpoint_enabled")
 
     @spam_check_endpoint_enabled.setter
-    def spam_check_endpoint_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def spam_check_endpoint_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "spam_check_endpoint_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="spamCheckEndpointUrl")
-    def spam_check_endpoint_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spam_check_endpoint_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the external Spamcheck service endpoint. Valid URI schemes are grpc or tls. Specifying tls forces communication to be encrypted.
         """
         return pulumi.get(self, "spam_check_endpoint_url")
 
     @spam_check_endpoint_url.setter
-    def spam_check_endpoint_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spam_check_endpoint_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spam_check_endpoint_url", value)
 
     @_builtins.property
     @pulumi.getter(name="staticObjectsExternalStorageAuthToken")
-    def static_objects_external_storage_auth_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def static_objects_external_storage_auth_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authentication token for the external storage linked in static*objects*external*storage*url.
         """
         return pulumi.get(self, "static_objects_external_storage_auth_token")
 
     @static_objects_external_storage_auth_token.setter
-    def static_objects_external_storage_auth_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def static_objects_external_storage_auth_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "static_objects_external_storage_auth_token", value)
 
     @_builtins.property
     @pulumi.getter(name="staticObjectsExternalStorageUrl")
-    def static_objects_external_storage_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def static_objects_external_storage_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to an external storage for repository static objects.
         """
         return pulumi.get(self, "static_objects_external_storage_url")
 
     @static_objects_external_storage_url.setter
-    def static_objects_external_storage_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def static_objects_external_storage_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "static_objects_external_storage_url", value)
 
     @_builtins.property
     @pulumi.getter(name="suggestPipelineEnabled")
-    def suggest_pipeline_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def suggest_pipeline_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable pipeline suggestion banner.
         """
         return pulumi.get(self, "suggest_pipeline_enabled")
 
     @suggest_pipeline_enabled.setter
-    def suggest_pipeline_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def suggest_pipeline_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "suggest_pipeline_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="terminalMaxSessionTime")
-    def terminal_max_session_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def terminal_max_session_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
         """
         return pulumi.get(self, "terminal_max_session_time")
 
     @terminal_max_session_time.setter
-    def terminal_max_session_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def terminal_max_session_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "terminal_max_session_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def terms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def terms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Required by: enforce_terms) Markdown content for the ToS.
         """
         return pulumi.get(self, "terms")
 
     @terms.setter
-    def terms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def terms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "terms", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedApiEnabled")
-    def throttle_authenticated_api_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def throttle_authenticated_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: throttle*authenticated*api*period*in*seconds and throttle*authenticated*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         """
         return pulumi.get(self, "throttle_authenticated_api_enabled")
 
     @throttle_authenticated_api_enabled.setter
-    def throttle_authenticated_api_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def throttle_authenticated_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "throttle_authenticated_api_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedApiPeriodInSeconds")
-    def throttle_authenticated_api_period_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rate limit period (in seconds).
         """
         return pulumi.get(self, "throttle_authenticated_api_period_in_seconds")
 
     @throttle_authenticated_api_period_in_seconds.setter
-    def throttle_authenticated_api_period_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_api_period_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedApiRequestsPerPeriod")
-    def throttle_authenticated_api_requests_per_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum requests per period per user.
         """
         return pulumi.get(self, "throttle_authenticated_api_requests_per_period")
 
     @throttle_authenticated_api_requests_per_period.setter
-    def throttle_authenticated_api_requests_per_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_api_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedGitLfsEnabled")
-    def throttle_authenticated_git_lfs_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def throttle_authenticated_git_lfs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable authenticated Git LFS request rate limit.
         """
         return pulumi.get(self, "throttle_authenticated_git_lfs_enabled")
 
     @throttle_authenticated_git_lfs_enabled.setter
-    def throttle_authenticated_git_lfs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def throttle_authenticated_git_lfs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "throttle_authenticated_git_lfs_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedGitLfsPeriodInSeconds")
-    def throttle_authenticated_git_lfs_period_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_git_lfs_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rate limit period (in seconds).
         """
         return pulumi.get(self, "throttle_authenticated_git_lfs_period_in_seconds")
 
     @throttle_authenticated_git_lfs_period_in_seconds.setter
-    def throttle_authenticated_git_lfs_period_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_git_lfs_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_git_lfs_period_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedGitLfsRequestsPerPeriod")
-    def throttle_authenticated_git_lfs_requests_per_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_git_lfs_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum requests per period per user.
         """
         return pulumi.get(self, "throttle_authenticated_git_lfs_requests_per_period")
 
     @throttle_authenticated_git_lfs_requests_per_period.setter
-    def throttle_authenticated_git_lfs_requests_per_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_git_lfs_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_git_lfs_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedPackagesApiEnabled")
-    def throttle_authenticated_packages_api_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def throttle_authenticated_packages_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
         """
         return pulumi.get(self, "throttle_authenticated_packages_api_enabled")
 
     @throttle_authenticated_packages_api_enabled.setter
-    def throttle_authenticated_packages_api_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def throttle_authenticated_packages_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "throttle_authenticated_packages_api_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedPackagesApiPeriodInSeconds")
-    def throttle_authenticated_packages_api_period_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_packages_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rate limit period (in seconds). View Package Registry rate limits for more details.
         """
         return pulumi.get(self, "throttle_authenticated_packages_api_period_in_seconds")
 
     @throttle_authenticated_packages_api_period_in_seconds.setter
-    def throttle_authenticated_packages_api_period_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_packages_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_packages_api_period_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedPackagesApiRequestsPerPeriod")
-    def throttle_authenticated_packages_api_requests_per_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_packages_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum requests per period per user. View Package Registry rate limits for more details.
         """
         return pulumi.get(self, "throttle_authenticated_packages_api_requests_per_period")
 
     @throttle_authenticated_packages_api_requests_per_period.setter
-    def throttle_authenticated_packages_api_requests_per_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_packages_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_packages_api_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedWebEnabled")
-    def throttle_authenticated_web_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def throttle_authenticated_web_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: throttle*authenticated*web*period*in*seconds and throttle*authenticated*web*requests*per*period) Enable authenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         """
         return pulumi.get(self, "throttle_authenticated_web_enabled")
 
     @throttle_authenticated_web_enabled.setter
-    def throttle_authenticated_web_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def throttle_authenticated_web_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "throttle_authenticated_web_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedWebPeriodInSeconds")
-    def throttle_authenticated_web_period_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_web_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rate limit period (in seconds).
         """
         return pulumi.get(self, "throttle_authenticated_web_period_in_seconds")
 
     @throttle_authenticated_web_period_in_seconds.setter
-    def throttle_authenticated_web_period_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_web_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_web_period_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedWebRequestsPerPeriod")
-    def throttle_authenticated_web_requests_per_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_authenticated_web_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum requests per period per user.
         """
         return pulumi.get(self, "throttle_authenticated_web_requests_per_period")
 
     @throttle_authenticated_web_requests_per_period.setter
-    def throttle_authenticated_web_requests_per_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_authenticated_web_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_web_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedApiEnabled")
-    def throttle_unauthenticated_api_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def throttle_unauthenticated_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         """
         return pulumi.get(self, "throttle_unauthenticated_api_enabled")
 
     @throttle_unauthenticated_api_enabled.setter
-    def throttle_unauthenticated_api_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def throttle_unauthenticated_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "throttle_unauthenticated_api_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedApiPeriodInSeconds")
-    def throttle_unauthenticated_api_period_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_unauthenticated_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rate limit period in seconds.
         """
         return pulumi.get(self, "throttle_unauthenticated_api_period_in_seconds")
 
     @throttle_unauthenticated_api_period_in_seconds.setter
-    def throttle_unauthenticated_api_period_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_unauthenticated_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_unauthenticated_api_period_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedApiRequestsPerPeriod")
-    def throttle_unauthenticated_api_requests_per_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_unauthenticated_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max requests per period per IP.
         """
         return pulumi.get(self, "throttle_unauthenticated_api_requests_per_period")
 
     @throttle_unauthenticated_api_requests_per_period.setter
-    def throttle_unauthenticated_api_requests_per_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_unauthenticated_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_unauthenticated_api_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedPackagesApiEnabled")
-    def throttle_unauthenticated_packages_api_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def throttle_unauthenticated_packages_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
         """
         return pulumi.get(self, "throttle_unauthenticated_packages_api_enabled")
 
     @throttle_unauthenticated_packages_api_enabled.setter
-    def throttle_unauthenticated_packages_api_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def throttle_unauthenticated_packages_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "throttle_unauthenticated_packages_api_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedPackagesApiPeriodInSeconds")
-    def throttle_unauthenticated_packages_api_period_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_unauthenticated_packages_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rate limit period (in seconds). View Package Registry rate limits for more details.
         """
         return pulumi.get(self, "throttle_unauthenticated_packages_api_period_in_seconds")
 
     @throttle_unauthenticated_packages_api_period_in_seconds.setter
-    def throttle_unauthenticated_packages_api_period_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_unauthenticated_packages_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_unauthenticated_packages_api_period_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedPackagesApiRequestsPerPeriod")
-    def throttle_unauthenticated_packages_api_requests_per_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_unauthenticated_packages_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum requests per period per user. View Package Registry rate limits for more details.
         """
         return pulumi.get(self, "throttle_unauthenticated_packages_api_requests_per_period")
 
     @throttle_unauthenticated_packages_api_requests_per_period.setter
-    def throttle_unauthenticated_packages_api_requests_per_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_unauthenticated_packages_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_unauthenticated_packages_api_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedWebEnabled")
-    def throttle_unauthenticated_web_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def throttle_unauthenticated_web_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         """
         return pulumi.get(self, "throttle_unauthenticated_web_enabled")
 
     @throttle_unauthenticated_web_enabled.setter
-    def throttle_unauthenticated_web_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def throttle_unauthenticated_web_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "throttle_unauthenticated_web_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedWebPeriodInSeconds")
-    def throttle_unauthenticated_web_period_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_unauthenticated_web_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rate limit period in seconds.
         """
         return pulumi.get(self, "throttle_unauthenticated_web_period_in_seconds")
 
     @throttle_unauthenticated_web_period_in_seconds.setter
-    def throttle_unauthenticated_web_period_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_unauthenticated_web_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_unauthenticated_web_period_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedWebRequestsPerPeriod")
-    def throttle_unauthenticated_web_requests_per_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def throttle_unauthenticated_web_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Max requests per period per IP.
         """
         return pulumi.get(self, "throttle_unauthenticated_web_requests_per_period")
 
     @throttle_unauthenticated_web_requests_per_period.setter
-    def throttle_unauthenticated_web_requests_per_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def throttle_unauthenticated_web_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_unauthenticated_web_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="timeTrackingLimitToHours")
-    def time_tracking_limit_to_hours(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def time_tracking_limit_to_hours(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Limit display of time tracking units to hours.
         """
         return pulumi.get(self, "time_tracking_limit_to_hours")
 
     @time_tracking_limit_to_hours.setter
-    def time_tracking_limit_to_hours(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def time_tracking_limit_to_hours(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "time_tracking_limit_to_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="twoFactorGracePeriod")
-    def two_factor_grace_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def two_factor_grace_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication.
         """
         return pulumi.get(self, "two_factor_grace_period")
 
     @two_factor_grace_period.setter
-    def two_factor_grace_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def two_factor_grace_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "two_factor_grace_period", value)
 
     @_builtins.property
     @pulumi.getter(name="unconfirmedUsersDeleteAfterDays")
-    def unconfirmed_users_delete_after_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unconfirmed_users_delete_after_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies how many days after sign-up to delete users who have not confirmed their email. Only applicable if delete*unconfirmed*users is set to true. Must be 1 or greater. Self-managed, Premium and Ultimate only.
         """
         return pulumi.get(self, "unconfirmed_users_delete_after_days")
 
     @unconfirmed_users_delete_after_days.setter
-    def unconfirmed_users_delete_after_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unconfirmed_users_delete_after_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unconfirmed_users_delete_after_days", value)
 
     @_builtins.property
     @pulumi.getter(name="uniqueIpsLimitEnabled")
-    def unique_ips_limit_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unique_ips_limit_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (If enabled, requires: unique*ips*limit*per*user and unique*ips*limit*time*window) Limit sign in from multiple IPs.
         """
         return pulumi.get(self, "unique_ips_limit_enabled")
 
     @unique_ips_limit_enabled.setter
-    def unique_ips_limit_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unique_ips_limit_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unique_ips_limit_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="uniqueIpsLimitPerUser")
-    def unique_ips_limit_per_user(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unique_ips_limit_per_user(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of IPs per user.
         """
         return pulumi.get(self, "unique_ips_limit_per_user")
 
     @unique_ips_limit_per_user.setter
-    def unique_ips_limit_per_user(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unique_ips_limit_per_user(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unique_ips_limit_per_user", value)
 
     @_builtins.property
     @pulumi.getter(name="uniqueIpsLimitTimeWindow")
-    def unique_ips_limit_time_window(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unique_ips_limit_time_window(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How many seconds an IP is counted towards the limit.
         """
         return pulumi.get(self, "unique_ips_limit_time_window")
 
     @unique_ips_limit_time_window.setter
-    def unique_ips_limit_time_window(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unique_ips_limit_time_window(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unique_ips_limit_time_window", value)
 
     @_builtins.property
     @pulumi.getter(name="updateRunnerVersionsEnabled")
-    def update_runner_versions_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def update_runner_versions_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Fetch GitLab Runner release version data from GitLab.com.
         """
         return pulumi.get(self, "update_runner_versions_enabled")
 
     @update_runner_versions_enabled.setter
-    def update_runner_versions_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def update_runner_versions_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "update_runner_versions_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="updatingNameDisabledForUsers")
-    def updating_name_disabled_for_users(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def updating_name_disabled_for_users(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable user profile name changes.
         """
         return pulumi.get(self, "updating_name_disabled_for_users")
 
     @updating_name_disabled_for_users.setter
-    def updating_name_disabled_for_users(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def updating_name_disabled_for_users(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "updating_name_disabled_for_users", value)
 
     @_builtins.property
     @pulumi.getter(name="usagePingEnabled")
-    def usage_ping_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def usage_ping_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Every week GitLab reports license usage back to GitLab, Inc.
         """
         return pulumi.get(self, "usage_ping_enabled")
 
     @usage_ping_enabled.setter
-    def usage_ping_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def usage_ping_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "usage_ping_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="useClickhouseForAnalytics")
-    def use_clickhouse_for_analytics(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_clickhouse_for_analytics(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables ClickHouse as a data source for analytics reports. ClickHouse must be configured for this setting to take effect. Available on Premium and Ultimate only.
         """
         return pulumi.get(self, "use_clickhouse_for_analytics")
 
     @use_clickhouse_for_analytics.setter
-    def use_clickhouse_for_analytics(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_clickhouse_for_analytics(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_clickhouse_for_analytics", value)
 
     @_builtins.property
     @pulumi.getter(name="userDeactivationEmailsEnabled")
-    def user_deactivation_emails_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def user_deactivation_emails_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Send an email to users upon account deactivation.
         """
         return pulumi.get(self, "user_deactivation_emails_enabled")
 
     @user_deactivation_emails_enabled.setter
-    def user_deactivation_emails_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def user_deactivation_emails_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "user_deactivation_emails_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="userDefaultExternal")
-    def user_default_external(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def user_default_external(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Newly registered users are external by default.
         """
         return pulumi.get(self, "user_default_external")
 
     @user_default_external.setter
-    def user_default_external(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def user_default_external(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "user_default_external", value)
 
     @_builtins.property
     @pulumi.getter(name="userDefaultInternalRegex")
-    def user_default_internal_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_default_internal_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify an email address regex pattern to identify default internal users.
         """
         return pulumi.get(self, "user_default_internal_regex")
 
     @user_default_internal_regex.setter
-    def user_default_internal_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_default_internal_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_default_internal_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="userDefaultsToPrivateProfile")
-    def user_defaults_to_private_profile(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def user_defaults_to_private_profile(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Newly created users have private profile by default.
         """
         return pulumi.get(self, "user_defaults_to_private_profile")
 
     @user_defaults_to_private_profile.setter
-    def user_defaults_to_private_profile(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def user_defaults_to_private_profile(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "user_defaults_to_private_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="userOauthApplications")
-    def user_oauth_applications(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def user_oauth_applications(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow users to register any application to use GitLab as an OAuth provider.
         """
         return pulumi.get(self, "user_oauth_applications")
 
     @user_oauth_applications.setter
-    def user_oauth_applications(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def user_oauth_applications(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "user_oauth_applications", value)
 
     @_builtins.property
     @pulumi.getter(name="userShowAddSshKeyMessage")
-    def user_show_add_ssh_key_message(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def user_show_add_ssh_key_message(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
         """
         return pulumi.get(self, "user_show_add_ssh_key_message")
 
     @user_show_add_ssh_key_message.setter
-    def user_show_add_ssh_key_message(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def user_show_add_ssh_key_message(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "user_show_add_ssh_key_message", value)
 
     @_builtins.property
     @pulumi.getter(name="validRunnerRegistrars")
-    def valid_runner_registrars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def valid_runner_registrars(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
         """
         return pulumi.get(self, "valid_runner_registrars")
 
     @valid_runner_registrars.setter
-    def valid_runner_registrars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def valid_runner_registrars(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "valid_runner_registrars", value)
 
     @_builtins.property
     @pulumi.getter(name="versionCheckEnabled")
-    def version_check_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def version_check_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Let GitLab inform you when an update is available.
         """
         return pulumi.get(self, "version_check_enabled")
 
     @version_check_enabled.setter
-    def version_check_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def version_check_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "version_check_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="webIdeClientsidePreviewEnabled")
-    def web_ide_clientside_preview_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def web_ide_clientside_preview_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
         """
         return pulumi.get(self, "web_ide_clientside_preview_enabled")
 
     @web_ide_clientside_preview_enabled.setter
-    def web_ide_clientside_preview_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def web_ide_clientside_preview_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "web_ide_clientside_preview_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="whatsNewVariant")
-    def whats_new_variant(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def whats_new_variant(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         What's new variant, possible values: all*tiers, current*tier, and disabled.
         """
         return pulumi.get(self, "whats_new_variant")
 
     @whats_new_variant.setter
-    def whats_new_variant(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def whats_new_variant(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "whats_new_variant", value)
 
     @_builtins.property
     @pulumi.getter(name="wikiPageMaxContentBytes")
-    def wiki_page_max_content_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def wiki_page_max_content_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
         """
         return pulumi.get(self, "wiki_page_max_content_bytes")
 
     @wiki_page_max_content_bytes.setter
-    def wiki_page_max_content_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def wiki_page_max_content_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "wiki_page_max_content_bytes", value)
 
 
@@ -10354,327 +10354,327 @@ class ApplicationSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 abuse_notification_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 after_sign_out_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 after_sign_up_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 akismet_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 akismet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_account_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_group_owners_to_manage_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_local_requests_from_system_hooks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_local_requests_from_web_hooks_and_services: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_project_creation_for_guest_and_below: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_runner_registration_token: Optional[pulumi.Input[_builtins.bool]] = None,
-                 archive_builds_in_human_readable: Optional[pulumi.Input[_builtins.str]] = None,
-                 asciidoc_max_includes: Optional[pulumi.Input[_builtins.int]] = None,
-                 asset_proxy_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 asset_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 asset_proxy_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 asset_proxy_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_keys_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_ban_user_on_excessive_projects_download: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_devops_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 automatic_purchased_storage_allocation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bulk_import_concurrent_pipeline_batch_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 bulk_import_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bulk_import_max_download_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 can_create_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 check_namespace_plan: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_job_live_trace_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_max_includes: Optional[pulumi.Input[_builtins.int]] = None,
-                 ci_max_total_yaml_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 commit_email_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 concurrent_bitbucket_import_jobs_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 concurrent_bitbucket_server_import_jobs_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 concurrent_github_import_jobs_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_registry_cleanup_tags_service_max_list_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_registry_delete_tags_service_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_registry_expiration_policies_caching: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_registry_expiration_policies_worker_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_registry_token_expire_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 deactivate_dormant_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deactivate_dormant_users_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 decompress_archive_file_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_artifacts_expire_in: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch_protection: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_branch_protection_defaults: Optional[pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']]] = None,
-                 default_ci_config_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_group_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_preferred_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_project_creation: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_project_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_projects_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_snippet_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_syntax_highlighting_theme: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_inactive_projects: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_unconfirmed_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_adjourned_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 diagramsnet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 diagramsnet_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 diff_max_files: Optional[pulumi.Input[_builtins.int]] = None,
-                 diff_max_lines: Optional[pulumi.Input[_builtins.int]] = None,
-                 diff_max_patch_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 disable_admin_oauth_scopes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_feed_token: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_personal_access_tokens: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_rebinding_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 domain_denylist_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_denylists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 downstream_pipeline_trigger_limit_per_project_user_sha: Optional[pulumi.Input[_builtins.int]] = None,
-                 dsa_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 duo_features_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecdsa_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 ecdsa_sk_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 ed25519_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 ed25519_sk_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 eks_access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 eks_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 eks_integration_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 eks_secret_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_aws: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_aws_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_aws_secret_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_indexed_field_length_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_indexed_file_size_limit_kb: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_indexing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_limit_indexing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_max_code_indexing_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 elasticsearch_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 elasticsearch_requeue_workers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_search: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 elasticsearch_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_worker_number_of_shards: Optional[pulumi.Input[_builtins.int]] = None,
-                 email_additional_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_author_in_body: Optional[pulumi.Input[_builtins.bool]] = None,
-                 email_confirmation_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_artifact_external_redirect_warning_page: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_git_access_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_namespace_storage_limit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enforce_terms: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_auth_client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_auth_client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_auth_client_key_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_authorization_service_default_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_authorization_service_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_authorization_service_timeout: Optional[pulumi.Input[_builtins.float]] = None,
-                 external_authorization_service_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_pipeline_validation_service_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 external_pipeline_validation_service_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_pipeline_validation_service_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 failed_login_attempts_unlock_period_in_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_template_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 first_day_of_week: Optional[pulumi.Input[_builtins.int]] = None,
-                 geo_node_allowed_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 geo_status_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 git_rate_limit_users_alertlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 git_rate_limit_users_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 git_two_factor_session_expiry: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitaly_timeout_default: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitaly_timeout_fast: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitaly_timeout_medium: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitlab_shell_operation_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitpod_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gitpod_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 globally_allowed_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grafana_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 gravatar_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 help_page_hide_commercial_content: Optional[pulumi.Input[_builtins.bool]] = None,
-                 help_page_support_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 help_page_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 help_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 hide_third_party_offers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 home_page_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 housekeeping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 housekeeping_optimize_repository_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 html_emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 in_product_marketing_emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 inactive_projects_delete_after_months: Optional[pulumi.Input[_builtins.int]] = None,
-                 inactive_projects_min_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[_builtins.int]] = None,
-                 inactive_resource_access_tokens_delete_after_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 include_optional_metrics_in_service_ping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 invisible_captcha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_create_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 jira_connect_application_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_connect_proxy_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_connect_public_key_storage_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_latest_artifact: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kroki_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kroki_formats: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
-                 kroki_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_markdown_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 lock_duo_features_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lock_memberships_to_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lock_memberships_to_saml: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mailgun_events_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mailgun_signing_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintenance_mode_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_attachment_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_decompressed_archive_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_export_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_import_remote_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_import_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_login_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_number_of_repository_downloads: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_number_of_repository_downloads_within_time_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pages_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_personal_access_token_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_ssh_key_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_terraform_state_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_method_call_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_password_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 mirror_available: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_capacity_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 mirror_max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 mirror_max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 notify_on_unknown_sign_in: Optional[pulumi.Input[_builtins.bool]] = None,
-                 npm_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nuget_skip_metadata_url_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 package_metadata_purl_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 package_registry_allow_anyone_to_pull_option: Optional[pulumi.Input[_builtins.bool]] = None,
-                 package_registry_cleanup_policies_worker_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 pages_domain_verification_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_authentication_enabled_for_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_authentication_enabled_for_web: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_lowercase_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_number_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_symbol_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_uppercase_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 performance_bar_allowed_group_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 personal_access_token_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_limit_per_project_user_sha: Optional[pulumi.Input[_builtins.int]] = None,
-                 plantuml_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 plantuml_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 polling_interval_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
-                 prevent_merge_requests_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_merge_requests_committers_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_export_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_jobs_api_rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 projects_api_rate_limit_unauthenticated: Optional[pulumi.Input[_builtins.int]] = None,
-                 prometheus_metrics_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protected_ci_variables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_event_activities_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 push_event_hooks_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 pypi_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rate_limiting_response_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 raw_blob_request_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 recaptcha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 recaptcha_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 recaptcha_site_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 receive_max_input_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 receptive_cluster_agents_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remember_me_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_checks_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_size_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-                 require_admin_approval_after_user_signup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_admin_two_factor_authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_personal_access_token_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_two_factor_authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 restricted_visibility_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rsa_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 search_rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 search_rate_limit_unauthenticated: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_approval_policies_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_global_group_approvers_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_txt_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_user_confirmation_email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_access_tokens_expiration_enforced: Optional[pulumi.Input[_builtins.bool]] = None,
-                 session_expire_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shared_runners_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared_runners_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 sidekiq_job_limiter_compression_threshold_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 sidekiq_job_limiter_limit_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 sidekiq_job_limiter_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_in_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 signup_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 silent_admin_exports_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 silent_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slack_app_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slack_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slack_app_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 slack_app_signing_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 slack_app_verification_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 snippet_size_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 snowplow_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_collector_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_cookie_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_database_collector_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sourcegraph_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sourcegraph_public_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sourcegraph_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 spam_check_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 spam_check_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spam_check_endpoint_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_objects_external_storage_auth_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_objects_external_storage_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 suggest_pipeline_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 terminal_max_session_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 terms: Optional[pulumi.Input[_builtins.str]] = None,
-                 throttle_authenticated_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_git_lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_git_lfs_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_git_lfs_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_packages_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_packages_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_packages_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_web_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_web_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_web_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_unauthenticated_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_packages_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_unauthenticated_packages_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_packages_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_web_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_unauthenticated_web_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_web_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_tracking_limit_to_hours: Optional[pulumi.Input[_builtins.bool]] = None,
-                 two_factor_grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 unconfirmed_users_delete_after_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 unique_ips_limit_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unique_ips_limit_per_user: Optional[pulumi.Input[_builtins.int]] = None,
-                 unique_ips_limit_time_window: Optional[pulumi.Input[_builtins.int]] = None,
-                 update_runner_versions_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 updating_name_disabled_for_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 usage_ping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_clickhouse_for_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_deactivation_emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_default_external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_default_internal_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_defaults_to_private_profile: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_oauth_applications: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_show_add_ssh_key_message: Optional[pulumi.Input[_builtins.bool]] = None,
-                 valid_runner_registrars: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 version_check_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 web_ide_clientside_preview_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 whats_new_variant: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_page_max_content_bytes: Optional[pulumi.Input[_builtins.int]] = None,
+                 abuse_notification_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 after_sign_out_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 after_sign_up_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_group_owners_to_manage_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_local_requests_from_system_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_local_requests_from_web_hooks_and_services: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_project_creation_for_guest_and_below: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_runner_registration_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 archive_builds_in_human_readable: pulumi.Input[Optional[_builtins.str]] = None,
+                 asciidoc_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
+                 asset_proxy_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 asset_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 asset_proxy_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 asset_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_keys_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_ban_user_on_excessive_projects_download: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_devops_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 automatic_purchased_storage_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bulk_import_concurrent_pipeline_batch_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 bulk_import_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bulk_import_max_download_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 check_namespace_plan: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_job_live_trace_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
+                 ci_max_total_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 commit_email_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 concurrent_bitbucket_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_bitbucket_server_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_github_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_expiration_policies_enable_historic_entries: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_registry_cleanup_tags_service_max_list_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_registry_delete_tags_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_registry_expiration_policies_caching: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_registry_expiration_policies_worker_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_registry_token_expire_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 deactivate_dormant_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deactivate_dormant_users_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 decompress_archive_file_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_artifacts_expire_in: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_branch_protection_defaults: pulumi.Input[Optional[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']]] = None,
+                 default_ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_group_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_preferred_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_project_creation: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_project_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_projects_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_snippet_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_syntax_highlighting_theme: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_inactive_projects: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_unconfirmed_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_adjourned_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 diagramsnet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 diagramsnet_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 diff_max_files: pulumi.Input[Optional[_builtins.int]] = None,
+                 diff_max_lines: pulumi.Input[Optional[_builtins.int]] = None,
+                 diff_max_patch_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 disable_admin_oauth_scopes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_feed_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_personal_access_tokens: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disabled_oauth_sign_in_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_rebinding_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 domain_denylist_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_denylists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 downstream_pipeline_trigger_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+                 dsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecdsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 ecdsa_sk_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 ed25519_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 ed25519_sk_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 eks_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 eks_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 eks_integration_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 eks_secret_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_aws: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_aws_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_aws_secret_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_indexed_field_length_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_indexed_file_size_limit_kb: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_indexing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_limit_indexing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_max_bulk_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_max_bulk_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_max_code_indexing_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_namespace_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 elasticsearch_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_project_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 elasticsearch_requeue_workers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_search: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 elasticsearch_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_worker_number_of_shards: pulumi.Input[Optional[_builtins.int]] = None,
+                 email_additional_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_author_in_body: pulumi.Input[Optional[_builtins.bool]] = None,
+                 email_confirmation_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_artifact_external_redirect_warning_page: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_git_access_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_namespace_storage_limit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enforce_terms: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_auth_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_auth_client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_auth_client_key_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_authorization_service_default_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_authorization_service_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_authorization_service_timeout: pulumi.Input[Optional[_builtins.float]] = None,
+                 external_authorization_service_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_pipeline_validation_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 external_pipeline_validation_service_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_pipeline_validation_service_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 failed_login_attempts_unlock_period_in_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_template_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 first_day_of_week: pulumi.Input[Optional[_builtins.int]] = None,
+                 geo_node_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 geo_status_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 git_rate_limit_users_alertlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 git_rate_limit_users_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 git_two_factor_session_expiry: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitaly_timeout_default: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitaly_timeout_fast: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitaly_timeout_medium: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitlab_shell_operation_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitpod_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gitpod_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 globally_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grafana_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 gravatar_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_owners_can_manage_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 help_page_hide_commercial_content: pulumi.Input[Optional[_builtins.bool]] = None,
+                 help_page_support_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 help_page_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 help_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 hide_third_party_offers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 home_page_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 housekeeping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 housekeeping_optimize_repository_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 html_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 import_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 in_product_marketing_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inactive_projects_delete_after_months: pulumi.Input[Optional[_builtins.int]] = None,
+                 inactive_projects_min_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 inactive_projects_send_warning_email_after_months: pulumi.Input[Optional[_builtins.int]] = None,
+                 inactive_resource_access_tokens_delete_after_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 include_optional_metrics_in_service_ping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 invisible_captcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 jira_connect_application_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_connect_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_connect_public_key_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kroki_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kroki_formats: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
+                 kroki_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_markdown_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 lock_duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_memberships_to_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_memberships_to_saml: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mailgun_events_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mailgun_signing_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maintenance_mode_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_attachment_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_decompressed_archive_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_import_remote_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_import_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_login_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_number_of_repository_downloads: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_number_of_repository_downloads_within_time_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_pages_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_personal_access_token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_ssh_key_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_terraform_state_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_method_call_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_password_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 mirror_available: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_capacity_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 mirror_max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 mirror_max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 notify_on_unknown_sign_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 npm_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nuget_skip_metadata_url_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 outbound_local_requests_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 package_metadata_purl_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 package_registry_allow_anyone_to_pull_option: pulumi.Input[Optional[_builtins.bool]] = None,
+                 package_registry_cleanup_policies_worker_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 pages_domain_verification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_authentication_enabled_for_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_authentication_enabled_for_web: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_lowercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_number_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_symbol_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_uppercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 performance_bar_allowed_group_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_access_token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+                 plantuml_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 plantuml_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 polling_interval_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
+                 prevent_merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_merge_requests_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_export_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_jobs_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 projects_api_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
+                 prometheus_metrics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protected_ci_variables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_event_activities_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 push_event_hooks_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 pypi_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rate_limiting_response_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 raw_blob_request_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 recaptcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 recaptcha_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 recaptcha_site_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 receive_max_input_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 receptive_cluster_agents_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remember_me_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_checks_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 repository_storages_weighted: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+                 require_admin_approval_after_user_signup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_admin_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_personal_access_token_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 restricted_visibility_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_approval_policies_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_global_group_approvers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_txt_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_user_confirmation_email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_access_tokens_expiration_enforced: pulumi.Input[Optional[_builtins.bool]] = None,
+                 session_expire_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shared_runners_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared_runners_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 sidekiq_job_limiter_compression_threshold_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 sidekiq_job_limiter_limit_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 sidekiq_job_limiter_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_in_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 signup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 silent_admin_exports_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 silent_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slack_app_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slack_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slack_app_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 slack_app_signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 slack_app_verification_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 snippet_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 snowplow_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_collector_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_cookie_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_database_collector_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sourcegraph_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sourcegraph_public_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sourcegraph_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 spam_check_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 spam_check_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spam_check_endpoint_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_objects_external_storage_auth_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_objects_external_storage_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 suggest_pipeline_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 terminal_max_session_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 terms: pulumi.Input[Optional[_builtins.str]] = None,
+                 throttle_authenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_git_lfs_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_lfs_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_tracking_limit_to_hours: pulumi.Input[Optional[_builtins.bool]] = None,
+                 two_factor_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 unconfirmed_users_delete_after_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 unique_ips_limit_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unique_ips_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 unique_ips_limit_time_window: pulumi.Input[Optional[_builtins.int]] = None,
+                 update_runner_versions_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updating_name_disabled_for_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 usage_ping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_clickhouse_for_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_deactivation_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_default_external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_default_internal_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_defaults_to_private_profile: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_oauth_applications: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_show_add_ssh_key_message: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valid_runner_registrars: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 version_check_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 web_ide_clientside_preview_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 whats_new_variant: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_page_max_content_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The `ApplicationSettings` resource manages the GitLab application settings.
@@ -11055,327 +11055,327 @@ class ApplicationSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 abuse_notification_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 after_sign_out_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 after_sign_up_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 akismet_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 akismet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_account_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_group_owners_to_manage_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_local_requests_from_system_hooks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_local_requests_from_web_hooks_and_services: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_project_creation_for_guest_and_below: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_runner_registration_token: Optional[pulumi.Input[_builtins.bool]] = None,
-                 archive_builds_in_human_readable: Optional[pulumi.Input[_builtins.str]] = None,
-                 asciidoc_max_includes: Optional[pulumi.Input[_builtins.int]] = None,
-                 asset_proxy_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 asset_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 asset_proxy_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 asset_proxy_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_keys_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_ban_user_on_excessive_projects_download: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_devops_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 automatic_purchased_storage_allocation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bulk_import_concurrent_pipeline_batch_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 bulk_import_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bulk_import_max_download_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 can_create_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 check_namespace_plan: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_job_live_trace_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_max_includes: Optional[pulumi.Input[_builtins.int]] = None,
-                 ci_max_total_yaml_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 commit_email_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 concurrent_bitbucket_import_jobs_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 concurrent_bitbucket_server_import_jobs_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 concurrent_github_import_jobs_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_registry_cleanup_tags_service_max_list_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_registry_delete_tags_service_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_registry_expiration_policies_caching: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_registry_expiration_policies_worker_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_registry_token_expire_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 deactivate_dormant_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deactivate_dormant_users_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 decompress_archive_file_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_artifacts_expire_in: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch_protection: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_branch_protection_defaults: Optional[pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']]] = None,
-                 default_ci_config_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_group_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_preferred_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_project_creation: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_project_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_projects_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_snippet_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_syntax_highlighting_theme: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_inactive_projects: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_unconfirmed_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_adjourned_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 diagramsnet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 diagramsnet_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 diff_max_files: Optional[pulumi.Input[_builtins.int]] = None,
-                 diff_max_lines: Optional[pulumi.Input[_builtins.int]] = None,
-                 diff_max_patch_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 disable_admin_oauth_scopes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_feed_token: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_personal_access_tokens: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_rebinding_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 domain_denylist_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_denylists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 downstream_pipeline_trigger_limit_per_project_user_sha: Optional[pulumi.Input[_builtins.int]] = None,
-                 dsa_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 duo_features_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecdsa_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 ecdsa_sk_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 ed25519_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 ed25519_sk_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 eks_access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 eks_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 eks_integration_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 eks_secret_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_aws: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_aws_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_aws_secret_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_indexed_field_length_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_indexed_file_size_limit_kb: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_indexing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_limit_indexing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_max_code_indexing_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 elasticsearch_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 elasticsearch_requeue_workers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_search: Optional[pulumi.Input[_builtins.bool]] = None,
-                 elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 elasticsearch_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticsearch_worker_number_of_shards: Optional[pulumi.Input[_builtins.int]] = None,
-                 email_additional_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_author_in_body: Optional[pulumi.Input[_builtins.bool]] = None,
-                 email_confirmation_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_artifact_external_redirect_warning_page: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled_git_access_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_namespace_storage_limit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enforce_terms: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_auth_client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_auth_client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_auth_client_key_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_authorization_service_default_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_authorization_service_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_authorization_service_timeout: Optional[pulumi.Input[_builtins.float]] = None,
-                 external_authorization_service_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_pipeline_validation_service_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 external_pipeline_validation_service_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_pipeline_validation_service_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 failed_login_attempts_unlock_period_in_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_template_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 first_day_of_week: Optional[pulumi.Input[_builtins.int]] = None,
-                 geo_node_allowed_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 geo_status_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 git_rate_limit_users_alertlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 git_rate_limit_users_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 git_two_factor_session_expiry: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitaly_timeout_default: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitaly_timeout_fast: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitaly_timeout_medium: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitlab_shell_operation_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 gitpod_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gitpod_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 globally_allowed_ips: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grafana_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 gravatar_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 help_page_hide_commercial_content: Optional[pulumi.Input[_builtins.bool]] = None,
-                 help_page_support_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 help_page_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 help_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 hide_third_party_offers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 home_page_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 housekeeping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 housekeeping_optimize_repository_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 html_emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 in_product_marketing_emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 inactive_projects_delete_after_months: Optional[pulumi.Input[_builtins.int]] = None,
-                 inactive_projects_min_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[_builtins.int]] = None,
-                 inactive_resource_access_tokens_delete_after_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 include_optional_metrics_in_service_ping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 invisible_captcha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_create_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 jira_connect_application_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_connect_proxy_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 jira_connect_public_key_storage_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_latest_artifact: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kroki_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kroki_formats: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
-                 kroki_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_markdown_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 lock_duo_features_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lock_memberships_to_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lock_memberships_to_saml: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mailgun_events_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mailgun_signing_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintenance_mode_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_attachment_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_decompressed_archive_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_export_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_import_remote_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_import_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_login_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_number_of_repository_downloads: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_number_of_repository_downloads_within_time_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pages_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_personal_access_token_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_ssh_key_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_terraform_state_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_method_call_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_password_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 mirror_available: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_capacity_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 mirror_max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 mirror_max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 notify_on_unknown_sign_in: Optional[pulumi.Input[_builtins.bool]] = None,
-                 npm_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nuget_skip_metadata_url_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 package_metadata_purl_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 package_registry_allow_anyone_to_pull_option: Optional[pulumi.Input[_builtins.bool]] = None,
-                 package_registry_cleanup_policies_worker_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 pages_domain_verification_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_authentication_enabled_for_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_authentication_enabled_for_web: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_lowercase_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_number_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_symbol_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_uppercase_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 performance_bar_allowed_group_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 personal_access_token_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_limit_per_project_user_sha: Optional[pulumi.Input[_builtins.int]] = None,
-                 plantuml_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 plantuml_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 polling_interval_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
-                 prevent_merge_requests_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_merge_requests_committers_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_export_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_jobs_api_rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 projects_api_rate_limit_unauthenticated: Optional[pulumi.Input[_builtins.int]] = None,
-                 prometheus_metrics_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protected_ci_variables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_event_activities_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 push_event_hooks_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 pypi_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rate_limiting_response_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 raw_blob_request_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 recaptcha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 recaptcha_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 recaptcha_site_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 receive_max_input_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 receptive_cluster_agents_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remember_me_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_checks_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_size_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-                 require_admin_approval_after_user_signup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_admin_two_factor_authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_personal_access_token_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_two_factor_authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 restricted_visibility_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rsa_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-                 search_rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 search_rate_limit_unauthenticated: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_approval_policies_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_global_group_approvers_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_txt_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_user_confirmation_email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_access_tokens_expiration_enforced: Optional[pulumi.Input[_builtins.bool]] = None,
-                 session_expire_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shared_runners_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared_runners_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 sidekiq_job_limiter_compression_threshold_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 sidekiq_job_limiter_limit_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 sidekiq_job_limiter_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_in_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 signup_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 silent_admin_exports_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 silent_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slack_app_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slack_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slack_app_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 slack_app_signing_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 slack_app_verification_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 snippet_size_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 snowplow_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_collector_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_cookie_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_database_collector_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 snowplow_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sourcegraph_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sourcegraph_public_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sourcegraph_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 spam_check_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 spam_check_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spam_check_endpoint_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_objects_external_storage_auth_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_objects_external_storage_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 suggest_pipeline_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 terminal_max_session_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 terms: Optional[pulumi.Input[_builtins.str]] = None,
-                 throttle_authenticated_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_git_lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_git_lfs_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_git_lfs_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_packages_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_packages_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_packages_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_web_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_authenticated_web_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_authenticated_web_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_unauthenticated_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_packages_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_unauthenticated_packages_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_packages_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_web_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 throttle_unauthenticated_web_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 throttle_unauthenticated_web_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_tracking_limit_to_hours: Optional[pulumi.Input[_builtins.bool]] = None,
-                 two_factor_grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 unconfirmed_users_delete_after_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 unique_ips_limit_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unique_ips_limit_per_user: Optional[pulumi.Input[_builtins.int]] = None,
-                 unique_ips_limit_time_window: Optional[pulumi.Input[_builtins.int]] = None,
-                 update_runner_versions_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 updating_name_disabled_for_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 usage_ping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_clickhouse_for_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_deactivation_emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_default_external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_default_internal_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_defaults_to_private_profile: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_oauth_applications: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_show_add_ssh_key_message: Optional[pulumi.Input[_builtins.bool]] = None,
-                 valid_runner_registrars: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 version_check_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 web_ide_clientside_preview_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 whats_new_variant: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_page_max_content_bytes: Optional[pulumi.Input[_builtins.int]] = None,
+                 abuse_notification_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 after_sign_out_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 after_sign_up_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_group_owners_to_manage_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_local_requests_from_system_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_local_requests_from_web_hooks_and_services: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_project_creation_for_guest_and_below: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_runner_registration_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 archive_builds_in_human_readable: pulumi.Input[Optional[_builtins.str]] = None,
+                 asciidoc_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
+                 asset_proxy_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 asset_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 asset_proxy_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 asset_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_keys_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_ban_user_on_excessive_projects_download: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_devops_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 automatic_purchased_storage_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bulk_import_concurrent_pipeline_batch_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 bulk_import_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bulk_import_max_download_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 check_namespace_plan: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_job_live_trace_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
+                 ci_max_total_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 commit_email_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 concurrent_bitbucket_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_bitbucket_server_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_github_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_expiration_policies_enable_historic_entries: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_registry_cleanup_tags_service_max_list_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_registry_delete_tags_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_registry_expiration_policies_caching: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_registry_expiration_policies_worker_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_registry_token_expire_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 deactivate_dormant_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deactivate_dormant_users_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 decompress_archive_file_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_artifacts_expire_in: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_branch_protection_defaults: pulumi.Input[Optional[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']]] = None,
+                 default_ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_group_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_preferred_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_project_creation: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_project_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_projects_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_snippet_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_syntax_highlighting_theme: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_inactive_projects: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_unconfirmed_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_adjourned_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 diagramsnet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 diagramsnet_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 diff_max_files: pulumi.Input[Optional[_builtins.int]] = None,
+                 diff_max_lines: pulumi.Input[Optional[_builtins.int]] = None,
+                 diff_max_patch_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 disable_admin_oauth_scopes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_feed_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_personal_access_tokens: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disabled_oauth_sign_in_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_rebinding_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 domain_denylist_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_denylists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 downstream_pipeline_trigger_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+                 dsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecdsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 ecdsa_sk_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 ed25519_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 ed25519_sk_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 eks_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 eks_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 eks_integration_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 eks_secret_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_aws: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_aws_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_aws_secret_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_indexed_field_length_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_indexed_file_size_limit_kb: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_indexing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_limit_indexing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_max_bulk_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_max_bulk_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_max_code_indexing_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 elasticsearch_namespace_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 elasticsearch_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_project_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 elasticsearch_requeue_workers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_search: pulumi.Input[Optional[_builtins.bool]] = None,
+                 elasticsearch_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 elasticsearch_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticsearch_worker_number_of_shards: pulumi.Input[Optional[_builtins.int]] = None,
+                 email_additional_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_author_in_body: pulumi.Input[Optional[_builtins.bool]] = None,
+                 email_confirmation_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_artifact_external_redirect_warning_page: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_git_access_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_namespace_storage_limit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enforce_terms: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_auth_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_auth_client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_auth_client_key_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_authorization_service_default_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_authorization_service_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_authorization_service_timeout: pulumi.Input[Optional[_builtins.float]] = None,
+                 external_authorization_service_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_pipeline_validation_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 external_pipeline_validation_service_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_pipeline_validation_service_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 failed_login_attempts_unlock_period_in_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_template_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 first_day_of_week: pulumi.Input[Optional[_builtins.int]] = None,
+                 geo_node_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 geo_status_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 git_rate_limit_users_alertlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 git_rate_limit_users_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 git_two_factor_session_expiry: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitaly_timeout_default: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitaly_timeout_fast: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitaly_timeout_medium: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitlab_shell_operation_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 gitpod_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gitpod_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 globally_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grafana_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 gravatar_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_owners_can_manage_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 help_page_hide_commercial_content: pulumi.Input[Optional[_builtins.bool]] = None,
+                 help_page_support_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 help_page_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 help_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 hide_third_party_offers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 home_page_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 housekeeping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 housekeeping_optimize_repository_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 html_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 import_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 in_product_marketing_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inactive_projects_delete_after_months: pulumi.Input[Optional[_builtins.int]] = None,
+                 inactive_projects_min_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 inactive_projects_send_warning_email_after_months: pulumi.Input[Optional[_builtins.int]] = None,
+                 inactive_resource_access_tokens_delete_after_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 include_optional_metrics_in_service_ping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 invisible_captcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 jira_connect_application_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_connect_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 jira_connect_public_key_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kroki_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kroki_formats: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
+                 kroki_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_markdown_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 lock_duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_memberships_to_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_memberships_to_saml: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mailgun_events_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mailgun_signing_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maintenance_mode_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_attachment_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_decompressed_archive_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_import_remote_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_import_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_login_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_number_of_repository_downloads: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_number_of_repository_downloads_within_time_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_pages_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_personal_access_token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_ssh_key_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_terraform_state_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_method_call_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 minimum_password_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 mirror_available: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_capacity_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 mirror_max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 mirror_max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 notify_on_unknown_sign_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 npm_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nuget_skip_metadata_url_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 outbound_local_requests_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 package_metadata_purl_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 package_registry_allow_anyone_to_pull_option: pulumi.Input[Optional[_builtins.bool]] = None,
+                 package_registry_cleanup_policies_worker_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 pages_domain_verification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_authentication_enabled_for_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_authentication_enabled_for_web: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_lowercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_number_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_symbol_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_uppercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 performance_bar_allowed_group_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_access_token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+                 plantuml_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 plantuml_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 polling_interval_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
+                 prevent_merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_merge_requests_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_export_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_jobs_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 projects_api_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
+                 prometheus_metrics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protected_ci_variables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_event_activities_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 push_event_hooks_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 pypi_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rate_limiting_response_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 raw_blob_request_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 recaptcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 recaptcha_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 recaptcha_site_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 receive_max_input_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 receptive_cluster_agents_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remember_me_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_checks_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 repository_storages_weighted: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+                 require_admin_approval_after_user_signup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_admin_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_personal_access_token_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 restricted_visibility_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_approval_policies_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_global_group_approvers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_txt_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_user_confirmation_email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_access_tokens_expiration_enforced: pulumi.Input[Optional[_builtins.bool]] = None,
+                 session_expire_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shared_runners_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared_runners_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 sidekiq_job_limiter_compression_threshold_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 sidekiq_job_limiter_limit_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 sidekiq_job_limiter_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_in_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 signup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 silent_admin_exports_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 silent_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slack_app_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slack_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slack_app_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 slack_app_signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 slack_app_verification_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 snippet_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 snowplow_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_collector_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_cookie_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_database_collector_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 snowplow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sourcegraph_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sourcegraph_public_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sourcegraph_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 spam_check_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 spam_check_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spam_check_endpoint_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_objects_external_storage_auth_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_objects_external_storage_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 suggest_pipeline_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 terminal_max_session_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 terms: pulumi.Input[Optional[_builtins.str]] = None,
+                 throttle_authenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_git_lfs_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_lfs_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_tracking_limit_to_hours: pulumi.Input[Optional[_builtins.bool]] = None,
+                 two_factor_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 unconfirmed_users_delete_after_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 unique_ips_limit_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unique_ips_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 unique_ips_limit_time_window: pulumi.Input[Optional[_builtins.int]] = None,
+                 update_runner_versions_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updating_name_disabled_for_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 usage_ping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_clickhouse_for_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_deactivation_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_default_external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_default_internal_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_defaults_to_private_profile: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_oauth_applications: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_show_add_ssh_key_message: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valid_runner_registrars: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 version_check_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 web_ide_clientside_preview_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 whats_new_variant: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_page_max_content_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -11720,329 +11720,329 @@ class ApplicationSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            abuse_notification_email: Optional[pulumi.Input[_builtins.str]] = None,
-            admin_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-            after_sign_out_path: Optional[pulumi.Input[_builtins.str]] = None,
-            after_sign_up_text: Optional[pulumi.Input[_builtins.str]] = None,
-            akismet_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-            akismet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_account_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_group_owners_to_manage_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_local_requests_from_system_hooks: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_local_requests_from_web_hooks_and_services: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_project_creation_for_guest_and_below: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_runner_registration_token: Optional[pulumi.Input[_builtins.bool]] = None,
-            archive_builds_in_human_readable: Optional[pulumi.Input[_builtins.str]] = None,
-            asciidoc_max_includes: Optional[pulumi.Input[_builtins.int]] = None,
-            asset_proxy_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            asset_proxy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            asset_proxy_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-            asset_proxy_url: Optional[pulumi.Input[_builtins.str]] = None,
-            authorized_keys_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_ban_user_on_excessive_projects_download: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_devops_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            automatic_purchased_storage_allocation: Optional[pulumi.Input[_builtins.bool]] = None,
-            bulk_import_concurrent_pipeline_batch_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            bulk_import_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            bulk_import_max_download_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-            can_create_group: Optional[pulumi.Input[_builtins.bool]] = None,
-            check_namespace_plan: Optional[pulumi.Input[_builtins.bool]] = None,
-            ci_job_live_trace_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            ci_max_includes: Optional[pulumi.Input[_builtins.int]] = None,
-            ci_max_total_yaml_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            commit_email_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-            concurrent_bitbucket_import_jobs_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            concurrent_bitbucket_server_import_jobs_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            concurrent_github_import_jobs_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            container_expiration_policies_enable_historic_entries: Optional[pulumi.Input[_builtins.bool]] = None,
-            container_registry_cleanup_tags_service_max_list_size: Optional[pulumi.Input[_builtins.int]] = None,
-            container_registry_delete_tags_service_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            container_registry_expiration_policies_caching: Optional[pulumi.Input[_builtins.bool]] = None,
-            container_registry_expiration_policies_worker_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            container_registry_token_expire_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            deactivate_dormant_users: Optional[pulumi.Input[_builtins.bool]] = None,
-            deactivate_dormant_users_period: Optional[pulumi.Input[_builtins.int]] = None,
-            decompress_archive_file_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            default_artifacts_expire_in: Optional[pulumi.Input[_builtins.str]] = None,
-            default_branch_name: Optional[pulumi.Input[_builtins.str]] = None,
-            default_branch_protection: Optional[pulumi.Input[_builtins.int]] = None,
-            default_branch_protection_defaults: Optional[pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']]] = None,
-            default_ci_config_path: Optional[pulumi.Input[_builtins.str]] = None,
-            default_group_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-            default_preferred_language: Optional[pulumi.Input[_builtins.str]] = None,
-            default_project_creation: Optional[pulumi.Input[_builtins.int]] = None,
-            default_project_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-            default_projects_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            default_snippet_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-            default_syntax_highlighting_theme: Optional[pulumi.Input[_builtins.int]] = None,
-            delete_inactive_projects: Optional[pulumi.Input[_builtins.bool]] = None,
-            delete_unconfirmed_users: Optional[pulumi.Input[_builtins.bool]] = None,
-            deletion_adjourned_period: Optional[pulumi.Input[_builtins.int]] = None,
-            diagramsnet_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            diagramsnet_url: Optional[pulumi.Input[_builtins.str]] = None,
-            diff_max_files: Optional[pulumi.Input[_builtins.int]] = None,
-            diff_max_lines: Optional[pulumi.Input[_builtins.int]] = None,
-            diff_max_patch_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            disable_admin_oauth_scopes: Optional[pulumi.Input[_builtins.bool]] = None,
-            disable_feed_token: Optional[pulumi.Input[_builtins.bool]] = None,
-            disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-            disable_personal_access_tokens: Optional[pulumi.Input[_builtins.bool]] = None,
-            disabled_oauth_sign_in_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            dns_rebinding_protection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            domain_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            domain_denylist_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            domain_denylists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            downstream_pipeline_trigger_limit_per_project_user_sha: Optional[pulumi.Input[_builtins.int]] = None,
-            dsa_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-            duo_features_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            ecdsa_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-            ecdsa_sk_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-            ed25519_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-            ed25519_sk_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-            eks_access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            eks_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            eks_integration_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            eks_secret_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-            elasticsearch_aws: Optional[pulumi.Input[_builtins.bool]] = None,
-            elasticsearch_aws_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-            elasticsearch_aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-            elasticsearch_aws_secret_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-            elasticsearch_indexed_field_length_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            elasticsearch_indexed_file_size_limit_kb: Optional[pulumi.Input[_builtins.int]] = None,
-            elasticsearch_indexing: Optional[pulumi.Input[_builtins.bool]] = None,
-            elasticsearch_limit_indexing: Optional[pulumi.Input[_builtins.bool]] = None,
-            elasticsearch_max_bulk_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-            elasticsearch_max_bulk_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-            elasticsearch_max_code_indexing_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-            elasticsearch_namespace_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            elasticsearch_password: Optional[pulumi.Input[_builtins.str]] = None,
-            elasticsearch_project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            elasticsearch_requeue_workers: Optional[pulumi.Input[_builtins.bool]] = None,
-            elasticsearch_search: Optional[pulumi.Input[_builtins.bool]] = None,
-            elasticsearch_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            elasticsearch_username: Optional[pulumi.Input[_builtins.str]] = None,
-            elasticsearch_worker_number_of_shards: Optional[pulumi.Input[_builtins.int]] = None,
-            email_additional_text: Optional[pulumi.Input[_builtins.str]] = None,
-            email_author_in_body: Optional[pulumi.Input[_builtins.bool]] = None,
-            email_confirmation_setting: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_artifact_external_redirect_warning_page: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled_git_access_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            enforce_namespace_storage_limit: Optional[pulumi.Input[_builtins.bool]] = None,
-            enforce_terms: Optional[pulumi.Input[_builtins.bool]] = None,
-            external_auth_client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            external_auth_client_key: Optional[pulumi.Input[_builtins.str]] = None,
-            external_auth_client_key_pass: Optional[pulumi.Input[_builtins.str]] = None,
-            external_authorization_service_default_label: Optional[pulumi.Input[_builtins.str]] = None,
-            external_authorization_service_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            external_authorization_service_timeout: Optional[pulumi.Input[_builtins.float]] = None,
-            external_authorization_service_url: Optional[pulumi.Input[_builtins.str]] = None,
-            external_pipeline_validation_service_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            external_pipeline_validation_service_token: Optional[pulumi.Input[_builtins.str]] = None,
-            external_pipeline_validation_service_url: Optional[pulumi.Input[_builtins.str]] = None,
-            failed_login_attempts_unlock_period_in_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-            file_template_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-            first_day_of_week: Optional[pulumi.Input[_builtins.int]] = None,
-            geo_node_allowed_ips: Optional[pulumi.Input[_builtins.str]] = None,
-            geo_status_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            git_rate_limit_users_alertlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            git_rate_limit_users_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            git_two_factor_session_expiry: Optional[pulumi.Input[_builtins.int]] = None,
-            gitaly_timeout_default: Optional[pulumi.Input[_builtins.int]] = None,
-            gitaly_timeout_fast: Optional[pulumi.Input[_builtins.int]] = None,
-            gitaly_timeout_medium: Optional[pulumi.Input[_builtins.int]] = None,
-            gitlab_dedicated_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-            gitlab_environment_toolkit_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-            gitlab_shell_operation_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            gitpod_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            gitpod_url: Optional[pulumi.Input[_builtins.str]] = None,
-            globally_allowed_ips: Optional[pulumi.Input[_builtins.str]] = None,
-            grafana_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            grafana_url: Optional[pulumi.Input[_builtins.str]] = None,
-            gravatar_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            group_owners_can_manage_default_branch_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            help_page_hide_commercial_content: Optional[pulumi.Input[_builtins.bool]] = None,
-            help_page_support_url: Optional[pulumi.Input[_builtins.str]] = None,
-            help_page_text: Optional[pulumi.Input[_builtins.str]] = None,
-            help_text: Optional[pulumi.Input[_builtins.str]] = None,
-            hide_third_party_offers: Optional[pulumi.Input[_builtins.bool]] = None,
-            home_page_url: Optional[pulumi.Input[_builtins.str]] = None,
-            housekeeping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            housekeeping_optimize_repository_period: Optional[pulumi.Input[_builtins.int]] = None,
-            html_emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            import_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            in_product_marketing_emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            inactive_projects_delete_after_months: Optional[pulumi.Input[_builtins.int]] = None,
-            inactive_projects_min_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-            inactive_projects_send_warning_email_after_months: Optional[pulumi.Input[_builtins.int]] = None,
-            inactive_resource_access_tokens_delete_after_days: Optional[pulumi.Input[_builtins.int]] = None,
-            include_optional_metrics_in_service_ping: Optional[pulumi.Input[_builtins.bool]] = None,
-            invisible_captcha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            issues_create_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            jira_connect_application_key: Optional[pulumi.Input[_builtins.str]] = None,
-            jira_connect_proxy_url: Optional[pulumi.Input[_builtins.str]] = None,
-            jira_connect_public_key_storage_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            keep_latest_artifact: Optional[pulumi.Input[_builtins.bool]] = None,
-            kroki_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            kroki_formats: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
-            kroki_url: Optional[pulumi.Input[_builtins.str]] = None,
-            local_markdown_version: Optional[pulumi.Input[_builtins.int]] = None,
-            lock_duo_features_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            lock_memberships_to_ldap: Optional[pulumi.Input[_builtins.bool]] = None,
-            lock_memberships_to_saml: Optional[pulumi.Input[_builtins.bool]] = None,
-            mailgun_events_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            mailgun_signing_key: Optional[pulumi.Input[_builtins.str]] = None,
-            maintenance_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-            maintenance_mode_message: Optional[pulumi.Input[_builtins.str]] = None,
-            maven_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-            max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
-            max_attachment_size: Optional[pulumi.Input[_builtins.int]] = None,
-            max_decompressed_archive_size: Optional[pulumi.Input[_builtins.int]] = None,
-            max_export_size: Optional[pulumi.Input[_builtins.int]] = None,
-            max_import_remote_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-            max_import_size: Optional[pulumi.Input[_builtins.int]] = None,
-            max_login_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-            max_number_of_repository_downloads: Optional[pulumi.Input[_builtins.int]] = None,
-            max_number_of_repository_downloads_within_time_period: Optional[pulumi.Input[_builtins.int]] = None,
-            max_pages_size: Optional[pulumi.Input[_builtins.int]] = None,
-            max_personal_access_token_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-            max_ssh_key_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-            max_terraform_state_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            metrics_method_call_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            minimum_password_length: Optional[pulumi.Input[_builtins.int]] = None,
-            mirror_available: Optional[pulumi.Input[_builtins.bool]] = None,
-            mirror_capacity_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            mirror_max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            mirror_max_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            notify_on_unknown_sign_in: Optional[pulumi.Input[_builtins.bool]] = None,
-            npm_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-            nuget_skip_metadata_url_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-            outbound_local_requests_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            package_metadata_purl_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            package_registry_allow_anyone_to_pull_option: Optional[pulumi.Input[_builtins.bool]] = None,
-            package_registry_cleanup_policies_worker_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            pages_domain_verification_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            password_authentication_enabled_for_git: Optional[pulumi.Input[_builtins.bool]] = None,
-            password_authentication_enabled_for_web: Optional[pulumi.Input[_builtins.bool]] = None,
-            password_lowercase_required: Optional[pulumi.Input[_builtins.bool]] = None,
-            password_number_required: Optional[pulumi.Input[_builtins.bool]] = None,
-            password_symbol_required: Optional[pulumi.Input[_builtins.bool]] = None,
-            password_uppercase_required: Optional[pulumi.Input[_builtins.bool]] = None,
-            performance_bar_allowed_group_path: Optional[pulumi.Input[_builtins.str]] = None,
-            personal_access_token_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            pipeline_limit_per_project_user_sha: Optional[pulumi.Input[_builtins.int]] = None,
-            plantuml_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            plantuml_url: Optional[pulumi.Input[_builtins.str]] = None,
-            polling_interval_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
-            prevent_merge_requests_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-            prevent_merge_requests_committers_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-            project_export_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            project_jobs_api_rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            projects_api_rate_limit_unauthenticated: Optional[pulumi.Input[_builtins.int]] = None,
-            prometheus_metrics_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            protected_ci_variables: Optional[pulumi.Input[_builtins.bool]] = None,
-            push_event_activities_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            push_event_hooks_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            pypi_package_requests_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-            rate_limiting_response_text: Optional[pulumi.Input[_builtins.str]] = None,
-            raw_blob_request_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            recaptcha_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            recaptcha_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-            recaptcha_site_key: Optional[pulumi.Input[_builtins.str]] = None,
-            receive_max_input_size: Optional[pulumi.Input[_builtins.int]] = None,
-            receptive_cluster_agents_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            remember_me_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            repository_checks_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            repository_size_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            repository_storages_weighted: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-            require_admin_approval_after_user_signup: Optional[pulumi.Input[_builtins.bool]] = None,
-            require_admin_two_factor_authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-            require_personal_access_token_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-            require_two_factor_authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-            restricted_visibility_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            rsa_key_restriction: Optional[pulumi.Input[_builtins.int]] = None,
-            search_rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            search_rate_limit_unauthenticated: Optional[pulumi.Input[_builtins.int]] = None,
-            security_approval_policies_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            security_policy_global_group_approvers_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            security_txt_content: Optional[pulumi.Input[_builtins.str]] = None,
-            send_user_confirmation_email: Optional[pulumi.Input[_builtins.bool]] = None,
-            service_access_tokens_expiration_enforced: Optional[pulumi.Input[_builtins.bool]] = None,
-            session_expire_delay: Optional[pulumi.Input[_builtins.int]] = None,
-            shared_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            shared_runners_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-            shared_runners_text: Optional[pulumi.Input[_builtins.str]] = None,
-            sidekiq_job_limiter_compression_threshold_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            sidekiq_job_limiter_limit_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            sidekiq_job_limiter_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            sign_in_text: Optional[pulumi.Input[_builtins.str]] = None,
-            signup_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            silent_admin_exports_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            silent_mode_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            slack_app_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            slack_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            slack_app_secret: Optional[pulumi.Input[_builtins.str]] = None,
-            slack_app_signing_secret: Optional[pulumi.Input[_builtins.str]] = None,
-            slack_app_verification_token: Optional[pulumi.Input[_builtins.str]] = None,
-            snippet_size_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            snowplow_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            snowplow_collector_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-            snowplow_cookie_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            snowplow_database_collector_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-            snowplow_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            sourcegraph_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            sourcegraph_public_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            sourcegraph_url: Optional[pulumi.Input[_builtins.str]] = None,
-            spam_check_api_key: Optional[pulumi.Input[_builtins.str]] = None,
-            spam_check_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            spam_check_endpoint_url: Optional[pulumi.Input[_builtins.str]] = None,
-            static_objects_external_storage_auth_token: Optional[pulumi.Input[_builtins.str]] = None,
-            static_objects_external_storage_url: Optional[pulumi.Input[_builtins.str]] = None,
-            suggest_pipeline_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            terminal_max_session_time: Optional[pulumi.Input[_builtins.int]] = None,
-            terms: Optional[pulumi.Input[_builtins.str]] = None,
-            throttle_authenticated_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            throttle_authenticated_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            throttle_authenticated_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-            throttle_authenticated_git_lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            throttle_authenticated_git_lfs_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            throttle_authenticated_git_lfs_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-            throttle_authenticated_packages_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            throttle_authenticated_packages_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            throttle_authenticated_packages_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-            throttle_authenticated_web_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            throttle_authenticated_web_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            throttle_authenticated_web_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-            throttle_unauthenticated_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            throttle_unauthenticated_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            throttle_unauthenticated_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-            throttle_unauthenticated_packages_api_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            throttle_unauthenticated_packages_api_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            throttle_unauthenticated_packages_api_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-            throttle_unauthenticated_web_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            throttle_unauthenticated_web_period_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            throttle_unauthenticated_web_requests_per_period: Optional[pulumi.Input[_builtins.int]] = None,
-            time_tracking_limit_to_hours: Optional[pulumi.Input[_builtins.bool]] = None,
-            two_factor_grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-            unconfirmed_users_delete_after_days: Optional[pulumi.Input[_builtins.int]] = None,
-            unique_ips_limit_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            unique_ips_limit_per_user: Optional[pulumi.Input[_builtins.int]] = None,
-            unique_ips_limit_time_window: Optional[pulumi.Input[_builtins.int]] = None,
-            update_runner_versions_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            updating_name_disabled_for_users: Optional[pulumi.Input[_builtins.bool]] = None,
-            usage_ping_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            use_clickhouse_for_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-            user_deactivation_emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            user_default_external: Optional[pulumi.Input[_builtins.bool]] = None,
-            user_default_internal_regex: Optional[pulumi.Input[_builtins.str]] = None,
-            user_defaults_to_private_profile: Optional[pulumi.Input[_builtins.bool]] = None,
-            user_oauth_applications: Optional[pulumi.Input[_builtins.bool]] = None,
-            user_show_add_ssh_key_message: Optional[pulumi.Input[_builtins.bool]] = None,
-            valid_runner_registrars: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            version_check_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            web_ide_clientside_preview_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            whats_new_variant: Optional[pulumi.Input[_builtins.str]] = None,
-            wiki_page_max_content_bytes: Optional[pulumi.Input[_builtins.int]] = None) -> 'ApplicationSettings':
+            abuse_notification_email: pulumi.Input[Optional[_builtins.str]] = None,
+            admin_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            after_sign_out_path: pulumi.Input[Optional[_builtins.str]] = None,
+            after_sign_up_text: pulumi.Input[Optional[_builtins.str]] = None,
+            akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_group_owners_to_manage_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_local_requests_from_system_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_local_requests_from_web_hooks_and_services: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_project_creation_for_guest_and_below: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_runner_registration_token: pulumi.Input[Optional[_builtins.bool]] = None,
+            archive_builds_in_human_readable: pulumi.Input[Optional[_builtins.str]] = None,
+            asciidoc_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
+            asset_proxy_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            asset_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            asset_proxy_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+            asset_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
+            authorized_keys_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_ban_user_on_excessive_projects_download: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_devops_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            automatic_purchased_storage_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
+            bulk_import_concurrent_pipeline_batch_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            bulk_import_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            bulk_import_max_download_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+            can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
+            check_namespace_plan: pulumi.Input[Optional[_builtins.bool]] = None,
+            ci_job_live_trace_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ci_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
+            ci_max_total_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            commit_email_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            concurrent_bitbucket_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            concurrent_bitbucket_server_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            concurrent_github_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            container_expiration_policies_enable_historic_entries: pulumi.Input[Optional[_builtins.bool]] = None,
+            container_registry_cleanup_tags_service_max_list_size: pulumi.Input[Optional[_builtins.int]] = None,
+            container_registry_delete_tags_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            container_registry_expiration_policies_caching: pulumi.Input[Optional[_builtins.bool]] = None,
+            container_registry_expiration_policies_worker_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            container_registry_token_expire_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            deactivate_dormant_users: pulumi.Input[Optional[_builtins.bool]] = None,
+            deactivate_dormant_users_period: pulumi.Input[Optional[_builtins.int]] = None,
+            decompress_archive_file_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            default_artifacts_expire_in: pulumi.Input[Optional[_builtins.str]] = None,
+            default_branch_name: pulumi.Input[Optional[_builtins.str]] = None,
+            default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
+            default_branch_protection_defaults: pulumi.Input[Optional[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']]] = None,
+            default_ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
+            default_group_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+            default_preferred_language: pulumi.Input[Optional[_builtins.str]] = None,
+            default_project_creation: pulumi.Input[Optional[_builtins.int]] = None,
+            default_project_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+            default_projects_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            default_snippet_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+            default_syntax_highlighting_theme: pulumi.Input[Optional[_builtins.int]] = None,
+            delete_inactive_projects: pulumi.Input[Optional[_builtins.bool]] = None,
+            delete_unconfirmed_users: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_adjourned_period: pulumi.Input[Optional[_builtins.int]] = None,
+            diagramsnet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            diagramsnet_url: pulumi.Input[Optional[_builtins.str]] = None,
+            diff_max_files: pulumi.Input[Optional[_builtins.int]] = None,
+            diff_max_lines: pulumi.Input[Optional[_builtins.int]] = None,
+            diff_max_patch_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            disable_admin_oauth_scopes: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_feed_token: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_personal_access_tokens: pulumi.Input[Optional[_builtins.bool]] = None,
+            disabled_oauth_sign_in_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dns_rebinding_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            domain_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            domain_denylist_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            domain_denylists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            downstream_pipeline_trigger_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+            dsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+            duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ecdsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+            ecdsa_sk_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+            ed25519_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+            ed25519_sk_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+            eks_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            eks_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            eks_integration_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            eks_secret_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            elasticsearch_aws: pulumi.Input[Optional[_builtins.bool]] = None,
+            elasticsearch_aws_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            elasticsearch_aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+            elasticsearch_aws_secret_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            elasticsearch_indexed_field_length_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            elasticsearch_indexed_file_size_limit_kb: pulumi.Input[Optional[_builtins.int]] = None,
+            elasticsearch_indexing: pulumi.Input[Optional[_builtins.bool]] = None,
+            elasticsearch_limit_indexing: pulumi.Input[Optional[_builtins.bool]] = None,
+            elasticsearch_max_bulk_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+            elasticsearch_max_bulk_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+            elasticsearch_max_code_indexing_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+            elasticsearch_namespace_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            elasticsearch_password: pulumi.Input[Optional[_builtins.str]] = None,
+            elasticsearch_project_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            elasticsearch_requeue_workers: pulumi.Input[Optional[_builtins.bool]] = None,
+            elasticsearch_search: pulumi.Input[Optional[_builtins.bool]] = None,
+            elasticsearch_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            elasticsearch_username: pulumi.Input[Optional[_builtins.str]] = None,
+            elasticsearch_worker_number_of_shards: pulumi.Input[Optional[_builtins.int]] = None,
+            email_additional_text: pulumi.Input[Optional[_builtins.str]] = None,
+            email_author_in_body: pulumi.Input[Optional[_builtins.bool]] = None,
+            email_confirmation_setting: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_artifact_external_redirect_warning_page: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled_git_access_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            enforce_namespace_storage_limit: pulumi.Input[Optional[_builtins.bool]] = None,
+            enforce_terms: pulumi.Input[Optional[_builtins.bool]] = None,
+            external_auth_client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            external_auth_client_key: pulumi.Input[Optional[_builtins.str]] = None,
+            external_auth_client_key_pass: pulumi.Input[Optional[_builtins.str]] = None,
+            external_authorization_service_default_label: pulumi.Input[Optional[_builtins.str]] = None,
+            external_authorization_service_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            external_authorization_service_timeout: pulumi.Input[Optional[_builtins.float]] = None,
+            external_authorization_service_url: pulumi.Input[Optional[_builtins.str]] = None,
+            external_pipeline_validation_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            external_pipeline_validation_service_token: pulumi.Input[Optional[_builtins.str]] = None,
+            external_pipeline_validation_service_url: pulumi.Input[Optional[_builtins.str]] = None,
+            failed_login_attempts_unlock_period_in_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+            file_template_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+            first_day_of_week: pulumi.Input[Optional[_builtins.int]] = None,
+            geo_node_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
+            geo_status_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            git_rate_limit_users_alertlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            git_rate_limit_users_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            git_two_factor_session_expiry: pulumi.Input[Optional[_builtins.int]] = None,
+            gitaly_timeout_default: pulumi.Input[Optional[_builtins.int]] = None,
+            gitaly_timeout_fast: pulumi.Input[Optional[_builtins.int]] = None,
+            gitaly_timeout_medium: pulumi.Input[Optional[_builtins.int]] = None,
+            gitlab_dedicated_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+            gitlab_environment_toolkit_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+            gitlab_shell_operation_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            gitpod_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            gitpod_url: pulumi.Input[Optional[_builtins.str]] = None,
+            globally_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
+            grafana_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            grafana_url: pulumi.Input[Optional[_builtins.str]] = None,
+            gravatar_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_owners_can_manage_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            help_page_hide_commercial_content: pulumi.Input[Optional[_builtins.bool]] = None,
+            help_page_support_url: pulumi.Input[Optional[_builtins.str]] = None,
+            help_page_text: pulumi.Input[Optional[_builtins.str]] = None,
+            help_text: pulumi.Input[Optional[_builtins.str]] = None,
+            hide_third_party_offers: pulumi.Input[Optional[_builtins.bool]] = None,
+            home_page_url: pulumi.Input[Optional[_builtins.str]] = None,
+            housekeeping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            housekeeping_optimize_repository_period: pulumi.Input[Optional[_builtins.int]] = None,
+            html_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            import_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            in_product_marketing_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            inactive_projects_delete_after_months: pulumi.Input[Optional[_builtins.int]] = None,
+            inactive_projects_min_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+            inactive_projects_send_warning_email_after_months: pulumi.Input[Optional[_builtins.int]] = None,
+            inactive_resource_access_tokens_delete_after_days: pulumi.Input[Optional[_builtins.int]] = None,
+            include_optional_metrics_in_service_ping: pulumi.Input[Optional[_builtins.bool]] = None,
+            invisible_captcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            issues_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            jira_connect_application_key: pulumi.Input[Optional[_builtins.str]] = None,
+            jira_connect_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
+            jira_connect_public_key_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
+            kroki_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            kroki_formats: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
+            kroki_url: pulumi.Input[Optional[_builtins.str]] = None,
+            local_markdown_version: pulumi.Input[Optional[_builtins.int]] = None,
+            lock_duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            lock_memberships_to_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
+            lock_memberships_to_saml: pulumi.Input[Optional[_builtins.bool]] = None,
+            mailgun_events_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            mailgun_signing_key: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            maintenance_mode_message: pulumi.Input[Optional[_builtins.str]] = None,
+            maven_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+            max_attachment_size: pulumi.Input[Optional[_builtins.int]] = None,
+            max_decompressed_archive_size: pulumi.Input[Optional[_builtins.int]] = None,
+            max_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+            max_import_remote_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+            max_import_size: pulumi.Input[Optional[_builtins.int]] = None,
+            max_login_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+            max_number_of_repository_downloads: pulumi.Input[Optional[_builtins.int]] = None,
+            max_number_of_repository_downloads_within_time_period: pulumi.Input[Optional[_builtins.int]] = None,
+            max_pages_size: pulumi.Input[Optional[_builtins.int]] = None,
+            max_personal_access_token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+            max_ssh_key_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+            max_terraform_state_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            metrics_method_call_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            minimum_password_length: pulumi.Input[Optional[_builtins.int]] = None,
+            mirror_available: pulumi.Input[Optional[_builtins.bool]] = None,
+            mirror_capacity_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            mirror_max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            mirror_max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            notify_on_unknown_sign_in: pulumi.Input[Optional[_builtins.bool]] = None,
+            npm_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+            nuget_skip_metadata_url_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            outbound_local_requests_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            package_metadata_purl_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            package_registry_allow_anyone_to_pull_option: pulumi.Input[Optional[_builtins.bool]] = None,
+            package_registry_cleanup_policies_worker_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            pages_domain_verification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            password_authentication_enabled_for_git: pulumi.Input[Optional[_builtins.bool]] = None,
+            password_authentication_enabled_for_web: pulumi.Input[Optional[_builtins.bool]] = None,
+            password_lowercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            password_number_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            password_symbol_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            password_uppercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            performance_bar_allowed_group_path: pulumi.Input[Optional[_builtins.str]] = None,
+            personal_access_token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+            plantuml_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            plantuml_url: pulumi.Input[Optional[_builtins.str]] = None,
+            polling_interval_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
+            prevent_merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+            prevent_merge_requests_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_export_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_jobs_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            projects_api_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
+            prometheus_metrics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            protected_ci_variables: pulumi.Input[Optional[_builtins.bool]] = None,
+            push_event_activities_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            push_event_hooks_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            pypi_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+            rate_limiting_response_text: pulumi.Input[Optional[_builtins.str]] = None,
+            raw_blob_request_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            recaptcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            recaptcha_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            recaptcha_site_key: pulumi.Input[Optional[_builtins.str]] = None,
+            receive_max_input_size: pulumi.Input[Optional[_builtins.int]] = None,
+            receptive_cluster_agents_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            remember_me_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            repository_checks_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            repository_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            repository_storages_weighted: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+            require_admin_approval_after_user_signup: pulumi.Input[Optional[_builtins.bool]] = None,
+            require_admin_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+            require_personal_access_token_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+            require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+            restricted_visibility_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+            search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
+            security_approval_policies_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            security_policy_global_group_approvers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            security_txt_content: pulumi.Input[Optional[_builtins.str]] = None,
+            send_user_confirmation_email: pulumi.Input[Optional[_builtins.bool]] = None,
+            service_access_tokens_expiration_enforced: pulumi.Input[Optional[_builtins.bool]] = None,
+            session_expire_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            shared_runners_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+            shared_runners_text: pulumi.Input[Optional[_builtins.str]] = None,
+            sidekiq_job_limiter_compression_threshold_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            sidekiq_job_limiter_limit_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            sidekiq_job_limiter_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            sign_in_text: pulumi.Input[Optional[_builtins.str]] = None,
+            signup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            silent_admin_exports_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            silent_mode_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            slack_app_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            slack_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            slack_app_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            slack_app_signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            slack_app_verification_token: pulumi.Input[Optional[_builtins.str]] = None,
+            snippet_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            snowplow_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snowplow_collector_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            snowplow_cookie_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            snowplow_database_collector_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            snowplow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            sourcegraph_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            sourcegraph_public_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            sourcegraph_url: pulumi.Input[Optional[_builtins.str]] = None,
+            spam_check_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            spam_check_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            spam_check_endpoint_url: pulumi.Input[Optional[_builtins.str]] = None,
+            static_objects_external_storage_auth_token: pulumi.Input[Optional[_builtins.str]] = None,
+            static_objects_external_storage_url: pulumi.Input[Optional[_builtins.str]] = None,
+            suggest_pipeline_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            terminal_max_session_time: pulumi.Input[Optional[_builtins.int]] = None,
+            terms: pulumi.Input[Optional[_builtins.str]] = None,
+            throttle_authenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_authenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_git_lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_authenticated_git_lfs_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_git_lfs_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_authenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_authenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_unauthenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_unauthenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_unauthenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            time_tracking_limit_to_hours: pulumi.Input[Optional[_builtins.bool]] = None,
+            two_factor_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+            unconfirmed_users_delete_after_days: pulumi.Input[Optional[_builtins.int]] = None,
+            unique_ips_limit_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            unique_ips_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+            unique_ips_limit_time_window: pulumi.Input[Optional[_builtins.int]] = None,
+            update_runner_versions_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            updating_name_disabled_for_users: pulumi.Input[Optional[_builtins.bool]] = None,
+            usage_ping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            use_clickhouse_for_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_deactivation_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_default_external: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_default_internal_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            user_defaults_to_private_profile: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_oauth_applications: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_show_add_ssh_key_message: pulumi.Input[Optional[_builtins.bool]] = None,
+            valid_runner_registrars: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            version_check_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            web_ide_clientside_preview_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            whats_new_variant: pulumi.Input[Optional[_builtins.str]] = None,
+            wiki_page_max_content_bytes: pulumi.Input[Optional[_builtins.int]] = None) -> 'ApplicationSettings':
         """
         Get an existing ApplicationSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

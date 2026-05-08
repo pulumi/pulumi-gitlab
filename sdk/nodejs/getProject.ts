@@ -386,21 +386,21 @@ export interface GetProjectOutputArgs {
     /**
      * Default number of revisions for shallow cloning.
      */
-    ciDefaultGitDepth?: pulumi.Input<number>;
+    ciDefaultGitDepth?: pulumi.Input<number | undefined>;
     /**
      * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
      */
-    ciIdTokenSubClaimComponents?: pulumi.Input<pulumi.Input<string>[]>;
+    ciIdTokenSubClaimComponents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The integer that uniquely identifies the project within the gitlab install.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The path of the repository with namespace.
      */
-    pathWithNamespace?: pulumi.Input<string>;
+    pathWithNamespace?: pulumi.Input<string | undefined>;
     /**
      * If true, jobs can be viewed by non-project members.
      */
-    publicBuilds?: pulumi.Input<boolean>;
+    publicBuilds?: pulumi.Input<boolean | undefined>;
 }

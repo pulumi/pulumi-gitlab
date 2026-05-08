@@ -158,27 +158,27 @@ export interface GroupBadgeState {
     /**
      * The ID or URL-encoded path of the group to add the badge to.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * The image url which will be presented on group overview.
      */
-    imageUrl?: pulumi.Input<string>;
+    imageUrl?: pulumi.Input<string | undefined>;
     /**
      * The url linked with the badge.
      */
-    linkUrl?: pulumi.Input<string>;
+    linkUrl?: pulumi.Input<string | undefined>;
     /**
      * The name of the badge.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The imageUrl argument rendered (in case of use of placeholders).
      */
-    renderedImageUrl?: pulumi.Input<string>;
+    renderedImageUrl?: pulumi.Input<string | undefined>;
     /**
      * The linkUrl argument rendered (in case of use of placeholders).
      */
-    renderedLinkUrl?: pulumi.Input<string>;
+    renderedLinkUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -200,5 +200,5 @@ export interface GroupBadgeArgs {
     /**
      * The name of the badge.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

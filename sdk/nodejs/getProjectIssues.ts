@@ -344,75 +344,75 @@ export interface GetProjectIssuesOutputArgs {
     /**
      * Return issues assigned to the given user id. Mutually exclusive with assignee_username. None returns unassigned issues. Any returns issues with an assignee.
      */
-    assigneeId?: pulumi.Input<number>;
+    assigneeId?: pulumi.Input<number | undefined>;
     /**
      * Return issues assigned to the given username. Similar to assignee*id and mutually exclusive with assignee*id. In GitLab CE, the assigneeUsername array should only contain a single value. Otherwise, an invalid parameter error is returned.
      */
-    assigneeUsername?: pulumi.Input<string>;
+    assigneeUsername?: pulumi.Input<string | undefined>;
     /**
      * Return issues created by the given user id. Combine with scope=all or scope=assigned*to*me.
      */
-    authorId?: pulumi.Input<number>;
+    authorId?: pulumi.Input<number | undefined>;
     /**
      * Filter confidential or public issues.
      */
-    confidential?: pulumi.Input<boolean>;
+    confidential?: pulumi.Input<boolean | undefined>;
     /**
      * Return issues created on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
      */
-    createdAfter?: pulumi.Input<string>;
+    createdAfter?: pulumi.Input<string | undefined>;
     /**
      * Return issues created on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
      */
-    createdBefore?: pulumi.Input<string>;
+    createdBefore?: pulumi.Input<string | undefined>;
     /**
      * Return issues that have no due date, are overdue, or whose due date is this week, this month, or between two weeks ago and next month. Accepts: 0 (no due date), any, today, tomorrow, overdue, week, month, next*month*and*previous*two_weeks.
      */
-    dueDate?: pulumi.Input<string>;
+    dueDate?: pulumi.Input<string | undefined>;
     /**
      * Return only the issues having the given iid
      */
-    iids?: pulumi.Input<pulumi.Input<number>[]>;
+    iids?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Filter to a given type of issue. Valid values are [issue incident testCase].
      */
-    issueType?: pulumi.Input<string>;
+    issueType?: pulumi.Input<string | undefined>;
     /**
      * Return issues with labels. Issues must have all labels to be returned. None lists all issues with no labels. Any lists all issues with at least one label. No+Label (Deprecated) lists all issues with no labels. Predefined names are case-insensitive.
      */
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The milestone title. None lists all issues with no milestone. Any lists all issues that have an assigned milestone.
      */
-    milestone?: pulumi.Input<string>;
+    milestone?: pulumi.Input<string | undefined>;
     /**
      * Return issues reacted by the authenticated user by the given emoji. None returns issues not given a reaction. Any returns issues given at least one reaction.
      */
-    myReactionEmoji?: pulumi.Input<string>;
+    myReactionEmoji?: pulumi.Input<string | undefined>;
     /**
      * Return issues that do not match the assignee id.
      */
-    notAssigneeId?: pulumi.Input<number>;
+    notAssigneeId?: pulumi.Input<number | undefined>;
     /**
      * Return issues that do not match the author id.
      */
-    notAuthorId?: pulumi.Input<number>;
+    notAuthorId?: pulumi.Input<number | undefined>;
     /**
      * Return issues that do not match the labels.
      */
-    notLabels?: pulumi.Input<pulumi.Input<string>[]>;
+    notLabels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Return issues that do not match the milestone.
      */
-    notMilestone?: pulumi.Input<string>;
+    notMilestone?: pulumi.Input<string | undefined>;
     /**
      * Return issues not reacted by the authenticated user by the given emoji.
      */
-    notMyReactionEmoji?: pulumi.Input<string>;
+    notMyReactionEmoji?: pulumi.Input<string | undefined>;
     /**
      * Return issues ordered by. Valid values are `createdAt`, `updatedAt`, `priority`, `dueDate`, `relativePosition`, `labelPriority`, `milestoneDue`, `popularity`, `weight`. Default is created_at
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
     /**
      * The name or id of the project.
      */
@@ -420,29 +420,29 @@ export interface GetProjectIssuesOutputArgs {
     /**
      * Return issues for the given scope. Valid values are `createdByMe`, `assignedToMe`, `all`. Defaults to all.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Search project issues against their title and description
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
     /**
      * Return issues sorted in asc or desc order. Default is desc
      */
-    sort?: pulumi.Input<string>;
+    sort?: pulumi.Input<string | undefined>;
     /**
      * Return issues updated on or after the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
      */
-    updatedAfter?: pulumi.Input<string>;
+    updatedAfter?: pulumi.Input<string | undefined>;
     /**
      * Return issues updated on or before the given time. Expected in ISO 8601 format (2019-03-15T08:00:00Z)
      */
-    updatedBefore?: pulumi.Input<string>;
+    updatedBefore?: pulumi.Input<string | undefined>;
     /**
      * Return issues with the specified weight. None returns issues with no weight assigned. Any returns issues with a weight assigned.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
     /**
      * If true, the response returns more details for each label in labels field: :name, :color, :description, :description*html, :text*color. Default is false.
      */
-    withLabelsDetails?: pulumi.Input<boolean>;
+    withLabelsDetails?: pulumi.Input<boolean | undefined>;
 }

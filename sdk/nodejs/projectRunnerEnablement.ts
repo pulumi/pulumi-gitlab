@@ -108,11 +108,11 @@ export interface ProjectRunnerEnablementState {
     /**
      * The ID or URL-encoded path of the project owned by the authenticated user.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID of a runner to enable for the project.
      */
-    runnerId?: pulumi.Input<number>;
+    runnerId?: pulumi.Input<number | undefined>;
 }
 
 /**

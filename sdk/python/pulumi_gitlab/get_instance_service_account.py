@@ -129,7 +129,7 @@ def get_instance_service_account(service_account_id: Optional[_builtins.str] = N
         name=pulumi.get(__ret__, 'name'),
         service_account_id=pulumi.get(__ret__, 'service_account_id'),
         username=pulumi.get(__ret__, 'username'))
-def get_instance_service_account_output(service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_instance_service_account_output(service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceServiceAccountResult]:
     """
     The `InstanceServiceAccount` data source retrieves information about a gitlab service account.

@@ -122,7 +122,7 @@ export interface GetReleaseOutputArgs {
     /**
      * The assets for a release
      */
-    assets?: pulumi.Input<inputs.GetReleaseAssetsArgs>;
+    assets?: pulumi.Input<inputs.GetReleaseAssetsArgs | undefined>;
     /**
      * The ID or URL-encoded path of the project.
      */

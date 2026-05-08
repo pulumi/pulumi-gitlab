@@ -119,15 +119,15 @@ export interface ProjectCicdCatalogState {
     /**
      * Whether the project should be enabled as a CI/CD Catalog resource.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
      */
-    keepSettingsOnDestroy?: pulumi.Input<boolean>;
+    keepSettingsOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or URL-encoded path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -141,7 +141,7 @@ export interface ProjectCicdCatalogArgs {
     /**
      * Set to true if the project CI/CD Catalog status should not be reset to its pre-terraform value on destroy. You will need to apply the resource with the new setting before destroying the resource.
      */
-    keepSettingsOnDestroy?: pulumi.Input<boolean>;
+    keepSettingsOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or URL-encoded path of the project.
      */

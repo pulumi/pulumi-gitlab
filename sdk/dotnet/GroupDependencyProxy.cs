@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Index.GroupDependencyProxy("foo", new()
+    ///     var foo = new GitLab.GroupDependencyProxy("foo", new()
     ///     {
     ///         Group = "1234",
     ///         Enabled = true,

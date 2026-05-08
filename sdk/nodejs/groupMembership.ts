@@ -145,31 +145,31 @@ export interface GroupMembershipState {
     /**
      * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Expiration date for the group membership. Format: `YYYY-MM-DD`
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the group.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
      */
-    memberRoleId?: pulumi.Input<number>;
+    memberRoleId?: pulumi.Input<number | undefined>;
     /**
      * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
      */
-    skipSubresourcesOnDestroy?: pulumi.Input<boolean>;
+    skipSubresourcesOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
      */
-    unassignIssuablesOnDestroy?: pulumi.Input<boolean>;
+    unassignIssuablesOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the user.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -183,7 +183,7 @@ export interface GroupMembershipArgs {
     /**
      * Expiration date for the group membership. Format: `YYYY-MM-DD`
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the group.
      */
@@ -191,15 +191,15 @@ export interface GroupMembershipArgs {
     /**
      * The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
      */
-    memberRoleId?: pulumi.Input<number>;
+    memberRoleId?: pulumi.Input<number | undefined>;
     /**
      * Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
      */
-    skipSubresourcesOnDestroy?: pulumi.Input<boolean>;
+    skipSubresourcesOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
      */
-    unassignIssuablesOnDestroy?: pulumi.Input<boolean>;
+    unassignIssuablesOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the user.
      */

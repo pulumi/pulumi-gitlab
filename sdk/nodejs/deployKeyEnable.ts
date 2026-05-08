@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * // Enable the deployment key on the second repo
  * const fooDeployKeyEnable = new gitlab.DeployKeyEnable("foo", {
  *     project: foo.id,
- *     keyId: parentDeployKey.deployKeyId,
+ *     keyId: parentDeployKey.deployKeyId.apply(x =>String(x)),
  * });
  * ```
  *
@@ -140,23 +140,23 @@ export interface DeployKeyEnableState {
     /**
      * Can deploy key push to the project's repository.
      */
-    canPush?: pulumi.Input<boolean>;
+    canPush?: pulumi.Input<boolean | undefined>;
     /**
      * Deploy key.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The Gitlab key id for the pre-existing deploy key
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * The name or id of the project to add the deploy key to.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Deploy key's title.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -166,7 +166,7 @@ export interface DeployKeyEnableArgs {
     /**
      * Can deploy key push to the project's repository.
      */
-    canPush?: pulumi.Input<boolean>;
+    canPush?: pulumi.Input<boolean | undefined>;
     /**
      * The Gitlab key id for the pre-existing deploy key
      */

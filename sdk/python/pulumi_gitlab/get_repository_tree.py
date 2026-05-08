@@ -153,10 +153,10 @@ def get_repository_tree(path: Optional[_builtins.str] = None,
         recursive=pulumi.get(__ret__, 'recursive'),
         ref=pulumi.get(__ret__, 'ref'),
         trees=pulumi.get(__ret__, 'trees'))
-def get_repository_tree_output(path: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               project: Optional[pulumi.Input[_builtins.str]] = None,
-                               recursive: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                               ref: Optional[pulumi.Input[_builtins.str]] = None,
+def get_repository_tree_output(path: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               project: pulumi.Input[Optional[_builtins.str]] = None,
+                               recursive: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                               ref: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryTreeResult]:
     """
     The `get_repository_tree` data source allows details of directories and files in a repository to be retrieved.

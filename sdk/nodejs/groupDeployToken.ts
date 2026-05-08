@@ -174,39 +174,39 @@ export interface GroupDeployTokenState {
     /**
      * True if the token is expired.
      */
-    expired?: pulumi.Input<boolean>;
+    expired?: pulumi.Input<boolean | undefined>;
     /**
      * Time the token expires in RFC3339 format. Not set by default.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The Id or full path of the group.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * A name to describe the deploy token with.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * True if the token is revoked.
      */
-    revoked?: pulumi.Input<boolean>;
+    revoked?: pulumi.Input<boolean | undefined>;
     /**
      * The scopes of the group deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Wether to validate if the expiration date is in the future.
      */
-    validatePastExpirationDate?: pulumi.Input<boolean>;
+    validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -216,7 +216,7 @@ export interface GroupDeployTokenArgs {
     /**
      * Time the token expires in RFC3339 format. Not set by default.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The Id or full path of the group.
      */
@@ -224,7 +224,7 @@ export interface GroupDeployTokenArgs {
     /**
      * A name to describe the deploy token with.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The scopes of the group deploy token. Valid values are: `readRepository`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readPackageRegistry`, `writePackageRegistry`
      */
@@ -232,9 +232,9 @@ export interface GroupDeployTokenArgs {
     /**
      * A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Wether to validate if the expiration date is in the future.
      */
-    validatePastExpirationDate?: pulumi.Input<boolean>;
+    validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }

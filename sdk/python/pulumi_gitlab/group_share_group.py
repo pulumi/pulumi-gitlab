@@ -22,8 +22,8 @@ class GroupShareGroupArgs:
                  group_access: pulumi.Input[_builtins.str],
                  group_id: pulumi.Input[_builtins.str],
                  share_group_id: pulumi.Input[_builtins.int],
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a GroupShareGroup resource.
 
@@ -79,37 +79,37 @@ class GroupShareGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Share expiration date. Format: `YYYY-MM-DD`
         """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter(name="memberRoleId")
-    def member_role_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def member_role_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.
         """
         return pulumi.get(self, "member_role_id")
 
     @member_role_id.setter
-    def member_role_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def member_role_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "member_role_id", value)
 
 
 @pulumi.input_type
 class _GroupShareGroupState:
     def __init__(__self__, *,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 share_group_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 share_group_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering GroupShareGroup resources.
 
@@ -132,62 +132,62 @@ class _GroupShareGroupState:
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Share expiration date. Format: `YYYY-MM-DD`
         """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter(name="groupAccess")
-    def group_access(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "group_access")
 
     @group_access.setter
-    def group_access(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_access(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_access", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the main group to be shared.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="memberRoleId")
-    def member_role_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def member_role_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `member_role_id` is removed from the config, the group share will revert to a base role.
         """
         return pulumi.get(self, "member_role_id")
 
     @member_role_id.setter
-    def member_role_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def member_role_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "member_role_id", value)
 
     @_builtins.property
     @pulumi.getter(name="shareGroupId")
-    def share_group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def share_group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The id of the additional group with which the main group will be shared.
         """
         return pulumi.get(self, "share_group_id")
 
     @share_group_id.setter
-    def share_group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def share_group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "share_group_id", value)
 
 
@@ -197,11 +197,11 @@ class GroupShareGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 share_group_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 share_group_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The `GroupShareGroup` resource allows managing the lifecycle of a group shared with another group.
@@ -218,7 +218,7 @@ class GroupShareGroup(pulumi.CustomResource):
 
         test = gitlab.GroupShareGroup("test",
             group_id=foo["id"],
-            share_group_id=bar["id"],
+            share_group_id=int(bar["id"]),
             group_access="guest",
             expires_at="2099-01-01")
         ```
@@ -265,7 +265,7 @@ class GroupShareGroup(pulumi.CustomResource):
 
         test = gitlab.GroupShareGroup("test",
             group_id=foo["id"],
-            share_group_id=bar["id"],
+            share_group_id=int(bar["id"]),
             group_access="guest",
             expires_at="2099-01-01")
         ```
@@ -298,11 +298,11 @@ class GroupShareGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 share_group_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 share_group_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -333,11 +333,11 @@ class GroupShareGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-            group_access: Optional[pulumi.Input[_builtins.str]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-            share_group_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'GroupShareGroup':
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            group_access: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+            share_group_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'GroupShareGroup':
         """
         Get an existing GroupShareGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

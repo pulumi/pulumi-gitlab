@@ -94,7 +94,7 @@ export interface GetProjectTagsOutputArgs {
     /**
      * Return tags ordered by `name` or `updated` fields. Default is `updated`.
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
     /**
      * The ID or URL-encoded path of the project owned by the authenticated user.
      */
@@ -102,9 +102,9 @@ export interface GetProjectTagsOutputArgs {
     /**
      * Return list of tags matching the search criteria. You can use `^term` and `term$` to find tags that begin and end with `term` respectively. No other regular expressions are supported.
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
     /**
      * Return tags sorted in `asc` or `desc` order. Default is `desc`.
      */
-    sort?: pulumi.Input<string>;
+    sort?: pulumi.Input<string | undefined>;
 }

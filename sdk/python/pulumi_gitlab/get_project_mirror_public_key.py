@@ -110,8 +110,8 @@ def get_project_mirror_public_key(mirror_id: Optional[_builtins.int] = None,
         mirror_id=pulumi.get(__ret__, 'mirror_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         public_key=pulumi.get(__ret__, 'public_key'))
-def get_project_mirror_public_key_output(mirror_id: Optional[pulumi.Input[_builtins.int]] = None,
-                                         project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_mirror_public_key_output(mirror_id: pulumi.Input[Optional[_builtins.int]] = None,
+                                         project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectMirrorPublicKeyResult]:
     """
     The `get_project_mirror_public_key` data source allows the public key of a project mirror to be retrieved by its mirror id and the project it belongs to.

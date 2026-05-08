@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.ProjectVariable("example", new()
+    ///     var example = new GitLab.ProjectVariable("example", new()
     ///     {
     ///         Project = "12345",
     ///         Key = "project_variable_key",

@@ -19,18 +19,18 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 base_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 cacert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 context: Optional[pulumi.Input[_builtins.str]] = None,
-                 early_auth_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auto_ci_support: Optional[pulumi.Input[_builtins.bool]] = None,
-                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None):
+                 base_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 cacert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 context: pulumi.Input[Optional[_builtins.str]] = None,
+                 early_auth_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_auto_ci_support: pulumi.Input[Optional[_builtins.bool]] = None,
+                 headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -74,146 +74,146 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="baseUrl")
-    def base_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
         """
         return pulumi.get(self, "base_url")
 
     @base_url.setter
-    def base_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_url", value)
 
     @_builtins.property
     @pulumi.getter(name="cacertFile")
-    def cacert_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cacert_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
         """
         return pulumi.get(self, "cacert_file")
 
     @cacert_file.setter
-    def cacert_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cacert_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cacert_file", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
         """
         return pulumi.get(self, "client_cert")
 
     @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `client_cert` is set.
         """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="configFile")
-    def config_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
         """
         return pulumi.get(self, "config_file")
 
     @config_file.setter
-    def config_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_file", value)
 
     @_builtins.property
     @pulumi.getter
-    def context(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def context(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
         """
         return pulumi.get(self, "context")
 
     @context.setter
-    def context(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def context(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "context", value)
 
     @_builtins.property
     @pulumi.getter(name="earlyAuthCheck")
-    def early_auth_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def early_auth_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep backups of your state.
         """
         return pulumi.get(self, "early_auth_check")
 
     @early_auth_check.setter
-    def early_auth_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def early_auth_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "early_auth_check", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutoCiSupport")
-    def enable_auto_ci_support(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_auto_ci_support(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If automatic CI support should be enabled or not. This only works when not providing a token.
         """
         return pulumi.get(self, "enable_auto_ci_support")
 
     @enable_auto_ci_support.setter
-    def enable_auto_ci_support(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_auto_ci_support(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_auto_ci_support", value)
 
     @_builtins.property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of headers to append to all API request to the GitLab instance.
         """
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def headers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to true this disables SSL verification of the connection to the GitLab instance.
         """
         return pulumi.get(self, "insecure")
 
     @insecure.setter
-    def insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def retries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
         """
         return pulumi.get(self, "retries")
 
     @retries.setter
-    def retries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retries", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
 
@@ -223,18 +223,18 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 base_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 cacert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 context: Optional[pulumi.Input[_builtins.str]] = None,
-                 early_auth_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auto_ci_support: Optional[pulumi.Input[_builtins.bool]] = None,
-                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
+                 base_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 cacert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 context: pulumi.Input[Optional[_builtins.str]] = None,
+                 early_auth_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_auto_ci_support: pulumi.Input[Optional[_builtins.bool]] = None,
+                 headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the gitlab package. By default, resources use package-wide configuration
@@ -286,18 +286,18 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 base_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 cacert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 context: Optional[pulumi.Input[_builtins.str]] = None,
-                 early_auth_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auto_ci_support: Optional[pulumi.Input[_builtins.bool]] = None,
-                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
+                 base_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 cacert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 context: pulumi.Input[Optional[_builtins.str]] = None,
+                 early_auth_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_auto_ci_support: pulumi.Input[Optional[_builtins.bool]] = None,
+                 headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

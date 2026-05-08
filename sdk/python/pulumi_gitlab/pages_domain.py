@@ -21,10 +21,10 @@ class PagesDomainArgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
-                 auto_ssl_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 expired: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_ssl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 expired: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PagesDomain resource.
 
@@ -72,65 +72,65 @@ class PagesDomainArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoSslEnabled")
-    def auto_ssl_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_ssl_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
         """
         return pulumi.get(self, "auto_ssl_enabled")
 
     @auto_ssl_enabled.setter
-    def auto_ssl_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_ssl_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_ssl_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate in PEM format with intermediates following in most specific to least specific order.
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
     @pulumi.getter
-    def expired(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def expired(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the certificate is expired.
         """
         return pulumi.get(self, "expired")
 
     @expired.setter
-    def expired(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def expired(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "expired", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate key in PEM format.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
 
 @pulumi.input_type
 class _PagesDomainState:
     def __init__(__self__, *,
-                 auto_ssl_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 expired: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 verification_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 verified: Optional[pulumi.Input[_builtins.bool]] = None):
+                 auto_ssl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 expired: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 verification_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 verified: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering PagesDomain resources.
 
@@ -165,110 +165,110 @@ class _PagesDomainState:
 
     @_builtins.property
     @pulumi.getter(name="autoSslEnabled")
-    def auto_ssl_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_ssl_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
         """
         return pulumi.get(self, "auto_ssl_enabled")
 
     @auto_ssl_enabled.setter
-    def auto_ssl_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_ssl_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_ssl_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate in PEM format with intermediates following in most specific to least specific order.
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The custom domain indicated by the user.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def expired(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def expired(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the certificate is expired.
         """
         return pulumi.get(self, "expired")
 
     @expired.setter
-    def expired(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def expired(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "expired", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate key in PEM format.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or Namespace path of the project owned by the authenticated user.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL for the given domain.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="verificationCode")
-    def verification_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def verification_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The verification code for the domain.
         """
         return pulumi.get(self, "verification_code")
 
     @verification_code.setter
-    def verification_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def verification_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "verification_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def verified(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def verified(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The certificate data.
         """
         return pulumi.get(self, "verified")
 
     @verified.setter
-    def verified(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def verified(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "verified", value)
 
 
@@ -278,12 +278,12 @@ class PagesDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_ssl_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 expired: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_ssl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 expired: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `PagesDomain` resource allows connecting custom domains and TLS certificates in GitLab Pages.
@@ -351,12 +351,12 @@ class PagesDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_ssl_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 expired: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_ssl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 expired: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -391,15 +391,15 @@ class PagesDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_ssl_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            certificate: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            expired: Optional[pulumi.Input[_builtins.bool]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            verification_code: Optional[pulumi.Input[_builtins.str]] = None,
-            verified: Optional[pulumi.Input[_builtins.bool]] = None) -> 'PagesDomain':
+            auto_ssl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            expired: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            verification_code: pulumi.Input[Optional[_builtins.str]] = None,
+            verified: pulumi.Input[Optional[_builtins.bool]] = None) -> 'PagesDomain':
         """
         Get an existing PagesDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

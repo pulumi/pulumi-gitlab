@@ -27,7 +27,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var oidc = new GitLab.Index.Application("oidc", new()
+    ///     var oidc = new GitLab.Application("oidc", new()
     ///     {
     ///         Confidential = true,
     ///         Scopes = new[]

@@ -24,15 +24,15 @@ class RepositoryFileArgs:
                  encoding: pulumi.Input[_builtins.str],
                  file_path: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
-                 author_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 author_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_filemode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 overwrite_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_commit_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 author_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 author_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_filemode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 overwrite_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_commit_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RepositoryFile resource.
 
@@ -137,137 +137,137 @@ class RepositoryFileArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorEmail")
-    def author_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email of the commit author.
         """
         return pulumi.get(self, "author_email")
 
     @author_email.setter
-    def author_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_email", value)
 
     @_builtins.property
     @pulumi.getter(name="authorName")
-    def author_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the commit author.
         """
         return pulumi.get(self, "author_name")
 
     @author_name.setter
-    def author_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_name", value)
 
     @_builtins.property
     @pulumi.getter(name="commitMessage")
-    def commit_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Commit message.
         """
         return pulumi.get(self, "commit_message")
 
     @commit_message.setter
-    def commit_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_message", value)
 
     @_builtins.property
     @pulumi.getter(name="createCommitMessage")
-    def create_commit_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_commit_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create commit message.
         """
         return pulumi.get(self, "create_commit_message")
 
     @create_commit_message.setter
-    def create_commit_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_commit_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_commit_message", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteCommitMessage")
-    def delete_commit_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_commit_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Delete Commit message.
         """
         return pulumi.get(self, "delete_commit_message")
 
     @delete_commit_message.setter
-    def delete_commit_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_commit_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_commit_message", value)
 
     @_builtins.property
     @pulumi.getter(name="executeFilemode")
-    def execute_filemode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_filemode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables or disables the execute flag on the file.
         """
         return pulumi.get(self, "execute_filemode")
 
     @execute_filemode.setter
-    def execute_filemode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_filemode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_filemode", value)
 
     @_builtins.property
     @pulumi.getter(name="overwriteOnCreate")
-    def overwrite_on_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite_on_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
         """
         return pulumi.get(self, "overwrite_on_create")
 
     @overwrite_on_create.setter
-    def overwrite_on_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite_on_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite_on_create", value)
 
     @_builtins.property
     @pulumi.getter(name="startBranch")
-    def start_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the branch to start the new commit from.
         """
         return pulumi.get(self, "start_branch")
 
     @start_branch.setter
-    def start_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="updateCommitMessage")
-    def update_commit_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_commit_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Update commit message.
         """
         return pulumi.get(self, "update_commit_message")
 
     @update_commit_message.setter
-    def update_commit_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_commit_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_commit_message", value)
 
 
 @pulumi.input_type
 class _RepositoryFileState:
     def __init__(__self__, *,
-                 author_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 author_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 blob_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_sha256: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_filemode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_commit_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_commit_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 author_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 author_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 blob_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_filemode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_commit_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_commit_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RepositoryFile resources.
 
@@ -338,254 +338,254 @@ class _RepositoryFileState:
 
     @_builtins.property
     @pulumi.getter(name="authorEmail")
-    def author_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email of the commit author.
         """
         return pulumi.get(self, "author_email")
 
     @author_email.setter
-    def author_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_email", value)
 
     @_builtins.property
     @pulumi.getter(name="authorName")
-    def author_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the commit author.
         """
         return pulumi.get(self, "author_name")
 
     @author_name.setter
-    def author_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_name", value)
 
     @_builtins.property
     @pulumi.getter(name="blobId")
-    def blob_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def blob_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The blob id.
         """
         return pulumi.get(self, "blob_id")
 
     @blob_id.setter
-    def blob_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def blob_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "blob_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the branch to which to commit to.
         """
         return pulumi.get(self, "branch")
 
     @branch.setter
-    def branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch", value)
 
     @_builtins.property
     @pulumi.getter(name="commitId")
-    def commit_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The commit id.
         """
         return pulumi.get(self, "commit_id")
 
     @commit_id.setter
-    def commit_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_id", value)
 
     @_builtins.property
     @pulumi.getter(name="commitMessage")
-    def commit_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Commit message.
         """
         return pulumi.get(self, "commit_message")
 
     @commit_message.setter
-    def commit_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_message", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File content.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter(name="contentSha256")
-    def content_sha256(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_sha256(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File content sha256 digest.
         """
         return pulumi.get(self, "content_sha256")
 
     @content_sha256.setter
-    def content_sha256(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_sha256(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_sha256", value)
 
     @_builtins.property
     @pulumi.getter(name="createCommitMessage")
-    def create_commit_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_commit_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create commit message.
         """
         return pulumi.get(self, "create_commit_message")
 
     @create_commit_message.setter
-    def create_commit_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_commit_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_commit_message", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteCommitMessage")
-    def delete_commit_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_commit_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Delete Commit message.
         """
         return pulumi.get(self, "delete_commit_message")
 
     @delete_commit_message.setter
-    def delete_commit_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_commit_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_commit_message", value)
 
     @_builtins.property
     @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file content encoding. Valid values are: `base64`, `text`.
         """
         return pulumi.get(self, "encoding")
 
     @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="executeFilemode")
-    def execute_filemode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def execute_filemode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables or disables the execute flag on the file.
         """
         return pulumi.get(self, "execute_filemode")
 
     @execute_filemode.setter
-    def execute_filemode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def execute_filemode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "execute_filemode", value)
 
     @_builtins.property
     @pulumi.getter(name="fileName")
-    def file_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The filename.
         """
         return pulumi.get(self, "file_name")
 
     @file_name.setter
-    def file_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name", value)
 
     @_builtins.property
     @pulumi.getter(name="filePath")
-    def file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
         """
         return pulumi.get(self, "file_path")
 
     @file_path.setter
-    def file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_path", value)
 
     @_builtins.property
     @pulumi.getter(name="lastCommitId")
-    def last_commit_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_commit_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last known commit id.
         """
         return pulumi.get(self, "last_commit_id")
 
     @last_commit_id.setter
-    def last_commit_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_commit_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_commit_id", value)
 
     @_builtins.property
     @pulumi.getter(name="overwriteOnCreate")
-    def overwrite_on_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite_on_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
         """
         return pulumi.get(self, "overwrite_on_create")
 
     @overwrite_on_create.setter
-    def overwrite_on_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite_on_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite_on_create", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name or ID of the project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of branch, tag or commit.
         """
         return pulumi.get(self, "ref")
 
     @ref.setter
-    def ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ref", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The file size.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="startBranch")
-    def start_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the branch to start the new commit from.
         """
         return pulumi.get(self, "start_branch")
 
     @start_branch.setter
-    def start_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="updateCommitMessage")
-    def update_commit_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_commit_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Update commit message.
         """
         return pulumi.get(self, "update_commit_message")
 
     @update_commit_message.setter
-    def update_commit_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_commit_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_commit_message", value)
 
 
@@ -595,20 +595,20 @@ class RepositoryFile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 author_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 author_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_filemode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
+                 author_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 author_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_filemode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `RepositoryFile` resource manages the lifecycle of a file within a repository.
@@ -635,7 +635,7 @@ class RepositoryFile(pulumi.CustomResource):
             description="An example group")
         this_project = gitlab.Project("this",
             name="example",
-            namespace_id=this.id,
+            namespace_id=this.id.apply(lambda x: int(x)),
             initialize_with_readme=True)
         this_repository_file = gitlab.RepositoryFile("this",
             project=this_project.id,
@@ -730,7 +730,7 @@ class RepositoryFile(pulumi.CustomResource):
             description="An example group")
         this_project = gitlab.Project("this",
             name="example",
-            namespace_id=this.id,
+            namespace_id=this.id.apply(lambda x: int(x)),
             initialize_with_readme=True)
         this_repository_file = gitlab.RepositoryFile("this",
             project=this_project.id,
@@ -792,20 +792,20 @@ class RepositoryFile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 author_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 author_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_filemode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
+                 author_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 author_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_filemode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -856,27 +856,27 @@ class RepositoryFile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            author_email: Optional[pulumi.Input[_builtins.str]] = None,
-            author_name: Optional[pulumi.Input[_builtins.str]] = None,
-            blob_id: Optional[pulumi.Input[_builtins.str]] = None,
-            branch: Optional[pulumi.Input[_builtins.str]] = None,
-            commit_id: Optional[pulumi.Input[_builtins.str]] = None,
-            commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-            content: Optional[pulumi.Input[_builtins.str]] = None,
-            content_sha256: Optional[pulumi.Input[_builtins.str]] = None,
-            create_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-            encoding: Optional[pulumi.Input[_builtins.str]] = None,
-            execute_filemode: Optional[pulumi.Input[_builtins.bool]] = None,
-            file_name: Optional[pulumi.Input[_builtins.str]] = None,
-            file_path: Optional[pulumi.Input[_builtins.str]] = None,
-            last_commit_id: Optional[pulumi.Input[_builtins.str]] = None,
-            overwrite_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            ref: Optional[pulumi.Input[_builtins.str]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            start_branch: Optional[pulumi.Input[_builtins.str]] = None,
-            update_commit_message: Optional[pulumi.Input[_builtins.str]] = None) -> 'RepositoryFile':
+            author_email: pulumi.Input[Optional[_builtins.str]] = None,
+            author_name: pulumi.Input[Optional[_builtins.str]] = None,
+            blob_id: pulumi.Input[Optional[_builtins.str]] = None,
+            branch: pulumi.Input[Optional[_builtins.str]] = None,
+            commit_id: pulumi.Input[Optional[_builtins.str]] = None,
+            commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+            create_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+            encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_filemode: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_name: pulumi.Input[Optional[_builtins.str]] = None,
+            file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            last_commit_id: pulumi.Input[Optional[_builtins.str]] = None,
+            overwrite_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            ref: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            start_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            update_commit_message: pulumi.Input[Optional[_builtins.str]] = None) -> 'RepositoryFile':
         """
         Get an existing RepositoryFile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

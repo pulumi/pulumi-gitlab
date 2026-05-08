@@ -70,5 +70,5 @@ export interface GetInstanceDeployKeysOutputArgs {
     /**
      * Only return deploy keys that are public.
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
 }

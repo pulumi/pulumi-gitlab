@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.ProjectAccessToken("example", new()
+    ///     var example = new GitLab.ProjectAccessToken("example", new()
     ///     {
     ///         Project = "25",
     ///         Name = "Example project access token",
@@ -42,7 +42,7 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var exampleProjectVariable = new GitLab.Index.ProjectVariable("example", new()
+    ///     var exampleProjectVariable = new GitLab.ProjectVariable("example", new()
     ///     {
     ///         Project = exampleGitlabProject.Id,
     ///         Key = "pat",

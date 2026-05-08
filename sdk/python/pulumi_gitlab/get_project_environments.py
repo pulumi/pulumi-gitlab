@@ -153,10 +153,10 @@ def get_project_environments(name: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         search=pulumi.get(__ret__, 'search'),
         states=pulumi.get(__ret__, 'states'))
-def get_project_environments_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    project: Optional[pulumi.Input[_builtins.str]] = None,
-                                    search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    states: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_project_environments_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    project: pulumi.Input[Optional[_builtins.str]] = None,
+                                    search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    states: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectEnvironmentsResult]:
     """
     The `get_project_environments` data source retrieves information about all environments of the given project.

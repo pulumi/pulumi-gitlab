@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.SystemHook("example", new()
+    ///     var example = new GitLab.SystemHook("example", new()
     ///     {
     ///         Url = "https://example.com/hook-%d",
     ///         Token = "secret-token",

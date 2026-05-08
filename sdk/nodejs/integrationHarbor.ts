@@ -162,31 +162,31 @@ export interface IntegrationHarborState {
     /**
      * Whether the integration is active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Password for authentication with the Harbor server, if authentication is required by the server.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * ID of the GitLab project you want to activate integration on.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URL-friendly Harbor project name. This project needs to already exist in Harbor. Example: `myProjectName`.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * Harbor URL. Example: `http://harbor.example.com`
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether or not to inherit default settings. Defaults to false.
      */
-    useInheritedSettings?: pulumi.Input<boolean>;
+    useInheritedSettings?: pulumi.Input<boolean | undefined>;
     /**
      * Username for authentication with the Harbor server, if authentication is required by the server.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -212,7 +212,7 @@ export interface IntegrationHarborArgs {
     /**
      * Indicates whether or not to inherit default settings. Defaults to false.
      */
-    useInheritedSettings?: pulumi.Input<boolean>;
+    useInheritedSettings?: pulumi.Input<boolean | undefined>;
     /**
      * Username for authentication with the Harbor server, if authentication is required by the server.
      */

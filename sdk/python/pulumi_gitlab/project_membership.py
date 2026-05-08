@@ -22,8 +22,8 @@ class ProjectMembershipArgs:
                  access_level: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  user_id: pulumi.Input[_builtins.int],
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ProjectMembership resource.
 
@@ -79,37 +79,37 @@ class ProjectMembershipArgs:
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expiration date for the project membership. Format: `YYYY-MM-DD`
         """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter(name="memberRoleId")
-    def member_role_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def member_role_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
         """
         return pulumi.get(self, "member_role_id")
 
     @member_role_id.setter
-    def member_role_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def member_role_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "member_role_id", value)
 
 
 @pulumi.input_type
 class _ProjectMembershipState:
     def __init__(__self__, *,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProjectMembership resources.
 
@@ -132,62 +132,62 @@ class _ProjectMembershipState:
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expiration date for the project membership. Format: `YYYY-MM-DD`
         """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter(name="memberRoleId")
-    def member_role_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def member_role_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
         """
         return pulumi.get(self, "member_role_id")
 
     @member_role_id.setter
-    def member_role_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def member_role_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "member_role_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of the project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The id of the user.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -197,11 +197,11 @@ class ProjectMembership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The `ProjectMembership` resource manages the lifecycle of a users project membership.
@@ -306,11 +306,11 @@ class ProjectMembership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -341,11 +341,11 @@ class ProjectMembership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-            member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'ProjectMembership':
+            access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'ProjectMembership':
         """
         Get an existing ProjectMembership resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

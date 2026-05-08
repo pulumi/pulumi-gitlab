@@ -20,19 +20,19 @@ __all__ = ['ProjectPushRulesInitArgs', 'ProjectPushRules']
 class ProjectPushRulesInitArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
-                 author_email_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 branch_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_committer_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_committer_name_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_message_negative_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_message_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 deny_delete_tag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 member_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_secrets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reject_non_dco_commits: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reject_unsigned_commits: Optional[pulumi.Input[_builtins.bool]] = None):
+                 author_email_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 branch_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_committer_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_committer_name_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_message_negative_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_message_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 deny_delete_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 member_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_secrets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reject_non_dco_commits: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reject_unsigned_commits: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectPushRules resource.
 
@@ -93,178 +93,178 @@ class ProjectPushRulesInitArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorEmailRegex")
-    def author_email_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_email_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All commit author emails must match this regex, e.g. `@my-company.com$`.
         """
         return pulumi.get(self, "author_email_regex")
 
     @author_email_regex.setter
-    def author_email_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_email_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_email_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="branchNameRegex")
-    def branch_name_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch_name_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
         """
         return pulumi.get(self, "branch_name_regex")
 
     @branch_name_regex.setter
-    def branch_name_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch_name_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch_name_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="commitCommitterCheck")
-    def commit_committer_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def commit_committer_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Users can only push commits to this repository that were committed with one of their own verified emails.
         """
         return pulumi.get(self, "commit_committer_check")
 
     @commit_committer_check.setter
-    def commit_committer_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def commit_committer_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "commit_committer_check", value)
 
     @_builtins.property
     @pulumi.getter(name="commitCommitterNameCheck")
-    def commit_committer_name_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def commit_committer_name_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
         """
         return pulumi.get(self, "commit_committer_name_check")
 
     @commit_committer_name_check.setter
-    def commit_committer_name_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def commit_committer_name_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "commit_committer_name_check", value)
 
     @_builtins.property
     @pulumi.getter(name="commitMessageNegativeRegex")
-    def commit_message_negative_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_message_negative_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         No commit message is allowed to match this regex, e.g. `ssh\\:\\/\\/`.
         """
         return pulumi.get(self, "commit_message_negative_regex")
 
     @commit_message_negative_regex.setter
-    def commit_message_negative_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_message_negative_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_message_negative_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="commitMessageRegex")
-    def commit_message_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_message_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
         """
         return pulumi.get(self, "commit_message_regex")
 
     @commit_message_regex.setter
-    def commit_message_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_message_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_message_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="denyDeleteTag")
-    def deny_delete_tag(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deny_delete_tag(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deny deleting a tag.
         """
         return pulumi.get(self, "deny_delete_tag")
 
     @deny_delete_tag.setter
-    def deny_delete_tag(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deny_delete_tag(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deny_delete_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="fileNameRegex")
-    def file_name_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All committed filenames must not match this regex, e.g. `(jar|exe)$`.
         """
         return pulumi.get(self, "file_name_regex")
 
     @file_name_regex.setter
-    def file_name_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="maxFileSize")
-    def max_file_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_file_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum file size (MB).
         """
         return pulumi.get(self, "max_file_size")
 
     @max_file_size.setter
-    def max_file_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_file_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_file_size", value)
 
     @_builtins.property
     @pulumi.getter(name="memberCheck")
-    def member_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def member_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Restrict commits by author (email) to existing GitLab users.
         """
         return pulumi.get(self, "member_check")
 
     @member_check.setter
-    def member_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def member_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "member_check", value)
 
     @_builtins.property
     @pulumi.getter(name="preventSecrets")
-    def prevent_secrets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_secrets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         GitLab will reject any files that are likely to contain secrets.
         """
         return pulumi.get(self, "prevent_secrets")
 
     @prevent_secrets.setter
-    def prevent_secrets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_secrets(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_secrets", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectNonDcoCommits")
-    def reject_non_dco_commits(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reject_non_dco_commits(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Reject commit when it’s not DCO certified.
         """
         return pulumi.get(self, "reject_non_dco_commits")
 
     @reject_non_dco_commits.setter
-    def reject_non_dco_commits(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reject_non_dco_commits(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reject_non_dco_commits", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectUnsignedCommits")
-    def reject_unsigned_commits(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reject_unsigned_commits(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Reject commit when it’s not signed.
         """
         return pulumi.get(self, "reject_unsigned_commits")
 
     @reject_unsigned_commits.setter
-    def reject_unsigned_commits(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reject_unsigned_commits(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reject_unsigned_commits", value)
 
 
 @pulumi.input_type
 class _ProjectPushRulesState:
     def __init__(__self__, *,
-                 author_email_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 branch_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_committer_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_committer_name_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_message_negative_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_message_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 deny_delete_tag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 member_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_secrets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reject_non_dco_commits: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reject_unsigned_commits: Optional[pulumi.Input[_builtins.bool]] = None):
+                 author_email_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 branch_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_committer_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_committer_name_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_message_negative_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_message_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 deny_delete_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 member_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_secrets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reject_non_dco_commits: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reject_unsigned_commits: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectPushRules resources.
 
@@ -314,170 +314,170 @@ class _ProjectPushRulesState:
 
     @_builtins.property
     @pulumi.getter(name="authorEmailRegex")
-    def author_email_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_email_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All commit author emails must match this regex, e.g. `@my-company.com$`.
         """
         return pulumi.get(self, "author_email_regex")
 
     @author_email_regex.setter
-    def author_email_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_email_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_email_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="branchNameRegex")
-    def branch_name_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch_name_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
         """
         return pulumi.get(self, "branch_name_regex")
 
     @branch_name_regex.setter
-    def branch_name_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch_name_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch_name_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="commitCommitterCheck")
-    def commit_committer_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def commit_committer_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Users can only push commits to this repository that were committed with one of their own verified emails.
         """
         return pulumi.get(self, "commit_committer_check")
 
     @commit_committer_check.setter
-    def commit_committer_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def commit_committer_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "commit_committer_check", value)
 
     @_builtins.property
     @pulumi.getter(name="commitCommitterNameCheck")
-    def commit_committer_name_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def commit_committer_name_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
         """
         return pulumi.get(self, "commit_committer_name_check")
 
     @commit_committer_name_check.setter
-    def commit_committer_name_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def commit_committer_name_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "commit_committer_name_check", value)
 
     @_builtins.property
     @pulumi.getter(name="commitMessageNegativeRegex")
-    def commit_message_negative_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_message_negative_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         No commit message is allowed to match this regex, e.g. `ssh\\:\\/\\/`.
         """
         return pulumi.get(self, "commit_message_negative_regex")
 
     @commit_message_negative_regex.setter
-    def commit_message_negative_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_message_negative_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_message_negative_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="commitMessageRegex")
-    def commit_message_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_message_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
         """
         return pulumi.get(self, "commit_message_regex")
 
     @commit_message_regex.setter
-    def commit_message_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_message_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_message_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="denyDeleteTag")
-    def deny_delete_tag(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deny_delete_tag(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deny deleting a tag.
         """
         return pulumi.get(self, "deny_delete_tag")
 
     @deny_delete_tag.setter
-    def deny_delete_tag(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deny_delete_tag(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deny_delete_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="fileNameRegex")
-    def file_name_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All committed filenames must not match this regex, e.g. `(jar|exe)$`.
         """
         return pulumi.get(self, "file_name_regex")
 
     @file_name_regex.setter
-    def file_name_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="maxFileSize")
-    def max_file_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_file_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum file size (MB).
         """
         return pulumi.get(self, "max_file_size")
 
     @max_file_size.setter
-    def max_file_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_file_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_file_size", value)
 
     @_builtins.property
     @pulumi.getter(name="memberCheck")
-    def member_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def member_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Restrict commits by author (email) to existing GitLab users.
         """
         return pulumi.get(self, "member_check")
 
     @member_check.setter
-    def member_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def member_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "member_check", value)
 
     @_builtins.property
     @pulumi.getter(name="preventSecrets")
-    def prevent_secrets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_secrets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         GitLab will reject any files that are likely to contain secrets.
         """
         return pulumi.get(self, "prevent_secrets")
 
     @prevent_secrets.setter
-    def prevent_secrets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_secrets(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_secrets", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of the project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectNonDcoCommits")
-    def reject_non_dco_commits(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reject_non_dco_commits(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Reject commit when it’s not DCO certified.
         """
         return pulumi.get(self, "reject_non_dco_commits")
 
     @reject_non_dco_commits.setter
-    def reject_non_dco_commits(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reject_non_dco_commits(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reject_non_dco_commits", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectUnsignedCommits")
-    def reject_unsigned_commits(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reject_unsigned_commits(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Reject commit when it’s not signed.
         """
         return pulumi.get(self, "reject_unsigned_commits")
 
     @reject_unsigned_commits.setter
-    def reject_unsigned_commits(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reject_unsigned_commits(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reject_unsigned_commits", value)
 
 
@@ -487,20 +487,20 @@ class ProjectPushRules(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 author_email_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 branch_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_committer_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_committer_name_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_message_negative_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_message_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 deny_delete_tag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 member_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_secrets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reject_non_dco_commits: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reject_unsigned_commits: Optional[pulumi.Input[_builtins.bool]] = None,
+                 author_email_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 branch_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_committer_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_committer_name_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_message_negative_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_message_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 deny_delete_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 member_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_secrets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reject_non_dco_commits: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reject_unsigned_commits: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The `ProjectPushRules` resource manages the lifecycle of push rules on a project.
@@ -634,20 +634,20 @@ class ProjectPushRules(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 author_email_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 branch_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_committer_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_committer_name_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_message_negative_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_message_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 deny_delete_tag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 member_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_secrets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reject_non_dco_commits: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reject_unsigned_commits: Optional[pulumi.Input[_builtins.bool]] = None,
+                 author_email_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 branch_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_committer_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_committer_name_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_message_negative_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_message_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 deny_delete_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 member_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_secrets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reject_non_dco_commits: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reject_unsigned_commits: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -683,20 +683,20 @@ class ProjectPushRules(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            author_email_regex: Optional[pulumi.Input[_builtins.str]] = None,
-            branch_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-            commit_committer_check: Optional[pulumi.Input[_builtins.bool]] = None,
-            commit_committer_name_check: Optional[pulumi.Input[_builtins.bool]] = None,
-            commit_message_negative_regex: Optional[pulumi.Input[_builtins.str]] = None,
-            commit_message_regex: Optional[pulumi.Input[_builtins.str]] = None,
-            deny_delete_tag: Optional[pulumi.Input[_builtins.bool]] = None,
-            file_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-            max_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-            member_check: Optional[pulumi.Input[_builtins.bool]] = None,
-            prevent_secrets: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            reject_non_dco_commits: Optional[pulumi.Input[_builtins.bool]] = None,
-            reject_unsigned_commits: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ProjectPushRules':
+            author_email_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            branch_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            commit_committer_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            commit_committer_name_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            commit_message_negative_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            commit_message_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            deny_delete_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            max_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+            member_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            prevent_secrets: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reject_non_dco_commits: pulumi.Input[Optional[_builtins.bool]] = None,
+            reject_unsigned_commits: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ProjectPushRules':
         """
         Get an existing ProjectPushRules resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

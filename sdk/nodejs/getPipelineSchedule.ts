@@ -148,7 +148,7 @@ export interface GetPipelineScheduleOutputArgs {
     /**
      * The timezone.
      */
-    cronTimezone?: pulumi.Input<string>;
+    cronTimezone?: pulumi.Input<string | undefined>;
     /**
      * The pipeline schedule id.
      */

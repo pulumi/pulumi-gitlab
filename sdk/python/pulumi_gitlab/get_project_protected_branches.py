@@ -97,8 +97,8 @@ def get_project_protected_branches(project_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         protected_branches=pulumi.get(__ret__, 'protected_branches'))
-def get_project_protected_branches_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                          protected_branches: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectProtectedBranchesProtectedBranchArgs', 'GetProjectProtectedBranchesProtectedBranchArgsDict']]]]] = None,
+def get_project_protected_branches_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                          protected_branches: pulumi.Input[Optional[Optional[Sequence[Union['GetProjectProtectedBranchesProtectedBranchArgs', 'GetProjectProtectedBranchesProtectedBranchArgsDict']]]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectProtectedBranchesResult]:
     """
     The `get_project_protected_branches` data source allows details of the protected branches of a given project.

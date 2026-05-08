@@ -202,9 +202,9 @@ def get_project_secure_file(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         secure_file_id=pulumi.get(__ret__, 'secure_file_id'))
-def get_project_secure_file_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   project: Optional[pulumi.Input[_builtins.str]] = None,
-                                   secure_file_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_project_secure_file_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   project: pulumi.Input[Optional[_builtins.str]] = None,
+                                   secure_file_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectSecureFileResult]:
     """
     The `ProjectSecureFile` data source allows the contents of a secure file to be retrieved by either Name or ID.

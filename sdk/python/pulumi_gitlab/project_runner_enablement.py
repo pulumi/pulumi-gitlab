@@ -58,8 +58,8 @@ class ProjectRunnerEnablementArgs:
 @pulumi.input_type
 class _ProjectRunnerEnablementState:
     def __init__(__self__, *,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 runner_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 runner_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProjectRunnerEnablement resources.
 
@@ -73,26 +73,26 @@ class _ProjectRunnerEnablementState:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of the project owned by the authenticated user.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="runnerId")
-    def runner_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def runner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a runner to enable for the project.
         """
         return pulumi.get(self, "runner_id")
 
     @runner_id.setter
-    def runner_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def runner_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "runner_id", value)
 
 
@@ -102,8 +102,8 @@ class ProjectRunnerEnablement(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 runner_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 runner_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The `ProjectRunnerEnablement` resource allows to enable a runner in a project.
@@ -189,8 +189,8 @@ class ProjectRunnerEnablement(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 runner_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 runner_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -216,8 +216,8 @@ class ProjectRunnerEnablement(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            runner_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'ProjectRunnerEnablement':
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            runner_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'ProjectRunnerEnablement':
         """
         Get an existing ProjectRunnerEnablement resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

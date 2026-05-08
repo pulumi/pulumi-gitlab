@@ -24,14 +24,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleGroup = new GitLab.Index.Group("example_group", new()
+    ///     var exampleGroup = new GitLab.Group("example_group", new()
     ///     {
     ///         Name = "example_group",
     ///         Path = "example_group",
     ///         Description = "An example group",
     ///     });
     /// 
-    ///     var teams = new GitLab.Index.GroupIntegrationMicrosoftTeams("teams", new()
+    ///     var teams = new GitLab.GroupIntegrationMicrosoftTeams("teams", new()
     ///     {
     ///         Group = exampleGroup.Id,
     ///         Webhook = "https://outlook.office.com/webhook/...",

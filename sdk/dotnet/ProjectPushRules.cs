@@ -31,7 +31,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sample = new GitLab.Index.ProjectPushRules("sample", new()
+    ///     var sample = new GitLab.ProjectPushRules("sample", new()
     ///     {
     ///         Project = "42",
     ///         AuthorEmailRegex = "@gitlab.com$",

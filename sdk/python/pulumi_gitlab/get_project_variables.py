@@ -121,8 +121,8 @@ def get_project_variables(environment_scope: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         variables=pulumi.get(__ret__, 'variables'))
-def get_project_variables_output(environment_scope: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_variables_output(environment_scope: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 project: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectVariablesResult]:
     """
     The `get_project_variables` data source allows to retrieve all project-level CI/CD variables.

@@ -109,8 +109,8 @@ def get_project_protected_tag(project: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         tag=pulumi.get(__ret__, 'tag'))
-def get_project_protected_tag_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                                     tag: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_protected_tag_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                                     tag: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectProtectedTagResult]:
     """
     The `get_project_protected_tag` data source allows details of a protected tag to be retrieved by its name and the project it belongs to.

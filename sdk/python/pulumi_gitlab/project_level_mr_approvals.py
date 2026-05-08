@@ -20,12 +20,12 @@ __all__ = ['ProjectLevelMrApprovalsArgs', 'ProjectLevelMrApprovals']
 class ProjectLevelMrApprovalsArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
-                 disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_disable_committers_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_password_to_approve: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reset_approvals_on_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 selective_code_owner_removals: Optional[pulumi.Input[_builtins.bool]] = None):
+                 disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_disable_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_password_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reset_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 selective_code_owner_removals: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectLevelMrApprovals resource.
 
@@ -65,87 +65,87 @@ class ProjectLevelMrApprovalsArgs:
 
     @_builtins.property
     @pulumi.getter(name="disableOverridingApproversPerMergeRequest")
-    def disable_overriding_approvers_per_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_overriding_approvers_per_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to disable overriding approvers per merge request.
         """
         return pulumi.get(self, "disable_overriding_approvers_per_merge_request")
 
     @disable_overriding_approvers_per_merge_request.setter
-    def disable_overriding_approvers_per_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_overriding_approvers_per_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_overriding_approvers_per_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsAuthorApproval")
-    def merge_requests_author_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_requests_author_approval(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to allow merge requests authors to approve their own merge requests.
         """
         return pulumi.get(self, "merge_requests_author_approval")
 
     @merge_requests_author_approval.setter
-    def merge_requests_author_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_requests_author_approval(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_requests_author_approval", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsDisableCommittersApproval")
-    def merge_requests_disable_committers_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_requests_disable_committers_approval(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to disable merge request committers from approving their own merge requests.
         """
         return pulumi.get(self, "merge_requests_disable_committers_approval")
 
     @merge_requests_disable_committers_approval.setter
-    def merge_requests_disable_committers_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_requests_disable_committers_approval(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_requests_disable_committers_approval", value)
 
     @_builtins.property
     @pulumi.getter(name="requirePasswordToApprove")
-    def require_password_to_approve(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_password_to_approve(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to require authentication to approve merge requests.
         """
         return pulumi.get(self, "require_password_to_approve")
 
     @require_password_to_approve.setter
-    def require_password_to_approve(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_password_to_approve(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_password_to_approve", value)
 
     @_builtins.property
     @pulumi.getter(name="resetApprovalsOnPush")
-    def reset_approvals_on_push(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reset_approvals_on_push(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         """
         return pulumi.get(self, "reset_approvals_on_push")
 
     @reset_approvals_on_push.setter
-    def reset_approvals_on_push(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reset_approvals_on_push(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reset_approvals_on_push", value)
 
     @_builtins.property
     @pulumi.getter(name="selectiveCodeOwnerRemovals")
-    def selective_code_owner_removals(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def selective_code_owner_removals(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
         """
         return pulumi.get(self, "selective_code_owner_removals")
 
     @selective_code_owner_removals.setter
-    def selective_code_owner_removals(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def selective_code_owner_removals(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "selective_code_owner_removals", value)
 
 
 @pulumi.input_type
 class _ProjectLevelMrApprovalsState:
     def __init__(__self__, *,
-                 disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_disable_committers_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_password_to_approve: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reset_approvals_on_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 selective_code_owner_removals: Optional[pulumi.Input[_builtins.bool]] = None):
+                 disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_disable_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_password_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reset_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 selective_code_owner_removals: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ProjectLevelMrApprovals resources.
 
@@ -174,86 +174,86 @@ class _ProjectLevelMrApprovalsState:
 
     @_builtins.property
     @pulumi.getter(name="disableOverridingApproversPerMergeRequest")
-    def disable_overriding_approvers_per_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_overriding_approvers_per_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to disable overriding approvers per merge request.
         """
         return pulumi.get(self, "disable_overriding_approvers_per_merge_request")
 
     @disable_overriding_approvers_per_merge_request.setter
-    def disable_overriding_approvers_per_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_overriding_approvers_per_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_overriding_approvers_per_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsAuthorApproval")
-    def merge_requests_author_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_requests_author_approval(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to allow merge requests authors to approve their own merge requests.
         """
         return pulumi.get(self, "merge_requests_author_approval")
 
     @merge_requests_author_approval.setter
-    def merge_requests_author_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_requests_author_approval(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_requests_author_approval", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsDisableCommittersApproval")
-    def merge_requests_disable_committers_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_requests_disable_committers_approval(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to disable merge request committers from approving their own merge requests.
         """
         return pulumi.get(self, "merge_requests_disable_committers_approval")
 
     @merge_requests_disable_committers_approval.setter
-    def merge_requests_disable_committers_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_requests_disable_committers_approval(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_requests_disable_committers_approval", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of a project to change MR approval configuration.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="requirePasswordToApprove")
-    def require_password_to_approve(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_password_to_approve(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to require authentication to approve merge requests.
         """
         return pulumi.get(self, "require_password_to_approve")
 
     @require_password_to_approve.setter
-    def require_password_to_approve(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_password_to_approve(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_password_to_approve", value)
 
     @_builtins.property
     @pulumi.getter(name="resetApprovalsOnPush")
-    def reset_approvals_on_push(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reset_approvals_on_push(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         """
         return pulumi.get(self, "reset_approvals_on_push")
 
     @reset_approvals_on_push.setter
-    def reset_approvals_on_push(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reset_approvals_on_push(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reset_approvals_on_push", value)
 
     @_builtins.property
     @pulumi.getter(name="selectiveCodeOwnerRemovals")
-    def selective_code_owner_removals(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def selective_code_owner_removals(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
         """
         return pulumi.get(self, "selective_code_owner_removals")
 
     @selective_code_owner_removals.setter
-    def selective_code_owner_removals(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def selective_code_owner_removals(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "selective_code_owner_removals", value)
 
 
@@ -263,13 +263,13 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_disable_committers_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_password_to_approve: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reset_approvals_on_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 selective_code_owner_removals: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_disable_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_password_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reset_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 selective_code_owner_removals: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The `gitlab_project_level_mr_approval_rule` resource manages the lifecycle of a Merge Request-level approval rule.
@@ -376,13 +376,13 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_disable_committers_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_password_to_approve: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reset_approvals_on_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 selective_code_owner_removals: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_disable_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_password_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reset_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 selective_code_owner_removals: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -411,13 +411,13 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            disable_overriding_approvers_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-            merge_requests_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-            merge_requests_disable_committers_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            require_password_to_approve: Optional[pulumi.Input[_builtins.bool]] = None,
-            reset_approvals_on_push: Optional[pulumi.Input[_builtins.bool]] = None,
-            selective_code_owner_removals: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ProjectLevelMrApprovals':
+            disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_requests_disable_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            require_password_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+            reset_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None,
+            selective_code_owner_removals: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ProjectLevelMrApprovals':
         """
         Get an existing ProjectLevelMrApprovals resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
