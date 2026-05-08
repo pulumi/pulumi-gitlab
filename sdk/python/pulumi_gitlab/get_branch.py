@@ -200,8 +200,8 @@ def get_branch(name: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         protected=pulumi.get(__ret__, 'protected'),
         web_url=pulumi.get(__ret__, 'web_url'))
-def get_branch_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                      project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_branch_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                      project: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBranchResult]:
     """
     The `Branch` data source allows details of a repository branch to be retrieved by its name and project.

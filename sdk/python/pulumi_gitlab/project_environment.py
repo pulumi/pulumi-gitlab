@@ -20,15 +20,15 @@ __all__ = ['ProjectEnvironmentArgs', 'ProjectEnvironment']
 class ProjectEnvironmentArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
-                 auto_stop_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_agent_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 flux_resource_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 stop_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_stop_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_agent_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 flux_resource_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 stop_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectEnvironment resource.
 
@@ -77,131 +77,131 @@ class ProjectEnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoStopSetting")
-    def auto_stop_setting(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_stop_setting(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
         """
         return pulumi.get(self, "auto_stop_setting")
 
     @auto_stop_setting.setter
-    def auto_stop_setting(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_stop_setting(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_stop_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterAgentId")
-    def cluster_agent_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cluster_agent_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The cluster agent to associate with this environment.
         """
         return pulumi.get(self, "cluster_agent_id")
 
     @cluster_agent_id.setter
-    def cluster_agent_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cluster_agent_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cluster_agent_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the environment.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="externalUrl")
-    def external_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Place to link to for this environment.
         """
         return pulumi.get(self, "external_url")
 
     @external_url.setter
-    def external_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_url", value)
 
     @_builtins.property
     @pulumi.getter(name="fluxResourcePath")
-    def flux_resource_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flux_resource_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Flux resource path to associate with this environment.
         """
         return pulumi.get(self, "flux_resource_path")
 
     @flux_resource_path.setter
-    def flux_resource_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flux_resource_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flux_resource_path", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesNamespace")
-    def kubernetes_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubernetes_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kubernetes namespace to associate with this environment.
         """
         return pulumi.get(self, "kubernetes_namespace")
 
     @kubernetes_namespace.setter
-    def kubernetes_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubernetes_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubernetes_namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the environment.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="stopBeforeDestroy")
-    def stop_before_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stop_before_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
         """
         return pulumi.get(self, "stop_before_destroy")
 
     @stop_before_destroy.setter
-    def stop_before_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stop_before_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stop_before_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
         """
         return pulumi.get(self, "tier")
 
     @tier.setter
-    def tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tier", value)
 
 
 @pulumi.input_type
 class _ProjectEnvironmentState:
     def __init__(__self__, *,
-                 auto_stop_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_stop_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_agent_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 flux_resource_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 slug: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 stop_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_stop_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_stop_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_agent_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 flux_resource_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 slug: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 stop_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectEnvironment resources.
 
@@ -254,182 +254,182 @@ class _ProjectEnvironmentState:
 
     @_builtins.property
     @pulumi.getter(name="autoStopAt")
-    def auto_stop_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_stop_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ISO8601 date/time that this environment will be automatically stopped at in UTC.
         """
         return pulumi.get(self, "auto_stop_at")
 
     @auto_stop_at.setter
-    def auto_stop_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_stop_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_stop_at", value)
 
     @_builtins.property
     @pulumi.getter(name="autoStopSetting")
-    def auto_stop_setting(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_stop_setting(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The auto stop setting for the environment. Allowed values are `always`, `with_action`. If this is set to `with_action` and `stop_before_destroy` is `true`, the environment will be force-stopped.
         """
         return pulumi.get(self, "auto_stop_setting")
 
     @auto_stop_setting.setter
-    def auto_stop_setting(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_stop_setting(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_stop_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterAgentId")
-    def cluster_agent_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cluster_agent_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The cluster agent to associate with this environment.
         """
         return pulumi.get(self, "cluster_agent_id")
 
     @cluster_agent_id.setter
-    def cluster_agent_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cluster_agent_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cluster_agent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ISO8601 date/time that this environment was created at in UTC.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the environment.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="externalUrl")
-    def external_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Place to link to for this environment.
         """
         return pulumi.get(self, "external_url")
 
     @external_url.setter
-    def external_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_url", value)
 
     @_builtins.property
     @pulumi.getter(name="fluxResourcePath")
-    def flux_resource_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flux_resource_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Flux resource path to associate with this environment.
         """
         return pulumi.get(self, "flux_resource_path")
 
     @flux_resource_path.setter
-    def flux_resource_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flux_resource_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flux_resource_path", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesNamespace")
-    def kubernetes_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubernetes_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kubernetes namespace to associate with this environment.
         """
         return pulumi.get(self, "kubernetes_namespace")
 
     @kubernetes_namespace.setter
-    def kubernetes_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubernetes_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubernetes_namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the environment.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or full path of the project to environment is created for.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def slug(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slug(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the environment in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
         """
         return pulumi.get(self, "slug")
 
     @slug.setter
-    def slug(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slug(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slug", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State the environment is in. Valid values are `available`, `stopped`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stopBeforeDestroy")
-    def stop_before_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stop_before_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether the environment is attempted to be stopped before the environment is deleted. If `auto_stop_setting` is set to `with_action`, this will perform a force stop.
         """
         return pulumi.get(self, "stop_before_destroy")
 
     @stop_before_destroy.setter
-    def stop_before_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stop_before_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stop_before_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tier of the new environment. Valid values are `production`, `staging`, `testing`, `development`, `other`.
         """
         return pulumi.get(self, "tier")
 
     @tier.setter
-    def tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tier", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ISO8601 date/time that this environment was last updated at in UTC.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -439,16 +439,16 @@ class ProjectEnvironment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_stop_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_agent_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 flux_resource_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 stop_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_stop_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_agent_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 flux_resource_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 stop_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectEnvironment` resource manages the lifecycle of an environment in a project.
@@ -472,7 +472,7 @@ class ProjectEnvironment(pulumi.CustomResource):
             description="An example group")
         this_project = gitlab.Project("this",
             name="example",
-            namespace_id=this.id,
+            namespace_id=this.id.apply(lambda x: int(x)),
             initialize_with_readme=True)
         this_project_environment = gitlab.ProjectEnvironment("this",
             project=this_project.id,
@@ -534,7 +534,7 @@ class ProjectEnvironment(pulumi.CustomResource):
             description="An example group")
         this_project = gitlab.Project("this",
             name="example",
-            namespace_id=this.id,
+            namespace_id=this.id.apply(lambda x: int(x)),
             initialize_with_readme=True)
         this_project_environment = gitlab.ProjectEnvironment("this",
             project=this_project.id,
@@ -570,16 +570,16 @@ class ProjectEnvironment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_stop_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_agent_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 flux_resource_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 stop_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_stop_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_agent_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 flux_resource_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 stop_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -616,21 +616,21 @@ class ProjectEnvironment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_stop_at: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_stop_setting: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_agent_id: Optional[pulumi.Input[_builtins.int]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            external_url: Optional[pulumi.Input[_builtins.str]] = None,
-            flux_resource_path: Optional[pulumi.Input[_builtins.str]] = None,
-            kubernetes_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            slug: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            stop_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            tier: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectEnvironment':
+            auto_stop_at: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_stop_setting: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_agent_id: pulumi.Input[Optional[_builtins.int]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            external_url: pulumi.Input[Optional[_builtins.str]] = None,
+            flux_resource_path: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            slug: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            stop_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            tier: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectEnvironment':
         """
         Get an existing ProjectEnvironment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

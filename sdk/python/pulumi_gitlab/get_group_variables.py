@@ -121,8 +121,8 @@ def get_group_variables(environment_scope: Optional[_builtins.str] = None,
         group=pulumi.get(__ret__, 'group'),
         id=pulumi.get(__ret__, 'id'),
         variables=pulumi.get(__ret__, 'variables'))
-def get_group_variables_output(environment_scope: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               group: Optional[pulumi.Input[_builtins.str]] = None,
+def get_group_variables_output(environment_scope: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               group: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupVariablesResult]:
     """
     The `get_group_variables` data source allows to retrieve all group-level CI/CD variables.

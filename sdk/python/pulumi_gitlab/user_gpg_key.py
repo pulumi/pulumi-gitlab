@@ -20,7 +20,7 @@ __all__ = ['UserGpgKeyArgs', 'UserGpgKey']
 class UserGpgKeyArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a UserGpgKey resource.
 
@@ -45,24 +45,24 @@ class UserGpgKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
 @pulumi.input_type
 class _UserGpgKeyState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering UserGpgKey resources.
 
@@ -82,50 +82,50 @@ class _UserGpgKeyState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when this key was created in GitLab.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The armored GPG public key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def key_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the GPG key.
         """
         return pulumi.get(self, "key_id")
 
     @key_id.setter
-    def key_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def key_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the user to add the GPG key to. If this field is omitted, this resource manages a GPG key for the current user. Otherwise, this resource manages a GPG key for the specified user, and an admin token is required.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -135,8 +135,8 @@ class UserGpgKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The `UserGpgKey` resource manages the lifecycle of a GPG key assigned to the current user or a specific user.
@@ -154,7 +154,7 @@ class UserGpgKey(pulumi.CustomResource):
         example = gitlab.get_user(username="example-user")
         # Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
         example_user_gpg_key = gitlab.UserGpgKey("example",
-            user_id=example.id,
+            user_id=output(example.id).apply(lambda x: int(x)),
             key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
         ...
         -----END PGP PUBLIC KEY BLOCK-----\"\"\")
@@ -210,7 +210,7 @@ class UserGpgKey(pulumi.CustomResource):
         example = gitlab.get_user(username="example-user")
         # Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
         example_user_gpg_key = gitlab.UserGpgKey("example",
-            user_id=example.id,
+            user_id=output(example.id).apply(lambda x: int(x)),
             key=\"\"\"-----BEGIN PGP PUBLIC KEY BLOCK-----
         ...
         -----END PGP PUBLIC KEY BLOCK-----\"\"\")
@@ -254,8 +254,8 @@ class UserGpgKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -281,10 +281,10 @@ class UserGpgKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            key_id: Optional[pulumi.Input[_builtins.int]] = None,
-            user_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'UserGpgKey':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            key_id: pulumi.Input[Optional[_builtins.int]] = None,
+            user_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'UserGpgKey':
         """
         Get an existing UserGpgKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

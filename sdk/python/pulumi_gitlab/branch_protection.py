@@ -23,14 +23,14 @@ class BranchProtectionArgs:
     def __init__(__self__, *,
                  branch: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
-                 allow_force_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]] = None,
-                 allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]] = None,
-                 allowed_to_unprotects: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]]] = None,
-                 code_owner_approval_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 unprotect_access_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_force_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_to_merges: pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]] = None,
+                 allowed_to_pushes: pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]] = None,
+                 allowed_to_unprotects: pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]]] = None,
+                 code_owner_approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 unprotect_access_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BranchProtection resource.
 
@@ -90,115 +90,115 @@ class BranchProtectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowForcePush")
-    def allow_force_push(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_force_push(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Can be set to true to allow users with push access to force push.
         """
         return pulumi.get(self, "allow_force_push")
 
     @allow_force_push.setter
-    def allow_force_push(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_force_push(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_force_push", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedToMerges")
-    def allowed_to_merges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]]:
+    def allowed_to_merges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]]:
         """
         Array of access levels and user(s)/group(s) allowed to merge to protected branch.
         """
         return pulumi.get(self, "allowed_to_merges")
 
     @allowed_to_merges.setter
-    def allowed_to_merges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]]):
+    def allowed_to_merges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]]):
         pulumi.set(self, "allowed_to_merges", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedToPushes")
-    def allowed_to_pushes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]]:
+    def allowed_to_pushes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]]:
         """
         Array of access levels and user(s)/group(s) allowed to push to protected branch.
         """
         return pulumi.get(self, "allowed_to_pushes")
 
     @allowed_to_pushes.setter
-    def allowed_to_pushes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]]):
+    def allowed_to_pushes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]]):
         pulumi.set(self, "allowed_to_pushes", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedToUnprotects")
-    def allowed_to_unprotects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]]]:
+    def allowed_to_unprotects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]]]:
         """
         Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
         """
         return pulumi.get(self, "allowed_to_unprotects")
 
     @allowed_to_unprotects.setter
-    def allowed_to_unprotects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]]]):
+    def allowed_to_unprotects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]]]):
         pulumi.set(self, "allowed_to_unprotects", value)
 
     @_builtins.property
     @pulumi.getter(name="codeOwnerApprovalRequired")
-    def code_owner_approval_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def code_owner_approval_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
         """
         return pulumi.get(self, "code_owner_approval_required")
 
     @code_owner_approval_required.setter
-    def code_owner_approval_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def code_owner_approval_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "code_owner_approval_required", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeAccessLevel")
-    def merge_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "merge_access_level")
 
     @merge_access_level.setter
-    def merge_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="pushAccessLevel")
-    def push_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def push_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "push_access_level")
 
     @push_access_level.setter
-    def push_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def push_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "push_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="unprotectAccessLevel")
-    def unprotect_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unprotect_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "unprotect_access_level")
 
     @unprotect_access_level.setter
-    def unprotect_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unprotect_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unprotect_access_level", value)
 
 
 @pulumi.input_type
 class _BranchProtectionState:
     def __init__(__self__, *,
-                 allow_force_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]] = None,
-                 allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]] = None,
-                 allowed_to_unprotects: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]]] = None,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 branch_protection_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 code_owner_approval_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 unprotect_access_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_force_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_to_merges: pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]] = None,
+                 allowed_to_pushes: pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]] = None,
+                 allowed_to_unprotects: pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]]] = None,
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 branch_protection_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 code_owner_approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 unprotect_access_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BranchProtection resources.
 
@@ -239,134 +239,134 @@ class _BranchProtectionState:
 
     @_builtins.property
     @pulumi.getter(name="allowForcePush")
-    def allow_force_push(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_force_push(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Can be set to true to allow users with push access to force push.
         """
         return pulumi.get(self, "allow_force_push")
 
     @allow_force_push.setter
-    def allow_force_push(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_force_push(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_force_push", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedToMerges")
-    def allowed_to_merges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]]:
+    def allowed_to_merges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]]:
         """
         Array of access levels and user(s)/group(s) allowed to merge to protected branch.
         """
         return pulumi.get(self, "allowed_to_merges")
 
     @allowed_to_merges.setter
-    def allowed_to_merges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]]):
+    def allowed_to_merges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToMergeArgs']]]]):
         pulumi.set(self, "allowed_to_merges", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedToPushes")
-    def allowed_to_pushes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]]:
+    def allowed_to_pushes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]]:
         """
         Array of access levels and user(s)/group(s) allowed to push to protected branch.
         """
         return pulumi.get(self, "allowed_to_pushes")
 
     @allowed_to_pushes.setter
-    def allowed_to_pushes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]]):
+    def allowed_to_pushes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToPushArgs']]]]):
         pulumi.set(self, "allowed_to_pushes", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedToUnprotects")
-    def allowed_to_unprotects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]]]:
+    def allowed_to_unprotects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]]]:
         """
         Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
         """
         return pulumi.get(self, "allowed_to_unprotects")
 
     @allowed_to_unprotects.setter
-    def allowed_to_unprotects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]]]):
+    def allowed_to_unprotects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BranchProtectionAllowedToUnprotectArgs']]]]):
         pulumi.set(self, "allowed_to_unprotects", value)
 
     @_builtins.property
     @pulumi.getter
-    def branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the branch.
         """
         return pulumi.get(self, "branch")
 
     @branch.setter
-    def branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch", value)
 
     @_builtins.property
     @pulumi.getter(name="branchProtectionId")
-    def branch_protection_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def branch_protection_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the branch protection (not the branch name).
         """
         return pulumi.get(self, "branch_protection_id")
 
     @branch_protection_id.setter
-    def branch_protection_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def branch_protection_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "branch_protection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="codeOwnerApprovalRequired")
-    def code_owner_approval_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def code_owner_approval_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
         """
         return pulumi.get(self, "code_owner_approval_required")
 
     @code_owner_approval_required.setter
-    def code_owner_approval_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def code_owner_approval_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "code_owner_approval_required", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeAccessLevel")
-    def merge_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "merge_access_level")
 
     @merge_access_level.setter
-    def merge_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_access_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pushAccessLevel")
-    def push_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def push_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "push_access_level")
 
     @push_access_level.setter
-    def push_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def push_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "push_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="unprotectAccessLevel")
-    def unprotect_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unprotect_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "unprotect_access_level")
 
     @unprotect_access_level.setter
-    def unprotect_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unprotect_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unprotect_access_level", value)
 
 
@@ -376,16 +376,16 @@ class BranchProtection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_force_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]]] = None,
-                 allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]]] = None,
-                 allowed_to_unprotects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]]] = None,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_owner_approval_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 unprotect_access_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_force_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_to_merges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]]] = None,
+                 allowed_to_pushes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]]] = None,
+                 allowed_to_unprotects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]]] = None,
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_owner_approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 unprotect_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `BranchProtection` resource manages the lifecycle of a protected branch of a repository.
@@ -442,12 +442,12 @@ class BranchProtection(pulumi.CustomResource):
         # Example using dynamic block
         main = gitlab.BranchProtection("main",
             allowed_to_pushes=[{
-                "user_id": entry["value"],
-            } for entry in [{"key": k, "value": v} for k, v in [
+                "user_id": int(entry["value"]),
+            } for entry in [{"key": k, "value": v} for k, v in sorted([
                 50,
                 55,
                 60,
-            ].items()]],
+            ].items())]],
             project="12345",
             branch="main",
             push_access_level="maintainer",
@@ -549,12 +549,12 @@ class BranchProtection(pulumi.CustomResource):
         # Example using dynamic block
         main = gitlab.BranchProtection("main",
             allowed_to_pushes=[{
-                "user_id": entry["value"],
-            } for entry in [{"key": k, "value": v} for k, v in [
+                "user_id": int(entry["value"]),
+            } for entry in [{"key": k, "value": v} for k, v in sorted([
                 50,
                 55,
                 60,
-            ].items()]],
+            ].items())]],
             project="12345",
             branch="main",
             push_access_level="maintainer",
@@ -597,16 +597,16 @@ class BranchProtection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_force_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]]] = None,
-                 allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]]] = None,
-                 allowed_to_unprotects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]]] = None,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_owner_approval_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 unprotect_access_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_force_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_to_merges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]]] = None,
+                 allowed_to_pushes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]]] = None,
+                 allowed_to_unprotects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]]] = None,
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_owner_approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 unprotect_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -641,17 +641,17 @@ class BranchProtection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_force_push: Optional[pulumi.Input[_builtins.bool]] = None,
-            allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]]] = None,
-            allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]]] = None,
-            allowed_to_unprotects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]]] = None,
-            branch: Optional[pulumi.Input[_builtins.str]] = None,
-            branch_protection_id: Optional[pulumi.Input[_builtins.int]] = None,
-            code_owner_approval_required: Optional[pulumi.Input[_builtins.bool]] = None,
-            merge_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            push_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            unprotect_access_level: Optional[pulumi.Input[_builtins.str]] = None) -> 'BranchProtection':
+            allow_force_push: pulumi.Input[Optional[_builtins.bool]] = None,
+            allowed_to_merges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]]] = None,
+            allowed_to_pushes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]]] = None,
+            allowed_to_unprotects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]]] = None,
+            branch: pulumi.Input[Optional[_builtins.str]] = None,
+            branch_protection_id: pulumi.Input[Optional[_builtins.int]] = None,
+            code_owner_approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            push_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            unprotect_access_level: pulumi.Input[Optional[_builtins.str]] = None) -> 'BranchProtection':
         """
         Get an existing BranchProtection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -20,10 +20,10 @@ __all__ = ['TopicArgs', 'Topic']
 class TopicArgs:
     def __init__(__self__, *,
                  title: pulumi.Input[_builtins.str],
-                 avatar: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 avatar: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Topic resource.
 
@@ -57,62 +57,62 @@ class TopicArgs:
 
     @_builtins.property
     @pulumi.getter
-    def avatar(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path to the avatar image to upload. **Note**: not available for imported resources.
         """
         return pulumi.get(self, "avatar")
 
     @avatar.setter
-    def avatar(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar", value)
 
     @_builtins.property
     @pulumi.getter(name="avatarHash")
-    def avatar_hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar_hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         """
         return pulumi.get(self, "avatar_hash")
 
     @avatar_hash.setter
-    def avatar_hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar_hash", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A text describing the topic.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The topic's name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _TopicState:
     def __init__(__self__, *,
-                 avatar: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 avatar: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
 
@@ -138,74 +138,74 @@ class _TopicState:
 
     @_builtins.property
     @pulumi.getter
-    def avatar(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path to the avatar image to upload. **Note**: not available for imported resources.
         """
         return pulumi.get(self, "avatar")
 
     @avatar.setter
-    def avatar(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar", value)
 
     @_builtins.property
     @pulumi.getter(name="avatarHash")
-    def avatar_hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar_hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         """
         return pulumi.get(self, "avatar_hash")
 
     @avatar_hash.setter
-    def avatar_hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar_hash", value)
 
     @_builtins.property
     @pulumi.getter(name="avatarUrl")
-    def avatar_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the avatar image.
         """
         return pulumi.get(self, "avatar_url")
 
     @avatar_url.setter
-    def avatar_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A text describing the topic.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The topic's name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The topic's description.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
@@ -215,11 +215,11 @@ class Topic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 avatar: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
+                 avatar: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `Topic` resource manages the lifecycle of topics that are then assignable to projects.
@@ -292,11 +292,11 @@ class Topic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 avatar: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
+                 avatar: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -324,12 +324,12 @@ class Topic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            avatar: Optional[pulumi.Input[_builtins.str]] = None,
-            avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-            avatar_url: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            title: Optional[pulumi.Input[_builtins.str]] = None) -> 'Topic':
+            avatar: pulumi.Input[Optional[_builtins.str]] = None,
+            avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            avatar_url: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * const example = new gitlab.Project("example", {
  *     name: "example",
  *     description: "An example project",
- *     namespaceId: exampleGitlabGroup.id,
+ *     namespaceId: Number(exampleGitlabGroup.id),
  * });
  * // Basic milestone with required fields only
  * const exampleProjectMilestone = new gitlab.ProjectMilestone("example", {
@@ -190,55 +190,55 @@ export interface ProjectMilestoneState {
     /**
      * The time of creation of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the milestone.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      */
-    dueDate?: pulumi.Input<string>;
+    dueDate?: pulumi.Input<string | undefined>;
     /**
      * Bool, true if milestone expired.
      */
-    expired?: pulumi.Input<boolean>;
+    expired?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project's milestone.
      */
-    iid?: pulumi.Input<number>;
+    iid?: pulumi.Input<number | undefined>;
     /**
      * The instance-wide ID of the project's milestone.
      */
-    milestoneId?: pulumi.Input<number>;
+    milestoneId?: pulumi.Input<number | undefined>;
     /**
      * The ID or URL-encoded path of the project owned by the authenticated user.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The project ID of milestone.
      */
-    projectId?: pulumi.Input<number>;
+    projectId?: pulumi.Input<number | undefined>;
     /**
      * The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      */
-    startDate?: pulumi.Input<string>;
+    startDate?: pulumi.Input<string | undefined>;
     /**
      * The state of the milestone. Valid values are: `active`, `closed`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The title of a milestone.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * The last update time of the milestone. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The web URL of the milestone.
      */
-    webUrl?: pulumi.Input<string>;
+    webUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -248,11 +248,11 @@ export interface ProjectMilestoneArgs {
     /**
      * The description of the milestone.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The due date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      */
-    dueDate?: pulumi.Input<string>;
+    dueDate?: pulumi.Input<string | undefined>;
     /**
      * The ID or URL-encoded path of the project owned by the authenticated user.
      */
@@ -260,11 +260,11 @@ export interface ProjectMilestoneArgs {
     /**
      * The start date of the milestone. Date string in the format YYYY-MM-DD, for example 2016-03-11.
      */
-    startDate?: pulumi.Input<string>;
+    startDate?: pulumi.Input<string | undefined>;
     /**
      * The state of the milestone. Valid values are: `active`, `closed`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The title of a milestone.
      */

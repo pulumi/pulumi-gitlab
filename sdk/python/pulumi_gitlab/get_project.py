@@ -1034,11 +1034,11 @@ def get_project(ci_default_git_depth: Optional[_builtins.int] = None,
         web_url=pulumi.get(__ret__, 'web_url'),
         wiki_access_level=pulumi.get(__ret__, 'wiki_access_level'),
         wiki_enabled=pulumi.get(__ret__, 'wiki_enabled'))
-def get_project_output(ci_default_git_depth: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                       ci_id_token_sub_claim_components: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                       id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       path_with_namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       public_builds: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_project_output(ci_default_git_depth: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                       ci_id_token_sub_claim_components: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                       id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       path_with_namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       public_builds: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
     """
     The `Project` data source allows details of a project to be retrieved by either its ID or its path with namespace.

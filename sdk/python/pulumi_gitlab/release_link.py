@@ -22,9 +22,9 @@ class ReleaseLinkArgs:
                  project: pulumi.Input[_builtins.str],
                  tag_name: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str],
-                 filepath: Optional[pulumi.Input[_builtins.str]] = None,
-                 link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 filepath: pulumi.Input[Optional[_builtins.str]] = None,
+                 link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReleaseLink resource.
 
@@ -83,53 +83,53 @@ class ReleaseLinkArgs:
 
     @_builtins.property
     @pulumi.getter
-    def filepath(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filepath(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         """
         return pulumi.get(self, "filepath")
 
     @filepath.setter
-    def filepath(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filepath(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filepath", value)
 
     @_builtins.property
     @pulumi.getter(name="linkType")
-    def link_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def link_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
         """
         return pulumi.get(self, "link_type")
 
     @link_type.setter
-    def link_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def link_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "link_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the link. Link names must be unique within the release.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _ReleaseLinkState:
     def __init__(__self__, *,
-                 direct_asset_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filepath: Optional[pulumi.Input[_builtins.str]] = None,
-                 link_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 direct_asset_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filepath: pulumi.Input[Optional[_builtins.str]] = None,
+                 link_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReleaseLink resources.
 
@@ -164,110 +164,110 @@ class _ReleaseLinkState:
 
     @_builtins.property
     @pulumi.getter(name="directAssetUrl")
-    def direct_asset_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direct_asset_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         """
         return pulumi.get(self, "direct_asset_url")
 
     @direct_asset_url.setter
-    def direct_asset_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direct_asset_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direct_asset_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def external(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def external(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         External or internal link.
         """
         return pulumi.get(self, "external")
 
     @external.setter
-    def external(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def external(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "external", value)
 
     @_builtins.property
     @pulumi.getter
-    def filepath(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filepath(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
         """
         return pulumi.get(self, "filepath")
 
     @filepath.setter
-    def filepath(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filepath(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filepath", value)
 
     @_builtins.property
     @pulumi.getter(name="linkId")
-    def link_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def link_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the link.
         """
         return pulumi.get(self, "link_id")
 
     @link_id.setter
-    def link_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def link_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "link_id", value)
 
     @_builtins.property
     @pulumi.getter(name="linkType")
-    def link_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def link_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
         """
         return pulumi.get(self, "link_type")
 
     @link_type.setter
-    def link_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def link_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "link_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the link. Link names must be unique within the release.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or Namespace path of the project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="tagName")
-    def tag_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag associated with the Release.
         """
         return pulumi.get(self, "tag_name")
 
     @tag_name.setter
-    def tag_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the link. Link URLs must be unique within the release.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -277,12 +277,12 @@ class ReleaseLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filepath: Optional[pulumi.Input[_builtins.str]] = None,
-                 link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 filepath: pulumi.Input[Optional[_builtins.str]] = None,
+                 link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ReleaseLink` resource manages the lifecycle of a release link.
@@ -386,12 +386,12 @@ class ReleaseLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filepath: Optional[pulumi.Input[_builtins.str]] = None,
-                 link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 filepath: pulumi.Input[Optional[_builtins.str]] = None,
+                 link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -426,15 +426,15 @@ class ReleaseLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            direct_asset_url: Optional[pulumi.Input[_builtins.str]] = None,
-            external: Optional[pulumi.Input[_builtins.bool]] = None,
-            filepath: Optional[pulumi.Input[_builtins.str]] = None,
-            link_id: Optional[pulumi.Input[_builtins.int]] = None,
-            link_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_name: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'ReleaseLink':
+            direct_asset_url: pulumi.Input[Optional[_builtins.str]] = None,
+            external: pulumi.Input[Optional[_builtins.bool]] = None,
+            filepath: pulumi.Input[Optional[_builtins.str]] = None,
+            link_id: pulumi.Input[Optional[_builtins.int]] = None,
+            link_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_name: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'ReleaseLink':
         """
         Get an existing ReleaseLink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

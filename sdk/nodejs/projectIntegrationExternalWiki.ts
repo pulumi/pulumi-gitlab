@@ -143,31 +143,31 @@ export interface ProjectIntegrationExternalWikiState {
     /**
      * Whether the integration is active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The ISO8601 date/time that this integration was activated at in UTC.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The URL of the external wiki.
      */
-    externalWikiUrl?: pulumi.Input<string>;
+    externalWikiUrl?: pulumi.Input<string | undefined>;
     /**
      * ID of the project you want to activate integration on.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * Title of the integration.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * The ISO8601 date/time that this integration was last updated at in UTC.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -26,12 +26,12 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.Index.GetProject.Invoke(new()
+        ///     var foo = GitLab.GetProject.Invoke(new()
         ///     {
         ///         PathWithNamespace = "foo/bar/baz",
         ///     });
         /// 
-        ///     var welcomeIssue = GitLab.Index.GetProjectIssue.Invoke(new()
+        ///     var welcomeIssue = GitLab.GetProjectIssue.Invoke(new()
         ///     {
         ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Id),
         ///         Iid = 1,
@@ -62,12 +62,12 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.Index.GetProject.Invoke(new()
+        ///     var foo = GitLab.GetProject.Invoke(new()
         ///     {
         ///         PathWithNamespace = "foo/bar/baz",
         ///     });
         /// 
-        ///     var welcomeIssue = GitLab.Index.GetProjectIssue.Invoke(new()
+        ///     var welcomeIssue = GitLab.GetProjectIssue.Invoke(new()
         ///     {
         ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Id),
         ///         Iid = 1,
@@ -98,12 +98,12 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.Index.GetProject.Invoke(new()
+        ///     var foo = GitLab.GetProject.Invoke(new()
         ///     {
         ///         PathWithNamespace = "foo/bar/baz",
         ///     });
         /// 
-        ///     var welcomeIssue = GitLab.Index.GetProjectIssue.Invoke(new()
+        ///     var welcomeIssue = GitLab.GetProjectIssue.Invoke(new()
         ///     {
         ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Id),
         ///         Iid = 1,

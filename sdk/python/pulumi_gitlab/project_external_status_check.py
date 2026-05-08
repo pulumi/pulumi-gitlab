@@ -21,9 +21,9 @@ class ProjectExternalStatusCheckArgs:
     def __init__(__self__, *,
                  external_url: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.int],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 shared_secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected_branch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 shared_secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectExternalStatusCheck resource.
 
@@ -68,50 +68,50 @@ class ProjectExternalStatusCheckArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the external status check service.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="protectedBranchIds")
-    def protected_branch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def protected_branch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The list of IDs of protected branches to scope the rule by.
         """
         return pulumi.get(self, "protected_branch_ids")
 
     @protected_branch_ids.setter
-    def protected_branch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def protected_branch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "protected_branch_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedSecret")
-    def shared_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HMAC secret for the external status check.  If this is set, then removed from the config, the value will get set to empty in the state.
         """
         return pulumi.get(self, "shared_secret")
 
     @shared_secret.setter
-    def shared_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_secret", value)
 
 
 @pulumi.input_type
 class _ProjectExternalStatusCheckState:
     def __init__(__self__, *,
-                 external_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 hmac: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 shared_secret: Optional[pulumi.Input[_builtins.str]] = None):
+                 external_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 hmac: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 protected_branch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 shared_secret: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectExternalStatusCheck resources.
 
@@ -137,74 +137,74 @@ class _ProjectExternalStatusCheckState:
 
     @_builtins.property
     @pulumi.getter(name="externalUrl")
-    def external_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the external status check service.
         """
         return pulumi.get(self, "external_url")
 
     @external_url.setter
-    def external_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def hmac(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hmac(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the external status check uses an HMAC secret.
         """
         return pulumi.get(self, "hmac")
 
     @hmac.setter
-    def hmac(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hmac(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hmac", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the external status check service.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="protectedBranchIds")
-    def protected_branch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def protected_branch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The list of IDs of protected branches to scope the rule by.
         """
         return pulumi.get(self, "protected_branch_ids")
 
     @protected_branch_ids.setter
-    def protected_branch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def protected_branch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "protected_branch_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedSecret")
-    def shared_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HMAC secret for the external status check.  If this is set, then removed from the config, the value will get set to empty in the state.
         """
         return pulumi.get(self, "shared_secret")
 
     @shared_secret.setter
-    def shared_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_secret", value)
 
 
@@ -214,11 +214,11 @@ class ProjectExternalStatusCheck(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 external_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 shared_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 protected_branch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 shared_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectExternalStatusCheck` resource allows you to manage the lifecycle of an external status check service on a project.
@@ -335,11 +335,11 @@ class ProjectExternalStatusCheck(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 external_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 shared_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 protected_branch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 shared_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -371,12 +371,12 @@ class ProjectExternalStatusCheck(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            external_url: Optional[pulumi.Input[_builtins.str]] = None,
-            hmac: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.int]] = None,
-            protected_branch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            shared_secret: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectExternalStatusCheck':
+            external_url: pulumi.Input[Optional[_builtins.str]] = None,
+            hmac: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.int]] = None,
+            protected_branch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            shared_secret: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectExternalStatusCheck':
         """
         Get an existing ProjectExternalStatusCheck resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -37,8 +37,8 @@ import * as utilities from "./utilities";
  * });
  * // To assign the service account to a group
  * const exampleMembership = new gitlab.GroupMembership("example_membership", {
- *     groupId: exampleSubgroup.id,
- *     userId: exampleSa.serviceAccountId,
+ *     groupId: exampleSubgroup.id.apply(x =>Number(x)),
+ *     userId: exampleSa.serviceAccountId.apply(x =>Number(x)),
  *     accessLevel: "developer",
  *     expiresAt: "2020-03-14",
  * });
@@ -149,24 +149,24 @@ export interface GroupServiceAccountState {
     /**
      * User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * The name of the user. If not specified, the default Service account user name is used.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The service account id.
      */
-    serviceAccountId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GroupServiceAccountTimeouts>;
+    serviceAccountId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.GroupServiceAccountTimeouts | undefined>;
     /**
      * The username of the user. If not specified, it’s automatically generated.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -176,7 +176,7 @@ export interface GroupServiceAccountArgs {
     /**
      * User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
      */
@@ -184,10 +184,10 @@ export interface GroupServiceAccountArgs {
     /**
      * The name of the user. If not specified, the default Service account user name is used.
      */
-    name?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GroupServiceAccountTimeouts>;
+    name?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.GroupServiceAccountTimeouts | undefined>;
     /**
      * The username of the user. If not specified, it’s automatically generated.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

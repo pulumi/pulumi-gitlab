@@ -178,51 +178,51 @@ export interface ProjectIntegrationEmailsOnPushState {
     /**
      * Whether the integration is active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Notifications are always fired for tag pushes.
      */
-    branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string | undefined>;
     /**
      * The ISO8601 date/time that this integration was activated at in UTC.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Disable code diffs.
      */
-    disableDiffs?: pulumi.Input<boolean>;
+    disableDiffs?: pulumi.Input<boolean | undefined>;
     /**
      * ID or full-path of the project you want to activate integration on.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for push events.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Emails separated by whitespace.
      */
-    recipients?: pulumi.Input<string>;
+    recipients?: pulumi.Input<string | undefined>;
     /**
      * Send from committer.
      */
-    sendFromCommitterEmail?: pulumi.Input<boolean>;
+    sendFromCommitterEmail?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for tag push events.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Title of the integration.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * The ISO8601 date/time that this integration was last updated at in UTC.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -232,11 +232,11 @@ export interface ProjectIntegrationEmailsOnPushArgs {
     /**
      * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Notifications are always fired for tag pushes.
      */
-    branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string | undefined>;
     /**
      * Disable code diffs.
      */
-    disableDiffs?: pulumi.Input<boolean>;
+    disableDiffs?: pulumi.Input<boolean | undefined>;
     /**
      * ID or full-path of the project you want to activate integration on.
      */
@@ -244,7 +244,7 @@ export interface ProjectIntegrationEmailsOnPushArgs {
     /**
      * Enable notifications for push events.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Emails separated by whitespace.
      */
@@ -252,9 +252,9 @@ export interface ProjectIntegrationEmailsOnPushArgs {
     /**
      * Send from committer.
      */
-    sendFromCommitterEmail?: pulumi.Input<boolean>;
+    sendFromCommitterEmail?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for tag push events.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
 }

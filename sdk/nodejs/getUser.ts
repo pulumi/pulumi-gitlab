@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *         "user2",
  *         "user3",
  *     ],
- * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: gitlab.getUser({
+ * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: gitlab.getUser({
  *     username: __value,
  * }) }), {}));
  * ```
@@ -232,7 +232,7 @@ export interface GetUserResult {
  *         "user2",
  *         "user3",
  *     ],
- * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: gitlab.getUser({
+ * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: gitlab.getUser({
  *     username: __value,
  * }) }), {}));
  * ```
@@ -256,21 +256,21 @@ export interface GetUserOutputArgs {
     /**
      * The email address of the user.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * (Experimental) If true, returns only an exact match. Otherwise, fuzzy matching might return the closest result. If no exact match is available, the data source returns an error.
      */
-    emailExactMatch?: pulumi.Input<boolean>;
+    emailExactMatch?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the user's namespace. Requires admin token to access this field.
      */
-    namespaceId?: pulumi.Input<number>;
+    namespaceId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the user.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
     /**
      * The username of the user.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

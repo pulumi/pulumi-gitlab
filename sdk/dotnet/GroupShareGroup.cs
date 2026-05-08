@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new GitLab.Index.GroupShareGroup("test", new()
+    ///     var test = new GitLab.GroupShareGroup("test", new()
     ///     {
     ///         GroupId = foo.Id,
     ///         ShareGroupId = bar.Id,

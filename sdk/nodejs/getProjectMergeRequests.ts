@@ -282,35 +282,35 @@ export interface GetProjectMergeRequestsOutputArgs {
     /**
      * Return merge requests created by the given user ID.
      */
-    authorId?: pulumi.Input<number>;
+    authorId?: pulumi.Input<number | undefined>;
     /**
      * Return merge requests created by the given username.
      */
-    authorUsername?: pulumi.Input<string>;
+    authorUsername?: pulumi.Input<string | undefined>;
     /**
      * Return merge requests created after the given time. Expected in RFC3339 format (2006-01-02T15:04:05Z).
      */
-    createdAfter?: pulumi.Input<string>;
+    createdAfter?: pulumi.Input<string | undefined>;
     /**
      * Return merge requests created before the given time. Expected in RFC3339 format (2006-01-02T15:04:05Z).
      */
-    createdBefore?: pulumi.Input<string>;
+    createdBefore?: pulumi.Input<string | undefined>;
     /**
      * The unique internal IDs of the merge requests.
      */
-    iids?: pulumi.Input<pulumi.Input<number>[]>;
+    iids?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Return only merge requests for a specific milestone. `None` returns merge requests with no milestone. `Any` returns merge requests that have an assigned milestone.
      */
-    milestone?: pulumi.Input<string>;
+    milestone?: pulumi.Input<string | undefined>;
     /**
      * Return merge requests reacted to by the authenticated user with the given emoji. `None` returns issues not given a reaction. `Any` returns issues given at least one reaction.
      */
-    myReactionEmoji?: pulumi.Input<string>;
+    myReactionEmoji?: pulumi.Input<string | undefined>;
     /**
      * Return requests ordered by `createdAt`, `title` or `updatedAt`. Default is `createdAt`.
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
     /**
      * The ID or path of the project.
      */
@@ -318,41 +318,41 @@ export interface GetProjectMergeRequestsOutputArgs {
     /**
      * Return merge requests reviewed by the given username. `None` returns merge requests with no reviews. `Any` returns merge requests with any reviewer.
      */
-    reviewerUsername?: pulumi.Input<string>;
+    reviewerUsername?: pulumi.Input<string | undefined>;
     /**
      * Return merge requests for the given scope: `createdByMe`, `assignedToMe`, or `all`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Search merge requests against their `title` or `description`.
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
     /**
      * Return requests sorted in `asc` or `desc` order. Default is `desc`.
      */
-    sort?: pulumi.Input<string>;
+    sort?: pulumi.Input<string | undefined>;
     /**
      * Return merge requests with the given source branch.
      */
-    sourceBranch?: pulumi.Input<string>;
+    sourceBranch?: pulumi.Input<string | undefined>;
     /**
      * Return all merge requests (all) or just those that are opened, closed, locked, or merged.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Return merge requests with the given target branch.
      */
-    targetBranch?: pulumi.Input<string>;
+    targetBranch?: pulumi.Input<string | undefined>;
     /**
      * Return merge requests updated after the given time. Expected in RFC3339 format (2006-01-02T15:04:05Z).
      */
-    updatedAfter?: pulumi.Input<string>;
+    updatedAfter?: pulumi.Input<string | undefined>;
     /**
      * Return merge requests updated before the given time. Expected in RFC3339 format (2006-01-02T15:04:05Z).
      */
-    updatedBefore?: pulumi.Input<string>;
+    updatedBefore?: pulumi.Input<string | undefined>;
     /**
      * Filter merge requests against their wip status. `yes` to return only draft merge requests, `no` to return non-draft merge requests.
      */
-    wip?: pulumi.Input<string>;
+    wip?: pulumi.Input<string | undefined>;
 }

@@ -124,23 +124,23 @@ __all__ = [
 ]
 
 class ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict(TypedDict):
-    allow_force_push: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_force_push: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Allow force push for all users with push access.
     """
-    allowed_to_merges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    allowed_to_merges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
     """
-    allowed_to_pushes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    allowed_to_pushes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
     """
-    code_owner_approval_required: NotRequired[pulumi.Input[_builtins.bool]]
+    code_owner_approval_required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Require code owner approval before merging.
     """
-    developer_can_initial_push: NotRequired[pulumi.Input[_builtins.bool]]
+    developer_can_initial_push: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Allow developers to initial push.
     """
@@ -148,11 +148,11 @@ class ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationSettingsDefaultBranchProtectionDefaultsArgs:
     def __init__(__self__, *,
-                 allow_force_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 code_owner_approval_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 developer_can_initial_push: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allow_force_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_to_merges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 allowed_to_pushes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 code_owner_approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 developer_can_initial_push: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_force_push: Allow force push for all users with push access.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] allowed_to_merges: An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
@@ -173,107 +173,107 @@ class ApplicationSettingsDefaultBranchProtectionDefaultsArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowForcePush")
-    def allow_force_push(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_force_push(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow force push for all users with push access.
         """
         return pulumi.get(self, "allow_force_push")
 
     @allow_force_push.setter
-    def allow_force_push(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_force_push(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_force_push", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedToMerges")
-    def allowed_to_merges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def allowed_to_merges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         An array of access levels allowed to merge. Supports Developer (30) or Maintainer (40).
         """
         return pulumi.get(self, "allowed_to_merges")
 
     @allowed_to_merges.setter
-    def allowed_to_merges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def allowed_to_merges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "allowed_to_merges", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedToPushes")
-    def allowed_to_pushes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def allowed_to_pushes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         An array of access levels allowed to push. Supports Developer (30) or Maintainer (40).
         """
         return pulumi.get(self, "allowed_to_pushes")
 
     @allowed_to_pushes.setter
-    def allowed_to_pushes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def allowed_to_pushes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "allowed_to_pushes", value)
 
     @_builtins.property
     @pulumi.getter(name="codeOwnerApprovalRequired")
-    def code_owner_approval_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def code_owner_approval_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Require code owner approval before merging.
         """
         return pulumi.get(self, "code_owner_approval_required")
 
     @code_owner_approval_required.setter
-    def code_owner_approval_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def code_owner_approval_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "code_owner_approval_required", value)
 
     @_builtins.property
     @pulumi.getter(name="developerCanInitialPush")
-    def developer_can_initial_push(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def developer_can_initial_push(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow developers to initial push.
         """
         return pulumi.get(self, "developer_can_initial_push")
 
     @developer_can_initial_push.setter
-    def developer_can_initial_push(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def developer_can_initial_push(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "developer_can_initial_push", value)
 
 
 class BranchCommitArgsDict(TypedDict):
-    author_email: NotRequired[pulumi.Input[_builtins.str]]
+    author_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The email of the author.
     """
-    author_name: NotRequired[pulumi.Input[_builtins.str]]
+    author_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the author.
     """
-    authored_date: NotRequired[pulumi.Input[_builtins.str]]
+    authored_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
     """
-    committed_date: NotRequired[pulumi.Input[_builtins.str]]
+    committed_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
     """
-    committer_email: NotRequired[pulumi.Input[_builtins.str]]
+    committer_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The email of the user that committed.
     """
-    committer_name: NotRequired[pulumi.Input[_builtins.str]]
+    committer_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the user that committed.
     """
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The unique id assigned to the commit by Gitlab.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The commit message
     """
-    parent_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    parent_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The id of the parents of the commit
     """
-    short_id: NotRequired[pulumi.Input[_builtins.str]]
+    short_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The short id assigned to the commit by Gitlab.
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The title of the commit
     """
@@ -281,17 +281,17 @@ class BranchCommitArgsDict(TypedDict):
 @pulumi.input_type
 class BranchCommitArgs:
     def __init__(__self__, *,
-                 author_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 author_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 authored_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 committed_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 committer_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 committer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 short_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 author_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 author_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 authored_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 committed_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 committer_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 committer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 short_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] author_email: The email of the author.
         :param pulumi.Input[_builtins.str] author_name: The name of the author.
@@ -330,151 +330,151 @@ class BranchCommitArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorEmail")
-    def author_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the author.
         """
         return pulumi.get(self, "author_email")
 
     @author_email.setter
-    def author_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_email", value)
 
     @_builtins.property
     @pulumi.getter(name="authorName")
-    def author_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the author.
         """
         return pulumi.get(self, "author_name")
 
     @author_name.setter
-    def author_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_name", value)
 
     @_builtins.property
     @pulumi.getter(name="authoredDate")
-    def authored_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authored_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
         """
         return pulumi.get(self, "authored_date")
 
     @authored_date.setter
-    def authored_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authored_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authored_date", value)
 
     @_builtins.property
     @pulumi.getter(name="committedDate")
-    def committed_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def committed_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
         """
         return pulumi.get(self, "committed_date")
 
     @committed_date.setter
-    def committed_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def committed_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "committed_date", value)
 
     @_builtins.property
     @pulumi.getter(name="committerEmail")
-    def committer_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def committer_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the user that committed.
         """
         return pulumi.get(self, "committer_email")
 
     @committer_email.setter
-    def committer_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def committer_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "committer_email", value)
 
     @_builtins.property
     @pulumi.getter(name="committerName")
-    def committer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def committer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user that committed.
         """
         return pulumi.get(self, "committer_name")
 
     @committer_name.setter
-    def committer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def committer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "committer_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique id assigned to the commit by Gitlab.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The commit message
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter(name="parentIds")
-    def parent_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def parent_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The id of the parents of the commit
         """
         return pulumi.get(self, "parent_ids")
 
     @parent_ids.setter
-    def parent_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def parent_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parent_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="shortId")
-    def short_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def short_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The short id assigned to the commit by Gitlab.
         """
         return pulumi.get(self, "short_id")
 
     @short_id.setter
-    def short_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def short_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "short_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The title of the commit
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
 class BranchProtectionAllowedToMergeArgsDict(TypedDict):
-    access_level: NotRequired[pulumi.Input[_builtins.str]]
+    access_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
     """
-    access_level_description: NotRequired[pulumi.Input[_builtins.str]]
+    access_level_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Readable description of access level.
     """
-    group_id: NotRequired[pulumi.Input[_builtins.int]]
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
     """
-    user_id: NotRequired[pulumi.Input[_builtins.int]]
+    user_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
     """
@@ -482,10 +482,10 @@ class BranchProtectionAllowedToMergeArgsDict(TypedDict):
 @pulumi.input_type
 class BranchProtectionAllowedToMergeArgs:
     def __init__(__self__, *,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_level_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_level_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param pulumi.Input[_builtins.str] access_level_description: Readable description of access level.
@@ -503,71 +503,71 @@ class BranchProtectionAllowedToMergeArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="accessLevelDescription")
-    def access_level_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Readable description of access level.
         """
         return pulumi.get(self, "access_level_description")
 
     @access_level_description.setter
-    def access_level_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level_description", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
 class BranchProtectionAllowedToPushArgsDict(TypedDict):
-    access_level: NotRequired[pulumi.Input[_builtins.str]]
+    access_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
     """
-    access_level_description: NotRequired[pulumi.Input[_builtins.str]]
+    access_level_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Readable description of access level.
     """
-    deploy_key_id: NotRequired[pulumi.Input[_builtins.int]]
+    deploy_key_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
     """
-    group_id: NotRequired[pulumi.Input[_builtins.int]]
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
     """
-    user_id: NotRequired[pulumi.Input[_builtins.int]]
+    user_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
     """
@@ -575,11 +575,11 @@ class BranchProtectionAllowedToPushArgsDict(TypedDict):
 @pulumi.input_type
 class BranchProtectionAllowedToPushArgs:
     def __init__(__self__, *,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_level_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 deploy_key_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_level_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_key_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param pulumi.Input[_builtins.str] access_level_description: Readable description of access level.
@@ -600,79 +600,79 @@ class BranchProtectionAllowedToPushArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="accessLevelDescription")
-    def access_level_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Readable description of access level.
         """
         return pulumi.get(self, "access_level_description")
 
     @access_level_description.setter
-    def access_level_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level_description", value)
 
     @_builtins.property
     @pulumi.getter(name="deployKeyId")
-    def deploy_key_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deploy_key_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
         """
         return pulumi.get(self, "deploy_key_id")
 
     @deploy_key_id.setter
-    def deploy_key_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deploy_key_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deploy_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
 class BranchProtectionAllowedToUnprotectArgsDict(TypedDict):
-    access_level: NotRequired[pulumi.Input[_builtins.str]]
+    access_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
     """
-    access_level_description: NotRequired[pulumi.Input[_builtins.str]]
+    access_level_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Readable description of access level.
     """
-    group_id: NotRequired[pulumi.Input[_builtins.int]]
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
     """
-    user_id: NotRequired[pulumi.Input[_builtins.int]]
+    user_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
     """
@@ -680,10 +680,10 @@ class BranchProtectionAllowedToUnprotectArgsDict(TypedDict):
 @pulumi.input_type
 class BranchProtectionAllowedToUnprotectArgs:
     def __init__(__self__, *,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_level_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_level_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
         :param pulumi.Input[_builtins.str] access_level_description: Readable description of access level.
@@ -701,50 +701,50 @@ class BranchProtectionAllowedToUnprotectArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="accessLevelDescription")
-    def access_level_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Readable description of access level.
         """
         return pulumi.get(self, "access_level_description")
 
     @access_level_description.setter
-    def access_level_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level_description", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -796,23 +796,23 @@ class GroupAccessTokenRotationConfigurationArgs:
 
 
 class GroupDefaultBranchProtectionDefaultsArgsDict(TypedDict):
-    allow_force_push: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_force_push: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Allow force push for all users with push access.
     """
-    allowed_to_merges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_to_merges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
     """
-    allowed_to_pushes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_to_pushes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
     """
-    code_owner_approval_required: NotRequired[pulumi.Input[_builtins.bool]]
+    code_owner_approval_required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Require code owner approval before merging.
     """
-    developer_can_initial_push: NotRequired[pulumi.Input[_builtins.bool]]
+    developer_can_initial_push: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Allow developers to initial push.
     """
@@ -820,11 +820,11 @@ class GroupDefaultBranchProtectionDefaultsArgsDict(TypedDict):
 @pulumi.input_type
 class GroupDefaultBranchProtectionDefaultsArgs:
     def __init__(__self__, *,
-                 allow_force_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_to_merges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 allowed_to_pushes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 code_owner_approval_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 developer_can_initial_push: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allow_force_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_to_merges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allowed_to_pushes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 code_owner_approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 developer_can_initial_push: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_force_push: Allow force push for all users with push access.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_to_merges: An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
@@ -845,75 +845,75 @@ class GroupDefaultBranchProtectionDefaultsArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowForcePush")
-    def allow_force_push(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_force_push(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow force push for all users with push access.
         """
         return pulumi.get(self, "allow_force_push")
 
     @allow_force_push.setter
-    def allow_force_push(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_force_push(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_force_push", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedToMerges")
-    def allowed_to_merges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_to_merges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of access levels allowed to merge. Valid values are: `developer`, `maintainer`, `no one`.
         """
         return pulumi.get(self, "allowed_to_merges")
 
     @allowed_to_merges.setter
-    def allowed_to_merges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_to_merges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_to_merges", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedToPushes")
-    def allowed_to_pushes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_to_pushes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of access levels allowed to push. Valid values are: `developer`, `maintainer`, `no one`.
         """
         return pulumi.get(self, "allowed_to_pushes")
 
     @allowed_to_pushes.setter
-    def allowed_to_pushes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_to_pushes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_to_pushes", value)
 
     @_builtins.property
     @pulumi.getter(name="codeOwnerApprovalRequired")
-    def code_owner_approval_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def code_owner_approval_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Require code owner approval before merging.
         """
         return pulumi.get(self, "code_owner_approval_required")
 
     @code_owner_approval_required.setter
-    def code_owner_approval_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def code_owner_approval_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "code_owner_approval_required", value)
 
     @_builtins.property
     @pulumi.getter(name="developerCanInitialPush")
-    def developer_can_initial_push(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def developer_can_initial_push(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow developers to initial push.
         """
         return pulumi.get(self, "developer_can_initial_push")
 
     @developer_can_initial_push.setter
-    def developer_can_initial_push(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def developer_can_initial_push(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "developer_can_initial_push", value)
 
 
 class GroupEpicBoardListArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.int]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the list.
     """
-    label_id: NotRequired[pulumi.Input[_builtins.int]]
+    label_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the label the list should be scoped to.
     """
-    position: NotRequired[pulumi.Input[_builtins.int]]
+    position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
     """
@@ -921,9 +921,9 @@ class GroupEpicBoardListArgsDict(TypedDict):
 @pulumi.input_type
 class GroupEpicBoardListArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.int]] = None,
-                 label_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 position: Optional[pulumi.Input[_builtins.int]] = None):
+                 id: pulumi.Input[Optional[_builtins.int]] = None,
+                 label_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 position: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] id: The ID of the list.
         :param pulumi.Input[_builtins.int] label_id: The ID of the label the list should be scoped to.
@@ -938,38 +938,38 @@ class GroupEpicBoardListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the list.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="labelId")
-    def label_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def label_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the label the list should be scoped to.
         """
         return pulumi.get(self, "label_id")
 
     @label_id.setter
-    def label_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def label_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "label_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The position of the list within the board. The position for the list is sed on the its position in the `lists` array.
         """
         return pulumi.get(self, "position")
 
     @position.setter
-    def position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "position", value)
 
 
@@ -1021,15 +1021,15 @@ class GroupHookCustomHeaderArgs:
 
 
 class GroupIssueBoardListArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.int]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the list.
     """
-    label_id: NotRequired[pulumi.Input[_builtins.int]]
+    label_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the label the list should be scoped to.
     """
-    position: NotRequired[pulumi.Input[_builtins.int]]
+    position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The explicit position of the list within the board, zero based.
     """
@@ -1037,9 +1037,9 @@ class GroupIssueBoardListArgsDict(TypedDict):
 @pulumi.input_type
 class GroupIssueBoardListArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.int]] = None,
-                 label_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 position: Optional[pulumi.Input[_builtins.int]] = None):
+                 id: pulumi.Input[Optional[_builtins.int]] = None,
+                 label_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 position: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] id: The ID of the list.
         :param pulumi.Input[_builtins.int] label_id: The ID of the label the list should be scoped to.
@@ -1054,67 +1054,67 @@ class GroupIssueBoardListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the list.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="labelId")
-    def label_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def label_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the label the list should be scoped to.
         """
         return pulumi.get(self, "label_id")
 
     @label_id.setter
-    def label_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def label_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "label_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The explicit position of the list within the board, zero based.
         """
         return pulumi.get(self, "position")
 
     @position.setter
-    def position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "position", value)
 
 
 class GroupProtectedEnvironmentApprovalRuleArgsDict(TypedDict):
-    access_level: NotRequired[pulumi.Input[_builtins.str]]
+    access_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
     """
-    access_level_description: NotRequired[pulumi.Input[_builtins.str]]
+    access_level_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Readable description of level of access.
     """
-    group_id: NotRequired[pulumi.Input[_builtins.int]]
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
     """
-    group_inheritance_type: NotRequired[pulumi.Input[_builtins.int]]
+    group_inheritance_type: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
     """
-    id: NotRequired[pulumi.Input[_builtins.int]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The unique ID of the Approval Rules object.
     """
-    required_approvals: NotRequired[pulumi.Input[_builtins.int]]
+    required_approvals: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
     """
-    user_id: NotRequired[pulumi.Input[_builtins.int]]
+    user_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `access_level` and `group_id`.
     """
@@ -1122,13 +1122,13 @@ class GroupProtectedEnvironmentApprovalRuleArgsDict(TypedDict):
 @pulumi.input_type
 class GroupProtectedEnvironmentApprovalRuleArgs:
     def __init__(__self__, *,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_level_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_inheritance_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 id: Optional[pulumi.Input[_builtins.int]] = None,
-                 required_approvals: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_level_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_inheritance_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 id: pulumi.Input[Optional[_builtins.int]] = None,
+                 required_approvals: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         :param pulumi.Input[_builtins.str] access_level_description: Readable description of level of access.
@@ -1155,111 +1155,111 @@ class GroupProtectedEnvironmentApprovalRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="accessLevelDescription")
-    def access_level_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Readable description of level of access.
         """
         return pulumi.get(self, "access_level_description")
 
     @access_level_description.setter
-    def access_level_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level_description", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupInheritanceType")
-    def group_inheritance_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_inheritance_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         """
         return pulumi.get(self, "group_inheritance_type")
 
     @group_inheritance_type.setter
-    def group_inheritance_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_inheritance_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_inheritance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique ID of the Approval Rules object.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredApprovals")
-    def required_approvals(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def required_approvals(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
         """
         return pulumi.get(self, "required_approvals")
 
     @required_approvals.setter
-    def required_approvals(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def required_approvals(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "required_approvals", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `access_level` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
 class GroupProtectedEnvironmentDeployAccessLevelArgsDict(TypedDict):
-    access_level: NotRequired[pulumi.Input[_builtins.str]]
+    access_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
     """
-    access_level_description: NotRequired[pulumi.Input[_builtins.str]]
+    access_level_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Readable description of level of access.
     """
-    group_id: NotRequired[pulumi.Input[_builtins.int]]
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
     """
-    group_inheritance_type: NotRequired[pulumi.Input[_builtins.int]]
+    group_inheritance_type: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
     """
-    id: NotRequired[pulumi.Input[_builtins.int]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The unique ID of the Deploy Access Level object.
     """
-    user_id: NotRequired[pulumi.Input[_builtins.int]]
+    user_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `access_level` and `group_id`.
     """
@@ -1267,12 +1267,12 @@ class GroupProtectedEnvironmentDeployAccessLevelArgsDict(TypedDict):
 @pulumi.input_type
 class GroupProtectedEnvironmentDeployAccessLevelArgs:
     def __init__(__self__, *,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_level_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_inheritance_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 id: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_level_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_inheritance_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 id: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         :param pulumi.Input[_builtins.str] access_level_description: Readable description of level of access.
@@ -1296,127 +1296,127 @@ class GroupProtectedEnvironmentDeployAccessLevelArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="accessLevelDescription")
-    def access_level_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Readable description of level of access.
         """
         return pulumi.get(self, "access_level_description")
 
     @access_level_description.setter
-    def access_level_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level_description", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the group allowed to deploy to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupInheritanceType")
-    def group_inheritance_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_inheritance_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         """
         return pulumi.get(self, "group_inheritance_type")
 
     @group_inheritance_type.setter
-    def group_inheritance_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_inheritance_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_inheritance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique ID of the Deploy Access Level object.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the user allowed to deploy to this protected environment. The user must be a member of the group with Maintainer role or higher. Mutually exclusive with `access_level` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
 class GroupPushRulesArgsDict(TypedDict):
-    author_email_regex: NotRequired[pulumi.Input[_builtins.str]]
+    author_email_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     All commit author emails must match this regex, e.g. `@my-company.com$`.
     """
-    branch_name_regex: NotRequired[pulumi.Input[_builtins.str]]
+    branch_name_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
     """
-    commit_committer_check: NotRequired[pulumi.Input[_builtins.bool]]
+    commit_committer_check: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Only commits pushed using verified emails are allowed.
     """
-    commit_committer_name_check: NotRequired[pulumi.Input[_builtins.bool]]
+    commit_committer_name_check: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
     """
-    commit_message_negative_regex: NotRequired[pulumi.Input[_builtins.str]]
+    commit_message_negative_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
     """
-    commit_message_regex: NotRequired[pulumi.Input[_builtins.str]]
+    commit_message_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
     """
-    deny_delete_tag: NotRequired[pulumi.Input[_builtins.bool]]
+    deny_delete_tag: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Deny deleting a tag.
     """
-    file_name_regex: NotRequired[pulumi.Input[_builtins.str]]
+    file_name_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Filenames matching the regular expression provided in this attribute are not allowed, for example, `(jar|exe)$`.
     """
-    max_file_size: NotRequired[pulumi.Input[_builtins.int]]
+    max_file_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum file size (MB) allowed.
     """
-    member_check: NotRequired[pulumi.Input[_builtins.bool]]
+    member_check: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Allows only GitLab users to author commits.
     """
-    prevent_secrets: NotRequired[pulumi.Input[_builtins.bool]]
+    prevent_secrets: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     GitLab will reject any files that are likely to contain secrets.
     """
-    reject_non_dco_commits: NotRequired[pulumi.Input[_builtins.bool]]
+    reject_non_dco_commits: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Reject commit when it’s not DCO certified.
     """
-    reject_unsigned_commits: NotRequired[pulumi.Input[_builtins.bool]]
+    reject_unsigned_commits: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Only commits signed through GPG are allowed.
     """
@@ -1424,19 +1424,19 @@ class GroupPushRulesArgsDict(TypedDict):
 @pulumi.input_type
 class GroupPushRulesArgs:
     def __init__(__self__, *,
-                 author_email_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 branch_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_committer_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_committer_name_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_message_negative_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_message_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 deny_delete_tag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 member_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_secrets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reject_non_dco_commits: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reject_unsigned_commits: Optional[pulumi.Input[_builtins.bool]] = None):
+                 author_email_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 branch_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_committer_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_committer_name_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_message_negative_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_message_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 deny_delete_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 member_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_secrets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reject_non_dco_commits: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reject_unsigned_commits: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
         :param pulumi.Input[_builtins.str] branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
@@ -1481,158 +1481,158 @@ class GroupPushRulesArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorEmailRegex")
-    def author_email_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_email_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All commit author emails must match this regex, e.g. `@my-company.com$`.
         """
         return pulumi.get(self, "author_email_regex")
 
     @author_email_regex.setter
-    def author_email_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_email_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_email_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="branchNameRegex")
-    def branch_name_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch_name_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
         """
         return pulumi.get(self, "branch_name_regex")
 
     @branch_name_regex.setter
-    def branch_name_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch_name_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch_name_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="commitCommitterCheck")
-    def commit_committer_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def commit_committer_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only commits pushed using verified emails are allowed.
         """
         return pulumi.get(self, "commit_committer_check")
 
     @commit_committer_check.setter
-    def commit_committer_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def commit_committer_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "commit_committer_check", value)
 
     @_builtins.property
     @pulumi.getter(name="commitCommitterNameCheck")
-    def commit_committer_name_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def commit_committer_name_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
         """
         return pulumi.get(self, "commit_committer_name_check")
 
     @commit_committer_name_check.setter
-    def commit_committer_name_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def commit_committer_name_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "commit_committer_name_check", value)
 
     @_builtins.property
     @pulumi.getter(name="commitMessageNegativeRegex")
-    def commit_message_negative_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_message_negative_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
         """
         return pulumi.get(self, "commit_message_negative_regex")
 
     @commit_message_negative_regex.setter
-    def commit_message_negative_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_message_negative_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_message_negative_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="commitMessageRegex")
-    def commit_message_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_message_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
         """
         return pulumi.get(self, "commit_message_regex")
 
     @commit_message_regex.setter
-    def commit_message_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_message_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_message_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="denyDeleteTag")
-    def deny_delete_tag(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deny_delete_tag(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deny deleting a tag.
         """
         return pulumi.get(self, "deny_delete_tag")
 
     @deny_delete_tag.setter
-    def deny_delete_tag(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deny_delete_tag(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deny_delete_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="fileNameRegex")
-    def file_name_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Filenames matching the regular expression provided in this attribute are not allowed, for example, `(jar|exe)$`.
         """
         return pulumi.get(self, "file_name_regex")
 
     @file_name_regex.setter
-    def file_name_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="maxFileSize")
-    def max_file_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_file_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum file size (MB) allowed.
         """
         return pulumi.get(self, "max_file_size")
 
     @max_file_size.setter
-    def max_file_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_file_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_file_size", value)
 
     @_builtins.property
     @pulumi.getter(name="memberCheck")
-    def member_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def member_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allows only GitLab users to author commits.
         """
         return pulumi.get(self, "member_check")
 
     @member_check.setter
-    def member_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def member_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "member_check", value)
 
     @_builtins.property
     @pulumi.getter(name="preventSecrets")
-    def prevent_secrets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_secrets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         GitLab will reject any files that are likely to contain secrets.
         """
         return pulumi.get(self, "prevent_secrets")
 
     @prevent_secrets.setter
-    def prevent_secrets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_secrets(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_secrets", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectNonDcoCommits")
-    def reject_non_dco_commits(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reject_non_dco_commits(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Reject commit when it’s not DCO certified.
         """
         return pulumi.get(self, "reject_non_dco_commits")
 
     @reject_non_dco_commits.setter
-    def reject_non_dco_commits(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reject_non_dco_commits(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reject_non_dco_commits", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectUnsignedCommits")
-    def reject_unsigned_commits(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reject_unsigned_commits(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only commits signed through GPG are allowed.
         """
         return pulumi.get(self, "reject_unsigned_commits")
 
     @reject_unsigned_commits.setter
-    def reject_unsigned_commits(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reject_unsigned_commits(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reject_unsigned_commits", value)
 
 
@@ -1641,7 +1641,7 @@ class GroupServiceAccountAccessTokenRotationConfigurationArgsDict(TypedDict):
     """
     The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
     """
-    expiration_days: NotRequired[pulumi.Input[_builtins.int]]
+    expiration_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The duration (in days) the new token should be valid for.
     """
@@ -1650,7 +1650,7 @@ class GroupServiceAccountAccessTokenRotationConfigurationArgsDict(TypedDict):
 class GroupServiceAccountAccessTokenRotationConfigurationArgs:
     def __init__(__self__, *,
                  rotate_before_days: pulumi.Input[_builtins.int],
-                 expiration_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 expiration_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] rotate_before_days: The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
         :param pulumi.Input[_builtins.int] expiration_days: The duration (in days) the new token should be valid for.
@@ -1673,19 +1673,19 @@ class GroupServiceAccountAccessTokenRotationConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="expirationDays")
-    def expiration_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiration_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration (in days) the new token should be valid for.
         """
         return pulumi.get(self, "expiration_days")
 
     @expiration_days.setter
-    def expiration_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiration_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiration_days", value)
 
 
 class GroupServiceAccountTimeoutsArgsDict(TypedDict):
-    delete: NotRequired[pulumi.Input[_builtins.str]]
+    delete: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
     """
@@ -1693,7 +1693,7 @@ class GroupServiceAccountTimeoutsArgsDict(TypedDict):
 @pulumi.input_type
 class GroupServiceAccountTimeoutsArgs:
     def __init__(__self__, *,
-                 delete: Optional[pulumi.Input[_builtins.str]] = None):
+                 delete: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] delete: How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
         """
@@ -1702,19 +1702,19 @@ class GroupServiceAccountTimeoutsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
         """
         return pulumi.get(self, "delete")
 
     @delete.setter
-    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete", value)
 
 
 class InstanceServiceAccountTimeoutsArgsDict(TypedDict):
-    delete: NotRequired[pulumi.Input[_builtins.str]]
+    delete: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
     """
@@ -1722,7 +1722,7 @@ class InstanceServiceAccountTimeoutsArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceServiceAccountTimeoutsArgs:
     def __init__(__self__, *,
-                 delete: Optional[pulumi.Input[_builtins.str]] = None):
+                 delete: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
         """
@@ -1731,14 +1731,14 @@ class InstanceServiceAccountTimeoutsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
         """
         return pulumi.get(self, "delete")
 
     @delete.setter
-    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete", value)
 
 
@@ -1884,31 +1884,31 @@ class ProjectAccessTokenRotationConfigurationArgs:
 
 
 class ProjectContainerExpirationPolicyArgsDict(TypedDict):
-    cadence: NotRequired[pulumi.Input[_builtins.str]]
+    cadence: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, the policy is enabled.
     """
-    keep_n: NotRequired[pulumi.Input[_builtins.int]]
+    keep_n: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of images to keep.
     """
-    name_regex_delete: NotRequired[pulumi.Input[_builtins.str]]
+    name_regex_delete: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The regular expression to match image names to delete.
     """
-    name_regex_keep: NotRequired[pulumi.Input[_builtins.str]]
+    name_regex_keep: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The regular expression to match image names to keep.
     """
-    next_run_at: NotRequired[pulumi.Input[_builtins.str]]
+    next_run_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The next time the policy will run.
     """
-    older_than: NotRequired[pulumi.Input[_builtins.str]]
+    older_than: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The number of days to keep images.
     """
@@ -1916,13 +1916,13 @@ class ProjectContainerExpirationPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectContainerExpirationPolicyArgs:
     def __init__(__self__, *,
-                 cadence: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_n: Optional[pulumi.Input[_builtins.int]] = None,
-                 name_regex_delete: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_regex_keep: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_run_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 older_than: Optional[pulumi.Input[_builtins.str]] = None):
+                 cadence: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_n: pulumi.Input[Optional[_builtins.int]] = None,
+                 name_regex_delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_regex_keep: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_run_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 older_than: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cadence: The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
         :param pulumi.Input[_builtins.bool] enabled: If true, the policy is enabled.
@@ -1949,91 +1949,91 @@ class ProjectContainerExpirationPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cadence(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cadence(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
         """
         return pulumi.get(self, "cadence")
 
     @cadence.setter
-    def cadence(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cadence(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cadence", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the policy is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="keepN")
-    def keep_n(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def keep_n(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of images to keep.
         """
         return pulumi.get(self, "keep_n")
 
     @keep_n.setter
-    def keep_n(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def keep_n(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "keep_n", value)
 
     @_builtins.property
     @pulumi.getter(name="nameRegexDelete")
-    def name_regex_delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name_regex_delete(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The regular expression to match image names to delete.
         """
         return pulumi.get(self, "name_regex_delete")
 
     @name_regex_delete.setter
-    def name_regex_delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name_regex_delete(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name_regex_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="nameRegexKeep")
-    def name_regex_keep(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name_regex_keep(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The regular expression to match image names to keep.
         """
         return pulumi.get(self, "name_regex_keep")
 
     @name_regex_keep.setter
-    def name_regex_keep(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name_regex_keep(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name_regex_keep", value)
 
     @_builtins.property
     @pulumi.getter(name="nextRunAt")
-    def next_run_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_run_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The next time the policy will run.
         """
         return pulumi.get(self, "next_run_at")
 
     @next_run_at.setter
-    def next_run_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_run_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_run_at", value)
 
     @_builtins.property
     @pulumi.getter(name="olderThan")
-    def older_than(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def older_than(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of days to keep images.
         """
         return pulumi.get(self, "older_than")
 
     @older_than.setter
-    def older_than(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def older_than(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "older_than", value)
 
 
 class ProjectContainerTagProtectionTimeoutsArgsDict(TypedDict):
-    create: NotRequired[pulumi.Input[_builtins.str]]
+    create: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     How long to wait for the container tag protection rule to be created. Defaults to 5 minutes.
     """
@@ -2041,7 +2041,7 @@ class ProjectContainerTagProtectionTimeoutsArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectContainerTagProtectionTimeoutsArgs:
     def __init__(__self__, *,
-                 create: Optional[pulumi.Input[_builtins.str]] = None):
+                 create: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] create: How long to wait for the container tag protection rule to be created. Defaults to 5 minutes.
         """
@@ -2050,14 +2050,14 @@ class ProjectContainerTagProtectionTimeoutsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How long to wait for the container tag protection rule to be created. Defaults to 5 minutes.
         """
         return pulumi.get(self, "create")
 
     @create.setter
-    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create", value)
 
 
@@ -2109,27 +2109,27 @@ class ProjectHookCustomHeaderArgs:
 
 
 class ProjectIssueBoardListArgsDict(TypedDict):
-    assignee_id: NotRequired[pulumi.Input[_builtins.int]]
+    assignee_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
     """
-    id: NotRequired[pulumi.Input[_builtins.int]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the list
     """
-    iteration_id: NotRequired[pulumi.Input[_builtins.int]]
+    iteration_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the iteration the list should be scoped to. Requires a GitLab EE license.
     """
-    label_id: NotRequired[pulumi.Input[_builtins.int]]
+    label_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the label the list should be scoped to. Requires a GitLab EE license.
     """
-    milestone_id: NotRequired[pulumi.Input[_builtins.int]]
+    milestone_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
     """
-    position: NotRequired[pulumi.Input[_builtins.int]]
+    position: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The position of the list within the board. The position for the list is based on the its position in the `lists` array.
     """
@@ -2137,12 +2137,12 @@ class ProjectIssueBoardListArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectIssueBoardListArgs:
     def __init__(__self__, *,
-                 assignee_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 id: Optional[pulumi.Input[_builtins.int]] = None,
-                 iteration_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 label_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 position: Optional[pulumi.Input[_builtins.int]] = None):
+                 assignee_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 id: pulumi.Input[Optional[_builtins.int]] = None,
+                 iteration_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 label_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 position: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] assignee_id: The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[_builtins.int] id: The ID of the list
@@ -2166,83 +2166,83 @@ class ProjectIssueBoardListArgs:
 
     @_builtins.property
     @pulumi.getter(name="assigneeId")
-    def assignee_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def assignee_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "assignee_id")
 
     @assignee_id.setter
-    def assignee_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def assignee_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "assignee_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the list
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="iterationId")
-    def iteration_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def iteration_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the iteration the list should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "iteration_id")
 
     @iteration_id.setter
-    def iteration_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def iteration_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "iteration_id", value)
 
     @_builtins.property
     @pulumi.getter(name="labelId")
-    def label_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def label_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the label the list should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "label_id")
 
     @label_id.setter
-    def label_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def label_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "label_id", value)
 
     @_builtins.property
     @pulumi.getter(name="milestoneId")
-    def milestone_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def milestone_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the milestone the list should be scoped to. Requires a GitLab EE license.
         """
         return pulumi.get(self, "milestone_id")
 
     @milestone_id.setter
-    def milestone_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def milestone_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "milestone_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The position of the list within the board. The position for the list is based on the its position in the `lists` array.
         """
         return pulumi.get(self, "position")
 
     @position.setter
-    def position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "position", value)
 
 
 class ProjectIssueTaskCompletionStatusArgsDict(TypedDict):
-    completed_count: NotRequired[pulumi.Input[_builtins.int]]
+    completed_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of tasks that are completed.
     """
-    count: NotRequired[pulumi.Input[_builtins.int]]
+    count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of tasks.
     """
@@ -2250,8 +2250,8 @@ class ProjectIssueTaskCompletionStatusArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectIssueTaskCompletionStatusArgs:
     def __init__(__self__, *,
-                 completed_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 count: Optional[pulumi.Input[_builtins.int]] = None):
+                 completed_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] completed_count: The number of tasks that are completed.
         :param pulumi.Input[_builtins.int] count: The number of tasks.
@@ -2263,43 +2263,43 @@ class ProjectIssueTaskCompletionStatusArgs:
 
     @_builtins.property
     @pulumi.getter(name="completedCount")
-    def completed_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def completed_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of tasks that are completed.
         """
         return pulumi.get(self, "completed_count")
 
     @completed_count.setter
-    def completed_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def completed_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "completed_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of tasks.
         """
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "count", value)
 
 
 class ProjectPagesSettingsDeploymentArgsDict(TypedDict):
-    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    created_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Date the deployment was created.
     """
-    path_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    path_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path prefix of the deployment when using parallel deployments.
     """
-    root_directory: NotRequired[pulumi.Input[_builtins.str]]
+    root_directory: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The root directory of the deployment.
     """
-    url: NotRequired[pulumi.Input[_builtins.str]]
+    url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URL of the deployment.
     """
@@ -2307,10 +2307,10 @@ class ProjectPagesSettingsDeploymentArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectPagesSettingsDeploymentArgs:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] created_at: Date the deployment was created.
         :param pulumi.Input[_builtins.str] path_prefix: The path prefix of the deployment when using parallel deployments.
@@ -2328,79 +2328,79 @@ class ProjectPagesSettingsDeploymentArgs:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date the deployment was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="pathPrefix")
-    def path_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path prefix of the deployment when using parallel deployments.
         """
         return pulumi.get(self, "path_prefix")
 
     @path_prefix.setter
-    def path_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="rootDirectory")
-    def root_directory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_directory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root directory of the deployment.
         """
         return pulumi.get(self, "root_directory")
 
     @root_directory.setter
-    def root_directory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_directory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_directory", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the deployment.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
 class ProjectProtectedEnvironmentApprovalRuleArgsDict(TypedDict):
-    access_level: NotRequired[pulumi.Input[_builtins.str]]
+    access_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
     """
-    access_level_description: NotRequired[pulumi.Input[_builtins.str]]
+    access_level_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Readable description of level of access.
     """
-    group_id: NotRequired[pulumi.Input[_builtins.int]]
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
     """
-    group_inheritance_type: NotRequired[pulumi.Input[_builtins.int]]
+    group_inheritance_type: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
     """
-    id: NotRequired[pulumi.Input[_builtins.int]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The unique ID of the Approval Rules object.
     """
-    required_approvals: NotRequired[pulumi.Input[_builtins.int]]
+    required_approvals: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
     """
-    user_id: NotRequired[pulumi.Input[_builtins.int]]
+    user_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
     """
@@ -2408,13 +2408,13 @@ class ProjectProtectedEnvironmentApprovalRuleArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectProtectedEnvironmentApprovalRuleArgs:
     def __init__(__self__, *,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_level_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_inheritance_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 id: Optional[pulumi.Input[_builtins.int]] = None,
-                 required_approvals: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_level_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_inheritance_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 id: pulumi.Input[Optional[_builtins.int]] = None,
+                 required_approvals: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         :param pulumi.Input[_builtins.str] access_level_description: Readable description of level of access.
@@ -2441,111 +2441,111 @@ class ProjectProtectedEnvironmentApprovalRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="accessLevelDescription")
-    def access_level_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Readable description of level of access.
         """
         return pulumi.get(self, "access_level_description")
 
     @access_level_description.setter
-    def access_level_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level_description", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the group allowed to approve a deployment to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupInheritanceType")
-    def group_inheritance_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_inheritance_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         """
         return pulumi.get(self, "group_inheritance_type")
 
     @group_inheritance_type.setter
-    def group_inheritance_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_inheritance_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_inheritance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique ID of the Approval Rules object.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredApprovals")
-    def required_approvals(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def required_approvals(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
         """
         return pulumi.get(self, "required_approvals")
 
     @required_approvals.setter
-    def required_approvals(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def required_approvals(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "required_approvals", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the user allowed to approve a deployment to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
 class ProjectProtectedEnvironmentDeployAccessLevelArgsDict(TypedDict):
-    access_level: NotRequired[pulumi.Input[_builtins.str]]
+    access_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
     """
-    access_level_description: NotRequired[pulumi.Input[_builtins.str]]
+    access_level_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Readable description of level of access.
     """
-    group_id: NotRequired[pulumi.Input[_builtins.int]]
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
     """
-    group_inheritance_type: NotRequired[pulumi.Input[_builtins.int]]
+    group_inheritance_type: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
     """
-    id: NotRequired[pulumi.Input[_builtins.int]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The unique ID of the Deploy Access Level object.
     """
-    user_id: NotRequired[pulumi.Input[_builtins.int]]
+    user_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
     """
@@ -2553,12 +2553,12 @@ class ProjectProtectedEnvironmentDeployAccessLevelArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectProtectedEnvironmentDeployAccessLevelArgs:
     def __init__(__self__, *,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_level_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_inheritance_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 id: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_level_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_inheritance_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 id: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         :param pulumi.Input[_builtins.str] access_level_description: Readable description of level of access.
@@ -2582,99 +2582,99 @@ class ProjectProtectedEnvironmentDeployAccessLevelArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="accessLevelDescription")
-    def access_level_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Readable description of level of access.
         """
         return pulumi.get(self, "access_level_description")
 
     @access_level_description.setter
-    def access_level_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level_description", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupInheritanceType")
-    def group_inheritance_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_inheritance_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         """
         return pulumi.get(self, "group_inheritance_type")
 
     @group_inheritance_type.setter
-    def group_inheritance_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_inheritance_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_inheritance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique ID of the Deploy Access Level object.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
 class ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict(TypedDict):
-    access_level: NotRequired[pulumi.Input[_builtins.str]]
+    access_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
     """
-    access_level_description: NotRequired[pulumi.Input[_builtins.str]]
+    access_level_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Readable description of level of access.
     """
-    group_id: NotRequired[pulumi.Input[_builtins.int]]
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
     """
-    group_inheritance_type: NotRequired[pulumi.Input[_builtins.int]]
+    group_inheritance_type: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
     """
-    id: NotRequired[pulumi.Input[_builtins.int]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The unique ID of the Deploy Access Level object.
     """
-    user_id: NotRequired[pulumi.Input[_builtins.int]]
+    user_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
     """
@@ -2682,12 +2682,12 @@ class ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs:
     def __init__(__self__, *,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_level_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_inheritance_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 id: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_level_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_inheritance_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 id: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         :param pulumi.Input[_builtins.str] access_level_description: Readable description of level of access.
@@ -2711,127 +2711,127 @@ class ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="accessLevelDescription")
-    def access_level_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Readable description of level of access.
         """
         return pulumi.get(self, "access_level_description")
 
     @access_level_description.setter
-    def access_level_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level_description", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupInheritanceType")
-    def group_inheritance_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_inheritance_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         """
         return pulumi.get(self, "group_inheritance_type")
 
     @group_inheritance_type.setter
-    def group_inheritance_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_inheritance_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_inheritance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique ID of the Deploy Access Level object.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
 class ProjectPushRulesArgsDict(TypedDict):
-    author_email_regex: NotRequired[pulumi.Input[_builtins.str]]
+    author_email_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     All commit author emails must match this regex, e.g. `@my-company.com$`.
     """
-    branch_name_regex: NotRequired[pulumi.Input[_builtins.str]]
+    branch_name_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
     """
-    commit_committer_check: NotRequired[pulumi.Input[_builtins.bool]]
+    commit_committer_check: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Users can only push commits to this repository that were committed with one of their own verified emails.
     """
-    commit_committer_name_check: NotRequired[pulumi.Input[_builtins.bool]]
+    commit_committer_name_check: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
     """
-    commit_message_negative_regex: NotRequired[pulumi.Input[_builtins.str]]
+    commit_message_negative_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     No commit message is allowed to match this regex, e.g. `ssh\\:\\/\\/`.
     """
-    commit_message_regex: NotRequired[pulumi.Input[_builtins.str]]
+    commit_message_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
     """
-    deny_delete_tag: NotRequired[pulumi.Input[_builtins.bool]]
+    deny_delete_tag: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Deny deleting a tag.
     """
-    file_name_regex: NotRequired[pulumi.Input[_builtins.str]]
+    file_name_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     All committed filenames must not match this regex, e.g. `(jar|exe)$`.
     """
-    max_file_size: NotRequired[pulumi.Input[_builtins.int]]
+    max_file_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum file size (MB).
     """
-    member_check: NotRequired[pulumi.Input[_builtins.bool]]
+    member_check: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Restrict commits by author (email) to existing GitLab users.
     """
-    prevent_secrets: NotRequired[pulumi.Input[_builtins.bool]]
+    prevent_secrets: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     GitLab will reject any files that are likely to contain secrets.
     """
-    reject_non_dco_commits: NotRequired[pulumi.Input[_builtins.bool]]
+    reject_non_dco_commits: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Reject commit when it's not DCO certified.
     """
-    reject_unsigned_commits: NotRequired[pulumi.Input[_builtins.bool]]
+    reject_unsigned_commits: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Reject commit when it's not signed through GPG.
     """
@@ -2839,19 +2839,19 @@ class ProjectPushRulesArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectPushRulesArgs:
     def __init__(__self__, *,
-                 author_email_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 branch_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_committer_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_committer_name_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 commit_message_negative_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_message_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 deny_delete_tag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 member_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_secrets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reject_non_dco_commits: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reject_unsigned_commits: Optional[pulumi.Input[_builtins.bool]] = None):
+                 author_email_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 branch_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_committer_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_committer_name_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 commit_message_negative_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_message_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 deny_delete_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 member_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_secrets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reject_non_dco_commits: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reject_unsigned_commits: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
         :param pulumi.Input[_builtins.str] branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
@@ -2896,203 +2896,203 @@ class ProjectPushRulesArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorEmailRegex")
-    def author_email_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_email_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All commit author emails must match this regex, e.g. `@my-company.com$`.
         """
         return pulumi.get(self, "author_email_regex")
 
     @author_email_regex.setter
-    def author_email_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_email_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_email_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="branchNameRegex")
-    def branch_name_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch_name_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
         """
         return pulumi.get(self, "branch_name_regex")
 
     @branch_name_regex.setter
-    def branch_name_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch_name_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch_name_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="commitCommitterCheck")
-    def commit_committer_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def commit_committer_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Users can only push commits to this repository that were committed with one of their own verified emails.
         """
         return pulumi.get(self, "commit_committer_check")
 
     @commit_committer_check.setter
-    def commit_committer_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def commit_committer_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "commit_committer_check", value)
 
     @_builtins.property
     @pulumi.getter(name="commitCommitterNameCheck")
-    def commit_committer_name_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def commit_committer_name_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
         """
         return pulumi.get(self, "commit_committer_name_check")
 
     @commit_committer_name_check.setter
-    def commit_committer_name_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def commit_committer_name_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "commit_committer_name_check", value)
 
     @_builtins.property
     @pulumi.getter(name="commitMessageNegativeRegex")
-    def commit_message_negative_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_message_negative_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         No commit message is allowed to match this regex, e.g. `ssh\\:\\/\\/`.
         """
         return pulumi.get(self, "commit_message_negative_regex")
 
     @commit_message_negative_regex.setter
-    def commit_message_negative_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_message_negative_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_message_negative_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="commitMessageRegex")
-    def commit_message_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_message_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
         """
         return pulumi.get(self, "commit_message_regex")
 
     @commit_message_regex.setter
-    def commit_message_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_message_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_message_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="denyDeleteTag")
-    def deny_delete_tag(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deny_delete_tag(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deny deleting a tag.
         """
         return pulumi.get(self, "deny_delete_tag")
 
     @deny_delete_tag.setter
-    def deny_delete_tag(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deny_delete_tag(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deny_delete_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="fileNameRegex")
-    def file_name_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All committed filenames must not match this regex, e.g. `(jar|exe)$`.
         """
         return pulumi.get(self, "file_name_regex")
 
     @file_name_regex.setter
-    def file_name_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="maxFileSize")
-    def max_file_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_file_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum file size (MB).
         """
         return pulumi.get(self, "max_file_size")
 
     @max_file_size.setter
-    def max_file_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_file_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_file_size", value)
 
     @_builtins.property
     @pulumi.getter(name="memberCheck")
-    def member_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def member_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Restrict commits by author (email) to existing GitLab users.
         """
         return pulumi.get(self, "member_check")
 
     @member_check.setter
-    def member_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def member_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "member_check", value)
 
     @_builtins.property
     @pulumi.getter(name="preventSecrets")
-    def prevent_secrets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_secrets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         GitLab will reject any files that are likely to contain secrets.
         """
         return pulumi.get(self, "prevent_secrets")
 
     @prevent_secrets.setter
-    def prevent_secrets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_secrets(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_secrets", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectNonDcoCommits")
-    def reject_non_dco_commits(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reject_non_dco_commits(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Reject commit when it's not DCO certified.
         """
         return pulumi.get(self, "reject_non_dco_commits")
 
     @reject_non_dco_commits.setter
-    def reject_non_dco_commits(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reject_non_dco_commits(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reject_non_dco_commits", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectUnsignedCommits")
-    def reject_unsigned_commits(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reject_unsigned_commits(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Reject commit when it's not signed through GPG.
         """
         return pulumi.get(self, "reject_unsigned_commits")
 
     @reject_unsigned_commits.setter
-    def reject_unsigned_commits(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reject_unsigned_commits(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reject_unsigned_commits", value)
 
 
 class ProjectTagCommitArgsDict(TypedDict):
-    author_email: NotRequired[pulumi.Input[_builtins.str]]
+    author_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The email of the author.
     """
-    author_name: NotRequired[pulumi.Input[_builtins.str]]
+    author_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the author.
     """
-    authored_date: NotRequired[pulumi.Input[_builtins.str]]
+    authored_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
     """
-    committed_date: NotRequired[pulumi.Input[_builtins.str]]
+    committed_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
     """
-    committer_email: NotRequired[pulumi.Input[_builtins.str]]
+    committer_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The email of the user that committed.
     """
-    committer_name: NotRequired[pulumi.Input[_builtins.str]]
+    committer_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the user that committed.
     """
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The unique id assigned to the commit by Gitlab.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The commit message
     """
-    parent_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    parent_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The id of the parents of the commit
     """
-    short_id: NotRequired[pulumi.Input[_builtins.str]]
+    short_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The short id assigned to the commit by Gitlab.
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The title of the commit
     """
@@ -3100,17 +3100,17 @@ class ProjectTagCommitArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectTagCommitArgs:
     def __init__(__self__, *,
-                 author_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 author_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 authored_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 committed_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 committer_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 committer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 short_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 author_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 author_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 authored_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 committed_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 committer_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 committer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 short_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] author_email: The email of the author.
         :param pulumi.Input[_builtins.str] author_name: The name of the author.
@@ -3149,143 +3149,143 @@ class ProjectTagCommitArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorEmail")
-    def author_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the author.
         """
         return pulumi.get(self, "author_email")
 
     @author_email.setter
-    def author_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_email", value)
 
     @_builtins.property
     @pulumi.getter(name="authorName")
-    def author_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the author.
         """
         return pulumi.get(self, "author_name")
 
     @author_name.setter
-    def author_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_name", value)
 
     @_builtins.property
     @pulumi.getter(name="authoredDate")
-    def authored_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authored_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date which the commit was authored (format: yyyy-MM-ddTHH:mm:ssZ).
         """
         return pulumi.get(self, "authored_date")
 
     @authored_date.setter
-    def authored_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authored_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authored_date", value)
 
     @_builtins.property
     @pulumi.getter(name="committedDate")
-    def committed_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def committed_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date at which the commit was pushed (format: yyyy-MM-ddTHH:mm:ssZ).
         """
         return pulumi.get(self, "committed_date")
 
     @committed_date.setter
-    def committed_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def committed_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "committed_date", value)
 
     @_builtins.property
     @pulumi.getter(name="committerEmail")
-    def committer_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def committer_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the user that committed.
         """
         return pulumi.get(self, "committer_email")
 
     @committer_email.setter
-    def committer_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def committer_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "committer_email", value)
 
     @_builtins.property
     @pulumi.getter(name="committerName")
-    def committer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def committer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user that committed.
         """
         return pulumi.get(self, "committer_name")
 
     @committer_name.setter
-    def committer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def committer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "committer_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique id assigned to the commit by Gitlab.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The commit message
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter(name="parentIds")
-    def parent_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def parent_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The id of the parents of the commit
         """
         return pulumi.get(self, "parent_ids")
 
     @parent_ids.setter
-    def parent_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def parent_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parent_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="shortId")
-    def short_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def short_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The short id assigned to the commit by Gitlab.
         """
         return pulumi.get(self, "short_id")
 
     @short_id.setter
-    def short_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def short_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "short_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The title of the commit
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
 class ProjectTagReleaseArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of release.
     """
-    tag_name: NotRequired[pulumi.Input[_builtins.str]]
+    tag_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the tag.
     """
@@ -3293,8 +3293,8 @@ class ProjectTagReleaseArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectTagReleaseArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of release.
         :param pulumi.Input[_builtins.str] tag_name: The name of the tag.
@@ -3306,31 +3306,31 @@ class ProjectTagReleaseArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of release.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="tagName")
-    def tag_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the tag.
         """
         return pulumi.get(self, "tag_name")
 
     @tag_name.setter
-    def tag_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_name", value)
 
 
 class ReleaseAssetsArgsDict(TypedDict):
-    count: NotRequired[pulumi.Input[_builtins.int]]
+    count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The total count of assets in this release.
     """
@@ -3338,7 +3338,7 @@ class ReleaseAssetsArgsDict(TypedDict):
 @pulumi.input_type
 class ReleaseAssetsArgs:
     def __init__(__self__, *,
-                 count: Optional[pulumi.Input[_builtins.int]] = None):
+                 count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] count: The total count of assets in this release.
         """
@@ -3347,39 +3347,39 @@ class ReleaseAssetsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The total count of assets in this release.
         """
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "count", value)
 
 
 class ReleaseAuthorArgsDict(TypedDict):
-    avatar_url: NotRequired[pulumi.Input[_builtins.str]]
+    avatar_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The url of the author's' user avatar.
     """
-    id: NotRequired[pulumi.Input[_builtins.int]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the author's user.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the author.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The state of the author's user.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The username of the author.
     """
-    web_url: NotRequired[pulumi.Input[_builtins.str]]
+    web_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The url to the author's user profile.
     """
@@ -3387,12 +3387,12 @@ class ReleaseAuthorArgsDict(TypedDict):
 @pulumi.input_type
 class ReleaseAuthorArgs:
     def __init__(__self__, *,
-                 avatar_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 avatar_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] avatar_url: The url of the author's' user avatar.
         :param pulumi.Input[_builtins.int] id: The ID of the author's user.
@@ -3416,123 +3416,123 @@ class ReleaseAuthorArgs:
 
     @_builtins.property
     @pulumi.getter(name="avatarUrl")
-    def avatar_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The url of the author's' user avatar.
         """
         return pulumi.get(self, "avatar_url")
 
     @avatar_url.setter
-    def avatar_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the author's user.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the author.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the author's user.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of the author.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="webUrl")
-    def web_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def web_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The url to the author's user profile.
         """
         return pulumi.get(self, "web_url")
 
     @web_url.setter
-    def web_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def web_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "web_url", value)
 
 
 class ReleaseCommitArgsDict(TypedDict):
-    author_email: NotRequired[pulumi.Input[_builtins.str]]
+    author_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The email address of the commit author.
     """
-    author_name: NotRequired[pulumi.Input[_builtins.str]]
+    author_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the commit author.
     """
-    authored_date: NotRequired[pulumi.Input[_builtins.str]]
+    authored_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The date and time the commit was authored. In ISO 8601 format (2019-03-15T08:00:00Z).
     """
-    committed_date: NotRequired[pulumi.Input[_builtins.str]]
+    committed_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The date and time the commit was made. In ISO 8601 format (2019-03-15T08:00:00Z).
     """
-    committer_email: NotRequired[pulumi.Input[_builtins.str]]
+    committer_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The email address of the committer.
     """
-    committer_name: NotRequired[pulumi.Input[_builtins.str]]
+    committer_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the committer.
     """
-    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    created_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The date and time the commit was created. In ISO 8601 format (2019-03-15T08:00:00Z).
     """
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The git commit full SHA
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The commit message.
     """
-    parent_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    parent_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The full SHA of any parent commits.
     """
-    short_id: NotRequired[pulumi.Input[_builtins.str]]
+    short_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The git commit short SHA.
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The title of the commit.
     """
@@ -3540,18 +3540,18 @@ class ReleaseCommitArgsDict(TypedDict):
 @pulumi.input_type
 class ReleaseCommitArgs:
     def __init__(__self__, *,
-                 author_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 author_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 authored_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 committed_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 committer_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 committer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 short_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 author_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 author_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 authored_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 committed_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 committer_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 committer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 short_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] author_email: The email address of the commit author.
         :param pulumi.Input[_builtins.str] author_name: The name of the commit author.
@@ -3593,175 +3593,175 @@ class ReleaseCommitArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorEmail")
-    def author_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address of the commit author.
         """
         return pulumi.get(self, "author_email")
 
     @author_email.setter
-    def author_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_email", value)
 
     @_builtins.property
     @pulumi.getter(name="authorName")
-    def author_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def author_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the commit author.
         """
         return pulumi.get(self, "author_name")
 
     @author_name.setter
-    def author_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def author_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "author_name", value)
 
     @_builtins.property
     @pulumi.getter(name="authoredDate")
-    def authored_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authored_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the commit was authored. In ISO 8601 format (2019-03-15T08:00:00Z).
         """
         return pulumi.get(self, "authored_date")
 
     @authored_date.setter
-    def authored_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authored_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authored_date", value)
 
     @_builtins.property
     @pulumi.getter(name="committedDate")
-    def committed_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def committed_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the commit was made. In ISO 8601 format (2019-03-15T08:00:00Z).
         """
         return pulumi.get(self, "committed_date")
 
     @committed_date.setter
-    def committed_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def committed_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "committed_date", value)
 
     @_builtins.property
     @pulumi.getter(name="committerEmail")
-    def committer_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def committer_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address of the committer.
         """
         return pulumi.get(self, "committer_email")
 
     @committer_email.setter
-    def committer_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def committer_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "committer_email", value)
 
     @_builtins.property
     @pulumi.getter(name="committerName")
-    def committer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def committer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the committer.
         """
         return pulumi.get(self, "committer_name")
 
     @committer_name.setter
-    def committer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def committer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "committer_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the commit was created. In ISO 8601 format (2019-03-15T08:00:00Z).
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The git commit full SHA
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The commit message.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter(name="parentIds")
-    def parent_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def parent_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The full SHA of any parent commits.
         """
         return pulumi.get(self, "parent_ids")
 
     @parent_ids.setter
-    def parent_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def parent_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parent_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="shortId")
-    def short_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def short_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The git commit short SHA.
         """
         return pulumi.get(self, "short_id")
 
     @short_id.setter
-    def short_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def short_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "short_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The title of the commit.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
 class ReleaseLinksArgsDict(TypedDict):
-    closed_issues_url: NotRequired[pulumi.Input[_builtins.str]]
+    closed_issues_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URL of the release's closed issues.
     """
-    closed_merge_requests_url: NotRequired[pulumi.Input[_builtins.str]]
+    closed_merge_requests_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URL of the release's closed merge requests.
     """
-    edit_url: NotRequired[pulumi.Input[_builtins.str]]
+    edit_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URL of the release's edit page.
     """
-    merged_merge_requests_url: NotRequired[pulumi.Input[_builtins.str]]
+    merged_merge_requests_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URL of the release's merged merge requests.
     """
-    opened_issues_url: NotRequired[pulumi.Input[_builtins.str]]
+    opened_issues_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URL of the release's open issues.
     """
-    opened_merge_requests_url: NotRequired[pulumi.Input[_builtins.str]]
+    opened_merge_requests_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URL of the release's open merge requests.
     """
-    self: NotRequired[pulumi.Input[_builtins.str]]
+    self: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URL of the release.
     """
@@ -3769,13 +3769,13 @@ class ReleaseLinksArgsDict(TypedDict):
 @pulumi.input_type
 class ReleaseLinksArgs:
     def __init__(__self__, *,
-                 closed_issues_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 closed_merge_requests_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 edit_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 merged_merge_requests_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 opened_issues_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 opened_merge_requests_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 self: Optional[pulumi.Input[_builtins.str]] = None):
+                 closed_issues_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 closed_merge_requests_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 edit_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 merged_merge_requests_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 opened_issues_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 opened_merge_requests_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 self: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] closed_issues_url: URL of the release's closed issues.
         :param pulumi.Input[_builtins.str] closed_merge_requests_url: URL of the release's closed merge requests.
@@ -3802,107 +3802,107 @@ class ReleaseLinksArgs:
 
     @_builtins.property
     @pulumi.getter(name="closedIssuesUrl")
-    def closed_issues_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def closed_issues_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the release's closed issues.
         """
         return pulumi.get(self, "closed_issues_url")
 
     @closed_issues_url.setter
-    def closed_issues_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def closed_issues_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "closed_issues_url", value)
 
     @_builtins.property
     @pulumi.getter(name="closedMergeRequestsUrl")
-    def closed_merge_requests_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def closed_merge_requests_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the release's closed merge requests.
         """
         return pulumi.get(self, "closed_merge_requests_url")
 
     @closed_merge_requests_url.setter
-    def closed_merge_requests_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def closed_merge_requests_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "closed_merge_requests_url", value)
 
     @_builtins.property
     @pulumi.getter(name="editUrl")
-    def edit_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edit_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the release's edit page.
         """
         return pulumi.get(self, "edit_url")
 
     @edit_url.setter
-    def edit_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edit_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edit_url", value)
 
     @_builtins.property
     @pulumi.getter(name="mergedMergeRequestsUrl")
-    def merged_merge_requests_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merged_merge_requests_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the release's merged merge requests.
         """
         return pulumi.get(self, "merged_merge_requests_url")
 
     @merged_merge_requests_url.setter
-    def merged_merge_requests_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merged_merge_requests_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merged_merge_requests_url", value)
 
     @_builtins.property
     @pulumi.getter(name="openedIssuesUrl")
-    def opened_issues_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opened_issues_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the release's open issues.
         """
         return pulumi.get(self, "opened_issues_url")
 
     @opened_issues_url.setter
-    def opened_issues_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opened_issues_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opened_issues_url", value)
 
     @_builtins.property
     @pulumi.getter(name="openedMergeRequestsUrl")
-    def opened_merge_requests_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opened_merge_requests_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the release's open merge requests.
         """
         return pulumi.get(self, "opened_merge_requests_url")
 
     @opened_merge_requests_url.setter
-    def opened_merge_requests_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opened_merge_requests_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opened_merge_requests_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def self(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the release.
         """
         return pulumi.get(self, "self")
 
     @self.setter
-    def self(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self", value)
 
 
 class TagProtectionAllowedToCreateArgsDict(TypedDict):
-    access_level: NotRequired[pulumi.Input[_builtins.str]]
+    access_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
     """
-    access_level_description: NotRequired[pulumi.Input[_builtins.str]]
+    access_level_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Readable description of access level.
     """
-    deploy_key_id: NotRequired[pulumi.Input[_builtins.int]]
+    deploy_key_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`.
     """
-    group_id: NotRequired[pulumi.Input[_builtins.int]]
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
     """
-    user_id: NotRequired[pulumi.Input[_builtins.int]]
+    user_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
     """
@@ -3910,11 +3910,11 @@ class TagProtectionAllowedToCreateArgsDict(TypedDict):
 @pulumi.input_type
 class TagProtectionAllowedToCreateArgs:
     def __init__(__self__, *,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_level_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 deploy_key_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_level_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_key_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param pulumi.Input[_builtins.str] access_level_description: Readable description of access level.
@@ -3935,62 +3935,62 @@ class TagProtectionAllowedToCreateArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="accessLevelDescription")
-    def access_level_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Readable description of access level.
         """
         return pulumi.get(self, "access_level_description")
 
     @access_level_description.setter
-    def access_level_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level_description", value)
 
     @_builtins.property
     @pulumi.getter(name="deployKeyId")
-    def deploy_key_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deploy_key_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`.
         """
         return pulumi.get(self, "deploy_key_id")
 
     @deploy_key_id.setter
-    def deploy_key_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deploy_key_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deploy_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -3999,31 +3999,31 @@ class ValueStreamAnalyticsStageArgsDict(TypedDict):
     """
     The name of the value stream stage.
     """
-    custom: NotRequired[pulumi.Input[_builtins.bool]]
+    custom: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.
     """
-    end_event_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    end_event_identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
     """
-    end_event_label_id: NotRequired[pulumi.Input[_builtins.str]]
+    end_event_label_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Label ID associated with the end event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
     """
-    hidden: NotRequired[pulumi.Input[_builtins.bool]]
+    hidden: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean whether the stage is hidden, GitLab provided default stages are hidden by default.
     """
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the value stream stage.
     """
-    start_event_identifier: NotRequired[pulumi.Input[_builtins.str]]
+    start_event_identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
     """
-    start_event_label_id: NotRequired[pulumi.Input[_builtins.str]]
+    start_event_label_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Label ID associated with the start event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
     """
@@ -4032,13 +4032,13 @@ class ValueStreamAnalyticsStageArgsDict(TypedDict):
 class ValueStreamAnalyticsStageArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 custom: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_event_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_event_label_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_event_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_event_label_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_event_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_event_label_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_event_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_event_label_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the value stream stage.
         :param pulumi.Input[_builtins.bool] custom: Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.
@@ -4079,86 +4079,86 @@ class ValueStreamAnalyticsStageArgs:
 
     @_builtins.property
     @pulumi.getter
-    def custom(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def custom(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.
         """
         return pulumi.get(self, "custom")
 
     @custom.setter
-    def custom(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def custom(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "custom", value)
 
     @_builtins.property
     @pulumi.getter(name="endEventIdentifier")
-    def end_event_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_event_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
         """
         return pulumi.get(self, "end_event_identifier")
 
     @end_event_identifier.setter
-    def end_event_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_event_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_event_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="endEventLabelId")
-    def end_event_label_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_event_label_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Label ID associated with the end event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
         """
         return pulumi.get(self, "end_event_label_id")
 
     @end_event_label_id.setter
-    def end_event_label_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_event_label_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_event_label_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def hidden(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hidden(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean whether the stage is hidden, GitLab provided default stages are hidden by default.
         """
         return pulumi.get(self, "hidden")
 
     @hidden.setter
-    def hidden(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hidden(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hidden", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the value stream stage.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="startEventIdentifier")
-    def start_event_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_event_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
         """
         return pulumi.get(self, "start_event_identifier")
 
     @start_event_identifier.setter
-    def start_event_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_event_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_event_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="startEventLabelId")
-    def start_event_label_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_event_label_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Label ID associated with the start event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
         """
         return pulumi.get(self, "start_event_label_id")
 
     @start_event_label_id.setter
-    def start_event_label_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_event_label_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_event_label_id", value)
 
 

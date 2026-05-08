@@ -161,43 +161,43 @@ export interface ProjectVariableState {
     /**
      * The description of the variable.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */
-    environmentScope?: pulumi.Input<string>;
+    environmentScope?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
      */
-    hidden?: pulumi.Input<boolean>;
+    hidden?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the variable.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
      */
-    masked?: pulumi.Input<boolean>;
+    masked?: pulumi.Input<boolean | undefined>;
     /**
      * The name or id of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      */
-    protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
      */
-    raw?: pulumi.Input<boolean>;
+    raw?: pulumi.Input<boolean | undefined>;
     /**
      * The value of the variable.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * The type of a variable. Valid values are: `envVar`, `file`.
      */
-    variableType?: pulumi.Input<string>;
+    variableType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -207,15 +207,15 @@ export interface ProjectVariableArgs {
     /**
      * The description of the variable.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */
-    environmentScope?: pulumi.Input<string>;
+    environmentScope?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
      */
-    hidden?: pulumi.Input<boolean>;
+    hidden?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the variable.
      */
@@ -223,7 +223,7 @@ export interface ProjectVariableArgs {
     /**
      * If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
      */
-    masked?: pulumi.Input<boolean>;
+    masked?: pulumi.Input<boolean | undefined>;
     /**
      * The name or id of the project.
      */
@@ -231,11 +231,11 @@ export interface ProjectVariableArgs {
     /**
      * If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
      */
-    protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
      */
-    raw?: pulumi.Input<boolean>;
+    raw?: pulumi.Input<boolean | undefined>;
     /**
      * The value of the variable.
      */
@@ -243,5 +243,5 @@ export interface ProjectVariableArgs {
     /**
      * The type of a variable. Valid values are: `envVar`, `file`.
      */
-    variableType?: pulumi.Input<string>;
+    variableType?: pulumi.Input<string | undefined>;
 }

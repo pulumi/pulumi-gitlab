@@ -21,27 +21,27 @@ class IntegrationMattermostArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  webhook: pulumi.Input[_builtins.str],
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_issue_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_note_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issue_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_request_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 note_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipeline_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_page_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_issue_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_note_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issue_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_request_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 note_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipeline_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_page_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a IntegrationMattermost resource.
 
@@ -140,283 +140,283 @@ class IntegrationMattermostArgs:
 
     @_builtins.property
     @pulumi.getter(name="branchesToBeNotified")
-    def branches_to_be_notified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branches_to_be_notified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Branches to send notifications for. Valid values are `all`, `default`, `protected`, `default_and_protected`.
         """
         return pulumi.get(self, "branches_to_be_notified")
 
     @branches_to_be_notified.setter
-    def branches_to_be_notified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branches_to_be_notified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branches_to_be_notified", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialIssueChannel")
-    def confidential_issue_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def confidential_issue_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive confidential issue events notifications.
         """
         return pulumi.get(self, "confidential_issue_channel")
 
     @confidential_issue_channel.setter
-    def confidential_issue_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def confidential_issue_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "confidential_issue_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialIssuesEvents")
-    def confidential_issues_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confidential_issues_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for confidential issues events.
         """
         return pulumi.get(self, "confidential_issues_events")
 
     @confidential_issues_events.setter
-    def confidential_issues_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confidential_issues_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confidential_issues_events", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialNoteChannel")
-    def confidential_note_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def confidential_note_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive confidential note events notifications.
         """
         return pulumi.get(self, "confidential_note_channel")
 
     @confidential_note_channel.setter
-    def confidential_note_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def confidential_note_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "confidential_note_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialNoteEvents")
-    def confidential_note_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confidential_note_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for confidential note events.
         """
         return pulumi.get(self, "confidential_note_events")
 
     @confidential_note_events.setter
-    def confidential_note_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confidential_note_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confidential_note_events", value)
 
     @_builtins.property
     @pulumi.getter(name="issueChannel")
-    def issue_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issue_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive issue events notifications.
         """
         return pulumi.get(self, "issue_channel")
 
     @issue_channel.setter
-    def issue_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issue_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issue_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesEvents")
-    def issues_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def issues_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for issues events.
         """
         return pulumi.get(self, "issues_events")
 
     @issues_events.setter
-    def issues_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def issues_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "issues_events", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestChannel")
-    def merge_request_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_request_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive merge request events notifications.
         """
         return pulumi.get(self, "merge_request_channel")
 
     @merge_request_channel.setter
-    def merge_request_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_request_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_request_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEvents")
-    def merge_requests_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_requests_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for merge requests events.
         """
         return pulumi.get(self, "merge_requests_events")
 
     @merge_requests_events.setter
-    def merge_requests_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_requests_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_requests_events", value)
 
     @_builtins.property
     @pulumi.getter(name="noteChannel")
-    def note_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def note_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive note events notifications.
         """
         return pulumi.get(self, "note_channel")
 
     @note_channel.setter
-    def note_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def note_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "note_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="noteEvents")
-    def note_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def note_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for note events.
         """
         return pulumi.get(self, "note_events")
 
     @note_events.setter
-    def note_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def note_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "note_events", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyOnlyBrokenPipelines")
-    def notify_only_broken_pipelines(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_only_broken_pipelines(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Send notifications for broken pipelines.
         """
         return pulumi.get(self, "notify_only_broken_pipelines")
 
     @notify_only_broken_pipelines.setter
-    def notify_only_broken_pipelines(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_only_broken_pipelines(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_only_broken_pipelines", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineChannel")
-    def pipeline_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pipeline_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive pipeline events notifications.
         """
         return pulumi.get(self, "pipeline_channel")
 
     @pipeline_channel.setter
-    def pipeline_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pipeline_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pipeline_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineEvents")
-    def pipeline_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pipeline_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for pipeline events.
         """
         return pulumi.get(self, "pipeline_events")
 
     @pipeline_events.setter
-    def pipeline_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pipeline_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pipeline_events", value)
 
     @_builtins.property
     @pulumi.getter(name="pushChannel")
-    def push_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def push_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive push events notifications.
         """
         return pulumi.get(self, "push_channel")
 
     @push_channel.setter
-    def push_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def push_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "push_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for push events.
         """
         return pulumi.get(self, "push_events")
 
     @push_events.setter
-    def push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "push_events", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushChannel")
-    def tag_push_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_push_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive tag push events notifications.
         """
         return pulumi.get(self, "tag_push_channel")
 
     @tag_push_channel.setter
-    def tag_push_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_push_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_push_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tag_push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for tag push events.
         """
         return pulumi.get(self, "tag_push_events")
 
     @tag_push_events.setter
-    def tag_push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tag_push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tag_push_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username to use.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="wikiPageChannel")
-    def wiki_page_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def wiki_page_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive wiki page events notifications.
         """
         return pulumi.get(self, "wiki_page_channel")
 
     @wiki_page_channel.setter
-    def wiki_page_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def wiki_page_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "wiki_page_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="wikiPageEvents")
-    def wiki_page_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wiki_page_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for wiki page events.
         """
         return pulumi.get(self, "wiki_page_events")
 
     @wiki_page_events.setter
-    def wiki_page_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wiki_page_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wiki_page_events", value)
 
 
 @pulumi.input_type
 class _IntegrationMattermostState:
     def __init__(__self__, *,
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_issue_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_note_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issue_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_request_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 note_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipeline_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_page_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_issue_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_note_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issue_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_request_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 note_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipeline_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_page_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering IntegrationMattermost resources.
 
@@ -493,278 +493,278 @@ class _IntegrationMattermostState:
 
     @_builtins.property
     @pulumi.getter(name="branchesToBeNotified")
-    def branches_to_be_notified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branches_to_be_notified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Branches to send notifications for. Valid values are `all`, `default`, `protected`, `default_and_protected`.
         """
         return pulumi.get(self, "branches_to_be_notified")
 
     @branches_to_be_notified.setter
-    def branches_to_be_notified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branches_to_be_notified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branches_to_be_notified", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialIssueChannel")
-    def confidential_issue_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def confidential_issue_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive confidential issue events notifications.
         """
         return pulumi.get(self, "confidential_issue_channel")
 
     @confidential_issue_channel.setter
-    def confidential_issue_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def confidential_issue_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "confidential_issue_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialIssuesEvents")
-    def confidential_issues_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confidential_issues_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for confidential issues events.
         """
         return pulumi.get(self, "confidential_issues_events")
 
     @confidential_issues_events.setter
-    def confidential_issues_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confidential_issues_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confidential_issues_events", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialNoteChannel")
-    def confidential_note_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def confidential_note_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive confidential note events notifications.
         """
         return pulumi.get(self, "confidential_note_channel")
 
     @confidential_note_channel.setter
-    def confidential_note_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def confidential_note_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "confidential_note_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialNoteEvents")
-    def confidential_note_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confidential_note_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for confidential note events.
         """
         return pulumi.get(self, "confidential_note_events")
 
     @confidential_note_events.setter
-    def confidential_note_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confidential_note_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confidential_note_events", value)
 
     @_builtins.property
     @pulumi.getter(name="issueChannel")
-    def issue_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issue_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive issue events notifications.
         """
         return pulumi.get(self, "issue_channel")
 
     @issue_channel.setter
-    def issue_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issue_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issue_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesEvents")
-    def issues_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def issues_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for issues events.
         """
         return pulumi.get(self, "issues_events")
 
     @issues_events.setter
-    def issues_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def issues_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "issues_events", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestChannel")
-    def merge_request_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_request_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive merge request events notifications.
         """
         return pulumi.get(self, "merge_request_channel")
 
     @merge_request_channel.setter
-    def merge_request_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_request_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_request_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEvents")
-    def merge_requests_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_requests_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for merge requests events.
         """
         return pulumi.get(self, "merge_requests_events")
 
     @merge_requests_events.setter
-    def merge_requests_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_requests_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_requests_events", value)
 
     @_builtins.property
     @pulumi.getter(name="noteChannel")
-    def note_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def note_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive note events notifications.
         """
         return pulumi.get(self, "note_channel")
 
     @note_channel.setter
-    def note_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def note_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "note_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="noteEvents")
-    def note_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def note_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for note events.
         """
         return pulumi.get(self, "note_events")
 
     @note_events.setter
-    def note_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def note_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "note_events", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyOnlyBrokenPipelines")
-    def notify_only_broken_pipelines(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_only_broken_pipelines(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Send notifications for broken pipelines.
         """
         return pulumi.get(self, "notify_only_broken_pipelines")
 
     @notify_only_broken_pipelines.setter
-    def notify_only_broken_pipelines(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_only_broken_pipelines(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_only_broken_pipelines", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineChannel")
-    def pipeline_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pipeline_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive pipeline events notifications.
         """
         return pulumi.get(self, "pipeline_channel")
 
     @pipeline_channel.setter
-    def pipeline_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pipeline_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pipeline_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineEvents")
-    def pipeline_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pipeline_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for pipeline events.
         """
         return pulumi.get(self, "pipeline_events")
 
     @pipeline_events.setter
-    def pipeline_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pipeline_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pipeline_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the project you want to activate integration on.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pushChannel")
-    def push_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def push_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive push events notifications.
         """
         return pulumi.get(self, "push_channel")
 
     @push_channel.setter
-    def push_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def push_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "push_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for push events.
         """
         return pulumi.get(self, "push_events")
 
     @push_events.setter
-    def push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "push_events", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushChannel")
-    def tag_push_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_push_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive tag push events notifications.
         """
         return pulumi.get(self, "tag_push_channel")
 
     @tag_push_channel.setter
-    def tag_push_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_push_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_push_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tag_push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for tag push events.
         """
         return pulumi.get(self, "tag_push_events")
 
     @tag_push_events.setter
-    def tag_push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tag_push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tag_push_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username to use.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter
-    def webhook(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Webhook URL (Example, https://mattermost.yourdomain.com/hooks/...). This value cannot be imported.
         """
         return pulumi.get(self, "webhook")
 
     @webhook.setter
-    def webhook(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook", value)
 
     @_builtins.property
     @pulumi.getter(name="wikiPageChannel")
-    def wiki_page_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def wiki_page_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the channel to receive wiki page events notifications.
         """
         return pulumi.get(self, "wiki_page_channel")
 
     @wiki_page_channel.setter
-    def wiki_page_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def wiki_page_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "wiki_page_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="wikiPageEvents")
-    def wiki_page_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wiki_page_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for wiki page events.
         """
         return pulumi.get(self, "wiki_page_events")
 
     @wiki_page_events.setter
-    def wiki_page_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wiki_page_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wiki_page_events", value)
 
 
@@ -774,29 +774,29 @@ class IntegrationMattermost(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_issue_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_note_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issue_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_request_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 note_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipeline_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_page_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None,
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_issue_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_note_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issue_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_request_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 note_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipeline_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_page_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The `IntegrationMattermost` resource manages the lifecycle of a project integration with Mattermost.
@@ -921,29 +921,29 @@ class IntegrationMattermost(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_issue_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_note_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issue_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_request_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 note_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipeline_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_page_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None,
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_issue_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_note_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issue_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_request_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 note_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipeline_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_page_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -992,29 +992,29 @@ class IntegrationMattermost(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-            confidential_issue_channel: Optional[pulumi.Input[_builtins.str]] = None,
-            confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            confidential_note_channel: Optional[pulumi.Input[_builtins.str]] = None,
-            confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            issue_channel: Optional[pulumi.Input[_builtins.str]] = None,
-            issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            merge_request_channel: Optional[pulumi.Input[_builtins.str]] = None,
-            merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            note_channel: Optional[pulumi.Input[_builtins.str]] = None,
-            note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            notify_only_broken_pipelines: Optional[pulumi.Input[_builtins.bool]] = None,
-            pipeline_channel: Optional[pulumi.Input[_builtins.str]] = None,
-            pipeline_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            push_channel: Optional[pulumi.Input[_builtins.str]] = None,
-            push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            tag_push_channel: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None,
-            webhook: Optional[pulumi.Input[_builtins.str]] = None,
-            wiki_page_channel: Optional[pulumi.Input[_builtins.str]] = None,
-            wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None) -> 'IntegrationMattermost':
+            branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+            confidential_issue_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            confidential_note_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            issue_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_request_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            note_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+            pipeline_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            push_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            tag_push_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            webhook: pulumi.Input[Optional[_builtins.str]] = None,
+            wiki_page_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None) -> 'IntegrationMattermost':
         """
         Get an existing IntegrationMattermost resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

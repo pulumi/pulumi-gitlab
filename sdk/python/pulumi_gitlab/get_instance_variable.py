@@ -166,7 +166,7 @@ def get_instance_variable(key: Optional[_builtins.str] = None,
         raw=pulumi.get(__ret__, 'raw'),
         value=pulumi.get(__ret__, 'value'),
         variable_type=pulumi.get(__ret__, 'variable_type'))
-def get_instance_variable_output(key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_instance_variable_output(key: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceVariableResult]:
     """
     The `InstanceVariable` data source retrieves details about an instance-level CI/CD variable.

@@ -200,67 +200,67 @@ export interface ProjectIntegrationMicrosoftTeamsState {
     /**
      * Whether the integration is active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`
      */
-    branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for confidential issue events.
      */
-    confidentialIssuesEvents?: pulumi.Input<boolean>;
+    confidentialIssuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for confidential note events.
      */
-    confidentialNoteEvents?: pulumi.Input<boolean>;
+    confidentialNoteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The ISO8601 date/time that this integration was activated at in UTC.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for issue events.
      */
-    issuesEvents?: pulumi.Input<boolean>;
+    issuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for merge request events.
      */
-    mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for note events.
      */
-    noteEvents?: pulumi.Input<boolean>;
+    noteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Send notifications for broken pipelines.
      */
-    notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
+    notifyOnlyBrokenPipelines?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for pipeline events.
      */
-    pipelineEvents?: pulumi.Input<boolean>;
+    pipelineEvents?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the project you want to activate the integration on.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for push events.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for tag push events.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The ISO8601 date/time that this integration was last updated at in UTC.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
      */
-    webhook?: pulumi.Input<string>;
+    webhook?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for wiki page events.
      */
-    wikiPageEvents?: pulumi.Input<boolean>;
+    wikiPageEvents?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -270,35 +270,35 @@ export interface ProjectIntegrationMicrosoftTeamsArgs {
     /**
      * Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`
      */
-    branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string | undefined>;
     /**
      * Enable notifications for confidential issue events.
      */
-    confidentialIssuesEvents?: pulumi.Input<boolean>;
+    confidentialIssuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for confidential note events.
      */
-    confidentialNoteEvents?: pulumi.Input<boolean>;
+    confidentialNoteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for issue events.
      */
-    issuesEvents?: pulumi.Input<boolean>;
+    issuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for merge request events.
      */
-    mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for note events.
      */
-    noteEvents?: pulumi.Input<boolean>;
+    noteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Send notifications for broken pipelines.
      */
-    notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
+    notifyOnlyBrokenPipelines?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for pipeline events.
      */
-    pipelineEvents?: pulumi.Input<boolean>;
+    pipelineEvents?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the project you want to activate the integration on.
      */
@@ -306,11 +306,11 @@ export interface ProjectIntegrationMicrosoftTeamsArgs {
     /**
      * Enable notifications for push events.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable notifications for tag push events.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The Microsoft Teams webhook (Example, https://outlook.office.com/webhook/...). This value cannot be imported.
      */
@@ -318,5 +318,5 @@ export interface ProjectIntegrationMicrosoftTeamsArgs {
     /**
      * Enable notifications for wiki page events.
      */
-    wikiPageEvents?: pulumi.Input<boolean>;
+    wikiPageEvents?: pulumi.Input<boolean | undefined>;
 }

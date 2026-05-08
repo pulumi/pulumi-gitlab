@@ -126,19 +126,19 @@ export interface GetGroupProvisionedUsersOutputArgs {
     /**
      * Return only active provisioned users.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Return only blocked provisioned users.
      */
-    blocked?: pulumi.Input<boolean>;
+    blocked?: pulumi.Input<boolean | undefined>;
     /**
      * Return only provisioned users created on or after the specified date. Expected in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ).
      */
-    createdAfter?: pulumi.Input<string>;
+    createdAfter?: pulumi.Input<string | undefined>;
     /**
      * Return only provisioned users created on or before the specified date. Expected in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ).
      */
-    createdBefore?: pulumi.Input<string>;
+    createdBefore?: pulumi.Input<string | undefined>;
     /**
      * The ID or URL-encoded path of the group.
      */
@@ -146,13 +146,13 @@ export interface GetGroupProvisionedUsersOutputArgs {
     /**
      * The list of provisioned users.
      */
-    provisionedUsers?: pulumi.Input<pulumi.Input<inputs.GetGroupProvisionedUsersProvisionedUserArgs>[]>;
+    provisionedUsers?: pulumi.Input<pulumi.Input<inputs.GetGroupProvisionedUsersProvisionedUserArgs>[] | undefined>;
     /**
      * The search query to filter the provisioned users.
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
     /**
      * The username of the provisioned user.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

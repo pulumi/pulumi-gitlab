@@ -124,8 +124,8 @@ def get_group_billable_member_memberships(group_id: Optional[_builtins.str] = No
         id=pulumi.get(__ret__, 'id'),
         memberships=pulumi.get(__ret__, 'memberships'),
         user_id=pulumi.get(__ret__, 'user_id'))
-def get_group_billable_member_memberships_output(group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_group_billable_member_memberships_output(group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 user_id: pulumi.Input[Optional[_builtins.int]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupBillableMemberMembershipsResult]:
     """
     The `get_group_billable_member_memberships` data source allows (sub)group- and project-memberships of a billable member of a group to be retrieved by either the user ID, username or email address.

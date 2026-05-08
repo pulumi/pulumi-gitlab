@@ -21,18 +21,18 @@ class UserArgs:
     def __init__(__self__, *,
                  email: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 can_create_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_random_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 projects_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 reset_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_confirmation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_random_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 note: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 projects_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 reset_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_confirmation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
 
@@ -104,166 +104,166 @@ class UserArgs:
 
     @_builtins.property
     @pulumi.getter(name="canCreateGroup")
-    def can_create_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_create_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean, defaults to false. Whether to allow the user to create groups.
         """
         return pulumi.get(self, "can_create_group")
 
     @can_create_group.setter
-    def can_create_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_create_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_create_group", value)
 
     @_builtins.property
     @pulumi.getter(name="forceRandomPassword")
-    def force_random_password(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_random_password(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set user password to a random value
         """
         return pulumi.get(self, "force_random_password")
 
     @force_random_password.setter
-    def force_random_password(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_random_password(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_random_password", value)
 
     @_builtins.property
     @pulumi.getter(name="isAdmin")
-    def is_admin(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_admin(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean, defaults to false.  Whether to enable administrative privileges
         """
         return pulumi.get(self, "is_admin")
 
     @is_admin.setter
-    def is_admin(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_admin(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_admin", value)
 
     @_builtins.property
     @pulumi.getter(name="isExternal")
-    def is_external(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_external(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         """
         return pulumi.get(self, "is_external")
 
     @is_external.setter
-    def is_external(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_external(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_external", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def namespace_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the user's namespace.
         """
         return pulumi.get(self, "namespace_id")
 
     @namespace_id.setter
-    def namespace_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def namespace_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "namespace_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def note(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def note(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The note associated to the user.
         """
         return pulumi.get(self, "note")
 
     @note.setter
-    def note(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def note(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "note", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the user.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="projectsLimit")
-    def projects_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def projects_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Integer, defaults to 0.  Number of projects user can create.
         """
         return pulumi.get(self, "projects_limit")
 
     @projects_limit.setter
-    def projects_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def projects_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "projects_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="resetPassword")
-    def reset_password(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reset_password(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean, defaults to false. Send user password reset link.
         """
         return pulumi.get(self, "reset_password")
 
     @reset_password.setter
-    def reset_password(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reset_password(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reset_password", value)
 
     @_builtins.property
     @pulumi.getter(name="skipConfirmation")
-    def skip_confirmation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_confirmation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean, defaults to true. Whether to skip confirmation.
         """
         return pulumi.get(self, "skip_confirmation")
 
     @skip_confirmation.setter
-    def skip_confirmation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_confirmation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_confirmation", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
-                 can_create_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_random_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 projects_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 reset_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_confirmation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_random_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 note: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 projects_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 reset_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_confirmation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
 
@@ -313,170 +313,170 @@ class _UserState:
 
     @_builtins.property
     @pulumi.getter(name="canCreateGroup")
-    def can_create_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_create_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean, defaults to false. Whether to allow the user to create groups.
         """
         return pulumi.get(self, "can_create_group")
 
     @can_create_group.setter
-    def can_create_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_create_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_create_group", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The e-mail address of the user.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="forceRandomPassword")
-    def force_random_password(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_random_password(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set user password to a random value
         """
         return pulumi.get(self, "force_random_password")
 
     @force_random_password.setter
-    def force_random_password(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_random_password(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_random_password", value)
 
     @_builtins.property
     @pulumi.getter(name="isAdmin")
-    def is_admin(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_admin(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean, defaults to false.  Whether to enable administrative privileges
         """
         return pulumi.get(self, "is_admin")
 
     @is_admin.setter
-    def is_admin(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_admin(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_admin", value)
 
     @_builtins.property
     @pulumi.getter(name="isExternal")
-    def is_external(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_external(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         """
         return pulumi.get(self, "is_external")
 
     @is_external.setter
-    def is_external(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_external(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_external", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def namespace_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the user's namespace.
         """
         return pulumi.get(self, "namespace_id")
 
     @namespace_id.setter
-    def namespace_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def namespace_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "namespace_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def note(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def note(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The note associated to the user.
         """
         return pulumi.get(self, "note")
 
     @note.setter
-    def note(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def note(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "note", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the user.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="projectsLimit")
-    def projects_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def projects_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Integer, defaults to 0.  Number of projects user can create.
         """
         return pulumi.get(self, "projects_limit")
 
     @projects_limit.setter
-    def projects_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def projects_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "projects_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="resetPassword")
-    def reset_password(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reset_password(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean, defaults to false. Send user password reset link.
         """
         return pulumi.get(self, "reset_password")
 
     @reset_password.setter
-    def reset_password(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reset_password(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reset_password", value)
 
     @_builtins.property
     @pulumi.getter(name="skipConfirmation")
-    def skip_confirmation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_confirmation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean, defaults to true. Whether to skip confirmation.
         """
         return pulumi.get(self, "skip_confirmation")
 
     @skip_confirmation.setter
-    def skip_confirmation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_confirmation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_confirmation", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String, defaults to 'active'. The state of the user account. Valid values are `active`, `deactivated`, `blocked`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of the user.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -486,20 +486,20 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 can_create_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_random_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 projects_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 reset_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_confirmation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_random_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 note: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 projects_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 reset_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_confirmation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `User` resource manages the lifecycle of a user.
@@ -621,20 +621,20 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 can_create_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_random_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 projects_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 reset_password: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_confirmation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_random_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 note: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 projects_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 reset_password: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_confirmation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -674,20 +674,20 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            can_create_group: Optional[pulumi.Input[_builtins.bool]] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            force_random_password: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_external: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_id: Optional[pulumi.Input[_builtins.int]] = None,
-            note: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            projects_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            reset_password: Optional[pulumi.Input[_builtins.bool]] = None,
-            skip_confirmation: Optional[pulumi.Input[_builtins.bool]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'User':
+            can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            force_random_password: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_external: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
+            note: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            projects_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            reset_password: pulumi.Input[Optional[_builtins.bool]] = None,
+            skip_confirmation: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

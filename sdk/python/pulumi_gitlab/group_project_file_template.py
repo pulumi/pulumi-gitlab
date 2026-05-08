@@ -62,8 +62,8 @@ class GroupProjectFileTemplateArgs:
 @pulumi.input_type
 class _GroupProjectFileTemplateState:
     def __init__(__self__, *,
-                 file_template_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 file_template_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering GroupProjectFileTemplate resources.
 
@@ -79,7 +79,7 @@ class _GroupProjectFileTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="fileTemplateProjectId")
-    def file_template_project_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def file_template_project_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the project that will be used for file templates. This project must be the direct
         			child of the project defined by the group_id
@@ -87,12 +87,12 @@ class _GroupProjectFileTemplateState:
         return pulumi.get(self, "file_template_project_id")
 
     @file_template_project_id.setter
-    def file_template_project_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def file_template_project_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "file_template_project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the group that will use the file template project. This group must be the direct
                     parent of the project defined by project_id
@@ -100,7 +100,7 @@ class _GroupProjectFileTemplateState:
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_id", value)
 
 
@@ -110,8 +110,8 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 file_template_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 file_template_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The `GroupProjectFileTemplate` resource allows setting a project from which
@@ -138,10 +138,10 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
             name="template project",
             description="contains file templates",
             visibility_level="public",
-            namespace_id=foo.id)
+            namespace_id=foo.id.apply(lambda x: int(x)))
         template_link = gitlab.GroupProjectFileTemplate("template_link",
-            group_id=foo.id,
-            file_template_project_id=bar.id)
+            group_id=foo.id.apply(lambda x: int(x)),
+            file_template_project_id=bar.id.apply(lambda x: int(x)))
         ```
 
 
@@ -183,10 +183,10 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
             name="template project",
             description="contains file templates",
             visibility_level="public",
-            namespace_id=foo.id)
+            namespace_id=foo.id.apply(lambda x: int(x)))
         template_link = gitlab.GroupProjectFileTemplate("template_link",
-            group_id=foo.id,
-            file_template_project_id=bar.id)
+            group_id=foo.id.apply(lambda x: int(x)),
+            file_template_project_id=bar.id.apply(lambda x: int(x)))
         ```
 
 
@@ -205,8 +205,8 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 file_template_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 file_template_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -232,8 +232,8 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            file_template_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-            group_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'GroupProjectFileTemplate':
+            file_template_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+            group_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'GroupProjectFileTemplate':
         """
         Get an existing GroupProjectFileTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

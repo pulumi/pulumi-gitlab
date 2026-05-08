@@ -131,23 +131,23 @@ export interface ProjectShareGroupState {
      *
      * @deprecated Use `groupAccess` instead of the `accessLevel` attribute.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Share expiration date. Format: `YYYY-MM-DD`
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
-    groupAccess?: pulumi.Input<string>;
+    groupAccess?: pulumi.Input<string | undefined>;
     /**
      * The id of the group.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * The ID or URL-encoded path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -159,15 +159,15 @@ export interface ProjectShareGroupArgs {
      *
      * @deprecated Use `groupAccess` instead of the `accessLevel` attribute.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Share expiration date. Format: `YYYY-MM-DD`
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
-    groupAccess?: pulumi.Input<string>;
+    groupAccess?: pulumi.Input<string | undefined>;
     /**
      * The id of the group.
      */

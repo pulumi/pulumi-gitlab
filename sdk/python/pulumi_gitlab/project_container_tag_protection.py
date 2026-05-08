@@ -23,10 +23,10 @@ class ProjectContainerTagProtectionArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  tag_name_regex: pulumi.Input[_builtins.str],
-                 immutable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 minimum_access_level_for_delete: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum_access_level_for_push: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['ProjectContainerTagProtectionTimeoutsArgs']] = None):
+                 immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 minimum_access_level_for_delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_access_level_for_push: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['ProjectContainerTagProtectionTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a ProjectContainerTagProtection resource.
 
@@ -73,60 +73,60 @@ class ProjectContainerTagProtectionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def immutable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def immutable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the container tag is immutable. If set, the container tag cannot be deleted or overwritten. Conflicts with `minimum_access_level_for_push` and `minimum_access_level_for_delete`.
         """
         return pulumi.get(self, "immutable")
 
     @immutable.setter
-    def immutable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def immutable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "immutable", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumAccessLevelForDelete")
-    def minimum_access_level_for_delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimum_access_level_for_delete(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minimum GitLab access level required to delete protected container tags in the container registry. Marks the container tag as protected. Valid values are: `MAINTAINER`, `OWNER`, `ADMIN`.
         """
         return pulumi.get(self, "minimum_access_level_for_delete")
 
     @minimum_access_level_for_delete.setter
-    def minimum_access_level_for_delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimum_access_level_for_delete(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimum_access_level_for_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumAccessLevelForPush")
-    def minimum_access_level_for_push(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimum_access_level_for_push(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minimum GitLab access level required to push protected container tags to the container registry. Marks the container tag as protected. Valid values are: `MAINTAINER`, `OWNER`, `ADMIN`.
         """
         return pulumi.get(self, "minimum_access_level_for_push")
 
     @minimum_access_level_for_push.setter
-    def minimum_access_level_for_push(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimum_access_level_for_push(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimum_access_level_for_push", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ProjectContainerTagProtectionTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ProjectContainerTagProtectionTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ProjectContainerTagProtectionTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ProjectContainerTagProtectionTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _ProjectContainerTagProtectionState:
     def __init__(__self__, *,
-                 immutable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 minimum_access_level_for_delete: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum_access_level_for_push: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protection_rule_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 tag_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['ProjectContainerTagProtectionTimeoutsArgs']] = None):
+                 immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 minimum_access_level_for_delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_access_level_for_push: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protection_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 tag_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['ProjectContainerTagProtectionTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering ProjectContainerTagProtection resources.
 
@@ -154,83 +154,83 @@ class _ProjectContainerTagProtectionState:
 
     @_builtins.property
     @pulumi.getter
-    def immutable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def immutable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the container tag is immutable. If set, the container tag cannot be deleted or overwritten. Conflicts with `minimum_access_level_for_push` and `minimum_access_level_for_delete`.
         """
         return pulumi.get(self, "immutable")
 
     @immutable.setter
-    def immutable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def immutable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "immutable", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumAccessLevelForDelete")
-    def minimum_access_level_for_delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimum_access_level_for_delete(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minimum GitLab access level required to delete protected container tags in the container registry. Marks the container tag as protected. Valid values are: `MAINTAINER`, `OWNER`, `ADMIN`.
         """
         return pulumi.get(self, "minimum_access_level_for_delete")
 
     @minimum_access_level_for_delete.setter
-    def minimum_access_level_for_delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimum_access_level_for_delete(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimum_access_level_for_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumAccessLevelForPush")
-    def minimum_access_level_for_push(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimum_access_level_for_push(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minimum GitLab access level required to push protected container tags to the container registry. Marks the container tag as protected. Valid values are: `MAINTAINER`, `OWNER`, `ADMIN`.
         """
         return pulumi.get(self, "minimum_access_level_for_push")
 
     @minimum_access_level_for_push.setter
-    def minimum_access_level_for_push(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimum_access_level_for_push(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimum_access_level_for_push", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID or URL-encoded path of the project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="protectionRuleId")
-    def protection_rule_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def protection_rule_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Unique ID of the protection rule.
         """
         return pulumi.get(self, "protection_rule_id")
 
     @protection_rule_id.setter
-    def protection_rule_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def protection_rule_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "protection_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tagNameRegex")
-    def tag_name_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_name_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container tag path pattern protected by the protection rule. Wildcard character * allowed. Tag path pattern should start with the project's full path.
         """
         return pulumi.get(self, "tag_name_regex")
 
     @tag_name_regex.setter
-    def tag_name_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_name_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_name_regex", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ProjectContainerTagProtectionTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ProjectContainerTagProtectionTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ProjectContainerTagProtectionTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ProjectContainerTagProtectionTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -240,12 +240,12 @@ class ProjectContainerTagProtection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 immutable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 minimum_access_level_for_delete: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum_access_level_for_push: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ProjectContainerTagProtectionTimeoutsArgs', 'ProjectContainerTagProtectionTimeoutsArgsDict']]] = None,
+                 immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 minimum_access_level_for_delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_access_level_for_push: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ProjectContainerTagProtectionTimeoutsArgs', 'ProjectContainerTagProtectionTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         The `ProjectContainerTagProtection` resource allows managing the lifecycle of a container tag protection rule.
@@ -366,12 +366,12 @@ class ProjectContainerTagProtection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 immutable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 minimum_access_level_for_delete: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum_access_level_for_push: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ProjectContainerTagProtectionTimeoutsArgs', 'ProjectContainerTagProtectionTimeoutsArgsDict']]] = None,
+                 immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 minimum_access_level_for_delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_access_level_for_push: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ProjectContainerTagProtectionTimeoutsArgs', 'ProjectContainerTagProtectionTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -402,13 +402,13 @@ class ProjectContainerTagProtection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            immutable: Optional[pulumi.Input[_builtins.bool]] = None,
-            minimum_access_level_for_delete: Optional[pulumi.Input[_builtins.str]] = None,
-            minimum_access_level_for_push: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            protection_rule_id: Optional[pulumi.Input[_builtins.int]] = None,
-            tag_name_regex: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['ProjectContainerTagProtectionTimeoutsArgs', 'ProjectContainerTagProtectionTimeoutsArgsDict']]] = None) -> 'ProjectContainerTagProtection':
+            immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+            minimum_access_level_for_delete: pulumi.Input[Optional[_builtins.str]] = None,
+            minimum_access_level_for_push: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protection_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            tag_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['ProjectContainerTagProtectionTimeoutsArgs', 'ProjectContainerTagProtectionTimeoutsArgsDict']]] = None) -> 'ProjectContainerTagProtection':
         """
         Get an existing ProjectContainerTagProtection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

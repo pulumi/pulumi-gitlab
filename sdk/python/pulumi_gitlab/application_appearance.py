@@ -19,20 +19,20 @@ __all__ = ['ApplicationAppearanceArgs', 'ApplicationAppearance']
 @pulumi.input_type
 class ApplicationAppearanceArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_header_and_footer_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 footer_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 header_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 member_guidelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_background_color: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_font_color: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_project_guidelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile_image_guidelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 pwa_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 pwa_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pwa_short_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_header_and_footer_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 footer_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 header_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 member_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_background_color: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_font_color: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_project_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile_image_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 pwa_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 pwa_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pwa_short_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationAppearance resource.
 
@@ -82,190 +82,190 @@ class ApplicationAppearanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Markdown text shown on the sign-in and sign-up page.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="emailHeaderAndFooterEnabled")
-    def email_header_and_footer_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def email_header_and_footer_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Add header and footer to all outgoing emails if enabled.
         """
         return pulumi.get(self, "email_header_and_footer_enabled")
 
     @email_header_and_footer_enabled.setter
-    def email_header_and_footer_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def email_header_and_footer_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "email_header_and_footer_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="footerMessage")
-    def footer_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def footer_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Message in the system footer bar.
         """
         return pulumi.get(self, "footer_message")
 
     @footer_message.setter
-    def footer_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def footer_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "footer_message", value)
 
     @_builtins.property
     @pulumi.getter(name="headerMessage")
-    def header_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def header_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Message in the system header bar.
         """
         return pulumi.get(self, "header_message")
 
     @header_message.setter
-    def header_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def header_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "header_message", value)
 
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
-    def keep_settings_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_settings_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
         """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @keep_settings_on_destroy.setter
-    def keep_settings_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_settings_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_settings_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="memberGuidelines")
-    def member_guidelines(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_guidelines(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Markdown text shown on the group or project member page for users with permission to change members.
         """
         return pulumi.get(self, "member_guidelines")
 
     @member_guidelines.setter
-    def member_guidelines(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_guidelines(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_guidelines", value)
 
     @_builtins.property
     @pulumi.getter(name="messageBackgroundColor")
-    def message_background_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message_background_color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Background color for the system header or footer bar, in CSS hex notation.
         """
         return pulumi.get(self, "message_background_color")
 
     @message_background_color.setter
-    def message_background_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message_background_color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message_background_color", value)
 
     @_builtins.property
     @pulumi.getter(name="messageFontColor")
-    def message_font_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message_font_color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Font color for the system header or footer bar, in CSS hex notation.
         """
         return pulumi.get(self, "message_font_color")
 
     @message_font_color.setter
-    def message_font_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message_font_color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message_font_color", value)
 
     @_builtins.property
     @pulumi.getter(name="newProjectGuidelines")
-    def new_project_guidelines(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def new_project_guidelines(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Markdown text shown on the new project page.
         """
         return pulumi.get(self, "new_project_guidelines")
 
     @new_project_guidelines.setter
-    def new_project_guidelines(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def new_project_guidelines(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "new_project_guidelines", value)
 
     @_builtins.property
     @pulumi.getter(name="profileImageGuidelines")
-    def profile_image_guidelines(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile_image_guidelines(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Markdown text shown on the profile page below the Public Avatar.
         """
         return pulumi.get(self, "profile_image_guidelines")
 
     @profile_image_guidelines.setter
-    def profile_image_guidelines(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile_image_guidelines(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile_image_guidelines", value)
 
     @_builtins.property
     @pulumi.getter(name="pwaDescription")
-    def pwa_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pwa_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An explanation of what the Progressive Web App does. Used for the attribute `description` in `manifest.json`.
         """
         return pulumi.get(self, "pwa_description")
 
     @pwa_description.setter
-    def pwa_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pwa_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pwa_description", value)
 
     @_builtins.property
     @pulumi.getter(name="pwaName")
-    def pwa_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pwa_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full name of the Progressive Web App. Used for the attribute `name` in `manifest.json`.
         """
         return pulumi.get(self, "pwa_name")
 
     @pwa_name.setter
-    def pwa_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pwa_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pwa_name", value)
 
     @_builtins.property
     @pulumi.getter(name="pwaShortName")
-    def pwa_short_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pwa_short_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Short name for Progressive Web App.
         """
         return pulumi.get(self, "pwa_short_name")
 
     @pwa_short_name.setter
-    def pwa_short_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pwa_short_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pwa_short_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application title on the sign-in and sign-up page.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
 @pulumi.input_type
 class _ApplicationAppearanceState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_header_and_footer_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 footer_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 header_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 member_guidelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_background_color: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_font_color: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_project_guidelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile_image_guidelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 pwa_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 pwa_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pwa_short_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_header_and_footer_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 footer_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 header_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 member_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_background_color: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_font_color: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_project_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile_image_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 pwa_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 pwa_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pwa_short_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationAppearance resources.
 
@@ -315,170 +315,170 @@ class _ApplicationAppearanceState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Markdown text shown on the sign-in and sign-up page.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="emailHeaderAndFooterEnabled")
-    def email_header_and_footer_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def email_header_and_footer_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Add header and footer to all outgoing emails if enabled.
         """
         return pulumi.get(self, "email_header_and_footer_enabled")
 
     @email_header_and_footer_enabled.setter
-    def email_header_and_footer_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def email_header_and_footer_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "email_header_and_footer_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="footerMessage")
-    def footer_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def footer_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Message in the system footer bar.
         """
         return pulumi.get(self, "footer_message")
 
     @footer_message.setter
-    def footer_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def footer_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "footer_message", value)
 
     @_builtins.property
     @pulumi.getter(name="headerMessage")
-    def header_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def header_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Message in the system header bar.
         """
         return pulumi.get(self, "header_message")
 
     @header_message.setter
-    def header_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def header_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "header_message", value)
 
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
-    def keep_settings_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_settings_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
         """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @keep_settings_on_destroy.setter
-    def keep_settings_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_settings_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_settings_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="memberGuidelines")
-    def member_guidelines(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_guidelines(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Markdown text shown on the group or project member page for users with permission to change members.
         """
         return pulumi.get(self, "member_guidelines")
 
     @member_guidelines.setter
-    def member_guidelines(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_guidelines(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_guidelines", value)
 
     @_builtins.property
     @pulumi.getter(name="messageBackgroundColor")
-    def message_background_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message_background_color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Background color for the system header or footer bar, in CSS hex notation.
         """
         return pulumi.get(self, "message_background_color")
 
     @message_background_color.setter
-    def message_background_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message_background_color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message_background_color", value)
 
     @_builtins.property
     @pulumi.getter(name="messageFontColor")
-    def message_font_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message_font_color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Font color for the system header or footer bar, in CSS hex notation.
         """
         return pulumi.get(self, "message_font_color")
 
     @message_font_color.setter
-    def message_font_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message_font_color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message_font_color", value)
 
     @_builtins.property
     @pulumi.getter(name="newProjectGuidelines")
-    def new_project_guidelines(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def new_project_guidelines(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Markdown text shown on the new project page.
         """
         return pulumi.get(self, "new_project_guidelines")
 
     @new_project_guidelines.setter
-    def new_project_guidelines(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def new_project_guidelines(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "new_project_guidelines", value)
 
     @_builtins.property
     @pulumi.getter(name="profileImageGuidelines")
-    def profile_image_guidelines(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile_image_guidelines(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Markdown text shown on the profile page below the Public Avatar.
         """
         return pulumi.get(self, "profile_image_guidelines")
 
     @profile_image_guidelines.setter
-    def profile_image_guidelines(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile_image_guidelines(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile_image_guidelines", value)
 
     @_builtins.property
     @pulumi.getter(name="pwaDescription")
-    def pwa_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pwa_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An explanation of what the Progressive Web App does. Used for the attribute `description` in `manifest.json`.
         """
         return pulumi.get(self, "pwa_description")
 
     @pwa_description.setter
-    def pwa_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pwa_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pwa_description", value)
 
     @_builtins.property
     @pulumi.getter(name="pwaName")
-    def pwa_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pwa_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full name of the Progressive Web App. Used for the attribute `name` in `manifest.json`.
         """
         return pulumi.get(self, "pwa_name")
 
     @pwa_name.setter
-    def pwa_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pwa_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pwa_name", value)
 
     @_builtins.property
     @pulumi.getter(name="pwaShortName")
-    def pwa_short_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pwa_short_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Short name for Progressive Web App.
         """
         return pulumi.get(self, "pwa_short_name")
 
     @pwa_short_name.setter
-    def pwa_short_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pwa_short_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pwa_short_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application title on the sign-in and sign-up page.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
@@ -488,20 +488,20 @@ class ApplicationAppearance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_header_and_footer_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 footer_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 header_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 member_guidelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_background_color: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_font_color: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_project_guidelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile_image_guidelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 pwa_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 pwa_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pwa_short_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_header_and_footer_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 footer_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 header_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 member_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_background_color: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_font_color: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_project_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile_image_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 pwa_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 pwa_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pwa_short_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ApplicationAppearance` resource manages the GitLab application appearance.
@@ -595,20 +595,20 @@ class ApplicationAppearance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_header_and_footer_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 footer_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 header_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 member_guidelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_background_color: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_font_color: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_project_guidelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile_image_guidelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 pwa_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 pwa_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pwa_short_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_header_and_footer_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 footer_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 header_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 member_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_background_color: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_font_color: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_project_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile_image_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 pwa_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 pwa_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pwa_short_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -642,20 +642,20 @@ class ApplicationAppearance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            email_header_and_footer_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            footer_message: Optional[pulumi.Input[_builtins.str]] = None,
-            header_message: Optional[pulumi.Input[_builtins.str]] = None,
-            keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            member_guidelines: Optional[pulumi.Input[_builtins.str]] = None,
-            message_background_color: Optional[pulumi.Input[_builtins.str]] = None,
-            message_font_color: Optional[pulumi.Input[_builtins.str]] = None,
-            new_project_guidelines: Optional[pulumi.Input[_builtins.str]] = None,
-            profile_image_guidelines: Optional[pulumi.Input[_builtins.str]] = None,
-            pwa_description: Optional[pulumi.Input[_builtins.str]] = None,
-            pwa_name: Optional[pulumi.Input[_builtins.str]] = None,
-            pwa_short_name: Optional[pulumi.Input[_builtins.str]] = None,
-            title: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApplicationAppearance':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            email_header_and_footer_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            footer_message: pulumi.Input[Optional[_builtins.str]] = None,
+            header_message: pulumi.Input[Optional[_builtins.str]] = None,
+            keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            member_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+            message_background_color: pulumi.Input[Optional[_builtins.str]] = None,
+            message_font_color: pulumi.Input[Optional[_builtins.str]] = None,
+            new_project_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+            profile_image_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+            pwa_description: pulumi.Input[Optional[_builtins.str]] = None,
+            pwa_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pwa_short_name: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApplicationAppearance':
         """
         Get an existing ApplicationAppearance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

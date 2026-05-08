@@ -141,27 +141,27 @@ export interface ProjectPackageProtectionRuleState {
     /**
      * Minimum GitLab access level required to delete packages from the package registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForPush` is not set.
      */
-    minimumAccessLevelForDelete?: pulumi.Input<string>;
+    minimumAccessLevelForDelete?: pulumi.Input<string | undefined>;
     /**
      * Minimum GitLab access level required to push packages to the package registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForDelete` is not set.
      */
-    minimumAccessLevelForPush?: pulumi.Input<string>;
+    minimumAccessLevelForPush?: pulumi.Input<string | undefined>;
     /**
      * Package name pattern protected by the protection rule. For example `@scope/package-*`. Wildcard character `*` allowed.
      */
-    packageNamePattern?: pulumi.Input<string>;
+    packageNamePattern?: pulumi.Input<string | undefined>;
     /**
      * Unique ID of the protection rule.
      */
-    packageProtectionRuleId?: pulumi.Input<number>;
+    packageProtectionRuleId?: pulumi.Input<number | undefined>;
     /**
      * Package type protected by the protection rule. For example npm.
      */
-    packageType?: pulumi.Input<string>;
+    packageType?: pulumi.Input<string | undefined>;
     /**
      * ID or URL-encoded path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -171,11 +171,11 @@ export interface ProjectPackageProtectionRuleArgs {
     /**
      * Minimum GitLab access level required to delete packages from the package registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForPush` is not set.
      */
-    minimumAccessLevelForDelete?: pulumi.Input<string>;
+    minimumAccessLevelForDelete?: pulumi.Input<string | undefined>;
     /**
      * Minimum GitLab access level required to push packages to the package registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForDelete` is not set.
      */
-    minimumAccessLevelForPush?: pulumi.Input<string>;
+    minimumAccessLevelForPush?: pulumi.Input<string | undefined>;
     /**
      * Package name pattern protected by the protection rule. For example `@scope/package-*`. Wildcard character `*` allowed.
      */

@@ -126,15 +126,15 @@ export interface ProjectTargetBranchRuleState {
     /**
      * The ID or URL-encoded path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A pattern matching the branch name for which the merge request should have a default target branch configured.
      */
-    sourceBranchPattern?: pulumi.Input<string>;
+    sourceBranchPattern?: pulumi.Input<string | undefined>;
     /**
      * The name of the branch to which the merge request should be addressed.
      */
-    targetBranchName?: pulumi.Input<string>;
+    targetBranchName?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -171,59 +171,59 @@ export interface ApplicationAppearanceState {
     /**
      * Markdown text shown on the sign-in and sign-up page.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Add header and footer to all outgoing emails if enabled.
      */
-    emailHeaderAndFooterEnabled?: pulumi.Input<boolean>;
+    emailHeaderAndFooterEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Message in the system footer bar.
      */
-    footerMessage?: pulumi.Input<string>;
+    footerMessage?: pulumi.Input<string | undefined>;
     /**
      * Message in the system header bar.
      */
-    headerMessage?: pulumi.Input<string>;
+    headerMessage?: pulumi.Input<string | undefined>;
     /**
      * Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
      */
-    keepSettingsOnDestroy?: pulumi.Input<boolean>;
+    keepSettingsOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Markdown text shown on the group or project member page for users with permission to change members.
      */
-    memberGuidelines?: pulumi.Input<string>;
+    memberGuidelines?: pulumi.Input<string | undefined>;
     /**
      * Background color for the system header or footer bar, in CSS hex notation.
      */
-    messageBackgroundColor?: pulumi.Input<string>;
+    messageBackgroundColor?: pulumi.Input<string | undefined>;
     /**
      * Font color for the system header or footer bar, in CSS hex notation.
      */
-    messageFontColor?: pulumi.Input<string>;
+    messageFontColor?: pulumi.Input<string | undefined>;
     /**
      * Markdown text shown on the new project page.
      */
-    newProjectGuidelines?: pulumi.Input<string>;
+    newProjectGuidelines?: pulumi.Input<string | undefined>;
     /**
      * Markdown text shown on the profile page below the Public Avatar.
      */
-    profileImageGuidelines?: pulumi.Input<string>;
+    profileImageGuidelines?: pulumi.Input<string | undefined>;
     /**
      * An explanation of what the Progressive Web App does. Used for the attribute `description` in `manifest.json`.
      */
-    pwaDescription?: pulumi.Input<string>;
+    pwaDescription?: pulumi.Input<string | undefined>;
     /**
      * Full name of the Progressive Web App. Used for the attribute `name` in `manifest.json`.
      */
-    pwaName?: pulumi.Input<string>;
+    pwaName?: pulumi.Input<string | undefined>;
     /**
      * Short name for Progressive Web App.
      */
-    pwaShortName?: pulumi.Input<string>;
+    pwaShortName?: pulumi.Input<string | undefined>;
     /**
      * Application title on the sign-in and sign-up page.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -233,57 +233,57 @@ export interface ApplicationAppearanceArgs {
     /**
      * Markdown text shown on the sign-in and sign-up page.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Add header and footer to all outgoing emails if enabled.
      */
-    emailHeaderAndFooterEnabled?: pulumi.Input<boolean>;
+    emailHeaderAndFooterEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Message in the system footer bar.
      */
-    footerMessage?: pulumi.Input<string>;
+    footerMessage?: pulumi.Input<string | undefined>;
     /**
      * Message in the system header bar.
      */
-    headerMessage?: pulumi.Input<string>;
+    headerMessage?: pulumi.Input<string | undefined>;
     /**
      * Set to true if the appearance settings should not be reset to their pre-terraform defaults on destroy.
      */
-    keepSettingsOnDestroy?: pulumi.Input<boolean>;
+    keepSettingsOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Markdown text shown on the group or project member page for users with permission to change members.
      */
-    memberGuidelines?: pulumi.Input<string>;
+    memberGuidelines?: pulumi.Input<string | undefined>;
     /**
      * Background color for the system header or footer bar, in CSS hex notation.
      */
-    messageBackgroundColor?: pulumi.Input<string>;
+    messageBackgroundColor?: pulumi.Input<string | undefined>;
     /**
      * Font color for the system header or footer bar, in CSS hex notation.
      */
-    messageFontColor?: pulumi.Input<string>;
+    messageFontColor?: pulumi.Input<string | undefined>;
     /**
      * Markdown text shown on the new project page.
      */
-    newProjectGuidelines?: pulumi.Input<string>;
+    newProjectGuidelines?: pulumi.Input<string | undefined>;
     /**
      * Markdown text shown on the profile page below the Public Avatar.
      */
-    profileImageGuidelines?: pulumi.Input<string>;
+    profileImageGuidelines?: pulumi.Input<string | undefined>;
     /**
      * An explanation of what the Progressive Web App does. Used for the attribute `description` in `manifest.json`.
      */
-    pwaDescription?: pulumi.Input<string>;
+    pwaDescription?: pulumi.Input<string | undefined>;
     /**
      * Full name of the Progressive Web App. Used for the attribute `name` in `manifest.json`.
      */
-    pwaName?: pulumi.Input<string>;
+    pwaName?: pulumi.Input<string | undefined>;
     /**
      * Short name for Progressive Web App.
      */
-    pwaShortName?: pulumi.Input<string>;
+    pwaShortName?: pulumi.Input<string | undefined>;
     /**
      * Application title on the sign-in and sign-up page.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }

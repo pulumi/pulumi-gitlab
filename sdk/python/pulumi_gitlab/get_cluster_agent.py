@@ -144,8 +144,8 @@ def get_cluster_agent(agent_id: Optional[_builtins.int] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'))
-def get_cluster_agent_output(agent_id: Optional[pulumi.Input[_builtins.int]] = None,
-                             project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_cluster_agent_output(agent_id: pulumi.Input[Optional[_builtins.int]] = None,
+                             project: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterAgentResult]:
     """
     The `ClusterAgent` data source retrieves details about a GitLab Agent for Kubernetes.

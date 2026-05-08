@@ -73,9 +73,9 @@ class UserIdentityArgs:
 @pulumi.input_type
 class _UserIdentityState:
     def __init__(__self__, *,
-                 external_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 external_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering UserIdentity resources.
 
@@ -92,38 +92,38 @@ class _UserIdentityState:
 
     @_builtins.property
     @pulumi.getter(name="externalProvider")
-    def external_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The external provider name.
         """
         return pulumi.get(self, "external_provider")
 
     @external_provider.setter
-    def external_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_provider", value)
 
     @_builtins.property
     @pulumi.getter(name="externalUid")
-    def external_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A specific external authentication provider UID.
         """
         return pulumi.get(self, "external_uid")
 
     @external_uid.setter
-    def external_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_uid", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The GitLab ID of the user.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -133,9 +133,9 @@ class UserIdentity(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 external_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 external_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The `UserIdentity` resource is for managing the lifecycle of a user's external identity.
@@ -159,7 +159,7 @@ class UserIdentity(pulumi.CustomResource):
             can_create_group=False,
             is_external=True)
         example_user_identity = gitlab.UserIdentity("example",
-            user_id=example.id,
+            user_id=example.id.apply(lambda x: int(x)),
             external_provider="google",
             external_uid="1234567890")
         ```
@@ -212,7 +212,7 @@ class UserIdentity(pulumi.CustomResource):
             can_create_group=False,
             is_external=True)
         example_user_identity = gitlab.UserIdentity("example",
-            user_id=example.id,
+            user_id=example.id.apply(lambda x: int(x)),
             external_provider="google",
             external_uid="1234567890")
         ```
@@ -246,9 +246,9 @@ class UserIdentity(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 external_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 external_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -277,9 +277,9 @@ class UserIdentity(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            external_provider: Optional[pulumi.Input[_builtins.str]] = None,
-            external_uid: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'UserIdentity':
+            external_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            external_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'UserIdentity':
         """
         Get an existing UserIdentity resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

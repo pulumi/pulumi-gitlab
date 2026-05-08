@@ -112,15 +112,15 @@ export interface ProjectJobTokenScopeState {
     /**
      * The ID or full path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID of the group that is in the CI/CD job token inbound allowlist.
      */
-    targetGroupId?: pulumi.Input<number>;
+    targetGroupId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project that is in the CI/CD job token inbound allowlist.
      */
-    targetProjectId?: pulumi.Input<number>;
+    targetProjectId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -134,9 +134,9 @@ export interface ProjectJobTokenScopeArgs {
     /**
      * The ID of the group that is in the CI/CD job token inbound allowlist.
      */
-    targetGroupId?: pulumi.Input<number>;
+    targetGroupId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project that is in the CI/CD job token inbound allowlist.
      */
-    targetProjectId?: pulumi.Input<number>;
+    targetProjectId?: pulumi.Input<number | undefined>;
 }

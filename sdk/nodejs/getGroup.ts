@@ -152,9 +152,9 @@ export interface GetGroupOutputArgs {
     /**
      * The full path of the group.
      */
-    fullPath?: pulumi.Input<string>;
+    fullPath?: pulumi.Input<string | undefined>;
     /**
      * The ID of the group.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
 }

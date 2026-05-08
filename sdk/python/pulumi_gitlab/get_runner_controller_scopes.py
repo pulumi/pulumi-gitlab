@@ -119,7 +119,7 @@ def get_runner_controller_scopes(runner_controller_id: Optional[_builtins.int] =
         instance_level_scopings=pulumi.get(__ret__, 'instance_level_scopings'),
         runner_controller_id=pulumi.get(__ret__, 'runner_controller_id'),
         runner_level_scopings=pulumi.get(__ret__, 'runner_level_scopings'))
-def get_runner_controller_scopes_output(runner_controller_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_runner_controller_scopes_output(runner_controller_id: pulumi.Input[Optional[_builtins.int]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRunnerControllerScopesResult]:
     """
     The `get_runner_controller_scopes` data source retrieves scopes for a runner controller.

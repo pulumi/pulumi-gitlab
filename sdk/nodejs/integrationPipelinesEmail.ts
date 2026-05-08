@@ -129,19 +129,19 @@ export interface IntegrationPipelinesEmailState {
     /**
      * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
      */
-    branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string | undefined>;
     /**
      * Notify only broken pipelines. Default is true.
      */
-    notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
+    notifyOnlyBrokenPipelines?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the project you want to activate integration on.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Email addresses where notifications are sent.
      */
-    recipients?: pulumi.Input<pulumi.Input<string>[]>;
+    recipients?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -151,11 +151,11 @@ export interface IntegrationPipelinesEmailArgs {
     /**
      * Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
      */
-    branchesToBeNotified?: pulumi.Input<string>;
+    branchesToBeNotified?: pulumi.Input<string | undefined>;
     /**
      * Notify only broken pipelines. Default is true.
      */
-    notifyOnlyBrokenPipelines?: pulumi.Input<boolean>;
+    notifyOnlyBrokenPipelines?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the project you want to activate integration on.
      */

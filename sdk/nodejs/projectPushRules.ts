@@ -195,59 +195,59 @@ export interface ProjectPushRulesState {
     /**
      * All commit author emails must match this regex, e.g. `@my-company.com$`.
      */
-    authorEmailRegex?: pulumi.Input<string>;
+    authorEmailRegex?: pulumi.Input<string | undefined>;
     /**
      * All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
      */
-    branchNameRegex?: pulumi.Input<string>;
+    branchNameRegex?: pulumi.Input<string | undefined>;
     /**
      * Users can only push commits to this repository that were committed with one of their own verified emails.
      */
-    commitCommitterCheck?: pulumi.Input<boolean>;
+    commitCommitterCheck?: pulumi.Input<boolean | undefined>;
     /**
      * Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
      */
-    commitCommitterNameCheck?: pulumi.Input<boolean>;
+    commitCommitterNameCheck?: pulumi.Input<boolean | undefined>;
     /**
      * No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
      */
-    commitMessageNegativeRegex?: pulumi.Input<string>;
+    commitMessageNegativeRegex?: pulumi.Input<string | undefined>;
     /**
      * All commit messages must match this regex, e.g. `Fixed \d+\..*`.
      */
-    commitMessageRegex?: pulumi.Input<string>;
+    commitMessageRegex?: pulumi.Input<string | undefined>;
     /**
      * Deny deleting a tag.
      */
-    denyDeleteTag?: pulumi.Input<boolean>;
+    denyDeleteTag?: pulumi.Input<boolean | undefined>;
     /**
      * All committed filenames must not match this regex, e.g. `(jar|exe)$`.
      */
-    fileNameRegex?: pulumi.Input<string>;
+    fileNameRegex?: pulumi.Input<string | undefined>;
     /**
      * Maximum file size (MB).
      */
-    maxFileSize?: pulumi.Input<number>;
+    maxFileSize?: pulumi.Input<number | undefined>;
     /**
      * Restrict commits by author (email) to existing GitLab users.
      */
-    memberCheck?: pulumi.Input<boolean>;
+    memberCheck?: pulumi.Input<boolean | undefined>;
     /**
      * GitLab will reject any files that are likely to contain secrets.
      */
-    preventSecrets?: pulumi.Input<boolean>;
+    preventSecrets?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or URL-encoded path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Reject commit when it’s not DCO certified.
      */
-    rejectNonDcoCommits?: pulumi.Input<boolean>;
+    rejectNonDcoCommits?: pulumi.Input<boolean | undefined>;
     /**
      * Reject commit when it’s not signed.
      */
-    rejectUnsignedCommits?: pulumi.Input<boolean>;
+    rejectUnsignedCommits?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -257,47 +257,47 @@ export interface ProjectPushRulesArgs {
     /**
      * All commit author emails must match this regex, e.g. `@my-company.com$`.
      */
-    authorEmailRegex?: pulumi.Input<string>;
+    authorEmailRegex?: pulumi.Input<string | undefined>;
     /**
      * All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
      */
-    branchNameRegex?: pulumi.Input<string>;
+    branchNameRegex?: pulumi.Input<string | undefined>;
     /**
      * Users can only push commits to this repository that were committed with one of their own verified emails.
      */
-    commitCommitterCheck?: pulumi.Input<boolean>;
+    commitCommitterCheck?: pulumi.Input<boolean | undefined>;
     /**
      * Users can only push commits to this repository if the commit author name is consistent with their GitLab account name.
      */
-    commitCommitterNameCheck?: pulumi.Input<boolean>;
+    commitCommitterNameCheck?: pulumi.Input<boolean | undefined>;
     /**
      * No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
      */
-    commitMessageNegativeRegex?: pulumi.Input<string>;
+    commitMessageNegativeRegex?: pulumi.Input<string | undefined>;
     /**
      * All commit messages must match this regex, e.g. `Fixed \d+\..*`.
      */
-    commitMessageRegex?: pulumi.Input<string>;
+    commitMessageRegex?: pulumi.Input<string | undefined>;
     /**
      * Deny deleting a tag.
      */
-    denyDeleteTag?: pulumi.Input<boolean>;
+    denyDeleteTag?: pulumi.Input<boolean | undefined>;
     /**
      * All committed filenames must not match this regex, e.g. `(jar|exe)$`.
      */
-    fileNameRegex?: pulumi.Input<string>;
+    fileNameRegex?: pulumi.Input<string | undefined>;
     /**
      * Maximum file size (MB).
      */
-    maxFileSize?: pulumi.Input<number>;
+    maxFileSize?: pulumi.Input<number | undefined>;
     /**
      * Restrict commits by author (email) to existing GitLab users.
      */
-    memberCheck?: pulumi.Input<boolean>;
+    memberCheck?: pulumi.Input<boolean | undefined>;
     /**
      * GitLab will reject any files that are likely to contain secrets.
      */
-    preventSecrets?: pulumi.Input<boolean>;
+    preventSecrets?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or URL-encoded path of the project.
      */
@@ -305,9 +305,9 @@ export interface ProjectPushRulesArgs {
     /**
      * Reject commit when it’s not DCO certified.
      */
-    rejectNonDcoCommits?: pulumi.Input<boolean>;
+    rejectNonDcoCommits?: pulumi.Input<boolean | undefined>;
     /**
      * Reject commit when it’s not signed.
      */
-    rejectUnsignedCommits?: pulumi.Input<boolean>;
+    rejectUnsignedCommits?: pulumi.Input<boolean | undefined>;
 }

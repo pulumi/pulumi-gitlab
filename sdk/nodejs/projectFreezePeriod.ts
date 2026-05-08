@@ -125,19 +125,19 @@ export interface ProjectFreezePeriodState {
     /**
      * The timezone.
      */
-    cronTimezone?: pulumi.Input<string>;
+    cronTimezone?: pulumi.Input<string | undefined>;
     /**
      * End of the Freeze Period in cron format (for example, `0 2 * * *`).
      */
-    freezeEnd?: pulumi.Input<string>;
+    freezeEnd?: pulumi.Input<string | undefined>;
     /**
      * Start of the Freeze Period in cron format (for example, `0 1 * * *`).
      */
-    freezeStart?: pulumi.Input<string>;
+    freezeStart?: pulumi.Input<string | undefined>;
     /**
      * The ID or path of the project to add the freeze period to.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -147,7 +147,7 @@ export interface ProjectFreezePeriodArgs {
     /**
      * The timezone.
      */
-    cronTimezone?: pulumi.Input<string>;
+    cronTimezone?: pulumi.Input<string | undefined>;
     /**
      * End of the Freeze Period in cron format (for example, `0 2 * * *`).
      */

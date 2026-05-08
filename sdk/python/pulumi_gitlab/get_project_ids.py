@@ -131,7 +131,7 @@ def get_project_ids(project: Optional[_builtins.str] = None,
         project_full_path=pulumi.get(__ret__, 'project_full_path'),
         project_graphql_id=pulumi.get(__ret__, 'project_graphql_id'),
         project_id=pulumi.get(__ret__, 'project_id'))
-def get_project_ids_output(project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_ids_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectIdsResult]:
     """
     The `get_project_ids` data source identification information for a given project, allowing a user to translate a full path or ID into the GraphQL ID of the project.

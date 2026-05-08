@@ -103,12 +103,12 @@ class ProjectIssueLinkArgs:
 @pulumi.input_type
 class _ProjectIssueLinkState:
     def __init__(__self__, *,
-                 issue_iid: Optional[pulumi.Input[_builtins.int]] = None,
-                 issue_link_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_issue_iid: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 issue_iid: pulumi.Input[Optional[_builtins.int]] = None,
+                 issue_link_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_issue_iid: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectIssueLink resources.
 
@@ -134,74 +134,74 @@ class _ProjectIssueLinkState:
 
     @_builtins.property
     @pulumi.getter(name="issueIid")
-    def issue_iid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def issue_iid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The internal ID of a project's issue.
         """
         return pulumi.get(self, "issue_iid")
 
     @issue_iid.setter
-    def issue_iid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def issue_iid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "issue_iid", value)
 
     @_builtins.property
     @pulumi.getter(name="issueLinkId")
-    def issue_link_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def issue_link_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ID of an issue relationship.
         """
         return pulumi.get(self, "issue_link_id")
 
     @issue_link_id.setter
-    def issue_link_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def issue_link_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "issue_link_id", value)
 
     @_builtins.property
     @pulumi.getter(name="linkType")
-    def link_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def link_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the relationship. Valid values are `relates_to`, `blocks`, `is_blocked_by`.
         """
         return pulumi.get(self, "link_type")
 
     @link_type.setter
-    def link_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def link_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "link_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of the project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="targetIssueIid")
-    def target_issue_iid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_issue_iid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The internal ID of the target issue.
         """
         return pulumi.get(self, "target_issue_iid")
 
     @target_issue_iid.setter
-    def target_issue_iid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_issue_iid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_issue_iid", value)
 
     @_builtins.property
     @pulumi.getter(name="targetProjectId")
-    def target_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of the target project.
         """
         return pulumi.get(self, "target_project_id")
 
     @target_project_id.setter
-    def target_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_project_id", value)
 
 
@@ -211,11 +211,11 @@ class ProjectIssueLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 issue_iid: Optional[pulumi.Input[_builtins.int]] = None,
-                 link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_issue_iid: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 issue_iid: pulumi.Input[Optional[_builtins.int]] = None,
+                 link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_issue_iid: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectIssueLink` resource manages the lifecycle of project issue links.
@@ -368,11 +368,11 @@ class ProjectIssueLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 issue_iid: Optional[pulumi.Input[_builtins.int]] = None,
-                 link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_issue_iid: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 issue_iid: pulumi.Input[Optional[_builtins.int]] = None,
+                 link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_issue_iid: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -408,12 +408,12 @@ class ProjectIssueLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            issue_iid: Optional[pulumi.Input[_builtins.int]] = None,
-            issue_link_id: Optional[pulumi.Input[_builtins.int]] = None,
-            link_type: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            target_issue_iid: Optional[pulumi.Input[_builtins.int]] = None,
-            target_project_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectIssueLink':
+            issue_iid: pulumi.Input[Optional[_builtins.int]] = None,
+            issue_link_id: pulumi.Input[Optional[_builtins.int]] = None,
+            link_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            target_issue_iid: pulumi.Input[Optional[_builtins.int]] = None,
+            target_project_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectIssueLink':
         """
         Get an existing ProjectIssueLink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

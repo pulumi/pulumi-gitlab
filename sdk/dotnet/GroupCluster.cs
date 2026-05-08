@@ -26,13 +26,13 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new GitLab.Index.Group("foo", new()
+    ///     var foo = new GitLab.Group("foo", new()
     ///     {
     ///         Name = "foo-group",
     ///         Path = "foo-path",
     ///     });
     /// 
-    ///     var bar = new GitLab.Index.GroupCluster("bar", new()
+    ///     var bar = new GitLab.GroupCluster("bar", new()
     ///     {
     ///         Group = foo.Id,
     ///         Name = "bar-cluster",

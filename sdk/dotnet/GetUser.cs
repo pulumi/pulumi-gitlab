@@ -31,13 +31,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetUser.Invoke(new()
+        ///     var example = GitLab.GetUser.Invoke(new()
         ///     {
         ///         Username = "myuser",
         ///     });
         /// 
         ///     // Example using `for_each`
-        ///     var example_two = Std.Index.Toset.Invoke(new()
+        ///     var example_two = Std.Toset.Invoke(new()
         ///     {
         ///         Input = new[]
         ///         {
@@ -73,13 +73,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetUser.Invoke(new()
+        ///     var example = GitLab.GetUser.Invoke(new()
         ///     {
         ///         Username = "myuser",
         ///     });
         /// 
         ///     // Example using `for_each`
-        ///     var example_two = Std.Index.Toset.Invoke(new()
+        ///     var example_two = Std.Toset.Invoke(new()
         ///     {
         ///         Input = new[]
         ///         {
@@ -115,13 +115,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetUser.Invoke(new()
+        ///     var example = GitLab.GetUser.Invoke(new()
         ///     {
         ///         Username = "myuser",
         ///     });
         /// 
         ///     // Example using `for_each`
-        ///     var example_two = Std.Index.Toset.Invoke(new()
+        ///     var example_two = Std.Toset.Invoke(new()
         ///     {
         ///         Input = new[]
         ///         {

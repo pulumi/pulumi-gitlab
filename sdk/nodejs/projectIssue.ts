@@ -354,163 +354,163 @@ export interface ProjectIssueState {
     /**
      * The IDs of the users to assign the issue to.
      */
-    assigneeIds?: pulumi.Input<pulumi.Input<number>[]>;
+    assigneeIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The ID of the author of the issue. Use `gitlab.User` data source to get more information about the user.
      */
-    authorId?: pulumi.Input<number>;
+    authorId?: pulumi.Input<number | undefined>;
     /**
      * When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      */
-    closedAt?: pulumi.Input<string>;
+    closedAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user that closed the issue. Use `gitlab.User` data source to get more information about the user.
      */
-    closedByUserId?: pulumi.Input<number>;
+    closedByUserId?: pulumi.Input<number | undefined>;
     /**
      * Set an issue to be confidential.
      */
-    confidential?: pulumi.Input<boolean>;
+    confidential?: pulumi.Input<boolean | undefined>;
     /**
      * When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Whether the issue is deleted instead of closed during destroy.
      */
-    deleteOnDestroy?: pulumi.Input<boolean>;
+    deleteOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The description of an issue. Limited to 1,048,576 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the issue is locked for discussions or not.
      */
-    discussionLocked?: pulumi.Input<boolean>;
+    discussionLocked?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
      */
-    discussionToResolve?: pulumi.Input<string>;
+    discussionToResolve?: pulumi.Input<string | undefined>;
     /**
      * The number of downvotes the issue has received.
      */
-    downvotes?: pulumi.Input<number>;
+    downvotes?: pulumi.Input<number | undefined>;
     /**
      * The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
      */
-    dueDate?: pulumi.Input<string>;
+    dueDate?: pulumi.Input<string | undefined>;
     /**
      * ID of the epic to add the issue to. Valid values are greater than or equal to 0.
      */
-    epicId?: pulumi.Input<number>;
+    epicId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the epic issue.
      */
-    epicIssueId?: pulumi.Input<number>;
+    epicIssueId?: pulumi.Input<number | undefined>;
     /**
      * The external ID of the issue.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * The human-readable time estimate of the issue.
      */
-    humanTimeEstimate?: pulumi.Input<string>;
+    humanTimeEstimate?: pulumi.Input<string | undefined>;
     /**
      * The human-readable total time spent of the issue.
      */
-    humanTotalTimeSpent?: pulumi.Input<string>;
+    humanTotalTimeSpent?: pulumi.Input<string | undefined>;
     /**
      * The internal ID of the project's issue.
      */
-    iid?: pulumi.Input<number>;
+    iid?: pulumi.Input<number | undefined>;
     /**
      * The instance-wide ID of the issue.
      */
-    issueId?: pulumi.Input<number>;
+    issueId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the issue link.
      */
-    issueLinkId?: pulumi.Input<number>;
+    issueLinkId?: pulumi.Input<number | undefined>;
     /**
      * The type of issue. Valid values are: `issue`, `incident`, `testCase`.
      */
-    issueType?: pulumi.Input<string>;
+    issueType?: pulumi.Input<string | undefined>;
     /**
      * The labels of an issue.
      */
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The links of the issue.
      */
-    links?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    links?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
      */
-    mergeRequestToResolveDiscussionsOf?: pulumi.Input<number>;
+    mergeRequestToResolveDiscussionsOf?: pulumi.Input<number | undefined>;
     /**
      * The number of merge requests associated with the issue.
      */
-    mergeRequestsCount?: pulumi.Input<number>;
+    mergeRequestsCount?: pulumi.Input<number | undefined>;
     /**
      * The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
      */
-    milestoneId?: pulumi.Input<number>;
+    milestoneId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the issue that was moved to.
      */
-    movedToId?: pulumi.Input<number>;
+    movedToId?: pulumi.Input<number | undefined>;
     /**
      * The name or ID of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The references of the issue.
      */
-    references?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    references?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The state of the issue. Valid values are: `opened`, `closed`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Whether the authenticated user is subscribed to the issue or not.
      */
-    subscribed?: pulumi.Input<boolean>;
+    subscribed?: pulumi.Input<boolean | undefined>;
     /**
      * The task completion status. It's always a one element list.
      */
-    taskCompletionStatuses?: pulumi.Input<pulumi.Input<inputs.ProjectIssueTaskCompletionStatus>[]>;
+    taskCompletionStatuses?: pulumi.Input<pulumi.Input<inputs.ProjectIssueTaskCompletionStatus>[] | undefined>;
     /**
      * The time estimate of the issue.
      */
-    timeEstimate?: pulumi.Input<number>;
+    timeEstimate?: pulumi.Input<number | undefined>;
     /**
      * The title of the issue.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * The total time spent of the issue.
      */
-    totalTimeSpent?: pulumi.Input<number>;
+    totalTimeSpent?: pulumi.Input<number | undefined>;
     /**
      * When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The number of upvotes the issue has received.
      */
-    upvotes?: pulumi.Input<number>;
+    upvotes?: pulumi.Input<number | undefined>;
     /**
      * The number of user notes on the issue.
      */
-    userNotesCount?: pulumi.Input<number>;
+    userNotesCount?: pulumi.Input<number | undefined>;
     /**
      * The web URL of the issue.
      */
-    webUrl?: pulumi.Input<string>;
+    webUrl?: pulumi.Input<string | undefined>;
     /**
      * The weight of the issue. Valid values are greater than or equal to 0.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -520,59 +520,59 @@ export interface ProjectIssueArgs {
     /**
      * The IDs of the users to assign the issue to.
      */
-    assigneeIds?: pulumi.Input<pulumi.Input<number>[]>;
+    assigneeIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Set an issue to be confidential.
      */
-    confidential?: pulumi.Input<boolean>;
+    confidential?: pulumi.Input<boolean | undefined>;
     /**
      * When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Whether the issue is deleted instead of closed during destroy.
      */
-    deleteOnDestroy?: pulumi.Input<boolean>;
+    deleteOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The description of an issue. Limited to 1,048,576 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the issue is locked for discussions or not.
      */
-    discussionLocked?: pulumi.Input<boolean>;
+    discussionLocked?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
      */
-    discussionToResolve?: pulumi.Input<string>;
+    discussionToResolve?: pulumi.Input<string | undefined>;
     /**
      * The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
      */
-    dueDate?: pulumi.Input<string>;
+    dueDate?: pulumi.Input<string | undefined>;
     /**
      * The ID of the epic issue.
      */
-    epicIssueId?: pulumi.Input<number>;
+    epicIssueId?: pulumi.Input<number | undefined>;
     /**
      * The internal ID of the project's issue.
      */
-    iid?: pulumi.Input<number>;
+    iid?: pulumi.Input<number | undefined>;
     /**
      * The type of issue. Valid values are: `issue`, `incident`, `testCase`.
      */
-    issueType?: pulumi.Input<string>;
+    issueType?: pulumi.Input<string | undefined>;
     /**
      * The labels of an issue.
      */
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
      */
-    mergeRequestToResolveDiscussionsOf?: pulumi.Input<number>;
+    mergeRequestToResolveDiscussionsOf?: pulumi.Input<number | undefined>;
     /**
      * The global ID of a milestone to assign issue. To find the milestoneId associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
      */
-    milestoneId?: pulumi.Input<number>;
+    milestoneId?: pulumi.Input<number | undefined>;
     /**
      * The name or ID of the project.
      */
@@ -580,7 +580,7 @@ export interface ProjectIssueArgs {
     /**
      * The state of the issue. Valid values are: `opened`, `closed`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The title of the issue.
      */
@@ -588,9 +588,9 @@ export interface ProjectIssueArgs {
     /**
      * When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The weight of the issue. Valid values are greater than or equal to 0.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }

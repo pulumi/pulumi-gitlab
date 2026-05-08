@@ -101,51 +101,51 @@ export interface ProviderArgs {
     /**
      * This is the target GitLab base API endpoint. Providing a value is a requirement when working with GitLab CE or GitLab Enterprise e.g. `https://my.gitlab.server/api/v4/`. It is optional to provide this value and it can also be sourced from the `GITLAB_BASE_URL` environment variable. The value must end with a slash.
      */
-    baseUrl?: pulumi.Input<string>;
+    baseUrl?: pulumi.Input<string | undefined>;
     /**
      * This is a file containing the ca cert to verify the gitlab instance. This is available for use when working with GitLab CE or Gitlab Enterprise with a locally-issued or self-signed certificate chain.
      */
-    cacertFile?: pulumi.Input<string>;
+    cacertFile?: pulumi.Input<string | undefined>;
     /**
      * File path to client certificate when GitLab instance is behind company proxy. File must contain PEM encoded data.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * File path to client key when GitLab instance is behind company proxy. File must contain PEM encoded data. Required when `clientCert` is set.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * The path to the configuration file to use. It may be sourced from the `GITLAB_CONFIG_FILE` environment variable.
      */
-    configFile?: pulumi.Input<string>;
+    configFile?: pulumi.Input<string | undefined>;
     /**
      * The context to use for authentication and configuration. The context must exist in the configuration file. It may be sourced from the `GITLAB_CONTEXT` environment variable.
      */
-    context?: pulumi.Input<string>;
+    context?: pulumi.Input<string | undefined>;
     /**
      * (Experimental) By default the provider does a dummy request to get the current user in order to verify that the provider configuration is correct and the GitLab API is reachable. Set this to `false` to skip this check. This may be useful if the GitLab instance does not yet exist and is created within the same terraform module. It may be sourced from the `GITLAB_EARLY_AUTH_CHECK`. This is an experimental feature and may change in the future. Please make sure to always keep backups of your state.
      */
-    earlyAuthCheck?: pulumi.Input<boolean>;
+    earlyAuthCheck?: pulumi.Input<boolean | undefined>;
     /**
      * If automatic CI support should be enabled or not. This only works when not providing a token.
      */
-    enableAutoCiSupport?: pulumi.Input<boolean>;
+    enableAutoCiSupport?: pulumi.Input<boolean | undefined>;
     /**
      * A map of headers to append to all API request to the GitLab instance.
      */
-    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * When set to true this disables SSL verification of the connection to the GitLab instance.
      */
-    insecure?: pulumi.Input<boolean>;
+    insecure?: pulumi.Input<boolean | undefined>;
     /**
      * The number of retries to execute when receiving a 429 Rate Limit error. Each retry will exponentially back off.
      */
-    retries?: pulumi.Input<number>;
+    retries?: pulumi.Input<number | undefined>;
     /**
      * The OAuth2 Token, Project, Group, Personal Access Token or CI Job Token used to connect to GitLab. The OAuth method is used in this provider for authentication (using Bearer authorization token). See https://docs.gitlab.com/api/#authentication for details. It may be sourced from the `GITLAB_TOKEN` environment variable.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

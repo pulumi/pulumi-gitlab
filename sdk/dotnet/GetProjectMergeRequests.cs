@@ -27,14 +27,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOne = GitLab.Index.GetProjectMergeRequests.Invoke(new()
+        ///     var exampleOne = GitLab.GetProjectMergeRequests.Invoke(new()
         ///     {
         ///         Project = "123",
         ///         TargetBranch = "main",
         ///         Wip = "yes",
         ///     });
         /// 
-        ///     var exampleTwo = GitLab.Index.GetProjectMergeRequests.Invoke(new()
+        ///     var exampleTwo = GitLab.GetProjectMergeRequests.Invoke(new()
         ///     {
         ///         Project = "company/group/project1",
         ///         AuthorId = 5,
@@ -63,14 +63,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOne = GitLab.Index.GetProjectMergeRequests.Invoke(new()
+        ///     var exampleOne = GitLab.GetProjectMergeRequests.Invoke(new()
         ///     {
         ///         Project = "123",
         ///         TargetBranch = "main",
         ///         Wip = "yes",
         ///     });
         /// 
-        ///     var exampleTwo = GitLab.Index.GetProjectMergeRequests.Invoke(new()
+        ///     var exampleTwo = GitLab.GetProjectMergeRequests.Invoke(new()
         ///     {
         ///         Project = "company/group/project1",
         ///         AuthorId = 5,
@@ -99,14 +99,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOne = GitLab.Index.GetProjectMergeRequests.Invoke(new()
+        ///     var exampleOne = GitLab.GetProjectMergeRequests.Invoke(new()
         ///     {
         ///         Project = "123",
         ///         TargetBranch = "main",
         ///         Wip = "yes",
         ///     });
         /// 
-        ///     var exampleTwo = GitLab.Index.GetProjectMergeRequests.Invoke(new()
+        ///     var exampleTwo = GitLab.GetProjectMergeRequests.Invoke(new()
         ///     {
         ///         Project = "company/group/project1",
         ///         AuthorId = 5,

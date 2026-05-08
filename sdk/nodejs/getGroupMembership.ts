@@ -96,17 +96,17 @@ export interface GetGroupMembershipOutputArgs {
     /**
      * Only return members with the desired access level. Acceptable values are: `guest`, `reporter`, `developer`, `maintainer`, `owner`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * The full path of the group.
      */
-    fullPath?: pulumi.Input<string>;
+    fullPath?: pulumi.Input<string | undefined>;
     /**
      * The ID of the group.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * Return all project members including members through ancestor groups.
      */
-    inherited?: pulumi.Input<boolean>;
+    inherited?: pulumi.Input<boolean | undefined>;
 }

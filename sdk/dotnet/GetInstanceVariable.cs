@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.Index.GetInstanceVariable.Invoke(new()
+        ///     var foo = GitLab.GetInstanceVariable.Invoke(new()
         ///     {
         ///         Key = "foo",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.Index.GetInstanceVariable.Invoke(new()
+        ///     var foo = GitLab.GetInstanceVariable.Invoke(new()
         ///     {
         ///         Key = "foo",
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.Index.GetInstanceVariable.Invoke(new()
+        ///     var foo = GitLab.GetInstanceVariable.Invoke(new()
         ///     {
         ///         Key = "foo",
         ///     });

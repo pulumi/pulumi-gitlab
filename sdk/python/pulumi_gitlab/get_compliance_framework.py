@@ -170,8 +170,8 @@ def get_compliance_framework(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         namespace_path=pulumi.get(__ret__, 'namespace_path'),
         pipeline_configuration_full_path=pulumi.get(__ret__, 'pipeline_configuration_full_path'))
-def get_compliance_framework_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                    namespace_path: Optional[pulumi.Input[_builtins.str]] = None,
+def get_compliance_framework_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                    namespace_path: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetComplianceFrameworkResult]:
     """
     The `ComplianceFramework` data source allows details of a compliance framework to be retrieved by its name and the namespace it belongs to.

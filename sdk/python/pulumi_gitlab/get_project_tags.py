@@ -141,10 +141,10 @@ def get_project_tags(order_by: Optional[_builtins.str] = None,
         search=pulumi.get(__ret__, 'search'),
         sort=pulumi.get(__ret__, 'sort'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_project_tags_output(order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            project: Optional[pulumi.Input[_builtins.str]] = None,
-                            search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            sort: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_project_tags_output(order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            project: pulumi.Input[Optional[_builtins.str]] = None,
+                            search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            sort: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectTagsResult]:
     """
     The `get_project_tags` data source allows details of project tags to be retrieved by some search criteria.

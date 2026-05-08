@@ -168,25 +168,25 @@ export interface ProjectJobTokenScopesState {
     /**
      * Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or full path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project. Use `project` instead. To be removed in 19.0.
      *
      * @deprecated Use `project` instead. To be removed in 19.0.
      */
-    projectId?: pulumi.Input<number>;
+    projectId?: pulumi.Input<number | undefined>;
     /**
      * A set of group IDs that are in the CI/CD job token inbound allowlist.
      */
-    targetGroupIds?: pulumi.Input<pulumi.Input<number>[]>;
+    targetGroupIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * A set of project IDs that are in the CI/CD job token inbound allowlist.
      */
-    targetProjectIds?: pulumi.Input<pulumi.Input<number>[]>;
+    targetProjectIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 /**
@@ -196,23 +196,23 @@ export interface ProjectJobTokenScopesArgs {
     /**
      * Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `gitlab.ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or full path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project. Use `project` instead. To be removed in 19.0.
      *
      * @deprecated Use `project` instead. To be removed in 19.0.
      */
-    projectId?: pulumi.Input<number>;
+    projectId?: pulumi.Input<number | undefined>;
     /**
      * A set of group IDs that are in the CI/CD job token inbound allowlist.
      */
-    targetGroupIds?: pulumi.Input<pulumi.Input<number>[]>;
+    targetGroupIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * A set of project IDs that are in the CI/CD job token inbound allowlist.
      */
-    targetProjectIds?: pulumi.Input<pulumi.Input<number>[]>;
+    targetProjectIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }

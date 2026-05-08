@@ -22,7 +22,7 @@ class GroupSamlLinkArgs:
                  access_level: pulumi.Input[_builtins.str],
                  group: pulumi.Input[_builtins.str],
                  saml_group_name: pulumi.Input[_builtins.str],
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a GroupSamlLink resource.
 
@@ -75,24 +75,24 @@ class GroupSamlLinkArgs:
 
     @_builtins.property
     @pulumi.getter(name="memberRoleId")
-    def member_role_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def member_role_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
         """
         return pulumi.get(self, "member_role_id")
 
     @member_role_id.setter
-    def member_role_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def member_role_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "member_role_id", value)
 
 
 @pulumi.input_type
 class _GroupSamlLinkState:
     def __init__(__self__, *,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 saml_group_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 saml_group_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupSamlLink resources.
 
@@ -112,50 +112,50 @@ class _GroupSamlLinkState:
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or path of the group to add the SAML Group Link to.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter(name="memberRoleId")
-    def member_role_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def member_role_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
         """
         return pulumi.get(self, "member_role_id")
 
     @member_role_id.setter
-    def member_role_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def member_role_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "member_role_id", value)
 
     @_builtins.property
     @pulumi.getter(name="samlGroupName")
-    def saml_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the SAML group.
         """
         return pulumi.get(self, "saml_group_name")
 
     @saml_group_name.setter
-    def saml_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_group_name", value)
 
 
@@ -165,10 +165,10 @@ class GroupSamlLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 saml_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 saml_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `GroupSamlLink` resource manages the lifecycle of an SAML integration with a group.
@@ -276,10 +276,10 @@ class GroupSamlLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 saml_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 saml_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -309,10 +309,10 @@ class GroupSamlLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            group: Optional[pulumi.Input[_builtins.str]] = None,
-            member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-            saml_group_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'GroupSamlLink':
+            access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+            saml_group_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupSamlLink':
         """
         Get an existing GroupSamlLink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

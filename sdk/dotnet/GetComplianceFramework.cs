@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetComplianceFramework.Invoke(new()
+        ///     var example = GitLab.GetComplianceFramework.Invoke(new()
         ///     {
         ///         NamespacePath = "top-level-group",
         ///         Name = "HIPAA",
@@ -53,7 +53,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetComplianceFramework.Invoke(new()
+        ///     var example = GitLab.GetComplianceFramework.Invoke(new()
         ///     {
         ///         NamespacePath = "top-level-group",
         ///         Name = "HIPAA",
@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetComplianceFramework.Invoke(new()
+        ///     var example = GitLab.GetComplianceFramework.Invoke(new()
         ///     {
         ///         NamespacePath = "top-level-group",
         ///         Name = "HIPAA",

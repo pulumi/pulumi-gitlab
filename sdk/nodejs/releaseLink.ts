@@ -161,39 +161,39 @@ export interface ReleaseLinkState {
     /**
      * Full path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      */
-    directAssetUrl?: pulumi.Input<string>;
+    directAssetUrl?: pulumi.Input<string | undefined>;
     /**
      * External or internal link.
      */
-    external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean | undefined>;
     /**
      * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      */
-    filepath?: pulumi.Input<string>;
+    filepath?: pulumi.Input<string | undefined>;
     /**
      * The ID of the link.
      */
-    linkId?: pulumi.Input<number>;
+    linkId?: pulumi.Input<number | undefined>;
     /**
      * The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
      */
-    linkType?: pulumi.Input<string>;
+    linkType?: pulumi.Input<string | undefined>;
     /**
      * The name of the link. Link names must be unique within the release.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or Namespace path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The tag associated with the Release.
      */
-    tagName?: pulumi.Input<string>;
+    tagName?: pulumi.Input<string | undefined>;
     /**
      * The URL of the link. Link URLs must be unique within the release.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -203,15 +203,15 @@ export interface ReleaseLinkArgs {
     /**
      * Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
      */
-    filepath?: pulumi.Input<string>;
+    filepath?: pulumi.Input<string | undefined>;
     /**
      * The type of the link. Valid values are `other`, `runbook`, `image`, `package`. Defaults to other.
      */
-    linkType?: pulumi.Input<string>;
+    linkType?: pulumi.Input<string | undefined>;
     /**
      * The name of the link. Link names must be unique within the release.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or Namespace path of the project.
      */

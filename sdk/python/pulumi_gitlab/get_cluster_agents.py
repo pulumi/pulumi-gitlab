@@ -102,7 +102,7 @@ def get_cluster_agents(project: Optional[_builtins.str] = None,
         cluster_agents=pulumi.get(__ret__, 'cluster_agents'),
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'))
-def get_cluster_agents_output(project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_cluster_agents_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterAgentsResult]:
     """
     The `get_cluster_agents` data source retrieves details of GitLab Agents for Kubernetes in a project.

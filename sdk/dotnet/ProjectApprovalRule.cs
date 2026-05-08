@@ -34,7 +34,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example_one = new GitLab.Index.ProjectApprovalRule("example-one", new()
+    ///     var example_one = new GitLab.ProjectApprovalRule("example-one", new()
     ///     {
     ///         Project = "5",
     ///         Name = "Example Rule",
@@ -51,7 +51,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // With Protected Branch IDs
-    ///     var example = new GitLab.Index.BranchProtection("example", new()
+    ///     var example = new GitLab.BranchProtection("example", new()
     ///     {
     ///         Project = "5",
     ///         Branch = "release/*",
@@ -59,7 +59,7 @@ namespace Pulumi.GitLab
     ///         MergeAccessLevel = "developer",
     ///     });
     /// 
-    ///     var example_two = new GitLab.Index.ProjectApprovalRule("example-two", new()
+    ///     var example_two = new GitLab.ProjectApprovalRule("example-two", new()
     ///     {
     ///         Project = "5",
     ///         Name = "Example Rule 2",
@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Example using `data.gitlab_user` and `for` loop
-    ///     var users = Std.Index.Toset.Invoke(new()
+    ///     var users = Std.Toset.Invoke(new()
     ///     {
     ///         Input = new[]
     ///         {
@@ -90,7 +90,7 @@ namespace Pulumi.GitLab
     ///         },
     ///     }).Apply(invoke =&gt; );
     /// 
-    ///     var example_three = new GitLab.Index.ProjectApprovalRule("example-three", new()
+    ///     var example_three = new GitLab.ProjectApprovalRule("example-three", new()
     ///     {
     ///         Project = "5",
     ///         Name = "Example Rule 3",
@@ -102,7 +102,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Example using `approval_rule` using `any_approver` as rule type
-    ///     var anyApprover = new GitLab.Index.ProjectApprovalRule("any_approver", new()
+    ///     var anyApprover = new GitLab.ProjectApprovalRule("any_approver", new()
     ///     {
     ///         Project = "5",
     ///         Name = "Any name",
@@ -111,7 +111,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Example using `applies_to_all_protected_branches`
-    ///     var example_four = new GitLab.Index.ProjectApprovalRule("example-four", new()
+    ///     var example_four = new GitLab.ProjectApprovalRule("example-four", new()
     ///     {
     ///         Project = "5",
     ///         Name = "Example Rule 4",

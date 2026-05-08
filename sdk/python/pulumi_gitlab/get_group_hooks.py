@@ -95,7 +95,7 @@ def get_group_hooks(group: Optional[_builtins.str] = None,
         group=pulumi.get(__ret__, 'group'),
         hooks=pulumi.get(__ret__, 'hooks'),
         id=pulumi.get(__ret__, 'id'))
-def get_group_hooks_output(group: Optional[pulumi.Input[_builtins.str]] = None,
+def get_group_hooks_output(group: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupHooksResult]:
     """
     The `get_group_hooks` data source retrieves details about hooks in a group.

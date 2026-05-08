@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example Usage
-    ///     var example = new GitLab.Index.ProjectDeployToken("example", new()
+    ///     var example = new GitLab.ProjectDeployToken("example", new()
     ///     {
     ///         Project = "example/deploying",
     ///         Name = "Example project deploy token",
@@ -39,11 +39,11 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var example_two = new GitLab.Index.ProjectDeployToken("example-two", new()
+    ///     var example_two = new GitLab.ProjectDeployToken("example-two", new()
     ///     {
     ///         Project = "12345678",
     ///         Name = "Example project deploy token expires in 24h",
-    ///         ExpiresAt = Std.Index.Timestamp.Invoke().Apply(invoke =&gt; Std.Index.Timeadd.Invoke(new()
+    ///         ExpiresAt = Std.Timestamp.Invoke().Apply(invoke =&gt; Std.Timeadd.Invoke(new()
     ///         {
     ///             Duration = invoke.Result,
     ///             Timestamp = "24h",

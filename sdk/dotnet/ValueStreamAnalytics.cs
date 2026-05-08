@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project = new GitLab.Index.ValueStreamAnalytics("project", new()
+    ///     var project = new GitLab.ValueStreamAnalytics("project", new()
     ///     {
     ///         Name = "TEST",
     ///         ProjectFullPath = "test/project",
@@ -51,7 +51,7 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var @group = new GitLab.Index.ValueStreamAnalytics("group", new()
+    ///     var @group = new GitLab.ValueStreamAnalytics("group", new()
     ///     {
     ///         Name = "TEST",
     ///         GroupFullPath = "test/group",

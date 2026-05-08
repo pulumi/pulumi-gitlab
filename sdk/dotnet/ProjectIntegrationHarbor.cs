@@ -24,14 +24,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var awesomeProject = new GitLab.Index.Project("awesome_project", new()
+    ///     var awesomeProject = new GitLab.Project("awesome_project", new()
     ///     {
     ///         Name = "awesome_project",
     ///         Description = "My awesome project.",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var harbor = new GitLab.Index.ProjectIntegrationHarbor("harbor", new()
+    ///     var harbor = new GitLab.ProjectIntegrationHarbor("harbor", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         Url = "http://harbor.example.com",

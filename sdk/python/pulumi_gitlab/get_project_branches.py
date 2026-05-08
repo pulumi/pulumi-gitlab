@@ -125,9 +125,9 @@ def get_project_branches(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         regex=pulumi.get(__ret__, 'regex'),
         search=pulumi.get(__ret__, 'search'))
-def get_project_branches_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                                regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_project_branches_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                                regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectBranchesResult]:
     """
     The `get_project_branches` data source allows details of the branches of a given project to be retrieved.

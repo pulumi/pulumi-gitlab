@@ -26,13 +26,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vars = GitLab.Index.GetGroupVariables.Invoke(new()
+        ///     var vars = GitLab.GetGroupVariables.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var stagingVars = GitLab.Index.GetGroupVariables.Invoke(new()
+        ///     var stagingVars = GitLab.GetGroupVariables.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         EnvironmentScope = "staging/*",
@@ -59,13 +59,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vars = GitLab.Index.GetGroupVariables.Invoke(new()
+        ///     var vars = GitLab.GetGroupVariables.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var stagingVars = GitLab.Index.GetGroupVariables.Invoke(new()
+        ///     var stagingVars = GitLab.GetGroupVariables.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         EnvironmentScope = "staging/*",
@@ -92,13 +92,13 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vars = GitLab.Index.GetGroupVariables.Invoke(new()
+        ///     var vars = GitLab.GetGroupVariables.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///     });
         /// 
         ///     // Using an environment scope
-        ///     var stagingVars = GitLab.Index.GetGroupVariables.Invoke(new()
+        ///     var stagingVars = GitLab.GetGroupVariables.Invoke(new()
         ///     {
         ///         Group = "my/example/group",
         ///         EnvironmentScope = "staging/*",

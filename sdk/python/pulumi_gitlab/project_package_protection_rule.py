@@ -22,8 +22,8 @@ class ProjectPackageProtectionRuleArgs:
                  package_name_pattern: pulumi.Input[_builtins.str],
                  package_type: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
-                 minimum_access_level_for_delete: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum_access_level_for_push: Optional[pulumi.Input[_builtins.str]] = None):
+                 minimum_access_level_for_delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_access_level_for_push: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectPackageProtectionRule resource.
 
@@ -79,38 +79,38 @@ class ProjectPackageProtectionRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="minimumAccessLevelForDelete")
-    def minimum_access_level_for_delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimum_access_level_for_delete(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minimum GitLab access level required to delete packages from the package registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_push` is not set.
         """
         return pulumi.get(self, "minimum_access_level_for_delete")
 
     @minimum_access_level_for_delete.setter
-    def minimum_access_level_for_delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimum_access_level_for_delete(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimum_access_level_for_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumAccessLevelForPush")
-    def minimum_access_level_for_push(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimum_access_level_for_push(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minimum GitLab access level required to push packages to the package registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_delete` is not set.
         """
         return pulumi.get(self, "minimum_access_level_for_push")
 
     @minimum_access_level_for_push.setter
-    def minimum_access_level_for_push(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimum_access_level_for_push(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimum_access_level_for_push", value)
 
 
 @pulumi.input_type
 class _ProjectPackageProtectionRuleState:
     def __init__(__self__, *,
-                 minimum_access_level_for_delete: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum_access_level_for_push: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_name_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_protection_rule_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 minimum_access_level_for_delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_access_level_for_push: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_name_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_protection_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectPackageProtectionRule resources.
 
@@ -136,74 +136,74 @@ class _ProjectPackageProtectionRuleState:
 
     @_builtins.property
     @pulumi.getter(name="minimumAccessLevelForDelete")
-    def minimum_access_level_for_delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimum_access_level_for_delete(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minimum GitLab access level required to delete packages from the package registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_push` is not set.
         """
         return pulumi.get(self, "minimum_access_level_for_delete")
 
     @minimum_access_level_for_delete.setter
-    def minimum_access_level_for_delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimum_access_level_for_delete(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimum_access_level_for_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumAccessLevelForPush")
-    def minimum_access_level_for_push(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimum_access_level_for_push(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minimum GitLab access level required to push packages to the package registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimum_access_level_for_delete` is not set.
         """
         return pulumi.get(self, "minimum_access_level_for_push")
 
     @minimum_access_level_for_push.setter
-    def minimum_access_level_for_push(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimum_access_level_for_push(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimum_access_level_for_push", value)
 
     @_builtins.property
     @pulumi.getter(name="packageNamePattern")
-    def package_name_pattern(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_name_pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Package name pattern protected by the protection rule. For example `@scope/package-*`. Wildcard character `*` allowed.
         """
         return pulumi.get(self, "package_name_pattern")
 
     @package_name_pattern.setter
-    def package_name_pattern(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_name_pattern(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_name_pattern", value)
 
     @_builtins.property
     @pulumi.getter(name="packageProtectionRuleId")
-    def package_protection_rule_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def package_protection_rule_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Unique ID of the protection rule.
         """
         return pulumi.get(self, "package_protection_rule_id")
 
     @package_protection_rule_id.setter
-    def package_protection_rule_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def package_protection_rule_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "package_protection_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="packageType")
-    def package_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Package type protected by the protection rule. For example npm.
         """
         return pulumi.get(self, "package_type")
 
     @package_type.setter
-    def package_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID or URL-encoded path of the project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -213,11 +213,11 @@ class ProjectPackageProtectionRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 minimum_access_level_for_delete: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum_access_level_for_push: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_name_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 minimum_access_level_for_delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_access_level_for_push: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_name_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectPackageProtectionRule` resource allows managing the lifecycle of a package protection rule.
@@ -318,11 +318,11 @@ class ProjectPackageProtectionRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 minimum_access_level_for_delete: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum_access_level_for_push: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_name_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 minimum_access_level_for_delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_access_level_for_push: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_name_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -354,12 +354,12 @@ class ProjectPackageProtectionRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            minimum_access_level_for_delete: Optional[pulumi.Input[_builtins.str]] = None,
-            minimum_access_level_for_push: Optional[pulumi.Input[_builtins.str]] = None,
-            package_name_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-            package_protection_rule_id: Optional[pulumi.Input[_builtins.int]] = None,
-            package_type: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectPackageProtectionRule':
+            minimum_access_level_for_delete: pulumi.Input[Optional[_builtins.str]] = None,
+            minimum_access_level_for_push: pulumi.Input[Optional[_builtins.str]] = None,
+            package_name_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+            package_protection_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            package_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectPackageProtectionRule':
         """
         Get an existing ProjectPackageProtectionRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

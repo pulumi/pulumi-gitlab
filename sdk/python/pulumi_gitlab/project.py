@@ -21,115 +21,115 @@ __all__ = ['ProjectArgs', 'Project']
 @pulumi.input_type
 class ProjectArgs:
     def __init__(__self__, *,
-                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_pipeline_trigger_approve_deployment: Optional[pulumi.Input[_builtins.bool]] = None,
-                 analytics_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 approvals_before_merge: Optional[pulumi.Input[_builtins.int]] = None,
-                 archive_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_cancel_pending_pipelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_devops_deploy_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_duo_code_review_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 autoclose_referenced_issues: Optional[pulumi.Input[_builtins.bool]] = None,
-                 avatar: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 branches: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_git_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 builds_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_config_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_default_git_depth: Optional[pulumi.Input[_builtins.int]] = None,
-                 ci_delete_pipelines_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 ci_forward_deployment_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_forward_deployment_rollback_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_push_repository_for_job_token_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_separated_caches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_expiration_policy: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']] = None,
-                 container_registry_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_registry_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environments_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_authorization_classification_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_flags_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 forked_from_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 forking_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_with_project_templates_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 import_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_url_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_url_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 infrastructure_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 initialize_with_readme: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 issues_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 keep_latest_artifact: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 merge_commit_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_pipelines_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_request_title_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_request_title_regex_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_trains_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_trains_skip_train_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_overwrites_diverged_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_trigger_builds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 model_experiments_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_registry_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 mr_default_target_self: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_mirror_protected_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 packages_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pages_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 permanently_delete_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipelines_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pre_receive_secret_detection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_merge_without_jira_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 printing_merge_request_link_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_builds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_jobs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_rules: Optional[pulumi.Input['ProjectPushRulesArgs']] = None,
-                 releases_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 remove_source_branch_after_merge: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 requirements_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 resolve_outdated_diff_discussions: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_default_process_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 restrict_user_defined_variables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_and_compliance_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_wait_for_default_branch_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 snippets_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 snippets_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 squash_commit_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 squash_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 suggestion_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_custom_template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 visibility_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_pipeline_trigger_approve_deployment: pulumi.Input[Optional[_builtins.bool]] = None,
+                 analytics_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 approvals_before_merge: pulumi.Input[Optional[_builtins.int]] = None,
+                 archive_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_cancel_pending_pipelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_devops_deploy_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_duo_code_review_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autoclose_referenced_issues: pulumi.Input[Optional[_builtins.bool]] = None,
+                 avatar: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 branches: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_git_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 builds_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_default_git_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 ci_delete_pipelines_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 ci_forward_deployment_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_forward_deployment_rollback_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_id_token_sub_claim_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ci_pipeline_variables_minimum_override_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_push_repository_for_job_token_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_restrict_pipeline_cancellation_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_separated_caches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_expiration_policy: pulumi.Input[Optional['ProjectContainerExpirationPolicyArgs']] = None,
+                 container_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_registry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_authorization_classification_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_flags_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 forked_from_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 forking_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_with_project_templates_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 import_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_url_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_url_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 infrastructure_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 initialize_with_readme: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 issues_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 merge_commit_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_pipelines_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_request_title_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_request_title_regex_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_trains_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_trains_skip_train_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_overwrites_diverged_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_trigger_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 model_experiments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 mr_default_target_self: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_allow_merge_if_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_mirror_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 packages_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pages_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 permanently_delete_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipelines_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pre_receive_secret_detection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_merge_without_jira_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 printing_merge_request_link_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_jobs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_rules: pulumi.Input[Optional['ProjectPushRulesArgs']] = None,
+                 releases_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 remove_source_branch_after_merge: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 requirements_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 resolve_outdated_diff_discussions: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_default_process_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 restrict_user_defined_variables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_wait_for_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 snippets_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 snippets_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 squash_commit_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 squash_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 suggestion_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_custom_template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 visibility_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Project resource.
 
@@ -510,1158 +510,1158 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowMergeOnSkippedPipeline")
-    def allow_merge_on_skipped_pipeline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_merge_on_skipped_pipeline(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if you want to treat skipped pipelines as if they finished with success.
         """
         return pulumi.get(self, "allow_merge_on_skipped_pipeline")
 
     @allow_merge_on_skipped_pipeline.setter
-    def allow_merge_on_skipped_pipeline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_merge_on_skipped_pipeline(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_merge_on_skipped_pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="allowPipelineTriggerApproveDeployment")
-    def allow_pipeline_trigger_approve_deployment(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_pipeline_trigger_approve_deployment(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         """
         return pulumi.get(self, "allow_pipeline_trigger_approve_deployment")
 
     @allow_pipeline_trigger_approve_deployment.setter
-    def allow_pipeline_trigger_approve_deployment(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_pipeline_trigger_approve_deployment(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_pipeline_trigger_approve_deployment", value)
 
     @_builtins.property
     @pulumi.getter(name="analyticsAccessLevel")
-    def analytics_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def analytics_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "analytics_access_level")
 
     @analytics_access_level.setter
-    def analytics_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def analytics_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "analytics_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="approvalsBeforeMerge")
     @_utilities.deprecated("""Use the resource `ProjectApprovalRule` instead. To be removed in 19.0.""")
-    def approvals_before_merge(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def approvals_before_merge(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `ProjectApprovalRule` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "approvals_before_merge")
 
     @approvals_before_merge.setter
-    def approvals_before_merge(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def approvals_before_merge(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "approvals_before_merge", value)
 
     @_builtins.property
     @pulumi.getter(name="archiveOnDestroy")
-    def archive_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def archive_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         """
         return pulumi.get(self, "archive_on_destroy")
 
     @archive_on_destroy.setter
-    def archive_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def archive_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "archive_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def archived(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def archived(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         """
         return pulumi.get(self, "archived")
 
     @archived.setter
-    def archived(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def archived(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "archived", value)
 
     @_builtins.property
     @pulumi.getter(name="autoCancelPendingPipelines")
-    def auto_cancel_pending_pipelines(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_cancel_pending_pipelines(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Auto-cancel pending pipelines. This isn't a boolean, but enabled/disabled.
         """
         return pulumi.get(self, "auto_cancel_pending_pipelines")
 
     @auto_cancel_pending_pipelines.setter
-    def auto_cancel_pending_pipelines(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_cancel_pending_pipelines(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_cancel_pending_pipelines", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDevopsDeployStrategy")
-    def auto_devops_deploy_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_devops_deploy_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         """
         return pulumi.get(self, "auto_devops_deploy_strategy")
 
     @auto_devops_deploy_strategy.setter
-    def auto_devops_deploy_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_devops_deploy_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_devops_deploy_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDevopsEnabled")
-    def auto_devops_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_devops_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Auto DevOps for this project.
         """
         return pulumi.get(self, "auto_devops_enabled")
 
     @auto_devops_enabled.setter
-    def auto_devops_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_devops_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_devops_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDuoCodeReviewEnabled")
-    def auto_duo_code_review_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_duo_code_review_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
         """
         return pulumi.get(self, "auto_duo_code_review_enabled")
 
     @auto_duo_code_review_enabled.setter
-    def auto_duo_code_review_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_duo_code_review_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_duo_code_review_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="autocloseReferencedIssues")
-    def autoclose_referenced_issues(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def autoclose_referenced_issues(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set whether auto-closing referenced issues on default branch.
         """
         return pulumi.get(self, "autoclose_referenced_issues")
 
     @autoclose_referenced_issues.setter
-    def autoclose_referenced_issues(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def autoclose_referenced_issues(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autoclose_referenced_issues", value)
 
     @_builtins.property
     @pulumi.getter
-    def avatar(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path to the avatar image to upload. **Note**: not available for imported resources.
         """
         return pulumi.get(self, "avatar")
 
     @avatar.setter
-    def avatar(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar", value)
 
     @_builtins.property
     @pulumi.getter(name="avatarHash")
-    def avatar_hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar_hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         """
         return pulumi.get(self, "avatar_hash")
 
     @avatar_hash.setter
-    def avatar_hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar_hash", value)
 
     @_builtins.property
     @pulumi.getter
-    def branches(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branches(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Branches to fork (empty for all branches).
         """
         return pulumi.get(self, "branches")
 
     @branches.setter
-    def branches(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branches(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branches", value)
 
     @_builtins.property
     @pulumi.getter(name="buildGitStrategy")
-    def build_git_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def build_git_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         """
         return pulumi.get(self, "build_git_strategy")
 
     @build_git_strategy.setter
-    def build_git_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def build_git_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "build_git_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="buildTimeout")
-    def build_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def build_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum amount of time, in seconds, that a job can run.
         """
         return pulumi.get(self, "build_timeout")
 
     @build_timeout.setter
-    def build_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def build_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "build_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="buildsAccessLevel")
-    def builds_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def builds_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "builds_access_level")
 
     @builds_access_level.setter
-    def builds_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def builds_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "builds_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="ciConfigPath")
-    def ci_config_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ci_config_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom Path to CI config file.
         """
         return pulumi.get(self, "ci_config_path")
 
     @ci_config_path.setter
-    def ci_config_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ci_config_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ci_config_path", value)
 
     @_builtins.property
     @pulumi.getter(name="ciDefaultGitDepth")
-    def ci_default_git_depth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ci_default_git_depth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default number of revisions for shallow cloning.
         """
         return pulumi.get(self, "ci_default_git_depth")
 
     @ci_default_git_depth.setter
-    def ci_default_git_depth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ci_default_git_depth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ci_default_git_depth", value)
 
     @_builtins.property
     @pulumi.getter(name="ciDeletePipelinesInSeconds")
-    def ci_delete_pipelines_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ci_delete_pipelines_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Pipelines older than the configured time are deleted.
         """
         return pulumi.get(self, "ci_delete_pipelines_in_seconds")
 
     @ci_delete_pipelines_in_seconds.setter
-    def ci_delete_pipelines_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ci_delete_pipelines_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ci_delete_pipelines_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="ciForwardDeploymentEnabled")
-    def ci_forward_deployment_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ci_forward_deployment_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When a new deployment job starts, skip older deployment jobs that are still pending.
         """
         return pulumi.get(self, "ci_forward_deployment_enabled")
 
     @ci_forward_deployment_enabled.setter
-    def ci_forward_deployment_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ci_forward_deployment_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ci_forward_deployment_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ciForwardDeploymentRollbackAllowed")
-    def ci_forward_deployment_rollback_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ci_forward_deployment_rollback_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow job retries even if the deployment job is outdated.
         """
         return pulumi.get(self, "ci_forward_deployment_rollback_allowed")
 
     @ci_forward_deployment_rollback_allowed.setter
-    def ci_forward_deployment_rollback_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ci_forward_deployment_rollback_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ci_forward_deployment_rollback_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="ciIdTokenSubClaimComponents")
-    def ci_id_token_sub_claim_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ci_id_token_sub_claim_components(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
         """
         return pulumi.get(self, "ci_id_token_sub_claim_components")
 
     @ci_id_token_sub_claim_components.setter
-    def ci_id_token_sub_claim_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ci_id_token_sub_claim_components(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ci_id_token_sub_claim_components", value)
 
     @_builtins.property
     @pulumi.getter(name="ciPipelineVariablesMinimumOverrideRole")
-    def ci_pipeline_variables_minimum_override_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ci_pipeline_variables_minimum_override_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         """
         return pulumi.get(self, "ci_pipeline_variables_minimum_override_role")
 
     @ci_pipeline_variables_minimum_override_role.setter
-    def ci_pipeline_variables_minimum_override_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ci_pipeline_variables_minimum_override_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ci_pipeline_variables_minimum_override_role", value)
 
     @_builtins.property
     @pulumi.getter(name="ciPushRepositoryForJobTokenAllowed")
-    def ci_push_repository_for_job_token_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ci_push_repository_for_job_token_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
         """
         return pulumi.get(self, "ci_push_repository_for_job_token_allowed")
 
     @ci_push_repository_for_job_token_allowed.setter
-    def ci_push_repository_for_job_token_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ci_push_repository_for_job_token_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ci_push_repository_for_job_token_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")
-    def ci_restrict_pipeline_cancellation_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ci_restrict_pipeline_cancellation_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         """
         return pulumi.get(self, "ci_restrict_pipeline_cancellation_role")
 
     @ci_restrict_pipeline_cancellation_role.setter
-    def ci_restrict_pipeline_cancellation_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ci_restrict_pipeline_cancellation_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ci_restrict_pipeline_cancellation_role", value)
 
     @_builtins.property
     @pulumi.getter(name="ciSeparatedCaches")
-    def ci_separated_caches(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ci_separated_caches(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use separate caches for protected branches.
         """
         return pulumi.get(self, "ci_separated_caches")
 
     @ci_separated_caches.setter
-    def ci_separated_caches(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ci_separated_caches(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ci_separated_caches", value)
 
     @_builtins.property
     @pulumi.getter(name="containerExpirationPolicy")
-    def container_expiration_policy(self) -> Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']]:
+    def container_expiration_policy(self) -> pulumi.Input[Optional['ProjectContainerExpirationPolicyArgs']]:
         """
         Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         """
         return pulumi.get(self, "container_expiration_policy")
 
     @container_expiration_policy.setter
-    def container_expiration_policy(self, value: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']]):
+    def container_expiration_policy(self, value: pulumi.Input[Optional['ProjectContainerExpirationPolicyArgs']]):
         pulumi.set(self, "container_expiration_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryAccessLevel")
-    def container_registry_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_registry_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "container_registry_access_level")
 
     @container_registry_access_level.setter
-    def container_registry_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_registry_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_registry_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryEnabled")
     @_utilities.deprecated("""Use `container_registry_access_level` instead. To be removed in 19.0.""")
-    def container_registry_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def container_registry_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable container registry for the project. Use `container_registry_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "container_registry_enabled")
 
     @container_registry_enabled.setter
-    def container_registry_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def container_registry_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "container_registry_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranch")
-    def default_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default branch for the project.
         """
         return pulumi.get(self, "default_branch")
 
     @default_branch.setter
-    def default_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_branch", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the project.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="emailsEnabled")
-    def emails_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def emails_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable email notifications.
         """
         return pulumi.get(self, "emails_enabled")
 
     @emails_enabled.setter
-    def emails_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def emails_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "emails_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentsAccessLevel")
-    def environments_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environments_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "environments_access_level")
 
     @environments_access_level.setter
-    def environments_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environments_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environments_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthorizationClassificationLabel")
-    def external_authorization_classification_label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_authorization_classification_label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The classification label for the project.
         """
         return pulumi.get(self, "external_authorization_classification_label")
 
     @external_authorization_classification_label.setter
-    def external_authorization_classification_label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_authorization_classification_label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_authorization_classification_label", value)
 
     @_builtins.property
     @pulumi.getter(name="featureFlagsAccessLevel")
-    def feature_flags_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feature_flags_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "feature_flags_access_level")
 
     @feature_flags_access_level.setter
-    def feature_flags_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feature_flags_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feature_flags_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="forkedFromProjectId")
-    def forked_from_project_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def forked_from_project_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
         """
         return pulumi.get(self, "forked_from_project_id")
 
     @forked_from_project_id.setter
-    def forked_from_project_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def forked_from_project_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "forked_from_project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="forkingAccessLevel")
-    def forking_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forking_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "forking_access_level")
 
     @forking_access_level.setter
-    def forking_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forking_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forking_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="groupRunnersEnabled")
-    def group_runners_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def group_runners_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable group runners for this project.
         """
         return pulumi.get(self, "group_runners_enabled")
 
     @group_runners_enabled.setter
-    def group_runners_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def group_runners_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "group_runners_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="groupWithProjectTemplatesId")
-    def group_with_project_templates_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_with_project_templates_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         """
         return pulumi.get(self, "group_with_project_templates_id")
 
     @group_with_project_templates_id.setter
-    def group_with_project_templates_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_with_project_templates_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_with_project_templates_id", value)
 
     @_builtins.property
     @pulumi.getter(name="importUrl")
-    def import_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def import_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url")
 
     @import_url.setter
-    def import_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def import_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "import_url", value)
 
     @_builtins.property
     @pulumi.getter(name="importUrlPassword")
-    def import_url_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def import_url_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url_password")
 
     @import_url_password.setter
-    def import_url_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def import_url_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "import_url_password", value)
 
     @_builtins.property
     @pulumi.getter(name="importUrlUsername")
-    def import_url_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def import_url_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url_username")
 
     @import_url_username.setter
-    def import_url_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def import_url_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "import_url_username", value)
 
     @_builtins.property
     @pulumi.getter(name="infrastructureAccessLevel")
-    def infrastructure_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infrastructure_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "infrastructure_access_level")
 
     @infrastructure_access_level.setter
-    def infrastructure_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infrastructure_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infrastructure_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="initializeWithReadme")
-    def initialize_with_readme(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def initialize_with_readme(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         """
         return pulumi.get(self, "initialize_with_readme")
 
     @initialize_with_readme.setter
-    def initialize_with_readme(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def initialize_with_readme(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "initialize_with_readme", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesAccessLevel")
-    def issues_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issues_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "issues_access_level")
 
     @issues_access_level.setter
-    def issues_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issues_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issues_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesEnabled")
     @_utilities.deprecated("""Use `issues_access_level` instead. To be removed in 19.0.""")
-    def issues_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def issues_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable issue tracking for the project. Use `issues_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "issues_enabled")
 
     @issues_enabled.setter
-    def issues_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def issues_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "issues_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesTemplate")
-    def issues_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issues_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the template for new issues in the project.
         """
         return pulumi.get(self, "issues_template")
 
     @issues_template.setter
-    def issues_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issues_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issues_template", value)
 
     @_builtins.property
     @pulumi.getter(name="keepLatestArtifact")
-    def keep_latest_artifact(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_latest_artifact(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable or enable the ability to keep the latest artifact for this project.
         """
         return pulumi.get(self, "keep_latest_artifact")
 
     @keep_latest_artifact.setter
-    def keep_latest_artifact(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_latest_artifact(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_latest_artifact", value)
 
     @_builtins.property
     @pulumi.getter(name="lfsEnabled")
-    def lfs_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lfs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable LFS for the project.
         """
         return pulumi.get(self, "lfs_enabled")
 
     @lfs_enabled.setter
-    def lfs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lfs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lfs_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maxArtifactsSize")
-    def max_artifacts_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_artifacts_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum file size in megabytes for individual job artifacts.
         """
         return pulumi.get(self, "max_artifacts_size")
 
     @max_artifacts_size.setter
-    def max_artifacts_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_artifacts_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_artifacts_size", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeCommitTemplate")
-    def merge_commit_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_commit_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template used to create merge commit message in merge requests.
         """
         return pulumi.get(self, "merge_commit_template")
 
     @merge_commit_template.setter
-    def merge_commit_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_commit_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_commit_template", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeMethod")
-    def merge_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         """
         return pulumi.get(self, "merge_method")
 
     @merge_method.setter
-    def merge_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_method", value)
 
     @_builtins.property
     @pulumi.getter(name="mergePipelinesEnabled")
-    def merge_pipelines_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_pipelines_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable merge pipelines.
         """
         return pulumi.get(self, "merge_pipelines_enabled")
 
     @merge_pipelines_enabled.setter
-    def merge_pipelines_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_pipelines_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_pipelines_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestTitleRegex")
-    def merge_request_title_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_request_title_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the regex pattern that merge request titles must match. Use `merge_request_title_regex_description` to provide a hint to the user.
         """
         return pulumi.get(self, "merge_request_title_regex")
 
     @merge_request_title_regex.setter
-    def merge_request_title_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_request_title_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_request_title_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestTitleRegexDescription")
-    def merge_request_title_regex_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_request_title_regex_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the description shown to users when a merge request title does not match `merge_request_title_regex`.
         """
         return pulumi.get(self, "merge_request_title_regex_description")
 
     @merge_request_title_regex_description.setter
-    def merge_request_title_regex_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_request_title_regex_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_request_title_regex_description", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsAccessLevel")
-    def merge_requests_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_requests_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "merge_requests_access_level")
 
     @merge_requests_access_level.setter
-    def merge_requests_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_requests_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_requests_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEnabled")
     @_utilities.deprecated("""Use `merge_requests_access_level` instead. To be removed in 19.0.""")
-    def merge_requests_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_requests_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable merge requests for the project. Use `merge_requests_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "merge_requests_enabled")
 
     @merge_requests_enabled.setter
-    def merge_requests_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_requests_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_requests_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsTemplate")
-    def merge_requests_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_requests_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the template for new merge requests in the project.
         """
         return pulumi.get(self, "merge_requests_template")
 
     @merge_requests_template.setter
-    def merge_requests_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_requests_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_requests_template", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeTrainsEnabled")
-    def merge_trains_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_trains_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         """
         return pulumi.get(self, "merge_trains_enabled")
 
     @merge_trains_enabled.setter
-    def merge_trains_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_trains_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_trains_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeTrainsSkipTrainAllowed")
-    def merge_trains_skip_train_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_trains_skip_train_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         """
         return pulumi.get(self, "merge_trains_skip_train_allowed")
 
     @merge_trains_skip_train_allowed.setter
-    def merge_trains_skip_train_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_trains_skip_train_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_trains_skip_train_allowed", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""To be removed in 19.0. Use `ProjectPullMirror` instead.""")
-    def mirror(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mirror(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deprecated: to be removed in 19.0. Use `ProjectPullMirror` instead. Enable project pull mirror.
         """
         return pulumi.get(self, "mirror")
 
     @mirror.setter
-    def mirror(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mirror(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mirror", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorOverwritesDivergedBranches")
     @_utilities.deprecated("""To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.""")
-    def mirror_overwrites_diverged_branches(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mirror_overwrites_diverged_branches(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
         """
         return pulumi.get(self, "mirror_overwrites_diverged_branches")
 
     @mirror_overwrites_diverged_branches.setter
-    def mirror_overwrites_diverged_branches(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mirror_overwrites_diverged_branches(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mirror_overwrites_diverged_branches", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorTriggerBuilds")
     @_utilities.deprecated("""To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.""")
-    def mirror_trigger_builds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mirror_trigger_builds(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
         """
         return pulumi.get(self, "mirror_trigger_builds")
 
     @mirror_trigger_builds.setter
-    def mirror_trigger_builds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mirror_trigger_builds(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mirror_trigger_builds", value)
 
     @_builtins.property
     @pulumi.getter(name="modelExperimentsAccessLevel")
-    def model_experiments_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_experiments_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "model_experiments_access_level")
 
     @model_experiments_access_level.setter
-    def model_experiments_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_experiments_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_experiments_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="modelRegistryAccessLevel")
-    def model_registry_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_registry_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "model_registry_access_level")
 
     @model_registry_access_level.setter
-    def model_registry_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_registry_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_registry_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorAccessLevel")
-    def monitor_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "monitor_access_level")
 
     @monitor_access_level.setter
-    def monitor_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="mrDefaultTargetSelf")
-    def mr_default_target_self(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mr_default_target_self(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         For forked projects, target merge requests to this project. If false, the target will be the upstream project.
         """
         return pulumi.get(self, "mr_default_target_self")
 
     @mr_default_target_self.setter
-    def mr_default_target_self(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mr_default_target_self(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mr_default_target_self", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def namespace_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The namespace (group or user) of the project. Defaults to your user.
         """
         return pulumi.get(self, "namespace_id")
 
     @namespace_id.setter
-    def namespace_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def namespace_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "namespace_id", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
-    def only_allow_merge_if_all_discussions_are_resolved(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_allow_merge_if_all_discussions_are_resolved(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if you want allow merges only if all discussions are resolved.
         """
         return pulumi.get(self, "only_allow_merge_if_all_discussions_are_resolved")
 
     @only_allow_merge_if_all_discussions_are_resolved.setter
-    def only_allow_merge_if_all_discussions_are_resolved(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_allow_merge_if_all_discussions_are_resolved(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_allow_merge_if_all_discussions_are_resolved", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyAllowMergeIfPipelineSucceeds")
-    def only_allow_merge_if_pipeline_succeeds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_allow_merge_if_pipeline_succeeds(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if you want allow merges only if a pipeline succeeds.
         """
         return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
 
     @only_allow_merge_if_pipeline_succeeds.setter
-    def only_allow_merge_if_pipeline_succeeds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_allow_merge_if_pipeline_succeeds(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_allow_merge_if_pipeline_succeeds", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyMirrorProtectedBranches")
     @_utilities.deprecated("""To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.""")
-    def only_mirror_protected_branches(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_mirror_protected_branches(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
         """
         return pulumi.get(self, "only_mirror_protected_branches")
 
     @only_mirror_protected_branches.setter
-    def only_mirror_protected_branches(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_mirror_protected_branches(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_mirror_protected_branches", value)
 
     @_builtins.property
     @pulumi.getter(name="packagesEnabled")
-    def packages_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def packages_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable packages repository for the project.
         """
         return pulumi.get(self, "packages_enabled")
 
     @packages_enabled.setter
-    def packages_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def packages_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "packages_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="pagesAccessLevel")
-    def pages_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pages_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         """
         return pulumi.get(self, "pages_access_level")
 
     @pages_access_level.setter
-    def pages_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pages_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pages_access_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of the repository.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="permanentlyDeleteOnDestroy")
-    def permanently_delete_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def permanently_delete_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
         """
         return pulumi.get(self, "permanently_delete_on_destroy")
 
     @permanently_delete_on_destroy.setter
-    def permanently_delete_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def permanently_delete_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "permanently_delete_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelinesEnabled")
     @_utilities.deprecated("""Use `builds_access_level` instead. To be removed in 19.0.""")
-    def pipelines_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pipelines_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls. Use `builds_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "pipelines_enabled")
 
     @pipelines_enabled.setter
-    def pipelines_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pipelines_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pipelines_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="preReceiveSecretDetectionEnabled")
-    def pre_receive_secret_detection_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pre_receive_secret_detection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         """
         return pulumi.get(self, "pre_receive_secret_detection_enabled")
 
     @pre_receive_secret_detection_enabled.setter
-    def pre_receive_secret_detection_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pre_receive_secret_detection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pre_receive_secret_detection_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="preventMergeWithoutJiraIssue")
-    def prevent_merge_without_jira_issue(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_merge_without_jira_issue(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         """
         return pulumi.get(self, "prevent_merge_without_jira_issue")
 
     @prevent_merge_without_jira_issue.setter
-    def prevent_merge_without_jira_issue(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_merge_without_jira_issue(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_merge_without_jira_issue", value)
 
     @_builtins.property
     @pulumi.getter(name="printingMergeRequestLinkEnabled")
-    def printing_merge_request_link_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def printing_merge_request_link_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Show link to create/view merge request when pushing from the command line
         """
         return pulumi.get(self, "printing_merge_request_link_enabled")
 
     @printing_merge_request_link_enabled.setter
-    def printing_merge_request_link_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def printing_merge_request_link_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "printing_merge_request_link_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="publicBuilds")
     @_utilities.deprecated("""The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""")
-    def public_builds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_builds(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, jobs can be viewed by non-project members.
         """
         return pulumi.get(self, "public_builds")
 
     @public_builds.setter
-    def public_builds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_builds(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_builds", value)
 
     @_builtins.property
     @pulumi.getter(name="publicJobs")
-    def public_jobs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_jobs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, jobs can be viewed by non-project members.
         """
         return pulumi.get(self, "public_jobs")
 
     @public_jobs.setter
-    def public_jobs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_jobs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_jobs", value)
 
     @_builtins.property
     @pulumi.getter(name="pushRules")
-    def push_rules(self) -> Optional[pulumi.Input['ProjectPushRulesArgs']]:
+    def push_rules(self) -> pulumi.Input[Optional['ProjectPushRulesArgs']]:
         """
         Push rules for the project.
         """
         return pulumi.get(self, "push_rules")
 
     @push_rules.setter
-    def push_rules(self, value: Optional[pulumi.Input['ProjectPushRulesArgs']]):
+    def push_rules(self, value: pulumi.Input[Optional['ProjectPushRulesArgs']]):
         pulumi.set(self, "push_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="releasesAccessLevel")
-    def releases_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def releases_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "releases_access_level")
 
     @releases_access_level.setter
-    def releases_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def releases_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "releases_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="removeSourceBranchAfterMerge")
-    def remove_source_branch_after_merge(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remove_source_branch_after_merge(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable `Delete source branch` option by default for all new merge requests.
         """
         return pulumi.get(self, "remove_source_branch_after_merge")
 
     @remove_source_branch_after_merge.setter
-    def remove_source_branch_after_merge(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remove_source_branch_after_merge(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remove_source_branch_after_merge", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryAccessLevel")
-    def repository_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "repository_access_level")
 
     @repository_access_level.setter
-    def repository_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryStorage")
-    def repository_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which storage shard the repository is on. (administrator only)
         """
         return pulumi.get(self, "repository_storage")
 
     @repository_storage.setter
-    def repository_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="requestAccessEnabled")
-    def request_access_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def request_access_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow users to request member access.
         """
         return pulumi.get(self, "request_access_enabled")
 
     @request_access_enabled.setter
-    def request_access_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def request_access_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "request_access_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="requirementsAccessLevel")
-    def requirements_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def requirements_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "requirements_access_level")
 
     @requirements_access_level.setter
-    def requirements_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def requirements_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "requirements_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="resolveOutdatedDiffDiscussions")
-    def resolve_outdated_diff_discussions(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def resolve_outdated_diff_discussions(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically resolve merge request diffs discussions on lines changed with a push.
         """
         return pulumi.get(self, "resolve_outdated_diff_discussions")
 
     @resolve_outdated_diff_discussions.setter
-    def resolve_outdated_diff_discussions(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def resolve_outdated_diff_discussions(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "resolve_outdated_diff_discussions", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupDefaultProcessMode")
-    def resource_group_default_process_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_default_process_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default resource group process mode for the project.
         """
         return pulumi.get(self, "resource_group_default_process_mode")
 
     @resource_group_default_process_mode.setter
-    def resource_group_default_process_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_default_process_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_default_process_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="restrictUserDefinedVariables")
     @_utilities.deprecated("""Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.""")
-    def restrict_user_defined_variables(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def restrict_user_defined_variables(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "restrict_user_defined_variables")
 
     @restrict_user_defined_variables.setter
-    def restrict_user_defined_variables(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def restrict_user_defined_variables(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "restrict_user_defined_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="securityAndComplianceAccessLevel")
-    def security_and_compliance_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_and_compliance_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "security_and_compliance_access_level")
 
     @security_and_compliance_access_level.setter
-    def security_and_compliance_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_and_compliance_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_and_compliance_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersEnabled")
-    def shared_runners_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared_runners_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable shared runners for this project.
         """
         return pulumi.get(self, "shared_runners_enabled")
 
     @shared_runners_enabled.setter
-    def shared_runners_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared_runners_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared_runners_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="skipWaitForDefaultBranchProtection")
-    def skip_wait_for_default_branch_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_wait_for_default_branch_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, the default behavior to wait for the default branch protection to be created is skipped.
         This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
@@ -1671,122 +1671,122 @@ class ProjectArgs:
         return pulumi.get(self, "skip_wait_for_default_branch_protection")
 
     @skip_wait_for_default_branch_protection.setter
-    def skip_wait_for_default_branch_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_wait_for_default_branch_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_wait_for_default_branch_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="snippetsAccessLevel")
-    def snippets_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snippets_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "snippets_access_level")
 
     @snippets_access_level.setter
-    def snippets_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snippets_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snippets_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="snippetsEnabled")
     @_utilities.deprecated("""Use `snippets_access_level` instead. To be removed in 19.0.""")
-    def snippets_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def snippets_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable snippets for the project. Use `snippets_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "snippets_enabled")
 
     @snippets_enabled.setter
-    def snippets_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def snippets_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "snippets_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="squashCommitTemplate")
-    def squash_commit_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def squash_commit_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template used to create squash commit message in merge requests.
         """
         return pulumi.get(self, "squash_commit_template")
 
     @squash_commit_template.setter
-    def squash_commit_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def squash_commit_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "squash_commit_template", value)
 
     @_builtins.property
     @pulumi.getter(name="squashOption")
-    def squash_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def squash_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         """
         return pulumi.get(self, "squash_option")
 
     @squash_option.setter
-    def squash_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def squash_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "squash_option", value)
 
     @_builtins.property
     @pulumi.getter(name="suggestionCommitMessage")
-    def suggestion_commit_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suggestion_commit_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The commit message used to apply merge request suggestions.
         """
         return pulumi.get(self, "suggestion_commit_message")
 
     @suggestion_commit_message.setter
-    def suggestion_commit_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suggestion_commit_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suggestion_commit_message", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Use `topics` instead. To be removed in 19.0.""")
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="templateName")
-    def template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         """
         return pulumi.get(self, "template_name")
 
     @template_name.setter
-    def template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_name", value)
 
     @_builtins.property
     @pulumi.getter(name="templateProjectId")
-    def template_project_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def template_project_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         """
         return pulumi.get(self, "template_project_id")
 
     @template_project_id.setter
-    def template_project_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def template_project_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "template_project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def topics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of topics for the project.
         """
         return pulumi.get(self, "topics")
 
     @topics.setter
-    def topics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def topics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "topics", value)
 
     @_builtins.property
     @pulumi.getter(name="useCustomTemplate")
-    def use_custom_template(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_custom_template(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
         	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
@@ -1794,166 +1794,166 @@ class ProjectArgs:
         return pulumi.get(self, "use_custom_template")
 
     @use_custom_template.setter
-    def use_custom_template(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_custom_template(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_custom_template", value)
 
     @_builtins.property
     @pulumi.getter(name="visibilityLevel")
-    def visibility_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visibility_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         """
         return pulumi.get(self, "visibility_level")
 
     @visibility_level.setter
-    def visibility_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visibility_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visibility_level", value)
 
     @_builtins.property
     @pulumi.getter(name="wikiAccessLevel")
-    def wiki_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def wiki_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "wiki_access_level")
 
     @wiki_access_level.setter
-    def wiki_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def wiki_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "wiki_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="wikiEnabled")
     @_utilities.deprecated("""Use `wiki_access_level` instead. To be removed in 19.0.""")
-    def wiki_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wiki_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable wiki for the project. Use `wiki_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "wiki_enabled")
 
     @wiki_enabled.setter
-    def wiki_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wiki_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wiki_enabled", value)
 
 
 @pulumi.input_type
 class _ProjectState:
     def __init__(__self__, *,
-                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_pipeline_trigger_approve_deployment: Optional[pulumi.Input[_builtins.bool]] = None,
-                 analytics_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 approvals_before_merge: Optional[pulumi.Input[_builtins.int]] = None,
-                 archive_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_cancel_pending_pipelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_devops_deploy_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_duo_code_review_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 autoclose_referenced_issues: Optional[pulumi.Input[_builtins.bool]] = None,
-                 avatar: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 branches: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_git_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 builds_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_config_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_default_git_depth: Optional[pulumi.Input[_builtins.int]] = None,
-                 ci_delete_pipelines_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 ci_forward_deployment_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_forward_deployment_rollback_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_push_repository_for_job_token_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_separated_caches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_expiration_policy: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']] = None,
-                 container_registry_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_registry_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 empty_repo: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environments_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_authorization_classification_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_flags_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 forked_from_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 forking_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_with_project_templates_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_url_to_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_url_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_url_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 infrastructure_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 initialize_with_readme: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 issues_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 keep_latest_artifact: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 merge_commit_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_pipelines_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_request_title_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_request_title_regex_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_trains_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_trains_skip_train_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_overwrites_diverged_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_trigger_builds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 model_experiments_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_registry_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 mr_default_target_self: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_mirror_protected_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 packages_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pages_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_with_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 permanently_delete_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipelines_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pre_receive_secret_detection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_merge_without_jira_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 printing_merge_request_link_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_builds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_jobs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_rules: Optional[pulumi.Input['ProjectPushRulesArgs']] = None,
-                 releases_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 remove_source_branch_after_merge: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 requirements_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 resolve_outdated_diff_discussions: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_default_process_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 restrict_user_defined_variables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 runners_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_and_compliance_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_wait_for_default_branch_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 snippets_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 snippets_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 squash_commit_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 squash_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_url_to_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 suggestion_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_custom_template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 visibility_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_pipeline_trigger_approve_deployment: pulumi.Input[Optional[_builtins.bool]] = None,
+                 analytics_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 approvals_before_merge: pulumi.Input[Optional[_builtins.int]] = None,
+                 archive_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_cancel_pending_pipelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_devops_deploy_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_duo_code_review_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autoclose_referenced_issues: pulumi.Input[Optional[_builtins.bool]] = None,
+                 avatar: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 branches: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_git_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 builds_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_default_git_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 ci_delete_pipelines_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 ci_forward_deployment_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_forward_deployment_rollback_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_id_token_sub_claim_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ci_pipeline_variables_minimum_override_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_push_repository_for_job_token_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_restrict_pipeline_cancellation_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_separated_caches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_expiration_policy: pulumi.Input[Optional['ProjectContainerExpirationPolicyArgs']] = None,
+                 container_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_registry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 empty_repo: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_authorization_classification_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_flags_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 forked_from_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 forking_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_with_project_templates_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_url_to_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_url_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_url_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 infrastructure_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 initialize_with_readme: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 issues_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 merge_commit_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_pipelines_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_request_title_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_request_title_regex_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_trains_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_trains_skip_train_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_overwrites_diverged_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_trigger_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 model_experiments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 mr_default_target_self: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_allow_merge_if_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_mirror_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 packages_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pages_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_with_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 permanently_delete_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipelines_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pre_receive_secret_detection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_merge_without_jira_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 printing_merge_request_link_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_jobs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_rules: pulumi.Input[Optional['ProjectPushRulesArgs']] = None,
+                 releases_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 remove_source_branch_after_merge: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 requirements_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 resolve_outdated_diff_discussions: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_default_process_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 restrict_user_defined_variables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 runners_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_wait_for_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 snippets_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 snippets_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 squash_commit_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 squash_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_url_to_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 suggestion_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_custom_template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 visibility_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Project resources.
 
@@ -2355,1218 +2355,1218 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="allowMergeOnSkippedPipeline")
-    def allow_merge_on_skipped_pipeline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_merge_on_skipped_pipeline(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if you want to treat skipped pipelines as if they finished with success.
         """
         return pulumi.get(self, "allow_merge_on_skipped_pipeline")
 
     @allow_merge_on_skipped_pipeline.setter
-    def allow_merge_on_skipped_pipeline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_merge_on_skipped_pipeline(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_merge_on_skipped_pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="allowPipelineTriggerApproveDeployment")
-    def allow_pipeline_trigger_approve_deployment(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_pipeline_trigger_approve_deployment(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         """
         return pulumi.get(self, "allow_pipeline_trigger_approve_deployment")
 
     @allow_pipeline_trigger_approve_deployment.setter
-    def allow_pipeline_trigger_approve_deployment(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_pipeline_trigger_approve_deployment(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_pipeline_trigger_approve_deployment", value)
 
     @_builtins.property
     @pulumi.getter(name="analyticsAccessLevel")
-    def analytics_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def analytics_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "analytics_access_level")
 
     @analytics_access_level.setter
-    def analytics_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def analytics_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "analytics_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="approvalsBeforeMerge")
     @_utilities.deprecated("""Use the resource `ProjectApprovalRule` instead. To be removed in 19.0.""")
-    def approvals_before_merge(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def approvals_before_merge(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `ProjectApprovalRule` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "approvals_before_merge")
 
     @approvals_before_merge.setter
-    def approvals_before_merge(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def approvals_before_merge(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "approvals_before_merge", value)
 
     @_builtins.property
     @pulumi.getter(name="archiveOnDestroy")
-    def archive_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def archive_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
         """
         return pulumi.get(self, "archive_on_destroy")
 
     @archive_on_destroy.setter
-    def archive_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def archive_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "archive_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def archived(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def archived(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the project is in read-only mode (archived). Repositories can be archived/unarchived by toggling this parameter.
         """
         return pulumi.get(self, "archived")
 
     @archived.setter
-    def archived(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def archived(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "archived", value)
 
     @_builtins.property
     @pulumi.getter(name="autoCancelPendingPipelines")
-    def auto_cancel_pending_pipelines(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_cancel_pending_pipelines(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Auto-cancel pending pipelines. This isn't a boolean, but enabled/disabled.
         """
         return pulumi.get(self, "auto_cancel_pending_pipelines")
 
     @auto_cancel_pending_pipelines.setter
-    def auto_cancel_pending_pipelines(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_cancel_pending_pipelines(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_cancel_pending_pipelines", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDevopsDeployStrategy")
-    def auto_devops_deploy_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_devops_deploy_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         """
         return pulumi.get(self, "auto_devops_deploy_strategy")
 
     @auto_devops_deploy_strategy.setter
-    def auto_devops_deploy_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_devops_deploy_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_devops_deploy_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDevopsEnabled")
-    def auto_devops_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_devops_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Auto DevOps for this project.
         """
         return pulumi.get(self, "auto_devops_enabled")
 
     @auto_devops_enabled.setter
-    def auto_devops_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_devops_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_devops_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDuoCodeReviewEnabled")
-    def auto_duo_code_review_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_duo_code_review_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
         """
         return pulumi.get(self, "auto_duo_code_review_enabled")
 
     @auto_duo_code_review_enabled.setter
-    def auto_duo_code_review_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_duo_code_review_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_duo_code_review_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="autocloseReferencedIssues")
-    def autoclose_referenced_issues(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def autoclose_referenced_issues(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set whether auto-closing referenced issues on default branch.
         """
         return pulumi.get(self, "autoclose_referenced_issues")
 
     @autoclose_referenced_issues.setter
-    def autoclose_referenced_issues(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def autoclose_referenced_issues(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autoclose_referenced_issues", value)
 
     @_builtins.property
     @pulumi.getter
-    def avatar(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path to the avatar image to upload. **Note**: not available for imported resources.
         """
         return pulumi.get(self, "avatar")
 
     @avatar.setter
-    def avatar(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar", value)
 
     @_builtins.property
     @pulumi.getter(name="avatarHash")
-    def avatar_hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar_hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         """
         return pulumi.get(self, "avatar_hash")
 
     @avatar_hash.setter
-    def avatar_hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar_hash", value)
 
     @_builtins.property
     @pulumi.getter(name="avatarUrl")
-    def avatar_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the avatar image.
         """
         return pulumi.get(self, "avatar_url")
 
     @avatar_url.setter
-    def avatar_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def branches(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branches(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Branches to fork (empty for all branches).
         """
         return pulumi.get(self, "branches")
 
     @branches.setter
-    def branches(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branches(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branches", value)
 
     @_builtins.property
     @pulumi.getter(name="buildGitStrategy")
-    def build_git_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def build_git_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Git strategy. Defaults to fetch. Valid values are `clone`, `fetch`.
         """
         return pulumi.get(self, "build_git_strategy")
 
     @build_git_strategy.setter
-    def build_git_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def build_git_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "build_git_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="buildTimeout")
-    def build_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def build_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum amount of time, in seconds, that a job can run.
         """
         return pulumi.get(self, "build_timeout")
 
     @build_timeout.setter
-    def build_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def build_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "build_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="buildsAccessLevel")
-    def builds_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def builds_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "builds_access_level")
 
     @builds_access_level.setter
-    def builds_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def builds_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "builds_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="ciConfigPath")
-    def ci_config_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ci_config_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom Path to CI config file.
         """
         return pulumi.get(self, "ci_config_path")
 
     @ci_config_path.setter
-    def ci_config_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ci_config_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ci_config_path", value)
 
     @_builtins.property
     @pulumi.getter(name="ciDefaultGitDepth")
-    def ci_default_git_depth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ci_default_git_depth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default number of revisions for shallow cloning.
         """
         return pulumi.get(self, "ci_default_git_depth")
 
     @ci_default_git_depth.setter
-    def ci_default_git_depth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ci_default_git_depth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ci_default_git_depth", value)
 
     @_builtins.property
     @pulumi.getter(name="ciDeletePipelinesInSeconds")
-    def ci_delete_pipelines_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ci_delete_pipelines_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Pipelines older than the configured time are deleted.
         """
         return pulumi.get(self, "ci_delete_pipelines_in_seconds")
 
     @ci_delete_pipelines_in_seconds.setter
-    def ci_delete_pipelines_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ci_delete_pipelines_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ci_delete_pipelines_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="ciForwardDeploymentEnabled")
-    def ci_forward_deployment_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ci_forward_deployment_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When a new deployment job starts, skip older deployment jobs that are still pending.
         """
         return pulumi.get(self, "ci_forward_deployment_enabled")
 
     @ci_forward_deployment_enabled.setter
-    def ci_forward_deployment_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ci_forward_deployment_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ci_forward_deployment_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ciForwardDeploymentRollbackAllowed")
-    def ci_forward_deployment_rollback_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ci_forward_deployment_rollback_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow job retries even if the deployment job is outdated.
         """
         return pulumi.get(self, "ci_forward_deployment_rollback_allowed")
 
     @ci_forward_deployment_rollback_allowed.setter
-    def ci_forward_deployment_rollback_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ci_forward_deployment_rollback_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ci_forward_deployment_rollback_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="ciIdTokenSubClaimComponents")
-    def ci_id_token_sub_claim_components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ci_id_token_sub_claim_components(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
         """
         return pulumi.get(self, "ci_id_token_sub_claim_components")
 
     @ci_id_token_sub_claim_components.setter
-    def ci_id_token_sub_claim_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ci_id_token_sub_claim_components(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ci_id_token_sub_claim_components", value)
 
     @_builtins.property
     @pulumi.getter(name="ciPipelineVariablesMinimumOverrideRole")
-    def ci_pipeline_variables_minimum_override_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ci_pipeline_variables_minimum_override_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
         """
         return pulumi.get(self, "ci_pipeline_variables_minimum_override_role")
 
     @ci_pipeline_variables_minimum_override_role.setter
-    def ci_pipeline_variables_minimum_override_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ci_pipeline_variables_minimum_override_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ci_pipeline_variables_minimum_override_role", value)
 
     @_builtins.property
     @pulumi.getter(name="ciPushRepositoryForJobTokenAllowed")
-    def ci_push_repository_for_job_token_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ci_push_repository_for_job_token_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
         """
         return pulumi.get(self, "ci_push_repository_for_job_token_allowed")
 
     @ci_push_repository_for_job_token_allowed.setter
-    def ci_push_repository_for_job_token_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ci_push_repository_for_job_token_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ci_push_repository_for_job_token_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")
-    def ci_restrict_pipeline_cancellation_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ci_restrict_pipeline_cancellation_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
         """
         return pulumi.get(self, "ci_restrict_pipeline_cancellation_role")
 
     @ci_restrict_pipeline_cancellation_role.setter
-    def ci_restrict_pipeline_cancellation_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ci_restrict_pipeline_cancellation_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ci_restrict_pipeline_cancellation_role", value)
 
     @_builtins.property
     @pulumi.getter(name="ciSeparatedCaches")
-    def ci_separated_caches(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ci_separated_caches(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use separate caches for protected branches.
         """
         return pulumi.get(self, "ci_separated_caches")
 
     @ci_separated_caches.setter
-    def ci_separated_caches(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ci_separated_caches(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ci_separated_caches", value)
 
     @_builtins.property
     @pulumi.getter(name="containerExpirationPolicy")
-    def container_expiration_policy(self) -> Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']]:
+    def container_expiration_policy(self) -> pulumi.Input[Optional['ProjectContainerExpirationPolicyArgs']]:
         """
         Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         """
         return pulumi.get(self, "container_expiration_policy")
 
     @container_expiration_policy.setter
-    def container_expiration_policy(self, value: Optional[pulumi.Input['ProjectContainerExpirationPolicyArgs']]):
+    def container_expiration_policy(self, value: pulumi.Input[Optional['ProjectContainerExpirationPolicyArgs']]):
         pulumi.set(self, "container_expiration_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryAccessLevel")
-    def container_registry_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_registry_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "container_registry_access_level")
 
     @container_registry_access_level.setter
-    def container_registry_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_registry_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_registry_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryEnabled")
     @_utilities.deprecated("""Use `container_registry_access_level` instead. To be removed in 19.0.""")
-    def container_registry_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def container_registry_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable container registry for the project. Use `container_registry_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "container_registry_enabled")
 
     @container_registry_enabled.setter
-    def container_registry_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def container_registry_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "container_registry_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranch")
-    def default_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default branch for the project.
         """
         return pulumi.get(self, "default_branch")
 
     @default_branch.setter
-    def default_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_branch", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the project.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="emailsEnabled")
-    def emails_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def emails_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable email notifications.
         """
         return pulumi.get(self, "emails_enabled")
 
     @emails_enabled.setter
-    def emails_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def emails_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "emails_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="emptyRepo")
-    def empty_repo(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def empty_repo(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the project is empty.
         """
         return pulumi.get(self, "empty_repo")
 
     @empty_repo.setter
-    def empty_repo(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def empty_repo(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "empty_repo", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentsAccessLevel")
-    def environments_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environments_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "environments_access_level")
 
     @environments_access_level.setter
-    def environments_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environments_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environments_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAuthorizationClassificationLabel")
-    def external_authorization_classification_label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_authorization_classification_label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The classification label for the project.
         """
         return pulumi.get(self, "external_authorization_classification_label")
 
     @external_authorization_classification_label.setter
-    def external_authorization_classification_label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_authorization_classification_label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_authorization_classification_label", value)
 
     @_builtins.property
     @pulumi.getter(name="featureFlagsAccessLevel")
-    def feature_flags_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feature_flags_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "feature_flags_access_level")
 
     @feature_flags_access_level.setter
-    def feature_flags_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feature_flags_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feature_flags_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="forkedFromProjectId")
-    def forked_from_project_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def forked_from_project_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The id of the project to fork. During create the project is forked and during an update the fork relation is changed.
         """
         return pulumi.get(self, "forked_from_project_id")
 
     @forked_from_project_id.setter
-    def forked_from_project_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def forked_from_project_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "forked_from_project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="forkingAccessLevel")
-    def forking_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forking_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "forking_access_level")
 
     @forking_access_level.setter
-    def forking_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forking_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forking_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="groupRunnersEnabled")
-    def group_runners_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def group_runners_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable group runners for this project.
         """
         return pulumi.get(self, "group_runners_enabled")
 
     @group_runners_enabled.setter
-    def group_runners_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def group_runners_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "group_runners_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="groupWithProjectTemplatesId")
-    def group_with_project_templates_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_with_project_templates_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires use*custom*template to be true (enterprise edition).
         """
         return pulumi.get(self, "group_with_project_templates_id")
 
     @group_with_project_templates_id.setter
-    def group_with_project_templates_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_with_project_templates_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_with_project_templates_id", value)
 
     @_builtins.property
     @pulumi.getter(name="httpUrlToRepo")
-    def http_url_to_repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_url_to_repo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL that can be provided to `git clone` to clone the
         """
         return pulumi.get(self, "http_url_to_repo")
 
     @http_url_to_repo.setter
-    def http_url_to_repo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_url_to_repo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_url_to_repo", value)
 
     @_builtins.property
     @pulumi.getter(name="importUrl")
-    def import_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def import_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forked_from_project_id` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `import_url_username` and `import_url_password`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url")
 
     @import_url.setter
-    def import_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def import_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "import_url", value)
 
     @_builtins.property
     @pulumi.getter(name="importUrlPassword")
-    def import_url_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def import_url_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`. See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url_password")
 
     @import_url_password.setter
-    def import_url_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def import_url_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "import_url_password", value)
 
     @_builtins.property
     @pulumi.getter(name="importUrlUsername")
-    def import_url_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def import_url_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         """
         return pulumi.get(self, "import_url_username")
 
     @import_url_username.setter
-    def import_url_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def import_url_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "import_url_username", value)
 
     @_builtins.property
     @pulumi.getter(name="infrastructureAccessLevel")
-    def infrastructure_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infrastructure_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "infrastructure_access_level")
 
     @infrastructure_access_level.setter
-    def infrastructure_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infrastructure_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infrastructure_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="initializeWithReadme")
-    def initialize_with_readme(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def initialize_with_readme(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         """
         return pulumi.get(self, "initialize_with_readme")
 
     @initialize_with_readme.setter
-    def initialize_with_readme(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def initialize_with_readme(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "initialize_with_readme", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesAccessLevel")
-    def issues_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issues_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "issues_access_level")
 
     @issues_access_level.setter
-    def issues_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issues_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issues_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesEnabled")
     @_utilities.deprecated("""Use `issues_access_level` instead. To be removed in 19.0.""")
-    def issues_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def issues_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable issue tracking for the project. Use `issues_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "issues_enabled")
 
     @issues_enabled.setter
-    def issues_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def issues_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "issues_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesTemplate")
-    def issues_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issues_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the template for new issues in the project.
         """
         return pulumi.get(self, "issues_template")
 
     @issues_template.setter
-    def issues_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issues_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issues_template", value)
 
     @_builtins.property
     @pulumi.getter(name="keepLatestArtifact")
-    def keep_latest_artifact(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_latest_artifact(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable or enable the ability to keep the latest artifact for this project.
         """
         return pulumi.get(self, "keep_latest_artifact")
 
     @keep_latest_artifact.setter
-    def keep_latest_artifact(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_latest_artifact(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_latest_artifact", value)
 
     @_builtins.property
     @pulumi.getter(name="lfsEnabled")
-    def lfs_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lfs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable LFS for the project.
         """
         return pulumi.get(self, "lfs_enabled")
 
     @lfs_enabled.setter
-    def lfs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lfs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lfs_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maxArtifactsSize")
-    def max_artifacts_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_artifacts_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum file size in megabytes for individual job artifacts.
         """
         return pulumi.get(self, "max_artifacts_size")
 
     @max_artifacts_size.setter
-    def max_artifacts_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_artifacts_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_artifacts_size", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeCommitTemplate")
-    def merge_commit_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_commit_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template used to create merge commit message in merge requests.
         """
         return pulumi.get(self, "merge_commit_template")
 
     @merge_commit_template.setter
-    def merge_commit_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_commit_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_commit_template", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeMethod")
-    def merge_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the merge method. Valid values are `merge`, `rebase_merge`, `ff`.
         """
         return pulumi.get(self, "merge_method")
 
     @merge_method.setter
-    def merge_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_method", value)
 
     @_builtins.property
     @pulumi.getter(name="mergePipelinesEnabled")
-    def merge_pipelines_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_pipelines_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable merge pipelines.
         """
         return pulumi.get(self, "merge_pipelines_enabled")
 
     @merge_pipelines_enabled.setter
-    def merge_pipelines_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_pipelines_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_pipelines_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestTitleRegex")
-    def merge_request_title_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_request_title_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the regex pattern that merge request titles must match. Use `merge_request_title_regex_description` to provide a hint to the user.
         """
         return pulumi.get(self, "merge_request_title_regex")
 
     @merge_request_title_regex.setter
-    def merge_request_title_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_request_title_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_request_title_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestTitleRegexDescription")
-    def merge_request_title_regex_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_request_title_regex_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the description shown to users when a merge request title does not match `merge_request_title_regex`.
         """
         return pulumi.get(self, "merge_request_title_regex_description")
 
     @merge_request_title_regex_description.setter
-    def merge_request_title_regex_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_request_title_regex_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_request_title_regex_description", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsAccessLevel")
-    def merge_requests_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_requests_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "merge_requests_access_level")
 
     @merge_requests_access_level.setter
-    def merge_requests_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_requests_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_requests_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEnabled")
     @_utilities.deprecated("""Use `merge_requests_access_level` instead. To be removed in 19.0.""")
-    def merge_requests_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_requests_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable merge requests for the project. Use `merge_requests_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "merge_requests_enabled")
 
     @merge_requests_enabled.setter
-    def merge_requests_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_requests_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_requests_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsTemplate")
-    def merge_requests_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_requests_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the template for new merge requests in the project.
         """
         return pulumi.get(self, "merge_requests_template")
 
     @merge_requests_template.setter
-    def merge_requests_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_requests_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_requests_template", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeTrainsEnabled")
-    def merge_trains_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_trains_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         """
         return pulumi.get(self, "merge_trains_enabled")
 
     @merge_trains_enabled.setter
-    def merge_trains_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_trains_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_trains_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeTrainsSkipTrainAllowed")
-    def merge_trains_skip_train_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_trains_skip_train_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         """
         return pulumi.get(self, "merge_trains_skip_train_allowed")
 
     @merge_trains_skip_train_allowed.setter
-    def merge_trains_skip_train_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_trains_skip_train_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_trains_skip_train_allowed", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""To be removed in 19.0. Use `ProjectPullMirror` instead.""")
-    def mirror(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mirror(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deprecated: to be removed in 19.0. Use `ProjectPullMirror` instead. Enable project pull mirror.
         """
         return pulumi.get(self, "mirror")
 
     @mirror.setter
-    def mirror(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mirror(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mirror", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorOverwritesDivergedBranches")
     @_utilities.deprecated("""To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.""")
-    def mirror_overwrites_diverged_branches(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mirror_overwrites_diverged_branches(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
         """
         return pulumi.get(self, "mirror_overwrites_diverged_branches")
 
     @mirror_overwrites_diverged_branches.setter
-    def mirror_overwrites_diverged_branches(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mirror_overwrites_diverged_branches(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mirror_overwrites_diverged_branches", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorTriggerBuilds")
     @_utilities.deprecated("""To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.""")
-    def mirror_trigger_builds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mirror_trigger_builds(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
         """
         return pulumi.get(self, "mirror_trigger_builds")
 
     @mirror_trigger_builds.setter
-    def mirror_trigger_builds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mirror_trigger_builds(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mirror_trigger_builds", value)
 
     @_builtins.property
     @pulumi.getter(name="modelExperimentsAccessLevel")
-    def model_experiments_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_experiments_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "model_experiments_access_level")
 
     @model_experiments_access_level.setter
-    def model_experiments_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_experiments_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_experiments_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="modelRegistryAccessLevel")
-    def model_registry_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_registry_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "model_registry_access_level")
 
     @model_registry_access_level.setter
-    def model_registry_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_registry_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_registry_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorAccessLevel")
-    def monitor_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "monitor_access_level")
 
     @monitor_access_level.setter
-    def monitor_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="mrDefaultTargetSelf")
-    def mr_default_target_self(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mr_default_target_self(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         For forked projects, target merge requests to this project. If false, the target will be the upstream project.
         """
         return pulumi.get(self, "mr_default_target_self")
 
     @mr_default_target_self.setter
-    def mr_default_target_self(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mr_default_target_self(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mr_default_target_self", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def namespace_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The namespace (group or user) of the project. Defaults to your user.
         """
         return pulumi.get(self, "namespace_id")
 
     @namespace_id.setter
-    def namespace_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def namespace_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "namespace_id", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
-    def only_allow_merge_if_all_discussions_are_resolved(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_allow_merge_if_all_discussions_are_resolved(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if you want allow merges only if all discussions are resolved.
         """
         return pulumi.get(self, "only_allow_merge_if_all_discussions_are_resolved")
 
     @only_allow_merge_if_all_discussions_are_resolved.setter
-    def only_allow_merge_if_all_discussions_are_resolved(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_allow_merge_if_all_discussions_are_resolved(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_allow_merge_if_all_discussions_are_resolved", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyAllowMergeIfPipelineSucceeds")
-    def only_allow_merge_if_pipeline_succeeds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_allow_merge_if_pipeline_succeeds(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if you want allow merges only if a pipeline succeeds.
         """
         return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
 
     @only_allow_merge_if_pipeline_succeeds.setter
-    def only_allow_merge_if_pipeline_succeeds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_allow_merge_if_pipeline_succeeds(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_allow_merge_if_pipeline_succeeds", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyMirrorProtectedBranches")
     @_utilities.deprecated("""To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.""")
-    def only_mirror_protected_branches(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_mirror_protected_branches(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
         """
         return pulumi.get(self, "only_mirror_protected_branches")
 
     @only_mirror_protected_branches.setter
-    def only_mirror_protected_branches(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_mirror_protected_branches(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_mirror_protected_branches", value)
 
     @_builtins.property
     @pulumi.getter(name="packagesEnabled")
-    def packages_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def packages_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable packages repository for the project.
         """
         return pulumi.get(self, "packages_enabled")
 
     @packages_enabled.setter
-    def packages_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def packages_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "packages_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="pagesAccessLevel")
-    def pages_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pages_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable pages access control. Valid values are `public`, `private`, `enabled`, `disabled`.
         """
         return pulumi.get(self, "pages_access_level")
 
     @pages_access_level.setter
-    def pages_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pages_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pages_access_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of the repository.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="pathWithNamespace")
-    def path_with_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path_with_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of the repository with namespace.
         """
         return pulumi.get(self, "path_with_namespace")
 
     @path_with_namespace.setter
-    def path_with_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path_with_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_with_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="permanentlyDeleteOnDestroy")
-    def permanently_delete_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def permanently_delete_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
         """
         return pulumi.get(self, "permanently_delete_on_destroy")
 
     @permanently_delete_on_destroy.setter
-    def permanently_delete_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def permanently_delete_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "permanently_delete_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelinesEnabled")
     @_utilities.deprecated("""Use `builds_access_level` instead. To be removed in 19.0.""")
-    def pipelines_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pipelines_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable pipelines for the project. The `pipelines_enabled` field is being sent as `jobs_enabled` in the GitLab API calls. Use `builds_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "pipelines_enabled")
 
     @pipelines_enabled.setter
-    def pipelines_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pipelines_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pipelines_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="preReceiveSecretDetectionEnabled")
-    def pre_receive_secret_detection_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pre_receive_secret_detection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         """
         return pulumi.get(self, "pre_receive_secret_detection_enabled")
 
     @pre_receive_secret_detection_enabled.setter
-    def pre_receive_secret_detection_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pre_receive_secret_detection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pre_receive_secret_detection_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="preventMergeWithoutJiraIssue")
-    def prevent_merge_without_jira_issue(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_merge_without_jira_issue(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         """
         return pulumi.get(self, "prevent_merge_without_jira_issue")
 
     @prevent_merge_without_jira_issue.setter
-    def prevent_merge_without_jira_issue(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_merge_without_jira_issue(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_merge_without_jira_issue", value)
 
     @_builtins.property
     @pulumi.getter(name="printingMergeRequestLinkEnabled")
-    def printing_merge_request_link_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def printing_merge_request_link_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Show link to create/view merge request when pushing from the command line
         """
         return pulumi.get(self, "printing_merge_request_link_enabled")
 
     @printing_merge_request_link_enabled.setter
-    def printing_merge_request_link_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def printing_merge_request_link_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "printing_merge_request_link_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="publicBuilds")
     @_utilities.deprecated("""The `public_builds` attribute has been deprecated in favor of `public_jobs` and will be removed in the next major version of the provider.""")
-    def public_builds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_builds(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, jobs can be viewed by non-project members.
         """
         return pulumi.get(self, "public_builds")
 
     @public_builds.setter
-    def public_builds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_builds(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_builds", value)
 
     @_builtins.property
     @pulumi.getter(name="publicJobs")
-    def public_jobs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_jobs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, jobs can be viewed by non-project members.
         """
         return pulumi.get(self, "public_jobs")
 
     @public_jobs.setter
-    def public_jobs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_jobs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_jobs", value)
 
     @_builtins.property
     @pulumi.getter(name="pushRules")
-    def push_rules(self) -> Optional[pulumi.Input['ProjectPushRulesArgs']]:
+    def push_rules(self) -> pulumi.Input[Optional['ProjectPushRulesArgs']]:
         """
         Push rules for the project.
         """
         return pulumi.get(self, "push_rules")
 
     @push_rules.setter
-    def push_rules(self, value: Optional[pulumi.Input['ProjectPushRulesArgs']]):
+    def push_rules(self, value: pulumi.Input[Optional['ProjectPushRulesArgs']]):
         pulumi.set(self, "push_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="releasesAccessLevel")
-    def releases_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def releases_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "releases_access_level")
 
     @releases_access_level.setter
-    def releases_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def releases_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "releases_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="removeSourceBranchAfterMerge")
-    def remove_source_branch_after_merge(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remove_source_branch_after_merge(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable `Delete source branch` option by default for all new merge requests.
         """
         return pulumi.get(self, "remove_source_branch_after_merge")
 
     @remove_source_branch_after_merge.setter
-    def remove_source_branch_after_merge(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remove_source_branch_after_merge(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remove_source_branch_after_merge", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryAccessLevel")
-    def repository_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "repository_access_level")
 
     @repository_access_level.setter
-    def repository_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryStorage")
-    def repository_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which storage shard the repository is on. (administrator only)
         """
         return pulumi.get(self, "repository_storage")
 
     @repository_storage.setter
-    def repository_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="requestAccessEnabled")
-    def request_access_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def request_access_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow users to request member access.
         """
         return pulumi.get(self, "request_access_enabled")
 
     @request_access_enabled.setter
-    def request_access_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def request_access_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "request_access_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="requirementsAccessLevel")
-    def requirements_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def requirements_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "requirements_access_level")
 
     @requirements_access_level.setter
-    def requirements_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def requirements_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "requirements_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="resolveOutdatedDiffDiscussions")
-    def resolve_outdated_diff_discussions(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def resolve_outdated_diff_discussions(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically resolve merge request diffs discussions on lines changed with a push.
         """
         return pulumi.get(self, "resolve_outdated_diff_discussions")
 
     @resolve_outdated_diff_discussions.setter
-    def resolve_outdated_diff_discussions(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def resolve_outdated_diff_discussions(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "resolve_outdated_diff_discussions", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupDefaultProcessMode")
-    def resource_group_default_process_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_default_process_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default resource group process mode for the project.
         """
         return pulumi.get(self, "resource_group_default_process_mode")
 
     @resource_group_default_process_mode.setter
-    def resource_group_default_process_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_default_process_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_default_process_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="restrictUserDefinedVariables")
     @_utilities.deprecated("""Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.""")
-    def restrict_user_defined_variables(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def restrict_user_defined_variables(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ci_pipeline_variables_minimum_override_role` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "restrict_user_defined_variables")
 
     @restrict_user_defined_variables.setter
-    def restrict_user_defined_variables(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def restrict_user_defined_variables(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "restrict_user_defined_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="runnersToken")
-    def runners_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runners_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Registration token to use during runner setup.
         """
         return pulumi.get(self, "runners_token")
 
     @runners_token.setter
-    def runners_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runners_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runners_token", value)
 
     @_builtins.property
     @pulumi.getter(name="securityAndComplianceAccessLevel")
-    def security_and_compliance_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_and_compliance_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "security_and_compliance_access_level")
 
     @security_and_compliance_access_level.setter
-    def security_and_compliance_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_and_compliance_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_and_compliance_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersEnabled")
-    def shared_runners_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared_runners_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable shared runners for this project.
         """
         return pulumi.get(self, "shared_runners_enabled")
 
     @shared_runners_enabled.setter
-    def shared_runners_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared_runners_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared_runners_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="skipWaitForDefaultBranchProtection")
-    def skip_wait_for_default_branch_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_wait_for_default_branch_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, the default behavior to wait for the default branch protection to be created is skipped.
         This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
@@ -3576,134 +3576,134 @@ class _ProjectState:
         return pulumi.get(self, "skip_wait_for_default_branch_protection")
 
     @skip_wait_for_default_branch_protection.setter
-    def skip_wait_for_default_branch_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_wait_for_default_branch_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_wait_for_default_branch_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="snippetsAccessLevel")
-    def snippets_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snippets_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "snippets_access_level")
 
     @snippets_access_level.setter
-    def snippets_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snippets_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snippets_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="snippetsEnabled")
     @_utilities.deprecated("""Use `snippets_access_level` instead. To be removed in 19.0.""")
-    def snippets_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def snippets_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable snippets for the project. Use `snippets_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "snippets_enabled")
 
     @snippets_enabled.setter
-    def snippets_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def snippets_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "snippets_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="squashCommitTemplate")
-    def squash_commit_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def squash_commit_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template used to create squash commit message in merge requests.
         """
         return pulumi.get(self, "squash_commit_template")
 
     @squash_commit_template.setter
-    def squash_commit_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def squash_commit_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "squash_commit_template", value)
 
     @_builtins.property
     @pulumi.getter(name="squashOption")
-    def squash_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def squash_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Squash commits when merge request is merged. Valid values are `never` (Do not allow), `always` (Require), `default_on` (Encourage), or `default_off` (Allow). The default value is `default_off` (Allow).
         """
         return pulumi.get(self, "squash_option")
 
     @squash_option.setter
-    def squash_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def squash_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "squash_option", value)
 
     @_builtins.property
     @pulumi.getter(name="sshUrlToRepo")
-    def ssh_url_to_repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssh_url_to_repo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL that can be provided to `git clone` to clone the
         """
         return pulumi.get(self, "ssh_url_to_repo")
 
     @ssh_url_to_repo.setter
-    def ssh_url_to_repo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssh_url_to_repo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssh_url_to_repo", value)
 
     @_builtins.property
     @pulumi.getter(name="suggestionCommitMessage")
-    def suggestion_commit_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suggestion_commit_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The commit message used to apply merge request suggestions.
         """
         return pulumi.get(self, "suggestion_commit_message")
 
     @suggestion_commit_message.setter
-    def suggestion_commit_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suggestion_commit_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suggestion_commit_message", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Use `topics` instead. To be removed in 19.0.""")
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="templateName")
-    def template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `template_project_id`.
         """
         return pulumi.get(self, "template_name")
 
     @template_name.setter
-    def template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_name", value)
 
     @_builtins.property
     @pulumi.getter(name="templateProjectId")
-    def template_project_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def template_project_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When used with use*custom*template, project ID of a custom project template. This is preferable to using template*name since template*name may be ambiguous (enterprise edition). This option is mutually exclusive with `template_name`. See `GroupProjectFileTemplate` to set a project as a template project. If a project has not been set as a template, using it here will result in an error.
         """
         return pulumi.get(self, "template_project_id")
 
     @template_project_id.setter
-    def template_project_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def template_project_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "template_project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def topics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of topics for the project.
         """
         return pulumi.get(self, "topics")
 
     @topics.setter
-    def topics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def topics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "topics", value)
 
     @_builtins.property
     @pulumi.getter(name="useCustomTemplate")
-    def use_custom_template(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_custom_template(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use either custom instance or group (with group*with*project*templates*id) project template (enterprise edition).
         	> When using a custom template, [Group Tokens won't work](https://docs.gitlab.com/user/project/settings/import_export_troubleshooting/#import-using-the-rest-api-fails-when-using-a-group-access-token). You must use a real user's Personal Access Token.
@@ -3711,56 +3711,56 @@ class _ProjectState:
         return pulumi.get(self, "use_custom_template")
 
     @use_custom_template.setter
-    def use_custom_template(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_custom_template(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_custom_template", value)
 
     @_builtins.property
     @pulumi.getter(name="visibilityLevel")
-    def visibility_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visibility_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set to `public` to create a public project. Valid values are `private`, `internal`, `public`.
         """
         return pulumi.get(self, "visibility_level")
 
     @visibility_level.setter
-    def visibility_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visibility_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visibility_level", value)
 
     @_builtins.property
     @pulumi.getter(name="webUrl")
-    def web_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def web_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL that can be used to find the project in a browser.
         """
         return pulumi.get(self, "web_url")
 
     @web_url.setter
-    def web_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def web_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "web_url", value)
 
     @_builtins.property
     @pulumi.getter(name="wikiAccessLevel")
-    def wiki_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def wiki_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "wiki_access_level")
 
     @wiki_access_level.setter
-    def wiki_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def wiki_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "wiki_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="wikiEnabled")
     @_utilities.deprecated("""Use `wiki_access_level` instead. To be removed in 19.0.""")
-    def wiki_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wiki_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable wiki for the project. Use `wiki_access_level` instead. To be removed in 19.0.
         """
         return pulumi.get(self, "wiki_enabled")
 
     @wiki_enabled.setter
-    def wiki_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wiki_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wiki_enabled", value)
 
 
@@ -3770,115 +3770,115 @@ class Project(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_pipeline_trigger_approve_deployment: Optional[pulumi.Input[_builtins.bool]] = None,
-                 analytics_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 approvals_before_merge: Optional[pulumi.Input[_builtins.int]] = None,
-                 archive_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_cancel_pending_pipelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_devops_deploy_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_duo_code_review_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 autoclose_referenced_issues: Optional[pulumi.Input[_builtins.bool]] = None,
-                 avatar: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 branches: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_git_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 builds_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_config_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_default_git_depth: Optional[pulumi.Input[_builtins.int]] = None,
-                 ci_delete_pipelines_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 ci_forward_deployment_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_forward_deployment_rollback_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_push_repository_for_job_token_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_separated_caches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_expiration_policy: Optional[pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
-                 container_registry_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_registry_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environments_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_authorization_classification_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_flags_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 forked_from_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 forking_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_with_project_templates_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 import_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_url_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_url_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 infrastructure_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 initialize_with_readme: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 issues_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 keep_latest_artifact: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 merge_commit_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_pipelines_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_request_title_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_request_title_regex_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_trains_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_trains_skip_train_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_overwrites_diverged_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_trigger_builds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 model_experiments_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_registry_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 mr_default_target_self: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_mirror_protected_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 packages_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pages_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 permanently_delete_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipelines_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pre_receive_secret_detection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_merge_without_jira_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 printing_merge_request_link_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_builds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_jobs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_rules: Optional[pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']]] = None,
-                 releases_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 remove_source_branch_after_merge: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 requirements_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 resolve_outdated_diff_discussions: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_default_process_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 restrict_user_defined_variables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_and_compliance_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_wait_for_default_branch_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 snippets_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 snippets_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 squash_commit_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 squash_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 suggestion_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_custom_template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 visibility_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_pipeline_trigger_approve_deployment: pulumi.Input[Optional[_builtins.bool]] = None,
+                 analytics_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 approvals_before_merge: pulumi.Input[Optional[_builtins.int]] = None,
+                 archive_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_cancel_pending_pipelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_devops_deploy_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_duo_code_review_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autoclose_referenced_issues: pulumi.Input[Optional[_builtins.bool]] = None,
+                 avatar: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 branches: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_git_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 builds_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_default_git_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 ci_delete_pipelines_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 ci_forward_deployment_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_forward_deployment_rollback_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_id_token_sub_claim_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ci_pipeline_variables_minimum_override_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_push_repository_for_job_token_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_restrict_pipeline_cancellation_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_separated_caches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_expiration_policy: pulumi.Input[Optional[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
+                 container_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_registry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_authorization_classification_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_flags_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 forked_from_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 forking_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_with_project_templates_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 import_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_url_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_url_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 infrastructure_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 initialize_with_readme: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 issues_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 merge_commit_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_pipelines_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_request_title_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_request_title_regex_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_trains_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_trains_skip_train_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_overwrites_diverged_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_trigger_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 model_experiments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 mr_default_target_self: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_allow_merge_if_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_mirror_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 packages_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pages_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 permanently_delete_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipelines_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pre_receive_secret_detection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_merge_without_jira_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 printing_merge_request_link_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_jobs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_rules: pulumi.Input[Optional[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']]] = None,
+                 releases_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 remove_source_branch_after_merge: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 requirements_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 resolve_outdated_diff_discussions: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_default_process_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 restrict_user_defined_variables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_wait_for_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 snippets_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 snippets_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 squash_commit_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 squash_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 suggestion_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_custom_template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 visibility_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The `Project` resource manages the lifecycle of a project.
@@ -4077,115 +4077,115 @@ class Project(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_pipeline_trigger_approve_deployment: Optional[pulumi.Input[_builtins.bool]] = None,
-                 analytics_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 approvals_before_merge: Optional[pulumi.Input[_builtins.int]] = None,
-                 archive_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_cancel_pending_pipelines: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_devops_deploy_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_duo_code_review_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 autoclose_referenced_issues: Optional[pulumi.Input[_builtins.bool]] = None,
-                 avatar: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 branches: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_git_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 builds_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_config_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_default_git_depth: Optional[pulumi.Input[_builtins.int]] = None,
-                 ci_delete_pipelines_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 ci_forward_deployment_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_forward_deployment_rollback_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_push_repository_for_job_token_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 ci_separated_caches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_expiration_policy: Optional[pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
-                 container_registry_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_registry_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environments_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_authorization_classification_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_flags_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 forked_from_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 forking_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_with_project_templates_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 import_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_url_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_url_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 infrastructure_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 initialize_with_readme: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 issues_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 keep_latest_artifact: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 merge_commit_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_pipelines_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_request_title_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_request_title_regex_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_requests_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_trains_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_trains_skip_train_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_overwrites_diverged_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_trigger_builds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 model_experiments_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_registry_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 mr_default_target_self: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_mirror_protected_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 packages_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pages_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 permanently_delete_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipelines_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pre_receive_secret_detection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_merge_without_jira_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 printing_merge_request_link_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_builds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_jobs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_rules: Optional[pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']]] = None,
-                 releases_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 remove_source_branch_after_merge: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 requirements_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 resolve_outdated_diff_discussions: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_default_process_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 restrict_user_defined_variables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_and_compliance_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_wait_for_default_branch_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 snippets_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 snippets_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 squash_commit_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 squash_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 suggestion_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_custom_template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 visibility_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_pipeline_trigger_approve_deployment: pulumi.Input[Optional[_builtins.bool]] = None,
+                 analytics_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 approvals_before_merge: pulumi.Input[Optional[_builtins.int]] = None,
+                 archive_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_cancel_pending_pipelines: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_devops_deploy_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_duo_code_review_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autoclose_referenced_issues: pulumi.Input[Optional[_builtins.bool]] = None,
+                 avatar: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 branches: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_git_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 builds_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_default_git_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 ci_delete_pipelines_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 ci_forward_deployment_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_forward_deployment_rollback_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_id_token_sub_claim_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ci_pipeline_variables_minimum_override_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_push_repository_for_job_token_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_restrict_pipeline_cancellation_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 ci_separated_caches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_expiration_policy: pulumi.Input[Optional[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
+                 container_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_registry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_authorization_classification_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_flags_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 forked_from_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 forking_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_with_project_templates_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 import_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_url_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_url_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 infrastructure_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 initialize_with_readme: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 issues_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 merge_commit_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_pipelines_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_request_title_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_request_title_regex_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_requests_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_trains_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_trains_skip_train_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_overwrites_diverged_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_trigger_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 model_experiments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 mr_default_target_self: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_allow_merge_if_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_mirror_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 packages_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pages_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 permanently_delete_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipelines_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pre_receive_secret_detection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_merge_without_jira_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 printing_merge_request_link_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_jobs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_rules: pulumi.Input[Optional[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']]] = None,
+                 releases_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 remove_source_branch_after_merge: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 requirements_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 resolve_outdated_diff_discussions: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_default_process_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 restrict_user_defined_variables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_wait_for_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 snippets_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 snippets_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 squash_commit_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 squash_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 suggestion_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_custom_template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 visibility_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -4323,122 +4323,122 @@ class Project(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_merge_on_skipped_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_pipeline_trigger_approve_deployment: Optional[pulumi.Input[_builtins.bool]] = None,
-            analytics_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            approvals_before_merge: Optional[pulumi.Input[_builtins.int]] = None,
-            archive_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            archived: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_cancel_pending_pipelines: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_devops_deploy_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_duo_code_review_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            autoclose_referenced_issues: Optional[pulumi.Input[_builtins.bool]] = None,
-            avatar: Optional[pulumi.Input[_builtins.str]] = None,
-            avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-            avatar_url: Optional[pulumi.Input[_builtins.str]] = None,
-            branches: Optional[pulumi.Input[_builtins.str]] = None,
-            build_git_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            build_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            builds_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            ci_config_path: Optional[pulumi.Input[_builtins.str]] = None,
-            ci_default_git_depth: Optional[pulumi.Input[_builtins.int]] = None,
-            ci_delete_pipelines_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            ci_forward_deployment_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            ci_forward_deployment_rollback_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            ci_id_token_sub_claim_components: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ci_pipeline_variables_minimum_override_role: Optional[pulumi.Input[_builtins.str]] = None,
-            ci_push_repository_for_job_token_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            ci_restrict_pipeline_cancellation_role: Optional[pulumi.Input[_builtins.str]] = None,
-            ci_separated_caches: Optional[pulumi.Input[_builtins.bool]] = None,
-            container_expiration_policy: Optional[pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
-            container_registry_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            container_registry_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            empty_repo: Optional[pulumi.Input[_builtins.bool]] = None,
-            environments_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            external_authorization_classification_label: Optional[pulumi.Input[_builtins.str]] = None,
-            feature_flags_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            forked_from_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-            forking_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            group_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            group_with_project_templates_id: Optional[pulumi.Input[_builtins.int]] = None,
-            http_url_to_repo: Optional[pulumi.Input[_builtins.str]] = None,
-            import_url: Optional[pulumi.Input[_builtins.str]] = None,
-            import_url_password: Optional[pulumi.Input[_builtins.str]] = None,
-            import_url_username: Optional[pulumi.Input[_builtins.str]] = None,
-            infrastructure_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            initialize_with_readme: Optional[pulumi.Input[_builtins.bool]] = None,
-            issues_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            issues_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            issues_template: Optional[pulumi.Input[_builtins.str]] = None,
-            keep_latest_artifact: Optional[pulumi.Input[_builtins.bool]] = None,
-            lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
-            merge_commit_template: Optional[pulumi.Input[_builtins.str]] = None,
-            merge_method: Optional[pulumi.Input[_builtins.str]] = None,
-            merge_pipelines_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            merge_request_title_regex: Optional[pulumi.Input[_builtins.str]] = None,
-            merge_request_title_regex_description: Optional[pulumi.Input[_builtins.str]] = None,
-            merge_requests_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            merge_requests_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            merge_requests_template: Optional[pulumi.Input[_builtins.str]] = None,
-            merge_trains_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            merge_trains_skip_train_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            mirror: Optional[pulumi.Input[_builtins.bool]] = None,
-            mirror_overwrites_diverged_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-            mirror_trigger_builds: Optional[pulumi.Input[_builtins.bool]] = None,
-            model_experiments_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            model_registry_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            monitor_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            mr_default_target_self: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_id: Optional[pulumi.Input[_builtins.int]] = None,
-            only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
-            only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
-            only_mirror_protected_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-            packages_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            pages_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            path: Optional[pulumi.Input[_builtins.str]] = None,
-            path_with_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            permanently_delete_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            pipelines_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            pre_receive_secret_detection_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            prevent_merge_without_jira_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-            printing_merge_request_link_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            public_builds: Optional[pulumi.Input[_builtins.bool]] = None,
-            public_jobs: Optional[pulumi.Input[_builtins.bool]] = None,
-            push_rules: Optional[pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']]] = None,
-            releases_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            remove_source_branch_after_merge: Optional[pulumi.Input[_builtins.bool]] = None,
-            repository_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_storage: Optional[pulumi.Input[_builtins.str]] = None,
-            request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            requirements_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            resolve_outdated_diff_discussions: Optional[pulumi.Input[_builtins.bool]] = None,
-            resource_group_default_process_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            restrict_user_defined_variables: Optional[pulumi.Input[_builtins.bool]] = None,
-            runners_token: Optional[pulumi.Input[_builtins.str]] = None,
-            security_and_compliance_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            shared_runners_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            skip_wait_for_default_branch_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            snippets_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            snippets_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            squash_commit_template: Optional[pulumi.Input[_builtins.str]] = None,
-            squash_option: Optional[pulumi.Input[_builtins.str]] = None,
-            ssh_url_to_repo: Optional[pulumi.Input[_builtins.str]] = None,
-            suggestion_commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            template_name: Optional[pulumi.Input[_builtins.str]] = None,
-            template_project_id: Optional[pulumi.Input[_builtins.int]] = None,
-            topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            use_custom_template: Optional[pulumi.Input[_builtins.bool]] = None,
-            visibility_level: Optional[pulumi.Input[_builtins.str]] = None,
-            web_url: Optional[pulumi.Input[_builtins.str]] = None,
-            wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            wiki_enabled: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Project':
+            allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_pipeline_trigger_approve_deployment: pulumi.Input[Optional[_builtins.bool]] = None,
+            analytics_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            approvals_before_merge: pulumi.Input[Optional[_builtins.int]] = None,
+            archive_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            archived: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_cancel_pending_pipelines: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_devops_deploy_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_duo_code_review_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            autoclose_referenced_issues: pulumi.Input[Optional[_builtins.bool]] = None,
+            avatar: pulumi.Input[Optional[_builtins.str]] = None,
+            avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            avatar_url: pulumi.Input[Optional[_builtins.str]] = None,
+            branches: pulumi.Input[Optional[_builtins.str]] = None,
+            build_git_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            build_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            builds_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
+            ci_default_git_depth: pulumi.Input[Optional[_builtins.int]] = None,
+            ci_delete_pipelines_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            ci_forward_deployment_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ci_forward_deployment_rollback_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            ci_id_token_sub_claim_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ci_pipeline_variables_minimum_override_role: pulumi.Input[Optional[_builtins.str]] = None,
+            ci_push_repository_for_job_token_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            ci_restrict_pipeline_cancellation_role: pulumi.Input[Optional[_builtins.str]] = None,
+            ci_separated_caches: pulumi.Input[Optional[_builtins.bool]] = None,
+            container_expiration_policy: pulumi.Input[Optional[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
+            container_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            container_registry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            empty_repo: pulumi.Input[Optional[_builtins.bool]] = None,
+            environments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            external_authorization_classification_label: pulumi.Input[Optional[_builtins.str]] = None,
+            feature_flags_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            forked_from_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+            forking_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            group_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_with_project_templates_id: pulumi.Input[Optional[_builtins.int]] = None,
+            http_url_to_repo: pulumi.Input[Optional[_builtins.str]] = None,
+            import_url: pulumi.Input[Optional[_builtins.str]] = None,
+            import_url_password: pulumi.Input[Optional[_builtins.str]] = None,
+            import_url_username: pulumi.Input[Optional[_builtins.str]] = None,
+            infrastructure_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            initialize_with_readme: pulumi.Input[Optional[_builtins.bool]] = None,
+            issues_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            issues_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            issues_template: pulumi.Input[Optional[_builtins.str]] = None,
+            keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
+            lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+            merge_commit_template: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_method: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_pipelines_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_request_title_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_request_title_regex_description: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_requests_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_requests_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_requests_template: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_trains_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_trains_skip_train_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            mirror: pulumi.Input[Optional[_builtins.bool]] = None,
+            mirror_overwrites_diverged_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+            mirror_trigger_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+            model_experiments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            model_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            mr_default_target_self: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
+            only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
+            only_allow_merge_if_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+            only_mirror_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+            packages_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            pages_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            path_with_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            permanently_delete_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            pipelines_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            pre_receive_secret_detection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            prevent_merge_without_jira_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+            printing_merge_request_link_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            public_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+            public_jobs: pulumi.Input[Optional[_builtins.bool]] = None,
+            push_rules: pulumi.Input[Optional[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']]] = None,
+            releases_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            remove_source_branch_after_merge: pulumi.Input[Optional[_builtins.bool]] = None,
+            repository_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            request_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            requirements_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            resolve_outdated_diff_discussions: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_group_default_process_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            restrict_user_defined_variables: pulumi.Input[Optional[_builtins.bool]] = None,
+            runners_token: pulumi.Input[Optional[_builtins.str]] = None,
+            security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            skip_wait_for_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            snippets_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            snippets_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            squash_commit_template: pulumi.Input[Optional[_builtins.str]] = None,
+            squash_option: pulumi.Input[Optional[_builtins.str]] = None,
+            ssh_url_to_repo: pulumi.Input[Optional[_builtins.str]] = None,
+            suggestion_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            template_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+            topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            use_custom_template: pulumi.Input[Optional[_builtins.bool]] = None,
+            visibility_level: pulumi.Input[Optional[_builtins.str]] = None,
+            web_url: pulumi.Input[Optional[_builtins.str]] = None,
+            wiki_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            wiki_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

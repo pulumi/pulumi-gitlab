@@ -589,8 +589,8 @@ def get_project_issue(iid: Optional[_builtins.int] = None,
         user_notes_count=pulumi.get(__ret__, 'user_notes_count'),
         web_url=pulumi.get(__ret__, 'web_url'),
         weight=pulumi.get(__ret__, 'weight'))
-def get_project_issue_output(iid: Optional[pulumi.Input[_builtins.int]] = None,
-                             project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_issue_output(iid: pulumi.Input[Optional[_builtins.int]] = None,
+                             project: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectIssueResult]:
     """
     The `ProjectIssue` data source allows to retrieve details about an issue in a project.

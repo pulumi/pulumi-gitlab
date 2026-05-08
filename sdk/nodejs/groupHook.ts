@@ -272,123 +272,123 @@ export interface GroupHookState {
     /**
      * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
      */
-    branchFilterStrategy?: pulumi.Input<string>;
+    branchFilterStrategy?: pulumi.Input<string | undefined>;
     /**
      * Invoke the hook for confidential issues events. Defaults to `false`.
      */
-    confidentialIssuesEvents?: pulumi.Input<boolean>;
+    confidentialIssuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for confidential note events. Defaults to `false`.
      */
-    confidentialNoteEvents?: pulumi.Input<boolean>;
+    confidentialNoteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Custom headers for the project webhook.
      */
-    customHeaders?: pulumi.Input<pulumi.Input<inputs.GroupHookCustomHeader>[]>;
+    customHeaders?: pulumi.Input<pulumi.Input<inputs.GroupHookCustomHeader>[] | undefined>;
     /**
      * Custom webhook template.
      */
-    customWebhookTemplate?: pulumi.Input<string>;
+    customWebhookTemplate?: pulumi.Input<string | undefined>;
     /**
      * Invoke the hook for deployment events. Defaults to `false`.
      */
-    deploymentEvents?: pulumi.Input<boolean>;
+    deploymentEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the group webhook.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Invoke the hook for emoji events. Defaults to `false`.
      */
-    emojiEvents?: pulumi.Input<boolean>;
+    emojiEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable SSL verification when invoking the hook. Defaults to `true`.
      */
-    enableSslVerification?: pulumi.Input<boolean>;
+    enableSslVerification?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for feature flag events. Defaults to `false`.
      */
-    featureFlagEvents?: pulumi.Input<boolean>;
+    featureFlagEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The full path or id of the group to add the hook to.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * The id of the group for the hook.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * The id of the group hook.
      */
-    hookId?: pulumi.Input<number>;
+    hookId?: pulumi.Input<number | undefined>;
     /**
      * Invoke the hook for issues events. Defaults to `false`.
      */
-    issuesEvents?: pulumi.Input<boolean>;
+    issuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for job events. Defaults to `false`.
      */
-    jobEvents?: pulumi.Input<boolean>;
+    jobEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for member events. Defaults to `false`.
      */
-    memberEvents?: pulumi.Input<boolean>;
+    memberEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for merge requests events. Defaults to `false`.
      */
-    mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the group webhook.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Invoke the hook for note events. Defaults to `false`.
      */
-    noteEvents?: pulumi.Input<boolean>;
+    noteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for pipeline events. Defaults to `false`.
      */
-    pipelineEvents?: pulumi.Input<boolean>;
+    pipelineEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for project events. Defaults to `false`.
      */
-    projectEvents?: pulumi.Input<boolean>;
+    projectEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for push events. Defaults to `true`.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for push events on matching branches only.
      */
-    pushEventsBranchFilter?: pulumi.Input<string>;
+    pushEventsBranchFilter?: pulumi.Input<string | undefined>;
     /**
      * Invoke the hook for release events. Defaults to `false`.
      */
-    releasesEvents?: pulumi.Input<boolean>;
+    releasesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for subgroup events. Defaults to `false`.
      */
-    subgroupEvents?: pulumi.Input<boolean>;
+    subgroupEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for tag push events. Defaults to `false`.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * A token to present when invoking the hook. The token is not available for imported resources.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Invoke the hook for vulnerability events. Defaults to `false`.
      */
-    vulnerabilityEvents?: pulumi.Input<boolean>;
+    vulnerabilityEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for wiki page events. Defaults to `false`.
      */
-    wikiPageEvents?: pulumi.Input<boolean>;
+    wikiPageEvents?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -398,43 +398,43 @@ export interface GroupHookArgs {
     /**
      * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
      */
-    branchFilterStrategy?: pulumi.Input<string>;
+    branchFilterStrategy?: pulumi.Input<string | undefined>;
     /**
      * Invoke the hook for confidential issues events. Defaults to `false`.
      */
-    confidentialIssuesEvents?: pulumi.Input<boolean>;
+    confidentialIssuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for confidential note events. Defaults to `false`.
      */
-    confidentialNoteEvents?: pulumi.Input<boolean>;
+    confidentialNoteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Custom headers for the project webhook.
      */
-    customHeaders?: pulumi.Input<pulumi.Input<inputs.GroupHookCustomHeader>[]>;
+    customHeaders?: pulumi.Input<pulumi.Input<inputs.GroupHookCustomHeader>[] | undefined>;
     /**
      * Custom webhook template.
      */
-    customWebhookTemplate?: pulumi.Input<string>;
+    customWebhookTemplate?: pulumi.Input<string | undefined>;
     /**
      * Invoke the hook for deployment events. Defaults to `false`.
      */
-    deploymentEvents?: pulumi.Input<boolean>;
+    deploymentEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the group webhook.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Invoke the hook for emoji events. Defaults to `false`.
      */
-    emojiEvents?: pulumi.Input<boolean>;
+    emojiEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Enable SSL verification when invoking the hook. Defaults to `true`.
      */
-    enableSslVerification?: pulumi.Input<boolean>;
+    enableSslVerification?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for feature flag events. Defaults to `false`.
      */
-    featureFlagEvents?: pulumi.Input<boolean>;
+    featureFlagEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The full path or id of the group to add the hook to.
      */
@@ -442,59 +442,59 @@ export interface GroupHookArgs {
     /**
      * Invoke the hook for issues events. Defaults to `false`.
      */
-    issuesEvents?: pulumi.Input<boolean>;
+    issuesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for job events. Defaults to `false`.
      */
-    jobEvents?: pulumi.Input<boolean>;
+    jobEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for member events. Defaults to `false`.
      */
-    memberEvents?: pulumi.Input<boolean>;
+    memberEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for merge requests events. Defaults to `false`.
      */
-    mergeRequestsEvents?: pulumi.Input<boolean>;
+    mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the group webhook.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Invoke the hook for note events. Defaults to `false`.
      */
-    noteEvents?: pulumi.Input<boolean>;
+    noteEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for pipeline events. Defaults to `false`.
      */
-    pipelineEvents?: pulumi.Input<boolean>;
+    pipelineEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for project events. Defaults to `false`.
      */
-    projectEvents?: pulumi.Input<boolean>;
+    projectEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for push events. Defaults to `true`.
      */
-    pushEvents?: pulumi.Input<boolean>;
+    pushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for push events on matching branches only.
      */
-    pushEventsBranchFilter?: pulumi.Input<string>;
+    pushEventsBranchFilter?: pulumi.Input<string | undefined>;
     /**
      * Invoke the hook for release events. Defaults to `false`.
      */
-    releasesEvents?: pulumi.Input<boolean>;
+    releasesEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for subgroup events. Defaults to `false`.
      */
-    subgroupEvents?: pulumi.Input<boolean>;
+    subgroupEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for tag push events. Defaults to `false`.
      */
-    tagPushEvents?: pulumi.Input<boolean>;
+    tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
      * A token to present when invoking the hook. The token is not available for imported resources.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
@@ -502,9 +502,9 @@ export interface GroupHookArgs {
     /**
      * Invoke the hook for vulnerability events. Defaults to `false`.
      */
-    vulnerabilityEvents?: pulumi.Input<boolean>;
+    vulnerabilityEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for wiki page events. Defaults to `false`.
      */
-    wikiPageEvents?: pulumi.Input<boolean>;
+    wikiPageEvents?: pulumi.Input<boolean | undefined>;
 }

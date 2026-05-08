@@ -186,7 +186,7 @@ export interface GetGroupSubgroupsOutputArgs {
     /**
      * Show all the groups you have access to.
      */
-    allAvailable?: pulumi.Input<boolean>;
+    allAvailable?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the group.
      */
@@ -194,33 +194,33 @@ export interface GetGroupSubgroupsOutputArgs {
     /**
      * Limit to groups where current user has at least this access level.
      */
-    minAccessLevel?: pulumi.Input<string>;
+    minAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Order groups by name, path or id.
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
     /**
      * Limit to groups explicitly owned by the current user.
      */
-    owned?: pulumi.Input<boolean>;
+    owned?: pulumi.Input<boolean | undefined>;
     /**
      * Return the list of authorized groups matching the search criteria.
      */
-    search?: pulumi.Input<string>;
+    search?: pulumi.Input<string | undefined>;
     /**
      * Skip the group IDs passed.
      */
-    skipGroups?: pulumi.Input<pulumi.Input<number>[]>;
+    skipGroups?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Order groups in asc or desc order.
      */
-    sort?: pulumi.Input<string>;
+    sort?: pulumi.Input<string | undefined>;
     /**
      * Include group statistics (administrators only).
      */
-    statistics?: pulumi.Input<boolean>;
+    statistics?: pulumi.Input<boolean | undefined>;
     /**
      * Include custom attributes in response (administrators only).
      */
-    withCustomAttributes?: pulumi.Input<boolean>;
+    withCustomAttributes?: pulumi.Input<boolean | undefined>;
 }

@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * });
  * const thisProject = new gitlab.Project("this", {
  *     name: "example",
- *     namespaceId: _this.id,
+ *     namespaceId: _this.id.apply(x =>Number(x)),
  *     initializeWithReadme: true,
  * });
  * const thisProjectSecureFile = new gitlab.ProjectSecureFile("this", {
@@ -168,35 +168,35 @@ export interface ProjectSecureFileState {
     /**
      * The checksum of the file
      */
-    checksum?: pulumi.Input<string>;
+    checksum?: pulumi.Input<string | undefined>;
     /**
      * The checksum algorithm used
      */
-    checksumAlgorithm?: pulumi.Input<string>;
+    checksumAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The contents of the secure file
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The time the secure file was uploaded
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The time the secure file will expire
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The name for the secure file, unique per project
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project to environment is created for.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The id of the secure file in gitlab
      */
-    secureFileId?: pulumi.Input<number>;
+    secureFileId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -210,7 +210,7 @@ export interface ProjectSecureFileArgs {
     /**
      * The name for the secure file, unique per project
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project to environment is created for.
      */

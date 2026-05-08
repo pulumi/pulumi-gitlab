@@ -136,19 +136,19 @@ export interface TagProtectionState {
     /**
      * Array of access levels/user(s)/group(s) allowed to create protected tags.
      */
-    allowedToCreates?: pulumi.Input<pulumi.Input<inputs.TagProtectionAllowedToCreate>[]>;
+    allowedToCreates?: pulumi.Input<pulumi.Input<inputs.TagProtectionAllowedToCreate>[] | undefined>;
     /**
      * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
-    createAccessLevel?: pulumi.Input<string>;
+    createAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * The id of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Name of the tag or wildcard.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -158,11 +158,11 @@ export interface TagProtectionArgs {
     /**
      * Array of access levels/user(s)/group(s) allowed to create protected tags.
      */
-    allowedToCreates?: pulumi.Input<pulumi.Input<inputs.TagProtectionAllowedToCreate>[]>;
+    allowedToCreates?: pulumi.Input<pulumi.Input<inputs.TagProtectionAllowedToCreate>[] | undefined>;
     /**
      * Access levels allowed to create. Default value of `maintainer`. The default value is always sent if not provided in the configuration. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
-    createAccessLevel?: pulumi.Input<string>;
+    createAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * The id of the project.
      */

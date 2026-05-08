@@ -21,13 +21,13 @@ class ProjectPullMirrorArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str],
-                 auth_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_branch_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 mirror_overwrites_diverged_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_trigger_builds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_mirror_protected_branches: Optional[pulumi.Input[_builtins.bool]] = None):
+                 auth_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_branch_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 mirror_overwrites_diverged_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_trigger_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_mirror_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectPullMirror resource.
 
@@ -84,107 +84,107 @@ class ProjectPullMirrorArgs:
 
     @_builtins.property
     @pulumi.getter(name="authPassword")
-    def auth_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authentication password or token for the remote repository.
         """
         return pulumi.get(self, "auth_password")
 
     @auth_password.setter
-    def auth_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_password", value)
 
     @_builtins.property
     @pulumi.getter(name="authUser")
-    def auth_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authentication username for the remote repository.
         """
         return pulumi.get(self, "auth_user")
 
     @auth_user.setter
-    def auth_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_user", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable the pull mirror. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorBranchRegex")
-    def mirror_branch_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mirror_branch_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Regular expression for branches to mirror. Requires GitLab Premium or Ultimate. Cannot be used with `only_mirror_protected_branches`.
         """
         return pulumi.get(self, "mirror_branch_regex")
 
     @mirror_branch_regex.setter
-    def mirror_branch_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mirror_branch_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mirror_branch_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorOverwritesDivergedBranches")
-    def mirror_overwrites_diverged_branches(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mirror_overwrites_diverged_branches(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Overwrite diverged branches on the target project.
         """
         return pulumi.get(self, "mirror_overwrites_diverged_branches")
 
     @mirror_overwrites_diverged_branches.setter
-    def mirror_overwrites_diverged_branches(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mirror_overwrites_diverged_branches(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mirror_overwrites_diverged_branches", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorTriggerBuilds")
-    def mirror_trigger_builds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mirror_trigger_builds(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Trigger CI/CD pipelines when the mirror updates.
         """
         return pulumi.get(self, "mirror_trigger_builds")
 
     @mirror_trigger_builds.setter
-    def mirror_trigger_builds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mirror_trigger_builds(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mirror_trigger_builds", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyMirrorProtectedBranches")
-    def only_mirror_protected_branches(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_mirror_protected_branches(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Mirror only protected branches. Cannot be used with `mirror_branch_regex`.
         """
         return pulumi.get(self, "only_mirror_protected_branches")
 
     @only_mirror_protected_branches.setter
-    def only_mirror_protected_branches(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_mirror_protected_branches(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_mirror_protected_branches", value)
 
 
 @pulumi.input_type
 class _ProjectPullMirrorState:
     def __init__(__self__, *,
-                 auth_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_error: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_successful_update_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_update_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_update_started_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 mirror_branch_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 mirror_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 mirror_overwrites_diverged_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_trigger_builds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_mirror_protected_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_error: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_successful_update_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_update_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_update_started_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 mirror_branch_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 mirror_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 mirror_overwrites_diverged_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_trigger_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_mirror_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectPullMirror resources.
 
@@ -237,182 +237,182 @@ class _ProjectPullMirrorState:
 
     @_builtins.property
     @pulumi.getter(name="authPassword")
-    def auth_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authentication password or token for the remote repository.
         """
         return pulumi.get(self, "auth_password")
 
     @auth_password.setter
-    def auth_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_password", value)
 
     @_builtins.property
     @pulumi.getter(name="authUser")
-    def auth_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authentication username for the remote repository.
         """
         return pulumi.get(self, "auth_user")
 
     @auth_user.setter
-    def auth_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_user", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable the pull mirror. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="lastError")
-    def last_error(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_error(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last error message from the mirror operation.
         """
         return pulumi.get(self, "last_error")
 
     @last_error.setter
-    def last_error(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_error(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_error", value)
 
     @_builtins.property
     @pulumi.getter(name="lastSuccessfulUpdateAt")
-    def last_successful_update_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_successful_update_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp of the last successful mirror update.
         """
         return pulumi.get(self, "last_successful_update_at")
 
     @last_successful_update_at.setter
-    def last_successful_update_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_successful_update_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_successful_update_at", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdateAt")
-    def last_update_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_update_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp of the last mirror update attempt.
         """
         return pulumi.get(self, "last_update_at")
 
     @last_update_at.setter
-    def last_update_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_update_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_update_at", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdateStartedAt")
-    def last_update_started_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_update_started_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the last mirror update started.
         """
         return pulumi.get(self, "last_update_started_at")
 
     @last_update_started_at.setter
-    def last_update_started_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_update_started_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_update_started_at", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorBranchRegex")
-    def mirror_branch_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mirror_branch_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Regular expression for branches to mirror. Requires GitLab Premium or Ultimate. Cannot be used with `only_mirror_protected_branches`.
         """
         return pulumi.get(self, "mirror_branch_regex")
 
     @mirror_branch_regex.setter
-    def mirror_branch_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mirror_branch_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mirror_branch_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorId")
-    def mirror_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mirror_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the pull mirror. This ID is set by GitLab.
         """
         return pulumi.get(self, "mirror_id")
 
     @mirror_id.setter
-    def mirror_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mirror_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mirror_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorOverwritesDivergedBranches")
-    def mirror_overwrites_diverged_branches(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mirror_overwrites_diverged_branches(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Overwrite diverged branches on the target project.
         """
         return pulumi.get(self, "mirror_overwrites_diverged_branches")
 
     @mirror_overwrites_diverged_branches.setter
-    def mirror_overwrites_diverged_branches(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mirror_overwrites_diverged_branches(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mirror_overwrites_diverged_branches", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorTriggerBuilds")
-    def mirror_trigger_builds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mirror_trigger_builds(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Trigger CI/CD pipelines when the mirror updates.
         """
         return pulumi.get(self, "mirror_trigger_builds")
 
     @mirror_trigger_builds.setter
-    def mirror_trigger_builds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mirror_trigger_builds(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mirror_trigger_builds", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyMirrorProtectedBranches")
-    def only_mirror_protected_branches(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_mirror_protected_branches(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Mirror only protected branches. Cannot be used with `mirror_branch_regex`.
         """
         return pulumi.get(self, "only_mirror_protected_branches")
 
     @only_mirror_protected_branches.setter
-    def only_mirror_protected_branches(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_mirror_protected_branches(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_mirror_protected_branches", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of the project owned by the authenticated user.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="updateStatus")
-    def update_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Current status of the mirror update.
         """
         return pulumi.get(self, "update_status")
 
     @update_status.setter
-    def update_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the remote repository to mirror from. While the API call allows including username and password as basic authentication in the URL, this resourcedoes not for security and idempotency reasons. Use `auth_user` and `auth_password` instead.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -422,15 +422,15 @@ class ProjectPullMirror(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_branch_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 mirror_overwrites_diverged_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_trigger_builds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_mirror_protected_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_branch_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 mirror_overwrites_diverged_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_trigger_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_mirror_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectPullMirror` resource allows managing pull mirroring for GitLab projects.
@@ -587,15 +587,15 @@ class ProjectPullMirror(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_branch_regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 mirror_overwrites_diverged_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mirror_trigger_builds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_mirror_protected_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_branch_regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 mirror_overwrites_diverged_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mirror_trigger_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_mirror_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -636,21 +636,21 @@ class ProjectPullMirror(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_password: Optional[pulumi.Input[_builtins.str]] = None,
-            auth_user: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            last_error: Optional[pulumi.Input[_builtins.str]] = None,
-            last_successful_update_at: Optional[pulumi.Input[_builtins.str]] = None,
-            last_update_at: Optional[pulumi.Input[_builtins.str]] = None,
-            last_update_started_at: Optional[pulumi.Input[_builtins.str]] = None,
-            mirror_branch_regex: Optional[pulumi.Input[_builtins.str]] = None,
-            mirror_id: Optional[pulumi.Input[_builtins.int]] = None,
-            mirror_overwrites_diverged_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-            mirror_trigger_builds: Optional[pulumi.Input[_builtins.bool]] = None,
-            only_mirror_protected_branches: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            update_status: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectPullMirror':
+            auth_password: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_user: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_error: pulumi.Input[Optional[_builtins.str]] = None,
+            last_successful_update_at: pulumi.Input[Optional[_builtins.str]] = None,
+            last_update_at: pulumi.Input[Optional[_builtins.str]] = None,
+            last_update_started_at: pulumi.Input[Optional[_builtins.str]] = None,
+            mirror_branch_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            mirror_id: pulumi.Input[Optional[_builtins.int]] = None,
+            mirror_overwrites_diverged_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+            mirror_trigger_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+            only_mirror_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            update_status: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectPullMirror':
         """
         Get an existing ProjectPullMirror resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

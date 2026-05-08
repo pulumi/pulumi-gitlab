@@ -161,8 +161,8 @@ def get_project_tag(name: Optional[_builtins.str] = None,
         protected=pulumi.get(__ret__, 'protected'),
         releases=pulumi.get(__ret__, 'releases'),
         target=pulumi.get(__ret__, 'target'))
-def get_project_tag_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                           project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_tag_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                           project: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectTagResult]:
     """
     The `ProjectTag` data source allows details of a project tag to be retrieved by its name.

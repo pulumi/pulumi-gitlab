@@ -265,9 +265,9 @@ def get_pipeline_schedule(cron_timezone: Optional[_builtins.str] = None,
         ref=pulumi.get(__ret__, 'ref'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         variables=pulumi.get(__ret__, 'variables'))
-def get_pipeline_schedule_output(cron_timezone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 pipeline_schedule_id: Optional[pulumi.Input[_builtins.int]] = None,
-                                 project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_pipeline_schedule_output(cron_timezone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 pipeline_schedule_id: pulumi.Input[Optional[_builtins.int]] = None,
+                                 project: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelineScheduleResult]:
     """
     The `PipelineSchedule` data source retrieves information about a gitlab pipeline schedule for a project.

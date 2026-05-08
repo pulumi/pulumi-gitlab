@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.GroupAccessToken("example", new()
+    ///     var example = new GitLab.GroupAccessToken("example", new()
     ///     {
     ///         Group = "25",
     ///         Name = "Example group access token",
@@ -42,7 +42,7 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var exampleGroupVariable = new GitLab.Index.GroupVariable("example", new()
+    ///     var exampleGroupVariable = new GitLab.GroupVariable("example", new()
     ///     {
     ///         Group = "25",
     ///         Key = "gat",

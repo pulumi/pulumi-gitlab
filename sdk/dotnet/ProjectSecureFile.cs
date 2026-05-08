@@ -25,35 +25,35 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new GitLab.Index.Group("this", new()
+    ///     var @this = new GitLab.Group("this", new()
     ///     {
     ///         Name = "example",
     ///         Path = "example",
     ///         Description = "An example group",
     ///     });
     /// 
-    ///     var thisProject = new GitLab.Index.Project("this", new()
+    ///     var thisProject = new GitLab.Project("this", new()
     ///     {
     ///         Name = "example",
     ///         NamespaceId = @this.Id,
     ///         InitializeWithReadme = true,
     ///     });
     /// 
-    ///     var thisProjectSecureFile = new GitLab.Index.ProjectSecureFile("this", new()
+    ///     var thisProjectSecureFile = new GitLab.ProjectSecureFile("this", new()
     ///     {
     ///         Name = "my-secure-file",
     ///         Project = thisProject.Id,
-    ///         Content = Std.Index.File.Invoke(new()
+    ///         Content = Std.File.Invoke(new()
     ///         {
     ///             Input = "example.txt",
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
-    ///     var disablePollForMetadata = new GitLab.Index.ProjectSecureFile("disable_poll_for_metadata", new()
+    ///     var disablePollForMetadata = new GitLab.ProjectSecureFile("disable_poll_for_metadata", new()
     ///     {
     ///         Name = "my-secure-file",
     ///         Project = thisProject.Id,
-    ///         Content = Std.Index.File.Invoke(new()
+    ///         Content = Std.File.Invoke(new()
     ///         {
     ///             Input = "example.txt",
     ///         }).Apply(invoke =&gt; invoke.Result),

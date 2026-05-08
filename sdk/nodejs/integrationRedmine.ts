@@ -142,23 +142,23 @@ export interface IntegrationRedmineState {
     /**
      * The URL to the Redmine project issue to link to this GitLab project.
      */
-    issuesUrl?: pulumi.Input<string>;
+    issuesUrl?: pulumi.Input<string | undefined>;
     /**
      * The URL to use to create a new issue in the Redmine project linked to this GitLab project.
      */
-    newIssueUrl?: pulumi.Input<string>;
+    newIssueUrl?: pulumi.Input<string | undefined>;
     /**
      * ID of the project you want to activate integration on.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URL to the Redmine project to link to this GitLab project.
      */
-    projectUrl?: pulumi.Input<string>;
+    projectUrl?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether or not to inherit default settings. Defaults to false.
      */
-    useInheritedSettings?: pulumi.Input<boolean>;
+    useInheritedSettings?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -184,5 +184,5 @@ export interface IntegrationRedmineArgs {
     /**
      * Indicates whether or not to inherit default settings. Defaults to false.
      */
-    useInheritedSettings?: pulumi.Input<boolean>;
+    useInheritedSettings?: pulumi.Input<boolean | undefined>;
 }

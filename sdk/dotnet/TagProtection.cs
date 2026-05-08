@@ -29,7 +29,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tagProtect = new GitLab.Index.TagProtection("TagProtect", new()
+    ///     var tagProtect = new GitLab.TagProtection("TagProtect", new()
     ///     {
     ///         Project = "12345",
     ///         Tag = "TagProtected",

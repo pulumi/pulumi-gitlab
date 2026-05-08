@@ -239,8 +239,8 @@ def get_project_label(label_id: Optional[_builtins.int] = None,
         project=pulumi.get(__ret__, 'project'),
         subscribed=pulumi.get(__ret__, 'subscribed'),
         text_color=pulumi.get(__ret__, 'text_color'))
-def get_project_label_output(label_id: Optional[pulumi.Input[_builtins.int]] = None,
-                             project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_label_output(label_id: pulumi.Input[Optional[_builtins.int]] = None,
+                             project: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectLabelResult]:
     """
     The `ProjectLabel` data source retrieves details about a project label.

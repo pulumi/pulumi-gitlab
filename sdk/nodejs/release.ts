@@ -209,71 +209,71 @@ export interface ReleaseState {
     /**
      * The release assets.
      */
-    assets?: pulumi.Input<inputs.ReleaseAssets>;
+    assets?: pulumi.Input<inputs.ReleaseAssets | undefined>;
     /**
      * The author of the release.
      */
-    author?: pulumi.Input<inputs.ReleaseAuthor>;
+    author?: pulumi.Input<inputs.ReleaseAuthor | undefined>;
     /**
      * The release commit.
      */
-    commit?: pulumi.Input<inputs.ReleaseCommit>;
+    commit?: pulumi.Input<inputs.ReleaseCommit | undefined>;
     /**
      * The path to the commit
      */
-    commitPath?: pulumi.Input<string>;
+    commitPath?: pulumi.Input<string | undefined>;
     /**
      * Date and time the release was created. In ISO 8601 format (2019-03-15T08:00:00Z).
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the release. You can use Markdown.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * HTML rendered Markdown of the release description.
      */
-    descriptionHtml?: pulumi.Input<string>;
+    descriptionHtml?: pulumi.Input<string | undefined>;
     /**
      * Links of the release
      */
-    links?: pulumi.Input<inputs.ReleaseLinks>;
+    links?: pulumi.Input<inputs.ReleaseLinks | undefined>;
     /**
      * The title of each milestone the release is associated with. GitLab Premium customers can specify group milestones.
      */
-    milestones?: pulumi.Input<pulumi.Input<string>[]>;
+    milestones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the release.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * If a tag specified in tag*name doesn't exist, the release is created from ref and tagged with tag*name. It can be a commit SHA, another tag name, or a branch name.
      */
-    ref?: pulumi.Input<string>;
+    ref?: pulumi.Input<string | undefined>;
     /**
      * Date and time for the release. Defaults to the current time. Expected in ISO 8601 format (2019-03-15T08:00:00Z). Only provide this field if creating an upcoming or historical release.
      */
-    releasedAt?: pulumi.Input<string>;
+    releasedAt?: pulumi.Input<string | undefined>;
     /**
      * Message to use if creating a new annotated tag.
      */
-    tagMessage?: pulumi.Input<string>;
+    tagMessage?: pulumi.Input<string | undefined>;
     /**
      * The tag where the release is created from.
      */
-    tagName?: pulumi.Input<string>;
+    tagName?: pulumi.Input<string | undefined>;
     /**
      * The path to the tag.
      */
-    tagPath?: pulumi.Input<string>;
+    tagPath?: pulumi.Input<string | undefined>;
     /**
      * Whether the releaseAt attribute is set to a future date.
      */
-    upcomingRelease?: pulumi.Input<boolean>;
+    upcomingRelease?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -283,19 +283,19 @@ export interface ReleaseArgs {
     /**
      * The release assets.
      */
-    assets?: pulumi.Input<inputs.ReleaseAssets>;
+    assets?: pulumi.Input<inputs.ReleaseAssets | undefined>;
     /**
      * The description of the release. You can use Markdown.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The title of each milestone the release is associated with. GitLab Premium customers can specify group milestones.
      */
-    milestones?: pulumi.Input<pulumi.Input<string>[]>;
+    milestones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the release.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project.
      */
@@ -303,15 +303,15 @@ export interface ReleaseArgs {
     /**
      * If a tag specified in tag*name doesn't exist, the release is created from ref and tagged with tag*name. It can be a commit SHA, another tag name, or a branch name.
      */
-    ref?: pulumi.Input<string>;
+    ref?: pulumi.Input<string | undefined>;
     /**
      * Date and time for the release. Defaults to the current time. Expected in ISO 8601 format (2019-03-15T08:00:00Z). Only provide this field if creating an upcoming or historical release.
      */
-    releasedAt?: pulumi.Input<string>;
+    releasedAt?: pulumi.Input<string | undefined>;
     /**
      * Message to use if creating a new annotated tag.
      */
-    tagMessage?: pulumi.Input<string>;
+    tagMessage?: pulumi.Input<string | undefined>;
     /**
      * The tag where the release is created from.
      */

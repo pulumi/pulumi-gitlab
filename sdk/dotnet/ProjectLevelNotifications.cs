@@ -26,7 +26,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.Project("example", new()
+    ///     var example = new GitLab.Project("example", new()
     ///     {
     ///         Name = "example project",
     ///         Description = "Lorem Ipsum",
@@ -34,14 +34,14 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Basic example
-    ///     var notifications = new GitLab.Index.ProjectLevelNotifications("notifications", new()
+    ///     var notifications = new GitLab.ProjectLevelNotifications("notifications", new()
     ///     {
     ///         Project = example.Id,
     ///         Level = "global",
     ///     });
     /// 
     ///     // Custom notification example
-    ///     var custom = new GitLab.Index.ProjectLevelNotifications("custom", new()
+    ///     var custom = new GitLab.ProjectLevelNotifications("custom", new()
     ///     {
     ///         Project = example.Id,
     ///         Level = "custom",

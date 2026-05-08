@@ -102,7 +102,7 @@ def get_project_labels(project: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         project=pulumi.get(__ret__, 'project'))
-def get_project_labels_output(project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_labels_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectLabelsResult]:
     """
     The `get_project_labels` data source retrieves a list of labels for a project.

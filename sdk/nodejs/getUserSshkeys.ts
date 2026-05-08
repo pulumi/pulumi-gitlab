@@ -76,9 +76,9 @@ export interface GetUserSshkeysOutputArgs {
     /**
      * ID of the user to get the SSH keys for.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
     /**
      * Username of the user to get the SSH keys for.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

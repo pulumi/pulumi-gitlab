@@ -22,9 +22,9 @@ class ProjectMergeRequestNoteArgs:
                  body: pulumi.Input[_builtins.str],
                  merge_request_iid: pulumi.Input[_builtins.int],
                  project: pulumi.Input[_builtins.str],
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_request_diff_head_sha: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_request_diff_head_sha: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectMergeRequestNote resource.
 
@@ -83,54 +83,54 @@ class ProjectMergeRequestNoteArgs:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def internal(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def internal(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the merge request note is internal.
         """
         return pulumi.get(self, "internal")
 
     @internal.setter
-    def internal(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def internal(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "internal", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestDiffHeadSha")
-    def merge_request_diff_head_sha(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_request_diff_head_sha(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The diff head SHA of the merge request when the note was created.
         """
         return pulumi.get(self, "merge_request_diff_head_sha")
 
     @merge_request_diff_head_sha.setter
-    def merge_request_diff_head_sha(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_request_diff_head_sha(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_request_diff_head_sha", value)
 
 
 @pulumi.input_type
 class _ProjectMergeRequestNoteState:
     def __init__(__self__, *,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_request_diff_head_sha: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_request_iid: Optional[pulumi.Input[_builtins.int]] = None,
-                 note_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resolvable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 system: Optional[pulumi.Input[_builtins.bool]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_request_diff_head_sha: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_request_iid: pulumi.Input[Optional[_builtins.int]] = None,
+                 note_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resolvable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 system: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectMergeRequestNote resources.
 
@@ -168,122 +168,122 @@ class _ProjectMergeRequestNoteState:
 
     @_builtins.property
     @pulumi.getter
-    def body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The body of the merge request note.
         """
         return pulumi.get(self, "body")
 
     @body.setter
-    def body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "body", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def internal(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def internal(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the merge request note is internal.
         """
         return pulumi.get(self, "internal")
 
     @internal.setter
-    def internal(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def internal(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "internal", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestDiffHeadSha")
-    def merge_request_diff_head_sha(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def merge_request_diff_head_sha(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The diff head SHA of the merge request when the note was created.
         """
         return pulumi.get(self, "merge_request_diff_head_sha")
 
     @merge_request_diff_head_sha.setter
-    def merge_request_diff_head_sha(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def merge_request_diff_head_sha(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_request_diff_head_sha", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestIid")
-    def merge_request_iid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def merge_request_iid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The IID of the merge request to add the note to.
         """
         return pulumi.get(self, "merge_request_iid")
 
     @merge_request_iid.setter
-    def merge_request_iid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def merge_request_iid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "merge_request_iid", value)
 
     @_builtins.property
     @pulumi.getter(name="noteId")
-    def note_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def note_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the merge request note.
         """
         return pulumi.get(self, "note_id")
 
     @note_id.setter
-    def note_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def note_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "note_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or path of the project to add the note to.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def resolvable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def resolvable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the merge request note is resolvable.
         """
         return pulumi.get(self, "resolvable")
 
     @resolvable.setter
-    def resolvable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def resolvable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "resolvable", value)
 
     @_builtins.property
     @pulumi.getter
-    def system(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def system(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the merge request note is a system note.
         """
         return pulumi.get(self, "system")
 
     @system.setter
-    def system(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def system(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "system", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last updated date of the merge request note.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -293,12 +293,12 @@ class ProjectMergeRequestNote(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_request_diff_head_sha: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_request_iid: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_request_diff_head_sha: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_request_iid: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectMergeRequestNote` resource manages the lifecycle of a project merge request note.
@@ -402,12 +402,12 @@ class ProjectMergeRequestNote(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_request_diff_head_sha: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_request_iid: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_request_diff_head_sha: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_request_iid: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -443,16 +443,16 @@ class ProjectMergeRequestNote(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            body: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            internal: Optional[pulumi.Input[_builtins.bool]] = None,
-            merge_request_diff_head_sha: Optional[pulumi.Input[_builtins.str]] = None,
-            merge_request_iid: Optional[pulumi.Input[_builtins.int]] = None,
-            note_id: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            resolvable: Optional[pulumi.Input[_builtins.bool]] = None,
-            system: Optional[pulumi.Input[_builtins.bool]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectMergeRequestNote':
+            body: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            internal: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_request_diff_head_sha: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_request_iid: pulumi.Input[Optional[_builtins.int]] = None,
+            note_id: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            resolvable: pulumi.Input[Optional[_builtins.bool]] = None,
+            system: pulumi.Input[Optional[_builtins.bool]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectMergeRequestNote':
         """
         Get an existing ProjectMergeRequestNote resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

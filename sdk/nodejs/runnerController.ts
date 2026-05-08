@@ -106,19 +106,19 @@ export interface RunnerControllerState {
     /**
      * The time the runner controller was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the runner controller.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The state of the runner controller. Valid values are: `disabled`, `enabled`, `dryRun`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The time the runner controller was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -128,9 +128,9 @@ export interface RunnerControllerArgs {
     /**
      * The description of the runner controller.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The state of the runner controller. Valid values are: `disabled`, `enabled`, `dryRun`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }

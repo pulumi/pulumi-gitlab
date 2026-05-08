@@ -21,10 +21,10 @@ __all__ = ['InstanceServiceAccountArgs', 'InstanceServiceAccount']
 @pulumi.input_type
 class InstanceServiceAccountArgs:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['InstanceServiceAccountTimeoutsArgs']] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['InstanceServiceAccountTimeoutsArgs']] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceServiceAccount resource.
 
@@ -43,58 +43,58 @@ class InstanceServiceAccountArgs:
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the user account. If not set, generates a no-reply email address.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user. If not set, uses Service account user.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['InstanceServiceAccountTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['InstanceServiceAccountTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['InstanceServiceAccountTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['InstanceServiceAccountTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of the user account. If not set, generates a name prepended with service*account*.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
 @pulumi.input_type
 class _InstanceServiceAccountState:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['InstanceServiceAccountTimeoutsArgs']] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['InstanceServiceAccountTimeoutsArgs']] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceServiceAccount resources.
 
@@ -116,59 +116,59 @@ class _InstanceServiceAccountState:
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the user account. If not set, generates a no-reply email address.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user. If not set, uses Service account user.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountId")
-    def service_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account id.
         """
         return pulumi.get(self, "service_account_id")
 
     @service_account_id.setter
-    def service_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['InstanceServiceAccountTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['InstanceServiceAccountTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['InstanceServiceAccountTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['InstanceServiceAccountTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of the user account. If not set, generates a name prepended with service*account*.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -178,10 +178,10 @@ class InstanceServiceAccount(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict']]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict']]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `InstanceServiceAccount` resource allows creating a GitLab instance service account.
@@ -205,7 +205,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
                 "delete": "3m",
             })
         example_token = gitlab.PersonalAccessToken("example_token",
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example personal access token for a service account",
             expires_at="2026-01-01",
             scopes=["api"])
@@ -258,7 +258,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
                 "delete": "3m",
             })
         example_token = gitlab.PersonalAccessToken("example_token",
-            user_id=example_sa.service_account_id,
+            user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example personal access token for a service account",
             expires_at="2026-01-01",
             scopes=["api"])
@@ -292,10 +292,10 @@ class InstanceServiceAccount(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict']]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict']]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -320,11 +320,11 @@ class InstanceServiceAccount(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict']]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceServiceAccount':
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict']]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceServiceAccount':
         """
         Get an existing InstanceServiceAccount resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

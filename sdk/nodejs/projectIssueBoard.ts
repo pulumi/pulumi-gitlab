@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * });
  * const exampleProjectMembership = new gitlab.ProjectMembership("example", {
  *     project: example.id,
- *     userId: exampleUser.id,
+ *     userId: exampleUser.id.apply(x =>Number(x)),
  *     accessLevel: "developer",
  * });
  * const exampleProjectMilestone = new gitlab.ProjectMilestone("example", {
@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  *     name: "Test Issue Board",
  *     lists: [
  *         {
- *             assigneeId: exampleUser.id,
+ *             assigneeId: exampleUser.id.apply(x =>Number(x)),
  *         },
  *         {
  *             milestoneId: exampleProjectMilestone.milestoneId,
@@ -58,7 +58,7 @@ import * as utilities from "./utilities";
  *     name: "Test Issue Board with list syntax",
  *     lists: [
  *         {
- *             assigneeId: exampleUser.id,
+ *             assigneeId: exampleUser.id.apply(x =>Number(x)),
  *         },
  *         {
  *             milestoneId: exampleProjectMilestone.milestoneId,
@@ -185,31 +185,31 @@ export interface ProjectIssueBoardState {
     /**
      * The assignee the board should be scoped to. Requires a GitLab EE license.
      */
-    assigneeId?: pulumi.Input<number>;
+    assigneeId?: pulumi.Input<number | undefined>;
     /**
      * The list of label names which the board should be scoped to. Requires a GitLab EE license.
      */
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of issue board lists
      */
-    lists?: pulumi.Input<pulumi.Input<inputs.ProjectIssueBoardList>[]>;
+    lists?: pulumi.Input<pulumi.Input<inputs.ProjectIssueBoardList>[] | undefined>;
     /**
      * The milestone the board should be scoped to. Requires a GitLab EE license.
      */
-    milestoneId?: pulumi.Input<number>;
+    milestoneId?: pulumi.Input<number | undefined>;
     /**
      * The name of the board.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project maintained by the authenticated user.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The weight range from 0 to 9, to which the board should be scoped to. Requires a GitLab EE license.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -219,23 +219,23 @@ export interface ProjectIssueBoardArgs {
     /**
      * The assignee the board should be scoped to. Requires a GitLab EE license.
      */
-    assigneeId?: pulumi.Input<number>;
+    assigneeId?: pulumi.Input<number | undefined>;
     /**
      * The list of label names which the board should be scoped to. Requires a GitLab EE license.
      */
-    labels?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of issue board lists
      */
-    lists?: pulumi.Input<pulumi.Input<inputs.ProjectIssueBoardList>[]>;
+    lists?: pulumi.Input<pulumi.Input<inputs.ProjectIssueBoardList>[] | undefined>;
     /**
      * The milestone the board should be scoped to. Requires a GitLab EE license.
      */
-    milestoneId?: pulumi.Input<number>;
+    milestoneId?: pulumi.Input<number | undefined>;
     /**
      * The name of the board.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project maintained by the authenticated user.
      */
@@ -243,5 +243,5 @@ export interface ProjectIssueBoardArgs {
     /**
      * The weight range from 0 to 9, to which the board should be scoped to. Requires a GitLab EE license.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }

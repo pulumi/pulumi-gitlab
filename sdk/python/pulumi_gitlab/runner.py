@@ -20,14 +20,14 @@ __all__ = ['RunnerArgs', 'Runner']
 class RunnerArgs:
     def __init__(__self__, *,
                  registration_token: pulumi.Input[_builtins.str],
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintenance_note: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_untagged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maintenance_note: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_untagged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Runner resource.
 
@@ -73,115 +73,115 @@ class RunnerArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The runner's description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the runner should be locked for current project.
         """
         return pulumi.get(self, "locked")
 
     @locked.setter
-    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "locked", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceNote")
-    def maintenance_note(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_note(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Free-form maintenance notes for the runner (1024 characters).
         """
         return pulumi.get(self, "maintenance_note")
 
     @maintenance_note.setter
-    def maintenance_note(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_note(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_note", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumTimeout")
-    def maximum_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum timeout set when this runner handles the job.
         """
         return pulumi.get(self, "maximum_timeout")
 
     @maximum_timeout.setter
-    def maximum_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def paused(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def paused(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the runner should ignore new jobs.
         """
         return pulumi.get(self, "paused")
 
     @paused.setter
-    def paused(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def paused(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "paused", value)
 
     @_builtins.property
     @pulumi.getter(name="runUntagged")
-    def run_untagged(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_untagged(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the runner should handle untagged jobs.
         """
         return pulumi.get(self, "run_untagged")
 
     @run_untagged.setter
-    def run_untagged(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_untagged(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_untagged", value)
 
     @_builtins.property
     @pulumi.getter(name="tagLists")
-    def tag_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tag_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of runner’s tags.
         """
         return pulumi.get(self, "tag_lists")
 
     @tag_lists.setter
-    def tag_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tag_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tag_lists", value)
 
 
 @pulumi.input_type
 class _RunnerState:
     def __init__(__self__, *,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintenance_note: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 registration_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_untagged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maintenance_note: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 registration_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_untagged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Runner resources.
 
@@ -223,115 +223,115 @@ class _RunnerState:
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access_level of the runner. Valid values are: `not_protected`, `ref_protected`.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="authenticationToken")
-    def authentication_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authentication_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The authentication token used for building a config.toml file. This value is not present when imported.
         """
         return pulumi.get(self, "authentication_token")
 
     @authentication_token.setter
-    def authentication_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authentication_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authentication_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The runner's description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the runner should be locked for current project.
         """
         return pulumi.get(self, "locked")
 
     @locked.setter
-    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "locked", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceNote")
-    def maintenance_note(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_note(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Free-form maintenance notes for the runner (1024 characters).
         """
         return pulumi.get(self, "maintenance_note")
 
     @maintenance_note.setter
-    def maintenance_note(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_note(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_note", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumTimeout")
-    def maximum_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum timeout set when this runner handles the job.
         """
         return pulumi.get(self, "maximum_timeout")
 
     @maximum_timeout.setter
-    def maximum_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def paused(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def paused(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the runner should ignore new jobs.
         """
         return pulumi.get(self, "paused")
 
     @paused.setter
-    def paused(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def paused(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "paused", value)
 
     @_builtins.property
     @pulumi.getter(name="registrationToken")
-    def registration_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def registration_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The registration token used to register the runner.
         """
         return pulumi.get(self, "registration_token")
 
     @registration_token.setter
-    def registration_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def registration_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "registration_token", value)
 
     @_builtins.property
     @pulumi.getter(name="runUntagged")
-    def run_untagged(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_untagged(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the runner should handle untagged jobs.
         """
         return pulumi.get(self, "run_untagged")
 
     @run_untagged.setter
-    def run_untagged(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_untagged(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_untagged", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of runners to show, one of: online and offline. active and paused are also possible values
         			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
@@ -339,19 +339,19 @@ class _RunnerState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="tagLists")
-    def tag_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tag_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of runner’s tags.
         """
         return pulumi.get(self, "tag_lists")
 
     @tag_lists.setter
-    def tag_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tag_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tag_lists", value)
 
 
@@ -361,15 +361,15 @@ class Runner(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintenance_note: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 registration_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_untagged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maintenance_note: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 registration_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_untagged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         The `Runner` resource manages the lifecycle of a runner.
@@ -456,15 +456,15 @@ class Runner(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintenance_note: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 registration_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_untagged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maintenance_note: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 registration_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_untagged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -499,17 +499,17 @@ class Runner(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            authentication_token: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            locked: Optional[pulumi.Input[_builtins.bool]] = None,
-            maintenance_note: Optional[pulumi.Input[_builtins.str]] = None,
-            maximum_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            paused: Optional[pulumi.Input[_builtins.bool]] = None,
-            registration_token: Optional[pulumi.Input[_builtins.str]] = None,
-            run_untagged: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Runner':
+            access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            authentication_token: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            maintenance_note: pulumi.Input[Optional[_builtins.str]] = None,
+            maximum_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            registration_token: pulumi.Input[Optional[_builtins.str]] = None,
+            run_untagged: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Runner':
         """
         Get an existing Runner resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

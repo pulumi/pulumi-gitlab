@@ -131,23 +131,23 @@ export interface ProjectContainerRepositoryProtectionState {
     /**
      * Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForPush` is not set.
      */
-    minimumAccessLevelForDelete?: pulumi.Input<string>;
+    minimumAccessLevelForDelete?: pulumi.Input<string | undefined>;
     /**
      * Minimum GitLab access level required to push container images to the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForDelete` is not set.
      */
-    minimumAccessLevelForPush?: pulumi.Input<string>;
+    minimumAccessLevelForPush?: pulumi.Input<string | undefined>;
     /**
      * ID or URL-encoded path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Unique ID of the protection rule.
      */
-    protectionRuleId?: pulumi.Input<number>;
+    protectionRuleId?: pulumi.Input<number | undefined>;
     /**
      * Container repository path pattern protected by the protection rule. Wildcard character * allowed. Repository path pattern should start with the project's full path
      */
-    repositoryPathPattern?: pulumi.Input<string>;
+    repositoryPathPattern?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,11 +157,11 @@ export interface ProjectContainerRepositoryProtectionArgs {
     /**
      * Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForPush` is not set.
      */
-    minimumAccessLevelForDelete?: pulumi.Input<string>;
+    minimumAccessLevelForDelete?: pulumi.Input<string | undefined>;
     /**
      * Minimum GitLab access level required to push container images to the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForDelete` is not set.
      */
-    minimumAccessLevelForPush?: pulumi.Input<string>;
+    minimumAccessLevelForPush?: pulumi.Input<string | undefined>;
     /**
      * ID or URL-encoded path of the project.
      */

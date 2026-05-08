@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * const exampleToken = new gitlab.PersonalAccessToken("example_token", {
- *     userId: exampleSa.serviceAccountId,
+ *     userId: exampleSa.serviceAccountId.apply(x =>Number(x)),
  *     name: "Example personal access token for a service account",
  *     expiresAt: "2026-01-01",
  *     scopes: ["api"],
@@ -132,20 +132,20 @@ export interface InstanceServiceAccountState {
     /**
      * The email of the user account. If not set, generates a no-reply email address.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The name of the user. If not set, uses Service account user.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The service account id.
      */
-    serviceAccountId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.InstanceServiceAccountTimeouts>;
+    serviceAccountId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.InstanceServiceAccountTimeouts | undefined>;
     /**
      * The username of the user account. If not set, generates a name prepended with service*account*.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -155,14 +155,14 @@ export interface InstanceServiceAccountArgs {
     /**
      * The email of the user account. If not set, generates a no-reply email address.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The name of the user. If not set, uses Service account user.
      */
-    name?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.InstanceServiceAccountTimeouts>;
+    name?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.InstanceServiceAccountTimeouts | undefined>;
     /**
      * The username of the user account. If not set, generates a name prepended with service*account*.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

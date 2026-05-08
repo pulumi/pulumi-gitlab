@@ -98,7 +98,7 @@ export interface GetProjectProtectedBranchOutputArgs {
     /**
      * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
      */
-    mergeAccessLevels?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchMergeAccessLevelArgs>[]>;
+    mergeAccessLevels?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchMergeAccessLevelArgs>[] | undefined>;
     /**
      * The name of the protected branch.
      */
@@ -110,5 +110,5 @@ export interface GetProjectProtectedBranchOutputArgs {
     /**
      * Array of access levels and user(s)/group(s) allowed to push to protected branch.
      */
-    pushAccessLevels?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchPushAccessLevelArgs>[]>;
+    pushAccessLevels?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchPushAccessLevelArgs>[] | undefined>;
 }

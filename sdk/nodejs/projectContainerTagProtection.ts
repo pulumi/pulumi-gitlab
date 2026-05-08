@@ -154,28 +154,28 @@ export interface ProjectContainerTagProtectionState {
     /**
      * Whether the container tag is immutable. If set, the container tag cannot be deleted or overwritten. Conflicts with `minimumAccessLevelForPush` and `minimumAccessLevelForDelete`.
      */
-    immutable?: pulumi.Input<boolean>;
+    immutable?: pulumi.Input<boolean | undefined>;
     /**
      * Minimum GitLab access level required to delete protected container tags in the container registry. Marks the container tag as protected. Valid values are: `MAINTAINER`, `OWNER`, `ADMIN`.
      */
-    minimumAccessLevelForDelete?: pulumi.Input<string>;
+    minimumAccessLevelForDelete?: pulumi.Input<string | undefined>;
     /**
      * Minimum GitLab access level required to push protected container tags to the container registry. Marks the container tag as protected. Valid values are: `MAINTAINER`, `OWNER`, `ADMIN`.
      */
-    minimumAccessLevelForPush?: pulumi.Input<string>;
+    minimumAccessLevelForPush?: pulumi.Input<string | undefined>;
     /**
      * ID or URL-encoded path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Unique ID of the protection rule.
      */
-    protectionRuleId?: pulumi.Input<number>;
+    protectionRuleId?: pulumi.Input<number | undefined>;
     /**
      * Container tag path pattern protected by the protection rule. Wildcard character * allowed. Tag path pattern should start with the project's full path.
      */
-    tagNameRegex?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.ProjectContainerTagProtectionTimeouts>;
+    tagNameRegex?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.ProjectContainerTagProtectionTimeouts | undefined>;
 }
 
 /**
@@ -185,15 +185,15 @@ export interface ProjectContainerTagProtectionArgs {
     /**
      * Whether the container tag is immutable. If set, the container tag cannot be deleted or overwritten. Conflicts with `minimumAccessLevelForPush` and `minimumAccessLevelForDelete`.
      */
-    immutable?: pulumi.Input<boolean>;
+    immutable?: pulumi.Input<boolean | undefined>;
     /**
      * Minimum GitLab access level required to delete protected container tags in the container registry. Marks the container tag as protected. Valid values are: `MAINTAINER`, `OWNER`, `ADMIN`.
      */
-    minimumAccessLevelForDelete?: pulumi.Input<string>;
+    minimumAccessLevelForDelete?: pulumi.Input<string | undefined>;
     /**
      * Minimum GitLab access level required to push protected container tags to the container registry. Marks the container tag as protected. Valid values are: `MAINTAINER`, `OWNER`, `ADMIN`.
      */
-    minimumAccessLevelForPush?: pulumi.Input<string>;
+    minimumAccessLevelForPush?: pulumi.Input<string | undefined>;
     /**
      * ID or URL-encoded path of the project.
      */
@@ -202,5 +202,5 @@ export interface ProjectContainerTagProtectionArgs {
      * Container tag path pattern protected by the protection rule. Wildcard character * allowed. Tag path pattern should start with the project's full path.
      */
     tagNameRegex: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.ProjectContainerTagProtectionTimeouts>;
+    timeouts?: pulumi.Input<inputs.ProjectContainerTagProtectionTimeouts | undefined>;
 }

@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var awesomeProject = new GitLab.Index.Project("awesome_project", new()
+    ///     var awesomeProject = new GitLab.Project("awesome_project", new()
     ///     {
     ///         Name = "awesome_project",
     ///         Description = "My awesome project.",
     ///         VisibilityLevel = "public",
     ///     });
     /// 
-    ///     var tracker = new GitLab.Index.IntegrationCustomIssueTracker("tracker", new()
+    ///     var tracker = new GitLab.IntegrationCustomIssueTracker("tracker", new()
     ///     {
     ///         Project = awesomeProject.Id,
     ///         ProjectUrl = "https://customtracker.com/issues",

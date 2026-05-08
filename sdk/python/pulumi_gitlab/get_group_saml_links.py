@@ -95,7 +95,7 @@ def get_group_saml_links(group: Optional[_builtins.str] = None,
         group=pulumi.get(__ret__, 'group'),
         id=pulumi.get(__ret__, 'id'),
         saml_links=pulumi.get(__ret__, 'saml_links'))
-def get_group_saml_links_output(group: Optional[pulumi.Input[_builtins.str]] = None,
+def get_group_saml_links_output(group: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupSamlLinksResult]:
     """
     The `get_group_saml_links` data source retrieves all SAML links for a specified group.

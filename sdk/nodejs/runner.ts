@@ -158,48 +158,48 @@ export interface RunnerState {
     /**
      * The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * The authentication token used for building a config.toml file. This value is not present when imported.
      */
-    authenticationToken?: pulumi.Input<string>;
+    authenticationToken?: pulumi.Input<string | undefined>;
     /**
      * The runner's description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the runner should be locked for current project.
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * Free-form maintenance notes for the runner (1024 characters).
      */
-    maintenanceNote?: pulumi.Input<string>;
+    maintenanceNote?: pulumi.Input<string | undefined>;
     /**
      * Maximum timeout set when this runner handles the job.
      */
-    maximumTimeout?: pulumi.Input<number>;
+    maximumTimeout?: pulumi.Input<number | undefined>;
     /**
      * Whether the runner should ignore new jobs.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * The registration token used to register the runner.
      */
-    registrationToken?: pulumi.Input<string>;
+    registrationToken?: pulumi.Input<string | undefined>;
     /**
      * Whether the runner should handle untagged jobs.
      */
-    runUntagged?: pulumi.Input<boolean>;
+    runUntagged?: pulumi.Input<boolean | undefined>;
     /**
      * The status of runners to show, one of: online and offline. active and paused are also possible values
      * 			              which were deprecated in GitLab 14.8 and will be removed in GitLab 16.0.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * List of runner’s tags.
      */
-    tagLists?: pulumi.Input<pulumi.Input<string>[]>;
+    tagLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -209,27 +209,27 @@ export interface RunnerArgs {
     /**
      * The accessLevel of the runner. Valid values are: `notProtected`, `refProtected`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * The runner's description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the runner should be locked for current project.
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * Free-form maintenance notes for the runner (1024 characters).
      */
-    maintenanceNote?: pulumi.Input<string>;
+    maintenanceNote?: pulumi.Input<string | undefined>;
     /**
      * Maximum timeout set when this runner handles the job.
      */
-    maximumTimeout?: pulumi.Input<number>;
+    maximumTimeout?: pulumi.Input<number | undefined>;
     /**
      * Whether the runner should ignore new jobs.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * The registration token used to register the runner.
      */
@@ -237,9 +237,9 @@ export interface RunnerArgs {
     /**
      * Whether the runner should handle untagged jobs.
      */
-    runUntagged?: pulumi.Input<boolean>;
+    runUntagged?: pulumi.Input<boolean | undefined>;
     /**
      * List of runner’s tags.
      */
-    tagLists?: pulumi.Input<pulumi.Input<string>[]>;
+    tagLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

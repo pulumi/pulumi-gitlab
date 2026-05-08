@@ -109,8 +109,8 @@ def get_project_access_tokens(project: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         state=pulumi.get(__ret__, 'state'))
-def get_project_access_tokens_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                                     state: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_project_access_tokens_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                                     state: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectAccessTokensResult]:
     """
     The `get_project_access_tokens` data source allows to retrieve all project access tokens for a given project.

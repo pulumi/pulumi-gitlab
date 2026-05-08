@@ -22,12 +22,12 @@ class IntegrationJenkinsArgs:
                  jenkins_url: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  project_name: pulumi.Input[_builtins.str],
-                 enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_request_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_request_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a IntegrationJenkins resource.
 
@@ -95,90 +95,90 @@ class IntegrationJenkinsArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableSslVerification")
-    def enable_ssl_verification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ssl_verification(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable SSL verification. Defaults to `true` (enabled).
         """
         return pulumi.get(self, "enable_ssl_verification")
 
     @enable_ssl_verification.setter
-    def enable_ssl_verification(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ssl_verification(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ssl_verification", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestEvents")
-    def merge_request_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_request_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for merge request events.
         """
         return pulumi.get(self, "merge_request_events")
 
     @merge_request_events.setter
-    def merge_request_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_request_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_request_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for authentication with the Jenkins server, if authentication is required by the server.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for push events.
         """
         return pulumi.get(self, "push_events")
 
     @push_events.setter
-    def push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "push_events", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tag_push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for tag push events.
         """
         return pulumi.get(self, "tag_push_events")
 
     @tag_push_events.setter
-    def tag_push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tag_push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tag_push_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username for authentication with the Jenkins server, if authentication is required by the server.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
 @pulumi.input_type
 class _IntegrationJenkinsState:
     def __init__(__self__, *,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 jenkins_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_request_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jenkins_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_request_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IntegrationJenkins resources.
 
@@ -216,122 +216,122 @@ class _IntegrationJenkinsState:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the integration is active.
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSslVerification")
-    def enable_ssl_verification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ssl_verification(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable SSL verification. Defaults to `true` (enabled).
         """
         return pulumi.get(self, "enable_ssl_verification")
 
     @enable_ssl_verification.setter
-    def enable_ssl_verification(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ssl_verification(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ssl_verification", value)
 
     @_builtins.property
     @pulumi.getter(name="jenkinsUrl")
-    def jenkins_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jenkins_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Jenkins URL like `http://jenkins.example.com`
         """
         return pulumi.get(self, "jenkins_url")
 
     @jenkins_url.setter
-    def jenkins_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jenkins_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jenkins_url", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestEvents")
-    def merge_request_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_request_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for merge request events.
         """
         return pulumi.get(self, "merge_request_events")
 
     @merge_request_events.setter
-    def merge_request_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_request_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_request_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for authentication with the Jenkins server, if authentication is required by the server.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the project you want to activate integration on.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL-friendly project name. Example: `my_project_name`.
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for push events.
         """
         return pulumi.get(self, "push_events")
 
     @push_events.setter
-    def push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "push_events", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tag_push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for tag push events.
         """
         return pulumi.get(self, "tag_push_events")
 
     @tag_push_events.setter
-    def tag_push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tag_push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tag_push_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username for authentication with the Jenkins server, if authentication is required by the server.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -341,15 +341,15 @@ class IntegrationJenkins(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 jenkins_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_request_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jenkins_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_request_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `IntegrationJenkins` resource manages the lifecycle of a project integration with Jenkins.
@@ -456,15 +456,15 @@ class IntegrationJenkins(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 jenkins_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_request_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jenkins_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_request_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -502,16 +502,16 @@ class IntegrationJenkins(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-            jenkins_url: Optional[pulumi.Input[_builtins.str]] = None,
-            merge_request_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            project_name: Optional[pulumi.Input[_builtins.str]] = None,
-            push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'IntegrationJenkins':
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+            jenkins_url: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_request_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'IntegrationJenkins':
         """
         Get an existing IntegrationJenkins resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

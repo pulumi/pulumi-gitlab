@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *
  * const test = new gitlab.GroupShareGroup("test", {
  *     groupId: foo.id,
- *     shareGroupId: bar.id,
+ *     shareGroupId: Number(bar.id),
  *     groupAccess: "guest",
  *     expiresAt: "2099-01-01",
  * });
@@ -133,23 +133,23 @@ export interface GroupShareGroupState {
     /**
      * Share expiration date. Format: `YYYY-MM-DD`
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
-    groupAccess?: pulumi.Input<string>;
+    groupAccess?: pulumi.Input<string | undefined>;
     /**
      * The id of the main group to be shared.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `memberRoleId` is removed from the config, the group share will revert to a base role.
      */
-    memberRoleId?: pulumi.Input<number>;
+    memberRoleId?: pulumi.Input<number | undefined>;
     /**
      * The id of the additional group with which the main group will be shared.
      */
-    shareGroupId?: pulumi.Input<number>;
+    shareGroupId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -159,7 +159,7 @@ export interface GroupShareGroupArgs {
     /**
      * Share expiration date. Format: `YYYY-MM-DD`
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The access level to grant the group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
@@ -171,7 +171,7 @@ export interface GroupShareGroupArgs {
     /**
      * The ID of a custom member role. Only available for Ultimate instances and requires a feature flag enabling, see [this feature issue](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) for details. If `memberRoleId` is removed from the config, the group share will revert to a base role.
      */
-    memberRoleId?: pulumi.Input<number>;
+    memberRoleId?: pulumi.Input<number | undefined>;
     /**
      * The id of the additional group with which the main group will be shared.
      */

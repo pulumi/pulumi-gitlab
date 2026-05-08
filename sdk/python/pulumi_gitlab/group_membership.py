@@ -22,10 +22,10 @@ class GroupMembershipArgs:
                  access_level: pulumi.Input[_builtins.str],
                  group_id: pulumi.Input[_builtins.int],
                  user_id: pulumi.Input[_builtins.int],
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 skip_subresources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unassign_issuables_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None):
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 skip_subresources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unassign_issuables_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GroupMembership resource.
 
@@ -87,63 +87,63 @@ class GroupMembershipArgs:
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expiration date for the group membership. Format: `YYYY-MM-DD`
         """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter(name="memberRoleId")
-    def member_role_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def member_role_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
         """
         return pulumi.get(self, "member_role_id")
 
     @member_role_id.setter
-    def member_role_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def member_role_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "member_role_id", value)
 
     @_builtins.property
     @pulumi.getter(name="skipSubresourcesOnDestroy")
-    def skip_subresources_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_subresources_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         """
         return pulumi.get(self, "skip_subresources_on_destroy")
 
     @skip_subresources_on_destroy.setter
-    def skip_subresources_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_subresources_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_subresources_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="unassignIssuablesOnDestroy")
-    def unassign_issuables_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unassign_issuables_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
         """
         return pulumi.get(self, "unassign_issuables_on_destroy")
 
     @unassign_issuables_on_destroy.setter
-    def unassign_issuables_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unassign_issuables_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unassign_issuables_on_destroy", value)
 
 
 @pulumi.input_type
 class _GroupMembershipState:
     def __init__(__self__, *,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 skip_subresources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unassign_issuables_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 skip_subresources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unassign_issuables_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering GroupMembership resources.
 
@@ -172,86 +172,86 @@ class _GroupMembershipState:
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expiration date for the group membership. Format: `YYYY-MM-DD`
         """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the group.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="memberRoleId")
-    def member_role_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def member_role_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
         """
         return pulumi.get(self, "member_role_id")
 
     @member_role_id.setter
-    def member_role_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def member_role_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "member_role_id", value)
 
     @_builtins.property
     @pulumi.getter(name="skipSubresourcesOnDestroy")
-    def skip_subresources_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_subresources_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the deletion of direct memberships of the removed member in subgroups and projects should be skipped. Only used during a destroy.
         """
         return pulumi.get(self, "skip_subresources_on_destroy")
 
     @skip_subresources_on_destroy.setter
-    def skip_subresources_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_subresources_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_subresources_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="unassignIssuablesOnDestroy")
-    def unassign_issuables_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unassign_issuables_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the removed member should be unassigned from any issues or merge requests inside a given group or project. Only used during a destroy.
         """
         return pulumi.get(self, "unassign_issuables_on_destroy")
 
     @unassign_issuables_on_destroy.setter
-    def unassign_issuables_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unassign_issuables_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unassign_issuables_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the user.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -261,13 +261,13 @@ class GroupMembership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 skip_subresources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unassign_issuables_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 skip_subresources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unassign_issuables_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The `GroupMembership` resource manages the lifecycle of a users group membership.
@@ -366,13 +366,13 @@ class GroupMembership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 skip_subresources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unassign_issuables_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 skip_subresources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unassign_issuables_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -405,13 +405,13 @@ class GroupMembership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-            group_id: Optional[pulumi.Input[_builtins.int]] = None,
-            member_role_id: Optional[pulumi.Input[_builtins.int]] = None,
-            skip_subresources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            unassign_issuables_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            user_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'GroupMembership':
+            access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.int]] = None,
+            member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+            skip_subresources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            unassign_issuables_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'GroupMembership':
         """
         Get an existing GroupMembership resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

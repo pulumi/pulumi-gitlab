@@ -123,15 +123,15 @@ export interface ProjectIntegrationYoutrackState {
     /**
      * URL to view an issue in the external issue tracker. Must contain :id.
      */
-    issuesUrl?: pulumi.Input<string>;
+    issuesUrl?: pulumi.Input<string | undefined>;
     /**
      * ID or namespace of the project you want to activate integration on.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * URL of the project in the external issue tracker.
      */
-    projectUrl?: pulumi.Input<string>;
+    projectUrl?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -167,43 +167,43 @@ export interface ProjectMergeRequestNoteState {
     /**
      * The body of the merge request note.
      */
-    body?: pulumi.Input<string>;
+    body?: pulumi.Input<string | undefined>;
     /**
      * The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the merge request note is internal.
      */
-    internal?: pulumi.Input<boolean>;
+    internal?: pulumi.Input<boolean | undefined>;
     /**
      * The diff head SHA of the merge request when the note was created.
      */
-    mergeRequestDiffHeadSha?: pulumi.Input<string>;
+    mergeRequestDiffHeadSha?: pulumi.Input<string | undefined>;
     /**
      * The IID of the merge request to add the note to.
      */
-    mergeRequestIid?: pulumi.Input<number>;
+    mergeRequestIid?: pulumi.Input<number | undefined>;
     /**
      * The ID of the merge request note.
      */
-    noteId?: pulumi.Input<number>;
+    noteId?: pulumi.Input<number | undefined>;
     /**
      * The ID or path of the project to add the note to.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the merge request note is resolvable.
      */
-    resolvable?: pulumi.Input<boolean>;
+    resolvable?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if the merge request note is a system note.
      */
-    system?: pulumi.Input<boolean>;
+    system?: pulumi.Input<boolean | undefined>;
     /**
      * The last updated date of the merge request note.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -217,15 +217,15 @@ export interface ProjectMergeRequestNoteArgs {
     /**
      * The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the merge request note is internal.
      */
-    internal?: pulumi.Input<boolean>;
+    internal?: pulumi.Input<boolean | undefined>;
     /**
      * The diff head SHA of the merge request when the note was created.
      */
-    mergeRequestDiffHeadSha?: pulumi.Input<string>;
+    mergeRequestDiffHeadSha?: pulumi.Input<string | undefined>;
     /**
      * The IID of the merge request to add the note to.
      */

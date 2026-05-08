@@ -445,7 +445,7 @@ def get_user(email: Optional[_builtins.str] = None,
 
     example = gitlab.get_user(username="myuser")
     # Example using `for_each`
-    example_two = {__key: gitlab.get_user(username=__value) for __key, __value in enumerate(std.toset(input=[
+    example_two = {str(__key): gitlab.get_user(username=__value) for __key, __value in enumerate(std.toset(input=[
         "user1",
         "user2",
         "user3",
@@ -501,11 +501,11 @@ def get_user(email: Optional[_builtins.str] = None,
         user_provider=pulumi.get(__ret__, 'user_provider'),
         username=pulumi.get(__ret__, 'username'),
         website_url=pulumi.get(__ret__, 'website_url'))
-def get_user_output(email: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    email_exact_match: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                    namespace_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                    user_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                    username: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_user_output(email: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    email_exact_match: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                    namespace_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                    user_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                    username: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     The `User` data source allows details of a user to be retrieved by either the user ID, username or email address.
@@ -525,7 +525,7 @@ def get_user_output(email: Optional[pulumi.Input[Optional[_builtins.str]]] = Non
 
     example = gitlab.get_user(username="myuser")
     # Example using `for_each`
-    example_two = {__key: gitlab.get_user(username=__value) for __key, __value in enumerate(std.toset(input=[
+    example_two = {str(__key): gitlab.get_user(username=__value) for __key, __value in enumerate(std.toset(input=[
         "user1",
         "user2",
         "user3",

@@ -124,27 +124,27 @@ export interface ProjectPagesSettingsState {
     /**
      * List of current active deployments.
      */
-    deployments?: pulumi.Input<pulumi.Input<inputs.ProjectPagesSettingsDeployment>[]>;
+    deployments?: pulumi.Input<pulumi.Input<inputs.ProjectPagesSettingsDeployment>[] | undefined>;
     /**
      * Boolean indicating if the project is set to force https. Requires `externalHttps` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
      */
-    forceHttps?: pulumi.Input<boolean>;
+    forceHttps?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean indicating if a unique domain is enabled.
      */
-    isUniqueDomainEnabled?: pulumi.Input<boolean>;
+    isUniqueDomainEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
      */
-    keepSettingsOnDestroy?: pulumi.Input<boolean>;
+    keepSettingsOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The project ID or path.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URL to access the project pages.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -154,15 +154,15 @@ export interface ProjectPagesSettingsArgs {
     /**
      * Boolean indicating if the project is set to force https. Requires `externalHttps` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
      */
-    forceHttps?: pulumi.Input<boolean>;
+    forceHttps?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean indicating if a unique domain is enabled.
      */
-    isUniqueDomainEnabled?: pulumi.Input<boolean>;
+    isUniqueDomainEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.
      */
-    keepSettingsOnDestroy?: pulumi.Input<boolean>;
+    keepSettingsOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The project ID or path.
      */

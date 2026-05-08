@@ -141,23 +141,23 @@ export interface ProjectPackageDependencyProxyState {
     /**
      * Indicates whether the dependency proxy is enabled for packages.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The password to authenticate with the external Maven registry. Must be set together with `mavenExternalRegistryUsername`. Cannot be imported.
      */
-    mavenExternalRegistryPassword?: pulumi.Input<string>;
+    mavenExternalRegistryPassword?: pulumi.Input<string | undefined>;
     /**
      * The URL of the external Maven registry.
      */
-    mavenExternalRegistryUrl?: pulumi.Input<string>;
+    mavenExternalRegistryUrl?: pulumi.Input<string | undefined>;
     /**
      * The username to authenticate with the external Maven registry. Must be set together with `mavenExternalRegistryPassword`.
      */
-    mavenExternalRegistryUsername?: pulumi.Input<string>;
+    mavenExternalRegistryUsername?: pulumi.Input<string | undefined>;
     /**
      * The ID or URL-encoded path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -167,19 +167,19 @@ export interface ProjectPackageDependencyProxyArgs {
     /**
      * Indicates whether the dependency proxy is enabled for packages.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The password to authenticate with the external Maven registry. Must be set together with `mavenExternalRegistryUsername`. Cannot be imported.
      */
-    mavenExternalRegistryPassword?: pulumi.Input<string>;
+    mavenExternalRegistryPassword?: pulumi.Input<string | undefined>;
     /**
      * The URL of the external Maven registry.
      */
-    mavenExternalRegistryUrl?: pulumi.Input<string>;
+    mavenExternalRegistryUrl?: pulumi.Input<string | undefined>;
     /**
      * The username to authenticate with the external Maven registry. Must be set together with `mavenExternalRegistryPassword`.
      */
-    mavenExternalRegistryUsername?: pulumi.Input<string>;
+    mavenExternalRegistryUsername?: pulumi.Input<string | undefined>;
     /**
      * The ID or URL-encoded path of the project.
      */

@@ -23,23 +23,23 @@ class ProjectIssueArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 assignee_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 confidential: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discussion_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 discussion_to_resolve: Optional[pulumi.Input[_builtins.str]] = None,
-                 due_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 epic_issue_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 iid: Optional[pulumi.Input[_builtins.int]] = None,
-                 issue_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 merge_request_to_resolve_discussions_of: Optional[pulumi.Input[_builtins.int]] = None,
-                 milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 assignee_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 confidential: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discussion_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 discussion_to_resolve: pulumi.Input[Optional[_builtins.str]] = None,
+                 due_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 epic_issue_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 iid: pulumi.Input[Optional[_builtins.int]] = None,
+                 issue_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 merge_request_to_resolve_discussions_of: pulumi.Input[Optional[_builtins.int]] = None,
+                 milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ProjectIssue resource.
 
@@ -126,252 +126,252 @@ class ProjectIssueArgs:
 
     @_builtins.property
     @pulumi.getter(name="assigneeIds")
-    def assignee_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def assignee_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The IDs of the users to assign the issue to.
         """
         return pulumi.get(self, "assignee_ids")
 
     @assignee_ids.setter
-    def assignee_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def assignee_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "assignee_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def confidential(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confidential(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set an issue to be confidential.
         """
         return pulumi.get(self, "confidential")
 
     @confidential.setter
-    def confidential(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confidential(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confidential", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteOnDestroy")
-    def delete_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the issue is deleted instead of closed during destroy.
         """
         return pulumi.get(self, "delete_on_destroy")
 
     @delete_on_destroy.setter
-    def delete_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of an issue. Limited to 1,048,576 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="discussionLocked")
-    def discussion_locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def discussion_locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the issue is locked for discussions or not.
         """
         return pulumi.get(self, "discussion_locked")
 
     @discussion_locked.setter
-    def discussion_locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def discussion_locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "discussion_locked", value)
 
     @_builtins.property
     @pulumi.getter(name="discussionToResolve")
-    def discussion_to_resolve(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discussion_to_resolve(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
         """
         return pulumi.get(self, "discussion_to_resolve")
 
     @discussion_to_resolve.setter
-    def discussion_to_resolve(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discussion_to_resolve(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discussion_to_resolve", value)
 
     @_builtins.property
     @pulumi.getter(name="dueDate")
-    def due_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def due_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
         """
         return pulumi.get(self, "due_date")
 
     @due_date.setter
-    def due_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def due_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "due_date", value)
 
     @_builtins.property
     @pulumi.getter(name="epicIssueId")
-    def epic_issue_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def epic_issue_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the epic issue.
         """
         return pulumi.get(self, "epic_issue_id")
 
     @epic_issue_id.setter
-    def epic_issue_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def epic_issue_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "epic_issue_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def iid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def iid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The internal ID of the project's issue.
         """
         return pulumi.get(self, "iid")
 
     @iid.setter
-    def iid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def iid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "iid", value)
 
     @_builtins.property
     @pulumi.getter(name="issueType")
-    def issue_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issue_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of issue. Valid values are: `issue`, `incident`, `test_case`.
         """
         return pulumi.get(self, "issue_type")
 
     @issue_type.setter
-    def issue_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issue_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issue_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The labels of an issue.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestToResolveDiscussionsOf")
-    def merge_request_to_resolve_discussions_of(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def merge_request_to_resolve_discussions_of(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
         """
         return pulumi.get(self, "merge_request_to_resolve_discussions_of")
 
     @merge_request_to_resolve_discussions_of.setter
-    def merge_request_to_resolve_discussions_of(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def merge_request_to_resolve_discussions_of(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "merge_request_to_resolve_discussions_of", value)
 
     @_builtins.property
     @pulumi.getter(name="milestoneId")
-    def milestone_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def milestone_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
         """
         return pulumi.get(self, "milestone_id")
 
     @milestone_id.setter
-    def milestone_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def milestone_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "milestone_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the issue. Valid values are: `opened`, `closed`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The weight of the issue. Valid values are greater than or equal to 0.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
 @pulumi.input_type
 class _ProjectIssueState:
     def __init__(__self__, *,
-                 assignee_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 author_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 closed_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 closed_by_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 confidential: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discussion_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 discussion_to_resolve: Optional[pulumi.Input[_builtins.str]] = None,
-                 downvotes: Optional[pulumi.Input[_builtins.int]] = None,
-                 due_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 epic_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 epic_issue_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 human_time_estimate: Optional[pulumi.Input[_builtins.str]] = None,
-                 human_total_time_spent: Optional[pulumi.Input[_builtins.str]] = None,
-                 iid: Optional[pulumi.Input[_builtins.int]] = None,
-                 issue_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 issue_link_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 issue_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 links: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 merge_request_to_resolve_discussions_of: Optional[pulumi.Input[_builtins.int]] = None,
-                 merge_requests_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 moved_to_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 references: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscribed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 task_completion_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']]]] = None,
-                 time_estimate: Optional[pulumi.Input[_builtins.int]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_time_spent: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 upvotes: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_notes_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 web_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 assignee_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 author_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 closed_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 closed_by_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 confidential: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discussion_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 discussion_to_resolve: pulumi.Input[Optional[_builtins.str]] = None,
+                 downvotes: pulumi.Input[Optional[_builtins.int]] = None,
+                 due_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 epic_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 epic_issue_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 human_time_estimate: pulumi.Input[Optional[_builtins.str]] = None,
+                 human_total_time_spent: pulumi.Input[Optional[_builtins.str]] = None,
+                 iid: pulumi.Input[Optional[_builtins.int]] = None,
+                 issue_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 issue_link_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 issue_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 links: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 merge_request_to_resolve_discussions_of: pulumi.Input[Optional[_builtins.int]] = None,
+                 merge_requests_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 moved_to_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 references: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscribed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 task_completion_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']]]] = None,
+                 time_estimate: pulumi.Input[Optional[_builtins.int]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_time_spent: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 upvotes: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_notes_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 web_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ProjectIssue resources.
 
@@ -499,482 +499,482 @@ class _ProjectIssueState:
 
     @_builtins.property
     @pulumi.getter(name="assigneeIds")
-    def assignee_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def assignee_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The IDs of the users to assign the issue to.
         """
         return pulumi.get(self, "assignee_ids")
 
     @assignee_ids.setter
-    def assignee_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def assignee_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "assignee_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="authorId")
-    def author_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def author_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the author of the issue. Use `User` data source to get more information about the user.
         """
         return pulumi.get(self, "author_id")
 
     @author_id.setter
-    def author_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def author_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "author_id", value)
 
     @_builtins.property
     @pulumi.getter(name="closedAt")
-    def closed_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def closed_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the issue was closed. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
         """
         return pulumi.get(self, "closed_at")
 
     @closed_at.setter
-    def closed_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def closed_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "closed_at", value)
 
     @_builtins.property
     @pulumi.getter(name="closedByUserId")
-    def closed_by_user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def closed_by_user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the user that closed the issue. Use `User` data source to get more information about the user.
         """
         return pulumi.get(self, "closed_by_user_id")
 
     @closed_by_user_id.setter
-    def closed_by_user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def closed_by_user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "closed_by_user_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def confidential(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confidential(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set an issue to be confidential.
         """
         return pulumi.get(self, "confidential")
 
     @confidential.setter
-    def confidential(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confidential(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confidential", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the issue was created. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z. Requires administrator or project/group owner rights.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteOnDestroy")
-    def delete_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the issue is deleted instead of closed during destroy.
         """
         return pulumi.get(self, "delete_on_destroy")
 
     @delete_on_destroy.setter
-    def delete_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of an issue. Limited to 1,048,576 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="discussionLocked")
-    def discussion_locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def discussion_locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the issue is locked for discussions or not.
         """
         return pulumi.get(self, "discussion_locked")
 
     @discussion_locked.setter
-    def discussion_locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def discussion_locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "discussion_locked", value)
 
     @_builtins.property
     @pulumi.getter(name="discussionToResolve")
-    def discussion_to_resolve(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discussion_to_resolve(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a discussion to resolve. This fills out the issue with a default description and mark the discussion as resolved. Use in combination with merge*request*to*resolve*discussions_of.
         """
         return pulumi.get(self, "discussion_to_resolve")
 
     @discussion_to_resolve.setter
-    def discussion_to_resolve(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discussion_to_resolve(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discussion_to_resolve", value)
 
     @_builtins.property
     @pulumi.getter
-    def downvotes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def downvotes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of downvotes the issue has received.
         """
         return pulumi.get(self, "downvotes")
 
     @downvotes.setter
-    def downvotes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def downvotes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "downvotes", value)
 
     @_builtins.property
     @pulumi.getter(name="dueDate")
-    def due_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def due_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The due date. Date time string in the format YYYY-MM-DD, for example 2016-03-11.
         """
         return pulumi.get(self, "due_date")
 
     @due_date.setter
-    def due_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def due_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "due_date", value)
 
     @_builtins.property
     @pulumi.getter(name="epicId")
-    def epic_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def epic_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ID of the epic to add the issue to. Valid values are greater than or equal to 0.
         """
         return pulumi.get(self, "epic_id")
 
     @epic_id.setter
-    def epic_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def epic_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "epic_id", value)
 
     @_builtins.property
     @pulumi.getter(name="epicIssueId")
-    def epic_issue_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def epic_issue_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the epic issue.
         """
         return pulumi.get(self, "epic_issue_id")
 
     @epic_issue_id.setter
-    def epic_issue_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def epic_issue_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "epic_issue_id", value)
 
     @_builtins.property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The external ID of the issue.
         """
         return pulumi.get(self, "external_id")
 
     @external_id.setter
-    def external_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_id", value)
 
     @_builtins.property
     @pulumi.getter(name="humanTimeEstimate")
-    def human_time_estimate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def human_time_estimate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable time estimate of the issue.
         """
         return pulumi.get(self, "human_time_estimate")
 
     @human_time_estimate.setter
-    def human_time_estimate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def human_time_estimate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "human_time_estimate", value)
 
     @_builtins.property
     @pulumi.getter(name="humanTotalTimeSpent")
-    def human_total_time_spent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def human_total_time_spent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable total time spent of the issue.
         """
         return pulumi.get(self, "human_total_time_spent")
 
     @human_total_time_spent.setter
-    def human_total_time_spent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def human_total_time_spent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "human_total_time_spent", value)
 
     @_builtins.property
     @pulumi.getter
-    def iid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def iid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The internal ID of the project's issue.
         """
         return pulumi.get(self, "iid")
 
     @iid.setter
-    def iid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def iid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "iid", value)
 
     @_builtins.property
     @pulumi.getter(name="issueId")
-    def issue_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def issue_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The instance-wide ID of the issue.
         """
         return pulumi.get(self, "issue_id")
 
     @issue_id.setter
-    def issue_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def issue_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "issue_id", value)
 
     @_builtins.property
     @pulumi.getter(name="issueLinkId")
-    def issue_link_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def issue_link_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the issue link.
         """
         return pulumi.get(self, "issue_link_id")
 
     @issue_link_id.setter
-    def issue_link_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def issue_link_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "issue_link_id", value)
 
     @_builtins.property
     @pulumi.getter(name="issueType")
-    def issue_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issue_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of issue. Valid values are: `issue`, `incident`, `test_case`.
         """
         return pulumi.get(self, "issue_type")
 
     @issue_type.setter
-    def issue_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issue_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issue_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The labels of an issue.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def links(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def links(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The links of the issue.
         """
         return pulumi.get(self, "links")
 
     @links.setter
-    def links(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def links(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "links", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestToResolveDiscussionsOf")
-    def merge_request_to_resolve_discussions_of(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def merge_request_to_resolve_discussions_of(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The IID of a merge request in which to resolve all issues. This fills out the issue with a default description and mark all discussions as resolved. When passing a description or title, these values take precedence over the default values.
         """
         return pulumi.get(self, "merge_request_to_resolve_discussions_of")
 
     @merge_request_to_resolve_discussions_of.setter
-    def merge_request_to_resolve_discussions_of(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def merge_request_to_resolve_discussions_of(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "merge_request_to_resolve_discussions_of", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsCount")
-    def merge_requests_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def merge_requests_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of merge requests associated with the issue.
         """
         return pulumi.get(self, "merge_requests_count")
 
     @merge_requests_count.setter
-    def merge_requests_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def merge_requests_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "merge_requests_count", value)
 
     @_builtins.property
     @pulumi.getter(name="milestoneId")
-    def milestone_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def milestone_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The global ID of a milestone to assign issue. To find the milestone_id associated with a milestone, view an issue with the milestone assigned and use the API to retrieve the issue's details.
         """
         return pulumi.get(self, "milestone_id")
 
     @milestone_id.setter
-    def milestone_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def milestone_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "milestone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="movedToId")
-    def moved_to_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def moved_to_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the issue that was moved to.
         """
         return pulumi.get(self, "moved_to_id")
 
     @moved_to_id.setter
-    def moved_to_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def moved_to_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "moved_to_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name or ID of the project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def references(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def references(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The references of the issue.
         """
         return pulumi.get(self, "references")
 
     @references.setter
-    def references(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def references(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "references", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the issue. Valid values are: `opened`, `closed`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def subscribed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def subscribed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the authenticated user is subscribed to the issue or not.
         """
         return pulumi.get(self, "subscribed")
 
     @subscribed.setter
-    def subscribed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def subscribed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "subscribed", value)
 
     @_builtins.property
     @pulumi.getter(name="taskCompletionStatuses")
-    def task_completion_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']]]]:
+    def task_completion_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']]]]:
         """
         The task completion status. It's always a one element list.
         """
         return pulumi.get(self, "task_completion_statuses")
 
     @task_completion_statuses.setter
-    def task_completion_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']]]]):
+    def task_completion_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectIssueTaskCompletionStatusArgs']]]]):
         pulumi.set(self, "task_completion_statuses", value)
 
     @_builtins.property
     @pulumi.getter(name="timeEstimate")
-    def time_estimate(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def time_estimate(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time estimate of the issue.
         """
         return pulumi.get(self, "time_estimate")
 
     @time_estimate.setter
-    def time_estimate(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def time_estimate(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "time_estimate", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The title of the issue.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
     @_builtins.property
     @pulumi.getter(name="totalTimeSpent")
-    def total_time_spent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_time_spent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The total time spent of the issue.
         """
         return pulumi.get(self, "total_time_spent")
 
     @total_time_spent.setter
-    def total_time_spent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_time_spent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_time_spent", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the issue was updated. Date time string, ISO 8601 formatted, for example 2016-03-11T03:45:40Z.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def upvotes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def upvotes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of upvotes the issue has received.
         """
         return pulumi.get(self, "upvotes")
 
     @upvotes.setter
-    def upvotes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def upvotes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "upvotes", value)
 
     @_builtins.property
     @pulumi.getter(name="userNotesCount")
-    def user_notes_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_notes_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of user notes on the issue.
         """
         return pulumi.get(self, "user_notes_count")
 
     @user_notes_count.setter
-    def user_notes_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_notes_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_notes_count", value)
 
     @_builtins.property
     @pulumi.getter(name="webUrl")
-    def web_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def web_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The web URL of the issue.
         """
         return pulumi.get(self, "web_url")
 
     @web_url.setter
-    def web_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def web_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "web_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The weight of the issue. Valid values are greater than or equal to 0.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
@@ -984,25 +984,25 @@ class ProjectIssue(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignee_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 confidential: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discussion_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 discussion_to_resolve: Optional[pulumi.Input[_builtins.str]] = None,
-                 due_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 epic_issue_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 iid: Optional[pulumi.Input[_builtins.int]] = None,
-                 issue_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 merge_request_to_resolve_discussions_of: Optional[pulumi.Input[_builtins.int]] = None,
-                 milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 assignee_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 confidential: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discussion_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 discussion_to_resolve: pulumi.Input[Optional[_builtins.str]] = None,
+                 due_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 epic_issue_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 iid: pulumi.Input[Optional[_builtins.int]] = None,
+                 issue_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 merge_request_to_resolve_discussions_of: pulumi.Input[Optional[_builtins.int]] = None,
+                 milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         The `ProjectIssue` resource manages the lifecycle of an issue within a project.
@@ -1135,25 +1135,25 @@ class ProjectIssue(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignee_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 confidential: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discussion_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 discussion_to_resolve: Optional[pulumi.Input[_builtins.str]] = None,
-                 due_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 epic_issue_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 iid: Optional[pulumi.Input[_builtins.int]] = None,
-                 issue_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 merge_request_to_resolve_discussions_of: Optional[pulumi.Input[_builtins.int]] = None,
-                 milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 assignee_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 confidential: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discussion_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 discussion_to_resolve: pulumi.Input[Optional[_builtins.str]] = None,
+                 due_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 epic_issue_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 iid: pulumi.Input[Optional[_builtins.int]] = None,
+                 issue_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 merge_request_to_resolve_discussions_of: pulumi.Input[Optional[_builtins.int]] = None,
+                 milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1217,46 +1217,46 @@ class ProjectIssue(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assignee_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            author_id: Optional[pulumi.Input[_builtins.int]] = None,
-            closed_at: Optional[pulumi.Input[_builtins.str]] = None,
-            closed_by_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-            confidential: Optional[pulumi.Input[_builtins.bool]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            discussion_locked: Optional[pulumi.Input[_builtins.bool]] = None,
-            discussion_to_resolve: Optional[pulumi.Input[_builtins.str]] = None,
-            downvotes: Optional[pulumi.Input[_builtins.int]] = None,
-            due_date: Optional[pulumi.Input[_builtins.str]] = None,
-            epic_id: Optional[pulumi.Input[_builtins.int]] = None,
-            epic_issue_id: Optional[pulumi.Input[_builtins.int]] = None,
-            external_id: Optional[pulumi.Input[_builtins.str]] = None,
-            human_time_estimate: Optional[pulumi.Input[_builtins.str]] = None,
-            human_total_time_spent: Optional[pulumi.Input[_builtins.str]] = None,
-            iid: Optional[pulumi.Input[_builtins.int]] = None,
-            issue_id: Optional[pulumi.Input[_builtins.int]] = None,
-            issue_link_id: Optional[pulumi.Input[_builtins.int]] = None,
-            issue_type: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            links: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            merge_request_to_resolve_discussions_of: Optional[pulumi.Input[_builtins.int]] = None,
-            merge_requests_count: Optional[pulumi.Input[_builtins.int]] = None,
-            milestone_id: Optional[pulumi.Input[_builtins.int]] = None,
-            moved_to_id: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            references: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            subscribed: Optional[pulumi.Input[_builtins.bool]] = None,
-            task_completion_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueTaskCompletionStatusArgs', 'ProjectIssueTaskCompletionStatusArgsDict']]]]] = None,
-            time_estimate: Optional[pulumi.Input[_builtins.int]] = None,
-            title: Optional[pulumi.Input[_builtins.str]] = None,
-            total_time_spent: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            upvotes: Optional[pulumi.Input[_builtins.int]] = None,
-            user_notes_count: Optional[pulumi.Input[_builtins.int]] = None,
-            web_url: Optional[pulumi.Input[_builtins.str]] = None,
-            weight: Optional[pulumi.Input[_builtins.int]] = None) -> 'ProjectIssue':
+            assignee_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            author_id: pulumi.Input[Optional[_builtins.int]] = None,
+            closed_at: pulumi.Input[Optional[_builtins.str]] = None,
+            closed_by_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+            confidential: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            discussion_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            discussion_to_resolve: pulumi.Input[Optional[_builtins.str]] = None,
+            downvotes: pulumi.Input[Optional[_builtins.int]] = None,
+            due_date: pulumi.Input[Optional[_builtins.str]] = None,
+            epic_id: pulumi.Input[Optional[_builtins.int]] = None,
+            epic_issue_id: pulumi.Input[Optional[_builtins.int]] = None,
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            human_time_estimate: pulumi.Input[Optional[_builtins.str]] = None,
+            human_total_time_spent: pulumi.Input[Optional[_builtins.str]] = None,
+            iid: pulumi.Input[Optional[_builtins.int]] = None,
+            issue_id: pulumi.Input[Optional[_builtins.int]] = None,
+            issue_link_id: pulumi.Input[Optional[_builtins.int]] = None,
+            issue_type: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            links: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            merge_request_to_resolve_discussions_of: pulumi.Input[Optional[_builtins.int]] = None,
+            merge_requests_count: pulumi.Input[Optional[_builtins.int]] = None,
+            milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+            moved_to_id: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            references: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subscribed: pulumi.Input[Optional[_builtins.bool]] = None,
+            task_completion_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectIssueTaskCompletionStatusArgs', 'ProjectIssueTaskCompletionStatusArgsDict']]]]] = None,
+            time_estimate: pulumi.Input[Optional[_builtins.int]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            total_time_spent: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            upvotes: pulumi.Input[Optional[_builtins.int]] = None,
+            user_notes_count: pulumi.Input[Optional[_builtins.int]] = None,
+            web_url: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> 'ProjectIssue':
         """
         Get an existing ProjectIssue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

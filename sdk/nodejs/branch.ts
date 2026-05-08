@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * const example = new gitlab.Project("example", {
  *     name: "example",
  *     description: "An example project",
- *     namespaceId: exampleGitlabGroup.id,
+ *     namespaceId: Number(exampleGitlabGroup.id),
  * });
  * const exampleBranch = new gitlab.Branch("example", {
  *     name: "example",
@@ -179,51 +179,51 @@ export interface BranchState {
     /**
      * Bool, true if you can push to the branch.
      */
-    canPush?: pulumi.Input<boolean>;
+    canPush?: pulumi.Input<boolean | undefined>;
     /**
      * The commit associated with the branch ref.
      */
-    commits?: pulumi.Input<pulumi.Input<inputs.BranchCommit>[]>;
+    commits?: pulumi.Input<pulumi.Input<inputs.BranchCommit>[] | undefined>;
     /**
      * Bool, true if branch is the default branch for the project.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * Bool, true if developer level access allows to merge branch.
      */
-    developerCanMerge?: pulumi.Input<boolean>;
+    developerCanMerge?: pulumi.Input<boolean | undefined>;
     /**
      * Bool, true if developer level access allows git push.
      */
-    developerCanPush?: pulumi.Input<boolean>;
+    developerCanPush?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
      */
-    keepOnDestroy?: pulumi.Input<boolean>;
+    keepOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Bool, true if the branch has been merged into its parent.
      */
-    merged?: pulumi.Input<boolean>;
+    merged?: pulumi.Input<boolean | undefined>;
     /**
      * The name for this branch.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project which the branch is created against.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Bool, true if branch has branch protection.
      */
-    protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean | undefined>;
     /**
      * The ref which the branch is created from.
      */
-    ref?: pulumi.Input<string>;
+    ref?: pulumi.Input<string | undefined>;
     /**
      * The url of the created branch (https).
      */
-    webUrl?: pulumi.Input<string>;
+    webUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -233,11 +233,11 @@ export interface BranchArgs {
     /**
      * Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
      */
-    keepOnDestroy?: pulumi.Input<boolean>;
+    keepOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The name for this branch.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project which the branch is created against.
      */

@@ -23,32 +23,32 @@ class GroupHookArgs:
     def __init__(__self__, *,
                  group: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str],
-                 branch_filter_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]] = None,
-                 custom_webhook_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 emoji_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 feature_flag_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 job_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 member_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipeline_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_events_branch_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 releases_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subgroup_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 vulnerability_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
+                 branch_filter_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]] = None,
+                 custom_webhook_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 emoji_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 feature_flag_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 job_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 member_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_events_branch_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 releases_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subgroup_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GroupHook resource.
 
@@ -162,350 +162,350 @@ class GroupHookArgs:
 
     @_builtins.property
     @pulumi.getter(name="branchFilterStrategy")
-    def branch_filter_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch_filter_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         """
         return pulumi.get(self, "branch_filter_strategy")
 
     @branch_filter_strategy.setter
-    def branch_filter_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch_filter_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch_filter_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialIssuesEvents")
-    def confidential_issues_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confidential_issues_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for confidential issues events. Defaults to `false`.
         """
         return pulumi.get(self, "confidential_issues_events")
 
     @confidential_issues_events.setter
-    def confidential_issues_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confidential_issues_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confidential_issues_events", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialNoteEvents")
-    def confidential_note_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confidential_note_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for confidential note events. Defaults to `false`.
         """
         return pulumi.get(self, "confidential_note_events")
 
     @confidential_note_events.setter
-    def confidential_note_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confidential_note_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confidential_note_events", value)
 
     @_builtins.property
     @pulumi.getter(name="customHeaders")
-    def custom_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]]:
+    def custom_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]]:
         """
         Custom headers for the project webhook.
         """
         return pulumi.get(self, "custom_headers")
 
     @custom_headers.setter
-    def custom_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]]):
+    def custom_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]]):
         pulumi.set(self, "custom_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="customWebhookTemplate")
-    def custom_webhook_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_webhook_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom webhook template.
         """
         return pulumi.get(self, "custom_webhook_template")
 
     @custom_webhook_template.setter
-    def custom_webhook_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_webhook_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_webhook_template", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentEvents")
-    def deployment_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deployment_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for deployment events. Defaults to `false`.
         """
         return pulumi.get(self, "deployment_events")
 
     @deployment_events.setter
-    def deployment_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deployment_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deployment_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the group webhook.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="emojiEvents")
-    def emoji_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def emoji_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for emoji events. Defaults to `false`.
         """
         return pulumi.get(self, "emoji_events")
 
     @emoji_events.setter
-    def emoji_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def emoji_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "emoji_events", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSslVerification")
-    def enable_ssl_verification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ssl_verification(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable SSL verification when invoking the hook. Defaults to `true`.
         """
         return pulumi.get(self, "enable_ssl_verification")
 
     @enable_ssl_verification.setter
-    def enable_ssl_verification(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ssl_verification(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ssl_verification", value)
 
     @_builtins.property
     @pulumi.getter(name="featureFlagEvents")
-    def feature_flag_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def feature_flag_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for feature flag events. Defaults to `false`.
         """
         return pulumi.get(self, "feature_flag_events")
 
     @feature_flag_events.setter
-    def feature_flag_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def feature_flag_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "feature_flag_events", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesEvents")
-    def issues_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def issues_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for issues events. Defaults to `false`.
         """
         return pulumi.get(self, "issues_events")
 
     @issues_events.setter
-    def issues_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def issues_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "issues_events", value)
 
     @_builtins.property
     @pulumi.getter(name="jobEvents")
-    def job_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def job_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for job events. Defaults to `false`.
         """
         return pulumi.get(self, "job_events")
 
     @job_events.setter
-    def job_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def job_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "job_events", value)
 
     @_builtins.property
     @pulumi.getter(name="memberEvents")
-    def member_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def member_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for member events. Defaults to `false`.
         """
         return pulumi.get(self, "member_events")
 
     @member_events.setter
-    def member_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def member_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "member_events", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEvents")
-    def merge_requests_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_requests_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for merge requests events. Defaults to `false`.
         """
         return pulumi.get(self, "merge_requests_events")
 
     @merge_requests_events.setter
-    def merge_requests_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_requests_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_requests_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the group webhook.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="noteEvents")
-    def note_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def note_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for note events. Defaults to `false`.
         """
         return pulumi.get(self, "note_events")
 
     @note_events.setter
-    def note_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def note_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "note_events", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineEvents")
-    def pipeline_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pipeline_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for pipeline events. Defaults to `false`.
         """
         return pulumi.get(self, "pipeline_events")
 
     @pipeline_events.setter
-    def pipeline_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pipeline_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pipeline_events", value)
 
     @_builtins.property
     @pulumi.getter(name="projectEvents")
-    def project_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def project_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for project events. Defaults to `false`.
         """
         return pulumi.get(self, "project_events")
 
     @project_events.setter
-    def project_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def project_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "project_events", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for push events. Defaults to `true`.
         """
         return pulumi.get(self, "push_events")
 
     @push_events.setter
-    def push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "push_events", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEventsBranchFilter")
-    def push_events_branch_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def push_events_branch_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Invoke the hook for push events on matching branches only.
         """
         return pulumi.get(self, "push_events_branch_filter")
 
     @push_events_branch_filter.setter
-    def push_events_branch_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def push_events_branch_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "push_events_branch_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="releasesEvents")
-    def releases_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def releases_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for release events. Defaults to `false`.
         """
         return pulumi.get(self, "releases_events")
 
     @releases_events.setter
-    def releases_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def releases_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "releases_events", value)
 
     @_builtins.property
     @pulumi.getter(name="subgroupEvents")
-    def subgroup_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def subgroup_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for subgroup events. Defaults to `false`.
         """
         return pulumi.get(self, "subgroup_events")
 
     @subgroup_events.setter
-    def subgroup_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def subgroup_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "subgroup_events", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tag_push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for tag push events. Defaults to `false`.
         """
         return pulumi.get(self, "tag_push_events")
 
     @tag_push_events.setter
-    def tag_push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tag_push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tag_push_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A token to present when invoking the hook. The token is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter(name="vulnerabilityEvents")
-    def vulnerability_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vulnerability_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for vulnerability events. Defaults to `false`.
         """
         return pulumi.get(self, "vulnerability_events")
 
     @vulnerability_events.setter
-    def vulnerability_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vulnerability_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vulnerability_events", value)
 
     @_builtins.property
     @pulumi.getter(name="wikiPageEvents")
-    def wiki_page_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wiki_page_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for wiki page events. Defaults to `false`.
         """
         return pulumi.get(self, "wiki_page_events")
 
     @wiki_page_events.setter
-    def wiki_page_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wiki_page_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wiki_page_events", value)
 
 
 @pulumi.input_type
 class _GroupHookState:
     def __init__(__self__, *,
-                 branch_filter_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]] = None,
-                 custom_webhook_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 emoji_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 feature_flag_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 hook_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 job_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 member_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipeline_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_events_branch_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 releases_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subgroup_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 vulnerability_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None):
+                 branch_filter_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]] = None,
+                 custom_webhook_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 emoji_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 feature_flag_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 hook_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 job_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 member_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_events_branch_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 releases_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subgroup_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GroupHook resources.
 
@@ -603,362 +603,362 @@ class _GroupHookState:
 
     @_builtins.property
     @pulumi.getter(name="branchFilterStrategy")
-    def branch_filter_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch_filter_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         """
         return pulumi.get(self, "branch_filter_strategy")
 
     @branch_filter_strategy.setter
-    def branch_filter_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch_filter_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch_filter_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialIssuesEvents")
-    def confidential_issues_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confidential_issues_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for confidential issues events. Defaults to `false`.
         """
         return pulumi.get(self, "confidential_issues_events")
 
     @confidential_issues_events.setter
-    def confidential_issues_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confidential_issues_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confidential_issues_events", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialNoteEvents")
-    def confidential_note_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def confidential_note_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for confidential note events. Defaults to `false`.
         """
         return pulumi.get(self, "confidential_note_events")
 
     @confidential_note_events.setter
-    def confidential_note_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def confidential_note_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "confidential_note_events", value)
 
     @_builtins.property
     @pulumi.getter(name="customHeaders")
-    def custom_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]]:
+    def custom_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]]:
         """
         Custom headers for the project webhook.
         """
         return pulumi.get(self, "custom_headers")
 
     @custom_headers.setter
-    def custom_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]]):
+    def custom_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]]):
         pulumi.set(self, "custom_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="customWebhookTemplate")
-    def custom_webhook_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_webhook_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom webhook template.
         """
         return pulumi.get(self, "custom_webhook_template")
 
     @custom_webhook_template.setter
-    def custom_webhook_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_webhook_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_webhook_template", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentEvents")
-    def deployment_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deployment_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for deployment events. Defaults to `false`.
         """
         return pulumi.get(self, "deployment_events")
 
     @deployment_events.setter
-    def deployment_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deployment_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deployment_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the group webhook.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="emojiEvents")
-    def emoji_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def emoji_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for emoji events. Defaults to `false`.
         """
         return pulumi.get(self, "emoji_events")
 
     @emoji_events.setter
-    def emoji_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def emoji_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "emoji_events", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSslVerification")
-    def enable_ssl_verification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ssl_verification(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable SSL verification when invoking the hook. Defaults to `true`.
         """
         return pulumi.get(self, "enable_ssl_verification")
 
     @enable_ssl_verification.setter
-    def enable_ssl_verification(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ssl_verification(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ssl_verification", value)
 
     @_builtins.property
     @pulumi.getter(name="featureFlagEvents")
-    def feature_flag_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def feature_flag_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for feature flag events. Defaults to `false`.
         """
         return pulumi.get(self, "feature_flag_events")
 
     @feature_flag_events.setter
-    def feature_flag_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def feature_flag_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "feature_flag_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full path or id of the group to add the hook to.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The id of the group for the hook.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hookId")
-    def hook_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hook_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The id of the group hook.
         """
         return pulumi.get(self, "hook_id")
 
     @hook_id.setter
-    def hook_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hook_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hook_id", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesEvents")
-    def issues_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def issues_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for issues events. Defaults to `false`.
         """
         return pulumi.get(self, "issues_events")
 
     @issues_events.setter
-    def issues_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def issues_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "issues_events", value)
 
     @_builtins.property
     @pulumi.getter(name="jobEvents")
-    def job_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def job_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for job events. Defaults to `false`.
         """
         return pulumi.get(self, "job_events")
 
     @job_events.setter
-    def job_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def job_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "job_events", value)
 
     @_builtins.property
     @pulumi.getter(name="memberEvents")
-    def member_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def member_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for member events. Defaults to `false`.
         """
         return pulumi.get(self, "member_events")
 
     @member_events.setter
-    def member_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def member_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "member_events", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEvents")
-    def merge_requests_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_requests_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for merge requests events. Defaults to `false`.
         """
         return pulumi.get(self, "merge_requests_events")
 
     @merge_requests_events.setter
-    def merge_requests_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_requests_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_requests_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the group webhook.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="noteEvents")
-    def note_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def note_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for note events. Defaults to `false`.
         """
         return pulumi.get(self, "note_events")
 
     @note_events.setter
-    def note_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def note_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "note_events", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineEvents")
-    def pipeline_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pipeline_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for pipeline events. Defaults to `false`.
         """
         return pulumi.get(self, "pipeline_events")
 
     @pipeline_events.setter
-    def pipeline_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pipeline_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pipeline_events", value)
 
     @_builtins.property
     @pulumi.getter(name="projectEvents")
-    def project_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def project_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for project events. Defaults to `false`.
         """
         return pulumi.get(self, "project_events")
 
     @project_events.setter
-    def project_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def project_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "project_events", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for push events. Defaults to `true`.
         """
         return pulumi.get(self, "push_events")
 
     @push_events.setter
-    def push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "push_events", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEventsBranchFilter")
-    def push_events_branch_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def push_events_branch_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Invoke the hook for push events on matching branches only.
         """
         return pulumi.get(self, "push_events_branch_filter")
 
     @push_events_branch_filter.setter
-    def push_events_branch_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def push_events_branch_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "push_events_branch_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="releasesEvents")
-    def releases_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def releases_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for release events. Defaults to `false`.
         """
         return pulumi.get(self, "releases_events")
 
     @releases_events.setter
-    def releases_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def releases_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "releases_events", value)
 
     @_builtins.property
     @pulumi.getter(name="subgroupEvents")
-    def subgroup_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def subgroup_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for subgroup events. Defaults to `false`.
         """
         return pulumi.get(self, "subgroup_events")
 
     @subgroup_events.setter
-    def subgroup_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def subgroup_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "subgroup_events", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tag_push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for tag push events. Defaults to `false`.
         """
         return pulumi.get(self, "tag_push_events")
 
     @tag_push_events.setter
-    def tag_push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tag_push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tag_push_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A token to present when invoking the hook. The token is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The url of the hook to invoke. Forces re-creation to preserve `token`.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="vulnerabilityEvents")
-    def vulnerability_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vulnerability_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for vulnerability events. Defaults to `false`.
         """
         return pulumi.get(self, "vulnerability_events")
 
     @vulnerability_events.setter
-    def vulnerability_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vulnerability_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vulnerability_events", value)
 
     @_builtins.property
     @pulumi.getter(name="wikiPageEvents")
-    def wiki_page_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wiki_page_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Invoke the hook for wiki page events. Defaults to `false`.
         """
         return pulumi.get(self, "wiki_page_events")
 
     @wiki_page_events.setter
-    def wiki_page_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wiki_page_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wiki_page_events", value)
 
 
@@ -968,34 +968,34 @@ class GroupHook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branch_filter_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]]] = None,
-                 custom_webhook_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 emoji_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 feature_flag_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 job_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 member_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipeline_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_events_branch_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 releases_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subgroup_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 vulnerability_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None,
+                 branch_filter_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]]] = None,
+                 custom_webhook_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 emoji_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 feature_flag_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 job_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 member_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_events_branch_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 releases_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subgroup_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The `GroupHook` resource manages the lifecycle of a group hook.
@@ -1093,34 +1093,34 @@ class GroupHook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branch_filter_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]]] = None,
-                 custom_webhook_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 emoji_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 feature_flag_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 job_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 member_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipeline_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_events_branch_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 releases_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subgroup_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 vulnerability_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None,
+                 branch_filter_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]]] = None,
+                 custom_webhook_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 emoji_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 feature_flag_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 job_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 member_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_events_branch_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 releases_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subgroup_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1176,36 +1176,36 @@ class GroupHook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            branch_filter_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            confidential_issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            confidential_note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            custom_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]]] = None,
-            custom_webhook_template: Optional[pulumi.Input[_builtins.str]] = None,
-            deployment_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            emoji_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-            feature_flag_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            group: Optional[pulumi.Input[_builtins.str]] = None,
-            group_id: Optional[pulumi.Input[_builtins.int]] = None,
-            hook_id: Optional[pulumi.Input[_builtins.int]] = None,
-            issues_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            job_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            member_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            note_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            pipeline_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            project_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            push_events_branch_filter: Optional[pulumi.Input[_builtins.str]] = None,
-            releases_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            subgroup_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            token: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            vulnerability_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            wiki_page_events: Optional[pulumi.Input[_builtins.bool]] = None) -> 'GroupHook':
+            branch_filter_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]]] = None,
+            custom_webhook_template: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            emoji_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+            feature_flag_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.int]] = None,
+            hook_id: pulumi.Input[Optional[_builtins.int]] = None,
+            issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            job_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            member_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            push_events_branch_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            releases_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            subgroup_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GroupHook':
         """
         Get an existing GroupHook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

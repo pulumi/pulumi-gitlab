@@ -19,24 +19,24 @@ __all__ = ['GlobalLevelNotificationsArgs', 'GlobalLevelNotifications']
 @pulumi.input_type
 class GlobalLevelNotificationsArgs:
     def __init__(__self__, *,
-                 close_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 close_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 failed_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fixed_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issue_due: Optional[pulumi.Input[_builtins.bool]] = None,
-                 level: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_when_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 moved_project: Optional[pulumi.Input[_builtins.bool]] = None,
-                 new_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 new_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 new_note: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_to_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reassign_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reassign_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reopen_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reopen_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 success_pipeline: Optional[pulumi.Input[_builtins.bool]] = None):
+                 close_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 close_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 failed_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fixed_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issue_due: pulumi.Input[Optional[_builtins.bool]] = None,
+                 level: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_when_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 moved_project: pulumi.Input[Optional[_builtins.bool]] = None,
+                 new_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 new_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 new_note: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_to_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reassign_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reassign_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reopen_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reopen_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 success_pipeline: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GlobalLevelNotifications resource.
 
@@ -98,242 +98,242 @@ class GlobalLevelNotificationsArgs:
 
     @_builtins.property
     @pulumi.getter(name="closeIssue")
-    def close_issue(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def close_issue(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for closed issues. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "close_issue")
 
     @close_issue.setter
-    def close_issue(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def close_issue(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "close_issue", value)
 
     @_builtins.property
     @pulumi.getter(name="closeMergeRequest")
-    def close_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def close_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for closed merge requests. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "close_merge_request")
 
     @close_merge_request.setter
-    def close_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def close_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "close_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="failedPipeline")
-    def failed_pipeline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def failed_pipeline(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for failed pipelines. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "failed_pipeline")
 
     @failed_pipeline.setter
-    def failed_pipeline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def failed_pipeline(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "failed_pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedPipeline")
-    def fixed_pipeline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fixed_pipeline(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for fixed pipelines. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "fixed_pipeline")
 
     @fixed_pipeline.setter
-    def fixed_pipeline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fixed_pipeline(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fixed_pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="issueDue")
-    def issue_due(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def issue_due(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for due issues. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "issue_due")
 
     @issue_due.setter
-    def issue_due(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def issue_due(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "issue_due", value)
 
     @_builtins.property
     @pulumi.getter
-    def level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The level of the notification. Valid values are: `disabled`, `participating`, `watch`, `global`, `mention`, `custom`.
         """
         return pulumi.get(self, "level")
 
     @level.setter
-    def level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "level", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeMergeRequest")
-    def merge_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for merged merge requests. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "merge_merge_request")
 
     @merge_merge_request.setter
-    def merge_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeWhenPipelineSucceeds")
-    def merge_when_pipeline_succeeds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_when_pipeline_succeeds(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for merged merge requests when the pipeline succeeds. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "merge_when_pipeline_succeeds")
 
     @merge_when_pipeline_succeeds.setter
-    def merge_when_pipeline_succeeds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_when_pipeline_succeeds(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_when_pipeline_succeeds", value)
 
     @_builtins.property
     @pulumi.getter(name="movedProject")
-    def moved_project(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def moved_project(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for moved projects. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "moved_project")
 
     @moved_project.setter
-    def moved_project(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def moved_project(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "moved_project", value)
 
     @_builtins.property
     @pulumi.getter(name="newIssue")
-    def new_issue(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def new_issue(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for new issues. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "new_issue")
 
     @new_issue.setter
-    def new_issue(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def new_issue(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "new_issue", value)
 
     @_builtins.property
     @pulumi.getter(name="newMergeRequest")
-    def new_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def new_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for new merge requests. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "new_merge_request")
 
     @new_merge_request.setter
-    def new_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def new_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "new_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="newNote")
-    def new_note(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def new_note(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for new notes on merge requests. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "new_note")
 
     @new_note.setter
-    def new_note(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def new_note(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "new_note", value)
 
     @_builtins.property
     @pulumi.getter(name="pushToMergeRequest")
-    def push_to_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def push_to_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for push to merge request branches. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "push_to_merge_request")
 
     @push_to_merge_request.setter
-    def push_to_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def push_to_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "push_to_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="reassignIssue")
-    def reassign_issue(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reassign_issue(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for issue reassignments. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "reassign_issue")
 
     @reassign_issue.setter
-    def reassign_issue(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reassign_issue(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reassign_issue", value)
 
     @_builtins.property
     @pulumi.getter(name="reassignMergeRequest")
-    def reassign_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reassign_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for merge request reassignments. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "reassign_merge_request")
 
     @reassign_merge_request.setter
-    def reassign_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reassign_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reassign_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="reopenIssue")
-    def reopen_issue(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reopen_issue(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for reopened issues. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "reopen_issue")
 
     @reopen_issue.setter
-    def reopen_issue(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reopen_issue(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reopen_issue", value)
 
     @_builtins.property
     @pulumi.getter(name="reopenMergeRequest")
-    def reopen_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reopen_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for reopened merge requests. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "reopen_merge_request")
 
     @reopen_merge_request.setter
-    def reopen_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reopen_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reopen_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="successPipeline")
-    def success_pipeline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def success_pipeline(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for successful pipelines. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "success_pipeline")
 
     @success_pipeline.setter
-    def success_pipeline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def success_pipeline(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "success_pipeline", value)
 
 
 @pulumi.input_type
 class _GlobalLevelNotificationsState:
     def __init__(__self__, *,
-                 close_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 close_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 failed_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fixed_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issue_due: Optional[pulumi.Input[_builtins.bool]] = None,
-                 level: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_when_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 moved_project: Optional[pulumi.Input[_builtins.bool]] = None,
-                 new_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 new_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 new_note: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_to_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reassign_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reassign_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reopen_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reopen_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 success_pipeline: Optional[pulumi.Input[_builtins.bool]] = None):
+                 close_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 close_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 failed_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fixed_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issue_due: pulumi.Input[Optional[_builtins.bool]] = None,
+                 level: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_when_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 moved_project: pulumi.Input[Optional[_builtins.bool]] = None,
+                 new_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 new_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 new_note: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_to_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reassign_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reassign_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reopen_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reopen_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 success_pipeline: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GlobalLevelNotifications resources.
 
@@ -395,218 +395,218 @@ class _GlobalLevelNotificationsState:
 
     @_builtins.property
     @pulumi.getter(name="closeIssue")
-    def close_issue(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def close_issue(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for closed issues. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "close_issue")
 
     @close_issue.setter
-    def close_issue(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def close_issue(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "close_issue", value)
 
     @_builtins.property
     @pulumi.getter(name="closeMergeRequest")
-    def close_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def close_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for closed merge requests. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "close_merge_request")
 
     @close_merge_request.setter
-    def close_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def close_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "close_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="failedPipeline")
-    def failed_pipeline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def failed_pipeline(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for failed pipelines. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "failed_pipeline")
 
     @failed_pipeline.setter
-    def failed_pipeline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def failed_pipeline(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "failed_pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedPipeline")
-    def fixed_pipeline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fixed_pipeline(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for fixed pipelines. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "fixed_pipeline")
 
     @fixed_pipeline.setter
-    def fixed_pipeline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fixed_pipeline(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fixed_pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="issueDue")
-    def issue_due(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def issue_due(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for due issues. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "issue_due")
 
     @issue_due.setter
-    def issue_due(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def issue_due(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "issue_due", value)
 
     @_builtins.property
     @pulumi.getter
-    def level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The level of the notification. Valid values are: `disabled`, `participating`, `watch`, `global`, `mention`, `custom`.
         """
         return pulumi.get(self, "level")
 
     @level.setter
-    def level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "level", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeMergeRequest")
-    def merge_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for merged merge requests. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "merge_merge_request")
 
     @merge_merge_request.setter
-    def merge_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeWhenPipelineSucceeds")
-    def merge_when_pipeline_succeeds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_when_pipeline_succeeds(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for merged merge requests when the pipeline succeeds. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "merge_when_pipeline_succeeds")
 
     @merge_when_pipeline_succeeds.setter
-    def merge_when_pipeline_succeeds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_when_pipeline_succeeds(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_when_pipeline_succeeds", value)
 
     @_builtins.property
     @pulumi.getter(name="movedProject")
-    def moved_project(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def moved_project(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for moved projects. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "moved_project")
 
     @moved_project.setter
-    def moved_project(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def moved_project(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "moved_project", value)
 
     @_builtins.property
     @pulumi.getter(name="newIssue")
-    def new_issue(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def new_issue(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for new issues. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "new_issue")
 
     @new_issue.setter
-    def new_issue(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def new_issue(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "new_issue", value)
 
     @_builtins.property
     @pulumi.getter(name="newMergeRequest")
-    def new_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def new_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for new merge requests. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "new_merge_request")
 
     @new_merge_request.setter
-    def new_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def new_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "new_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="newNote")
-    def new_note(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def new_note(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for new notes on merge requests. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "new_note")
 
     @new_note.setter
-    def new_note(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def new_note(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "new_note", value)
 
     @_builtins.property
     @pulumi.getter(name="pushToMergeRequest")
-    def push_to_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def push_to_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for push to merge request branches. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "push_to_merge_request")
 
     @push_to_merge_request.setter
-    def push_to_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def push_to_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "push_to_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="reassignIssue")
-    def reassign_issue(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reassign_issue(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for issue reassignments. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "reassign_issue")
 
     @reassign_issue.setter
-    def reassign_issue(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reassign_issue(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reassign_issue", value)
 
     @_builtins.property
     @pulumi.getter(name="reassignMergeRequest")
-    def reassign_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reassign_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for merge request reassignments. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "reassign_merge_request")
 
     @reassign_merge_request.setter
-    def reassign_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reassign_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reassign_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="reopenIssue")
-    def reopen_issue(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reopen_issue(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for reopened issues. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "reopen_issue")
 
     @reopen_issue.setter
-    def reopen_issue(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reopen_issue(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reopen_issue", value)
 
     @_builtins.property
     @pulumi.getter(name="reopenMergeRequest")
-    def reopen_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reopen_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for reopened merge requests. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "reopen_merge_request")
 
     @reopen_merge_request.setter
-    def reopen_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reopen_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reopen_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="successPipeline")
-    def success_pipeline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def success_pipeline(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for successful pipelines. Can only be used when `level` is `custom`.
         """
         return pulumi.get(self, "success_pipeline")
 
     @success_pipeline.setter
-    def success_pipeline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def success_pipeline(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "success_pipeline", value)
 
 
@@ -616,24 +616,24 @@ class GlobalLevelNotifications(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 close_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 close_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 failed_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fixed_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issue_due: Optional[pulumi.Input[_builtins.bool]] = None,
-                 level: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_when_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 moved_project: Optional[pulumi.Input[_builtins.bool]] = None,
-                 new_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 new_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 new_note: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_to_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reassign_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reassign_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reopen_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reopen_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 success_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
+                 close_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 close_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 failed_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fixed_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issue_due: pulumi.Input[Optional[_builtins.bool]] = None,
+                 level: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_when_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 moved_project: pulumi.Input[Optional[_builtins.bool]] = None,
+                 new_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 new_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 new_note: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_to_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reassign_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reassign_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reopen_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reopen_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 success_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The `GlobalLevelNotifications` resource manages global notifications.
@@ -717,24 +717,24 @@ class GlobalLevelNotifications(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 close_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 close_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 failed_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fixed_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issue_due: Optional[pulumi.Input[_builtins.bool]] = None,
-                 level: Optional[pulumi.Input[_builtins.str]] = None,
-                 merge_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_when_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 moved_project: Optional[pulumi.Input[_builtins.bool]] = None,
-                 new_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 new_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 new_note: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_to_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reassign_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reassign_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reopen_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reopen_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 success_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
+                 close_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 close_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 failed_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fixed_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issue_due: pulumi.Input[Optional[_builtins.bool]] = None,
+                 level: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_when_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 moved_project: pulumi.Input[Optional[_builtins.bool]] = None,
+                 new_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 new_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 new_note: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_to_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reassign_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reassign_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reopen_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reopen_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 success_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -772,24 +772,24 @@ class GlobalLevelNotifications(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            close_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-            close_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-            failed_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-            fixed_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-            issue_due: Optional[pulumi.Input[_builtins.bool]] = None,
-            level: Optional[pulumi.Input[_builtins.str]] = None,
-            merge_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-            merge_when_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
-            moved_project: Optional[pulumi.Input[_builtins.bool]] = None,
-            new_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-            new_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-            new_note: Optional[pulumi.Input[_builtins.bool]] = None,
-            push_to_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-            reassign_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-            reassign_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-            reopen_issue: Optional[pulumi.Input[_builtins.bool]] = None,
-            reopen_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-            success_pipeline: Optional[pulumi.Input[_builtins.bool]] = None) -> 'GlobalLevelNotifications':
+            close_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+            close_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            failed_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+            fixed_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+            issue_due: pulumi.Input[Optional[_builtins.bool]] = None,
+            level: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_when_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+            moved_project: pulumi.Input[Optional[_builtins.bool]] = None,
+            new_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+            new_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            new_note: pulumi.Input[Optional[_builtins.bool]] = None,
+            push_to_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            reassign_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+            reassign_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            reopen_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+            reopen_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            success_pipeline: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GlobalLevelNotifications':
         """
         Get an existing GlobalLevelNotifications resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

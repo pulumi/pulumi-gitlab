@@ -74,5 +74,5 @@ export interface GetProjectProtectedBranchesOutputArgs {
     /**
      * A list of protected branches, as defined below.
      */
-    protectedBranches?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchesProtectedBranchArgs>[]>;
+    protectedBranches?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchesProtectedBranchArgs>[] | undefined>;
 }

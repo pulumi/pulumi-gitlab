@@ -195,55 +195,55 @@ export interface ProjectAccessTokenState {
     /**
      * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * True if the token is active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Time the token has been created, RFC3339 format.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the project access token.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The name of the project access token.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * True if the token is revoked.
      */
-    revoked?: pulumi.Input<boolean>;
+    revoked?: pulumi.Input<boolean | undefined>;
     /**
      * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
      */
-    rotationConfiguration?: pulumi.Input<inputs.ProjectAccessTokenRotationConfiguration>;
+    rotationConfiguration?: pulumi.Input<inputs.ProjectAccessTokenRotationConfiguration | undefined>;
     /**
      * The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The token of the project access token. **Note**: the token is not available for imported resources.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The userId associated to the token.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
     /**
      * Wether to validate if the expiration date is in the future.
      */
-    validatePastExpirationDate?: pulumi.Input<boolean>;
+    validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -253,19 +253,19 @@ export interface ProjectAccessTokenArgs {
     /**
      * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
-    accessLevel?: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * The description of the project access token.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * When the token will expire, YYYY-MM-DD format. Is automatically set when `rotationConfiguration` is used.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The name of the project access token.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or full path of the project.
      */
@@ -273,7 +273,7 @@ export interface ProjectAccessTokenArgs {
     /**
      * The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
      */
-    rotationConfiguration?: pulumi.Input<inputs.ProjectAccessTokenRotationConfiguration>;
+    rotationConfiguration?: pulumi.Input<inputs.ProjectAccessTokenRotationConfiguration | undefined>;
     /**
      * The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
      */
@@ -281,5 +281,5 @@ export interface ProjectAccessTokenArgs {
     /**
      * Wether to validate if the expiration date is in the future.
      */
-    validatePastExpirationDate?: pulumi.Input<boolean>;
+    validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }

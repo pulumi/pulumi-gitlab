@@ -22,40 +22,40 @@ __all__ = ['GroupArgs', 'Group']
 class GroupArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
-                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_email_domains_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 avatar: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch_protection: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_branch_protection_defaults: Optional[pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 extra_shared_runners_minutes_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 membership_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mentions_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 permanently_remove_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_forking_outside_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_sharing_groups_outside_hierarchy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_creation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_rules: Optional[pulumi.Input['GroupPushRulesArgs']] = None,
-                 request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_two_factor_authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 share_with_group_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shared_runners_minutes_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared_runners_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 subgroup_creation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 two_factor_grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 visibility_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_email_domains_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 avatar: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_branch_protection_defaults: pulumi.Input[Optional['GroupDefaultBranchProtectionDefaultsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extra_shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_restriction_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 membership_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mentions_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_allow_merge_if_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 permanently_remove_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_forking_outside_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_sharing_groups_outside_hierarchy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_creation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_rules: pulumi.Input[Optional['GroupPushRulesArgs']] = None,
+                 request_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 share_with_group_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared_runners_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 subgroup_creation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 two_factor_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 visibility_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_access_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
 
@@ -182,457 +182,457 @@ class GroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowMergeOnSkippedPipeline")
-    def allow_merge_on_skipped_pipeline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_merge_on_skipped_pipeline(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
         """
         return pulumi.get(self, "allow_merge_on_skipped_pipeline")
 
     @allow_merge_on_skipped_pipeline.setter
-    def allow_merge_on_skipped_pipeline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_merge_on_skipped_pipeline(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_merge_on_skipped_pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedEmailDomainsLists")
-    def allowed_email_domains_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_email_domains_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
         """
         return pulumi.get(self, "allowed_email_domains_lists")
 
     @allowed_email_domains_lists.setter
-    def allowed_email_domains_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_email_domains_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_email_domains_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDevopsEnabled")
-    def auto_devops_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_devops_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Default to Auto DevOps pipeline for all projects within this group.
         """
         return pulumi.get(self, "auto_devops_enabled")
 
     @auto_devops_enabled.setter
-    def auto_devops_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_devops_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_devops_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def avatar(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path to the avatar image to upload. **Note**: not available for imported resources.
         """
         return pulumi.get(self, "avatar")
 
     @avatar.setter
-    def avatar(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar", value)
 
     @_builtins.property
     @pulumi.getter(name="avatarHash")
-    def avatar_hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar_hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         """
         return pulumi.get(self, "avatar_hash")
 
     @avatar_hash.setter
-    def avatar_hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar_hash", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranch")
-    def default_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Initial default branch name.
         """
         return pulumi.get(self, "default_branch")
 
     @default_branch.setter
-    def default_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranchProtection")
     @_utilities.deprecated("""Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead.""")
-    def default_branch_protection(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_branch_protection(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         """
         return pulumi.get(self, "default_branch_protection")
 
     @default_branch_protection.setter
-    def default_branch_protection(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_branch_protection(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_branch_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranchProtectionDefaults")
-    def default_branch_protection_defaults(self) -> Optional[pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs']]:
+    def default_branch_protection_defaults(self) -> pulumi.Input[Optional['GroupDefaultBranchProtectionDefaultsArgs']]:
         """
         The default branch protection defaults
         """
         return pulumi.get(self, "default_branch_protection_defaults")
 
     @default_branch_protection_defaults.setter
-    def default_branch_protection_defaults(self, value: Optional[pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs']]):
+    def default_branch_protection_defaults(self, value: pulumi.Input[Optional['GroupDefaultBranchProtectionDefaultsArgs']]):
         pulumi.set(self, "default_branch_protection_defaults", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group's description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="emailsEnabled")
-    def emails_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def emails_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable email notifications.
         """
         return pulumi.get(self, "emails_enabled")
 
     @emails_enabled.setter
-    def emails_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def emails_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "emails_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="extraSharedRunnersMinutesLimit")
-    def extra_shared_runners_minutes_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def extra_shared_runners_minutes_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         """
         return pulumi.get(self, "extra_shared_runners_minutes_limit")
 
     @extra_shared_runners_minutes_limit.setter
-    def extra_shared_runners_minutes_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def extra_shared_runners_minutes_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "extra_shared_runners_minutes_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="ipRestrictionRanges")
-    def ip_restriction_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_restriction_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         """
         return pulumi.get(self, "ip_restriction_ranges")
 
     @ip_restriction_ranges.setter
-    def ip_restriction_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_restriction_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_restriction_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="lfsEnabled")
-    def lfs_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lfs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable/disable Large File Storage (LFS) for the projects in this group.
         """
         return pulumi.get(self, "lfs_enabled")
 
     @lfs_enabled.setter
-    def lfs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lfs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lfs_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maxArtifactsSize")
-    def max_artifacts_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_artifacts_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum file size in megabytes for individual job artifacts.
         """
         return pulumi.get(self, "max_artifacts_size")
 
     @max_artifacts_size.setter
-    def max_artifacts_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_artifacts_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_artifacts_size", value)
 
     @_builtins.property
     @pulumi.getter(name="membershipLock")
-    def membership_lock(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def membership_lock(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Users cannot be added to projects in this group.
         """
         return pulumi.get(self, "membership_lock")
 
     @membership_lock.setter
-    def membership_lock(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def membership_lock(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "membership_lock", value)
 
     @_builtins.property
     @pulumi.getter(name="mentionsDisabled")
-    def mentions_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mentions_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable the capability of a group from getting mentioned.
         """
         return pulumi.get(self, "mentions_disabled")
 
     @mentions_disabled.setter
-    def mentions_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mentions_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mentions_disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
-    def only_allow_merge_if_all_discussions_are_resolved(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_allow_merge_if_all_discussions_are_resolved(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
         """
         return pulumi.get(self, "only_allow_merge_if_all_discussions_are_resolved")
 
     @only_allow_merge_if_all_discussions_are_resolved.setter
-    def only_allow_merge_if_all_discussions_are_resolved(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_allow_merge_if_all_discussions_are_resolved(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_allow_merge_if_all_discussions_are_resolved", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyAllowMergeIfPipelineSucceeds")
-    def only_allow_merge_if_pipeline_succeeds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_allow_merge_if_pipeline_succeeds(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
         """
         return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
 
     @only_allow_merge_if_pipeline_succeeds.setter
-    def only_allow_merge_if_pipeline_succeeds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_allow_merge_if_pipeline_succeeds(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_allow_merge_if_pipeline_succeeds", value)
 
     @_builtins.property
     @pulumi.getter(name="parentId")
-    def parent_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def parent_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Id of the parent group (creates a nested group).
         """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
-    def parent_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def parent_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "parent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="permanentlyRemoveOnDelete")
-    def permanently_remove_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def permanently_remove_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
         """
         return pulumi.get(self, "permanently_remove_on_delete")
 
     @permanently_remove_on_delete.setter
-    def permanently_remove_on_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def permanently_remove_on_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "permanently_remove_on_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="preventForkingOutsideGroup")
-    def prevent_forking_outside_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_forking_outside_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         """
         return pulumi.get(self, "prevent_forking_outside_group")
 
     @prevent_forking_outside_group.setter
-    def prevent_forking_outside_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_forking_outside_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_forking_outside_group", value)
 
     @_builtins.property
     @pulumi.getter(name="preventSharingGroupsOutsideHierarchy")
-    def prevent_sharing_groups_outside_hierarchy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_sharing_groups_outside_hierarchy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
         """
         return pulumi.get(self, "prevent_sharing_groups_outside_hierarchy")
 
     @prevent_sharing_groups_outside_hierarchy.setter
-    def prevent_sharing_groups_outside_hierarchy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_sharing_groups_outside_hierarchy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_sharing_groups_outside_hierarchy", value)
 
     @_builtins.property
     @pulumi.getter(name="projectCreationLevel")
-    def project_creation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_creation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
         """
         return pulumi.get(self, "project_creation_level")
 
     @project_creation_level.setter
-    def project_creation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_creation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_creation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="pushRules")
-    def push_rules(self) -> Optional[pulumi.Input['GroupPushRulesArgs']]:
+    def push_rules(self) -> pulumi.Input[Optional['GroupPushRulesArgs']]:
         """
         Push rules for the group.
         """
         return pulumi.get(self, "push_rules")
 
     @push_rules.setter
-    def push_rules(self, value: Optional[pulumi.Input['GroupPushRulesArgs']]):
+    def push_rules(self, value: pulumi.Input[Optional['GroupPushRulesArgs']]):
         pulumi.set(self, "push_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="requestAccessEnabled")
-    def request_access_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def request_access_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow users to request member access.
         """
         return pulumi.get(self, "request_access_enabled")
 
     @request_access_enabled.setter
-    def request_access_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def request_access_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "request_access_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="requireTwoFactorAuthentication")
-    def require_two_factor_authentication(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_two_factor_authentication(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Require all users in this group to setup Two-factor authentication.
         """
         return pulumi.get(self, "require_two_factor_authentication")
 
     @require_two_factor_authentication.setter
-    def require_two_factor_authentication(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_two_factor_authentication(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_two_factor_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="shareWithGroupLock")
-    def share_with_group_lock(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def share_with_group_lock(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevent sharing a project with another group within this group.
         """
         return pulumi.get(self, "share_with_group_lock")
 
     @share_with_group_lock.setter
-    def share_with_group_lock(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def share_with_group_lock(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "share_with_group_lock", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersMinutesLimit")
-    def shared_runners_minutes_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shared_runners_minutes_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         """
         return pulumi.get(self, "shared_runners_minutes_limit")
 
     @shared_runners_minutes_limit.setter
-    def shared_runners_minutes_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shared_runners_minutes_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shared_runners_minutes_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersSetting")
-    def shared_runners_setting(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_runners_setting(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
         """
         return pulumi.get(self, "shared_runners_setting")
 
     @shared_runners_setting.setter
-    def shared_runners_setting(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_runners_setting(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_runners_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="subgroupCreationLevel")
-    def subgroup_creation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subgroup_creation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
         """
         return pulumi.get(self, "subgroup_creation_level")
 
     @subgroup_creation_level.setter
-    def subgroup_creation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subgroup_creation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subgroup_creation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="twoFactorGracePeriod")
-    def two_factor_grace_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def two_factor_grace_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         """
         return pulumi.get(self, "two_factor_grace_period")
 
     @two_factor_grace_period.setter
-    def two_factor_grace_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def two_factor_grace_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "two_factor_grace_period", value)
 
     @_builtins.property
     @pulumi.getter(name="visibilityLevel")
-    def visibility_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visibility_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
         """
         return pulumi.get(self, "visibility_level")
 
     @visibility_level.setter
-    def visibility_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visibility_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visibility_level", value)
 
     @_builtins.property
     @pulumi.getter(name="wikiAccessLevel")
-    def wiki_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def wiki_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "wiki_access_level")
 
     @wiki_access_level.setter
-    def wiki_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def wiki_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "wiki_access_level", value)
 
 
 @pulumi.input_type
 class _GroupState:
     def __init__(__self__, *,
-                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_email_domains_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 avatar: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch_protection: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_branch_protection_defaults: Optional[pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 extra_shared_runners_minutes_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 full_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 membership_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mentions_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 permanently_remove_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_forking_outside_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_sharing_groups_outside_hierarchy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_creation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_rules: Optional[pulumi.Input['GroupPushRulesArgs']] = None,
-                 request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_two_factor_authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 runners_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_with_group_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shared_runners_minutes_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared_runners_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 subgroup_creation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 two_factor_grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 visibility_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_email_domains_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 avatar: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_branch_protection_defaults: pulumi.Input[Optional['GroupDefaultBranchProtectionDefaultsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extra_shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 full_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 full_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_restriction_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 membership_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mentions_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_allow_merge_if_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 permanently_remove_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_forking_outside_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_sharing_groups_outside_hierarchy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_creation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_rules: pulumi.Input[Optional['GroupPushRulesArgs']] = None,
+                 request_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 runners_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_with_group_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared_runners_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 subgroup_creation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 two_factor_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 visibility_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_access_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
 
@@ -763,483 +763,483 @@ class _GroupState:
 
     @_builtins.property
     @pulumi.getter(name="allowMergeOnSkippedPipeline")
-    def allow_merge_on_skipped_pipeline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_merge_on_skipped_pipeline(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
         """
         return pulumi.get(self, "allow_merge_on_skipped_pipeline")
 
     @allow_merge_on_skipped_pipeline.setter
-    def allow_merge_on_skipped_pipeline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_merge_on_skipped_pipeline(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_merge_on_skipped_pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedEmailDomainsLists")
-    def allowed_email_domains_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_email_domains_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
         """
         return pulumi.get(self, "allowed_email_domains_lists")
 
     @allowed_email_domains_lists.setter
-    def allowed_email_domains_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_email_domains_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_email_domains_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDevopsEnabled")
-    def auto_devops_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_devops_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Default to Auto DevOps pipeline for all projects within this group.
         """
         return pulumi.get(self, "auto_devops_enabled")
 
     @auto_devops_enabled.setter
-    def auto_devops_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_devops_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_devops_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def avatar(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A local path to the avatar image to upload. **Note**: not available for imported resources.
         """
         return pulumi.get(self, "avatar")
 
     @avatar.setter
-    def avatar(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar", value)
 
     @_builtins.property
     @pulumi.getter(name="avatarHash")
-    def avatar_hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar_hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         """
         return pulumi.get(self, "avatar_hash")
 
     @avatar_hash.setter
-    def avatar_hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar_hash", value)
 
     @_builtins.property
     @pulumi.getter(name="avatarUrl")
-    def avatar_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def avatar_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the avatar image.
         """
         return pulumi.get(self, "avatar_url")
 
     @avatar_url.setter
-    def avatar_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def avatar_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar_url", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranch")
-    def default_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Initial default branch name.
         """
         return pulumi.get(self, "default_branch")
 
     @default_branch.setter
-    def default_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranchProtection")
     @_utilities.deprecated("""Deprecated in GitLab 17.0, due for removal in v5 of the API. Use default_branch_protection_defaults instead.""")
-    def default_branch_protection(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_branch_protection(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         """
         return pulumi.get(self, "default_branch_protection")
 
     @default_branch_protection.setter
-    def default_branch_protection(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_branch_protection(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_branch_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranchProtectionDefaults")
-    def default_branch_protection_defaults(self) -> Optional[pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs']]:
+    def default_branch_protection_defaults(self) -> pulumi.Input[Optional['GroupDefaultBranchProtectionDefaultsArgs']]:
         """
         The default branch protection defaults
         """
         return pulumi.get(self, "default_branch_protection_defaults")
 
     @default_branch_protection_defaults.setter
-    def default_branch_protection_defaults(self, value: Optional[pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs']]):
+    def default_branch_protection_defaults(self, value: pulumi.Input[Optional['GroupDefaultBranchProtectionDefaultsArgs']]):
         pulumi.set(self, "default_branch_protection_defaults", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group's description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="emailsEnabled")
-    def emails_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def emails_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable email notifications.
         """
         return pulumi.get(self, "emails_enabled")
 
     @emails_enabled.setter
-    def emails_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def emails_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "emails_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="extraSharedRunnersMinutesLimit")
-    def extra_shared_runners_minutes_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def extra_shared_runners_minutes_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         """
         return pulumi.get(self, "extra_shared_runners_minutes_limit")
 
     @extra_shared_runners_minutes_limit.setter
-    def extra_shared_runners_minutes_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def extra_shared_runners_minutes_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "extra_shared_runners_minutes_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="fullName")
-    def full_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def full_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the group.
         """
         return pulumi.get(self, "full_name")
 
     @full_name.setter
-    def full_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def full_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "full_name", value)
 
     @_builtins.property
     @pulumi.getter(name="fullPath")
-    def full_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def full_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full path of the group.
         """
         return pulumi.get(self, "full_path")
 
     @full_path.setter
-    def full_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def full_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "full_path", value)
 
     @_builtins.property
     @pulumi.getter(name="ipRestrictionRanges")
-    def ip_restriction_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_restriction_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         """
         return pulumi.get(self, "ip_restriction_ranges")
 
     @ip_restriction_ranges.setter
-    def ip_restriction_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_restriction_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_restriction_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="lfsEnabled")
-    def lfs_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lfs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable/disable Large File Storage (LFS) for the projects in this group.
         """
         return pulumi.get(self, "lfs_enabled")
 
     @lfs_enabled.setter
-    def lfs_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lfs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lfs_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maxArtifactsSize")
-    def max_artifacts_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_artifacts_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum file size in megabytes for individual job artifacts.
         """
         return pulumi.get(self, "max_artifacts_size")
 
     @max_artifacts_size.setter
-    def max_artifacts_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_artifacts_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_artifacts_size", value)
 
     @_builtins.property
     @pulumi.getter(name="membershipLock")
-    def membership_lock(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def membership_lock(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Users cannot be added to projects in this group.
         """
         return pulumi.get(self, "membership_lock")
 
     @membership_lock.setter
-    def membership_lock(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def membership_lock(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "membership_lock", value)
 
     @_builtins.property
     @pulumi.getter(name="mentionsDisabled")
-    def mentions_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mentions_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable the capability of a group from getting mentioned.
         """
         return pulumi.get(self, "mentions_disabled")
 
     @mentions_disabled.setter
-    def mentions_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mentions_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mentions_disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
-    def only_allow_merge_if_all_discussions_are_resolved(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_allow_merge_if_all_discussions_are_resolved(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only allow merging merge requests when all discussions are resolved. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
         """
         return pulumi.get(self, "only_allow_merge_if_all_discussions_are_resolved")
 
     @only_allow_merge_if_all_discussions_are_resolved.setter
-    def only_allow_merge_if_all_discussions_are_resolved(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_allow_merge_if_all_discussions_are_resolved(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_allow_merge_if_all_discussions_are_resolved", value)
 
     @_builtins.property
     @pulumi.getter(name="onlyAllowMergeIfPipelineSucceeds")
-    def only_allow_merge_if_pipeline_succeeds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def only_allow_merge_if_pipeline_succeeds(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only allow merging merge requests if the pipeline succeeds. When enabled for a group, applies to all projects in the group. Premium and Ultimate only.
         """
         return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
 
     @only_allow_merge_if_pipeline_succeeds.setter
-    def only_allow_merge_if_pipeline_succeeds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def only_allow_merge_if_pipeline_succeeds(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "only_allow_merge_if_pipeline_succeeds", value)
 
     @_builtins.property
     @pulumi.getter(name="parentId")
-    def parent_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def parent_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Id of the parent group (creates a nested group).
         """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
-    def parent_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def parent_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "parent_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of the group.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="permanentlyRemoveOnDelete")
-    def permanently_remove_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def permanently_remove_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the group should be permanently removed during a `delete` operation. This only works with subgroups. Must be configured via an `apply` before the `destroy` is run.
         """
         return pulumi.get(self, "permanently_remove_on_delete")
 
     @permanently_remove_on_delete.setter
-    def permanently_remove_on_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def permanently_remove_on_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "permanently_remove_on_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="preventForkingOutsideGroup")
-    def prevent_forking_outside_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_forking_outside_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         """
         return pulumi.get(self, "prevent_forking_outside_group")
 
     @prevent_forking_outside_group.setter
-    def prevent_forking_outside_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_forking_outside_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_forking_outside_group", value)
 
     @_builtins.property
     @pulumi.getter(name="preventSharingGroupsOutsideHierarchy")
-    def prevent_sharing_groups_outside_hierarchy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_sharing_groups_outside_hierarchy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
         """
         return pulumi.get(self, "prevent_sharing_groups_outside_hierarchy")
 
     @prevent_sharing_groups_outside_hierarchy.setter
-    def prevent_sharing_groups_outside_hierarchy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_sharing_groups_outside_hierarchy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_sharing_groups_outside_hierarchy", value)
 
     @_builtins.property
     @pulumi.getter(name="projectCreationLevel")
-    def project_creation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_creation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
         """
         return pulumi.get(self, "project_creation_level")
 
     @project_creation_level.setter
-    def project_creation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_creation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_creation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="pushRules")
-    def push_rules(self) -> Optional[pulumi.Input['GroupPushRulesArgs']]:
+    def push_rules(self) -> pulumi.Input[Optional['GroupPushRulesArgs']]:
         """
         Push rules for the group.
         """
         return pulumi.get(self, "push_rules")
 
     @push_rules.setter
-    def push_rules(self, value: Optional[pulumi.Input['GroupPushRulesArgs']]):
+    def push_rules(self, value: pulumi.Input[Optional['GroupPushRulesArgs']]):
         pulumi.set(self, "push_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="requestAccessEnabled")
-    def request_access_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def request_access_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow users to request member access.
         """
         return pulumi.get(self, "request_access_enabled")
 
     @request_access_enabled.setter
-    def request_access_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def request_access_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "request_access_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="requireTwoFactorAuthentication")
-    def require_two_factor_authentication(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_two_factor_authentication(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Require all users in this group to setup Two-factor authentication.
         """
         return pulumi.get(self, "require_two_factor_authentication")
 
     @require_two_factor_authentication.setter
-    def require_two_factor_authentication(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_two_factor_authentication(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_two_factor_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="runnersToken")
-    def runners_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runners_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group level registration token to use during runner setup.
         """
         return pulumi.get(self, "runners_token")
 
     @runners_token.setter
-    def runners_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runners_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runners_token", value)
 
     @_builtins.property
     @pulumi.getter(name="shareWithGroupLock")
-    def share_with_group_lock(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def share_with_group_lock(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevent sharing a project with another group within this group.
         """
         return pulumi.get(self, "share_with_group_lock")
 
     @share_with_group_lock.setter
-    def share_with_group_lock(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def share_with_group_lock(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "share_with_group_lock", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersMinutesLimit")
-    def shared_runners_minutes_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shared_runners_minutes_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         """
         return pulumi.get(self, "shared_runners_minutes_limit")
 
     @shared_runners_minutes_limit.setter
-    def shared_runners_minutes_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shared_runners_minutes_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shared_runners_minutes_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersSetting")
-    def shared_runners_setting(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_runners_setting(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable or disable shared runners for a group’s subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
         """
         return pulumi.get(self, "shared_runners_setting")
 
     @shared_runners_setting.setter
-    def shared_runners_setting(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_runners_setting(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_runners_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="subgroupCreationLevel")
-    def subgroup_creation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subgroup_creation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Allowed to create subgroups. Valid values are: `owner`, `maintainer`.
         """
         return pulumi.get(self, "subgroup_creation_level")
 
     @subgroup_creation_level.setter
-    def subgroup_creation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subgroup_creation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subgroup_creation_level", value)
 
     @_builtins.property
     @pulumi.getter(name="twoFactorGracePeriod")
-    def two_factor_grace_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def two_factor_grace_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Defaults to 48. Time before Two-factor authentication is enforced (in hours).
         """
         return pulumi.get(self, "two_factor_grace_period")
 
     @two_factor_grace_period.setter
-    def two_factor_grace_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def two_factor_grace_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "two_factor_grace_period", value)
 
     @_builtins.property
     @pulumi.getter(name="visibilityLevel")
-    def visibility_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visibility_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group's visibility. Can be `private`, `internal`, or `public`. Valid values are: `private`, `internal`, `public`.
         """
         return pulumi.get(self, "visibility_level")
 
     @visibility_level.setter
-    def visibility_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visibility_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visibility_level", value)
 
     @_builtins.property
     @pulumi.getter(name="webUrl")
-    def web_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def web_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Web URL of the group.
         """
         return pulumi.get(self, "web_url")
 
     @web_url.setter
-    def web_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def web_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "web_url", value)
 
     @_builtins.property
     @pulumi.getter(name="wikiAccessLevel")
-    def wiki_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def wiki_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "wiki_access_level")
 
     @wiki_access_level.setter
-    def wiki_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def wiki_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "wiki_access_level", value)
 
 
@@ -1249,41 +1249,41 @@ class Group(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_email_domains_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 avatar: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch_protection: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_branch_protection_defaults: Optional[pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 extra_shared_runners_minutes_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 membership_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mentions_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 permanently_remove_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_forking_outside_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_sharing_groups_outside_hierarchy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_creation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_rules: Optional[pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']]] = None,
-                 request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_two_factor_authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 share_with_group_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shared_runners_minutes_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared_runners_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 subgroup_creation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 two_factor_grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 visibility_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_email_domains_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 avatar: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extra_shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_restriction_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 membership_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mentions_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_allow_merge_if_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 permanently_remove_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_forking_outside_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_sharing_groups_outside_hierarchy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_creation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_rules: pulumi.Input[Optional[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']]] = None,
+                 request_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 share_with_group_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared_runners_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 subgroup_creation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 two_factor_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 visibility_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `Group` resource manages the lifecycle of a group.
@@ -1306,7 +1306,7 @@ class Group(pulumi.CustomResource):
         example_project = gitlab.Project("example",
             name="example",
             description="An example project",
-            namespace_id=example.id)
+            namespace_id=example.id.apply(lambda x: int(x)))
         # Group with custom push rules
         example_two = gitlab.Group("example-two",
             name="example-two",
@@ -1430,7 +1430,7 @@ class Group(pulumi.CustomResource):
         example_project = gitlab.Project("example",
             name="example",
             description="An example project",
-            namespace_id=example.id)
+            namespace_id=example.id.apply(lambda x: int(x)))
         # Group with custom push rules
         example_two = gitlab.Group("example-two",
             name="example-two",
@@ -1504,41 +1504,41 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_merge_on_skipped_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_email_domains_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 avatar: Optional[pulumi.Input[_builtins.str]] = None,
-                 avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_branch_protection: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_branch_protection_defaults: Optional[pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 extra_shared_runners_minutes_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 membership_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mentions_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
-                 only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 permanently_remove_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_forking_outside_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prevent_sharing_groups_outside_hierarchy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_creation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_rules: Optional[pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']]] = None,
-                 request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_two_factor_authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-                 share_with_group_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shared_runners_minutes_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared_runners_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 subgroup_creation_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 two_factor_grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 visibility_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_email_domains_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 avatar: pulumi.Input[Optional[_builtins.str]] = None,
+                 avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extra_shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_restriction_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 membership_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mentions_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
+                 only_allow_merge_if_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 permanently_remove_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_forking_outside_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prevent_sharing_groups_outside_hierarchy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_creation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_rules: pulumi.Input[Optional[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']]] = None,
+                 request_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+                 share_with_group_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared_runners_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 subgroup_creation_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 two_factor_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 visibility_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 wiki_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1602,46 +1602,46 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_merge_on_skipped_pipeline: Optional[pulumi.Input[_builtins.bool]] = None,
-            allowed_email_domains_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            auto_devops_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            avatar: Optional[pulumi.Input[_builtins.str]] = None,
-            avatar_hash: Optional[pulumi.Input[_builtins.str]] = None,
-            avatar_url: Optional[pulumi.Input[_builtins.str]] = None,
-            default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-            default_branch_protection: Optional[pulumi.Input[_builtins.int]] = None,
-            default_branch_protection_defaults: Optional[pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            emails_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            extra_shared_runners_minutes_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            full_name: Optional[pulumi.Input[_builtins.str]] = None,
-            full_path: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_restriction_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            lfs_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            max_artifacts_size: Optional[pulumi.Input[_builtins.int]] = None,
-            membership_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-            mentions_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            only_allow_merge_if_all_discussions_are_resolved: Optional[pulumi.Input[_builtins.bool]] = None,
-            only_allow_merge_if_pipeline_succeeds: Optional[pulumi.Input[_builtins.bool]] = None,
-            parent_id: Optional[pulumi.Input[_builtins.int]] = None,
-            path: Optional[pulumi.Input[_builtins.str]] = None,
-            permanently_remove_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            prevent_forking_outside_group: Optional[pulumi.Input[_builtins.bool]] = None,
-            prevent_sharing_groups_outside_hierarchy: Optional[pulumi.Input[_builtins.bool]] = None,
-            project_creation_level: Optional[pulumi.Input[_builtins.str]] = None,
-            push_rules: Optional[pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']]] = None,
-            request_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            require_two_factor_authentication: Optional[pulumi.Input[_builtins.bool]] = None,
-            runners_token: Optional[pulumi.Input[_builtins.str]] = None,
-            share_with_group_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-            shared_runners_minutes_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            shared_runners_setting: Optional[pulumi.Input[_builtins.str]] = None,
-            subgroup_creation_level: Optional[pulumi.Input[_builtins.str]] = None,
-            two_factor_grace_period: Optional[pulumi.Input[_builtins.int]] = None,
-            visibility_level: Optional[pulumi.Input[_builtins.str]] = None,
-            web_url: Optional[pulumi.Input[_builtins.str]] = None,
-            wiki_access_level: Optional[pulumi.Input[_builtins.str]] = None) -> 'Group':
+            allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+            allowed_email_domains_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            avatar: pulumi.Input[Optional[_builtins.str]] = None,
+            avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            avatar_url: pulumi.Input[Optional[_builtins.str]] = None,
+            default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
+            default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            extra_shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            full_name: pulumi.Input[Optional[_builtins.str]] = None,
+            full_path: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_restriction_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+            membership_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+            mentions_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
+            only_allow_merge_if_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.int]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            permanently_remove_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            prevent_forking_outside_group: pulumi.Input[Optional[_builtins.bool]] = None,
+            prevent_sharing_groups_outside_hierarchy: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_creation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            push_rules: pulumi.Input[Optional[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']]] = None,
+            request_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+            runners_token: pulumi.Input[Optional[_builtins.str]] = None,
+            share_with_group_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+            shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            shared_runners_setting: pulumi.Input[Optional[_builtins.str]] = None,
+            subgroup_creation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            two_factor_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+            visibility_level: pulumi.Input[Optional[_builtins.str]] = None,
+            web_url: pulumi.Input[Optional[_builtins.str]] = None,
+            wiki_access_level: pulumi.Input[Optional[_builtins.str]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

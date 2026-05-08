@@ -26,13 +26,13 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = GitLab.Index.GetUser.Invoke(new()
+    ///     var example = GitLab.GetUser.Invoke(new()
     ///     {
     ///         Username = "example-user",
     ///     });
     /// 
     ///     // Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
-    ///     var exampleUserGpgKey = new GitLab.Index.UserGpgKey("example", new()
+    ///     var exampleUserGpgKey = new GitLab.UserGpgKey("example", new()
     ///     {
     ///         UserId = example.Apply(getUserResult =&gt; getUserResult.Id),
     ///         Key = @"-----BEGIN PGP PUBLIC KEY BLOCK-----
@@ -41,7 +41,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Manages a GPG key for the current user
-    ///     var exampleUser = new GitLab.Index.UserGpgKey("example_user", new()
+    ///     var exampleUser = new GitLab.UserGpgKey("example_user", new()
     ///     {
     ///         Key = @"-----BEGIN PGP PUBLIC KEY BLOCK-----
     /// ...

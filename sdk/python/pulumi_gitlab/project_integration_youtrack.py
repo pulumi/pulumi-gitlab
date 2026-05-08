@@ -73,9 +73,9 @@ class ProjectIntegrationYoutrackArgs:
 @pulumi.input_type
 class _ProjectIntegrationYoutrackState:
     def __init__(__self__, *,
-                 issues_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 issues_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectIntegrationYoutrack resources.
 
@@ -92,38 +92,38 @@ class _ProjectIntegrationYoutrackState:
 
     @_builtins.property
     @pulumi.getter(name="issuesUrl")
-    def issues_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issues_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to view an issue in the external issue tracker. Must contain :id.
         """
         return pulumi.get(self, "issues_url")
 
     @issues_url.setter
-    def issues_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issues_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issues_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID or namespace of the project you want to activate integration on.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="projectUrl")
-    def project_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the project in the external issue tracker.
         """
         return pulumi.get(self, "project_url")
 
     @project_url.setter
-    def project_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_url", value)
 
 
@@ -133,9 +133,9 @@ class ProjectIntegrationYoutrack(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 issues_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 issues_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectIntegrationYoutrack` resource manages the lifecycle of a project integration with YouTrack.
@@ -232,9 +232,9 @@ class ProjectIntegrationYoutrack(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 issues_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 issues_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -263,9 +263,9 @@ class ProjectIntegrationYoutrack(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            issues_url: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            project_url: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectIntegrationYoutrack':
+            issues_url: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_url: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectIntegrationYoutrack':
         """
         Get an existing ProjectIntegrationYoutrack resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var schedule = new GitLab.Index.ProjectFreezePeriod("schedule", new()
+    ///     var schedule = new GitLab.ProjectFreezePeriod("schedule", new()
     ///     {
     ///         Project = foo.Id,
     ///         FreezeStart = "0 23 * * 5",

@@ -149,27 +149,27 @@ export interface ProjectExternalStatusCheckState {
     /**
      * The URL of the external status check service.
      */
-    externalUrl?: pulumi.Input<string>;
+    externalUrl?: pulumi.Input<string | undefined>;
     /**
      * True if the external status check uses an HMAC secret.
      */
-    hmac?: pulumi.Input<boolean>;
+    hmac?: pulumi.Input<boolean | undefined>;
     /**
      * The display name of the external status check service.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project.
      */
-    projectId?: pulumi.Input<number>;
+    projectId?: pulumi.Input<number | undefined>;
     /**
      * The list of IDs of protected branches to scope the rule by.
      */
-    protectedBranchIds?: pulumi.Input<pulumi.Input<number>[]>;
+    protectedBranchIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The HMAC secret for the external status check.  If this is set, then removed from the config, the value will get set to empty in the state.
      */
-    sharedSecret?: pulumi.Input<string>;
+    sharedSecret?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -183,7 +183,7 @@ export interface ProjectExternalStatusCheckArgs {
     /**
      * The display name of the external status check service.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project.
      */
@@ -191,9 +191,9 @@ export interface ProjectExternalStatusCheckArgs {
     /**
      * The list of IDs of protected branches to scope the rule by.
      */
-    protectedBranchIds?: pulumi.Input<pulumi.Input<number>[]>;
+    protectedBranchIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The HMAC secret for the external status check.  If this is set, then removed from the config, the value will get set to empty in the state.
      */
-    sharedSecret?: pulumi.Input<string>;
+    sharedSecret?: pulumi.Input<string | undefined>;
 }

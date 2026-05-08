@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetRunnerController.Invoke(new()
+        ///     var example = GitLab.GetRunnerController.Invoke(new()
         ///     {
         ///         Id = 1,
         ///     });
@@ -60,7 +60,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetRunnerController.Invoke(new()
+        ///     var example = GitLab.GetRunnerController.Invoke(new()
         ///     {
         ///         Id = 1,
         ///     });
@@ -90,7 +90,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = GitLab.Index.GetRunnerController.Invoke(new()
+        ///     var example = GitLab.GetRunnerController.Invoke(new()
         ///     {
         ///         Id = 1,
         ///     });

@@ -142,28 +142,28 @@ export interface ApplicationState {
     /**
      * Internal name of the application.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * The application is used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential. Defaults to true if not supplied
      */
-    confidential?: pulumi.Input<boolean>;
+    confidential?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the application.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL gitlab should send the user to after authentication.
      */
-    redirectUrl?: pulumi.Input<string>;
+    redirectUrl?: pulumi.Input<string | undefined>;
     /**
      * Scopes of the application. Use "openid" if you plan to use this as an oidc authentication application. Valid options are: `api`, `readApi`, `readUser`, `readRepository`, `writeRepository`, `readRegistry`, `writeRegistry`, `sudo`, `adminMode`, `openid`, `profile`, `email`.
      * This is only populated when creating a new application. This attribute is not available for imported resources
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Application secret. Sensitive and must be kept secret. This is only populated when creating a new application. This attribute is not available for imported resources.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -173,11 +173,11 @@ export interface ApplicationArgs {
     /**
      * The application is used where the client secret can be kept confidential. Native mobile apps and Single Page Apps are considered non-confidential. Defaults to true if not supplied
      */
-    confidential?: pulumi.Input<boolean>;
+    confidential?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the application.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL gitlab should send the user to after authentication.
      */

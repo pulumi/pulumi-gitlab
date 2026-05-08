@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = GitLab.Index.GetRunnerControllers.Invoke();
+        ///     var all = GitLab.GetRunnerControllers.Invoke();
         /// 
         /// });
         /// ```
@@ -57,7 +57,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = GitLab.Index.GetRunnerControllers.Invoke();
+        ///     var all = GitLab.GetRunnerControllers.Invoke();
         /// 
         /// });
         /// ```
@@ -84,7 +84,7 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = GitLab.Index.GetRunnerControllers.Invoke();
+        ///     var all = GitLab.GetRunnerControllers.Invoke();
         /// 
         /// });
         /// ```

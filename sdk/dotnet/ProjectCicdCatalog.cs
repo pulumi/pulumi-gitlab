@@ -29,7 +29,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.ProjectCicdCatalog("example", new()
+    ///     var example = new GitLab.ProjectCicdCatalog("example", new()
     ///     {
     ///         Project = "namespace/project",
     ///         Enabled = true,

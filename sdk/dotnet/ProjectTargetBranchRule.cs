@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.Project("example", new()
+    ///     var example = new GitLab.Project("example", new()
     ///     {
     ///         Name = "example project",
     ///         Description = "Lorem Ipsum",
@@ -32,7 +32,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Basic example
-    ///     var rule = new GitLab.Index.ProjectTargetBranchRule("rule", new()
+    ///     var rule = new GitLab.ProjectTargetBranchRule("rule", new()
     ///     {
     ///         Project = example.Id,
     ///         SourceBranchPattern = "develop",

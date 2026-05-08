@@ -20,12 +20,12 @@ __all__ = ['SystemHookArgs', 'SystemHook']
 class SystemHookArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[_builtins.str],
-                 enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_update_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_update_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SystemHook resource.
 
@@ -65,88 +65,88 @@ class SystemHookArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableSslVerification")
-    def enable_ssl_verification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ssl_verification(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Do SSL verification when triggering the hook.
         """
         return pulumi.get(self, "enable_ssl_verification")
 
     @enable_ssl_verification.setter
-    def enable_ssl_verification(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ssl_verification(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ssl_verification", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEvents")
-    def merge_requests_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_requests_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Trigger hook on merge requests events.
         """
         return pulumi.get(self, "merge_requests_events")
 
     @merge_requests_events.setter
-    def merge_requests_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_requests_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_requests_events", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, the hook fires on push events.
         """
         return pulumi.get(self, "push_events")
 
     @push_events.setter
-    def push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "push_events", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryUpdateEvents")
-    def repository_update_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def repository_update_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Trigger hook on repository update events.
         """
         return pulumi.get(self, "repository_update_events")
 
     @repository_update_events.setter
-    def repository_update_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def repository_update_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "repository_update_events", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tag_push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, the hook fires on new tags being pushed.
         """
         return pulumi.get(self, "tag_push_events")
 
     @tag_push_events.setter
-    def tag_push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tag_push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tag_push_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
 
 @pulumi.input_type
 class _SystemHookState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_update_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_update_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SystemHook resources.
 
@@ -178,98 +178,98 @@ class _SystemHookState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the hook was created in ISO8601 format.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSslVerification")
-    def enable_ssl_verification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ssl_verification(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Do SSL verification when triggering the hook.
         """
         return pulumi.get(self, "enable_ssl_verification")
 
     @enable_ssl_verification.setter
-    def enable_ssl_verification(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ssl_verification(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ssl_verification", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEvents")
-    def merge_requests_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_requests_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Trigger hook on merge requests events.
         """
         return pulumi.get(self, "merge_requests_events")
 
     @merge_requests_events.setter
-    def merge_requests_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_requests_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_requests_events", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, the hook fires on push events.
         """
         return pulumi.get(self, "push_events")
 
     @push_events.setter
-    def push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "push_events", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryUpdateEvents")
-    def repository_update_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def repository_update_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Trigger hook on repository update events.
         """
         return pulumi.get(self, "repository_update_events")
 
     @repository_update_events.setter
-    def repository_update_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def repository_update_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "repository_update_events", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tag_push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, the hook fires on new tags being pushed.
         """
         return pulumi.get(self, "tag_push_events")
 
     @tag_push_events.setter
-    def tag_push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tag_push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tag_push_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hook URL.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -279,13 +279,13 @@ class SystemHook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_update_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_update_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `SystemHook` resource manages the lifecycle of a system hook.
@@ -390,13 +390,13 @@ class SystemHook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repository_update_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repository_update_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -428,14 +428,14 @@ class SystemHook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_ssl_verification: Optional[pulumi.Input[_builtins.bool]] = None,
-            merge_requests_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            repository_update_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            token: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'SystemHook':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            repository_update_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'SystemHook':
         """
         Get an existing SystemHook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -135,9 +135,9 @@ def get_project_issue_label_events(issue_iid: Optional[_builtins.int] = None,
         issue_iid=pulumi.get(__ret__, 'issue_iid'),
         pages_returned=pulumi.get(__ret__, 'pages_returned'),
         project=pulumi.get(__ret__, 'project'))
-def get_project_issue_label_events_output(issue_iid: Optional[pulumi.Input[_builtins.int]] = None,
-                                          pages_returned: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                          project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_issue_label_events_output(issue_iid: pulumi.Input[Optional[_builtins.int]] = None,
+                                          pages_returned: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                          project: pulumi.Input[Optional[_builtins.str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectIssueLabelEventsResult]:
     """
     The `get_project_issue_label_events` data source retrieves label events for a specific GitLab project issue.

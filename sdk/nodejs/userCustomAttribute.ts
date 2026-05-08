@@ -118,15 +118,15 @@ export interface UserCustomAttributeState {
     /**
      * Key for the Custom Attribute.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The id of the user.
      */
-    user?: pulumi.Input<number>;
+    user?: pulumi.Input<number | undefined>;
     /**
      * Value for the Custom Attribute.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**

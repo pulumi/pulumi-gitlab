@@ -66,7 +66,7 @@ import * as utilities from "./utilities";
  *         55,
  *         60,
  *     ].map((v, k) => ({key: k, value: v})).map(entry => ({
- *         userId: entry.value,
+ *         userId: Number(entry.value),
  *     })),
  *     project: "12345",
  *     branch: "main",
@@ -225,47 +225,47 @@ export interface BranchProtectionState {
     /**
      * Can be set to true to allow users with push access to force push.
      */
-    allowForcePush?: pulumi.Input<boolean>;
+    allowForcePush?: pulumi.Input<boolean | undefined>;
     /**
      * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
      */
-    allowedToMerges?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToMerge>[]>;
+    allowedToMerges?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToMerge>[] | undefined>;
     /**
      * Array of access levels and user(s)/group(s) allowed to push to protected branch.
      */
-    allowedToPushes?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToPush>[]>;
+    allowedToPushes?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToPush>[] | undefined>;
     /**
      * Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
      */
-    allowedToUnprotects?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToUnprotect>[]>;
+    allowedToUnprotects?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToUnprotect>[] | undefined>;
     /**
      * Name of the branch.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * The ID of the branch protection (not the branch name).
      */
-    branchProtectionId?: pulumi.Input<number>;
+    branchProtectionId?: pulumi.Input<number | undefined>;
     /**
      * Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
      */
-    codeOwnerApprovalRequired?: pulumi.Input<boolean>;
+    codeOwnerApprovalRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
-    mergeAccessLevel?: pulumi.Input<string>;
+    mergeAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * The id of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
-    pushAccessLevel?: pulumi.Input<string>;
+    pushAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
      */
-    unprotectAccessLevel?: pulumi.Input<string>;
+    unprotectAccessLevel?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -275,19 +275,19 @@ export interface BranchProtectionArgs {
     /**
      * Can be set to true to allow users with push access to force push.
      */
-    allowForcePush?: pulumi.Input<boolean>;
+    allowForcePush?: pulumi.Input<boolean | undefined>;
     /**
      * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
      */
-    allowedToMerges?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToMerge>[]>;
+    allowedToMerges?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToMerge>[] | undefined>;
     /**
      * Array of access levels and user(s)/group(s) allowed to push to protected branch.
      */
-    allowedToPushes?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToPush>[]>;
+    allowedToPushes?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToPush>[] | undefined>;
     /**
      * Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
      */
-    allowedToUnprotects?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToUnprotect>[]>;
+    allowedToUnprotects?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToUnprotect>[] | undefined>;
     /**
      * Name of the branch.
      */
@@ -295,11 +295,11 @@ export interface BranchProtectionArgs {
     /**
      * Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
      */
-    codeOwnerApprovalRequired?: pulumi.Input<boolean>;
+    codeOwnerApprovalRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
-    mergeAccessLevel?: pulumi.Input<string>;
+    mergeAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * The id of the project.
      */
@@ -307,9 +307,9 @@ export interface BranchProtectionArgs {
     /**
      * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
-    pushAccessLevel?: pulumi.Input<string>;
+    pushAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
      */
-    unprotectAccessLevel?: pulumi.Input<string>;
+    unprotectAccessLevel?: pulumi.Input<string | undefined>;
 }

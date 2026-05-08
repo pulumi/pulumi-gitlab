@@ -25,19 +25,19 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // A repo to host the deployment key
-    ///     var parent = new GitLab.Index.Project("parent", new()
+    ///     var parent = new GitLab.Project("parent", new()
     ///     {
     ///         Name = "parent_project",
     ///     });
     /// 
     ///     // A second repo to use the deployment key from the parent project
-    ///     var foo = new GitLab.Index.Project("foo", new()
+    ///     var foo = new GitLab.Project("foo", new()
     ///     {
     ///         Name = "foo_project",
     ///     });
     /// 
     ///     // Upload a deployment key for the parent repo
-    ///     var parentDeployKey = new GitLab.Index.DeployKey("parent", new()
+    ///     var parentDeployKey = new GitLab.DeployKey("parent", new()
     ///     {
     ///         Project = parent.Id,
     ///         Title = "Example deploy key",
@@ -45,7 +45,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // Enable the deployment key on the second repo
-    ///     var fooDeployKeyEnable = new GitLab.Index.DeployKeyEnable("foo", new()
+    ///     var fooDeployKeyEnable = new GitLab.DeployKeyEnable("foo", new()
     ///     {
     ///         Project = foo.Id,
     ///         KeyId = parentDeployKey.DeployKeyId,

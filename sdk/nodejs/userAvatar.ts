@@ -123,23 +123,23 @@ export interface UserAvatarState {
     /**
      * A local path to the avatar image to upload. **Note**: the avatar is not available for imported resources.
      */
-    avatar?: pulumi.Input<string>;
+    avatar?: pulumi.Input<string | undefined>;
     /**
      * The hash of the avatar image.  This is used to track changes to the avatar image if the image contents change but the image name remains the same. Use `filesha256("path/to/avatar.png")` whenever possible.
      */
-    avatarHash?: pulumi.Input<string>;
+    avatarHash?: pulumi.Input<string | undefined>;
     /**
      * The URL of the avatar image.
      */
-    avatarUrl?: pulumi.Input<string>;
+    avatarUrl?: pulumi.Input<string | undefined>;
     /**
      * The access token of the user. If this field is omitted, a GitLab token with administrator scope is required to manage the avatar for the specified user. **Note**: the token is not available for imported resources.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user.
      */
-    userId?: pulumi.Input<number>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -153,11 +153,11 @@ export interface UserAvatarArgs {
     /**
      * The hash of the avatar image.  This is used to track changes to the avatar image if the image contents change but the image name remains the same. Use `filesha256("path/to/avatar.png")` whenever possible.
      */
-    avatarHash?: pulumi.Input<string>;
+    avatarHash?: pulumi.Input<string | undefined>;
     /**
      * The access token of the user. If this field is omitted, a GitLab token with administrator scope is required to manage the avatar for the specified user. **Note**: the token is not available for imported resources.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user.
      */

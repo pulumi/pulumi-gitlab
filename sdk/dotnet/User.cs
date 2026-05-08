@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.User("example", new()
+    ///     var example = new GitLab.User("example", new()
     ///     {
     ///         Name = "Example Foo",
     ///         Username = "example",

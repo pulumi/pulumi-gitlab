@@ -144,17 +144,17 @@ export interface GetRunnersOutputArgs {
     /**
      * Filters for runners with the given paused value
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * Filters for runners with the given status. Valid Values are `online`, `offline`, `stale`, `neverContacted`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Filters for runners with all of the given tags
      */
-    tagLists?: pulumi.Input<pulumi.Input<string>[]>;
+    tagLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of runner to return. Valid values are `instanceType`, `groupType`, `projectType`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

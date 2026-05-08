@@ -22,8 +22,8 @@ class DeployKeyArgs:
                  key: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 can_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 can_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DeployKey resource.
 
@@ -79,38 +79,38 @@ class DeployKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="canPush")
-    def can_push(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_push(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow this deploy key to be used to push changes to the project. Defaults to `false`.
         """
         return pulumi.get(self, "can_push")
 
     @can_push.setter
-    def can_push(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_push(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_push", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
         """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
 
 @pulumi.input_type
 class _DeployKeyState:
     def __init__(__self__, *,
-                 can_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deploy_key_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 can_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deploy_key_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DeployKey resources.
 
@@ -136,74 +136,74 @@ class _DeployKeyState:
 
     @_builtins.property
     @pulumi.getter(name="canPush")
-    def can_push(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_push(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow this deploy key to be used to push changes to the project. Defaults to `false`.
         """
         return pulumi.get(self, "can_push")
 
     @can_push.setter
-    def can_push(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_push(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_push", value)
 
     @_builtins.property
     @pulumi.getter(name="deployKeyId")
-    def deploy_key_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deploy_key_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The id of the project deploy key.
         """
         return pulumi.get(self, "deploy_key_id")
 
     @deploy_key_id.setter
-    def deploy_key_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deploy_key_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deploy_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expiration date for the deploy key. Does not expire if no value is provided. Expected in RFC3339 format `(2019-03-15T08:00:00Z)`
         """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public ssh key body.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name or id of the project to add the deploy key to.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A title to describe the deploy key with.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
@@ -213,11 +213,11 @@ class DeployKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 can_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
+                 can_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `DeployKey` resource manages the lifecycle of a project deploy key.
@@ -332,11 +332,11 @@ class DeployKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 can_push: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
+                 can_push: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -368,12 +368,12 @@ class DeployKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            can_push: Optional[pulumi.Input[_builtins.bool]] = None,
-            deploy_key_id: Optional[pulumi.Input[_builtins.int]] = None,
-            expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            title: Optional[pulumi.Input[_builtins.str]] = None) -> 'DeployKey':
+            can_push: pulumi.Input[Optional[_builtins.bool]] = None,
+            deploy_key_id: pulumi.Input[Optional[_builtins.int]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None) -> 'DeployKey':
         """
         Get an existing DeployKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

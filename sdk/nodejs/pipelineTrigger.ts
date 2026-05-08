@@ -122,19 +122,19 @@ export interface PipelineTriggerState {
     /**
      * The description of the pipeline trigger.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The pipeline trigger id.
      */
-    pipelineTriggerId?: pulumi.Input<number>;
+    pipelineTriggerId?: pulumi.Input<number | undefined>;
     /**
      * The name or id of the project to add the trigger to.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The pipeline trigger token. This value is not available during import.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 /**

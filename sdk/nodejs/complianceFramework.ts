@@ -151,31 +151,31 @@ export interface ComplianceFrameworkState {
     /**
      * New color representation of the compliance framework in hex format. e.g. #FCA121.
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * Set this compliance framework as the default framework for the group. Default: `false`
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * Description for the compliance framework.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Globally unique ID of the compliance framework.
      */
-    frameworkId?: pulumi.Input<string>;
+    frameworkId?: pulumi.Input<string | undefined>;
     /**
      * Name for the compliance framework.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Full path of the namespace to add the compliance framework to.
      */
-    namespacePath?: pulumi.Input<string>;
+    namespacePath?: pulumi.Input<string | undefined>;
     /**
      * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
      */
-    pipelineConfigurationFullPath?: pulumi.Input<string>;
+    pipelineConfigurationFullPath?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -189,7 +189,7 @@ export interface ComplianceFrameworkArgs {
     /**
      * Set this compliance framework as the default framework for the group. Default: `false`
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * Description for the compliance framework.
      */
@@ -197,7 +197,7 @@ export interface ComplianceFrameworkArgs {
     /**
      * Name for the compliance framework.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Full path of the namespace to add the compliance framework to.
      */
@@ -205,5 +205,5 @@ export interface ComplianceFrameworkArgs {
     /**
      * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
      */
-    pipelineConfigurationFullPath?: pulumi.Input<string>;
+    pipelineConfigurationFullPath?: pulumi.Input<string | undefined>;
 }

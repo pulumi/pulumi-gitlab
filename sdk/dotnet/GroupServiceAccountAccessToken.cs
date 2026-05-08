@@ -33,7 +33,7 @@ namespace Pulumi.GitLab
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // This must be a top-level group
-    ///     var example = new GitLab.Index.Group("example", new()
+    ///     var example = new GitLab.Group("example", new()
     ///     {
     ///         Name = "example",
     ///         Path = "example",
@@ -41,7 +41,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // The service account against the top-level group
-    ///     var exampleSa = new GitLab.Index.GroupServiceAccount("example_sa", new()
+    ///     var exampleSa = new GitLab.GroupServiceAccount("example_sa", new()
     ///     {
     ///         Group = example.Id,
     ///         Name = "example-name",
@@ -49,7 +49,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // To assign the service account to a group
-    ///     var exampleMembership = new GitLab.Index.GroupMembership("example_membership", new()
+    ///     var exampleMembership = new GitLab.GroupMembership("example_membership", new()
     ///     {
     ///         GroupId = example.Id,
     ///         UserId = exampleSa.ServiceAccountId,
@@ -58,7 +58,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // The service account access token with no expiry
-    ///     var exampleSaTokenNoExpiry = new GitLab.Index.GroupServiceAccountAccessToken("example_sa_token_no_expiry", new()
+    ///     var exampleSaTokenNoExpiry = new GitLab.GroupServiceAccountAccessToken("example_sa_token_no_expiry", new()
     ///     {
     ///         Group = example.Id,
     ///         UserId = exampleSa.ServiceAccountId,
@@ -70,7 +70,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // The service account access token with expires at
-    ///     var exampleSaTokenExpiresAt = new GitLab.Index.GroupServiceAccountAccessToken("example_sa_token_expires_at", new()
+    ///     var exampleSaTokenExpiresAt = new GitLab.GroupServiceAccountAccessToken("example_sa_token_expires_at", new()
     ///     {
     ///         Group = example.Id,
     ///         UserId = exampleSa.ServiceAccountId,
@@ -83,7 +83,7 @@ namespace Pulumi.GitLab
     ///     });
     /// 
     ///     // The service account access token with rotation configuration
-    ///     var exampleSaTokenRotationConfiguration = new GitLab.Index.GroupServiceAccountAccessToken("example_sa_token_rotation_configuration", new()
+    ///     var exampleSaTokenRotationConfiguration = new GitLab.GroupServiceAccountAccessToken("example_sa_token_rotation_configuration", new()
     ///     {
     ///         Group = example.Id,
     ///         UserId = exampleSa.ServiceAccountId,

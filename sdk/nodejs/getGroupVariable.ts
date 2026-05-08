@@ -138,7 +138,7 @@ export interface GetGroupVariableOutputArgs {
     /**
      * The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
      */
-    environmentScope?: pulumi.Input<string>;
+    environmentScope?: pulumi.Input<string | undefined>;
     /**
      * The name or id of the group.
      */

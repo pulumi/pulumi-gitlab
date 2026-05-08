@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * const example = new gitlab.Project("example", {
  *     name: "example",
  *     description: "An example project",
- *     namespaceId: exampleGitlabGroup.id,
+ *     namespaceId: Number(exampleGitlabGroup.id),
  * });
  * const exampleProjectTag = new gitlab.ProjectTag("example", {
  *     name: "example",
@@ -155,35 +155,35 @@ export interface ProjectTagState {
     /**
      * The commit associated with the tag.
      */
-    commits?: pulumi.Input<pulumi.Input<inputs.ProjectTagCommit>[]>;
+    commits?: pulumi.Input<pulumi.Input<inputs.ProjectTagCommit>[] | undefined>;
     /**
      * The message of the annotated tag.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * The name of a tag.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or URL-encoded path of the project owned by the authenticated user.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Bool, true if tag has tag protection.
      */
-    protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean | undefined>;
     /**
      * Create tag using commit SHA, another tag name, or branch name. This attribute is not available for imported resources.
      */
-    ref?: pulumi.Input<string>;
+    ref?: pulumi.Input<string | undefined>;
     /**
      * The release associated with the tag.
      */
-    releases?: pulumi.Input<pulumi.Input<inputs.ProjectTagRelease>[]>;
+    releases?: pulumi.Input<pulumi.Input<inputs.ProjectTagRelease>[] | undefined>;
     /**
      * The unique id assigned to the commit by Gitlab.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -193,11 +193,11 @@ export interface ProjectTagArgs {
     /**
      * The message of the annotated tag.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * The name of a tag.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID or URL-encoded path of the project owned by the authenticated user.
      */

@@ -21,9 +21,9 @@ class MemberRoleArgs:
     def __init__(__self__, *,
                  base_access_level: pulumi.Input[_builtins.str],
                  enabled_permissions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MemberRole resource.
 
@@ -68,52 +68,52 @@ class MemberRoleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description for the member role.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="groupPath")
-    def group_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full path of the namespace to create the member role in. **Required for SAAS** **Not allowed for self-managed**
         """
         return pulumi.get(self, "group_path")
 
     @group_path.setter
-    def group_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name for the member role.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _MemberRoleState:
     def __init__(__self__, *,
-                 base_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 edit_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 group_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 iid: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 base_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 edit_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 iid: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MemberRole resources.
 
@@ -145,98 +145,98 @@ class _MemberRoleState:
 
     @_builtins.property
     @pulumi.getter(name="baseAccessLevel")
-    def base_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base access level for the custom role. Valid values are: `DEVELOPER`, `GUEST`, `MAINTAINER`, `MINIMAL_ACCESS`, `OWNER`, `REPORTER`
         """
         return pulumi.get(self, "base_access_level")
 
     @base_access_level.setter
-    def base_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp of when the member role was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description for the member role.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="editPath")
-    def edit_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edit_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Web UI path to edit the member role
         """
         return pulumi.get(self, "edit_path")
 
     @edit_path.setter
-    def edit_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edit_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edit_path", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledPermissions")
-    def enabled_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def enabled_permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         All permissions enabled for the custom role. Valid values are: `ADMIN_CICD_VARIABLES`, `ADMIN_COMPLIANCE_FRAMEWORK`, `ADMIN_GROUP_MEMBER`, `ADMIN_INTEGRATIONS`, `ADMIN_MERGE_REQUEST`, `ADMIN_PROTECTED_BRANCH`, `ADMIN_PROTECTED_ENVIRONMENTS`, `ADMIN_PUSH_RULES`, `ADMIN_RUNNERS`, `ADMIN_TERRAFORM_STATE`, `ADMIN_VULNERABILITY`, `ADMIN_WEB_HOOK`, `ARCHIVE_PROJECT`, `MANAGE_DEPLOY_TOKENS`, `MANAGE_GROUP_ACCESS_TOKENS`, `MANAGE_MERGE_REQUEST_SETTINGS`, `MANAGE_PROJECT_ACCESS_TOKENS`, `MANAGE_SECURITY_POLICY_LINK`, `READ_ADMIN_CICD`, `READ_ADMIN_GROUPS`, `READ_ADMIN_PROJECTS`, `READ_ADMIN_SUBSCRIPTION`, `READ_ADMIN_MONITORING`, `READ_ADMIN_USERS`, `READ_ADMIN_DASHBOARD`, `READ_CODE`, `READ_COMPLIANCE_DASHBOARD`, `READ_CRM_CONTACT`, `READ_DEPENDENCY`, `READ_RUNNERS`, `READ_VULNERABILITY`, `REMOVE_GROUP`, `REMOVE_PROJECT`
         """
         return pulumi.get(self, "enabled_permissions")
 
     @enabled_permissions.setter
-    def enabled_permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def enabled_permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "enabled_permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="groupPath")
-    def group_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full path of the namespace to create the member role in. **Required for SAAS** **Not allowed for self-managed**
         """
         return pulumi.get(self, "group_path")
 
     @group_path.setter
-    def group_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def iid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def iid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The id integer value extracted from the `id` attribute
         """
         return pulumi.get(self, "iid")
 
     @iid.setter
-    def iid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def iid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "iid", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name for the member role.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -246,11 +246,11 @@ class MemberRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 base_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 group_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 base_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `MemberRole` resource manages the lifecycle of a custom member role.
@@ -333,11 +333,11 @@ class MemberRole(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 base_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 group_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 base_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -369,14 +369,14 @@ class MemberRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            base_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            edit_path: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            group_path: Optional[pulumi.Input[_builtins.str]] = None,
-            iid: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'MemberRole':
+            base_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            edit_path: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            group_path: pulumi.Input[Optional[_builtins.str]] = None,
+            iid: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'MemberRole':
         """
         Get an existing MemberRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

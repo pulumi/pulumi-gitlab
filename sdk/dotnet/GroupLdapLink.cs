@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new GitLab.Index.GroupLdapLink("test", new()
+    ///     var test = new GitLab.GroupLdapLink("test", new()
     ///     {
     ///         Group = "12345",
     ///         Cn = "testuser",

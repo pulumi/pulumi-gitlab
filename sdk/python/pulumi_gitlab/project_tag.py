@@ -23,8 +23,8 @@ class ProjectTagArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  ref: pulumi.Input[_builtins.str],
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectTag resource.
 
@@ -66,40 +66,40 @@ class ProjectTagArgs:
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The message of the annotated tag.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a tag.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _ProjectTagState:
     def __init__(__self__, *,
-                 commits: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagCommitArgs']]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 releases: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagReleaseArgs']]]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None):
+                 commits: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectTagCommitArgs']]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 releases: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectTagReleaseArgs']]]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectTag resources.
 
@@ -131,98 +131,98 @@ class _ProjectTagState:
 
     @_builtins.property
     @pulumi.getter
-    def commits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagCommitArgs']]]]:
+    def commits(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectTagCommitArgs']]]]:
         """
         The commit associated with the tag.
         """
         return pulumi.get(self, "commits")
 
     @commits.setter
-    def commits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagCommitArgs']]]]):
+    def commits(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectTagCommitArgs']]]]):
         pulumi.set(self, "commits", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The message of the annotated tag.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a tag.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of the project owned by the authenticated user.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def protected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Bool, true if tag has tag protection.
         """
         return pulumi.get(self, "protected")
 
     @protected.setter
-    def protected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected", value)
 
     @_builtins.property
     @pulumi.getter
-    def ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create tag using commit SHA, another tag name, or branch name. This attribute is not available for imported resources.
         """
         return pulumi.get(self, "ref")
 
     @ref.setter
-    def ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ref", value)
 
     @_builtins.property
     @pulumi.getter
-    def releases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagReleaseArgs']]]]:
+    def releases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectTagReleaseArgs']]]]:
         """
         The release associated with the tag.
         """
         return pulumi.get(self, "releases")
 
     @releases.setter
-    def releases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagReleaseArgs']]]]):
+    def releases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectTagReleaseArgs']]]]):
         pulumi.set(self, "releases", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique id assigned to the commit by Gitlab.
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target", value)
 
 
@@ -232,10 +232,10 @@ class ProjectTag(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 ref: Optional[pulumi.Input[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectTag` resource allows users to manage the lifecycle of a tag in a project.
@@ -252,7 +252,7 @@ class ProjectTag(pulumi.CustomResource):
         example = gitlab.Project("example",
             name="example",
             description="An example project",
-            namespace_id=example_gitlab_group["id"])
+            namespace_id=int(example_gitlab_group["id"]))
         example_project_tag = gitlab.ProjectTag("example",
             name="example",
             ref="main",
@@ -302,7 +302,7 @@ class ProjectTag(pulumi.CustomResource):
         example = gitlab.Project("example",
             name="example",
             description="An example project",
-            namespace_id=example_gitlab_group["id"])
+            namespace_id=int(example_gitlab_group["id"]))
         example_project_tag = gitlab.ProjectTag("example",
             name="example",
             ref="main",
@@ -339,10 +339,10 @@ class ProjectTag(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 ref: Optional[pulumi.Input[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 ref: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -374,14 +374,14 @@ class ProjectTag(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            commits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagCommitArgs', 'ProjectTagCommitArgsDict']]]]] = None,
-            message: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            protected: Optional[pulumi.Input[_builtins.bool]] = None,
-            ref: Optional[pulumi.Input[_builtins.str]] = None,
-            releases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagReleaseArgs', 'ProjectTagReleaseArgsDict']]]]] = None,
-            target: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectTag':
+            commits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectTagCommitArgs', 'ProjectTagCommitArgsDict']]]]] = None,
+            message: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protected: pulumi.Input[Optional[_builtins.bool]] = None,
+            ref: pulumi.Input[Optional[_builtins.str]] = None,
+            releases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectTagReleaseArgs', 'ProjectTagReleaseArgsDict']]]]] = None,
+            target: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectTag':
         """
         Get an existing ProjectTag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

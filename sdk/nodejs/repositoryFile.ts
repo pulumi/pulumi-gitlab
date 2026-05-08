@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  * });
  * const thisProject = new gitlab.Project("this", {
  *     name: "example",
- *     namespaceId: _this.id,
+ *     namespaceId: _this.id.apply(x =>Number(x)),
  *     initializeWithReadme: true,
  * });
  * const thisRepositoryFile = new gitlab.RepositoryFile("this", {
@@ -280,87 +280,87 @@ export interface RepositoryFileState {
     /**
      * Email of the commit author.
      */
-    authorEmail?: pulumi.Input<string>;
+    authorEmail?: pulumi.Input<string | undefined>;
     /**
      * Name of the commit author.
      */
-    authorName?: pulumi.Input<string>;
+    authorName?: pulumi.Input<string | undefined>;
     /**
      * The blob id.
      */
-    blobId?: pulumi.Input<string>;
+    blobId?: pulumi.Input<string | undefined>;
     /**
      * Name of the branch to which to commit to.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * The commit id.
      */
-    commitId?: pulumi.Input<string>;
+    commitId?: pulumi.Input<string | undefined>;
     /**
      * Commit message.
      */
-    commitMessage?: pulumi.Input<string>;
+    commitMessage?: pulumi.Input<string | undefined>;
     /**
      * File content.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * File content sha256 digest.
      */
-    contentSha256?: pulumi.Input<string>;
+    contentSha256?: pulumi.Input<string | undefined>;
     /**
      * Create commit message.
      */
-    createCommitMessage?: pulumi.Input<string>;
+    createCommitMessage?: pulumi.Input<string | undefined>;
     /**
      * Delete Commit message.
      */
-    deleteCommitMessage?: pulumi.Input<string>;
+    deleteCommitMessage?: pulumi.Input<string | undefined>;
     /**
      * The file content encoding. Valid values are: `base64`, `text`.
      */
-    encoding?: pulumi.Input<string>;
+    encoding?: pulumi.Input<string | undefined>;
     /**
      * Enables or disables the execute flag on the file.
      */
-    executeFilemode?: pulumi.Input<boolean>;
+    executeFilemode?: pulumi.Input<boolean | undefined>;
     /**
      * The filename.
      */
-    fileName?: pulumi.Input<string>;
+    fileName?: pulumi.Input<string | undefined>;
     /**
      * The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      */
-    filePath?: pulumi.Input<string>;
+    filePath?: pulumi.Input<string | undefined>;
     /**
      * The last known commit id.
      */
-    lastCommitId?: pulumi.Input<string>;
+    lastCommitId?: pulumi.Input<string | undefined>;
     /**
      * Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
      */
-    overwriteOnCreate?: pulumi.Input<boolean>;
+    overwriteOnCreate?: pulumi.Input<boolean | undefined>;
     /**
      * The name or ID of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of branch, tag or commit.
      */
-    ref?: pulumi.Input<string>;
+    ref?: pulumi.Input<string | undefined>;
     /**
      * The file size.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * Name of the branch to start the new commit from.
      */
-    startBranch?: pulumi.Input<string>;
+    startBranch?: pulumi.Input<string | undefined>;
     /**
      * Update commit message.
      */
-    updateCommitMessage?: pulumi.Input<string>;
+    updateCommitMessage?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -370,11 +370,11 @@ export interface RepositoryFileArgs {
     /**
      * Email of the commit author.
      */
-    authorEmail?: pulumi.Input<string>;
+    authorEmail?: pulumi.Input<string | undefined>;
     /**
      * Name of the commit author.
      */
-    authorName?: pulumi.Input<string>;
+    authorName?: pulumi.Input<string | undefined>;
     /**
      * Name of the branch to which to commit to.
      */
@@ -382,7 +382,7 @@ export interface RepositoryFileArgs {
     /**
      * Commit message.
      */
-    commitMessage?: pulumi.Input<string>;
+    commitMessage?: pulumi.Input<string | undefined>;
     /**
      * File content.
      */
@@ -390,11 +390,11 @@ export interface RepositoryFileArgs {
     /**
      * Create commit message.
      */
-    createCommitMessage?: pulumi.Input<string>;
+    createCommitMessage?: pulumi.Input<string | undefined>;
     /**
      * Delete Commit message.
      */
-    deleteCommitMessage?: pulumi.Input<string>;
+    deleteCommitMessage?: pulumi.Input<string | undefined>;
     /**
      * The file content encoding. Valid values are: `base64`, `text`.
      */
@@ -402,7 +402,7 @@ export interface RepositoryFileArgs {
     /**
      * Enables or disables the execute flag on the file.
      */
-    executeFilemode?: pulumi.Input<boolean>;
+    executeFilemode?: pulumi.Input<boolean | undefined>;
     /**
      * The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
      */
@@ -410,7 +410,7 @@ export interface RepositoryFileArgs {
     /**
      * Enable overwriting existing files, defaults to `false`. This attribute is only used during `create` and must be use carefully. We suggest to use `imports` whenever possible and limit the use of this attribute for when the project was imported on the same `apply`. This attribute is not supported during a resource import.
      */
-    overwriteOnCreate?: pulumi.Input<boolean>;
+    overwriteOnCreate?: pulumi.Input<boolean | undefined>;
     /**
      * The name or ID of the project.
      */
@@ -418,9 +418,9 @@ export interface RepositoryFileArgs {
     /**
      * Name of the branch to start the new commit from.
      */
-    startBranch?: pulumi.Input<string>;
+    startBranch?: pulumi.Input<string | undefined>;
     /**
      * Update commit message.
      */
-    updateCommitMessage?: pulumi.Input<string>;
+    updateCommitMessage?: pulumi.Input<string | undefined>;
 }

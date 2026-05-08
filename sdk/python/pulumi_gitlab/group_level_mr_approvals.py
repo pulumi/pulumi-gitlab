@@ -20,12 +20,12 @@ __all__ = ['GroupLevelMrApprovalsArgs', 'GroupLevelMrApprovals']
 class GroupLevelMrApprovalsArgs:
     def __init__(__self__, *,
                  group: pulumi.Input[_builtins.str],
-                 allow_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_committer_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_overrides_to_approver_list_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_reauthentication_to_approve: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retain_approvals_on_push: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allow_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_committer_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_overrides_to_approver_list_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_reauthentication_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retain_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GroupLevelMrApprovals resource.
 
@@ -65,87 +65,87 @@ class GroupLevelMrApprovalsArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowAuthorApproval")
-    def allow_author_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_author_approval(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow or prevent authors from self approving merge requests; `true` means authors can self approve.
         """
         return pulumi.get(self, "allow_author_approval")
 
     @allow_author_approval.setter
-    def allow_author_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_author_approval(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_author_approval", value)
 
     @_builtins.property
     @pulumi.getter(name="allowCommitterApproval")
-    def allow_committer_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_committer_approval(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow or prevent committers from self approving merge requests.
         """
         return pulumi.get(self, "allow_committer_approval")
 
     @allow_committer_approval.setter
-    def allow_committer_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_committer_approval(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_committer_approval", value)
 
     @_builtins.property
     @pulumi.getter(name="allowOverridesToApproverListPerMergeRequest")
-    def allow_overrides_to_approver_list_per_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_overrides_to_approver_list_per_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow or prevent overriding approvers per merge request.
         """
         return pulumi.get(self, "allow_overrides_to_approver_list_per_merge_request")
 
     @allow_overrides_to_approver_list_per_merge_request.setter
-    def allow_overrides_to_approver_list_per_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_overrides_to_approver_list_per_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_overrides_to_approver_list_per_merge_request", value)
 
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
-    def keep_settings_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_settings_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
         """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @keep_settings_on_destroy.setter
-    def keep_settings_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_settings_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_settings_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="requireReauthenticationToApprove")
-    def require_reauthentication_to_approve(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_reauthentication_to_approve(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Require approver to authenticate before adding the approval.
         """
         return pulumi.get(self, "require_reauthentication_to_approve")
 
     @require_reauthentication_to_approve.setter
-    def require_reauthentication_to_approve(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_reauthentication_to_approve(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_reauthentication_to_approve", value)
 
     @_builtins.property
     @pulumi.getter(name="retainApprovalsOnPush")
-    def retain_approvals_on_push(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def retain_approvals_on_push(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Retain approval count on a new push.
         """
         return pulumi.get(self, "retain_approvals_on_push")
 
     @retain_approvals_on_push.setter
-    def retain_approvals_on_push(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def retain_approvals_on_push(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "retain_approvals_on_push", value)
 
 
 @pulumi.input_type
 class _GroupLevelMrApprovalsState:
     def __init__(__self__, *,
-                 allow_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_committer_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_overrides_to_approver_list_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_reauthentication_to_approve: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retain_approvals_on_push: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allow_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_committer_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_overrides_to_approver_list_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_reauthentication_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retain_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GroupLevelMrApprovals resources.
 
@@ -174,86 +174,86 @@ class _GroupLevelMrApprovalsState:
 
     @_builtins.property
     @pulumi.getter(name="allowAuthorApproval")
-    def allow_author_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_author_approval(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow or prevent authors from self approving merge requests; `true` means authors can self approve.
         """
         return pulumi.get(self, "allow_author_approval")
 
     @allow_author_approval.setter
-    def allow_author_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_author_approval(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_author_approval", value)
 
     @_builtins.property
     @pulumi.getter(name="allowCommitterApproval")
-    def allow_committer_approval(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_committer_approval(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow or prevent committers from self approving merge requests.
         """
         return pulumi.get(self, "allow_committer_approval")
 
     @allow_committer_approval.setter
-    def allow_committer_approval(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_committer_approval(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_committer_approval", value)
 
     @_builtins.property
     @pulumi.getter(name="allowOverridesToApproverListPerMergeRequest")
-    def allow_overrides_to_approver_list_per_merge_request(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_overrides_to_approver_list_per_merge_request(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow or prevent overriding approvers per merge request.
         """
         return pulumi.get(self, "allow_overrides_to_approver_list_per_merge_request")
 
     @allow_overrides_to_approver_list_per_merge_request.setter
-    def allow_overrides_to_approver_list_per_merge_request(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_overrides_to_approver_list_per_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_overrides_to_approver_list_per_merge_request", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID or URL-encoded path of the group.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
-    def keep_settings_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_settings_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if the group merge request approval settings should not be reset to their pre-terraform defaults on destroy. You will need to apply the resource with the new setting before destroying the resource.
         """
         return pulumi.get(self, "keep_settings_on_destroy")
 
     @keep_settings_on_destroy.setter
-    def keep_settings_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_settings_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_settings_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="requireReauthenticationToApprove")
-    def require_reauthentication_to_approve(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_reauthentication_to_approve(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Require approver to authenticate before adding the approval.
         """
         return pulumi.get(self, "require_reauthentication_to_approve")
 
     @require_reauthentication_to_approve.setter
-    def require_reauthentication_to_approve(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_reauthentication_to_approve(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_reauthentication_to_approve", value)
 
     @_builtins.property
     @pulumi.getter(name="retainApprovalsOnPush")
-    def retain_approvals_on_push(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def retain_approvals_on_push(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Retain approval count on a new push.
         """
         return pulumi.get(self, "retain_approvals_on_push")
 
     @retain_approvals_on_push.setter
-    def retain_approvals_on_push(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def retain_approvals_on_push(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "retain_approvals_on_push", value)
 
 
@@ -263,13 +263,13 @@ class GroupLevelMrApprovals(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_committer_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_overrides_to_approver_list_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_reauthentication_to_approve: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retain_approvals_on_push: Optional[pulumi.Input[_builtins.bool]] = None,
+                 allow_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_committer_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_overrides_to_approver_list_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_reauthentication_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retain_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The `GroupLevelMrApprovals` resource manages the lifecycle of group merge request approval settings. More than one resource per group will conflict with each other.
@@ -388,13 +388,13 @@ class GroupLevelMrApprovals(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_committer_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_overrides_to_approver_list_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 require_reauthentication_to_approve: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retain_approvals_on_push: Optional[pulumi.Input[_builtins.bool]] = None,
+                 allow_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_committer_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_overrides_to_approver_list_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_reauthentication_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retain_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -423,13 +423,13 @@ class GroupLevelMrApprovals(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_author_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_committer_approval: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_overrides_to_approver_list_per_merge_request: Optional[pulumi.Input[_builtins.bool]] = None,
-            group: Optional[pulumi.Input[_builtins.str]] = None,
-            keep_settings_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            require_reauthentication_to_approve: Optional[pulumi.Input[_builtins.bool]] = None,
-            retain_approvals_on_push: Optional[pulumi.Input[_builtins.bool]] = None) -> 'GroupLevelMrApprovals':
+            allow_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_committer_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_overrides_to_approver_list_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            require_reauthentication_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+            retain_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GroupLevelMrApprovals':
         """
         Get an existing GroupLevelMrApprovals resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

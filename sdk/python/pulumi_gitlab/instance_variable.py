@@ -21,11 +21,11 @@ class InstanceVariableArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 masked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 raw: Optional[pulumi.Input[_builtins.bool]] = None,
-                 variable_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 masked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 raw: pulumi.Input[Optional[_builtins.bool]] = None,
+                 variable_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceVariable resource.
 
@@ -76,75 +76,75 @@ class InstanceVariableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the variable. Maximum of 255 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def masked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def masked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
         """
         return pulumi.get(self, "masked")
 
     @masked.setter
-    def masked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def masked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "masked", value)
 
     @_builtins.property
     @pulumi.getter
-    def protected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         """
         return pulumi.get(self, "protected")
 
     @protected.setter
-    def protected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected", value)
 
     @_builtins.property
     @pulumi.getter
-    def raw(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def raw(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
         """
         return pulumi.get(self, "raw")
 
     @raw.setter
-    def raw(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def raw(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "raw", value)
 
     @_builtins.property
     @pulumi.getter(name="variableType")
-    def variable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def variable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         return pulumi.get(self, "variable_type")
 
     @variable_type.setter
-    def variable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def variable_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "variable_type", value)
 
 
 @pulumi.input_type
 class _InstanceVariableState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 masked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 raw: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 masked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 raw: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceVariable resources.
 
@@ -173,86 +173,86 @@ class _InstanceVariableState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the variable. Maximum of 255 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the variable.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def masked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def masked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the value of the variable will be hidden in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable). Defaults to `false`.
         """
         return pulumi.get(self, "masked")
 
     @masked.setter
-    def masked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def masked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "masked", value)
 
     @_builtins.property
     @pulumi.getter
-    def protected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the variable will be passed only to pipelines running on protected branches and tags. Defaults to `false`.
         """
         return pulumi.get(self, "protected")
 
     @protected.setter
-    def protected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected", value)
 
     @_builtins.property
     @pulumi.getter
-    def raw(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def raw(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the variable is treated as a raw string. Default: false. When true, variables in the value are not expanded.
         """
         return pulumi.get(self, "raw")
 
     @raw.setter
-    def raw(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def raw(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "raw", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the variable.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
     @_builtins.property
     @pulumi.getter(name="variableType")
-    def variable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def variable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of a variable. Valid values are: `env_var`, `file`. Default is `env_var`.
         """
         return pulumi.get(self, "variable_type")
 
     @variable_type.setter
-    def variable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def variable_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "variable_type", value)
 
 
@@ -262,13 +262,13 @@ class InstanceVariable(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 masked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 raw: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 masked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 raw: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `InstanceVariable` resource manages the lifecycle of an instance-level CI/CD variable.
@@ -363,13 +363,13 @@ class InstanceVariable(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 masked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 raw: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 masked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 raw: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -400,13 +400,13 @@ class InstanceVariable(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            masked: Optional[pulumi.Input[_builtins.bool]] = None,
-            protected: Optional[pulumi.Input[_builtins.bool]] = None,
-            raw: Optional[pulumi.Input[_builtins.bool]] = None,
-            value: Optional[pulumi.Input[_builtins.str]] = None,
-            variable_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceVariable':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            masked: pulumi.Input[Optional[_builtins.bool]] = None,
+            protected: pulumi.Input[Optional[_builtins.bool]] = None,
+            raw: pulumi.Input[Optional[_builtins.bool]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None,
+            variable_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceVariable':
         """
         Get an existing InstanceVariable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

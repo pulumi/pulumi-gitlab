@@ -30,7 +30,7 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new GitLab.Index.RunnerControllerRunnerScope("example", new()
+    ///     var example = new GitLab.RunnerControllerRunnerScope("example", new()
     ///     {
     ///         RunnerControllerId = exampleGitlabRunnerController.Id,
     ///         RunnerId = 42,

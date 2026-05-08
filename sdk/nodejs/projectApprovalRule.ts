@@ -60,7 +60,7 @@ import * as utilities from "./utilities";
  *         "user2",
  *         "user3",
  *     ],
- * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: gitlab.getUser({
+ * }).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: gitlab.getUser({
  *     username: __value,
  * }) }), {}));
  * const example_three = new gitlab.ProjectApprovalRule("example-three", {
@@ -227,43 +227,43 @@ export interface ProjectApprovalRuleState {
     /**
      * Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
      */
-    appliesToAllProtectedBranches?: pulumi.Input<boolean>;
+    appliesToAllProtectedBranches?: pulumi.Input<boolean | undefined>;
     /**
      * The number of approvals required for this rule.
      */
-    approvalsRequired?: pulumi.Input<number>;
+    approvalsRequired?: pulumi.Input<number | undefined>;
     /**
      * When this flag is set, the default `anyApprover` rule will not be imported if present.
      */
-    disableImportingDefaultAnyApproverRuleOnCreate?: pulumi.Input<boolean>;
+    disableImportingDefaultAnyApproverRuleOnCreate?: pulumi.Input<boolean | undefined>;
     /**
      * A list of group IDs whose members can approve of the merge request.
      */
-    groupIds?: pulumi.Input<pulumi.Input<number>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The name of the approval rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name or id of the project to add the approval rules.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A list of protected branch IDs (not branch names) for which the rule applies.
      */
-    protectedBranchIds?: pulumi.Input<pulumi.Input<number>[]>;
+    protectedBranchIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
      */
-    reportType?: pulumi.Input<string>;
+    reportType?: pulumi.Input<string | undefined>;
     /**
      * String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
      */
-    ruleType?: pulumi.Input<string>;
+    ruleType?: pulumi.Input<string | undefined>;
     /**
      * A list of specific User IDs to add to the list of approvers.
      */
-    userIds?: pulumi.Input<pulumi.Input<number>[]>;
+    userIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 /**
@@ -273,7 +273,7 @@ export interface ProjectApprovalRuleArgs {
     /**
      * Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
      */
-    appliesToAllProtectedBranches?: pulumi.Input<boolean>;
+    appliesToAllProtectedBranches?: pulumi.Input<boolean | undefined>;
     /**
      * The number of approvals required for this rule.
      */
@@ -281,15 +281,15 @@ export interface ProjectApprovalRuleArgs {
     /**
      * When this flag is set, the default `anyApprover` rule will not be imported if present.
      */
-    disableImportingDefaultAnyApproverRuleOnCreate?: pulumi.Input<boolean>;
+    disableImportingDefaultAnyApproverRuleOnCreate?: pulumi.Input<boolean | undefined>;
     /**
      * A list of group IDs whose members can approve of the merge request.
      */
-    groupIds?: pulumi.Input<pulumi.Input<number>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The name of the approval rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name or id of the project to add the approval rules.
      */
@@ -297,17 +297,17 @@ export interface ProjectApprovalRuleArgs {
     /**
      * A list of protected branch IDs (not branch names) for which the rule applies.
      */
-    protectedBranchIds?: pulumi.Input<pulumi.Input<number>[]>;
+    protectedBranchIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
      */
-    reportType?: pulumi.Input<string>;
+    reportType?: pulumi.Input<string | undefined>;
     /**
      * String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
      */
-    ruleType?: pulumi.Input<string>;
+    ruleType?: pulumi.Input<string | undefined>;
     /**
      * A list of specific User IDs to add to the list of approvers.
      */
-    userIds?: pulumi.Input<pulumi.Input<number>[]>;
+    userIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }

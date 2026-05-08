@@ -175,12 +175,12 @@ def get_project_membership(full_path: Optional[_builtins.str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         query=pulumi.get(__ret__, 'query'),
         user_ids=pulumi.get(__ret__, 'user_ids'))
-def get_project_membership_output(full_path: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  inherited: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                  project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  project_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                  query: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  user_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.int]]]] = None,
+def get_project_membership_output(full_path: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  inherited: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                  project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  project_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                  query: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  user_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.int]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectMembershipResult]:
     """
     The `ProjectMembership` data source allows you to list and filter all members of a project.

@@ -156,10 +156,10 @@ def get_groups(order_by: Optional[_builtins.str] = None,
         search=pulumi.get(__ret__, 'search'),
         sort=pulumi.get(__ret__, 'sort'),
         top_level_only=pulumi.get(__ret__, 'top_level_only'))
-def get_groups_output(order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      sort: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      top_level_only: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_groups_output(order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      sort: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      top_level_only: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupsResult]:
     """
     The `get_groups` data source allows details of multiple groups to be retrieved given some optional filter criteria.

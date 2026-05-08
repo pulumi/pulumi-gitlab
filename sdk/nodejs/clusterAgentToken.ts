@@ -194,43 +194,43 @@ export interface ClusterAgentTokenState {
     /**
      * The ID of the agent.
      */
-    agentId?: pulumi.Input<number>;
+    agentId?: pulumi.Input<number | undefined>;
     /**
      * The ISO8601 datetime when the agent was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user who created the agent.
      */
-    createdByUserId?: pulumi.Input<number>;
+    createdByUserId?: pulumi.Input<number | undefined>;
     /**
      * The Description for the agent.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ISO8601 datetime when the token was last used.
      */
-    lastUsedAt?: pulumi.Input<string>;
+    lastUsedAt?: pulumi.Input<string | undefined>;
     /**
      * The Name of the agent.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * ID or full path of the project maintained by the authenticated user.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The status of the token. Valid values are `active`, `revoked`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The secret token for the agent. The `token` is not available in imported resources.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The ID of the token.
      */
-    tokenId?: pulumi.Input<number>;
+    tokenId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -244,11 +244,11 @@ export interface ClusterAgentTokenArgs {
     /**
      * The Description for the agent.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Name of the agent.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * ID or full path of the project maintained by the authenticated user.
      */

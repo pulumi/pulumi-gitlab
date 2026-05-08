@@ -21,11 +21,11 @@ class ProjectIntegrationEmailsOnPushArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  recipients: pulumi.Input[_builtins.str],
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_diffs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 send_from_committer_email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None):
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_diffs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 send_from_committer_email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ProjectIntegrationEmailsOnPush resource.
 
@@ -76,80 +76,80 @@ class ProjectIntegrationEmailsOnPushArgs:
 
     @_builtins.property
     @pulumi.getter(name="branchesToBeNotified")
-    def branches_to_be_notified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branches_to_be_notified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.
         """
         return pulumi.get(self, "branches_to_be_notified")
 
     @branches_to_be_notified.setter
-    def branches_to_be_notified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branches_to_be_notified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branches_to_be_notified", value)
 
     @_builtins.property
     @pulumi.getter(name="disableDiffs")
-    def disable_diffs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_diffs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable code diffs.
         """
         return pulumi.get(self, "disable_diffs")
 
     @disable_diffs.setter
-    def disable_diffs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_diffs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_diffs", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for push events.
         """
         return pulumi.get(self, "push_events")
 
     @push_events.setter
-    def push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "push_events", value)
 
     @_builtins.property
     @pulumi.getter(name="sendFromCommitterEmail")
-    def send_from_committer_email(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_from_committer_email(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Send from committer.
         """
         return pulumi.get(self, "send_from_committer_email")
 
     @send_from_committer_email.setter
-    def send_from_committer_email(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_from_committer_email(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_from_committer_email", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tag_push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for tag push events.
         """
         return pulumi.get(self, "tag_push_events")
 
     @tag_push_events.setter
-    def tag_push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tag_push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tag_push_events", value)
 
 
 @pulumi.input_type
 class _ProjectIntegrationEmailsOnPushState:
     def __init__(__self__, *,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_diffs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 recipients: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_from_committer_email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slug: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_diffs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 recipients: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_from_committer_email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slug: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectIntegrationEmailsOnPush resources.
 
@@ -193,146 +193,146 @@ class _ProjectIntegrationEmailsOnPushState:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the integration is active.
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="branchesToBeNotified")
-    def branches_to_be_notified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branches_to_be_notified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Branches to send notifications for. Valid options are `all`, `default`, `protected`, `default_and_protected`. Notifications are always fired for tag pushes.
         """
         return pulumi.get(self, "branches_to_be_notified")
 
     @branches_to_be_notified.setter
-    def branches_to_be_notified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branches_to_be_notified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branches_to_be_notified", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ISO8601 date/time that this integration was activated at in UTC.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="disableDiffs")
-    def disable_diffs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_diffs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable code diffs.
         """
         return pulumi.get(self, "disable_diffs")
 
     @disable_diffs.setter
-    def disable_diffs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_diffs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_diffs", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID or full-path of the project you want to activate integration on.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for push events.
         """
         return pulumi.get(self, "push_events")
 
     @push_events.setter
-    def push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "push_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def recipients(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recipients(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Emails separated by whitespace.
         """
         return pulumi.get(self, "recipients")
 
     @recipients.setter
-    def recipients(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recipients(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recipients", value)
 
     @_builtins.property
     @pulumi.getter(name="sendFromCommitterEmail")
-    def send_from_committer_email(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def send_from_committer_email(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Send from committer.
         """
         return pulumi.get(self, "send_from_committer_email")
 
     @send_from_committer_email.setter
-    def send_from_committer_email(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def send_from_committer_email(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "send_from_committer_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def slug(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slug(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the integration in lowercase, shortened to 63 bytes, and with everything except 0-9 and a-z replaced with -. No leading / trailing -. Use in URLs, host names and domain names.
         """
         return pulumi.get(self, "slug")
 
     @slug.setter
-    def slug(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slug(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slug", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tag_push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable notifications for tag push events.
         """
         return pulumi.get(self, "tag_push_events")
 
     @tag_push_events.setter
-    def tag_push_events(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tag_push_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tag_push_events", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Title of the integration.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ISO8601 date/time that this integration was last updated at in UTC.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -342,13 +342,13 @@ class ProjectIntegrationEmailsOnPush(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_diffs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 recipients: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_from_committer_email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_diffs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 recipients: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_from_committer_email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The `ProjectIntegrationEmailsOnPush` resource manages the lifecycle of a project integration with the Emails on Push Service.
@@ -457,13 +457,13 @@ class ProjectIntegrationEmailsOnPush(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_diffs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-                 recipients: Optional[pulumi.Input[_builtins.str]] = None,
-                 send_from_committer_email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
+                 branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_diffs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 recipients: pulumi.Input[Optional[_builtins.str]] = None,
+                 send_from_committer_email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -499,18 +499,18 @@ class ProjectIntegrationEmailsOnPush(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active: Optional[pulumi.Input[_builtins.bool]] = None,
-            branches_to_be_notified: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_diffs: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            recipients: Optional[pulumi.Input[_builtins.str]] = None,
-            send_from_committer_email: Optional[pulumi.Input[_builtins.bool]] = None,
-            slug: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_push_events: Optional[pulumi.Input[_builtins.bool]] = None,
-            title: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectIntegrationEmailsOnPush':
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_diffs: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            recipients: pulumi.Input[Optional[_builtins.str]] = None,
+            send_from_committer_email: pulumi.Input[Optional[_builtins.bool]] = None,
+            slug: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectIntegrationEmailsOnPush':
         """
         Get an existing ProjectIntegrationEmailsOnPush resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

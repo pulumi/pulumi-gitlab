@@ -109,8 +109,8 @@ def get_user_sshkeys(user_id: Optional[_builtins.int] = None,
         keys=pulumi.get(__ret__, 'keys'),
         user_id=pulumi.get(__ret__, 'user_id'),
         username=pulumi.get(__ret__, 'username'))
-def get_user_sshkeys_output(user_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                            username: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_user_sshkeys_output(user_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                            username: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserSshkeysResult]:
     """
     The `get_user_sshkeys` data source retrieves a list of SSH keys for a user.
