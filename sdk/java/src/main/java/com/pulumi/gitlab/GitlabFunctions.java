@@ -2864,6 +2864,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGroupServiceAccountAccessTokensResult> getGroupServiceAccountAccessTokens(GetGroupServiceAccountAccessTokensArgs args) {
         return getGroupServiceAccountAccessTokens(args, InvokeOptions.Empty);
@@ -2876,6 +2878,8 @@ public final class GitlabFunctions {
      * &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGroupServiceAccountAccessTokensResult> getGroupServiceAccountAccessTokensPlain(GetGroupServiceAccountAccessTokensPlainArgs args) {
@@ -2890,6 +2894,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGroupServiceAccountAccessTokensResult> getGroupServiceAccountAccessTokens(GetGroupServiceAccountAccessTokensArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getGroupServiceAccountAccessTokens:getGroupServiceAccountAccessTokens", TypeShape.of(GetGroupServiceAccountAccessTokensResult.class), args, Utilities.withVersion(options));
@@ -2903,6 +2909,8 @@ public final class GitlabFunctions {
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetGroupServiceAccountAccessTokensResult> getGroupServiceAccountAccessTokens(GetGroupServiceAccountAccessTokensArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getGroupServiceAccountAccessTokens:getGroupServiceAccountAccessTokens", TypeShape.of(GetGroupServiceAccountAccessTokensResult.class), args, Utilities.withVersion(options));
@@ -2915,6 +2923,8 @@ public final class GitlabFunctions {
      * &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetGroupServiceAccountAccessTokensResult> getGroupServiceAccountAccessTokensPlain(GetGroupServiceAccountAccessTokensPlainArgs args, InvokeOptions options) {

@@ -98,6 +98,8 @@ def get_group_service_account_access_tokens(group: Optional[_builtins.str] = Non
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
 
+    ## Example Usage
+
 
     :param _builtins.str group: The ID or URL-encoded path of the group containing the service account. Must be a top level group.
     :param _builtins.int service_account_id: The ID of the service account user.
@@ -124,6 +126,8 @@ def get_group_service_account_access_tokens_output(group: pulumi.Input[Optional[
     > **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+
+    ## Example Usage
 
 
     :param _builtins.str group: The ID or URL-encoded path of the group containing the service account. Must be a top level group.
