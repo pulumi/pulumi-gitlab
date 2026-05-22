@@ -19,6 +19,8 @@ namespace Pulumi.GitLab
         /// &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetGroupServiceAccountAccessTokensResult> InvokeAsync(GetGroupServiceAccountAccessTokensArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupServiceAccountAccessTokensResult>("gitlab:index/getGroupServiceAccountAccessTokens:getGroupServiceAccountAccessTokens", args ?? new GetGroupServiceAccountAccessTokensArgs(), options.WithDefaults());
@@ -31,6 +33,8 @@ namespace Pulumi.GitLab
         /// &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetGroupServiceAccountAccessTokensResult> Invoke(GetGroupServiceAccountAccessTokensInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupServiceAccountAccessTokensResult>("gitlab:index/getGroupServiceAccountAccessTokens:getGroupServiceAccountAccessTokens", args ?? new GetGroupServiceAccountAccessTokensInvokeArgs(), options.WithDefaults());
@@ -43,6 +47,8 @@ namespace Pulumi.GitLab
         /// &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetGroupServiceAccountAccessTokensResult> Invoke(GetGroupServiceAccountAccessTokensInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupServiceAccountAccessTokensResult>("gitlab:index/getGroupServiceAccountAccessTokens:getGroupServiceAccountAccessTokens", args ?? new GetGroupServiceAccountAccessTokensInvokeArgs(), options.WithDefaults());

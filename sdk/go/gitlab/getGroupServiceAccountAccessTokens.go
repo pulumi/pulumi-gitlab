@@ -18,6 +18,8 @@ import (
 // > **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+//
+// ## Example Usage
 func GetGroupServiceAccountAccessTokens(ctx *pulumi.Context, args *GetGroupServiceAccountAccessTokensArgs, opts ...pulumi.InvokeOption) (*GetGroupServiceAccountAccessTokensResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupServiceAccountAccessTokensResult
