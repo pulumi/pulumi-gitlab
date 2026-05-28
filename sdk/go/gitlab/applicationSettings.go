@@ -20,7 +20,7 @@ import (
 //
 // > All `ApplicationSettings` use the same ID `gitlab`.
 //
-// !> This resource does not implement any destroy logic, it's a no-op at this point.
+// > This resource does not implement any destroy logic, it's a no-op at this point.
 //
 //	It's also not possible to revert to the previous settings.
 //
