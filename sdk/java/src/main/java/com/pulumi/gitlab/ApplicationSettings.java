@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; All `gitlab.ApplicationSettings` use the same ID `gitlab`.
  * 
- * !&gt; This resource does not implement any destroy logic, it&#39;s a no-op at this point.
+ * &gt; This resource does not implement any destroy logic, it&#39;s a no-op at this point.
  *    It&#39;s also not possible to revert to the previous settings.
  * 
  * &gt; Requires at administrative privileges on GitLab.
