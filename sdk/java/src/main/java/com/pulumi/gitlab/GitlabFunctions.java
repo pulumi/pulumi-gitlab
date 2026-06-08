@@ -12258,6 +12258,9 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyActionArgs;
      * import com.pulumi.gitlab.RepositoryFile;
      * import com.pulumi.gitlab.RepositoryFileArgs;
      * import java.util.ArrayList;
@@ -12323,6 +12326,9 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyActionArgs;
      * import com.pulumi.gitlab.RepositoryFile;
      * import com.pulumi.gitlab.RepositoryFileArgs;
      * import java.util.ArrayList;
@@ -12388,6 +12394,9 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyActionArgs;
      * import com.pulumi.gitlab.RepositoryFile;
      * import com.pulumi.gitlab.RepositoryFileArgs;
      * import java.util.ArrayList;
@@ -12453,6 +12462,9 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyActionArgs;
      * import com.pulumi.gitlab.RepositoryFile;
      * import com.pulumi.gitlab.RepositoryFileArgs;
      * import java.util.ArrayList;
@@ -12518,6 +12530,9 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyActionArgs;
      * import com.pulumi.gitlab.RepositoryFile;
      * import com.pulumi.gitlab.RepositoryFileArgs;
      * import java.util.ArrayList;
@@ -12583,6 +12598,9 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyActionArgs;
      * import com.pulumi.gitlab.RepositoryFile;
      * import com.pulumi.gitlab.RepositoryFileArgs;
      * import java.util.ArrayList;
@@ -12648,6 +12666,9 @@ public final class GitlabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gitlab.GitlabFunctions;
      * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyRuleArgs;
+     * import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentScanExecutionPolicyActionArgs;
      * import com.pulumi.gitlab.RepositoryFile;
      * import com.pulumi.gitlab.RepositoryFileArgs;
      * import java.util.ArrayList;
