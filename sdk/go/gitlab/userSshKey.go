@@ -37,7 +37,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewUserSshKey(ctx, "example", &gitlab.UserSshKeyArgs{
-//				UserId:    pulumi.Int(pulumi.String(example.Id)),
+//				UserId:    pulumi.String(example.Id),
 //				Title:     pulumi.String("example-key"),
 //				Key:       pulumi.String("ssh-ed25519 AAAA..."),
 //				ExpiresAt: pulumi.String("2016-01-21T00:00:00.000Z"),
