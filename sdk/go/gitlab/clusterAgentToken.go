@@ -53,14 +53,14 @@ import (
 //				return err
 //			}
 //			thisClusterAgent, err := gitlab.NewClusterAgent(ctx, "this", &gitlab.ClusterAgentArgs{
-//				Project: pulumi.String(pulumi.String(this.Id)),
+//				Project: pulumi.String(this.Id),
 //				Name:    pulumi.String("my-agent"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			thisClusterAgentToken, err := gitlab.NewClusterAgentToken(ctx, "this", &gitlab.ClusterAgentTokenArgs{
-//				Project:     pulumi.String(pulumi.String(this.Id)),
+//				Project:     pulumi.String(this.Id),
 //				AgentId:     thisClusterAgent.AgentId,
 //				Name:        pulumi.String("my-agent-token"),
 //				Description: pulumi.String("Token for the my-agent used with `gitlab-agent` Helm Chart"),

@@ -40,7 +40,7 @@ import (
 //			}
 //			// Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
 //			_, err = gitlab.NewUserGpgKey(ctx, "example", &gitlab.UserGpgKeyArgs{
-//				UserId: pulumi.Int(pulumi.String(example.Id)),
+//				UserId: pulumi.String(example.Id),
 //				Key:    pulumi.String("-----BEGIN PGP PUBLIC KEY BLOCK-----\n...\n-----END PGP PUBLIC KEY BLOCK-----"),
 //			})
 //			if err != nil {

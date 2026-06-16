@@ -49,7 +49,7 @@ import (
 //				Url:         pulumi.String("http://harbor.example.com"),
 //				ProjectName: pulumi.String("my_project_name"),
 //				Username:    pulumi.String("username"),
-//				Password:    pulumi.String(pulumi.String(password)),
+//				Password:    pulumi.String(password),
 //			})
 //			if err != nil {
 //				return err
