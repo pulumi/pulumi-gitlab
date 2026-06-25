@@ -26,7 +26,7 @@ class GroupSamlLinkArgs:
         """
         The set of arguments for constructing a GroupSamlLink resource.
 
-        :param pulumi.Input[_builtins.str] access_level: Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+        :param pulumi.Input[_builtins.str] access_level: Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[_builtins.str] group: The ID or path of the group to add the SAML Group Link to.
         :param pulumi.Input[_builtins.str] saml_group_name: The name of the SAML group.
         :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
@@ -41,7 +41,7 @@ class GroupSamlLinkArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Input[_builtins.str]:
         """
-        Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+        Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`.
         """
         return pulumi.get(self, "access_level")
 
@@ -96,7 +96,7 @@ class _GroupSamlLinkState:
         """
         Input properties used for looking up and filtering GroupSamlLink resources.
 
-        :param pulumi.Input[_builtins.str] access_level: Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+        :param pulumi.Input[_builtins.str] access_level: Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[_builtins.str] group: The ID or path of the group to add the SAML Group Link to.
         :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
         :param pulumi.Input[_builtins.str] saml_group_name: The name of the SAML group.
@@ -114,7 +114,7 @@ class _GroupSamlLinkState:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+        Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`.
         """
         return pulumi.get(self, "access_level")
 
@@ -211,7 +211,7 @@ class GroupSamlLink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_level: Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+        :param pulumi.Input[_builtins.str] access_level: Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[_builtins.str] group: The ID or path of the group to add the SAML Group Link to.
         :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
         :param pulumi.Input[_builtins.str] saml_group_name: The name of the SAML group.
@@ -320,7 +320,7 @@ class GroupSamlLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_level: Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+        :param pulumi.Input[_builtins.str] access_level: Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`.
         :param pulumi.Input[_builtins.str] group: The ID or path of the group to add the SAML Group Link to.
         :param pulumi.Input[_builtins.int] member_role_id: The ID of a custom member role. Only available for Ultimate instances. When using a custom role, the `access_level` must match the base role used to create the custom role.
         :param pulumi.Input[_builtins.str] saml_group_name: The name of the SAML group.
@@ -339,7 +339,7 @@ class GroupSamlLink(pulumi.CustomResource):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Output[_builtins.str]:
         """
-        Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+        Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`.
         """
         return pulumi.get(self, "access_level")
 

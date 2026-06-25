@@ -44,6 +44,17 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
+ * // Using URL variables
+ * // Values of URL variables can't be imported
+ * const urlVariables = new gitlab.ProjectHook("url_variables", {
+ *     project: "example/hooked",
+ *     url: "https://example.com/hook/example?token=secret",
+ *     mergeRequestsEvents: true,
+ *     urlVariables: [{
+ *         key: "hidden",
+ *         value: "token=secret",
+ *     }],
+ * });
  * ```
  *
  * ## Import
@@ -90,6 +101,10 @@ export class ProjectHook extends pulumi.CustomResource {
     }
 
     /**
+     * Lifecycle status of the webhook. Values include `executable` and `disabled`.
+     */
+    declare public /*out*/ readonly alertStatus: pulumi.Output<string>;
+    /**
      * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
      */
     declare public readonly branchFilterStrategy: pulumi.Output<string>;
@@ -118,6 +133,10 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string>;
     /**
+     * Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+     */
+    declare public /*out*/ readonly disabledUntil: pulumi.Output<string>;
+    /**
      * Invoke the hook for emoji events. Defaults to `false`.
      */
     declare public readonly emojiEvents: pulumi.Output<boolean>;
@@ -125,6 +144,10 @@ export class ProjectHook extends pulumi.CustomResource {
      * Enable SSL verification when invoking the hook. Defaults to `true`.
      */
     declare public readonly enableSslVerification: pulumi.Output<boolean>;
+    /**
+     * Invoke the hook for feature flag events. Defaults to `false`.
+     */
+    declare public readonly featureFlagEvents: pulumi.Output<boolean>;
     /**
      * The id of the project hook.
      */
@@ -141,6 +164,10 @@ export class ProjectHook extends pulumi.CustomResource {
      * Invoke the hook for merge requests events. Defaults to `false`.
      */
     declare public readonly mergeRequestsEvents: pulumi.Output<boolean>;
+    /**
+     * Invoke the hook for milestone events. Defaults to `false`.
+     */
+    declare public readonly milestoneEvents: pulumi.Output<boolean>;
     /**
      * Name of the project webhook.
      */
@@ -174,9 +201,25 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     declare public readonly releasesEvents: pulumi.Output<boolean>;
     /**
+     * Invoke the hook for repository update events.
+     */
+    declare public /*out*/ readonly repositoryUpdateEvents: pulumi.Output<boolean>;
+    /**
      * Invoke the hook for project access token expiry events. Defaults to `false`.
      */
     declare public readonly resourceAccessTokenEvents: pulumi.Output<boolean>;
+    /**
+     * Invoke the hook for resource deploy token events. Defaults to `false`.
+     */
+    declare public readonly resourceDeployTokenEvents: pulumi.Output<boolean>;
+    /**
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     */
+    declare public readonly signingToken: pulumi.Output<string | undefined>;
+    /**
+     * Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     */
+    declare public /*out*/ readonly signingTokenPresent: pulumi.Output<boolean>;
     /**
      * Invoke the hook for tag push events. Defaults to `false`.
      */
@@ -189,6 +232,10 @@ export class ProjectHook extends pulumi.CustomResource {
      * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
     declare public readonly url: pulumi.Output<string>;
+    /**
+     * Array of sensitive portions of the webhook URL to mask.
+     */
+    declare public readonly urlVariables: pulumi.Output<outputs.ProjectHookUrlVariable[] | undefined>;
     /**
      * Invoke the hook for vulnerability events. Defaults to `false`.
      */
@@ -211,6 +258,7 @@ export class ProjectHook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectHookState | undefined;
+            resourceInputs["alertStatus"] = state?.alertStatus;
             resourceInputs["branchFilterStrategy"] = state?.branchFilterStrategy;
             resourceInputs["confidentialIssuesEvents"] = state?.confidentialIssuesEvents;
             resourceInputs["confidentialNoteEvents"] = state?.confidentialNoteEvents;
@@ -218,12 +266,15 @@ export class ProjectHook extends pulumi.CustomResource {
             resourceInputs["customWebhookTemplate"] = state?.customWebhookTemplate;
             resourceInputs["deploymentEvents"] = state?.deploymentEvents;
             resourceInputs["description"] = state?.description;
+            resourceInputs["disabledUntil"] = state?.disabledUntil;
             resourceInputs["emojiEvents"] = state?.emojiEvents;
             resourceInputs["enableSslVerification"] = state?.enableSslVerification;
+            resourceInputs["featureFlagEvents"] = state?.featureFlagEvents;
             resourceInputs["hookId"] = state?.hookId;
             resourceInputs["issuesEvents"] = state?.issuesEvents;
             resourceInputs["jobEvents"] = state?.jobEvents;
             resourceInputs["mergeRequestsEvents"] = state?.mergeRequestsEvents;
+            resourceInputs["milestoneEvents"] = state?.milestoneEvents;
             resourceInputs["name"] = state?.name;
             resourceInputs["noteEvents"] = state?.noteEvents;
             resourceInputs["pipelineEvents"] = state?.pipelineEvents;
@@ -232,10 +283,15 @@ export class ProjectHook extends pulumi.CustomResource {
             resourceInputs["pushEvents"] = state?.pushEvents;
             resourceInputs["pushEventsBranchFilter"] = state?.pushEventsBranchFilter;
             resourceInputs["releasesEvents"] = state?.releasesEvents;
+            resourceInputs["repositoryUpdateEvents"] = state?.repositoryUpdateEvents;
             resourceInputs["resourceAccessTokenEvents"] = state?.resourceAccessTokenEvents;
+            resourceInputs["resourceDeployTokenEvents"] = state?.resourceDeployTokenEvents;
+            resourceInputs["signingToken"] = state?.signingToken;
+            resourceInputs["signingTokenPresent"] = state?.signingTokenPresent;
             resourceInputs["tagPushEvents"] = state?.tagPushEvents;
             resourceInputs["token"] = state?.token;
             resourceInputs["url"] = state?.url;
+            resourceInputs["urlVariables"] = state?.urlVariables;
             resourceInputs["vulnerabilityEvents"] = state?.vulnerabilityEvents;
             resourceInputs["wikiPageEvents"] = state?.wikiPageEvents;
         } else {
@@ -255,9 +311,11 @@ export class ProjectHook extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["emojiEvents"] = args?.emojiEvents;
             resourceInputs["enableSslVerification"] = args?.enableSslVerification;
+            resourceInputs["featureFlagEvents"] = args?.featureFlagEvents;
             resourceInputs["issuesEvents"] = args?.issuesEvents;
             resourceInputs["jobEvents"] = args?.jobEvents;
             resourceInputs["mergeRequestsEvents"] = args?.mergeRequestsEvents;
+            resourceInputs["milestoneEvents"] = args?.milestoneEvents;
             resourceInputs["name"] = args?.name;
             resourceInputs["noteEvents"] = args?.noteEvents;
             resourceInputs["pipelineEvents"] = args?.pipelineEvents;
@@ -266,16 +324,23 @@ export class ProjectHook extends pulumi.CustomResource {
             resourceInputs["pushEventsBranchFilter"] = args?.pushEventsBranchFilter;
             resourceInputs["releasesEvents"] = args?.releasesEvents;
             resourceInputs["resourceAccessTokenEvents"] = args?.resourceAccessTokenEvents;
+            resourceInputs["resourceDeployTokenEvents"] = args?.resourceDeployTokenEvents;
+            resourceInputs["signingToken"] = args?.signingToken ? pulumi.secret(args.signingToken) : undefined;
             resourceInputs["tagPushEvents"] = args?.tagPushEvents;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["url"] = args?.url;
+            resourceInputs["urlVariables"] = args?.urlVariables;
             resourceInputs["vulnerabilityEvents"] = args?.vulnerabilityEvents;
             resourceInputs["wikiPageEvents"] = args?.wikiPageEvents;
+            resourceInputs["alertStatus"] = undefined /*out*/;
+            resourceInputs["disabledUntil"] = undefined /*out*/;
             resourceInputs["hookId"] = undefined /*out*/;
             resourceInputs["projectId"] = undefined /*out*/;
+            resourceInputs["repositoryUpdateEvents"] = undefined /*out*/;
+            resourceInputs["signingTokenPresent"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["token"] };
+        const secretOpts = { additionalSecretOutputs: ["signingToken", "token"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(ProjectHook.__pulumiType, name, resourceInputs, opts);
     }
@@ -285,6 +350,10 @@ export class ProjectHook extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectHook resources.
  */
 export interface ProjectHookState {
+    /**
+     * Lifecycle status of the webhook. Values include `executable` and `disabled`.
+     */
+    alertStatus?: pulumi.Input<string | undefined>;
     /**
      * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
      */
@@ -314,6 +383,10 @@ export interface ProjectHookState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+     */
+    disabledUntil?: pulumi.Input<string | undefined>;
+    /**
      * Invoke the hook for emoji events. Defaults to `false`.
      */
     emojiEvents?: pulumi.Input<boolean | undefined>;
@@ -321,6 +394,10 @@ export interface ProjectHookState {
      * Enable SSL verification when invoking the hook. Defaults to `true`.
      */
     enableSslVerification?: pulumi.Input<boolean | undefined>;
+    /**
+     * Invoke the hook for feature flag events. Defaults to `false`.
+     */
+    featureFlagEvents?: pulumi.Input<boolean | undefined>;
     /**
      * The id of the project hook.
      */
@@ -337,6 +414,10 @@ export interface ProjectHookState {
      * Invoke the hook for merge requests events. Defaults to `false`.
      */
     mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
+    /**
+     * Invoke the hook for milestone events. Defaults to `false`.
+     */
+    milestoneEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the project webhook.
      */
@@ -370,9 +451,25 @@ export interface ProjectHookState {
      */
     releasesEvents?: pulumi.Input<boolean | undefined>;
     /**
+     * Invoke the hook for repository update events.
+     */
+    repositoryUpdateEvents?: pulumi.Input<boolean | undefined>;
+    /**
      * Invoke the hook for project access token expiry events. Defaults to `false`.
      */
     resourceAccessTokenEvents?: pulumi.Input<boolean | undefined>;
+    /**
+     * Invoke the hook for resource deploy token events. Defaults to `false`.
+     */
+    resourceDeployTokenEvents?: pulumi.Input<boolean | undefined>;
+    /**
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     */
+    signingToken?: pulumi.Input<string | undefined>;
+    /**
+     * Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     */
+    signingTokenPresent?: pulumi.Input<boolean | undefined>;
     /**
      * Invoke the hook for tag push events. Defaults to `false`.
      */
@@ -385,6 +482,10 @@ export interface ProjectHookState {
      * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
     url?: pulumi.Input<string | undefined>;
+    /**
+     * Array of sensitive portions of the webhook URL to mask.
+     */
+    urlVariables?: pulumi.Input<pulumi.Input<inputs.ProjectHookUrlVariable>[] | undefined>;
     /**
      * Invoke the hook for vulnerability events. Defaults to `false`.
      */
@@ -436,6 +537,10 @@ export interface ProjectHookArgs {
      */
     enableSslVerification?: pulumi.Input<boolean | undefined>;
     /**
+     * Invoke the hook for feature flag events. Defaults to `false`.
+     */
+    featureFlagEvents?: pulumi.Input<boolean | undefined>;
+    /**
      * Invoke the hook for issues events. Defaults to `false`.
      */
     issuesEvents?: pulumi.Input<boolean | undefined>;
@@ -447,6 +552,10 @@ export interface ProjectHookArgs {
      * Invoke the hook for merge requests events. Defaults to `false`.
      */
     mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
+    /**
+     * Invoke the hook for milestone events. Defaults to `false`.
+     */
+    milestoneEvents?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the project webhook.
      */
@@ -480,6 +589,14 @@ export interface ProjectHookArgs {
      */
     resourceAccessTokenEvents?: pulumi.Input<boolean | undefined>;
     /**
+     * Invoke the hook for resource deploy token events. Defaults to `false`.
+     */
+    resourceDeployTokenEvents?: pulumi.Input<boolean | undefined>;
+    /**
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     */
+    signingToken?: pulumi.Input<string | undefined>;
+    /**
      * Invoke the hook for tag push events. Defaults to `false`.
      */
     tagPushEvents?: pulumi.Input<boolean | undefined>;
@@ -491,6 +608,10 @@ export interface ProjectHookArgs {
      * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
     url: pulumi.Input<string>;
+    /**
+     * Array of sensitive portions of the webhook URL to mask.
+     */
+    urlVariables?: pulumi.Input<pulumi.Input<inputs.ProjectHookUrlVariable>[] | undefined>;
     /**
      * Invoke the hook for vulnerability events. Defaults to `false`.
      */

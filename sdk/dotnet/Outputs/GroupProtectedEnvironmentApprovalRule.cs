@@ -22,7 +22,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string? AccessLevelDescription;
         /// <summary>
-        /// The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `AccessLevel` and `UserId`.
+        /// The ID of the group allowed to approve a deployment to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `AccessLevel` and `UserId`.
         /// </summary>
         public readonly int? GroupId;
         /// <summary>

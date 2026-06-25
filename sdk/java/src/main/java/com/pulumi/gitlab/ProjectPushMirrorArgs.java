@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -45,6 +46,21 @@ public final class ProjectPushMirrorArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+
+    /**
+     * SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+     * 
+     */
+    @Import(name="hostKeys")
+    private @Nullable Output<List<String>> hostKeys;
+
+    /**
+     * @return SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+     * 
+     */
+    public Optional<Output<List<String>>> hostKeys() {
+        return Optional.ofNullable(this.hostKeys);
     }
 
     /**
@@ -127,6 +143,7 @@ public final class ProjectPushMirrorArgs extends com.pulumi.resources.ResourceAr
     private ProjectPushMirrorArgs(ProjectPushMirrorArgs $) {
         this.authMethod = $.authMethod;
         this.enabled = $.enabled;
+        this.hostKeys = $.hostKeys;
         this.keepDivergentRefs = $.keepDivergentRefs;
         this.mirrorBranchRegex = $.mirrorBranchRegex;
         this.onlyProtectedBranches = $.onlyProtectedBranches;
@@ -192,6 +209,37 @@ public final class ProjectPushMirrorArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param hostKeys SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostKeys(@Nullable Output<List<String>> hostKeys) {
+            $.hostKeys = hostKeys;
+            return this;
+        }
+
+        /**
+         * @param hostKeys SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostKeys(List<String> hostKeys) {
+            return hostKeys(Output.of(hostKeys));
+        }
+
+        /**
+         * @param hostKeys SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostKeys(String... hostKeys) {
+            return hostKeys(List.of(hostKeys));
         }
 
         /**

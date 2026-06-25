@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,11 +22,108 @@ import (
 //	automatically take ownership of the default branch without an explicit import by unprotecting and properly protecting it again.
 //	Having multiple `BranchProtection` resources for the same project and default branch will result in them overriding each other - make sure to only have a single one.
 //
-// > The `allowedToPush`, `allowedToMerge`, `allowedToUnprotect`, `unprotectAccessLevel` and `codeOwnerApprovalRequired` attributes require a GitLab Enterprise instance.
+// > The `allowedToPush`, `allowedToMerge`, `allowedToUnprotect` and `codeOwnerApprovalRequired` attributes require a GitLab Enterprise instance.
+//
+// > The `mergeAccessLevel` and `pushAccessLevel` attributes are not available for GitLab Enterprise.  Use `allowedToMerge` and `allowedToPush` instead.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_branches/)
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// CE example
+//			_, err := gitlab.NewBranchProtection(ctx, "ce_branch", &gitlab.BranchProtectionArgs{
+//				Project:          pulumi.String("12345"),
+//				Branch:           pulumi.String("BranchProtected"),
+//				PushAccessLevel:  pulumi.String("developer"),
+//				MergeAccessLevel: pulumi.String("developer"),
+//				AllowForcePush:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// EE example
+//			_, err = gitlab.NewBranchProtection(ctx, "ee_branch", &gitlab.BranchProtectionArgs{
+//				Project:                   pulumi.String("12345"),
+//				Branch:                    pulumi.String("BranchProtected"),
+//				AllowForcePush:            pulumi.Bool(true),
+//				CodeOwnerApprovalRequired: pulumi.Bool(true),
+//				AllowedToPushes: gitlab.BranchProtectionAllowedToPushArray{
+//					&gitlab.BranchProtectionAllowedToPushArgs{
+//						UserId: pulumi.Int(5),
+//					},
+//					&gitlab.BranchProtectionAllowedToPushArgs{
+//						UserId: pulumi.Int(521),
+//					},
+//					&gitlab.BranchProtectionAllowedToPushArgs{
+//						AccessLevel: pulumi.String("no one"),
+//					},
+//				},
+//				AllowedToMerges: gitlab.BranchProtectionAllowedToMergeArray{
+//					&gitlab.BranchProtectionAllowedToMergeArgs{
+//						UserId: pulumi.Int(15),
+//					},
+//					&gitlab.BranchProtectionAllowedToMergeArgs{
+//						UserId: pulumi.Int(37),
+//					},
+//					&gitlab.BranchProtectionAllowedToMergeArgs{
+//						AccessLevel: pulumi.String("maintainer"),
+//					},
+//				},
+//				AllowedToUnprotects: gitlab.BranchProtectionAllowedToUnprotectArray{
+//					&gitlab.BranchProtectionAllowedToUnprotectArgs{
+//						UserId: pulumi.Int(15),
+//					},
+//					&gitlab.BranchProtectionAllowedToUnprotectArgs{
+//						GroupId: pulumi.Int(42),
+//					},
+//					&gitlab.BranchProtectionAllowedToUnprotectArgs{
+//						AccessLevel: pulumi.String("maintainer"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// EE example with admin push access level
+//			_, err = gitlab.NewBranchProtection(ctx, "admin_push", &gitlab.BranchProtectionArgs{
+//				Project: pulumi.String("12345"),
+//				Branch:  pulumi.String("admin-protected"),
+//				AllowedToPushes: gitlab.BranchProtectionAllowedToPushArray{
+//					&gitlab.BranchProtectionAllowedToPushArgs{
+//						AccessLevel: pulumi.String("admin"),
+//					},
+//				},
+//				AllowedToMerges: gitlab.BranchProtectionAllowedToMergeArray{
+//					&gitlab.BranchProtectionAllowedToMergeArgs{
+//						AccessLevel: pulumi.String("maintainer"),
+//					},
+//				},
+//				AllowedToUnprotects: gitlab.BranchProtectionAllowedToUnprotectArray{
+//					&gitlab.BranchProtectionAllowedToUnprotectArgs{
+//						AccessLevel: pulumi.String("maintainer"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -44,11 +141,11 @@ type BranchProtection struct {
 
 	// Can be set to true to allow users with push access to force push.
 	AllowForcePush pulumi.BoolOutput `pulumi:"allowForcePush"`
-	// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+	// Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
 	AllowedToMerges BranchProtectionAllowedToMergeArrayOutput `pulumi:"allowedToMerges"`
-	// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+	// Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
 	AllowedToPushes BranchProtectionAllowedToPushArrayOutput `pulumi:"allowedToPushes"`
-	// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+	// Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
 	AllowedToUnprotects BranchProtectionAllowedToUnprotectArrayOutput `pulumi:"allowedToUnprotects"`
 	// Name of the branch.
 	Branch pulumi.StringOutput `pulumi:"branch"`
@@ -56,14 +153,12 @@ type BranchProtection struct {
 	BranchProtectionId pulumi.IntOutput `pulumi:"branchProtectionId"`
 	// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
 	CodeOwnerApprovalRequired pulumi.BoolOutput `pulumi:"codeOwnerApprovalRequired"`
-	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
 	MergeAccessLevel pulumi.StringOutput `pulumi:"mergeAccessLevel"`
 	// The id of the project.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
 	PushAccessLevel pulumi.StringOutput `pulumi:"pushAccessLevel"`
-	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-	UnprotectAccessLevel pulumi.StringOutput `pulumi:"unprotectAccessLevel"`
 }
 
 // NewBranchProtection registers a new resource with the given unique name, arguments, and options.
@@ -104,11 +199,11 @@ func GetBranchProtection(ctx *pulumi.Context,
 type branchProtectionState struct {
 	// Can be set to true to allow users with push access to force push.
 	AllowForcePush *bool `pulumi:"allowForcePush"`
-	// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+	// Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
 	AllowedToMerges []BranchProtectionAllowedToMerge `pulumi:"allowedToMerges"`
-	// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+	// Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
 	AllowedToPushes []BranchProtectionAllowedToPush `pulumi:"allowedToPushes"`
-	// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+	// Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
 	AllowedToUnprotects []BranchProtectionAllowedToUnprotect `pulumi:"allowedToUnprotects"`
 	// Name of the branch.
 	Branch *string `pulumi:"branch"`
@@ -116,24 +211,22 @@ type branchProtectionState struct {
 	BranchProtectionId *int `pulumi:"branchProtectionId"`
 	// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
 	CodeOwnerApprovalRequired *bool `pulumi:"codeOwnerApprovalRequired"`
-	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
 	MergeAccessLevel *string `pulumi:"mergeAccessLevel"`
 	// The id of the project.
 	Project *string `pulumi:"project"`
-	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
 	PushAccessLevel *string `pulumi:"pushAccessLevel"`
-	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-	UnprotectAccessLevel *string `pulumi:"unprotectAccessLevel"`
 }
 
 type BranchProtectionState struct {
 	// Can be set to true to allow users with push access to force push.
 	AllowForcePush pulumi.BoolPtrInput
-	// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+	// Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
 	AllowedToMerges BranchProtectionAllowedToMergeArrayInput
-	// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+	// Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
 	AllowedToPushes BranchProtectionAllowedToPushArrayInput
-	// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+	// Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
 	AllowedToUnprotects BranchProtectionAllowedToUnprotectArrayInput
 	// Name of the branch.
 	Branch pulumi.StringPtrInput
@@ -141,14 +234,12 @@ type BranchProtectionState struct {
 	BranchProtectionId pulumi.IntPtrInput
 	// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
 	CodeOwnerApprovalRequired pulumi.BoolPtrInput
-	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
 	MergeAccessLevel pulumi.StringPtrInput
 	// The id of the project.
 	Project pulumi.StringPtrInput
-	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
 	PushAccessLevel pulumi.StringPtrInput
-	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-	UnprotectAccessLevel pulumi.StringPtrInput
 }
 
 func (BranchProtectionState) ElementType() reflect.Type {
@@ -158,48 +249,44 @@ func (BranchProtectionState) ElementType() reflect.Type {
 type branchProtectionArgs struct {
 	// Can be set to true to allow users with push access to force push.
 	AllowForcePush *bool `pulumi:"allowForcePush"`
-	// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+	// Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
 	AllowedToMerges []BranchProtectionAllowedToMerge `pulumi:"allowedToMerges"`
-	// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+	// Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
 	AllowedToPushes []BranchProtectionAllowedToPush `pulumi:"allowedToPushes"`
-	// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+	// Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
 	AllowedToUnprotects []BranchProtectionAllowedToUnprotect `pulumi:"allowedToUnprotects"`
 	// Name of the branch.
 	Branch string `pulumi:"branch"`
 	// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
 	CodeOwnerApprovalRequired *bool `pulumi:"codeOwnerApprovalRequired"`
-	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
 	MergeAccessLevel *string `pulumi:"mergeAccessLevel"`
 	// The id of the project.
 	Project string `pulumi:"project"`
-	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
 	PushAccessLevel *string `pulumi:"pushAccessLevel"`
-	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-	UnprotectAccessLevel *string `pulumi:"unprotectAccessLevel"`
 }
 
 // The set of arguments for constructing a BranchProtection resource.
 type BranchProtectionArgs struct {
 	// Can be set to true to allow users with push access to force push.
 	AllowForcePush pulumi.BoolPtrInput
-	// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+	// Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
 	AllowedToMerges BranchProtectionAllowedToMergeArrayInput
-	// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+	// Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
 	AllowedToPushes BranchProtectionAllowedToPushArrayInput
-	// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+	// Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
 	AllowedToUnprotects BranchProtectionAllowedToUnprotectArrayInput
 	// Name of the branch.
 	Branch pulumi.StringInput
 	// Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
 	CodeOwnerApprovalRequired pulumi.BoolPtrInput
-	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+	// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
 	MergeAccessLevel pulumi.StringPtrInput
 	// The id of the project.
 	Project pulumi.StringInput
-	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+	// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
 	PushAccessLevel pulumi.StringPtrInput
-	// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-	UnprotectAccessLevel pulumi.StringPtrInput
 }
 
 func (BranchProtectionArgs) ElementType() reflect.Type {
@@ -294,17 +381,17 @@ func (o BranchProtectionOutput) AllowForcePush() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BranchProtection) pulumi.BoolOutput { return v.AllowForcePush }).(pulumi.BoolOutput)
 }
 
-// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+// Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
 func (o BranchProtectionOutput) AllowedToMerges() BranchProtectionAllowedToMergeArrayOutput {
 	return o.ApplyT(func(v *BranchProtection) BranchProtectionAllowedToMergeArrayOutput { return v.AllowedToMerges }).(BranchProtectionAllowedToMergeArrayOutput)
 }
 
-// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+// Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
 func (o BranchProtectionOutput) AllowedToPushes() BranchProtectionAllowedToPushArrayOutput {
 	return o.ApplyT(func(v *BranchProtection) BranchProtectionAllowedToPushArrayOutput { return v.AllowedToPushes }).(BranchProtectionAllowedToPushArrayOutput)
 }
 
-// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+// Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
 func (o BranchProtectionOutput) AllowedToUnprotects() BranchProtectionAllowedToUnprotectArrayOutput {
 	return o.ApplyT(func(v *BranchProtection) BranchProtectionAllowedToUnprotectArrayOutput { return v.AllowedToUnprotects }).(BranchProtectionAllowedToUnprotectArrayOutput)
 }
@@ -324,7 +411,7 @@ func (o BranchProtectionOutput) CodeOwnerApprovalRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BranchProtection) pulumi.BoolOutput { return v.CodeOwnerApprovalRequired }).(pulumi.BoolOutput)
 }
 
-// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+// Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
 func (o BranchProtectionOutput) MergeAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *BranchProtection) pulumi.StringOutput { return v.MergeAccessLevel }).(pulumi.StringOutput)
 }
@@ -334,14 +421,9 @@ func (o BranchProtectionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *BranchProtection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+// Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
 func (o BranchProtectionOutput) PushAccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *BranchProtection) pulumi.StringOutput { return v.PushAccessLevel }).(pulumi.StringOutput)
-}
-
-// Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-func (o BranchProtectionOutput) UnprotectAccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v *BranchProtection) pulumi.StringOutput { return v.UnprotectAccessLevel }).(pulumi.StringOutput)
 }
 
 type BranchProtectionArrayOutput struct{ *pulumi.OutputState }

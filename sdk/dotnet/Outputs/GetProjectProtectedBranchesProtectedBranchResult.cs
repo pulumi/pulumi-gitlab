@@ -26,7 +26,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+        /// Array of merge access levels/users/groups allowed for the protected branch.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult> MergeAccessLevels;
         /// <summary>
@@ -34,9 +34,13 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+        /// Array of push access levels/users/groups/deploy keys allowed for the protected branch.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult> PushAccessLevels;
+        /// <summary>
+        /// Array of unprotect access levels/users/groups allowed for the protected branch.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetProjectProtectedBranchesProtectedBranchUnprotectAccessLevelResult> UnprotectAccessLevels;
 
         [OutputConstructor]
         private GetProjectProtectedBranchesProtectedBranchResult(
@@ -50,7 +54,9 @@ namespace Pulumi.GitLab.Outputs
 
             string name,
 
-            ImmutableArray<Outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult> pushAccessLevels)
+            ImmutableArray<Outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult> pushAccessLevels,
+
+            ImmutableArray<Outputs.GetProjectProtectedBranchesProtectedBranchUnprotectAccessLevelResult> unprotectAccessLevels)
         {
             AllowForcePush = allowForcePush;
             CodeOwnerApprovalRequired = codeOwnerApprovalRequired;
@@ -58,6 +64,7 @@ namespace Pulumi.GitLab.Outputs
             MergeAccessLevels = mergeAccessLevels;
             Name = name;
             PushAccessLevels = pushAccessLevels;
+            UnprotectAccessLevels = unprotectAccessLevels;
         }
     }
 }

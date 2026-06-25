@@ -8,13 +8,11 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
     /**
-     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * @return Access level allowed to perform the relevant action.
      * 
      */
     private String accessLevel;
@@ -24,24 +22,24 @@ public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
      */
     private String accessLevelDescription;
     /**
-     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     * @return The ID of a GitLab deploy key allowed to perform the relevant action.
      * 
      */
-    private @Nullable Integer deployKeyId;
+    private Integer deployKeyId;
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
+     * @return The ID of a GitLab group allowed to perform the relevant action.
      * 
      */
-    private @Nullable Integer groupId;
+    private Integer groupId;
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
+     * @return The ID of a GitLab user allowed to perform the relevant action.
      * 
      */
-    private @Nullable Integer userId;
+    private Integer userId;
 
     private GetProjectProtectedBranchesProtectedBranchPushAccessLevel() {}
     /**
-     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * @return Access level allowed to perform the relevant action.
      * 
      */
     public String accessLevel() {
@@ -55,25 +53,25 @@ public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
         return this.accessLevelDescription;
     }
     /**
-     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     * @return The ID of a GitLab deploy key allowed to perform the relevant action.
      * 
      */
-    public Optional<Integer> deployKeyId() {
-        return Optional.ofNullable(this.deployKeyId);
+    public Integer deployKeyId() {
+        return this.deployKeyId;
     }
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
+     * @return The ID of a GitLab group allowed to perform the relevant action.
      * 
      */
-    public Optional<Integer> groupId() {
-        return Optional.ofNullable(this.groupId);
+    public Integer groupId() {
+        return this.groupId;
     }
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
+     * @return The ID of a GitLab user allowed to perform the relevant action.
      * 
      */
-    public Optional<Integer> userId() {
-        return Optional.ofNullable(this.userId);
+    public Integer userId() {
+        return this.userId;
     }
 
     public static Builder builder() {
@@ -87,9 +85,9 @@ public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
     public static final class Builder {
         private String accessLevel;
         private String accessLevelDescription;
-        private @Nullable Integer deployKeyId;
-        private @Nullable Integer groupId;
-        private @Nullable Integer userId;
+        private Integer deployKeyId;
+        private Integer groupId;
+        private Integer userId;
         public Builder() {}
         public Builder(GetProjectProtectedBranchesProtectedBranchPushAccessLevel defaults) {
     	      Objects.requireNonNull(defaults);
@@ -117,20 +115,26 @@ public final class GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
             return this;
         }
         @CustomType.Setter
-        public Builder deployKeyId(@Nullable Integer deployKeyId) {
-
+        public Builder deployKeyId(Integer deployKeyId) {
+            if (deployKeyId == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesProtectedBranchPushAccessLevel", "deployKeyId");
+            }
             this.deployKeyId = deployKeyId;
             return this;
         }
         @CustomType.Setter
-        public Builder groupId(@Nullable Integer groupId) {
-
+        public Builder groupId(Integer groupId) {
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesProtectedBranchPushAccessLevel", "groupId");
+            }
             this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
-        public Builder userId(@Nullable Integer userId) {
-
+        public Builder userId(Integer userId) {
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesProtectedBranchPushAccessLevel", "userId");
+            }
             this.userId = userId;
             return this;
         }

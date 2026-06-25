@@ -140,6 +140,12 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<string>> AllowedEmailDomainsLists { get; private set; } = null!;
 
         /// <summary>
+        /// Set to `True` to archive the group instead of deleting on destroy. If set to `True` it will entirely omit the `DELETE` operation.
+        /// </summary>
+        [Output("archiveOnDestroy")]
+        public Output<bool?> ArchiveOnDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// Default to Auto DevOps pipeline for all projects within this group.
         /// </summary>
         [Output("autoDevopsEnabled")]
@@ -436,6 +442,12 @@ namespace Pulumi.GitLab
         }
 
         /// <summary>
+        /// Set to `True` to archive the group instead of deleting on destroy. If set to `True` it will entirely omit the `DELETE` operation.
+        /// </summary>
+        [Input("archiveOnDestroy")]
+        public Input<bool>? ArchiveOnDestroy { get; set; }
+
+        /// <summary>
         /// Default to Auto DevOps pipeline for all projects within this group.
         /// </summary>
         [Input("autoDevopsEnabled")]
@@ -664,6 +676,12 @@ namespace Pulumi.GitLab
             get => _allowedEmailDomainsLists ?? (_allowedEmailDomainsLists = new InputList<string>());
             set => _allowedEmailDomainsLists = value;
         }
+
+        /// <summary>
+        /// Set to `True` to archive the group instead of deleting on destroy. If set to `True` it will entirely omit the `DELETE` operation.
+        /// </summary>
+        [Input("archiveOnDestroy")]
+        public Input<bool>? ArchiveOnDestroy { get; set; }
 
         /// <summary>
         /// Default to Auto DevOps pipeline for all projects within this group.

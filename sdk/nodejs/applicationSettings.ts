@@ -235,12 +235,6 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     declare public readonly defaultBranchName: pulumi.Output<string>;
     /**
-     * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-     */
-    declare public readonly defaultBranchProtection: pulumi.Output<number>;
-    /**
      * The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
      */
     declare public readonly defaultBranchProtectionDefaults: pulumi.Output<outputs.ApplicationSettingsDefaultBranchProtectionDefaults>;
@@ -320,6 +314,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * Prevent editing approval rules in projects and merge requests.
      */
     declare public readonly disableOverridingApproversPerMergeRequest: pulumi.Output<boolean>;
+    /**
+     * Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
+     */
+    declare public readonly disablePasswordAuthenticationForUsersWithSsoIdentities: pulumi.Output<boolean>;
     /**
      * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      */
@@ -861,6 +859,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     declare public readonly pagesDomainVerificationEnabled: pulumi.Output<boolean>;
     /**
+     * Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
+     */
+    declare public readonly pagesUniqueDomainDefaultEnabled: pulumi.Output<boolean>;
+    /**
      * Enable authentication for Git over HTTP(S) via a GitLab account password.
      */
     declare public readonly passwordAuthenticationEnabledForGit: pulumi.Output<boolean>;
@@ -1025,6 +1027,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     declare public readonly searchRateLimitUnauthenticated: pulumi.Output<number>;
     /**
+     * Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
+     */
+    declare public readonly secretPushProtectionAvailable: pulumi.Output<boolean>;
+    /**
      * Maximum number of active merge request approval policies per security policy project. Maximum: 20
      */
     declare public readonly securityApprovalPoliciesLimit: pulumi.Output<number>;
@@ -1048,6 +1054,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * Session duration in minutes. GitLab restart is required to apply changes.
      */
     declare public readonly sessionExpireDelay: pulumi.Output<number>;
+    /**
+     * Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
+     */
+    declare public readonly sessionExpireFromInit: pulumi.Output<boolean>;
     /**
      * (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
      */
@@ -1404,7 +1414,6 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["decompressArchiveFileTimeout"] = state?.decompressArchiveFileTimeout;
             resourceInputs["defaultArtifactsExpireIn"] = state?.defaultArtifactsExpireIn;
             resourceInputs["defaultBranchName"] = state?.defaultBranchName;
-            resourceInputs["defaultBranchProtection"] = state?.defaultBranchProtection;
             resourceInputs["defaultBranchProtectionDefaults"] = state?.defaultBranchProtectionDefaults;
             resourceInputs["defaultCiConfigPath"] = state?.defaultCiConfigPath;
             resourceInputs["defaultGroupVisibility"] = state?.defaultGroupVisibility;
@@ -1425,6 +1434,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["disableAdminOauthScopes"] = state?.disableAdminOauthScopes;
             resourceInputs["disableFeedToken"] = state?.disableFeedToken;
             resourceInputs["disableOverridingApproversPerMergeRequest"] = state?.disableOverridingApproversPerMergeRequest;
+            resourceInputs["disablePasswordAuthenticationForUsersWithSsoIdentities"] = state?.disablePasswordAuthenticationForUsersWithSsoIdentities;
             resourceInputs["disablePersonalAccessTokens"] = state?.disablePersonalAccessTokens;
             resourceInputs["disabledOauthSignInSources"] = state?.disabledOauthSignInSources;
             resourceInputs["dnsRebindingProtectionEnabled"] = state?.dnsRebindingProtectionEnabled;
@@ -1560,6 +1570,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["packageRegistryAllowAnyoneToPullOption"] = state?.packageRegistryAllowAnyoneToPullOption;
             resourceInputs["packageRegistryCleanupPoliciesWorkerCapacity"] = state?.packageRegistryCleanupPoliciesWorkerCapacity;
             resourceInputs["pagesDomainVerificationEnabled"] = state?.pagesDomainVerificationEnabled;
+            resourceInputs["pagesUniqueDomainDefaultEnabled"] = state?.pagesUniqueDomainDefaultEnabled;
             resourceInputs["passwordAuthenticationEnabledForGit"] = state?.passwordAuthenticationEnabledForGit;
             resourceInputs["passwordAuthenticationEnabledForWeb"] = state?.passwordAuthenticationEnabledForWeb;
             resourceInputs["passwordLowercaseRequired"] = state?.passwordLowercaseRequired;
@@ -1601,12 +1612,14 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["rsaKeyRestriction"] = state?.rsaKeyRestriction;
             resourceInputs["searchRateLimit"] = state?.searchRateLimit;
             resourceInputs["searchRateLimitUnauthenticated"] = state?.searchRateLimitUnauthenticated;
+            resourceInputs["secretPushProtectionAvailable"] = state?.secretPushProtectionAvailable;
             resourceInputs["securityApprovalPoliciesLimit"] = state?.securityApprovalPoliciesLimit;
             resourceInputs["securityPolicyGlobalGroupApproversEnabled"] = state?.securityPolicyGlobalGroupApproversEnabled;
             resourceInputs["securityTxtContent"] = state?.securityTxtContent;
             resourceInputs["sendUserConfirmationEmail"] = state?.sendUserConfirmationEmail;
             resourceInputs["serviceAccessTokensExpirationEnforced"] = state?.serviceAccessTokensExpirationEnforced;
             resourceInputs["sessionExpireDelay"] = state?.sessionExpireDelay;
+            resourceInputs["sessionExpireFromInit"] = state?.sessionExpireFromInit;
             resourceInputs["sharedRunnersEnabled"] = state?.sharedRunnersEnabled;
             resourceInputs["sharedRunnersMinutes"] = state?.sharedRunnersMinutes;
             resourceInputs["sharedRunnersText"] = state?.sharedRunnersText;
@@ -1729,7 +1742,6 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["decompressArchiveFileTimeout"] = args?.decompressArchiveFileTimeout;
             resourceInputs["defaultArtifactsExpireIn"] = args?.defaultArtifactsExpireIn;
             resourceInputs["defaultBranchName"] = args?.defaultBranchName;
-            resourceInputs["defaultBranchProtection"] = args?.defaultBranchProtection;
             resourceInputs["defaultBranchProtectionDefaults"] = args?.defaultBranchProtectionDefaults;
             resourceInputs["defaultCiConfigPath"] = args?.defaultCiConfigPath;
             resourceInputs["defaultGroupVisibility"] = args?.defaultGroupVisibility;
@@ -1750,6 +1762,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["disableAdminOauthScopes"] = args?.disableAdminOauthScopes;
             resourceInputs["disableFeedToken"] = args?.disableFeedToken;
             resourceInputs["disableOverridingApproversPerMergeRequest"] = args?.disableOverridingApproversPerMergeRequest;
+            resourceInputs["disablePasswordAuthenticationForUsersWithSsoIdentities"] = args?.disablePasswordAuthenticationForUsersWithSsoIdentities;
             resourceInputs["disablePersonalAccessTokens"] = args?.disablePersonalAccessTokens;
             resourceInputs["disabledOauthSignInSources"] = args?.disabledOauthSignInSources;
             resourceInputs["dnsRebindingProtectionEnabled"] = args?.dnsRebindingProtectionEnabled;
@@ -1883,6 +1896,7 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["packageRegistryAllowAnyoneToPullOption"] = args?.packageRegistryAllowAnyoneToPullOption;
             resourceInputs["packageRegistryCleanupPoliciesWorkerCapacity"] = args?.packageRegistryCleanupPoliciesWorkerCapacity;
             resourceInputs["pagesDomainVerificationEnabled"] = args?.pagesDomainVerificationEnabled;
+            resourceInputs["pagesUniqueDomainDefaultEnabled"] = args?.pagesUniqueDomainDefaultEnabled;
             resourceInputs["passwordAuthenticationEnabledForGit"] = args?.passwordAuthenticationEnabledForGit;
             resourceInputs["passwordAuthenticationEnabledForWeb"] = args?.passwordAuthenticationEnabledForWeb;
             resourceInputs["passwordLowercaseRequired"] = args?.passwordLowercaseRequired;
@@ -1924,12 +1938,14 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["rsaKeyRestriction"] = args?.rsaKeyRestriction;
             resourceInputs["searchRateLimit"] = args?.searchRateLimit;
             resourceInputs["searchRateLimitUnauthenticated"] = args?.searchRateLimitUnauthenticated;
+            resourceInputs["secretPushProtectionAvailable"] = args?.secretPushProtectionAvailable;
             resourceInputs["securityApprovalPoliciesLimit"] = args?.securityApprovalPoliciesLimit;
             resourceInputs["securityPolicyGlobalGroupApproversEnabled"] = args?.securityPolicyGlobalGroupApproversEnabled;
             resourceInputs["securityTxtContent"] = args?.securityTxtContent;
             resourceInputs["sendUserConfirmationEmail"] = args?.sendUserConfirmationEmail;
             resourceInputs["serviceAccessTokensExpirationEnforced"] = args?.serviceAccessTokensExpirationEnforced;
             resourceInputs["sessionExpireDelay"] = args?.sessionExpireDelay;
+            resourceInputs["sessionExpireFromInit"] = args?.sessionExpireFromInit;
             resourceInputs["sharedRunnersEnabled"] = args?.sharedRunnersEnabled;
             resourceInputs["sharedRunnersMinutes"] = args?.sharedRunnersMinutes;
             resourceInputs["sharedRunnersText"] = args?.sharedRunnersText;
@@ -2203,12 +2219,6 @@ export interface ApplicationSettingsState {
      */
     defaultBranchName?: pulumi.Input<string | undefined>;
     /**
-     * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-     */
-    defaultBranchProtection?: pulumi.Input<number | undefined>;
-    /**
      * The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
      */
     defaultBranchProtectionDefaults?: pulumi.Input<inputs.ApplicationSettingsDefaultBranchProtectionDefaults | undefined>;
@@ -2288,6 +2298,10 @@ export interface ApplicationSettingsState {
      * Prevent editing approval rules in projects and merge requests.
      */
     disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean | undefined>;
+    /**
+     * Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
+     */
+    disablePasswordAuthenticationForUsersWithSsoIdentities?: pulumi.Input<boolean | undefined>;
     /**
      * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      */
@@ -2829,6 +2843,10 @@ export interface ApplicationSettingsState {
      */
     pagesDomainVerificationEnabled?: pulumi.Input<boolean | undefined>;
     /**
+     * Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
+     */
+    pagesUniqueDomainDefaultEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * Enable authentication for Git over HTTP(S) via a GitLab account password.
      */
     passwordAuthenticationEnabledForGit?: pulumi.Input<boolean | undefined>;
@@ -2993,6 +3011,10 @@ export interface ApplicationSettingsState {
      */
     searchRateLimitUnauthenticated?: pulumi.Input<number | undefined>;
     /**
+     * Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
+     */
+    secretPushProtectionAvailable?: pulumi.Input<boolean | undefined>;
+    /**
      * Maximum number of active merge request approval policies per security policy project. Maximum: 20
      */
     securityApprovalPoliciesLimit?: pulumi.Input<number | undefined>;
@@ -3016,6 +3038,10 @@ export interface ApplicationSettingsState {
      * Session duration in minutes. GitLab restart is required to apply changes.
      */
     sessionExpireDelay?: pulumi.Input<number | undefined>;
+    /**
+     * Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
+     */
+    sessionExpireFromInit?: pulumi.Input<boolean | undefined>;
     /**
      * (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
      */
@@ -3503,12 +3529,6 @@ export interface ApplicationSettingsArgs {
      */
     defaultBranchName?: pulumi.Input<string | undefined>;
     /**
-     * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-     */
-    defaultBranchProtection?: pulumi.Input<number | undefined>;
-    /**
      * The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
      */
     defaultBranchProtectionDefaults?: pulumi.Input<inputs.ApplicationSettingsDefaultBranchProtectionDefaults | undefined>;
@@ -3588,6 +3608,10 @@ export interface ApplicationSettingsArgs {
      * Prevent editing approval rules in projects and merge requests.
      */
     disableOverridingApproversPerMergeRequest?: pulumi.Input<boolean | undefined>;
+    /**
+     * Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
+     */
+    disablePasswordAuthenticationForUsersWithSsoIdentities?: pulumi.Input<boolean | undefined>;
     /**
      * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
      */
@@ -4121,6 +4145,10 @@ export interface ApplicationSettingsArgs {
      */
     pagesDomainVerificationEnabled?: pulumi.Input<boolean | undefined>;
     /**
+     * Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
+     */
+    pagesUniqueDomainDefaultEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * Enable authentication for Git over HTTP(S) via a GitLab account password.
      */
     passwordAuthenticationEnabledForGit?: pulumi.Input<boolean | undefined>;
@@ -4285,6 +4313,10 @@ export interface ApplicationSettingsArgs {
      */
     searchRateLimitUnauthenticated?: pulumi.Input<number | undefined>;
     /**
+     * Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
+     */
+    secretPushProtectionAvailable?: pulumi.Input<boolean | undefined>;
+    /**
      * Maximum number of active merge request approval policies per security policy project. Maximum: 20
      */
     securityApprovalPoliciesLimit?: pulumi.Input<number | undefined>;
@@ -4308,6 +4340,10 @@ export interface ApplicationSettingsArgs {
      * Session duration in minutes. GitLab restart is required to apply changes.
      */
     sessionExpireDelay?: pulumi.Input<number | undefined>;
+    /**
+     * Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
+     */
+    sessionExpireFromInit?: pulumi.Input<boolean | undefined>;
     /**
      * (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
      */

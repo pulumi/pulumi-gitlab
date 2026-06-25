@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,14 +34,38 @@ type LookupGroupArgs struct {
 
 // A collection of values returned by getGroup.
 type LookupGroupResult struct {
+	// Default to allowing merge on a skipped pipeline for new projects in the group.
+	AllowMergeOnSkippedPipeline bool `pulumi:"allowMergeOnSkippedPipeline"`
+	// Comma-separated list of email address domains allowed to be added as group members.
+	AllowedEmailDomainsList string `pulumi:"allowedEmailDomainsList"`
+	// Default to Auto DevOps pipeline for all projects within this group.
+	AutoDevopsEnabled bool `pulumi:"autoDevopsEnabled"`
+	// URL of the group avatar.
+	AvatarUrl string `pulumi:"avatarUrl"`
+	// Timestamp at which the group was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.
+	CustomAttributes []map[string]string `pulumi:"customAttributes"`
 	// The default branch of the group.
 	DefaultBranch string `pulumi:"defaultBranch"`
-	// Whether developers and maintainers can push to the applicable default branch.
+	// Whether developers and maintainers can push to the applicable default branch. Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0.
+	//
+	// Deprecated: Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0.
 	DefaultBranchProtection int `pulumi:"defaultBranchProtection"`
+	// Default protection settings applied to the default branch of new projects in this group.
+	DefaultBranchProtectionDefaults []GetGroupDefaultBranchProtectionDefault `pulumi:"defaultBranchProtectionDefaults"`
 	// The description of the group.
 	Description string `pulumi:"description"`
+	// Whether email notifications are disabled for this group. Use `emailsEnabled` instead, to be removed in 19.0.
+	//
+	// Deprecated: Use `emailsEnabled` instead, to be removed in 19.0.
+	EmailsDisabled bool `pulumi:"emailsDisabled"`
+	// Whether email notifications are enabled for this group.
+	EmailsEnabled bool `pulumi:"emailsEnabled"`
 	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit int `pulumi:"extraSharedRunnersMinutesLimit"`
+	// The ID of the project used to load custom file templates.
+	FileTemplateProjectId int `pulumi:"fileTemplateProjectId"`
 	// The full name of the group.
 	FullName string `pulumi:"fullName"`
 	// The full path of the group.
@@ -50,30 +74,62 @@ type LookupGroupResult struct {
 	GroupId int `pulumi:"groupId"`
 	// The ID of this datasource. In the format `<group-id>`.
 	Id string `pulumi:"id"`
+	// Comma-separated list of IP addresses or subnet masks that restrict access to the group.
+	IpRestrictionRanges string `pulumi:"ipRestrictionRanges"`
+	// Default access level for members synced from LDAP.
+	LdapAccess int `pulumi:"ldapAccess"`
+	// LDAP common name used to sync members from an LDAP group.
+	LdapCn string `pulumi:"ldapCn"`
 	// Boolean, is LFS enabled for projects in this group.
 	LfsEnabled bool `pulumi:"lfsEnabled"`
+	// Date on which the group was marked for deletion.
+	MarkedForDeletionOn string `pulumi:"markedForDeletionOn"`
+	// Maximum artifacts size for the group, in MB.
+	MaxArtifactsSize int `pulumi:"maxArtifactsSize"`
 	// Users cannot be added to projects in this group.
 	MembershipLock bool `pulumi:"membershipLock"`
+	// Whether mentions are disabled for this group.
+	MentionsDisabled bool `pulumi:"mentionsDisabled"`
 	// The name of this group.
 	Name string `pulumi:"name"`
+	// Default to only allowing merge if all discussions are resolved for new projects in the group.
+	OnlyAllowMergeIfAllDiscussionsAreResolved bool `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
+	// Default to only allowing merge if the pipeline succeeds for new projects in the group.
+	OnlyAllowMergeIfPipelineSucceeds bool `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
 	// Integer, ID of the parent group.
 	ParentId int `pulumi:"parentId"`
 	// The path of the group.
 	Path string `pulumi:"path"`
 	// When enabled, users can not fork projects from this group to external namespaces.
 	PreventForkingOutsideGroup bool `pulumi:"preventForkingOutsideGroup"`
-	// When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+	// When enabled, users cannot invite other groups outside of the top-level group's hierarchy. This option is only available for top-level groups.
 	PreventSharingGroupsOutsideHierarchy bool `pulumi:"preventSharingGroupsOutsideHierarchy"`
+	// Determine which roles can create projects in the group. Possible values are `noone`, `maintainer`, `developer`, `owner`, `administrator`.
+	ProjectCreationLevel string `pulumi:"projectCreationLevel"`
+	// Push rules for the group. Push rules are only available on Premium and Ultimate plans, and only if the authenticated user has permission to read them.
+	PushRules []GetGroupPushRule `pulumi:"pushRules"`
+	// Repository storage shard the group's projects use. (admin only)
+	RepositoryStorage string `pulumi:"repositoryStorage"`
 	// Boolean, is request for access enabled to the group.
 	RequestAccessEnabled bool `pulumi:"requestAccessEnabled"`
+	// Require all users in this group to set up two-factor authentication.
+	RequireTwoFactorAuthentication bool `pulumi:"requireTwoFactorAuthentication"`
 	// The group level registration token to use during runner setup.
 	RunnersToken string `pulumi:"runnersToken"`
+	// Prevent sharing a project with another group within this group.
+	ShareWithGroupLock bool `pulumi:"shareWithGroupLock"`
 	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
 	SharedRunnersMinutesLimit int `pulumi:"sharedRunnersMinutesLimit"`
 	// Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
 	SharedRunnersSetting string `pulumi:"sharedRunnersSetting"`
 	// Describes groups which have access shared to this group.
 	SharedWithGroups []GetGroupSharedWithGroup `pulumi:"sharedWithGroups"`
+	// Statistics for the group. Keys: `commitCount`, `storageSize`, `repositorySize`, `wikiSize`, `lfsObjectsSize`, `jobArtifactsSize`, `pipelineArtifactsSize`, `packagesSize`, `snippetsSize`, `uploadsSize`, `containerRegistrySize`.
+	Statistics map[string]int `pulumi:"statistics"`
+	// Determine which roles can create subgroups in the group. Possible values are `owner`, `maintainer`.
+	SubgroupCreationLevel string `pulumi:"subgroupCreationLevel"`
+	// Grace period, in hours, before enforcing two-factor authentication on group members.
+	TwoFactorGracePeriod int `pulumi:"twoFactorGracePeriod"`
 	// Visibility level of the group. Possible values are `private`, `internal`, `public`.
 	VisibilityLevel string `pulumi:"visibilityLevel"`
 	// Web URL of the group.
@@ -118,14 +174,53 @@ func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx contex
 	return o
 }
 
+// Default to allowing merge on a skipped pipeline for new projects in the group.
+func (o LookupGroupResultOutput) AllowMergeOnSkippedPipeline() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.AllowMergeOnSkippedPipeline }).(pulumi.BoolOutput)
+}
+
+// Comma-separated list of email address domains allowed to be added as group members.
+func (o LookupGroupResultOutput) AllowedEmailDomainsList() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.AllowedEmailDomainsList }).(pulumi.StringOutput)
+}
+
+// Default to Auto DevOps pipeline for all projects within this group.
+func (o LookupGroupResultOutput) AutoDevopsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.AutoDevopsEnabled }).(pulumi.BoolOutput)
+}
+
+// URL of the group avatar.
+func (o LookupGroupResultOutput) AvatarUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// Timestamp at which the group was created.
+func (o LookupGroupResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.
+func (o LookupGroupResultOutput) CustomAttributes() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []map[string]string { return v.CustomAttributes }).(pulumi.StringMapArrayOutput)
+}
+
 // The default branch of the group.
 func (o LookupGroupResultOutput) DefaultBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.DefaultBranch }).(pulumi.StringOutput)
 }
 
-// Whether developers and maintainers can push to the applicable default branch.
+// Whether developers and maintainers can push to the applicable default branch. Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0.
+//
+// Deprecated: Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0.
 func (o LookupGroupResultOutput) DefaultBranchProtection() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupGroupResult) int { return v.DefaultBranchProtection }).(pulumi.IntOutput)
+}
+
+// Default protection settings applied to the default branch of new projects in this group.
+func (o LookupGroupResultOutput) DefaultBranchProtectionDefaults() GetGroupDefaultBranchProtectionDefaultArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []GetGroupDefaultBranchProtectionDefault {
+		return v.DefaultBranchProtectionDefaults
+	}).(GetGroupDefaultBranchProtectionDefaultArrayOutput)
 }
 
 // The description of the group.
@@ -133,9 +228,26 @@ func (o LookupGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Whether email notifications are disabled for this group. Use `emailsEnabled` instead, to be removed in 19.0.
+//
+// Deprecated: Use `emailsEnabled` instead, to be removed in 19.0.
+func (o LookupGroupResultOutput) EmailsDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.EmailsDisabled }).(pulumi.BoolOutput)
+}
+
+// Whether email notifications are enabled for this group.
+func (o LookupGroupResultOutput) EmailsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.EmailsEnabled }).(pulumi.BoolOutput)
+}
+
 // Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 func (o LookupGroupResultOutput) ExtraSharedRunnersMinutesLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupGroupResult) int { return v.ExtraSharedRunnersMinutesLimit }).(pulumi.IntOutput)
+}
+
+// The ID of the project used to load custom file templates.
+func (o LookupGroupResultOutput) FileTemplateProjectId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGroupResult) int { return v.FileTemplateProjectId }).(pulumi.IntOutput)
 }
 
 // The full name of the group.
@@ -158,9 +270,34 @@ func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Comma-separated list of IP addresses or subnet masks that restrict access to the group.
+func (o LookupGroupResultOutput) IpRestrictionRanges() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.IpRestrictionRanges }).(pulumi.StringOutput)
+}
+
+// Default access level for members synced from LDAP.
+func (o LookupGroupResultOutput) LdapAccess() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGroupResult) int { return v.LdapAccess }).(pulumi.IntOutput)
+}
+
+// LDAP common name used to sync members from an LDAP group.
+func (o LookupGroupResultOutput) LdapCn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.LdapCn }).(pulumi.StringOutput)
+}
+
 // Boolean, is LFS enabled for projects in this group.
 func (o LookupGroupResultOutput) LfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupResult) bool { return v.LfsEnabled }).(pulumi.BoolOutput)
+}
+
+// Date on which the group was marked for deletion.
+func (o LookupGroupResultOutput) MarkedForDeletionOn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.MarkedForDeletionOn }).(pulumi.StringOutput)
+}
+
+// Maximum artifacts size for the group, in MB.
+func (o LookupGroupResultOutput) MaxArtifactsSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGroupResult) int { return v.MaxArtifactsSize }).(pulumi.IntOutput)
 }
 
 // Users cannot be added to projects in this group.
@@ -168,9 +305,24 @@ func (o LookupGroupResultOutput) MembershipLock() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupResult) bool { return v.MembershipLock }).(pulumi.BoolOutput)
 }
 
+// Whether mentions are disabled for this group.
+func (o LookupGroupResultOutput) MentionsDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.MentionsDisabled }).(pulumi.BoolOutput)
+}
+
 // The name of this group.
 func (o LookupGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Default to only allowing merge if all discussions are resolved for new projects in the group.
+func (o LookupGroupResultOutput) OnlyAllowMergeIfAllDiscussionsAreResolved() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.OnlyAllowMergeIfAllDiscussionsAreResolved }).(pulumi.BoolOutput)
+}
+
+// Default to only allowing merge if the pipeline succeeds for new projects in the group.
+func (o LookupGroupResultOutput) OnlyAllowMergeIfPipelineSucceeds() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.OnlyAllowMergeIfPipelineSucceeds }).(pulumi.BoolOutput)
 }
 
 // Integer, ID of the parent group.
@@ -188,9 +340,24 @@ func (o LookupGroupResultOutput) PreventForkingOutsideGroup() pulumi.BoolOutput 
 	return o.ApplyT(func(v LookupGroupResult) bool { return v.PreventForkingOutsideGroup }).(pulumi.BoolOutput)
 }
 
-// When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+// When enabled, users cannot invite other groups outside of the top-level group's hierarchy. This option is only available for top-level groups.
 func (o LookupGroupResultOutput) PreventSharingGroupsOutsideHierarchy() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupResult) bool { return v.PreventSharingGroupsOutsideHierarchy }).(pulumi.BoolOutput)
+}
+
+// Determine which roles can create projects in the group. Possible values are `noone`, `maintainer`, `developer`, `owner`, `administrator`.
+func (o LookupGroupResultOutput) ProjectCreationLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.ProjectCreationLevel }).(pulumi.StringOutput)
+}
+
+// Push rules for the group. Push rules are only available on Premium and Ultimate plans, and only if the authenticated user has permission to read them.
+func (o LookupGroupResultOutput) PushRules() GetGroupPushRuleArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []GetGroupPushRule { return v.PushRules }).(GetGroupPushRuleArrayOutput)
+}
+
+// Repository storage shard the group's projects use. (admin only)
+func (o LookupGroupResultOutput) RepositoryStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.RepositoryStorage }).(pulumi.StringOutput)
 }
 
 // Boolean, is request for access enabled to the group.
@@ -198,9 +365,19 @@ func (o LookupGroupResultOutput) RequestAccessEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupResult) bool { return v.RequestAccessEnabled }).(pulumi.BoolOutput)
 }
 
+// Require all users in this group to set up two-factor authentication.
+func (o LookupGroupResultOutput) RequireTwoFactorAuthentication() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.RequireTwoFactorAuthentication }).(pulumi.BoolOutput)
+}
+
 // The group level registration token to use during runner setup.
 func (o LookupGroupResultOutput) RunnersToken() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.RunnersToken }).(pulumi.StringOutput)
+}
+
+// Prevent sharing a project with another group within this group.
+func (o LookupGroupResultOutput) ShareWithGroupLock() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.ShareWithGroupLock }).(pulumi.BoolOutput)
 }
 
 // Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
@@ -216,6 +393,21 @@ func (o LookupGroupResultOutput) SharedRunnersSetting() pulumi.StringOutput {
 // Describes groups which have access shared to this group.
 func (o LookupGroupResultOutput) SharedWithGroups() GetGroupSharedWithGroupArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []GetGroupSharedWithGroup { return v.SharedWithGroups }).(GetGroupSharedWithGroupArrayOutput)
+}
+
+// Statistics for the group. Keys: `commitCount`, `storageSize`, `repositorySize`, `wikiSize`, `lfsObjectsSize`, `jobArtifactsSize`, `pipelineArtifactsSize`, `packagesSize`, `snippetsSize`, `uploadsSize`, `containerRegistrySize`.
+func (o LookupGroupResultOutput) Statistics() pulumi.IntMapOutput {
+	return o.ApplyT(func(v LookupGroupResult) map[string]int { return v.Statistics }).(pulumi.IntMapOutput)
+}
+
+// Determine which roles can create subgroups in the group. Possible values are `owner`, `maintainer`.
+func (o LookupGroupResultOutput) SubgroupCreationLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.SubgroupCreationLevel }).(pulumi.StringOutput)
+}
+
+// Grace period, in hours, before enforcing two-factor authentication on group members.
+func (o LookupGroupResultOutput) TwoFactorGracePeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGroupResult) int { return v.TwoFactorGracePeriod }).(pulumi.IntOutput)
 }
 
 // Visibility level of the group. Possible values are `private`, `internal`, `public`.

@@ -64,7 +64,7 @@ namespace Pulumi.GitLab
         public Output<bool> Active { get; private set; } = null!;
 
         /// <summary>
-        /// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        /// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
         /// </summary>
         [Output("apiUrl")]
         public Output<string> ApiUrl { get; private set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.GitLab
         public Output<bool> IssuesEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        /// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
         /// </summary>
         [Output("jiraAuthType")]
         public Output<int> JiraAuthType { get; private set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.GitLab
         public Output<bool> MergeRequestsEvents { get; private set; } = null!;
 
         /// <summary>
-        /// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+        /// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.GitLab
         public Output<bool> UseInheritedSettings { get; private set; } = null!;
 
         /// <summary>
-        /// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+        /// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -228,7 +228,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectIntegrationJiraArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        /// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
         /// </summary>
         [Input("apiUrl")]
         public Input<string>? ApiUrl { get; set; }
@@ -252,7 +252,7 @@ namespace Pulumi.GitLab
         public Input<bool>? IssuesEnabled { get; set; }
 
         /// <summary>
-        /// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        /// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
         /// </summary>
         [Input("jiraAuthType")]
         public Input<int>? JiraAuthType { get; set; }
@@ -291,7 +291,7 @@ namespace Pulumi.GitLab
         private Input<string>? _password;
 
         /// <summary>
-        /// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+        /// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
         /// </summary>
         public Input<string>? Password
         {
@@ -334,7 +334,7 @@ namespace Pulumi.GitLab
         public Input<bool>? UseInheritedSettings { get; set; }
 
         /// <summary>
-        /// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+        /// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -354,7 +354,7 @@ namespace Pulumi.GitLab
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        /// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
         /// </summary>
         [Input("apiUrl")]
         public Input<string>? ApiUrl { get; set; }
@@ -384,7 +384,7 @@ namespace Pulumi.GitLab
         public Input<bool>? IssuesEnabled { get; set; }
 
         /// <summary>
-        /// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        /// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
         /// </summary>
         [Input("jiraAuthType")]
         public Input<int>? JiraAuthType { get; set; }
@@ -423,7 +423,7 @@ namespace Pulumi.GitLab
         private Input<string>? _password;
 
         /// <summary>
-        /// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+        /// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
         /// </summary>
         public Input<string>? Password
         {
@@ -478,7 +478,7 @@ namespace Pulumi.GitLab
         public Input<bool>? UseInheritedSettings { get; set; }
 
         /// <summary>
-        /// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+        /// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

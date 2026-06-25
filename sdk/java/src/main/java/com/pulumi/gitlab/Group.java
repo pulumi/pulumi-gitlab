@@ -166,6 +166,20 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.allowedEmailDomainsLists;
     }
     /**
+     * Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+     * 
+     */
+    @Export(name="archiveOnDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> archiveOnDestroy;
+
+    /**
+     * @return Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+     * 
+     */
+    public Output<Optional<Boolean>> archiveOnDestroy() {
+        return Codegen.optional(this.archiveOnDestroy);
+    }
+    /**
      * Default to Auto DevOps pipeline for all projects within this group.
      * 
      */

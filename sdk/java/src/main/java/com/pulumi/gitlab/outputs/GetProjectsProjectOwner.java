@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectsProjectOwner {
     /**
-     * @return The avatar url of the owner.
+     * @return The avatar URL of the owner.
      * 
      */
     private String avatarUrl;
@@ -37,14 +37,14 @@ public final class GetProjectsProjectOwner {
      */
     private String username;
     /**
-     * @return The website url of the owner.
+     * @return The website URL of the owner.
      * 
      */
     private String websiteUrl;
 
     private GetProjectsProjectOwner() {}
     /**
-     * @return The avatar url of the owner.
+     * @return The avatar URL of the owner.
      * 
      */
     public String avatarUrl() {
@@ -79,7 +79,7 @@ public final class GetProjectsProjectOwner {
         return this.username;
     }
     /**
-     * @return The website url of the owner.
+     * @return The website URL of the owner.
      * 
      */
     public String websiteUrl() {

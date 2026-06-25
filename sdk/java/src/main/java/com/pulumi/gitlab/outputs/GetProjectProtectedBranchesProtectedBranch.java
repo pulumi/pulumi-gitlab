@@ -7,12 +7,12 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevel;
 import com.pulumi.gitlab.outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevel;
+import com.pulumi.gitlab.outputs.GetProjectProtectedBranchesProtectedBranchUnprotectAccessLevel;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectProtectedBranchesProtectedBranch {
@@ -32,20 +32,25 @@ public final class GetProjectProtectedBranchesProtectedBranch {
      */
     private Integer id;
     /**
-     * @return Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     * @return Array of merge access levels/users/groups allowed for the protected branch.
      * 
      */
-    private @Nullable List<GetProjectProtectedBranchesProtectedBranchMergeAccessLevel> mergeAccessLevels;
+    private List<GetProjectProtectedBranchesProtectedBranchMergeAccessLevel> mergeAccessLevels;
     /**
      * @return The name of the protected branch.
      * 
      */
     private String name;
     /**
-     * @return Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     * @return Array of push access levels/users/groups/deploy keys allowed for the protected branch.
      * 
      */
-    private @Nullable List<GetProjectProtectedBranchesProtectedBranchPushAccessLevel> pushAccessLevels;
+    private List<GetProjectProtectedBranchesProtectedBranchPushAccessLevel> pushAccessLevels;
+    /**
+     * @return Array of unprotect access levels/users/groups allowed for the protected branch.
+     * 
+     */
+    private List<GetProjectProtectedBranchesProtectedBranchUnprotectAccessLevel> unprotectAccessLevels;
 
     private GetProjectProtectedBranchesProtectedBranch() {}
     /**
@@ -70,11 +75,11 @@ public final class GetProjectProtectedBranchesProtectedBranch {
         return this.id;
     }
     /**
-     * @return Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     * @return Array of merge access levels/users/groups allowed for the protected branch.
      * 
      */
     public List<GetProjectProtectedBranchesProtectedBranchMergeAccessLevel> mergeAccessLevels() {
-        return this.mergeAccessLevels == null ? List.of() : this.mergeAccessLevels;
+        return this.mergeAccessLevels;
     }
     /**
      * @return The name of the protected branch.
@@ -84,11 +89,18 @@ public final class GetProjectProtectedBranchesProtectedBranch {
         return this.name;
     }
     /**
-     * @return Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     * @return Array of push access levels/users/groups/deploy keys allowed for the protected branch.
      * 
      */
     public List<GetProjectProtectedBranchesProtectedBranchPushAccessLevel> pushAccessLevels() {
-        return this.pushAccessLevels == null ? List.of() : this.pushAccessLevels;
+        return this.pushAccessLevels;
+    }
+    /**
+     * @return Array of unprotect access levels/users/groups allowed for the protected branch.
+     * 
+     */
+    public List<GetProjectProtectedBranchesProtectedBranchUnprotectAccessLevel> unprotectAccessLevels() {
+        return this.unprotectAccessLevels;
     }
 
     public static Builder builder() {
@@ -103,9 +115,10 @@ public final class GetProjectProtectedBranchesProtectedBranch {
         private Boolean allowForcePush;
         private Boolean codeOwnerApprovalRequired;
         private Integer id;
-        private @Nullable List<GetProjectProtectedBranchesProtectedBranchMergeAccessLevel> mergeAccessLevels;
+        private List<GetProjectProtectedBranchesProtectedBranchMergeAccessLevel> mergeAccessLevels;
         private String name;
-        private @Nullable List<GetProjectProtectedBranchesProtectedBranchPushAccessLevel> pushAccessLevels;
+        private List<GetProjectProtectedBranchesProtectedBranchPushAccessLevel> pushAccessLevels;
+        private List<GetProjectProtectedBranchesProtectedBranchUnprotectAccessLevel> unprotectAccessLevels;
         public Builder() {}
         public Builder(GetProjectProtectedBranchesProtectedBranch defaults) {
     	      Objects.requireNonNull(defaults);
@@ -115,6 +128,7 @@ public final class GetProjectProtectedBranchesProtectedBranch {
     	      this.mergeAccessLevels = defaults.mergeAccessLevels;
     	      this.name = defaults.name;
     	      this.pushAccessLevels = defaults.pushAccessLevels;
+    	      this.unprotectAccessLevels = defaults.unprotectAccessLevels;
         }
 
         @CustomType.Setter
@@ -142,8 +156,10 @@ public final class GetProjectProtectedBranchesProtectedBranch {
             return this;
         }
         @CustomType.Setter
-        public Builder mergeAccessLevels(@Nullable List<GetProjectProtectedBranchesProtectedBranchMergeAccessLevel> mergeAccessLevels) {
-
+        public Builder mergeAccessLevels(List<GetProjectProtectedBranchesProtectedBranchMergeAccessLevel> mergeAccessLevels) {
+            if (mergeAccessLevels == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesProtectedBranch", "mergeAccessLevels");
+            }
             this.mergeAccessLevels = mergeAccessLevels;
             return this;
         }
@@ -159,13 +175,26 @@ public final class GetProjectProtectedBranchesProtectedBranch {
             return this;
         }
         @CustomType.Setter
-        public Builder pushAccessLevels(@Nullable List<GetProjectProtectedBranchesProtectedBranchPushAccessLevel> pushAccessLevels) {
-
+        public Builder pushAccessLevels(List<GetProjectProtectedBranchesProtectedBranchPushAccessLevel> pushAccessLevels) {
+            if (pushAccessLevels == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesProtectedBranch", "pushAccessLevels");
+            }
             this.pushAccessLevels = pushAccessLevels;
             return this;
         }
         public Builder pushAccessLevels(GetProjectProtectedBranchesProtectedBranchPushAccessLevel... pushAccessLevels) {
             return pushAccessLevels(List.of(pushAccessLevels));
+        }
+        @CustomType.Setter
+        public Builder unprotectAccessLevels(List<GetProjectProtectedBranchesProtectedBranchUnprotectAccessLevel> unprotectAccessLevels) {
+            if (unprotectAccessLevels == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesProtectedBranch", "unprotectAccessLevels");
+            }
+            this.unprotectAccessLevels = unprotectAccessLevels;
+            return this;
+        }
+        public Builder unprotectAccessLevels(GetProjectProtectedBranchesProtectedBranchUnprotectAccessLevel... unprotectAccessLevels) {
+            return unprotectAccessLevels(List.of(unprotectAccessLevels));
         }
         public GetProjectProtectedBranchesProtectedBranch build() {
             final var _resultValue = new GetProjectProtectedBranchesProtectedBranch();
@@ -175,6 +204,7 @@ public final class GetProjectProtectedBranchesProtectedBranch {
             _resultValue.mergeAccessLevels = mergeAccessLevels;
             _resultValue.name = name;
             _resultValue.pushAccessLevels = pushAccessLevels;
+            _resultValue.unprotectAccessLevels = unprotectAccessLevels;
             return _resultValue;
         }
     }

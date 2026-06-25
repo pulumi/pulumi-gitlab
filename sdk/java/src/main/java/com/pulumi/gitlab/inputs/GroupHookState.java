@@ -6,6 +6,7 @@ package com.pulumi.gitlab.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gitlab.inputs.GroupHookCustomHeaderArgs;
+import com.pulumi.gitlab.inputs.GroupHookUrlVariableArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -18,6 +19,21 @@ import javax.annotation.Nullable;
 public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
 
     public static final GroupHookState Empty = new GroupHookState();
+
+    /**
+     * Lifecycle status of the webhook. Values include `executable` and `disabled`.
+     * 
+     */
+    @Import(name="alertStatus")
+    private @Nullable Output<String> alertStatus;
+
+    /**
+     * @return Lifecycle status of the webhook. Values include `executable` and `disabled`.
+     * 
+     */
+    public Optional<Output<String>> alertStatus() {
+        return Optional.ofNullable(this.alertStatus);
+    }
 
     /**
      * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
@@ -65,14 +81,14 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom headers for the project webhook.
+     * Custom headers for the group webhook.
      * 
      */
     @Import(name="customHeaders")
     private @Nullable Output<List<GroupHookCustomHeaderArgs>> customHeaders;
 
     /**
-     * @return Custom headers for the project webhook.
+     * @return Custom headers for the group webhook.
      * 
      */
     public Optional<Output<List<GroupHookCustomHeaderArgs>>> customHeaders() {
@@ -122,6 +138,21 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+     * 
+     */
+    @Import(name="disabledUntil")
+    private @Nullable Output<String> disabledUntil;
+
+    /**
+     * @return Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+     * 
+     */
+    public Optional<Output<String>> disabledUntil() {
+        return Optional.ofNullable(this.disabledUntil);
     }
 
     /**
@@ -275,6 +306,21 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Invoke the hook for milestone events. Defaults to `false`.
+     * 
+     */
+    @Import(name="milestoneEvents")
+    private @Nullable Output<Boolean> milestoneEvents;
+
+    /**
+     * @return Invoke the hook for milestone events. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> milestoneEvents() {
+        return Optional.ofNullable(this.milestoneEvents);
+    }
+
+    /**
      * Name of the group webhook.
      * 
      */
@@ -380,6 +426,51 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Invoke the hook for resource access token expiry events. Defaults to `false`.
+     * 
+     */
+    @Import(name="resourceAccessTokenEvents")
+    private @Nullable Output<Boolean> resourceAccessTokenEvents;
+
+    /**
+     * @return Invoke the hook for resource access token expiry events. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> resourceAccessTokenEvents() {
+        return Optional.ofNullable(this.resourceAccessTokenEvents);
+    }
+
+    /**
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * 
+     */
+    @Import(name="signingToken")
+    private @Nullable Output<String> signingToken;
+
+    /**
+     * @return Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * 
+     */
+    public Optional<Output<String>> signingToken() {
+        return Optional.ofNullable(this.signingToken);
+    }
+
+    /**
+     * Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     * 
+     */
+    @Import(name="signingTokenPresent")
+    private @Nullable Output<Boolean> signingTokenPresent;
+
+    /**
+     * @return Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     * 
+     */
+    public Optional<Output<Boolean>> signingTokenPresent() {
+        return Optional.ofNullable(this.signingTokenPresent);
+    }
+
+    /**
      * Invoke the hook for subgroup events. Defaults to `false`.
      * 
      */
@@ -440,6 +531,21 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Array of sensitive portions of the webhook URL to mask.
+     * 
+     */
+    @Import(name="urlVariables")
+    private @Nullable Output<List<GroupHookUrlVariableArgs>> urlVariables;
+
+    /**
+     * @return Array of sensitive portions of the webhook URL to mask.
+     * 
+     */
+    public Optional<Output<List<GroupHookUrlVariableArgs>>> urlVariables() {
+        return Optional.ofNullable(this.urlVariables);
+    }
+
+    /**
      * Invoke the hook for vulnerability events. Defaults to `false`.
      * 
      */
@@ -472,6 +578,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
     private GroupHookState() {}
 
     private GroupHookState(GroupHookState $) {
+        this.alertStatus = $.alertStatus;
         this.branchFilterStrategy = $.branchFilterStrategy;
         this.confidentialIssuesEvents = $.confidentialIssuesEvents;
         this.confidentialNoteEvents = $.confidentialNoteEvents;
@@ -479,6 +586,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         this.customWebhookTemplate = $.customWebhookTemplate;
         this.deploymentEvents = $.deploymentEvents;
         this.description = $.description;
+        this.disabledUntil = $.disabledUntil;
         this.emojiEvents = $.emojiEvents;
         this.enableSslVerification = $.enableSslVerification;
         this.featureFlagEvents = $.featureFlagEvents;
@@ -489,6 +597,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         this.jobEvents = $.jobEvents;
         this.memberEvents = $.memberEvents;
         this.mergeRequestsEvents = $.mergeRequestsEvents;
+        this.milestoneEvents = $.milestoneEvents;
         this.name = $.name;
         this.noteEvents = $.noteEvents;
         this.pipelineEvents = $.pipelineEvents;
@@ -496,10 +605,14 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         this.pushEvents = $.pushEvents;
         this.pushEventsBranchFilter = $.pushEventsBranchFilter;
         this.releasesEvents = $.releasesEvents;
+        this.resourceAccessTokenEvents = $.resourceAccessTokenEvents;
+        this.signingToken = $.signingToken;
+        this.signingTokenPresent = $.signingTokenPresent;
         this.subgroupEvents = $.subgroupEvents;
         this.tagPushEvents = $.tagPushEvents;
         this.token = $.token;
         this.url = $.url;
+        this.urlVariables = $.urlVariables;
         this.vulnerabilityEvents = $.vulnerabilityEvents;
         this.wikiPageEvents = $.wikiPageEvents;
     }
@@ -520,6 +633,27 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(GroupHookState defaults) {
             $ = new GroupHookState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param alertStatus Lifecycle status of the webhook. Values include `executable` and `disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alertStatus(@Nullable Output<String> alertStatus) {
+            $.alertStatus = alertStatus;
+            return this;
+        }
+
+        /**
+         * @param alertStatus Lifecycle status of the webhook. Values include `executable` and `disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alertStatus(String alertStatus) {
+            return alertStatus(Output.of(alertStatus));
         }
 
         /**
@@ -586,7 +720,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customHeaders Custom headers for the project webhook.
+         * @param customHeaders Custom headers for the group webhook.
          * 
          * @return builder
          * 
@@ -597,7 +731,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customHeaders Custom headers for the project webhook.
+         * @param customHeaders Custom headers for the group webhook.
          * 
          * @return builder
          * 
@@ -607,7 +741,7 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customHeaders Custom headers for the project webhook.
+         * @param customHeaders Custom headers for the group webhook.
          * 
          * @return builder
          * 
@@ -677,6 +811,27 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param disabledUntil Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabledUntil(@Nullable Output<String> disabledUntil) {
+            $.disabledUntil = disabledUntil;
+            return this;
+        }
+
+        /**
+         * @param disabledUntil Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabledUntil(String disabledUntil) {
+            return disabledUntil(Output.of(disabledUntil));
         }
 
         /**
@@ -890,6 +1045,27 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param milestoneEvents Invoke the hook for milestone events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder milestoneEvents(@Nullable Output<Boolean> milestoneEvents) {
+            $.milestoneEvents = milestoneEvents;
+            return this;
+        }
+
+        /**
+         * @param milestoneEvents Invoke the hook for milestone events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder milestoneEvents(Boolean milestoneEvents) {
+            return milestoneEvents(Output.of(milestoneEvents));
+        }
+
+        /**
          * @param name Name of the group webhook.
          * 
          * @return builder
@@ -1037,6 +1213,69 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param resourceAccessTokenEvents Invoke the hook for resource access token expiry events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceAccessTokenEvents(@Nullable Output<Boolean> resourceAccessTokenEvents) {
+            $.resourceAccessTokenEvents = resourceAccessTokenEvents;
+            return this;
+        }
+
+        /**
+         * @param resourceAccessTokenEvents Invoke the hook for resource access token expiry events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceAccessTokenEvents(Boolean resourceAccessTokenEvents) {
+            return resourceAccessTokenEvents(Output.of(resourceAccessTokenEvents));
+        }
+
+        /**
+         * @param signingToken Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingToken(@Nullable Output<String> signingToken) {
+            $.signingToken = signingToken;
+            return this;
+        }
+
+        /**
+         * @param signingToken Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingToken(String signingToken) {
+            return signingToken(Output.of(signingToken));
+        }
+
+        /**
+         * @param signingTokenPresent Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingTokenPresent(@Nullable Output<Boolean> signingTokenPresent) {
+            $.signingTokenPresent = signingTokenPresent;
+            return this;
+        }
+
+        /**
+         * @param signingTokenPresent Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingTokenPresent(Boolean signingTokenPresent) {
+            return signingTokenPresent(Output.of(signingTokenPresent));
+        }
+
+        /**
          * @param subgroupEvents Invoke the hook for subgroup events. Defaults to `false`.
          * 
          * @return builder
@@ -1118,6 +1357,37 @@ public final class GroupHookState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder url(String url) {
             return url(Output.of(url));
+        }
+
+        /**
+         * @param urlVariables Array of sensitive portions of the webhook URL to mask.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlVariables(@Nullable Output<List<GroupHookUrlVariableArgs>> urlVariables) {
+            $.urlVariables = urlVariables;
+            return this;
+        }
+
+        /**
+         * @param urlVariables Array of sensitive portions of the webhook URL to mask.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlVariables(List<GroupHookUrlVariableArgs> urlVariables) {
+            return urlVariables(Output.of(urlVariables));
+        }
+
+        /**
+         * @param urlVariables Array of sensitive portions of the webhook URL to mask.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlVariables(GroupHookUrlVariableArgs... urlVariables) {
+            return urlVariables(List.of(urlVariables));
         }
 
         /**

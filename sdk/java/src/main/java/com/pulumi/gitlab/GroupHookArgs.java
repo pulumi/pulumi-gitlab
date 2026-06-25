@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.inputs.GroupHookCustomHeaderArgs;
+import com.pulumi.gitlab.inputs.GroupHookUrlVariableArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -65,14 +66,14 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom headers for the project webhook.
+     * Custom headers for the group webhook.
      * 
      */
     @Import(name="customHeaders")
     private @Nullable Output<List<GroupHookCustomHeaderArgs>> customHeaders;
 
     /**
-     * @return Custom headers for the project webhook.
+     * @return Custom headers for the group webhook.
      * 
      */
     public Optional<Output<List<GroupHookCustomHeaderArgs>>> customHeaders() {
@@ -245,6 +246,21 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Invoke the hook for milestone events. Defaults to `false`.
+     * 
+     */
+    @Import(name="milestoneEvents")
+    private @Nullable Output<Boolean> milestoneEvents;
+
+    /**
+     * @return Invoke the hook for milestone events. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> milestoneEvents() {
+        return Optional.ofNullable(this.milestoneEvents);
+    }
+
+    /**
      * Name of the group webhook.
      * 
      */
@@ -350,6 +366,36 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Invoke the hook for resource access token expiry events. Defaults to `false`.
+     * 
+     */
+    @Import(name="resourceAccessTokenEvents")
+    private @Nullable Output<Boolean> resourceAccessTokenEvents;
+
+    /**
+     * @return Invoke the hook for resource access token expiry events. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> resourceAccessTokenEvents() {
+        return Optional.ofNullable(this.resourceAccessTokenEvents);
+    }
+
+    /**
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * 
+     */
+    @Import(name="signingToken")
+    private @Nullable Output<String> signingToken;
+
+    /**
+     * @return Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * 
+     */
+    public Optional<Output<String>> signingToken() {
+        return Optional.ofNullable(this.signingToken);
+    }
+
+    /**
      * Invoke the hook for subgroup events. Defaults to `false`.
      * 
      */
@@ -410,6 +456,21 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Array of sensitive portions of the webhook URL to mask.
+     * 
+     */
+    @Import(name="urlVariables")
+    private @Nullable Output<List<GroupHookUrlVariableArgs>> urlVariables;
+
+    /**
+     * @return Array of sensitive portions of the webhook URL to mask.
+     * 
+     */
+    public Optional<Output<List<GroupHookUrlVariableArgs>>> urlVariables() {
+        return Optional.ofNullable(this.urlVariables);
+    }
+
+    /**
      * Invoke the hook for vulnerability events. Defaults to `false`.
      * 
      */
@@ -457,6 +518,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         this.jobEvents = $.jobEvents;
         this.memberEvents = $.memberEvents;
         this.mergeRequestsEvents = $.mergeRequestsEvents;
+        this.milestoneEvents = $.milestoneEvents;
         this.name = $.name;
         this.noteEvents = $.noteEvents;
         this.pipelineEvents = $.pipelineEvents;
@@ -464,10 +526,13 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         this.pushEvents = $.pushEvents;
         this.pushEventsBranchFilter = $.pushEventsBranchFilter;
         this.releasesEvents = $.releasesEvents;
+        this.resourceAccessTokenEvents = $.resourceAccessTokenEvents;
+        this.signingToken = $.signingToken;
         this.subgroupEvents = $.subgroupEvents;
         this.tagPushEvents = $.tagPushEvents;
         this.token = $.token;
         this.url = $.url;
+        this.urlVariables = $.urlVariables;
         this.vulnerabilityEvents = $.vulnerabilityEvents;
         this.wikiPageEvents = $.wikiPageEvents;
     }
@@ -554,7 +619,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customHeaders Custom headers for the project webhook.
+         * @param customHeaders Custom headers for the group webhook.
          * 
          * @return builder
          * 
@@ -565,7 +630,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customHeaders Custom headers for the project webhook.
+         * @param customHeaders Custom headers for the group webhook.
          * 
          * @return builder
          * 
@@ -575,7 +640,7 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customHeaders Custom headers for the project webhook.
+         * @param customHeaders Custom headers for the group webhook.
          * 
          * @return builder
          * 
@@ -816,6 +881,27 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param milestoneEvents Invoke the hook for milestone events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder milestoneEvents(@Nullable Output<Boolean> milestoneEvents) {
+            $.milestoneEvents = milestoneEvents;
+            return this;
+        }
+
+        /**
+         * @param milestoneEvents Invoke the hook for milestone events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder milestoneEvents(Boolean milestoneEvents) {
+            return milestoneEvents(Output.of(milestoneEvents));
+        }
+
+        /**
          * @param name Name of the group webhook.
          * 
          * @return builder
@@ -963,6 +1049,48 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param resourceAccessTokenEvents Invoke the hook for resource access token expiry events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceAccessTokenEvents(@Nullable Output<Boolean> resourceAccessTokenEvents) {
+            $.resourceAccessTokenEvents = resourceAccessTokenEvents;
+            return this;
+        }
+
+        /**
+         * @param resourceAccessTokenEvents Invoke the hook for resource access token expiry events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceAccessTokenEvents(Boolean resourceAccessTokenEvents) {
+            return resourceAccessTokenEvents(Output.of(resourceAccessTokenEvents));
+        }
+
+        /**
+         * @param signingToken Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingToken(@Nullable Output<String> signingToken) {
+            $.signingToken = signingToken;
+            return this;
+        }
+
+        /**
+         * @param signingToken Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingToken(String signingToken) {
+            return signingToken(Output.of(signingToken));
+        }
+
+        /**
          * @param subgroupEvents Invoke the hook for subgroup events. Defaults to `false`.
          * 
          * @return builder
@@ -1044,6 +1172,37 @@ public final class GroupHookArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder url(String url) {
             return url(Output.of(url));
+        }
+
+        /**
+         * @param urlVariables Array of sensitive portions of the webhook URL to mask.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlVariables(@Nullable Output<List<GroupHookUrlVariableArgs>> urlVariables) {
+            $.urlVariables = urlVariables;
+            return this;
+        }
+
+        /**
+         * @param urlVariables Array of sensitive portions of the webhook URL to mask.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlVariables(List<GroupHookUrlVariableArgs> urlVariables) {
+            return urlVariables(Output.of(urlVariables));
+        }
+
+        /**
+         * @param urlVariables Array of sensitive portions of the webhook URL to mask.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlVariables(GroupHookUrlVariableArgs... urlVariables) {
+            return urlVariables(List.of(urlVariables));
         }
 
         /**

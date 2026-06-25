@@ -26,7 +26,10 @@ class GetProjectHookResult:
     """
     A collection of values returned by getProjectHook.
     """
-    def __init__(__self__, branch_filter_strategy=None, confidential_issues_events=None, confidential_note_events=None, custom_webhook_template=None, deployment_events=None, emoji_events=None, enable_ssl_verification=None, hook_id=None, id=None, issues_events=None, job_events=None, merge_requests_events=None, note_events=None, pipeline_events=None, project=None, project_id=None, push_events=None, push_events_branch_filter=None, releases_events=None, tag_push_events=None, token=None, url=None, vulnerability_events=None, wiki_page_events=None):
+    def __init__(__self__, alert_status=None, branch_filter_strategy=None, confidential_issues_events=None, confidential_note_events=None, created_at=None, custom_webhook_template=None, deployment_events=None, disabled_until=None, emoji_events=None, enable_ssl_verification=None, feature_flag_events=None, hook_id=None, id=None, issues_events=None, job_events=None, merge_requests_events=None, milestone_events=None, note_events=None, pipeline_events=None, project=None, project_id=None, push_events=None, push_events_branch_filter=None, releases_events=None, repository_update_events=None, resource_access_token_events=None, resource_deploy_token_events=None, signing_token_present=None, tag_push_events=None, url=None, vulnerability_events=None, wiki_page_events=None):
+        if alert_status and not isinstance(alert_status, str):
+            raise TypeError("Expected argument 'alert_status' to be a str")
+        pulumi.set(__self__, "alert_status", alert_status)
         if branch_filter_strategy and not isinstance(branch_filter_strategy, str):
             raise TypeError("Expected argument 'branch_filter_strategy' to be a str")
         pulumi.set(__self__, "branch_filter_strategy", branch_filter_strategy)
@@ -36,18 +39,27 @@ class GetProjectHookResult:
         if confidential_note_events and not isinstance(confidential_note_events, bool):
             raise TypeError("Expected argument 'confidential_note_events' to be a bool")
         pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+        if created_at and not isinstance(created_at, str):
+            raise TypeError("Expected argument 'created_at' to be a str")
+        pulumi.set(__self__, "created_at", created_at)
         if custom_webhook_template and not isinstance(custom_webhook_template, str):
             raise TypeError("Expected argument 'custom_webhook_template' to be a str")
         pulumi.set(__self__, "custom_webhook_template", custom_webhook_template)
         if deployment_events and not isinstance(deployment_events, bool):
             raise TypeError("Expected argument 'deployment_events' to be a bool")
         pulumi.set(__self__, "deployment_events", deployment_events)
+        if disabled_until and not isinstance(disabled_until, str):
+            raise TypeError("Expected argument 'disabled_until' to be a str")
+        pulumi.set(__self__, "disabled_until", disabled_until)
         if emoji_events and not isinstance(emoji_events, bool):
             raise TypeError("Expected argument 'emoji_events' to be a bool")
         pulumi.set(__self__, "emoji_events", emoji_events)
         if enable_ssl_verification and not isinstance(enable_ssl_verification, bool):
             raise TypeError("Expected argument 'enable_ssl_verification' to be a bool")
         pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
+        if feature_flag_events and not isinstance(feature_flag_events, bool):
+            raise TypeError("Expected argument 'feature_flag_events' to be a bool")
+        pulumi.set(__self__, "feature_flag_events", feature_flag_events)
         if hook_id and not isinstance(hook_id, int):
             raise TypeError("Expected argument 'hook_id' to be a int")
         pulumi.set(__self__, "hook_id", hook_id)
@@ -63,6 +75,9 @@ class GetProjectHookResult:
         if merge_requests_events and not isinstance(merge_requests_events, bool):
             raise TypeError("Expected argument 'merge_requests_events' to be a bool")
         pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+        if milestone_events and not isinstance(milestone_events, bool):
+            raise TypeError("Expected argument 'milestone_events' to be a bool")
+        pulumi.set(__self__, "milestone_events", milestone_events)
         if note_events and not isinstance(note_events, bool):
             raise TypeError("Expected argument 'note_events' to be a bool")
         pulumi.set(__self__, "note_events", note_events)
@@ -84,12 +99,21 @@ class GetProjectHookResult:
         if releases_events and not isinstance(releases_events, bool):
             raise TypeError("Expected argument 'releases_events' to be a bool")
         pulumi.set(__self__, "releases_events", releases_events)
+        if repository_update_events and not isinstance(repository_update_events, bool):
+            raise TypeError("Expected argument 'repository_update_events' to be a bool")
+        pulumi.set(__self__, "repository_update_events", repository_update_events)
+        if resource_access_token_events and not isinstance(resource_access_token_events, bool):
+            raise TypeError("Expected argument 'resource_access_token_events' to be a bool")
+        pulumi.set(__self__, "resource_access_token_events", resource_access_token_events)
+        if resource_deploy_token_events and not isinstance(resource_deploy_token_events, bool):
+            raise TypeError("Expected argument 'resource_deploy_token_events' to be a bool")
+        pulumi.set(__self__, "resource_deploy_token_events", resource_deploy_token_events)
+        if signing_token_present and not isinstance(signing_token_present, bool):
+            raise TypeError("Expected argument 'signing_token_present' to be a bool")
+        pulumi.set(__self__, "signing_token_present", signing_token_present)
         if tag_push_events and not isinstance(tag_push_events, bool):
             raise TypeError("Expected argument 'tag_push_events' to be a bool")
         pulumi.set(__self__, "tag_push_events", tag_push_events)
-        if token and not isinstance(token, str):
-            raise TypeError("Expected argument 'token' to be a str")
-        pulumi.set(__self__, "token", token)
         if url and not isinstance(url, str):
             raise TypeError("Expected argument 'url' to be a str")
         pulumi.set(__self__, "url", url)
@@ -99,6 +123,14 @@ class GetProjectHookResult:
         if wiki_page_events and not isinstance(wiki_page_events, bool):
             raise TypeError("Expected argument 'wiki_page_events' to be a bool")
         pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+
+    @_builtins.property
+    @pulumi.getter(name="alertStatus")
+    def alert_status(self) -> _builtins.str:
+        """
+        Lifecycle status of the webhook. Values include `executable` and `disabled`.
+        """
+        return pulumi.get(self, "alert_status")
 
     @_builtins.property
     @pulumi.getter(name="branchFilterStrategy")
@@ -125,6 +157,14 @@ class GetProjectHookResult:
         return pulumi.get(self, "confidential_note_events")
 
     @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The date and time the hook was created in ISO8601 format.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
     @pulumi.getter(name="customWebhookTemplate")
     def custom_webhook_template(self) -> _builtins.str:
         """
@@ -141,6 +181,14 @@ class GetProjectHookResult:
         return pulumi.get(self, "deployment_events")
 
     @_builtins.property
+    @pulumi.getter(name="disabledUntil")
+    def disabled_until(self) -> _builtins.str:
+        """
+        Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+        """
+        return pulumi.get(self, "disabled_until")
+
+    @_builtins.property
     @pulumi.getter(name="emojiEvents")
     def emoji_events(self) -> _builtins.bool:
         """
@@ -155,6 +203,14 @@ class GetProjectHookResult:
         Enable ssl verification when invoking the hook.
         """
         return pulumi.get(self, "enable_ssl_verification")
+
+    @_builtins.property
+    @pulumi.getter(name="featureFlagEvents")
+    def feature_flag_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for feature flag events.
+        """
+        return pulumi.get(self, "feature_flag_events")
 
     @_builtins.property
     @pulumi.getter(name="hookId")
@@ -195,6 +251,14 @@ class GetProjectHookResult:
         Invoke the hook for merge requests.
         """
         return pulumi.get(self, "merge_requests_events")
+
+    @_builtins.property
+    @pulumi.getter(name="milestoneEvents")
+    def milestone_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for milestone events.
+        """
+        return pulumi.get(self, "milestone_events")
 
     @_builtins.property
     @pulumi.getter(name="noteEvents")
@@ -253,21 +317,44 @@ class GetProjectHookResult:
         return pulumi.get(self, "releases_events")
 
     @_builtins.property
+    @pulumi.getter(name="repositoryUpdateEvents")
+    def repository_update_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for repository update events.
+        """
+        return pulumi.get(self, "repository_update_events")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceAccessTokenEvents")
+    def resource_access_token_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for project access token expiry events.
+        """
+        return pulumi.get(self, "resource_access_token_events")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceDeployTokenEvents")
+    def resource_deploy_token_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for resource deploy token events.
+        """
+        return pulumi.get(self, "resource_deploy_token_events")
+
+    @_builtins.property
+    @pulumi.getter(name="signingTokenPresent")
+    def signing_token_present(self) -> _builtins.bool:
+        """
+        Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
+        """
+        return pulumi.get(self, "signing_token_present")
+
+    @_builtins.property
     @pulumi.getter(name="tagPushEvents")
     def tag_push_events(self) -> _builtins.bool:
         """
         Invoke the hook for tag push events.
         """
         return pulumi.get(self, "tag_push_events")
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.""")
-    def token(self) -> _builtins.str:
-        """
-        A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
-        """
-        return pulumi.get(self, "token")
 
     @_builtins.property
     @pulumi.getter
@@ -300,18 +387,23 @@ class AwaitableGetProjectHookResult(GetProjectHookResult):
         if False:
             yield self
         return GetProjectHookResult(
+            alert_status=self.alert_status,
             branch_filter_strategy=self.branch_filter_strategy,
             confidential_issues_events=self.confidential_issues_events,
             confidential_note_events=self.confidential_note_events,
+            created_at=self.created_at,
             custom_webhook_template=self.custom_webhook_template,
             deployment_events=self.deployment_events,
+            disabled_until=self.disabled_until,
             emoji_events=self.emoji_events,
             enable_ssl_verification=self.enable_ssl_verification,
+            feature_flag_events=self.feature_flag_events,
             hook_id=self.hook_id,
             id=self.id,
             issues_events=self.issues_events,
             job_events=self.job_events,
             merge_requests_events=self.merge_requests_events,
+            milestone_events=self.milestone_events,
             note_events=self.note_events,
             pipeline_events=self.pipeline_events,
             project=self.project,
@@ -319,8 +411,11 @@ class AwaitableGetProjectHookResult(GetProjectHookResult):
             push_events=self.push_events,
             push_events_branch_filter=self.push_events_branch_filter,
             releases_events=self.releases_events,
+            repository_update_events=self.repository_update_events,
+            resource_access_token_events=self.resource_access_token_events,
+            resource_deploy_token_events=self.resource_deploy_token_events,
+            signing_token_present=self.signing_token_present,
             tag_push_events=self.tag_push_events,
-            token=self.token,
             url=self.url,
             vulnerability_events=self.vulnerability_events,
             wiki_page_events=self.wiki_page_events)
@@ -356,18 +451,23 @@ def get_project_hook(hook_id: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectHook:getProjectHook', __args__, opts=opts, typ=GetProjectHookResult).value
 
     return AwaitableGetProjectHookResult(
+        alert_status=pulumi.get(__ret__, 'alert_status'),
         branch_filter_strategy=pulumi.get(__ret__, 'branch_filter_strategy'),
         confidential_issues_events=pulumi.get(__ret__, 'confidential_issues_events'),
         confidential_note_events=pulumi.get(__ret__, 'confidential_note_events'),
+        created_at=pulumi.get(__ret__, 'created_at'),
         custom_webhook_template=pulumi.get(__ret__, 'custom_webhook_template'),
         deployment_events=pulumi.get(__ret__, 'deployment_events'),
+        disabled_until=pulumi.get(__ret__, 'disabled_until'),
         emoji_events=pulumi.get(__ret__, 'emoji_events'),
         enable_ssl_verification=pulumi.get(__ret__, 'enable_ssl_verification'),
+        feature_flag_events=pulumi.get(__ret__, 'feature_flag_events'),
         hook_id=pulumi.get(__ret__, 'hook_id'),
         id=pulumi.get(__ret__, 'id'),
         issues_events=pulumi.get(__ret__, 'issues_events'),
         job_events=pulumi.get(__ret__, 'job_events'),
         merge_requests_events=pulumi.get(__ret__, 'merge_requests_events'),
+        milestone_events=pulumi.get(__ret__, 'milestone_events'),
         note_events=pulumi.get(__ret__, 'note_events'),
         pipeline_events=pulumi.get(__ret__, 'pipeline_events'),
         project=pulumi.get(__ret__, 'project'),
@@ -375,8 +475,11 @@ def get_project_hook(hook_id: Optional[_builtins.int] = None,
         push_events=pulumi.get(__ret__, 'push_events'),
         push_events_branch_filter=pulumi.get(__ret__, 'push_events_branch_filter'),
         releases_events=pulumi.get(__ret__, 'releases_events'),
+        repository_update_events=pulumi.get(__ret__, 'repository_update_events'),
+        resource_access_token_events=pulumi.get(__ret__, 'resource_access_token_events'),
+        resource_deploy_token_events=pulumi.get(__ret__, 'resource_deploy_token_events'),
+        signing_token_present=pulumi.get(__ret__, 'signing_token_present'),
         tag_push_events=pulumi.get(__ret__, 'tag_push_events'),
-        token=pulumi.get(__ret__, 'token'),
         url=pulumi.get(__ret__, 'url'),
         vulnerability_events=pulumi.get(__ret__, 'vulnerability_events'),
         wiki_page_events=pulumi.get(__ret__, 'wiki_page_events'))
@@ -409,18 +512,23 @@ def get_project_hook_output(hook_id: pulumi.Input[Optional[_builtins.int]] = Non
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectHook:getProjectHook', __args__, opts=opts, typ=GetProjectHookResult)
     return __ret__.apply(lambda __response__: GetProjectHookResult(
+        alert_status=pulumi.get(__response__, 'alert_status'),
         branch_filter_strategy=pulumi.get(__response__, 'branch_filter_strategy'),
         confidential_issues_events=pulumi.get(__response__, 'confidential_issues_events'),
         confidential_note_events=pulumi.get(__response__, 'confidential_note_events'),
+        created_at=pulumi.get(__response__, 'created_at'),
         custom_webhook_template=pulumi.get(__response__, 'custom_webhook_template'),
         deployment_events=pulumi.get(__response__, 'deployment_events'),
+        disabled_until=pulumi.get(__response__, 'disabled_until'),
         emoji_events=pulumi.get(__response__, 'emoji_events'),
         enable_ssl_verification=pulumi.get(__response__, 'enable_ssl_verification'),
+        feature_flag_events=pulumi.get(__response__, 'feature_flag_events'),
         hook_id=pulumi.get(__response__, 'hook_id'),
         id=pulumi.get(__response__, 'id'),
         issues_events=pulumi.get(__response__, 'issues_events'),
         job_events=pulumi.get(__response__, 'job_events'),
         merge_requests_events=pulumi.get(__response__, 'merge_requests_events'),
+        milestone_events=pulumi.get(__response__, 'milestone_events'),
         note_events=pulumi.get(__response__, 'note_events'),
         pipeline_events=pulumi.get(__response__, 'pipeline_events'),
         project=pulumi.get(__response__, 'project'),
@@ -428,8 +536,11 @@ def get_project_hook_output(hook_id: pulumi.Input[Optional[_builtins.int]] = Non
         push_events=pulumi.get(__response__, 'push_events'),
         push_events_branch_filter=pulumi.get(__response__, 'push_events_branch_filter'),
         releases_events=pulumi.get(__response__, 'releases_events'),
+        repository_update_events=pulumi.get(__response__, 'repository_update_events'),
+        resource_access_token_events=pulumi.get(__response__, 'resource_access_token_events'),
+        resource_deploy_token_events=pulumi.get(__response__, 'resource_deploy_token_events'),
+        signing_token_present=pulumi.get(__response__, 'signing_token_present'),
         tag_push_events=pulumi.get(__response__, 'tag_push_events'),
-        token=pulumi.get(__response__, 'token'),
         url=pulumi.get(__response__, 'url'),
         vulnerability_events=pulumi.get(__response__, 'vulnerability_events'),
         wiki_page_events=pulumi.get(__response__, 'wiki_page_events')))

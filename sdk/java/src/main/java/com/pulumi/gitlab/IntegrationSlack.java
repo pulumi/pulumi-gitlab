@@ -263,24 +263,6 @@ public class IntegrationSlack extends com.pulumi.resources.CustomResource {
         return this.notifyOnlyBrokenPipelines;
     }
     /**
-     * This parameter has been replaced with `branchesToBeNotified`.
-     * 
-     * @deprecated
-     * use &#39;branches_to_be_notified&#39; argument instead
-     * 
-     */
-    @Deprecated /* use 'branches_to_be_notified' argument instead */
-    @Export(name="notifyOnlyDefaultBranch", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> notifyOnlyDefaultBranch;
-
-    /**
-     * @return This parameter has been replaced with `branchesToBeNotified`.
-     * 
-     */
-    public Output<Boolean> notifyOnlyDefaultBranch() {
-        return this.notifyOnlyDefaultBranch;
-    }
-    /**
      * The name of the channel to receive pipeline events notifications.
      * 
      */

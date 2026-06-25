@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -84,7 +84,7 @@ type UserImpersonationToken struct {
 	TokenId pulumi.IntOutput `pulumi:"tokenId"`
 	// The ID of the user.
 	UserId pulumi.IntOutput `pulumi:"userId"`
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate pulumi.BoolOutput `pulumi:"validatePastExpirationDate"`
 }
 
@@ -151,7 +151,7 @@ type userImpersonationTokenState struct {
 	TokenId *int `pulumi:"tokenId"`
 	// The ID of the user.
 	UserId *int `pulumi:"userId"`
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
@@ -176,7 +176,7 @@ type UserImpersonationTokenState struct {
 	TokenId pulumi.IntPtrInput
 	// The ID of the user.
 	UserId pulumi.IntPtrInput
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
@@ -193,7 +193,7 @@ type userImpersonationTokenArgs struct {
 	Scopes []string `pulumi:"scopes"`
 	// The ID of the user.
 	UserId int `pulumi:"userId"`
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
@@ -207,7 +207,7 @@ type UserImpersonationTokenArgs struct {
 	Scopes pulumi.StringArrayInput
 	// The ID of the user.
 	UserId pulumi.IntInput
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
@@ -348,7 +348,7 @@ func (o UserImpersonationTokenOutput) UserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *UserImpersonationToken) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
 }
 
-// Wether to validate if the expiration date is in the future.
+// Whether to validate if the expiration date is in the future.
 func (o UserImpersonationTokenOutput) ValidatePastExpirationDate() pulumi.BoolOutput {
 	return o.ApplyT(func(v *UserImpersonationToken) pulumi.BoolOutput { return v.ValidatePastExpirationDate }).(pulumi.BoolOutput)
 }

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -71,7 +71,7 @@ import (
 type GroupSamlLink struct {
 	pulumi.CustomResourceState
 
-	// Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+	// Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// The ID or path of the group to add the SAML Group Link to.
 	Group pulumi.StringOutput `pulumi:"group"`
@@ -120,7 +120,7 @@ func GetGroupSamlLink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupSamlLink resources.
 type groupSamlLinkState struct {
-	// Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+	// Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The ID or path of the group to add the SAML Group Link to.
 	Group *string `pulumi:"group"`
@@ -131,7 +131,7 @@ type groupSamlLinkState struct {
 }
 
 type GroupSamlLinkState struct {
-	// Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+	// Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
 	AccessLevel pulumi.StringPtrInput
 	// The ID or path of the group to add the SAML Group Link to.
 	Group pulumi.StringPtrInput
@@ -146,7 +146,7 @@ func (GroupSamlLinkState) ElementType() reflect.Type {
 }
 
 type groupSamlLinkArgs struct {
-	// Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+	// Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
 	AccessLevel string `pulumi:"accessLevel"`
 	// The ID or path of the group to add the SAML Group Link to.
 	Group string `pulumi:"group"`
@@ -158,7 +158,7 @@ type groupSamlLinkArgs struct {
 
 // The set of arguments for constructing a GroupSamlLink resource.
 type GroupSamlLinkArgs struct {
-	// Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+	// Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
 	AccessLevel pulumi.StringInput
 	// The ID or path of the group to add the SAML Group Link to.
 	Group pulumi.StringInput
@@ -255,7 +255,7 @@ func (o GroupSamlLinkOutput) ToGroupSamlLinkOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+// Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
 func (o GroupSamlLinkOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupSamlLink) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
 }

@@ -99,6 +99,12 @@ namespace Pulumi.GitLab
         [Output("serviceAccountId")]
         public Output<string> ServiceAccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// If set to `True`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `False`.
+        /// </summary>
+        [Output("skipWaitForDeletion")]
+        public Output<bool?> SkipWaitForDeletion { get; private set; } = null!;
+
         [Output("timeouts")]
         public Output<Outputs.GroupServiceAccountTimeouts?> Timeouts { get; private set; } = null!;
 
@@ -172,6 +178,12 @@ namespace Pulumi.GitLab
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// If set to `True`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `False`.
+        /// </summary>
+        [Input("skipWaitForDeletion")]
+        public Input<bool>? SkipWaitForDeletion { get; set; }
+
         [Input("timeouts")]
         public Input<Inputs.GroupServiceAccountTimeoutsArgs>? Timeouts { get; set; }
 
@@ -212,6 +224,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("serviceAccountId")]
         public Input<string>? ServiceAccountId { get; set; }
+
+        /// <summary>
+        /// If set to `True`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `False`.
+        /// </summary>
+        [Input("skipWaitForDeletion")]
+        public Input<bool>? SkipWaitForDeletion { get; set; }
 
         [Input("timeouts")]
         public Input<Inputs.GroupServiceAccountTimeoutsGetArgs>? Timeouts { get; set; }

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -85,6 +85,8 @@ type ProjectLabel struct {
 	LabelId pulumi.IntOutput `pulumi:"labelId"`
 	// The name of the label.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The priority of the label. Must be greater or equal than zero or null to remove the priority.
+	Priority pulumi.IntPtrOutput `pulumi:"priority"`
 	// The name or id of the project to add the label to.
 	Project pulumi.StringOutput `pulumi:"project"`
 }
@@ -135,6 +137,8 @@ type projectLabelState struct {
 	LabelId *int `pulumi:"labelId"`
 	// The name of the label.
 	Name *string `pulumi:"name"`
+	// The priority of the label. Must be greater or equal than zero or null to remove the priority.
+	Priority *int `pulumi:"priority"`
 	// The name or id of the project to add the label to.
 	Project *string `pulumi:"project"`
 }
@@ -150,6 +154,8 @@ type ProjectLabelState struct {
 	LabelId pulumi.IntPtrInput
 	// The name of the label.
 	Name pulumi.StringPtrInput
+	// The priority of the label. Must be greater or equal than zero or null to remove the priority.
+	Priority pulumi.IntPtrInput
 	// The name or id of the project to add the label to.
 	Project pulumi.StringPtrInput
 }
@@ -165,6 +171,8 @@ type projectLabelArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the label.
 	Name *string `pulumi:"name"`
+	// The priority of the label. Must be greater or equal than zero or null to remove the priority.
+	Priority *int `pulumi:"priority"`
 	// The name or id of the project to add the label to.
 	Project string `pulumi:"project"`
 }
@@ -177,6 +185,8 @@ type ProjectLabelArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the label.
 	Name pulumi.StringPtrInput
+	// The priority of the label. Must be greater or equal than zero or null to remove the priority.
+	Priority pulumi.IntPtrInput
 	// The name or id of the project to add the label to.
 	Project pulumi.StringInput
 }
@@ -291,6 +301,11 @@ func (o ProjectLabelOutput) LabelId() pulumi.IntOutput {
 // The name of the label.
 func (o ProjectLabelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectLabel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The priority of the label. Must be greater or equal than zero or null to remove the priority.
+func (o ProjectLabelOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectLabel) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
 // The name or id of the project to add the label to.

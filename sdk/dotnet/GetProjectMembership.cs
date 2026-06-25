@@ -16,7 +16,7 @@ namespace Pulumi.GitLab
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
         /// </summary>
-        public static Task<GetProjectMembershipResult> InvokeAsync(GetProjectMembershipArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetProjectMembershipResult> InvokeAsync(GetProjectMembershipArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectMembershipResult>("gitlab:index/getProjectMembership:getProjectMembership", args ?? new GetProjectMembershipArgs(), options.WithDefaults());
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Pulumi.GitLab
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
         /// </summary>
-        public static Output<GetProjectMembershipResult> Invoke(GetProjectMembershipInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetProjectMembershipResult> Invoke(GetProjectMembershipInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectMembershipResult>("gitlab:index/getProjectMembership:getProjectMembership", args ?? new GetProjectMembershipInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -40,12 +40,6 @@ namespace Pulumi.GitLab
     public sealed class GetProjectMembershipArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The full path of the project. Use `Project` instead. Will be removed in 19.0.
-        /// </summary>
-        [Input("fullPath")]
-        public string? FullPath { get; set; }
-
-        /// <summary>
         /// Return all project members including members through ancestor groups
         /// </summary>
         [Input("inherited")]
@@ -54,14 +48,8 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The ID or full path of the project.
         /// </summary>
-        [Input("project")]
-        public string? Project { get; set; }
-
-        /// <summary>
-        /// The ID of the project. Use `Project` instead. Will be removed in 19.0.
-        /// </summary>
-        [Input("projectId")]
-        public int? ProjectId { get; set; }
+        [Input("project", required: true)]
+        public string Project { get; set; } = null!;
 
         /// <summary>
         /// A query string to search for members
@@ -90,12 +78,6 @@ namespace Pulumi.GitLab
     public sealed class GetProjectMembershipInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The full path of the project. Use `Project` instead. Will be removed in 19.0.
-        /// </summary>
-        [Input("fullPath")]
-        public Input<string>? FullPath { get; set; }
-
-        /// <summary>
         /// Return all project members including members through ancestor groups
         /// </summary>
         [Input("inherited")]
@@ -104,14 +86,8 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The ID or full path of the project.
         /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// The ID of the project. Use `Project` instead. Will be removed in 19.0.
-        /// </summary>
-        [Input("projectId")]
-        public Input<int>? ProjectId { get; set; }
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// A query string to search for members
@@ -142,10 +118,6 @@ namespace Pulumi.GitLab
     public sealed class GetProjectMembershipResult
     {
         /// <summary>
-        /// The full path of the project. Use `Project` instead. Will be removed in 19.0.
-        /// </summary>
-        public readonly string FullPath;
-        /// <summary>
         /// The ID of this datasource. In the format `&lt;project:query-hash&gt;` if query is set, otherwise `&lt;project&gt;`.
         /// </summary>
         public readonly string Id;
@@ -162,10 +134,6 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The ID of the project. Use `Project` instead. Will be removed in 19.0.
-        /// </summary>
-        public readonly int ProjectId;
-        /// <summary>
         /// A query string to search for members
         /// </summary>
         public readonly string? Query;
@@ -176,8 +144,6 @@ namespace Pulumi.GitLab
 
         [OutputConstructor]
         private GetProjectMembershipResult(
-            string fullPath,
-
             string id,
 
             bool? inherited,
@@ -186,18 +152,14 @@ namespace Pulumi.GitLab
 
             string project,
 
-            int projectId,
-
             string? query,
 
             ImmutableArray<int> userIds)
         {
-            FullPath = fullPath;
             Id = id;
             Inherited = inherited;
             Members = members;
             Project = project;
-            ProjectId = projectId;
             Query = query;
             UserIds = userIds;
         }

@@ -18,29 +18,6 @@ public final class ProjectShareGroupArgs extends com.pulumi.resources.ResourceAr
     public static final ProjectShareGroupArgs Empty = new ProjectShareGroupArgs();
 
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-     * 
-     * @deprecated
-     * Use `groupAccess` instead of the `accessLevel` attribute.
-     * 
-     */
-    @Deprecated /* Use `groupAccess` instead of the `accessLevel` attribute. */
-    @Import(name="accessLevel")
-    private @Nullable Output<String> accessLevel;
-
-    /**
-     * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-     * 
-     * @deprecated
-     * Use `groupAccess` instead of the `accessLevel` attribute.
-     * 
-     */
-    @Deprecated /* Use `groupAccess` instead of the `accessLevel` attribute. */
-    public Optional<Output<String>> accessLevel() {
-        return Optional.ofNullable(this.accessLevel);
-    }
-
-    /**
      * Share expiration date. Format: `YYYY-MM-DD`
      * 
      */
@@ -59,15 +36,15 @@ public final class ProjectShareGroupArgs extends com.pulumi.resources.ResourceAr
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
-    @Import(name="groupAccess")
-    private @Nullable Output<String> groupAccess;
+    @Import(name="groupAccess", required=true)
+    private Output<String> groupAccess;
 
     /**
      * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
-    public Optional<Output<String>> groupAccess() {
-        return Optional.ofNullable(this.groupAccess);
+    public Output<String> groupAccess() {
+        return this.groupAccess;
     }
 
     /**
@@ -103,7 +80,6 @@ public final class ProjectShareGroupArgs extends com.pulumi.resources.ResourceAr
     private ProjectShareGroupArgs() {}
 
     private ProjectShareGroupArgs(ProjectShareGroupArgs $) {
-        this.accessLevel = $.accessLevel;
         this.expiresAt = $.expiresAt;
         this.groupAccess = $.groupAccess;
         this.groupId = $.groupId;
@@ -126,35 +102,6 @@ public final class ProjectShareGroupArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(ProjectShareGroupArgs defaults) {
             $ = new ProjectShareGroupArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param accessLevel The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `groupAccess` instead of the `accessLevel` attribute.
-         * 
-         */
-        @Deprecated /* Use `groupAccess` instead of the `accessLevel` attribute. */
-        public Builder accessLevel(@Nullable Output<String> accessLevel) {
-            $.accessLevel = accessLevel;
-            return this;
-        }
-
-        /**
-         * @param accessLevel The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `groupAccess` instead of the `accessLevel` attribute.
-         * 
-         */
-        @Deprecated /* Use `groupAccess` instead of the `accessLevel` attribute. */
-        public Builder accessLevel(String accessLevel) {
-            return accessLevel(Output.of(accessLevel));
         }
 
         /**
@@ -184,7 +131,7 @@ public final class ProjectShareGroupArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder groupAccess(@Nullable Output<String> groupAccess) {
+        public Builder groupAccess(Output<String> groupAccess) {
             $.groupAccess = groupAccess;
             return this;
         }
@@ -242,6 +189,9 @@ public final class ProjectShareGroupArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ProjectShareGroupArgs build() {
+            if ($.groupAccess == null) {
+                throw new MissingRequiredPropertyException("ProjectShareGroupArgs", "groupAccess");
+            }
             if ($.groupId == null) {
                 throw new MissingRequiredPropertyException("ProjectShareGroupArgs", "groupId");
             }

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -69,7 +69,7 @@ type ProjectIntegrationJira struct {
 
 	// Whether the integration is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
-	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
 	ApiUrl pulumi.StringOutput `pulumi:"apiUrl"`
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled pulumi.BoolOutput `pulumi:"commentOnEventEnabled"`
@@ -79,7 +79,7 @@ type ProjectIntegrationJira struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Enable viewing Jira issues in GitLab.
 	IssuesEnabled pulumi.BoolOutput `pulumi:"issuesEnabled"`
-	// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+	// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
 	JiraAuthType pulumi.IntOutput `pulumi:"jiraAuthType"`
 	// Prefix to match Jira issue keys.
 	JiraIssuePrefix pulumi.StringOutput `pulumi:"jiraIssuePrefix"`
@@ -91,7 +91,7 @@ type ProjectIntegrationJira struct {
 	JiraIssueTransitionId pulumi.StringOutput `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for merge request events
 	MergeRequestsEvents pulumi.BoolOutput `pulumi:"mergeRequestsEvents"`
-	// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+	// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -105,7 +105,7 @@ type ProjectIntegrationJira struct {
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Indicates whether or not to inherit default settings. Defaults to false.
 	UseInheritedSettings pulumi.BoolOutput `pulumi:"useInheritedSettings"`
-	// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+	// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -157,7 +157,7 @@ func GetProjectIntegrationJira(ctx *pulumi.Context,
 type projectIntegrationJiraState struct {
 	// Whether the integration is active.
 	Active *bool `pulumi:"active"`
-	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
 	ApiUrl *string `pulumi:"apiUrl"`
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled *bool `pulumi:"commentOnEventEnabled"`
@@ -167,7 +167,7 @@ type projectIntegrationJiraState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Enable viewing Jira issues in GitLab.
 	IssuesEnabled *bool `pulumi:"issuesEnabled"`
-	// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+	// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
 	JiraAuthType *int `pulumi:"jiraAuthType"`
 	// Prefix to match Jira issue keys.
 	JiraIssuePrefix *string `pulumi:"jiraIssuePrefix"`
@@ -179,7 +179,7 @@ type projectIntegrationJiraState struct {
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for merge request events
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
-	// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+	// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
 	Password *string `pulumi:"password"`
 	// ID of the project you want to activate integration on.
 	Project *string `pulumi:"project"`
@@ -193,14 +193,14 @@ type projectIntegrationJiraState struct {
 	Url *string `pulumi:"url"`
 	// Indicates whether or not to inherit default settings. Defaults to false.
 	UseInheritedSettings *bool `pulumi:"useInheritedSettings"`
-	// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+	// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
 	Username *string `pulumi:"username"`
 }
 
 type ProjectIntegrationJiraState struct {
 	// Whether the integration is active.
 	Active pulumi.BoolPtrInput
-	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
 	ApiUrl pulumi.StringPtrInput
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled pulumi.BoolPtrInput
@@ -210,7 +210,7 @@ type ProjectIntegrationJiraState struct {
 	CreatedAt pulumi.StringPtrInput
 	// Enable viewing Jira issues in GitLab.
 	IssuesEnabled pulumi.BoolPtrInput
-	// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+	// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
 	JiraAuthType pulumi.IntPtrInput
 	// Prefix to match Jira issue keys.
 	JiraIssuePrefix pulumi.StringPtrInput
@@ -222,7 +222,7 @@ type ProjectIntegrationJiraState struct {
 	JiraIssueTransitionId pulumi.StringPtrInput
 	// Enable notifications for merge request events
 	MergeRequestsEvents pulumi.BoolPtrInput
-	// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+	// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
 	Password pulumi.StringPtrInput
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringPtrInput
@@ -236,7 +236,7 @@ type ProjectIntegrationJiraState struct {
 	Url pulumi.StringPtrInput
 	// Indicates whether or not to inherit default settings. Defaults to false.
 	UseInheritedSettings pulumi.BoolPtrInput
-	// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+	// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
 	Username pulumi.StringPtrInput
 }
 
@@ -245,7 +245,7 @@ func (ProjectIntegrationJiraState) ElementType() reflect.Type {
 }
 
 type projectIntegrationJiraArgs struct {
-	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
 	ApiUrl *string `pulumi:"apiUrl"`
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled *bool `pulumi:"commentOnEventEnabled"`
@@ -253,7 +253,7 @@ type projectIntegrationJiraArgs struct {
 	CommitEvents *bool `pulumi:"commitEvents"`
 	// Enable viewing Jira issues in GitLab.
 	IssuesEnabled *bool `pulumi:"issuesEnabled"`
-	// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+	// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
 	JiraAuthType *int `pulumi:"jiraAuthType"`
 	// Prefix to match Jira issue keys.
 	JiraIssuePrefix *string `pulumi:"jiraIssuePrefix"`
@@ -265,7 +265,7 @@ type projectIntegrationJiraArgs struct {
 	JiraIssueTransitionId *string `pulumi:"jiraIssueTransitionId"`
 	// Enable notifications for merge request events
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
-	// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+	// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
 	Password string `pulumi:"password"`
 	// ID of the project you want to activate integration on.
 	Project string `pulumi:"project"`
@@ -275,13 +275,13 @@ type projectIntegrationJiraArgs struct {
 	Url string `pulumi:"url"`
 	// Indicates whether or not to inherit default settings. Defaults to false.
 	UseInheritedSettings *bool `pulumi:"useInheritedSettings"`
-	// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+	// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
 	Username *string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a ProjectIntegrationJira resource.
 type ProjectIntegrationJiraArgs struct {
-	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
 	ApiUrl pulumi.StringPtrInput
 	// Enable comments inside Jira issues on each GitLab event (commit / merge request)
 	CommentOnEventEnabled pulumi.BoolPtrInput
@@ -289,7 +289,7 @@ type ProjectIntegrationJiraArgs struct {
 	CommitEvents pulumi.BoolPtrInput
 	// Enable viewing Jira issues in GitLab.
 	IssuesEnabled pulumi.BoolPtrInput
-	// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+	// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
 	JiraAuthType pulumi.IntPtrInput
 	// Prefix to match Jira issue keys.
 	JiraIssuePrefix pulumi.StringPtrInput
@@ -301,7 +301,7 @@ type ProjectIntegrationJiraArgs struct {
 	JiraIssueTransitionId pulumi.StringPtrInput
 	// Enable notifications for merge request events
 	MergeRequestsEvents pulumi.BoolPtrInput
-	// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+	// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
 	Password pulumi.StringInput
 	// ID of the project you want to activate integration on.
 	Project pulumi.StringInput
@@ -311,7 +311,7 @@ type ProjectIntegrationJiraArgs struct {
 	Url pulumi.StringInput
 	// Indicates whether or not to inherit default settings. Defaults to false.
 	UseInheritedSettings pulumi.BoolPtrInput
-	// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+	// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
 	Username pulumi.StringPtrInput
 }
 
@@ -407,7 +407,7 @@ func (o ProjectIntegrationJiraOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectIntegrationJira) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
 }
 
-// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
 func (o ProjectIntegrationJiraOutput) ApiUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectIntegrationJira) pulumi.StringOutput { return v.ApiUrl }).(pulumi.StringOutput)
 }
@@ -432,7 +432,7 @@ func (o ProjectIntegrationJiraOutput) IssuesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectIntegrationJira) pulumi.BoolOutput { return v.IssuesEnabled }).(pulumi.BoolOutput)
 }
 
-// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+// The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
 func (o ProjectIntegrationJiraOutput) JiraAuthType() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectIntegrationJira) pulumi.IntOutput { return v.JiraAuthType }).(pulumi.IntOutput)
 }
@@ -462,7 +462,7 @@ func (o ProjectIntegrationJiraOutput) MergeRequestsEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectIntegrationJira) pulumi.BoolOutput { return v.MergeRequestsEvents }).(pulumi.BoolOutput)
 }
 
-// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+// The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
 func (o ProjectIntegrationJiraOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectIntegrationJira) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
@@ -497,7 +497,7 @@ func (o ProjectIntegrationJiraOutput) UseInheritedSettings() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectIntegrationJira) pulumi.BoolOutput { return v.UseInheritedSettings }).(pulumi.BoolOutput)
 }
 
-// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+// The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
 func (o ProjectIntegrationJiraOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectIntegrationJira) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

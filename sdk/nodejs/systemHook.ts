@@ -73,29 +73,45 @@ export class SystemHook extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
+     * Description of the hook.
+     */
+    declare public readonly description: pulumi.Output<string>;
+    /**
      * Do SSL verification when triggering the hook.
      */
-    declare public readonly enableSslVerification: pulumi.Output<boolean | undefined>;
+    declare public readonly enableSslVerification: pulumi.Output<boolean>;
     /**
      * Trigger hook on merge requests events.
      */
-    declare public readonly mergeRequestsEvents: pulumi.Output<boolean | undefined>;
+    declare public readonly mergeRequestsEvents: pulumi.Output<boolean>;
+    /**
+     * Name of the hook.
+     */
+    declare public readonly name: pulumi.Output<string>;
     /**
      * When true, the hook fires on push events.
      */
-    declare public readonly pushEvents: pulumi.Output<boolean | undefined>;
+    declare public readonly pushEvents: pulumi.Output<boolean>;
     /**
      * Trigger hook on repository update events.
      */
-    declare public readonly repositoryUpdateEvents: pulumi.Output<boolean | undefined>;
+    declare public readonly repositoryUpdateEvents: pulumi.Output<boolean>;
+    /**
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     */
+    declare public readonly signingToken: pulumi.Output<string | undefined>;
+    /**
+     * Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     */
+    declare public /*out*/ readonly signingTokenPresent: pulumi.Output<boolean>;
     /**
      * When true, the hook fires on new tags being pushed.
      */
-    declare public readonly tagPushEvents: pulumi.Output<boolean | undefined>;
+    declare public readonly tagPushEvents: pulumi.Output<boolean>;
     /**
      * Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
      */
-    declare public readonly token: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string>;
     /**
      * The hook URL.
      */
@@ -115,10 +131,14 @@ export class SystemHook extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SystemHookState | undefined;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
             resourceInputs["enableSslVerification"] = state?.enableSslVerification;
             resourceInputs["mergeRequestsEvents"] = state?.mergeRequestsEvents;
+            resourceInputs["name"] = state?.name;
             resourceInputs["pushEvents"] = state?.pushEvents;
             resourceInputs["repositoryUpdateEvents"] = state?.repositoryUpdateEvents;
+            resourceInputs["signingToken"] = state?.signingToken;
+            resourceInputs["signingTokenPresent"] = state?.signingTokenPresent;
             resourceInputs["tagPushEvents"] = state?.tagPushEvents;
             resourceInputs["token"] = state?.token;
             resourceInputs["url"] = state?.url;
@@ -127,17 +147,21 @@ export class SystemHook extends pulumi.CustomResource {
             if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
+            resourceInputs["description"] = args?.description;
             resourceInputs["enableSslVerification"] = args?.enableSslVerification;
             resourceInputs["mergeRequestsEvents"] = args?.mergeRequestsEvents;
+            resourceInputs["name"] = args?.name;
             resourceInputs["pushEvents"] = args?.pushEvents;
             resourceInputs["repositoryUpdateEvents"] = args?.repositoryUpdateEvents;
+            resourceInputs["signingToken"] = args?.signingToken ? pulumi.secret(args.signingToken) : undefined;
             resourceInputs["tagPushEvents"] = args?.tagPushEvents;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["url"] = args?.url;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["signingTokenPresent"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["token"] };
+        const secretOpts = { additionalSecretOutputs: ["signingToken", "token"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(SystemHook.__pulumiType, name, resourceInputs, opts);
     }
@@ -152,6 +176,10 @@ export interface SystemHookState {
      */
     createdAt?: pulumi.Input<string | undefined>;
     /**
+     * Description of the hook.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
      * Do SSL verification when triggering the hook.
      */
     enableSslVerification?: pulumi.Input<boolean | undefined>;
@@ -160,6 +188,10 @@ export interface SystemHookState {
      */
     mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
+     * Name of the hook.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
      * When true, the hook fires on push events.
      */
     pushEvents?: pulumi.Input<boolean | undefined>;
@@ -167,6 +199,14 @@ export interface SystemHookState {
      * Trigger hook on repository update events.
      */
     repositoryUpdateEvents?: pulumi.Input<boolean | undefined>;
+    /**
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     */
+    signingToken?: pulumi.Input<string | undefined>;
+    /**
+     * Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     */
+    signingTokenPresent?: pulumi.Input<boolean | undefined>;
     /**
      * When true, the hook fires on new tags being pushed.
      */
@@ -186,6 +226,10 @@ export interface SystemHookState {
  */
 export interface SystemHookArgs {
     /**
+     * Description of the hook.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
      * Do SSL verification when triggering the hook.
      */
     enableSslVerification?: pulumi.Input<boolean | undefined>;
@@ -194,6 +238,10 @@ export interface SystemHookArgs {
      */
     mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
+     * Name of the hook.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
      * When true, the hook fires on push events.
      */
     pushEvents?: pulumi.Input<boolean | undefined>;
@@ -201,6 +249,10 @@ export interface SystemHookArgs {
      * Trigger hook on repository update events.
      */
     repositoryUpdateEvents?: pulumi.Input<boolean | undefined>;
+    /**
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     */
+    signingToken?: pulumi.Input<string | undefined>;
     /**
      * When true, the hook fires on new tags being pushed.
      */

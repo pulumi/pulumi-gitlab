@@ -66,29 +66,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0. */
-    @Import(name="approvalsBeforeMerge")
-    private @Nullable Output<Integer> approvalsBeforeMerge;
-
-    /**
-     * @return Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0. */
-    public Optional<Output<Integer>> approvalsBeforeMerge() {
-        return Optional.ofNullable(this.approvalsBeforeMerge);
-    }
-
-    /**
      * Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
      * 
      */
@@ -344,6 +321,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Show pipeline variables on the pipeline details page. Introduced in GitLab 17.8.
+     * 
+     */
+    @Import(name="ciDisplayPipelineVariables")
+    private @Nullable Output<Boolean> ciDisplayPipelineVariables;
+
+    /**
+     * @return Show pipeline variables on the pipeline details page. Introduced in GitLab 17.8.
+     * 
+     */
+    public Optional<Output<Boolean>> ciDisplayPipelineVariables() {
+        return Optional.ofNullable(this.ciDisplayPipelineVariables);
+    }
+
+    /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      * 
      */
@@ -419,14 +411,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `noOne`
      * 
      */
     @Import(name="ciRestrictPipelineCancellationRole")
     private @Nullable Output<String> ciRestrictPipelineCancellationRole;
 
     /**
-     * @return The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * @return The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `noOne`
      * 
      */
     public Optional<Output<String>> ciRestrictPipelineCancellationRole() {
@@ -476,29 +468,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> containerRegistryAccessLevel() {
         return Optional.ofNullable(this.containerRegistryAccessLevel);
-    }
-
-    /**
-     * Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `containerRegistryAccessLevel` instead. To be removed in 19.0. */
-    @Import(name="containerRegistryEnabled")
-    private @Nullable Output<Boolean> containerRegistryEnabled;
-
-    /**
-     * @return Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `containerRegistryAccessLevel` instead. To be removed in 19.0. */
-    public Optional<Output<Boolean>> containerRegistryEnabled() {
-        return Optional.ofNullable(this.containerRegistryEnabled);
     }
 
     /**
@@ -682,14 +651,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+     * Git URL to a repository to be imported. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     @Import(name="importUrl")
     private @Nullable Output<String> importUrl;
 
     /**
-     * @return Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+     * @return Git URL to a repository to be imported. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     public Optional<Output<String>> importUrl() {
@@ -769,29 +738,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> issuesAccessLevel() {
         return Optional.ofNullable(this.issuesAccessLevel);
-    }
-
-    /**
-     * Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `issuesAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `issuesAccessLevel` instead. To be removed in 19.0. */
-    @Import(name="issuesEnabled")
-    private @Nullable Output<Boolean> issuesEnabled;
-
-    /**
-     * @return Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `issuesAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `issuesAccessLevel` instead. To be removed in 19.0. */
-    public Optional<Output<Boolean>> issuesEnabled() {
-        return Optional.ofNullable(this.issuesEnabled);
     }
 
     /**
@@ -945,29 +891,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `mergeRequestsAccessLevel` instead. To be removed in 19.0. */
-    @Import(name="mergeRequestsEnabled")
-    private @Nullable Output<Boolean> mergeRequestsEnabled;
-
-    /**
-     * @return Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `mergeRequestsAccessLevel` instead. To be removed in 19.0. */
-    public Optional<Output<Boolean>> mergeRequestsEnabled() {
-        return Optional.ofNullable(this.mergeRequestsEnabled);
-    }
-
-    /**
      * Sets the template for new merge requests in the project.
      * 
      */
@@ -1010,75 +933,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> mergeTrainsSkipTrainAllowed() {
         return Optional.ofNullable(this.mergeTrainsSkipTrainAllowed);
-    }
-
-    /**
-     * Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
-     * 
-     * @deprecated
-     * To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
-     * 
-     */
-    @Deprecated /* To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. */
-    @Import(name="mirror")
-    private @Nullable Output<Boolean> mirror;
-
-    /**
-     * @return Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
-     * 
-     * @deprecated
-     * To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
-     * 
-     */
-    @Deprecated /* To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. */
-    public Optional<Output<Boolean>> mirror() {
-        return Optional.ofNullable(this.mirror);
-    }
-
-    /**
-     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
-     * 
-     * @deprecated
-     * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
-     * 
-     */
-    @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. */
-    @Import(name="mirrorOverwritesDivergedBranches")
-    private @Nullable Output<Boolean> mirrorOverwritesDivergedBranches;
-
-    /**
-     * @return Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
-     * 
-     * @deprecated
-     * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
-     * 
-     */
-    @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. */
-    public Optional<Output<Boolean>> mirrorOverwritesDivergedBranches() {
-        return Optional.ofNullable(this.mirrorOverwritesDivergedBranches);
-    }
-
-    /**
-     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
-     * 
-     * @deprecated
-     * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
-     * 
-     */
-    @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. */
-    @Import(name="mirrorTriggerBuilds")
-    private @Nullable Output<Boolean> mirrorTriggerBuilds;
-
-    /**
-     * @return Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
-     * 
-     * @deprecated
-     * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
-     * 
-     */
-    @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. */
-    public Optional<Output<Boolean>> mirrorTriggerBuilds() {
-        return Optional.ofNullable(this.mirrorTriggerBuilds);
     }
 
     /**
@@ -1202,26 +1056,18 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
-     * 
-     * @deprecated
-     * To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
+     * Set visibility of the package registry. Valid values are `disabled`, `private`, `enabled`, `public`.
      * 
      */
-    @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. */
-    @Import(name="onlyMirrorProtectedBranches")
-    private @Nullable Output<Boolean> onlyMirrorProtectedBranches;
+    @Import(name="packageRegistryAccessLevel")
+    private @Nullable Output<String> packageRegistryAccessLevel;
 
     /**
-     * @return Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
-     * 
-     * @deprecated
-     * To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
+     * @return Set visibility of the package registry. Valid values are `disabled`, `private`, `enabled`, `public`.
      * 
      */
-    @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. */
-    public Optional<Output<Boolean>> onlyMirrorProtectedBranches() {
-        return Optional.ofNullable(this.onlyMirrorProtectedBranches);
+    public Optional<Output<String>> packageRegistryAccessLevel() {
+        return Optional.ofNullable(this.packageRegistryAccessLevel);
     }
 
     /**
@@ -1300,29 +1146,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `buildsAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `buildsAccessLevel` instead. To be removed in 19.0. */
-    @Import(name="pipelinesEnabled")
-    private @Nullable Output<Boolean> pipelinesEnabled;
-
-    /**
-     * @return Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `buildsAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `buildsAccessLevel` instead. To be removed in 19.0. */
-    public Optional<Output<Boolean>> pipelinesEnabled() {
-        return Optional.ofNullable(this.pipelinesEnabled);
-    }
-
-    /**
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      * 
      */
@@ -1365,6 +1188,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> printingMergeRequestLinkEnabled() {
         return Optional.ofNullable(this.printingMergeRequestLinkEnabled);
+    }
+
+    /**
+     * Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor&#39;s lower-privileged context.
+     * 
+     */
+    @Import(name="protectMergeRequestPipelines")
+    private @Nullable Output<Boolean> protectMergeRequestPipelines;
+
+    /**
+     * @return Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor&#39;s lower-privileged context.
+     * 
+     */
+    public Optional<Output<Boolean>> protectMergeRequestPipelines() {
+        return Optional.ofNullable(this.protectMergeRequestPipelines);
     }
 
     /**
@@ -1541,29 +1379,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0. */
-    @Import(name="restrictUserDefinedVariables")
-    private @Nullable Output<Boolean> restrictUserDefinedVariables;
-
-    /**
-     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0. */
-    public Optional<Output<Boolean>> restrictUserDefinedVariables() {
-        return Optional.ofNullable(this.restrictUserDefinedVariables);
-    }
-
-    /**
      * Registration token to use during runner setup.
      * 
      */
@@ -1645,29 +1460,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `snippetsAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `snippetsAccessLevel` instead. To be removed in 19.0. */
-    @Import(name="snippetsEnabled")
-    private @Nullable Output<Boolean> snippetsEnabled;
-
-    /**
-     * @return Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `snippetsAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `snippetsAccessLevel` instead. To be removed in 19.0. */
-    public Optional<Output<Boolean>> snippetsEnabled() {
-        return Optional.ofNullable(this.snippetsEnabled);
-    }
-
-    /**
      * Template used to create squash commit message in merge requests.
      * 
      */
@@ -1725,29 +1517,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> suggestionCommitMessage() {
         return Optional.ofNullable(this.suggestionCommitMessage);
-    }
-
-    /**
-     * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `topics` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `topics` instead. To be removed in 19.0. */
-    @Import(name="tags")
-    private @Nullable Output<List<String>> tags;
-
-    /**
-     * @return The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `topics` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `topics` instead. To be removed in 19.0. */
-    public Optional<Output<List<String>>> tags() {
-        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -1857,36 +1626,12 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.wikiAccessLevel);
     }
 
-    /**
-     * Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `wikiAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `wikiAccessLevel` instead. To be removed in 19.0. */
-    @Import(name="wikiEnabled")
-    private @Nullable Output<Boolean> wikiEnabled;
-
-    /**
-     * @return Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `wikiAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `wikiAccessLevel` instead. To be removed in 19.0. */
-    public Optional<Output<Boolean>> wikiEnabled() {
-        return Optional.ofNullable(this.wikiEnabled);
-    }
-
     private ProjectState() {}
 
     private ProjectState(ProjectState $) {
         this.allowMergeOnSkippedPipeline = $.allowMergeOnSkippedPipeline;
         this.allowPipelineTriggerApproveDeployment = $.allowPipelineTriggerApproveDeployment;
         this.analyticsAccessLevel = $.analyticsAccessLevel;
-        this.approvalsBeforeMerge = $.approvalsBeforeMerge;
         this.archiveOnDestroy = $.archiveOnDestroy;
         this.archived = $.archived;
         this.autoCancelPendingPipelines = $.autoCancelPendingPipelines;
@@ -1904,6 +1649,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.ciConfigPath = $.ciConfigPath;
         this.ciDefaultGitDepth = $.ciDefaultGitDepth;
         this.ciDeletePipelinesInSeconds = $.ciDeletePipelinesInSeconds;
+        this.ciDisplayPipelineVariables = $.ciDisplayPipelineVariables;
         this.ciForwardDeploymentEnabled = $.ciForwardDeploymentEnabled;
         this.ciForwardDeploymentRollbackAllowed = $.ciForwardDeploymentRollbackAllowed;
         this.ciIdTokenSubClaimComponents = $.ciIdTokenSubClaimComponents;
@@ -1913,7 +1659,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.ciSeparatedCaches = $.ciSeparatedCaches;
         this.containerExpirationPolicy = $.containerExpirationPolicy;
         this.containerRegistryAccessLevel = $.containerRegistryAccessLevel;
-        this.containerRegistryEnabled = $.containerRegistryEnabled;
         this.defaultBranch = $.defaultBranch;
         this.description = $.description;
         this.emailsEnabled = $.emailsEnabled;
@@ -1932,7 +1677,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.infrastructureAccessLevel = $.infrastructureAccessLevel;
         this.initializeWithReadme = $.initializeWithReadme;
         this.issuesAccessLevel = $.issuesAccessLevel;
-        this.issuesEnabled = $.issuesEnabled;
         this.issuesTemplate = $.issuesTemplate;
         this.keepLatestArtifact = $.keepLatestArtifact;
         this.lfsEnabled = $.lfsEnabled;
@@ -1943,13 +1687,9 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.mergeRequestTitleRegex = $.mergeRequestTitleRegex;
         this.mergeRequestTitleRegexDescription = $.mergeRequestTitleRegexDescription;
         this.mergeRequestsAccessLevel = $.mergeRequestsAccessLevel;
-        this.mergeRequestsEnabled = $.mergeRequestsEnabled;
         this.mergeRequestsTemplate = $.mergeRequestsTemplate;
         this.mergeTrainsEnabled = $.mergeTrainsEnabled;
         this.mergeTrainsSkipTrainAllowed = $.mergeTrainsSkipTrainAllowed;
-        this.mirror = $.mirror;
-        this.mirrorOverwritesDivergedBranches = $.mirrorOverwritesDivergedBranches;
-        this.mirrorTriggerBuilds = $.mirrorTriggerBuilds;
         this.modelExperimentsAccessLevel = $.modelExperimentsAccessLevel;
         this.modelRegistryAccessLevel = $.modelRegistryAccessLevel;
         this.monitorAccessLevel = $.monitorAccessLevel;
@@ -1958,16 +1698,16 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.namespaceId = $.namespaceId;
         this.onlyAllowMergeIfAllDiscussionsAreResolved = $.onlyAllowMergeIfAllDiscussionsAreResolved;
         this.onlyAllowMergeIfPipelineSucceeds = $.onlyAllowMergeIfPipelineSucceeds;
-        this.onlyMirrorProtectedBranches = $.onlyMirrorProtectedBranches;
+        this.packageRegistryAccessLevel = $.packageRegistryAccessLevel;
         this.packagesEnabled = $.packagesEnabled;
         this.pagesAccessLevel = $.pagesAccessLevel;
         this.path = $.path;
         this.pathWithNamespace = $.pathWithNamespace;
         this.permanentlyDeleteOnDestroy = $.permanentlyDeleteOnDestroy;
-        this.pipelinesEnabled = $.pipelinesEnabled;
         this.preReceiveSecretDetectionEnabled = $.preReceiveSecretDetectionEnabled;
         this.preventMergeWithoutJiraIssue = $.preventMergeWithoutJiraIssue;
         this.printingMergeRequestLinkEnabled = $.printingMergeRequestLinkEnabled;
+        this.protectMergeRequestPipelines = $.protectMergeRequestPipelines;
         this.publicBuilds = $.publicBuilds;
         this.publicJobs = $.publicJobs;
         this.pushRules = $.pushRules;
@@ -1979,18 +1719,15 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.requirementsAccessLevel = $.requirementsAccessLevel;
         this.resolveOutdatedDiffDiscussions = $.resolveOutdatedDiffDiscussions;
         this.resourceGroupDefaultProcessMode = $.resourceGroupDefaultProcessMode;
-        this.restrictUserDefinedVariables = $.restrictUserDefinedVariables;
         this.runnersToken = $.runnersToken;
         this.securityAndComplianceAccessLevel = $.securityAndComplianceAccessLevel;
         this.sharedRunnersEnabled = $.sharedRunnersEnabled;
         this.skipWaitForDefaultBranchProtection = $.skipWaitForDefaultBranchProtection;
         this.snippetsAccessLevel = $.snippetsAccessLevel;
-        this.snippetsEnabled = $.snippetsEnabled;
         this.squashCommitTemplate = $.squashCommitTemplate;
         this.squashOption = $.squashOption;
         this.sshUrlToRepo = $.sshUrlToRepo;
         this.suggestionCommitMessage = $.suggestionCommitMessage;
-        this.tags = $.tags;
         this.templateName = $.templateName;
         this.templateProjectId = $.templateProjectId;
         this.topics = $.topics;
@@ -1998,7 +1735,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.visibilityLevel = $.visibilityLevel;
         this.webUrl = $.webUrl;
         this.wikiAccessLevel = $.wikiAccessLevel;
-        this.wikiEnabled = $.wikiEnabled;
     }
 
     public static Builder builder() {
@@ -2080,35 +1816,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder analyticsAccessLevel(String analyticsAccessLevel) {
             return analyticsAccessLevel(Output.of(analyticsAccessLevel));
-        }
-
-        /**
-         * @param approvalsBeforeMerge Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0. */
-        public Builder approvalsBeforeMerge(@Nullable Output<Integer> approvalsBeforeMerge) {
-            $.approvalsBeforeMerge = approvalsBeforeMerge;
-            return this;
-        }
-
-        /**
-         * @param approvalsBeforeMerge Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0. */
-        public Builder approvalsBeforeMerge(Integer approvalsBeforeMerge) {
-            return approvalsBeforeMerge(Output.of(approvalsBeforeMerge));
         }
 
         /**
@@ -2469,6 +2176,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param ciDisplayPipelineVariables Show pipeline variables on the pipeline details page. Introduced in GitLab 17.8.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciDisplayPipelineVariables(@Nullable Output<Boolean> ciDisplayPipelineVariables) {
+            $.ciDisplayPipelineVariables = ciDisplayPipelineVariables;
+            return this;
+        }
+
+        /**
+         * @param ciDisplayPipelineVariables Show pipeline variables on the pipeline details page. Introduced in GitLab 17.8.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciDisplayPipelineVariables(Boolean ciDisplayPipelineVariables) {
+            return ciDisplayPipelineVariables(Output.of(ciDisplayPipelineVariables));
+        }
+
+        /**
          * @param ciForwardDeploymentEnabled When a new deployment job starts, skip older deployment jobs that are still pending.
          * 
          * @return builder
@@ -2584,7 +2312,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ciRestrictPipelineCancellationRole The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+         * @param ciRestrictPipelineCancellationRole The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `noOne`
          * 
          * @return builder
          * 
@@ -2595,7 +2323,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ciRestrictPipelineCancellationRole The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+         * @param ciRestrictPipelineCancellationRole The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `noOne`
          * 
          * @return builder
          * 
@@ -2665,35 +2393,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder containerRegistryAccessLevel(String containerRegistryAccessLevel) {
             return containerRegistryAccessLevel(Output.of(containerRegistryAccessLevel));
-        }
-
-        /**
-         * @param containerRegistryEnabled Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `containerRegistryAccessLevel` instead. To be removed in 19.0. */
-        public Builder containerRegistryEnabled(@Nullable Output<Boolean> containerRegistryEnabled) {
-            $.containerRegistryEnabled = containerRegistryEnabled;
-            return this;
-        }
-
-        /**
-         * @param containerRegistryEnabled Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `containerRegistryAccessLevel` instead. To be removed in 19.0. */
-        public Builder containerRegistryEnabled(Boolean containerRegistryEnabled) {
-            return containerRegistryEnabled(Output.of(containerRegistryEnabled));
         }
 
         /**
@@ -2949,7 +2648,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importUrl Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+         * @param importUrl Git URL to a repository to be imported. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
          * 
          * @return builder
          * 
@@ -2960,7 +2659,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importUrl Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+         * @param importUrl Git URL to a repository to be imported. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
          * 
          * @return builder
          * 
@@ -3072,35 +2771,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder issuesAccessLevel(String issuesAccessLevel) {
             return issuesAccessLevel(Output.of(issuesAccessLevel));
-        }
-
-        /**
-         * @param issuesEnabled Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `issuesAccessLevel` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `issuesAccessLevel` instead. To be removed in 19.0. */
-        public Builder issuesEnabled(@Nullable Output<Boolean> issuesEnabled) {
-            $.issuesEnabled = issuesEnabled;
-            return this;
-        }
-
-        /**
-         * @param issuesEnabled Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `issuesAccessLevel` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `issuesAccessLevel` instead. To be removed in 19.0. */
-        public Builder issuesEnabled(Boolean issuesEnabled) {
-            return issuesEnabled(Output.of(issuesEnabled));
         }
 
         /**
@@ -3314,35 +2984,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mergeRequestsEnabled Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `mergeRequestsAccessLevel` instead. To be removed in 19.0. */
-        public Builder mergeRequestsEnabled(@Nullable Output<Boolean> mergeRequestsEnabled) {
-            $.mergeRequestsEnabled = mergeRequestsEnabled;
-            return this;
-        }
-
-        /**
-         * @param mergeRequestsEnabled Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `mergeRequestsAccessLevel` instead. To be removed in 19.0. */
-        public Builder mergeRequestsEnabled(Boolean mergeRequestsEnabled) {
-            return mergeRequestsEnabled(Output.of(mergeRequestsEnabled));
-        }
-
-        /**
          * @param mergeRequestsTemplate Sets the template for new merge requests in the project.
          * 
          * @return builder
@@ -3403,93 +3044,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mergeTrainsSkipTrainAllowed(Boolean mergeTrainsSkipTrainAllowed) {
             return mergeTrainsSkipTrainAllowed(Output.of(mergeTrainsSkipTrainAllowed));
-        }
-
-        /**
-         * @param mirror Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
-         * 
-         */
-        @Deprecated /* To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. */
-        public Builder mirror(@Nullable Output<Boolean> mirror) {
-            $.mirror = mirror;
-            return this;
-        }
-
-        /**
-         * @param mirror Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
-         * 
-         */
-        @Deprecated /* To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. */
-        public Builder mirror(Boolean mirror) {
-            return mirror(Output.of(mirror));
-        }
-
-        /**
-         * @param mirrorOverwritesDivergedBranches Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
-         * 
-         */
-        @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. */
-        public Builder mirrorOverwritesDivergedBranches(@Nullable Output<Boolean> mirrorOverwritesDivergedBranches) {
-            $.mirrorOverwritesDivergedBranches = mirrorOverwritesDivergedBranches;
-            return this;
-        }
-
-        /**
-         * @param mirrorOverwritesDivergedBranches Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
-         * 
-         */
-        @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. */
-        public Builder mirrorOverwritesDivergedBranches(Boolean mirrorOverwritesDivergedBranches) {
-            return mirrorOverwritesDivergedBranches(Output.of(mirrorOverwritesDivergedBranches));
-        }
-
-        /**
-         * @param mirrorTriggerBuilds Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
-         * 
-         */
-        @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. */
-        public Builder mirrorTriggerBuilds(@Nullable Output<Boolean> mirrorTriggerBuilds) {
-            $.mirrorTriggerBuilds = mirrorTriggerBuilds;
-            return this;
-        }
-
-        /**
-         * @param mirrorTriggerBuilds Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
-         * 
-         */
-        @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. */
-        public Builder mirrorTriggerBuilds(Boolean mirrorTriggerBuilds) {
-            return mirrorTriggerBuilds(Output.of(mirrorTriggerBuilds));
         }
 
         /**
@@ -3661,32 +3215,24 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param onlyMirrorProtectedBranches Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
+         * @param packageRegistryAccessLevel Set visibility of the package registry. Valid values are `disabled`, `private`, `enabled`, `public`.
          * 
          * @return builder
          * 
-         * @deprecated
-         * To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
-         * 
          */
-        @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. */
-        public Builder onlyMirrorProtectedBranches(@Nullable Output<Boolean> onlyMirrorProtectedBranches) {
-            $.onlyMirrorProtectedBranches = onlyMirrorProtectedBranches;
+        public Builder packageRegistryAccessLevel(@Nullable Output<String> packageRegistryAccessLevel) {
+            $.packageRegistryAccessLevel = packageRegistryAccessLevel;
             return this;
         }
 
         /**
-         * @param onlyMirrorProtectedBranches Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
+         * @param packageRegistryAccessLevel Set visibility of the package registry. Valid values are `disabled`, `private`, `enabled`, `public`.
          * 
          * @return builder
          * 
-         * @deprecated
-         * To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
-         * 
          */
-        @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. */
-        public Builder onlyMirrorProtectedBranches(Boolean onlyMirrorProtectedBranches) {
-            return onlyMirrorProtectedBranches(Output.of(onlyMirrorProtectedBranches));
+        public Builder packageRegistryAccessLevel(String packageRegistryAccessLevel) {
+            return packageRegistryAccessLevel(Output.of(packageRegistryAccessLevel));
         }
 
         /**
@@ -3795,35 +3341,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pipelinesEnabled Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `buildsAccessLevel` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `buildsAccessLevel` instead. To be removed in 19.0. */
-        public Builder pipelinesEnabled(@Nullable Output<Boolean> pipelinesEnabled) {
-            $.pipelinesEnabled = pipelinesEnabled;
-            return this;
-        }
-
-        /**
-         * @param pipelinesEnabled Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `buildsAccessLevel` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `buildsAccessLevel` instead. To be removed in 19.0. */
-        public Builder pipelinesEnabled(Boolean pipelinesEnabled) {
-            return pipelinesEnabled(Output.of(pipelinesEnabled));
-        }
-
-        /**
          * @param preReceiveSecretDetectionEnabled Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
          * 
          * @return builder
@@ -3884,6 +3401,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder printingMergeRequestLinkEnabled(Boolean printingMergeRequestLinkEnabled) {
             return printingMergeRequestLinkEnabled(Output.of(printingMergeRequestLinkEnabled));
+        }
+
+        /**
+         * @param protectMergeRequestPipelines Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor&#39;s lower-privileged context.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protectMergeRequestPipelines(@Nullable Output<Boolean> protectMergeRequestPipelines) {
+            $.protectMergeRequestPipelines = protectMergeRequestPipelines;
+            return this;
+        }
+
+        /**
+         * @param protectMergeRequestPipelines Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor&#39;s lower-privileged context.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protectMergeRequestPipelines(Boolean protectMergeRequestPipelines) {
+            return protectMergeRequestPipelines(Output.of(protectMergeRequestPipelines));
         }
 
         /**
@@ -4126,35 +3664,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param restrictUserDefinedVariables Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0. */
-        public Builder restrictUserDefinedVariables(@Nullable Output<Boolean> restrictUserDefinedVariables) {
-            $.restrictUserDefinedVariables = restrictUserDefinedVariables;
-            return this;
-        }
-
-        /**
-         * @param restrictUserDefinedVariables Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0. */
-        public Builder restrictUserDefinedVariables(Boolean restrictUserDefinedVariables) {
-            return restrictUserDefinedVariables(Output.of(restrictUserDefinedVariables));
-        }
-
-        /**
          * @param runnersToken Registration token to use during runner setup.
          * 
          * @return builder
@@ -4266,35 +3775,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snippetsEnabled Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `snippetsAccessLevel` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `snippetsAccessLevel` instead. To be removed in 19.0. */
-        public Builder snippetsEnabled(@Nullable Output<Boolean> snippetsEnabled) {
-            $.snippetsEnabled = snippetsEnabled;
-            return this;
-        }
-
-        /**
-         * @param snippetsEnabled Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `snippetsAccessLevel` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `snippetsAccessLevel` instead. To be removed in 19.0. */
-        public Builder snippetsEnabled(Boolean snippetsEnabled) {
-            return snippetsEnabled(Output.of(snippetsEnabled));
-        }
-
-        /**
          * @param squashCommitTemplate Template used to create squash commit message in merge requests.
          * 
          * @return builder
@@ -4376,49 +3856,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder suggestionCommitMessage(String suggestionCommitMessage) {
             return suggestionCommitMessage(Output.of(suggestionCommitMessage));
-        }
-
-        /**
-         * @param tags The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `topics` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `topics` instead. To be removed in 19.0. */
-        public Builder tags(@Nullable Output<List<String>> tags) {
-            $.tags = tags;
-            return this;
-        }
-
-        /**
-         * @param tags The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `topics` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `topics` instead. To be removed in 19.0. */
-        public Builder tags(List<String> tags) {
-            return tags(Output.of(tags));
-        }
-
-        /**
-         * @param tags The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `topics` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `topics` instead. To be removed in 19.0. */
-        public Builder tags(String... tags) {
-            return tags(List.of(tags));
         }
 
         /**
@@ -4578,35 +4015,6 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder wikiAccessLevel(String wikiAccessLevel) {
             return wikiAccessLevel(Output.of(wikiAccessLevel));
-        }
-
-        /**
-         * @param wikiEnabled Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `wikiAccessLevel` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `wikiAccessLevel` instead. To be removed in 19.0. */
-        public Builder wikiEnabled(@Nullable Output<Boolean> wikiEnabled) {
-            $.wikiEnabled = wikiEnabled;
-            return this;
-        }
-
-        /**
-         * @param wikiEnabled Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `wikiAccessLevel` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `wikiAccessLevel` instead. To be removed in 19.0. */
-        public Builder wikiEnabled(Boolean wikiEnabled) {
-            return wikiEnabled(Output.of(wikiEnabled));
         }
 
         public ProjectState build() {

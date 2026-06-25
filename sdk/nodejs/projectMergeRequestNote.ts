@@ -74,7 +74,7 @@ export class ProjectMergeRequestNote extends pulumi.CustomResource {
      */
     declare public readonly body: pulumi.Output<string>;
     /**
-     * The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+     * The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
      */
     declare public readonly createdAt: pulumi.Output<string>;
     /**
@@ -169,7 +169,7 @@ export interface ProjectMergeRequestNoteState {
      */
     body?: pulumi.Input<string | undefined>;
     /**
-     * The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+     * The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
      */
     createdAt?: pulumi.Input<string | undefined>;
     /**
@@ -215,7 +215,7 @@ export interface ProjectMergeRequestNoteArgs {
      */
     body: pulumi.Input<string>;
     /**
-     * The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+     * The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
      */
     createdAt?: pulumi.Input<string | undefined>;
     /**

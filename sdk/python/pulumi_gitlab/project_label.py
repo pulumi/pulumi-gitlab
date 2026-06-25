@@ -22,7 +22,8 @@ class ProjectLabelArgs:
                  color: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ProjectLabel resource.
 
@@ -30,6 +31,7 @@ class ProjectLabelArgs:
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the label to.
         :param pulumi.Input[_builtins.str] description: The description of the label.
         :param pulumi.Input[_builtins.str] name: The name of the label.
+        :param pulumi.Input[_builtins.int] priority: The priority of the label. Must be greater or equal than zero or null to remove the priority.
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "project", project)
@@ -37,6 +39,8 @@ class ProjectLabelArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
 
     @_builtins.property
     @pulumi.getter
@@ -86,6 +90,18 @@ class ProjectLabelArgs:
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The priority of the label. Must be greater or equal than zero or null to remove the priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "priority", value)
+
 
 @pulumi.input_type
 class _ProjectLabelState:
@@ -95,6 +111,7 @@ class _ProjectLabelState:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  label_id: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectLabel resources.
@@ -104,6 +121,7 @@ class _ProjectLabelState:
         :param pulumi.Input[_builtins.str] description: The description of the label.
         :param pulumi.Input[_builtins.int] label_id: The id of the project label.
         :param pulumi.Input[_builtins.str] name: The name of the label.
+        :param pulumi.Input[_builtins.int] priority: The priority of the label. Must be greater or equal than zero or null to remove the priority.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the label to.
         """
         if color is not None:
@@ -116,6 +134,8 @@ class _ProjectLabelState:
             pulumi.set(__self__, "label_id", label_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -181,6 +201,18 @@ class _ProjectLabelState:
 
     @_builtins.property
     @pulumi.getter
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The priority of the label. Must be greater or equal than zero or null to remove the priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "priority", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name or id of the project to add the label to.
@@ -201,6 +233,7 @@ class ProjectLabel(pulumi.CustomResource):
                  color: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -246,6 +279,7 @@ class ProjectLabel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] color: The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
         :param pulumi.Input[_builtins.str] description: The description of the label.
         :param pulumi.Input[_builtins.str] name: The name of the label.
+        :param pulumi.Input[_builtins.int] priority: The priority of the label. Must be greater or equal than zero or null to remove the priority.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the label to.
         """
         ...
@@ -310,6 +344,7 @@ class ProjectLabel(pulumi.CustomResource):
                  color: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -325,6 +360,7 @@ class ProjectLabel(pulumi.CustomResource):
             __props__.__dict__["color"] = color
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
+            __props__.__dict__["priority"] = priority
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
@@ -345,6 +381,7 @@ class ProjectLabel(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             label_id: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectLabel':
         """
         Get an existing ProjectLabel resource's state with the given name, id, and optional extra
@@ -358,6 +395,7 @@ class ProjectLabel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the label.
         :param pulumi.Input[_builtins.int] label_id: The id of the project label.
         :param pulumi.Input[_builtins.str] name: The name of the label.
+        :param pulumi.Input[_builtins.int] priority: The priority of the label. Must be greater or equal than zero or null to remove the priority.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the label to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -369,6 +407,7 @@ class ProjectLabel(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["label_id"] = label_id
         __props__.__dict__["name"] = name
+        __props__.__dict__["priority"] = priority
         __props__.__dict__["project"] = project
         return ProjectLabel(resource_name, opts=opts, __props__=__props__)
 
@@ -411,6 +450,14 @@ class ProjectLabel(pulumi.CustomResource):
         The name of the label.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The priority of the label. Must be greater or equal than zero or null to remove the priority.
+        """
+        return pulumi.get(self, "priority")
 
     @_builtins.property
     @pulumi.getter

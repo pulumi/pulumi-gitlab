@@ -14,10 +14,8 @@ import * as utilities from "./utilities";
 export function getProjectProtectedBranch(args: GetProjectProtectedBranchArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectProtectedBranchResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch", {
-        "mergeAccessLevels": args.mergeAccessLevels,
         "name": args.name,
         "projectId": args.projectId,
-        "pushAccessLevels": args.pushAccessLevels,
     }, opts);
 }
 
@@ -26,10 +24,6 @@ export function getProjectProtectedBranch(args: GetProjectProtectedBranchArgs, o
  */
 export interface GetProjectProtectedBranchArgs {
     /**
-     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
-     */
-    mergeAccessLevels?: inputs.GetProjectProtectedBranchMergeAccessLevel[];
-    /**
      * The name of the protected branch.
      */
     name: string;
@@ -37,10 +31,6 @@ export interface GetProjectProtectedBranchArgs {
      * The integer or path with namespace that uniquely identifies the project.
      */
     projectId: string;
-    /**
-     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
-     */
-    pushAccessLevels?: inputs.GetProjectProtectedBranchPushAccessLevel[];
 }
 
 /**
@@ -60,9 +50,9 @@ export interface GetProjectProtectedBranchResult {
      */
     readonly id: number;
     /**
-     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     * Array of merge access levels/users/groups allowed for the protected branch.
      */
-    readonly mergeAccessLevels?: outputs.GetProjectProtectedBranchMergeAccessLevel[];
+    readonly mergeAccessLevels: outputs.GetProjectProtectedBranchMergeAccessLevel[];
     /**
      * The name of the protected branch.
      */
@@ -72,9 +62,13 @@ export interface GetProjectProtectedBranchResult {
      */
     readonly projectId: string;
     /**
-     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     * Array of push access levels/users/groups/deploy keys allowed for the protected branch.
      */
-    readonly pushAccessLevels?: outputs.GetProjectProtectedBranchPushAccessLevel[];
+    readonly pushAccessLevels: outputs.GetProjectProtectedBranchPushAccessLevel[];
+    /**
+     * Array of unprotect access levels/users/groups allowed for the protected branch.
+     */
+    readonly unprotectAccessLevels: outputs.GetProjectProtectedBranchUnprotectAccessLevel[];
 }
 /**
  * The `gitlab.getProjectProtectedBranch` data source allows details of a protected branch to be retrieved by its name and the project it belongs to.
@@ -84,10 +78,8 @@ export interface GetProjectProtectedBranchResult {
 export function getProjectProtectedBranchOutput(args: GetProjectProtectedBranchOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectProtectedBranchResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectProtectedBranch:getProjectProtectedBranch", {
-        "mergeAccessLevels": args.mergeAccessLevels,
         "name": args.name,
         "projectId": args.projectId,
-        "pushAccessLevels": args.pushAccessLevels,
     }, opts);
 }
 
@@ -96,10 +88,6 @@ export function getProjectProtectedBranchOutput(args: GetProjectProtectedBranchO
  */
 export interface GetProjectProtectedBranchOutputArgs {
     /**
-     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
-     */
-    mergeAccessLevels?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchMergeAccessLevelArgs>[] | undefined>;
-    /**
      * The name of the protected branch.
      */
     name: pulumi.Input<string>;
@@ -107,8 +95,4 @@ export interface GetProjectProtectedBranchOutputArgs {
      * The integer or path with namespace that uniquely identifies the project.
      */
     projectId: pulumi.Input<string>;
-    /**
-     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
-     */
-    pushAccessLevels?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchPushAccessLevelArgs>[] | undefined>;
 }

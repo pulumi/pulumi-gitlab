@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -70,7 +70,7 @@ type ProjectMergeRequestNote struct {
 
 	// The body of the merge request note.
 	Body pulumi.StringOutput `pulumi:"body"`
-	// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+	// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Indicates if the merge request note is internal.
 	Internal pulumi.BoolOutput `pulumi:"internal"`
@@ -131,7 +131,7 @@ func GetProjectMergeRequestNote(ctx *pulumi.Context,
 type projectMergeRequestNoteState struct {
 	// The body of the merge request note.
 	Body *string `pulumi:"body"`
-	// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+	// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Indicates if the merge request note is internal.
 	Internal *bool `pulumi:"internal"`
@@ -154,7 +154,7 @@ type projectMergeRequestNoteState struct {
 type ProjectMergeRequestNoteState struct {
 	// The body of the merge request note.
 	Body pulumi.StringPtrInput
-	// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+	// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
 	CreatedAt pulumi.StringPtrInput
 	// Indicates if the merge request note is internal.
 	Internal pulumi.BoolPtrInput
@@ -181,7 +181,7 @@ func (ProjectMergeRequestNoteState) ElementType() reflect.Type {
 type projectMergeRequestNoteArgs struct {
 	// The body of the merge request note.
 	Body string `pulumi:"body"`
-	// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+	// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Indicates if the merge request note is internal.
 	Internal *bool `pulumi:"internal"`
@@ -197,7 +197,7 @@ type projectMergeRequestNoteArgs struct {
 type ProjectMergeRequestNoteArgs struct {
 	// The body of the merge request note.
 	Body pulumi.StringInput
-	// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+	// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
 	CreatedAt pulumi.StringPtrInput
 	// Indicates if the merge request note is internal.
 	Internal pulumi.BoolPtrInput
@@ -301,7 +301,7 @@ func (o ProjectMergeRequestNoteOutput) Body() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectMergeRequestNote) pulumi.StringOutput { return v.Body }).(pulumi.StringOutput)
 }
 
-// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
 func (o ProjectMergeRequestNoteOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectMergeRequestNote) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }

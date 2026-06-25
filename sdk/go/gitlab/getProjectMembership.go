@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,18 +26,10 @@ func LookupProjectMembership(ctx *pulumi.Context, args *LookupProjectMembershipA
 
 // A collection of arguments for invoking getProjectMembership.
 type LookupProjectMembershipArgs struct {
-	// The full path of the project. Use `project` instead. Will be removed in 19.0.
-	//
-	// Deprecated: Use `project` instead. Will be removed in 19.0.
-	FullPath *string `pulumi:"fullPath"`
 	// Return all project members including members through ancestor groups
 	Inherited *bool `pulumi:"inherited"`
 	// The ID or full path of the project.
-	Project *string `pulumi:"project"`
-	// The ID of the project. Use `project` instead. Will be removed in 19.0.
-	//
-	// Deprecated: Use `project` instead. Will be removed in 19.0.
-	ProjectId *int `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// A query string to search for members
 	Query *string `pulumi:"query"`
 	// List of user ids to filter members by
@@ -46,10 +38,6 @@ type LookupProjectMembershipArgs struct {
 
 // A collection of values returned by getProjectMembership.
 type LookupProjectMembershipResult struct {
-	// The full path of the project. Use `project` instead. Will be removed in 19.0.
-	//
-	// Deprecated: Use `project` instead. Will be removed in 19.0.
-	FullPath string `pulumi:"fullPath"`
 	// The ID of this datasource. In the format `<project:query-hash>` if query is set, otherwise `<project>`.
 	Id string `pulumi:"id"`
 	// Return all project members including members through ancestor groups
@@ -58,10 +46,6 @@ type LookupProjectMembershipResult struct {
 	Members []GetProjectMembershipMember `pulumi:"members"`
 	// The ID or full path of the project.
 	Project string `pulumi:"project"`
-	// The ID of the project. Use `project` instead. Will be removed in 19.0.
-	//
-	// Deprecated: Use `project` instead. Will be removed in 19.0.
-	ProjectId int `pulumi:"projectId"`
 	// A query string to search for members
 	Query *string `pulumi:"query"`
 	// List of user ids to filter members by
@@ -79,18 +63,10 @@ func LookupProjectMembershipOutput(ctx *pulumi.Context, args LookupProjectMember
 
 // A collection of arguments for invoking getProjectMembership.
 type LookupProjectMembershipOutputArgs struct {
-	// The full path of the project. Use `project` instead. Will be removed in 19.0.
-	//
-	// Deprecated: Use `project` instead. Will be removed in 19.0.
-	FullPath pulumi.StringPtrInput `pulumi:"fullPath"`
 	// Return all project members including members through ancestor groups
 	Inherited pulumi.BoolPtrInput `pulumi:"inherited"`
 	// The ID or full path of the project.
-	Project pulumi.StringPtrInput `pulumi:"project"`
-	// The ID of the project. Use `project` instead. Will be removed in 19.0.
-	//
-	// Deprecated: Use `project` instead. Will be removed in 19.0.
-	ProjectId pulumi.IntPtrInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// A query string to search for members
 	Query pulumi.StringPtrInput `pulumi:"query"`
 	// List of user ids to filter members by
@@ -116,13 +92,6 @@ func (o LookupProjectMembershipResultOutput) ToLookupProjectMembershipResultOutp
 	return o
 }
 
-// The full path of the project. Use `project` instead. Will be removed in 19.0.
-//
-// Deprecated: Use `project` instead. Will be removed in 19.0.
-func (o LookupProjectMembershipResultOutput) FullPath() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProjectMembershipResult) string { return v.FullPath }).(pulumi.StringOutput)
-}
-
 // The ID of this datasource. In the format `<project:query-hash>` if query is set, otherwise `<project>`.
 func (o LookupProjectMembershipResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectMembershipResult) string { return v.Id }).(pulumi.StringOutput)
@@ -141,13 +110,6 @@ func (o LookupProjectMembershipResultOutput) Members() GetProjectMembershipMembe
 // The ID or full path of the project.
 func (o LookupProjectMembershipResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectMembershipResult) string { return v.Project }).(pulumi.StringOutput)
-}
-
-// The ID of the project. Use `project` instead. Will be removed in 19.0.
-//
-// Deprecated: Use `project` instead. Will be removed in 19.0.
-func (o LookupProjectMembershipResultOutput) ProjectId() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupProjectMembershipResult) int { return v.ProjectId }).(pulumi.IntOutput)
 }
 
 // A query string to search for members

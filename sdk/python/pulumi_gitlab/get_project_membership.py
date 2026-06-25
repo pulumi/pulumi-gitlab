@@ -27,10 +27,7 @@ class GetProjectMembershipResult:
     """
     A collection of values returned by getProjectMembership.
     """
-    def __init__(__self__, full_path=None, id=None, inherited=None, members=None, project=None, project_id=None, query=None, user_ids=None):
-        if full_path and not isinstance(full_path, str):
-            raise TypeError("Expected argument 'full_path' to be a str")
-        pulumi.set(__self__, "full_path", full_path)
+    def __init__(__self__, id=None, inherited=None, members=None, project=None, query=None, user_ids=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -43,24 +40,12 @@ class GetProjectMembershipResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
-        if project_id and not isinstance(project_id, int):
-            raise TypeError("Expected argument 'project_id' to be a int")
-        pulumi.set(__self__, "project_id", project_id)
         if query and not isinstance(query, str):
             raise TypeError("Expected argument 'query' to be a str")
         pulumi.set(__self__, "query", query)
         if user_ids and not isinstance(user_ids, list):
             raise TypeError("Expected argument 'user_ids' to be a list")
         pulumi.set(__self__, "user_ids", user_ids)
-
-    @_builtins.property
-    @pulumi.getter(name="fullPath")
-    @_utilities.deprecated("""Use `project` instead. Will be removed in 19.0.""")
-    def full_path(self) -> _builtins.str:
-        """
-        The full path of the project. Use `project` instead. Will be removed in 19.0.
-        """
-        return pulumi.get(self, "full_path")
 
     @_builtins.property
     @pulumi.getter
@@ -95,15 +80,6 @@ class GetProjectMembershipResult:
         return pulumi.get(self, "project")
 
     @_builtins.property
-    @pulumi.getter(name="projectId")
-    @_utilities.deprecated("""Use `project` instead. Will be removed in 19.0.""")
-    def project_id(self) -> _builtins.int:
-        """
-        The ID of the project. Use `project` instead. Will be removed in 19.0.
-        """
-        return pulumi.get(self, "project_id")
-
-    @_builtins.property
     @pulumi.getter
     def query(self) -> Optional[_builtins.str]:
         """
@@ -126,20 +102,16 @@ class AwaitableGetProjectMembershipResult(GetProjectMembershipResult):
         if False:
             yield self
         return GetProjectMembershipResult(
-            full_path=self.full_path,
             id=self.id,
             inherited=self.inherited,
             members=self.members,
             project=self.project,
-            project_id=self.project_id,
             query=self.query,
             user_ids=self.user_ids)
 
 
-def get_project_membership(full_path: Optional[_builtins.str] = None,
-                           inherited: Optional[_builtins.bool] = None,
+def get_project_membership(inherited: Optional[_builtins.bool] = None,
                            project: Optional[_builtins.str] = None,
-                           project_id: Optional[_builtins.int] = None,
                            query: Optional[_builtins.str] = None,
                            user_ids: Optional[Sequence[_builtins.int]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectMembershipResult:
@@ -149,36 +121,28 @@ def get_project_membership(full_path: Optional[_builtins.str] = None,
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
 
 
-    :param _builtins.str full_path: The full path of the project. Use `project` instead. Will be removed in 19.0.
     :param _builtins.bool inherited: Return all project members including members through ancestor groups
     :param _builtins.str project: The ID or full path of the project.
-    :param _builtins.int project_id: The ID of the project. Use `project` instead. Will be removed in 19.0.
     :param _builtins.str query: A query string to search for members
     :param Sequence[_builtins.int] user_ids: List of user ids to filter members by
     """
     __args__ = dict()
-    __args__['fullPath'] = full_path
     __args__['inherited'] = inherited
     __args__['project'] = project
-    __args__['projectId'] = project_id
     __args__['query'] = query
     __args__['userIds'] = user_ids
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectMembership:getProjectMembership', __args__, opts=opts, typ=GetProjectMembershipResult).value
 
     return AwaitableGetProjectMembershipResult(
-        full_path=pulumi.get(__ret__, 'full_path'),
         id=pulumi.get(__ret__, 'id'),
         inherited=pulumi.get(__ret__, 'inherited'),
         members=pulumi.get(__ret__, 'members'),
         project=pulumi.get(__ret__, 'project'),
-        project_id=pulumi.get(__ret__, 'project_id'),
         query=pulumi.get(__ret__, 'query'),
         user_ids=pulumi.get(__ret__, 'user_ids'))
-def get_project_membership_output(full_path: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                  inherited: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                                  project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                  project_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+def get_project_membership_output(inherited: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                  project: pulumi.Input[Optional[_builtins.str]] = None,
                                   query: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   user_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.int]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectMembershipResult]:
@@ -188,28 +152,22 @@ def get_project_membership_output(full_path: pulumi.Input[Optional[Optional[_bui
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
 
 
-    :param _builtins.str full_path: The full path of the project. Use `project` instead. Will be removed in 19.0.
     :param _builtins.bool inherited: Return all project members including members through ancestor groups
     :param _builtins.str project: The ID or full path of the project.
-    :param _builtins.int project_id: The ID of the project. Use `project` instead. Will be removed in 19.0.
     :param _builtins.str query: A query string to search for members
     :param Sequence[_builtins.int] user_ids: List of user ids to filter members by
     """
     __args__ = dict()
-    __args__['fullPath'] = full_path
     __args__['inherited'] = inherited
     __args__['project'] = project
-    __args__['projectId'] = project_id
     __args__['query'] = query
     __args__['userIds'] = user_ids
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectMembership:getProjectMembership', __args__, opts=opts, typ=GetProjectMembershipResult)
     return __ret__.apply(lambda __response__: GetProjectMembershipResult(
-        full_path=pulumi.get(__response__, 'full_path'),
         id=pulumi.get(__response__, 'id'),
         inherited=pulumi.get(__response__, 'inherited'),
         members=pulumi.get(__response__, 'members'),
         project=pulumi.get(__response__, 'project'),
-        project_id=pulumi.get(__response__, 'project_id'),
         query=pulumi.get(__response__, 'query'),
         user_ids=pulumi.get(__response__, 'user_ids')))

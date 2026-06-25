@@ -14,7 +14,7 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetProjectsProjectOwnerResult
     {
         /// <summary>
-        /// The avatar url of the owner.
+        /// The avatar URL of the owner.
         /// </summary>
         public readonly string AvatarUrl;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string Username;
         /// <summary>
-        /// The website url of the owner.
+        /// The website URL of the owner.
         /// </summary>
         public readonly string WebsiteUrl;
 

@@ -14,6 +14,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -103,6 +104,20 @@ public class ProjectPushMirror extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> enabled() {
         return this.enabled;
+    }
+    /**
+     * SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+     * 
+     */
+    @Export(name="hostKeys", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> hostKeys;
+
+    /**
+     * @return SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+     * 
+     */
+    public Output<Optional<List<String>>> hostKeys() {
+        return Codegen.optional(this.hostKeys);
     }
     /**
      * Determines if divergent refs are skipped.

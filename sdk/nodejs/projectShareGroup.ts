@@ -63,19 +63,13 @@ export class ProjectShareGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-     *
-     * @deprecated Use `groupAccess` instead of the `accessLevel` attribute.
-     */
-    declare public readonly accessLevel: pulumi.Output<string | undefined>;
-    /**
      * Share expiration date. Format: `YYYY-MM-DD`
      */
     declare public readonly expiresAt: pulumi.Output<string | undefined>;
     /**
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
-    declare public readonly groupAccess: pulumi.Output<string | undefined>;
+    declare public readonly groupAccess: pulumi.Output<string>;
     /**
      * The id of the group.
      */
@@ -98,20 +92,21 @@ export class ProjectShareGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectShareGroupState | undefined;
-            resourceInputs["accessLevel"] = state?.accessLevel;
             resourceInputs["expiresAt"] = state?.expiresAt;
             resourceInputs["groupAccess"] = state?.groupAccess;
             resourceInputs["groupId"] = state?.groupId;
             resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as ProjectShareGroupArgs | undefined;
+            if (args?.groupAccess === undefined && !opts.urn) {
+                throw new Error("Missing required property 'groupAccess'");
+            }
             if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
             if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            resourceInputs["accessLevel"] = args?.accessLevel;
             resourceInputs["expiresAt"] = args?.expiresAt;
             resourceInputs["groupAccess"] = args?.groupAccess;
             resourceInputs["groupId"] = args?.groupId;
@@ -126,12 +121,6 @@ export class ProjectShareGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectShareGroup resources.
  */
 export interface ProjectShareGroupState {
-    /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-     *
-     * @deprecated Use `groupAccess` instead of the `accessLevel` attribute.
-     */
-    accessLevel?: pulumi.Input<string | undefined>;
     /**
      * Share expiration date. Format: `YYYY-MM-DD`
      */
@@ -155,19 +144,13 @@ export interface ProjectShareGroupState {
  */
 export interface ProjectShareGroupArgs {
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-     *
-     * @deprecated Use `groupAccess` instead of the `accessLevel` attribute.
-     */
-    accessLevel?: pulumi.Input<string | undefined>;
-    /**
      * Share expiration date. Format: `YYYY-MM-DD`
      */
     expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      */
-    groupAccess?: pulumi.Input<string | undefined>;
+    groupAccess: pulumi.Input<string>;
     /**
      * The id of the group.
      */

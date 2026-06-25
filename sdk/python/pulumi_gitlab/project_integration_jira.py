@@ -38,14 +38,14 @@ class ProjectIntegrationJiraArgs:
         """
         The set of arguments for constructing a ProjectIntegrationJira resource.
 
-        :param pulumi.Input[_builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+        :param pulumi.Input[_builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[_builtins.str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
-        :param pulumi.Input[_builtins.str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        :param pulumi.Input[_builtins.str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
         :param pulumi.Input[_builtins.bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[_builtins.bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[_builtins.bool] issues_enabled: Enable viewing Jira issues in GitLab.
-        :param pulumi.Input[_builtins.int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        :param pulumi.Input[_builtins.int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
         :param pulumi.Input[_builtins.str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[_builtins.str] jira_issue_regex: Regular expression to match Jira issue keys.
         :param pulumi.Input[_builtins.bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
@@ -53,7 +53,7 @@ class ProjectIntegrationJiraArgs:
         :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] project_keys: Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         :param pulumi.Input[_builtins.bool] use_inherited_settings: Indicates whether or not to inherit default settings. Defaults to false.
-        :param pulumi.Input[_builtins.str] username: The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+        :param pulumi.Input[_builtins.str] username: The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
         """
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "project", project)
@@ -89,7 +89,7 @@ class ProjectIntegrationJiraArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[_builtins.str]:
         """
-        The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+        The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
         """
         return pulumi.get(self, "password")
 
@@ -125,7 +125,7 @@ class ProjectIntegrationJiraArgs:
     @pulumi.getter(name="apiUrl")
     def api_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
         """
         return pulumi.get(self, "api_url")
 
@@ -173,7 +173,7 @@ class ProjectIntegrationJiraArgs:
     @pulumi.getter(name="jiraAuthType")
     def jira_auth_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
         """
         return pulumi.get(self, "jira_auth_type")
 
@@ -269,7 +269,7 @@ class ProjectIntegrationJiraArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+        The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
         """
         return pulumi.get(self, "username")
 
@@ -305,25 +305,25 @@ class _ProjectIntegrationJiraState:
         Input properties used for looking up and filtering ProjectIntegrationJira resources.
 
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
-        :param pulumi.Input[_builtins.str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        :param pulumi.Input[_builtins.str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
         :param pulumi.Input[_builtins.bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[_builtins.bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[_builtins.str] created_at: The ISO8601 date/time that this integration was activated at in UTC.
         :param pulumi.Input[_builtins.bool] issues_enabled: Enable viewing Jira issues in GitLab.
-        :param pulumi.Input[_builtins.int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        :param pulumi.Input[_builtins.int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
         :param pulumi.Input[_builtins.str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[_builtins.str] jira_issue_regex: Regular expression to match Jira issue keys.
         :param pulumi.Input[_builtins.bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
         :param pulumi.Input[_builtins.str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events
-        :param pulumi.Input[_builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+        :param pulumi.Input[_builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] project_keys: Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         :param pulumi.Input[_builtins.str] title: Title of the integration.
         :param pulumi.Input[_builtins.str] updated_at: The ISO8601 date/time that this integration was last updated at in UTC.
         :param pulumi.Input[_builtins.str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
         :param pulumi.Input[_builtins.bool] use_inherited_settings: Indicates whether or not to inherit default settings. Defaults to false.
-        :param pulumi.Input[_builtins.str] username: The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+        :param pulumi.Input[_builtins.str] username: The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
@@ -382,7 +382,7 @@ class _ProjectIntegrationJiraState:
     @pulumi.getter(name="apiUrl")
     def api_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
         """
         return pulumi.get(self, "api_url")
 
@@ -442,7 +442,7 @@ class _ProjectIntegrationJiraState:
     @pulumi.getter(name="jiraAuthType")
     def jira_auth_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
         """
         return pulumi.get(self, "jira_auth_type")
 
@@ -514,7 +514,7 @@ class _ProjectIntegrationJiraState:
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+        The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
         """
         return pulumi.get(self, "password")
 
@@ -598,7 +598,7 @@ class _ProjectIntegrationJiraState:
     @pulumi.getter
     def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+        The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
         """
         return pulumi.get(self, "username")
 
@@ -667,22 +667,22 @@ class ProjectIntegrationJira(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        :param pulumi.Input[_builtins.str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
         :param pulumi.Input[_builtins.bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[_builtins.bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[_builtins.bool] issues_enabled: Enable viewing Jira issues in GitLab.
-        :param pulumi.Input[_builtins.int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        :param pulumi.Input[_builtins.int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
         :param pulumi.Input[_builtins.str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[_builtins.str] jira_issue_regex: Regular expression to match Jira issue keys.
         :param pulumi.Input[_builtins.bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
         :param pulumi.Input[_builtins.str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events
-        :param pulumi.Input[_builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+        :param pulumi.Input[_builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] project_keys: Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         :param pulumi.Input[_builtins.str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
         :param pulumi.Input[_builtins.bool] use_inherited_settings: Indicates whether or not to inherit default settings. Defaults to false.
-        :param pulumi.Input[_builtins.str] username: The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+        :param pulumi.Input[_builtins.str] username: The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
         """
         ...
     @overload
@@ -831,25 +831,25 @@ class ProjectIntegrationJira(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Whether the integration is active.
-        :param pulumi.Input[_builtins.str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        :param pulumi.Input[_builtins.str] api_url: The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
         :param pulumi.Input[_builtins.bool] comment_on_event_enabled: Enable comments inside Jira issues on each GitLab event (commit / merge request)
         :param pulumi.Input[_builtins.bool] commit_events: Enable notifications for commit events
         :param pulumi.Input[_builtins.str] created_at: The ISO8601 date/time that this integration was activated at in UTC.
         :param pulumi.Input[_builtins.bool] issues_enabled: Enable viewing Jira issues in GitLab.
-        :param pulumi.Input[_builtins.int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        :param pulumi.Input[_builtins.int] jira_auth_type: The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
         :param pulumi.Input[_builtins.str] jira_issue_prefix: Prefix to match Jira issue keys.
         :param pulumi.Input[_builtins.str] jira_issue_regex: Regular expression to match Jira issue keys.
         :param pulumi.Input[_builtins.bool] jira_issue_transition_automatic: Enable automatic issue transitions. Takes precedence over jira*issue*transition_id if enabled. Defaults to false. This value cannot be imported, and will not perform drift detection if changed outside Terraform.
         :param pulumi.Input[_builtins.str] jira_issue_transition_id: The ID of a transition that moves issues to a closed state. You can find this number under the JIRA workflow administration (Administration > Issues > Workflows) by selecting View under Operations of the desired workflow of your project. By default, this ID is set to 2.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Enable notifications for merge request events
-        :param pulumi.Input[_builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+        :param pulumi.Input[_builtins.str] password: The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] project_keys: Keys of Jira projects. When issues_enabled is true, this setting specifies which Jira projects to view issues from in GitLab.
         :param pulumi.Input[_builtins.str] title: Title of the integration.
         :param pulumi.Input[_builtins.str] updated_at: The ISO8601 date/time that this integration was last updated at in UTC.
         :param pulumi.Input[_builtins.str] url: The URL to the JIRA project which is being linked to this GitLab project. For example, https://jira.example.com.
         :param pulumi.Input[_builtins.bool] use_inherited_settings: Indicates whether or not to inherit default settings. Defaults to false.
-        :param pulumi.Input[_builtins.str] username: The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+        :param pulumi.Input[_builtins.str] username: The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -889,7 +889,7 @@ class ProjectIntegrationJira(pulumi.CustomResource):
     @pulumi.getter(name="apiUrl")
     def api_url(self) -> pulumi.Output[_builtins.str]:
         """
-        The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+        The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
         """
         return pulumi.get(self, "api_url")
 
@@ -929,7 +929,7 @@ class ProjectIntegrationJira(pulumi.CustomResource):
     @pulumi.getter(name="jiraAuthType")
     def jira_auth_type(self) -> pulumi.Output[_builtins.int]:
         """
-        The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+        The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
         """
         return pulumi.get(self, "jira_auth_type")
 
@@ -977,7 +977,7 @@ class ProjectIntegrationJira(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[_builtins.str]:
         """
-        The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+        The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
         """
         return pulumi.get(self, "password")
 
@@ -1033,7 +1033,7 @@ class ProjectIntegrationJira(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[_builtins.str]:
         """
-        The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+        The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
         """
         return pulumi.get(self, "username")
 

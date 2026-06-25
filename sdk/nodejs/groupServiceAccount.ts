@@ -100,6 +100,10 @@ export class GroupServiceAccount extends pulumi.CustomResource {
      * The service account id.
      */
     declare public /*out*/ readonly serviceAccountId: pulumi.Output<string>;
+    /**
+     * If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
+     */
+    declare public readonly skipWaitForDeletion: pulumi.Output<boolean | undefined>;
     declare public readonly timeouts: pulumi.Output<outputs.GroupServiceAccountTimeouts | undefined>;
     /**
      * The username of the user. If not specified, it’s automatically generated.
@@ -123,6 +127,7 @@ export class GroupServiceAccount extends pulumi.CustomResource {
             resourceInputs["group"] = state?.group;
             resourceInputs["name"] = state?.name;
             resourceInputs["serviceAccountId"] = state?.serviceAccountId;
+            resourceInputs["skipWaitForDeletion"] = state?.skipWaitForDeletion;
             resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["username"] = state?.username;
         } else {
@@ -133,6 +138,7 @@ export class GroupServiceAccount extends pulumi.CustomResource {
             resourceInputs["email"] = args?.email;
             resourceInputs["group"] = args?.group;
             resourceInputs["name"] = args?.name;
+            resourceInputs["skipWaitForDeletion"] = args?.skipWaitForDeletion;
             resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["username"] = args?.username;
             resourceInputs["serviceAccountId"] = undefined /*out*/;
@@ -162,6 +168,10 @@ export interface GroupServiceAccountState {
      * The service account id.
      */
     serviceAccountId?: pulumi.Input<string | undefined>;
+    /**
+     * If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
+     */
+    skipWaitForDeletion?: pulumi.Input<boolean | undefined>;
     timeouts?: pulumi.Input<inputs.GroupServiceAccountTimeouts | undefined>;
     /**
      * The username of the user. If not specified, it’s automatically generated.
@@ -185,6 +195,10 @@ export interface GroupServiceAccountArgs {
      * The name of the user. If not specified, the default Service account user name is used.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
+     */
+    skipWaitForDeletion?: pulumi.Input<boolean | undefined>;
     timeouts?: pulumi.Input<inputs.GroupServiceAccountTimeouts | undefined>;
     /**
      * The username of the user. If not specified, it’s automatically generated.

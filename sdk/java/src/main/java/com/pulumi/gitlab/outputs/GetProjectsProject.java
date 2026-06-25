@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.outputs.GetProjectsProjectContainerExpirationPolicy;
 import com.pulumi.gitlab.outputs.GetProjectsProjectForkedFromProject;
+import com.pulumi.gitlab.outputs.GetProjectsProjectLicense;
 import com.pulumi.gitlab.outputs.GetProjectsProjectNamespace;
 import com.pulumi.gitlab.outputs.GetProjectsProjectOwner;
 import com.pulumi.gitlab.outputs.GetProjectsProjectPermission;
@@ -21,16 +22,7 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectsProject {
     /**
-     * @return Links for the project. Use `links` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `links` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `links` instead. To be removed in 19.0. */
-    private Map<String,String> _links;
-    /**
-     * @return Whether allowMergeOnSkippedPipeline is enabled for the project.
+     * @return Whether `allowMergeOnSkippedPipeline` is enabled for the project.
      * 
      */
     private Boolean allowMergeOnSkippedPipeline;
@@ -45,17 +37,21 @@ public final class GetProjectsProject {
      */
     private String analyticsAccessLevel;
     /**
-     * @return The numbers of approvals needed in a merge requests.
+     * @return The number of approvals needed in a merge request.
+     * 
+     * @deprecated
+     * Use the Merge Request Approvals API instead, to be removed in 20.0.
      * 
      */
+    @Deprecated /* Use the Merge Request Approvals API instead, to be removed in 20.0. */
     private Integer approvalsBeforeMerge;
     /**
-     * @return Whether the project is archived.
+     * @return Whether the project is in read-only mode (archived).
      * 
      */
     private Boolean archived;
     /**
-     * @return Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+     * @return Auto-cancel pending pipelines. This isn&#39;t a boolean, but `enabled`/`disabled`.
      * 
      */
     private String autoCancelPendingPipelines;
@@ -70,12 +66,17 @@ public final class GetProjectsProject {
      */
     private Boolean autoDevopsEnabled;
     /**
+     * @return Whether GitLab Duo code review is enabled for the project.
+     * 
+     */
+    private Boolean autoDuoCodeReviewEnabled;
+    /**
      * @return Set whether auto-closing referenced issues on default branch.
      * 
      */
     private Boolean autocloseReferencedIssues;
     /**
-     * @return The avatar url of the project.
+     * @return The avatar URL of the project.
      * 
      */
     private String avatarUrl;
@@ -85,7 +86,7 @@ public final class GetProjectsProject {
      */
     private String buildCoverageRegex;
     /**
-     * @return The Git strategy. Defaults to fetch.
+     * @return The Git strategy. Defaults to `fetch`.
      * 
      */
     private String buildGitStrategy;
@@ -99,6 +100,16 @@ public final class GetProjectsProject {
      * 
      */
     private String buildsAccessLevel;
+    /**
+     * @return Whether the calling user can create merge requests in this project.
+     * 
+     */
+    private Boolean canCreateMergeRequestIn;
+    /**
+     * @return Whether pipelines triggered from merge requests opened from forks may run in the parent project.
+     * 
+     */
+    private Boolean ciAllowForkPipelinesToRunInParentProject;
     /**
      * @return CI config file path for the project.
      * 
@@ -115,6 +126,11 @@ public final class GetProjectsProject {
      */
     private Integer ciDeletePipelinesInSeconds;
     /**
+     * @return Whether pipeline variables are displayed in the UI.
+     * 
+     */
+    private Boolean ciDisplayPipelineVariables;
+    /**
      * @return When a new deployment job starts, skip older deployment jobs that are still pending.
      * 
      */
@@ -125,35 +141,69 @@ public final class GetProjectsProject {
      */
     private Boolean ciForwardDeploymentRollbackAllowed;
     /**
-     * @return Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include refType and ref. Defaults to [&#34;projectPath&#34;, &#34;refType&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+     * @return Fields included in the sub claim of the ID Token. Accepts an array starting with `projectPath`. The array might also include `refType` and `ref`. Defaults to `[&#34;projectPath&#34;, &#34;refType&#34;, &#34;ref&#34;]`. Introduced in GitLab 17.10.
      * 
      */
     private List<String> ciIdTokenSubClaimComponents;
     /**
-     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+     * @return Whether the CI/CD job token access scope is enabled (limits which projects can be accessed using the job token).
+     * 
+     */
+    private Boolean ciJobTokenScopeEnabled;
+    /**
+     * @return Whether the project must explicitly opt in to receive ID tokens in CI jobs.
+     * 
+     */
+    private Boolean ciOptInJwt;
+    /**
+     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`.
      * 
      */
     private String ciPipelineVariablesMinimumOverrideRole;
     /**
-     * @return The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * @return Whether pushes to the repository using the CI/CD job token are allowed.
+     * 
+     */
+    private Boolean ciPushRepositoryForJobTokenAllowed;
+    /**
+     * @return The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `noOne`.
      * 
      */
     private String ciRestrictPipelineCancellationRole;
     /**
-     * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
+     * @return Use separate caches for protected branches.
+     * 
+     */
+    private Boolean ciSeparatedCaches;
+    /**
+     * @return Compliance frameworks applied to the project. Premium and Ultimate only.
+     * 
+     */
+    private List<String> complianceFrameworks;
+    /**
+     * @return The image cleanup policy for this project.
      * 
      */
     private List<GetProjectsProjectContainerExpirationPolicy> containerExpirationPolicies;
     /**
-     * @return Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+     * @return Set visibility of container registry for this project. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
     private String containerRegistryAccessLevel;
     /**
      * @return Whether the container registry is enabled for the project.
      * 
+     * @deprecated
+     * Use `containerRegistryAccessLevel` instead, to be removed in 20.0.
+     * 
      */
+    @Deprecated /* Use `containerRegistryAccessLevel` instead, to be removed in 20.0. */
     private Boolean containerRegistryEnabled;
+    /**
+     * @return The image prefix used by the container registry for this project.
+     * 
+     */
+    private String containerRegistryImagePrefix;
     /**
      * @return Creation time for the project.
      * 
@@ -175,10 +225,15 @@ public final class GetProjectsProject {
      */
     private String defaultBranch;
     /**
-     * @return The description of the project.
+     * @return A description of the project.
      * 
      */
     private String description;
+    /**
+     * @return Whether email notifications are disabled for the project.
+     * 
+     */
+    private Boolean emailsDisabled;
     /**
      * @return Enable email notifications.
      * 
@@ -189,6 +244,11 @@ public final class GetProjectsProject {
      * 
      */
     private Boolean emptyRepo;
+    /**
+     * @return Whether authentication checks are enforced when uploading to the project.
+     * 
+     */
+    private Boolean enforceAuthChecksOnUploads;
     /**
      * @return Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
      * 
@@ -245,6 +305,11 @@ public final class GetProjectsProject {
      */
     private String importStatus;
     /**
+     * @return The type of import used to create the project (for example `github`, `bitbucket`).
+     * 
+     */
+    private String importType;
+    /**
      * @return URL the project was imported from.
      * 
      */
@@ -255,6 +320,11 @@ public final class GetProjectsProject {
      */
     private String infrastructureAccessLevel;
     /**
+     * @return Template used to suggest a branch name when creating one from an issue.
+     * 
+     */
+    private String issueBranchTemplate;
+    /**
      * @return Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -262,12 +332,25 @@ public final class GetProjectsProject {
     /**
      * @return Whether issues are enabled for the project.
      * 
-     */
-    private Boolean issuesEnabled;
-    /**
-     * @return Whether pipelines are enabled for the project.
+     * @deprecated
+     * Use `issuesAccessLevel` instead, to be removed in 20.0.
      * 
      */
+    @Deprecated /* Use `issuesAccessLevel` instead, to be removed in 20.0. */
+    private Boolean issuesEnabled;
+    /**
+     * @return Default description template for new issues.
+     * 
+     */
+    private String issuesTemplate;
+    /**
+     * @return Whether jobs are enabled for the project.
+     * 
+     * @deprecated
+     * Use `buildsAccessLevel` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `buildsAccessLevel` instead, to be removed in 20.0. */
     private Boolean jobsEnabled;
     /**
      * @return Disable or enable the ability to keep the latest artifact for this project.
@@ -275,7 +358,7 @@ public final class GetProjectsProject {
      */
     private Boolean keepLatestArtifact;
     /**
-     * @return Last activirty time for the project.
+     * @return Last activity time for the project.
      * 
      */
     private String lastActivityAt;
@@ -285,10 +368,44 @@ public final class GetProjectsProject {
      */
     private Boolean lfsEnabled;
     /**
+     * @return URL of the project&#39;s license file.
+     * 
+     */
+    private String licenseUrl;
+    /**
+     * @return Information about the project&#39;s license, if one is detected.
+     * 
+     */
+    private List<GetProjectsProjectLicense> licenses;
+    /**
      * @return Links for the project.
      * 
      */
     private Map<String,String> links;
+    /**
+     * @return Whether the project is marked for deletion.
+     * 
+     */
+    private Boolean markedForDeletion;
+    /**
+     * @return Timestamp at which the project was marked for deletion. Premium and Ultimate only.
+     * 
+     * @deprecated
+     * Use `markedForDeletionOn` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `markedForDeletionOn` instead, to be removed in 20.0. */
+    private String markedForDeletionAt;
+    /**
+     * @return Timestamp at which the project was marked for deletion. Premium and Ultimate only.
+     * 
+     */
+    private String markedForDeletionOn;
+    /**
+     * @return Maximum artifacts size, in MB, for the project. Overrides the instance-wide setting when set.
+     * 
+     */
+    private Integer maxArtifactsSize;
     /**
      * @return Template used to create merge commit message in merge requests.
      * 
@@ -305,6 +422,16 @@ public final class GetProjectsProject {
      */
     private Boolean mergePipelinesEnabled;
     /**
+     * @return Regular expression that merge request titles must match.
+     * 
+     */
+    private String mergeRequestTitleRegex;
+    /**
+     * @return Human-readable description of `mergeRequestTitleRegex`.
+     * 
+     */
+    private String mergeRequestTitleRegexDescription;
+    /**
      * @return Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -312,20 +439,34 @@ public final class GetProjectsProject {
     /**
      * @return Whether merge requests are enabled for the project.
      * 
+     * @deprecated
+     * Use `mergeRequestsAccessLevel` instead, to be removed in 20.0.
+     * 
      */
+    @Deprecated /* Use `mergeRequestsAccessLevel` instead, to be removed in 20.0. */
     private Boolean mergeRequestsEnabled;
+    /**
+     * @return Default description template for new merge requests.
+     * 
+     */
+    private String mergeRequestsTemplate;
     /**
      * @return Enable or disable merge trains.
      * 
      */
     private Boolean mergeTrainsEnabled;
     /**
-     * @return Whether the pull mirroring is enabled for the project.
+     * @return Allows merge train merge requests to be merged without waiting for pipelines to finish.
+     * 
+     */
+    private Boolean mergeTrainsSkipTrainAllowed;
+    /**
+     * @return Whether pull mirroring is enabled for the project.
      * 
      */
     private Boolean mirror;
     /**
-     * @return Whether mirrorOverwritesDivergedBranches is enabled for the project.
+     * @return Whether `mirrorOverwritesDivergedBranches` is enabled for the project.
      * 
      */
     private Boolean mirrorOverwritesDivergedBranches;
@@ -355,6 +496,11 @@ public final class GetProjectsProject {
      */
     private String monitorAccessLevel;
     /**
+     * @return For forks, whether merge requests target the fork itself rather than the upstream project by default.
+     * 
+     */
+    private Boolean mrDefaultTargetSelf;
+    /**
      * @return The name of the project.
      * 
      */
@@ -365,40 +511,68 @@ public final class GetProjectsProject {
      */
     private String nameWithNamespace;
     /**
+     * @return The namespace (group or user) ID of the project. Alias for `namespace[0].id`.
+     * 
+     * @deprecated
+     * Use `namespace[0].id` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `namespace[0].id` instead, to be removed in 20.0. */
+    private Integer namespaceId;
+    /**
      * @return Namespace of the project (parent group/s).
      * 
      */
     private List<GetProjectsProjectNamespace> namespaces;
     /**
-     * @return Whether onlyAllowMergeIfAllDiscussionsAreResolved is enabled for the project.
+     * @return Whether `onlyAllowMergeIfAllDiscussionsAreResolved` is enabled for the project.
      * 
      */
     private Boolean onlyAllowMergeIfAllDiscussionsAreResolved;
     /**
-     * @return Whether onlyAllowMergeIfPipelineSucceeds is enabled for the project.
+     * @return Whether `onlyAllowMergeIfPipelineSucceeds` is enabled for the project.
      * 
      */
     private Boolean onlyAllowMergeIfPipelineSucceeds;
     /**
-     * @return Whether onlyMirrorProtectedBranches is enabled for the project.
+     * @return Whether `onlyMirrorProtectedBranches` is enabled for the project.
      * 
      */
     private Boolean onlyMirrorProtectedBranches;
     /**
-     * @return The number of open issies for the project.
+     * @return The number of open issues for the project.
      * 
      */
     private Integer openIssuesCount;
     /**
-     * @return The owner of the project, due to Terraform aggregate types limitations, this field&#39;s attributes are accessed with the `owner.0` prefix. Structure is documented below.
+     * @return Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    private String operationsAccessLevel;
+    /**
+     * @return The owner of the project. Only populated when the calling token has administrator scope.
      * 
      */
     private List<GetProjectsProjectOwner> owners;
     /**
-     * @return Whether packages are enabled for the project.
+     * @return The visibility of the package registry.
      * 
      */
+    private String packageRegistryAccessLevel;
+    /**
+     * @return Whether packages are enabled for the project.
+     * 
+     * @deprecated
+     * Use `packageRegistryAccessLevel` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `packageRegistryAccessLevel` instead, to be removed in 20.0. */
     private Boolean packagesEnabled;
+    /**
+     * @return Set the GitLab Pages access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    private String pagesAccessLevel;
     /**
      * @return The path of the project.
      * 
@@ -415,17 +589,41 @@ public final class GetProjectsProject {
      */
     private List<GetProjectsProjectPermission> permissions;
     /**
+     * @return Whether pre-receive secret detection is enabled for the project.
+     * 
+     */
+    private Boolean preReceiveSecretDetectionEnabled;
+    /**
      * @return Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
      * 
      */
     private Boolean preventMergeWithoutJiraIssue;
     /**
-     * @return Whether public builds are enabled for the project.
+     * @return Show link to create/view merge request when pushing from the command line.
      * 
      */
+    private Boolean printingMergeRequestLinkEnabled;
+    /**
+     * @return Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor&#39;s lower-privileged context.
+     * 
+     */
+    private Boolean protectMergeRequestPipelines;
+    /**
+     * @return If true, jobs can be viewed by non-project members. Alias for `publicJobs`.
+     * 
+     * @deprecated
+     * Use `publicJobs` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `publicJobs` instead, to be removed in 20.0. */
     private Boolean publicBuilds;
     /**
-     * @return The remote url of the project.
+     * @return If true, jobs can be viewed by non-project members.
+     * 
+     */
+    private Boolean publicJobs;
+    /**
+     * @return The URL of the project README.
      * 
      */
     private String readmeUrl;
@@ -434,6 +632,11 @@ public final class GetProjectsProject {
      * 
      */
     private String releasesAccessLevel;
+    /**
+     * @return Enable `Delete source branch` option by default for all new merge requests.
+     * 
+     */
+    private Boolean removeSourceBranchAfterMerge;
     /**
      * @return Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
      * 
@@ -455,7 +658,12 @@ public final class GetProjectsProject {
      */
     private String requirementsAccessLevel;
     /**
-     * @return Whether resolveOutdatedDiffDiscussions is enabled for the project
+     * @return Whether the requirements feature is enabled. Premium and Ultimate only.
+     * 
+     */
+    private Boolean requirementsEnabled;
+    /**
+     * @return Automatically resolve merge request diffs discussions on lines changed with a push.
      * 
      */
     private Boolean resolveOutdatedDiffDiscussions;
@@ -467,10 +675,19 @@ public final class GetProjectsProject {
     /**
      * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
      * 
+     * @deprecated
+     * Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0.
+     * 
      */
+    @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0. */
     private Boolean restrictUserDefinedVariables;
     /**
-     * @return The runners token for the project.
+     * @return Runner token expiration interval, in seconds.
+     * 
+     */
+    private Integer runnerTokenExpirationInterval;
+    /**
+     * @return Registration token to use during runner setup.
      * 
      */
     private String runnersToken;
@@ -480,12 +697,27 @@ public final class GetProjectsProject {
      */
     private String securityAndComplianceAccessLevel;
     /**
+     * @return Whether the security and compliance feature is enabled.
+     * 
+     */
+    private Boolean securityAndComplianceEnabled;
+    /**
+     * @return The Service Desk email address for the project.
+     * 
+     */
+    private String serviceDeskAddress;
+    /**
+     * @return Whether Service Desk is enabled for the project.
+     * 
+     */
+    private Boolean serviceDeskEnabled;
+    /**
      * @return Whether shared runners are enabled for the project.
      * 
      */
     private Boolean sharedRunnersEnabled;
     /**
-     * @return Groups the the project is shared with.
+     * @return Describes groups which have access shared to this project.
      * 
      */
     private List<GetProjectsProjectSharedWithGroup> sharedWithGroups;
@@ -497,13 +729,22 @@ public final class GetProjectsProject {
     /**
      * @return Whether snippets are enabled for the project.
      * 
+     * @deprecated
+     * Use `snippetsAccessLevel` instead, to be removed in 20.0.
+     * 
      */
+    @Deprecated /* Use `snippetsAccessLevel` instead, to be removed in 20.0. */
     private Boolean snippetsEnabled;
     /**
      * @return Template used to create squash commit message in merge requests.
      * 
      */
     private String squashCommitTemplate;
+    /**
+     * @return The project&#39;s squash option for merge requests (`never`, `always`, `defaultOn`, `defaultOff`).
+     * 
+     */
+    private String squashOption;
     /**
      * @return The SSH clone URL of the project.
      * 
@@ -525,9 +766,13 @@ public final class GetProjectsProject {
      */
     private String suggestionCommitMessage;
     /**
-     * @return A set of the project topics (formerly called &#34;project tags&#34;).
+     * @return The list of project topics (formerly project tags).
+     * 
+     * @deprecated
+     * Use `topics` instead, to be removed in 20.0.
      * 
      */
+    @Deprecated /* Use `topics` instead, to be removed in 20.0. */
     private List<String> tagLists;
     /**
      * @return The list of topics for the project.
@@ -535,12 +780,26 @@ public final class GetProjectsProject {
      */
     private List<String> topics;
     /**
-     * @return The visibility of the project.
+     * @return The time the project was last updated.
+     * 
+     */
+    private String updatedAt;
+    /**
+     * @return The visibility of the project (`private`, `internal`, `public`).
      * 
      */
     private String visibility;
     /**
-     * @return The web url of the project.
+     * @return The visibility of the project. Alias for `visibility`.
+     * 
+     * @deprecated
+     * Use `visibility` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `visibility` instead, to be removed in 20.0. */
+    private String visibilityLevel;
+    /**
+     * @return URL that can be used to find the project in a browser.
      * 
      */
     private String webUrl;
@@ -552,23 +811,16 @@ public final class GetProjectsProject {
     /**
      * @return Whether wiki is enabled for the project.
      * 
+     * @deprecated
+     * Use `wikiAccessLevel` instead, to be removed in 20.0.
+     * 
      */
+    @Deprecated /* Use `wikiAccessLevel` instead, to be removed in 20.0. */
     private Boolean wikiEnabled;
 
     private GetProjectsProject() {}
     /**
-     * @return Links for the project. Use `links` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `links` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `links` instead. To be removed in 19.0. */
-    public Map<String,String> _links() {
-        return this._links;
-    }
-    /**
-     * @return Whether allowMergeOnSkippedPipeline is enabled for the project.
+     * @return Whether `allowMergeOnSkippedPipeline` is enabled for the project.
      * 
      */
     public Boolean allowMergeOnSkippedPipeline() {
@@ -589,21 +841,25 @@ public final class GetProjectsProject {
         return this.analyticsAccessLevel;
     }
     /**
-     * @return The numbers of approvals needed in a merge requests.
+     * @return The number of approvals needed in a merge request.
+     * 
+     * @deprecated
+     * Use the Merge Request Approvals API instead, to be removed in 20.0.
      * 
      */
+    @Deprecated /* Use the Merge Request Approvals API instead, to be removed in 20.0. */
     public Integer approvalsBeforeMerge() {
         return this.approvalsBeforeMerge;
     }
     /**
-     * @return Whether the project is archived.
+     * @return Whether the project is in read-only mode (archived).
      * 
      */
     public Boolean archived() {
         return this.archived;
     }
     /**
-     * @return Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+     * @return Auto-cancel pending pipelines. This isn&#39;t a boolean, but `enabled`/`disabled`.
      * 
      */
     public String autoCancelPendingPipelines() {
@@ -624,6 +880,13 @@ public final class GetProjectsProject {
         return this.autoDevopsEnabled;
     }
     /**
+     * @return Whether GitLab Duo code review is enabled for the project.
+     * 
+     */
+    public Boolean autoDuoCodeReviewEnabled() {
+        return this.autoDuoCodeReviewEnabled;
+    }
+    /**
      * @return Set whether auto-closing referenced issues on default branch.
      * 
      */
@@ -631,7 +894,7 @@ public final class GetProjectsProject {
         return this.autocloseReferencedIssues;
     }
     /**
-     * @return The avatar url of the project.
+     * @return The avatar URL of the project.
      * 
      */
     public String avatarUrl() {
@@ -645,7 +908,7 @@ public final class GetProjectsProject {
         return this.buildCoverageRegex;
     }
     /**
-     * @return The Git strategy. Defaults to fetch.
+     * @return The Git strategy. Defaults to `fetch`.
      * 
      */
     public String buildGitStrategy() {
@@ -664,6 +927,20 @@ public final class GetProjectsProject {
      */
     public String buildsAccessLevel() {
         return this.buildsAccessLevel;
+    }
+    /**
+     * @return Whether the calling user can create merge requests in this project.
+     * 
+     */
+    public Boolean canCreateMergeRequestIn() {
+        return this.canCreateMergeRequestIn;
+    }
+    /**
+     * @return Whether pipelines triggered from merge requests opened from forks may run in the parent project.
+     * 
+     */
+    public Boolean ciAllowForkPipelinesToRunInParentProject() {
+        return this.ciAllowForkPipelinesToRunInParentProject;
     }
     /**
      * @return CI config file path for the project.
@@ -687,6 +964,13 @@ public final class GetProjectsProject {
         return this.ciDeletePipelinesInSeconds;
     }
     /**
+     * @return Whether pipeline variables are displayed in the UI.
+     * 
+     */
+    public Boolean ciDisplayPipelineVariables() {
+        return this.ciDisplayPipelineVariables;
+    }
+    /**
      * @return When a new deployment job starts, skip older deployment jobs that are still pending.
      * 
      */
@@ -701,35 +985,70 @@ public final class GetProjectsProject {
         return this.ciForwardDeploymentRollbackAllowed;
     }
     /**
-     * @return Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include refType and ref. Defaults to [&#34;projectPath&#34;, &#34;refType&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
+     * @return Fields included in the sub claim of the ID Token. Accepts an array starting with `projectPath`. The array might also include `refType` and `ref`. Defaults to `[&#34;projectPath&#34;, &#34;refType&#34;, &#34;ref&#34;]`. Introduced in GitLab 17.10.
      * 
      */
     public List<String> ciIdTokenSubClaimComponents() {
         return this.ciIdTokenSubClaimComponents;
     }
     /**
-     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+     * @return Whether the CI/CD job token access scope is enabled (limits which projects can be accessed using the job token).
+     * 
+     */
+    public Boolean ciJobTokenScopeEnabled() {
+        return this.ciJobTokenScopeEnabled;
+    }
+    /**
+     * @return Whether the project must explicitly opt in to receive ID tokens in CI jobs.
+     * 
+     */
+    public Boolean ciOptInJwt() {
+        return this.ciOptInJwt;
+    }
+    /**
+     * @return The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`.
      * 
      */
     public String ciPipelineVariablesMinimumOverrideRole() {
         return this.ciPipelineVariablesMinimumOverrideRole;
     }
     /**
-     * @return The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * @return Whether pushes to the repository using the CI/CD job token are allowed.
+     * 
+     */
+    public Boolean ciPushRepositoryForJobTokenAllowed() {
+        return this.ciPushRepositoryForJobTokenAllowed;
+    }
+    /**
+     * @return The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `noOne`.
      * 
      */
     public String ciRestrictPipelineCancellationRole() {
         return this.ciRestrictPipelineCancellationRole;
     }
     /**
-     * @return Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
+     * @return Use separate caches for protected branches.
+     * 
+     */
+    public Boolean ciSeparatedCaches() {
+        return this.ciSeparatedCaches;
+    }
+    /**
+     * @return Compliance frameworks applied to the project. Premium and Ultimate only.
+     * 
+     */
+    public List<String> complianceFrameworks() {
+        return this.complianceFrameworks;
+    }
+    /**
+     * @return The image cleanup policy for this project.
      * 
      */
     public List<GetProjectsProjectContainerExpirationPolicy> containerExpirationPolicies() {
         return this.containerExpirationPolicies;
     }
     /**
-     * @return Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+     * @return Set visibility of container registry for this project. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
     public String containerRegistryAccessLevel() {
@@ -738,9 +1057,20 @@ public final class GetProjectsProject {
     /**
      * @return Whether the container registry is enabled for the project.
      * 
+     * @deprecated
+     * Use `containerRegistryAccessLevel` instead, to be removed in 20.0.
+     * 
      */
+    @Deprecated /* Use `containerRegistryAccessLevel` instead, to be removed in 20.0. */
     public Boolean containerRegistryEnabled() {
         return this.containerRegistryEnabled;
+    }
+    /**
+     * @return The image prefix used by the container registry for this project.
+     * 
+     */
+    public String containerRegistryImagePrefix() {
+        return this.containerRegistryImagePrefix;
     }
     /**
      * @return Creation time for the project.
@@ -771,11 +1101,18 @@ public final class GetProjectsProject {
         return this.defaultBranch;
     }
     /**
-     * @return The description of the project.
+     * @return A description of the project.
      * 
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Whether email notifications are disabled for the project.
+     * 
+     */
+    public Boolean emailsDisabled() {
+        return this.emailsDisabled;
     }
     /**
      * @return Enable email notifications.
@@ -790,6 +1127,13 @@ public final class GetProjectsProject {
      */
     public Boolean emptyRepo() {
         return this.emptyRepo;
+    }
+    /**
+     * @return Whether authentication checks are enforced when uploading to the project.
+     * 
+     */
+    public Boolean enforceAuthChecksOnUploads() {
+        return this.enforceAuthChecksOnUploads;
     }
     /**
      * @return Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
@@ -869,6 +1213,13 @@ public final class GetProjectsProject {
         return this.importStatus;
     }
     /**
+     * @return The type of import used to create the project (for example `github`, `bitbucket`).
+     * 
+     */
+    public String importType() {
+        return this.importType;
+    }
+    /**
      * @return URL the project was imported from.
      * 
      */
@@ -883,6 +1234,13 @@ public final class GetProjectsProject {
         return this.infrastructureAccessLevel;
     }
     /**
+     * @return Template used to suggest a branch name when creating one from an issue.
+     * 
+     */
+    public String issueBranchTemplate() {
+        return this.issueBranchTemplate;
+    }
+    /**
      * @return Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -892,14 +1250,29 @@ public final class GetProjectsProject {
     /**
      * @return Whether issues are enabled for the project.
      * 
+     * @deprecated
+     * Use `issuesAccessLevel` instead, to be removed in 20.0.
+     * 
      */
+    @Deprecated /* Use `issuesAccessLevel` instead, to be removed in 20.0. */
     public Boolean issuesEnabled() {
         return this.issuesEnabled;
     }
     /**
-     * @return Whether pipelines are enabled for the project.
+     * @return Default description template for new issues.
      * 
      */
+    public String issuesTemplate() {
+        return this.issuesTemplate;
+    }
+    /**
+     * @return Whether jobs are enabled for the project.
+     * 
+     * @deprecated
+     * Use `buildsAccessLevel` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `buildsAccessLevel` instead, to be removed in 20.0. */
     public Boolean jobsEnabled() {
         return this.jobsEnabled;
     }
@@ -911,7 +1284,7 @@ public final class GetProjectsProject {
         return this.keepLatestArtifact;
     }
     /**
-     * @return Last activirty time for the project.
+     * @return Last activity time for the project.
      * 
      */
     public String lastActivityAt() {
@@ -925,11 +1298,57 @@ public final class GetProjectsProject {
         return this.lfsEnabled;
     }
     /**
+     * @return URL of the project&#39;s license file.
+     * 
+     */
+    public String licenseUrl() {
+        return this.licenseUrl;
+    }
+    /**
+     * @return Information about the project&#39;s license, if one is detected.
+     * 
+     */
+    public List<GetProjectsProjectLicense> licenses() {
+        return this.licenses;
+    }
+    /**
      * @return Links for the project.
      * 
      */
     public Map<String,String> links() {
         return this.links;
+    }
+    /**
+     * @return Whether the project is marked for deletion.
+     * 
+     */
+    public Boolean markedForDeletion() {
+        return this.markedForDeletion;
+    }
+    /**
+     * @return Timestamp at which the project was marked for deletion. Premium and Ultimate only.
+     * 
+     * @deprecated
+     * Use `markedForDeletionOn` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `markedForDeletionOn` instead, to be removed in 20.0. */
+    public String markedForDeletionAt() {
+        return this.markedForDeletionAt;
+    }
+    /**
+     * @return Timestamp at which the project was marked for deletion. Premium and Ultimate only.
+     * 
+     */
+    public String markedForDeletionOn() {
+        return this.markedForDeletionOn;
+    }
+    /**
+     * @return Maximum artifacts size, in MB, for the project. Overrides the instance-wide setting when set.
+     * 
+     */
+    public Integer maxArtifactsSize() {
+        return this.maxArtifactsSize;
     }
     /**
      * @return Template used to create merge commit message in merge requests.
@@ -953,6 +1372,20 @@ public final class GetProjectsProject {
         return this.mergePipelinesEnabled;
     }
     /**
+     * @return Regular expression that merge request titles must match.
+     * 
+     */
+    public String mergeRequestTitleRegex() {
+        return this.mergeRequestTitleRegex;
+    }
+    /**
+     * @return Human-readable description of `mergeRequestTitleRegex`.
+     * 
+     */
+    public String mergeRequestTitleRegexDescription() {
+        return this.mergeRequestTitleRegexDescription;
+    }
+    /**
      * @return Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -962,9 +1395,20 @@ public final class GetProjectsProject {
     /**
      * @return Whether merge requests are enabled for the project.
      * 
+     * @deprecated
+     * Use `mergeRequestsAccessLevel` instead, to be removed in 20.0.
+     * 
      */
+    @Deprecated /* Use `mergeRequestsAccessLevel` instead, to be removed in 20.0. */
     public Boolean mergeRequestsEnabled() {
         return this.mergeRequestsEnabled;
+    }
+    /**
+     * @return Default description template for new merge requests.
+     * 
+     */
+    public String mergeRequestsTemplate() {
+        return this.mergeRequestsTemplate;
     }
     /**
      * @return Enable or disable merge trains.
@@ -974,14 +1418,21 @@ public final class GetProjectsProject {
         return this.mergeTrainsEnabled;
     }
     /**
-     * @return Whether the pull mirroring is enabled for the project.
+     * @return Allows merge train merge requests to be merged without waiting for pipelines to finish.
+     * 
+     */
+    public Boolean mergeTrainsSkipTrainAllowed() {
+        return this.mergeTrainsSkipTrainAllowed;
+    }
+    /**
+     * @return Whether pull mirroring is enabled for the project.
      * 
      */
     public Boolean mirror() {
         return this.mirror;
     }
     /**
-     * @return Whether mirrorOverwritesDivergedBranches is enabled for the project.
+     * @return Whether `mirrorOverwritesDivergedBranches` is enabled for the project.
      * 
      */
     public Boolean mirrorOverwritesDivergedBranches() {
@@ -1023,6 +1474,13 @@ public final class GetProjectsProject {
         return this.monitorAccessLevel;
     }
     /**
+     * @return For forks, whether merge requests target the fork itself rather than the upstream project by default.
+     * 
+     */
+    public Boolean mrDefaultTargetSelf() {
+        return this.mrDefaultTargetSelf;
+    }
+    /**
      * @return The name of the project.
      * 
      */
@@ -1037,6 +1495,17 @@ public final class GetProjectsProject {
         return this.nameWithNamespace;
     }
     /**
+     * @return The namespace (group or user) ID of the project. Alias for `namespace[0].id`.
+     * 
+     * @deprecated
+     * Use `namespace[0].id` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `namespace[0].id` instead, to be removed in 20.0. */
+    public Integer namespaceId() {
+        return this.namespaceId;
+    }
+    /**
      * @return Namespace of the project (parent group/s).
      * 
      */
@@ -1044,46 +1513,71 @@ public final class GetProjectsProject {
         return this.namespaces;
     }
     /**
-     * @return Whether onlyAllowMergeIfAllDiscussionsAreResolved is enabled for the project.
+     * @return Whether `onlyAllowMergeIfAllDiscussionsAreResolved` is enabled for the project.
      * 
      */
     public Boolean onlyAllowMergeIfAllDiscussionsAreResolved() {
         return this.onlyAllowMergeIfAllDiscussionsAreResolved;
     }
     /**
-     * @return Whether onlyAllowMergeIfPipelineSucceeds is enabled for the project.
+     * @return Whether `onlyAllowMergeIfPipelineSucceeds` is enabled for the project.
      * 
      */
     public Boolean onlyAllowMergeIfPipelineSucceeds() {
         return this.onlyAllowMergeIfPipelineSucceeds;
     }
     /**
-     * @return Whether onlyMirrorProtectedBranches is enabled for the project.
+     * @return Whether `onlyMirrorProtectedBranches` is enabled for the project.
      * 
      */
     public Boolean onlyMirrorProtectedBranches() {
         return this.onlyMirrorProtectedBranches;
     }
     /**
-     * @return The number of open issies for the project.
+     * @return The number of open issues for the project.
      * 
      */
     public Integer openIssuesCount() {
         return this.openIssuesCount;
     }
     /**
-     * @return The owner of the project, due to Terraform aggregate types limitations, this field&#39;s attributes are accessed with the `owner.0` prefix. Structure is documented below.
+     * @return Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public String operationsAccessLevel() {
+        return this.operationsAccessLevel;
+    }
+    /**
+     * @return The owner of the project. Only populated when the calling token has administrator scope.
      * 
      */
     public List<GetProjectsProjectOwner> owners() {
         return this.owners;
     }
     /**
-     * @return Whether packages are enabled for the project.
+     * @return The visibility of the package registry.
      * 
      */
+    public String packageRegistryAccessLevel() {
+        return this.packageRegistryAccessLevel;
+    }
+    /**
+     * @return Whether packages are enabled for the project.
+     * 
+     * @deprecated
+     * Use `packageRegistryAccessLevel` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `packageRegistryAccessLevel` instead, to be removed in 20.0. */
     public Boolean packagesEnabled() {
         return this.packagesEnabled;
+    }
+    /**
+     * @return Set the GitLab Pages access level. Valid values are `disabled`, `private`, `enabled`.
+     * 
+     */
+    public String pagesAccessLevel() {
+        return this.pagesAccessLevel;
     }
     /**
      * @return The path of the project.
@@ -1107,6 +1601,13 @@ public final class GetProjectsProject {
         return this.permissions;
     }
     /**
+     * @return Whether pre-receive secret detection is enabled for the project.
+     * 
+     */
+    public Boolean preReceiveSecretDetectionEnabled() {
+        return this.preReceiveSecretDetectionEnabled;
+    }
+    /**
      * @return Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
      * 
      */
@@ -1114,14 +1615,39 @@ public final class GetProjectsProject {
         return this.preventMergeWithoutJiraIssue;
     }
     /**
-     * @return Whether public builds are enabled for the project.
+     * @return Show link to create/view merge request when pushing from the command line.
      * 
      */
+    public Boolean printingMergeRequestLinkEnabled() {
+        return this.printingMergeRequestLinkEnabled;
+    }
+    /**
+     * @return Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor&#39;s lower-privileged context.
+     * 
+     */
+    public Boolean protectMergeRequestPipelines() {
+        return this.protectMergeRequestPipelines;
+    }
+    /**
+     * @return If true, jobs can be viewed by non-project members. Alias for `publicJobs`.
+     * 
+     * @deprecated
+     * Use `publicJobs` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `publicJobs` instead, to be removed in 20.0. */
     public Boolean publicBuilds() {
         return this.publicBuilds;
     }
     /**
-     * @return The remote url of the project.
+     * @return If true, jobs can be viewed by non-project members.
+     * 
+     */
+    public Boolean publicJobs() {
+        return this.publicJobs;
+    }
+    /**
+     * @return The URL of the project README.
      * 
      */
     public String readmeUrl() {
@@ -1133,6 +1659,13 @@ public final class GetProjectsProject {
      */
     public String releasesAccessLevel() {
         return this.releasesAccessLevel;
+    }
+    /**
+     * @return Enable `Delete source branch` option by default for all new merge requests.
+     * 
+     */
+    public Boolean removeSourceBranchAfterMerge() {
+        return this.removeSourceBranchAfterMerge;
     }
     /**
      * @return Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1163,7 +1696,14 @@ public final class GetProjectsProject {
         return this.requirementsAccessLevel;
     }
     /**
-     * @return Whether resolveOutdatedDiffDiscussions is enabled for the project
+     * @return Whether the requirements feature is enabled. Premium and Ultimate only.
+     * 
+     */
+    public Boolean requirementsEnabled() {
+        return this.requirementsEnabled;
+    }
+    /**
+     * @return Automatically resolve merge request diffs discussions on lines changed with a push.
      * 
      */
     public Boolean resolveOutdatedDiffDiscussions() {
@@ -1179,12 +1719,23 @@ public final class GetProjectsProject {
     /**
      * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
      * 
+     * @deprecated
+     * Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0.
+     * 
      */
+    @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0. */
     public Boolean restrictUserDefinedVariables() {
         return this.restrictUserDefinedVariables;
     }
     /**
-     * @return The runners token for the project.
+     * @return Runner token expiration interval, in seconds.
+     * 
+     */
+    public Integer runnerTokenExpirationInterval() {
+        return this.runnerTokenExpirationInterval;
+    }
+    /**
+     * @return Registration token to use during runner setup.
      * 
      */
     public String runnersToken() {
@@ -1198,6 +1749,27 @@ public final class GetProjectsProject {
         return this.securityAndComplianceAccessLevel;
     }
     /**
+     * @return Whether the security and compliance feature is enabled.
+     * 
+     */
+    public Boolean securityAndComplianceEnabled() {
+        return this.securityAndComplianceEnabled;
+    }
+    /**
+     * @return The Service Desk email address for the project.
+     * 
+     */
+    public String serviceDeskAddress() {
+        return this.serviceDeskAddress;
+    }
+    /**
+     * @return Whether Service Desk is enabled for the project.
+     * 
+     */
+    public Boolean serviceDeskEnabled() {
+        return this.serviceDeskEnabled;
+    }
+    /**
      * @return Whether shared runners are enabled for the project.
      * 
      */
@@ -1205,7 +1777,7 @@ public final class GetProjectsProject {
         return this.sharedRunnersEnabled;
     }
     /**
-     * @return Groups the the project is shared with.
+     * @return Describes groups which have access shared to this project.
      * 
      */
     public List<GetProjectsProjectSharedWithGroup> sharedWithGroups() {
@@ -1221,7 +1793,11 @@ public final class GetProjectsProject {
     /**
      * @return Whether snippets are enabled for the project.
      * 
+     * @deprecated
+     * Use `snippetsAccessLevel` instead, to be removed in 20.0.
+     * 
      */
+    @Deprecated /* Use `snippetsAccessLevel` instead, to be removed in 20.0. */
     public Boolean snippetsEnabled() {
         return this.snippetsEnabled;
     }
@@ -1231,6 +1807,13 @@ public final class GetProjectsProject {
      */
     public String squashCommitTemplate() {
         return this.squashCommitTemplate;
+    }
+    /**
+     * @return The project&#39;s squash option for merge requests (`never`, `always`, `defaultOn`, `defaultOff`).
+     * 
+     */
+    public String squashOption() {
+        return this.squashOption;
     }
     /**
      * @return The SSH clone URL of the project.
@@ -1261,9 +1844,13 @@ public final class GetProjectsProject {
         return this.suggestionCommitMessage;
     }
     /**
-     * @return A set of the project topics (formerly called &#34;project tags&#34;).
+     * @return The list of project topics (formerly project tags).
+     * 
+     * @deprecated
+     * Use `topics` instead, to be removed in 20.0.
      * 
      */
+    @Deprecated /* Use `topics` instead, to be removed in 20.0. */
     public List<String> tagLists() {
         return this.tagLists;
     }
@@ -1275,14 +1862,32 @@ public final class GetProjectsProject {
         return this.topics;
     }
     /**
-     * @return The visibility of the project.
+     * @return The time the project was last updated.
+     * 
+     */
+    public String updatedAt() {
+        return this.updatedAt;
+    }
+    /**
+     * @return The visibility of the project (`private`, `internal`, `public`).
      * 
      */
     public String visibility() {
         return this.visibility;
     }
     /**
-     * @return The web url of the project.
+     * @return The visibility of the project. Alias for `visibility`.
+     * 
+     * @deprecated
+     * Use `visibility` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `visibility` instead, to be removed in 20.0. */
+    public String visibilityLevel() {
+        return this.visibilityLevel;
+    }
+    /**
+     * @return URL that can be used to find the project in a browser.
      * 
      */
     public String webUrl() {
@@ -1298,7 +1903,11 @@ public final class GetProjectsProject {
     /**
      * @return Whether wiki is enabled for the project.
      * 
+     * @deprecated
+     * Use `wikiAccessLevel` instead, to be removed in 20.0.
+     * 
      */
+    @Deprecated /* Use `wikiAccessLevel` instead, to be removed in 20.0. */
     public Boolean wikiEnabled() {
         return this.wikiEnabled;
     }
@@ -1312,7 +1921,6 @@ public final class GetProjectsProject {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,String> _links;
         private Boolean allowMergeOnSkippedPipeline;
         private Boolean allowPipelineTriggerApproveDeployment;
         private String analyticsAccessLevel;
@@ -1321,30 +1929,42 @@ public final class GetProjectsProject {
         private String autoCancelPendingPipelines;
         private String autoDevopsDeployStrategy;
         private Boolean autoDevopsEnabled;
+        private Boolean autoDuoCodeReviewEnabled;
         private Boolean autocloseReferencedIssues;
         private String avatarUrl;
         private String buildCoverageRegex;
         private String buildGitStrategy;
         private Integer buildTimeout;
         private String buildsAccessLevel;
+        private Boolean canCreateMergeRequestIn;
+        private Boolean ciAllowForkPipelinesToRunInParentProject;
         private String ciConfigPath;
         private Integer ciDefaultGitDepth;
         private Integer ciDeletePipelinesInSeconds;
+        private Boolean ciDisplayPipelineVariables;
         private Boolean ciForwardDeploymentEnabled;
         private Boolean ciForwardDeploymentRollbackAllowed;
         private List<String> ciIdTokenSubClaimComponents;
+        private Boolean ciJobTokenScopeEnabled;
+        private Boolean ciOptInJwt;
         private String ciPipelineVariablesMinimumOverrideRole;
+        private Boolean ciPushRepositoryForJobTokenAllowed;
         private String ciRestrictPipelineCancellationRole;
+        private Boolean ciSeparatedCaches;
+        private List<String> complianceFrameworks;
         private List<GetProjectsProjectContainerExpirationPolicy> containerExpirationPolicies;
         private String containerRegistryAccessLevel;
         private Boolean containerRegistryEnabled;
+        private String containerRegistryImagePrefix;
         private String createdAt;
         private Integer creatorId;
         private List<Map<String,String>> customAttributes;
         private String defaultBranch;
         private String description;
+        private Boolean emailsDisabled;
         private Boolean emailsEnabled;
         private Boolean emptyRepo;
+        private Boolean enforceAuthChecksOnUploads;
         private String environmentsAccessLevel;
         private String externalAuthorizationClassificationLabel;
         private String featureFlagsAccessLevel;
@@ -1356,21 +1976,34 @@ public final class GetProjectsProject {
         private Integer id;
         private String importError;
         private String importStatus;
+        private String importType;
         private String importUrl;
         private String infrastructureAccessLevel;
+        private String issueBranchTemplate;
         private String issuesAccessLevel;
         private Boolean issuesEnabled;
+        private String issuesTemplate;
         private Boolean jobsEnabled;
         private Boolean keepLatestArtifact;
         private String lastActivityAt;
         private Boolean lfsEnabled;
+        private String licenseUrl;
+        private List<GetProjectsProjectLicense> licenses;
         private Map<String,String> links;
+        private Boolean markedForDeletion;
+        private String markedForDeletionAt;
+        private String markedForDeletionOn;
+        private Integer maxArtifactsSize;
         private String mergeCommitTemplate;
         private String mergeMethod;
         private Boolean mergePipelinesEnabled;
+        private String mergeRequestTitleRegex;
+        private String mergeRequestTitleRegexDescription;
         private String mergeRequestsAccessLevel;
         private Boolean mergeRequestsEnabled;
+        private String mergeRequestsTemplate;
         private Boolean mergeTrainsEnabled;
+        private Boolean mergeTrainsSkipTrainAllowed;
         private Boolean mirror;
         private Boolean mirrorOverwritesDivergedBranches;
         private Boolean mirrorTriggerBuilds;
@@ -1378,50 +2011,67 @@ public final class GetProjectsProject {
         private String modelExperimentsAccessLevel;
         private String modelRegistryAccessLevel;
         private String monitorAccessLevel;
+        private Boolean mrDefaultTargetSelf;
         private String name;
         private String nameWithNamespace;
+        private Integer namespaceId;
         private List<GetProjectsProjectNamespace> namespaces;
         private Boolean onlyAllowMergeIfAllDiscussionsAreResolved;
         private Boolean onlyAllowMergeIfPipelineSucceeds;
         private Boolean onlyMirrorProtectedBranches;
         private Integer openIssuesCount;
+        private String operationsAccessLevel;
         private List<GetProjectsProjectOwner> owners;
+        private String packageRegistryAccessLevel;
         private Boolean packagesEnabled;
+        private String pagesAccessLevel;
         private String path;
         private String pathWithNamespace;
         private List<GetProjectsProjectPermission> permissions;
+        private Boolean preReceiveSecretDetectionEnabled;
         private Boolean preventMergeWithoutJiraIssue;
+        private Boolean printingMergeRequestLinkEnabled;
+        private Boolean protectMergeRequestPipelines;
         private Boolean publicBuilds;
+        private Boolean publicJobs;
         private String readmeUrl;
         private String releasesAccessLevel;
+        private Boolean removeSourceBranchAfterMerge;
         private String repositoryAccessLevel;
         private String repositoryStorage;
         private Boolean requestAccessEnabled;
         private String requirementsAccessLevel;
+        private Boolean requirementsEnabled;
         private Boolean resolveOutdatedDiffDiscussions;
         private String resourceGroupDefaultProcessMode;
         private Boolean restrictUserDefinedVariables;
+        private Integer runnerTokenExpirationInterval;
         private String runnersToken;
         private String securityAndComplianceAccessLevel;
+        private Boolean securityAndComplianceEnabled;
+        private String serviceDeskAddress;
+        private Boolean serviceDeskEnabled;
         private Boolean sharedRunnersEnabled;
         private List<GetProjectsProjectSharedWithGroup> sharedWithGroups;
         private String snippetsAccessLevel;
         private Boolean snippetsEnabled;
         private String squashCommitTemplate;
+        private String squashOption;
         private String sshUrlToRepo;
         private Integer starCount;
         private Map<String,Integer> statistics;
         private String suggestionCommitMessage;
         private List<String> tagLists;
         private List<String> topics;
+        private String updatedAt;
         private String visibility;
+        private String visibilityLevel;
         private String webUrl;
         private String wikiAccessLevel;
         private Boolean wikiEnabled;
         public Builder() {}
         public Builder(GetProjectsProject defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this._links = defaults._links;
     	      this.allowMergeOnSkippedPipeline = defaults.allowMergeOnSkippedPipeline;
     	      this.allowPipelineTriggerApproveDeployment = defaults.allowPipelineTriggerApproveDeployment;
     	      this.analyticsAccessLevel = defaults.analyticsAccessLevel;
@@ -1430,30 +2080,42 @@ public final class GetProjectsProject {
     	      this.autoCancelPendingPipelines = defaults.autoCancelPendingPipelines;
     	      this.autoDevopsDeployStrategy = defaults.autoDevopsDeployStrategy;
     	      this.autoDevopsEnabled = defaults.autoDevopsEnabled;
+    	      this.autoDuoCodeReviewEnabled = defaults.autoDuoCodeReviewEnabled;
     	      this.autocloseReferencedIssues = defaults.autocloseReferencedIssues;
     	      this.avatarUrl = defaults.avatarUrl;
     	      this.buildCoverageRegex = defaults.buildCoverageRegex;
     	      this.buildGitStrategy = defaults.buildGitStrategy;
     	      this.buildTimeout = defaults.buildTimeout;
     	      this.buildsAccessLevel = defaults.buildsAccessLevel;
+    	      this.canCreateMergeRequestIn = defaults.canCreateMergeRequestIn;
+    	      this.ciAllowForkPipelinesToRunInParentProject = defaults.ciAllowForkPipelinesToRunInParentProject;
     	      this.ciConfigPath = defaults.ciConfigPath;
     	      this.ciDefaultGitDepth = defaults.ciDefaultGitDepth;
     	      this.ciDeletePipelinesInSeconds = defaults.ciDeletePipelinesInSeconds;
+    	      this.ciDisplayPipelineVariables = defaults.ciDisplayPipelineVariables;
     	      this.ciForwardDeploymentEnabled = defaults.ciForwardDeploymentEnabled;
     	      this.ciForwardDeploymentRollbackAllowed = defaults.ciForwardDeploymentRollbackAllowed;
     	      this.ciIdTokenSubClaimComponents = defaults.ciIdTokenSubClaimComponents;
+    	      this.ciJobTokenScopeEnabled = defaults.ciJobTokenScopeEnabled;
+    	      this.ciOptInJwt = defaults.ciOptInJwt;
     	      this.ciPipelineVariablesMinimumOverrideRole = defaults.ciPipelineVariablesMinimumOverrideRole;
+    	      this.ciPushRepositoryForJobTokenAllowed = defaults.ciPushRepositoryForJobTokenAllowed;
     	      this.ciRestrictPipelineCancellationRole = defaults.ciRestrictPipelineCancellationRole;
+    	      this.ciSeparatedCaches = defaults.ciSeparatedCaches;
+    	      this.complianceFrameworks = defaults.complianceFrameworks;
     	      this.containerExpirationPolicies = defaults.containerExpirationPolicies;
     	      this.containerRegistryAccessLevel = defaults.containerRegistryAccessLevel;
     	      this.containerRegistryEnabled = defaults.containerRegistryEnabled;
+    	      this.containerRegistryImagePrefix = defaults.containerRegistryImagePrefix;
     	      this.createdAt = defaults.createdAt;
     	      this.creatorId = defaults.creatorId;
     	      this.customAttributes = defaults.customAttributes;
     	      this.defaultBranch = defaults.defaultBranch;
     	      this.description = defaults.description;
+    	      this.emailsDisabled = defaults.emailsDisabled;
     	      this.emailsEnabled = defaults.emailsEnabled;
     	      this.emptyRepo = defaults.emptyRepo;
+    	      this.enforceAuthChecksOnUploads = defaults.enforceAuthChecksOnUploads;
     	      this.environmentsAccessLevel = defaults.environmentsAccessLevel;
     	      this.externalAuthorizationClassificationLabel = defaults.externalAuthorizationClassificationLabel;
     	      this.featureFlagsAccessLevel = defaults.featureFlagsAccessLevel;
@@ -1465,21 +2127,34 @@ public final class GetProjectsProject {
     	      this.id = defaults.id;
     	      this.importError = defaults.importError;
     	      this.importStatus = defaults.importStatus;
+    	      this.importType = defaults.importType;
     	      this.importUrl = defaults.importUrl;
     	      this.infrastructureAccessLevel = defaults.infrastructureAccessLevel;
+    	      this.issueBranchTemplate = defaults.issueBranchTemplate;
     	      this.issuesAccessLevel = defaults.issuesAccessLevel;
     	      this.issuesEnabled = defaults.issuesEnabled;
+    	      this.issuesTemplate = defaults.issuesTemplate;
     	      this.jobsEnabled = defaults.jobsEnabled;
     	      this.keepLatestArtifact = defaults.keepLatestArtifact;
     	      this.lastActivityAt = defaults.lastActivityAt;
     	      this.lfsEnabled = defaults.lfsEnabled;
+    	      this.licenseUrl = defaults.licenseUrl;
+    	      this.licenses = defaults.licenses;
     	      this.links = defaults.links;
+    	      this.markedForDeletion = defaults.markedForDeletion;
+    	      this.markedForDeletionAt = defaults.markedForDeletionAt;
+    	      this.markedForDeletionOn = defaults.markedForDeletionOn;
+    	      this.maxArtifactsSize = defaults.maxArtifactsSize;
     	      this.mergeCommitTemplate = defaults.mergeCommitTemplate;
     	      this.mergeMethod = defaults.mergeMethod;
     	      this.mergePipelinesEnabled = defaults.mergePipelinesEnabled;
+    	      this.mergeRequestTitleRegex = defaults.mergeRequestTitleRegex;
+    	      this.mergeRequestTitleRegexDescription = defaults.mergeRequestTitleRegexDescription;
     	      this.mergeRequestsAccessLevel = defaults.mergeRequestsAccessLevel;
     	      this.mergeRequestsEnabled = defaults.mergeRequestsEnabled;
+    	      this.mergeRequestsTemplate = defaults.mergeRequestsTemplate;
     	      this.mergeTrainsEnabled = defaults.mergeTrainsEnabled;
+    	      this.mergeTrainsSkipTrainAllowed = defaults.mergeTrainsSkipTrainAllowed;
     	      this.mirror = defaults.mirror;
     	      this.mirrorOverwritesDivergedBranches = defaults.mirrorOverwritesDivergedBranches;
     	      this.mirrorTriggerBuilds = defaults.mirrorTriggerBuilds;
@@ -1487,56 +2162,66 @@ public final class GetProjectsProject {
     	      this.modelExperimentsAccessLevel = defaults.modelExperimentsAccessLevel;
     	      this.modelRegistryAccessLevel = defaults.modelRegistryAccessLevel;
     	      this.monitorAccessLevel = defaults.monitorAccessLevel;
+    	      this.mrDefaultTargetSelf = defaults.mrDefaultTargetSelf;
     	      this.name = defaults.name;
     	      this.nameWithNamespace = defaults.nameWithNamespace;
+    	      this.namespaceId = defaults.namespaceId;
     	      this.namespaces = defaults.namespaces;
     	      this.onlyAllowMergeIfAllDiscussionsAreResolved = defaults.onlyAllowMergeIfAllDiscussionsAreResolved;
     	      this.onlyAllowMergeIfPipelineSucceeds = defaults.onlyAllowMergeIfPipelineSucceeds;
     	      this.onlyMirrorProtectedBranches = defaults.onlyMirrorProtectedBranches;
     	      this.openIssuesCount = defaults.openIssuesCount;
+    	      this.operationsAccessLevel = defaults.operationsAccessLevel;
     	      this.owners = defaults.owners;
+    	      this.packageRegistryAccessLevel = defaults.packageRegistryAccessLevel;
     	      this.packagesEnabled = defaults.packagesEnabled;
+    	      this.pagesAccessLevel = defaults.pagesAccessLevel;
     	      this.path = defaults.path;
     	      this.pathWithNamespace = defaults.pathWithNamespace;
     	      this.permissions = defaults.permissions;
+    	      this.preReceiveSecretDetectionEnabled = defaults.preReceiveSecretDetectionEnabled;
     	      this.preventMergeWithoutJiraIssue = defaults.preventMergeWithoutJiraIssue;
+    	      this.printingMergeRequestLinkEnabled = defaults.printingMergeRequestLinkEnabled;
+    	      this.protectMergeRequestPipelines = defaults.protectMergeRequestPipelines;
     	      this.publicBuilds = defaults.publicBuilds;
+    	      this.publicJobs = defaults.publicJobs;
     	      this.readmeUrl = defaults.readmeUrl;
     	      this.releasesAccessLevel = defaults.releasesAccessLevel;
+    	      this.removeSourceBranchAfterMerge = defaults.removeSourceBranchAfterMerge;
     	      this.repositoryAccessLevel = defaults.repositoryAccessLevel;
     	      this.repositoryStorage = defaults.repositoryStorage;
     	      this.requestAccessEnabled = defaults.requestAccessEnabled;
     	      this.requirementsAccessLevel = defaults.requirementsAccessLevel;
+    	      this.requirementsEnabled = defaults.requirementsEnabled;
     	      this.resolveOutdatedDiffDiscussions = defaults.resolveOutdatedDiffDiscussions;
     	      this.resourceGroupDefaultProcessMode = defaults.resourceGroupDefaultProcessMode;
     	      this.restrictUserDefinedVariables = defaults.restrictUserDefinedVariables;
+    	      this.runnerTokenExpirationInterval = defaults.runnerTokenExpirationInterval;
     	      this.runnersToken = defaults.runnersToken;
     	      this.securityAndComplianceAccessLevel = defaults.securityAndComplianceAccessLevel;
+    	      this.securityAndComplianceEnabled = defaults.securityAndComplianceEnabled;
+    	      this.serviceDeskAddress = defaults.serviceDeskAddress;
+    	      this.serviceDeskEnabled = defaults.serviceDeskEnabled;
     	      this.sharedRunnersEnabled = defaults.sharedRunnersEnabled;
     	      this.sharedWithGroups = defaults.sharedWithGroups;
     	      this.snippetsAccessLevel = defaults.snippetsAccessLevel;
     	      this.snippetsEnabled = defaults.snippetsEnabled;
     	      this.squashCommitTemplate = defaults.squashCommitTemplate;
+    	      this.squashOption = defaults.squashOption;
     	      this.sshUrlToRepo = defaults.sshUrlToRepo;
     	      this.starCount = defaults.starCount;
     	      this.statistics = defaults.statistics;
     	      this.suggestionCommitMessage = defaults.suggestionCommitMessage;
     	      this.tagLists = defaults.tagLists;
     	      this.topics = defaults.topics;
+    	      this.updatedAt = defaults.updatedAt;
     	      this.visibility = defaults.visibility;
+    	      this.visibilityLevel = defaults.visibilityLevel;
     	      this.webUrl = defaults.webUrl;
     	      this.wikiAccessLevel = defaults.wikiAccessLevel;
     	      this.wikiEnabled = defaults.wikiEnabled;
         }
 
-        @CustomType.Setter
-        public Builder _links(Map<String,String> _links) {
-            if (_links == null) {
-              throw new MissingRequiredPropertyException("GetProjectsProject", "_links");
-            }
-            this._links = _links;
-            return this;
-        }
         @CustomType.Setter
         public Builder allowMergeOnSkippedPipeline(Boolean allowMergeOnSkippedPipeline) {
             if (allowMergeOnSkippedPipeline == null) {
@@ -1602,6 +2287,14 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder autoDuoCodeReviewEnabled(Boolean autoDuoCodeReviewEnabled) {
+            if (autoDuoCodeReviewEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "autoDuoCodeReviewEnabled");
+            }
+            this.autoDuoCodeReviewEnabled = autoDuoCodeReviewEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder autocloseReferencedIssues(Boolean autocloseReferencedIssues) {
             if (autocloseReferencedIssues == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "autocloseReferencedIssues");
@@ -1650,6 +2343,22 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder canCreateMergeRequestIn(Boolean canCreateMergeRequestIn) {
+            if (canCreateMergeRequestIn == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "canCreateMergeRequestIn");
+            }
+            this.canCreateMergeRequestIn = canCreateMergeRequestIn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ciAllowForkPipelinesToRunInParentProject(Boolean ciAllowForkPipelinesToRunInParentProject) {
+            if (ciAllowForkPipelinesToRunInParentProject == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "ciAllowForkPipelinesToRunInParentProject");
+            }
+            this.ciAllowForkPipelinesToRunInParentProject = ciAllowForkPipelinesToRunInParentProject;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ciConfigPath(String ciConfigPath) {
             if (ciConfigPath == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "ciConfigPath");
@@ -1671,6 +2380,14 @@ public final class GetProjectsProject {
               throw new MissingRequiredPropertyException("GetProjectsProject", "ciDeletePipelinesInSeconds");
             }
             this.ciDeletePipelinesInSeconds = ciDeletePipelinesInSeconds;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ciDisplayPipelineVariables(Boolean ciDisplayPipelineVariables) {
+            if (ciDisplayPipelineVariables == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "ciDisplayPipelineVariables");
+            }
+            this.ciDisplayPipelineVariables = ciDisplayPipelineVariables;
             return this;
         }
         @CustomType.Setter
@@ -1701,11 +2418,35 @@ public final class GetProjectsProject {
             return ciIdTokenSubClaimComponents(List.of(ciIdTokenSubClaimComponents));
         }
         @CustomType.Setter
+        public Builder ciJobTokenScopeEnabled(Boolean ciJobTokenScopeEnabled) {
+            if (ciJobTokenScopeEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "ciJobTokenScopeEnabled");
+            }
+            this.ciJobTokenScopeEnabled = ciJobTokenScopeEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ciOptInJwt(Boolean ciOptInJwt) {
+            if (ciOptInJwt == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "ciOptInJwt");
+            }
+            this.ciOptInJwt = ciOptInJwt;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ciPipelineVariablesMinimumOverrideRole(String ciPipelineVariablesMinimumOverrideRole) {
             if (ciPipelineVariablesMinimumOverrideRole == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "ciPipelineVariablesMinimumOverrideRole");
             }
             this.ciPipelineVariablesMinimumOverrideRole = ciPipelineVariablesMinimumOverrideRole;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ciPushRepositoryForJobTokenAllowed(Boolean ciPushRepositoryForJobTokenAllowed) {
+            if (ciPushRepositoryForJobTokenAllowed == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "ciPushRepositoryForJobTokenAllowed");
+            }
+            this.ciPushRepositoryForJobTokenAllowed = ciPushRepositoryForJobTokenAllowed;
             return this;
         }
         @CustomType.Setter
@@ -1715,6 +2456,25 @@ public final class GetProjectsProject {
             }
             this.ciRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ciSeparatedCaches(Boolean ciSeparatedCaches) {
+            if (ciSeparatedCaches == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "ciSeparatedCaches");
+            }
+            this.ciSeparatedCaches = ciSeparatedCaches;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder complianceFrameworks(List<String> complianceFrameworks) {
+            if (complianceFrameworks == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "complianceFrameworks");
+            }
+            this.complianceFrameworks = complianceFrameworks;
+            return this;
+        }
+        public Builder complianceFrameworks(String... complianceFrameworks) {
+            return complianceFrameworks(List.of(complianceFrameworks));
         }
         @CustomType.Setter
         public Builder containerExpirationPolicies(List<GetProjectsProjectContainerExpirationPolicy> containerExpirationPolicies) {
@@ -1741,6 +2501,14 @@ public final class GetProjectsProject {
               throw new MissingRequiredPropertyException("GetProjectsProject", "containerRegistryEnabled");
             }
             this.containerRegistryEnabled = containerRegistryEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder containerRegistryImagePrefix(String containerRegistryImagePrefix) {
+            if (containerRegistryImagePrefix == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "containerRegistryImagePrefix");
+            }
+            this.containerRegistryImagePrefix = containerRegistryImagePrefix;
             return this;
         }
         @CustomType.Setter
@@ -1784,6 +2552,14 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder emailsDisabled(Boolean emailsDisabled) {
+            if (emailsDisabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "emailsDisabled");
+            }
+            this.emailsDisabled = emailsDisabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder emailsEnabled(Boolean emailsEnabled) {
             if (emailsEnabled == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "emailsEnabled");
@@ -1797,6 +2573,14 @@ public final class GetProjectsProject {
               throw new MissingRequiredPropertyException("GetProjectsProject", "emptyRepo");
             }
             this.emptyRepo = emptyRepo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enforceAuthChecksOnUploads(Boolean enforceAuthChecksOnUploads) {
+            if (enforceAuthChecksOnUploads == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "enforceAuthChecksOnUploads");
+            }
+            this.enforceAuthChecksOnUploads = enforceAuthChecksOnUploads;
             return this;
         }
         @CustomType.Setter
@@ -1891,6 +2675,14 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder importType(String importType) {
+            if (importType == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "importType");
+            }
+            this.importType = importType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder importUrl(String importUrl) {
             if (importUrl == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "importUrl");
@@ -1907,6 +2699,14 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder issueBranchTemplate(String issueBranchTemplate) {
+            if (issueBranchTemplate == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "issueBranchTemplate");
+            }
+            this.issueBranchTemplate = issueBranchTemplate;
+            return this;
+        }
+        @CustomType.Setter
         public Builder issuesAccessLevel(String issuesAccessLevel) {
             if (issuesAccessLevel == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "issuesAccessLevel");
@@ -1920,6 +2720,14 @@ public final class GetProjectsProject {
               throw new MissingRequiredPropertyException("GetProjectsProject", "issuesEnabled");
             }
             this.issuesEnabled = issuesEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder issuesTemplate(String issuesTemplate) {
+            if (issuesTemplate == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "issuesTemplate");
+            }
+            this.issuesTemplate = issuesTemplate;
             return this;
         }
         @CustomType.Setter
@@ -1955,11 +2763,62 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder licenseUrl(String licenseUrl) {
+            if (licenseUrl == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "licenseUrl");
+            }
+            this.licenseUrl = licenseUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder licenses(List<GetProjectsProjectLicense> licenses) {
+            if (licenses == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "licenses");
+            }
+            this.licenses = licenses;
+            return this;
+        }
+        public Builder licenses(GetProjectsProjectLicense... licenses) {
+            return licenses(List.of(licenses));
+        }
+        @CustomType.Setter
         public Builder links(Map<String,String> links) {
             if (links == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "links");
             }
             this.links = links;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder markedForDeletion(Boolean markedForDeletion) {
+            if (markedForDeletion == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "markedForDeletion");
+            }
+            this.markedForDeletion = markedForDeletion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder markedForDeletionAt(String markedForDeletionAt) {
+            if (markedForDeletionAt == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "markedForDeletionAt");
+            }
+            this.markedForDeletionAt = markedForDeletionAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder markedForDeletionOn(String markedForDeletionOn) {
+            if (markedForDeletionOn == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "markedForDeletionOn");
+            }
+            this.markedForDeletionOn = markedForDeletionOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxArtifactsSize(Integer maxArtifactsSize) {
+            if (maxArtifactsSize == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "maxArtifactsSize");
+            }
+            this.maxArtifactsSize = maxArtifactsSize;
             return this;
         }
         @CustomType.Setter
@@ -1987,6 +2846,22 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder mergeRequestTitleRegex(String mergeRequestTitleRegex) {
+            if (mergeRequestTitleRegex == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "mergeRequestTitleRegex");
+            }
+            this.mergeRequestTitleRegex = mergeRequestTitleRegex;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mergeRequestTitleRegexDescription(String mergeRequestTitleRegexDescription) {
+            if (mergeRequestTitleRegexDescription == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "mergeRequestTitleRegexDescription");
+            }
+            this.mergeRequestTitleRegexDescription = mergeRequestTitleRegexDescription;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mergeRequestsAccessLevel(String mergeRequestsAccessLevel) {
             if (mergeRequestsAccessLevel == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "mergeRequestsAccessLevel");
@@ -2003,11 +2878,27 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder mergeRequestsTemplate(String mergeRequestsTemplate) {
+            if (mergeRequestsTemplate == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "mergeRequestsTemplate");
+            }
+            this.mergeRequestsTemplate = mergeRequestsTemplate;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mergeTrainsEnabled(Boolean mergeTrainsEnabled) {
             if (mergeTrainsEnabled == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "mergeTrainsEnabled");
             }
             this.mergeTrainsEnabled = mergeTrainsEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mergeTrainsSkipTrainAllowed(Boolean mergeTrainsSkipTrainAllowed) {
+            if (mergeTrainsSkipTrainAllowed == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "mergeTrainsSkipTrainAllowed");
+            }
+            this.mergeTrainsSkipTrainAllowed = mergeTrainsSkipTrainAllowed;
             return this;
         }
         @CustomType.Setter
@@ -2067,6 +2958,14 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder mrDefaultTargetSelf(Boolean mrDefaultTargetSelf) {
+            if (mrDefaultTargetSelf == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "mrDefaultTargetSelf");
+            }
+            this.mrDefaultTargetSelf = mrDefaultTargetSelf;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "name");
@@ -2080,6 +2979,14 @@ public final class GetProjectsProject {
               throw new MissingRequiredPropertyException("GetProjectsProject", "nameWithNamespace");
             }
             this.nameWithNamespace = nameWithNamespace;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder namespaceId(Integer namespaceId) {
+            if (namespaceId == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "namespaceId");
+            }
+            this.namespaceId = namespaceId;
             return this;
         }
         @CustomType.Setter
@@ -2126,6 +3033,14 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder operationsAccessLevel(String operationsAccessLevel) {
+            if (operationsAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "operationsAccessLevel");
+            }
+            this.operationsAccessLevel = operationsAccessLevel;
+            return this;
+        }
+        @CustomType.Setter
         public Builder owners(List<GetProjectsProjectOwner> owners) {
             if (owners == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "owners");
@@ -2137,11 +3052,27 @@ public final class GetProjectsProject {
             return owners(List.of(owners));
         }
         @CustomType.Setter
+        public Builder packageRegistryAccessLevel(String packageRegistryAccessLevel) {
+            if (packageRegistryAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "packageRegistryAccessLevel");
+            }
+            this.packageRegistryAccessLevel = packageRegistryAccessLevel;
+            return this;
+        }
+        @CustomType.Setter
         public Builder packagesEnabled(Boolean packagesEnabled) {
             if (packagesEnabled == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "packagesEnabled");
             }
             this.packagesEnabled = packagesEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pagesAccessLevel(String pagesAccessLevel) {
+            if (pagesAccessLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "pagesAccessLevel");
+            }
+            this.pagesAccessLevel = pagesAccessLevel;
             return this;
         }
         @CustomType.Setter
@@ -2172,6 +3103,14 @@ public final class GetProjectsProject {
             return permissions(List.of(permissions));
         }
         @CustomType.Setter
+        public Builder preReceiveSecretDetectionEnabled(Boolean preReceiveSecretDetectionEnabled) {
+            if (preReceiveSecretDetectionEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "preReceiveSecretDetectionEnabled");
+            }
+            this.preReceiveSecretDetectionEnabled = preReceiveSecretDetectionEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder preventMergeWithoutJiraIssue(Boolean preventMergeWithoutJiraIssue) {
             if (preventMergeWithoutJiraIssue == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "preventMergeWithoutJiraIssue");
@@ -2180,11 +3119,35 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder printingMergeRequestLinkEnabled(Boolean printingMergeRequestLinkEnabled) {
+            if (printingMergeRequestLinkEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "printingMergeRequestLinkEnabled");
+            }
+            this.printingMergeRequestLinkEnabled = printingMergeRequestLinkEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder protectMergeRequestPipelines(Boolean protectMergeRequestPipelines) {
+            if (protectMergeRequestPipelines == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "protectMergeRequestPipelines");
+            }
+            this.protectMergeRequestPipelines = protectMergeRequestPipelines;
+            return this;
+        }
+        @CustomType.Setter
         public Builder publicBuilds(Boolean publicBuilds) {
             if (publicBuilds == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "publicBuilds");
             }
             this.publicBuilds = publicBuilds;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder publicJobs(Boolean publicJobs) {
+            if (publicJobs == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "publicJobs");
+            }
+            this.publicJobs = publicJobs;
             return this;
         }
         @CustomType.Setter
@@ -2201,6 +3164,14 @@ public final class GetProjectsProject {
               throw new MissingRequiredPropertyException("GetProjectsProject", "releasesAccessLevel");
             }
             this.releasesAccessLevel = releasesAccessLevel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder removeSourceBranchAfterMerge(Boolean removeSourceBranchAfterMerge) {
+            if (removeSourceBranchAfterMerge == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "removeSourceBranchAfterMerge");
+            }
+            this.removeSourceBranchAfterMerge = removeSourceBranchAfterMerge;
             return this;
         }
         @CustomType.Setter
@@ -2236,6 +3207,14 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder requirementsEnabled(Boolean requirementsEnabled) {
+            if (requirementsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "requirementsEnabled");
+            }
+            this.requirementsEnabled = requirementsEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resolveOutdatedDiffDiscussions(Boolean resolveOutdatedDiffDiscussions) {
             if (resolveOutdatedDiffDiscussions == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "resolveOutdatedDiffDiscussions");
@@ -2260,6 +3239,14 @@ public final class GetProjectsProject {
             return this;
         }
         @CustomType.Setter
+        public Builder runnerTokenExpirationInterval(Integer runnerTokenExpirationInterval) {
+            if (runnerTokenExpirationInterval == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "runnerTokenExpirationInterval");
+            }
+            this.runnerTokenExpirationInterval = runnerTokenExpirationInterval;
+            return this;
+        }
+        @CustomType.Setter
         public Builder runnersToken(String runnersToken) {
             if (runnersToken == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "runnersToken");
@@ -2273,6 +3260,30 @@ public final class GetProjectsProject {
               throw new MissingRequiredPropertyException("GetProjectsProject", "securityAndComplianceAccessLevel");
             }
             this.securityAndComplianceAccessLevel = securityAndComplianceAccessLevel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder securityAndComplianceEnabled(Boolean securityAndComplianceEnabled) {
+            if (securityAndComplianceEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "securityAndComplianceEnabled");
+            }
+            this.securityAndComplianceEnabled = securityAndComplianceEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder serviceDeskAddress(String serviceDeskAddress) {
+            if (serviceDeskAddress == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "serviceDeskAddress");
+            }
+            this.serviceDeskAddress = serviceDeskAddress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder serviceDeskEnabled(Boolean serviceDeskEnabled) {
+            if (serviceDeskEnabled == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "serviceDeskEnabled");
+            }
+            this.serviceDeskEnabled = serviceDeskEnabled;
             return this;
         }
         @CustomType.Setter
@@ -2316,6 +3327,14 @@ public final class GetProjectsProject {
               throw new MissingRequiredPropertyException("GetProjectsProject", "squashCommitTemplate");
             }
             this.squashCommitTemplate = squashCommitTemplate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder squashOption(String squashOption) {
+            if (squashOption == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "squashOption");
+            }
+            this.squashOption = squashOption;
             return this;
         }
         @CustomType.Setter
@@ -2373,11 +3392,27 @@ public final class GetProjectsProject {
             return topics(List.of(topics));
         }
         @CustomType.Setter
+        public Builder updatedAt(String updatedAt) {
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
+            return this;
+        }
+        @CustomType.Setter
         public Builder visibility(String visibility) {
             if (visibility == null) {
               throw new MissingRequiredPropertyException("GetProjectsProject", "visibility");
             }
             this.visibility = visibility;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder visibilityLevel(String visibilityLevel) {
+            if (visibilityLevel == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProject", "visibilityLevel");
+            }
+            this.visibilityLevel = visibilityLevel;
             return this;
         }
         @CustomType.Setter
@@ -2406,7 +3441,6 @@ public final class GetProjectsProject {
         }
         public GetProjectsProject build() {
             final var _resultValue = new GetProjectsProject();
-            _resultValue._links = _links;
             _resultValue.allowMergeOnSkippedPipeline = allowMergeOnSkippedPipeline;
             _resultValue.allowPipelineTriggerApproveDeployment = allowPipelineTriggerApproveDeployment;
             _resultValue.analyticsAccessLevel = analyticsAccessLevel;
@@ -2415,30 +3449,42 @@ public final class GetProjectsProject {
             _resultValue.autoCancelPendingPipelines = autoCancelPendingPipelines;
             _resultValue.autoDevopsDeployStrategy = autoDevopsDeployStrategy;
             _resultValue.autoDevopsEnabled = autoDevopsEnabled;
+            _resultValue.autoDuoCodeReviewEnabled = autoDuoCodeReviewEnabled;
             _resultValue.autocloseReferencedIssues = autocloseReferencedIssues;
             _resultValue.avatarUrl = avatarUrl;
             _resultValue.buildCoverageRegex = buildCoverageRegex;
             _resultValue.buildGitStrategy = buildGitStrategy;
             _resultValue.buildTimeout = buildTimeout;
             _resultValue.buildsAccessLevel = buildsAccessLevel;
+            _resultValue.canCreateMergeRequestIn = canCreateMergeRequestIn;
+            _resultValue.ciAllowForkPipelinesToRunInParentProject = ciAllowForkPipelinesToRunInParentProject;
             _resultValue.ciConfigPath = ciConfigPath;
             _resultValue.ciDefaultGitDepth = ciDefaultGitDepth;
             _resultValue.ciDeletePipelinesInSeconds = ciDeletePipelinesInSeconds;
+            _resultValue.ciDisplayPipelineVariables = ciDisplayPipelineVariables;
             _resultValue.ciForwardDeploymentEnabled = ciForwardDeploymentEnabled;
             _resultValue.ciForwardDeploymentRollbackAllowed = ciForwardDeploymentRollbackAllowed;
             _resultValue.ciIdTokenSubClaimComponents = ciIdTokenSubClaimComponents;
+            _resultValue.ciJobTokenScopeEnabled = ciJobTokenScopeEnabled;
+            _resultValue.ciOptInJwt = ciOptInJwt;
             _resultValue.ciPipelineVariablesMinimumOverrideRole = ciPipelineVariablesMinimumOverrideRole;
+            _resultValue.ciPushRepositoryForJobTokenAllowed = ciPushRepositoryForJobTokenAllowed;
             _resultValue.ciRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;
+            _resultValue.ciSeparatedCaches = ciSeparatedCaches;
+            _resultValue.complianceFrameworks = complianceFrameworks;
             _resultValue.containerExpirationPolicies = containerExpirationPolicies;
             _resultValue.containerRegistryAccessLevel = containerRegistryAccessLevel;
             _resultValue.containerRegistryEnabled = containerRegistryEnabled;
+            _resultValue.containerRegistryImagePrefix = containerRegistryImagePrefix;
             _resultValue.createdAt = createdAt;
             _resultValue.creatorId = creatorId;
             _resultValue.customAttributes = customAttributes;
             _resultValue.defaultBranch = defaultBranch;
             _resultValue.description = description;
+            _resultValue.emailsDisabled = emailsDisabled;
             _resultValue.emailsEnabled = emailsEnabled;
             _resultValue.emptyRepo = emptyRepo;
+            _resultValue.enforceAuthChecksOnUploads = enforceAuthChecksOnUploads;
             _resultValue.environmentsAccessLevel = environmentsAccessLevel;
             _resultValue.externalAuthorizationClassificationLabel = externalAuthorizationClassificationLabel;
             _resultValue.featureFlagsAccessLevel = featureFlagsAccessLevel;
@@ -2450,21 +3496,34 @@ public final class GetProjectsProject {
             _resultValue.id = id;
             _resultValue.importError = importError;
             _resultValue.importStatus = importStatus;
+            _resultValue.importType = importType;
             _resultValue.importUrl = importUrl;
             _resultValue.infrastructureAccessLevel = infrastructureAccessLevel;
+            _resultValue.issueBranchTemplate = issueBranchTemplate;
             _resultValue.issuesAccessLevel = issuesAccessLevel;
             _resultValue.issuesEnabled = issuesEnabled;
+            _resultValue.issuesTemplate = issuesTemplate;
             _resultValue.jobsEnabled = jobsEnabled;
             _resultValue.keepLatestArtifact = keepLatestArtifact;
             _resultValue.lastActivityAt = lastActivityAt;
             _resultValue.lfsEnabled = lfsEnabled;
+            _resultValue.licenseUrl = licenseUrl;
+            _resultValue.licenses = licenses;
             _resultValue.links = links;
+            _resultValue.markedForDeletion = markedForDeletion;
+            _resultValue.markedForDeletionAt = markedForDeletionAt;
+            _resultValue.markedForDeletionOn = markedForDeletionOn;
+            _resultValue.maxArtifactsSize = maxArtifactsSize;
             _resultValue.mergeCommitTemplate = mergeCommitTemplate;
             _resultValue.mergeMethod = mergeMethod;
             _resultValue.mergePipelinesEnabled = mergePipelinesEnabled;
+            _resultValue.mergeRequestTitleRegex = mergeRequestTitleRegex;
+            _resultValue.mergeRequestTitleRegexDescription = mergeRequestTitleRegexDescription;
             _resultValue.mergeRequestsAccessLevel = mergeRequestsAccessLevel;
             _resultValue.mergeRequestsEnabled = mergeRequestsEnabled;
+            _resultValue.mergeRequestsTemplate = mergeRequestsTemplate;
             _resultValue.mergeTrainsEnabled = mergeTrainsEnabled;
+            _resultValue.mergeTrainsSkipTrainAllowed = mergeTrainsSkipTrainAllowed;
             _resultValue.mirror = mirror;
             _resultValue.mirrorOverwritesDivergedBranches = mirrorOverwritesDivergedBranches;
             _resultValue.mirrorTriggerBuilds = mirrorTriggerBuilds;
@@ -2472,43 +3531,61 @@ public final class GetProjectsProject {
             _resultValue.modelExperimentsAccessLevel = modelExperimentsAccessLevel;
             _resultValue.modelRegistryAccessLevel = modelRegistryAccessLevel;
             _resultValue.monitorAccessLevel = monitorAccessLevel;
+            _resultValue.mrDefaultTargetSelf = mrDefaultTargetSelf;
             _resultValue.name = name;
             _resultValue.nameWithNamespace = nameWithNamespace;
+            _resultValue.namespaceId = namespaceId;
             _resultValue.namespaces = namespaces;
             _resultValue.onlyAllowMergeIfAllDiscussionsAreResolved = onlyAllowMergeIfAllDiscussionsAreResolved;
             _resultValue.onlyAllowMergeIfPipelineSucceeds = onlyAllowMergeIfPipelineSucceeds;
             _resultValue.onlyMirrorProtectedBranches = onlyMirrorProtectedBranches;
             _resultValue.openIssuesCount = openIssuesCount;
+            _resultValue.operationsAccessLevel = operationsAccessLevel;
             _resultValue.owners = owners;
+            _resultValue.packageRegistryAccessLevel = packageRegistryAccessLevel;
             _resultValue.packagesEnabled = packagesEnabled;
+            _resultValue.pagesAccessLevel = pagesAccessLevel;
             _resultValue.path = path;
             _resultValue.pathWithNamespace = pathWithNamespace;
             _resultValue.permissions = permissions;
+            _resultValue.preReceiveSecretDetectionEnabled = preReceiveSecretDetectionEnabled;
             _resultValue.preventMergeWithoutJiraIssue = preventMergeWithoutJiraIssue;
+            _resultValue.printingMergeRequestLinkEnabled = printingMergeRequestLinkEnabled;
+            _resultValue.protectMergeRequestPipelines = protectMergeRequestPipelines;
             _resultValue.publicBuilds = publicBuilds;
+            _resultValue.publicJobs = publicJobs;
             _resultValue.readmeUrl = readmeUrl;
             _resultValue.releasesAccessLevel = releasesAccessLevel;
+            _resultValue.removeSourceBranchAfterMerge = removeSourceBranchAfterMerge;
             _resultValue.repositoryAccessLevel = repositoryAccessLevel;
             _resultValue.repositoryStorage = repositoryStorage;
             _resultValue.requestAccessEnabled = requestAccessEnabled;
             _resultValue.requirementsAccessLevel = requirementsAccessLevel;
+            _resultValue.requirementsEnabled = requirementsEnabled;
             _resultValue.resolveOutdatedDiffDiscussions = resolveOutdatedDiffDiscussions;
             _resultValue.resourceGroupDefaultProcessMode = resourceGroupDefaultProcessMode;
             _resultValue.restrictUserDefinedVariables = restrictUserDefinedVariables;
+            _resultValue.runnerTokenExpirationInterval = runnerTokenExpirationInterval;
             _resultValue.runnersToken = runnersToken;
             _resultValue.securityAndComplianceAccessLevel = securityAndComplianceAccessLevel;
+            _resultValue.securityAndComplianceEnabled = securityAndComplianceEnabled;
+            _resultValue.serviceDeskAddress = serviceDeskAddress;
+            _resultValue.serviceDeskEnabled = serviceDeskEnabled;
             _resultValue.sharedRunnersEnabled = sharedRunnersEnabled;
             _resultValue.sharedWithGroups = sharedWithGroups;
             _resultValue.snippetsAccessLevel = snippetsAccessLevel;
             _resultValue.snippetsEnabled = snippetsEnabled;
             _resultValue.squashCommitTemplate = squashCommitTemplate;
+            _resultValue.squashOption = squashOption;
             _resultValue.sshUrlToRepo = sshUrlToRepo;
             _resultValue.starCount = starCount;
             _resultValue.statistics = statistics;
             _resultValue.suggestionCommitMessage = suggestionCommitMessage;
             _resultValue.tagLists = tagLists;
             _resultValue.topics = topics;
+            _resultValue.updatedAt = updatedAt;
             _resultValue.visibility = visibility;
+            _resultValue.visibilityLevel = visibilityLevel;
             _resultValue.webUrl = webUrl;
             _resultValue.wikiAccessLevel = wikiAccessLevel;
             _resultValue.wikiEnabled = wikiEnabled;

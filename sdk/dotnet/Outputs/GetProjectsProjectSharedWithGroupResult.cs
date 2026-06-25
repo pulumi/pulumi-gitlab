@@ -14,27 +14,41 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetProjectsProjectSharedWithGroupResult
     {
         /// <summary>
-        /// The group access level.
+        /// The access level (integer) of the shared group. Matches the upstream GitLab API. See `GroupAccessLevelName` for the human-readable string form.
         /// </summary>
-        public readonly string GroupAccessLevel;
+        public readonly int GroupAccessLevel;
         /// <summary>
-        /// The group ID.
+        /// The human-readable access level name of the shared group (e.g. `Developer`, `Maintainer`). Computed from `GroupAccessLevel`.
+        /// </summary>
+        public readonly string GroupAccessLevelName;
+        /// <summary>
+        /// The full path of the group shared with.
+        /// </summary>
+        public readonly string GroupFullPath;
+        /// <summary>
+        /// The ID of the group shared with.
         /// </summary>
         public readonly int GroupId;
         /// <summary>
-        /// The group name.
+        /// The name of the group shared with.
         /// </summary>
         public readonly string GroupName;
 
         [OutputConstructor]
         private GetProjectsProjectSharedWithGroupResult(
-            string groupAccessLevel,
+            int groupAccessLevel,
+
+            string groupAccessLevelName,
+
+            string groupFullPath,
 
             int groupId,
 
             string groupName)
         {
             GroupAccessLevel = groupAccessLevel;
+            GroupAccessLevelName = groupAccessLevelName;
+            GroupFullPath = groupFullPath;
             GroupId = groupId;
             GroupName = groupName;
         }

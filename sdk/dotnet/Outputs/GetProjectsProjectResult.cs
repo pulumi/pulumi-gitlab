@@ -14,11 +14,7 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetProjectsProjectResult
     {
         /// <summary>
-        /// Links for the project. Use `Links` instead. To be removed in 19.0.
-        /// </summary>
-        public readonly ImmutableDictionary<string, string> _links;
-        /// <summary>
-        /// Whether AllowMergeOnSkippedPipeline is enabled for the project.
+        /// Whether `AllowMergeOnSkippedPipeline` is enabled for the project.
         /// </summary>
         public readonly bool AllowMergeOnSkippedPipeline;
         /// <summary>
@@ -30,15 +26,15 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string AnalyticsAccessLevel;
         /// <summary>
-        /// The numbers of approvals needed in a merge requests.
+        /// The number of approvals needed in a merge request.
         /// </summary>
         public readonly int ApprovalsBeforeMerge;
         /// <summary>
-        /// Whether the project is archived.
+        /// Whether the project is in read-only mode (archived).
         /// </summary>
         public readonly bool Archived;
         /// <summary>
-        /// Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        /// Auto-cancel pending pipelines. This isn't a boolean, but `Enabled`/`Disabled`.
         /// </summary>
         public readonly string AutoCancelPendingPipelines;
         /// <summary>
@@ -50,11 +46,15 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool AutoDevopsEnabled;
         /// <summary>
+        /// Whether GitLab Duo code review is enabled for the project.
+        /// </summary>
+        public readonly bool AutoDuoCodeReviewEnabled;
+        /// <summary>
         /// Set whether auto-closing referenced issues on default branch.
         /// </summary>
         public readonly bool AutocloseReferencedIssues;
         /// <summary>
-        /// The avatar url of the project.
+        /// The avatar URL of the project.
         /// </summary>
         public readonly string AvatarUrl;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string BuildCoverageRegex;
         /// <summary>
-        /// The Git strategy. Defaults to fetch.
+        /// The Git strategy. Defaults to `Fetch`.
         /// </summary>
         public readonly string BuildGitStrategy;
         /// <summary>
@@ -73,6 +73,14 @@ namespace Pulumi.GitLab.Outputs
         /// Set the builds access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string BuildsAccessLevel;
+        /// <summary>
+        /// Whether the calling user can create merge requests in this project.
+        /// </summary>
+        public readonly bool CanCreateMergeRequestIn;
+        /// <summary>
+        /// Whether pipelines triggered from merge requests opened from forks may run in the parent project.
+        /// </summary>
+        public readonly bool CiAllowForkPipelinesToRunInParentProject;
         /// <summary>
         /// CI config file path for the project.
         /// </summary>
@@ -86,6 +94,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly int CiDeletePipelinesInSeconds;
         /// <summary>
+        /// Whether pipeline variables are displayed in the UI.
+        /// </summary>
+        public readonly bool CiDisplayPipelineVariables;
+        /// <summary>
         /// When a new deployment job starts, skip older deployment jobs that are still pending.
         /// </summary>
         public readonly bool CiForwardDeploymentEnabled;
@@ -94,29 +106,53 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool CiForwardDeploymentRollbackAllowed;
         /// <summary>
-        /// Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include RefType and ref. Defaults to ["ProjectPath", "RefType", "ref"]. Introduced in GitLab 17.10.
+        /// Fields included in the sub claim of the ID Token. Accepts an array starting with `ProjectPath`. The array might also include `RefType` and `Ref`. Defaults to `["ProjectPath", "RefType", "ref"]`. Introduced in GitLab 17.10.
         /// </summary>
         public readonly ImmutableArray<string> CiIdTokenSubClaimComponents;
         /// <summary>
-        /// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `Developer`, `Maintainer`, `Owner`, `NoOneAllowed`
+        /// Whether the CI/CD job token access scope is enabled (limits which projects can be accessed using the job token).
+        /// </summary>
+        public readonly bool CiJobTokenScopeEnabled;
+        /// <summary>
+        /// Whether the project must explicitly opt in to receive ID tokens in CI jobs.
+        /// </summary>
+        public readonly bool CiOptInJwt;
+        /// <summary>
+        /// The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `Developer`, `Maintainer`, `Owner`, `NoOneAllowed`.
         /// </summary>
         public readonly string CiPipelineVariablesMinimumOverrideRole;
         /// <summary>
-        /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `Developer`, `Maintainer`, `no one`
+        /// Whether pushes to the repository using the CI/CD job token are allowed.
+        /// </summary>
+        public readonly bool CiPushRepositoryForJobTokenAllowed;
+        /// <summary>
+        /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `Developer`, `Maintainer`, `NoOne`.
         /// </summary>
         public readonly string CiRestrictPipelineCancellationRole;
         /// <summary>
-        /// Set the image cleanup policy for this project. **Note**: this field is sometimes named `ContainerExpirationPolicyAttributes` in the GitLab Upstream API.
+        /// Use separate caches for protected branches.
+        /// </summary>
+        public readonly bool CiSeparatedCaches;
+        /// <summary>
+        /// Compliance frameworks applied to the project. Premium and Ultimate only.
+        /// </summary>
+        public readonly ImmutableArray<string> ComplianceFrameworks;
+        /// <summary>
+        /// The image cleanup policy for this project.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectContainerExpirationPolicyResult> ContainerExpirationPolicies;
         /// <summary>
-        /// Set visibility of container registry, for this project. Valid values are `Disabled`, `Private`, `Enabled`.
+        /// Set visibility of container registry for this project. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string ContainerRegistryAccessLevel;
         /// <summary>
         /// Whether the container registry is enabled for the project.
         /// </summary>
         public readonly bool ContainerRegistryEnabled;
+        /// <summary>
+        /// The image prefix used by the container registry for this project.
+        /// </summary>
+        public readonly string ContainerRegistryImagePrefix;
         /// <summary>
         /// Creation time for the project.
         /// </summary>
@@ -134,9 +170,13 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string DefaultBranch;
         /// <summary>
-        /// The description of the project.
+        /// A description of the project.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Whether email notifications are disabled for the project.
+        /// </summary>
+        public readonly bool EmailsDisabled;
         /// <summary>
         /// Enable email notifications.
         /// </summary>
@@ -145,6 +185,10 @@ namespace Pulumi.GitLab.Outputs
         /// Whether the project is empty.
         /// </summary>
         public readonly bool EmptyRepo;
+        /// <summary>
+        /// Whether authentication checks are enforced when uploading to the project.
+        /// </summary>
+        public readonly bool EnforceAuthChecksOnUploads;
         /// <summary>
         /// Set the environments access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
@@ -190,6 +234,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string ImportStatus;
         /// <summary>
+        /// The type of import used to create the project (for example `Github`, `Bitbucket`).
+        /// </summary>
+        public readonly string ImportType;
+        /// <summary>
         /// URL the project was imported from.
         /// </summary>
         public readonly string ImportUrl;
@@ -197,6 +245,10 @@ namespace Pulumi.GitLab.Outputs
         /// Set the infrastructure access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string InfrastructureAccessLevel;
+        /// <summary>
+        /// Template used to suggest a branch name when creating one from an issue.
+        /// </summary>
+        public readonly string IssueBranchTemplate;
         /// <summary>
         /// Set the issues access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
@@ -206,7 +258,11 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool IssuesEnabled;
         /// <summary>
-        /// Whether pipelines are enabled for the project.
+        /// Default description template for new issues.
+        /// </summary>
+        public readonly string IssuesTemplate;
+        /// <summary>
+        /// Whether jobs are enabled for the project.
         /// </summary>
         public readonly bool JobsEnabled;
         /// <summary>
@@ -214,7 +270,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool KeepLatestArtifact;
         /// <summary>
-        /// Last activirty time for the project.
+        /// Last activity time for the project.
         /// </summary>
         public readonly string LastActivityAt;
         /// <summary>
@@ -222,9 +278,33 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool LfsEnabled;
         /// <summary>
+        /// URL of the project's license file.
+        /// </summary>
+        public readonly string LicenseUrl;
+        /// <summary>
+        /// Information about the project's license, if one is detected.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetProjectsProjectLicenseResult> Licenses;
+        /// <summary>
         /// Links for the project.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Links;
+        /// <summary>
+        /// Whether the project is marked for deletion.
+        /// </summary>
+        public readonly bool MarkedForDeletion;
+        /// <summary>
+        /// Timestamp at which the project was marked for deletion. Premium and Ultimate only.
+        /// </summary>
+        public readonly string MarkedForDeletionAt;
+        /// <summary>
+        /// Timestamp at which the project was marked for deletion. Premium and Ultimate only.
+        /// </summary>
+        public readonly string MarkedForDeletionOn;
+        /// <summary>
+        /// Maximum artifacts size, in MB, for the project. Overrides the instance-wide setting when set.
+        /// </summary>
+        public readonly int MaxArtifactsSize;
         /// <summary>
         /// Template used to create merge commit message in merge requests.
         /// </summary>
@@ -238,6 +318,14 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool MergePipelinesEnabled;
         /// <summary>
+        /// Regular expression that merge request titles must match.
+        /// </summary>
+        public readonly string MergeRequestTitleRegex;
+        /// <summary>
+        /// Human-readable description of `MergeRequestTitleRegex`.
+        /// </summary>
+        public readonly string MergeRequestTitleRegexDescription;
+        /// <summary>
         /// Set the merge requests access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string MergeRequestsAccessLevel;
@@ -246,15 +334,23 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool MergeRequestsEnabled;
         /// <summary>
+        /// Default description template for new merge requests.
+        /// </summary>
+        public readonly string MergeRequestsTemplate;
+        /// <summary>
         /// Enable or disable merge trains.
         /// </summary>
         public readonly bool MergeTrainsEnabled;
         /// <summary>
-        /// Whether the pull mirroring is enabled for the project.
+        /// Allows merge train merge requests to be merged without waiting for pipelines to finish.
+        /// </summary>
+        public readonly bool MergeTrainsSkipTrainAllowed;
+        /// <summary>
+        /// Whether pull mirroring is enabled for the project.
         /// </summary>
         public readonly bool Mirror;
         /// <summary>
-        /// Whether MirrorOverwritesDivergedBranches is enabled for the project.
+        /// Whether `MirrorOverwritesDivergedBranches` is enabled for the project.
         /// </summary>
         public readonly bool MirrorOverwritesDivergedBranches;
         /// <summary>
@@ -278,6 +374,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string MonitorAccessLevel;
         /// <summary>
+        /// For forks, whether merge requests target the fork itself rather than the upstream project by default.
+        /// </summary>
+        public readonly bool MrDefaultTargetSelf;
+        /// <summary>
         /// The name of the project.
         /// </summary>
         public readonly string Name;
@@ -286,33 +386,49 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string NameWithNamespace;
         /// <summary>
+        /// The namespace (group or user) ID of the project. Alias for `namespace[0].id`.
+        /// </summary>
+        public readonly int NamespaceId;
+        /// <summary>
         /// Namespace of the project (parent group/s).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectNamespaceResult> Namespaces;
         /// <summary>
-        /// Whether OnlyAllowMergeIfAllDiscussionsAreResolved is enabled for the project.
+        /// Whether `OnlyAllowMergeIfAllDiscussionsAreResolved` is enabled for the project.
         /// </summary>
         public readonly bool OnlyAllowMergeIfAllDiscussionsAreResolved;
         /// <summary>
-        /// Whether OnlyAllowMergeIfPipelineSucceeds is enabled for the project.
+        /// Whether `OnlyAllowMergeIfPipelineSucceeds` is enabled for the project.
         /// </summary>
         public readonly bool OnlyAllowMergeIfPipelineSucceeds;
         /// <summary>
-        /// Whether OnlyMirrorProtectedBranches is enabled for the project.
+        /// Whether `OnlyMirrorProtectedBranches` is enabled for the project.
         /// </summary>
         public readonly bool OnlyMirrorProtectedBranches;
         /// <summary>
-        /// The number of open issies for the project.
+        /// The number of open issues for the project.
         /// </summary>
         public readonly int OpenIssuesCount;
         /// <summary>
-        /// The owner of the project, due to Terraform aggregate types limitations, this field's attributes are accessed with the `owner.0` prefix. Structure is documented below.
+        /// Set the operations access level. Valid values are `Disabled`, `Private`, `Enabled`.
+        /// </summary>
+        public readonly string OperationsAccessLevel;
+        /// <summary>
+        /// The owner of the project. Only populated when the calling token has administrator scope.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectOwnerResult> Owners;
+        /// <summary>
+        /// The visibility of the package registry.
+        /// </summary>
+        public readonly string PackageRegistryAccessLevel;
         /// <summary>
         /// Whether packages are enabled for the project.
         /// </summary>
         public readonly bool PackagesEnabled;
+        /// <summary>
+        /// Set the GitLab Pages access level. Valid values are `Disabled`, `Private`, `Enabled`.
+        /// </summary>
+        public readonly string PagesAccessLevel;
         /// <summary>
         /// The path of the project.
         /// </summary>
@@ -326,21 +442,41 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectPermissionResult> Permissions;
         /// <summary>
+        /// Whether pre-receive secret detection is enabled for the project.
+        /// </summary>
+        public readonly bool PreReceiveSecretDetectionEnabled;
+        /// <summary>
         /// Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
         /// </summary>
         public readonly bool PreventMergeWithoutJiraIssue;
         /// <summary>
-        /// Whether public builds are enabled for the project.
+        /// Show link to create/view merge request when pushing from the command line.
+        /// </summary>
+        public readonly bool PrintingMergeRequestLinkEnabled;
+        /// <summary>
+        /// Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
+        /// </summary>
+        public readonly bool ProtectMergeRequestPipelines;
+        /// <summary>
+        /// If true, jobs can be viewed by non-project members. Alias for `PublicJobs`.
         /// </summary>
         public readonly bool PublicBuilds;
         /// <summary>
-        /// The remote url of the project.
+        /// If true, jobs can be viewed by non-project members.
+        /// </summary>
+        public readonly bool PublicJobs;
+        /// <summary>
+        /// The URL of the project README.
         /// </summary>
         public readonly string ReadmeUrl;
         /// <summary>
         /// Set the releases access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         public readonly string ReleasesAccessLevel;
+        /// <summary>
+        /// Enable `Delete source branch` option by default for all new merge requests.
+        /// </summary>
+        public readonly bool RemoveSourceBranchAfterMerge;
         /// <summary>
         /// Set the repository access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
@@ -358,7 +494,11 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string RequirementsAccessLevel;
         /// <summary>
-        /// Whether ResolveOutdatedDiffDiscussions is enabled for the project
+        /// Whether the requirements feature is enabled. Premium and Ultimate only.
+        /// </summary>
+        public readonly bool RequirementsEnabled;
+        /// <summary>
+        /// Automatically resolve merge request diffs discussions on lines changed with a push.
         /// </summary>
         public readonly bool ResolveOutdatedDiffDiscussions;
         /// <summary>
@@ -370,7 +510,11 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool RestrictUserDefinedVariables;
         /// <summary>
-        /// The runners token for the project.
+        /// Runner token expiration interval, in seconds.
+        /// </summary>
+        public readonly int RunnerTokenExpirationInterval;
+        /// <summary>
+        /// Registration token to use during runner setup.
         /// </summary>
         public readonly string RunnersToken;
         /// <summary>
@@ -378,11 +522,23 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string SecurityAndComplianceAccessLevel;
         /// <summary>
+        /// Whether the security and compliance feature is enabled.
+        /// </summary>
+        public readonly bool SecurityAndComplianceEnabled;
+        /// <summary>
+        /// The Service Desk email address for the project.
+        /// </summary>
+        public readonly string ServiceDeskAddress;
+        /// <summary>
+        /// Whether Service Desk is enabled for the project.
+        /// </summary>
+        public readonly bool ServiceDeskEnabled;
+        /// <summary>
         /// Whether shared runners are enabled for the project.
         /// </summary>
         public readonly bool SharedRunnersEnabled;
         /// <summary>
-        /// Groups the the project is shared with.
+        /// Describes groups which have access shared to this project.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectSharedWithGroupResult> SharedWithGroups;
         /// <summary>
@@ -397,6 +553,10 @@ namespace Pulumi.GitLab.Outputs
         /// Template used to create squash commit message in merge requests.
         /// </summary>
         public readonly string SquashCommitTemplate;
+        /// <summary>
+        /// The project's squash option for merge requests (`Never`, `Always`, `DefaultOn`, `DefaultOff`).
+        /// </summary>
+        public readonly string SquashOption;
         /// <summary>
         /// The SSH clone URL of the project.
         /// </summary>
@@ -414,7 +574,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string SuggestionCommitMessage;
         /// <summary>
-        /// A set of the project topics (formerly called "project tags").
+        /// The list of project topics (formerly project tags).
         /// </summary>
         public readonly ImmutableArray<string> TagLists;
         /// <summary>
@@ -422,11 +582,19 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Topics;
         /// <summary>
-        /// The visibility of the project.
+        /// The time the project was last updated.
+        /// </summary>
+        public readonly string UpdatedAt;
+        /// <summary>
+        /// The visibility of the project (`Private`, `Internal`, `Public`).
         /// </summary>
         public readonly string Visibility;
         /// <summary>
-        /// The web url of the project.
+        /// The visibility of the project. Alias for `Visibility`.
+        /// </summary>
+        public readonly string VisibilityLevel;
+        /// <summary>
+        /// URL that can be used to find the project in a browser.
         /// </summary>
         public readonly string WebUrl;
         /// <summary>
@@ -440,8 +608,6 @@ namespace Pulumi.GitLab.Outputs
 
         [OutputConstructor]
         private GetProjectsProjectResult(
-            ImmutableDictionary<string, string> _links,
-
             bool allowMergeOnSkippedPipeline,
 
             bool allowPipelineTriggerApproveDeployment,
@@ -458,6 +624,8 @@ namespace Pulumi.GitLab.Outputs
 
             bool autoDevopsEnabled,
 
+            bool autoDuoCodeReviewEnabled,
+
             bool autocloseReferencedIssues,
 
             string avatarUrl,
@@ -470,11 +638,17 @@ namespace Pulumi.GitLab.Outputs
 
             string buildsAccessLevel,
 
+            bool canCreateMergeRequestIn,
+
+            bool ciAllowForkPipelinesToRunInParentProject,
+
             string ciConfigPath,
 
             int ciDefaultGitDepth,
 
             int ciDeletePipelinesInSeconds,
+
+            bool ciDisplayPipelineVariables,
 
             bool ciForwardDeploymentEnabled,
 
@@ -482,15 +656,27 @@ namespace Pulumi.GitLab.Outputs
 
             ImmutableArray<string> ciIdTokenSubClaimComponents,
 
+            bool ciJobTokenScopeEnabled,
+
+            bool ciOptInJwt,
+
             string ciPipelineVariablesMinimumOverrideRole,
 
+            bool ciPushRepositoryForJobTokenAllowed,
+
             string ciRestrictPipelineCancellationRole,
+
+            bool ciSeparatedCaches,
+
+            ImmutableArray<string> complianceFrameworks,
 
             ImmutableArray<Outputs.GetProjectsProjectContainerExpirationPolicyResult> containerExpirationPolicies,
 
             string containerRegistryAccessLevel,
 
             bool containerRegistryEnabled,
+
+            string containerRegistryImagePrefix,
 
             string createdAt,
 
@@ -502,9 +688,13 @@ namespace Pulumi.GitLab.Outputs
 
             string description,
 
+            bool emailsDisabled,
+
             bool emailsEnabled,
 
             bool emptyRepo,
+
+            bool enforceAuthChecksOnUploads,
 
             string environmentsAccessLevel,
 
@@ -528,13 +718,19 @@ namespace Pulumi.GitLab.Outputs
 
             string importStatus,
 
+            string importType,
+
             string importUrl,
 
             string infrastructureAccessLevel,
 
+            string issueBranchTemplate,
+
             string issuesAccessLevel,
 
             bool issuesEnabled,
+
+            string issuesTemplate,
 
             bool jobsEnabled,
 
@@ -544,7 +740,19 @@ namespace Pulumi.GitLab.Outputs
 
             bool lfsEnabled,
 
+            string licenseUrl,
+
+            ImmutableArray<Outputs.GetProjectsProjectLicenseResult> licenses,
+
             ImmutableDictionary<string, string> links,
+
+            bool markedForDeletion,
+
+            string markedForDeletionAt,
+
+            string markedForDeletionOn,
+
+            int maxArtifactsSize,
 
             string mergeCommitTemplate,
 
@@ -552,11 +760,19 @@ namespace Pulumi.GitLab.Outputs
 
             bool mergePipelinesEnabled,
 
+            string mergeRequestTitleRegex,
+
+            string mergeRequestTitleRegexDescription,
+
             string mergeRequestsAccessLevel,
 
             bool mergeRequestsEnabled,
 
+            string mergeRequestsTemplate,
+
             bool mergeTrainsEnabled,
+
+            bool mergeTrainsSkipTrainAllowed,
 
             bool mirror,
 
@@ -572,9 +788,13 @@ namespace Pulumi.GitLab.Outputs
 
             string monitorAccessLevel,
 
+            bool mrDefaultTargetSelf,
+
             string name,
 
             string nameWithNamespace,
+
+            int namespaceId,
 
             ImmutableArray<Outputs.GetProjectsProjectNamespaceResult> namespaces,
 
@@ -586,9 +806,15 @@ namespace Pulumi.GitLab.Outputs
 
             int openIssuesCount,
 
+            string operationsAccessLevel,
+
             ImmutableArray<Outputs.GetProjectsProjectOwnerResult> owners,
 
+            string packageRegistryAccessLevel,
+
             bool packagesEnabled,
+
+            string pagesAccessLevel,
 
             string path,
 
@@ -596,13 +822,23 @@ namespace Pulumi.GitLab.Outputs
 
             ImmutableArray<Outputs.GetProjectsProjectPermissionResult> permissions,
 
+            bool preReceiveSecretDetectionEnabled,
+
             bool preventMergeWithoutJiraIssue,
 
+            bool printingMergeRequestLinkEnabled,
+
+            bool protectMergeRequestPipelines,
+
             bool publicBuilds,
+
+            bool publicJobs,
 
             string readmeUrl,
 
             string releasesAccessLevel,
+
+            bool removeSourceBranchAfterMerge,
 
             string repositoryAccessLevel,
 
@@ -612,15 +848,25 @@ namespace Pulumi.GitLab.Outputs
 
             string requirementsAccessLevel,
 
+            bool requirementsEnabled,
+
             bool resolveOutdatedDiffDiscussions,
 
             string resourceGroupDefaultProcessMode,
 
             bool restrictUserDefinedVariables,
 
+            int runnerTokenExpirationInterval,
+
             string runnersToken,
 
             string securityAndComplianceAccessLevel,
+
+            bool securityAndComplianceEnabled,
+
+            string serviceDeskAddress,
+
+            bool serviceDeskEnabled,
 
             bool sharedRunnersEnabled,
 
@@ -631,6 +877,8 @@ namespace Pulumi.GitLab.Outputs
             bool snippetsEnabled,
 
             string squashCommitTemplate,
+
+            string squashOption,
 
             string sshUrlToRepo,
 
@@ -644,7 +892,11 @@ namespace Pulumi.GitLab.Outputs
 
             ImmutableArray<string> topics,
 
+            string updatedAt,
+
             string visibility,
+
+            string visibilityLevel,
 
             string webUrl,
 
@@ -652,7 +904,6 @@ namespace Pulumi.GitLab.Outputs
 
             bool wikiEnabled)
         {
-            this._links = _links;
             AllowMergeOnSkippedPipeline = allowMergeOnSkippedPipeline;
             AllowPipelineTriggerApproveDeployment = allowPipelineTriggerApproveDeployment;
             AnalyticsAccessLevel = analyticsAccessLevel;
@@ -661,30 +912,42 @@ namespace Pulumi.GitLab.Outputs
             AutoCancelPendingPipelines = autoCancelPendingPipelines;
             AutoDevopsDeployStrategy = autoDevopsDeployStrategy;
             AutoDevopsEnabled = autoDevopsEnabled;
+            AutoDuoCodeReviewEnabled = autoDuoCodeReviewEnabled;
             AutocloseReferencedIssues = autocloseReferencedIssues;
             AvatarUrl = avatarUrl;
             BuildCoverageRegex = buildCoverageRegex;
             BuildGitStrategy = buildGitStrategy;
             BuildTimeout = buildTimeout;
             BuildsAccessLevel = buildsAccessLevel;
+            CanCreateMergeRequestIn = canCreateMergeRequestIn;
+            CiAllowForkPipelinesToRunInParentProject = ciAllowForkPipelinesToRunInParentProject;
             CiConfigPath = ciConfigPath;
             CiDefaultGitDepth = ciDefaultGitDepth;
             CiDeletePipelinesInSeconds = ciDeletePipelinesInSeconds;
+            CiDisplayPipelineVariables = ciDisplayPipelineVariables;
             CiForwardDeploymentEnabled = ciForwardDeploymentEnabled;
             CiForwardDeploymentRollbackAllowed = ciForwardDeploymentRollbackAllowed;
             CiIdTokenSubClaimComponents = ciIdTokenSubClaimComponents;
+            CiJobTokenScopeEnabled = ciJobTokenScopeEnabled;
+            CiOptInJwt = ciOptInJwt;
             CiPipelineVariablesMinimumOverrideRole = ciPipelineVariablesMinimumOverrideRole;
+            CiPushRepositoryForJobTokenAllowed = ciPushRepositoryForJobTokenAllowed;
             CiRestrictPipelineCancellationRole = ciRestrictPipelineCancellationRole;
+            CiSeparatedCaches = ciSeparatedCaches;
+            ComplianceFrameworks = complianceFrameworks;
             ContainerExpirationPolicies = containerExpirationPolicies;
             ContainerRegistryAccessLevel = containerRegistryAccessLevel;
             ContainerRegistryEnabled = containerRegistryEnabled;
+            ContainerRegistryImagePrefix = containerRegistryImagePrefix;
             CreatedAt = createdAt;
             CreatorId = creatorId;
             CustomAttributes = customAttributes;
             DefaultBranch = defaultBranch;
             Description = description;
+            EmailsDisabled = emailsDisabled;
             EmailsEnabled = emailsEnabled;
             EmptyRepo = emptyRepo;
+            EnforceAuthChecksOnUploads = enforceAuthChecksOnUploads;
             EnvironmentsAccessLevel = environmentsAccessLevel;
             ExternalAuthorizationClassificationLabel = externalAuthorizationClassificationLabel;
             FeatureFlagsAccessLevel = featureFlagsAccessLevel;
@@ -696,21 +959,34 @@ namespace Pulumi.GitLab.Outputs
             Id = id;
             ImportError = importError;
             ImportStatus = importStatus;
+            ImportType = importType;
             ImportUrl = importUrl;
             InfrastructureAccessLevel = infrastructureAccessLevel;
+            IssueBranchTemplate = issueBranchTemplate;
             IssuesAccessLevel = issuesAccessLevel;
             IssuesEnabled = issuesEnabled;
+            IssuesTemplate = issuesTemplate;
             JobsEnabled = jobsEnabled;
             KeepLatestArtifact = keepLatestArtifact;
             LastActivityAt = lastActivityAt;
             LfsEnabled = lfsEnabled;
+            LicenseUrl = licenseUrl;
+            Licenses = licenses;
             Links = links;
+            MarkedForDeletion = markedForDeletion;
+            MarkedForDeletionAt = markedForDeletionAt;
+            MarkedForDeletionOn = markedForDeletionOn;
+            MaxArtifactsSize = maxArtifactsSize;
             MergeCommitTemplate = mergeCommitTemplate;
             MergeMethod = mergeMethod;
             MergePipelinesEnabled = mergePipelinesEnabled;
+            MergeRequestTitleRegex = mergeRequestTitleRegex;
+            MergeRequestTitleRegexDescription = mergeRequestTitleRegexDescription;
             MergeRequestsAccessLevel = mergeRequestsAccessLevel;
             MergeRequestsEnabled = mergeRequestsEnabled;
+            MergeRequestsTemplate = mergeRequestsTemplate;
             MergeTrainsEnabled = mergeTrainsEnabled;
+            MergeTrainsSkipTrainAllowed = mergeTrainsSkipTrainAllowed;
             Mirror = mirror;
             MirrorOverwritesDivergedBranches = mirrorOverwritesDivergedBranches;
             MirrorTriggerBuilds = mirrorTriggerBuilds;
@@ -718,43 +994,61 @@ namespace Pulumi.GitLab.Outputs
             ModelExperimentsAccessLevel = modelExperimentsAccessLevel;
             ModelRegistryAccessLevel = modelRegistryAccessLevel;
             MonitorAccessLevel = monitorAccessLevel;
+            MrDefaultTargetSelf = mrDefaultTargetSelf;
             Name = name;
             NameWithNamespace = nameWithNamespace;
+            NamespaceId = namespaceId;
             Namespaces = namespaces;
             OnlyAllowMergeIfAllDiscussionsAreResolved = onlyAllowMergeIfAllDiscussionsAreResolved;
             OnlyAllowMergeIfPipelineSucceeds = onlyAllowMergeIfPipelineSucceeds;
             OnlyMirrorProtectedBranches = onlyMirrorProtectedBranches;
             OpenIssuesCount = openIssuesCount;
+            OperationsAccessLevel = operationsAccessLevel;
             Owners = owners;
+            PackageRegistryAccessLevel = packageRegistryAccessLevel;
             PackagesEnabled = packagesEnabled;
+            PagesAccessLevel = pagesAccessLevel;
             Path = path;
             PathWithNamespace = pathWithNamespace;
             Permissions = permissions;
+            PreReceiveSecretDetectionEnabled = preReceiveSecretDetectionEnabled;
             PreventMergeWithoutJiraIssue = preventMergeWithoutJiraIssue;
+            PrintingMergeRequestLinkEnabled = printingMergeRequestLinkEnabled;
+            ProtectMergeRequestPipelines = protectMergeRequestPipelines;
             PublicBuilds = publicBuilds;
+            PublicJobs = publicJobs;
             ReadmeUrl = readmeUrl;
             ReleasesAccessLevel = releasesAccessLevel;
+            RemoveSourceBranchAfterMerge = removeSourceBranchAfterMerge;
             RepositoryAccessLevel = repositoryAccessLevel;
             RepositoryStorage = repositoryStorage;
             RequestAccessEnabled = requestAccessEnabled;
             RequirementsAccessLevel = requirementsAccessLevel;
+            RequirementsEnabled = requirementsEnabled;
             ResolveOutdatedDiffDiscussions = resolveOutdatedDiffDiscussions;
             ResourceGroupDefaultProcessMode = resourceGroupDefaultProcessMode;
             RestrictUserDefinedVariables = restrictUserDefinedVariables;
+            RunnerTokenExpirationInterval = runnerTokenExpirationInterval;
             RunnersToken = runnersToken;
             SecurityAndComplianceAccessLevel = securityAndComplianceAccessLevel;
+            SecurityAndComplianceEnabled = securityAndComplianceEnabled;
+            ServiceDeskAddress = serviceDeskAddress;
+            ServiceDeskEnabled = serviceDeskEnabled;
             SharedRunnersEnabled = sharedRunnersEnabled;
             SharedWithGroups = sharedWithGroups;
             SnippetsAccessLevel = snippetsAccessLevel;
             SnippetsEnabled = snippetsEnabled;
             SquashCommitTemplate = squashCommitTemplate;
+            SquashOption = squashOption;
             SshUrlToRepo = sshUrlToRepo;
             StarCount = starCount;
             Statistics = statistics;
             SuggestionCommitMessage = suggestionCommitMessage;
             TagLists = tagLists;
             Topics = topics;
+            UpdatedAt = updatedAt;
             Visibility = visibility;
+            VisibilityLevel = visibilityLevel;
             WebUrl = webUrl;
             WikiAccessLevel = wikiAccessLevel;
             WikiEnabled = wikiEnabled;

@@ -24,6 +24,7 @@ class ProjectLevelMrApprovalsArgs:
                  merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
                  merge_requests_disable_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
                  require_password_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_reauthentication_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
                  reset_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None,
                  selective_code_owner_removals: pulumi.Input[Optional[_builtins.bool]] = None):
         """
@@ -33,7 +34,8 @@ class ProjectLevelMrApprovalsArgs:
         :param pulumi.Input[_builtins.bool] disable_overriding_approvers_per_merge_request: Set to `true` to disable overriding approvers per merge request.
         :param pulumi.Input[_builtins.bool] merge_requests_author_approval: Set to `true` to allow merge requests authors to approve their own merge requests.
         :param pulumi.Input[_builtins.bool] merge_requests_disable_committers_approval: Set to `true` to disable merge request committers from approving their own merge requests.
-        :param pulumi.Input[_builtins.bool] require_password_to_approve: Set to `true` to require authentication to approve merge requests.
+        :param pulumi.Input[_builtins.bool] require_password_to_approve: Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `require_reauthentication_to_approve` instead.
+        :param pulumi.Input[_builtins.bool] require_reauthentication_to_approve: If true, requires approver to reauthenticate before adding the approval.
         :param pulumi.Input[_builtins.bool] reset_approvals_on_push: Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         :param pulumi.Input[_builtins.bool] selective_code_owner_removals: Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
         """
@@ -45,7 +47,12 @@ class ProjectLevelMrApprovalsArgs:
         if merge_requests_disable_committers_approval is not None:
             pulumi.set(__self__, "merge_requests_disable_committers_approval", merge_requests_disable_committers_approval)
         if require_password_to_approve is not None:
+            warnings.warn("""Deprecated, to be removed in 20.0. Use `require_reauthentication_to_approve` instead.""", DeprecationWarning)
+            pulumi.log.warn("""require_password_to_approve is deprecated: Deprecated, to be removed in 20.0. Use `require_reauthentication_to_approve` instead.""")
+        if require_password_to_approve is not None:
             pulumi.set(__self__, "require_password_to_approve", require_password_to_approve)
+        if require_reauthentication_to_approve is not None:
+            pulumi.set(__self__, "require_reauthentication_to_approve", require_reauthentication_to_approve)
         if reset_approvals_on_push is not None:
             pulumi.set(__self__, "reset_approvals_on_push", reset_approvals_on_push)
         if selective_code_owner_removals is not None:
@@ -101,15 +108,28 @@ class ProjectLevelMrApprovalsArgs:
 
     @_builtins.property
     @pulumi.getter(name="requirePasswordToApprove")
+    @_utilities.deprecated("""Deprecated, to be removed in 20.0. Use `require_reauthentication_to_approve` instead.""")
     def require_password_to_approve(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Set to `true` to require authentication to approve merge requests.
+        Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `require_reauthentication_to_approve` instead.
         """
         return pulumi.get(self, "require_password_to_approve")
 
     @require_password_to_approve.setter
     def require_password_to_approve(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_password_to_approve", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requireReauthenticationToApprove")
+    def require_reauthentication_to_approve(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, requires approver to reauthenticate before adding the approval.
+        """
+        return pulumi.get(self, "require_reauthentication_to_approve")
+
+    @require_reauthentication_to_approve.setter
+    def require_reauthentication_to_approve(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "require_reauthentication_to_approve", value)
 
     @_builtins.property
     @pulumi.getter(name="resetApprovalsOnPush")
@@ -144,6 +164,7 @@ class _ProjectLevelMrApprovalsState:
                  merge_requests_disable_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  require_password_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_reauthentication_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
                  reset_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None,
                  selective_code_owner_removals: pulumi.Input[Optional[_builtins.bool]] = None):
         """
@@ -153,7 +174,8 @@ class _ProjectLevelMrApprovalsState:
         :param pulumi.Input[_builtins.bool] merge_requests_author_approval: Set to `true` to allow merge requests authors to approve their own merge requests.
         :param pulumi.Input[_builtins.bool] merge_requests_disable_committers_approval: Set to `true` to disable merge request committers from approving their own merge requests.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of a project to change MR approval configuration.
-        :param pulumi.Input[_builtins.bool] require_password_to_approve: Set to `true` to require authentication to approve merge requests.
+        :param pulumi.Input[_builtins.bool] require_password_to_approve: Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `require_reauthentication_to_approve` instead.
+        :param pulumi.Input[_builtins.bool] require_reauthentication_to_approve: If true, requires approver to reauthenticate before adding the approval.
         :param pulumi.Input[_builtins.bool] reset_approvals_on_push: Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         :param pulumi.Input[_builtins.bool] selective_code_owner_removals: Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
         """
@@ -166,7 +188,12 @@ class _ProjectLevelMrApprovalsState:
         if project is not None:
             pulumi.set(__self__, "project", project)
         if require_password_to_approve is not None:
+            warnings.warn("""Deprecated, to be removed in 20.0. Use `require_reauthentication_to_approve` instead.""", DeprecationWarning)
+            pulumi.log.warn("""require_password_to_approve is deprecated: Deprecated, to be removed in 20.0. Use `require_reauthentication_to_approve` instead.""")
+        if require_password_to_approve is not None:
             pulumi.set(__self__, "require_password_to_approve", require_password_to_approve)
+        if require_reauthentication_to_approve is not None:
+            pulumi.set(__self__, "require_reauthentication_to_approve", require_reauthentication_to_approve)
         if reset_approvals_on_push is not None:
             pulumi.set(__self__, "reset_approvals_on_push", reset_approvals_on_push)
         if selective_code_owner_removals is not None:
@@ -222,15 +249,28 @@ class _ProjectLevelMrApprovalsState:
 
     @_builtins.property
     @pulumi.getter(name="requirePasswordToApprove")
+    @_utilities.deprecated("""Deprecated, to be removed in 20.0. Use `require_reauthentication_to_approve` instead.""")
     def require_password_to_approve(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Set to `true` to require authentication to approve merge requests.
+        Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `require_reauthentication_to_approve` instead.
         """
         return pulumi.get(self, "require_password_to_approve")
 
     @require_password_to_approve.setter
     def require_password_to_approve(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_password_to_approve", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requireReauthenticationToApprove")
+    def require_reauthentication_to_approve(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, requires approver to reauthenticate before adding the approval.
+        """
+        return pulumi.get(self, "require_reauthentication_to_approve")
+
+    @require_reauthentication_to_approve.setter
+    def require_reauthentication_to_approve(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "require_reauthentication_to_approve", value)
 
     @_builtins.property
     @pulumi.getter(name="resetApprovalsOnPush")
@@ -268,6 +308,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
                  merge_requests_disable_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  require_password_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_reauthentication_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
                  reset_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None,
                  selective_code_owner_removals: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -314,7 +355,8 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] merge_requests_author_approval: Set to `true` to allow merge requests authors to approve their own merge requests.
         :param pulumi.Input[_builtins.bool] merge_requests_disable_committers_approval: Set to `true` to disable merge request committers from approving their own merge requests.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of a project to change MR approval configuration.
-        :param pulumi.Input[_builtins.bool] require_password_to_approve: Set to `true` to require authentication to approve merge requests.
+        :param pulumi.Input[_builtins.bool] require_password_to_approve: Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `require_reauthentication_to_approve` instead.
+        :param pulumi.Input[_builtins.bool] require_reauthentication_to_approve: If true, requires approver to reauthenticate before adding the approval.
         :param pulumi.Input[_builtins.bool] reset_approvals_on_push: Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         :param pulumi.Input[_builtins.bool] selective_code_owner_removals: Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
         """
@@ -381,6 +423,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
                  merge_requests_disable_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  require_password_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+                 require_reauthentication_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
                  reset_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None,
                  selective_code_owner_removals: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -399,6 +442,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["require_password_to_approve"] = require_password_to_approve
+            __props__.__dict__["require_reauthentication_to_approve"] = require_reauthentication_to_approve
             __props__.__dict__["reset_approvals_on_push"] = reset_approvals_on_push
             __props__.__dict__["selective_code_owner_removals"] = selective_code_owner_removals
         super(ProjectLevelMrApprovals, __self__).__init__(
@@ -416,6 +460,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
             merge_requests_disable_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             require_password_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+            require_reauthentication_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
             reset_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None,
             selective_code_owner_removals: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ProjectLevelMrApprovals':
         """
@@ -429,7 +474,8 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] merge_requests_author_approval: Set to `true` to allow merge requests authors to approve their own merge requests.
         :param pulumi.Input[_builtins.bool] merge_requests_disable_committers_approval: Set to `true` to disable merge request committers from approving their own merge requests.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of a project to change MR approval configuration.
-        :param pulumi.Input[_builtins.bool] require_password_to_approve: Set to `true` to require authentication to approve merge requests.
+        :param pulumi.Input[_builtins.bool] require_password_to_approve: Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `require_reauthentication_to_approve` instead.
+        :param pulumi.Input[_builtins.bool] require_reauthentication_to_approve: If true, requires approver to reauthenticate before adding the approval.
         :param pulumi.Input[_builtins.bool] reset_approvals_on_push: Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
         :param pulumi.Input[_builtins.bool] selective_code_owner_removals: Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
         """
@@ -442,6 +488,7 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         __props__.__dict__["merge_requests_disable_committers_approval"] = merge_requests_disable_committers_approval
         __props__.__dict__["project"] = project
         __props__.__dict__["require_password_to_approve"] = require_password_to_approve
+        __props__.__dict__["require_reauthentication_to_approve"] = require_reauthentication_to_approve
         __props__.__dict__["reset_approvals_on_push"] = reset_approvals_on_push
         __props__.__dict__["selective_code_owner_removals"] = selective_code_owner_removals
         return ProjectLevelMrApprovals(resource_name, opts=opts, __props__=__props__)
@@ -480,11 +527,20 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="requirePasswordToApprove")
+    @_utilities.deprecated("""Deprecated, to be removed in 20.0. Use `require_reauthentication_to_approve` instead.""")
     def require_password_to_approve(self) -> pulumi.Output[_builtins.bool]:
         """
-        Set to `true` to require authentication to approve merge requests.
+        Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `require_reauthentication_to_approve` instead.
         """
         return pulumi.get(self, "require_password_to_approve")
+
+    @_builtins.property
+    @pulumi.getter(name="requireReauthenticationToApprove")
+    def require_reauthentication_to_approve(self) -> pulumi.Output[_builtins.bool]:
+        """
+        If true, requires approver to reauthenticate before adding the approval.
+        """
+        return pulumi.get(self, "require_reauthentication_to_approve")
 
     @_builtins.property
     @pulumi.getter(name="resetApprovalsOnPush")

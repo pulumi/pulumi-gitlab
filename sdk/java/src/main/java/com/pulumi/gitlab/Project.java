@@ -94,24 +94,6 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.analyticsAccessLevel;
     }
     /**
-     * Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0. */
-    @Export(name="approvalsBeforeMerge", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> approvalsBeforeMerge;
-
-    /**
-     * @return Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-     * 
-     */
-    public Output<Optional<Integer>> approvalsBeforeMerge() {
-        return Codegen.optional(this.approvalsBeforeMerge);
-    }
-    /**
      * Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
      * 
      */
@@ -350,6 +332,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.ciDeletePipelinesInSeconds;
     }
     /**
+     * Show pipeline variables on the pipeline details page. Introduced in GitLab 17.8.
+     * 
+     */
+    @Export(name="ciDisplayPipelineVariables", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> ciDisplayPipelineVariables;
+
+    /**
+     * @return Show pipeline variables on the pipeline details page. Introduced in GitLab 17.8.
+     * 
+     */
+    public Output<Boolean> ciDisplayPipelineVariables() {
+        return this.ciDisplayPipelineVariables;
+    }
+    /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      * 
      */
@@ -420,14 +416,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.ciPushRepositoryForJobTokenAllowed;
     }
     /**
-     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `noOne`
      * 
      */
     @Export(name="ciRestrictPipelineCancellationRole", refs={String.class}, tree="[0]")
     private Output<String> ciRestrictPipelineCancellationRole;
 
     /**
-     * @return The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * @return The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `noOne`
      * 
      */
     public Output<String> ciRestrictPipelineCancellationRole() {
@@ -474,24 +470,6 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<String> containerRegistryAccessLevel() {
         return this.containerRegistryAccessLevel;
-    }
-    /**
-     * Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `containerRegistryAccessLevel` instead. To be removed in 19.0. */
-    @Export(name="containerRegistryEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> containerRegistryEnabled;
-
-    /**
-     * @return Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    public Output<Boolean> containerRegistryEnabled() {
-        return this.containerRegistryEnabled;
     }
     /**
      * The default branch for the project.
@@ -662,14 +640,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.httpUrlToRepo;
     }
     /**
-     * Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+     * Git URL to a repository to be imported. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     @Export(name="importUrl", refs={String.class}, tree="[0]")
     private Output<String> importUrl;
 
     /**
-     * @return Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+     * @return Git URL to a repository to be imported. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      * 
      */
     public Output<String> importUrl() {
@@ -744,24 +722,6 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<String> issuesAccessLevel() {
         return this.issuesAccessLevel;
-    }
-    /**
-     * Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `issuesAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `issuesAccessLevel` instead. To be removed in 19.0. */
-    @Export(name="issuesEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> issuesEnabled;
-
-    /**
-     * @return Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    public Output<Boolean> issuesEnabled() {
-        return this.issuesEnabled;
     }
     /**
      * Sets the template for new issues in the project.
@@ -904,24 +864,6 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.mergeRequestsAccessLevel;
     }
     /**
-     * Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `mergeRequestsAccessLevel` instead. To be removed in 19.0. */
-    @Export(name="mergeRequestsEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> mergeRequestsEnabled;
-
-    /**
-     * @return Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    public Output<Boolean> mergeRequestsEnabled() {
-        return this.mergeRequestsEnabled;
-    }
-    /**
      * Sets the template for new merge requests in the project.
      * 
      */
@@ -962,60 +904,6 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> mergeTrainsSkipTrainAllowed() {
         return this.mergeTrainsSkipTrainAllowed;
-    }
-    /**
-     * Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
-     * 
-     * @deprecated
-     * To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
-     * 
-     */
-    @Deprecated /* To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. */
-    @Export(name="mirror", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> mirror;
-
-    /**
-     * @return Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
-     * 
-     */
-    public Output<Boolean> mirror() {
-        return this.mirror;
-    }
-    /**
-     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
-     * 
-     * @deprecated
-     * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
-     * 
-     */
-    @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. */
-    @Export(name="mirrorOverwritesDivergedBranches", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> mirrorOverwritesDivergedBranches;
-
-    /**
-     * @return Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
-     * 
-     */
-    public Output<Boolean> mirrorOverwritesDivergedBranches() {
-        return this.mirrorOverwritesDivergedBranches;
-    }
-    /**
-     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
-     * 
-     * @deprecated
-     * To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
-     * 
-     */
-    @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. */
-    @Export(name="mirrorTriggerBuilds", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> mirrorTriggerBuilds;
-
-    /**
-     * @return Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
-     * 
-     */
-    public Output<Boolean> mirrorTriggerBuilds() {
-        return this.mirrorTriggerBuilds;
     }
     /**
      * Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
@@ -1130,22 +1018,18 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.onlyAllowMergeIfPipelineSucceeds;
     }
     /**
-     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
-     * 
-     * @deprecated
-     * To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
+     * Set visibility of the package registry. Valid values are `disabled`, `private`, `enabled`, `public`.
      * 
      */
-    @Deprecated /* To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. */
-    @Export(name="onlyMirrorProtectedBranches", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> onlyMirrorProtectedBranches;
+    @Export(name="packageRegistryAccessLevel", refs={String.class}, tree="[0]")
+    private Output<String> packageRegistryAccessLevel;
 
     /**
-     * @return Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
+     * @return Set visibility of the package registry. Valid values are `disabled`, `private`, `enabled`, `public`.
      * 
      */
-    public Output<Boolean> onlyMirrorProtectedBranches() {
-        return this.onlyMirrorProtectedBranches;
+    public Output<String> packageRegistryAccessLevel() {
+        return this.packageRegistryAccessLevel;
     }
     /**
      * Enable packages repository for the project.
@@ -1218,24 +1102,6 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.permanentlyDeleteOnDestroy);
     }
     /**
-     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `buildsAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `buildsAccessLevel` instead. To be removed in 19.0. */
-    @Export(name="pipelinesEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> pipelinesEnabled;
-
-    /**
-     * @return Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    public Output<Boolean> pipelinesEnabled() {
-        return this.pipelinesEnabled;
-    }
-    /**
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      * 
      */
@@ -1276,6 +1142,20 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> printingMergeRequestLinkEnabled() {
         return this.printingMergeRequestLinkEnabled;
+    }
+    /**
+     * Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor&#39;s lower-privileged context.
+     * 
+     */
+    @Export(name="protectMergeRequestPipelines", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> protectMergeRequestPipelines;
+
+    /**
+     * @return Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor&#39;s lower-privileged context.
+     * 
+     */
+    public Output<Boolean> protectMergeRequestPipelines() {
+        return this.protectMergeRequestPipelines;
     }
     /**
      * If true, jobs can be viewed by non-project members.
@@ -1436,24 +1316,6 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.resourceGroupDefaultProcessMode;
     }
     /**
-     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0. */
-    @Export(name="restrictUserDefinedVariables", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> restrictUserDefinedVariables;
-
-    /**
-     * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-     * 
-     */
-    public Output<Boolean> restrictUserDefinedVariables() {
-        return this.restrictUserDefinedVariables;
-    }
-    /**
      * Registration token to use during runner setup.
      * 
      */
@@ -1530,24 +1392,6 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.snippetsAccessLevel;
     }
     /**
-     * Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `snippetsAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `snippetsAccessLevel` instead. To be removed in 19.0. */
-    @Export(name="snippetsEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> snippetsEnabled;
-
-    /**
-     * @return Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    public Output<Boolean> snippetsEnabled() {
-        return this.snippetsEnabled;
-    }
-    /**
      * Template used to create squash commit message in merge requests.
      * 
      */
@@ -1602,24 +1446,6 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> suggestionCommitMessage() {
         return Codegen.optional(this.suggestionCommitMessage);
-    }
-    /**
-     * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `topics` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `topics` instead. To be removed in 19.0. */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> tags;
-
-    /**
-     * @return The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
-     * 
-     */
-    public Output<List<String>> tags() {
-        return this.tags;
     }
     /**
      * When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
@@ -1720,24 +1546,6 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<String> wikiAccessLevel() {
         return this.wikiAccessLevel;
-    }
-    /**
-     * Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `wikiAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `wikiAccessLevel` instead. To be removed in 19.0. */
-    @Export(name="wikiEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> wikiEnabled;
-
-    /**
-     * @return Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
-     * 
-     */
-    public Output<Boolean> wikiEnabled() {
-        return this.wikiEnabled;
     }
 
     /**

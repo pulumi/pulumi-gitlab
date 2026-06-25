@@ -92,88 +92,144 @@ public class SystemHook extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
+     * Description of the hook.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    /**
+     * @return Description of the hook.
+     * 
+     */
+    public Output<String> description() {
+        return this.description;
+    }
+    /**
      * Do SSL verification when triggering the hook.
      * 
      */
     @Export(name="enableSslVerification", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableSslVerification;
+    private Output<Boolean> enableSslVerification;
 
     /**
      * @return Do SSL verification when triggering the hook.
      * 
      */
-    public Output<Optional<Boolean>> enableSslVerification() {
-        return Codegen.optional(this.enableSslVerification);
+    public Output<Boolean> enableSslVerification() {
+        return this.enableSslVerification;
     }
     /**
      * Trigger hook on merge requests events.
      * 
      */
     @Export(name="mergeRequestsEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> mergeRequestsEvents;
+    private Output<Boolean> mergeRequestsEvents;
 
     /**
      * @return Trigger hook on merge requests events.
      * 
      */
-    public Output<Optional<Boolean>> mergeRequestsEvents() {
-        return Codegen.optional(this.mergeRequestsEvents);
+    public Output<Boolean> mergeRequestsEvents() {
+        return this.mergeRequestsEvents;
+    }
+    /**
+     * Name of the hook.
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return Name of the hook.
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
     }
     /**
      * When true, the hook fires on push events.
      * 
      */
     @Export(name="pushEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> pushEvents;
+    private Output<Boolean> pushEvents;
 
     /**
      * @return When true, the hook fires on push events.
      * 
      */
-    public Output<Optional<Boolean>> pushEvents() {
-        return Codegen.optional(this.pushEvents);
+    public Output<Boolean> pushEvents() {
+        return this.pushEvents;
     }
     /**
      * Trigger hook on repository update events.
      * 
      */
     @Export(name="repositoryUpdateEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> repositoryUpdateEvents;
+    private Output<Boolean> repositoryUpdateEvents;
 
     /**
      * @return Trigger hook on repository update events.
      * 
      */
-    public Output<Optional<Boolean>> repositoryUpdateEvents() {
-        return Codegen.optional(this.repositoryUpdateEvents);
+    public Output<Boolean> repositoryUpdateEvents() {
+        return this.repositoryUpdateEvents;
+    }
+    /**
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * 
+     */
+    @Export(name="signingToken", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> signingToken;
+
+    /**
+     * @return Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * 
+     */
+    public Output<Optional<String>> signingToken() {
+        return Codegen.optional(this.signingToken);
+    }
+    /**
+     * Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     * 
+     */
+    @Export(name="signingTokenPresent", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> signingTokenPresent;
+
+    /**
+     * @return Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     * 
+     */
+    public Output<Boolean> signingTokenPresent() {
+        return this.signingTokenPresent;
     }
     /**
      * When true, the hook fires on new tags being pushed.
      * 
      */
     @Export(name="tagPushEvents", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> tagPushEvents;
+    private Output<Boolean> tagPushEvents;
 
     /**
      * @return When true, the hook fires on new tags being pushed.
      * 
      */
-    public Output<Optional<Boolean>> tagPushEvents() {
-        return Codegen.optional(this.tagPushEvents);
+    public Output<Boolean> tagPushEvents() {
+        return this.tagPushEvents;
     }
     /**
      * Secret token to validate received payloads; this isn&#39;t returned in the response. This attribute is not available for imported resources.
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> token;
+    private Output<String> token;
 
     /**
      * @return Secret token to validate received payloads; this isn&#39;t returned in the response. This attribute is not available for imported resources.
      * 
      */
-    public Output<Optional<String>> token() {
-        return Codegen.optional(this.token);
+    public Output<String> token() {
+        return this.token;
     }
     /**
      * The hook URL.
@@ -230,6 +286,7 @@ public class SystemHook extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "signingToken",
                 "token"
             ))
             .build();

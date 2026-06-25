@@ -13,6 +13,11 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectHooksHook {
     /**
+     * @return Lifecycle status of the webhook. Values include `executable` and `disabled`.
+     * 
+     */
+    private String alertStatus;
+    /**
      * @return Filter push events by branch.
      * 
      */
@@ -28,6 +33,11 @@ public final class GetProjectHooksHook {
      */
     private Boolean confidentialNoteEvents;
     /**
+     * @return The date and time the hook was created in ISO8601 format.
+     * 
+     */
+    private String createdAt;
+    /**
      * @return Set a custom webhook template.
      * 
      */
@@ -38,6 +48,11 @@ public final class GetProjectHooksHook {
      */
     private Boolean deploymentEvents;
     /**
+     * @return Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+     * 
+     */
+    private String disabledUntil;
+    /**
      * @return Invoke the hook for emoji events.
      * 
      */
@@ -47,6 +62,11 @@ public final class GetProjectHooksHook {
      * 
      */
     private Boolean enableSslVerification;
+    /**
+     * @return Invoke the hook for feature flag events.
+     * 
+     */
+    private Boolean featureFlagEvents;
     /**
      * @return The id of the project hook.
      * 
@@ -67,6 +87,11 @@ public final class GetProjectHooksHook {
      * 
      */
     private Boolean mergeRequestsEvents;
+    /**
+     * @return Invoke the hook for milestone events.
+     * 
+     */
+    private Boolean milestoneEvents;
     /**
      * @return Invoke the hook for notes events.
      * 
@@ -103,19 +128,30 @@ public final class GetProjectHooksHook {
      */
     private Boolean releasesEvents;
     /**
+     * @return Invoke the hook for repository update events.
+     * 
+     */
+    private Boolean repositoryUpdateEvents;
+    /**
+     * @return Invoke the hook for project access token expiry events.
+     * 
+     */
+    private Boolean resourceAccessTokenEvents;
+    /**
+     * @return Invoke the hook for resource deploy token events.
+     * 
+     */
+    private Boolean resourceDeployTokenEvents;
+    /**
+     * @return Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     * 
+     */
+    private Boolean signingTokenPresent;
+    /**
      * @return Invoke the hook for tag push events.
      * 
      */
     private Boolean tagPushEvents;
-    /**
-     * @return A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
-     * 
-     * @deprecated
-     * The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0. */
-    private String token;
     /**
      * @return The url of the hook to invoke.
      * 
@@ -133,6 +169,13 @@ public final class GetProjectHooksHook {
     private Boolean wikiPageEvents;
 
     private GetProjectHooksHook() {}
+    /**
+     * @return Lifecycle status of the webhook. Values include `executable` and `disabled`.
+     * 
+     */
+    public String alertStatus() {
+        return this.alertStatus;
+    }
     /**
      * @return Filter push events by branch.
      * 
@@ -155,6 +198,13 @@ public final class GetProjectHooksHook {
         return this.confidentialNoteEvents;
     }
     /**
+     * @return The date and time the hook was created in ISO8601 format.
+     * 
+     */
+    public String createdAt() {
+        return this.createdAt;
+    }
+    /**
      * @return Set a custom webhook template.
      * 
      */
@@ -169,6 +219,13 @@ public final class GetProjectHooksHook {
         return this.deploymentEvents;
     }
     /**
+     * @return Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+     * 
+     */
+    public String disabledUntil() {
+        return this.disabledUntil;
+    }
+    /**
      * @return Invoke the hook for emoji events.
      * 
      */
@@ -181,6 +238,13 @@ public final class GetProjectHooksHook {
      */
     public Boolean enableSslVerification() {
         return this.enableSslVerification;
+    }
+    /**
+     * @return Invoke the hook for feature flag events.
+     * 
+     */
+    public Boolean featureFlagEvents() {
+        return this.featureFlagEvents;
     }
     /**
      * @return The id of the project hook.
@@ -209,6 +273,13 @@ public final class GetProjectHooksHook {
      */
     public Boolean mergeRequestsEvents() {
         return this.mergeRequestsEvents;
+    }
+    /**
+     * @return Invoke the hook for milestone events.
+     * 
+     */
+    public Boolean milestoneEvents() {
+        return this.milestoneEvents;
     }
     /**
      * @return Invoke the hook for notes events.
@@ -260,22 +331,39 @@ public final class GetProjectHooksHook {
         return this.releasesEvents;
     }
     /**
+     * @return Invoke the hook for repository update events.
+     * 
+     */
+    public Boolean repositoryUpdateEvents() {
+        return this.repositoryUpdateEvents;
+    }
+    /**
+     * @return Invoke the hook for project access token expiry events.
+     * 
+     */
+    public Boolean resourceAccessTokenEvents() {
+        return this.resourceAccessTokenEvents;
+    }
+    /**
+     * @return Invoke the hook for resource deploy token events.
+     * 
+     */
+    public Boolean resourceDeployTokenEvents() {
+        return this.resourceDeployTokenEvents;
+    }
+    /**
+     * @return Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     * 
+     */
+    public Boolean signingTokenPresent() {
+        return this.signingTokenPresent;
+    }
+    /**
      * @return Invoke the hook for tag push events.
      * 
      */
     public Boolean tagPushEvents() {
         return this.tagPushEvents;
-    }
-    /**
-     * @return A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
-     * 
-     * @deprecated
-     * The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0. */
-    public String token() {
-        return this.token;
     }
     /**
      * @return The url of the hook to invoke.
@@ -308,17 +396,22 @@ public final class GetProjectHooksHook {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String alertStatus;
         private String branchFilterStrategy;
         private Boolean confidentialIssuesEvents;
         private Boolean confidentialNoteEvents;
+        private String createdAt;
         private String customWebhookTemplate;
         private Boolean deploymentEvents;
+        private String disabledUntil;
         private Boolean emojiEvents;
         private Boolean enableSslVerification;
+        private Boolean featureFlagEvents;
         private Integer hookId;
         private Boolean issuesEvents;
         private Boolean jobEvents;
         private Boolean mergeRequestsEvents;
+        private Boolean milestoneEvents;
         private Boolean noteEvents;
         private Boolean pipelineEvents;
         private String project;
@@ -326,25 +419,33 @@ public final class GetProjectHooksHook {
         private Boolean pushEvents;
         private String pushEventsBranchFilter;
         private Boolean releasesEvents;
+        private Boolean repositoryUpdateEvents;
+        private Boolean resourceAccessTokenEvents;
+        private Boolean resourceDeployTokenEvents;
+        private Boolean signingTokenPresent;
         private Boolean tagPushEvents;
-        private String token;
         private String url;
         private Boolean vulnerabilityEvents;
         private Boolean wikiPageEvents;
         public Builder() {}
         public Builder(GetProjectHooksHook defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.alertStatus = defaults.alertStatus;
     	      this.branchFilterStrategy = defaults.branchFilterStrategy;
     	      this.confidentialIssuesEvents = defaults.confidentialIssuesEvents;
     	      this.confidentialNoteEvents = defaults.confidentialNoteEvents;
+    	      this.createdAt = defaults.createdAt;
     	      this.customWebhookTemplate = defaults.customWebhookTemplate;
     	      this.deploymentEvents = defaults.deploymentEvents;
+    	      this.disabledUntil = defaults.disabledUntil;
     	      this.emojiEvents = defaults.emojiEvents;
     	      this.enableSslVerification = defaults.enableSslVerification;
+    	      this.featureFlagEvents = defaults.featureFlagEvents;
     	      this.hookId = defaults.hookId;
     	      this.issuesEvents = defaults.issuesEvents;
     	      this.jobEvents = defaults.jobEvents;
     	      this.mergeRequestsEvents = defaults.mergeRequestsEvents;
+    	      this.milestoneEvents = defaults.milestoneEvents;
     	      this.noteEvents = defaults.noteEvents;
     	      this.pipelineEvents = defaults.pipelineEvents;
     	      this.project = defaults.project;
@@ -352,13 +453,24 @@ public final class GetProjectHooksHook {
     	      this.pushEvents = defaults.pushEvents;
     	      this.pushEventsBranchFilter = defaults.pushEventsBranchFilter;
     	      this.releasesEvents = defaults.releasesEvents;
+    	      this.repositoryUpdateEvents = defaults.repositoryUpdateEvents;
+    	      this.resourceAccessTokenEvents = defaults.resourceAccessTokenEvents;
+    	      this.resourceDeployTokenEvents = defaults.resourceDeployTokenEvents;
+    	      this.signingTokenPresent = defaults.signingTokenPresent;
     	      this.tagPushEvents = defaults.tagPushEvents;
-    	      this.token = defaults.token;
     	      this.url = defaults.url;
     	      this.vulnerabilityEvents = defaults.vulnerabilityEvents;
     	      this.wikiPageEvents = defaults.wikiPageEvents;
         }
 
+        @CustomType.Setter
+        public Builder alertStatus(String alertStatus) {
+            if (alertStatus == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "alertStatus");
+            }
+            this.alertStatus = alertStatus;
+            return this;
+        }
         @CustomType.Setter
         public Builder branchFilterStrategy(String branchFilterStrategy) {
             if (branchFilterStrategy == null) {
@@ -384,6 +496,14 @@ public final class GetProjectHooksHook {
             return this;
         }
         @CustomType.Setter
+        public Builder createdAt(String createdAt) {
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "createdAt");
+            }
+            this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customWebhookTemplate(String customWebhookTemplate) {
             if (customWebhookTemplate == null) {
               throw new MissingRequiredPropertyException("GetProjectHooksHook", "customWebhookTemplate");
@@ -400,6 +520,14 @@ public final class GetProjectHooksHook {
             return this;
         }
         @CustomType.Setter
+        public Builder disabledUntil(String disabledUntil) {
+            if (disabledUntil == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "disabledUntil");
+            }
+            this.disabledUntil = disabledUntil;
+            return this;
+        }
+        @CustomType.Setter
         public Builder emojiEvents(Boolean emojiEvents) {
             if (emojiEvents == null) {
               throw new MissingRequiredPropertyException("GetProjectHooksHook", "emojiEvents");
@@ -413,6 +541,14 @@ public final class GetProjectHooksHook {
               throw new MissingRequiredPropertyException("GetProjectHooksHook", "enableSslVerification");
             }
             this.enableSslVerification = enableSslVerification;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder featureFlagEvents(Boolean featureFlagEvents) {
+            if (featureFlagEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "featureFlagEvents");
+            }
+            this.featureFlagEvents = featureFlagEvents;
             return this;
         }
         @CustomType.Setter
@@ -445,6 +581,14 @@ public final class GetProjectHooksHook {
               throw new MissingRequiredPropertyException("GetProjectHooksHook", "mergeRequestsEvents");
             }
             this.mergeRequestsEvents = mergeRequestsEvents;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder milestoneEvents(Boolean milestoneEvents) {
+            if (milestoneEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "milestoneEvents");
+            }
+            this.milestoneEvents = milestoneEvents;
             return this;
         }
         @CustomType.Setter
@@ -504,19 +648,43 @@ public final class GetProjectHooksHook {
             return this;
         }
         @CustomType.Setter
+        public Builder repositoryUpdateEvents(Boolean repositoryUpdateEvents) {
+            if (repositoryUpdateEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "repositoryUpdateEvents");
+            }
+            this.repositoryUpdateEvents = repositoryUpdateEvents;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder resourceAccessTokenEvents(Boolean resourceAccessTokenEvents) {
+            if (resourceAccessTokenEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "resourceAccessTokenEvents");
+            }
+            this.resourceAccessTokenEvents = resourceAccessTokenEvents;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder resourceDeployTokenEvents(Boolean resourceDeployTokenEvents) {
+            if (resourceDeployTokenEvents == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "resourceDeployTokenEvents");
+            }
+            this.resourceDeployTokenEvents = resourceDeployTokenEvents;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder signingTokenPresent(Boolean signingTokenPresent) {
+            if (signingTokenPresent == null) {
+              throw new MissingRequiredPropertyException("GetProjectHooksHook", "signingTokenPresent");
+            }
+            this.signingTokenPresent = signingTokenPresent;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tagPushEvents(Boolean tagPushEvents) {
             if (tagPushEvents == null) {
               throw new MissingRequiredPropertyException("GetProjectHooksHook", "tagPushEvents");
             }
             this.tagPushEvents = tagPushEvents;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder token(String token) {
-            if (token == null) {
-              throw new MissingRequiredPropertyException("GetProjectHooksHook", "token");
-            }
-            this.token = token;
             return this;
         }
         @CustomType.Setter
@@ -545,17 +713,22 @@ public final class GetProjectHooksHook {
         }
         public GetProjectHooksHook build() {
             final var _resultValue = new GetProjectHooksHook();
+            _resultValue.alertStatus = alertStatus;
             _resultValue.branchFilterStrategy = branchFilterStrategy;
             _resultValue.confidentialIssuesEvents = confidentialIssuesEvents;
             _resultValue.confidentialNoteEvents = confidentialNoteEvents;
+            _resultValue.createdAt = createdAt;
             _resultValue.customWebhookTemplate = customWebhookTemplate;
             _resultValue.deploymentEvents = deploymentEvents;
+            _resultValue.disabledUntil = disabledUntil;
             _resultValue.emojiEvents = emojiEvents;
             _resultValue.enableSslVerification = enableSslVerification;
+            _resultValue.featureFlagEvents = featureFlagEvents;
             _resultValue.hookId = hookId;
             _resultValue.issuesEvents = issuesEvents;
             _resultValue.jobEvents = jobEvents;
             _resultValue.mergeRequestsEvents = mergeRequestsEvents;
+            _resultValue.milestoneEvents = milestoneEvents;
             _resultValue.noteEvents = noteEvents;
             _resultValue.pipelineEvents = pipelineEvents;
             _resultValue.project = project;
@@ -563,8 +736,11 @@ public final class GetProjectHooksHook {
             _resultValue.pushEvents = pushEvents;
             _resultValue.pushEventsBranchFilter = pushEventsBranchFilter;
             _resultValue.releasesEvents = releasesEvents;
+            _resultValue.repositoryUpdateEvents = repositoryUpdateEvents;
+            _resultValue.resourceAccessTokenEvents = resourceAccessTokenEvents;
+            _resultValue.resourceDeployTokenEvents = resourceDeployTokenEvents;
+            _resultValue.signingTokenPresent = signingTokenPresent;
             _resultValue.tagPushEvents = tagPushEvents;
-            _resultValue.token = token;
             _resultValue.url = url;
             _resultValue.vulnerabilityEvents = vulnerabilityEvents;
             _resultValue.wikiPageEvents = wikiPageEvents;

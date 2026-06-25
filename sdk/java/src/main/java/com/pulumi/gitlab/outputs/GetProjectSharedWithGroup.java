@@ -12,10 +12,19 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectSharedWithGroup {
     /**
-     * @return The accessLevel permission level of the shared group.
+     * @return The access level (integer) of the shared group. Matches the upstream GitLab API. See `groupAccessLevelName` for the human-readable string form.
      * 
      */
     private Integer groupAccessLevel;
+    /**
+     * @return The human-readable access level name of the shared group (e.g. `developer`, `maintainer`). Computed from `groupAccessLevel`.
+     * 
+     * @deprecated
+     * Use `groupAccessLevel` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `groupAccessLevel` instead, to be removed in 20.0. */
+    private String groupAccessLevelName;
     /**
      * @return The full path of the group shared with.
      * 
@@ -34,11 +43,22 @@ public final class GetProjectSharedWithGroup {
 
     private GetProjectSharedWithGroup() {}
     /**
-     * @return The accessLevel permission level of the shared group.
+     * @return The access level (integer) of the shared group. Matches the upstream GitLab API. See `groupAccessLevelName` for the human-readable string form.
      * 
      */
     public Integer groupAccessLevel() {
         return this.groupAccessLevel;
+    }
+    /**
+     * @return The human-readable access level name of the shared group (e.g. `developer`, `maintainer`). Computed from `groupAccessLevel`.
+     * 
+     * @deprecated
+     * Use `groupAccessLevel` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `groupAccessLevel` instead, to be removed in 20.0. */
+    public String groupAccessLevelName() {
+        return this.groupAccessLevelName;
     }
     /**
      * @return The full path of the group shared with.
@@ -72,6 +92,7 @@ public final class GetProjectSharedWithGroup {
     @CustomType.Builder
     public static final class Builder {
         private Integer groupAccessLevel;
+        private String groupAccessLevelName;
         private String groupFullPath;
         private Integer groupId;
         private String groupName;
@@ -79,6 +100,7 @@ public final class GetProjectSharedWithGroup {
         public Builder(GetProjectSharedWithGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupAccessLevel = defaults.groupAccessLevel;
+    	      this.groupAccessLevelName = defaults.groupAccessLevelName;
     	      this.groupFullPath = defaults.groupFullPath;
     	      this.groupId = defaults.groupId;
     	      this.groupName = defaults.groupName;
@@ -90,6 +112,14 @@ public final class GetProjectSharedWithGroup {
               throw new MissingRequiredPropertyException("GetProjectSharedWithGroup", "groupAccessLevel");
             }
             this.groupAccessLevel = groupAccessLevel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupAccessLevelName(String groupAccessLevelName) {
+            if (groupAccessLevelName == null) {
+              throw new MissingRequiredPropertyException("GetProjectSharedWithGroup", "groupAccessLevelName");
+            }
+            this.groupAccessLevelName = groupAccessLevelName;
             return this;
         }
         @CustomType.Setter
@@ -119,6 +149,7 @@ public final class GetProjectSharedWithGroup {
         public GetProjectSharedWithGroup build() {
             final var _resultValue = new GetProjectSharedWithGroup();
             _resultValue.groupAccessLevel = groupAccessLevel;
+            _resultValue.groupAccessLevelName = groupAccessLevelName;
             _resultValue.groupFullPath = groupFullPath;
             _resultValue.groupId = groupId;
             _resultValue.groupName = groupName;

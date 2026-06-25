@@ -117,7 +117,7 @@ namespace Pulumi.GitLab
         public Output<int> UserId { get; private set; } = null!;
 
         /// <summary>
-        /// Wether to validate if the expiration date is in the future.
+        /// Whether to validate if the expiration date is in the future.
         /// </summary>
         [Output("validatePastExpirationDate")]
         public Output<bool> ValidatePastExpirationDate { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.GitLab
         public Input<int> UserId { get; set; } = null!;
 
         /// <summary>
-        /// Wether to validate if the expiration date is in the future.
+        /// Whether to validate if the expiration date is in the future.
         /// </summary>
         [Input("validatePastExpirationDate")]
         public Input<bool>? ValidatePastExpirationDate { get; set; }
@@ -293,7 +293,7 @@ namespace Pulumi.GitLab
         public Input<int>? UserId { get; set; }
 
         /// <summary>
-        /// Wether to validate if the expiration date is in the future.
+        /// Whether to validate if the expiration date is in the future.
         /// </summary>
         [Input("validatePastExpirationDate")]
         public Input<bool>? ValidatePastExpirationDate { get; set; }

@@ -22,9 +22,13 @@ __all__ = [
     'BranchProtectionAllowedToPush',
     'BranchProtectionAllowedToUnprotect',
     'GroupAccessTokenRotationConfiguration',
+    'GroupBranchProtectionAllowedToMerge',
+    'GroupBranchProtectionAllowedToPush',
+    'GroupBranchProtectionAllowedToUnprotect',
     'GroupDefaultBranchProtectionDefaults',
     'GroupEpicBoardList',
     'GroupHookCustomHeader',
+    'GroupHookUrlVariable',
     'GroupIssueBoardList',
     'GroupProtectedEnvironmentApprovalRule',
     'GroupProtectedEnvironmentDeployAccessLevel',
@@ -38,13 +42,14 @@ __all__ = [
     'ProjectContainerExpirationPolicy',
     'ProjectContainerTagProtectionTimeouts',
     'ProjectHookCustomHeader',
+    'ProjectHookUrlVariable',
     'ProjectIssueBoardList',
     'ProjectIssueTaskCompletionStatus',
     'ProjectPagesSettingsDeployment',
     'ProjectProtectedEnvironmentApprovalRule',
-    'ProjectProtectedEnvironmentDeployAccessLevel',
     'ProjectProtectedEnvironmentDeployAccessLevelsAttribute',
     'ProjectPushRules',
+    'ProjectServiceAccountTimeouts',
     'ProjectTagCommit',
     'ProjectTagRelease',
     'ReleaseAssets',
@@ -57,16 +62,32 @@ __all__ = [
     'GetClusterAgentsClusterAgentResult',
     'GetGroupAccessTokensAccessTokenResult',
     'GetGroupBillableMemberMembershipsMembershipResult',
+    'GetGroupDefaultBranchProtectionDefaultResult',
+    'GetGroupDefaultBranchProtectionDefaultAllowedToMergeResult',
+    'GetGroupDefaultBranchProtectionDefaultAllowedToPushResult',
     'GetGroupHooksHookResult',
+    'GetGroupLabelsLabelResult',
     'GetGroupMembershipMemberResult',
     'GetGroupMembershipMemberGroupSamlIdentityResult',
+    'GetGroupProtectedBranchMergeAccessLevelResult',
+    'GetGroupProtectedBranchPushAccessLevelResult',
+    'GetGroupProtectedBranchUnprotectAccessLevelResult',
+    'GetGroupProtectedBranchesProtectedBranchResult',
+    'GetGroupProtectedBranchesProtectedBranchMergeAccessLevelResult',
+    'GetGroupProtectedBranchesProtectedBranchPushAccessLevelResult',
+    'GetGroupProtectedBranchesProtectedBranchUnprotectAccessLevelResult',
     'GetGroupProvisionedUsersProvisionedUserResult',
+    'GetGroupPushRuleResult',
     'GetGroupSamlLinksSamlLinkResult',
     'GetGroupServiceAccountAccessTokensAccessTokenResult',
     'GetGroupSharedWithGroupResult',
     'GetGroupSubgroupsSubgroupResult',
     'GetGroupVariablesVariableResult',
     'GetGroupsGroupResult',
+    'GetGroupsGroupDefaultBranchProtectionDefaultResult',
+    'GetGroupsGroupDefaultBranchProtectionDefaultAllowedToMergeResult',
+    'GetGroupsGroupDefaultBranchProtectionDefaultAllowedToPushResult',
+    'GetGroupsGroupSharedWithGroupResult',
     'GetInstanceDeployKeysDeployKeyResult',
     'GetInstanceDeployKeysDeployKeyProjectsWithWriteAccessResult',
     'GetInstanceVariablesVariableResult',
@@ -83,6 +104,7 @@ __all__ = [
     'GetProjectBranchesBranchCommitResult',
     'GetProjectContainerExpirationPolicyResult',
     'GetProjectEnvironmentsEnvironmentResult',
+    'GetProjectForkedFromProjectResult',
     'GetProjectHooksHookResult',
     'GetProjectIssueLabelEventsEventResult',
     'GetProjectIssueLabelEventsEventLabelResult',
@@ -91,6 +113,7 @@ __all__ = [
     'GetProjectIssuesIssueResult',
     'GetProjectIssuesIssueTaskCompletionStatusResult',
     'GetProjectLabelsLabelResult',
+    'GetProjectLicenseResult',
     'GetProjectMembershipMemberResult',
     'GetProjectMergeRequestAssigneeResult',
     'GetProjectMergeRequestAuthorResult',
@@ -100,11 +123,16 @@ __all__ = [
     'GetProjectMergeRequestsMergeRequestAuthorResult',
     'GetProjectMergeRequestsMergeRequestClosedByResult',
     'GetProjectMilestonesMilestoneResult',
+    'GetProjectNamespaceResult',
+    'GetProjectOwnerResult',
+    'GetProjectPermissionResult',
     'GetProjectProtectedBranchMergeAccessLevelResult',
     'GetProjectProtectedBranchPushAccessLevelResult',
+    'GetProjectProtectedBranchUnprotectAccessLevelResult',
     'GetProjectProtectedBranchesProtectedBranchResult',
     'GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult',
     'GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult',
+    'GetProjectProtectedBranchesProtectedBranchUnprotectAccessLevelResult',
     'GetProjectProtectedTagCreateAccessLevelResult',
     'GetProjectProtectedTagsProtectedTagResult',
     'GetProjectProtectedTagsProtectedTagCreateAccessLevelResult',
@@ -122,6 +150,7 @@ __all__ = [
     'GetProjectsProjectResult',
     'GetProjectsProjectContainerExpirationPolicyResult',
     'GetProjectsProjectForkedFromProjectResult',
+    'GetProjectsProjectLicenseResult',
     'GetProjectsProjectNamespaceResult',
     'GetProjectsProjectOwnerResult',
     'GetProjectsProjectPermissionResult',
@@ -141,6 +170,7 @@ __all__ = [
     'GetSecurityPolicyDocumentScanExecutionPolicyPolicyScopeProjectsResult',
     'GetSecurityPolicyDocumentScanExecutionPolicyRuleResult',
     'GetSecurityPolicyDocumentScanExecutionPolicySkipCiResult',
+    'GetSystemHooksHookResult',
     'GetUserSshkeysKeyResult',
     'GetUsersUserResult',
 ]
@@ -438,10 +468,10 @@ class BranchProtectionAllowedToMerge(dict):
                  group_id: Optional[_builtins.int] = None,
                  user_id: Optional[_builtins.int] = None):
         """
-        :param _builtins.str access_level: Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        :param _builtins.str access_level: Access level allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param _builtins.str access_level_description: Readable description of access level.
-        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id` and `access_level`.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id` and `access_level`.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -456,7 +486,7 @@ class BranchProtectionAllowedToMerge(dict):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[_builtins.str]:
         """
-        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        Access level allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "access_level")
 
@@ -472,7 +502,7 @@ class BranchProtectionAllowedToMerge(dict):
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[_builtins.int]:
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id` and `access_level`.
         """
         return pulumi.get(self, "group_id")
 
@@ -480,7 +510,7 @@ class BranchProtectionAllowedToMerge(dict):
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[_builtins.int]:
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id` and `access_level`.
         """
         return pulumi.get(self, "user_id")
 
@@ -519,11 +549,11 @@ class BranchProtectionAllowedToPush(dict):
                  group_id: Optional[_builtins.int] = None,
                  user_id: Optional[_builtins.int] = None):
         """
-        :param _builtins.str access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        :param _builtins.str access_level: Access level allowed to perform the relevant action. Mutually exclusive with `deploy_key_id`, `group_id`, and `user_id`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         :param _builtins.str access_level_description: Readable description of access level.
-        :param _builtins.int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
-        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
-        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
+        :param _builtins.int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `user_id`, `group_id`, and `access_level`. This field is read-only until Gitlab 17.5.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id`, `user_id`, and `access_level`.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id`, `group_id`, and `access_level`.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -540,7 +570,7 @@ class BranchProtectionAllowedToPush(dict):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[_builtins.str]:
         """
-        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        Access level allowed to perform the relevant action. Mutually exclusive with `deploy_key_id`, `group_id`, and `user_id`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "access_level")
 
@@ -556,7 +586,7 @@ class BranchProtectionAllowedToPush(dict):
     @pulumi.getter(name="deployKeyId")
     def deploy_key_id(self) -> Optional[_builtins.int]:
         """
-        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `user_id`, `group_id`, and `access_level`. This field is read-only until Gitlab 17.5.
         """
         return pulumi.get(self, "deploy_key_id")
 
@@ -564,7 +594,7 @@ class BranchProtectionAllowedToPush(dict):
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[_builtins.int]:
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id`, `user_id`, and `access_level`.
         """
         return pulumi.get(self, "group_id")
 
@@ -572,7 +602,7 @@ class BranchProtectionAllowedToPush(dict):
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[_builtins.int]:
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id`, `group_id`, and `access_level`.
         """
         return pulumi.get(self, "user_id")
 
@@ -608,10 +638,10 @@ class BranchProtectionAllowedToUnprotect(dict):
                  group_id: Optional[_builtins.int] = None,
                  user_id: Optional[_builtins.int] = None):
         """
-        :param _builtins.str access_level: Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
+        :param _builtins.str access_level: Access level allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. Valid values are: `developer`, `maintainer`, `admin`.
         :param _builtins.str access_level_description: Readable description of access level.
-        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id` and `access_level`.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id` and `access_level`.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -626,7 +656,7 @@ class BranchProtectionAllowedToUnprotect(dict):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[_builtins.str]:
         """
-        Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
+        Access level allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. Valid values are: `developer`, `maintainer`, `admin`.
         """
         return pulumi.get(self, "access_level")
 
@@ -642,7 +672,7 @@ class BranchProtectionAllowedToUnprotect(dict):
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[_builtins.int]:
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id` and `access_level`.
         """
         return pulumi.get(self, "group_id")
 
@@ -650,7 +680,7 @@ class BranchProtectionAllowedToUnprotect(dict):
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[_builtins.int]:
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id` and `access_level`.
         """
         return pulumi.get(self, "user_id")
 
@@ -701,6 +731,254 @@ class GroupAccessTokenRotationConfiguration(dict):
         The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
         """
         return pulumi.get(self, "rotate_before_days")
+
+
+@pulumi.output_type
+class GroupBranchProtectionAllowedToMerge(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+        elif key == "accessLevelDescription":
+            suggest = "access_level_description"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupBranchProtectionAllowedToMerge. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupBranchProtectionAllowedToMerge.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupBranchProtectionAllowedToMerge.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[_builtins.str] = None,
+                 access_level_description: Optional[_builtins.str] = None,
+                 group_id: Optional[_builtins.int] = None,
+                 user_id: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str access_level: Access level allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        :param _builtins.str access_level_description: Readable description of access level.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id` and `access_level`.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id` and `access_level`.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_level_description is not None:
+            pulumi.set(__self__, "access_level_description", access_level_description)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[_builtins.str]:
+        """
+        Access level allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> Optional[_builtins.str]:
+        """
+        Readable description of access level.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[_builtins.int]:
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id` and `access_level`.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[_builtins.int]:
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id` and `access_level`.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GroupBranchProtectionAllowedToPush(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+        elif key == "accessLevelDescription":
+            suggest = "access_level_description"
+        elif key == "deployKeyId":
+            suggest = "deploy_key_id"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupBranchProtectionAllowedToPush. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupBranchProtectionAllowedToPush.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupBranchProtectionAllowedToPush.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[_builtins.str] = None,
+                 access_level_description: Optional[_builtins.str] = None,
+                 deploy_key_id: Optional[_builtins.int] = None,
+                 group_id: Optional[_builtins.int] = None,
+                 user_id: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str access_level: Access level allowed to perform the relevant action. Mutually exclusive with `deploy_key_id`, `group_id`, and `user_id`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        :param _builtins.str access_level_description: Readable description of access level.
+        :param _builtins.int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `user_id`, `group_id`, and `access_level`.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id`, `user_id`, and `access_level`.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id`, `group_id`, and `access_level`.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_level_description is not None:
+            pulumi.set(__self__, "access_level_description", access_level_description)
+        if deploy_key_id is not None:
+            pulumi.set(__self__, "deploy_key_id", deploy_key_id)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[_builtins.str]:
+        """
+        Access level allowed to perform the relevant action. Mutually exclusive with `deploy_key_id`, `group_id`, and `user_id`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> Optional[_builtins.str]:
+        """
+        Readable description of access level.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @_builtins.property
+    @pulumi.getter(name="deployKeyId")
+    def deploy_key_id(self) -> Optional[_builtins.int]:
+        """
+        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `user_id`, `group_id`, and `access_level`.
+        """
+        return pulumi.get(self, "deploy_key_id")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[_builtins.int]:
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id`, `user_id`, and `access_level`.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[_builtins.int]:
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id`, `group_id`, and `access_level`.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GroupBranchProtectionAllowedToUnprotect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+        elif key == "accessLevelDescription":
+            suggest = "access_level_description"
+        elif key == "groupId":
+            suggest = "group_id"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupBranchProtectionAllowedToUnprotect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupBranchProtectionAllowedToUnprotect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupBranchProtectionAllowedToUnprotect.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[_builtins.str] = None,
+                 access_level_description: Optional[_builtins.str] = None,
+                 group_id: Optional[_builtins.int] = None,
+                 user_id: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str access_level: Access level allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. Valid values are: `developer`, `maintainer`, `admin`.
+        :param _builtins.str access_level_description: Readable description of access level.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id` and `access_level`.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id` and `access_level`.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_level_description is not None:
+            pulumi.set(__self__, "access_level_description", access_level_description)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[_builtins.str]:
+        """
+        Access level allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. Valid values are: `developer`, `maintainer`, `admin`.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> Optional[_builtins.str]:
+        """
+        Readable description of access level.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[_builtins.int]:
+        """
+        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id` and `access_level`.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[_builtins.int]:
+        """
+        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id` and `access_level`.
+        """
+        return pulumi.get(self, "user_id")
 
 
 @pulumi.output_type
@@ -885,6 +1163,35 @@ class GroupHookCustomHeader(dict):
 
 
 @pulumi.output_type
+class GroupHookUrlVariable(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: The value to display in place of the sensitive portion in the URL.
+        :param _builtins.str value: The sensitive portion of the webhook URL to mask.  This value cannot be imported.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The value to display in place of the sensitive portion in the URL.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The sensitive portion of the webhook URL to mask.  This value cannot be imported.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GroupIssueBoardList(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -984,7 +1291,7 @@ class GroupProtectedEnvironmentApprovalRule(dict):
         """
         :param _builtins.str access_level: Levels of access allowed to approve a deployment to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
         :param _builtins.str access_level_description: Readable description of level of access.
-        :param _builtins.int group_id: The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
+        :param _builtins.int group_id: The ID of the group allowed to approve a deployment to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
         :param _builtins.int group_inheritance_type: Group inheritance allows access rules to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
         :param _builtins.int id: The unique ID of the Approval Rules object.
         :param _builtins.int required_approvals: The number of approval required to allow deployment to this protected environment. This is mutually exclusive with user_id.
@@ -1025,7 +1332,7 @@ class GroupProtectedEnvironmentApprovalRule(dict):
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[_builtins.int]:
         """
-        The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
+        The ID of the group allowed to approve a deployment to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `access_level` and `user_id`.
         """
         return pulumi.get(self, "group_id")
 
@@ -1747,6 +2054,35 @@ class ProjectHookCustomHeader(dict):
 
 
 @pulumi.output_type
+class ProjectHookUrlVariable(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: The value to display in place of the sensitive portion in the URL.
+        :param _builtins.str value: The sensitive portion of the webhook URL to mask.  This value cannot be imported.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The value to display in place of the sensitive portion in the URL.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The sensitive portion of the webhook URL to mask.  This value cannot be imported.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class ProjectIssueBoardList(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2091,110 +2427,6 @@ class ProjectProtectedEnvironmentApprovalRule(dict):
 
 
 @pulumi.output_type
-class ProjectProtectedEnvironmentDeployAccessLevel(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessLevel":
-            suggest = "access_level"
-        elif key == "accessLevelDescription":
-            suggest = "access_level_description"
-        elif key == "groupId":
-            suggest = "group_id"
-        elif key == "groupInheritanceType":
-            suggest = "group_inheritance_type"
-        elif key == "userId":
-            suggest = "user_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ProjectProtectedEnvironmentDeployAccessLevel. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ProjectProtectedEnvironmentDeployAccessLevel.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ProjectProtectedEnvironmentDeployAccessLevel.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 access_level: Optional[_builtins.str] = None,
-                 access_level_description: Optional[_builtins.str] = None,
-                 group_id: Optional[_builtins.int] = None,
-                 group_inheritance_type: Optional[_builtins.int] = None,
-                 id: Optional[_builtins.int] = None,
-                 user_id: Optional[_builtins.int] = None):
-        """
-        :param _builtins.str access_level: Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
-        :param _builtins.str access_level_description: Readable description of level of access.
-        :param _builtins.int group_id: The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
-        :param _builtins.int group_inheritance_type: Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
-        :param _builtins.int id: The unique ID of the Deploy Access Level object.
-        :param _builtins.int user_id: The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
-        """
-        if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
-        if access_level_description is not None:
-            pulumi.set(__self__, "access_level_description", access_level_description)
-        if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
-        if group_inheritance_type is not None:
-            pulumi.set(__self__, "group_inheritance_type", group_inheritance_type)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
-
-    @_builtins.property
-    @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[_builtins.str]:
-        """
-        Levels of access required to deploy to this protected environment. Mutually exclusive with `user_id` and `group_id`. Valid values are `developer`, `maintainer`.
-        """
-        return pulumi.get(self, "access_level")
-
-    @_builtins.property
-    @pulumi.getter(name="accessLevelDescription")
-    def access_level_description(self) -> Optional[_builtins.str]:
-        """
-        Readable description of level of access.
-        """
-        return pulumi.get(self, "access_level_description")
-
-    @_builtins.property
-    @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[_builtins.int]:
-        """
-        The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `access_level` and `user_id`.
-        """
-        return pulumi.get(self, "group_id")
-
-    @_builtins.property
-    @pulumi.getter(name="groupInheritanceType")
-    def group_inheritance_type(self) -> Optional[_builtins.int]:
-        """
-        Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
-        """
-        return pulumi.get(self, "group_inheritance_type")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[_builtins.int]:
-        """
-        The unique ID of the Deploy Access Level object.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[_builtins.int]:
-        """
-        The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `access_level` and `group_id`.
-        """
-        return pulumi.get(self, "user_id")
-
-
-@pulumi.output_type
 class ProjectProtectedEnvironmentDeployAccessLevelsAttribute(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2500,6 +2732,25 @@ class ProjectPushRules(dict):
         Reject commit when it's not signed through GPG.
         """
         return pulumi.get(self, "reject_unsigned_commits")
+
+
+@pulumi.output_type
+class ProjectServiceAccountTimeouts(dict):
+    def __init__(__self__, *,
+                 delete: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str delete: How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
+        """
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
+        """
+        return pulumi.get(self, "delete")
 
 
 @pulumi.output_type
@@ -3706,79 +3957,220 @@ class GetGroupBillableMemberMembershipsMembershipResult(dict):
 
 
 @pulumi.output_type
+class GetGroupDefaultBranchProtectionDefaultResult(dict):
+    def __init__(__self__, *,
+                 allow_force_push: _builtins.bool,
+                 allowed_to_merges: Sequence['outputs.GetGroupDefaultBranchProtectionDefaultAllowedToMergeResult'],
+                 allowed_to_pushes: Sequence['outputs.GetGroupDefaultBranchProtectionDefaultAllowedToPushResult'],
+                 code_owner_approval_required: _builtins.bool,
+                 developer_can_initial_push: _builtins.bool):
+        """
+        :param _builtins.bool allow_force_push: Whether force-push is allowed to the default branch.
+        :param Sequence['GetGroupDefaultBranchProtectionDefaultAllowedToMergeArgs'] allowed_to_merges: Access levels allowed to merge into the default branch.
+        :param Sequence['GetGroupDefaultBranchProtectionDefaultAllowedToPushArgs'] allowed_to_pushes: Access levels allowed to push to the default branch.
+        :param _builtins.bool code_owner_approval_required: Whether code-owner approval is required on the default branch.
+        :param _builtins.bool developer_can_initial_push: Whether developers can make the initial push to the default branch.
+        """
+        pulumi.set(__self__, "allow_force_push", allow_force_push)
+        pulumi.set(__self__, "allowed_to_merges", allowed_to_merges)
+        pulumi.set(__self__, "allowed_to_pushes", allowed_to_pushes)
+        pulumi.set(__self__, "code_owner_approval_required", code_owner_approval_required)
+        pulumi.set(__self__, "developer_can_initial_push", developer_can_initial_push)
+
+    @_builtins.property
+    @pulumi.getter(name="allowForcePush")
+    def allow_force_push(self) -> _builtins.bool:
+        """
+        Whether force-push is allowed to the default branch.
+        """
+        return pulumi.get(self, "allow_force_push")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedToMerges")
+    def allowed_to_merges(self) -> Sequence['outputs.GetGroupDefaultBranchProtectionDefaultAllowedToMergeResult']:
+        """
+        Access levels allowed to merge into the default branch.
+        """
+        return pulumi.get(self, "allowed_to_merges")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedToPushes")
+    def allowed_to_pushes(self) -> Sequence['outputs.GetGroupDefaultBranchProtectionDefaultAllowedToPushResult']:
+        """
+        Access levels allowed to push to the default branch.
+        """
+        return pulumi.get(self, "allowed_to_pushes")
+
+    @_builtins.property
+    @pulumi.getter(name="codeOwnerApprovalRequired")
+    def code_owner_approval_required(self) -> _builtins.bool:
+        """
+        Whether code-owner approval is required on the default branch.
+        """
+        return pulumi.get(self, "code_owner_approval_required")
+
+    @_builtins.property
+    @pulumi.getter(name="developerCanInitialPush")
+    def developer_can_initial_push(self) -> _builtins.bool:
+        """
+        Whether developers can make the initial push to the default branch.
+        """
+        return pulumi.get(self, "developer_can_initial_push")
+
+
+@pulumi.output_type
+class GetGroupDefaultBranchProtectionDefaultAllowedToMergeResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.int):
+        """
+        :param _builtins.int access_level: The access level integer.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.int:
+        """
+        The access level integer.
+        """
+        return pulumi.get(self, "access_level")
+
+
+@pulumi.output_type
+class GetGroupDefaultBranchProtectionDefaultAllowedToPushResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.int):
+        """
+        :param _builtins.int access_level: The access level integer.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.int:
+        """
+        The access level integer.
+        """
+        return pulumi.get(self, "access_level")
+
+
+@pulumi.output_type
 class GetGroupHooksHookResult(dict):
     def __init__(__self__, *,
+                 alert_status: _builtins.str,
+                 branch_filter_strategy: _builtins.str,
                  confidential_issues_events: _builtins.bool,
                  confidential_note_events: _builtins.bool,
+                 created_at: _builtins.str,
                  custom_webhook_template: _builtins.str,
                  deployment_events: _builtins.bool,
+                 disabled_until: _builtins.str,
                  emoji_events: _builtins.bool,
                  enable_ssl_verification: _builtins.bool,
+                 feature_flag_events: _builtins.bool,
                  group: _builtins.str,
                  group_id: _builtins.int,
                  hook_id: _builtins.int,
                  issues_events: _builtins.bool,
                  job_events: _builtins.bool,
+                 member_events: _builtins.bool,
                  merge_requests_events: _builtins.bool,
+                 milestone_events: _builtins.bool,
                  note_events: _builtins.bool,
                  pipeline_events: _builtins.bool,
+                 project_events: _builtins.bool,
                  push_events: _builtins.bool,
                  push_events_branch_filter: _builtins.str,
                  releases_events: _builtins.bool,
+                 resource_access_token_events: _builtins.bool,
+                 signing_token_present: _builtins.bool,
                  subgroup_events: _builtins.bool,
                  tag_push_events: _builtins.bool,
-                 token: _builtins.str,
                  url: _builtins.str,
                  vulnerability_events: _builtins.bool,
                  wiki_page_events: _builtins.bool):
         """
+        :param _builtins.str alert_status: Lifecycle status of the webhook. Values include `executable` and `disabled`.
+        :param _builtins.str branch_filter_strategy: Filter push events by branch.
         :param _builtins.bool confidential_issues_events: Invoke the hook for confidential issues events.
         :param _builtins.bool confidential_note_events: Invoke the hook for confidential notes events.
+        :param _builtins.str created_at: The date and time the hook was created in ISO8601 format.
         :param _builtins.str custom_webhook_template: Set a custom webhook template.
         :param _builtins.bool deployment_events: Invoke the hook for deployment events.
+        :param _builtins.str disabled_until: Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
         :param _builtins.bool emoji_events: Invoke the hook for emoji events.
         :param _builtins.bool enable_ssl_verification: Enable ssl verification when invoking the hook.
+        :param _builtins.bool feature_flag_events: Invoke the hook for feature flag events.
         :param _builtins.str group: The ID or full path of the group.
         :param _builtins.int group_id: The id of the group for the hook.
         :param _builtins.int hook_id: The id of the group hook.
         :param _builtins.bool issues_events: Invoke the hook for issues events.
         :param _builtins.bool job_events: Invoke the hook for job events.
+        :param _builtins.bool member_events: Invoke the hook for member events.
         :param _builtins.bool merge_requests_events: Invoke the hook for merge requests.
+        :param _builtins.bool milestone_events: Invoke the hook for milestone events.
         :param _builtins.bool note_events: Invoke the hook for notes events.
         :param _builtins.bool pipeline_events: Invoke the hook for pipeline events.
+        :param _builtins.bool project_events: Invoke the hook for project events.
         :param _builtins.bool push_events: Invoke the hook for push events.
         :param _builtins.str push_events_branch_filter: Invoke the hook for push events on matching branches only.
         :param _builtins.bool releases_events: Invoke the hook for releases events.
+        :param _builtins.bool resource_access_token_events: Invoke the hook for resource access token expiry events.
+        :param _builtins.bool signing_token_present: Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
         :param _builtins.bool subgroup_events: Invoke the hook for subgroup events.
         :param _builtins.bool tag_push_events: Invoke the hook for tag push events.
-        :param _builtins.str token: A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
         :param _builtins.str url: The url of the hook to invoke.
         :param _builtins.bool vulnerability_events: Invoke the hook for vulnerability events.
         :param _builtins.bool wiki_page_events: Invoke the hook for wiki page events.
         """
+        pulumi.set(__self__, "alert_status", alert_status)
+        pulumi.set(__self__, "branch_filter_strategy", branch_filter_strategy)
         pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+        pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "custom_webhook_template", custom_webhook_template)
         pulumi.set(__self__, "deployment_events", deployment_events)
+        pulumi.set(__self__, "disabled_until", disabled_until)
         pulumi.set(__self__, "emoji_events", emoji_events)
         pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
+        pulumi.set(__self__, "feature_flag_events", feature_flag_events)
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "hook_id", hook_id)
         pulumi.set(__self__, "issues_events", issues_events)
         pulumi.set(__self__, "job_events", job_events)
+        pulumi.set(__self__, "member_events", member_events)
         pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+        pulumi.set(__self__, "milestone_events", milestone_events)
         pulumi.set(__self__, "note_events", note_events)
         pulumi.set(__self__, "pipeline_events", pipeline_events)
+        pulumi.set(__self__, "project_events", project_events)
         pulumi.set(__self__, "push_events", push_events)
         pulumi.set(__self__, "push_events_branch_filter", push_events_branch_filter)
         pulumi.set(__self__, "releases_events", releases_events)
+        pulumi.set(__self__, "resource_access_token_events", resource_access_token_events)
+        pulumi.set(__self__, "signing_token_present", signing_token_present)
         pulumi.set(__self__, "subgroup_events", subgroup_events)
         pulumi.set(__self__, "tag_push_events", tag_push_events)
-        pulumi.set(__self__, "token", token)
         pulumi.set(__self__, "url", url)
         pulumi.set(__self__, "vulnerability_events", vulnerability_events)
         pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+
+    @_builtins.property
+    @pulumi.getter(name="alertStatus")
+    def alert_status(self) -> _builtins.str:
+        """
+        Lifecycle status of the webhook. Values include `executable` and `disabled`.
+        """
+        return pulumi.get(self, "alert_status")
+
+    @_builtins.property
+    @pulumi.getter(name="branchFilterStrategy")
+    def branch_filter_strategy(self) -> _builtins.str:
+        """
+        Filter push events by branch.
+        """
+        return pulumi.get(self, "branch_filter_strategy")
 
     @_builtins.property
     @pulumi.getter(name="confidentialIssuesEvents")
@@ -3797,6 +4189,14 @@ class GetGroupHooksHookResult(dict):
         return pulumi.get(self, "confidential_note_events")
 
     @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The date and time the hook was created in ISO8601 format.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
     @pulumi.getter(name="customWebhookTemplate")
     def custom_webhook_template(self) -> _builtins.str:
         """
@@ -3813,6 +4213,14 @@ class GetGroupHooksHookResult(dict):
         return pulumi.get(self, "deployment_events")
 
     @_builtins.property
+    @pulumi.getter(name="disabledUntil")
+    def disabled_until(self) -> _builtins.str:
+        """
+        Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+        """
+        return pulumi.get(self, "disabled_until")
+
+    @_builtins.property
     @pulumi.getter(name="emojiEvents")
     def emoji_events(self) -> _builtins.bool:
         """
@@ -3827,6 +4235,14 @@ class GetGroupHooksHookResult(dict):
         Enable ssl verification when invoking the hook.
         """
         return pulumi.get(self, "enable_ssl_verification")
+
+    @_builtins.property
+    @pulumi.getter(name="featureFlagEvents")
+    def feature_flag_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for feature flag events.
+        """
+        return pulumi.get(self, "feature_flag_events")
 
     @_builtins.property
     @pulumi.getter
@@ -3869,12 +4285,28 @@ class GetGroupHooksHookResult(dict):
         return pulumi.get(self, "job_events")
 
     @_builtins.property
+    @pulumi.getter(name="memberEvents")
+    def member_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for member events.
+        """
+        return pulumi.get(self, "member_events")
+
+    @_builtins.property
     @pulumi.getter(name="mergeRequestsEvents")
     def merge_requests_events(self) -> _builtins.bool:
         """
         Invoke the hook for merge requests.
         """
         return pulumi.get(self, "merge_requests_events")
+
+    @_builtins.property
+    @pulumi.getter(name="milestoneEvents")
+    def milestone_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for milestone events.
+        """
+        return pulumi.get(self, "milestone_events")
 
     @_builtins.property
     @pulumi.getter(name="noteEvents")
@@ -3891,6 +4323,14 @@ class GetGroupHooksHookResult(dict):
         Invoke the hook for pipeline events.
         """
         return pulumi.get(self, "pipeline_events")
+
+    @_builtins.property
+    @pulumi.getter(name="projectEvents")
+    def project_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for project events.
+        """
+        return pulumi.get(self, "project_events")
 
     @_builtins.property
     @pulumi.getter(name="pushEvents")
@@ -3917,6 +4357,22 @@ class GetGroupHooksHookResult(dict):
         return pulumi.get(self, "releases_events")
 
     @_builtins.property
+    @pulumi.getter(name="resourceAccessTokenEvents")
+    def resource_access_token_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for resource access token expiry events.
+        """
+        return pulumi.get(self, "resource_access_token_events")
+
+    @_builtins.property
+    @pulumi.getter(name="signingTokenPresent")
+    def signing_token_present(self) -> _builtins.bool:
+        """
+        Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
+        """
+        return pulumi.get(self, "signing_token_present")
+
+    @_builtins.property
     @pulumi.getter(name="subgroupEvents")
     def subgroup_events(self) -> _builtins.bool:
         """
@@ -3931,15 +4387,6 @@ class GetGroupHooksHookResult(dict):
         Invoke the hook for tag push events.
         """
         return pulumi.get(self, "tag_push_events")
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.""")
-    def token(self) -> _builtins.str:
-        """
-        A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
-        """
-        return pulumi.get(self, "token")
 
     @_builtins.property
     @pulumi.getter
@@ -3964,6 +4411,112 @@ class GetGroupHooksHookResult(dict):
         Invoke the hook for wiki page events.
         """
         return pulumi.get(self, "wiki_page_events")
+
+
+@pulumi.output_type
+class GetGroupLabelsLabelResult(dict):
+    def __init__(__self__, *,
+                 closed_issues_count: _builtins.int,
+                 color: _builtins.str,
+                 description: _builtins.str,
+                 id: _builtins.int,
+                 name: _builtins.str,
+                 open_issues_count: _builtins.int,
+                 open_merge_requests_count: _builtins.int,
+                 subscribed: _builtins.bool,
+                 text_color: _builtins.str):
+        """
+        :param _builtins.int closed_issues_count: The number of closed issues with this label.
+        :param _builtins.str color: The color of the label given in 6-digit hex notation with leading '#' sign.
+        :param _builtins.str description: The description of the label.
+        :param _builtins.int id: The ID of the label.
+        :param _builtins.str name: The name of the label.
+        :param _builtins.int open_issues_count: The number of open issues with this label.
+        :param _builtins.int open_merge_requests_count: The number of open merge requests with this label.
+        :param _builtins.bool subscribed: Whether the authenticated user is subscribed to the label.
+        :param _builtins.str text_color: The text color of the label given in 6-digit hex notation with leading '#' sign.
+        """
+        pulumi.set(__self__, "closed_issues_count", closed_issues_count)
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "open_issues_count", open_issues_count)
+        pulumi.set(__self__, "open_merge_requests_count", open_merge_requests_count)
+        pulumi.set(__self__, "subscribed", subscribed)
+        pulumi.set(__self__, "text_color", text_color)
+
+    @_builtins.property
+    @pulumi.getter(name="closedIssuesCount")
+    def closed_issues_count(self) -> _builtins.int:
+        """
+        The number of closed issues with this label.
+        """
+        return pulumi.get(self, "closed_issues_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def color(self) -> _builtins.str:
+        """
+        The color of the label given in 6-digit hex notation with leading '#' sign.
+        """
+        return pulumi.get(self, "color")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the label.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the label.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the label.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="openIssuesCount")
+    def open_issues_count(self) -> _builtins.int:
+        """
+        The number of open issues with this label.
+        """
+        return pulumi.get(self, "open_issues_count")
+
+    @_builtins.property
+    @pulumi.getter(name="openMergeRequestsCount")
+    def open_merge_requests_count(self) -> _builtins.int:
+        """
+        The number of open merge requests with this label.
+        """
+        return pulumi.get(self, "open_merge_requests_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def subscribed(self) -> _builtins.bool:
+        """
+        Whether the authenticated user is subscribed to the label.
+        """
+        return pulumi.get(self, "subscribed")
+
+    @_builtins.property
+    @pulumi.getter(name="textColor")
+    def text_color(self) -> _builtins.str:
+        """
+        The text color of the label given in 6-digit hex notation with leading '#' sign.
+        """
+        return pulumi.get(self, "text_color")
 
 
 @pulumi.output_type
@@ -4110,6 +4663,418 @@ class GetGroupMembershipMemberGroupSamlIdentityResult(dict):
         The ID of the SAML provider.
         """
         return pulumi.get(self, "saml_provider_id")
+
+
+@pulumi.output_type
+class GetGroupProtectedBranchMergeAccessLevelResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_level_description: _builtins.str,
+                 group_id: _builtins.int,
+                 user_id: _builtins.int):
+        """
+        :param _builtins.str access_level: Access level allowed to perform the relevant action.
+        :param _builtins.str access_level_description: Readable description of access level.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_level_description", access_level_description)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Access level allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> _builtins.str:
+        """
+        Readable description of access level.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab group allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab user allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GetGroupProtectedBranchPushAccessLevelResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_level_description: _builtins.str,
+                 deploy_key_id: _builtins.int,
+                 group_id: _builtins.int,
+                 user_id: _builtins.int):
+        """
+        :param _builtins.str access_level: Access level allowed to perform the relevant action.
+        :param _builtins.str access_level_description: Readable description of access level.
+        :param _builtins.int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_level_description", access_level_description)
+        pulumi.set(__self__, "deploy_key_id", deploy_key_id)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Access level allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> _builtins.str:
+        """
+        Readable description of access level.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @_builtins.property
+    @pulumi.getter(name="deployKeyId")
+    def deploy_key_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab deploy key allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "deploy_key_id")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab group allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab user allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GetGroupProtectedBranchUnprotectAccessLevelResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_level_description: _builtins.str,
+                 group_id: _builtins.int,
+                 user_id: _builtins.int):
+        """
+        :param _builtins.str access_level: Access level allowed to perform the relevant action.
+        :param _builtins.str access_level_description: Readable description of access level.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_level_description", access_level_description)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Access level allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> _builtins.str:
+        """
+        Readable description of access level.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab group allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab user allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GetGroupProtectedBranchesProtectedBranchResult(dict):
+    def __init__(__self__, *,
+                 allow_force_push: _builtins.bool,
+                 code_owner_approval_required: _builtins.bool,
+                 id: _builtins.int,
+                 merge_access_levels: Sequence['outputs.GetGroupProtectedBranchesProtectedBranchMergeAccessLevelResult'],
+                 name: _builtins.str,
+                 push_access_levels: Sequence['outputs.GetGroupProtectedBranchesProtectedBranchPushAccessLevelResult'],
+                 unprotect_access_levels: Sequence['outputs.GetGroupProtectedBranchesProtectedBranchUnprotectAccessLevelResult']):
+        """
+        :param _builtins.bool allow_force_push: Whether force push is allowed.
+        :param _builtins.bool code_owner_approval_required: Reject code pushes that change files listed in the CODEOWNERS file.
+        :param _builtins.int id: The ID of this resource.
+        :param Sequence['GetGroupProtectedBranchesProtectedBranchMergeAccessLevelArgs'] merge_access_levels: Array of merge access levels/users/groups allowed for the protected branch.
+        :param _builtins.str name: The name of the protected branch.
+        :param Sequence['GetGroupProtectedBranchesProtectedBranchPushAccessLevelArgs'] push_access_levels: Array of push access levels/users/groups/deploy keys allowed for the protected branch.
+        :param Sequence['GetGroupProtectedBranchesProtectedBranchUnprotectAccessLevelArgs'] unprotect_access_levels: Array of unprotect access levels/users/groups allowed for the protected branch.
+        """
+        pulumi.set(__self__, "allow_force_push", allow_force_push)
+        pulumi.set(__self__, "code_owner_approval_required", code_owner_approval_required)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "merge_access_levels", merge_access_levels)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "push_access_levels", push_access_levels)
+        pulumi.set(__self__, "unprotect_access_levels", unprotect_access_levels)
+
+    @_builtins.property
+    @pulumi.getter(name="allowForcePush")
+    def allow_force_push(self) -> _builtins.bool:
+        """
+        Whether force push is allowed.
+        """
+        return pulumi.get(self, "allow_force_push")
+
+    @_builtins.property
+    @pulumi.getter(name="codeOwnerApprovalRequired")
+    def code_owner_approval_required(self) -> _builtins.bool:
+        """
+        Reject code pushes that change files listed in the CODEOWNERS file.
+        """
+        return pulumi.get(self, "code_owner_approval_required")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="mergeAccessLevels")
+    def merge_access_levels(self) -> Sequence['outputs.GetGroupProtectedBranchesProtectedBranchMergeAccessLevelResult']:
+        """
+        Array of merge access levels/users/groups allowed for the protected branch.
+        """
+        return pulumi.get(self, "merge_access_levels")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the protected branch.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="pushAccessLevels")
+    def push_access_levels(self) -> Sequence['outputs.GetGroupProtectedBranchesProtectedBranchPushAccessLevelResult']:
+        """
+        Array of push access levels/users/groups/deploy keys allowed for the protected branch.
+        """
+        return pulumi.get(self, "push_access_levels")
+
+    @_builtins.property
+    @pulumi.getter(name="unprotectAccessLevels")
+    def unprotect_access_levels(self) -> Sequence['outputs.GetGroupProtectedBranchesProtectedBranchUnprotectAccessLevelResult']:
+        """
+        Array of unprotect access levels/users/groups allowed for the protected branch.
+        """
+        return pulumi.get(self, "unprotect_access_levels")
+
+
+@pulumi.output_type
+class GetGroupProtectedBranchesProtectedBranchMergeAccessLevelResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_level_description: _builtins.str,
+                 group_id: _builtins.int,
+                 user_id: _builtins.int):
+        """
+        :param _builtins.str access_level: Access level allowed to perform the relevant action.
+        :param _builtins.str access_level_description: Readable description of access level.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_level_description", access_level_description)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Access level allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> _builtins.str:
+        """
+        Readable description of access level.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab group allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab user allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GetGroupProtectedBranchesProtectedBranchPushAccessLevelResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_level_description: _builtins.str,
+                 deploy_key_id: _builtins.int,
+                 group_id: _builtins.int,
+                 user_id: _builtins.int):
+        """
+        :param _builtins.str access_level: Access level allowed to perform the relevant action.
+        :param _builtins.str access_level_description: Readable description of access level.
+        :param _builtins.int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_level_description", access_level_description)
+        pulumi.set(__self__, "deploy_key_id", deploy_key_id)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Access level allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> _builtins.str:
+        """
+        Readable description of access level.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @_builtins.property
+    @pulumi.getter(name="deployKeyId")
+    def deploy_key_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab deploy key allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "deploy_key_id")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab group allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab user allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GetGroupProtectedBranchesProtectedBranchUnprotectAccessLevelResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_level_description: _builtins.str,
+                 group_id: _builtins.int,
+                 user_id: _builtins.int):
+        """
+        :param _builtins.str access_level: Access level allowed to perform the relevant action.
+        :param _builtins.str access_level_description: Readable description of access level.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_level_description", access_level_description)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Access level allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> _builtins.str:
+        """
+        Readable description of access level.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab group allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab user allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "user_id")
 
 
 @pulumi.output_type
@@ -4392,6 +5357,156 @@ class GetGroupProvisionedUsersProvisionedUserResult(dict):
         The website URL of the provisioned user.
         """
         return pulumi.get(self, "website_url")
+
+
+@pulumi.output_type
+class GetGroupPushRuleResult(dict):
+    def __init__(__self__, *,
+                 author_email_regex: _builtins.str,
+                 branch_name_regex: _builtins.str,
+                 commit_committer_check: _builtins.bool,
+                 commit_committer_name_check: _builtins.bool,
+                 commit_message_negative_regex: _builtins.str,
+                 commit_message_regex: _builtins.str,
+                 deny_delete_tag: _builtins.bool,
+                 file_name_regex: _builtins.str,
+                 max_file_size: _builtins.int,
+                 member_check: _builtins.bool,
+                 prevent_secrets: _builtins.bool,
+                 reject_non_dco_commits: _builtins.bool,
+                 reject_unsigned_commits: _builtins.bool):
+        """
+        :param _builtins.str author_email_regex: All commit author emails must match this regex, e.g. `@my-company.com$`.
+        :param _builtins.str branch_name_regex: All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
+        :param _builtins.bool commit_committer_check: Users can only push commits to projects in this group that were committed with one of their own verified emails.
+        :param _builtins.bool commit_committer_name_check: Users can only push commits to projects in this group if the commit author name is consistent with their GitLab account name.
+        :param _builtins.str commit_message_negative_regex: No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
+        :param _builtins.str commit_message_regex: All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
+        :param _builtins.bool deny_delete_tag: Deny deleting a tag.
+        :param _builtins.str file_name_regex: All committed filenames must not match this regex, e.g. `(jar|exe)$`.
+        :param _builtins.int max_file_size: Maximum file size (MB).
+        :param _builtins.bool member_check: Restrict commits by author (email) to existing GitLab users.
+        :param _builtins.bool prevent_secrets: GitLab will reject any files that are likely to contain secrets.
+        :param _builtins.bool reject_non_dco_commits: Reject commit when it's not DCO certified.
+        :param _builtins.bool reject_unsigned_commits: Reject commit when it's not signed through GPG.
+        """
+        pulumi.set(__self__, "author_email_regex", author_email_regex)
+        pulumi.set(__self__, "branch_name_regex", branch_name_regex)
+        pulumi.set(__self__, "commit_committer_check", commit_committer_check)
+        pulumi.set(__self__, "commit_committer_name_check", commit_committer_name_check)
+        pulumi.set(__self__, "commit_message_negative_regex", commit_message_negative_regex)
+        pulumi.set(__self__, "commit_message_regex", commit_message_regex)
+        pulumi.set(__self__, "deny_delete_tag", deny_delete_tag)
+        pulumi.set(__self__, "file_name_regex", file_name_regex)
+        pulumi.set(__self__, "max_file_size", max_file_size)
+        pulumi.set(__self__, "member_check", member_check)
+        pulumi.set(__self__, "prevent_secrets", prevent_secrets)
+        pulumi.set(__self__, "reject_non_dco_commits", reject_non_dco_commits)
+        pulumi.set(__self__, "reject_unsigned_commits", reject_unsigned_commits)
+
+    @_builtins.property
+    @pulumi.getter(name="authorEmailRegex")
+    def author_email_regex(self) -> _builtins.str:
+        """
+        All commit author emails must match this regex, e.g. `@my-company.com$`.
+        """
+        return pulumi.get(self, "author_email_regex")
+
+    @_builtins.property
+    @pulumi.getter(name="branchNameRegex")
+    def branch_name_regex(self) -> _builtins.str:
+        """
+        All branch names must match this regex, e.g. `(feature|hotfix)\\/*`.
+        """
+        return pulumi.get(self, "branch_name_regex")
+
+    @_builtins.property
+    @pulumi.getter(name="commitCommitterCheck")
+    def commit_committer_check(self) -> _builtins.bool:
+        """
+        Users can only push commits to projects in this group that were committed with one of their own verified emails.
+        """
+        return pulumi.get(self, "commit_committer_check")
+
+    @_builtins.property
+    @pulumi.getter(name="commitCommitterNameCheck")
+    def commit_committer_name_check(self) -> _builtins.bool:
+        """
+        Users can only push commits to projects in this group if the commit author name is consistent with their GitLab account name.
+        """
+        return pulumi.get(self, "commit_committer_name_check")
+
+    @_builtins.property
+    @pulumi.getter(name="commitMessageNegativeRegex")
+    def commit_message_negative_regex(self) -> _builtins.str:
+        """
+        No commit message is allowed to match this regex, for example `ssh\\:\\/\\/`.
+        """
+        return pulumi.get(self, "commit_message_negative_regex")
+
+    @_builtins.property
+    @pulumi.getter(name="commitMessageRegex")
+    def commit_message_regex(self) -> _builtins.str:
+        """
+        All commit messages must match this regex, e.g. `Fixed \\d+\\..*`.
+        """
+        return pulumi.get(self, "commit_message_regex")
+
+    @_builtins.property
+    @pulumi.getter(name="denyDeleteTag")
+    def deny_delete_tag(self) -> _builtins.bool:
+        """
+        Deny deleting a tag.
+        """
+        return pulumi.get(self, "deny_delete_tag")
+
+    @_builtins.property
+    @pulumi.getter(name="fileNameRegex")
+    def file_name_regex(self) -> _builtins.str:
+        """
+        All committed filenames must not match this regex, e.g. `(jar|exe)$`.
+        """
+        return pulumi.get(self, "file_name_regex")
+
+    @_builtins.property
+    @pulumi.getter(name="maxFileSize")
+    def max_file_size(self) -> _builtins.int:
+        """
+        Maximum file size (MB).
+        """
+        return pulumi.get(self, "max_file_size")
+
+    @_builtins.property
+    @pulumi.getter(name="memberCheck")
+    def member_check(self) -> _builtins.bool:
+        """
+        Restrict commits by author (email) to existing GitLab users.
+        """
+        return pulumi.get(self, "member_check")
+
+    @_builtins.property
+    @pulumi.getter(name="preventSecrets")
+    def prevent_secrets(self) -> _builtins.bool:
+        """
+        GitLab will reject any files that are likely to contain secrets.
+        """
+        return pulumi.get(self, "prevent_secrets")
+
+    @_builtins.property
+    @pulumi.getter(name="rejectNonDcoCommits")
+    def reject_non_dco_commits(self) -> _builtins.bool:
+        """
+        Reject commit when it's not DCO certified.
+        """
+        return pulumi.get(self, "reject_non_dco_commits")
+
+    @_builtins.property
+    @pulumi.getter(name="rejectUnsignedCommits")
+    def reject_unsigned_commits(self) -> _builtins.bool:
+        """
+        Reject commit when it's not signed through GPG.
+        """
+        return pulumi.get(self, "reject_unsigned_commits")
 
 
 @pulumi.output_type
@@ -4936,68 +6051,222 @@ class GetGroupVariablesVariableResult(dict):
 @pulumi.output_type
 class GetGroupsGroupResult(dict):
     def __init__(__self__, *,
+                 allow_merge_on_skipped_pipeline: _builtins.bool,
+                 allowed_email_domains_list: _builtins.str,
+                 auto_devops_enabled: _builtins.bool,
+                 avatar_url: _builtins.str,
+                 created_at: _builtins.str,
+                 custom_attributes: Sequence[Mapping[str, _builtins.str]],
+                 default_branch: _builtins.str,
                  default_branch_protection: _builtins.int,
+                 default_branch_protection_defaults: Sequence['outputs.GetGroupsGroupDefaultBranchProtectionDefaultResult'],
                  description: _builtins.str,
+                 emails_disabled: _builtins.bool,
+                 emails_enabled: _builtins.bool,
+                 extra_shared_runners_minutes_limit: _builtins.int,
+                 file_template_project_id: _builtins.int,
                  full_name: _builtins.str,
                  full_path: _builtins.str,
                  group_id: _builtins.int,
+                 ip_restriction_ranges: _builtins.str,
+                 ldap_access: _builtins.int,
+                 ldap_cn: _builtins.str,
                  lfs_enabled: _builtins.bool,
+                 marked_for_deletion_on: _builtins.str,
+                 max_artifacts_size: _builtins.int,
+                 membership_lock: _builtins.bool,
+                 mentions_disabled: _builtins.bool,
                  name: _builtins.str,
+                 only_allow_merge_if_all_discussions_are_resolved: _builtins.bool,
+                 only_allow_merge_if_pipeline_succeeds: _builtins.bool,
                  parent_id: _builtins.int,
                  path: _builtins.str,
                  prevent_forking_outside_group: _builtins.bool,
                  prevent_sharing_groups_outside_hierarchy: _builtins.bool,
+                 project_creation_level: _builtins.str,
+                 repository_storage: _builtins.str,
                  request_access_enabled: _builtins.bool,
+                 require_two_factor_authentication: _builtins.bool,
                  runners_token: _builtins.str,
+                 share_with_group_lock: _builtins.bool,
+                 shared_runners_minutes_limit: _builtins.int,
                  shared_runners_setting: _builtins.str,
+                 shared_with_groups: Sequence['outputs.GetGroupsGroupSharedWithGroupResult'],
+                 statistics: Mapping[str, _builtins.int],
+                 subgroup_creation_level: _builtins.str,
+                 two_factor_grace_period: _builtins.int,
                  visibility_level: _builtins.str,
                  web_url: _builtins.str,
                  wiki_access_level: _builtins.str):
         """
-        :param _builtins.int default_branch_protection: Whether developers and maintainers can push to the applicable default branch. Will be removed in 19.0.
+        :param _builtins.bool allow_merge_on_skipped_pipeline: Default to allowing merge on a skipped pipeline for new projects in the group.
+        :param _builtins.str allowed_email_domains_list: Comma-separated list of email address domains allowed to be added as group members.
+        :param _builtins.bool auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
+        :param _builtins.str avatar_url: URL of the group avatar.
+        :param _builtins.str created_at: Timestamp at which the group was created.
+        :param Sequence[Mapping[str, _builtins.str]] custom_attributes: Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.
+        :param _builtins.str default_branch: The default branch of the group.
+        :param _builtins.int default_branch_protection: Whether developers and maintainers can push to the applicable default branch. Use `default_branch_protection_defaults` instead, to be removed in 19.0.
+        :param Sequence['GetGroupsGroupDefaultBranchProtectionDefaultArgs'] default_branch_protection_defaults: Default protection settings applied to the default branch of new projects in this group.
         :param _builtins.str description: The description of the group.
+        :param _builtins.bool emails_disabled: Whether email notifications are disabled for this group. Use `emails_enabled` instead, to be removed in 19.0.
+        :param _builtins.bool emails_enabled: Whether email notifications are enabled for this group.
+        :param _builtins.int extra_shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
+        :param _builtins.int file_template_project_id: The ID of the project used to load custom file templates.
         :param _builtins.str full_name: The full name of the group.
         :param _builtins.str full_path: The full path of the group.
         :param _builtins.int group_id: The ID of the group.
-        :param _builtins.bool lfs_enabled: Is LFS enabled for projects in this group.
+        :param _builtins.str ip_restriction_ranges: Comma-separated list of IP addresses or subnet masks that restrict access to the group.
+        :param _builtins.int ldap_access: Default access level for members synced from LDAP.
+        :param _builtins.str ldap_cn: LDAP common name used to sync members from an LDAP group.
+        :param _builtins.bool lfs_enabled: Boolean, is LFS enabled for projects in this group.
+        :param _builtins.str marked_for_deletion_on: Date on which the group was marked for deletion.
+        :param _builtins.int max_artifacts_size: Maximum artifacts size for the group, in MB.
+        :param _builtins.bool membership_lock: Users cannot be added to projects in this group.
+        :param _builtins.bool mentions_disabled: Whether mentions are disabled for this group.
         :param _builtins.str name: The name of this group.
-        :param _builtins.int parent_id: ID of the parent group.
+        :param _builtins.bool only_allow_merge_if_all_discussions_are_resolved: Default to only allowing merge if all discussions are resolved for new projects in the group.
+        :param _builtins.bool only_allow_merge_if_pipeline_succeeds: Default to only allowing merge if the pipeline succeeds for new projects in the group.
+        :param _builtins.int parent_id: Integer, ID of the parent group.
         :param _builtins.str path: The path of the group.
         :param _builtins.bool prevent_forking_outside_group: When enabled, users can not fork projects from this group to external namespaces.
-        :param _builtins.bool prevent_sharing_groups_outside_hierarchy: When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
-        :param _builtins.bool request_access_enabled: Is request for access enabled to the group.
+        :param _builtins.bool prevent_sharing_groups_outside_hierarchy: When enabled, users cannot invite other groups outside of the top-level group's hierarchy. This option is only available for top-level groups.
+        :param _builtins.str project_creation_level: Determine which roles can create projects in the group. Possible values are `noone`, `maintainer`, `developer`, `owner`, `administrator`.
+        :param _builtins.str repository_storage: Repository storage shard the group's projects use. (admin only)
+        :param _builtins.bool request_access_enabled: Boolean, is request for access enabled to the group.
+        :param _builtins.bool require_two_factor_authentication: Require all users in this group to set up two-factor authentication.
         :param _builtins.str runners_token: The group level registration token to use during runner setup.
+        :param _builtins.bool share_with_group_lock: Prevent sharing a project with another group within this group.
+        :param _builtins.int shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
         :param _builtins.str shared_runners_setting: Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
+        :param Sequence['GetGroupsGroupSharedWithGroupArgs'] shared_with_groups: Describes groups which have access shared to this group.
+        :param Mapping[str, _builtins.int] statistics: Statistics for the group. Keys: `commit_count`, `storage_size`, `repository_size`, `wiki_size`, `lfs_objects_size`, `job_artifacts_size`, `pipeline_artifacts_size`, `packages_size`, `snippets_size`, `uploads_size`, `container_registry_size`.
+        :param _builtins.str subgroup_creation_level: Determine which roles can create subgroups in the group. Possible values are `owner`, `maintainer`.
+        :param _builtins.int two_factor_grace_period: Grace period, in hours, before enforcing two-factor authentication on group members.
         :param _builtins.str visibility_level: Visibility level of the group. Possible values are `private`, `internal`, `public`.
         :param _builtins.str web_url: Web URL of the group.
         :param _builtins.str wiki_access_level: The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
+        pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
+        pulumi.set(__self__, "allowed_email_domains_list", allowed_email_domains_list)
+        pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+        pulumi.set(__self__, "avatar_url", avatar_url)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "custom_attributes", custom_attributes)
+        pulumi.set(__self__, "default_branch", default_branch)
         pulumi.set(__self__, "default_branch_protection", default_branch_protection)
+        pulumi.set(__self__, "default_branch_protection_defaults", default_branch_protection_defaults)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "emails_disabled", emails_disabled)
+        pulumi.set(__self__, "emails_enabled", emails_enabled)
+        pulumi.set(__self__, "extra_shared_runners_minutes_limit", extra_shared_runners_minutes_limit)
+        pulumi.set(__self__, "file_template_project_id", file_template_project_id)
         pulumi.set(__self__, "full_name", full_name)
         pulumi.set(__self__, "full_path", full_path)
         pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "ip_restriction_ranges", ip_restriction_ranges)
+        pulumi.set(__self__, "ldap_access", ldap_access)
+        pulumi.set(__self__, "ldap_cn", ldap_cn)
         pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        pulumi.set(__self__, "marked_for_deletion_on", marked_for_deletion_on)
+        pulumi.set(__self__, "max_artifacts_size", max_artifacts_size)
+        pulumi.set(__self__, "membership_lock", membership_lock)
+        pulumi.set(__self__, "mentions_disabled", mentions_disabled)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
+        pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
         pulumi.set(__self__, "parent_id", parent_id)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
         pulumi.set(__self__, "prevent_sharing_groups_outside_hierarchy", prevent_sharing_groups_outside_hierarchy)
+        pulumi.set(__self__, "project_creation_level", project_creation_level)
+        pulumi.set(__self__, "repository_storage", repository_storage)
         pulumi.set(__self__, "request_access_enabled", request_access_enabled)
+        pulumi.set(__self__, "require_two_factor_authentication", require_two_factor_authentication)
         pulumi.set(__self__, "runners_token", runners_token)
+        pulumi.set(__self__, "share_with_group_lock", share_with_group_lock)
+        pulumi.set(__self__, "shared_runners_minutes_limit", shared_runners_minutes_limit)
         pulumi.set(__self__, "shared_runners_setting", shared_runners_setting)
+        pulumi.set(__self__, "shared_with_groups", shared_with_groups)
+        pulumi.set(__self__, "statistics", statistics)
+        pulumi.set(__self__, "subgroup_creation_level", subgroup_creation_level)
+        pulumi.set(__self__, "two_factor_grace_period", two_factor_grace_period)
         pulumi.set(__self__, "visibility_level", visibility_level)
         pulumi.set(__self__, "web_url", web_url)
         pulumi.set(__self__, "wiki_access_level", wiki_access_level)
 
     @_builtins.property
+    @pulumi.getter(name="allowMergeOnSkippedPipeline")
+    def allow_merge_on_skipped_pipeline(self) -> _builtins.bool:
+        """
+        Default to allowing merge on a skipped pipeline for new projects in the group.
+        """
+        return pulumi.get(self, "allow_merge_on_skipped_pipeline")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedEmailDomainsList")
+    def allowed_email_domains_list(self) -> _builtins.str:
+        """
+        Comma-separated list of email address domains allowed to be added as group members.
+        """
+        return pulumi.get(self, "allowed_email_domains_list")
+
+    @_builtins.property
+    @pulumi.getter(name="autoDevopsEnabled")
+    def auto_devops_enabled(self) -> _builtins.bool:
+        """
+        Default to Auto DevOps pipeline for all projects within this group.
+        """
+        return pulumi.get(self, "auto_devops_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> _builtins.str:
+        """
+        URL of the group avatar.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Timestamp at which the group was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Sequence[Mapping[str, _builtins.str]]:
+        """
+        Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultBranch")
+    def default_branch(self) -> _builtins.str:
+        """
+        The default branch of the group.
+        """
+        return pulumi.get(self, "default_branch")
+
+    @_builtins.property
     @pulumi.getter(name="defaultBranchProtection")
-    @_utilities.deprecated("""Will be removed in 19.0.""")
+    @_utilities.deprecated("""Use `default_branch_protection_defaults` instead, to be removed in 19.0.""")
     def default_branch_protection(self) -> _builtins.int:
         """
-        Whether developers and maintainers can push to the applicable default branch. Will be removed in 19.0.
+        Whether developers and maintainers can push to the applicable default branch. Use `default_branch_protection_defaults` instead, to be removed in 19.0.
         """
         return pulumi.get(self, "default_branch_protection")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultBranchProtectionDefaults")
+    def default_branch_protection_defaults(self) -> Sequence['outputs.GetGroupsGroupDefaultBranchProtectionDefaultResult']:
+        """
+        Default protection settings applied to the default branch of new projects in this group.
+        """
+        return pulumi.get(self, "default_branch_protection_defaults")
 
     @_builtins.property
     @pulumi.getter
@@ -5006,6 +6275,39 @@ class GetGroupsGroupResult(dict):
         The description of the group.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="emailsDisabled")
+    @_utilities.deprecated("""Use `emails_enabled` instead, to be removed in 19.0.""")
+    def emails_disabled(self) -> _builtins.bool:
+        """
+        Whether email notifications are disabled for this group. Use `emails_enabled` instead, to be removed in 19.0.
+        """
+        return pulumi.get(self, "emails_disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="emailsEnabled")
+    def emails_enabled(self) -> _builtins.bool:
+        """
+        Whether email notifications are enabled for this group.
+        """
+        return pulumi.get(self, "emails_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="extraSharedRunnersMinutesLimit")
+    def extra_shared_runners_minutes_limit(self) -> _builtins.int:
+        """
+        Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
+        """
+        return pulumi.get(self, "extra_shared_runners_minutes_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="fileTemplateProjectId")
+    def file_template_project_id(self) -> _builtins.int:
+        """
+        The ID of the project used to load custom file templates.
+        """
+        return pulumi.get(self, "file_template_project_id")
 
     @_builtins.property
     @pulumi.getter(name="fullName")
@@ -5032,12 +6334,68 @@ class GetGroupsGroupResult(dict):
         return pulumi.get(self, "group_id")
 
     @_builtins.property
+    @pulumi.getter(name="ipRestrictionRanges")
+    def ip_restriction_ranges(self) -> _builtins.str:
+        """
+        Comma-separated list of IP addresses or subnet masks that restrict access to the group.
+        """
+        return pulumi.get(self, "ip_restriction_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="ldapAccess")
+    def ldap_access(self) -> _builtins.int:
+        """
+        Default access level for members synced from LDAP.
+        """
+        return pulumi.get(self, "ldap_access")
+
+    @_builtins.property
+    @pulumi.getter(name="ldapCn")
+    def ldap_cn(self) -> _builtins.str:
+        """
+        LDAP common name used to sync members from an LDAP group.
+        """
+        return pulumi.get(self, "ldap_cn")
+
+    @_builtins.property
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> _builtins.bool:
         """
-        Is LFS enabled for projects in this group.
+        Boolean, is LFS enabled for projects in this group.
         """
         return pulumi.get(self, "lfs_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="markedForDeletionOn")
+    def marked_for_deletion_on(self) -> _builtins.str:
+        """
+        Date on which the group was marked for deletion.
+        """
+        return pulumi.get(self, "marked_for_deletion_on")
+
+    @_builtins.property
+    @pulumi.getter(name="maxArtifactsSize")
+    def max_artifacts_size(self) -> _builtins.int:
+        """
+        Maximum artifacts size for the group, in MB.
+        """
+        return pulumi.get(self, "max_artifacts_size")
+
+    @_builtins.property
+    @pulumi.getter(name="membershipLock")
+    def membership_lock(self) -> _builtins.bool:
+        """
+        Users cannot be added to projects in this group.
+        """
+        return pulumi.get(self, "membership_lock")
+
+    @_builtins.property
+    @pulumi.getter(name="mentionsDisabled")
+    def mentions_disabled(self) -> _builtins.bool:
+        """
+        Whether mentions are disabled for this group.
+        """
+        return pulumi.get(self, "mentions_disabled")
 
     @_builtins.property
     @pulumi.getter
@@ -5048,10 +6406,26 @@ class GetGroupsGroupResult(dict):
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
+    def only_allow_merge_if_all_discussions_are_resolved(self) -> _builtins.bool:
+        """
+        Default to only allowing merge if all discussions are resolved for new projects in the group.
+        """
+        return pulumi.get(self, "only_allow_merge_if_all_discussions_are_resolved")
+
+    @_builtins.property
+    @pulumi.getter(name="onlyAllowMergeIfPipelineSucceeds")
+    def only_allow_merge_if_pipeline_succeeds(self) -> _builtins.bool:
+        """
+        Default to only allowing merge if the pipeline succeeds for new projects in the group.
+        """
+        return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
+
+    @_builtins.property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> _builtins.int:
         """
-        ID of the parent group.
+        Integer, ID of the parent group.
         """
         return pulumi.get(self, "parent_id")
 
@@ -5075,17 +6449,41 @@ class GetGroupsGroupResult(dict):
     @pulumi.getter(name="preventSharingGroupsOutsideHierarchy")
     def prevent_sharing_groups_outside_hierarchy(self) -> _builtins.bool:
         """
-        When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+        When enabled, users cannot invite other groups outside of the top-level group's hierarchy. This option is only available for top-level groups.
         """
         return pulumi.get(self, "prevent_sharing_groups_outside_hierarchy")
+
+    @_builtins.property
+    @pulumi.getter(name="projectCreationLevel")
+    def project_creation_level(self) -> _builtins.str:
+        """
+        Determine which roles can create projects in the group. Possible values are `noone`, `maintainer`, `developer`, `owner`, `administrator`.
+        """
+        return pulumi.get(self, "project_creation_level")
+
+    @_builtins.property
+    @pulumi.getter(name="repositoryStorage")
+    def repository_storage(self) -> _builtins.str:
+        """
+        Repository storage shard the group's projects use. (admin only)
+        """
+        return pulumi.get(self, "repository_storage")
 
     @_builtins.property
     @pulumi.getter(name="requestAccessEnabled")
     def request_access_enabled(self) -> _builtins.bool:
         """
-        Is request for access enabled to the group.
+        Boolean, is request for access enabled to the group.
         """
         return pulumi.get(self, "request_access_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="requireTwoFactorAuthentication")
+    def require_two_factor_authentication(self) -> _builtins.bool:
+        """
+        Require all users in this group to set up two-factor authentication.
+        """
+        return pulumi.get(self, "require_two_factor_authentication")
 
     @_builtins.property
     @pulumi.getter(name="runnersToken")
@@ -5096,12 +6494,60 @@ class GetGroupsGroupResult(dict):
         return pulumi.get(self, "runners_token")
 
     @_builtins.property
+    @pulumi.getter(name="shareWithGroupLock")
+    def share_with_group_lock(self) -> _builtins.bool:
+        """
+        Prevent sharing a project with another group within this group.
+        """
+        return pulumi.get(self, "share_with_group_lock")
+
+    @_builtins.property
+    @pulumi.getter(name="sharedRunnersMinutesLimit")
+    def shared_runners_minutes_limit(self) -> _builtins.int:
+        """
+        Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+        """
+        return pulumi.get(self, "shared_runners_minutes_limit")
+
+    @_builtins.property
     @pulumi.getter(name="sharedRunnersSetting")
     def shared_runners_setting(self) -> _builtins.str:
         """
         Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabled_and_overridable`, `disabled_and_unoverridable`, `disabled_with_override`.
         """
         return pulumi.get(self, "shared_runners_setting")
+
+    @_builtins.property
+    @pulumi.getter(name="sharedWithGroups")
+    def shared_with_groups(self) -> Sequence['outputs.GetGroupsGroupSharedWithGroupResult']:
+        """
+        Describes groups which have access shared to this group.
+        """
+        return pulumi.get(self, "shared_with_groups")
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> Mapping[str, _builtins.int]:
+        """
+        Statistics for the group. Keys: `commit_count`, `storage_size`, `repository_size`, `wiki_size`, `lfs_objects_size`, `job_artifacts_size`, `pipeline_artifacts_size`, `packages_size`, `snippets_size`, `uploads_size`, `container_registry_size`.
+        """
+        return pulumi.get(self, "statistics")
+
+    @_builtins.property
+    @pulumi.getter(name="subgroupCreationLevel")
+    def subgroup_creation_level(self) -> _builtins.str:
+        """
+        Determine which roles can create subgroups in the group. Possible values are `owner`, `maintainer`.
+        """
+        return pulumi.get(self, "subgroup_creation_level")
+
+    @_builtins.property
+    @pulumi.getter(name="twoFactorGracePeriod")
+    def two_factor_grace_period(self) -> _builtins.int:
+        """
+        Grace period, in hours, before enforcing two-factor authentication on group members.
+        """
+        return pulumi.get(self, "two_factor_grace_period")
 
     @_builtins.property
     @pulumi.getter(name="visibilityLevel")
@@ -5126,6 +6572,166 @@ class GetGroupsGroupResult(dict):
         The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "wiki_access_level")
+
+
+@pulumi.output_type
+class GetGroupsGroupDefaultBranchProtectionDefaultResult(dict):
+    def __init__(__self__, *,
+                 allow_force_push: _builtins.bool,
+                 allowed_to_merges: Sequence['outputs.GetGroupsGroupDefaultBranchProtectionDefaultAllowedToMergeResult'],
+                 allowed_to_pushes: Sequence['outputs.GetGroupsGroupDefaultBranchProtectionDefaultAllowedToPushResult'],
+                 code_owner_approval_required: _builtins.bool,
+                 developer_can_initial_push: _builtins.bool):
+        """
+        :param _builtins.bool allow_force_push: Whether force-push is allowed to the default branch.
+        :param Sequence['GetGroupsGroupDefaultBranchProtectionDefaultAllowedToMergeArgs'] allowed_to_merges: Access levels allowed to merge into the default branch.
+        :param Sequence['GetGroupsGroupDefaultBranchProtectionDefaultAllowedToPushArgs'] allowed_to_pushes: Access levels allowed to push to the default branch.
+        :param _builtins.bool code_owner_approval_required: Whether code-owner approval is required on the default branch.
+        :param _builtins.bool developer_can_initial_push: Whether developers can make the initial push to the default branch.
+        """
+        pulumi.set(__self__, "allow_force_push", allow_force_push)
+        pulumi.set(__self__, "allowed_to_merges", allowed_to_merges)
+        pulumi.set(__self__, "allowed_to_pushes", allowed_to_pushes)
+        pulumi.set(__self__, "code_owner_approval_required", code_owner_approval_required)
+        pulumi.set(__self__, "developer_can_initial_push", developer_can_initial_push)
+
+    @_builtins.property
+    @pulumi.getter(name="allowForcePush")
+    def allow_force_push(self) -> _builtins.bool:
+        """
+        Whether force-push is allowed to the default branch.
+        """
+        return pulumi.get(self, "allow_force_push")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedToMerges")
+    def allowed_to_merges(self) -> Sequence['outputs.GetGroupsGroupDefaultBranchProtectionDefaultAllowedToMergeResult']:
+        """
+        Access levels allowed to merge into the default branch.
+        """
+        return pulumi.get(self, "allowed_to_merges")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedToPushes")
+    def allowed_to_pushes(self) -> Sequence['outputs.GetGroupsGroupDefaultBranchProtectionDefaultAllowedToPushResult']:
+        """
+        Access levels allowed to push to the default branch.
+        """
+        return pulumi.get(self, "allowed_to_pushes")
+
+    @_builtins.property
+    @pulumi.getter(name="codeOwnerApprovalRequired")
+    def code_owner_approval_required(self) -> _builtins.bool:
+        """
+        Whether code-owner approval is required on the default branch.
+        """
+        return pulumi.get(self, "code_owner_approval_required")
+
+    @_builtins.property
+    @pulumi.getter(name="developerCanInitialPush")
+    def developer_can_initial_push(self) -> _builtins.bool:
+        """
+        Whether developers can make the initial push to the default branch.
+        """
+        return pulumi.get(self, "developer_can_initial_push")
+
+
+@pulumi.output_type
+class GetGroupsGroupDefaultBranchProtectionDefaultAllowedToMergeResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.int):
+        """
+        :param _builtins.int access_level: The access level integer.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.int:
+        """
+        The access level integer.
+        """
+        return pulumi.get(self, "access_level")
+
+
+@pulumi.output_type
+class GetGroupsGroupDefaultBranchProtectionDefaultAllowedToPushResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.int):
+        """
+        :param _builtins.int access_level: The access level integer.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.int:
+        """
+        The access level integer.
+        """
+        return pulumi.get(self, "access_level")
+
+
+@pulumi.output_type
+class GetGroupsGroupSharedWithGroupResult(dict):
+    def __init__(__self__, *,
+                 expires_at: _builtins.str,
+                 group_access_level: _builtins.int,
+                 group_full_path: _builtins.str,
+                 group_id: _builtins.int,
+                 group_name: _builtins.str):
+        """
+        :param _builtins.str expires_at: Share with group expiration date.
+        :param _builtins.int group_access_level: The access_level permission level of the shared group.
+        :param _builtins.str group_full_path: The full path of the group shared with.
+        :param _builtins.int group_id: The ID of the group shared with.
+        :param _builtins.str group_name: The name of the group shared with.
+        """
+        pulumi.set(__self__, "expires_at", expires_at)
+        pulumi.set(__self__, "group_access_level", group_access_level)
+        pulumi.set(__self__, "group_full_path", group_full_path)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "group_name", group_name)
+
+    @_builtins.property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> _builtins.str:
+        """
+        Share with group expiration date.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @_builtins.property
+    @pulumi.getter(name="groupAccessLevel")
+    def group_access_level(self) -> _builtins.int:
+        """
+        The access_level permission level of the shared group.
+        """
+        return pulumi.get(self, "group_access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="groupFullPath")
+    def group_full_path(self) -> _builtins.str:
+        """
+        The full path of the group shared with.
+        """
+        return pulumi.get(self, "group_full_path")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> _builtins.int:
+        """
+        The ID of the group shared with.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> _builtins.str:
+        """
+        The name of the group shared with.
+        """
+        return pulumi.get(self, "group_name")
 
 
 @pulumi.output_type
@@ -6489,19 +8095,108 @@ class GetProjectEnvironmentsEnvironmentResult(dict):
 
 
 @pulumi.output_type
+class GetProjectForkedFromProjectResult(dict):
+    def __init__(__self__, *,
+                 http_url_to_repo: _builtins.str,
+                 id: _builtins.int,
+                 name: _builtins.str,
+                 name_with_namespace: _builtins.str,
+                 path: _builtins.str,
+                 path_with_namespace: _builtins.str,
+                 web_url: _builtins.str):
+        """
+        :param _builtins.str http_url_to_repo: The HTTP clone URL of the upstream project.
+        :param _builtins.int id: The ID of the upstream project.
+        :param _builtins.str name: The name of the upstream project.
+        :param _builtins.str name_with_namespace: In `group / subgroup / project` or `user / project` format.
+        :param _builtins.str path: The path of the upstream project.
+        :param _builtins.str path_with_namespace: In `group/subgroup/project` or `user/project` format.
+        :param _builtins.str web_url: The web URL of the upstream project.
+        """
+        pulumi.set(__self__, "http_url_to_repo", http_url_to_repo)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "name_with_namespace", name_with_namespace)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "path_with_namespace", path_with_namespace)
+        pulumi.set(__self__, "web_url", web_url)
+
+    @_builtins.property
+    @pulumi.getter(name="httpUrlToRepo")
+    def http_url_to_repo(self) -> _builtins.str:
+        """
+        The HTTP clone URL of the upstream project.
+        """
+        return pulumi.get(self, "http_url_to_repo")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the upstream project.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the upstream project.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="nameWithNamespace")
+    def name_with_namespace(self) -> _builtins.str:
+        """
+        In `group / subgroup / project` or `user / project` format.
+        """
+        return pulumi.get(self, "name_with_namespace")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        The path of the upstream project.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="pathWithNamespace")
+    def path_with_namespace(self) -> _builtins.str:
+        """
+        In `group/subgroup/project` or `user/project` format.
+        """
+        return pulumi.get(self, "path_with_namespace")
+
+    @_builtins.property
+    @pulumi.getter(name="webUrl")
+    def web_url(self) -> _builtins.str:
+        """
+        The web URL of the upstream project.
+        """
+        return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
 class GetProjectHooksHookResult(dict):
     def __init__(__self__, *,
+                 alert_status: _builtins.str,
                  branch_filter_strategy: _builtins.str,
                  confidential_issues_events: _builtins.bool,
                  confidential_note_events: _builtins.bool,
+                 created_at: _builtins.str,
                  custom_webhook_template: _builtins.str,
                  deployment_events: _builtins.bool,
+                 disabled_until: _builtins.str,
                  emoji_events: _builtins.bool,
                  enable_ssl_verification: _builtins.bool,
+                 feature_flag_events: _builtins.bool,
                  hook_id: _builtins.int,
                  issues_events: _builtins.bool,
                  job_events: _builtins.bool,
                  merge_requests_events: _builtins.bool,
+                 milestone_events: _builtins.bool,
                  note_events: _builtins.bool,
                  pipeline_events: _builtins.bool,
                  project: _builtins.str,
@@ -6509,23 +8204,31 @@ class GetProjectHooksHookResult(dict):
                  push_events: _builtins.bool,
                  push_events_branch_filter: _builtins.str,
                  releases_events: _builtins.bool,
+                 repository_update_events: _builtins.bool,
+                 resource_access_token_events: _builtins.bool,
+                 resource_deploy_token_events: _builtins.bool,
+                 signing_token_present: _builtins.bool,
                  tag_push_events: _builtins.bool,
-                 token: _builtins.str,
                  url: _builtins.str,
                  vulnerability_events: _builtins.bool,
                  wiki_page_events: _builtins.bool):
         """
+        :param _builtins.str alert_status: Lifecycle status of the webhook. Values include `executable` and `disabled`.
         :param _builtins.str branch_filter_strategy: Filter push events by branch.
         :param _builtins.bool confidential_issues_events: Invoke the hook for confidential issues events.
         :param _builtins.bool confidential_note_events: Invoke the hook for confidential notes events.
+        :param _builtins.str created_at: The date and time the hook was created in ISO8601 format.
         :param _builtins.str custom_webhook_template: Set a custom webhook template.
         :param _builtins.bool deployment_events: Invoke the hook for deployment events.
+        :param _builtins.str disabled_until: Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
         :param _builtins.bool emoji_events: Invoke the hook for emoji events.
         :param _builtins.bool enable_ssl_verification: Enable ssl verification when invoking the hook.
+        :param _builtins.bool feature_flag_events: Invoke the hook for feature flag events.
         :param _builtins.int hook_id: The id of the project hook.
         :param _builtins.bool issues_events: Invoke the hook for issues events.
         :param _builtins.bool job_events: Invoke the hook for job events.
         :param _builtins.bool merge_requests_events: Invoke the hook for merge requests.
+        :param _builtins.bool milestone_events: Invoke the hook for milestone events.
         :param _builtins.bool note_events: Invoke the hook for notes events.
         :param _builtins.bool pipeline_events: Invoke the hook for pipeline events.
         :param _builtins.str project: The name or id of the project to add the hook to.
@@ -6533,23 +8236,31 @@ class GetProjectHooksHookResult(dict):
         :param _builtins.bool push_events: Invoke the hook for push events.
         :param _builtins.str push_events_branch_filter: Invoke the hook for push events on matching branches only.
         :param _builtins.bool releases_events: Invoke the hook for releases events.
+        :param _builtins.bool repository_update_events: Invoke the hook for repository update events.
+        :param _builtins.bool resource_access_token_events: Invoke the hook for project access token expiry events.
+        :param _builtins.bool resource_deploy_token_events: Invoke the hook for resource deploy token events.
+        :param _builtins.bool signing_token_present: Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
         :param _builtins.bool tag_push_events: Invoke the hook for tag push events.
-        :param _builtins.str token: A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
         :param _builtins.str url: The url of the hook to invoke.
         :param _builtins.bool vulnerability_events: Invoke the hook for vulnerability events.
         :param _builtins.bool wiki_page_events: Invoke the hook for wiki page events.
         """
+        pulumi.set(__self__, "alert_status", alert_status)
         pulumi.set(__self__, "branch_filter_strategy", branch_filter_strategy)
         pulumi.set(__self__, "confidential_issues_events", confidential_issues_events)
         pulumi.set(__self__, "confidential_note_events", confidential_note_events)
+        pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "custom_webhook_template", custom_webhook_template)
         pulumi.set(__self__, "deployment_events", deployment_events)
+        pulumi.set(__self__, "disabled_until", disabled_until)
         pulumi.set(__self__, "emoji_events", emoji_events)
         pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
+        pulumi.set(__self__, "feature_flag_events", feature_flag_events)
         pulumi.set(__self__, "hook_id", hook_id)
         pulumi.set(__self__, "issues_events", issues_events)
         pulumi.set(__self__, "job_events", job_events)
         pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+        pulumi.set(__self__, "milestone_events", milestone_events)
         pulumi.set(__self__, "note_events", note_events)
         pulumi.set(__self__, "pipeline_events", pipeline_events)
         pulumi.set(__self__, "project", project)
@@ -6557,11 +8268,22 @@ class GetProjectHooksHookResult(dict):
         pulumi.set(__self__, "push_events", push_events)
         pulumi.set(__self__, "push_events_branch_filter", push_events_branch_filter)
         pulumi.set(__self__, "releases_events", releases_events)
+        pulumi.set(__self__, "repository_update_events", repository_update_events)
+        pulumi.set(__self__, "resource_access_token_events", resource_access_token_events)
+        pulumi.set(__self__, "resource_deploy_token_events", resource_deploy_token_events)
+        pulumi.set(__self__, "signing_token_present", signing_token_present)
         pulumi.set(__self__, "tag_push_events", tag_push_events)
-        pulumi.set(__self__, "token", token)
         pulumi.set(__self__, "url", url)
         pulumi.set(__self__, "vulnerability_events", vulnerability_events)
         pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+
+    @_builtins.property
+    @pulumi.getter(name="alertStatus")
+    def alert_status(self) -> _builtins.str:
+        """
+        Lifecycle status of the webhook. Values include `executable` and `disabled`.
+        """
+        return pulumi.get(self, "alert_status")
 
     @_builtins.property
     @pulumi.getter(name="branchFilterStrategy")
@@ -6588,6 +8310,14 @@ class GetProjectHooksHookResult(dict):
         return pulumi.get(self, "confidential_note_events")
 
     @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The date and time the hook was created in ISO8601 format.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
     @pulumi.getter(name="customWebhookTemplate")
     def custom_webhook_template(self) -> _builtins.str:
         """
@@ -6604,6 +8334,14 @@ class GetProjectHooksHookResult(dict):
         return pulumi.get(self, "deployment_events")
 
     @_builtins.property
+    @pulumi.getter(name="disabledUntil")
+    def disabled_until(self) -> _builtins.str:
+        """
+        Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+        """
+        return pulumi.get(self, "disabled_until")
+
+    @_builtins.property
     @pulumi.getter(name="emojiEvents")
     def emoji_events(self) -> _builtins.bool:
         """
@@ -6618,6 +8356,14 @@ class GetProjectHooksHookResult(dict):
         Enable ssl verification when invoking the hook.
         """
         return pulumi.get(self, "enable_ssl_verification")
+
+    @_builtins.property
+    @pulumi.getter(name="featureFlagEvents")
+    def feature_flag_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for feature flag events.
+        """
+        return pulumi.get(self, "feature_flag_events")
 
     @_builtins.property
     @pulumi.getter(name="hookId")
@@ -6650,6 +8396,14 @@ class GetProjectHooksHookResult(dict):
         Invoke the hook for merge requests.
         """
         return pulumi.get(self, "merge_requests_events")
+
+    @_builtins.property
+    @pulumi.getter(name="milestoneEvents")
+    def milestone_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for milestone events.
+        """
+        return pulumi.get(self, "milestone_events")
 
     @_builtins.property
     @pulumi.getter(name="noteEvents")
@@ -6708,21 +8462,44 @@ class GetProjectHooksHookResult(dict):
         return pulumi.get(self, "releases_events")
 
     @_builtins.property
+    @pulumi.getter(name="repositoryUpdateEvents")
+    def repository_update_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for repository update events.
+        """
+        return pulumi.get(self, "repository_update_events")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceAccessTokenEvents")
+    def resource_access_token_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for project access token expiry events.
+        """
+        return pulumi.get(self, "resource_access_token_events")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceDeployTokenEvents")
+    def resource_deploy_token_events(self) -> _builtins.bool:
+        """
+        Invoke the hook for resource deploy token events.
+        """
+        return pulumi.get(self, "resource_deploy_token_events")
+
+    @_builtins.property
+    @pulumi.getter(name="signingTokenPresent")
+    def signing_token_present(self) -> _builtins.bool:
+        """
+        Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
+        """
+        return pulumi.get(self, "signing_token_present")
+
+    @_builtins.property
     @pulumi.getter(name="tagPushEvents")
     def tag_push_events(self) -> _builtins.bool:
         """
         Invoke the hook for tag push events.
         """
         return pulumi.get(self, "tag_push_events")
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.""")
-    def token(self) -> _builtins.str:
-        """
-        A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
-        """
-        return pulumi.get(self, "token")
 
     @_builtins.property
     @pulumi.getter
@@ -7580,6 +9357,68 @@ class GetProjectLabelsLabelResult(dict):
 
 
 @pulumi.output_type
+class GetProjectLicenseResult(dict):
+    def __init__(__self__, *,
+                 html_url: _builtins.str,
+                 key: _builtins.str,
+                 name: _builtins.str,
+                 nickname: _builtins.str,
+                 source_url: _builtins.str):
+        """
+        :param _builtins.str html_url: URL to the license's human-readable description.
+        :param _builtins.str key: The license key (e.g. `mit`).
+        :param _builtins.str name: The license name (e.g. `MIT License`).
+        :param _builtins.str nickname: The license nickname.
+        :param _builtins.str source_url: URL to the license source text.
+        """
+        pulumi.set(__self__, "html_url", html_url)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "nickname", nickname)
+        pulumi.set(__self__, "source_url", source_url)
+
+    @_builtins.property
+    @pulumi.getter(name="htmlUrl")
+    def html_url(self) -> _builtins.str:
+        """
+        URL to the license's human-readable description.
+        """
+        return pulumi.get(self, "html_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The license key (e.g. `mit`).
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The license name (e.g. `MIT License`).
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nickname(self) -> _builtins.str:
+        """
+        The license nickname.
+        """
+        return pulumi.get(self, "nickname")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceUrl")
+    def source_url(self) -> _builtins.str:
+        """
+        URL to the license source text.
+        """
+        return pulumi.get(self, "source_url")
+
+
+@pulumi.output_type
 class GetProjectMembershipMemberResult(dict):
     def __init__(__self__, *,
                  access_level: _builtins.str,
@@ -8371,30 +10210,192 @@ class GetProjectMilestonesMilestoneResult(dict):
 
 
 @pulumi.output_type
+class GetProjectNamespaceResult(dict):
+    def __init__(__self__, *,
+                 full_path: _builtins.str,
+                 id: _builtins.int,
+                 kind: _builtins.str,
+                 name: _builtins.str,
+                 path: _builtins.str):
+        """
+        :param _builtins.str full_path: The full path of the namespace.
+        :param _builtins.int id: The ID of the namespace.
+        :param _builtins.str kind: The kind of the namespace.
+        :param _builtins.str name: The name of the namespace.
+        :param _builtins.str path: The path of the namespace.
+        """
+        pulumi.set(__self__, "full_path", full_path)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter(name="fullPath")
+    def full_path(self) -> _builtins.str:
+        """
+        The full path of the namespace.
+        """
+        return pulumi.get(self, "full_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the namespace.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> _builtins.str:
+        """
+        The kind of the namespace.
+        """
+        return pulumi.get(self, "kind")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the namespace.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        The path of the namespace.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class GetProjectOwnerResult(dict):
+    def __init__(__self__, *,
+                 avatar_url: _builtins.str,
+                 id: _builtins.int,
+                 name: _builtins.str,
+                 state: _builtins.str,
+                 username: _builtins.str,
+                 website_url: _builtins.str):
+        """
+        :param _builtins.str avatar_url: The avatar URL of the owner.
+        :param _builtins.int id: The ID of the owner.
+        :param _builtins.str name: The name of the owner.
+        :param _builtins.str state: The state of the owner.
+        :param _builtins.str username: The username of the owner.
+        :param _builtins.str website_url: The website URL of the owner.
+        """
+        pulumi.set(__self__, "avatar_url", avatar_url)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "username", username)
+        pulumi.set(__self__, "website_url", website_url)
+
+    @_builtins.property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> _builtins.str:
+        """
+        The avatar URL of the owner.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the owner.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the owner.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        The state of the owner.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        The username of the owner.
+        """
+        return pulumi.get(self, "username")
+
+    @_builtins.property
+    @pulumi.getter(name="websiteUrl")
+    def website_url(self) -> _builtins.str:
+        """
+        The website URL of the owner.
+        """
+        return pulumi.get(self, "website_url")
+
+
+@pulumi.output_type
+class GetProjectPermissionResult(dict):
+    def __init__(__self__, *,
+                 group_access: Mapping[str, _builtins.int],
+                 project_access: Mapping[str, _builtins.int]):
+        """
+        :param Mapping[str, _builtins.int] group_access: Group access level.
+        :param Mapping[str, _builtins.int] project_access: Project access level.
+        """
+        pulumi.set(__self__, "group_access", group_access)
+        pulumi.set(__self__, "project_access", project_access)
+
+    @_builtins.property
+    @pulumi.getter(name="groupAccess")
+    def group_access(self) -> Mapping[str, _builtins.int]:
+        """
+        Group access level.
+        """
+        return pulumi.get(self, "group_access")
+
+    @_builtins.property
+    @pulumi.getter(name="projectAccess")
+    def project_access(self) -> Mapping[str, _builtins.int]:
+        """
+        Project access level.
+        """
+        return pulumi.get(self, "project_access")
+
+
+@pulumi.output_type
 class GetProjectProtectedBranchMergeAccessLevelResult(dict):
     def __init__(__self__, *,
                  access_level: _builtins.str,
                  access_level_description: _builtins.str,
-                 group_id: Optional[_builtins.int] = None,
-                 user_id: Optional[_builtins.int] = None):
+                 group_id: _builtins.int,
+                 user_id: _builtins.int):
         """
-        :param _builtins.str access_level: Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        :param _builtins.str access_level: Access level allowed to perform the relevant action.
         :param _builtins.str access_level_description: Readable description of access level.
-        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action.
         """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "access_level_description", access_level_description)
-        if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
-        if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "user_id", user_id)
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> _builtins.str:
         """
-        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        Access level allowed to perform the relevant action.
         """
         return pulumi.get(self, "access_level")
 
@@ -8408,17 +10409,17 @@ class GetProjectProtectedBranchMergeAccessLevelResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[_builtins.int]:
+    def group_id(self) -> _builtins.int:
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action.
         """
         return pulumi.get(self, "group_id")
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[_builtins.int]:
+    def user_id(self) -> _builtins.int:
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action.
         """
         return pulumi.get(self, "user_id")
 
@@ -8428,30 +10429,27 @@ class GetProjectProtectedBranchPushAccessLevelResult(dict):
     def __init__(__self__, *,
                  access_level: _builtins.str,
                  access_level_description: _builtins.str,
-                 deploy_key_id: Optional[_builtins.int] = None,
-                 group_id: Optional[_builtins.int] = None,
-                 user_id: Optional[_builtins.int] = None):
+                 deploy_key_id: _builtins.int,
+                 group_id: _builtins.int,
+                 user_id: _builtins.int):
         """
-        :param _builtins.str access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        :param _builtins.str access_level: Access level allowed to perform the relevant action.
         :param _builtins.str access_level_description: Readable description of access level.
-        :param _builtins.int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
-        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
-        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
+        :param _builtins.int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action.
         """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "access_level_description", access_level_description)
-        if deploy_key_id is not None:
-            pulumi.set(__self__, "deploy_key_id", deploy_key_id)
-        if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
-        if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+        pulumi.set(__self__, "deploy_key_id", deploy_key_id)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "user_id", user_id)
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> _builtins.str:
         """
-        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        Access level allowed to perform the relevant action.
         """
         return pulumi.get(self, "access_level")
 
@@ -8465,25 +10463,76 @@ class GetProjectProtectedBranchPushAccessLevelResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="deployKeyId")
-    def deploy_key_id(self) -> Optional[_builtins.int]:
+    def deploy_key_id(self) -> _builtins.int:
         """
-        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        The ID of a GitLab deploy key allowed to perform the relevant action.
         """
         return pulumi.get(self, "deploy_key_id")
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[_builtins.int]:
+    def group_id(self) -> _builtins.int:
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action.
         """
         return pulumi.get(self, "group_id")
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[_builtins.int]:
+    def user_id(self) -> _builtins.int:
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GetProjectProtectedBranchUnprotectAccessLevelResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_level_description: _builtins.str,
+                 group_id: _builtins.int,
+                 user_id: _builtins.int):
+        """
+        :param _builtins.str access_level: Access level allowed to perform the relevant action.
+        :param _builtins.str access_level_description: Readable description of access level.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_level_description", access_level_description)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Access level allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> _builtins.str:
+        """
+        Readable description of access level.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab group allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab user allowed to perform the relevant action.
         """
         return pulumi.get(self, "user_id")
 
@@ -8494,25 +10543,26 @@ class GetProjectProtectedBranchesProtectedBranchResult(dict):
                  allow_force_push: _builtins.bool,
                  code_owner_approval_required: _builtins.bool,
                  id: _builtins.int,
+                 merge_access_levels: Sequence['outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult'],
                  name: _builtins.str,
-                 merge_access_levels: Optional[Sequence['outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult']] = None,
-                 push_access_levels: Optional[Sequence['outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult']] = None):
+                 push_access_levels: Sequence['outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult'],
+                 unprotect_access_levels: Sequence['outputs.GetProjectProtectedBranchesProtectedBranchUnprotectAccessLevelResult']):
         """
         :param _builtins.bool allow_force_push: Whether force push is allowed.
         :param _builtins.bool code_owner_approval_required: Reject code pushes that change files listed in the CODEOWNERS file.
         :param _builtins.int id: The ID of this resource.
+        :param Sequence['GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs'] merge_access_levels: Array of merge access levels/users/groups allowed for the protected branch.
         :param _builtins.str name: The name of the protected branch.
-        :param Sequence['GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs'] merge_access_levels: Array of access levels and user(s)/group(s) allowed to merge to protected branch.
-        :param Sequence['GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs'] push_access_levels: Array of access levels and user(s)/group(s) allowed to push to protected branch.
+        :param Sequence['GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs'] push_access_levels: Array of push access levels/users/groups/deploy keys allowed for the protected branch.
+        :param Sequence['GetProjectProtectedBranchesProtectedBranchUnprotectAccessLevelArgs'] unprotect_access_levels: Array of unprotect access levels/users/groups allowed for the protected branch.
         """
         pulumi.set(__self__, "allow_force_push", allow_force_push)
         pulumi.set(__self__, "code_owner_approval_required", code_owner_approval_required)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "merge_access_levels", merge_access_levels)
         pulumi.set(__self__, "name", name)
-        if merge_access_levels is not None:
-            pulumi.set(__self__, "merge_access_levels", merge_access_levels)
-        if push_access_levels is not None:
-            pulumi.set(__self__, "push_access_levels", push_access_levels)
+        pulumi.set(__self__, "push_access_levels", push_access_levels)
+        pulumi.set(__self__, "unprotect_access_levels", unprotect_access_levels)
 
     @_builtins.property
     @pulumi.getter(name="allowForcePush")
@@ -8539,6 +10589,14 @@ class GetProjectProtectedBranchesProtectedBranchResult(dict):
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="mergeAccessLevels")
+    def merge_access_levels(self) -> Sequence['outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult']:
+        """
+        Array of merge access levels/users/groups allowed for the protected branch.
+        """
+        return pulumi.get(self, "merge_access_levels")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
@@ -8547,20 +10605,20 @@ class GetProjectProtectedBranchesProtectedBranchResult(dict):
         return pulumi.get(self, "name")
 
     @_builtins.property
-    @pulumi.getter(name="mergeAccessLevels")
-    def merge_access_levels(self) -> Optional[Sequence['outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult']]:
-        """
-        Array of access levels and user(s)/group(s) allowed to merge to protected branch.
-        """
-        return pulumi.get(self, "merge_access_levels")
-
-    @_builtins.property
     @pulumi.getter(name="pushAccessLevels")
-    def push_access_levels(self) -> Optional[Sequence['outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult']]:
+    def push_access_levels(self) -> Sequence['outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult']:
         """
-        Array of access levels and user(s)/group(s) allowed to push to protected branch.
+        Array of push access levels/users/groups/deploy keys allowed for the protected branch.
         """
         return pulumi.get(self, "push_access_levels")
+
+    @_builtins.property
+    @pulumi.getter(name="unprotectAccessLevels")
+    def unprotect_access_levels(self) -> Sequence['outputs.GetProjectProtectedBranchesProtectedBranchUnprotectAccessLevelResult']:
+        """
+        Array of unprotect access levels/users/groups allowed for the protected branch.
+        """
+        return pulumi.get(self, "unprotect_access_levels")
 
 
 @pulumi.output_type
@@ -8568,26 +10626,24 @@ class GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult(dict):
     def __init__(__self__, *,
                  access_level: _builtins.str,
                  access_level_description: _builtins.str,
-                 group_id: Optional[_builtins.int] = None,
-                 user_id: Optional[_builtins.int] = None):
+                 group_id: _builtins.int,
+                 user_id: _builtins.int):
         """
-        :param _builtins.str access_level: Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        :param _builtins.str access_level: Access level allowed to perform the relevant action.
         :param _builtins.str access_level_description: Readable description of access level.
-        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
-        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action.
         """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "access_level_description", access_level_description)
-        if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
-        if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "user_id", user_id)
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> _builtins.str:
         """
-        Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        Access level allowed to perform the relevant action.
         """
         return pulumi.get(self, "access_level")
 
@@ -8601,17 +10657,17 @@ class GetProjectProtectedBranchesProtectedBranchMergeAccessLevelResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[_builtins.int]:
+    def group_id(self) -> _builtins.int:
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action.
         """
         return pulumi.get(self, "group_id")
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[_builtins.int]:
+    def user_id(self) -> _builtins.int:
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action.
         """
         return pulumi.get(self, "user_id")
 
@@ -8621,30 +10677,27 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult(dict):
     def __init__(__self__, *,
                  access_level: _builtins.str,
                  access_level_description: _builtins.str,
-                 deploy_key_id: Optional[_builtins.int] = None,
-                 group_id: Optional[_builtins.int] = None,
-                 user_id: Optional[_builtins.int] = None):
+                 deploy_key_id: _builtins.int,
+                 group_id: _builtins.int,
+                 user_id: _builtins.int):
         """
-        :param _builtins.str access_level: Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        :param _builtins.str access_level: Access level allowed to perform the relevant action.
         :param _builtins.str access_level_description: Readable description of access level.
-        :param _builtins.int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
-        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
-        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
+        :param _builtins.int deploy_key_id: The ID of a GitLab deploy key allowed to perform the relevant action.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action.
         """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "access_level_description", access_level_description)
-        if deploy_key_id is not None:
-            pulumi.set(__self__, "deploy_key_id", deploy_key_id)
-        if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
-        if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+        pulumi.set(__self__, "deploy_key_id", deploy_key_id)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "user_id", user_id)
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> _builtins.str:
         """
-        Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+        Access level allowed to perform the relevant action.
         """
         return pulumi.get(self, "access_level")
 
@@ -8658,25 +10711,76 @@ class GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="deployKeyId")
-    def deploy_key_id(self) -> Optional[_builtins.int]:
+    def deploy_key_id(self) -> _builtins.int:
         """
-        The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `group_id` and `user_id`. This field is read-only until Gitlab 17.5.
+        The ID of a GitLab deploy key allowed to perform the relevant action.
         """
         return pulumi.get(self, "deploy_key_id")
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[_builtins.int]:
+    def group_id(self) -> _builtins.int:
         """
-        The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `user_id`.
+        The ID of a GitLab group allowed to perform the relevant action.
         """
         return pulumi.get(self, "group_id")
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[_builtins.int]:
+    def user_id(self) -> _builtins.int:
         """
-        The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deploy_key_id` and `group_id`.
+        The ID of a GitLab user allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GetProjectProtectedBranchesProtectedBranchUnprotectAccessLevelResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_level_description: _builtins.str,
+                 group_id: _builtins.int,
+                 user_id: _builtins.int):
+        """
+        :param _builtins.str access_level: Access level allowed to perform the relevant action.
+        :param _builtins.str access_level_description: Readable description of access level.
+        :param _builtins.int group_id: The ID of a GitLab group allowed to perform the relevant action.
+        :param _builtins.int user_id: The ID of a GitLab user allowed to perform the relevant action.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_level_description", access_level_description)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Access level allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevelDescription")
+    def access_level_description(self) -> _builtins.str:
+        """
+        Readable description of access level.
+        """
+        return pulumi.get(self, "access_level_description")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab group allowed to perform the relevant action.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.int:
+        """
+        The ID of a GitLab user allowed to perform the relevant action.
         """
         return pulumi.get(self, "user_id")
 
@@ -9156,16 +11260,19 @@ class GetProjectSecureFileMetadataSubjectResult(dict):
 class GetProjectSharedWithGroupResult(dict):
     def __init__(__self__, *,
                  group_access_level: _builtins.int,
+                 group_access_level_name: _builtins.str,
                  group_full_path: _builtins.str,
                  group_id: _builtins.int,
                  group_name: _builtins.str):
         """
-        :param _builtins.int group_access_level: The access_level permission level of the shared group.
+        :param _builtins.int group_access_level: The access level (integer) of the shared group. Matches the upstream GitLab API. See `group_access_level_name` for the human-readable string form.
+        :param _builtins.str group_access_level_name: The human-readable access level name of the shared group (e.g. `developer`, `maintainer`). Computed from `group_access_level`.
         :param _builtins.str group_full_path: The full path of the group shared with.
         :param _builtins.int group_id: The ID of the group shared with.
         :param _builtins.str group_name: The name of the group shared with.
         """
         pulumi.set(__self__, "group_access_level", group_access_level)
+        pulumi.set(__self__, "group_access_level_name", group_access_level_name)
         pulumi.set(__self__, "group_full_path", group_full_path)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "group_name", group_name)
@@ -9174,9 +11281,18 @@ class GetProjectSharedWithGroupResult(dict):
     @pulumi.getter(name="groupAccessLevel")
     def group_access_level(self) -> _builtins.int:
         """
-        The access_level permission level of the shared group.
+        The access level (integer) of the shared group. Matches the upstream GitLab API. See `group_access_level_name` for the human-readable string form.
         """
         return pulumi.get(self, "group_access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="groupAccessLevelName")
+    @_utilities.deprecated("""Use `group_access_level` instead, to be removed in 20.0.""")
+    def group_access_level_name(self) -> _builtins.str:
+        """
+        The human-readable access level name of the shared group (e.g. `developer`, `maintainer`). Computed from `group_access_level`.
+        """
+        return pulumi.get(self, "group_access_level_name")
 
     @_builtins.property
     @pulumi.getter(name="groupFullPath")
@@ -9699,7 +11815,6 @@ class GetProjectVariablesVariableResult(dict):
 @pulumi.output_type
 class GetProjectsProjectResult(dict):
     def __init__(__self__, *,
-                 _links: Mapping[str, _builtins.str],
                  allow_merge_on_skipped_pipeline: _builtins.bool,
                  allow_pipeline_trigger_approve_deployment: _builtins.bool,
                  analytics_access_level: _builtins.str,
@@ -9708,30 +11823,42 @@ class GetProjectsProjectResult(dict):
                  auto_cancel_pending_pipelines: _builtins.str,
                  auto_devops_deploy_strategy: _builtins.str,
                  auto_devops_enabled: _builtins.bool,
+                 auto_duo_code_review_enabled: _builtins.bool,
                  autoclose_referenced_issues: _builtins.bool,
                  avatar_url: _builtins.str,
                  build_coverage_regex: _builtins.str,
                  build_git_strategy: _builtins.str,
                  build_timeout: _builtins.int,
                  builds_access_level: _builtins.str,
+                 can_create_merge_request_in: _builtins.bool,
+                 ci_allow_fork_pipelines_to_run_in_parent_project: _builtins.bool,
                  ci_config_path: _builtins.str,
                  ci_default_git_depth: _builtins.int,
                  ci_delete_pipelines_in_seconds: _builtins.int,
+                 ci_display_pipeline_variables: _builtins.bool,
                  ci_forward_deployment_enabled: _builtins.bool,
                  ci_forward_deployment_rollback_allowed: _builtins.bool,
                  ci_id_token_sub_claim_components: Sequence[_builtins.str],
+                 ci_job_token_scope_enabled: _builtins.bool,
+                 ci_opt_in_jwt: _builtins.bool,
                  ci_pipeline_variables_minimum_override_role: _builtins.str,
+                 ci_push_repository_for_job_token_allowed: _builtins.bool,
                  ci_restrict_pipeline_cancellation_role: _builtins.str,
+                 ci_separated_caches: _builtins.bool,
+                 compliance_frameworks: Sequence[_builtins.str],
                  container_expiration_policies: Sequence['outputs.GetProjectsProjectContainerExpirationPolicyResult'],
                  container_registry_access_level: _builtins.str,
                  container_registry_enabled: _builtins.bool,
+                 container_registry_image_prefix: _builtins.str,
                  created_at: _builtins.str,
                  creator_id: _builtins.int,
                  custom_attributes: Sequence[Mapping[str, _builtins.str]],
                  default_branch: _builtins.str,
                  description: _builtins.str,
+                 emails_disabled: _builtins.bool,
                  emails_enabled: _builtins.bool,
                  empty_repo: _builtins.bool,
+                 enforce_auth_checks_on_uploads: _builtins.bool,
                  environments_access_level: _builtins.str,
                  external_authorization_classification_label: _builtins.str,
                  feature_flags_access_level: _builtins.str,
@@ -9743,21 +11870,34 @@ class GetProjectsProjectResult(dict):
                  id: _builtins.int,
                  import_error: _builtins.str,
                  import_status: _builtins.str,
+                 import_type: _builtins.str,
                  import_url: _builtins.str,
                  infrastructure_access_level: _builtins.str,
+                 issue_branch_template: _builtins.str,
                  issues_access_level: _builtins.str,
                  issues_enabled: _builtins.bool,
+                 issues_template: _builtins.str,
                  jobs_enabled: _builtins.bool,
                  keep_latest_artifact: _builtins.bool,
                  last_activity_at: _builtins.str,
                  lfs_enabled: _builtins.bool,
+                 license_url: _builtins.str,
+                 licenses: Sequence['outputs.GetProjectsProjectLicenseResult'],
                  links: Mapping[str, _builtins.str],
+                 marked_for_deletion: _builtins.bool,
+                 marked_for_deletion_at: _builtins.str,
+                 marked_for_deletion_on: _builtins.str,
+                 max_artifacts_size: _builtins.int,
                  merge_commit_template: _builtins.str,
                  merge_method: _builtins.str,
                  merge_pipelines_enabled: _builtins.bool,
+                 merge_request_title_regex: _builtins.str,
+                 merge_request_title_regex_description: _builtins.str,
                  merge_requests_access_level: _builtins.str,
                  merge_requests_enabled: _builtins.bool,
+                 merge_requests_template: _builtins.str,
                  merge_trains_enabled: _builtins.bool,
+                 merge_trains_skip_train_allowed: _builtins.bool,
                  mirror: _builtins.bool,
                  mirror_overwrites_diverged_branches: _builtins.bool,
                  mirror_trigger_builds: _builtins.bool,
@@ -9765,80 +11905,109 @@ class GetProjectsProjectResult(dict):
                  model_experiments_access_level: _builtins.str,
                  model_registry_access_level: _builtins.str,
                  monitor_access_level: _builtins.str,
+                 mr_default_target_self: _builtins.bool,
                  name: _builtins.str,
                  name_with_namespace: _builtins.str,
+                 namespace_id: _builtins.int,
                  namespaces: Sequence['outputs.GetProjectsProjectNamespaceResult'],
                  only_allow_merge_if_all_discussions_are_resolved: _builtins.bool,
                  only_allow_merge_if_pipeline_succeeds: _builtins.bool,
                  only_mirror_protected_branches: _builtins.bool,
                  open_issues_count: _builtins.int,
+                 operations_access_level: _builtins.str,
                  owners: Sequence['outputs.GetProjectsProjectOwnerResult'],
+                 package_registry_access_level: _builtins.str,
                  packages_enabled: _builtins.bool,
+                 pages_access_level: _builtins.str,
                  path: _builtins.str,
                  path_with_namespace: _builtins.str,
                  permissions: Sequence['outputs.GetProjectsProjectPermissionResult'],
+                 pre_receive_secret_detection_enabled: _builtins.bool,
                  prevent_merge_without_jira_issue: _builtins.bool,
+                 printing_merge_request_link_enabled: _builtins.bool,
+                 protect_merge_request_pipelines: _builtins.bool,
                  public_builds: _builtins.bool,
+                 public_jobs: _builtins.bool,
                  readme_url: _builtins.str,
                  releases_access_level: _builtins.str,
+                 remove_source_branch_after_merge: _builtins.bool,
                  repository_access_level: _builtins.str,
                  repository_storage: _builtins.str,
                  request_access_enabled: _builtins.bool,
                  requirements_access_level: _builtins.str,
+                 requirements_enabled: _builtins.bool,
                  resolve_outdated_diff_discussions: _builtins.bool,
                  resource_group_default_process_mode: _builtins.str,
                  restrict_user_defined_variables: _builtins.bool,
+                 runner_token_expiration_interval: _builtins.int,
                  runners_token: _builtins.str,
                  security_and_compliance_access_level: _builtins.str,
+                 security_and_compliance_enabled: _builtins.bool,
+                 service_desk_address: _builtins.str,
+                 service_desk_enabled: _builtins.bool,
                  shared_runners_enabled: _builtins.bool,
                  shared_with_groups: Sequence['outputs.GetProjectsProjectSharedWithGroupResult'],
                  snippets_access_level: _builtins.str,
                  snippets_enabled: _builtins.bool,
                  squash_commit_template: _builtins.str,
+                 squash_option: _builtins.str,
                  ssh_url_to_repo: _builtins.str,
                  star_count: _builtins.int,
                  statistics: Mapping[str, _builtins.int],
                  suggestion_commit_message: _builtins.str,
                  tag_lists: Sequence[_builtins.str],
                  topics: Sequence[_builtins.str],
+                 updated_at: _builtins.str,
                  visibility: _builtins.str,
+                 visibility_level: _builtins.str,
                  web_url: _builtins.str,
                  wiki_access_level: _builtins.str,
                  wiki_enabled: _builtins.bool):
         """
-        :param Mapping[str, _builtins.str] _links: Links for the project. Use `links` instead. To be removed in 19.0.
-        :param _builtins.bool allow_merge_on_skipped_pipeline: Whether allow_merge_on_skipped_pipeline is enabled for the project.
+        :param _builtins.bool allow_merge_on_skipped_pipeline: Whether `allow_merge_on_skipped_pipeline` is enabled for the project.
         :param _builtins.bool allow_pipeline_trigger_approve_deployment: Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
         :param _builtins.str analytics_access_level: Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
-        :param _builtins.int approvals_before_merge: The numbers of approvals needed in a merge requests.
-        :param _builtins.bool archived: Whether the project is archived.
-        :param _builtins.str auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        :param _builtins.int approvals_before_merge: The number of approvals needed in a merge request.
+        :param _builtins.bool archived: Whether the project is in read-only mode (archived).
+        :param _builtins.str auto_cancel_pending_pipelines: Auto-cancel pending pipelines. This isn't a boolean, but `enabled`/`disabled`.
         :param _builtins.str auto_devops_deploy_strategy: Auto Deploy strategy. Valid values are `continuous`, `manual`, `timed_incremental`.
         :param _builtins.bool auto_devops_enabled: Enable Auto DevOps for this project.
+        :param _builtins.bool auto_duo_code_review_enabled: Whether GitLab Duo code review is enabled for the project.
         :param _builtins.bool autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
-        :param _builtins.str avatar_url: The avatar url of the project.
+        :param _builtins.str avatar_url: The avatar URL of the project.
         :param _builtins.str build_coverage_regex: Build coverage regex for the project.
-        :param _builtins.str build_git_strategy: The Git strategy. Defaults to fetch.
+        :param _builtins.str build_git_strategy: The Git strategy. Defaults to `fetch`.
         :param _builtins.int build_timeout: The maximum amount of time, in seconds, that a job can run.
         :param _builtins.str builds_access_level: Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
+        :param _builtins.bool can_create_merge_request_in: Whether the calling user can create merge requests in this project.
+        :param _builtins.bool ci_allow_fork_pipelines_to_run_in_parent_project: Whether pipelines triggered from merge requests opened from forks may run in the parent project.
         :param _builtins.str ci_config_path: CI config file path for the project.
         :param _builtins.int ci_default_git_depth: Default number of revisions for shallow cloning.
         :param _builtins.int ci_delete_pipelines_in_seconds: Pipelines older than the configured time are deleted.
+        :param _builtins.bool ci_display_pipeline_variables: Whether pipeline variables are displayed in the UI.
         :param _builtins.bool ci_forward_deployment_enabled: When a new deployment job starts, skip older deployment jobs that are still pending.
         :param _builtins.bool ci_forward_deployment_rollback_allowed: Allow job retries even if the deployment job is outdated.
-        :param Sequence[_builtins.str] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include ref_type and ref. Defaults to ["project_path", "ref_type", "ref"]. Introduced in GitLab 17.10.
-        :param _builtins.str ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
-        :param _builtins.str ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
-        :param Sequence['GetProjectsProjectContainerExpirationPolicyArgs'] container_expiration_policies: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
-        :param _builtins.str container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+        :param Sequence[_builtins.str] ci_id_token_sub_claim_components: Fields included in the sub claim of the ID Token. Accepts an array starting with `project_path`. The array might also include `ref_type` and `ref`. Defaults to `["project_path", "ref_type", "ref"]`. Introduced in GitLab 17.10.
+        :param _builtins.bool ci_job_token_scope_enabled: Whether the CI/CD job token access scope is enabled (limits which projects can be accessed using the job token).
+        :param _builtins.bool ci_opt_in_jwt: Whether the project must explicitly opt in to receive ID tokens in CI jobs.
+        :param _builtins.str ci_pipeline_variables_minimum_override_role: The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`.
+        :param _builtins.bool ci_push_repository_for_job_token_allowed: Whether pushes to the repository using the CI/CD job token are allowed.
+        :param _builtins.str ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no_one`.
+        :param _builtins.bool ci_separated_caches: Use separate caches for protected branches.
+        :param Sequence[_builtins.str] compliance_frameworks: Compliance frameworks applied to the project. Premium and Ultimate only.
+        :param Sequence['GetProjectsProjectContainerExpirationPolicyArgs'] container_expiration_policies: The image cleanup policy for this project.
+        :param _builtins.str container_registry_access_level: Set visibility of container registry for this project. Valid values are `disabled`, `private`, `enabled`.
         :param _builtins.bool container_registry_enabled: Whether the container registry is enabled for the project.
+        :param _builtins.str container_registry_image_prefix: The image prefix used by the container registry for this project.
         :param _builtins.str created_at: Creation time for the project.
         :param _builtins.int creator_id: Creator ID for the project.
         :param Sequence[Mapping[str, _builtins.str]] custom_attributes: Custom attributes for the project.
         :param _builtins.str default_branch: The default branch name of the project.
-        :param _builtins.str description: The description of the project.
+        :param _builtins.str description: A description of the project.
+        :param _builtins.bool emails_disabled: Whether email notifications are disabled for the project.
         :param _builtins.bool emails_enabled: Enable email notifications.
         :param _builtins.bool empty_repo: Whether the project is empty.
+        :param _builtins.bool enforce_auth_checks_on_uploads: Whether authentication checks are enforced when uploading to the project.
         :param _builtins.str environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         :param _builtins.str external_authorization_classification_label: The classification label for the project.
         :param _builtins.str feature_flags_access_level: Set the feature flags access level. Valid values are `disabled`, `private`, `enabled`.
@@ -9850,70 +12019,100 @@ class GetProjectsProjectResult(dict):
         :param _builtins.int id: The ID of the project.
         :param _builtins.str import_error: The import error, if it exists, for the project.
         :param _builtins.str import_status: The import status of the project.
+        :param _builtins.str import_type: The type of import used to create the project (for example `github`, `bitbucket`).
         :param _builtins.str import_url: URL the project was imported from.
         :param _builtins.str infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
+        :param _builtins.str issue_branch_template: Template used to suggest a branch name when creating one from an issue.
         :param _builtins.str issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         :param _builtins.bool issues_enabled: Whether issues are enabled for the project.
-        :param _builtins.bool jobs_enabled: Whether pipelines are enabled for the project.
+        :param _builtins.str issues_template: Default description template for new issues.
+        :param _builtins.bool jobs_enabled: Whether jobs are enabled for the project.
         :param _builtins.bool keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
-        :param _builtins.str last_activity_at: Last activirty time for the project.
+        :param _builtins.str last_activity_at: Last activity time for the project.
         :param _builtins.bool lfs_enabled: Whether LFS (large file storage) is enabled for the project.
+        :param _builtins.str license_url: URL of the project's license file.
+        :param Sequence['GetProjectsProjectLicenseArgs'] licenses: Information about the project's license, if one is detected.
         :param Mapping[str, _builtins.str] links: Links for the project.
+        :param _builtins.bool marked_for_deletion: Whether the project is marked for deletion.
+        :param _builtins.str marked_for_deletion_at: Timestamp at which the project was marked for deletion. Premium and Ultimate only.
+        :param _builtins.str marked_for_deletion_on: Timestamp at which the project was marked for deletion. Premium and Ultimate only.
+        :param _builtins.int max_artifacts_size: Maximum artifacts size, in MB, for the project. Overrides the instance-wide setting when set.
         :param _builtins.str merge_commit_template: Template used to create merge commit message in merge requests.
         :param _builtins.str merge_method: Merge method for the project.
         :param _builtins.bool merge_pipelines_enabled: Enable or disable merge pipelines.
+        :param _builtins.str merge_request_title_regex: Regular expression that merge request titles must match.
+        :param _builtins.str merge_request_title_regex_description: Human-readable description of `merge_request_title_regex`.
         :param _builtins.str merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
         :param _builtins.bool merge_requests_enabled: Whether merge requests are enabled for the project.
+        :param _builtins.str merge_requests_template: Default description template for new merge requests.
         :param _builtins.bool merge_trains_enabled: Enable or disable merge trains.
-        :param _builtins.bool mirror: Whether the pull mirroring is enabled for the project.
-        :param _builtins.bool mirror_overwrites_diverged_branches: Whether mirror_overwrites_diverged_branches is enabled for the project.
+        :param _builtins.bool merge_trains_skip_train_allowed: Allows merge train merge requests to be merged without waiting for pipelines to finish.
+        :param _builtins.bool mirror: Whether pull mirroring is enabled for the project.
+        :param _builtins.bool mirror_overwrites_diverged_branches: Whether `mirror_overwrites_diverged_branches` is enabled for the project.
         :param _builtins.bool mirror_trigger_builds: Whether pull mirroring triggers builds for the project.
         :param _builtins.int mirror_user_id: The mirror user ID for the project.
         :param _builtins.str model_experiments_access_level: The visibility of machine learning model experiments.
         :param _builtins.str model_registry_access_level: The visibility of machine learning model registry.
         :param _builtins.str monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
+        :param _builtins.bool mr_default_target_self: For forks, whether merge requests target the fork itself rather than the upstream project by default.
         :param _builtins.str name: The name of the project.
         :param _builtins.str name_with_namespace: In `group / subgroup / project` or `user / project` format.
+        :param _builtins.int namespace_id: The namespace (group or user) ID of the project. Alias for `namespace[0].id`.
         :param Sequence['GetProjectsProjectNamespaceArgs'] namespaces: Namespace of the project (parent group/s).
-        :param _builtins.bool only_allow_merge_if_all_discussions_are_resolved: Whether only_allow_merge_if_all_discussions_are_resolved is enabled for the project.
-        :param _builtins.bool only_allow_merge_if_pipeline_succeeds: Whether only_allow_merge_if_pipeline_succeeds is enabled for the project.
-        :param _builtins.bool only_mirror_protected_branches: Whether only_mirror_protected_branches is enabled for the project.
-        :param _builtins.int open_issues_count: The number of open issies for the project.
-        :param Sequence['GetProjectsProjectOwnerArgs'] owners: The owner of the project, due to Terraform aggregate types limitations, this field's attributes are accessed with the `owner.0` prefix. Structure is documented below.
+        :param _builtins.bool only_allow_merge_if_all_discussions_are_resolved: Whether `only_allow_merge_if_all_discussions_are_resolved` is enabled for the project.
+        :param _builtins.bool only_allow_merge_if_pipeline_succeeds: Whether `only_allow_merge_if_pipeline_succeeds` is enabled for the project.
+        :param _builtins.bool only_mirror_protected_branches: Whether `only_mirror_protected_branches` is enabled for the project.
+        :param _builtins.int open_issues_count: The number of open issues for the project.
+        :param _builtins.str operations_access_level: Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
+        :param Sequence['GetProjectsProjectOwnerArgs'] owners: The owner of the project. Only populated when the calling token has administrator scope.
+        :param _builtins.str package_registry_access_level: The visibility of the package registry.
         :param _builtins.bool packages_enabled: Whether packages are enabled for the project.
+        :param _builtins.str pages_access_level: Set the GitLab Pages access level. Valid values are `disabled`, `private`, `enabled`.
         :param _builtins.str path: The path of the project.
         :param _builtins.str path_with_namespace: In `group/subgroup/project` or `user/project` format.
         :param Sequence['GetProjectsProjectPermissionArgs'] permissions: Permissions for the project.
+        :param _builtins.bool pre_receive_secret_detection_enabled: Whether pre-receive secret detection is enabled for the project.
         :param _builtins.bool prevent_merge_without_jira_issue: Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
-        :param _builtins.bool public_builds: Whether public builds are enabled for the project.
-        :param _builtins.str readme_url: The remote url of the project.
+        :param _builtins.bool printing_merge_request_link_enabled: Show link to create/view merge request when pushing from the command line.
+        :param _builtins.bool protect_merge_request_pipelines: Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
+        :param _builtins.bool public_builds: If true, jobs can be viewed by non-project members. Alias for `public_jobs`.
+        :param _builtins.bool public_jobs: If true, jobs can be viewed by non-project members.
+        :param _builtins.str readme_url: The URL of the project README.
         :param _builtins.str releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
+        :param _builtins.bool remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param _builtins.str repository_access_level: Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
         :param _builtins.str repository_storage: Which storage shard the repository is on. (administrator only)
         :param _builtins.bool request_access_enabled: Whether requesting access is enabled for the project.
         :param _builtins.str requirements_access_level: Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
-        :param _builtins.bool resolve_outdated_diff_discussions: Whether resolve_outdated_diff_discussions is enabled for the project
+        :param _builtins.bool requirements_enabled: Whether the requirements feature is enabled. Premium and Ultimate only.
+        :param _builtins.bool resolve_outdated_diff_discussions: Automatically resolve merge request diffs discussions on lines changed with a push.
         :param _builtins.str resource_group_default_process_mode: The default resource group process mode for the project.
         :param _builtins.bool restrict_user_defined_variables: Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
-        :param _builtins.str runners_token: The runners token for the project.
+        :param _builtins.int runner_token_expiration_interval: Runner token expiration interval, in seconds.
+        :param _builtins.str runners_token: Registration token to use during runner setup.
         :param _builtins.str security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
+        :param _builtins.bool security_and_compliance_enabled: Whether the security and compliance feature is enabled.
+        :param _builtins.str service_desk_address: The Service Desk email address for the project.
+        :param _builtins.bool service_desk_enabled: Whether Service Desk is enabled for the project.
         :param _builtins.bool shared_runners_enabled: Whether shared runners are enabled for the project.
-        :param Sequence['GetProjectsProjectSharedWithGroupArgs'] shared_with_groups: Groups the the project is shared with.
+        :param Sequence['GetProjectsProjectSharedWithGroupArgs'] shared_with_groups: Describes groups which have access shared to this project.
         :param _builtins.str snippets_access_level: Set the snippets access level. Valid values are `disabled`, `private`, `enabled`.
         :param _builtins.bool snippets_enabled: Whether snippets are enabled for the project.
         :param _builtins.str squash_commit_template: Template used to create squash commit message in merge requests.
+        :param _builtins.str squash_option: The project's squash option for merge requests (`never`, `always`, `default_on`, `default_off`).
         :param _builtins.str ssh_url_to_repo: The SSH clone URL of the project.
         :param _builtins.int star_count: The number of stars on the project.
         :param Mapping[str, _builtins.int] statistics: Statistics for the project.
         :param _builtins.str suggestion_commit_message: The commit message used to apply merge request suggestions.
-        :param Sequence[_builtins.str] tag_lists: A set of the project topics (formerly called "project tags").
+        :param Sequence[_builtins.str] tag_lists: The list of project topics (formerly project tags).
         :param Sequence[_builtins.str] topics: The list of topics for the project.
-        :param _builtins.str visibility: The visibility of the project.
-        :param _builtins.str web_url: The web url of the project.
+        :param _builtins.str updated_at: The time the project was last updated.
+        :param _builtins.str visibility: The visibility of the project (`private`, `internal`, `public`).
+        :param _builtins.str visibility_level: The visibility of the project. Alias for `visibility`.
+        :param _builtins.str web_url: URL that can be used to find the project in a browser.
         :param _builtins.str wiki_access_level: Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
         :param _builtins.bool wiki_enabled: Whether wiki is enabled for the project.
         """
-        pulumi.set(__self__, "_links", _links)
         pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         pulumi.set(__self__, "allow_pipeline_trigger_approve_deployment", allow_pipeline_trigger_approve_deployment)
         pulumi.set(__self__, "analytics_access_level", analytics_access_level)
@@ -9922,30 +12121,42 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "auto_cancel_pending_pipelines", auto_cancel_pending_pipelines)
         pulumi.set(__self__, "auto_devops_deploy_strategy", auto_devops_deploy_strategy)
         pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+        pulumi.set(__self__, "auto_duo_code_review_enabled", auto_duo_code_review_enabled)
         pulumi.set(__self__, "autoclose_referenced_issues", autoclose_referenced_issues)
         pulumi.set(__self__, "avatar_url", avatar_url)
         pulumi.set(__self__, "build_coverage_regex", build_coverage_regex)
         pulumi.set(__self__, "build_git_strategy", build_git_strategy)
         pulumi.set(__self__, "build_timeout", build_timeout)
         pulumi.set(__self__, "builds_access_level", builds_access_level)
+        pulumi.set(__self__, "can_create_merge_request_in", can_create_merge_request_in)
+        pulumi.set(__self__, "ci_allow_fork_pipelines_to_run_in_parent_project", ci_allow_fork_pipelines_to_run_in_parent_project)
         pulumi.set(__self__, "ci_config_path", ci_config_path)
         pulumi.set(__self__, "ci_default_git_depth", ci_default_git_depth)
         pulumi.set(__self__, "ci_delete_pipelines_in_seconds", ci_delete_pipelines_in_seconds)
+        pulumi.set(__self__, "ci_display_pipeline_variables", ci_display_pipeline_variables)
         pulumi.set(__self__, "ci_forward_deployment_enabled", ci_forward_deployment_enabled)
         pulumi.set(__self__, "ci_forward_deployment_rollback_allowed", ci_forward_deployment_rollback_allowed)
         pulumi.set(__self__, "ci_id_token_sub_claim_components", ci_id_token_sub_claim_components)
+        pulumi.set(__self__, "ci_job_token_scope_enabled", ci_job_token_scope_enabled)
+        pulumi.set(__self__, "ci_opt_in_jwt", ci_opt_in_jwt)
         pulumi.set(__self__, "ci_pipeline_variables_minimum_override_role", ci_pipeline_variables_minimum_override_role)
+        pulumi.set(__self__, "ci_push_repository_for_job_token_allowed", ci_push_repository_for_job_token_allowed)
         pulumi.set(__self__, "ci_restrict_pipeline_cancellation_role", ci_restrict_pipeline_cancellation_role)
+        pulumi.set(__self__, "ci_separated_caches", ci_separated_caches)
+        pulumi.set(__self__, "compliance_frameworks", compliance_frameworks)
         pulumi.set(__self__, "container_expiration_policies", container_expiration_policies)
         pulumi.set(__self__, "container_registry_access_level", container_registry_access_level)
         pulumi.set(__self__, "container_registry_enabled", container_registry_enabled)
+        pulumi.set(__self__, "container_registry_image_prefix", container_registry_image_prefix)
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "creator_id", creator_id)
         pulumi.set(__self__, "custom_attributes", custom_attributes)
         pulumi.set(__self__, "default_branch", default_branch)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "emails_disabled", emails_disabled)
         pulumi.set(__self__, "emails_enabled", emails_enabled)
         pulumi.set(__self__, "empty_repo", empty_repo)
+        pulumi.set(__self__, "enforce_auth_checks_on_uploads", enforce_auth_checks_on_uploads)
         pulumi.set(__self__, "environments_access_level", environments_access_level)
         pulumi.set(__self__, "external_authorization_classification_label", external_authorization_classification_label)
         pulumi.set(__self__, "feature_flags_access_level", feature_flags_access_level)
@@ -9957,21 +12168,34 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "import_error", import_error)
         pulumi.set(__self__, "import_status", import_status)
+        pulumi.set(__self__, "import_type", import_type)
         pulumi.set(__self__, "import_url", import_url)
         pulumi.set(__self__, "infrastructure_access_level", infrastructure_access_level)
+        pulumi.set(__self__, "issue_branch_template", issue_branch_template)
         pulumi.set(__self__, "issues_access_level", issues_access_level)
         pulumi.set(__self__, "issues_enabled", issues_enabled)
+        pulumi.set(__self__, "issues_template", issues_template)
         pulumi.set(__self__, "jobs_enabled", jobs_enabled)
         pulumi.set(__self__, "keep_latest_artifact", keep_latest_artifact)
         pulumi.set(__self__, "last_activity_at", last_activity_at)
         pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        pulumi.set(__self__, "license_url", license_url)
+        pulumi.set(__self__, "licenses", licenses)
         pulumi.set(__self__, "links", links)
+        pulumi.set(__self__, "marked_for_deletion", marked_for_deletion)
+        pulumi.set(__self__, "marked_for_deletion_at", marked_for_deletion_at)
+        pulumi.set(__self__, "marked_for_deletion_on", marked_for_deletion_on)
+        pulumi.set(__self__, "max_artifacts_size", max_artifacts_size)
         pulumi.set(__self__, "merge_commit_template", merge_commit_template)
         pulumi.set(__self__, "merge_method", merge_method)
         pulumi.set(__self__, "merge_pipelines_enabled", merge_pipelines_enabled)
+        pulumi.set(__self__, "merge_request_title_regex", merge_request_title_regex)
+        pulumi.set(__self__, "merge_request_title_regex_description", merge_request_title_regex_description)
         pulumi.set(__self__, "merge_requests_access_level", merge_requests_access_level)
         pulumi.set(__self__, "merge_requests_enabled", merge_requests_enabled)
+        pulumi.set(__self__, "merge_requests_template", merge_requests_template)
         pulumi.set(__self__, "merge_trains_enabled", merge_trains_enabled)
+        pulumi.set(__self__, "merge_trains_skip_train_allowed", merge_trains_skip_train_allowed)
         pulumi.set(__self__, "mirror", mirror)
         pulumi.set(__self__, "mirror_overwrites_diverged_branches", mirror_overwrites_diverged_branches)
         pulumi.set(__self__, "mirror_trigger_builds", mirror_trigger_builds)
@@ -9979,61 +12203,70 @@ class GetProjectsProjectResult(dict):
         pulumi.set(__self__, "model_experiments_access_level", model_experiments_access_level)
         pulumi.set(__self__, "model_registry_access_level", model_registry_access_level)
         pulumi.set(__self__, "monitor_access_level", monitor_access_level)
+        pulumi.set(__self__, "mr_default_target_self", mr_default_target_self)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "name_with_namespace", name_with_namespace)
+        pulumi.set(__self__, "namespace_id", namespace_id)
         pulumi.set(__self__, "namespaces", namespaces)
         pulumi.set(__self__, "only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
         pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
         pulumi.set(__self__, "only_mirror_protected_branches", only_mirror_protected_branches)
         pulumi.set(__self__, "open_issues_count", open_issues_count)
+        pulumi.set(__self__, "operations_access_level", operations_access_level)
         pulumi.set(__self__, "owners", owners)
+        pulumi.set(__self__, "package_registry_access_level", package_registry_access_level)
         pulumi.set(__self__, "packages_enabled", packages_enabled)
+        pulumi.set(__self__, "pages_access_level", pages_access_level)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "path_with_namespace", path_with_namespace)
         pulumi.set(__self__, "permissions", permissions)
+        pulumi.set(__self__, "pre_receive_secret_detection_enabled", pre_receive_secret_detection_enabled)
         pulumi.set(__self__, "prevent_merge_without_jira_issue", prevent_merge_without_jira_issue)
+        pulumi.set(__self__, "printing_merge_request_link_enabled", printing_merge_request_link_enabled)
+        pulumi.set(__self__, "protect_merge_request_pipelines", protect_merge_request_pipelines)
         pulumi.set(__self__, "public_builds", public_builds)
+        pulumi.set(__self__, "public_jobs", public_jobs)
         pulumi.set(__self__, "readme_url", readme_url)
         pulumi.set(__self__, "releases_access_level", releases_access_level)
+        pulumi.set(__self__, "remove_source_branch_after_merge", remove_source_branch_after_merge)
         pulumi.set(__self__, "repository_access_level", repository_access_level)
         pulumi.set(__self__, "repository_storage", repository_storage)
         pulumi.set(__self__, "request_access_enabled", request_access_enabled)
         pulumi.set(__self__, "requirements_access_level", requirements_access_level)
+        pulumi.set(__self__, "requirements_enabled", requirements_enabled)
         pulumi.set(__self__, "resolve_outdated_diff_discussions", resolve_outdated_diff_discussions)
         pulumi.set(__self__, "resource_group_default_process_mode", resource_group_default_process_mode)
         pulumi.set(__self__, "restrict_user_defined_variables", restrict_user_defined_variables)
+        pulumi.set(__self__, "runner_token_expiration_interval", runner_token_expiration_interval)
         pulumi.set(__self__, "runners_token", runners_token)
         pulumi.set(__self__, "security_and_compliance_access_level", security_and_compliance_access_level)
+        pulumi.set(__self__, "security_and_compliance_enabled", security_and_compliance_enabled)
+        pulumi.set(__self__, "service_desk_address", service_desk_address)
+        pulumi.set(__self__, "service_desk_enabled", service_desk_enabled)
         pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
         pulumi.set(__self__, "shared_with_groups", shared_with_groups)
         pulumi.set(__self__, "snippets_access_level", snippets_access_level)
         pulumi.set(__self__, "snippets_enabled", snippets_enabled)
         pulumi.set(__self__, "squash_commit_template", squash_commit_template)
+        pulumi.set(__self__, "squash_option", squash_option)
         pulumi.set(__self__, "ssh_url_to_repo", ssh_url_to_repo)
         pulumi.set(__self__, "star_count", star_count)
         pulumi.set(__self__, "statistics", statistics)
         pulumi.set(__self__, "suggestion_commit_message", suggestion_commit_message)
         pulumi.set(__self__, "tag_lists", tag_lists)
         pulumi.set(__self__, "topics", topics)
+        pulumi.set(__self__, "updated_at", updated_at)
         pulumi.set(__self__, "visibility", visibility)
+        pulumi.set(__self__, "visibility_level", visibility_level)
         pulumi.set(__self__, "web_url", web_url)
         pulumi.set(__self__, "wiki_access_level", wiki_access_level)
         pulumi.set(__self__, "wiki_enabled", wiki_enabled)
 
     @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""Use `links` instead. To be removed in 19.0.""")
-    def _links(self) -> Mapping[str, _builtins.str]:
-        """
-        Links for the project. Use `links` instead. To be removed in 19.0.
-        """
-        return pulumi.get(self, "_links")
-
-    @_builtins.property
     @pulumi.getter(name="allowMergeOnSkippedPipeline")
     def allow_merge_on_skipped_pipeline(self) -> _builtins.bool:
         """
-        Whether allow_merge_on_skipped_pipeline is enabled for the project.
+        Whether `allow_merge_on_skipped_pipeline` is enabled for the project.
         """
         return pulumi.get(self, "allow_merge_on_skipped_pipeline")
 
@@ -10055,9 +12288,10 @@ class GetProjectsProjectResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="approvalsBeforeMerge")
+    @_utilities.deprecated("""Use the Merge Request Approvals API instead, to be removed in 20.0.""")
     def approvals_before_merge(self) -> _builtins.int:
         """
-        The numbers of approvals needed in a merge requests.
+        The number of approvals needed in a merge request.
         """
         return pulumi.get(self, "approvals_before_merge")
 
@@ -10065,7 +12299,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter
     def archived(self) -> _builtins.bool:
         """
-        Whether the project is archived.
+        Whether the project is in read-only mode (archived).
         """
         return pulumi.get(self, "archived")
 
@@ -10073,7 +12307,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="autoCancelPendingPipelines")
     def auto_cancel_pending_pipelines(self) -> _builtins.str:
         """
-        Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+        Auto-cancel pending pipelines. This isn't a boolean, but `enabled`/`disabled`.
         """
         return pulumi.get(self, "auto_cancel_pending_pipelines")
 
@@ -10094,6 +12328,14 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "auto_devops_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="autoDuoCodeReviewEnabled")
+    def auto_duo_code_review_enabled(self) -> _builtins.bool:
+        """
+        Whether GitLab Duo code review is enabled for the project.
+        """
+        return pulumi.get(self, "auto_duo_code_review_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="autocloseReferencedIssues")
     def autoclose_referenced_issues(self) -> _builtins.bool:
         """
@@ -10105,7 +12347,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="avatarUrl")
     def avatar_url(self) -> _builtins.str:
         """
-        The avatar url of the project.
+        The avatar URL of the project.
         """
         return pulumi.get(self, "avatar_url")
 
@@ -10121,7 +12363,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="buildGitStrategy")
     def build_git_strategy(self) -> _builtins.str:
         """
-        The Git strategy. Defaults to fetch.
+        The Git strategy. Defaults to `fetch`.
         """
         return pulumi.get(self, "build_git_strategy")
 
@@ -10140,6 +12382,22 @@ class GetProjectsProjectResult(dict):
         Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "builds_access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="canCreateMergeRequestIn")
+    def can_create_merge_request_in(self) -> _builtins.bool:
+        """
+        Whether the calling user can create merge requests in this project.
+        """
+        return pulumi.get(self, "can_create_merge_request_in")
+
+    @_builtins.property
+    @pulumi.getter(name="ciAllowForkPipelinesToRunInParentProject")
+    def ci_allow_fork_pipelines_to_run_in_parent_project(self) -> _builtins.bool:
+        """
+        Whether pipelines triggered from merge requests opened from forks may run in the parent project.
+        """
+        return pulumi.get(self, "ci_allow_fork_pipelines_to_run_in_parent_project")
 
     @_builtins.property
     @pulumi.getter(name="ciConfigPath")
@@ -10166,6 +12424,14 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "ci_delete_pipelines_in_seconds")
 
     @_builtins.property
+    @pulumi.getter(name="ciDisplayPipelineVariables")
+    def ci_display_pipeline_variables(self) -> _builtins.bool:
+        """
+        Whether pipeline variables are displayed in the UI.
+        """
+        return pulumi.get(self, "ci_display_pipeline_variables")
+
+    @_builtins.property
     @pulumi.getter(name="ciForwardDeploymentEnabled")
     def ci_forward_deployment_enabled(self) -> _builtins.bool:
         """
@@ -10185,31 +12451,71 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="ciIdTokenSubClaimComponents")
     def ci_id_token_sub_claim_components(self) -> Sequence[_builtins.str]:
         """
-        Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include ref_type and ref. Defaults to ["project_path", "ref_type", "ref"]. Introduced in GitLab 17.10.
+        Fields included in the sub claim of the ID Token. Accepts an array starting with `project_path`. The array might also include `ref_type` and `ref`. Defaults to `["project_path", "ref_type", "ref"]`. Introduced in GitLab 17.10.
         """
         return pulumi.get(self, "ci_id_token_sub_claim_components")
+
+    @_builtins.property
+    @pulumi.getter(name="ciJobTokenScopeEnabled")
+    def ci_job_token_scope_enabled(self) -> _builtins.bool:
+        """
+        Whether the CI/CD job token access scope is enabled (limits which projects can be accessed using the job token).
+        """
+        return pulumi.get(self, "ci_job_token_scope_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="ciOptInJwt")
+    def ci_opt_in_jwt(self) -> _builtins.bool:
+        """
+        Whether the project must explicitly opt in to receive ID tokens in CI jobs.
+        """
+        return pulumi.get(self, "ci_opt_in_jwt")
 
     @_builtins.property
     @pulumi.getter(name="ciPipelineVariablesMinimumOverrideRole")
     def ci_pipeline_variables_minimum_override_role(self) -> _builtins.str:
         """
-        The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`
+        The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `no_one_allowed`.
         """
         return pulumi.get(self, "ci_pipeline_variables_minimum_override_role")
+
+    @_builtins.property
+    @pulumi.getter(name="ciPushRepositoryForJobTokenAllowed")
+    def ci_push_repository_for_job_token_allowed(self) -> _builtins.bool:
+        """
+        Whether pushes to the repository using the CI/CD job token are allowed.
+        """
+        return pulumi.get(self, "ci_push_repository_for_job_token_allowed")
 
     @_builtins.property
     @pulumi.getter(name="ciRestrictPipelineCancellationRole")
     def ci_restrict_pipeline_cancellation_role(self) -> _builtins.str:
         """
-        The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+        The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no_one`.
         """
         return pulumi.get(self, "ci_restrict_pipeline_cancellation_role")
+
+    @_builtins.property
+    @pulumi.getter(name="ciSeparatedCaches")
+    def ci_separated_caches(self) -> _builtins.bool:
+        """
+        Use separate caches for protected branches.
+        """
+        return pulumi.get(self, "ci_separated_caches")
+
+    @_builtins.property
+    @pulumi.getter(name="complianceFrameworks")
+    def compliance_frameworks(self) -> Sequence[_builtins.str]:
+        """
+        Compliance frameworks applied to the project. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "compliance_frameworks")
 
     @_builtins.property
     @pulumi.getter(name="containerExpirationPolicies")
     def container_expiration_policies(self) -> Sequence['outputs.GetProjectsProjectContainerExpirationPolicyResult']:
         """
-        Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+        The image cleanup policy for this project.
         """
         return pulumi.get(self, "container_expiration_policies")
 
@@ -10217,17 +12523,26 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="containerRegistryAccessLevel")
     def container_registry_access_level(self) -> _builtins.str:
         """
-        Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+        Set visibility of container registry for this project. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "container_registry_access_level")
 
     @_builtins.property
     @pulumi.getter(name="containerRegistryEnabled")
+    @_utilities.deprecated("""Use `container_registry_access_level` instead, to be removed in 20.0.""")
     def container_registry_enabled(self) -> _builtins.bool:
         """
         Whether the container registry is enabled for the project.
         """
         return pulumi.get(self, "container_registry_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="containerRegistryImagePrefix")
+    def container_registry_image_prefix(self) -> _builtins.str:
+        """
+        The image prefix used by the container registry for this project.
+        """
+        return pulumi.get(self, "container_registry_image_prefix")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -10265,9 +12580,17 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description of the project.
+        A description of the project.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="emailsDisabled")
+    def emails_disabled(self) -> _builtins.bool:
+        """
+        Whether email notifications are disabled for the project.
+        """
+        return pulumi.get(self, "emails_disabled")
 
     @_builtins.property
     @pulumi.getter(name="emailsEnabled")
@@ -10284,6 +12607,14 @@ class GetProjectsProjectResult(dict):
         Whether the project is empty.
         """
         return pulumi.get(self, "empty_repo")
+
+    @_builtins.property
+    @pulumi.getter(name="enforceAuthChecksOnUploads")
+    def enforce_auth_checks_on_uploads(self) -> _builtins.bool:
+        """
+        Whether authentication checks are enforced when uploading to the project.
+        """
+        return pulumi.get(self, "enforce_auth_checks_on_uploads")
 
     @_builtins.property
     @pulumi.getter(name="environmentsAccessLevel")
@@ -10374,6 +12705,14 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "import_status")
 
     @_builtins.property
+    @pulumi.getter(name="importType")
+    def import_type(self) -> _builtins.str:
+        """
+        The type of import used to create the project (for example `github`, `bitbucket`).
+        """
+        return pulumi.get(self, "import_type")
+
+    @_builtins.property
     @pulumi.getter(name="importUrl")
     def import_url(self) -> _builtins.str:
         """
@@ -10390,6 +12729,14 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "infrastructure_access_level")
 
     @_builtins.property
+    @pulumi.getter(name="issueBranchTemplate")
+    def issue_branch_template(self) -> _builtins.str:
+        """
+        Template used to suggest a branch name when creating one from an issue.
+        """
+        return pulumi.get(self, "issue_branch_template")
+
+    @_builtins.property
     @pulumi.getter(name="issuesAccessLevel")
     def issues_access_level(self) -> _builtins.str:
         """
@@ -10399,6 +12746,7 @@ class GetProjectsProjectResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="issuesEnabled")
+    @_utilities.deprecated("""Use `issues_access_level` instead, to be removed in 20.0.""")
     def issues_enabled(self) -> _builtins.bool:
         """
         Whether issues are enabled for the project.
@@ -10406,10 +12754,19 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "issues_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="issuesTemplate")
+    def issues_template(self) -> _builtins.str:
+        """
+        Default description template for new issues.
+        """
+        return pulumi.get(self, "issues_template")
+
+    @_builtins.property
     @pulumi.getter(name="jobsEnabled")
+    @_utilities.deprecated("""Use `builds_access_level` instead, to be removed in 20.0.""")
     def jobs_enabled(self) -> _builtins.bool:
         """
-        Whether pipelines are enabled for the project.
+        Whether jobs are enabled for the project.
         """
         return pulumi.get(self, "jobs_enabled")
 
@@ -10425,7 +12782,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="lastActivityAt")
     def last_activity_at(self) -> _builtins.str:
         """
-        Last activirty time for the project.
+        Last activity time for the project.
         """
         return pulumi.get(self, "last_activity_at")
 
@@ -10438,12 +12795,61 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "lfs_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="licenseUrl")
+    def license_url(self) -> _builtins.str:
+        """
+        URL of the project's license file.
+        """
+        return pulumi.get(self, "license_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def licenses(self) -> Sequence['outputs.GetProjectsProjectLicenseResult']:
+        """
+        Information about the project's license, if one is detected.
+        """
+        return pulumi.get(self, "licenses")
+
+    @_builtins.property
     @pulumi.getter
     def links(self) -> Mapping[str, _builtins.str]:
         """
         Links for the project.
         """
         return pulumi.get(self, "links")
+
+    @_builtins.property
+    @pulumi.getter(name="markedForDeletion")
+    def marked_for_deletion(self) -> _builtins.bool:
+        """
+        Whether the project is marked for deletion.
+        """
+        return pulumi.get(self, "marked_for_deletion")
+
+    @_builtins.property
+    @pulumi.getter(name="markedForDeletionAt")
+    @_utilities.deprecated("""Use `marked_for_deletion_on` instead, to be removed in 20.0.""")
+    def marked_for_deletion_at(self) -> _builtins.str:
+        """
+        Timestamp at which the project was marked for deletion. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "marked_for_deletion_at")
+
+    @_builtins.property
+    @pulumi.getter(name="markedForDeletionOn")
+    def marked_for_deletion_on(self) -> _builtins.str:
+        """
+        Timestamp at which the project was marked for deletion. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "marked_for_deletion_on")
+
+    @_builtins.property
+    @pulumi.getter(name="maxArtifactsSize")
+    def max_artifacts_size(self) -> _builtins.int:
+        """
+        Maximum artifacts size, in MB, for the project. Overrides the instance-wide setting when set.
+        """
+        return pulumi.get(self, "max_artifacts_size")
 
     @_builtins.property
     @pulumi.getter(name="mergeCommitTemplate")
@@ -10470,6 +12876,22 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "merge_pipelines_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="mergeRequestTitleRegex")
+    def merge_request_title_regex(self) -> _builtins.str:
+        """
+        Regular expression that merge request titles must match.
+        """
+        return pulumi.get(self, "merge_request_title_regex")
+
+    @_builtins.property
+    @pulumi.getter(name="mergeRequestTitleRegexDescription")
+    def merge_request_title_regex_description(self) -> _builtins.str:
+        """
+        Human-readable description of `merge_request_title_regex`.
+        """
+        return pulumi.get(self, "merge_request_title_regex_description")
+
+    @_builtins.property
     @pulumi.getter(name="mergeRequestsAccessLevel")
     def merge_requests_access_level(self) -> _builtins.str:
         """
@@ -10479,11 +12901,20 @@ class GetProjectsProjectResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEnabled")
+    @_utilities.deprecated("""Use `merge_requests_access_level` instead, to be removed in 20.0.""")
     def merge_requests_enabled(self) -> _builtins.bool:
         """
         Whether merge requests are enabled for the project.
         """
         return pulumi.get(self, "merge_requests_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="mergeRequestsTemplate")
+    def merge_requests_template(self) -> _builtins.str:
+        """
+        Default description template for new merge requests.
+        """
+        return pulumi.get(self, "merge_requests_template")
 
     @_builtins.property
     @pulumi.getter(name="mergeTrainsEnabled")
@@ -10494,10 +12925,18 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "merge_trains_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="mergeTrainsSkipTrainAllowed")
+    def merge_trains_skip_train_allowed(self) -> _builtins.bool:
+        """
+        Allows merge train merge requests to be merged without waiting for pipelines to finish.
+        """
+        return pulumi.get(self, "merge_trains_skip_train_allowed")
+
+    @_builtins.property
     @pulumi.getter
     def mirror(self) -> _builtins.bool:
         """
-        Whether the pull mirroring is enabled for the project.
+        Whether pull mirroring is enabled for the project.
         """
         return pulumi.get(self, "mirror")
 
@@ -10505,7 +12944,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="mirrorOverwritesDivergedBranches")
     def mirror_overwrites_diverged_branches(self) -> _builtins.bool:
         """
-        Whether mirror_overwrites_diverged_branches is enabled for the project.
+        Whether `mirror_overwrites_diverged_branches` is enabled for the project.
         """
         return pulumi.get(self, "mirror_overwrites_diverged_branches")
 
@@ -10550,6 +12989,14 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "monitor_access_level")
 
     @_builtins.property
+    @pulumi.getter(name="mrDefaultTargetSelf")
+    def mr_default_target_self(self) -> _builtins.bool:
+        """
+        For forks, whether merge requests target the fork itself rather than the upstream project by default.
+        """
+        return pulumi.get(self, "mr_default_target_self")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
@@ -10566,6 +13013,15 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "name_with_namespace")
 
     @_builtins.property
+    @pulumi.getter(name="namespaceId")
+    @_utilities.deprecated("""Use `namespace[0].id` instead, to be removed in 20.0.""")
+    def namespace_id(self) -> _builtins.int:
+        """
+        The namespace (group or user) ID of the project. Alias for `namespace[0].id`.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @_builtins.property
     @pulumi.getter
     def namespaces(self) -> Sequence['outputs.GetProjectsProjectNamespaceResult']:
         """
@@ -10577,7 +13033,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
     def only_allow_merge_if_all_discussions_are_resolved(self) -> _builtins.bool:
         """
-        Whether only_allow_merge_if_all_discussions_are_resolved is enabled for the project.
+        Whether `only_allow_merge_if_all_discussions_are_resolved` is enabled for the project.
         """
         return pulumi.get(self, "only_allow_merge_if_all_discussions_are_resolved")
 
@@ -10585,7 +13041,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="onlyAllowMergeIfPipelineSucceeds")
     def only_allow_merge_if_pipeline_succeeds(self) -> _builtins.bool:
         """
-        Whether only_allow_merge_if_pipeline_succeeds is enabled for the project.
+        Whether `only_allow_merge_if_pipeline_succeeds` is enabled for the project.
         """
         return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
 
@@ -10593,7 +13049,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="onlyMirrorProtectedBranches")
     def only_mirror_protected_branches(self) -> _builtins.bool:
         """
-        Whether only_mirror_protected_branches is enabled for the project.
+        Whether `only_mirror_protected_branches` is enabled for the project.
         """
         return pulumi.get(self, "only_mirror_protected_branches")
 
@@ -10601,25 +13057,50 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="openIssuesCount")
     def open_issues_count(self) -> _builtins.int:
         """
-        The number of open issies for the project.
+        The number of open issues for the project.
         """
         return pulumi.get(self, "open_issues_count")
+
+    @_builtins.property
+    @pulumi.getter(name="operationsAccessLevel")
+    def operations_access_level(self) -> _builtins.str:
+        """
+        Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "operations_access_level")
 
     @_builtins.property
     @pulumi.getter
     def owners(self) -> Sequence['outputs.GetProjectsProjectOwnerResult']:
         """
-        The owner of the project, due to Terraform aggregate types limitations, this field's attributes are accessed with the `owner.0` prefix. Structure is documented below.
+        The owner of the project. Only populated when the calling token has administrator scope.
         """
         return pulumi.get(self, "owners")
 
     @_builtins.property
+    @pulumi.getter(name="packageRegistryAccessLevel")
+    def package_registry_access_level(self) -> _builtins.str:
+        """
+        The visibility of the package registry.
+        """
+        return pulumi.get(self, "package_registry_access_level")
+
+    @_builtins.property
     @pulumi.getter(name="packagesEnabled")
+    @_utilities.deprecated("""Use `package_registry_access_level` instead, to be removed in 20.0.""")
     def packages_enabled(self) -> _builtins.bool:
         """
         Whether packages are enabled for the project.
         """
         return pulumi.get(self, "packages_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="pagesAccessLevel")
+    def pages_access_level(self) -> _builtins.str:
+        """
+        Set the GitLab Pages access level. Valid values are `disabled`, `private`, `enabled`.
+        """
+        return pulumi.get(self, "pages_access_level")
 
     @_builtins.property
     @pulumi.getter
@@ -10646,6 +13127,14 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "permissions")
 
     @_builtins.property
+    @pulumi.getter(name="preReceiveSecretDetectionEnabled")
+    def pre_receive_secret_detection_enabled(self) -> _builtins.bool:
+        """
+        Whether pre-receive secret detection is enabled for the project.
+        """
+        return pulumi.get(self, "pre_receive_secret_detection_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="preventMergeWithoutJiraIssue")
     def prevent_merge_without_jira_issue(self) -> _builtins.bool:
         """
@@ -10654,18 +13143,43 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "prevent_merge_without_jira_issue")
 
     @_builtins.property
+    @pulumi.getter(name="printingMergeRequestLinkEnabled")
+    def printing_merge_request_link_enabled(self) -> _builtins.bool:
+        """
+        Show link to create/view merge request when pushing from the command line.
+        """
+        return pulumi.get(self, "printing_merge_request_link_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="protectMergeRequestPipelines")
+    def protect_merge_request_pipelines(self) -> _builtins.bool:
+        """
+        Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
+        """
+        return pulumi.get(self, "protect_merge_request_pipelines")
+
+    @_builtins.property
     @pulumi.getter(name="publicBuilds")
+    @_utilities.deprecated("""Use `public_jobs` instead, to be removed in 20.0.""")
     def public_builds(self) -> _builtins.bool:
         """
-        Whether public builds are enabled for the project.
+        If true, jobs can be viewed by non-project members. Alias for `public_jobs`.
         """
         return pulumi.get(self, "public_builds")
+
+    @_builtins.property
+    @pulumi.getter(name="publicJobs")
+    def public_jobs(self) -> _builtins.bool:
+        """
+        If true, jobs can be viewed by non-project members.
+        """
+        return pulumi.get(self, "public_jobs")
 
     @_builtins.property
     @pulumi.getter(name="readmeUrl")
     def readme_url(self) -> _builtins.str:
         """
-        The remote url of the project.
+        The URL of the project README.
         """
         return pulumi.get(self, "readme_url")
 
@@ -10676,6 +13190,14 @@ class GetProjectsProjectResult(dict):
         Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "releases_access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="removeSourceBranchAfterMerge")
+    def remove_source_branch_after_merge(self) -> _builtins.bool:
+        """
+        Enable `Delete source branch` option by default for all new merge requests.
+        """
+        return pulumi.get(self, "remove_source_branch_after_merge")
 
     @_builtins.property
     @pulumi.getter(name="repositoryAccessLevel")
@@ -10710,10 +13232,18 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "requirements_access_level")
 
     @_builtins.property
+    @pulumi.getter(name="requirementsEnabled")
+    def requirements_enabled(self) -> _builtins.bool:
+        """
+        Whether the requirements feature is enabled. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "requirements_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="resolveOutdatedDiffDiscussions")
     def resolve_outdated_diff_discussions(self) -> _builtins.bool:
         """
-        Whether resolve_outdated_diff_discussions is enabled for the project
+        Automatically resolve merge request diffs discussions on lines changed with a push.
         """
         return pulumi.get(self, "resolve_outdated_diff_discussions")
 
@@ -10727,6 +13257,7 @@ class GetProjectsProjectResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="restrictUserDefinedVariables")
+    @_utilities.deprecated("""Use `ci_pipeline_variables_minimum_override_role` instead, to be removed in 20.0.""")
     def restrict_user_defined_variables(self) -> _builtins.bool:
         """
         Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
@@ -10734,10 +13265,18 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "restrict_user_defined_variables")
 
     @_builtins.property
+    @pulumi.getter(name="runnerTokenExpirationInterval")
+    def runner_token_expiration_interval(self) -> _builtins.int:
+        """
+        Runner token expiration interval, in seconds.
+        """
+        return pulumi.get(self, "runner_token_expiration_interval")
+
+    @_builtins.property
     @pulumi.getter(name="runnersToken")
     def runners_token(self) -> _builtins.str:
         """
-        The runners token for the project.
+        Registration token to use during runner setup.
         """
         return pulumi.get(self, "runners_token")
 
@@ -10748,6 +13287,30 @@ class GetProjectsProjectResult(dict):
         Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "security_and_compliance_access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="securityAndComplianceEnabled")
+    def security_and_compliance_enabled(self) -> _builtins.bool:
+        """
+        Whether the security and compliance feature is enabled.
+        """
+        return pulumi.get(self, "security_and_compliance_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDeskAddress")
+    def service_desk_address(self) -> _builtins.str:
+        """
+        The Service Desk email address for the project.
+        """
+        return pulumi.get(self, "service_desk_address")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDeskEnabled")
+    def service_desk_enabled(self) -> _builtins.bool:
+        """
+        Whether Service Desk is enabled for the project.
+        """
+        return pulumi.get(self, "service_desk_enabled")
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersEnabled")
@@ -10761,7 +13324,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="sharedWithGroups")
     def shared_with_groups(self) -> Sequence['outputs.GetProjectsProjectSharedWithGroupResult']:
         """
-        Groups the the project is shared with.
+        Describes groups which have access shared to this project.
         """
         return pulumi.get(self, "shared_with_groups")
 
@@ -10775,6 +13338,7 @@ class GetProjectsProjectResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="snippetsEnabled")
+    @_utilities.deprecated("""Use `snippets_access_level` instead, to be removed in 20.0.""")
     def snippets_enabled(self) -> _builtins.bool:
         """
         Whether snippets are enabled for the project.
@@ -10788,6 +13352,14 @@ class GetProjectsProjectResult(dict):
         Template used to create squash commit message in merge requests.
         """
         return pulumi.get(self, "squash_commit_template")
+
+    @_builtins.property
+    @pulumi.getter(name="squashOption")
+    def squash_option(self) -> _builtins.str:
+        """
+        The project's squash option for merge requests (`never`, `always`, `default_on`, `default_off`).
+        """
+        return pulumi.get(self, "squash_option")
 
     @_builtins.property
     @pulumi.getter(name="sshUrlToRepo")
@@ -10823,9 +13395,10 @@ class GetProjectsProjectResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="tagLists")
+    @_utilities.deprecated("""Use `topics` instead, to be removed in 20.0.""")
     def tag_lists(self) -> Sequence[_builtins.str]:
         """
-        A set of the project topics (formerly called "project tags").
+        The list of project topics (formerly project tags).
         """
         return pulumi.get(self, "tag_lists")
 
@@ -10838,18 +13411,35 @@ class GetProjectsProjectResult(dict):
         return pulumi.get(self, "topics")
 
     @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        The time the project was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @_builtins.property
     @pulumi.getter
     def visibility(self) -> _builtins.str:
         """
-        The visibility of the project.
+        The visibility of the project (`private`, `internal`, `public`).
         """
         return pulumi.get(self, "visibility")
+
+    @_builtins.property
+    @pulumi.getter(name="visibilityLevel")
+    @_utilities.deprecated("""Use `visibility` instead, to be removed in 20.0.""")
+    def visibility_level(self) -> _builtins.str:
+        """
+        The visibility of the project. Alias for `visibility`.
+        """
+        return pulumi.get(self, "visibility_level")
 
     @_builtins.property
     @pulumi.getter(name="webUrl")
     def web_url(self) -> _builtins.str:
         """
-        The web url of the project.
+        URL that can be used to find the project in a browser.
         """
         return pulumi.get(self, "web_url")
 
@@ -10863,6 +13453,7 @@ class GetProjectsProjectResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="wikiEnabled")
+    @_utilities.deprecated("""Use `wiki_access_level` instead, to be removed in 20.0.""")
     def wiki_enabled(self) -> _builtins.bool:
         """
         Whether wiki is enabled for the project.
@@ -10971,7 +13562,7 @@ class GetProjectsProjectForkedFromProjectResult(dict):
         :param _builtins.str name_with_namespace: In `group / subgroup / project` or `user / project` format.
         :param _builtins.str path: The path of the upstream project.
         :param _builtins.str path_with_namespace: In `group/subgroup/project` or `user/project` format.
-        :param _builtins.str web_url: The web url of the upstream project.
+        :param _builtins.str web_url: The web URL of the upstream project.
         """
         pulumi.set(__self__, "http_url_to_repo", http_url_to_repo)
         pulumi.set(__self__, "id", id)
@@ -11033,9 +13624,71 @@ class GetProjectsProjectForkedFromProjectResult(dict):
     @pulumi.getter(name="webUrl")
     def web_url(self) -> _builtins.str:
         """
-        The web url of the upstream project.
+        The web URL of the upstream project.
         """
         return pulumi.get(self, "web_url")
+
+
+@pulumi.output_type
+class GetProjectsProjectLicenseResult(dict):
+    def __init__(__self__, *,
+                 html_url: _builtins.str,
+                 key: _builtins.str,
+                 name: _builtins.str,
+                 nickname: _builtins.str,
+                 source_url: _builtins.str):
+        """
+        :param _builtins.str html_url: URL to the license's human-readable description.
+        :param _builtins.str key: The license key (e.g. `mit`).
+        :param _builtins.str name: The license name (e.g. `MIT License`).
+        :param _builtins.str nickname: The license nickname.
+        :param _builtins.str source_url: URL to the license source text.
+        """
+        pulumi.set(__self__, "html_url", html_url)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "nickname", nickname)
+        pulumi.set(__self__, "source_url", source_url)
+
+    @_builtins.property
+    @pulumi.getter(name="htmlUrl")
+    def html_url(self) -> _builtins.str:
+        """
+        URL to the license's human-readable description.
+        """
+        return pulumi.get(self, "html_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The license key (e.g. `mit`).
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The license name (e.g. `MIT License`).
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def nickname(self) -> _builtins.str:
+        """
+        The license nickname.
+        """
+        return pulumi.get(self, "nickname")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceUrl")
+    def source_url(self) -> _builtins.str:
+        """
+        URL to the license source text.
+        """
+        return pulumi.get(self, "source_url")
 
 
 @pulumi.output_type
@@ -11110,12 +13763,12 @@ class GetProjectsProjectOwnerResult(dict):
                  username: _builtins.str,
                  website_url: _builtins.str):
         """
-        :param _builtins.str avatar_url: The avatar url of the owner.
+        :param _builtins.str avatar_url: The avatar URL of the owner.
         :param _builtins.int id: The ID of the owner.
         :param _builtins.str name: The name of the owner.
         :param _builtins.str state: The state of the owner.
         :param _builtins.str username: The username of the owner.
-        :param _builtins.str website_url: The website url of the owner.
+        :param _builtins.str website_url: The website URL of the owner.
         """
         pulumi.set(__self__, "avatar_url", avatar_url)
         pulumi.set(__self__, "id", id)
@@ -11128,7 +13781,7 @@ class GetProjectsProjectOwnerResult(dict):
     @pulumi.getter(name="avatarUrl")
     def avatar_url(self) -> _builtins.str:
         """
-        The avatar url of the owner.
+        The avatar URL of the owner.
         """
         return pulumi.get(self, "avatar_url")
 
@@ -11168,7 +13821,7 @@ class GetProjectsProjectOwnerResult(dict):
     @pulumi.getter(name="websiteUrl")
     def website_url(self) -> _builtins.str:
         """
-        The website url of the owner.
+        The website URL of the owner.
         """
         return pulumi.get(self, "website_url")
 
@@ -11205,31 +13858,54 @@ class GetProjectsProjectPermissionResult(dict):
 @pulumi.output_type
 class GetProjectsProjectSharedWithGroupResult(dict):
     def __init__(__self__, *,
-                 group_access_level: _builtins.str,
+                 group_access_level: _builtins.int,
+                 group_access_level_name: _builtins.str,
+                 group_full_path: _builtins.str,
                  group_id: _builtins.int,
                  group_name: _builtins.str):
         """
-        :param _builtins.str group_access_level: The group access level.
-        :param _builtins.int group_id: The group ID.
-        :param _builtins.str group_name: The group name.
+        :param _builtins.int group_access_level: The access level (integer) of the shared group. Matches the upstream GitLab API. See `group_access_level_name` for the human-readable string form.
+        :param _builtins.str group_access_level_name: The human-readable access level name of the shared group (e.g. `developer`, `maintainer`). Computed from `group_access_level`.
+        :param _builtins.str group_full_path: The full path of the group shared with.
+        :param _builtins.int group_id: The ID of the group shared with.
+        :param _builtins.str group_name: The name of the group shared with.
         """
         pulumi.set(__self__, "group_access_level", group_access_level)
+        pulumi.set(__self__, "group_access_level_name", group_access_level_name)
+        pulumi.set(__self__, "group_full_path", group_full_path)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "group_name", group_name)
 
     @_builtins.property
     @pulumi.getter(name="groupAccessLevel")
-    def group_access_level(self) -> _builtins.str:
+    def group_access_level(self) -> _builtins.int:
         """
-        The group access level.
+        The access level (integer) of the shared group. Matches the upstream GitLab API. See `group_access_level_name` for the human-readable string form.
         """
         return pulumi.get(self, "group_access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="groupAccessLevelName")
+    @_utilities.deprecated("""Use `group_access_level` instead, to be removed in 20.0.""")
+    def group_access_level_name(self) -> _builtins.str:
+        """
+        The human-readable access level name of the shared group (e.g. `developer`, `maintainer`). Computed from `group_access_level`.
+        """
+        return pulumi.get(self, "group_access_level_name")
+
+    @_builtins.property
+    @pulumi.getter(name="groupFullPath")
+    def group_full_path(self) -> _builtins.str:
+        """
+        The full path of the group shared with.
+        """
+        return pulumi.get(self, "group_full_path")
 
     @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> _builtins.int:
         """
-        The group ID.
+        The ID of the group shared with.
         """
         return pulumi.get(self, "group_id")
 
@@ -11237,7 +13913,7 @@ class GetProjectsProjectSharedWithGroupResult(dict):
     @pulumi.getter(name="groupName")
     def group_name(self) -> _builtins.str:
         """
-        The group name.
+        The name of the group shared with.
         """
         return pulumi.get(self, "group_name")
 
@@ -11473,35 +14149,23 @@ class GetReleaseLinksReleaseLinkResult(dict):
 @pulumi.output_type
 class GetRepositoryTreeTreeResult(dict):
     def __init__(__self__, *,
-                 id: _builtins.str,
                  mode: _builtins.str,
                  name: _builtins.str,
                  node_id: _builtins.str,
                  path: _builtins.str,
                  type: _builtins.str):
         """
-        :param _builtins.str id: The project ID. Use `node_id` instead. To be removed in 19.0.
         :param _builtins.str mode: Unix access mode of the file in the repository.
         :param _builtins.str name: Name of the blob or tree in the repository
         :param _builtins.str node_id: The SHA-1 hash of the tree or blob in the repository.
         :param _builtins.str path: Path of the object inside of the repository.
         :param _builtins.str type: Type of object in the repository. Can be either type tree or of type blob
         """
-        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "node_id", node_id)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""Use `node_id` instead. To be removed in 19.0.""")
-    def id(self) -> _builtins.str:
-        """
-        The project ID. Use `node_id` instead. To be removed in 19.0.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -12080,6 +14744,134 @@ class GetSecurityPolicyDocumentScanExecutionPolicySkipCiResult(dict):
         Allow (true) or prevent (false) the use of skip-ci directive.
         """
         return pulumi.get(self, "allowed")
+
+
+@pulumi.output_type
+class GetSystemHooksHookResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 description: _builtins.str,
+                 enable_ssl_verification: _builtins.bool,
+                 hook_id: _builtins.int,
+                 merge_requests_events: _builtins.bool,
+                 name: _builtins.str,
+                 push_events: _builtins.bool,
+                 repository_update_events: _builtins.bool,
+                 signing_token_present: _builtins.bool,
+                 tag_push_events: _builtins.bool,
+                 url: _builtins.str):
+        """
+        :param _builtins.str created_at: The date and time the hook was created in ISO8601 format.
+        :param _builtins.str description: The description of the hook.
+        :param _builtins.bool enable_ssl_verification: Do SSL verification when triggering the hook.
+        :param _builtins.int hook_id: The id of the system hook.
+        :param _builtins.bool merge_requests_events: Trigger hook on merge requests events.
+        :param _builtins.str name: The name of the hook.
+        :param _builtins.bool push_events: When true, the hook fires on push events.
+        :param _builtins.bool repository_update_events: Trigger hook on repository update events.
+        :param _builtins.bool signing_token_present: Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
+        :param _builtins.bool tag_push_events: When true, the hook fires on new tags being pushed.
+        :param _builtins.str url: The hook URL.
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
+        pulumi.set(__self__, "hook_id", hook_id)
+        pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "push_events", push_events)
+        pulumi.set(__self__, "repository_update_events", repository_update_events)
+        pulumi.set(__self__, "signing_token_present", signing_token_present)
+        pulumi.set(__self__, "tag_push_events", tag_push_events)
+        pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The date and time the hook was created in ISO8601 format.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the hook.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="enableSslVerification")
+    def enable_ssl_verification(self) -> _builtins.bool:
+        """
+        Do SSL verification when triggering the hook.
+        """
+        return pulumi.get(self, "enable_ssl_verification")
+
+    @_builtins.property
+    @pulumi.getter(name="hookId")
+    def hook_id(self) -> _builtins.int:
+        """
+        The id of the system hook.
+        """
+        return pulumi.get(self, "hook_id")
+
+    @_builtins.property
+    @pulumi.getter(name="mergeRequestsEvents")
+    def merge_requests_events(self) -> _builtins.bool:
+        """
+        Trigger hook on merge requests events.
+        """
+        return pulumi.get(self, "merge_requests_events")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the hook.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="pushEvents")
+    def push_events(self) -> _builtins.bool:
+        """
+        When true, the hook fires on push events.
+        """
+        return pulumi.get(self, "push_events")
+
+    @_builtins.property
+    @pulumi.getter(name="repositoryUpdateEvents")
+    def repository_update_events(self) -> _builtins.bool:
+        """
+        Trigger hook on repository update events.
+        """
+        return pulumi.get(self, "repository_update_events")
+
+    @_builtins.property
+    @pulumi.getter(name="signingTokenPresent")
+    def signing_token_present(self) -> _builtins.bool:
+        """
+        Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
+        """
+        return pulumi.get(self, "signing_token_present")
+
+    @_builtins.property
+    @pulumi.getter(name="tagPushEvents")
+    def tag_push_events(self) -> _builtins.bool:
+        """
+        When true, the hook fires on new tags being pushed.
+        """
+        return pulumi.get(self, "tag_push_events")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> _builtins.str:
+        """
+        The hook URL.
+        """
+        return pulumi.get(self, "url")
 
 
 @pulumi.output_type

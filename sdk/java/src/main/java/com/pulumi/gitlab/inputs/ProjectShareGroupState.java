@@ -17,29 +17,6 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
     public static final ProjectShareGroupState Empty = new ProjectShareGroupState();
 
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-     * 
-     * @deprecated
-     * Use `groupAccess` instead of the `accessLevel` attribute.
-     * 
-     */
-    @Deprecated /* Use `groupAccess` instead of the `accessLevel` attribute. */
-    @Import(name="accessLevel")
-    private @Nullable Output<String> accessLevel;
-
-    /**
-     * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-     * 
-     * @deprecated
-     * Use `groupAccess` instead of the `accessLevel` attribute.
-     * 
-     */
-    @Deprecated /* Use `groupAccess` instead of the `accessLevel` attribute. */
-    public Optional<Output<String>> accessLevel() {
-        return Optional.ofNullable(this.accessLevel);
-    }
-
-    /**
      * Share expiration date. Format: `YYYY-MM-DD`
      * 
      */
@@ -102,7 +79,6 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
     private ProjectShareGroupState() {}
 
     private ProjectShareGroupState(ProjectShareGroupState $) {
-        this.accessLevel = $.accessLevel;
         this.expiresAt = $.expiresAt;
         this.groupAccess = $.groupAccess;
         this.groupId = $.groupId;
@@ -125,35 +101,6 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
 
         public Builder(ProjectShareGroupState defaults) {
             $ = new ProjectShareGroupState(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param accessLevel The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `groupAccess` instead of the `accessLevel` attribute.
-         * 
-         */
-        @Deprecated /* Use `groupAccess` instead of the `accessLevel` attribute. */
-        public Builder accessLevel(@Nullable Output<String> accessLevel) {
-            $.accessLevel = accessLevel;
-            return this;
-        }
-
-        /**
-         * @param accessLevel The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `groupAccess` instead of the `accessLevel` attribute.
-         * 
-         */
-        @Deprecated /* Use `groupAccess` instead of the `accessLevel` attribute. */
-        public Builder accessLevel(String accessLevel) {
-            return accessLevel(Output.of(accessLevel));
         }
 
         /**

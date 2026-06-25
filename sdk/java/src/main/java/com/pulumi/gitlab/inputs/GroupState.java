@@ -51,6 +51,21 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+     * 
+     */
+    @Import(name="archiveOnDestroy")
+    private @Nullable Output<Boolean> archiveOnDestroy;
+
+    /**
+     * @return Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+     * 
+     */
+    public Optional<Output<Boolean>> archiveOnDestroy() {
+        return Optional.ofNullable(this.archiveOnDestroy);
+    }
+
+    /**
      * Default to Auto DevOps pipeline for all projects within this group.
      * 
      */
@@ -633,6 +648,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     private GroupState(GroupState $) {
         this.allowMergeOnSkippedPipeline = $.allowMergeOnSkippedPipeline;
         this.allowedEmailDomainsLists = $.allowedEmailDomainsLists;
+        this.archiveOnDestroy = $.archiveOnDestroy;
         this.autoDevopsEnabled = $.autoDevopsEnabled;
         this.avatar = $.avatar;
         this.avatarHash = $.avatarHash;
@@ -741,6 +757,27 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowedEmailDomainsLists(String... allowedEmailDomainsLists) {
             return allowedEmailDomainsLists(List.of(allowedEmailDomainsLists));
+        }
+
+        /**
+         * @param archiveOnDestroy Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder archiveOnDestroy(@Nullable Output<Boolean> archiveOnDestroy) {
+            $.archiveOnDestroy = archiveOnDestroy;
+            return this;
+        }
+
+        /**
+         * @param archiveOnDestroy Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder archiveOnDestroy(Boolean archiveOnDestroy) {
+            return archiveOnDestroy(Output.of(archiveOnDestroy));
         }
 
         /**

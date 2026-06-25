@@ -76,12 +76,6 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly analyticsAccessLevel: pulumi.Output<string>;
     /**
-     * Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-     *
-     * @deprecated Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-     */
-    declare public readonly approvalsBeforeMerge: pulumi.Output<number | undefined>;
-    /**
      * Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
      */
     declare public readonly archiveOnDestroy: pulumi.Output<boolean | undefined>;
@@ -150,6 +144,10 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly ciDeletePipelinesInSeconds: pulumi.Output<number>;
     /**
+     * Show pipeline variables on the pipeline details page. Introduced in GitLab 17.8.
+     */
+    declare public readonly ciDisplayPipelineVariables: pulumi.Output<boolean>;
+    /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     declare public readonly ciForwardDeploymentEnabled: pulumi.Output<boolean>;
@@ -170,7 +168,7 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly ciPushRepositoryForJobTokenAllowed: pulumi.Output<boolean>;
     /**
-     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `noOne`
      */
     declare public readonly ciRestrictPipelineCancellationRole: pulumi.Output<string>;
     /**
@@ -185,12 +183,6 @@ export class Project extends pulumi.CustomResource {
      * Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
      */
     declare public readonly containerRegistryAccessLevel: pulumi.Output<string>;
-    /**
-     * Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-     */
-    declare public readonly containerRegistryEnabled: pulumi.Output<boolean>;
     /**
      * The default branch for the project.
      */
@@ -240,7 +232,7 @@ export class Project extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly httpUrlToRepo: pulumi.Output<string>;
     /**
-     * Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+     * Git URL to a repository to be imported. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      */
     declare public readonly importUrl: pulumi.Output<string>;
     /**
@@ -263,12 +255,6 @@ export class Project extends pulumi.CustomResource {
      * Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      */
     declare public readonly issuesAccessLevel: pulumi.Output<string>;
-    /**
-     * Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `issuesAccessLevel` instead. To be removed in 19.0.
-     */
-    declare public readonly issuesEnabled: pulumi.Output<boolean>;
     /**
      * Sets the template for new issues in the project.
      */
@@ -310,12 +296,6 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly mergeRequestsAccessLevel: pulumi.Output<string>;
     /**
-     * Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-     */
-    declare public readonly mergeRequestsEnabled: pulumi.Output<boolean>;
-    /**
      * Sets the template for new merge requests in the project.
      */
     declare public readonly mergeRequestsTemplate: pulumi.Output<string | undefined>;
@@ -327,24 +307,6 @@ export class Project extends pulumi.CustomResource {
      * Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
      */
     declare public readonly mergeTrainsSkipTrainAllowed: pulumi.Output<boolean>;
-    /**
-     * Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
-     *
-     * @deprecated To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
-     */
-    declare public readonly mirror: pulumi.Output<boolean>;
-    /**
-     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
-     *
-     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
-     */
-    declare public readonly mirrorOverwritesDivergedBranches: pulumi.Output<boolean>;
-    /**
-     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
-     *
-     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
-     */
-    declare public readonly mirrorTriggerBuilds: pulumi.Output<boolean>;
     /**
      * Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -378,11 +340,9 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly onlyAllowMergeIfPipelineSucceeds: pulumi.Output<boolean>;
     /**
-     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
-     *
-     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
+     * Set visibility of the package registry. Valid values are `disabled`, `private`, `enabled`, `public`.
      */
-    declare public readonly onlyMirrorProtectedBranches: pulumi.Output<boolean>;
+    declare public readonly packageRegistryAccessLevel: pulumi.Output<string>;
     /**
      * Enable packages repository for the project.
      */
@@ -404,12 +364,6 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly permanentlyDeleteOnDestroy: pulumi.Output<boolean | undefined>;
     /**
-     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `buildsAccessLevel` instead. To be removed in 19.0.
-     */
-    declare public readonly pipelinesEnabled: pulumi.Output<boolean>;
-    /**
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      */
     declare public readonly preReceiveSecretDetectionEnabled: pulumi.Output<boolean>;
@@ -421,6 +375,10 @@ export class Project extends pulumi.CustomResource {
      * Show link to create/view merge request when pushing from the command line
      */
     declare public readonly printingMergeRequestLinkEnabled: pulumi.Output<boolean>;
+    /**
+     * Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
+     */
+    declare public readonly protectMergeRequestPipelines: pulumi.Output<boolean>;
     /**
      * If true, jobs can be viewed by non-project members.
      *
@@ -468,12 +426,6 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly resourceGroupDefaultProcessMode: pulumi.Output<string>;
     /**
-     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-     */
-    declare public readonly restrictUserDefinedVariables: pulumi.Output<boolean>;
-    /**
      * Registration token to use during runner setup.
      */
     declare public /*out*/ readonly runnersToken: pulumi.Output<string>;
@@ -497,12 +449,6 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly snippetsAccessLevel: pulumi.Output<string>;
     /**
-     * Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `snippetsAccessLevel` instead. To be removed in 19.0.
-     */
-    declare public readonly snippetsEnabled: pulumi.Output<boolean>;
-    /**
      * Template used to create squash commit message in merge requests.
      */
     declare public readonly squashCommitTemplate: pulumi.Output<string | undefined>;
@@ -518,12 +464,6 @@ export class Project extends pulumi.CustomResource {
      * The commit message used to apply merge request suggestions.
      */
     declare public readonly suggestionCommitMessage: pulumi.Output<string | undefined>;
-    /**
-     * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `topics` instead. To be removed in 19.0.
-     */
-    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
      */
@@ -553,12 +493,6 @@ export class Project extends pulumi.CustomResource {
      * Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
      */
     declare public readonly wikiAccessLevel: pulumi.Output<string>;
-    /**
-     * Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `wikiAccessLevel` instead. To be removed in 19.0.
-     */
-    declare public readonly wikiEnabled: pulumi.Output<boolean>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -576,7 +510,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["allowMergeOnSkippedPipeline"] = state?.allowMergeOnSkippedPipeline;
             resourceInputs["allowPipelineTriggerApproveDeployment"] = state?.allowPipelineTriggerApproveDeployment;
             resourceInputs["analyticsAccessLevel"] = state?.analyticsAccessLevel;
-            resourceInputs["approvalsBeforeMerge"] = state?.approvalsBeforeMerge;
             resourceInputs["archiveOnDestroy"] = state?.archiveOnDestroy;
             resourceInputs["archived"] = state?.archived;
             resourceInputs["autoCancelPendingPipelines"] = state?.autoCancelPendingPipelines;
@@ -594,6 +527,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["ciConfigPath"] = state?.ciConfigPath;
             resourceInputs["ciDefaultGitDepth"] = state?.ciDefaultGitDepth;
             resourceInputs["ciDeletePipelinesInSeconds"] = state?.ciDeletePipelinesInSeconds;
+            resourceInputs["ciDisplayPipelineVariables"] = state?.ciDisplayPipelineVariables;
             resourceInputs["ciForwardDeploymentEnabled"] = state?.ciForwardDeploymentEnabled;
             resourceInputs["ciForwardDeploymentRollbackAllowed"] = state?.ciForwardDeploymentRollbackAllowed;
             resourceInputs["ciIdTokenSubClaimComponents"] = state?.ciIdTokenSubClaimComponents;
@@ -603,7 +537,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["ciSeparatedCaches"] = state?.ciSeparatedCaches;
             resourceInputs["containerExpirationPolicy"] = state?.containerExpirationPolicy;
             resourceInputs["containerRegistryAccessLevel"] = state?.containerRegistryAccessLevel;
-            resourceInputs["containerRegistryEnabled"] = state?.containerRegistryEnabled;
             resourceInputs["defaultBranch"] = state?.defaultBranch;
             resourceInputs["description"] = state?.description;
             resourceInputs["emailsEnabled"] = state?.emailsEnabled;
@@ -622,7 +555,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["infrastructureAccessLevel"] = state?.infrastructureAccessLevel;
             resourceInputs["initializeWithReadme"] = state?.initializeWithReadme;
             resourceInputs["issuesAccessLevel"] = state?.issuesAccessLevel;
-            resourceInputs["issuesEnabled"] = state?.issuesEnabled;
             resourceInputs["issuesTemplate"] = state?.issuesTemplate;
             resourceInputs["keepLatestArtifact"] = state?.keepLatestArtifact;
             resourceInputs["lfsEnabled"] = state?.lfsEnabled;
@@ -633,13 +565,9 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["mergeRequestTitleRegex"] = state?.mergeRequestTitleRegex;
             resourceInputs["mergeRequestTitleRegexDescription"] = state?.mergeRequestTitleRegexDescription;
             resourceInputs["mergeRequestsAccessLevel"] = state?.mergeRequestsAccessLevel;
-            resourceInputs["mergeRequestsEnabled"] = state?.mergeRequestsEnabled;
             resourceInputs["mergeRequestsTemplate"] = state?.mergeRequestsTemplate;
             resourceInputs["mergeTrainsEnabled"] = state?.mergeTrainsEnabled;
             resourceInputs["mergeTrainsSkipTrainAllowed"] = state?.mergeTrainsSkipTrainAllowed;
-            resourceInputs["mirror"] = state?.mirror;
-            resourceInputs["mirrorOverwritesDivergedBranches"] = state?.mirrorOverwritesDivergedBranches;
-            resourceInputs["mirrorTriggerBuilds"] = state?.mirrorTriggerBuilds;
             resourceInputs["modelExperimentsAccessLevel"] = state?.modelExperimentsAccessLevel;
             resourceInputs["modelRegistryAccessLevel"] = state?.modelRegistryAccessLevel;
             resourceInputs["monitorAccessLevel"] = state?.monitorAccessLevel;
@@ -648,16 +576,16 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["namespaceId"] = state?.namespaceId;
             resourceInputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = state?.onlyAllowMergeIfAllDiscussionsAreResolved;
             resourceInputs["onlyAllowMergeIfPipelineSucceeds"] = state?.onlyAllowMergeIfPipelineSucceeds;
-            resourceInputs["onlyMirrorProtectedBranches"] = state?.onlyMirrorProtectedBranches;
+            resourceInputs["packageRegistryAccessLevel"] = state?.packageRegistryAccessLevel;
             resourceInputs["packagesEnabled"] = state?.packagesEnabled;
             resourceInputs["pagesAccessLevel"] = state?.pagesAccessLevel;
             resourceInputs["path"] = state?.path;
             resourceInputs["pathWithNamespace"] = state?.pathWithNamespace;
             resourceInputs["permanentlyDeleteOnDestroy"] = state?.permanentlyDeleteOnDestroy;
-            resourceInputs["pipelinesEnabled"] = state?.pipelinesEnabled;
             resourceInputs["preReceiveSecretDetectionEnabled"] = state?.preReceiveSecretDetectionEnabled;
             resourceInputs["preventMergeWithoutJiraIssue"] = state?.preventMergeWithoutJiraIssue;
             resourceInputs["printingMergeRequestLinkEnabled"] = state?.printingMergeRequestLinkEnabled;
+            resourceInputs["protectMergeRequestPipelines"] = state?.protectMergeRequestPipelines;
             resourceInputs["publicBuilds"] = state?.publicBuilds;
             resourceInputs["publicJobs"] = state?.publicJobs;
             resourceInputs["pushRules"] = state?.pushRules;
@@ -669,18 +597,15 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["requirementsAccessLevel"] = state?.requirementsAccessLevel;
             resourceInputs["resolveOutdatedDiffDiscussions"] = state?.resolveOutdatedDiffDiscussions;
             resourceInputs["resourceGroupDefaultProcessMode"] = state?.resourceGroupDefaultProcessMode;
-            resourceInputs["restrictUserDefinedVariables"] = state?.restrictUserDefinedVariables;
             resourceInputs["runnersToken"] = state?.runnersToken;
             resourceInputs["securityAndComplianceAccessLevel"] = state?.securityAndComplianceAccessLevel;
             resourceInputs["sharedRunnersEnabled"] = state?.sharedRunnersEnabled;
             resourceInputs["skipWaitForDefaultBranchProtection"] = state?.skipWaitForDefaultBranchProtection;
             resourceInputs["snippetsAccessLevel"] = state?.snippetsAccessLevel;
-            resourceInputs["snippetsEnabled"] = state?.snippetsEnabled;
             resourceInputs["squashCommitTemplate"] = state?.squashCommitTemplate;
             resourceInputs["squashOption"] = state?.squashOption;
             resourceInputs["sshUrlToRepo"] = state?.sshUrlToRepo;
             resourceInputs["suggestionCommitMessage"] = state?.suggestionCommitMessage;
-            resourceInputs["tags"] = state?.tags;
             resourceInputs["templateName"] = state?.templateName;
             resourceInputs["templateProjectId"] = state?.templateProjectId;
             resourceInputs["topics"] = state?.topics;
@@ -688,13 +613,11 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["visibilityLevel"] = state?.visibilityLevel;
             resourceInputs["webUrl"] = state?.webUrl;
             resourceInputs["wikiAccessLevel"] = state?.wikiAccessLevel;
-            resourceInputs["wikiEnabled"] = state?.wikiEnabled;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
             resourceInputs["allowMergeOnSkippedPipeline"] = args?.allowMergeOnSkippedPipeline;
             resourceInputs["allowPipelineTriggerApproveDeployment"] = args?.allowPipelineTriggerApproveDeployment;
             resourceInputs["analyticsAccessLevel"] = args?.analyticsAccessLevel;
-            resourceInputs["approvalsBeforeMerge"] = args?.approvalsBeforeMerge;
             resourceInputs["archiveOnDestroy"] = args?.archiveOnDestroy;
             resourceInputs["archived"] = args?.archived;
             resourceInputs["autoCancelPendingPipelines"] = args?.autoCancelPendingPipelines;
@@ -711,6 +634,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["ciConfigPath"] = args?.ciConfigPath;
             resourceInputs["ciDefaultGitDepth"] = args?.ciDefaultGitDepth;
             resourceInputs["ciDeletePipelinesInSeconds"] = args?.ciDeletePipelinesInSeconds;
+            resourceInputs["ciDisplayPipelineVariables"] = args?.ciDisplayPipelineVariables;
             resourceInputs["ciForwardDeploymentEnabled"] = args?.ciForwardDeploymentEnabled;
             resourceInputs["ciForwardDeploymentRollbackAllowed"] = args?.ciForwardDeploymentRollbackAllowed;
             resourceInputs["ciIdTokenSubClaimComponents"] = args?.ciIdTokenSubClaimComponents;
@@ -720,7 +644,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["ciSeparatedCaches"] = args?.ciSeparatedCaches;
             resourceInputs["containerExpirationPolicy"] = args?.containerExpirationPolicy;
             resourceInputs["containerRegistryAccessLevel"] = args?.containerRegistryAccessLevel;
-            resourceInputs["containerRegistryEnabled"] = args?.containerRegistryEnabled;
             resourceInputs["defaultBranch"] = args?.defaultBranch;
             resourceInputs["description"] = args?.description;
             resourceInputs["emailsEnabled"] = args?.emailsEnabled;
@@ -737,7 +660,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["infrastructureAccessLevel"] = args?.infrastructureAccessLevel;
             resourceInputs["initializeWithReadme"] = args?.initializeWithReadme;
             resourceInputs["issuesAccessLevel"] = args?.issuesAccessLevel;
-            resourceInputs["issuesEnabled"] = args?.issuesEnabled;
             resourceInputs["issuesTemplate"] = args?.issuesTemplate;
             resourceInputs["keepLatestArtifact"] = args?.keepLatestArtifact;
             resourceInputs["lfsEnabled"] = args?.lfsEnabled;
@@ -748,13 +670,9 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["mergeRequestTitleRegex"] = args?.mergeRequestTitleRegex;
             resourceInputs["mergeRequestTitleRegexDescription"] = args?.mergeRequestTitleRegexDescription;
             resourceInputs["mergeRequestsAccessLevel"] = args?.mergeRequestsAccessLevel;
-            resourceInputs["mergeRequestsEnabled"] = args?.mergeRequestsEnabled;
             resourceInputs["mergeRequestsTemplate"] = args?.mergeRequestsTemplate;
             resourceInputs["mergeTrainsEnabled"] = args?.mergeTrainsEnabled;
             resourceInputs["mergeTrainsSkipTrainAllowed"] = args?.mergeTrainsSkipTrainAllowed;
-            resourceInputs["mirror"] = args?.mirror;
-            resourceInputs["mirrorOverwritesDivergedBranches"] = args?.mirrorOverwritesDivergedBranches;
-            resourceInputs["mirrorTriggerBuilds"] = args?.mirrorTriggerBuilds;
             resourceInputs["modelExperimentsAccessLevel"] = args?.modelExperimentsAccessLevel;
             resourceInputs["modelRegistryAccessLevel"] = args?.modelRegistryAccessLevel;
             resourceInputs["monitorAccessLevel"] = args?.monitorAccessLevel;
@@ -763,15 +681,15 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["namespaceId"] = args?.namespaceId;
             resourceInputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = args?.onlyAllowMergeIfAllDiscussionsAreResolved;
             resourceInputs["onlyAllowMergeIfPipelineSucceeds"] = args?.onlyAllowMergeIfPipelineSucceeds;
-            resourceInputs["onlyMirrorProtectedBranches"] = args?.onlyMirrorProtectedBranches;
+            resourceInputs["packageRegistryAccessLevel"] = args?.packageRegistryAccessLevel;
             resourceInputs["packagesEnabled"] = args?.packagesEnabled;
             resourceInputs["pagesAccessLevel"] = args?.pagesAccessLevel;
             resourceInputs["path"] = args?.path;
             resourceInputs["permanentlyDeleteOnDestroy"] = args?.permanentlyDeleteOnDestroy;
-            resourceInputs["pipelinesEnabled"] = args?.pipelinesEnabled;
             resourceInputs["preReceiveSecretDetectionEnabled"] = args?.preReceiveSecretDetectionEnabled;
             resourceInputs["preventMergeWithoutJiraIssue"] = args?.preventMergeWithoutJiraIssue;
             resourceInputs["printingMergeRequestLinkEnabled"] = args?.printingMergeRequestLinkEnabled;
+            resourceInputs["protectMergeRequestPipelines"] = args?.protectMergeRequestPipelines;
             resourceInputs["publicBuilds"] = args?.publicBuilds;
             resourceInputs["publicJobs"] = args?.publicJobs;
             resourceInputs["pushRules"] = args?.pushRules;
@@ -783,23 +701,19 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["requirementsAccessLevel"] = args?.requirementsAccessLevel;
             resourceInputs["resolveOutdatedDiffDiscussions"] = args?.resolveOutdatedDiffDiscussions;
             resourceInputs["resourceGroupDefaultProcessMode"] = args?.resourceGroupDefaultProcessMode;
-            resourceInputs["restrictUserDefinedVariables"] = args?.restrictUserDefinedVariables;
             resourceInputs["securityAndComplianceAccessLevel"] = args?.securityAndComplianceAccessLevel;
             resourceInputs["sharedRunnersEnabled"] = args?.sharedRunnersEnabled;
             resourceInputs["skipWaitForDefaultBranchProtection"] = args?.skipWaitForDefaultBranchProtection;
             resourceInputs["snippetsAccessLevel"] = args?.snippetsAccessLevel;
-            resourceInputs["snippetsEnabled"] = args?.snippetsEnabled;
             resourceInputs["squashCommitTemplate"] = args?.squashCommitTemplate;
             resourceInputs["squashOption"] = args?.squashOption;
             resourceInputs["suggestionCommitMessage"] = args?.suggestionCommitMessage;
-            resourceInputs["tags"] = args?.tags;
             resourceInputs["templateName"] = args?.templateName;
             resourceInputs["templateProjectId"] = args?.templateProjectId;
             resourceInputs["topics"] = args?.topics;
             resourceInputs["useCustomTemplate"] = args?.useCustomTemplate;
             resourceInputs["visibilityLevel"] = args?.visibilityLevel;
             resourceInputs["wikiAccessLevel"] = args?.wikiAccessLevel;
-            resourceInputs["wikiEnabled"] = args?.wikiEnabled;
             resourceInputs["avatarUrl"] = undefined /*out*/;
             resourceInputs["emptyRepo"] = undefined /*out*/;
             resourceInputs["httpUrlToRepo"] = undefined /*out*/;
@@ -831,12 +745,6 @@ export interface ProjectState {
      * Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      */
     analyticsAccessLevel?: pulumi.Input<string | undefined>;
-    /**
-     * Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-     *
-     * @deprecated Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-     */
-    approvalsBeforeMerge?: pulumi.Input<number | undefined>;
     /**
      * Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
      */
@@ -906,6 +814,10 @@ export interface ProjectState {
      */
     ciDeletePipelinesInSeconds?: pulumi.Input<number | undefined>;
     /**
+     * Show pipeline variables on the pipeline details page. Introduced in GitLab 17.8.
+     */
+    ciDisplayPipelineVariables?: pulumi.Input<boolean | undefined>;
+    /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     ciForwardDeploymentEnabled?: pulumi.Input<boolean | undefined>;
@@ -926,7 +838,7 @@ export interface ProjectState {
      */
     ciPushRepositoryForJobTokenAllowed?: pulumi.Input<boolean | undefined>;
     /**
-     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `noOne`
      */
     ciRestrictPipelineCancellationRole?: pulumi.Input<string | undefined>;
     /**
@@ -941,12 +853,6 @@ export interface ProjectState {
      * Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
      */
     containerRegistryAccessLevel?: pulumi.Input<string | undefined>;
-    /**
-     * Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-     */
-    containerRegistryEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The default branch for the project.
      */
@@ -996,7 +902,7 @@ export interface ProjectState {
      */
     httpUrlToRepo?: pulumi.Input<string | undefined>;
     /**
-     * Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+     * Git URL to a repository to be imported. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      */
     importUrl?: pulumi.Input<string | undefined>;
     /**
@@ -1019,12 +925,6 @@ export interface ProjectState {
      * Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      */
     issuesAccessLevel?: pulumi.Input<string | undefined>;
-    /**
-     * Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `issuesAccessLevel` instead. To be removed in 19.0.
-     */
-    issuesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the template for new issues in the project.
      */
@@ -1066,12 +966,6 @@ export interface ProjectState {
      */
     mergeRequestsAccessLevel?: pulumi.Input<string | undefined>;
     /**
-     * Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-     */
-    mergeRequestsEnabled?: pulumi.Input<boolean | undefined>;
-    /**
      * Sets the template for new merge requests in the project.
      */
     mergeRequestsTemplate?: pulumi.Input<string | undefined>;
@@ -1083,24 +977,6 @@ export interface ProjectState {
      * Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
      */
     mergeTrainsSkipTrainAllowed?: pulumi.Input<boolean | undefined>;
-    /**
-     * Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
-     *
-     * @deprecated To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
-     */
-    mirror?: pulumi.Input<boolean | undefined>;
-    /**
-     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
-     *
-     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
-     */
-    mirrorOverwritesDivergedBranches?: pulumi.Input<boolean | undefined>;
-    /**
-     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
-     *
-     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
-     */
-    mirrorTriggerBuilds?: pulumi.Input<boolean | undefined>;
     /**
      * Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -1134,11 +1010,9 @@ export interface ProjectState {
      */
     onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean | undefined>;
     /**
-     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
-     *
-     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
+     * Set visibility of the package registry. Valid values are `disabled`, `private`, `enabled`, `public`.
      */
-    onlyMirrorProtectedBranches?: pulumi.Input<boolean | undefined>;
+    packageRegistryAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable packages repository for the project.
      */
@@ -1160,12 +1034,6 @@ export interface ProjectState {
      */
     permanentlyDeleteOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
-     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `buildsAccessLevel` instead. To be removed in 19.0.
-     */
-    pipelinesEnabled?: pulumi.Input<boolean | undefined>;
-    /**
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      */
     preReceiveSecretDetectionEnabled?: pulumi.Input<boolean | undefined>;
@@ -1177,6 +1045,10 @@ export interface ProjectState {
      * Show link to create/view merge request when pushing from the command line
      */
     printingMergeRequestLinkEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
+     */
+    protectMergeRequestPipelines?: pulumi.Input<boolean | undefined>;
     /**
      * If true, jobs can be viewed by non-project members.
      *
@@ -1224,12 +1096,6 @@ export interface ProjectState {
      */
     resourceGroupDefaultProcessMode?: pulumi.Input<string | undefined>;
     /**
-     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-     */
-    restrictUserDefinedVariables?: pulumi.Input<boolean | undefined>;
-    /**
      * Registration token to use during runner setup.
      */
     runnersToken?: pulumi.Input<string | undefined>;
@@ -1253,12 +1119,6 @@ export interface ProjectState {
      */
     snippetsAccessLevel?: pulumi.Input<string | undefined>;
     /**
-     * Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `snippetsAccessLevel` instead. To be removed in 19.0.
-     */
-    snippetsEnabled?: pulumi.Input<boolean | undefined>;
-    /**
      * Template used to create squash commit message in merge requests.
      */
     squashCommitTemplate?: pulumi.Input<string | undefined>;
@@ -1274,12 +1134,6 @@ export interface ProjectState {
      * The commit message used to apply merge request suggestions.
      */
     suggestionCommitMessage?: pulumi.Input<string | undefined>;
-    /**
-     * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `topics` instead. To be removed in 19.0.
-     */
-    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
      */
@@ -1309,12 +1163,6 @@ export interface ProjectState {
      * Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
      */
     wikiAccessLevel?: pulumi.Input<string | undefined>;
-    /**
-     * Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `wikiAccessLevel` instead. To be removed in 19.0.
-     */
-    wikiEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -1333,12 +1181,6 @@ export interface ProjectArgs {
      * Set the analytics access level. Valid values are `disabled`, `private`, `enabled`.
      */
     analyticsAccessLevel?: pulumi.Input<string | undefined>;
-    /**
-     * Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-     *
-     * @deprecated Use the resource `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-     */
-    approvalsBeforeMerge?: pulumi.Input<number | undefined>;
     /**
      * Set to `true` to archive the project instead of deleting on destroy. If set to `true` it will entire omit the `DELETE` operation.
      */
@@ -1404,6 +1246,10 @@ export interface ProjectArgs {
      */
     ciDeletePipelinesInSeconds?: pulumi.Input<number | undefined>;
     /**
+     * Show pipeline variables on the pipeline details page. Introduced in GitLab 17.8.
+     */
+    ciDisplayPipelineVariables?: pulumi.Input<boolean | undefined>;
+    /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     ciForwardDeploymentEnabled?: pulumi.Input<boolean | undefined>;
@@ -1424,7 +1270,7 @@ export interface ProjectArgs {
      */
     ciPushRepositoryForJobTokenAllowed?: pulumi.Input<boolean | undefined>;
     /**
-     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `noOne`
      */
     ciRestrictPipelineCancellationRole?: pulumi.Input<string | undefined>;
     /**
@@ -1439,12 +1285,6 @@ export interface ProjectArgs {
      * Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
      */
     containerRegistryAccessLevel?: pulumi.Input<string | undefined>;
-    /**
-     * Enable container registry for the project. Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `containerRegistryAccessLevel` instead. To be removed in 19.0.
-     */
-    containerRegistryEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The default branch for the project.
      */
@@ -1486,7 +1326,7 @@ export interface ProjectArgs {
      */
     groupWithProjectTemplatesId?: pulumi.Input<number | undefined>;
     /**
-     * Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `forkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+     * Git URL to a repository to be imported. Make sure to provide the credentials in `importUrlUsername` and `importUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
      */
     importUrl?: pulumi.Input<string | undefined>;
     /**
@@ -1509,12 +1349,6 @@ export interface ProjectArgs {
      * Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      */
     issuesAccessLevel?: pulumi.Input<string | undefined>;
-    /**
-     * Enable issue tracking for the project. Use `issuesAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `issuesAccessLevel` instead. To be removed in 19.0.
-     */
-    issuesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the template for new issues in the project.
      */
@@ -1556,12 +1390,6 @@ export interface ProjectArgs {
      */
     mergeRequestsAccessLevel?: pulumi.Input<string | undefined>;
     /**
-     * Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `mergeRequestsAccessLevel` instead. To be removed in 19.0.
-     */
-    mergeRequestsEnabled?: pulumi.Input<boolean | undefined>;
-    /**
      * Sets the template for new merge requests in the project.
      */
     mergeRequestsTemplate?: pulumi.Input<string | undefined>;
@@ -1573,24 +1401,6 @@ export interface ProjectArgs {
      * Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
      */
     mergeTrainsSkipTrainAllowed?: pulumi.Input<boolean | undefined>;
-    /**
-     * Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
-     *
-     * @deprecated To be removed in 19.0. Use `gitlab.ProjectPullMirror` instead.
-     */
-    mirror?: pulumi.Input<boolean | undefined>;
-    /**
-     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
-     *
-     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead.
-     */
-    mirrorOverwritesDivergedBranches?: pulumi.Input<boolean | undefined>;
-    /**
-     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
-     *
-     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead.
-     */
-    mirrorTriggerBuilds?: pulumi.Input<boolean | undefined>;
     /**
      * Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -1624,11 +1434,9 @@ export interface ProjectArgs {
      */
     onlyAllowMergeIfPipelineSucceeds?: pulumi.Input<boolean | undefined>;
     /**
-     * Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
-     *
-     * @deprecated To be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead.
+     * Set visibility of the package registry. Valid values are `disabled`, `private`, `enabled`, `public`.
      */
-    onlyMirrorProtectedBranches?: pulumi.Input<boolean | undefined>;
+    packageRegistryAccessLevel?: pulumi.Input<string | undefined>;
     /**
      * Enable packages repository for the project.
      */
@@ -1646,12 +1454,6 @@ export interface ProjectArgs {
      */
     permanentlyDeleteOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
-     * Enable pipelines for the project. The `pipelinesEnabled` field is being sent as `jobsEnabled` in the GitLab API calls. Use `buildsAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `buildsAccessLevel` instead. To be removed in 19.0.
-     */
-    pipelinesEnabled?: pulumi.Input<boolean | undefined>;
-    /**
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      */
     preReceiveSecretDetectionEnabled?: pulumi.Input<boolean | undefined>;
@@ -1663,6 +1465,10 @@ export interface ProjectArgs {
      * Show link to create/view merge request when pushing from the command line
      */
     printingMergeRequestLinkEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
+     */
+    protectMergeRequestPipelines?: pulumi.Input<boolean | undefined>;
     /**
      * If true, jobs can be viewed by non-project members.
      *
@@ -1710,12 +1516,6 @@ export interface ProjectArgs {
      */
     resourceGroupDefaultProcessMode?: pulumi.Input<string | undefined>;
     /**
-     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `ciPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-     */
-    restrictUserDefinedVariables?: pulumi.Input<boolean | undefined>;
-    /**
      * Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
      */
     securityAndComplianceAccessLevel?: pulumi.Input<string | undefined>;
@@ -1735,12 +1535,6 @@ export interface ProjectArgs {
      */
     snippetsAccessLevel?: pulumi.Input<string | undefined>;
     /**
-     * Enable snippets for the project. Use `snippetsAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `snippetsAccessLevel` instead. To be removed in 19.0.
-     */
-    snippetsEnabled?: pulumi.Input<boolean | undefined>;
-    /**
      * Template used to create squash commit message in merge requests.
      */
     squashCommitTemplate?: pulumi.Input<string | undefined>;
@@ -1752,12 +1546,6 @@ export interface ProjectArgs {
      * The commit message used to apply merge request suggestions.
      */
     suggestionCommitMessage?: pulumi.Input<string | undefined>;
-    /**
-     * The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `topics` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `topics` instead. To be removed in 19.0.
-     */
-    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `templateProjectId`.
      */
@@ -1783,10 +1571,4 @@ export interface ProjectArgs {
      * Set the wiki access level. Valid values are `disabled`, `private`, `enabled`.
      */
     wikiAccessLevel?: pulumi.Input<string | undefined>;
-    /**
-     * Enable wiki for the project. Use `wikiAccessLevel` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `wikiAccessLevel` instead. To be removed in 19.0.
-     */
-    wikiEnabled?: pulumi.Input<boolean | undefined>;
 }

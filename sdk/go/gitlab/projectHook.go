@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -63,6 +63,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Using URL variables
+//			// Values of URL variables can't be imported
+//			_, err = gitlab.NewProjectHook(ctx, "url_variables", &gitlab.ProjectHookArgs{
+//				Project:             pulumi.String("example/hooked"),
+//				Url:                 pulumi.String("https://example.com/hook/example?token=secret"),
+//				MergeRequestsEvents: pulumi.Bool(true),
+//				UrlVariables: gitlab.ProjectHookUrlVariableArray{
+//					&gitlab.ProjectHookUrlVariableArgs{
+//						Key:   pulumi.String("hidden"),
+//						Value: pulumi.String("token=secret"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -86,6 +102,8 @@ import (
 type ProjectHook struct {
 	pulumi.CustomResourceState
 
+	// Lifecycle status of the webhook. Values include `executable` and `disabled`.
+	AlertStatus pulumi.StringOutput `pulumi:"alertStatus"`
 	// Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
 	BranchFilterStrategy pulumi.StringOutput `pulumi:"branchFilterStrategy"`
 	// Invoke the hook for confidential issues events. Defaults to `false`.
@@ -100,10 +118,14 @@ type ProjectHook struct {
 	DeploymentEvents pulumi.BoolOutput `pulumi:"deploymentEvents"`
 	// Description of the webhook.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+	DisabledUntil pulumi.StringOutput `pulumi:"disabledUntil"`
 	// Invoke the hook for emoji events. Defaults to `false`.
 	EmojiEvents pulumi.BoolOutput `pulumi:"emojiEvents"`
 	// Enable SSL verification when invoking the hook. Defaults to `true`.
 	EnableSslVerification pulumi.BoolOutput `pulumi:"enableSslVerification"`
+	// Invoke the hook for feature flag events. Defaults to `false`.
+	FeatureFlagEvents pulumi.BoolOutput `pulumi:"featureFlagEvents"`
 	// The id of the project hook.
 	HookId pulumi.IntOutput `pulumi:"hookId"`
 	// Invoke the hook for issues events. Defaults to `false`.
@@ -112,6 +134,8 @@ type ProjectHook struct {
 	JobEvents pulumi.BoolOutput `pulumi:"jobEvents"`
 	// Invoke the hook for merge requests events. Defaults to `false`.
 	MergeRequestsEvents pulumi.BoolOutput `pulumi:"mergeRequestsEvents"`
+	// Invoke the hook for milestone events. Defaults to `false`.
+	MilestoneEvents pulumi.BoolOutput `pulumi:"milestoneEvents"`
 	// Name of the project webhook.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Invoke the hook for note events. Defaults to `false`.
@@ -128,14 +152,24 @@ type ProjectHook struct {
 	PushEventsBranchFilter pulumi.StringOutput `pulumi:"pushEventsBranchFilter"`
 	// Invoke the hook for release events. Defaults to `false`.
 	ReleasesEvents pulumi.BoolOutput `pulumi:"releasesEvents"`
+	// Invoke the hook for repository update events.
+	RepositoryUpdateEvents pulumi.BoolOutput `pulumi:"repositoryUpdateEvents"`
 	// Invoke the hook for project access token expiry events. Defaults to `false`.
 	ResourceAccessTokenEvents pulumi.BoolOutput `pulumi:"resourceAccessTokenEvents"`
+	// Invoke the hook for resource deploy token events. Defaults to `false`.
+	ResourceDeployTokenEvents pulumi.BoolOutput `pulumi:"resourceDeployTokenEvents"`
+	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+	SigningToken pulumi.StringPtrOutput `pulumi:"signingToken"`
+	// Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+	SigningTokenPresent pulumi.BoolOutput `pulumi:"signingTokenPresent"`
 	// Invoke the hook for tag push events. Defaults to `false`.
 	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token pulumi.StringOutput `pulumi:"token"`
 	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url pulumi.StringOutput `pulumi:"url"`
+	// Array of sensitive portions of the webhook URL to mask.
+	UrlVariables ProjectHookUrlVariableArrayOutput `pulumi:"urlVariables"`
 	// Invoke the hook for vulnerability events. Defaults to `false`.
 	VulnerabilityEvents pulumi.BoolOutput `pulumi:"vulnerabilityEvents"`
 	// Invoke the hook for wiki page events. Defaults to `false`.
@@ -155,10 +189,14 @@ func NewProjectHook(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	if args.SigningToken != nil {
+		args.SigningToken = pulumi.ToSecret(args.SigningToken).(pulumi.StringPtrInput)
+	}
 	if args.Token != nil {
 		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"signingToken",
 		"token",
 	})
 	opts = append(opts, secrets)
@@ -185,6 +223,8 @@ func GetProjectHook(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectHook resources.
 type projectHookState struct {
+	// Lifecycle status of the webhook. Values include `executable` and `disabled`.
+	AlertStatus *string `pulumi:"alertStatus"`
 	// Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
 	BranchFilterStrategy *string `pulumi:"branchFilterStrategy"`
 	// Invoke the hook for confidential issues events. Defaults to `false`.
@@ -199,10 +239,14 @@ type projectHookState struct {
 	DeploymentEvents *bool `pulumi:"deploymentEvents"`
 	// Description of the webhook.
 	Description *string `pulumi:"description"`
+	// Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+	DisabledUntil *string `pulumi:"disabledUntil"`
 	// Invoke the hook for emoji events. Defaults to `false`.
 	EmojiEvents *bool `pulumi:"emojiEvents"`
 	// Enable SSL verification when invoking the hook. Defaults to `true`.
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`
+	// Invoke the hook for feature flag events. Defaults to `false`.
+	FeatureFlagEvents *bool `pulumi:"featureFlagEvents"`
 	// The id of the project hook.
 	HookId *int `pulumi:"hookId"`
 	// Invoke the hook for issues events. Defaults to `false`.
@@ -211,6 +255,8 @@ type projectHookState struct {
 	JobEvents *bool `pulumi:"jobEvents"`
 	// Invoke the hook for merge requests events. Defaults to `false`.
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
+	// Invoke the hook for milestone events. Defaults to `false`.
+	MilestoneEvents *bool `pulumi:"milestoneEvents"`
 	// Name of the project webhook.
 	Name *string `pulumi:"name"`
 	// Invoke the hook for note events. Defaults to `false`.
@@ -227,14 +273,24 @@ type projectHookState struct {
 	PushEventsBranchFilter *string `pulumi:"pushEventsBranchFilter"`
 	// Invoke the hook for release events. Defaults to `false`.
 	ReleasesEvents *bool `pulumi:"releasesEvents"`
+	// Invoke the hook for repository update events.
+	RepositoryUpdateEvents *bool `pulumi:"repositoryUpdateEvents"`
 	// Invoke the hook for project access token expiry events. Defaults to `false`.
 	ResourceAccessTokenEvents *bool `pulumi:"resourceAccessTokenEvents"`
+	// Invoke the hook for resource deploy token events. Defaults to `false`.
+	ResourceDeployTokenEvents *bool `pulumi:"resourceDeployTokenEvents"`
+	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+	SigningToken *string `pulumi:"signingToken"`
+	// Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+	SigningTokenPresent *bool `pulumi:"signingTokenPresent"`
 	// Invoke the hook for tag push events. Defaults to `false`.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token *string `pulumi:"token"`
 	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url *string `pulumi:"url"`
+	// Array of sensitive portions of the webhook URL to mask.
+	UrlVariables []ProjectHookUrlVariable `pulumi:"urlVariables"`
 	// Invoke the hook for vulnerability events. Defaults to `false`.
 	VulnerabilityEvents *bool `pulumi:"vulnerabilityEvents"`
 	// Invoke the hook for wiki page events. Defaults to `false`.
@@ -242,6 +298,8 @@ type projectHookState struct {
 }
 
 type ProjectHookState struct {
+	// Lifecycle status of the webhook. Values include `executable` and `disabled`.
+	AlertStatus pulumi.StringPtrInput
 	// Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
 	BranchFilterStrategy pulumi.StringPtrInput
 	// Invoke the hook for confidential issues events. Defaults to `false`.
@@ -256,10 +314,14 @@ type ProjectHookState struct {
 	DeploymentEvents pulumi.BoolPtrInput
 	// Description of the webhook.
 	Description pulumi.StringPtrInput
+	// Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+	DisabledUntil pulumi.StringPtrInput
 	// Invoke the hook for emoji events. Defaults to `false`.
 	EmojiEvents pulumi.BoolPtrInput
 	// Enable SSL verification when invoking the hook. Defaults to `true`.
 	EnableSslVerification pulumi.BoolPtrInput
+	// Invoke the hook for feature flag events. Defaults to `false`.
+	FeatureFlagEvents pulumi.BoolPtrInput
 	// The id of the project hook.
 	HookId pulumi.IntPtrInput
 	// Invoke the hook for issues events. Defaults to `false`.
@@ -268,6 +330,8 @@ type ProjectHookState struct {
 	JobEvents pulumi.BoolPtrInput
 	// Invoke the hook for merge requests events. Defaults to `false`.
 	MergeRequestsEvents pulumi.BoolPtrInput
+	// Invoke the hook for milestone events. Defaults to `false`.
+	MilestoneEvents pulumi.BoolPtrInput
 	// Name of the project webhook.
 	Name pulumi.StringPtrInput
 	// Invoke the hook for note events. Defaults to `false`.
@@ -284,14 +348,24 @@ type ProjectHookState struct {
 	PushEventsBranchFilter pulumi.StringPtrInput
 	// Invoke the hook for release events. Defaults to `false`.
 	ReleasesEvents pulumi.BoolPtrInput
+	// Invoke the hook for repository update events.
+	RepositoryUpdateEvents pulumi.BoolPtrInput
 	// Invoke the hook for project access token expiry events. Defaults to `false`.
 	ResourceAccessTokenEvents pulumi.BoolPtrInput
+	// Invoke the hook for resource deploy token events. Defaults to `false`.
+	ResourceDeployTokenEvents pulumi.BoolPtrInput
+	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+	SigningToken pulumi.StringPtrInput
+	// Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+	SigningTokenPresent pulumi.BoolPtrInput
 	// Invoke the hook for tag push events. Defaults to `false`.
 	TagPushEvents pulumi.BoolPtrInput
 	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token pulumi.StringPtrInput
 	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url pulumi.StringPtrInput
+	// Array of sensitive portions of the webhook URL to mask.
+	UrlVariables ProjectHookUrlVariableArrayInput
 	// Invoke the hook for vulnerability events. Defaults to `false`.
 	VulnerabilityEvents pulumi.BoolPtrInput
 	// Invoke the hook for wiki page events. Defaults to `false`.
@@ -321,12 +395,16 @@ type projectHookArgs struct {
 	EmojiEvents *bool `pulumi:"emojiEvents"`
 	// Enable SSL verification when invoking the hook. Defaults to `true`.
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`
+	// Invoke the hook for feature flag events. Defaults to `false`.
+	FeatureFlagEvents *bool `pulumi:"featureFlagEvents"`
 	// Invoke the hook for issues events. Defaults to `false`.
 	IssuesEvents *bool `pulumi:"issuesEvents"`
 	// Invoke the hook for job events. Defaults to `false`.
 	JobEvents *bool `pulumi:"jobEvents"`
 	// Invoke the hook for merge requests events. Defaults to `false`.
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
+	// Invoke the hook for milestone events. Defaults to `false`.
+	MilestoneEvents *bool `pulumi:"milestoneEvents"`
 	// Name of the project webhook.
 	Name *string `pulumi:"name"`
 	// Invoke the hook for note events. Defaults to `false`.
@@ -343,12 +421,18 @@ type projectHookArgs struct {
 	ReleasesEvents *bool `pulumi:"releasesEvents"`
 	// Invoke the hook for project access token expiry events. Defaults to `false`.
 	ResourceAccessTokenEvents *bool `pulumi:"resourceAccessTokenEvents"`
+	// Invoke the hook for resource deploy token events. Defaults to `false`.
+	ResourceDeployTokenEvents *bool `pulumi:"resourceDeployTokenEvents"`
+	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+	SigningToken *string `pulumi:"signingToken"`
 	// Invoke the hook for tag push events. Defaults to `false`.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token *string `pulumi:"token"`
 	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url string `pulumi:"url"`
+	// Array of sensitive portions of the webhook URL to mask.
+	UrlVariables []ProjectHookUrlVariable `pulumi:"urlVariables"`
 	// Invoke the hook for vulnerability events. Defaults to `false`.
 	VulnerabilityEvents *bool `pulumi:"vulnerabilityEvents"`
 	// Invoke the hook for wiki page events. Defaults to `false`.
@@ -375,12 +459,16 @@ type ProjectHookArgs struct {
 	EmojiEvents pulumi.BoolPtrInput
 	// Enable SSL verification when invoking the hook. Defaults to `true`.
 	EnableSslVerification pulumi.BoolPtrInput
+	// Invoke the hook for feature flag events. Defaults to `false`.
+	FeatureFlagEvents pulumi.BoolPtrInput
 	// Invoke the hook for issues events. Defaults to `false`.
 	IssuesEvents pulumi.BoolPtrInput
 	// Invoke the hook for job events. Defaults to `false`.
 	JobEvents pulumi.BoolPtrInput
 	// Invoke the hook for merge requests events. Defaults to `false`.
 	MergeRequestsEvents pulumi.BoolPtrInput
+	// Invoke the hook for milestone events. Defaults to `false`.
+	MilestoneEvents pulumi.BoolPtrInput
 	// Name of the project webhook.
 	Name pulumi.StringPtrInput
 	// Invoke the hook for note events. Defaults to `false`.
@@ -397,12 +485,18 @@ type ProjectHookArgs struct {
 	ReleasesEvents pulumi.BoolPtrInput
 	// Invoke the hook for project access token expiry events. Defaults to `false`.
 	ResourceAccessTokenEvents pulumi.BoolPtrInput
+	// Invoke the hook for resource deploy token events. Defaults to `false`.
+	ResourceDeployTokenEvents pulumi.BoolPtrInput
+	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+	SigningToken pulumi.StringPtrInput
 	// Invoke the hook for tag push events. Defaults to `false`.
 	TagPushEvents pulumi.BoolPtrInput
 	// A token to present when invoking the hook. The token is not available for imported resources.
 	Token pulumi.StringPtrInput
 	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url pulumi.StringInput
+	// Array of sensitive portions of the webhook URL to mask.
+	UrlVariables ProjectHookUrlVariableArrayInput
 	// Invoke the hook for vulnerability events. Defaults to `false`.
 	VulnerabilityEvents pulumi.BoolPtrInput
 	// Invoke the hook for wiki page events. Defaults to `false`.
@@ -496,6 +590,11 @@ func (o ProjectHookOutput) ToProjectHookOutputWithContext(ctx context.Context) P
 	return o
 }
 
+// Lifecycle status of the webhook. Values include `executable` and `disabled`.
+func (o ProjectHookOutput) AlertStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.StringOutput { return v.AlertStatus }).(pulumi.StringOutput)
+}
+
 // Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
 func (o ProjectHookOutput) BranchFilterStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.StringOutput { return v.BranchFilterStrategy }).(pulumi.StringOutput)
@@ -531,6 +630,11 @@ func (o ProjectHookOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+func (o ProjectHookOutput) DisabledUntil() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.StringOutput { return v.DisabledUntil }).(pulumi.StringOutput)
+}
+
 // Invoke the hook for emoji events. Defaults to `false`.
 func (o ProjectHookOutput) EmojiEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.EmojiEvents }).(pulumi.BoolOutput)
@@ -539,6 +643,11 @@ func (o ProjectHookOutput) EmojiEvents() pulumi.BoolOutput {
 // Enable SSL verification when invoking the hook. Defaults to `true`.
 func (o ProjectHookOutput) EnableSslVerification() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.EnableSslVerification }).(pulumi.BoolOutput)
+}
+
+// Invoke the hook for feature flag events. Defaults to `false`.
+func (o ProjectHookOutput) FeatureFlagEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.FeatureFlagEvents }).(pulumi.BoolOutput)
 }
 
 // The id of the project hook.
@@ -559,6 +668,11 @@ func (o ProjectHookOutput) JobEvents() pulumi.BoolOutput {
 // Invoke the hook for merge requests events. Defaults to `false`.
 func (o ProjectHookOutput) MergeRequestsEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.MergeRequestsEvents }).(pulumi.BoolOutput)
+}
+
+// Invoke the hook for milestone events. Defaults to `false`.
+func (o ProjectHookOutput) MilestoneEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.MilestoneEvents }).(pulumi.BoolOutput)
 }
 
 // Name of the project webhook.
@@ -601,9 +715,29 @@ func (o ProjectHookOutput) ReleasesEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.ReleasesEvents }).(pulumi.BoolOutput)
 }
 
+// Invoke the hook for repository update events.
+func (o ProjectHookOutput) RepositoryUpdateEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.RepositoryUpdateEvents }).(pulumi.BoolOutput)
+}
+
 // Invoke the hook for project access token expiry events. Defaults to `false`.
 func (o ProjectHookOutput) ResourceAccessTokenEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.ResourceAccessTokenEvents }).(pulumi.BoolOutput)
+}
+
+// Invoke the hook for resource deploy token events. Defaults to `false`.
+func (o ProjectHookOutput) ResourceDeployTokenEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.ResourceDeployTokenEvents }).(pulumi.BoolOutput)
+}
+
+// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+func (o ProjectHookOutput) SigningToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.StringPtrOutput { return v.SigningToken }).(pulumi.StringPtrOutput)
+}
+
+// Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+func (o ProjectHookOutput) SigningTokenPresent() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.SigningTokenPresent }).(pulumi.BoolOutput)
 }
 
 // Invoke the hook for tag push events. Defaults to `false`.
@@ -619,6 +753,11 @@ func (o ProjectHookOutput) Token() pulumi.StringOutput {
 // The url of the hook to invoke. Forces re-creation to preserve `token`.
 func (o ProjectHookOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// Array of sensitive portions of the webhook URL to mask.
+func (o ProjectHookOutput) UrlVariables() ProjectHookUrlVariableArrayOutput {
+	return o.ApplyT(func(v *ProjectHook) ProjectHookUrlVariableArrayOutput { return v.UrlVariables }).(ProjectHookUrlVariableArrayOutput)
 }
 
 // Invoke the hook for vulnerability events. Defaults to `false`.

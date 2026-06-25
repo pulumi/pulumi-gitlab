@@ -73,7 +73,7 @@ export class ProjectIntegrationJira extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly active: pulumi.Output<boolean>;
     /**
-     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
      */
     declare public readonly apiUrl: pulumi.Output<string>;
     /**
@@ -93,7 +93,7 @@ export class ProjectIntegrationJira extends pulumi.CustomResource {
      */
     declare public readonly issuesEnabled: pulumi.Output<boolean>;
     /**
-     * The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+     * The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
      */
     declare public readonly jiraAuthType: pulumi.Output<number>;
     /**
@@ -117,7 +117,7 @@ export class ProjectIntegrationJira extends pulumi.CustomResource {
      */
     declare public readonly mergeRequestsEvents: pulumi.Output<boolean>;
     /**
-     * The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+     * The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
      */
     declare public readonly password: pulumi.Output<string>;
     /**
@@ -145,7 +145,7 @@ export class ProjectIntegrationJira extends pulumi.CustomResource {
      */
     declare public readonly useInheritedSettings: pulumi.Output<boolean>;
     /**
-     * The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+     * The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
      */
     declare public readonly username: pulumi.Output<string>;
 
@@ -230,7 +230,7 @@ export interface ProjectIntegrationJiraState {
      */
     active?: pulumi.Input<boolean | undefined>;
     /**
-     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
      */
     apiUrl?: pulumi.Input<string | undefined>;
     /**
@@ -250,7 +250,7 @@ export interface ProjectIntegrationJiraState {
      */
     issuesEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+     * The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
      */
     jiraAuthType?: pulumi.Input<number | undefined>;
     /**
@@ -274,7 +274,7 @@ export interface ProjectIntegrationJiraState {
      */
     mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
-     * The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+     * The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
      */
     password?: pulumi.Input<string | undefined>;
     /**
@@ -302,7 +302,7 @@ export interface ProjectIntegrationJiraState {
      */
     useInheritedSettings?: pulumi.Input<boolean | undefined>;
     /**
-     * The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+     * The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
      */
     username?: pulumi.Input<string | undefined>;
 }
@@ -312,7 +312,7 @@ export interface ProjectIntegrationJiraState {
  */
 export interface ProjectIntegrationJiraArgs {
     /**
-     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
      */
     apiUrl?: pulumi.Input<string | undefined>;
     /**
@@ -328,7 +328,7 @@ export interface ProjectIntegrationJiraArgs {
      */
     issuesEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+     * The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
      */
     jiraAuthType?: pulumi.Input<number | undefined>;
     /**
@@ -352,7 +352,7 @@ export interface ProjectIntegrationJiraArgs {
      */
     mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
-     * The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+     * The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
      */
     password: pulumi.Input<string>;
     /**
@@ -372,7 +372,7 @@ export interface ProjectIntegrationJiraArgs {
      */
     useInheritedSettings?: pulumi.Input<boolean | undefined>;
     /**
-     * The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+     * The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
      */
     username?: pulumi.Input<string | undefined>;
 }

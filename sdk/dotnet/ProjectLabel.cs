@@ -95,6 +95,12 @@ namespace Pulumi.GitLab
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The priority of the label. Must be greater or equal than zero or null to remove the priority.
+        /// </summary>
+        [Output("priority")]
+        public Output<int?> Priority { get; private set; } = null!;
+
+        /// <summary>
         /// The name or id of the project to add the label to.
         /// </summary>
         [Output("project")]
@@ -165,6 +171,12 @@ namespace Pulumi.GitLab
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The priority of the label. Must be greater or equal than zero or null to remove the priority.
+        /// </summary>
+        [Input("priority")]
+        public Input<int>? Priority { get; set; }
+
+        /// <summary>
         /// The name or id of the project to add the label to.
         /// </summary>
         [Input("project", required: true)]
@@ -207,6 +219,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The priority of the label. Must be greater or equal than zero or null to remove the priority.
+        /// </summary>
+        [Input("priority")]
+        public Input<int>? Priority { get; set; }
 
         /// <summary>
         /// The name or id of the project to add the label to.

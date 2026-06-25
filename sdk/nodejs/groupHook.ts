@@ -56,6 +56,10 @@ export class GroupHook extends pulumi.CustomResource {
     }
 
     /**
+     * Lifecycle status of the webhook. Values include `executable` and `disabled`.
+     */
+    declare public /*out*/ readonly alertStatus: pulumi.Output<string>;
+    /**
      * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
      */
     declare public readonly branchFilterStrategy: pulumi.Output<string>;
@@ -68,7 +72,7 @@ export class GroupHook extends pulumi.CustomResource {
      */
     declare public readonly confidentialNoteEvents: pulumi.Output<boolean>;
     /**
-     * Custom headers for the project webhook.
+     * Custom headers for the group webhook.
      */
     declare public readonly customHeaders: pulumi.Output<outputs.GroupHookCustomHeader[] | undefined>;
     /**
@@ -83,6 +87,10 @@ export class GroupHook extends pulumi.CustomResource {
      * Description of the group webhook.
      */
     declare public readonly description: pulumi.Output<string>;
+    /**
+     * Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+     */
+    declare public /*out*/ readonly disabledUntil: pulumi.Output<string>;
     /**
      * Invoke the hook for emoji events. Defaults to `false`.
      */
@@ -124,6 +132,10 @@ export class GroupHook extends pulumi.CustomResource {
      */
     declare public readonly mergeRequestsEvents: pulumi.Output<boolean>;
     /**
+     * Invoke the hook for milestone events. Defaults to `false`.
+     */
+    declare public readonly milestoneEvents: pulumi.Output<boolean>;
+    /**
      * Name of the group webhook.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -152,6 +164,18 @@ export class GroupHook extends pulumi.CustomResource {
      */
     declare public readonly releasesEvents: pulumi.Output<boolean>;
     /**
+     * Invoke the hook for resource access token expiry events. Defaults to `false`.
+     */
+    declare public readonly resourceAccessTokenEvents: pulumi.Output<boolean>;
+    /**
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     */
+    declare public readonly signingToken: pulumi.Output<string | undefined>;
+    /**
+     * Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     */
+    declare public /*out*/ readonly signingTokenPresent: pulumi.Output<boolean>;
+    /**
      * Invoke the hook for subgroup events. Defaults to `false`.
      */
     declare public readonly subgroupEvents: pulumi.Output<boolean>;
@@ -167,6 +191,10 @@ export class GroupHook extends pulumi.CustomResource {
      * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
     declare public readonly url: pulumi.Output<string>;
+    /**
+     * Array of sensitive portions of the webhook URL to mask.
+     */
+    declare public readonly urlVariables: pulumi.Output<outputs.GroupHookUrlVariable[] | undefined>;
     /**
      * Invoke the hook for vulnerability events. Defaults to `false`.
      */
@@ -189,6 +217,7 @@ export class GroupHook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupHookState | undefined;
+            resourceInputs["alertStatus"] = state?.alertStatus;
             resourceInputs["branchFilterStrategy"] = state?.branchFilterStrategy;
             resourceInputs["confidentialIssuesEvents"] = state?.confidentialIssuesEvents;
             resourceInputs["confidentialNoteEvents"] = state?.confidentialNoteEvents;
@@ -196,6 +225,7 @@ export class GroupHook extends pulumi.CustomResource {
             resourceInputs["customWebhookTemplate"] = state?.customWebhookTemplate;
             resourceInputs["deploymentEvents"] = state?.deploymentEvents;
             resourceInputs["description"] = state?.description;
+            resourceInputs["disabledUntil"] = state?.disabledUntil;
             resourceInputs["emojiEvents"] = state?.emojiEvents;
             resourceInputs["enableSslVerification"] = state?.enableSslVerification;
             resourceInputs["featureFlagEvents"] = state?.featureFlagEvents;
@@ -206,6 +236,7 @@ export class GroupHook extends pulumi.CustomResource {
             resourceInputs["jobEvents"] = state?.jobEvents;
             resourceInputs["memberEvents"] = state?.memberEvents;
             resourceInputs["mergeRequestsEvents"] = state?.mergeRequestsEvents;
+            resourceInputs["milestoneEvents"] = state?.milestoneEvents;
             resourceInputs["name"] = state?.name;
             resourceInputs["noteEvents"] = state?.noteEvents;
             resourceInputs["pipelineEvents"] = state?.pipelineEvents;
@@ -213,10 +244,14 @@ export class GroupHook extends pulumi.CustomResource {
             resourceInputs["pushEvents"] = state?.pushEvents;
             resourceInputs["pushEventsBranchFilter"] = state?.pushEventsBranchFilter;
             resourceInputs["releasesEvents"] = state?.releasesEvents;
+            resourceInputs["resourceAccessTokenEvents"] = state?.resourceAccessTokenEvents;
+            resourceInputs["signingToken"] = state?.signingToken;
+            resourceInputs["signingTokenPresent"] = state?.signingTokenPresent;
             resourceInputs["subgroupEvents"] = state?.subgroupEvents;
             resourceInputs["tagPushEvents"] = state?.tagPushEvents;
             resourceInputs["token"] = state?.token;
             resourceInputs["url"] = state?.url;
+            resourceInputs["urlVariables"] = state?.urlVariables;
             resourceInputs["vulnerabilityEvents"] = state?.vulnerabilityEvents;
             resourceInputs["wikiPageEvents"] = state?.wikiPageEvents;
         } else {
@@ -242,6 +277,7 @@ export class GroupHook extends pulumi.CustomResource {
             resourceInputs["jobEvents"] = args?.jobEvents;
             resourceInputs["memberEvents"] = args?.memberEvents;
             resourceInputs["mergeRequestsEvents"] = args?.mergeRequestsEvents;
+            resourceInputs["milestoneEvents"] = args?.milestoneEvents;
             resourceInputs["name"] = args?.name;
             resourceInputs["noteEvents"] = args?.noteEvents;
             resourceInputs["pipelineEvents"] = args?.pipelineEvents;
@@ -249,17 +285,23 @@ export class GroupHook extends pulumi.CustomResource {
             resourceInputs["pushEvents"] = args?.pushEvents;
             resourceInputs["pushEventsBranchFilter"] = args?.pushEventsBranchFilter;
             resourceInputs["releasesEvents"] = args?.releasesEvents;
+            resourceInputs["resourceAccessTokenEvents"] = args?.resourceAccessTokenEvents;
+            resourceInputs["signingToken"] = args?.signingToken ? pulumi.secret(args.signingToken) : undefined;
             resourceInputs["subgroupEvents"] = args?.subgroupEvents;
             resourceInputs["tagPushEvents"] = args?.tagPushEvents;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["url"] = args?.url;
+            resourceInputs["urlVariables"] = args?.urlVariables;
             resourceInputs["vulnerabilityEvents"] = args?.vulnerabilityEvents;
             resourceInputs["wikiPageEvents"] = args?.wikiPageEvents;
+            resourceInputs["alertStatus"] = undefined /*out*/;
+            resourceInputs["disabledUntil"] = undefined /*out*/;
             resourceInputs["groupId"] = undefined /*out*/;
             resourceInputs["hookId"] = undefined /*out*/;
+            resourceInputs["signingTokenPresent"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["token"] };
+        const secretOpts = { additionalSecretOutputs: ["signingToken", "token"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(GroupHook.__pulumiType, name, resourceInputs, opts);
     }
@@ -269,6 +311,10 @@ export class GroupHook extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GroupHook resources.
  */
 export interface GroupHookState {
+    /**
+     * Lifecycle status of the webhook. Values include `executable` and `disabled`.
+     */
+    alertStatus?: pulumi.Input<string | undefined>;
     /**
      * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
      */
@@ -282,7 +328,7 @@ export interface GroupHookState {
      */
     confidentialNoteEvents?: pulumi.Input<boolean | undefined>;
     /**
-     * Custom headers for the project webhook.
+     * Custom headers for the group webhook.
      */
     customHeaders?: pulumi.Input<pulumi.Input<inputs.GroupHookCustomHeader>[] | undefined>;
     /**
@@ -297,6 +343,10 @@ export interface GroupHookState {
      * Description of the group webhook.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+     */
+    disabledUntil?: pulumi.Input<string | undefined>;
     /**
      * Invoke the hook for emoji events. Defaults to `false`.
      */
@@ -338,6 +388,10 @@ export interface GroupHookState {
      */
     mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
+     * Invoke the hook for milestone events. Defaults to `false`.
+     */
+    milestoneEvents?: pulumi.Input<boolean | undefined>;
+    /**
      * Name of the group webhook.
      */
     name?: pulumi.Input<string | undefined>;
@@ -366,6 +420,18 @@ export interface GroupHookState {
      */
     releasesEvents?: pulumi.Input<boolean | undefined>;
     /**
+     * Invoke the hook for resource access token expiry events. Defaults to `false`.
+     */
+    resourceAccessTokenEvents?: pulumi.Input<boolean | undefined>;
+    /**
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     */
+    signingToken?: pulumi.Input<string | undefined>;
+    /**
+     * Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     */
+    signingTokenPresent?: pulumi.Input<boolean | undefined>;
+    /**
      * Invoke the hook for subgroup events. Defaults to `false`.
      */
     subgroupEvents?: pulumi.Input<boolean | undefined>;
@@ -381,6 +447,10 @@ export interface GroupHookState {
      * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
     url?: pulumi.Input<string | undefined>;
+    /**
+     * Array of sensitive portions of the webhook URL to mask.
+     */
+    urlVariables?: pulumi.Input<pulumi.Input<inputs.GroupHookUrlVariable>[] | undefined>;
     /**
      * Invoke the hook for vulnerability events. Defaults to `false`.
      */
@@ -408,7 +478,7 @@ export interface GroupHookArgs {
      */
     confidentialNoteEvents?: pulumi.Input<boolean | undefined>;
     /**
-     * Custom headers for the project webhook.
+     * Custom headers for the group webhook.
      */
     customHeaders?: pulumi.Input<pulumi.Input<inputs.GroupHookCustomHeader>[] | undefined>;
     /**
@@ -456,6 +526,10 @@ export interface GroupHookArgs {
      */
     mergeRequestsEvents?: pulumi.Input<boolean | undefined>;
     /**
+     * Invoke the hook for milestone events. Defaults to `false`.
+     */
+    milestoneEvents?: pulumi.Input<boolean | undefined>;
+    /**
      * Name of the group webhook.
      */
     name?: pulumi.Input<string | undefined>;
@@ -484,6 +558,14 @@ export interface GroupHookArgs {
      */
     releasesEvents?: pulumi.Input<boolean | undefined>;
     /**
+     * Invoke the hook for resource access token expiry events. Defaults to `false`.
+     */
+    resourceAccessTokenEvents?: pulumi.Input<boolean | undefined>;
+    /**
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     */
+    signingToken?: pulumi.Input<string | undefined>;
+    /**
      * Invoke the hook for subgroup events. Defaults to `false`.
      */
     subgroupEvents?: pulumi.Input<boolean | undefined>;
@@ -499,6 +581,10 @@ export interface GroupHookArgs {
      * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
     url: pulumi.Input<string>;
+    /**
+     * Array of sensitive portions of the webhook URL to mask.
+     */
+    urlVariables?: pulumi.Input<pulumi.Input<inputs.GroupHookUrlVariable>[] | undefined>;
     /**
      * Invoke the hook for vulnerability events. Defaults to `false`.
      */

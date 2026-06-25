@@ -23,6 +23,7 @@ class ProjectPushMirrorArgs:
                  url: pulumi.Input[_builtins.str],
                  auth_method: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  keep_divergent_refs: pulumi.Input[Optional[_builtins.bool]] = None,
                  mirror_branch_regex: pulumi.Input[Optional[_builtins.str]] = None,
                  only_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None):
@@ -33,6 +34,7 @@ class ProjectPushMirrorArgs:
         :param pulumi.Input[_builtins.str] url: The URL of the remote repository to be mirrored. Note that URLs with credentials will not import properly, and will require a replace on the first apply.
         :param pulumi.Input[_builtins.str] auth_method: Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
         :param pulumi.Input[_builtins.bool] enabled: Determines if the mirror is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_keys: SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full known_hosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `ssh_known_hosts` representation and does not return them.
         :param pulumi.Input[_builtins.bool] keep_divergent_refs: Determines if divergent refs are skipped.
         :param pulumi.Input[_builtins.str] mirror_branch_regex: Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] only_protected_branches: Determines if only protected branches are mirrored.
@@ -43,6 +45,8 @@ class ProjectPushMirrorArgs:
             pulumi.set(__self__, "auth_method", auth_method)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if host_keys is not None:
+            pulumi.set(__self__, "host_keys", host_keys)
         if keep_divergent_refs is not None:
             pulumi.set(__self__, "keep_divergent_refs", keep_divergent_refs)
         if mirror_branch_regex is not None:
@@ -99,6 +103,18 @@ class ProjectPushMirrorArgs:
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="hostKeys")
+    def host_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full known_hosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `ssh_known_hosts` representation and does not return them.
+        """
+        return pulumi.get(self, "host_keys")
+
+    @host_keys.setter
+    def host_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "host_keys", value)
+
+    @_builtins.property
     @pulumi.getter(name="keepDivergentRefs")
     def keep_divergent_refs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -140,6 +156,7 @@ class _ProjectPushMirrorState:
     def __init__(__self__, *,
                  auth_method: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  keep_divergent_refs: pulumi.Input[Optional[_builtins.bool]] = None,
                  mirror_branch_regex: pulumi.Input[Optional[_builtins.str]] = None,
                  mirror_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -151,6 +168,7 @@ class _ProjectPushMirrorState:
 
         :param pulumi.Input[_builtins.str] auth_method: Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
         :param pulumi.Input[_builtins.bool] enabled: Determines if the mirror is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_keys: SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full known_hosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `ssh_known_hosts` representation and does not return them.
         :param pulumi.Input[_builtins.bool] keep_divergent_refs: Determines if divergent refs are skipped.
         :param pulumi.Input[_builtins.str] mirror_branch_regex: Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
         :param pulumi.Input[_builtins.int] mirror_id: Mirror ID.
@@ -162,6 +180,8 @@ class _ProjectPushMirrorState:
             pulumi.set(__self__, "auth_method", auth_method)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if host_keys is not None:
+            pulumi.set(__self__, "host_keys", host_keys)
         if keep_divergent_refs is not None:
             pulumi.set(__self__, "keep_divergent_refs", keep_divergent_refs)
         if mirror_branch_regex is not None:
@@ -198,6 +218,18 @@ class _ProjectPushMirrorState:
     @enabled.setter
     def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hostKeys")
+    def host_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full known_hosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `ssh_known_hosts` representation and does not return them.
+        """
+        return pulumi.get(self, "host_keys")
+
+    @host_keys.setter
+    def host_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "host_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="keepDivergentRefs")
@@ -280,6 +312,7 @@ class ProjectPushMirror(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_method: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  keep_divergent_refs: pulumi.Input[Optional[_builtins.bool]] = None,
                  mirror_branch_regex: pulumi.Input[Optional[_builtins.str]] = None,
                  only_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -325,6 +358,7 @@ class ProjectPushMirror(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_method: Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
         :param pulumi.Input[_builtins.bool] enabled: Determines if the mirror is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_keys: SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full known_hosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `ssh_known_hosts` representation and does not return them.
         :param pulumi.Input[_builtins.bool] keep_divergent_refs: Determines if divergent refs are skipped.
         :param pulumi.Input[_builtins.str] mirror_branch_regex: Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] only_protected_branches: Determines if only protected branches are mirrored.
@@ -389,6 +423,7 @@ class ProjectPushMirror(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_method: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  keep_divergent_refs: pulumi.Input[Optional[_builtins.bool]] = None,
                  mirror_branch_regex: pulumi.Input[Optional[_builtins.str]] = None,
                  only_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -405,6 +440,7 @@ class ProjectPushMirror(pulumi.CustomResource):
 
             __props__.__dict__["auth_method"] = auth_method
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["host_keys"] = host_keys
             __props__.__dict__["keep_divergent_refs"] = keep_divergent_refs
             __props__.__dict__["mirror_branch_regex"] = mirror_branch_regex
             __props__.__dict__["only_protected_branches"] = only_protected_branches
@@ -429,6 +465,7 @@ class ProjectPushMirror(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auth_method: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            host_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             keep_divergent_refs: pulumi.Input[Optional[_builtins.bool]] = None,
             mirror_branch_regex: pulumi.Input[Optional[_builtins.str]] = None,
             mirror_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -444,6 +481,7 @@ class ProjectPushMirror(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_method: Determines the mirror authentication method. Valid values are: `ssh_public_key`, `password`.
         :param pulumi.Input[_builtins.bool] enabled: Determines if the mirror is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] host_keys: SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full known_hosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `ssh_known_hosts` representation and does not return them.
         :param pulumi.Input[_builtins.bool] keep_divergent_refs: Determines if divergent refs are skipped.
         :param pulumi.Input[_builtins.str] mirror_branch_regex: Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
         :param pulumi.Input[_builtins.int] mirror_id: Mirror ID.
@@ -457,6 +495,7 @@ class ProjectPushMirror(pulumi.CustomResource):
 
         __props__.__dict__["auth_method"] = auth_method
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["host_keys"] = host_keys
         __props__.__dict__["keep_divergent_refs"] = keep_divergent_refs
         __props__.__dict__["mirror_branch_regex"] = mirror_branch_regex
         __props__.__dict__["mirror_id"] = mirror_id
@@ -480,6 +519,14 @@ class ProjectPushMirror(pulumi.CustomResource):
         Determines if the mirror is enabled.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="hostKeys")
+    def host_keys(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full known_hosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `ssh_known_hosts` representation and does not return them.
+        """
+        return pulumi.get(self, "host_keys")
 
     @_builtins.property
     @pulumi.getter(name="keepDivergentRefs")

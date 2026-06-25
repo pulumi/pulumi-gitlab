@@ -19,6 +19,21 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetProjectsArgs Empty = new GetProjectsArgs();
 
     /**
+     * Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+     * 
+     */
+    @Import(name="active")
+    private @Nullable Output<Boolean> active;
+
+    /**
+     * @return Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+     * 
+     */
+    public Optional<Output<Boolean>> active() {
+        return Optional.ofNullable(this.active);
+    }
+
+    /**
      * Limit by archived status.
      * 
      */
@@ -64,14 +79,14 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+     * The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
      * 
      */
     @Import(name="maxQueryablePages")
     private @Nullable Output<Integer> maxQueryablePages;
 
     /**
-     * @return The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+     * @return The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
      * 
      */
     public Optional<Output<Integer>> maxQueryablePages() {
@@ -139,14 +154,14 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The first page to begin the query on.
+     * The first page to begin the query on (default 1).
      * 
      */
     @Import(name="page")
     private @Nullable Output<Integer> page;
 
     /**
-     * @return The first page to begin the query on.
+     * @return The first page to begin the query on (default 1).
      * 
      */
     public Optional<Output<Integer>> page() {
@@ -154,14 +169,14 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The number of results to return per page.
+     * The number of results to return per page (default 20, maximum 100).
      * 
      */
     @Import(name="perPage")
     private @Nullable Output<Integer> perPage;
 
     /**
-     * @return The number of results to return per page.
+     * @return The number of results to return per page (default 20, maximum 100).
      * 
      */
     public Optional<Output<Integer>> perPage() {
@@ -351,6 +366,7 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
     private GetProjectsArgs() {}
 
     private GetProjectsArgs(GetProjectsArgs $) {
+        this.active = $.active;
         this.archived = $.archived;
         this.groupId = $.groupId;
         this.includeSubgroups = $.includeSubgroups;
@@ -391,6 +407,27 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetProjectsArgs defaults) {
             $ = new GetProjectsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param active Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder active(@Nullable Output<Boolean> active) {
+            $.active = active;
+            return this;
+        }
+
+        /**
+         * @param active Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder active(Boolean active) {
+            return active(Output.of(active));
         }
 
         /**
@@ -457,7 +494,7 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param maxQueryablePages The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+         * @param maxQueryablePages The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
          * 
          * @return builder
          * 
@@ -468,7 +505,7 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param maxQueryablePages The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+         * @param maxQueryablePages The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
          * 
          * @return builder
          * 
@@ -562,7 +599,7 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param page The first page to begin the query on.
+         * @param page The first page to begin the query on (default 1).
          * 
          * @return builder
          * 
@@ -573,7 +610,7 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param page The first page to begin the query on.
+         * @param page The first page to begin the query on (default 1).
          * 
          * @return builder
          * 
@@ -583,7 +620,7 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param perPage The number of results to return per page.
+         * @param perPage The number of results to return per page (default 20, maximum 100).
          * 
          * @return builder
          * 
@@ -594,7 +631,7 @@ public final class GetProjectsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param perPage The number of results to return per page.
+         * @param perPage The number of results to return per page (default 20, maximum 100).
          * 
          * @return builder
          * 

@@ -77,7 +77,7 @@ export interface BranchCommit {
 
 export interface BranchProtectionAllowedToMerge {
     /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access level allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     accessLevel: string;
     /**
@@ -85,18 +85,18 @@ export interface BranchProtectionAllowedToMerge {
      */
     accessLevelDescription: string;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId` and `accessLevel`.
      */
     groupId?: number;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId` and `accessLevel`.
      */
     userId?: number;
 }
 
 export interface BranchProtectionAllowedToPush {
     /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access level allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     accessLevel: string;
     /**
@@ -104,22 +104,22 @@ export interface BranchProtectionAllowedToPush {
      */
     accessLevelDescription: string;
     /**
-     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `userId`, `groupId`, and `accessLevel`. This field is read-only until Gitlab 17.5.
      */
     deployKeyId?: number;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `userId`, and `accessLevel`.
      */
     groupId?: number;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `accessLevel`.
      */
     userId?: number;
 }
 
 export interface BranchProtectionAllowedToUnprotect {
     /**
-     * Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
+     * Access level allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. Valid values are: `developer`, `maintainer`, `admin`.
      */
     accessLevel: string;
     /**
@@ -127,11 +127,11 @@ export interface BranchProtectionAllowedToUnprotect {
      */
     accessLevelDescription: string;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId` and `accessLevel`.
      */
     groupId?: number;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId` and `accessLevel`.
      */
     userId?: number;
 }
@@ -250,7 +250,52 @@ export interface GetGroupBillableMemberMembershipsMembership {
     sourceMembersUrl: string;
 }
 
+export interface GetGroupDefaultBranchProtectionDefault {
+    /**
+     * Whether force-push is allowed to the default branch.
+     */
+    allowForcePush: boolean;
+    /**
+     * Access levels allowed to merge into the default branch.
+     */
+    allowedToMerges: outputs.GetGroupDefaultBranchProtectionDefaultAllowedToMerge[];
+    /**
+     * Access levels allowed to push to the default branch.
+     */
+    allowedToPushes: outputs.GetGroupDefaultBranchProtectionDefaultAllowedToPush[];
+    /**
+     * Whether code-owner approval is required on the default branch.
+     */
+    codeOwnerApprovalRequired: boolean;
+    /**
+     * Whether developers can make the initial push to the default branch.
+     */
+    developerCanInitialPush: boolean;
+}
+
+export interface GetGroupDefaultBranchProtectionDefaultAllowedToMerge {
+    /**
+     * The access level integer.
+     */
+    accessLevel: number;
+}
+
+export interface GetGroupDefaultBranchProtectionDefaultAllowedToPush {
+    /**
+     * The access level integer.
+     */
+    accessLevel: number;
+}
+
 export interface GetGroupHooksHook {
+    /**
+     * Lifecycle status of the webhook. Values include `executable` and `disabled`.
+     */
+    alertStatus: string;
+    /**
+     * Filter push events by branch.
+     */
+    branchFilterStrategy: string;
     /**
      * Invoke the hook for confidential issues events.
      */
@@ -260,6 +305,10 @@ export interface GetGroupHooksHook {
      */
     confidentialNoteEvents: boolean;
     /**
+     * The date and time the hook was created in ISO8601 format.
+     */
+    createdAt: string;
+    /**
      * Set a custom webhook template.
      */
     customWebhookTemplate: string;
@@ -268,6 +317,10 @@ export interface GetGroupHooksHook {
      */
     deploymentEvents: boolean;
     /**
+     * Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+     */
+    disabledUntil: string;
+    /**
      * Invoke the hook for emoji events.
      */
     emojiEvents: boolean;
@@ -275,6 +328,10 @@ export interface GetGroupHooksHook {
      * Enable ssl verification when invoking the hook.
      */
     enableSslVerification: boolean;
+    /**
+     * Invoke the hook for feature flag events.
+     */
+    featureFlagEvents: boolean;
     /**
      * The ID or full path of the group.
      */
@@ -296,9 +353,17 @@ export interface GetGroupHooksHook {
      */
     jobEvents: boolean;
     /**
+     * Invoke the hook for member events.
+     */
+    memberEvents: boolean;
+    /**
      * Invoke the hook for merge requests.
      */
     mergeRequestsEvents: boolean;
+    /**
+     * Invoke the hook for milestone events.
+     */
+    milestoneEvents: boolean;
     /**
      * Invoke the hook for notes events.
      */
@@ -307,6 +372,10 @@ export interface GetGroupHooksHook {
      * Invoke the hook for pipeline events.
      */
     pipelineEvents: boolean;
+    /**
+     * Invoke the hook for project events.
+     */
+    projectEvents: boolean;
     /**
      * Invoke the hook for push events.
      */
@@ -320,6 +389,14 @@ export interface GetGroupHooksHook {
      */
     releasesEvents: boolean;
     /**
+     * Invoke the hook for resource access token expiry events.
+     */
+    resourceAccessTokenEvents: boolean;
+    /**
+     * Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     */
+    signingTokenPresent: boolean;
+    /**
      * Invoke the hook for subgroup events.
      */
     subgroupEvents: boolean;
@@ -327,12 +404,6 @@ export interface GetGroupHooksHook {
      * Invoke the hook for tag push events.
      */
     tagPushEvents: boolean;
-    /**
-     * A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
-     *
-     * @deprecated The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
-     */
-    token: string;
     /**
      * The url of the hook to invoke.
      */
@@ -345,6 +416,45 @@ export interface GetGroupHooksHook {
      * Invoke the hook for wiki page events.
      */
     wikiPageEvents: boolean;
+}
+
+export interface GetGroupLabelsLabel {
+    /**
+     * The number of closed issues with this label.
+     */
+    closedIssuesCount: number;
+    /**
+     * The color of the label given in 6-digit hex notation with leading '#' sign.
+     */
+    color: string;
+    /**
+     * The description of the label.
+     */
+    description: string;
+    /**
+     * The ID of the label.
+     */
+    id: number;
+    /**
+     * The name of the label.
+     */
+    name: string;
+    /**
+     * The number of open issues with this label.
+     */
+    openIssuesCount: number;
+    /**
+     * The number of open merge requests with this label.
+     */
+    openMergeRequestsCount: number;
+    /**
+     * Whether the authenticated user is subscribed to the label.
+     */
+    subscribed: boolean;
+    /**
+     * The text color of the label given in 6-digit hex notation with leading '#' sign.
+     */
+    textColor: string;
 }
 
 export interface GetGroupMembershipMember {
@@ -399,6 +509,159 @@ export interface GetGroupMembershipMemberGroupSamlIdentity {
      * The ID of the SAML provider.
      */
     samlProviderId: number;
+}
+
+export interface GetGroupProtectedBranchMergeAccessLevel {
+    /**
+     * Access level allowed to perform the relevant action.
+     */
+    accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action.
+     */
+    groupId: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action.
+     */
+    userId: number;
+}
+
+export interface GetGroupProtectedBranchPushAccessLevel {
+    /**
+     * Access level allowed to perform the relevant action.
+     */
+    accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab deploy key allowed to perform the relevant action.
+     */
+    deployKeyId: number;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action.
+     */
+    groupId: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action.
+     */
+    userId: number;
+}
+
+export interface GetGroupProtectedBranchUnprotectAccessLevel {
+    /**
+     * Access level allowed to perform the relevant action.
+     */
+    accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action.
+     */
+    groupId: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action.
+     */
+    userId: number;
+}
+
+export interface GetGroupProtectedBranchesProtectedBranch {
+    /**
+     * Whether force push is allowed.
+     */
+    allowForcePush: boolean;
+    /**
+     * Reject code pushes that change files listed in the CODEOWNERS file.
+     */
+    codeOwnerApprovalRequired: boolean;
+    /**
+     * The ID of this resource.
+     */
+    id: number;
+    /**
+     * Array of merge access levels/users/groups allowed for the protected branch.
+     */
+    mergeAccessLevels: outputs.GetGroupProtectedBranchesProtectedBranchMergeAccessLevel[];
+    /**
+     * The name of the protected branch.
+     */
+    name: string;
+    /**
+     * Array of push access levels/users/groups/deploy keys allowed for the protected branch.
+     */
+    pushAccessLevels: outputs.GetGroupProtectedBranchesProtectedBranchPushAccessLevel[];
+    /**
+     * Array of unprotect access levels/users/groups allowed for the protected branch.
+     */
+    unprotectAccessLevels: outputs.GetGroupProtectedBranchesProtectedBranchUnprotectAccessLevel[];
+}
+
+export interface GetGroupProtectedBranchesProtectedBranchMergeAccessLevel {
+    /**
+     * Access level allowed to perform the relevant action.
+     */
+    accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action.
+     */
+    groupId: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action.
+     */
+    userId: number;
+}
+
+export interface GetGroupProtectedBranchesProtectedBranchPushAccessLevel {
+    /**
+     * Access level allowed to perform the relevant action.
+     */
+    accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab deploy key allowed to perform the relevant action.
+     */
+    deployKeyId: number;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action.
+     */
+    groupId: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action.
+     */
+    userId: number;
+}
+
+export interface GetGroupProtectedBranchesProtectedBranchUnprotectAccessLevel {
+    /**
+     * Access level allowed to perform the relevant action.
+     */
+    accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action.
+     */
+    groupId: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action.
+     */
+    userId: number;
 }
 
 export interface GetGroupProvisionedUsersProvisionedUser {
@@ -502,6 +765,61 @@ export interface GetGroupProvisionedUsersProvisionedUser {
      * The website URL of the provisioned user.
      */
     websiteUrl: string;
+}
+
+export interface GetGroupPushRule {
+    /**
+     * All commit author emails must match this regex, e.g. `@my-company.com$`.
+     */
+    authorEmailRegex: string;
+    /**
+     * All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+     */
+    branchNameRegex: string;
+    /**
+     * Users can only push commits to projects in this group that were committed with one of their own verified emails.
+     */
+    commitCommitterCheck: boolean;
+    /**
+     * Users can only push commits to projects in this group if the commit author name is consistent with their GitLab account name.
+     */
+    commitCommitterNameCheck: boolean;
+    /**
+     * No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     */
+    commitMessageNegativeRegex: string;
+    /**
+     * All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     */
+    commitMessageRegex: string;
+    /**
+     * Deny deleting a tag.
+     */
+    denyDeleteTag: boolean;
+    /**
+     * All committed filenames must not match this regex, e.g. `(jar|exe)$`.
+     */
+    fileNameRegex: string;
+    /**
+     * Maximum file size (MB).
+     */
+    maxFileSize: number;
+    /**
+     * Restrict commits by author (email) to existing GitLab users.
+     */
+    memberCheck: boolean;
+    /**
+     * GitLab will reject any files that are likely to contain secrets.
+     */
+    preventSecrets: boolean;
+    /**
+     * Reject commit when it's not DCO certified.
+     */
+    rejectNonDcoCommits: boolean;
+    /**
+     * Reject commit when it's not signed through GPG.
+     */
+    rejectUnsignedCommits: boolean;
 }
 
 export interface GetGroupSamlLinksSamlLink {
@@ -681,15 +999,65 @@ export interface GetGroupVariablesVariable {
 
 export interface GetGroupsGroup {
     /**
-     * Whether developers and maintainers can push to the applicable default branch. Will be removed in 19.0.
+     * Default to allowing merge on a skipped pipeline for new projects in the group.
+     */
+    allowMergeOnSkippedPipeline: boolean;
+    /**
+     * Comma-separated list of email address domains allowed to be added as group members.
+     */
+    allowedEmailDomainsList: string;
+    /**
+     * Default to Auto DevOps pipeline for all projects within this group.
+     */
+    autoDevopsEnabled: boolean;
+    /**
+     * URL of the group avatar.
+     */
+    avatarUrl: string;
+    /**
+     * Timestamp at which the group was created.
+     */
+    createdAt: string;
+    /**
+     * Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.
+     */
+    customAttributes: {[key: string]: string}[];
+    /**
+     * The default branch of the group.
+     */
+    defaultBranch: string;
+    /**
+     * Whether developers and maintainers can push to the applicable default branch. Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0.
      *
-     * @deprecated Will be removed in 19.0.
+     * @deprecated Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0.
      */
     defaultBranchProtection: number;
+    /**
+     * Default protection settings applied to the default branch of new projects in this group.
+     */
+    defaultBranchProtectionDefaults: outputs.GetGroupsGroupDefaultBranchProtectionDefault[];
     /**
      * The description of the group.
      */
     description: string;
+    /**
+     * Whether email notifications are disabled for this group. Use `emailsEnabled` instead, to be removed in 19.0.
+     *
+     * @deprecated Use `emailsEnabled` instead, to be removed in 19.0.
+     */
+    emailsDisabled: boolean;
+    /**
+     * Whether email notifications are enabled for this group.
+     */
+    emailsEnabled: boolean;
+    /**
+     * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
+     */
+    extraSharedRunnersMinutesLimit: number;
+    /**
+     * The ID of the project used to load custom file templates.
+     */
+    fileTemplateProjectId: number;
     /**
      * The full name of the group.
      */
@@ -703,15 +1071,51 @@ export interface GetGroupsGroup {
      */
     groupId: number;
     /**
-     * Is LFS enabled for projects in this group.
+     * Comma-separated list of IP addresses or subnet masks that restrict access to the group.
+     */
+    ipRestrictionRanges: string;
+    /**
+     * Default access level for members synced from LDAP.
+     */
+    ldapAccess: number;
+    /**
+     * LDAP common name used to sync members from an LDAP group.
+     */
+    ldapCn: string;
+    /**
+     * Boolean, is LFS enabled for projects in this group.
      */
     lfsEnabled: boolean;
+    /**
+     * Date on which the group was marked for deletion.
+     */
+    markedForDeletionOn: string;
+    /**
+     * Maximum artifacts size for the group, in MB.
+     */
+    maxArtifactsSize: number;
+    /**
+     * Users cannot be added to projects in this group.
+     */
+    membershipLock: boolean;
+    /**
+     * Whether mentions are disabled for this group.
+     */
+    mentionsDisabled: boolean;
     /**
      * The name of this group.
      */
     name: string;
     /**
-     * ID of the parent group.
+     * Default to only allowing merge if all discussions are resolved for new projects in the group.
+     */
+    onlyAllowMergeIfAllDiscussionsAreResolved: boolean;
+    /**
+     * Default to only allowing merge if the pipeline succeeds for new projects in the group.
+     */
+    onlyAllowMergeIfPipelineSucceeds: boolean;
+    /**
+     * Integer, ID of the parent group.
      */
     parentId: number;
     /**
@@ -723,21 +1127,57 @@ export interface GetGroupsGroup {
      */
     preventForkingOutsideGroup: boolean;
     /**
-     * When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+     * When enabled, users cannot invite other groups outside of the top-level group's hierarchy. This option is only available for top-level groups.
      */
     preventSharingGroupsOutsideHierarchy: boolean;
     /**
-     * Is request for access enabled to the group.
+     * Determine which roles can create projects in the group. Possible values are `noone`, `maintainer`, `developer`, `owner`, `administrator`.
+     */
+    projectCreationLevel: string;
+    /**
+     * Repository storage shard the group's projects use. (admin only)
+     */
+    repositoryStorage: string;
+    /**
+     * Boolean, is request for access enabled to the group.
      */
     requestAccessEnabled: boolean;
+    /**
+     * Require all users in this group to set up two-factor authentication.
+     */
+    requireTwoFactorAuthentication: boolean;
     /**
      * The group level registration token to use during runner setup.
      */
     runnersToken: string;
     /**
+     * Prevent sharing a project with another group within this group.
+     */
+    shareWithGroupLock: boolean;
+    /**
+     * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
+     */
+    sharedRunnersMinutesLimit: number;
+    /**
      * Enable or disable shared runners for a group's subgroups and projects. Valid values are: `enabled`, `disabledAndOverridable`, `disabledAndUnoverridable`, `disabledWithOverride`.
      */
     sharedRunnersSetting: string;
+    /**
+     * Describes groups which have access shared to this group.
+     */
+    sharedWithGroups: outputs.GetGroupsGroupSharedWithGroup[];
+    /**
+     * Statistics for the group. Keys: `commitCount`, `storageSize`, `repositorySize`, `wikiSize`, `lfsObjectsSize`, `jobArtifactsSize`, `pipelineArtifactsSize`, `packagesSize`, `snippetsSize`, `uploadsSize`, `containerRegistrySize`.
+     */
+    statistics: {[key: string]: number};
+    /**
+     * Determine which roles can create subgroups in the group. Possible values are `owner`, `maintainer`.
+     */
+    subgroupCreationLevel: string;
+    /**
+     * Grace period, in hours, before enforcing two-factor authentication on group members.
+     */
+    twoFactorGracePeriod: number;
     /**
      * Visibility level of the group. Possible values are `private`, `internal`, `public`.
      */
@@ -750,6 +1190,66 @@ export interface GetGroupsGroup {
      * The group's wiki access level. Only available on Premium and Ultimate plans. Valid values are `disabled`, `private`, `enabled`.
      */
     wikiAccessLevel: string;
+}
+
+export interface GetGroupsGroupDefaultBranchProtectionDefault {
+    /**
+     * Whether force-push is allowed to the default branch.
+     */
+    allowForcePush: boolean;
+    /**
+     * Access levels allowed to merge into the default branch.
+     */
+    allowedToMerges: outputs.GetGroupsGroupDefaultBranchProtectionDefaultAllowedToMerge[];
+    /**
+     * Access levels allowed to push to the default branch.
+     */
+    allowedToPushes: outputs.GetGroupsGroupDefaultBranchProtectionDefaultAllowedToPush[];
+    /**
+     * Whether code-owner approval is required on the default branch.
+     */
+    codeOwnerApprovalRequired: boolean;
+    /**
+     * Whether developers can make the initial push to the default branch.
+     */
+    developerCanInitialPush: boolean;
+}
+
+export interface GetGroupsGroupDefaultBranchProtectionDefaultAllowedToMerge {
+    /**
+     * The access level integer.
+     */
+    accessLevel: number;
+}
+
+export interface GetGroupsGroupDefaultBranchProtectionDefaultAllowedToPush {
+    /**
+     * The access level integer.
+     */
+    accessLevel: number;
+}
+
+export interface GetGroupsGroupSharedWithGroup {
+    /**
+     * Share with group expiration date.
+     */
+    expiresAt: string;
+    /**
+     * The accessLevel permission level of the shared group.
+     */
+    groupAccessLevel: number;
+    /**
+     * The full path of the group shared with.
+     */
+    groupFullPath: string;
+    /**
+     * The ID of the group shared with.
+     */
+    groupId: number;
+    /**
+     * The name of the group shared with.
+     */
+    groupName: string;
 }
 
 export interface GetInstanceDeployKeysDeployKey {
@@ -1236,7 +1736,42 @@ export interface GetProjectEnvironmentsEnvironment {
     updatedAt: string;
 }
 
+export interface GetProjectForkedFromProject {
+    /**
+     * The HTTP clone URL of the upstream project.
+     */
+    httpUrlToRepo: string;
+    /**
+     * The ID of the upstream project.
+     */
+    id: number;
+    /**
+     * The name of the upstream project.
+     */
+    name: string;
+    /**
+     * In `group / subgroup / project` or `user / project` format.
+     */
+    nameWithNamespace: string;
+    /**
+     * The path of the upstream project.
+     */
+    path: string;
+    /**
+     * In `group/subgroup/project` or `user/project` format.
+     */
+    pathWithNamespace: string;
+    /**
+     * The web URL of the upstream project.
+     */
+    webUrl: string;
+}
+
 export interface GetProjectHooksHook {
+    /**
+     * Lifecycle status of the webhook. Values include `executable` and `disabled`.
+     */
+    alertStatus: string;
     /**
      * Filter push events by branch.
      */
@@ -1250,6 +1785,10 @@ export interface GetProjectHooksHook {
      */
     confidentialNoteEvents: boolean;
     /**
+     * The date and time the hook was created in ISO8601 format.
+     */
+    createdAt: string;
+    /**
      * Set a custom webhook template.
      */
     customWebhookTemplate: string;
@@ -1258,6 +1797,10 @@ export interface GetProjectHooksHook {
      */
     deploymentEvents: boolean;
     /**
+     * Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+     */
+    disabledUntil: string;
+    /**
      * Invoke the hook for emoji events.
      */
     emojiEvents: boolean;
@@ -1265,6 +1808,10 @@ export interface GetProjectHooksHook {
      * Enable ssl verification when invoking the hook.
      */
     enableSslVerification: boolean;
+    /**
+     * Invoke the hook for feature flag events.
+     */
+    featureFlagEvents: boolean;
     /**
      * The id of the project hook.
      */
@@ -1281,6 +1828,10 @@ export interface GetProjectHooksHook {
      * Invoke the hook for merge requests.
      */
     mergeRequestsEvents: boolean;
+    /**
+     * Invoke the hook for milestone events.
+     */
+    milestoneEvents: boolean;
     /**
      * Invoke the hook for notes events.
      */
@@ -1310,15 +1861,25 @@ export interface GetProjectHooksHook {
      */
     releasesEvents: boolean;
     /**
+     * Invoke the hook for repository update events.
+     */
+    repositoryUpdateEvents: boolean;
+    /**
+     * Invoke the hook for project access token expiry events.
+     */
+    resourceAccessTokenEvents: boolean;
+    /**
+     * Invoke the hook for resource deploy token events.
+     */
+    resourceDeployTokenEvents: boolean;
+    /**
+     * Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     */
+    signingTokenPresent: boolean;
+    /**
      * Invoke the hook for tag push events.
      */
     tagPushEvents: boolean;
-    /**
-     * A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. Will be removed in 19.0.
-     *
-     * @deprecated The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
-     */
-    token: string;
     /**
      * The url of the hook to invoke.
      */
@@ -1638,6 +2199,29 @@ export interface GetProjectLabelsLabel {
     textColor: string;
 }
 
+export interface GetProjectLicense {
+    /**
+     * URL to the license's human-readable description.
+     */
+    htmlUrl: string;
+    /**
+     * The license key (e.g. `mit`).
+     */
+    key: string;
+    /**
+     * The license name (e.g. `MIT License`).
+     */
+    name: string;
+    /**
+     * The license nickname.
+     */
+    nickname: string;
+    /**
+     * URL to the license source text.
+     */
+    sourceUrl: string;
+}
+
 export interface GetProjectMembershipMember {
     /**
      * The level of access to the group.
@@ -1930,9 +2514,70 @@ export interface GetProjectMilestonesMilestone {
     webUrl: string;
 }
 
+export interface GetProjectNamespace {
+    /**
+     * The full path of the namespace.
+     */
+    fullPath: string;
+    /**
+     * The ID of the namespace.
+     */
+    id: number;
+    /**
+     * The kind of the namespace.
+     */
+    kind: string;
+    /**
+     * The name of the namespace.
+     */
+    name: string;
+    /**
+     * The path of the namespace.
+     */
+    path: string;
+}
+
+export interface GetProjectOwner {
+    /**
+     * The avatar URL of the owner.
+     */
+    avatarUrl: string;
+    /**
+     * The ID of the owner.
+     */
+    id: number;
+    /**
+     * The name of the owner.
+     */
+    name: string;
+    /**
+     * The state of the owner.
+     */
+    state: string;
+    /**
+     * The username of the owner.
+     */
+    username: string;
+    /**
+     * The website URL of the owner.
+     */
+    websiteUrl: string;
+}
+
+export interface GetProjectPermission {
+    /**
+     * Group access level.
+     */
+    groupAccess: {[key: string]: number};
+    /**
+     * Project access level.
+     */
+    projectAccess: {[key: string]: number};
+}
+
 export interface GetProjectProtectedBranchMergeAccessLevel {
     /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access level allowed to perform the relevant action.
      */
     accessLevel: string;
     /**
@@ -1940,18 +2585,18 @@ export interface GetProjectProtectedBranchMergeAccessLevel {
      */
     accessLevelDescription: string;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab group allowed to perform the relevant action.
      */
-    groupId?: number;
+    groupId: number;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action.
      */
-    userId?: number;
+    userId: number;
 }
 
 export interface GetProjectProtectedBranchPushAccessLevel {
     /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access level allowed to perform the relevant action.
      */
     accessLevel: string;
     /**
@@ -1959,17 +2604,36 @@ export interface GetProjectProtectedBranchPushAccessLevel {
      */
     accessLevelDescription: string;
     /**
-     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     * The ID of a GitLab deploy key allowed to perform the relevant action.
      */
-    deployKeyId?: number;
+    deployKeyId: number;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
+     * The ID of a GitLab group allowed to perform the relevant action.
      */
-    groupId?: number;
+    groupId: number;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action.
      */
-    userId?: number;
+    userId: number;
+}
+
+export interface GetProjectProtectedBranchUnprotectAccessLevel {
+    /**
+     * Access level allowed to perform the relevant action.
+     */
+    accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action.
+     */
+    groupId: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action.
+     */
+    userId: number;
 }
 
 export interface GetProjectProtectedBranchesProtectedBranch {
@@ -1986,22 +2650,26 @@ export interface GetProjectProtectedBranchesProtectedBranch {
      */
     id: number;
     /**
-     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     * Array of merge access levels/users/groups allowed for the protected branch.
      */
-    mergeAccessLevels?: outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevel[];
+    mergeAccessLevels: outputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevel[];
     /**
      * The name of the protected branch.
      */
     name: string;
     /**
-     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     * Array of push access levels/users/groups/deploy keys allowed for the protected branch.
      */
-    pushAccessLevels?: outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevel[];
+    pushAccessLevels: outputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevel[];
+    /**
+     * Array of unprotect access levels/users/groups allowed for the protected branch.
+     */
+    unprotectAccessLevels: outputs.GetProjectProtectedBranchesProtectedBranchUnprotectAccessLevel[];
 }
 
 export interface GetProjectProtectedBranchesProtectedBranchMergeAccessLevel {
     /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access level allowed to perform the relevant action.
      */
     accessLevel: string;
     /**
@@ -2009,18 +2677,18 @@ export interface GetProjectProtectedBranchesProtectedBranchMergeAccessLevel {
      */
     accessLevelDescription: string;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab group allowed to perform the relevant action.
      */
-    groupId?: number;
+    groupId: number;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action.
      */
-    userId?: number;
+    userId: number;
 }
 
 export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
     /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access level allowed to perform the relevant action.
      */
     accessLevel: string;
     /**
@@ -2028,17 +2696,36 @@ export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
      */
     accessLevelDescription: string;
     /**
-     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     * The ID of a GitLab deploy key allowed to perform the relevant action.
      */
-    deployKeyId?: number;
+    deployKeyId: number;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
+     * The ID of a GitLab group allowed to perform the relevant action.
      */
-    groupId?: number;
+    groupId: number;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action.
      */
-    userId?: number;
+    userId: number;
+}
+
+export interface GetProjectProtectedBranchesProtectedBranchUnprotectAccessLevel {
+    /**
+     * Access level allowed to perform the relevant action.
+     */
+    accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action.
+     */
+    groupId: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action.
+     */
+    userId: number;
 }
 
 export interface GetProjectProtectedTagCreateAccessLevel {
@@ -2216,9 +2903,15 @@ export interface GetProjectSecureFileMetadataSubject {
 
 export interface GetProjectSharedWithGroup {
     /**
-     * The accessLevel permission level of the shared group.
+     * The access level (integer) of the shared group. Matches the upstream GitLab API. See `groupAccessLevelName` for the human-readable string form.
      */
     groupAccessLevel: number;
+    /**
+     * The human-readable access level name of the shared group (e.g. `developer`, `maintainer`). Computed from `groupAccessLevel`.
+     *
+     * @deprecated Use `groupAccessLevel` instead, to be removed in 20.0.
+     */
+    groupAccessLevelName: string;
     /**
      * The full path of the group shared with.
      */
@@ -2417,13 +3110,7 @@ export interface GetProjectVariablesVariable {
 
 export interface GetProjectsProject {
     /**
-     * Links for the project. Use `links` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `links` instead. To be removed in 19.0.
-     */
-    _links: {[key: string]: string};
-    /**
-     * Whether allowMergeOnSkippedPipeline is enabled for the project.
+     * Whether `allowMergeOnSkippedPipeline` is enabled for the project.
      */
     allowMergeOnSkippedPipeline: boolean;
     /**
@@ -2435,15 +3122,17 @@ export interface GetProjectsProject {
      */
     analyticsAccessLevel: string;
     /**
-     * The numbers of approvals needed in a merge requests.
+     * The number of approvals needed in a merge request.
+     *
+     * @deprecated Use the Merge Request Approvals API instead, to be removed in 20.0.
      */
     approvalsBeforeMerge: number;
     /**
-     * Whether the project is archived.
+     * Whether the project is in read-only mode (archived).
      */
     archived: boolean;
     /**
-     * Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+     * Auto-cancel pending pipelines. This isn't a boolean, but `enabled`/`disabled`.
      */
     autoCancelPendingPipelines: string;
     /**
@@ -2455,11 +3144,15 @@ export interface GetProjectsProject {
      */
     autoDevopsEnabled: boolean;
     /**
+     * Whether GitLab Duo code review is enabled for the project.
+     */
+    autoDuoCodeReviewEnabled: boolean;
+    /**
      * Set whether auto-closing referenced issues on default branch.
      */
     autocloseReferencedIssues: boolean;
     /**
-     * The avatar url of the project.
+     * The avatar URL of the project.
      */
     avatarUrl: string;
     /**
@@ -2467,7 +3160,7 @@ export interface GetProjectsProject {
      */
     buildCoverageRegex: string;
     /**
-     * The Git strategy. Defaults to fetch.
+     * The Git strategy. Defaults to `fetch`.
      */
     buildGitStrategy: string;
     /**
@@ -2478,6 +3171,14 @@ export interface GetProjectsProject {
      * Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
      */
     buildsAccessLevel: string;
+    /**
+     * Whether the calling user can create merge requests in this project.
+     */
+    canCreateMergeRequestIn: boolean;
+    /**
+     * Whether pipelines triggered from merge requests opened from forks may run in the parent project.
+     */
+    ciAllowForkPipelinesToRunInParentProject: boolean;
     /**
      * CI config file path for the project.
      */
@@ -2491,6 +3192,10 @@ export interface GetProjectsProject {
      */
     ciDeletePipelinesInSeconds: number;
     /**
+     * Whether pipeline variables are displayed in the UI.
+     */
+    ciDisplayPipelineVariables: boolean;
+    /**
      * When a new deployment job starts, skip older deployment jobs that are still pending.
      */
     ciForwardDeploymentEnabled: boolean;
@@ -2499,29 +3204,55 @@ export interface GetProjectsProject {
      */
     ciForwardDeploymentRollbackAllowed: boolean;
     /**
-     * Fields included in the sub claim of the ID Token. Accepts an array starting with project_path. The array might also include refType and ref. Defaults to ["projectPath", "refType", "ref"]. Introduced in GitLab 17.10.
+     * Fields included in the sub claim of the ID Token. Accepts an array starting with `projectPath`. The array might also include `refType` and `ref`. Defaults to `["projectPath", "refType", "ref"]`. Introduced in GitLab 17.10.
      */
     ciIdTokenSubClaimComponents: string[];
     /**
-     * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+     * Whether the CI/CD job token access scope is enabled (limits which projects can be accessed using the job token).
+     */
+    ciJobTokenScopeEnabled: boolean;
+    /**
+     * Whether the project must explicitly opt in to receive ID tokens in CI jobs.
+     */
+    ciOptInJwt: boolean;
+    /**
+     * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`.
      */
     ciPipelineVariablesMinimumOverrideRole: string;
     /**
-     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * Whether pushes to the repository using the CI/CD job token are allowed.
+     */
+    ciPushRepositoryForJobTokenAllowed: boolean;
+    /**
+     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `noOne`.
      */
     ciRestrictPipelineCancellationRole: string;
     /**
-     * Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
+     * Use separate caches for protected branches.
+     */
+    ciSeparatedCaches: boolean;
+    /**
+     * Compliance frameworks applied to the project. Premium and Ultimate only.
+     */
+    complianceFrameworks: string[];
+    /**
+     * The image cleanup policy for this project.
      */
     containerExpirationPolicies: outputs.GetProjectsProjectContainerExpirationPolicy[];
     /**
-     * Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+     * Set visibility of container registry for this project. Valid values are `disabled`, `private`, `enabled`.
      */
     containerRegistryAccessLevel: string;
     /**
      * Whether the container registry is enabled for the project.
+     *
+     * @deprecated Use `containerRegistryAccessLevel` instead, to be removed in 20.0.
      */
     containerRegistryEnabled: boolean;
+    /**
+     * The image prefix used by the container registry for this project.
+     */
+    containerRegistryImagePrefix: string;
     /**
      * Creation time for the project.
      */
@@ -2539,9 +3270,13 @@ export interface GetProjectsProject {
      */
     defaultBranch: string;
     /**
-     * The description of the project.
+     * A description of the project.
      */
     description: string;
+    /**
+     * Whether email notifications are disabled for the project.
+     */
+    emailsDisabled: boolean;
     /**
      * Enable email notifications.
      */
@@ -2550,6 +3285,10 @@ export interface GetProjectsProject {
      * Whether the project is empty.
      */
     emptyRepo: boolean;
+    /**
+     * Whether authentication checks are enforced when uploading to the project.
+     */
+    enforceAuthChecksOnUploads: boolean;
     /**
      * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -2595,6 +3334,10 @@ export interface GetProjectsProject {
      */
     importStatus: string;
     /**
+     * The type of import used to create the project (for example `github`, `bitbucket`).
+     */
+    importType: string;
+    /**
      * URL the project was imported from.
      */
     importUrl: string;
@@ -2603,15 +3346,27 @@ export interface GetProjectsProject {
      */
     infrastructureAccessLevel: string;
     /**
+     * Template used to suggest a branch name when creating one from an issue.
+     */
+    issueBranchTemplate: string;
+    /**
      * Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      */
     issuesAccessLevel: string;
     /**
      * Whether issues are enabled for the project.
+     *
+     * @deprecated Use `issuesAccessLevel` instead, to be removed in 20.0.
      */
     issuesEnabled: boolean;
     /**
-     * Whether pipelines are enabled for the project.
+     * Default description template for new issues.
+     */
+    issuesTemplate: string;
+    /**
+     * Whether jobs are enabled for the project.
+     *
+     * @deprecated Use `buildsAccessLevel` instead, to be removed in 20.0.
      */
     jobsEnabled: boolean;
     /**
@@ -2619,7 +3374,7 @@ export interface GetProjectsProject {
      */
     keepLatestArtifact: boolean;
     /**
-     * Last activirty time for the project.
+     * Last activity time for the project.
      */
     lastActivityAt: string;
     /**
@@ -2627,9 +3382,35 @@ export interface GetProjectsProject {
      */
     lfsEnabled: boolean;
     /**
+     * URL of the project's license file.
+     */
+    licenseUrl: string;
+    /**
+     * Information about the project's license, if one is detected.
+     */
+    licenses: outputs.GetProjectsProjectLicense[];
+    /**
      * Links for the project.
      */
     links: {[key: string]: string};
+    /**
+     * Whether the project is marked for deletion.
+     */
+    markedForDeletion: boolean;
+    /**
+     * Timestamp at which the project was marked for deletion. Premium and Ultimate only.
+     *
+     * @deprecated Use `markedForDeletionOn` instead, to be removed in 20.0.
+     */
+    markedForDeletionAt: string;
+    /**
+     * Timestamp at which the project was marked for deletion. Premium and Ultimate only.
+     */
+    markedForDeletionOn: string;
+    /**
+     * Maximum artifacts size, in MB, for the project. Overrides the instance-wide setting when set.
+     */
+    maxArtifactsSize: number;
     /**
      * Template used to create merge commit message in merge requests.
      */
@@ -2643,23 +3424,41 @@ export interface GetProjectsProject {
      */
     mergePipelinesEnabled: boolean;
     /**
+     * Regular expression that merge request titles must match.
+     */
+    mergeRequestTitleRegex: string;
+    /**
+     * Human-readable description of `mergeRequestTitleRegex`.
+     */
+    mergeRequestTitleRegexDescription: string;
+    /**
      * Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
      */
     mergeRequestsAccessLevel: string;
     /**
      * Whether merge requests are enabled for the project.
+     *
+     * @deprecated Use `mergeRequestsAccessLevel` instead, to be removed in 20.0.
      */
     mergeRequestsEnabled: boolean;
+    /**
+     * Default description template for new merge requests.
+     */
+    mergeRequestsTemplate: string;
     /**
      * Enable or disable merge trains.
      */
     mergeTrainsEnabled: boolean;
     /**
-     * Whether the pull mirroring is enabled for the project.
+     * Allows merge train merge requests to be merged without waiting for pipelines to finish.
+     */
+    mergeTrainsSkipTrainAllowed: boolean;
+    /**
+     * Whether pull mirroring is enabled for the project.
      */
     mirror: boolean;
     /**
-     * Whether mirrorOverwritesDivergedBranches is enabled for the project.
+     * Whether `mirrorOverwritesDivergedBranches` is enabled for the project.
      */
     mirrorOverwritesDivergedBranches: boolean;
     /**
@@ -2683,6 +3482,10 @@ export interface GetProjectsProject {
      */
     monitorAccessLevel: string;
     /**
+     * For forks, whether merge requests target the fork itself rather than the upstream project by default.
+     */
+    mrDefaultTargetSelf: boolean;
+    /**
      * The name of the project.
      */
     name: string;
@@ -2691,33 +3494,53 @@ export interface GetProjectsProject {
      */
     nameWithNamespace: string;
     /**
+     * The namespace (group or user) ID of the project. Alias for `namespace[0].id`.
+     *
+     * @deprecated Use `namespace[0].id` instead, to be removed in 20.0.
+     */
+    namespaceId: number;
+    /**
      * Namespace of the project (parent group/s).
      */
     namespaces: outputs.GetProjectsProjectNamespace[];
     /**
-     * Whether onlyAllowMergeIfAllDiscussionsAreResolved is enabled for the project.
+     * Whether `onlyAllowMergeIfAllDiscussionsAreResolved` is enabled for the project.
      */
     onlyAllowMergeIfAllDiscussionsAreResolved: boolean;
     /**
-     * Whether onlyAllowMergeIfPipelineSucceeds is enabled for the project.
+     * Whether `onlyAllowMergeIfPipelineSucceeds` is enabled for the project.
      */
     onlyAllowMergeIfPipelineSucceeds: boolean;
     /**
-     * Whether onlyMirrorProtectedBranches is enabled for the project.
+     * Whether `onlyMirrorProtectedBranches` is enabled for the project.
      */
     onlyMirrorProtectedBranches: boolean;
     /**
-     * The number of open issies for the project.
+     * The number of open issues for the project.
      */
     openIssuesCount: number;
     /**
-     * The owner of the project, due to Terraform aggregate types limitations, this field's attributes are accessed with the `owner.0` prefix. Structure is documented below.
+     * Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    operationsAccessLevel: string;
+    /**
+     * The owner of the project. Only populated when the calling token has administrator scope.
      */
     owners: outputs.GetProjectsProjectOwner[];
     /**
+     * The visibility of the package registry.
+     */
+    packageRegistryAccessLevel: string;
+    /**
      * Whether packages are enabled for the project.
+     *
+     * @deprecated Use `packageRegistryAccessLevel` instead, to be removed in 20.0.
      */
     packagesEnabled: boolean;
+    /**
+     * Set the GitLab Pages access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    pagesAccessLevel: string;
     /**
      * The path of the project.
      */
@@ -2731,21 +3554,43 @@ export interface GetProjectsProject {
      */
     permissions: outputs.GetProjectsProjectPermission[];
     /**
+     * Whether pre-receive secret detection is enabled for the project.
+     */
+    preReceiveSecretDetectionEnabled: boolean;
+    /**
      * Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
      */
     preventMergeWithoutJiraIssue: boolean;
     /**
-     * Whether public builds are enabled for the project.
+     * Show link to create/view merge request when pushing from the command line.
+     */
+    printingMergeRequestLinkEnabled: boolean;
+    /**
+     * Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
+     */
+    protectMergeRequestPipelines: boolean;
+    /**
+     * If true, jobs can be viewed by non-project members. Alias for `publicJobs`.
+     *
+     * @deprecated Use `publicJobs` instead, to be removed in 20.0.
      */
     publicBuilds: boolean;
     /**
-     * The remote url of the project.
+     * If true, jobs can be viewed by non-project members.
+     */
+    publicJobs: boolean;
+    /**
+     * The URL of the project README.
      */
     readmeUrl: string;
     /**
      * Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
      */
     releasesAccessLevel: string;
+    /**
+     * Enable `Delete source branch` option by default for all new merge requests.
+     */
+    removeSourceBranchAfterMerge: boolean;
     /**
      * Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -2763,7 +3608,11 @@ export interface GetProjectsProject {
      */
     requirementsAccessLevel: string;
     /**
-     * Whether resolveOutdatedDiffDiscussions is enabled for the project
+     * Whether the requirements feature is enabled. Premium and Ultimate only.
+     */
+    requirementsEnabled: boolean;
+    /**
+     * Automatically resolve merge request diffs discussions on lines changed with a push.
      */
     resolveOutdatedDiffDiscussions: boolean;
     /**
@@ -2772,10 +3621,16 @@ export interface GetProjectsProject {
     resourceGroupDefaultProcessMode: string;
     /**
      * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
+     *
+     * @deprecated Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0.
      */
     restrictUserDefinedVariables: boolean;
     /**
-     * The runners token for the project.
+     * Runner token expiration interval, in seconds.
+     */
+    runnerTokenExpirationInterval: number;
+    /**
+     * Registration token to use during runner setup.
      */
     runnersToken: string;
     /**
@@ -2783,11 +3638,23 @@ export interface GetProjectsProject {
      */
     securityAndComplianceAccessLevel: string;
     /**
+     * Whether the security and compliance feature is enabled.
+     */
+    securityAndComplianceEnabled: boolean;
+    /**
+     * The Service Desk email address for the project.
+     */
+    serviceDeskAddress: string;
+    /**
+     * Whether Service Desk is enabled for the project.
+     */
+    serviceDeskEnabled: boolean;
+    /**
      * Whether shared runners are enabled for the project.
      */
     sharedRunnersEnabled: boolean;
     /**
-     * Groups the the project is shared with.
+     * Describes groups which have access shared to this project.
      */
     sharedWithGroups: outputs.GetProjectsProjectSharedWithGroup[];
     /**
@@ -2796,12 +3663,18 @@ export interface GetProjectsProject {
     snippetsAccessLevel: string;
     /**
      * Whether snippets are enabled for the project.
+     *
+     * @deprecated Use `snippetsAccessLevel` instead, to be removed in 20.0.
      */
     snippetsEnabled: boolean;
     /**
      * Template used to create squash commit message in merge requests.
      */
     squashCommitTemplate: string;
+    /**
+     * The project's squash option for merge requests (`never`, `always`, `defaultOn`, `defaultOff`).
+     */
+    squashOption: string;
     /**
      * The SSH clone URL of the project.
      */
@@ -2819,7 +3692,9 @@ export interface GetProjectsProject {
      */
     suggestionCommitMessage: string;
     /**
-     * A set of the project topics (formerly called "project tags").
+     * The list of project topics (formerly project tags).
+     *
+     * @deprecated Use `topics` instead, to be removed in 20.0.
      */
     tagLists: string[];
     /**
@@ -2827,11 +3702,21 @@ export interface GetProjectsProject {
      */
     topics: string[];
     /**
-     * The visibility of the project.
+     * The time the project was last updated.
+     */
+    updatedAt: string;
+    /**
+     * The visibility of the project (`private`, `internal`, `public`).
      */
     visibility: string;
     /**
-     * The web url of the project.
+     * The visibility of the project. Alias for `visibility`.
+     *
+     * @deprecated Use `visibility` instead, to be removed in 20.0.
+     */
+    visibilityLevel: string;
+    /**
+     * URL that can be used to find the project in a browser.
      */
     webUrl: string;
     /**
@@ -2840,6 +3725,8 @@ export interface GetProjectsProject {
     wikiAccessLevel: string;
     /**
      * Whether wiki is enabled for the project.
+     *
+     * @deprecated Use `wikiAccessLevel` instead, to be removed in 20.0.
      */
     wikiEnabled: boolean;
 }
@@ -2901,9 +3788,32 @@ export interface GetProjectsProjectForkedFromProject {
      */
     pathWithNamespace: string;
     /**
-     * The web url of the upstream project.
+     * The web URL of the upstream project.
      */
     webUrl: string;
+}
+
+export interface GetProjectsProjectLicense {
+    /**
+     * URL to the license's human-readable description.
+     */
+    htmlUrl: string;
+    /**
+     * The license key (e.g. `mit`).
+     */
+    key: string;
+    /**
+     * The license name (e.g. `MIT License`).
+     */
+    name: string;
+    /**
+     * The license nickname.
+     */
+    nickname: string;
+    /**
+     * URL to the license source text.
+     */
+    sourceUrl: string;
 }
 
 export interface GetProjectsProjectNamespace {
@@ -2931,7 +3841,7 @@ export interface GetProjectsProjectNamespace {
 
 export interface GetProjectsProjectOwner {
     /**
-     * The avatar url of the owner.
+     * The avatar URL of the owner.
      */
     avatarUrl: string;
     /**
@@ -2951,7 +3861,7 @@ export interface GetProjectsProjectOwner {
      */
     username: string;
     /**
-     * The website url of the owner.
+     * The website URL of the owner.
      */
     websiteUrl: string;
 }
@@ -2969,15 +3879,25 @@ export interface GetProjectsProjectPermission {
 
 export interface GetProjectsProjectSharedWithGroup {
     /**
-     * The group access level.
+     * The access level (integer) of the shared group. Matches the upstream GitLab API. See `groupAccessLevelName` for the human-readable string form.
      */
-    groupAccessLevel: string;
+    groupAccessLevel: number;
     /**
-     * The group ID.
+     * The human-readable access level name of the shared group (e.g. `developer`, `maintainer`). Computed from `groupAccessLevel`.
+     *
+     * @deprecated Use `groupAccessLevel` instead, to be removed in 20.0.
+     */
+    groupAccessLevelName: string;
+    /**
+     * The full path of the group shared with.
+     */
+    groupFullPath: string;
+    /**
+     * The ID of the group shared with.
      */
     groupId: number;
     /**
-     * The group name.
+     * The name of the group shared with.
      */
     groupName: string;
 }
@@ -3067,12 +3987,6 @@ export interface GetReleaseLinksReleaseLink {
 }
 
 export interface GetRepositoryTreeTree {
-    /**
-     * The project ID. Use `nodeId` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `nodeId` instead. To be removed in 19.0.
-     */
-    id: string;
     /**
      * Unix access mode of the file in the repository.
      */
@@ -3289,6 +4203,53 @@ export interface GetSecurityPolicyDocumentScanExecutionPolicySkipCi {
     allowed: boolean;
 }
 
+export interface GetSystemHooksHook {
+    /**
+     * The date and time the hook was created in ISO8601 format.
+     */
+    createdAt: string;
+    /**
+     * The description of the hook.
+     */
+    description: string;
+    /**
+     * Do SSL verification when triggering the hook.
+     */
+    enableSslVerification: boolean;
+    /**
+     * The id of the system hook.
+     */
+    hookId: number;
+    /**
+     * Trigger hook on merge requests events.
+     */
+    mergeRequestsEvents: boolean;
+    /**
+     * The name of the hook.
+     */
+    name: string;
+    /**
+     * When true, the hook fires on push events.
+     */
+    pushEvents: boolean;
+    /**
+     * Trigger hook on repository update events.
+     */
+    repositoryUpdateEvents: boolean;
+    /**
+     * Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     */
+    signingTokenPresent: boolean;
+    /**
+     * When true, the hook fires on new tags being pushed.
+     */
+    tagPushEvents: boolean;
+    /**
+     * The hook URL.
+     */
+    url: string;
+}
+
 export interface GetUserSshkeysKey {
     /**
      * The time when this key was created in GitLab.
@@ -3442,6 +4403,67 @@ export interface GroupAccessTokenRotationConfiguration {
     rotateBeforeDays: number;
 }
 
+export interface GroupBranchProtectionAllowedToMerge {
+    /**
+     * Access level allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     */
+    accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId` and `accessLevel`.
+     */
+    groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId` and `accessLevel`.
+     */
+    userId?: number;
+}
+
+export interface GroupBranchProtectionAllowedToPush {
+    /**
+     * Access level allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     */
+    accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `userId`, `groupId`, and `accessLevel`.
+     */
+    deployKeyId?: number;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `userId`, and `accessLevel`.
+     */
+    groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `accessLevel`.
+     */
+    userId?: number;
+}
+
+export interface GroupBranchProtectionAllowedToUnprotect {
+    /**
+     * Access level allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. Valid values are: `developer`, `maintainer`, `admin`.
+     */
+    accessLevel: string;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription: string;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId` and `accessLevel`.
+     */
+    groupId?: number;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId` and `accessLevel`.
+     */
+    userId?: number;
+}
+
 export interface GroupDefaultBranchProtectionDefaults {
     /**
      * Allow force push for all users with push access.
@@ -3491,6 +4513,17 @@ export interface GroupHookCustomHeader {
     value: string;
 }
 
+export interface GroupHookUrlVariable {
+    /**
+     * The value to display in place of the sensitive portion in the URL.
+     */
+    key: string;
+    /**
+     * The sensitive portion of the webhook URL to mask.  This value cannot be imported.
+     */
+    value: string;
+}
+
 export interface GroupIssueBoardList {
     /**
      * The ID of the list.
@@ -3516,7 +4549,7 @@ export interface GroupProtectedEnvironmentApprovalRule {
      */
     accessLevelDescription: string;
     /**
-     * The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
+     * The ID of the group allowed to approve a deployment to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
      */
     groupId?: number;
     /**
@@ -3726,6 +4759,17 @@ export interface ProjectHookCustomHeader {
     value: string;
 }
 
+export interface ProjectHookUrlVariable {
+    /**
+     * The value to display in place of the sensitive portion in the URL.
+     */
+    key: string;
+    /**
+     * The sensitive portion of the webhook URL to mask.  This value cannot be imported.
+     */
+    value: string;
+}
+
 export interface ProjectIssueBoardList {
     /**
      * The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
@@ -3814,33 +4858,6 @@ export interface ProjectProtectedEnvironmentApprovalRule {
     userId?: number;
 }
 
-export interface ProjectProtectedEnvironmentDeployAccessLevel {
-    /**
-     * Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
-     */
-    accessLevel?: string;
-    /**
-     * Readable description of level of access.
-     */
-    accessLevelDescription: string;
-    /**
-     * The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
-     */
-    groupId?: number;
-    /**
-     * Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
-     */
-    groupInheritanceType: number;
-    /**
-     * The unique ID of the Deploy Access Level object.
-     */
-    id: number;
-    /**
-     * The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
-     */
-    userId?: number;
-}
-
 export interface ProjectProtectedEnvironmentDeployAccessLevelsAttribute {
     /**
      * Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
@@ -3921,6 +4938,13 @@ export interface ProjectPushRules {
      * Reject commit when it's not signed through GPG.
      */
     rejectUnsignedCommits?: boolean;
+}
+
+export interface ProjectServiceAccountTimeouts {
+    /**
+     * How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
+     */
+    delete?: string;
 }
 
 export interface ProjectTagCommit {

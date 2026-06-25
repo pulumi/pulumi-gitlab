@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,8 +28,6 @@ func GetProjectProtectedBranches(ctx *pulumi.Context, args *GetProjectProtectedB
 type GetProjectProtectedBranchesArgs struct {
 	// The integer or path with namespace that uniquely identifies the project.
 	ProjectId string `pulumi:"projectId"`
-	// A list of protected branches, as defined below.
-	ProtectedBranches []GetProjectProtectedBranchesProtectedBranch `pulumi:"protectedBranches"`
 }
 
 // A collection of values returned by getProjectProtectedBranches.
@@ -55,8 +53,6 @@ func GetProjectProtectedBranchesOutput(ctx *pulumi.Context, args GetProjectProte
 type GetProjectProtectedBranchesOutputArgs struct {
 	// The integer or path with namespace that uniquely identifies the project.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// A list of protected branches, as defined below.
-	ProtectedBranches GetProjectProtectedBranchesProtectedBranchArrayInput `pulumi:"protectedBranches"`
 }
 
 func (GetProjectProtectedBranchesOutputArgs) ElementType() reflect.Type {

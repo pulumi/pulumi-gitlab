@@ -62,40 +62,64 @@ namespace Pulumi.GitLab
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
+        /// Description of the hook.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
         /// Do SSL verification when triggering the hook.
         /// </summary>
         [Output("enableSslVerification")]
-        public Output<bool?> EnableSslVerification { get; private set; } = null!;
+        public Output<bool> EnableSslVerification { get; private set; } = null!;
 
         /// <summary>
         /// Trigger hook on merge requests events.
         /// </summary>
         [Output("mergeRequestsEvents")]
-        public Output<bool?> MergeRequestsEvents { get; private set; } = null!;
+        public Output<bool> MergeRequestsEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the hook.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// When true, the hook fires on push events.
         /// </summary>
         [Output("pushEvents")]
-        public Output<bool?> PushEvents { get; private set; } = null!;
+        public Output<bool> PushEvents { get; private set; } = null!;
 
         /// <summary>
         /// Trigger hook on repository update events.
         /// </summary>
         [Output("repositoryUpdateEvents")]
-        public Output<bool?> RepositoryUpdateEvents { get; private set; } = null!;
+        public Output<bool> RepositoryUpdateEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `WebhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        /// </summary>
+        [Output("signingToken")]
+        public Output<string?> SigningToken { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether a `SigningToken` is configured server-side. Reflects the value returned by the GitLab API.
+        /// </summary>
+        [Output("signingTokenPresent")]
+        public Output<bool> SigningTokenPresent { get; private set; } = null!;
 
         /// <summary>
         /// When true, the hook fires on new tags being pushed.
         /// </summary>
         [Output("tagPushEvents")]
-        public Output<bool?> TagPushEvents { get; private set; } = null!;
+        public Output<bool> TagPushEvents { get; private set; } = null!;
 
         /// <summary>
         /// Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         /// </summary>
         [Output("token")]
-        public Output<string?> Token { get; private set; } = null!;
+        public Output<string> Token { get; private set; } = null!;
 
         /// <summary>
         /// The hook URL.
@@ -128,6 +152,7 @@ namespace Pulumi.GitLab
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "signingToken",
                     "token",
                 },
             };
@@ -154,6 +179,12 @@ namespace Pulumi.GitLab
     public sealed class SystemHookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Description of the hook.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Do SSL verification when triggering the hook.
         /// </summary>
         [Input("enableSslVerification")]
@@ -166,6 +197,12 @@ namespace Pulumi.GitLab
         public Input<bool>? MergeRequestsEvents { get; set; }
 
         /// <summary>
+        /// Name of the hook.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
         /// When true, the hook fires on push events.
         /// </summary>
         [Input("pushEvents")]
@@ -176,6 +213,22 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("repositoryUpdateEvents")]
         public Input<bool>? RepositoryUpdateEvents { get; set; }
+
+        [Input("signingToken")]
+        private Input<string>? _signingToken;
+
+        /// <summary>
+        /// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `WebhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        /// </summary>
+        public Input<string>? SigningToken
+        {
+            get => _signingToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _signingToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// When true, the hook fires on new tags being pushed.
@@ -220,6 +273,12 @@ namespace Pulumi.GitLab
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
+        /// Description of the hook.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Do SSL verification when triggering the hook.
         /// </summary>
         [Input("enableSslVerification")]
@@ -232,6 +291,12 @@ namespace Pulumi.GitLab
         public Input<bool>? MergeRequestsEvents { get; set; }
 
         /// <summary>
+        /// Name of the hook.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
         /// When true, the hook fires on push events.
         /// </summary>
         [Input("pushEvents")]
@@ -242,6 +307,28 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("repositoryUpdateEvents")]
         public Input<bool>? RepositoryUpdateEvents { get; set; }
+
+        [Input("signingToken")]
+        private Input<string>? _signingToken;
+
+        /// <summary>
+        /// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `WebhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        /// </summary>
+        public Input<string>? SigningToken
+        {
+            get => _signingToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _signingToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Whether a `SigningToken` is configured server-side. Reflects the value returned by the GitLab API.
+        /// </summary>
+        [Input("signingTokenPresent")]
+        public Input<bool>? SigningTokenPresent { get; set; }
 
         /// <summary>
         /// When true, the hook fires on new tags being pushed.

@@ -15,7 +15,6 @@ export function getProjectProtectedBranches(args: GetProjectProtectedBranchesArg
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", {
         "projectId": args.projectId,
-        "protectedBranches": args.protectedBranches,
     }, opts);
 }
 
@@ -27,10 +26,6 @@ export interface GetProjectProtectedBranchesArgs {
      * The integer or path with namespace that uniquely identifies the project.
      */
     projectId: string;
-    /**
-     * A list of protected branches, as defined below.
-     */
-    protectedBranches?: inputs.GetProjectProtectedBranchesProtectedBranch[];
 }
 
 /**
@@ -48,7 +43,7 @@ export interface GetProjectProtectedBranchesResult {
     /**
      * A list of protected branches, as defined below.
      */
-    readonly protectedBranches?: outputs.GetProjectProtectedBranchesProtectedBranch[];
+    readonly protectedBranches: outputs.GetProjectProtectedBranchesProtectedBranch[];
 }
 /**
  * The `gitlab.getProjectProtectedBranches` data source allows details of the protected branches of a given project.
@@ -59,7 +54,6 @@ export function getProjectProtectedBranchesOutput(args: GetProjectProtectedBranc
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectProtectedBranches:getProjectProtectedBranches", {
         "projectId": args.projectId,
-        "protectedBranches": args.protectedBranches,
     }, opts);
 }
 
@@ -71,8 +65,4 @@ export interface GetProjectProtectedBranchesOutputArgs {
      * The integer or path with namespace that uniquely identifies the project.
      */
     projectId: pulumi.Input<string>;
-    /**
-     * A list of protected branches, as defined below.
-     */
-    protectedBranches?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchesProtectedBranchArgs>[] | undefined>;
 }

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.ProjectProtectedEnvironment` resource manages the lifecycle of a protected environment in a project.
  *
- * > In order to use a user or group in the `deployAccessLevels` configuration,
+ * > In order to use a user or group in the `deployAccessLevelsAttribute` configuration,
  *    you need to make sure that users have access to the project and groups must have this project shared.
  *    You may use the `gitlab.ProjectMembership` and `gitlabProjectSharedGroup` resources to achieve this.
  *    Unfortunately, the GitLab API does not complain about users and groups without access to the project and just ignores those.
@@ -62,13 +62,7 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
      */
     declare public readonly approvalRules: pulumi.Output<outputs.ProjectProtectedEnvironmentApprovalRule[]>;
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`. Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
-     */
-    declare public readonly deployAccessLevels: pulumi.Output<outputs.ProjectProtectedEnvironmentDeployAccessLevel[] | undefined>;
-    /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevelsAttribute` should be one of `userId`, `groupId` or `accessLevel`.
      */
     declare public readonly deployAccessLevelsAttributes: pulumi.Output<outputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute[] | undefined>;
     /**
@@ -94,7 +88,6 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ProjectProtectedEnvironmentState | undefined;
             resourceInputs["approvalRules"] = state?.approvalRules;
-            resourceInputs["deployAccessLevels"] = state?.deployAccessLevels;
             resourceInputs["deployAccessLevelsAttributes"] = state?.deployAccessLevelsAttributes;
             resourceInputs["environment"] = state?.environment;
             resourceInputs["project"] = state?.project;
@@ -107,7 +100,6 @@ export class ProjectProtectedEnvironment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             resourceInputs["approvalRules"] = args?.approvalRules;
-            resourceInputs["deployAccessLevels"] = args?.deployAccessLevels;
             resourceInputs["deployAccessLevelsAttributes"] = args?.deployAccessLevelsAttributes;
             resourceInputs["environment"] = args?.environment;
             resourceInputs["project"] = args?.project;
@@ -126,13 +118,7 @@ export interface ProjectProtectedEnvironmentState {
      */
     approvalRules?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentApprovalRule>[] | undefined>;
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`. Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
-     */
-    deployAccessLevels?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevel>[] | undefined>;
-    /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevelsAttribute` should be one of `userId`, `groupId` or `accessLevel`.
      */
     deployAccessLevelsAttributes?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute>[] | undefined>;
     /**
@@ -154,13 +140,7 @@ export interface ProjectProtectedEnvironmentArgs {
      */
     approvalRules?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentApprovalRule>[] | undefined>;
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`. Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
-     */
-    deployAccessLevels?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevel>[] | undefined>;
-    /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevelsAttribute` should be one of `userId`, `groupId` or `accessLevel`.
      */
     deployAccessLevelsAttributes?: pulumi.Input<pulumi.Input<inputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute>[] | undefined>;
     /**

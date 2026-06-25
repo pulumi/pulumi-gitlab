@@ -15,11 +15,8 @@ export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): 
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProject:getProject", {
-        "ciDefaultGitDepth": args.ciDefaultGitDepth,
-        "ciIdTokenSubClaimComponents": args.ciIdTokenSubClaimComponents,
         "id": args.id,
         "pathWithNamespace": args.pathWithNamespace,
-        "publicBuilds": args.publicBuilds,
     }, opts);
 }
 
@@ -28,14 +25,6 @@ export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetProjectArgs {
     /**
-     * Default number of revisions for shallow cloning.
-     */
-    ciDefaultGitDepth?: number;
-    /**
-     * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
-     */
-    ciIdTokenSubClaimComponents?: string[];
-    /**
      * The integer that uniquely identifies the project within the gitlab install.
      */
     id?: string;
@@ -43,16 +32,16 @@ export interface GetProjectArgs {
      * The path of the repository with namespace.
      */
     pathWithNamespace?: string;
-    /**
-     * If true, jobs can be viewed by non-project members.
-     */
-    publicBuilds?: boolean;
 }
 
 /**
  * A collection of values returned by getProject.
  */
 export interface GetProjectResult {
+    /**
+     * Whether `allowMergeOnSkippedPipeline` is enabled for the project.
+     */
+    readonly allowMergeOnSkippedPipeline: boolean;
     /**
      * Set whether or not a pipeline triggerer is allowed to approve deployments. Premium and Ultimate only.
      */
@@ -62,11 +51,17 @@ export interface GetProjectResult {
      */
     readonly analyticsAccessLevel: string;
     /**
+     * The number of approvals needed in a merge request.
+     *
+     * @deprecated Use the Merge Request Approvals API instead, to be removed in 20.0.
+     */
+    readonly approvalsBeforeMerge: number;
+    /**
      * Whether the project is in read-only mode (archived).
      */
     readonly archived: boolean;
     /**
-     * Auto-cancel pending pipelines. This isn’t a boolean, but enabled/disabled.
+     * Auto-cancel pending pipelines. This isn't a boolean, but `enabled`/`disabled`.
      */
     readonly autoCancelPendingPipelines: string;
     /**
@@ -78,11 +73,23 @@ export interface GetProjectResult {
      */
     readonly autoDevopsEnabled: boolean;
     /**
+     * Whether GitLab Duo code review is enabled for the project.
+     */
+    readonly autoDuoCodeReviewEnabled: boolean;
+    /**
      * Set whether auto-closing referenced issues on default branch.
      */
     readonly autocloseReferencedIssues: boolean;
     /**
-     * The Git strategy. Defaults to fetch.
+     * The avatar URL of the project.
+     */
+    readonly avatarUrl: string;
+    /**
+     * Build coverage regex for the project.
+     */
+    readonly buildCoverageRegex: string;
+    /**
+     * The Git strategy. Defaults to `fetch`.
      */
     readonly buildGitStrategy: string;
     /**
@@ -93,6 +100,14 @@ export interface GetProjectResult {
      * Set the builds access level. Valid values are `disabled`, `private`, `enabled`.
      */
     readonly buildsAccessLevel: string;
+    /**
+     * Whether the calling user can create merge requests in this project.
+     */
+    readonly canCreateMergeRequestIn: boolean;
+    /**
+     * Whether pipelines triggered from merge requests opened from forks may run in the parent project.
+     */
+    readonly ciAllowForkPipelinesToRunInParentProject: boolean;
     /**
      * CI config file path for the project.
      */
@@ -106,15 +121,39 @@ export interface GetProjectResult {
      */
     readonly ciDeletePipelinesInSeconds: number;
     /**
-     * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
+     * Whether pipeline variables are displayed in the UI.
+     */
+    readonly ciDisplayPipelineVariables: boolean;
+    /**
+     * When a new deployment job starts, skip older deployment jobs that are still pending.
+     */
+    readonly ciForwardDeploymentEnabled: boolean;
+    /**
+     * Allow job retries even if the deployment job is outdated.
+     */
+    readonly ciForwardDeploymentRollbackAllowed: boolean;
+    /**
+     * Fields included in the sub claim of the ID Token. Accepts an array starting with `projectPath`. The array might also include `refType` and `ref`. Defaults to `["projectPath", "refType", "ref"]`. Introduced in GitLab 17.10.
      */
     readonly ciIdTokenSubClaimComponents: string[];
     /**
-     * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`
+     * Whether the CI/CD job token access scope is enabled (limits which projects can be accessed using the job token).
+     */
+    readonly ciJobTokenScopeEnabled: boolean;
+    /**
+     * Whether the project must explicitly opt in to receive ID tokens in CI jobs.
+     */
+    readonly ciOptInJwt: boolean;
+    /**
+     * The minimum role required to set variables when running pipelines and jobs. Introduced in GitLab 17.1. Valid values are `developer`, `maintainer`, `owner`, `noOneAllowed`.
      */
     readonly ciPipelineVariablesMinimumOverrideRole: string;
     /**
-     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no one`
+     * Whether pushes to the repository using the CI/CD job token are allowed.
+     */
+    readonly ciPushRepositoryForJobTokenAllowed: boolean;
+    /**
+     * The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `noOne`.
      */
     readonly ciRestrictPipelineCancellationRole: string;
     /**
@@ -122,21 +161,51 @@ export interface GetProjectResult {
      */
     readonly ciSeparatedCaches: boolean;
     /**
-     * Set the image cleanup policy for this project. **Note**: this field is sometimes named `containerExpirationPolicyAttributes` in the GitLab Upstream API.
+     * Compliance frameworks applied to the project. Premium and Ultimate only.
+     */
+    readonly complianceFrameworks: string[];
+    /**
+     * The image cleanup policy for this project.
      */
     readonly containerExpirationPolicies: outputs.GetProjectContainerExpirationPolicy[];
     /**
-     * Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
+     * Set visibility of container registry for this project. Valid values are `disabled`, `private`, `enabled`.
      */
     readonly containerRegistryAccessLevel: string;
     /**
-     * The default branch for the project.
+     * Whether the container registry is enabled for the project.
+     *
+     * @deprecated Use `containerRegistryAccessLevel` instead, to be removed in 20.0.
+     */
+    readonly containerRegistryEnabled: boolean;
+    /**
+     * The image prefix used by the container registry for this project.
+     */
+    readonly containerRegistryImagePrefix: string;
+    /**
+     * Creation time for the project.
+     */
+    readonly createdAt: string;
+    /**
+     * Creator ID for the project.
+     */
+    readonly creatorId: number;
+    /**
+     * Custom attributes for the project.
+     */
+    readonly customAttributes: {[key: string]: string}[];
+    /**
+     * The default branch name of the project.
      */
     readonly defaultBranch: string;
     /**
      * A description of the project.
      */
     readonly description: string;
+    /**
+     * Whether email notifications are disabled for the project.
+     */
+    readonly emailsDisabled: boolean;
     /**
      * Enable email notifications.
      */
@@ -145,6 +214,10 @@ export interface GetProjectResult {
      * Whether the project is empty.
      */
     readonly emptyRepo: boolean;
+    /**
+     * Whether authentication checks are enforced when uploading to the project.
+     */
+    readonly enforceAuthChecksOnUploads: boolean;
     /**
      * Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -158,17 +231,41 @@ export interface GetProjectResult {
      */
     readonly featureFlagsAccessLevel: string;
     /**
+     * Present if the project is a fork. Contains information about the upstream project.
+     */
+    readonly forkedFromProjects: outputs.GetProjectForkedFromProject[];
+    /**
      * Set the forking access level. Valid values are `disabled`, `private`, `enabled`.
      */
     readonly forkingAccessLevel: string;
     /**
-     * URL that can be provided to `git clone` to clone the
+     * The number of forks of the project.
+     */
+    readonly forksCount: number;
+    /**
+     * Whether group runners are enabled for the project.
+     */
+    readonly groupRunnersEnabled: boolean;
+    /**
+     * The HTTP clone URL of the project.
      */
     readonly httpUrlToRepo: string;
     /**
      * The integer that uniquely identifies the project within the gitlab install.
      */
     readonly id: string;
+    /**
+     * The import error, if it exists, for the project.
+     */
+    readonly importError: string;
+    /**
+     * The import status of the project.
+     */
+    readonly importStatus: string;
+    /**
+     * The type of import used to create the project (for example `github`, `bitbucket`).
+     */
+    readonly importType: string;
     /**
      * URL the project was imported from.
      */
@@ -178,41 +275,105 @@ export interface GetProjectResult {
      */
     readonly infrastructureAccessLevel: string;
     /**
+     * Template used to suggest a branch name when creating one from an issue.
+     */
+    readonly issueBranchTemplate: string;
+    /**
      * Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      */
     readonly issuesAccessLevel: string;
     /**
-     * Enable issue tracking for the project. Use `issuesAccessLevel` instead. This attribute will be removed in 19.0.
+     * Whether issues are enabled for the project.
      *
-     * @deprecated Use `issuesAccessLevel` instead. This attribute will be removed in 19.0.
+     * @deprecated Use `issuesAccessLevel` instead, to be removed in 20.0.
      */
     readonly issuesEnabled: boolean;
+    /**
+     * Default description template for new issues.
+     */
+    readonly issuesTemplate: string;
+    /**
+     * Whether jobs are enabled for the project.
+     *
+     * @deprecated Use `buildsAccessLevel` instead, to be removed in 20.0.
+     */
+    readonly jobsEnabled: boolean;
     /**
      * Disable or enable the ability to keep the latest artifact for this project.
      */
     readonly keepLatestArtifact: boolean;
     /**
-     * Enable LFS for the project.
+     * Last activity time for the project.
+     */
+    readonly lastActivityAt: string;
+    /**
+     * Whether LFS (large file storage) is enabled for the project.
      */
     readonly lfsEnabled: boolean;
+    /**
+     * URL of the project's license file.
+     */
+    readonly licenseUrl: string;
+    /**
+     * Information about the project's license, if one is detected.
+     */
+    readonly licenses: outputs.GetProjectLicense[];
+    /**
+     * Links for the project.
+     */
+    readonly links: {[key: string]: string};
+    /**
+     * Whether the project is marked for deletion.
+     */
+    readonly markedForDeletion: boolean;
+    /**
+     * Timestamp at which the project was marked for deletion. Premium and Ultimate only.
+     *
+     * @deprecated Use `markedForDeletionOn` instead, to be removed in 20.0.
+     */
+    readonly markedForDeletionAt: string;
+    /**
+     * Timestamp at which the project was marked for deletion. Premium and Ultimate only.
+     */
+    readonly markedForDeletionOn: string;
+    /**
+     * Maximum artifacts size, in MB, for the project. Overrides the instance-wide setting when set.
+     */
+    readonly maxArtifactsSize: number;
     /**
      * Template used to create merge commit message in merge requests.
      */
     readonly mergeCommitTemplate: string;
     /**
+     * Merge method for the project.
+     */
+    readonly mergeMethod: string;
+    /**
      * Enable or disable merge pipelines.
      */
     readonly mergePipelinesEnabled: boolean;
+    /**
+     * Regular expression that merge request titles must match.
+     */
+    readonly mergeRequestTitleRegex: string;
+    /**
+     * Human-readable description of `mergeRequestTitleRegex`.
+     */
+    readonly mergeRequestTitleRegexDescription: string;
     /**
      * Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
      */
     readonly mergeRequestsAccessLevel: string;
     /**
-     * Enable merge requests for the project. Use `mergeRequestsAccessLevel` instead. This attribute will be removed in 19.0.
+     * Whether merge requests are enabled for the project.
      *
-     * @deprecated Use `mergeRequestsAccessLevel` instead. This attribute will be removed in 19.0.
+     * @deprecated Use `mergeRequestsAccessLevel` instead, to be removed in 20.0.
      */
     readonly mergeRequestsEnabled: boolean;
+    /**
+     * Default description template for new merge requests.
+     */
+    readonly mergeRequestsTemplate: string;
     /**
      * Enable or disable merge trains.
      */
@@ -221,6 +382,22 @@ export interface GetProjectResult {
      * Allows merge train merge requests to be merged without waiting for pipelines to finish.
      */
     readonly mergeTrainsSkipTrainAllowed: boolean;
+    /**
+     * Whether pull mirroring is enabled for the project.
+     */
+    readonly mirror: boolean;
+    /**
+     * Whether `mirrorOverwritesDivergedBranches` is enabled for the project.
+     */
+    readonly mirrorOverwritesDivergedBranches: boolean;
+    /**
+     * Whether pull mirroring triggers builds for the project.
+     */
+    readonly mirrorTriggerBuilds: boolean;
+    /**
+     * The mirror user ID for the project.
+     */
+    readonly mirrorUserId: number;
     /**
      * The visibility of machine learning model experiments.
      */
@@ -234,15 +411,67 @@ export interface GetProjectResult {
      */
     readonly monitorAccessLevel: string;
     /**
+     * For forks, whether merge requests target the fork itself rather than the upstream project by default.
+     */
+    readonly mrDefaultTargetSelf: boolean;
+    /**
      * The name of the project.
      */
     readonly name: string;
     /**
-     * The namespace (group or user) of the project. Defaults to your user.
+     * In `group / subgroup / project` or `user / project` format.
+     */
+    readonly nameWithNamespace: string;
+    /**
+     * The namespace (group or user) ID of the project. Alias for `namespace[0].id`.
+     *
+     * @deprecated Use `namespace[0].id` instead, to be removed in 20.0.
      */
     readonly namespaceId: number;
     /**
-     * The path of the repository.
+     * Namespace of the project (parent group/s).
+     */
+    readonly namespaces: outputs.GetProjectNamespace[];
+    /**
+     * Whether `onlyAllowMergeIfAllDiscussionsAreResolved` is enabled for the project.
+     */
+    readonly onlyAllowMergeIfAllDiscussionsAreResolved: boolean;
+    /**
+     * Whether `onlyAllowMergeIfPipelineSucceeds` is enabled for the project.
+     */
+    readonly onlyAllowMergeIfPipelineSucceeds: boolean;
+    /**
+     * Whether `onlyMirrorProtectedBranches` is enabled for the project.
+     */
+    readonly onlyMirrorProtectedBranches: boolean;
+    /**
+     * The number of open issues for the project.
+     */
+    readonly openIssuesCount: number;
+    /**
+     * Set the operations access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    readonly operationsAccessLevel: string;
+    /**
+     * The owner of the project. Only populated when the calling token has administrator scope.
+     */
+    readonly owners: outputs.GetProjectOwner[];
+    /**
+     * The visibility of the package registry.
+     */
+    readonly packageRegistryAccessLevel: string;
+    /**
+     * Whether packages are enabled for the project.
+     *
+     * @deprecated Use `packageRegistryAccessLevel` instead, to be removed in 20.0.
+     */
+    readonly packagesEnabled: boolean;
+    /**
+     * Set the GitLab Pages access level. Valid values are `disabled`, `private`, `enabled`.
+     */
+    readonly pagesAccessLevel: string;
+    /**
+     * The path of the project.
      */
     readonly path: string;
     /**
@@ -250,33 +479,49 @@ export interface GetProjectResult {
      */
     readonly pathWithNamespace: string;
     /**
-     * Enable pipelines for the project. Use `pipelinesAccessLevel` instead. This attribute will be removed in 19.0.
-     *
-     * @deprecated Use `pipelinesAccessLevel` instead. This attribute will be removed in 19.0.
+     * Permissions for the project.
      */
-    readonly pipelinesEnabled: boolean;
+    readonly permissions: outputs.GetProjectPermission[];
+    /**
+     * Whether pre-receive secret detection is enabled for the project.
+     */
+    readonly preReceiveSecretDetectionEnabled: boolean;
     /**
      * Whether merge requests require an associated issue from Jira. Premium and Ultimate only.
      */
     readonly preventMergeWithoutJiraIssue: boolean;
     /**
-     * Show link to create/view merge request when pushing from the command line
+     * Show link to create/view merge request when pushing from the command line.
      */
     readonly printingMergeRequestLinkEnabled: boolean;
     /**
+     * Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
+     */
+    readonly protectMergeRequestPipelines: boolean;
+    /**
+     * If true, jobs can be viewed by non-project members. Alias for `publicJobs`.
+     *
+     * @deprecated Use `publicJobs` instead, to be removed in 20.0.
+     */
+    readonly publicBuilds: boolean;
+    /**
      * If true, jobs can be viewed by non-project members.
      */
-    readonly publicBuilds?: boolean;
+    readonly publicJobs: boolean;
     /**
-     * Push rules for the project. Push rules are only available on Enterprise plans and if the authenticated has permissions to read them.
+     * Push rules for the project. Push rules are only available on Enterprise plans and if the authenticated user has permission to read them.
      */
     readonly pushRules: outputs.GetProjectPushRule[];
+    /**
+     * The URL of the project README.
+     */
+    readonly readmeUrl: string;
     /**
      * Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
      */
     readonly releasesAccessLevel: string;
     /**
-     * Enable `Delete source branch` option by default for all new merge requests
+     * Enable `Delete source branch` option by default for all new merge requests.
      */
     readonly removeSourceBranchAfterMerge: boolean;
     /**
@@ -288,7 +533,7 @@ export interface GetProjectResult {
      */
     readonly repositoryStorage: string;
     /**
-     * Allow users to request member access.
+     * Whether requesting access is enabled for the project.
      */
     readonly requestAccessEnabled: boolean;
     /**
@@ -296,15 +541,27 @@ export interface GetProjectResult {
      */
     readonly requirementsAccessLevel: string;
     /**
+     * Whether the requirements feature is enabled. Premium and Ultimate only.
+     */
+    readonly requirementsEnabled: boolean;
+    /**
      * Automatically resolve merge request diffs discussions on lines changed with a push.
      */
     readonly resolveOutdatedDiffDiscussions: boolean;
     /**
-     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `ciRestrictPipelineVariablesRole` instead. This attribute will be removed in 19.0.
+     * The default resource group process mode for the project.
+     */
+    readonly resourceGroupDefaultProcessMode: string;
+    /**
+     * Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
      *
-     * @deprecated Use `ciRestrictPipelineVariablesRole` instead. This attribute will be removed in 19.0.
+     * @deprecated Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0.
      */
     readonly restrictUserDefinedVariables: boolean;
+    /**
+     * Runner token expiration interval, in seconds.
+     */
+    readonly runnerTokenExpirationInterval: number;
     /**
      * Registration token to use during runner setup.
      */
@@ -314,6 +571,22 @@ export interface GetProjectResult {
      */
     readonly securityAndComplianceAccessLevel: string;
     /**
+     * Whether the security and compliance feature is enabled.
+     */
+    readonly securityAndComplianceEnabled: boolean;
+    /**
+     * The Service Desk email address for the project.
+     */
+    readonly serviceDeskAddress: string;
+    /**
+     * Whether Service Desk is enabled for the project.
+     */
+    readonly serviceDeskEnabled: boolean;
+    /**
+     * Whether shared runners are enabled for the project.
+     */
+    readonly sharedRunnersEnabled: boolean;
+    /**
      * Describes groups which have access shared to this project.
      */
     readonly sharedWithGroups: outputs.GetProjectSharedWithGroup[];
@@ -322,9 +595,9 @@ export interface GetProjectResult {
      */
     readonly snippetsAccessLevel: string;
     /**
-     * Enable snippets for the project. Use `snippetsAccessLevel` instead. This attribute will be removed in 19.0.
+     * Whether snippets are enabled for the project.
      *
-     * @deprecated Use `snippetsAccessLevel` instead. This attribute will be removed in 19.0.
+     * @deprecated Use `snippetsAccessLevel` instead, to be removed in 20.0.
      */
     readonly snippetsEnabled: boolean;
     /**
@@ -332,19 +605,47 @@ export interface GetProjectResult {
      */
     readonly squashCommitTemplate: string;
     /**
-     * URL that can be provided to `git clone` to clone the
+     * The project's squash option for merge requests (`never`, `always`, `defaultOn`, `defaultOff`).
+     */
+    readonly squashOption: string;
+    /**
+     * The SSH clone URL of the project.
      */
     readonly sshUrlToRepo: string;
+    /**
+     * The number of stars on the project.
+     */
+    readonly starCount: number;
+    /**
+     * Statistics for the project.
+     */
+    readonly statistics: {[key: string]: number};
     /**
      * The commit message used to apply merge request suggestions.
      */
     readonly suggestionCommitMessage: string;
     /**
+     * The list of project topics (formerly project tags).
+     *
+     * @deprecated Use `topics` instead, to be removed in 20.0.
+     */
+    readonly tagLists: string[];
+    /**
      * The list of topics for the project.
      */
     readonly topics: string[];
     /**
-     * Repositories are created as private by default.
+     * The time the project was last updated.
+     */
+    readonly updatedAt: string;
+    /**
+     * The visibility of the project (`private`, `internal`, `public`).
+     */
+    readonly visibility: string;
+    /**
+     * The visibility of the project. Alias for `visibility`.
+     *
+     * @deprecated Use `visibility` instead, to be removed in 20.0.
      */
     readonly visibilityLevel: string;
     /**
@@ -356,9 +657,9 @@ export interface GetProjectResult {
      */
     readonly wikiAccessLevel: string;
     /**
-     * Enable wiki for the project. Use `wikiAccessLevel` instead. This attribute will be removed in 19.0.
+     * Whether wiki is enabled for the project.
      *
-     * @deprecated Use `wikiAccessLevel` instead. This attribute will be removed in 19.0.
+     * @deprecated Use `wikiAccessLevel` instead, to be removed in 20.0.
      */
     readonly wikiEnabled: boolean;
 }
@@ -371,11 +672,8 @@ export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.Invo
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProject:getProject", {
-        "ciDefaultGitDepth": args.ciDefaultGitDepth,
-        "ciIdTokenSubClaimComponents": args.ciIdTokenSubClaimComponents,
         "id": args.id,
         "pathWithNamespace": args.pathWithNamespace,
-        "publicBuilds": args.publicBuilds,
     }, opts);
 }
 
@@ -384,14 +682,6 @@ export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.Invo
  */
 export interface GetProjectOutputArgs {
     /**
-     * Default number of revisions for shallow cloning.
-     */
-    ciDefaultGitDepth?: pulumi.Input<number | undefined>;
-    /**
-     * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to ["project*path", "ref*type", "ref"]. Introduced in GitLab 17.10.
-     */
-    ciIdTokenSubClaimComponents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
      * The integer that uniquely identifies the project within the gitlab install.
      */
     id?: pulumi.Input<string | undefined>;
@@ -399,8 +689,4 @@ export interface GetProjectOutputArgs {
      * The path of the repository with namespace.
      */
     pathWithNamespace?: pulumi.Input<string | undefined>;
-    /**
-     * If true, jobs can be viewed by non-project members.
-     */
-    publicBuilds?: pulumi.Input<boolean | undefined>;
 }

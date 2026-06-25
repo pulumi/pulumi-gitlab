@@ -82,14 +82,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/groupSamlLink:GroupSamlLink")
 public class GroupSamlLink extends com.pulumi.resources.CustomResource {
     /**
-     * Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
      * 
      */
     @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output<String> accessLevel;
 
     /**
-     * @return Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+     * @return Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
      * 
      */
     public Output<String> accessLevel() {

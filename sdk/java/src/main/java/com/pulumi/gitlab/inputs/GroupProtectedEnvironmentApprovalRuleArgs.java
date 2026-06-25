@@ -47,14 +47,14 @@ public final class GroupProtectedEnvironmentApprovalRuleArgs extends com.pulumi.
     }
 
     /**
-     * The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
+     * The ID of the group allowed to approve a deployment to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<Integer> groupId;
 
     /**
-     * @return The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
+     * @return The ID of the group allowed to approve a deployment to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
      * 
      */
     public Optional<Output<Integer>> groupId() {
@@ -194,7 +194,7 @@ public final class GroupProtectedEnvironmentApprovalRuleArgs extends com.pulumi.
         }
 
         /**
-         * @param groupId The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
+         * @param groupId The ID of the group allowed to approve a deployment to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class GroupProtectedEnvironmentApprovalRuleArgs extends com.pulumi.
         }
 
         /**
-         * @param groupId The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
+         * @param groupId The ID of the group allowed to approve a deployment to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
          * 
          * @return builder
          * 

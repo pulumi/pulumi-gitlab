@@ -12,6 +12,7 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectLabelState;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -153,6 +154,20 @@ public class ProjectLabel extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The priority of the label. Must be greater or equal than zero or null to remove the priority.
+     * 
+     */
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> priority;
+
+    /**
+     * @return The priority of the label. Must be greater or equal than zero or null to remove the priority.
+     * 
+     */
+    public Output<Optional<Integer>> priority() {
+        return Codegen.optional(this.priority);
     }
     /**
      * The name or id of the project to add the label to.

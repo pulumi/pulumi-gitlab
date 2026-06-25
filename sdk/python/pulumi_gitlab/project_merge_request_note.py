@@ -31,7 +31,7 @@ class ProjectMergeRequestNoteArgs:
         :param pulumi.Input[_builtins.str] body: The body of the merge request note.
         :param pulumi.Input[_builtins.int] merge_request_iid: The IID of the merge request to add the note to.
         :param pulumi.Input[_builtins.str] project: The ID or path of the project to add the note to.
-        :param pulumi.Input[_builtins.str] created_at: The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+        :param pulumi.Input[_builtins.str] created_at: The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
         :param pulumi.Input[_builtins.bool] internal: Indicates if the merge request note is internal.
         :param pulumi.Input[_builtins.str] merge_request_diff_head_sha: The diff head SHA of the merge request when the note was created.
         """
@@ -85,7 +85,7 @@ class ProjectMergeRequestNoteArgs:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+        The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
         """
         return pulumi.get(self, "created_at")
 
@@ -135,7 +135,7 @@ class _ProjectMergeRequestNoteState:
         Input properties used for looking up and filtering ProjectMergeRequestNote resources.
 
         :param pulumi.Input[_builtins.str] body: The body of the merge request note.
-        :param pulumi.Input[_builtins.str] created_at: The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+        :param pulumi.Input[_builtins.str] created_at: The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
         :param pulumi.Input[_builtins.bool] internal: Indicates if the merge request note is internal.
         :param pulumi.Input[_builtins.str] merge_request_diff_head_sha: The diff head SHA of the merge request when the note was created.
         :param pulumi.Input[_builtins.int] merge_request_iid: The IID of the merge request to add the note to.
@@ -182,7 +182,7 @@ class _ProjectMergeRequestNoteState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+        The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
         """
         return pulumi.get(self, "created_at")
 
@@ -339,7 +339,7 @@ class ProjectMergeRequestNote(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] body: The body of the merge request note.
-        :param pulumi.Input[_builtins.str] created_at: The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+        :param pulumi.Input[_builtins.str] created_at: The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
         :param pulumi.Input[_builtins.bool] internal: Indicates if the merge request note is internal.
         :param pulumi.Input[_builtins.str] merge_request_diff_head_sha: The diff head SHA of the merge request when the note was created.
         :param pulumi.Input[_builtins.int] merge_request_iid: The IID of the merge request to add the note to.
@@ -461,7 +461,7 @@ class ProjectMergeRequestNote(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] body: The body of the merge request note.
-        :param pulumi.Input[_builtins.str] created_at: The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+        :param pulumi.Input[_builtins.str] created_at: The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
         :param pulumi.Input[_builtins.bool] internal: Indicates if the merge request note is internal.
         :param pulumi.Input[_builtins.str] merge_request_diff_head_sha: The diff head SHA of the merge request when the note was created.
         :param pulumi.Input[_builtins.int] merge_request_iid: The IID of the merge request to add the note to.
@@ -499,7 +499,7 @@ class ProjectMergeRequestNote(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         """
-        The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+        The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
         """
         return pulumi.get(self, "created_at")
 

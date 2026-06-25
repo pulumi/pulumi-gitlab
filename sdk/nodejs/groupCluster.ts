@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.GroupCluster` resource manages the lifecycle of a group cluster.
  *
- * > This is deprecated, due for removal in GitLab 19.0.
+ * > This is deprecated, due for removal in GitLab 20.0.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_clusters/)
  *

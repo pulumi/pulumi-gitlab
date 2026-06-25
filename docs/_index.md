@@ -11,7 +11,7 @@ The Gitlab provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/gitlab`](https://www.npmjs.com/package/@pulumi/gitlab)
 * Python: [`pulumi-gitlab`](https://pypi.org/project/pulumi-gitlab/)
-* Go: [`github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab`](https://github.com/pulumi/pulumi-gitlab)
+* Go: [`github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab`](https://github.com/pulumi/pulumi-gitlab)
 * .NET: [`Pulumi.Gitlab`](https://www.nuget.org/packages/Pulumi.Gitlab)
 * Java: [`com.pulumi/gitlab`](https://central.sonatype.com/artifact/com.pulumi/gitlab)
 
@@ -234,7 +234,7 @@ config:
 package main
 
 import (
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 

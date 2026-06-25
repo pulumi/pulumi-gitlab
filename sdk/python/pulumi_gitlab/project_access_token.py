@@ -39,7 +39,7 @@ class ProjectAccessTokenArgs:
         :param pulumi.Input[_builtins.str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         :param pulumi.Input[_builtins.str] name: The name of the project access token.
         :param pulumi.Input['ProjectAccessTokenRotationConfigurationArgs'] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
-        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Whether to validate if the expiration date is in the future.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "scopes", scopes)
@@ -144,7 +144,7 @@ class ProjectAccessTokenArgs:
     @pulumi.getter(name="validatePastExpirationDate")
     def validate_past_expiration_date(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Wether to validate if the expiration date is in the future.
+        Whether to validate if the expiration date is in the future.
         """
         return pulumi.get(self, "validate_past_expiration_date")
 
@@ -184,7 +184,7 @@ class _ProjectAccessTokenState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
         :param pulumi.Input[_builtins.str] token: The token of the project access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[_builtins.int] user_id: The user_id associated to the token.
-        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Whether to validate if the expiration date is in the future.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -361,7 +361,7 @@ class _ProjectAccessTokenState:
     @pulumi.getter(name="validatePastExpirationDate")
     def validate_past_expiration_date(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Wether to validate if the expiration date is in the future.
+        Whether to validate if the expiration date is in the future.
         """
         return pulumi.get(self, "validate_past_expiration_date")
 
@@ -439,7 +439,7 @@ class ProjectAccessToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project.
         :param pulumi.Input[Union['ProjectAccessTokenRotationConfigurationArgs', 'ProjectAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
-        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Whether to validate if the expiration date is in the future.
         """
         ...
     @overload
@@ -585,7 +585,7 @@ class ProjectAccessToken(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
         :param pulumi.Input[_builtins.str] token: The token of the project access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[_builtins.int] user_id: The user_id associated to the token.
-        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Whether to validate if the expiration date is in the future.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -706,7 +706,7 @@ class ProjectAccessToken(pulumi.CustomResource):
     @pulumi.getter(name="validatePastExpirationDate")
     def validate_past_expiration_date(self) -> pulumi.Output[_builtins.bool]:
         """
-        Wether to validate if the expiration date is in the future.
+        Whether to validate if the expiration date is in the future.
         """
         return pulumi.get(self, "validate_past_expiration_date")
 

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,7 +30,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -68,6 +68,8 @@ type ProjectPushMirror struct {
 	AuthMethod pulumi.StringOutput `pulumi:"authMethod"`
 	// Determines if the mirror is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+	HostKeys pulumi.StringArrayOutput `pulumi:"hostKeys"`
 	// Determines if divergent refs are skipped.
 	KeepDivergentRefs pulumi.BoolOutput `pulumi:"keepDivergentRefs"`
 	// Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
@@ -129,6 +131,8 @@ type projectPushMirrorState struct {
 	AuthMethod *string `pulumi:"authMethod"`
 	// Determines if the mirror is enabled.
 	Enabled *bool `pulumi:"enabled"`
+	// SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+	HostKeys []string `pulumi:"hostKeys"`
 	// Determines if divergent refs are skipped.
 	KeepDivergentRefs *bool `pulumi:"keepDivergentRefs"`
 	// Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
@@ -148,6 +152,8 @@ type ProjectPushMirrorState struct {
 	AuthMethod pulumi.StringPtrInput
 	// Determines if the mirror is enabled.
 	Enabled pulumi.BoolPtrInput
+	// SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+	HostKeys pulumi.StringArrayInput
 	// Determines if divergent refs are skipped.
 	KeepDivergentRefs pulumi.BoolPtrInput
 	// Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
@@ -171,6 +177,8 @@ type projectPushMirrorArgs struct {
 	AuthMethod *string `pulumi:"authMethod"`
 	// Determines if the mirror is enabled.
 	Enabled *bool `pulumi:"enabled"`
+	// SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+	HostKeys []string `pulumi:"hostKeys"`
 	// Determines if divergent refs are skipped.
 	KeepDivergentRefs *bool `pulumi:"keepDivergentRefs"`
 	// Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
@@ -189,6 +197,8 @@ type ProjectPushMirrorArgs struct {
 	AuthMethod pulumi.StringPtrInput
 	// Determines if the mirror is enabled.
 	Enabled pulumi.BoolPtrInput
+	// SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+	HostKeys pulumi.StringArrayInput
 	// Determines if divergent refs are skipped.
 	KeepDivergentRefs pulumi.BoolPtrInput
 	// Contains a regular expression. Only branches with names matching the regex are mirrored. Requires only*protected*branches to be disabled. Premium and Ultimate only.
@@ -296,6 +306,11 @@ func (o ProjectPushMirrorOutput) AuthMethod() pulumi.StringOutput {
 // Determines if the mirror is enabled.
 func (o ProjectPushMirrorOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectPushMirror) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+func (o ProjectPushMirrorOutput) HostKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ProjectPushMirror) pulumi.StringArrayOutput { return v.HostKeys }).(pulumi.StringArrayOutput)
 }
 
 // Determines if divergent refs are skipped.

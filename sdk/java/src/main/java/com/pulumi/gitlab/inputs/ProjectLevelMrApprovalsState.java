@@ -77,18 +77,41 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
     }
 
     /**
-     * Set to `true` to require authentication to approve merge requests.
+     * Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+     * 
+     * @deprecated
+     * Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
      * 
      */
+    @Deprecated /* Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead. */
     @Import(name="requirePasswordToApprove")
     private @Nullable Output<Boolean> requirePasswordToApprove;
 
     /**
-     * @return Set to `true` to require authentication to approve merge requests.
+     * @return Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+     * 
+     * @deprecated
+     * Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
      * 
      */
+    @Deprecated /* Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead. */
     public Optional<Output<Boolean>> requirePasswordToApprove() {
         return Optional.ofNullable(this.requirePasswordToApprove);
+    }
+
+    /**
+     * If true, requires approver to reauthenticate before adding the approval.
+     * 
+     */
+    @Import(name="requireReauthenticationToApprove")
+    private @Nullable Output<Boolean> requireReauthenticationToApprove;
+
+    /**
+     * @return If true, requires approver to reauthenticate before adding the approval.
+     * 
+     */
+    public Optional<Output<Boolean>> requireReauthenticationToApprove() {
+        return Optional.ofNullable(this.requireReauthenticationToApprove);
     }
 
     /**
@@ -129,6 +152,7 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         this.mergeRequestsDisableCommittersApproval = $.mergeRequestsDisableCommittersApproval;
         this.project = $.project;
         this.requirePasswordToApprove = $.requirePasswordToApprove;
+        this.requireReauthenticationToApprove = $.requireReauthenticationToApprove;
         this.resetApprovalsOnPush = $.resetApprovalsOnPush;
         this.selectiveCodeOwnerRemovals = $.selectiveCodeOwnerRemovals;
     }
@@ -236,24 +260,53 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param requirePasswordToApprove Set to `true` to require authentication to approve merge requests.
+         * @param requirePasswordToApprove Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+         * 
          */
+        @Deprecated /* Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead. */
         public Builder requirePasswordToApprove(@Nullable Output<Boolean> requirePasswordToApprove) {
             $.requirePasswordToApprove = requirePasswordToApprove;
             return this;
         }
 
         /**
-         * @param requirePasswordToApprove Set to `true` to require authentication to approve merge requests.
+         * @param requirePasswordToApprove Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+         * 
+         */
+        @Deprecated /* Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead. */
+        public Builder requirePasswordToApprove(Boolean requirePasswordToApprove) {
+            return requirePasswordToApprove(Output.of(requirePasswordToApprove));
+        }
+
+        /**
+         * @param requireReauthenticationToApprove If true, requires approver to reauthenticate before adding the approval.
          * 
          * @return builder
          * 
          */
-        public Builder requirePasswordToApprove(Boolean requirePasswordToApprove) {
-            return requirePasswordToApprove(Output.of(requirePasswordToApprove));
+        public Builder requireReauthenticationToApprove(@Nullable Output<Boolean> requireReauthenticationToApprove) {
+            $.requireReauthenticationToApprove = requireReauthenticationToApprove;
+            return this;
+        }
+
+        /**
+         * @param requireReauthenticationToApprove If true, requires approver to reauthenticate before adding the approval.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requireReauthenticationToApprove(Boolean requireReauthenticationToApprove) {
+            return requireReauthenticationToApprove(Output.of(requireReauthenticationToApprove));
         }
 
         /**

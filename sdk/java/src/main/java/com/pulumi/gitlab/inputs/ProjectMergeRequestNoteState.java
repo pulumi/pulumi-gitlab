@@ -33,14 +33,14 @@ public final class ProjectMergeRequestNoteState extends com.pulumi.resources.Res
     }
 
     /**
-     * The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+     * The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+     * @return The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -222,7 +222,7 @@ public final class ProjectMergeRequestNoteState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param createdAt The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+         * @param createdAt The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class ProjectMergeRequestNoteState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param createdAt The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+         * @param createdAt The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
          * 
          * @return builder
          * 

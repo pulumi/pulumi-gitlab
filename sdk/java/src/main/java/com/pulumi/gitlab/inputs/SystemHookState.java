@@ -32,6 +32,21 @@ public final class SystemHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Description of the hook.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Description of the hook.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * Do SSL verification when triggering the hook.
      * 
      */
@@ -62,6 +77,21 @@ public final class SystemHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Name of the hook.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Name of the hook.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * When true, the hook fires on push events.
      * 
      */
@@ -89,6 +119,36 @@ public final class SystemHookState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> repositoryUpdateEvents() {
         return Optional.ofNullable(this.repositoryUpdateEvents);
+    }
+
+    /**
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * 
+     */
+    @Import(name="signingToken")
+    private @Nullable Output<String> signingToken;
+
+    /**
+     * @return Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * 
+     */
+    public Optional<Output<String>> signingToken() {
+        return Optional.ofNullable(this.signingToken);
+    }
+
+    /**
+     * Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     * 
+     */
+    @Import(name="signingTokenPresent")
+    private @Nullable Output<Boolean> signingTokenPresent;
+
+    /**
+     * @return Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     * 
+     */
+    public Optional<Output<Boolean>> signingTokenPresent() {
+        return Optional.ofNullable(this.signingTokenPresent);
     }
 
     /**
@@ -140,10 +200,14 @@ public final class SystemHookState extends com.pulumi.resources.ResourceArgs {
 
     private SystemHookState(SystemHookState $) {
         this.createdAt = $.createdAt;
+        this.description = $.description;
         this.enableSslVerification = $.enableSslVerification;
         this.mergeRequestsEvents = $.mergeRequestsEvents;
+        this.name = $.name;
         this.pushEvents = $.pushEvents;
         this.repositoryUpdateEvents = $.repositoryUpdateEvents;
+        this.signingToken = $.signingToken;
+        this.signingTokenPresent = $.signingTokenPresent;
         this.tagPushEvents = $.tagPushEvents;
         this.token = $.token;
         this.url = $.url;
@@ -189,6 +253,27 @@ public final class SystemHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param description Description of the hook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Description of the hook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
          * @param enableSslVerification Do SSL verification when triggering the hook.
          * 
          * @return builder
@@ -231,6 +316,27 @@ public final class SystemHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param name Name of the hook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Name of the hook.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
          * @param pushEvents When true, the hook fires on push events.
          * 
          * @return builder
@@ -270,6 +376,48 @@ public final class SystemHookState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder repositoryUpdateEvents(Boolean repositoryUpdateEvents) {
             return repositoryUpdateEvents(Output.of(repositoryUpdateEvents));
+        }
+
+        /**
+         * @param signingToken Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingToken(@Nullable Output<String> signingToken) {
+            $.signingToken = signingToken;
+            return this;
+        }
+
+        /**
+         * @param signingToken Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingToken(String signingToken) {
+            return signingToken(Output.of(signingToken));
+        }
+
+        /**
+         * @param signingTokenPresent Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingTokenPresent(@Nullable Output<Boolean> signingTokenPresent) {
+            $.signingTokenPresent = signingTokenPresent;
+            return this;
+        }
+
+        /**
+         * @param signingTokenPresent Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingTokenPresent(Boolean signingTokenPresent) {
+            return signingTokenPresent(Output.of(signingTokenPresent));
         }
 
         /**

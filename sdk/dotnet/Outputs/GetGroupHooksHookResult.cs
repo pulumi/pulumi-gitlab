@@ -14,6 +14,14 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetGroupHooksHookResult
     {
         /// <summary>
+        /// Lifecycle status of the webhook. Values include `Executable` and `Disabled`.
+        /// </summary>
+        public readonly string AlertStatus;
+        /// <summary>
+        /// Filter push events by branch.
+        /// </summary>
+        public readonly string BranchFilterStrategy;
+        /// <summary>
         /// Invoke the hook for confidential issues events.
         /// </summary>
         public readonly bool ConfidentialIssuesEvents;
@@ -21,6 +29,10 @@ namespace Pulumi.GitLab.Outputs
         /// Invoke the hook for confidential notes events.
         /// </summary>
         public readonly bool ConfidentialNoteEvents;
+        /// <summary>
+        /// The date and time the hook was created in ISO8601 format.
+        /// </summary>
+        public readonly string CreatedAt;
         /// <summary>
         /// Set a custom webhook template.
         /// </summary>
@@ -30,6 +42,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool DeploymentEvents;
         /// <summary>
+        /// Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+        /// </summary>
+        public readonly string DisabledUntil;
+        /// <summary>
         /// Invoke the hook for emoji events.
         /// </summary>
         public readonly bool EmojiEvents;
@@ -37,6 +53,10 @@ namespace Pulumi.GitLab.Outputs
         /// Enable ssl verification when invoking the hook.
         /// </summary>
         public readonly bool EnableSslVerification;
+        /// <summary>
+        /// Invoke the hook for feature flag events.
+        /// </summary>
+        public readonly bool FeatureFlagEvents;
         /// <summary>
         /// The ID or full path of the group.
         /// </summary>
@@ -58,9 +78,17 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool JobEvents;
         /// <summary>
+        /// Invoke the hook for member events.
+        /// </summary>
+        public readonly bool MemberEvents;
+        /// <summary>
         /// Invoke the hook for merge requests.
         /// </summary>
         public readonly bool MergeRequestsEvents;
+        /// <summary>
+        /// Invoke the hook for milestone events.
+        /// </summary>
+        public readonly bool MilestoneEvents;
         /// <summary>
         /// Invoke the hook for notes events.
         /// </summary>
@@ -69,6 +97,10 @@ namespace Pulumi.GitLab.Outputs
         /// Invoke the hook for pipeline events.
         /// </summary>
         public readonly bool PipelineEvents;
+        /// <summary>
+        /// Invoke the hook for project events.
+        /// </summary>
+        public readonly bool ProjectEvents;
         /// <summary>
         /// Invoke the hook for push events.
         /// </summary>
@@ -82,6 +114,14 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool ReleasesEvents;
         /// <summary>
+        /// Invoke the hook for resource access token expiry events.
+        /// </summary>
+        public readonly bool ResourceAccessTokenEvents;
+        /// <summary>
+        /// Whether a `SigningToken` is configured server-side. Reflects the value returned by the GitLab API.
+        /// </summary>
+        public readonly bool SigningTokenPresent;
+        /// <summary>
         /// Invoke the hook for subgroup events.
         /// </summary>
         public readonly bool SubgroupEvents;
@@ -89,10 +129,6 @@ namespace Pulumi.GitLab.Outputs
         /// Invoke the hook for tag push events.
         /// </summary>
         public readonly bool TagPushEvents;
-        /// <summary>
-        /// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
-        /// </summary>
-        public readonly string Token;
         /// <summary>
         /// The url of the hook to invoke.
         /// </summary>
@@ -108,17 +144,27 @@ namespace Pulumi.GitLab.Outputs
 
         [OutputConstructor]
         private GetGroupHooksHookResult(
+            string alertStatus,
+
+            string branchFilterStrategy,
+
             bool confidentialIssuesEvents,
 
             bool confidentialNoteEvents,
+
+            string createdAt,
 
             string customWebhookTemplate,
 
             bool deploymentEvents,
 
+            string disabledUntil,
+
             bool emojiEvents,
 
             bool enableSslVerification,
+
+            bool featureFlagEvents,
 
             string group,
 
@@ -130,11 +176,17 @@ namespace Pulumi.GitLab.Outputs
 
             bool jobEvents,
 
+            bool memberEvents,
+
             bool mergeRequestsEvents,
+
+            bool milestoneEvents,
 
             bool noteEvents,
 
             bool pipelineEvents,
+
+            bool projectEvents,
 
             bool pushEvents,
 
@@ -142,11 +194,13 @@ namespace Pulumi.GitLab.Outputs
 
             bool releasesEvents,
 
+            bool resourceAccessTokenEvents,
+
+            bool signingTokenPresent,
+
             bool subgroupEvents,
 
             bool tagPushEvents,
-
-            string token,
 
             string url,
 
@@ -154,26 +208,35 @@ namespace Pulumi.GitLab.Outputs
 
             bool wikiPageEvents)
         {
+            AlertStatus = alertStatus;
+            BranchFilterStrategy = branchFilterStrategy;
             ConfidentialIssuesEvents = confidentialIssuesEvents;
             ConfidentialNoteEvents = confidentialNoteEvents;
+            CreatedAt = createdAt;
             CustomWebhookTemplate = customWebhookTemplate;
             DeploymentEvents = deploymentEvents;
+            DisabledUntil = disabledUntil;
             EmojiEvents = emojiEvents;
             EnableSslVerification = enableSslVerification;
+            FeatureFlagEvents = featureFlagEvents;
             Group = group;
             GroupId = groupId;
             HookId = hookId;
             IssuesEvents = issuesEvents;
             JobEvents = jobEvents;
+            MemberEvents = memberEvents;
             MergeRequestsEvents = mergeRequestsEvents;
+            MilestoneEvents = milestoneEvents;
             NoteEvents = noteEvents;
             PipelineEvents = pipelineEvents;
+            ProjectEvents = projectEvents;
             PushEvents = pushEvents;
             PushEventsBranchFilter = pushEventsBranchFilter;
             ReleasesEvents = releasesEvents;
+            ResourceAccessTokenEvents = resourceAccessTokenEvents;
+            SigningTokenPresent = signingTokenPresent;
             SubgroupEvents = subgroupEvents;
             TagPushEvents = tagPushEvents;
-            Token = token;
             Url = url;
             VulnerabilityEvents = vulnerabilityEvents;
             WikiPageEvents = wikiPageEvents;

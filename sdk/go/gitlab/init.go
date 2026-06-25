@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,8 +41,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DeployKey{}
 	case "gitlab:index/deployKeyEnable:DeployKeyEnable":
 		r = &DeployKeyEnable{}
-	case "gitlab:index/deployToken:DeployToken":
-		r = &DeployToken{}
 	case "gitlab:index/globalLevelNotifications:GlobalLevelNotifications":
 		r = &GlobalLevelNotifications{}
 	case "gitlab:index/group:Group":
@@ -51,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupAccessToken{}
 	case "gitlab:index/groupBadge:GroupBadge":
 		r = &GroupBadge{}
+	case "gitlab:index/groupBranchProtection:GroupBranchProtection":
+		r = &GroupBranchProtection{}
 	case "gitlab:index/groupCluster:GroupCluster":
 		r = &GroupCluster{}
 	case "gitlab:index/groupCustomAttribute:GroupCustomAttribute":
@@ -63,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupEpicBoard{}
 	case "gitlab:index/groupHook:GroupHook":
 		r = &GroupHook{}
+	case "gitlab:index/groupIntegrationHarbor:GroupIntegrationHarbor":
+		r = &GroupIntegrationHarbor{}
 	case "gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost":
 		r = &GroupIntegrationMattermost{}
 	case "gitlab:index/groupIntegrationMicrosoftTeams:GroupIntegrationMicrosoftTeams":
@@ -83,6 +85,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupProtectedEnvironment{}
 	case "gitlab:index/groupSamlLink:GroupSamlLink":
 		r = &GroupSamlLink{}
+	case "gitlab:index/groupSavedReply:GroupSavedReply":
+		r = &GroupSavedReply{}
 	case "gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment":
 		r = &GroupSecurityPolicyAttachment{}
 	case "gitlab:index/groupServiceAccount:GroupServiceAccount":
@@ -99,34 +103,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceServiceAccount{}
 	case "gitlab:index/instanceVariable:InstanceVariable":
 		r = &InstanceVariable{}
-	case "gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker":
-		r = &IntegrationCustomIssueTracker{}
-	case "gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush":
-		r = &IntegrationEmailsOnPush{}
-	case "gitlab:index/integrationExternalWiki:IntegrationExternalWiki":
-		r = &IntegrationExternalWiki{}
-	case "gitlab:index/integrationGithub:IntegrationGithub":
-		r = &IntegrationGithub{}
-	case "gitlab:index/integrationHarbor:IntegrationHarbor":
-		r = &IntegrationHarbor{}
-	case "gitlab:index/integrationJenkins:IntegrationJenkins":
-		r = &IntegrationJenkins{}
-	case "gitlab:index/integrationJira:IntegrationJira":
-		r = &IntegrationJira{}
-	case "gitlab:index/integrationMattermost:IntegrationMattermost":
-		r = &IntegrationMattermost{}
-	case "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams":
-		r = &IntegrationMicrosoftTeams{}
-	case "gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail":
-		r = &IntegrationPipelinesEmail{}
-	case "gitlab:index/integrationRedmine:IntegrationRedmine":
-		r = &IntegrationRedmine{}
 	case "gitlab:index/integrationSlack:IntegrationSlack":
 		r = &IntegrationSlack{}
-	case "gitlab:index/integrationTelegram:IntegrationTelegram":
-		r = &IntegrationTelegram{}
-	case "gitlab:index/label:Label":
-		r = &Label{}
 	case "gitlab:index/memberRole:MemberRole":
 		r = &MemberRole{}
 	case "gitlab:index/pagesDomain:PagesDomain":
@@ -171,12 +149,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectHook{}
 	case "gitlab:index/projectIntegrationCustomIssueTracker:ProjectIntegrationCustomIssueTracker":
 		r = &ProjectIntegrationCustomIssueTracker{}
+	case "gitlab:index/projectIntegrationDatadog:ProjectIntegrationDatadog":
+		r = &ProjectIntegrationDatadog{}
 	case "gitlab:index/projectIntegrationEmailsOnPush:ProjectIntegrationEmailsOnPush":
 		r = &ProjectIntegrationEmailsOnPush{}
 	case "gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki":
 		r = &ProjectIntegrationExternalWiki{}
 	case "gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub":
 		r = &ProjectIntegrationGithub{}
+	case "gitlab:index/projectIntegrationGoogleChat:ProjectIntegrationGoogleChat":
+		r = &ProjectIntegrationGoogleChat{}
 	case "gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor":
 		r = &ProjectIntegrationHarbor{}
 	case "gitlab:index/projectIntegrationJenkins:ProjectIntegrationJenkins":
@@ -219,8 +201,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectMergeRequestNote{}
 	case "gitlab:index/projectMilestone:ProjectMilestone":
 		r = &ProjectMilestone{}
-	case "gitlab:index/projectMirror:ProjectMirror":
-		r = &ProjectMirror{}
 	case "gitlab:index/projectPackageDependencyProxy:ProjectPackageDependencyProxy":
 		r = &ProjectPackageDependencyProxy{}
 	case "gitlab:index/projectPackageProtectionRule:ProjectPackageProtectionRule":
@@ -237,10 +217,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectPushRules{}
 	case "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement":
 		r = &ProjectRunnerEnablement{}
+	case "gitlab:index/projectSavedReply:ProjectSavedReply":
+		r = &ProjectSavedReply{}
 	case "gitlab:index/projectSecureFile:ProjectSecureFile":
 		r = &ProjectSecureFile{}
 	case "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment":
 		r = &ProjectSecurityPolicyAttachment{}
+	case "gitlab:index/projectServiceAccount:ProjectServiceAccount":
+		r = &ProjectServiceAccount{}
 	case "gitlab:index/projectShareGroup:ProjectShareGroup":
 		r = &ProjectShareGroup{}
 	case "gitlab:index/projectTag:ProjectTag":
@@ -257,8 +241,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ReleaseLink{}
 	case "gitlab:index/repositoryFile:RepositoryFile":
 		r = &RepositoryFile{}
-	case "gitlab:index/runner:Runner":
-		r = &Runner{}
 	case "gitlab:index/runnerController:RunnerController":
 		r = &RunnerController{}
 	case "gitlab:index/runnerControllerInstanceScope:RunnerControllerInstanceScope":
@@ -287,6 +269,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &UserImpersonationToken{}
 	case "gitlab:index/userRunner:UserRunner":
 		r = &UserRunner{}
+	case "gitlab:index/userSavedReply:UserSavedReply":
+		r = &UserSavedReply{}
 	case "gitlab:index/userSshKey:UserSshKey":
 		r = &UserSshKey{}
 	case "gitlab:index/valueStreamAnalytics:ValueStreamAnalytics":
@@ -374,11 +358,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
-		"index/deployToken",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
 		"index/globalLevelNotifications",
 		&module{version},
 	)
@@ -395,6 +374,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/groupBadge",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupBranchProtection",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -425,6 +409,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/groupHook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupIntegrationHarbor",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -479,6 +468,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/groupSavedReply",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/groupSecurityPolicyAttachment",
 		&module{version},
 	)
@@ -519,72 +513,7 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
-		"index/integrationCustomIssueTracker",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/integrationEmailsOnPush",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/integrationExternalWiki",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/integrationGithub",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/integrationHarbor",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/integrationJenkins",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/integrationJira",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/integrationMattermost",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/integrationMicrosoftTeams",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/integrationPipelinesEmail",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/integrationRedmine",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
 		"index/integrationSlack",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/integrationTelegram",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/label",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -699,6 +628,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectIntegrationDatadog",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectIntegrationEmailsOnPush",
 		&module{version},
 	)
@@ -710,6 +644,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectIntegrationGithub",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectIntegrationGoogleChat",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -819,11 +758,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
-		"index/projectMirror",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
 		"index/projectPackageDependencyProxy",
 		&module{version},
 	)
@@ -864,12 +798,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectSavedReply",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectSecureFile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectSecurityPolicyAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectServiceAccount",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -910,11 +854,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/repositoryFile",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gitlab",
-		"index/runner",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -985,6 +924,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/userRunner",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/userSavedReply",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

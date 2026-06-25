@@ -19,33 +19,37 @@ __all__ = ['ProjectJobTokenScopesArgs', 'ProjectJobTokenScopes']
 @pulumi.input_type
 class ProjectJobTokenScopesArgs:
     def __init__(__self__, *,
+                 project: pulumi.Input[_builtins.str],
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None,
-                 project_id: pulumi.Input[Optional[_builtins.int]] = None,
                  target_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  target_project_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         The set of arguments for constructing a ProjectJobTokenScopes resource.
 
-        :param pulumi.Input[_builtins.bool] enabled: Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project.
-        :param pulumi.Input[_builtins.int] project_id: The ID of the project. Use `project` instead. To be removed in 19.0.
+        :param pulumi.Input[_builtins.bool] enabled: Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] target_group_ids: A set of group IDs that are in the CI/CD job token inbound allowlist.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] target_project_ids: A set of project IDs that are in the CI/CD job token inbound allowlist.
         """
+        pulumi.set(__self__, "project", project)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
-        if project_id is not None:
-            warnings.warn("""Use `project` instead. To be removed in 19.0.""", DeprecationWarning)
-            pulumi.log.warn("""project_id is deprecated: Use `project` instead. To be removed in 19.0.""")
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
         if target_group_ids is not None:
             pulumi.set(__self__, "target_group_ids", target_group_ids)
         if target_project_ids is not None:
             pulumi.set(__self__, "target_project_ids", target_project_ids)
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID or full path of the project.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
@@ -58,31 +62,6 @@ class ProjectJobTokenScopesArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The ID or full path of the project.
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "project", value)
-
-    @_builtins.property
-    @pulumi.getter(name="projectId")
-    @_utilities.deprecated("""Use `project` instead. To be removed in 19.0.""")
-    def project_id(self) -> pulumi.Input[Optional[_builtins.int]]:
-        """
-        The ID of the project. Use `project` instead. To be removed in 19.0.
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[Optional[_builtins.int]]):
-        pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetGroupIds")
@@ -114,7 +93,6 @@ class _ProjectJobTokenScopesState:
     def __init__(__self__, *,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 project_id: pulumi.Input[Optional[_builtins.int]] = None,
                  target_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  target_project_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
@@ -122,7 +100,6 @@ class _ProjectJobTokenScopesState:
 
         :param pulumi.Input[_builtins.bool] enabled: Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project.
-        :param pulumi.Input[_builtins.int] project_id: The ID of the project. Use `project` instead. To be removed in 19.0.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] target_group_ids: A set of group IDs that are in the CI/CD job token inbound allowlist.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] target_project_ids: A set of project IDs that are in the CI/CD job token inbound allowlist.
         """
@@ -130,11 +107,6 @@ class _ProjectJobTokenScopesState:
             pulumi.set(__self__, "enabled", enabled)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if project_id is not None:
-            warnings.warn("""Use `project` instead. To be removed in 19.0.""", DeprecationWarning)
-            pulumi.log.warn("""project_id is deprecated: Use `project` instead. To be removed in 19.0.""")
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
         if target_group_ids is not None:
             pulumi.set(__self__, "target_group_ids", target_group_ids)
         if target_project_ids is not None:
@@ -163,19 +135,6 @@ class _ProjectJobTokenScopesState:
     @project.setter
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
-
-    @_builtins.property
-    @pulumi.getter(name="projectId")
-    @_utilities.deprecated("""Use `project` instead. To be removed in 19.0.""")
-    def project_id(self) -> pulumi.Input[Optional[_builtins.int]]:
-        """
-        The ID of the project. Use `project` instead. To be removed in 19.0.
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[Optional[_builtins.int]]):
-        pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetGroupIds")
@@ -210,7 +169,6 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 project_id: pulumi.Input[Optional[_builtins.int]] = None,
                  target_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  target_project_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  __props__=None):
@@ -277,18 +235,19 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab project job token scopes can be imported using an id made up of just the `project_id`
+        GitLab project job token scopes can be imported using an id made up of `{project}`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes bar 123
         ```
+
+        Where `project` may be the project ID or path with namespace depending on what you have in your config.
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project.
-        :param pulumi.Input[_builtins.int] project_id: The ID of the project. Use `project` instead. To be removed in 19.0.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] target_group_ids: A set of group IDs that are in the CI/CD job token inbound allowlist.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] target_project_ids: A set of project IDs that are in the CI/CD job token inbound allowlist.
         """
@@ -296,7 +255,7 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ProjectJobTokenScopesArgs] = None,
+                 args: ProjectJobTokenScopesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The `ProjectJobTokenScopes` resource manages the CI/CD Job Token scopes in a project.
@@ -361,11 +320,13 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
 
         Importing using the CLI is supported with the following syntax:
 
-        GitLab project job token scopes can be imported using an id made up of just the `project_id`
+        GitLab project job token scopes can be imported using an id made up of `{project}`, for example:
 
         ```sh
         $ pulumi import gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes bar 123
         ```
+
+        Where `project` may be the project ID or path with namespace depending on what you have in your config.
 
 
         :param str resource_name: The name of the resource.
@@ -385,7 +346,6 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 project_id: pulumi.Input[Optional[_builtins.int]] = None,
                  target_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  target_project_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  __props__=None):
@@ -398,8 +358,9 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
             __props__ = ProjectJobTokenScopesArgs.__new__(ProjectJobTokenScopesArgs)
 
             __props__.__dict__["enabled"] = enabled
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
-            __props__.__dict__["project_id"] = project_id
             __props__.__dict__["target_group_ids"] = target_group_ids
             __props__.__dict__["target_project_ids"] = target_project_ids
         super(ProjectJobTokenScopes, __self__).__init__(
@@ -414,7 +375,6 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            project_id: pulumi.Input[Optional[_builtins.int]] = None,
             target_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
             target_project_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None) -> 'ProjectJobTokenScopes':
         """
@@ -426,7 +386,6 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `target_project_ids` or `target_group_ids`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project.
-        :param pulumi.Input[_builtins.int] project_id: The ID of the project. Use `project` instead. To be removed in 19.0.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] target_group_ids: A set of group IDs that are in the CI/CD job token inbound allowlist.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] target_project_ids: A set of project IDs that are in the CI/CD job token inbound allowlist.
         """
@@ -436,7 +395,6 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
 
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["project"] = project
-        __props__.__dict__["project_id"] = project_id
         __props__.__dict__["target_group_ids"] = target_group_ids
         __props__.__dict__["target_project_ids"] = target_project_ids
         return ProjectJobTokenScopes(resource_name, opts=opts, __props__=__props__)
@@ -456,15 +414,6 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
         The ID or full path of the project.
         """
         return pulumi.get(self, "project")
-
-    @_builtins.property
-    @pulumi.getter(name="projectId")
-    @_utilities.deprecated("""Use `project` instead. To be removed in 19.0.""")
-    def project_id(self) -> pulumi.Output[_builtins.int]:
-        """
-        The ID of the project. Use `project` instead. To be removed in 19.0.
-        """
-        return pulumi.get(self, "project_id")
 
     @_builtins.property
     @pulumi.getter(name="targetGroupIds")

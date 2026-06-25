@@ -92,6 +92,10 @@ export class ProjectLabel extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * The priority of the label. Must be greater or equal than zero or null to remove the priority.
+     */
+    declare public readonly priority: pulumi.Output<number | undefined>;
+    /**
      * The name or id of the project to add the label to.
      */
     declare public readonly project: pulumi.Output<string>;
@@ -114,6 +118,7 @@ export class ProjectLabel extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["labelId"] = state?.labelId;
             resourceInputs["name"] = state?.name;
+            resourceInputs["priority"] = state?.priority;
             resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as ProjectLabelArgs | undefined;
@@ -126,6 +131,7 @@ export class ProjectLabel extends pulumi.CustomResource {
             resourceInputs["color"] = args?.color;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
+            resourceInputs["priority"] = args?.priority;
             resourceInputs["project"] = args?.project;
             resourceInputs["colorHex"] = undefined /*out*/;
             resourceInputs["labelId"] = undefined /*out*/;
@@ -160,6 +166,10 @@ export interface ProjectLabelState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * The priority of the label. Must be greater or equal than zero or null to remove the priority.
+     */
+    priority?: pulumi.Input<number | undefined>;
+    /**
      * The name or id of the project to add the label to.
      */
     project?: pulumi.Input<string | undefined>;
@@ -181,6 +191,10 @@ export interface ProjectLabelArgs {
      * The name of the label.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The priority of the label. Must be greater or equal than zero or null to remove the priority.
+     */
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The name or id of the project to add the label to.
      */

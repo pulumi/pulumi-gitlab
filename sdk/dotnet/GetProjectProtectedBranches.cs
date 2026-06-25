@@ -45,18 +45,6 @@ namespace Pulumi.GitLab
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
-        [Input("protectedBranches")]
-        private List<Inputs.GetProjectProtectedBranchesProtectedBranchArgs>? _protectedBranches;
-
-        /// <summary>
-        /// A list of protected branches, as defined below.
-        /// </summary>
-        public List<Inputs.GetProjectProtectedBranchesProtectedBranchArgs> ProtectedBranches
-        {
-            get => _protectedBranches ?? (_protectedBranches = new List<Inputs.GetProjectProtectedBranchesProtectedBranchArgs>());
-            set => _protectedBranches = value;
-        }
-
         public GetProjectProtectedBranchesArgs()
         {
         }
@@ -70,18 +58,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
-
-        [Input("protectedBranches")]
-        private InputList<Inputs.GetProjectProtectedBranchesProtectedBranchInputArgs>? _protectedBranches;
-
-        /// <summary>
-        /// A list of protected branches, as defined below.
-        /// </summary>
-        public InputList<Inputs.GetProjectProtectedBranchesProtectedBranchInputArgs> ProtectedBranches
-        {
-            get => _protectedBranches ?? (_protectedBranches = new InputList<Inputs.GetProjectProtectedBranchesProtectedBranchInputArgs>());
-            set => _protectedBranches = value;
-        }
 
         public GetProjectProtectedBranchesInvokeArgs()
         {

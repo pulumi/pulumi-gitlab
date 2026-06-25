@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * A GitLab Project targer branch rule can be imported using a key composed of `<project>:<target-branch-rule-id>`, for example:
+ * A GitLab Project target branch rule can be imported using a key composed of `<project>:<target-branch-rule-id>`, for example:
  *
  * ```sh
  * $ pulumi import gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule example "12345:1"

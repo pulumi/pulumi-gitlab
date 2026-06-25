@@ -11,15 +11,6 @@ import java.util.Objects;
 @CustomType
 public final class GetRepositoryTreeTree {
     /**
-     * @return The project ID. Use `nodeId` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `nodeId` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `nodeId` instead. To be removed in 19.0. */
-    private String id;
-    /**
      * @return Unix access mode of the file in the repository.
      * 
      */
@@ -46,17 +37,6 @@ public final class GetRepositoryTreeTree {
     private String type;
 
     private GetRepositoryTreeTree() {}
-    /**
-     * @return The project ID. Use `nodeId` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `nodeId` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `nodeId` instead. To be removed in 19.0. */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return Unix access mode of the file in the repository.
      * 
@@ -102,7 +82,6 @@ public final class GetRepositoryTreeTree {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private String mode;
         private String name;
         private String nodeId;
@@ -111,7 +90,6 @@ public final class GetRepositoryTreeTree {
         public Builder() {}
         public Builder(GetRepositoryTreeTree defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.mode = defaults.mode;
     	      this.name = defaults.name;
     	      this.nodeId = defaults.nodeId;
@@ -119,14 +97,6 @@ public final class GetRepositoryTreeTree {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetRepositoryTreeTree", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder mode(String mode) {
             if (mode == null) {
@@ -169,7 +139,6 @@ public final class GetRepositoryTreeTree {
         }
         public GetRepositoryTreeTree build() {
             final var _resultValue = new GetRepositoryTreeTree();
-            _resultValue.id = id;
             _resultValue.mode = mode;
             _resultValue.name = name;
             _resultValue.nodeId = nodeId;

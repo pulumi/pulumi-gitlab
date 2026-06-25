@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BranchProtectionAllowedToPush {
     /**
-     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * @return Access level allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     private @Nullable String accessLevel;
@@ -23,24 +23,24 @@ public final class BranchProtectionAllowedToPush {
      */
     private @Nullable String accessLevelDescription;
     /**
-     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `userId`, `groupId`, and `accessLevel`. This field is read-only until Gitlab 17.5.
      * 
      */
     private @Nullable Integer deployKeyId;
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `userId`, and `accessLevel`.
      * 
      */
     private @Nullable Integer groupId;
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `accessLevel`.
      * 
      */
     private @Nullable Integer userId;
 
     private BranchProtectionAllowedToPush() {}
     /**
-     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * @return Access level allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     public Optional<String> accessLevel() {
@@ -54,21 +54,21 @@ public final class BranchProtectionAllowedToPush {
         return Optional.ofNullable(this.accessLevelDescription);
     }
     /**
-     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `userId`, `groupId`, and `accessLevel`. This field is read-only until Gitlab 17.5.
      * 
      */
     public Optional<Integer> deployKeyId() {
         return Optional.ofNullable(this.deployKeyId);
     }
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `userId`, and `accessLevel`.
      * 
      */
     public Optional<Integer> groupId() {
         return Optional.ofNullable(this.groupId);
     }
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `accessLevel`.
      * 
      */
     public Optional<Integer> userId() {

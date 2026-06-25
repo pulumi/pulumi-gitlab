@@ -20,32 +20,44 @@ __all__ = ['SystemHookArgs', 'SystemHook']
 class SystemHookArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
                  merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  repository_update_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 signing_token: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SystemHook resource.
 
         :param pulumi.Input[_builtins.str] url: The hook URL.
+        :param pulumi.Input[_builtins.str] description: Description of the hook.
         :param pulumi.Input[_builtins.bool] enable_ssl_verification: Do SSL verification when triggering the hook.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Trigger hook on merge requests events.
+        :param pulumi.Input[_builtins.str] name: Name of the hook.
         :param pulumi.Input[_builtins.bool] push_events: When true, the hook fires on push events.
         :param pulumi.Input[_builtins.bool] repository_update_events: Trigger hook on repository update events.
+        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
         :param pulumi.Input[_builtins.bool] tag_push_events: When true, the hook fires on new tags being pushed.
         :param pulumi.Input[_builtins.str] token: Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         """
         pulumi.set(__self__, "url", url)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if enable_ssl_verification is not None:
             pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
         if merge_requests_events is not None:
             pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if push_events is not None:
             pulumi.set(__self__, "push_events", push_events)
         if repository_update_events is not None:
             pulumi.set(__self__, "repository_update_events", repository_update_events)
+        if signing_token is not None:
+            pulumi.set(__self__, "signing_token", signing_token)
         if tag_push_events is not None:
             pulumi.set(__self__, "tag_push_events", tag_push_events)
         if token is not None:
@@ -62,6 +74,18 @@ class SystemHookArgs:
     @url.setter
     def url(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Description of the hook.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSslVerification")
@@ -88,6 +112,18 @@ class SystemHookArgs:
         pulumi.set(self, "merge_requests_events", value)
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the hook.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
     @pulumi.getter(name="pushEvents")
     def push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -110,6 +146,18 @@ class SystemHookArgs:
     @repository_update_events.setter
     def repository_update_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "repository_update_events", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signingToken")
+    def signing_token(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        """
+        return pulumi.get(self, "signing_token")
+
+    @signing_token.setter
+    def signing_token(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "signing_token", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
@@ -140,10 +188,14 @@ class SystemHookArgs:
 class _SystemHookState:
     def __init__(__self__, *,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
                  merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  repository_update_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 signing_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 signing_token_present: pulumi.Input[Optional[_builtins.bool]] = None,
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None):
@@ -151,24 +203,36 @@ class _SystemHookState:
         Input properties used for looking up and filtering SystemHook resources.
 
         :param pulumi.Input[_builtins.str] created_at: The date and time the hook was created in ISO8601 format.
+        :param pulumi.Input[_builtins.str] description: Description of the hook.
         :param pulumi.Input[_builtins.bool] enable_ssl_verification: Do SSL verification when triggering the hook.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Trigger hook on merge requests events.
+        :param pulumi.Input[_builtins.str] name: Name of the hook.
         :param pulumi.Input[_builtins.bool] push_events: When true, the hook fires on push events.
         :param pulumi.Input[_builtins.bool] repository_update_events: Trigger hook on repository update events.
+        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        :param pulumi.Input[_builtins.bool] signing_token_present: Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
         :param pulumi.Input[_builtins.bool] tag_push_events: When true, the hook fires on new tags being pushed.
         :param pulumi.Input[_builtins.str] token: Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The hook URL.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if enable_ssl_verification is not None:
             pulumi.set(__self__, "enable_ssl_verification", enable_ssl_verification)
         if merge_requests_events is not None:
             pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if push_events is not None:
             pulumi.set(__self__, "push_events", push_events)
         if repository_update_events is not None:
             pulumi.set(__self__, "repository_update_events", repository_update_events)
+        if signing_token is not None:
+            pulumi.set(__self__, "signing_token", signing_token)
+        if signing_token_present is not None:
+            pulumi.set(__self__, "signing_token_present", signing_token_present)
         if tag_push_events is not None:
             pulumi.set(__self__, "tag_push_events", tag_push_events)
         if token is not None:
@@ -187,6 +251,18 @@ class _SystemHookState:
     @created_at.setter
     def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Description of the hook.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSslVerification")
@@ -213,6 +289,18 @@ class _SystemHookState:
         pulumi.set(self, "merge_requests_events", value)
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the hook.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
     @pulumi.getter(name="pushEvents")
     def push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -235,6 +323,30 @@ class _SystemHookState:
     @repository_update_events.setter
     def repository_update_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "repository_update_events", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signingToken")
+    def signing_token(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        """
+        return pulumi.get(self, "signing_token")
+
+    @signing_token.setter
+    def signing_token(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "signing_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signingTokenPresent")
+    def signing_token_present(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
+        """
+        return pulumi.get(self, "signing_token_present")
+
+    @signing_token_present.setter
+    def signing_token_present(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "signing_token_present", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
@@ -279,10 +391,13 @@ class SystemHook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
                  merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  repository_update_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 signing_token: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -325,10 +440,13 @@ class SystemHook(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] description: Description of the hook.
         :param pulumi.Input[_builtins.bool] enable_ssl_verification: Do SSL verification when triggering the hook.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Trigger hook on merge requests events.
+        :param pulumi.Input[_builtins.str] name: Name of the hook.
         :param pulumi.Input[_builtins.bool] push_events: When true, the hook fires on push events.
         :param pulumi.Input[_builtins.bool] repository_update_events: Trigger hook on repository update events.
+        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
         :param pulumi.Input[_builtins.bool] tag_push_events: When true, the hook fires on new tags being pushed.
         :param pulumi.Input[_builtins.str] token: Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The hook URL.
@@ -390,10 +508,13 @@ class SystemHook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
                  merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  repository_update_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 signing_token: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -406,17 +527,21 @@ class SystemHook(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SystemHookArgs.__new__(SystemHookArgs)
 
+            __props__.__dict__["description"] = description
             __props__.__dict__["enable_ssl_verification"] = enable_ssl_verification
             __props__.__dict__["merge_requests_events"] = merge_requests_events
+            __props__.__dict__["name"] = name
             __props__.__dict__["push_events"] = push_events
             __props__.__dict__["repository_update_events"] = repository_update_events
+            __props__.__dict__["signing_token"] = None if signing_token is None else pulumi.Output.secret(signing_token)
             __props__.__dict__["tag_push_events"] = tag_push_events
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
             __props__.__dict__["created_at"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
+            __props__.__dict__["signing_token_present"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["signingToken", "token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SystemHook, __self__).__init__(
             'gitlab:index/systemHook:SystemHook',
@@ -429,10 +554,14 @@ class SystemHook(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
             enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
             merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
             push_events: pulumi.Input[Optional[_builtins.bool]] = None,
             repository_update_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            signing_token: pulumi.Input[Optional[_builtins.str]] = None,
+            signing_token_present: pulumi.Input[Optional[_builtins.bool]] = None,
             tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
             token: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None) -> 'SystemHook':
@@ -444,10 +573,14 @@ class SystemHook(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_at: The date and time the hook was created in ISO8601 format.
+        :param pulumi.Input[_builtins.str] description: Description of the hook.
         :param pulumi.Input[_builtins.bool] enable_ssl_verification: Do SSL verification when triggering the hook.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Trigger hook on merge requests events.
+        :param pulumi.Input[_builtins.str] name: Name of the hook.
         :param pulumi.Input[_builtins.bool] push_events: When true, the hook fires on push events.
         :param pulumi.Input[_builtins.bool] repository_update_events: Trigger hook on repository update events.
+        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        :param pulumi.Input[_builtins.bool] signing_token_present: Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
         :param pulumi.Input[_builtins.bool] tag_push_events: When true, the hook fires on new tags being pushed.
         :param pulumi.Input[_builtins.str] token: Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The hook URL.
@@ -457,10 +590,14 @@ class SystemHook(pulumi.CustomResource):
         __props__ = _SystemHookState.__new__(_SystemHookState)
 
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["description"] = description
         __props__.__dict__["enable_ssl_verification"] = enable_ssl_verification
         __props__.__dict__["merge_requests_events"] = merge_requests_events
+        __props__.__dict__["name"] = name
         __props__.__dict__["push_events"] = push_events
         __props__.__dict__["repository_update_events"] = repository_update_events
+        __props__.__dict__["signing_token"] = signing_token
+        __props__.__dict__["signing_token_present"] = signing_token_present
         __props__.__dict__["tag_push_events"] = tag_push_events
         __props__.__dict__["token"] = token
         __props__.__dict__["url"] = url
@@ -475,8 +612,16 @@ class SystemHook(pulumi.CustomResource):
         return pulumi.get(self, "created_at")
 
     @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[_builtins.str]:
+        """
+        Description of the hook.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
     @pulumi.getter(name="enableSslVerification")
-    def enable_ssl_verification(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enable_ssl_verification(self) -> pulumi.Output[_builtins.bool]:
         """
         Do SSL verification when triggering the hook.
         """
@@ -484,15 +629,23 @@ class SystemHook(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="mergeRequestsEvents")
-    def merge_requests_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def merge_requests_events(self) -> pulumi.Output[_builtins.bool]:
         """
         Trigger hook on merge requests events.
         """
         return pulumi.get(self, "merge_requests_events")
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        Name of the hook.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
     @pulumi.getter(name="pushEvents")
-    def push_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def push_events(self) -> pulumi.Output[_builtins.bool]:
         """
         When true, the hook fires on push events.
         """
@@ -500,15 +653,31 @@ class SystemHook(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="repositoryUpdateEvents")
-    def repository_update_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def repository_update_events(self) -> pulumi.Output[_builtins.bool]:
         """
         Trigger hook on repository update events.
         """
         return pulumi.get(self, "repository_update_events")
 
     @_builtins.property
+    @pulumi.getter(name="signingToken")
+    def signing_token(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        """
+        return pulumi.get(self, "signing_token")
+
+    @_builtins.property
+    @pulumi.getter(name="signingTokenPresent")
+    def signing_token_present(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
+        """
+        return pulumi.get(self, "signing_token_present")
+
+    @_builtins.property
     @pulumi.getter(name="tagPushEvents")
-    def tag_push_events(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def tag_push_events(self) -> pulumi.Output[_builtins.bool]:
         """
         When true, the hook fires on new tags being pushed.
         """
@@ -516,7 +685,7 @@ class SystemHook(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def token(self) -> pulumi.Output[_builtins.str]:
         """
         Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
         """
