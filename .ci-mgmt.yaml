@@ -1,5 +1,5 @@
 provider: gitlab
-major-version: 9
+major-version: 10
 upstreamProviderOrg: gitlabhq
 esc:
     enabled: true
