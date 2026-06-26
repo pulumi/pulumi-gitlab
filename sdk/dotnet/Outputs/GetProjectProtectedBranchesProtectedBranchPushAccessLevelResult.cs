@@ -14,7 +14,7 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult
     {
         /// <summary>
-        /// Access levels allowed to push to protected branch. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
+        /// Access level allowed to perform the relevant action.
         /// </summary>
         public readonly string AccessLevel;
         /// <summary>
@@ -22,17 +22,17 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string AccessLevelDescription;
         /// <summary>
-        /// The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `GroupId` and `UserId`. This field is read-only until Gitlab 17.5.
+        /// The ID of a GitLab deploy key allowed to perform the relevant action.
         /// </summary>
-        public readonly int? DeployKeyId;
+        public readonly int DeployKeyId;
         /// <summary>
-        /// The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `DeployKeyId` and `UserId`.
+        /// The ID of a GitLab group allowed to perform the relevant action.
         /// </summary>
-        public readonly int? GroupId;
+        public readonly int GroupId;
         /// <summary>
-        /// The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `DeployKeyId` and `GroupId`.
+        /// The ID of a GitLab user allowed to perform the relevant action.
         /// </summary>
-        public readonly int? UserId;
+        public readonly int UserId;
 
         [OutputConstructor]
         private GetProjectProtectedBranchesProtectedBranchPushAccessLevelResult(
@@ -40,11 +40,11 @@ namespace Pulumi.GitLab.Outputs
 
             string accessLevelDescription,
 
-            int? deployKeyId,
+            int deployKeyId,
 
-            int? groupId,
+            int groupId,
 
-            int? userId)
+            int userId)
         {
             AccessLevel = accessLevel;
             AccessLevelDescription = accessLevelDescription;

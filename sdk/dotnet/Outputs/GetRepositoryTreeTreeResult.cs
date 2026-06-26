@@ -14,10 +14,6 @@ namespace Pulumi.GitLab.Outputs
     public sealed class GetRepositoryTreeTreeResult
     {
         /// <summary>
-        /// The project ID. Use `NodeId` instead. To be removed in 19.0.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Unix access mode of the file in the repository.
         /// </summary>
         public readonly string Mode;
@@ -40,8 +36,6 @@ namespace Pulumi.GitLab.Outputs
 
         [OutputConstructor]
         private GetRepositoryTreeTreeResult(
-            string id,
-
             string mode,
 
             string name,
@@ -52,7 +46,6 @@ namespace Pulumi.GitLab.Outputs
 
             string type)
         {
-            Id = id;
             Mode = mode;
             Name = name;
             NodeId = nodeId;

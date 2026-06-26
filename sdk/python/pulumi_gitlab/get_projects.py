@@ -27,7 +27,10 @@ class GetProjectsResult:
     """
     A collection of values returned by getProjects.
     """
-    def __init__(__self__, archived=None, group_id=None, id=None, include_subgroups=None, max_queryable_pages=None, membership=None, min_access_level=None, order_by=None, owned=None, page=None, per_page=None, projects=None, search=None, simple=None, sort=None, starred=None, statistics=None, topics=None, visibility=None, with_custom_attributes=None, with_issues_enabled=None, with_merge_requests_enabled=None, with_programming_language=None, with_shared=None):
+    def __init__(__self__, active=None, archived=None, group_id=None, id=None, include_subgroups=None, max_queryable_pages=None, membership=None, min_access_level=None, order_by=None, owned=None, page=None, per_page=None, projects=None, search=None, simple=None, sort=None, starred=None, statistics=None, topics=None, visibility=None, with_custom_attributes=None, with_issues_enabled=None, with_merge_requests_enabled=None, with_programming_language=None, with_shared=None):
+        if active and not isinstance(active, bool):
+            raise TypeError("Expected argument 'active' to be a bool")
+        pulumi.set(__self__, "active", active)
         if archived and not isinstance(archived, bool):
             raise TypeError("Expected argument 'archived' to be a bool")
         pulumi.set(__self__, "archived", archived)
@@ -103,6 +106,14 @@ class GetProjectsResult:
 
     @_builtins.property
     @pulumi.getter
+    def active(self) -> Optional[_builtins.bool]:
+        """
+        Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+        """
+        return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter
     def archived(self) -> Optional[_builtins.bool]:
         """
         Limit by archived status.
@@ -121,7 +132,7 @@ class GetProjectsResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource. In the format `<group_id-options_hash>`, where `options_hash` is a hash of all the other search options provided.
         """
         return pulumi.get(self, "id")
 
@@ -137,7 +148,7 @@ class GetProjectsResult:
     @pulumi.getter(name="maxQueryablePages")
     def max_queryable_pages(self) -> Optional[_builtins.int]:
         """
-        The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+        The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
         """
         return pulumi.get(self, "max_queryable_pages")
 
@@ -177,7 +188,7 @@ class GetProjectsResult:
     @pulumi.getter
     def page(self) -> Optional[_builtins.int]:
         """
-        The first page to begin the query on.
+        The first page to begin the query on (default 1).
         """
         return pulumi.get(self, "page")
 
@@ -185,7 +196,7 @@ class GetProjectsResult:
     @pulumi.getter(name="perPage")
     def per_page(self) -> Optional[_builtins.int]:
         """
-        The number of results to return per page.
+        The number of results to return per page (default 20, maximum 100).
         """
         return pulumi.get(self, "per_page")
 
@@ -300,6 +311,7 @@ class AwaitableGetProjectsResult(GetProjectsResult):
         if False:
             yield self
         return GetProjectsResult(
+            active=self.active,
             archived=self.archived,
             group_id=self.group_id,
             id=self.id,
@@ -326,7 +338,8 @@ class AwaitableGetProjectsResult(GetProjectsResult):
             with_shared=self.with_shared)
 
 
-def get_projects(archived: Optional[_builtins.bool] = None,
+def get_projects(active: Optional[_builtins.bool] = None,
+                 archived: Optional[_builtins.bool] = None,
                  group_id: Optional[_builtins.int] = None,
                  include_subgroups: Optional[_builtins.bool] = None,
                  max_queryable_pages: Optional[_builtins.int] = None,
@@ -376,16 +389,17 @@ def get_projects(archived: Optional[_builtins.bool] = None,
     ```
 
 
+    :param _builtins.bool active: Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
     :param _builtins.bool archived: Limit by archived status.
     :param _builtins.int group_id: The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
     :param _builtins.bool include_subgroups: Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
-    :param _builtins.int max_queryable_pages: The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+    :param _builtins.int max_queryable_pages: The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
     :param _builtins.bool membership: Limit by projects that the current user is a member of.
     :param _builtins.int min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `group_id`.
     :param _builtins.str order_by: Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
     :param _builtins.bool owned: Limit by projects owned by the current user.
-    :param _builtins.int page: The first page to begin the query on.
-    :param _builtins.int per_page: The number of results to return per page.
+    :param _builtins.int page: The first page to begin the query on (default 1).
+    :param _builtins.int per_page: The number of results to return per page (default 20, maximum 100).
     :param _builtins.str search: Return list of authorized projects matching the search criteria.
     :param _builtins.bool simple: Return only the ID, URL, name, and path of each project.
     :param _builtins.str sort: Return projects sorted in `asc` or `desc` order. Default is `desc`.
@@ -400,6 +414,7 @@ def get_projects(archived: Optional[_builtins.bool] = None,
     :param _builtins.bool with_shared: Include projects shared to this group. Default is `true`. Needs `group_id`.
     """
     __args__ = dict()
+    __args__['active'] = active
     __args__['archived'] = archived
     __args__['groupId'] = group_id
     __args__['includeSubgroups'] = include_subgroups
@@ -426,6 +441,7 @@ def get_projects(archived: Optional[_builtins.bool] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjects:getProjects', __args__, opts=opts, typ=GetProjectsResult).value
 
     return AwaitableGetProjectsResult(
+        active=pulumi.get(__ret__, 'active'),
         archived=pulumi.get(__ret__, 'archived'),
         group_id=pulumi.get(__ret__, 'group_id'),
         id=pulumi.get(__ret__, 'id'),
@@ -450,7 +466,8 @@ def get_projects(archived: Optional[_builtins.bool] = None,
         with_merge_requests_enabled=pulumi.get(__ret__, 'with_merge_requests_enabled'),
         with_programming_language=pulumi.get(__ret__, 'with_programming_language'),
         with_shared=pulumi.get(__ret__, 'with_shared'))
-def get_projects_output(archived: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+def get_projects_output(active: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        archived: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                         group_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                         include_subgroups: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                         max_queryable_pages: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
@@ -500,16 +517,17 @@ def get_projects_output(archived: pulumi.Input[Optional[Optional[_builtins.bool]
     ```
 
 
+    :param _builtins.bool active: Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
     :param _builtins.bool archived: Limit by archived status.
     :param _builtins.int group_id: The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `min_access_level`, `with_programming_language` or `statistics`.
     :param _builtins.bool include_subgroups: Include projects in subgroups of this group. Default is `false`. Needs `group_id`.
-    :param _builtins.int max_queryable_pages: The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+    :param _builtins.int max_queryable_pages: The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
     :param _builtins.bool membership: Limit by projects that the current user is a member of.
     :param _builtins.int min_access_level: Limit to projects where current user has at least this access level, refer to the [official documentation](https://docs.gitlab.com/user/permissions/#default-roles) for values. Cannot be used with `group_id`.
     :param _builtins.str order_by: Return projects ordered ordered by: `id`, `name`, `path`, `created_at`, `updated_at`, `last_activity_at`, `similarity`, `repository_size`, `storage_size`, `packages_size`, `wiki_size`. Some values or only available in certain circumstances. See [upstream docs](https://docs.gitlab.com/api/projects/#list-all-projects) for details.
     :param _builtins.bool owned: Limit by projects owned by the current user.
-    :param _builtins.int page: The first page to begin the query on.
-    :param _builtins.int per_page: The number of results to return per page.
+    :param _builtins.int page: The first page to begin the query on (default 1).
+    :param _builtins.int per_page: The number of results to return per page (default 20, maximum 100).
     :param _builtins.str search: Return list of authorized projects matching the search criteria.
     :param _builtins.bool simple: Return only the ID, URL, name, and path of each project.
     :param _builtins.str sort: Return projects sorted in `asc` or `desc` order. Default is `desc`.
@@ -524,6 +542,7 @@ def get_projects_output(archived: pulumi.Input[Optional[Optional[_builtins.bool]
     :param _builtins.bool with_shared: Include projects shared to this group. Default is `true`. Needs `group_id`.
     """
     __args__ = dict()
+    __args__['active'] = active
     __args__['archived'] = archived
     __args__['groupId'] = group_id
     __args__['includeSubgroups'] = include_subgroups
@@ -549,6 +568,7 @@ def get_projects_output(archived: pulumi.Input[Optional[Optional[_builtins.bool]
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjects:getProjects', __args__, opts=opts, typ=GetProjectsResult)
     return __ret__.apply(lambda __response__: GetProjectsResult(
+        active=pulumi.get(__response__, 'active'),
         archived=pulumi.get(__response__, 'archived'),
         group_id=pulumi.get(__response__, 'group_id'),
         id=pulumi.get(__response__, 'id'),

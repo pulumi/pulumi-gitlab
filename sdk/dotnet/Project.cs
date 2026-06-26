@@ -60,12 +60,6 @@ namespace Pulumi.GitLab
         public Output<string> AnalyticsAccessLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-        /// </summary>
-        [Output("approvalsBeforeMerge")]
-        public Output<int?> ApprovalsBeforeMerge { get; private set; } = null!;
-
-        /// <summary>
         /// Set to `True` to archive the project instead of deleting on destroy. If set to `True` it will entire omit the `DELETE` operation.
         /// </summary>
         [Output("archiveOnDestroy")]
@@ -168,6 +162,12 @@ namespace Pulumi.GitLab
         public Output<int> CiDeletePipelinesInSeconds { get; private set; } = null!;
 
         /// <summary>
+        /// Show pipeline variables on the pipeline details page. Introduced in GitLab 17.8.
+        /// </summary>
+        [Output("ciDisplayPipelineVariables")]
+        public Output<bool> CiDisplayPipelineVariables { get; private set; } = null!;
+
+        /// <summary>
         /// When a new deployment job starts, skip older deployment jobs that are still pending.
         /// </summary>
         [Output("ciForwardDeploymentEnabled")]
@@ -198,7 +198,7 @@ namespace Pulumi.GitLab
         public Output<bool> CiPushRepositoryForJobTokenAllowed { get; private set; } = null!;
 
         /// <summary>
-        /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `Developer`, `Maintainer`, `no one`
+        /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `Developer`, `Maintainer`, `NoOne`
         /// </summary>
         [Output("ciRestrictPipelineCancellationRole")]
         public Output<string> CiRestrictPipelineCancellationRole { get; private set; } = null!;
@@ -220,12 +220,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("containerRegistryAccessLevel")]
         public Output<string> ContainerRegistryAccessLevel { get; private set; } = null!;
-
-        /// <summary>
-        /// Enable container registry for the project. Use `ContainerRegistryAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Output("containerRegistryEnabled")]
-        public Output<bool> ContainerRegistryEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The default branch for the project.
@@ -300,7 +294,7 @@ namespace Pulumi.GitLab
         public Output<string> HttpUrlToRepo { get; private set; } = null!;
 
         /// <summary>
-        /// Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `ForkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `ImportUrlUsername` and `ImportUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+        /// Git URL to a repository to be imported. Make sure to provide the credentials in `ImportUrlUsername` and `ImportUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         /// </summary>
         [Output("importUrl")]
         public Output<string> ImportUrl { get; private set; } = null!;
@@ -334,12 +328,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("issuesAccessLevel")]
         public Output<string> IssuesAccessLevel { get; private set; } = null!;
-
-        /// <summary>
-        /// Enable issue tracking for the project. Use `IssuesAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Output("issuesEnabled")]
-        public Output<bool> IssuesEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Sets the template for new issues in the project.
@@ -402,12 +390,6 @@ namespace Pulumi.GitLab
         public Output<string> MergeRequestsAccessLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Enable merge requests for the project. Use `MergeRequestsAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Output("mergeRequestsEnabled")]
-        public Output<bool> MergeRequestsEnabled { get; private set; } = null!;
-
-        /// <summary>
         /// Sets the template for new merge requests in the project.
         /// </summary>
         [Output("mergeRequestsTemplate")]
@@ -424,24 +406,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("mergeTrainsSkipTrainAllowed")]
         public Output<bool> MergeTrainsSkipTrainAllowed { get; private set; } = null!;
-
-        /// <summary>
-        /// Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
-        /// </summary>
-        [Output("mirror")]
-        public Output<bool> Mirror { get; private set; } = null!;
-
-        /// <summary>
-        /// Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
-        /// </summary>
-        [Output("mirrorOverwritesDivergedBranches")]
-        public Output<bool> MirrorOverwritesDivergedBranches { get; private set; } = null!;
-
-        /// <summary>
-        /// Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
-        /// </summary>
-        [Output("mirrorTriggerBuilds")]
-        public Output<bool> MirrorTriggerBuilds { get; private set; } = null!;
 
         /// <summary>
         /// Set visibility of machine learning model experiments. Valid values are `Disabled`, `Private`, `Enabled`.
@@ -492,10 +456,10 @@ namespace Pulumi.GitLab
         public Output<bool> OnlyAllowMergeIfPipelineSucceeds { get; private set; } = null!;
 
         /// <summary>
-        /// Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
+        /// Set visibility of the package registry. Valid values are `Disabled`, `Private`, `Enabled`, `Public`.
         /// </summary>
-        [Output("onlyMirrorProtectedBranches")]
-        public Output<bool> OnlyMirrorProtectedBranches { get; private set; } = null!;
+        [Output("packageRegistryAccessLevel")]
+        public Output<string> PackageRegistryAccessLevel { get; private set; } = null!;
 
         /// <summary>
         /// Enable packages repository for the project.
@@ -528,12 +492,6 @@ namespace Pulumi.GitLab
         public Output<bool?> PermanentlyDeleteOnDestroy { get; private set; } = null!;
 
         /// <summary>
-        /// Enable pipelines for the project. The `PipelinesEnabled` field is being sent as `JobsEnabled` in the GitLab API calls. Use `BuildsAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Output("pipelinesEnabled")]
-        public Output<bool> PipelinesEnabled { get; private set; } = null!;
-
-        /// <summary>
         /// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         /// </summary>
         [Output("preReceiveSecretDetectionEnabled")]
@@ -550,6 +508,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("printingMergeRequestLinkEnabled")]
         public Output<bool> PrintingMergeRequestLinkEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
+        /// </summary>
+        [Output("protectMergeRequestPipelines")]
+        public Output<bool> ProtectMergeRequestPipelines { get; private set; } = null!;
 
         /// <summary>
         /// If true, jobs can be viewed by non-project members.
@@ -618,12 +582,6 @@ namespace Pulumi.GitLab
         public Output<string> ResourceGroupDefaultProcessMode { get; private set; } = null!;
 
         /// <summary>
-        /// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `CiPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-        /// </summary>
-        [Output("restrictUserDefinedVariables")]
-        public Output<bool> RestrictUserDefinedVariables { get; private set; } = null!;
-
-        /// <summary>
         /// Registration token to use during runner setup.
         /// </summary>
         [Output("runnersToken")]
@@ -657,12 +615,6 @@ namespace Pulumi.GitLab
         public Output<string> SnippetsAccessLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Enable snippets for the project. Use `SnippetsAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Output("snippetsEnabled")]
-        public Output<bool> SnippetsEnabled { get; private set; } = null!;
-
-        /// <summary>
         /// Template used to create squash commit message in merge requests.
         /// </summary>
         [Output("squashCommitTemplate")]
@@ -685,12 +637,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("suggestionCommitMessage")]
         public Output<string?> SuggestionCommitMessage { get; private set; } = null!;
-
-        /// <summary>
-        /// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `Topics` instead. To be removed in 19.0.
-        /// </summary>
-        [Output("tags")]
-        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `TemplateProjectId`.
@@ -734,12 +680,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("wikiAccessLevel")]
         public Output<string> WikiAccessLevel { get; private set; } = null!;
-
-        /// <summary>
-        /// Enable wiki for the project. Use `WikiAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Output("wikiEnabled")]
-        public Output<bool> WikiEnabled { get; private set; } = null!;
 
 
         /// <summary>
@@ -809,12 +749,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("analyticsAccessLevel")]
         public Input<string>? AnalyticsAccessLevel { get; set; }
-
-        /// <summary>
-        /// Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("approvalsBeforeMerge")]
-        public Input<int>? ApprovalsBeforeMerge { get; set; }
 
         /// <summary>
         /// Set to `True` to archive the project instead of deleting on destroy. If set to `True` it will entire omit the `DELETE` operation.
@@ -913,6 +847,12 @@ namespace Pulumi.GitLab
         public Input<int>? CiDeletePipelinesInSeconds { get; set; }
 
         /// <summary>
+        /// Show pipeline variables on the pipeline details page. Introduced in GitLab 17.8.
+        /// </summary>
+        [Input("ciDisplayPipelineVariables")]
+        public Input<bool>? CiDisplayPipelineVariables { get; set; }
+
+        /// <summary>
         /// When a new deployment job starts, skip older deployment jobs that are still pending.
         /// </summary>
         [Input("ciForwardDeploymentEnabled")]
@@ -949,7 +889,7 @@ namespace Pulumi.GitLab
         public Input<bool>? CiPushRepositoryForJobTokenAllowed { get; set; }
 
         /// <summary>
-        /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `Developer`, `Maintainer`, `no one`
+        /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `Developer`, `Maintainer`, `NoOne`
         /// </summary>
         [Input("ciRestrictPipelineCancellationRole")]
         public Input<string>? CiRestrictPipelineCancellationRole { get; set; }
@@ -971,12 +911,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("containerRegistryAccessLevel")]
         public Input<string>? ContainerRegistryAccessLevel { get; set; }
-
-        /// <summary>
-        /// Enable container registry for the project. Use `ContainerRegistryAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("containerRegistryEnabled")]
-        public Input<bool>? ContainerRegistryEnabled { get; set; }
 
         /// <summary>
         /// The default branch for the project.
@@ -1039,7 +973,7 @@ namespace Pulumi.GitLab
         public Input<int>? GroupWithProjectTemplatesId { get; set; }
 
         /// <summary>
-        /// Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `ForkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `ImportUrlUsername` and `ImportUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+        /// Git URL to a repository to be imported. Make sure to provide the credentials in `ImportUrlUsername` and `ImportUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         /// </summary>
         [Input("importUrl")]
         public Input<string>? ImportUrl { get; set; }
@@ -1083,12 +1017,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("issuesAccessLevel")]
         public Input<string>? IssuesAccessLevel { get; set; }
-
-        /// <summary>
-        /// Enable issue tracking for the project. Use `IssuesAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("issuesEnabled")]
-        public Input<bool>? IssuesEnabled { get; set; }
 
         /// <summary>
         /// Sets the template for new issues in the project.
@@ -1151,12 +1079,6 @@ namespace Pulumi.GitLab
         public Input<string>? MergeRequestsAccessLevel { get; set; }
 
         /// <summary>
-        /// Enable merge requests for the project. Use `MergeRequestsAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("mergeRequestsEnabled")]
-        public Input<bool>? MergeRequestsEnabled { get; set; }
-
-        /// <summary>
         /// Sets the template for new merge requests in the project.
         /// </summary>
         [Input("mergeRequestsTemplate")]
@@ -1173,24 +1095,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mergeTrainsSkipTrainAllowed")]
         public Input<bool>? MergeTrainsSkipTrainAllowed { get; set; }
-
-        /// <summary>
-        /// Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
-        /// </summary>
-        [Input("mirror")]
-        public Input<bool>? Mirror { get; set; }
-
-        /// <summary>
-        /// Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
-        /// </summary>
-        [Input("mirrorOverwritesDivergedBranches")]
-        public Input<bool>? MirrorOverwritesDivergedBranches { get; set; }
-
-        /// <summary>
-        /// Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
-        /// </summary>
-        [Input("mirrorTriggerBuilds")]
-        public Input<bool>? MirrorTriggerBuilds { get; set; }
 
         /// <summary>
         /// Set visibility of machine learning model experiments. Valid values are `Disabled`, `Private`, `Enabled`.
@@ -1241,10 +1145,10 @@ namespace Pulumi.GitLab
         public Input<bool>? OnlyAllowMergeIfPipelineSucceeds { get; set; }
 
         /// <summary>
-        /// Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
+        /// Set visibility of the package registry. Valid values are `Disabled`, `Private`, `Enabled`, `Public`.
         /// </summary>
-        [Input("onlyMirrorProtectedBranches")]
-        public Input<bool>? OnlyMirrorProtectedBranches { get; set; }
+        [Input("packageRegistryAccessLevel")]
+        public Input<string>? PackageRegistryAccessLevel { get; set; }
 
         /// <summary>
         /// Enable packages repository for the project.
@@ -1271,12 +1175,6 @@ namespace Pulumi.GitLab
         public Input<bool>? PermanentlyDeleteOnDestroy { get; set; }
 
         /// <summary>
-        /// Enable pipelines for the project. The `PipelinesEnabled` field is being sent as `JobsEnabled` in the GitLab API calls. Use `BuildsAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("pipelinesEnabled")]
-        public Input<bool>? PipelinesEnabled { get; set; }
-
-        /// <summary>
         /// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         /// </summary>
         [Input("preReceiveSecretDetectionEnabled")]
@@ -1293,6 +1191,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("printingMergeRequestLinkEnabled")]
         public Input<bool>? PrintingMergeRequestLinkEnabled { get; set; }
+
+        /// <summary>
+        /// Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
+        /// </summary>
+        [Input("protectMergeRequestPipelines")]
+        public Input<bool>? ProtectMergeRequestPipelines { get; set; }
 
         /// <summary>
         /// If true, jobs can be viewed by non-project members.
@@ -1361,12 +1265,6 @@ namespace Pulumi.GitLab
         public Input<string>? ResourceGroupDefaultProcessMode { get; set; }
 
         /// <summary>
-        /// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `CiPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("restrictUserDefinedVariables")]
-        public Input<bool>? RestrictUserDefinedVariables { get; set; }
-
-        /// <summary>
         /// Set the security and compliance access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         [Input("securityAndComplianceAccessLevel")]
@@ -1394,12 +1292,6 @@ namespace Pulumi.GitLab
         public Input<string>? SnippetsAccessLevel { get; set; }
 
         /// <summary>
-        /// Enable snippets for the project. Use `SnippetsAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("snippetsEnabled")]
-        public Input<bool>? SnippetsEnabled { get; set; }
-
-        /// <summary>
         /// Template used to create squash commit message in merge requests.
         /// </summary>
         [Input("squashCommitTemplate")]
@@ -1416,19 +1308,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("suggestionCommitMessage")]
         public Input<string>? SuggestionCommitMessage { get; set; }
-
-        [Input("tags")]
-        private InputList<string>? _tags;
-
-        /// <summary>
-        /// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `Topics` instead. To be removed in 19.0.
-        /// </summary>
-        [Obsolete(@"Use `Topics` instead. To be removed in 19.0.")]
-        public InputList<string> Tags
-        {
-            get => _tags ?? (_tags = new InputList<string>());
-            set => _tags = value;
-        }
 
         /// <summary>
         /// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `TemplateProjectId`.
@@ -1473,12 +1352,6 @@ namespace Pulumi.GitLab
         [Input("wikiAccessLevel")]
         public Input<string>? WikiAccessLevel { get; set; }
 
-        /// <summary>
-        /// Enable wiki for the project. Use `WikiAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("wikiEnabled")]
-        public Input<bool>? WikiEnabled { get; set; }
-
         public ProjectArgs()
         {
         }
@@ -1504,12 +1377,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("analyticsAccessLevel")]
         public Input<string>? AnalyticsAccessLevel { get; set; }
-
-        /// <summary>
-        /// Number of merge request approvals required for merging. Default is 0. This field **does not** work well in combination with the `gitlab.ProjectApprovalRule` resource. We recommend you do not use this deprecated field and use `gitlab.ProjectApprovalRule` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("approvalsBeforeMerge")]
-        public Input<int>? ApprovalsBeforeMerge { get; set; }
 
         /// <summary>
         /// Set to `True` to archive the project instead of deleting on destroy. If set to `True` it will entire omit the `DELETE` operation.
@@ -1614,6 +1481,12 @@ namespace Pulumi.GitLab
         public Input<int>? CiDeletePipelinesInSeconds { get; set; }
 
         /// <summary>
+        /// Show pipeline variables on the pipeline details page. Introduced in GitLab 17.8.
+        /// </summary>
+        [Input("ciDisplayPipelineVariables")]
+        public Input<bool>? CiDisplayPipelineVariables { get; set; }
+
+        /// <summary>
         /// When a new deployment job starts, skip older deployment jobs that are still pending.
         /// </summary>
         [Input("ciForwardDeploymentEnabled")]
@@ -1650,7 +1523,7 @@ namespace Pulumi.GitLab
         public Input<bool>? CiPushRepositoryForJobTokenAllowed { get; set; }
 
         /// <summary>
-        /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `Developer`, `Maintainer`, `no one`
+        /// The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `Developer`, `Maintainer`, `NoOne`
         /// </summary>
         [Input("ciRestrictPipelineCancellationRole")]
         public Input<string>? CiRestrictPipelineCancellationRole { get; set; }
@@ -1672,12 +1545,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("containerRegistryAccessLevel")]
         public Input<string>? ContainerRegistryAccessLevel { get; set; }
-
-        /// <summary>
-        /// Enable container registry for the project. Use `ContainerRegistryAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("containerRegistryEnabled")]
-        public Input<bool>? ContainerRegistryEnabled { get; set; }
 
         /// <summary>
         /// The default branch for the project.
@@ -1752,7 +1619,7 @@ namespace Pulumi.GitLab
         public Input<string>? HttpUrlToRepo { get; set; }
 
         /// <summary>
-        /// Git URL to a repository to be imported. Use with creating a mirror is deprecated - use `gitlab.ProjectPullMirror` instead. Together with `mirror = true` it will setup a Pull Mirror. This can also be used together with `ForkedFromProjectId` to setup a Pull Mirror for a fork. The fork takes precedence over the import. Make sure to provide the credentials in `ImportUrlUsername` and `ImportUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
+        /// Git URL to a repository to be imported. Make sure to provide the credentials in `ImportUrlUsername` and `ImportUrlPassword`. GitLab never returns the credentials, thus the provider cannot detect configuration drift in the credentials. They can also not be imported using `pulumi import`. See the examples section for how to properly use it.
         /// </summary>
         [Input("importUrl")]
         public Input<string>? ImportUrl { get; set; }
@@ -1796,12 +1663,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("issuesAccessLevel")]
         public Input<string>? IssuesAccessLevel { get; set; }
-
-        /// <summary>
-        /// Enable issue tracking for the project. Use `IssuesAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("issuesEnabled")]
-        public Input<bool>? IssuesEnabled { get; set; }
 
         /// <summary>
         /// Sets the template for new issues in the project.
@@ -1864,12 +1725,6 @@ namespace Pulumi.GitLab
         public Input<string>? MergeRequestsAccessLevel { get; set; }
 
         /// <summary>
-        /// Enable merge requests for the project. Use `MergeRequestsAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("mergeRequestsEnabled")]
-        public Input<bool>? MergeRequestsEnabled { get; set; }
-
-        /// <summary>
         /// Sets the template for new merge requests in the project.
         /// </summary>
         [Input("mergeRequestsTemplate")]
@@ -1886,24 +1741,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mergeTrainsSkipTrainAllowed")]
         public Input<bool>? MergeTrainsSkipTrainAllowed { get; set; }
-
-        /// <summary>
-        /// Deprecated: to be removed in 19.0. Use `gitlab.ProjectPullMirror` instead. Enable project pull mirror.
-        /// </summary>
-        [Input("mirror")]
-        public Input<bool>? Mirror { get; set; }
-
-        /// <summary>
-        /// Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_overwrites_diverged_branches` instead. Enable overwrite diverged branches for a mirrored project.
-        /// </summary>
-        [Input("mirrorOverwritesDivergedBranches")]
-        public Input<bool>? MirrorOverwritesDivergedBranches { get; set; }
-
-        /// <summary>
-        /// Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.mirror_trigger_builds` instead. Enable trigger builds on pushes for a mirrored project.
-        /// </summary>
-        [Input("mirrorTriggerBuilds")]
-        public Input<bool>? MirrorTriggerBuilds { get; set; }
 
         /// <summary>
         /// Set visibility of machine learning model experiments. Valid values are `Disabled`, `Private`, `Enabled`.
@@ -1954,10 +1791,10 @@ namespace Pulumi.GitLab
         public Input<bool>? OnlyAllowMergeIfPipelineSucceeds { get; set; }
 
         /// <summary>
-        /// Deprecated: to be removed in 19.0. Use `gitlab_project_pull_mirror.only_mirror_protected_branches` instead. Enable only mirror protected branches for a mirrored project.
+        /// Set visibility of the package registry. Valid values are `Disabled`, `Private`, `Enabled`, `Public`.
         /// </summary>
-        [Input("onlyMirrorProtectedBranches")]
-        public Input<bool>? OnlyMirrorProtectedBranches { get; set; }
+        [Input("packageRegistryAccessLevel")]
+        public Input<string>? PackageRegistryAccessLevel { get; set; }
 
         /// <summary>
         /// Enable packages repository for the project.
@@ -1990,12 +1827,6 @@ namespace Pulumi.GitLab
         public Input<bool>? PermanentlyDeleteOnDestroy { get; set; }
 
         /// <summary>
-        /// Enable pipelines for the project. The `PipelinesEnabled` field is being sent as `JobsEnabled` in the GitLab API calls. Use `BuildsAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("pipelinesEnabled")]
-        public Input<bool>? PipelinesEnabled { get; set; }
-
-        /// <summary>
         /// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
         /// </summary>
         [Input("preReceiveSecretDetectionEnabled")]
@@ -2012,6 +1843,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("printingMergeRequestLinkEnabled")]
         public Input<bool>? PrintingMergeRequestLinkEnabled { get; set; }
+
+        /// <summary>
+        /// Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
+        /// </summary>
+        [Input("protectMergeRequestPipelines")]
+        public Input<bool>? ProtectMergeRequestPipelines { get; set; }
 
         /// <summary>
         /// If true, jobs can be viewed by non-project members.
@@ -2079,12 +1916,6 @@ namespace Pulumi.GitLab
         [Input("resourceGroupDefaultProcessMode")]
         public Input<string>? ResourceGroupDefaultProcessMode { get; set; }
 
-        /// <summary>
-        /// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline. Use `CiPipelineVariablesMinimumOverrideRole` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("restrictUserDefinedVariables")]
-        public Input<bool>? RestrictUserDefinedVariables { get; set; }
-
         [Input("runnersToken")]
         private Input<string>? _runnersToken;
 
@@ -2129,12 +1960,6 @@ namespace Pulumi.GitLab
         public Input<string>? SnippetsAccessLevel { get; set; }
 
         /// <summary>
-        /// Enable snippets for the project. Use `SnippetsAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("snippetsEnabled")]
-        public Input<bool>? SnippetsEnabled { get; set; }
-
-        /// <summary>
         /// Template used to create squash commit message in merge requests.
         /// </summary>
         [Input("squashCommitTemplate")]
@@ -2157,19 +1982,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("suggestionCommitMessage")]
         public Input<string>? SuggestionCommitMessage { get; set; }
-
-        [Input("tags")]
-        private InputList<string>? _tags;
-
-        /// <summary>
-        /// The list of tags for a project; put array of tags, that should be finally assigned to a project. Use `Topics` instead. To be removed in 19.0.
-        /// </summary>
-        [Obsolete(@"Use `Topics` instead. To be removed in 19.0.")]
-        public InputList<string> Tags
-        {
-            get => _tags ?? (_tags = new InputList<string>());
-            set => _tags = value;
-        }
 
         /// <summary>
         /// When used without use*custom*template, name of a built-in project template. When used with use*custom*template, name of a custom project template. This option is mutually exclusive with `TemplateProjectId`.
@@ -2219,12 +2031,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("wikiAccessLevel")]
         public Input<string>? WikiAccessLevel { get; set; }
-
-        /// <summary>
-        /// Enable wiki for the project. Use `WikiAccessLevel` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("wikiEnabled")]
-        public Input<bool>? WikiEnabled { get; set; }
 
         public ProjectState()
         {

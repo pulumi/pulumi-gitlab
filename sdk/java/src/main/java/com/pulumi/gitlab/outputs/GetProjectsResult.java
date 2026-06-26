@@ -17,6 +17,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetProjectsResult {
     /**
+     * @return Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+     * 
+     */
+    private @Nullable Boolean active;
+    /**
      * @return Limit by archived status.
      * 
      */
@@ -27,7 +32,7 @@ public final class GetProjectsResult {
      */
     private @Nullable Integer groupId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;group_id-options_hash&gt;`, where `optionsHash` is a hash of all the other search options provided.
      * 
      */
     private String id;
@@ -37,7 +42,7 @@ public final class GetProjectsResult {
      */
     private @Nullable Boolean includeSubgroups;
     /**
-     * @return The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+     * @return The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
      * 
      */
     private @Nullable Integer maxQueryablePages;
@@ -62,12 +67,12 @@ public final class GetProjectsResult {
      */
     private @Nullable Boolean owned;
     /**
-     * @return The first page to begin the query on.
+     * @return The first page to begin the query on (default 1).
      * 
      */
     private @Nullable Integer page;
     /**
-     * @return The number of results to return per page.
+     * @return The number of results to return per page (default 20, maximum 100).
      * 
      */
     private @Nullable Integer perPage;
@@ -139,6 +144,13 @@ public final class GetProjectsResult {
 
     private GetProjectsResult() {}
     /**
+     * @return Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+     * 
+     */
+    public Optional<Boolean> active() {
+        return Optional.ofNullable(this.active);
+    }
+    /**
      * @return Limit by archived status.
      * 
      */
@@ -153,7 +165,7 @@ public final class GetProjectsResult {
         return Optional.ofNullable(this.groupId);
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this datasource. In the format `&lt;group_id-options_hash&gt;`, where `optionsHash` is a hash of all the other search options provided.
      * 
      */
     public String id() {
@@ -167,7 +179,7 @@ public final class GetProjectsResult {
         return Optional.ofNullable(this.includeSubgroups);
     }
     /**
-     * @return The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+     * @return The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
      * 
      */
     public Optional<Integer> maxQueryablePages() {
@@ -202,14 +214,14 @@ public final class GetProjectsResult {
         return Optional.ofNullable(this.owned);
     }
     /**
-     * @return The first page to begin the query on.
+     * @return The first page to begin the query on (default 1).
      * 
      */
     public Optional<Integer> page() {
         return Optional.ofNullable(this.page);
     }
     /**
-     * @return The number of results to return per page.
+     * @return The number of results to return per page (default 20, maximum 100).
      * 
      */
     public Optional<Integer> perPage() {
@@ -316,6 +328,7 @@ public final class GetProjectsResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean active;
         private @Nullable Boolean archived;
         private @Nullable Integer groupId;
         private String id;
@@ -343,6 +356,7 @@ public final class GetProjectsResult {
         public Builder() {}
         public Builder(GetProjectsResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.active = defaults.active;
     	      this.archived = defaults.archived;
     	      this.groupId = defaults.groupId;
     	      this.id = defaults.id;
@@ -369,6 +383,12 @@ public final class GetProjectsResult {
     	      this.withShared = defaults.withShared;
         }
 
+        @CustomType.Setter
+        public Builder active(@Nullable Boolean active) {
+
+            this.active = active;
+            return this;
+        }
         @CustomType.Setter
         public Builder archived(@Nullable Boolean archived) {
 
@@ -525,6 +545,7 @@ public final class GetProjectsResult {
         }
         public GetProjectsResult build() {
             final var _resultValue = new GetProjectsResult();
+            _resultValue.active = active;
             _resultValue.archived = archived;
             _resultValue.groupId = groupId;
             _resultValue.id = id;

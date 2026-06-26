@@ -20,14 +20,14 @@ public final class ProjectIntegrationJiraArgs extends com.pulumi.resources.Resou
     public static final ProjectIntegrationJiraArgs Empty = new ProjectIntegrationJiraArgs();
 
     /**
-     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+     * The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
      * 
      */
     @Import(name="apiUrl")
     private @Nullable Output<String> apiUrl;
 
     /**
-     * @return The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+     * @return The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
      * 
      */
     public Optional<Output<String>> apiUrl() {
@@ -80,14 +80,14 @@ public final class ProjectIntegrationJiraArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+     * The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
      * 
      */
     @Import(name="jiraAuthType")
     private @Nullable Output<Integer> jiraAuthType;
 
     /**
-     * @return The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+     * @return The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
      * 
      */
     public Optional<Output<Integer>> jiraAuthType() {
@@ -170,14 +170,14 @@ public final class ProjectIntegrationJiraArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+     * The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
      * 
      */
     @Import(name="password", required=true)
     private Output<String> password;
 
     /**
-     * @return The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+     * @return The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
      * 
      */
     public Output<String> password() {
@@ -245,14 +245,14 @@ public final class ProjectIntegrationJiraArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+     * The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+     * @return The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
      * 
      */
     public Optional<Output<String>> username() {
@@ -299,7 +299,7 @@ public final class ProjectIntegrationJiraArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param apiUrl The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+         * @param apiUrl The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class ProjectIntegrationJiraArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param apiUrl The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com.
+         * @param apiUrl The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
          * 
          * @return builder
          * 
@@ -383,7 +383,7 @@ public final class ProjectIntegrationJiraArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param jiraAuthType The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+         * @param jiraAuthType The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class ProjectIntegrationJiraArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param jiraAuthType The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. Defaults to 0.
+         * @param jiraAuthType The authentication method to be used with Jira. 0 means Basic Authentication. 1 means Jira personal access token. 2 means Jira Cloud service accounts. Defaults to 0.
          * 
          * @return builder
          * 
@@ -509,7 +509,7 @@ public final class ProjectIntegrationJiraArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param password The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+         * @param password The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
          * 
          * @return builder
          * 
@@ -520,7 +520,7 @@ public final class ProjectIntegrationJiraArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param password The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token.
+         * @param password The Jira API token, password, or personal access token to be used with Jira. When your authentication method is basic (jira*auth*type is 0), use an API token for Jira Cloud or a password for Jira Data Center or Jira Server. When your authentication method is a Jira personal access token (jira*auth*type is 1), use the personal access token. When your authentication method is a Jira Cloud Service Account, use an API token.
          * 
          * @return builder
          * 
@@ -624,7 +624,7 @@ public final class ProjectIntegrationJiraArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param username The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+         * @param username The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
          * 
          * @return builder
          * 
@@ -635,7 +635,7 @@ public final class ProjectIntegrationJiraArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param username The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0).
+         * @param username The email or username to be used with Jira. For Jira Cloud use an email, for Jira Data Center and Jira Server use a username. Required when using Basic authentication (jira*auth*type is 0). Should not be provided when using a Jira Cloud Service Account
          * 
          * @return builder
          * 

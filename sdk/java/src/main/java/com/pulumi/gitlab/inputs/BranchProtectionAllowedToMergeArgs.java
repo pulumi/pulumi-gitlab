@@ -17,14 +17,14 @@ public final class BranchProtectionAllowedToMergeArgs extends com.pulumi.resourc
     public static final BranchProtectionAllowedToMergeArgs Empty = new BranchProtectionAllowedToMergeArgs();
 
     /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access level allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     @Import(name="accessLevel")
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * @return Access level allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     public Optional<Output<String>> accessLevel() {
@@ -47,14 +47,14 @@ public final class BranchProtectionAllowedToMergeArgs extends com.pulumi.resourc
     }
 
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId` and `accessLevel`.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<Integer> groupId;
 
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId` and `accessLevel`.
      * 
      */
     public Optional<Output<Integer>> groupId() {
@@ -62,14 +62,14 @@ public final class BranchProtectionAllowedToMergeArgs extends com.pulumi.resourc
     }
 
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId` and `accessLevel`.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId` and `accessLevel`.
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -104,7 +104,7 @@ public final class BranchProtectionAllowedToMergeArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param accessLevel Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+         * @param accessLevel Access level allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class BranchProtectionAllowedToMergeArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param accessLevel Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+         * @param accessLevel Access level allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class BranchProtectionAllowedToMergeArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId` and `accessLevel`.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class BranchProtectionAllowedToMergeArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId` and `accessLevel`.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class BranchProtectionAllowedToMergeArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId` and `accessLevel`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class BranchProtectionAllowedToMergeArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId` and `accessLevel`.
          * 
          * @return builder
          * 

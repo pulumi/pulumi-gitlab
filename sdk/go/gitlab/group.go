@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -138,6 +138,8 @@ type Group struct {
 	AllowMergeOnSkippedPipeline pulumi.BoolOutput `pulumi:"allowMergeOnSkippedPipeline"`
 	// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
 	AllowedEmailDomainsLists pulumi.StringArrayOutput `pulumi:"allowedEmailDomainsLists"`
+	// Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+	ArchiveOnDestroy pulumi.BoolPtrOutput `pulumi:"archiveOnDestroy"`
 	// Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolOutput `pulumi:"autoDevopsEnabled"`
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -259,6 +261,8 @@ type groupState struct {
 	AllowMergeOnSkippedPipeline *bool `pulumi:"allowMergeOnSkippedPipeline"`
 	// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
 	AllowedEmailDomainsLists []string `pulumi:"allowedEmailDomainsLists"`
+	// Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+	ArchiveOnDestroy *bool `pulumi:"archiveOnDestroy"`
 	// Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -344,6 +348,8 @@ type GroupState struct {
 	AllowMergeOnSkippedPipeline pulumi.BoolPtrInput
 	// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
 	AllowedEmailDomainsLists pulumi.StringArrayInput
+	// Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+	ArchiveOnDestroy pulumi.BoolPtrInput
 	// Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolPtrInput
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -433,6 +439,8 @@ type groupArgs struct {
 	AllowMergeOnSkippedPipeline *bool `pulumi:"allowMergeOnSkippedPipeline"`
 	// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
 	AllowedEmailDomainsLists []string `pulumi:"allowedEmailDomainsLists"`
+	// Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+	ArchiveOnDestroy *bool `pulumi:"archiveOnDestroy"`
 	// Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -509,6 +517,8 @@ type GroupArgs struct {
 	AllowMergeOnSkippedPipeline pulumi.BoolPtrInput
 	// A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
 	AllowedEmailDomainsLists pulumi.StringArrayInput
+	// Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+	ArchiveOnDestroy pulumi.BoolPtrInput
 	// Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolPtrInput
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -674,6 +684,11 @@ func (o GroupOutput) AllowMergeOnSkippedPipeline() pulumi.BoolOutput {
 // A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
 func (o GroupOutput) AllowedEmailDomainsLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.AllowedEmailDomainsLists }).(pulumi.StringArrayOutput)
+}
+
+// Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+func (o GroupOutput) ArchiveOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.ArchiveOnDestroy }).(pulumi.BoolPtrOutput)
 }
 
 // Default to Auto DevOps pipeline for all projects within this group.

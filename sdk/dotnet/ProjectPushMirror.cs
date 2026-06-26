@@ -67,6 +67,12 @@ namespace Pulumi.GitLab
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
+        /// SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full KnownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `SshKnownHosts` representation and does not return them.
+        /// </summary>
+        [Output("hostKeys")]
+        public Output<ImmutableArray<string>> HostKeys { get; private set; } = null!;
+
+        /// <summary>
         /// Determines if divergent refs are skipped.
         /// </summary>
         [Output("keepDivergentRefs")]
@@ -164,6 +170,18 @@ namespace Pulumi.GitLab
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("hostKeys")]
+        private InputList<string>? _hostKeys;
+
+        /// <summary>
+        /// SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full KnownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `SshKnownHosts` representation and does not return them.
+        /// </summary>
+        public InputList<string> HostKeys
+        {
+            get => _hostKeys ?? (_hostKeys = new InputList<string>());
+            set => _hostKeys = value;
+        }
+
         /// <summary>
         /// Determines if divergent refs are skipped.
         /// </summary>
@@ -223,6 +241,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        [Input("hostKeys")]
+        private InputList<string>? _hostKeys;
+
+        /// <summary>
+        /// SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full KnownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `SshKnownHosts` representation and does not return them.
+        /// </summary>
+        public InputList<string> HostKeys
+        {
+            get => _hostKeys ?? (_hostKeys = new InputList<string>());
+            set => _hostKeys = value;
+        }
 
         /// <summary>
         /// Determines if divergent refs are skipped.

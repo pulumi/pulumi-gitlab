@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,14 +26,10 @@ func GetProjectProtectedBranch(ctx *pulumi.Context, args *GetProjectProtectedBra
 
 // A collection of arguments for invoking getProjectProtectedBranch.
 type GetProjectProtectedBranchArgs struct {
-	// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
-	MergeAccessLevels []GetProjectProtectedBranchMergeAccessLevel `pulumi:"mergeAccessLevels"`
 	// The name of the protected branch.
 	Name string `pulumi:"name"`
 	// The integer or path with namespace that uniquely identifies the project.
 	ProjectId string `pulumi:"projectId"`
-	// Array of access levels and user(s)/group(s) allowed to push to protected branch.
-	PushAccessLevels []GetProjectProtectedBranchPushAccessLevel `pulumi:"pushAccessLevels"`
 }
 
 // A collection of values returned by getProjectProtectedBranch.
@@ -44,14 +40,16 @@ type GetProjectProtectedBranchResult struct {
 	CodeOwnerApprovalRequired bool `pulumi:"codeOwnerApprovalRequired"`
 	// The ID of this resource.
 	Id int `pulumi:"id"`
-	// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+	// Array of merge access levels/users/groups allowed for the protected branch.
 	MergeAccessLevels []GetProjectProtectedBranchMergeAccessLevel `pulumi:"mergeAccessLevels"`
 	// The name of the protected branch.
 	Name string `pulumi:"name"`
 	// The integer or path with namespace that uniquely identifies the project.
 	ProjectId string `pulumi:"projectId"`
-	// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+	// Array of push access levels/users/groups/deploy keys allowed for the protected branch.
 	PushAccessLevels []GetProjectProtectedBranchPushAccessLevel `pulumi:"pushAccessLevels"`
+	// Array of unprotect access levels/users/groups allowed for the protected branch.
+	UnprotectAccessLevels []GetProjectProtectedBranchUnprotectAccessLevel `pulumi:"unprotectAccessLevels"`
 }
 
 func GetProjectProtectedBranchOutput(ctx *pulumi.Context, args GetProjectProtectedBranchOutputArgs, opts ...pulumi.InvokeOption) GetProjectProtectedBranchResultOutput {
@@ -65,14 +63,10 @@ func GetProjectProtectedBranchOutput(ctx *pulumi.Context, args GetProjectProtect
 
 // A collection of arguments for invoking getProjectProtectedBranch.
 type GetProjectProtectedBranchOutputArgs struct {
-	// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
-	MergeAccessLevels GetProjectProtectedBranchMergeAccessLevelArrayInput `pulumi:"mergeAccessLevels"`
 	// The name of the protected branch.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The integer or path with namespace that uniquely identifies the project.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// Array of access levels and user(s)/group(s) allowed to push to protected branch.
-	PushAccessLevels GetProjectProtectedBranchPushAccessLevelArrayInput `pulumi:"pushAccessLevels"`
 }
 
 func (GetProjectProtectedBranchOutputArgs) ElementType() reflect.Type {
@@ -109,7 +103,7 @@ func (o GetProjectProtectedBranchResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+// Array of merge access levels/users/groups allowed for the protected branch.
 func (o GetProjectProtectedBranchResultOutput) MergeAccessLevels() GetProjectProtectedBranchMergeAccessLevelArrayOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchResult) []GetProjectProtectedBranchMergeAccessLevel {
 		return v.MergeAccessLevels
@@ -126,11 +120,18 @@ func (o GetProjectProtectedBranchResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+// Array of push access levels/users/groups/deploy keys allowed for the protected branch.
 func (o GetProjectProtectedBranchResultOutput) PushAccessLevels() GetProjectProtectedBranchPushAccessLevelArrayOutput {
 	return o.ApplyT(func(v GetProjectProtectedBranchResult) []GetProjectProtectedBranchPushAccessLevel {
 		return v.PushAccessLevels
 	}).(GetProjectProtectedBranchPushAccessLevelArrayOutput)
+}
+
+// Array of unprotect access levels/users/groups allowed for the protected branch.
+func (o GetProjectProtectedBranchResultOutput) UnprotectAccessLevels() GetProjectProtectedBranchUnprotectAccessLevelArrayOutput {
+	return o.ApplyT(func(v GetProjectProtectedBranchResult) []GetProjectProtectedBranchUnprotectAccessLevel {
+		return v.UnprotectAccessLevels
+	}).(GetProjectProtectedBranchUnprotectAccessLevelArrayOutput)
 }
 
 func init() {

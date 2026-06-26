@@ -712,29 +712,6 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0. */
-    @Import(name="defaultBranchProtection")
-    private @Nullable Output<Integer> defaultBranchProtection;
-
-    /**
-     * @return Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0. */
-    public Optional<Output<Integer>> defaultBranchProtection() {
-        return Optional.ofNullable(this.defaultBranchProtection);
-    }
-
-    /**
      * The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
      * 
      */
@@ -1032,6 +1009,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Boolean>> disableOverridingApproversPerMergeRequest() {
         return Optional.ofNullable(this.disableOverridingApproversPerMergeRequest);
+    }
+
+    /**
+     * Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
+     * 
+     */
+    @Import(name="disablePasswordAuthenticationForUsersWithSsoIdentities")
+    private @Nullable Output<Boolean> disablePasswordAuthenticationForUsersWithSsoIdentities;
+
+    /**
+     * @return Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
+     * 
+     */
+    public Optional<Output<Boolean>> disablePasswordAuthenticationForUsersWithSsoIdentities() {
+        return Optional.ofNullable(this.disablePasswordAuthenticationForUsersWithSsoIdentities);
     }
 
     /**
@@ -3060,6 +3052,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
+     * 
+     */
+    @Import(name="pagesUniqueDomainDefaultEnabled")
+    private @Nullable Output<Boolean> pagesUniqueDomainDefaultEnabled;
+
+    /**
+     * @return Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
+     * 
+     */
+    public Optional<Output<Boolean>> pagesUniqueDomainDefaultEnabled() {
+        return Optional.ofNullable(this.pagesUniqueDomainDefaultEnabled);
+    }
+
+    /**
      * Enable authentication for Git over HTTP(S) via a GitLab account password.
      * 
      */
@@ -3675,6 +3682,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
+     * 
+     */
+    @Import(name="secretPushProtectionAvailable")
+    private @Nullable Output<Boolean> secretPushProtectionAvailable;
+
+    /**
+     * @return Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> secretPushProtectionAvailable() {
+        return Optional.ofNullable(this.secretPushProtectionAvailable);
+    }
+
+    /**
      * Maximum number of active merge request approval policies per security policy project. Maximum: 20
      * 
      */
@@ -3762,6 +3784,21 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Integer>> sessionExpireDelay() {
         return Optional.ofNullable(this.sessionExpireDelay);
+    }
+
+    /**
+     * Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
+     * 
+     */
+    @Import(name="sessionExpireFromInit")
+    private @Nullable Output<Boolean> sessionExpireFromInit;
+
+    /**
+     * @return Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
+     * 
+     */
+    public Optional<Output<Boolean>> sessionExpireFromInit() {
+        return Optional.ofNullable(this.sessionExpireFromInit);
     }
 
     /**
@@ -4923,7 +4960,6 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.decompressArchiveFileTimeout = $.decompressArchiveFileTimeout;
         this.defaultArtifactsExpireIn = $.defaultArtifactsExpireIn;
         this.defaultBranchName = $.defaultBranchName;
-        this.defaultBranchProtection = $.defaultBranchProtection;
         this.defaultBranchProtectionDefaults = $.defaultBranchProtectionDefaults;
         this.defaultCiConfigPath = $.defaultCiConfigPath;
         this.defaultGroupVisibility = $.defaultGroupVisibility;
@@ -4944,6 +4980,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.disableAdminOauthScopes = $.disableAdminOauthScopes;
         this.disableFeedToken = $.disableFeedToken;
         this.disableOverridingApproversPerMergeRequest = $.disableOverridingApproversPerMergeRequest;
+        this.disablePasswordAuthenticationForUsersWithSsoIdentities = $.disablePasswordAuthenticationForUsersWithSsoIdentities;
         this.disablePersonalAccessTokens = $.disablePersonalAccessTokens;
         this.disabledOauthSignInSources = $.disabledOauthSignInSources;
         this.dnsRebindingProtectionEnabled = $.dnsRebindingProtectionEnabled;
@@ -5079,6 +5116,7 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.packageRegistryAllowAnyoneToPullOption = $.packageRegistryAllowAnyoneToPullOption;
         this.packageRegistryCleanupPoliciesWorkerCapacity = $.packageRegistryCleanupPoliciesWorkerCapacity;
         this.pagesDomainVerificationEnabled = $.pagesDomainVerificationEnabled;
+        this.pagesUniqueDomainDefaultEnabled = $.pagesUniqueDomainDefaultEnabled;
         this.passwordAuthenticationEnabledForGit = $.passwordAuthenticationEnabledForGit;
         this.passwordAuthenticationEnabledForWeb = $.passwordAuthenticationEnabledForWeb;
         this.passwordLowercaseRequired = $.passwordLowercaseRequired;
@@ -5120,12 +5158,14 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         this.rsaKeyRestriction = $.rsaKeyRestriction;
         this.searchRateLimit = $.searchRateLimit;
         this.searchRateLimitUnauthenticated = $.searchRateLimitUnauthenticated;
+        this.secretPushProtectionAvailable = $.secretPushProtectionAvailable;
         this.securityApprovalPoliciesLimit = $.securityApprovalPoliciesLimit;
         this.securityPolicyGlobalGroupApproversEnabled = $.securityPolicyGlobalGroupApproversEnabled;
         this.securityTxtContent = $.securityTxtContent;
         this.sendUserConfirmationEmail = $.sendUserConfirmationEmail;
         this.serviceAccessTokensExpirationEnforced = $.serviceAccessTokensExpirationEnforced;
         this.sessionExpireDelay = $.sessionExpireDelay;
+        this.sessionExpireFromInit = $.sessionExpireFromInit;
         this.sharedRunnersEnabled = $.sharedRunnersEnabled;
         this.sharedRunnersMinutes = $.sharedRunnersMinutes;
         this.sharedRunnersText = $.sharedRunnersText;
@@ -6197,35 +6237,6 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param defaultBranchProtection Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0. */
-        public Builder defaultBranchProtection(@Nullable Output<Integer> defaultBranchProtection) {
-            $.defaultBranchProtection = defaultBranchProtection;
-            return this;
-        }
-
-        /**
-         * @param defaultBranchProtection Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0. */
-        public Builder defaultBranchProtection(Integer defaultBranchProtection) {
-            return defaultBranchProtection(Output.of(defaultBranchProtection));
-        }
-
-        /**
          * @param defaultBranchProtectionDefaults The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
          * 
          * @return builder
@@ -6643,6 +6654,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder disableOverridingApproversPerMergeRequest(Boolean disableOverridingApproversPerMergeRequest) {
             return disableOverridingApproversPerMergeRequest(Output.of(disableOverridingApproversPerMergeRequest));
+        }
+
+        /**
+         * @param disablePasswordAuthenticationForUsersWithSsoIdentities Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disablePasswordAuthenticationForUsersWithSsoIdentities(@Nullable Output<Boolean> disablePasswordAuthenticationForUsersWithSsoIdentities) {
+            $.disablePasswordAuthenticationForUsersWithSsoIdentities = disablePasswordAuthenticationForUsersWithSsoIdentities;
+            return this;
+        }
+
+        /**
+         * @param disablePasswordAuthenticationForUsersWithSsoIdentities Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disablePasswordAuthenticationForUsersWithSsoIdentities(Boolean disablePasswordAuthenticationForUsersWithSsoIdentities) {
+            return disablePasswordAuthenticationForUsersWithSsoIdentities(Output.of(disablePasswordAuthenticationForUsersWithSsoIdentities));
         }
 
         /**
@@ -9591,6 +9623,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param pagesUniqueDomainDefaultEnabled Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pagesUniqueDomainDefaultEnabled(@Nullable Output<Boolean> pagesUniqueDomainDefaultEnabled) {
+            $.pagesUniqueDomainDefaultEnabled = pagesUniqueDomainDefaultEnabled;
+            return this;
+        }
+
+        /**
+         * @param pagesUniqueDomainDefaultEnabled Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pagesUniqueDomainDefaultEnabled(Boolean pagesUniqueDomainDefaultEnabled) {
+            return pagesUniqueDomainDefaultEnabled(Output.of(pagesUniqueDomainDefaultEnabled));
+        }
+
+        /**
          * @param passwordAuthenticationEnabledForGit Enable authentication for Git over HTTP(S) via a GitLab account password.
          * 
          * @return builder
@@ -10462,6 +10515,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param secretPushProtectionAvailable Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretPushProtectionAvailable(@Nullable Output<Boolean> secretPushProtectionAvailable) {
+            $.secretPushProtectionAvailable = secretPushProtectionAvailable;
+            return this;
+        }
+
+        /**
+         * @param secretPushProtectionAvailable Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretPushProtectionAvailable(Boolean secretPushProtectionAvailable) {
+            return secretPushProtectionAvailable(Output.of(secretPushProtectionAvailable));
+        }
+
+        /**
          * @param securityApprovalPoliciesLimit Maximum number of active merge request approval policies per security policy project. Maximum: 20
          * 
          * @return builder
@@ -10585,6 +10659,27 @@ public final class ApplicationSettingsState extends com.pulumi.resources.Resourc
          */
         public Builder sessionExpireDelay(Integer sessionExpireDelay) {
             return sessionExpireDelay(Output.of(sessionExpireDelay));
+        }
+
+        /**
+         * @param sessionExpireFromInit Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionExpireFromInit(@Nullable Output<Boolean> sessionExpireFromInit) {
+            $.sessionExpireFromInit = sessionExpireFromInit;
+            return this;
+        }
+
+        /**
+         * @param sessionExpireFromInit Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionExpireFromInit(Boolean sessionExpireFromInit) {
+            return sessionExpireFromInit(Output.of(sessionExpireFromInit));
         }
 
         /**

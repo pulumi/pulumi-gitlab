@@ -18,6 +18,21 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetProjectsPlainArgs Empty = new GetProjectsPlainArgs();
 
     /**
+     * Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+     * 
+     */
+    @Import(name="active")
+    private @Nullable Boolean active;
+
+    /**
+     * @return Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+     * 
+     */
+    public Optional<Boolean> active() {
+        return Optional.ofNullable(this.active);
+    }
+
+    /**
      * Limit by archived status.
      * 
      */
@@ -63,14 +78,14 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+     * The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
      * 
      */
     @Import(name="maxQueryablePages")
     private @Nullable Integer maxQueryablePages;
 
     /**
-     * @return The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+     * @return The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
      * 
      */
     public Optional<Integer> maxQueryablePages() {
@@ -138,14 +153,14 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The first page to begin the query on.
+     * The first page to begin the query on (default 1).
      * 
      */
     @Import(name="page")
     private @Nullable Integer page;
 
     /**
-     * @return The first page to begin the query on.
+     * @return The first page to begin the query on (default 1).
      * 
      */
     public Optional<Integer> page() {
@@ -153,14 +168,14 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The number of results to return per page.
+     * The number of results to return per page (default 20, maximum 100).
      * 
      */
     @Import(name="perPage")
     private @Nullable Integer perPage;
 
     /**
-     * @return The number of results to return per page.
+     * @return The number of results to return per page (default 20, maximum 100).
      * 
      */
     public Optional<Integer> perPage() {
@@ -350,6 +365,7 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
     private GetProjectsPlainArgs() {}
 
     private GetProjectsPlainArgs(GetProjectsPlainArgs $) {
+        this.active = $.active;
         this.archived = $.archived;
         this.groupId = $.groupId;
         this.includeSubgroups = $.includeSubgroups;
@@ -393,6 +409,17 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
+         * @param active Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder active(@Nullable Boolean active) {
+            $.active = active;
+            return this;
+        }
+
+        /**
          * @param archived Limit by archived status.
          * 
          * @return builder
@@ -426,7 +453,7 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param maxQueryablePages The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+         * @param maxQueryablePages The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
          * 
          * @return builder
          * 
@@ -481,7 +508,7 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param page The first page to begin the query on.
+         * @param page The first page to begin the query on (default 1).
          * 
          * @return builder
          * 
@@ -492,7 +519,7 @@ public final class GetProjectsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param perPage The number of results to return per page.
+         * @param perPage The number of results to return per page (default 20, maximum 100).
          * 
          * @return builder
          * 

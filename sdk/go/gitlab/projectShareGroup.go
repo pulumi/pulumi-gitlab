@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -58,14 +58,10 @@ import (
 type ProjectShareGroup struct {
 	pulumi.CustomResourceState
 
-	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-	//
-	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
-	AccessLevel pulumi.StringPtrOutput `pulumi:"accessLevel"`
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-	GroupAccess pulumi.StringPtrOutput `pulumi:"groupAccess"`
+	GroupAccess pulumi.StringOutput `pulumi:"groupAccess"`
 	// The id of the group.
 	GroupId pulumi.IntOutput `pulumi:"groupId"`
 	// The ID or URL-encoded path of the project.
@@ -79,6 +75,9 @@ func NewProjectShareGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.GroupAccess == nil {
+		return nil, errors.New("invalid value for required argument 'GroupAccess'")
+	}
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
@@ -108,10 +107,6 @@ func GetProjectShareGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectShareGroup resources.
 type projectShareGroupState struct {
-	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-	//
-	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
-	AccessLevel *string `pulumi:"accessLevel"`
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
@@ -123,10 +118,6 @@ type projectShareGroupState struct {
 }
 
 type ProjectShareGroupState struct {
-	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-	//
-	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
-	AccessLevel pulumi.StringPtrInput
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
@@ -142,14 +133,10 @@ func (ProjectShareGroupState) ElementType() reflect.Type {
 }
 
 type projectShareGroupArgs struct {
-	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-	//
-	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
-	AccessLevel *string `pulumi:"accessLevel"`
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-	GroupAccess *string `pulumi:"groupAccess"`
+	GroupAccess string `pulumi:"groupAccess"`
 	// The id of the group.
 	GroupId int `pulumi:"groupId"`
 	// The ID or URL-encoded path of the project.
@@ -158,14 +145,10 @@ type projectShareGroupArgs struct {
 
 // The set of arguments for constructing a ProjectShareGroup resource.
 type ProjectShareGroupArgs struct {
-	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-	//
-	// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
-	AccessLevel pulumi.StringPtrInput
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
 	// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-	GroupAccess pulumi.StringPtrInput
+	GroupAccess pulumi.StringInput
 	// The id of the group.
 	GroupId pulumi.IntInput
 	// The ID or URL-encoded path of the project.
@@ -259,21 +242,14 @@ func (o ProjectShareGroupOutput) ToProjectShareGroupOutputWithContext(ctx contex
 	return o
 }
 
-// The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-//
-// Deprecated: Use `groupAccess` instead of the `accessLevel` attribute.
-func (o ProjectShareGroupOutput) AccessLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectShareGroup) pulumi.StringPtrOutput { return v.AccessLevel }).(pulumi.StringPtrOutput)
-}
-
 // Share expiration date. Format: `YYYY-MM-DD`
 func (o ProjectShareGroupOutput) ExpiresAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectShareGroup) pulumi.StringPtrOutput { return v.ExpiresAt }).(pulumi.StringPtrOutput)
 }
 
 // The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-func (o ProjectShareGroupOutput) GroupAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectShareGroup) pulumi.StringPtrOutput { return v.GroupAccess }).(pulumi.StringPtrOutput)
+func (o ProjectShareGroupOutput) GroupAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectShareGroup) pulumi.StringOutput { return v.GroupAccess }).(pulumi.StringOutput)
 }
 
 // The id of the group.

@@ -6,6 +6,7 @@ package com.pulumi.gitlab.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gitlab.inputs.GroupServiceAccountTimeoutsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -76,6 +77,21 @@ public final class GroupServiceAccountState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.serviceAccountId);
     }
 
+    /**
+     * If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
+     * 
+     */
+    @Import(name="skipWaitForDeletion")
+    private @Nullable Output<Boolean> skipWaitForDeletion;
+
+    /**
+     * @return If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> skipWaitForDeletion() {
+        return Optional.ofNullable(this.skipWaitForDeletion);
+    }
+
     @Import(name="timeouts")
     private @Nullable Output<GroupServiceAccountTimeoutsArgs> timeouts;
 
@@ -105,6 +121,7 @@ public final class GroupServiceAccountState extends com.pulumi.resources.Resourc
         this.group = $.group;
         this.name = $.name;
         this.serviceAccountId = $.serviceAccountId;
+        this.skipWaitForDeletion = $.skipWaitForDeletion;
         this.timeouts = $.timeouts;
         this.username = $.username;
     }
@@ -209,6 +226,27 @@ public final class GroupServiceAccountState extends com.pulumi.resources.Resourc
          */
         public Builder serviceAccountId(String serviceAccountId) {
             return serviceAccountId(Output.of(serviceAccountId));
+        }
+
+        /**
+         * @param skipWaitForDeletion If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipWaitForDeletion(@Nullable Output<Boolean> skipWaitForDeletion) {
+            $.skipWaitForDeletion = skipWaitForDeletion;
+            return this;
+        }
+
+        /**
+         * @param skipWaitForDeletion If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipWaitForDeletion(Boolean skipWaitForDeletion) {
+            return skipWaitForDeletion(Output.of(skipWaitForDeletion));
         }
 
         public Builder timeouts(@Nullable Output<GroupServiceAccountTimeoutsArgs> timeouts) {

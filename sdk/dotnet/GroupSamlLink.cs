@@ -62,7 +62,7 @@ namespace Pulumi.GitLab
     public partial class GroupSamlLink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access level for members of the SAML group. Valid values are: `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`.
+        /// Access level for members of the SAML group. Valid values are: `Minimal`, `Guest`, `Planner`, `Reporter`, `SecurityManager`, `Developer`, `Maintainer`, `Owner`.
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.GitLab
     public sealed class GroupSamlLinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access level for members of the SAML group. Valid values are: `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`.
+        /// Access level for members of the SAML group. Valid values are: `Minimal`, `Guest`, `Planner`, `Reporter`, `SecurityManager`, `Developer`, `Maintainer`, `Owner`.
         /// </summary>
         [Input("accessLevel", required: true)]
         public Input<string> AccessLevel { get; set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.GitLab
     public sealed class GroupSamlLinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access level for members of the SAML group. Valid values are: `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`.
+        /// Access level for members of the SAML group. Valid values are: `Minimal`, `Guest`, `Planner`, `Reporter`, `SecurityManager`, `Developer`, `Maintainer`, `Owner`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }

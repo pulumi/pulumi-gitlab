@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -77,8 +77,12 @@ type ProjectLevelMrApprovals struct {
 	MergeRequestsDisableCommittersApproval pulumi.BoolOutput `pulumi:"mergeRequestsDisableCommittersApproval"`
 	// The ID or URL-encoded path of a project to change MR approval configuration.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Set to `true` to require authentication to approve merge requests.
+	// Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+	//
+	// Deprecated: Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
 	RequirePasswordToApprove pulumi.BoolOutput `pulumi:"requirePasswordToApprove"`
+	// If true, requires approver to reauthenticate before adding the approval.
+	RequireReauthenticationToApprove pulumi.BoolOutput `pulumi:"requireReauthenticationToApprove"`
 	// Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 	ResetApprovalsOnPush pulumi.BoolOutput `pulumi:"resetApprovalsOnPush"`
 	// Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
@@ -126,8 +130,12 @@ type projectLevelMrApprovalsState struct {
 	MergeRequestsDisableCommittersApproval *bool `pulumi:"mergeRequestsDisableCommittersApproval"`
 	// The ID or URL-encoded path of a project to change MR approval configuration.
 	Project *string `pulumi:"project"`
-	// Set to `true` to require authentication to approve merge requests.
+	// Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+	//
+	// Deprecated: Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
 	RequirePasswordToApprove *bool `pulumi:"requirePasswordToApprove"`
+	// If true, requires approver to reauthenticate before adding the approval.
+	RequireReauthenticationToApprove *bool `pulumi:"requireReauthenticationToApprove"`
 	// Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 	ResetApprovalsOnPush *bool `pulumi:"resetApprovalsOnPush"`
 	// Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
@@ -143,8 +151,12 @@ type ProjectLevelMrApprovalsState struct {
 	MergeRequestsDisableCommittersApproval pulumi.BoolPtrInput
 	// The ID or URL-encoded path of a project to change MR approval configuration.
 	Project pulumi.StringPtrInput
-	// Set to `true` to require authentication to approve merge requests.
+	// Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+	//
+	// Deprecated: Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
 	RequirePasswordToApprove pulumi.BoolPtrInput
+	// If true, requires approver to reauthenticate before adding the approval.
+	RequireReauthenticationToApprove pulumi.BoolPtrInput
 	// Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 	ResetApprovalsOnPush pulumi.BoolPtrInput
 	// Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
@@ -164,8 +176,12 @@ type projectLevelMrApprovalsArgs struct {
 	MergeRequestsDisableCommittersApproval *bool `pulumi:"mergeRequestsDisableCommittersApproval"`
 	// The ID or URL-encoded path of a project to change MR approval configuration.
 	Project string `pulumi:"project"`
-	// Set to `true` to require authentication to approve merge requests.
+	// Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+	//
+	// Deprecated: Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
 	RequirePasswordToApprove *bool `pulumi:"requirePasswordToApprove"`
+	// If true, requires approver to reauthenticate before adding the approval.
+	RequireReauthenticationToApprove *bool `pulumi:"requireReauthenticationToApprove"`
 	// Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 	ResetApprovalsOnPush *bool `pulumi:"resetApprovalsOnPush"`
 	// Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
@@ -182,8 +198,12 @@ type ProjectLevelMrApprovalsArgs struct {
 	MergeRequestsDisableCommittersApproval pulumi.BoolPtrInput
 	// The ID or URL-encoded path of a project to change MR approval configuration.
 	Project pulumi.StringInput
-	// Set to `true` to require authentication to approve merge requests.
+	// Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+	//
+	// Deprecated: Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
 	RequirePasswordToApprove pulumi.BoolPtrInput
+	// If true, requires approver to reauthenticate before adding the approval.
+	RequireReauthenticationToApprove pulumi.BoolPtrInput
 	// Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
 	ResetApprovalsOnPush pulumi.BoolPtrInput
 	// Reset approvals from Code Owners if their files changed. Can be enabled only if reset*approvals*on_push is disabled.
@@ -297,9 +317,16 @@ func (o ProjectLevelMrApprovalsOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Set to `true` to require authentication to approve merge requests.
+// Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+//
+// Deprecated: Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
 func (o ProjectLevelMrApprovalsOutput) RequirePasswordToApprove() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.BoolOutput { return v.RequirePasswordToApprove }).(pulumi.BoolOutput)
+}
+
+// If true, requires approver to reauthenticate before adding the approval.
+func (o ProjectLevelMrApprovalsOutput) RequireReauthenticationToApprove() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectLevelMrApprovals) pulumi.BoolOutput { return v.RequireReauthenticationToApprove }).(pulumi.BoolOutput)
 }
 
 // Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.

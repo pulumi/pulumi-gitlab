@@ -33,7 +33,7 @@ class GroupDeployTokenArgs:
         :param pulumi.Input[_builtins.str] expires_at: Time the token expires in RFC3339 format. Not set by default.
         :param pulumi.Input[_builtins.str] name: A name to describe the deploy token with.
         :param pulumi.Input[_builtins.str] username: A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
-        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Whether to validate if the expiration date is in the future.
         """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "scopes", scopes)
@@ -110,7 +110,7 @@ class GroupDeployTokenArgs:
     @pulumi.getter(name="validatePastExpirationDate")
     def validate_past_expiration_date(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Wether to validate if the expiration date is in the future.
+        Whether to validate if the expiration date is in the future.
         """
         return pulumi.get(self, "validate_past_expiration_date")
 
@@ -142,7 +142,7 @@ class _GroupDeployTokenState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
         :param pulumi.Input[_builtins.str] token: The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
         :param pulumi.Input[_builtins.str] username: A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
-        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Whether to validate if the expiration date is in the future.
         """
         if expired is not None:
             pulumi.set(__self__, "expired", expired)
@@ -263,7 +263,7 @@ class _GroupDeployTokenState:
     @pulumi.getter(name="validatePastExpirationDate")
     def validate_past_expiration_date(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Wether to validate if the expiration date is in the future.
+        Whether to validate if the expiration date is in the future.
         """
         return pulumi.get(self, "validate_past_expiration_date")
 
@@ -340,7 +340,7 @@ class GroupDeployToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: A name to describe the deploy token with.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
         :param pulumi.Input[_builtins.str] username: A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
-        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Whether to validate if the expiration date is in the future.
         """
         ...
     @overload
@@ -475,7 +475,7 @@ class GroupDeployToken(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group deploy token. Valid values are: `read_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_package_registry`, `write_package_registry`
         :param pulumi.Input[_builtins.str] token: The secret token. This is only populated when creating a new deploy token. **Note**: The token is not available for imported resources.
         :param pulumi.Input[_builtins.str] username: A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
-        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Whether to validate if the expiration date is in the future.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -560,7 +560,7 @@ class GroupDeployToken(pulumi.CustomResource):
     @pulumi.getter(name="validatePastExpirationDate")
     def validate_past_expiration_date(self) -> pulumi.Output[_builtins.bool]:
         """
-        Wether to validate if the expiration date is in the future.
+        Whether to validate if the expiration date is in the future.
         """
         return pulumi.get(self, "validate_past_expiration_date")
 

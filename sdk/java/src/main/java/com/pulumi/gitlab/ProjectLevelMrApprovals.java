@@ -137,18 +137,36 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
         return this.project;
     }
     /**
-     * Set to `true` to require authentication to approve merge requests.
+     * Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+     * 
+     * @deprecated
+     * Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
      * 
      */
+    @Deprecated /* Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead. */
     @Export(name="requirePasswordToApprove", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> requirePasswordToApprove;
 
     /**
-     * @return Set to `true` to require authentication to approve merge requests.
+     * @return Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
      * 
      */
     public Output<Boolean> requirePasswordToApprove() {
         return this.requirePasswordToApprove;
+    }
+    /**
+     * If true, requires approver to reauthenticate before adding the approval.
+     * 
+     */
+    @Export(name="requireReauthenticationToApprove", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> requireReauthenticationToApprove;
+
+    /**
+     * @return If true, requires approver to reauthenticate before adding the approval.
+     * 
+     */
+    public Output<Boolean> requireReauthenticationToApprove() {
+        return this.requireReauthenticationToApprove;
     }
     /**
      * Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.

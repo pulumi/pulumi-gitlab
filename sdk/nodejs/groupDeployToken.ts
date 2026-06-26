@@ -116,7 +116,7 @@ export class GroupDeployToken extends pulumi.CustomResource {
      */
     declare public readonly username: pulumi.Output<string>;
     /**
-     * Wether to validate if the expiration date is in the future.
+     * Whether to validate if the expiration date is in the future.
      */
     declare public readonly validatePastExpirationDate: pulumi.Output<boolean>;
 
@@ -204,7 +204,7 @@ export interface GroupDeployTokenState {
      */
     username?: pulumi.Input<string | undefined>;
     /**
-     * Wether to validate if the expiration date is in the future.
+     * Whether to validate if the expiration date is in the future.
      */
     validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }
@@ -234,7 +234,7 @@ export interface GroupDeployTokenArgs {
      */
     username?: pulumi.Input<string | undefined>;
     /**
-     * Wether to validate if the expiration date is in the future.
+     * Whether to validate if the expiration date is in the future.
      */
     validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }

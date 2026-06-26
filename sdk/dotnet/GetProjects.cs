@@ -154,6 +154,12 @@ namespace Pulumi.GitLab
     public sealed class GetProjectsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Limit by projects that are not archived and not marked for deletion. If `False`, return only projects that are archived or marked for deletion.
+        /// </summary>
+        [Input("active")]
+        public bool? Active { get; set; }
+
+        /// <summary>
         /// Limit by archived status.
         /// </summary>
         [Input("archived")]
@@ -172,7 +178,7 @@ namespace Pulumi.GitLab
         public bool? IncludeSubgroups { get; set; }
 
         /// <summary>
-        /// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+        /// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
         /// </summary>
         [Input("maxQueryablePages")]
         public int? MaxQueryablePages { get; set; }
@@ -202,13 +208,13 @@ namespace Pulumi.GitLab
         public bool? Owned { get; set; }
 
         /// <summary>
-        /// The first page to begin the query on.
+        /// The first page to begin the query on (default 1).
         /// </summary>
         [Input("page")]
         public int? Page { get; set; }
 
         /// <summary>
-        /// The number of results to return per page.
+        /// The number of results to return per page (default 20, maximum 100).
         /// </summary>
         [Input("perPage")]
         public int? PerPage { get; set; }
@@ -300,6 +306,12 @@ namespace Pulumi.GitLab
     public sealed class GetProjectsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Limit by projects that are not archived and not marked for deletion. If `False`, return only projects that are archived or marked for deletion.
+        /// </summary>
+        [Input("active")]
+        public Input<bool>? Active { get; set; }
+
+        /// <summary>
         /// Limit by archived status.
         /// </summary>
         [Input("archived")]
@@ -318,7 +330,7 @@ namespace Pulumi.GitLab
         public Input<bool>? IncludeSubgroups { get; set; }
 
         /// <summary>
-        /// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+        /// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
         /// </summary>
         [Input("maxQueryablePages")]
         public Input<int>? MaxQueryablePages { get; set; }
@@ -348,13 +360,13 @@ namespace Pulumi.GitLab
         public Input<bool>? Owned { get; set; }
 
         /// <summary>
-        /// The first page to begin the query on.
+        /// The first page to begin the query on (default 1).
         /// </summary>
         [Input("page")]
         public Input<int>? Page { get; set; }
 
         /// <summary>
-        /// The number of results to return per page.
+        /// The number of results to return per page (default 20, maximum 100).
         /// </summary>
         [Input("perPage")]
         public Input<int>? PerPage { get; set; }
@@ -448,6 +460,10 @@ namespace Pulumi.GitLab
     public sealed class GetProjectsResult
     {
         /// <summary>
+        /// Limit by projects that are not archived and not marked for deletion. If `False`, return only projects that are archived or marked for deletion.
+        /// </summary>
+        public readonly bool? Active;
+        /// <summary>
         /// Limit by archived status.
         /// </summary>
         public readonly bool? Archived;
@@ -456,7 +472,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly int? GroupId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this datasource. In the format `&lt;group_id-options_hash&gt;`, where `OptionsHash` is a hash of all the other search options provided.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -464,7 +480,7 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool? IncludeSubgroups;
         /// <summary>
-        /// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+        /// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
         /// </summary>
         public readonly int? MaxQueryablePages;
         /// <summary>
@@ -484,11 +500,11 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool? Owned;
         /// <summary>
-        /// The first page to begin the query on.
+        /// The first page to begin the query on (default 1).
         /// </summary>
         public readonly int? Page;
         /// <summary>
-        /// The number of results to return per page.
+        /// The number of results to return per page (default 20, maximum 100).
         /// </summary>
         public readonly int? PerPage;
         /// <summary>
@@ -546,6 +562,8 @@ namespace Pulumi.GitLab
 
         [OutputConstructor]
         private GetProjectsResult(
+            bool? active,
+
             bool? archived,
 
             int? groupId,
@@ -594,6 +612,7 @@ namespace Pulumi.GitLab
 
             bool? withShared)
         {
+            Active = active;
             Archived = archived;
             GroupId = groupId;
             Id = id;

@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  * Importing using the CLI is supported with the following syntax:
  * 
- * A GitLab Project targer branch rule can be imported using a key composed of `&lt;project&gt;:&lt;target-branch-rule-id&gt;`, for example:
+ * A GitLab Project target branch rule can be imported using a key composed of `&lt;project&gt;:&lt;target-branch-rule-id&gt;`, for example:
  * 
  * ```sh
  * $ pulumi import gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule example &#34;12345:1&#34;

@@ -684,24 +684,6 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.defaultBranchName;
     }
     /**
-     * Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0. */
-    @Export(name="defaultBranchProtection", refs={Integer.class}, tree="[0]")
-    private Output<Integer> defaultBranchProtection;
-
-    /**
-     * @return Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `defaultBranchProtectionDefaults` instead. To be removed in 19.0.
-     * 
-     */
-    public Output<Integer> defaultBranchProtection() {
-        return this.defaultBranchProtection;
-    }
-    /**
      * The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
      * 
      */
@@ -980,6 +962,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> disableOverridingApproversPerMergeRequest() {
         return this.disableOverridingApproversPerMergeRequest;
+    }
+    /**
+     * Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
+     * 
+     */
+    @Export(name="disablePasswordAuthenticationForUsersWithSsoIdentities", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> disablePasswordAuthenticationForUsersWithSsoIdentities;
+
+    /**
+     * @return Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
+     * 
+     */
+    public Output<Boolean> disablePasswordAuthenticationForUsersWithSsoIdentities() {
+        return this.disablePasswordAuthenticationForUsersWithSsoIdentities;
     }
     /**
      * Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
@@ -2872,6 +2868,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.pagesDomainVerificationEnabled;
     }
     /**
+     * Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
+     * 
+     */
+    @Export(name="pagesUniqueDomainDefaultEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> pagesUniqueDomainDefaultEnabled;
+
+    /**
+     * @return Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
+     * 
+     */
+    public Output<Boolean> pagesUniqueDomainDefaultEnabled() {
+        return this.pagesUniqueDomainDefaultEnabled;
+    }
+    /**
      * Enable authentication for Git over HTTP(S) via a GitLab account password.
      * 
      */
@@ -3446,6 +3456,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.searchRateLimitUnauthenticated;
     }
     /**
+     * Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
+     * 
+     */
+    @Export(name="secretPushProtectionAvailable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> secretPushProtectionAvailable;
+
+    /**
+     * @return Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
+     * 
+     */
+    public Output<Boolean> secretPushProtectionAvailable() {
+        return this.secretPushProtectionAvailable;
+    }
+    /**
      * Maximum number of active merge request approval policies per security policy project. Maximum: 20
      * 
      */
@@ -3528,6 +3552,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> sessionExpireDelay() {
         return this.sessionExpireDelay;
+    }
+    /**
+     * Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
+     * 
+     */
+    @Export(name="sessionExpireFromInit", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> sessionExpireFromInit;
+
+    /**
+     * @return Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
+     * 
+     */
+    public Output<Boolean> sessionExpireFromInit() {
+        return this.sessionExpireFromInit;
     }
     /**
      * (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.

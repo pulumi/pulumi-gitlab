@@ -4,10 +4,7 @@
 package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,36 +13,6 @@ import javax.annotation.Nullable;
 public final class GetProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetProjectPlainArgs Empty = new GetProjectPlainArgs();
-
-    /**
-     * Default number of revisions for shallow cloning.
-     * 
-     */
-    @Import(name="ciDefaultGitDepth")
-    private @Nullable Integer ciDefaultGitDepth;
-
-    /**
-     * @return Default number of revisions for shallow cloning.
-     * 
-     */
-    public Optional<Integer> ciDefaultGitDepth() {
-        return Optional.ofNullable(this.ciDefaultGitDepth);
-    }
-
-    /**
-     * Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
-     * 
-     */
-    @Import(name="ciIdTokenSubClaimComponents")
-    private @Nullable List<String> ciIdTokenSubClaimComponents;
-
-    /**
-     * @return Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
-     * 
-     */
-    public Optional<List<String>> ciIdTokenSubClaimComponents() {
-        return Optional.ofNullable(this.ciIdTokenSubClaimComponents);
-    }
 
     /**
      * The integer that uniquely identifies the project within the gitlab install.
@@ -77,29 +44,11 @@ public final class GetProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.pathWithNamespace);
     }
 
-    /**
-     * If true, jobs can be viewed by non-project members.
-     * 
-     */
-    @Import(name="publicBuilds")
-    private @Nullable Boolean publicBuilds;
-
-    /**
-     * @return If true, jobs can be viewed by non-project members.
-     * 
-     */
-    public Optional<Boolean> publicBuilds() {
-        return Optional.ofNullable(this.publicBuilds);
-    }
-
     private GetProjectPlainArgs() {}
 
     private GetProjectPlainArgs(GetProjectPlainArgs $) {
-        this.ciDefaultGitDepth = $.ciDefaultGitDepth;
-        this.ciIdTokenSubClaimComponents = $.ciIdTokenSubClaimComponents;
         this.id = $.id;
         this.pathWithNamespace = $.pathWithNamespace;
-        this.publicBuilds = $.publicBuilds;
     }
 
     public static Builder builder() {
@@ -121,38 +70,6 @@ public final class GetProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ciDefaultGitDepth Default number of revisions for shallow cloning.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ciDefaultGitDepth(@Nullable Integer ciDefaultGitDepth) {
-            $.ciDefaultGitDepth = ciDefaultGitDepth;
-            return this;
-        }
-
-        /**
-         * @param ciIdTokenSubClaimComponents Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ciIdTokenSubClaimComponents(@Nullable List<String> ciIdTokenSubClaimComponents) {
-            $.ciIdTokenSubClaimComponents = ciIdTokenSubClaimComponents;
-            return this;
-        }
-
-        /**
-         * @param ciIdTokenSubClaimComponents Fields included in the sub claim of the ID Token. Accepts an array starting with project*path. The array might also include ref*type and ref. Defaults to [&#34;project*path&#34;, &#34;ref*type&#34;, &#34;ref&#34;]. Introduced in GitLab 17.10.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ciIdTokenSubClaimComponents(String... ciIdTokenSubClaimComponents) {
-            return ciIdTokenSubClaimComponents(List.of(ciIdTokenSubClaimComponents));
-        }
-
-        /**
          * @param id The integer that uniquely identifies the project within the gitlab install.
          * 
          * @return builder
@@ -171,17 +88,6 @@ public final class GetProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder pathWithNamespace(@Nullable String pathWithNamespace) {
             $.pathWithNamespace = pathWithNamespace;
-            return this;
-        }
-
-        /**
-         * @param publicBuilds If true, jobs can be viewed by non-project members.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder publicBuilds(@Nullable Boolean publicBuilds) {
-            $.publicBuilds = publicBuilds;
             return this;
         }
 

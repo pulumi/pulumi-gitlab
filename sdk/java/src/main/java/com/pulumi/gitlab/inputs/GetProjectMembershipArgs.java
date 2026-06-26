@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -17,29 +18,6 @@ import javax.annotation.Nullable;
 public final class GetProjectMembershipArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetProjectMembershipArgs Empty = new GetProjectMembershipArgs();
-
-    /**
-     * The full path of the project. Use `project` instead. Will be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `project` instead. Will be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
-    @Import(name="fullPath")
-    private @Nullable Output<String> fullPath;
-
-    /**
-     * @return The full path of the project. Use `project` instead. Will be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `project` instead. Will be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
-    public Optional<Output<String>> fullPath() {
-        return Optional.ofNullable(this.fullPath);
-    }
 
     /**
      * Return all project members including members through ancestor groups
@@ -60,38 +38,15 @@ public final class GetProjectMembershipArgs extends com.pulumi.resources.InvokeA
      * The ID or full path of the project.
      * 
      */
-    @Import(name="project")
-    private @Nullable Output<String> project;
+    @Import(name="project", required=true)
+    private Output<String> project;
 
     /**
      * @return The ID or full path of the project.
      * 
      */
-    public Optional<Output<String>> project() {
-        return Optional.ofNullable(this.project);
-    }
-
-    /**
-     * The ID of the project. Use `project` instead. Will be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `project` instead. Will be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
-    @Import(name="projectId")
-    private @Nullable Output<Integer> projectId;
-
-    /**
-     * @return The ID of the project. Use `project` instead. Will be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `project` instead. Will be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
-    public Optional<Output<Integer>> projectId() {
-        return Optional.ofNullable(this.projectId);
+    public Output<String> project() {
+        return this.project;
     }
 
     /**
@@ -127,10 +82,8 @@ public final class GetProjectMembershipArgs extends com.pulumi.resources.InvokeA
     private GetProjectMembershipArgs() {}
 
     private GetProjectMembershipArgs(GetProjectMembershipArgs $) {
-        this.fullPath = $.fullPath;
         this.inherited = $.inherited;
         this.project = $.project;
-        this.projectId = $.projectId;
         this.query = $.query;
         this.userIds = $.userIds;
     }
@@ -151,35 +104,6 @@ public final class GetProjectMembershipArgs extends com.pulumi.resources.InvokeA
 
         public Builder(GetProjectMembershipArgs defaults) {
             $ = new GetProjectMembershipArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param fullPath The full path of the project. Use `project` instead. Will be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `project` instead. Will be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `project` instead. Will be removed in 19.0. */
-        public Builder fullPath(@Nullable Output<String> fullPath) {
-            $.fullPath = fullPath;
-            return this;
-        }
-
-        /**
-         * @param fullPath The full path of the project. Use `project` instead. Will be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `project` instead. Will be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `project` instead. Will be removed in 19.0. */
-        public Builder fullPath(String fullPath) {
-            return fullPath(Output.of(fullPath));
         }
 
         /**
@@ -209,7 +133,7 @@ public final class GetProjectMembershipArgs extends com.pulumi.resources.InvokeA
          * @return builder
          * 
          */
-        public Builder project(@Nullable Output<String> project) {
+        public Builder project(Output<String> project) {
             $.project = project;
             return this;
         }
@@ -222,35 +146,6 @@ public final class GetProjectMembershipArgs extends com.pulumi.resources.InvokeA
          */
         public Builder project(String project) {
             return project(Output.of(project));
-        }
-
-        /**
-         * @param projectId The ID of the project. Use `project` instead. Will be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `project` instead. Will be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `project` instead. Will be removed in 19.0. */
-        public Builder projectId(@Nullable Output<Integer> projectId) {
-            $.projectId = projectId;
-            return this;
-        }
-
-        /**
-         * @param projectId The ID of the project. Use `project` instead. Will be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `project` instead. Will be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `project` instead. Will be removed in 19.0. */
-        public Builder projectId(Integer projectId) {
-            return projectId(Output.of(projectId));
         }
 
         /**
@@ -306,6 +201,9 @@ public final class GetProjectMembershipArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetProjectMembershipArgs build() {
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetProjectMembershipArgs", "project");
+            }
             return $;
         }
     }

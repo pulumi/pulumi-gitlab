@@ -37,7 +37,7 @@ class GroupServiceAccountAccessTokenArgs:
         :param pulumi.Input[_builtins.str] expires_at: The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         :param pulumi.Input[_builtins.str] name: The name of the personal access token.
         :param pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs'] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
-        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Whether to validate if the expiration date is in the future.
         """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "scopes", scopes)
@@ -127,7 +127,7 @@ class GroupServiceAccountAccessTokenArgs:
     @pulumi.getter(name="validatePastExpirationDate")
     def validate_past_expiration_date(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Wether to validate if the expiration date is in the future.
+        Whether to validate if the expiration date is in the future.
         """
         return pulumi.get(self, "validate_past_expiration_date")
 
@@ -163,7 +163,7 @@ class _GroupServiceAccountAccessTokenState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group service account access token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`. If `self_rotate` is included, you must also provide either `expires_at` or `rotation_configuration`.
         :param pulumi.Input[_builtins.str] token: The token of the group service account access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[_builtins.int] user_id: The ID of a service account user.
-        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Whether to validate if the expiration date is in the future.
         """
         if active is not None:
             pulumi.set(__self__, "active", active)
@@ -312,7 +312,7 @@ class _GroupServiceAccountAccessTokenState:
     @pulumi.getter(name="validatePastExpirationDate")
     def validate_past_expiration_date(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Wether to validate if the expiration date is in the future.
+        Whether to validate if the expiration date is in the future.
         """
         return pulumi.get(self, "validate_past_expiration_date")
 
@@ -417,7 +417,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
         :param pulumi.Input[Union['GroupServiceAccountAccessTokenRotationConfigurationArgs', 'GroupServiceAccountAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group service account access token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`. If `self_rotate` is included, you must also provide either `expires_at` or `rotation_configuration`.
         :param pulumi.Input[_builtins.int] user_id: The ID of a service account user.
-        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Whether to validate if the expiration date is in the future.
         """
         ...
     @overload
@@ -587,7 +587,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group service account access token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`. If `self_rotate` is included, you must also provide either `expires_at` or `rotation_configuration`.
         :param pulumi.Input[_builtins.str] token: The token of the group service account access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[_builtins.int] user_id: The ID of a service account user.
-        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Wether to validate if the expiration date is in the future.
+        :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Whether to validate if the expiration date is in the future.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -690,7 +690,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
     @pulumi.getter(name="validatePastExpirationDate")
     def validate_past_expiration_date(self) -> pulumi.Output[_builtins.bool]:
         """
-        Wether to validate if the expiration date is in the future.
+        Whether to validate if the expiration date is in the future.
         """
         return pulumi.get(self, "validate_past_expiration_date")
 

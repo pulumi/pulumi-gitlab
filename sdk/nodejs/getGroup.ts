@@ -39,21 +39,65 @@ export interface GetGroupArgs {
  */
 export interface GetGroupResult {
     /**
+     * Default to allowing merge on a skipped pipeline for new projects in the group.
+     */
+    readonly allowMergeOnSkippedPipeline: boolean;
+    /**
+     * Comma-separated list of email address domains allowed to be added as group members.
+     */
+    readonly allowedEmailDomainsList: string;
+    /**
+     * Default to Auto DevOps pipeline for all projects within this group.
+     */
+    readonly autoDevopsEnabled: boolean;
+    /**
+     * URL of the group avatar.
+     */
+    readonly avatarUrl: string;
+    /**
+     * Timestamp at which the group was created.
+     */
+    readonly createdAt: string;
+    /**
+     * Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.
+     */
+    readonly customAttributes: {[key: string]: string}[];
+    /**
      * The default branch of the group.
      */
     readonly defaultBranch: string;
     /**
-     * Whether developers and maintainers can push to the applicable default branch.
+     * Whether developers and maintainers can push to the applicable default branch. Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0.
+     *
+     * @deprecated Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0.
      */
     readonly defaultBranchProtection: number;
+    /**
+     * Default protection settings applied to the default branch of new projects in this group.
+     */
+    readonly defaultBranchProtectionDefaults: outputs.GetGroupDefaultBranchProtectionDefault[];
     /**
      * The description of the group.
      */
     readonly description: string;
     /**
+     * Whether email notifications are disabled for this group. Use `emailsEnabled` instead, to be removed in 19.0.
+     *
+     * @deprecated Use `emailsEnabled` instead, to be removed in 19.0.
+     */
+    readonly emailsDisabled: boolean;
+    /**
+     * Whether email notifications are enabled for this group.
+     */
+    readonly emailsEnabled: boolean;
+    /**
      * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      */
     readonly extraSharedRunnersMinutesLimit: number;
+    /**
+     * The ID of the project used to load custom file templates.
+     */
+    readonly fileTemplateProjectId: number;
     /**
      * The full name of the group.
      */
@@ -71,17 +115,49 @@ export interface GetGroupResult {
      */
     readonly id: string;
     /**
+     * Comma-separated list of IP addresses or subnet masks that restrict access to the group.
+     */
+    readonly ipRestrictionRanges: string;
+    /**
+     * Default access level for members synced from LDAP.
+     */
+    readonly ldapAccess: number;
+    /**
+     * LDAP common name used to sync members from an LDAP group.
+     */
+    readonly ldapCn: string;
+    /**
      * Boolean, is LFS enabled for projects in this group.
      */
     readonly lfsEnabled: boolean;
+    /**
+     * Date on which the group was marked for deletion.
+     */
+    readonly markedForDeletionOn: string;
+    /**
+     * Maximum artifacts size for the group, in MB.
+     */
+    readonly maxArtifactsSize: number;
     /**
      * Users cannot be added to projects in this group.
      */
     readonly membershipLock: boolean;
     /**
+     * Whether mentions are disabled for this group.
+     */
+    readonly mentionsDisabled: boolean;
+    /**
      * The name of this group.
      */
     readonly name: string;
+    /**
+     * Default to only allowing merge if all discussions are resolved for new projects in the group.
+     */
+    readonly onlyAllowMergeIfAllDiscussionsAreResolved: boolean;
+    /**
+     * Default to only allowing merge if the pipeline succeeds for new projects in the group.
+     */
+    readonly onlyAllowMergeIfPipelineSucceeds: boolean;
     /**
      * Integer, ID of the parent group.
      */
@@ -95,17 +171,37 @@ export interface GetGroupResult {
      */
     readonly preventForkingOutsideGroup: boolean;
     /**
-     * When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+     * When enabled, users cannot invite other groups outside of the top-level group's hierarchy. This option is only available for top-level groups.
      */
     readonly preventSharingGroupsOutsideHierarchy: boolean;
+    /**
+     * Determine which roles can create projects in the group. Possible values are `noone`, `maintainer`, `developer`, `owner`, `administrator`.
+     */
+    readonly projectCreationLevel: string;
+    /**
+     * Push rules for the group. Push rules are only available on Premium and Ultimate plans, and only if the authenticated user has permission to read them.
+     */
+    readonly pushRules: outputs.GetGroupPushRule[];
+    /**
+     * Repository storage shard the group's projects use. (admin only)
+     */
+    readonly repositoryStorage: string;
     /**
      * Boolean, is request for access enabled to the group.
      */
     readonly requestAccessEnabled: boolean;
     /**
+     * Require all users in this group to set up two-factor authentication.
+     */
+    readonly requireTwoFactorAuthentication: boolean;
+    /**
      * The group level registration token to use during runner setup.
      */
     readonly runnersToken: string;
+    /**
+     * Prevent sharing a project with another group within this group.
+     */
+    readonly shareWithGroupLock: boolean;
     /**
      * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Maximum number of monthly CI/CD minutes for this group. Can be nil (default; inherit system default), 0 (unlimited), or > 0.
      */
@@ -118,6 +214,18 @@ export interface GetGroupResult {
      * Describes groups which have access shared to this group.
      */
     readonly sharedWithGroups: outputs.GetGroupSharedWithGroup[];
+    /**
+     * Statistics for the group. Keys: `commitCount`, `storageSize`, `repositorySize`, `wikiSize`, `lfsObjectsSize`, `jobArtifactsSize`, `pipelineArtifactsSize`, `packagesSize`, `snippetsSize`, `uploadsSize`, `containerRegistrySize`.
+     */
+    readonly statistics: {[key: string]: number};
+    /**
+     * Determine which roles can create subgroups in the group. Possible values are `owner`, `maintainer`.
+     */
+    readonly subgroupCreationLevel: string;
+    /**
+     * Grace period, in hours, before enforcing two-factor authentication on group members.
+     */
+    readonly twoFactorGracePeriod: number;
     /**
      * Visibility level of the group. Possible values are `private`, `internal`, `public`.
      */

@@ -12,38 +12,70 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectsProjectSharedWithGroup {
     /**
-     * @return The group access level.
+     * @return The access level (integer) of the shared group. Matches the upstream GitLab API. See `groupAccessLevelName` for the human-readable string form.
      * 
      */
-    private String groupAccessLevel;
+    private Integer groupAccessLevel;
     /**
-     * @return The group ID.
+     * @return The human-readable access level name of the shared group (e.g. `developer`, `maintainer`). Computed from `groupAccessLevel`.
+     * 
+     * @deprecated
+     * Use `groupAccessLevel` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `groupAccessLevel` instead, to be removed in 20.0. */
+    private String groupAccessLevelName;
+    /**
+     * @return The full path of the group shared with.
+     * 
+     */
+    private String groupFullPath;
+    /**
+     * @return The ID of the group shared with.
      * 
      */
     private Integer groupId;
     /**
-     * @return The group name.
+     * @return The name of the group shared with.
      * 
      */
     private String groupName;
 
     private GetProjectsProjectSharedWithGroup() {}
     /**
-     * @return The group access level.
+     * @return The access level (integer) of the shared group. Matches the upstream GitLab API. See `groupAccessLevelName` for the human-readable string form.
      * 
      */
-    public String groupAccessLevel() {
+    public Integer groupAccessLevel() {
         return this.groupAccessLevel;
     }
     /**
-     * @return The group ID.
+     * @return The human-readable access level name of the shared group (e.g. `developer`, `maintainer`). Computed from `groupAccessLevel`.
+     * 
+     * @deprecated
+     * Use `groupAccessLevel` instead, to be removed in 20.0.
+     * 
+     */
+    @Deprecated /* Use `groupAccessLevel` instead, to be removed in 20.0. */
+    public String groupAccessLevelName() {
+        return this.groupAccessLevelName;
+    }
+    /**
+     * @return The full path of the group shared with.
+     * 
+     */
+    public String groupFullPath() {
+        return this.groupFullPath;
+    }
+    /**
+     * @return The ID of the group shared with.
      * 
      */
     public Integer groupId() {
         return this.groupId;
     }
     /**
-     * @return The group name.
+     * @return The name of the group shared with.
      * 
      */
     public String groupName() {
@@ -59,23 +91,43 @@ public final class GetProjectsProjectSharedWithGroup {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String groupAccessLevel;
+        private Integer groupAccessLevel;
+        private String groupAccessLevelName;
+        private String groupFullPath;
         private Integer groupId;
         private String groupName;
         public Builder() {}
         public Builder(GetProjectsProjectSharedWithGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupAccessLevel = defaults.groupAccessLevel;
+    	      this.groupAccessLevelName = defaults.groupAccessLevelName;
+    	      this.groupFullPath = defaults.groupFullPath;
     	      this.groupId = defaults.groupId;
     	      this.groupName = defaults.groupName;
         }
 
         @CustomType.Setter
-        public Builder groupAccessLevel(String groupAccessLevel) {
+        public Builder groupAccessLevel(Integer groupAccessLevel) {
             if (groupAccessLevel == null) {
               throw new MissingRequiredPropertyException("GetProjectsProjectSharedWithGroup", "groupAccessLevel");
             }
             this.groupAccessLevel = groupAccessLevel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupAccessLevelName(String groupAccessLevelName) {
+            if (groupAccessLevelName == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectSharedWithGroup", "groupAccessLevelName");
+            }
+            this.groupAccessLevelName = groupAccessLevelName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupFullPath(String groupFullPath) {
+            if (groupFullPath == null) {
+              throw new MissingRequiredPropertyException("GetProjectsProjectSharedWithGroup", "groupFullPath");
+            }
+            this.groupFullPath = groupFullPath;
             return this;
         }
         @CustomType.Setter
@@ -97,6 +149,8 @@ public final class GetProjectsProjectSharedWithGroup {
         public GetProjectsProjectSharedWithGroup build() {
             final var _resultValue = new GetProjectsProjectSharedWithGroup();
             _resultValue.groupAccessLevel = groupAccessLevel;
+            _resultValue.groupAccessLevelName = groupAccessLevelName;
+            _resultValue.groupFullPath = groupFullPath;
             _resultValue.groupId = groupId;
             _resultValue.groupName = groupName;
             return _resultValue;

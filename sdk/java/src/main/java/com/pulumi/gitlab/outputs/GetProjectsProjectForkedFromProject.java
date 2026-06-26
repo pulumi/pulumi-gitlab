@@ -42,7 +42,7 @@ public final class GetProjectsProjectForkedFromProject {
      */
     private String pathWithNamespace;
     /**
-     * @return The web url of the upstream project.
+     * @return The web URL of the upstream project.
      * 
      */
     private String webUrl;
@@ -91,7 +91,7 @@ public final class GetProjectsProjectForkedFromProject {
         return this.pathWithNamespace;
     }
     /**
-     * @return The web url of the upstream project.
+     * @return The web URL of the upstream project.
      * 
      */
     public String webUrl() {

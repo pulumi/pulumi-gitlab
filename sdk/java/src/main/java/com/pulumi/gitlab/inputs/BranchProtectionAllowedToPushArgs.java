@@ -17,14 +17,14 @@ public final class BranchProtectionAllowedToPushArgs extends com.pulumi.resource
     public static final BranchProtectionAllowedToPushArgs Empty = new BranchProtectionAllowedToPushArgs();
 
     /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access level allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     @Import(name="accessLevel")
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * @return Access level allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      * 
      */
     public Optional<Output<String>> accessLevel() {
@@ -47,14 +47,14 @@ public final class BranchProtectionAllowedToPushArgs extends com.pulumi.resource
     }
 
     /**
-     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `userId`, `groupId`, and `accessLevel`. This field is read-only until Gitlab 17.5.
      * 
      */
     @Import(name="deployKeyId")
     private @Nullable Output<Integer> deployKeyId;
 
     /**
-     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     * @return The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `userId`, `groupId`, and `accessLevel`. This field is read-only until Gitlab 17.5.
      * 
      */
     public Optional<Output<Integer>> deployKeyId() {
@@ -62,14 +62,14 @@ public final class BranchProtectionAllowedToPushArgs extends com.pulumi.resource
     }
 
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `userId`, and `accessLevel`.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<Integer> groupId;
 
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `userId`, and `accessLevel`.
      * 
      */
     public Optional<Output<Integer>> groupId() {
@@ -77,14 +77,14 @@ public final class BranchProtectionAllowedToPushArgs extends com.pulumi.resource
     }
 
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `accessLevel`.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<Integer> userId;
 
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `accessLevel`.
      * 
      */
     public Optional<Output<Integer>> userId() {
@@ -120,7 +120,7 @@ public final class BranchProtectionAllowedToPushArgs extends com.pulumi.resource
         }
 
         /**
-         * @param accessLevel Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+         * @param accessLevel Access level allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class BranchProtectionAllowedToPushArgs extends com.pulumi.resource
         }
 
         /**
-         * @param accessLevel Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+         * @param accessLevel Access level allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class BranchProtectionAllowedToPushArgs extends com.pulumi.resource
         }
 
         /**
-         * @param deployKeyId The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+         * @param deployKeyId The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `userId`, `groupId`, and `accessLevel`. This field is read-only until Gitlab 17.5.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class BranchProtectionAllowedToPushArgs extends com.pulumi.resource
         }
 
         /**
-         * @param deployKeyId The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+         * @param deployKeyId The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `userId`, `groupId`, and `accessLevel`. This field is read-only until Gitlab 17.5.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class BranchProtectionAllowedToPushArgs extends com.pulumi.resource
         }
 
         /**
-         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
+         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `userId`, and `accessLevel`.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class BranchProtectionAllowedToPushArgs extends com.pulumi.resource
         }
 
         /**
-         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
+         * @param groupId The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `userId`, and `accessLevel`.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class BranchProtectionAllowedToPushArgs extends com.pulumi.resource
         }
 
         /**
-         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
+         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `accessLevel`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class BranchProtectionAllowedToPushArgs extends com.pulumi.resource
         }
 
         /**
-         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
+         * @param userId The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `accessLevel`.
          * 
          * @return builder
          * 

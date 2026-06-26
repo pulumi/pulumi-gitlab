@@ -19,31 +19,35 @@ __all__ = ['ProjectShareGroupArgs', 'ProjectShareGroup']
 @pulumi.input_type
 class ProjectShareGroupArgs:
     def __init__(__self__, *,
+                 group_access: pulumi.Input[_builtins.str],
                  group_id: pulumi.Input[_builtins.int],
                  project: pulumi.Input[_builtins.str],
-                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
-                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
-                 group_access: pulumi.Input[Optional[_builtins.str]] = None):
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectShareGroup resource.
 
+        :param pulumi.Input[_builtins.str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.int] group_id: The id of the group.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
-        :param pulumi.Input[_builtins.str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
-        :param pulumi.Input[_builtins.str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """
+        pulumi.set(__self__, "group_access", group_access)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "project", project)
-        if access_level is not None:
-            warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
-            pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
-        if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
-        if group_access is not None:
-            pulumi.set(__self__, "group_access", group_access)
+
+    @_builtins.property
+    @pulumi.getter(name="groupAccess")
+    def group_access(self) -> pulumi.Input[_builtins.str]:
+        """
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+        """
+        return pulumi.get(self, "group_access")
+
+    @group_access.setter
+    def group_access(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "group_access", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
@@ -70,19 +74,6 @@ class ProjectShareGroupArgs:
         pulumi.set(self, "project", value)
 
     @_builtins.property
-    @pulumi.getter(name="accessLevel")
-    @_utilities.deprecated("""Use `group_access` instead of the `access_level` attribute.""")
-    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-        """
-        return pulumi.get(self, "access_level")
-
-    @access_level.setter
-    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "access_level", value)
-
-    @_builtins.property
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -94,23 +85,10 @@ class ProjectShareGroupArgs:
     def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
-    @_builtins.property
-    @pulumi.getter(name="groupAccess")
-    def group_access(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-        """
-        return pulumi.get(self, "group_access")
-
-    @group_access.setter
-    def group_access(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "group_access", value)
-
 
 @pulumi.input_type
 class _ProjectShareGroupState:
     def __init__(__self__, *,
-                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  group_access: pulumi.Input[Optional[_builtins.str]] = None,
                  group_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -118,17 +96,11 @@ class _ProjectShareGroupState:
         """
         Input properties used for looking up and filtering ProjectShareGroup resources.
 
-        :param pulumi.Input[_builtins.str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
         :param pulumi.Input[_builtins.str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.int] group_id: The id of the group.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
         """
-        if access_level is not None:
-            warnings.warn("""Use `group_access` instead of the `access_level` attribute.""", DeprecationWarning)
-            pulumi.log.warn("""access_level is deprecated: Use `group_access` instead of the `access_level` attribute.""")
-        if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
         if group_access is not None:
@@ -137,19 +109,6 @@ class _ProjectShareGroupState:
             pulumi.set(__self__, "group_id", group_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
-
-    @_builtins.property
-    @pulumi.getter(name="accessLevel")
-    @_utilities.deprecated("""Use `group_access` instead of the `access_level` attribute.""")
-    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-        """
-        return pulumi.get(self, "access_level")
-
-    @access_level.setter
-    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
@@ -206,7 +165,6 @@ class ProjectShareGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  group_access: pulumi.Input[Optional[_builtins.str]] = None,
                  group_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -244,7 +202,6 @@ class ProjectShareGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
         :param pulumi.Input[_builtins.str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.int] group_id: The id of the group.
@@ -301,7 +258,6 @@ class ProjectShareGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  group_access: pulumi.Input[Optional[_builtins.str]] = None,
                  group_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -315,8 +271,9 @@ class ProjectShareGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProjectShareGroupArgs.__new__(ProjectShareGroupArgs)
 
-            __props__.__dict__["access_level"] = access_level
             __props__.__dict__["expires_at"] = expires_at
+            if group_access is None and not opts.urn:
+                raise TypeError("Missing required property 'group_access'")
             __props__.__dict__["group_access"] = group_access
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
@@ -334,7 +291,6 @@ class ProjectShareGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_level: pulumi.Input[Optional[_builtins.str]] = None,
             expires_at: pulumi.Input[Optional[_builtins.str]] = None,
             group_access: pulumi.Input[Optional[_builtins.str]] = None,
             group_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -346,7 +302,6 @@ class ProjectShareGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_level: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
         :param pulumi.Input[_builtins.str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.int] group_id: The id of the group.
@@ -356,21 +311,11 @@ class ProjectShareGroup(pulumi.CustomResource):
 
         __props__ = _ProjectShareGroupState.__new__(_ProjectShareGroupState)
 
-        __props__.__dict__["access_level"] = access_level
         __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["group_access"] = group_access
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["project"] = project
         return ProjectShareGroup(resource_name, opts=opts, __props__=__props__)
-
-    @_builtins.property
-    @pulumi.getter(name="accessLevel")
-    @_utilities.deprecated("""Use `group_access` instead of the `access_level` attribute.""")
-    def access_level(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-        """
-        return pulumi.get(self, "access_level")
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
@@ -382,7 +327,7 @@ class ProjectShareGroup(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="groupAccess")
-    def group_access(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def group_access(self) -> pulumi.Output[_builtins.str]:
         """
         The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
         """

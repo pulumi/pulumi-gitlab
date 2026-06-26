@@ -23,7 +23,7 @@ public final class GroupProtectedEnvironmentApprovalRule {
      */
     private @Nullable String accessLevelDescription;
     /**
-     * @return The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
+     * @return The ID of the group allowed to approve a deployment to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
      * 
      */
     private @Nullable Integer groupId;
@@ -64,7 +64,7 @@ public final class GroupProtectedEnvironmentApprovalRule {
         return Optional.ofNullable(this.accessLevelDescription);
     }
     /**
-     * @return The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
+     * @return The ID of the group allowed to approve a deployment to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
      * 
      */
     public Optional<Integer> groupId() {

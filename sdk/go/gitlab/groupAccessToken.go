@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -102,7 +102,7 @@ type GroupAccessToken struct {
 	Token pulumi.StringOutput `pulumi:"token"`
 	// The userId associated to the token.
 	UserId pulumi.IntOutput `pulumi:"userId"`
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate pulumi.BoolOutput `pulumi:"validatePastExpirationDate"`
 }
 
@@ -170,7 +170,7 @@ type groupAccessTokenState struct {
 	Token *string `pulumi:"token"`
 	// The userId associated to the token.
 	UserId *int `pulumi:"userId"`
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
@@ -199,7 +199,7 @@ type GroupAccessTokenState struct {
 	Token pulumi.StringPtrInput
 	// The userId associated to the token.
 	UserId pulumi.IntPtrInput
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
@@ -222,7 +222,7 @@ type groupAccessTokenArgs struct {
 	RotationConfiguration *GroupAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
 	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes []string `pulumi:"scopes"`
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
@@ -242,7 +242,7 @@ type GroupAccessTokenArgs struct {
 	RotationConfiguration GroupAccessTokenRotationConfigurationPtrInput
 	// The scopes of the group access token. Valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readVirtualRegistry`, `writeVirtualRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes pulumi.StringArrayInput
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
@@ -395,7 +395,7 @@ func (o GroupAccessTokenOutput) UserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
 }
 
-// Wether to validate if the expiration date is in the future.
+// Whether to validate if the expiration date is in the future.
 func (o GroupAccessTokenOutput) ValidatePastExpirationDate() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.BoolOutput { return v.ValidatePastExpirationDate }).(pulumi.BoolOutput)
 }

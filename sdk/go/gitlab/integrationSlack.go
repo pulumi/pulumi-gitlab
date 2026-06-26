@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -94,10 +94,6 @@ type IntegrationSlack struct {
 	NoteEvents pulumi.BoolOutput `pulumi:"noteEvents"`
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines pulumi.BoolOutput `pulumi:"notifyOnlyBrokenPipelines"`
-	// This parameter has been replaced with `branchesToBeNotified`.
-	//
-	// Deprecated: use 'branches_to_be_notified' argument instead
-	NotifyOnlyDefaultBranch pulumi.BoolOutput `pulumi:"notifyOnlyDefaultBranch"`
 	// The name of the channel to receive pipeline events notifications.
 	PipelineChannel pulumi.StringPtrOutput `pulumi:"pipelineChannel"`
 	// Enable notifications for pipeline events.
@@ -184,10 +180,6 @@ type integrationSlackState struct {
 	NoteEvents *bool `pulumi:"noteEvents"`
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
-	// This parameter has been replaced with `branchesToBeNotified`.
-	//
-	// Deprecated: use 'branches_to_be_notified' argument instead
-	NotifyOnlyDefaultBranch *bool `pulumi:"notifyOnlyDefaultBranch"`
 	// The name of the channel to receive pipeline events notifications.
 	PipelineChannel *string `pulumi:"pipelineChannel"`
 	// Enable notifications for pipeline events.
@@ -239,10 +231,6 @@ type IntegrationSlackState struct {
 	NoteEvents pulumi.BoolPtrInput
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput
-	// This parameter has been replaced with `branchesToBeNotified`.
-	//
-	// Deprecated: use 'branches_to_be_notified' argument instead
-	NotifyOnlyDefaultBranch pulumi.BoolPtrInput
 	// The name of the channel to receive pipeline events notifications.
 	PipelineChannel pulumi.StringPtrInput
 	// Enable notifications for pipeline events.
@@ -296,10 +284,6 @@ type integrationSlackArgs struct {
 	NoteEvents *bool `pulumi:"noteEvents"`
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines *bool `pulumi:"notifyOnlyBrokenPipelines"`
-	// This parameter has been replaced with `branchesToBeNotified`.
-	//
-	// Deprecated: use 'branches_to_be_notified' argument instead
-	NotifyOnlyDefaultBranch *bool `pulumi:"notifyOnlyDefaultBranch"`
 	// The name of the channel to receive pipeline events notifications.
 	PipelineChannel *string `pulumi:"pipelineChannel"`
 	// Enable notifications for pipeline events.
@@ -350,10 +334,6 @@ type IntegrationSlackArgs struct {
 	NoteEvents pulumi.BoolPtrInput
 	// Send notifications for broken pipelines.
 	NotifyOnlyBrokenPipelines pulumi.BoolPtrInput
-	// This parameter has been replaced with `branchesToBeNotified`.
-	//
-	// Deprecated: use 'branches_to_be_notified' argument instead
-	NotifyOnlyDefaultBranch pulumi.BoolPtrInput
 	// The name of the channel to receive pipeline events notifications.
 	PipelineChannel pulumi.StringPtrInput
 	// Enable notifications for pipeline events.
@@ -528,13 +508,6 @@ func (o IntegrationSlackOutput) NoteEvents() pulumi.BoolOutput {
 // Send notifications for broken pipelines.
 func (o IntegrationSlackOutput) NotifyOnlyBrokenPipelines() pulumi.BoolOutput {
 	return o.ApplyT(func(v *IntegrationSlack) pulumi.BoolOutput { return v.NotifyOnlyBrokenPipelines }).(pulumi.BoolOutput)
-}
-
-// This parameter has been replaced with `branchesToBeNotified`.
-//
-// Deprecated: use 'branches_to_be_notified' argument instead
-func (o IntegrationSlackOutput) NotifyOnlyDefaultBranch() pulumi.BoolOutput {
-	return o.ApplyT(func(v *IntegrationSlack) pulumi.BoolOutput { return v.NotifyOnlyDefaultBranch }).(pulumi.BoolOutput)
 }
 
 // The name of the channel to receive pipeline events notifications.

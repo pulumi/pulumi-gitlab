@@ -71,24 +71,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="gitlab:index/projectShareGroup:ProjectShareGroup")
 public class ProjectShareGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-     * 
-     * @deprecated
-     * Use `groupAccess` instead of the `accessLevel` attribute.
-     * 
-     */
-    @Deprecated /* Use `groupAccess` instead of the `accessLevel` attribute. */
-    @Export(name="accessLevel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accessLevel;
-
-    /**
-     * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
-     * 
-     */
-    public Output<Optional<String>> accessLevel() {
-        return Codegen.optional(this.accessLevel);
-    }
-    /**
      * Share expiration date. Format: `YYYY-MM-DD`
      * 
      */
@@ -107,14 +89,14 @@ public class ProjectShareGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="groupAccess", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> groupAccess;
+    private Output<String> groupAccess;
 
     /**
      * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
      * 
      */
-    public Output<Optional<String>> groupAccess() {
-        return Codegen.optional(this.groupAccess);
+    public Output<String> groupAccess() {
+        return this.groupAccess;
     }
     /**
      * The id of the group.

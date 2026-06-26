@@ -11,6 +11,7 @@ import com.pulumi.gitlab.ProjectHookArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectHookState;
 import com.pulumi.gitlab.outputs.ProjectHookCustomHeader;
+import com.pulumi.gitlab.outputs.ProjectHookUrlVariable;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -37,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gitlab.ProjectHook;
  * import com.pulumi.gitlab.ProjectHookArgs;
  * import com.pulumi.gitlab.inputs.ProjectHookCustomHeaderArgs;
+ * import com.pulumi.gitlab.inputs.ProjectHookUrlVariableArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -76,6 +78,18 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
+ *         // Using URL variables
+ *         // Values of URL variables can't be imported
+ *         var urlVariables = new ProjectHook("urlVariables", ProjectHookArgs.builder()
+ *             .project("example/hooked")
+ *             .url("https://example.com/hook/example?token=secret")
+ *             .mergeRequestsEvents(true)
+ *             .urlVariables(ProjectHookUrlVariableArgs.builder()
+ *                 .key("hidden")
+ *                 .value("token=secret")
+ *                 .build())
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -99,6 +113,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gitlab:index/projectHook:ProjectHook")
 public class ProjectHook extends com.pulumi.resources.CustomResource {
+    /**
+     * Lifecycle status of the webhook. Values include `executable` and `disabled`.
+     * 
+     */
+    @Export(name="alertStatus", refs={String.class}, tree="[0]")
+    private Output<String> alertStatus;
+
+    /**
+     * @return Lifecycle status of the webhook. Values include `executable` and `disabled`.
+     * 
+     */
+    public Output<String> alertStatus() {
+        return this.alertStatus;
+    }
     /**
      * Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
      * 
@@ -198,6 +226,20 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
+     * Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+     * 
+     */
+    @Export(name="disabledUntil", refs={String.class}, tree="[0]")
+    private Output<String> disabledUntil;
+
+    /**
+     * @return Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+     * 
+     */
+    public Output<String> disabledUntil() {
+        return this.disabledUntil;
+    }
+    /**
      * Invoke the hook for emoji events. Defaults to `false`.
      * 
      */
@@ -224,6 +266,20 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> enableSslVerification() {
         return this.enableSslVerification;
+    }
+    /**
+     * Invoke the hook for feature flag events. Defaults to `false`.
+     * 
+     */
+    @Export(name="featureFlagEvents", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> featureFlagEvents;
+
+    /**
+     * @return Invoke the hook for feature flag events. Defaults to `false`.
+     * 
+     */
+    public Output<Boolean> featureFlagEvents() {
+        return this.featureFlagEvents;
     }
     /**
      * The id of the project hook.
@@ -280,6 +336,20 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> mergeRequestsEvents() {
         return this.mergeRequestsEvents;
+    }
+    /**
+     * Invoke the hook for milestone events. Defaults to `false`.
+     * 
+     */
+    @Export(name="milestoneEvents", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> milestoneEvents;
+
+    /**
+     * @return Invoke the hook for milestone events. Defaults to `false`.
+     * 
+     */
+    public Output<Boolean> milestoneEvents() {
+        return this.milestoneEvents;
     }
     /**
      * Name of the project webhook.
@@ -394,6 +464,20 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         return this.releasesEvents;
     }
     /**
+     * Invoke the hook for repository update events.
+     * 
+     */
+    @Export(name="repositoryUpdateEvents", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> repositoryUpdateEvents;
+
+    /**
+     * @return Invoke the hook for repository update events.
+     * 
+     */
+    public Output<Boolean> repositoryUpdateEvents() {
+        return this.repositoryUpdateEvents;
+    }
+    /**
      * Invoke the hook for project access token expiry events. Defaults to `false`.
      * 
      */
@@ -406,6 +490,48 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> resourceAccessTokenEvents() {
         return this.resourceAccessTokenEvents;
+    }
+    /**
+     * Invoke the hook for resource deploy token events. Defaults to `false`.
+     * 
+     */
+    @Export(name="resourceDeployTokenEvents", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> resourceDeployTokenEvents;
+
+    /**
+     * @return Invoke the hook for resource deploy token events. Defaults to `false`.
+     * 
+     */
+    public Output<Boolean> resourceDeployTokenEvents() {
+        return this.resourceDeployTokenEvents;
+    }
+    /**
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * 
+     */
+    @Export(name="signingToken", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> signingToken;
+
+    /**
+     * @return Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * 
+     */
+    public Output<Optional<String>> signingToken() {
+        return Codegen.optional(this.signingToken);
+    }
+    /**
+     * Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     * 
+     */
+    @Export(name="signingTokenPresent", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> signingTokenPresent;
+
+    /**
+     * @return Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     * 
+     */
+    public Output<Boolean> signingTokenPresent() {
+        return this.signingTokenPresent;
     }
     /**
      * Invoke the hook for tag push events. Defaults to `false`.
@@ -448,6 +574,20 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
      */
     public Output<String> url() {
         return this.url;
+    }
+    /**
+     * Array of sensitive portions of the webhook URL to mask.
+     * 
+     */
+    @Export(name="urlVariables", refs={List.class,ProjectHookUrlVariable.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ProjectHookUrlVariable>> urlVariables;
+
+    /**
+     * @return Array of sensitive portions of the webhook URL to mask.
+     * 
+     */
+    public Output<Optional<List<ProjectHookUrlVariable>>> urlVariables() {
+        return Codegen.optional(this.urlVariables);
     }
     /**
      * Invoke the hook for vulnerability events. Defaults to `false`.
@@ -518,6 +658,7 @@ public class ProjectHook extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "signingToken",
                 "token"
             ))
             .build();

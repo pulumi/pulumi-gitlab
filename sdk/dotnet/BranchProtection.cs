@@ -19,7 +19,9 @@ namespace Pulumi.GitLab
     ///    automatically take ownership of the default branch without an explicit import by unprotecting and properly protecting it again.
     ///    Having multiple `gitlab.BranchProtection` resources for the same project and default branch will result in them overriding each other - make sure to only have a single one.
     /// 
-    /// &gt; The `AllowedToPush`, `AllowedToMerge`, `AllowedToUnprotect`, `UnprotectAccessLevel` and `CodeOwnerApprovalRequired` attributes require a GitLab Enterprise instance.
+    /// &gt; The `AllowedToPush`, `AllowedToMerge`, `AllowedToUnprotect` and `CodeOwnerApprovalRequired` attributes require a GitLab Enterprise instance.
+    /// 
+    /// &gt; The `MergeAccessLevel` and `PushAccessLevel` attributes are not available for GitLab Enterprise.  Use `AllowedToMerge` and `AllowedToPush` instead.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_branches/)
     /// 
@@ -33,13 +35,21 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var branchProtect = new GitLab.BranchProtection("BranchProtect", new()
+    ///     // CE example
+    ///     var ceBranch = new GitLab.BranchProtection("ce_branch", new()
     ///     {
     ///         Project = "12345",
     ///         Branch = "BranchProtected",
     ///         PushAccessLevel = "developer",
     ///         MergeAccessLevel = "developer",
-    ///         UnprotectAccessLevel = "developer",
+    ///         AllowForcePush = true,
+    ///     });
+    /// 
+    ///     // EE example
+    ///     var eeBranch = new GitLab.BranchProtection("ee_branch", new()
+    ///     {
+    ///         Project = "12345",
+    ///         Branch = "BranchProtected",
     ///         AllowForcePush = true,
     ///         CodeOwnerApprovalRequired = true,
     ///         AllowedToPushes = new[]
@@ -52,6 +62,10 @@ namespace Pulumi.GitLab
     ///             {
     ///                 UserId = 521,
     ///             },
+    ///             new GitLab.Inputs.BranchProtectionAllowedToPushArgs
+    ///             {
+    ///                 AccessLevel = "no one",
+    ///             },
     ///         },
     ///         AllowedToMerges = new[]
     ///         {
@@ -62,6 +76,10 @@ namespace Pulumi.GitLab
     ///             new GitLab.Inputs.BranchProtectionAllowedToMergeArgs
     ///             {
     ///                 UserId = 37,
+    ///             },
+    ///             new GitLab.Inputs.BranchProtectionAllowedToMergeArgs
+    ///             {
+    ///                 AccessLevel = "maintainer",
     ///             },
     ///         },
     ///         AllowedToUnprotects = new[]
@@ -74,39 +92,39 @@ namespace Pulumi.GitLab
     ///             {
     ///                 GroupId = 42,
     ///             },
+    ///             new GitLab.Inputs.BranchProtectionAllowedToUnprotectArgs
+    ///             {
+    ///                 AccessLevel = "maintainer",
+    ///             },
     ///         },
     ///     });
     /// 
-    ///     // Example using dynamic block
-    ///     var main = new GitLab.BranchProtection("main", new()
-    ///     {
-    ///         AllowedToPushes = new[]
-    ///         {
-    ///             50,
-    ///             55,
-    ///             60,
-    ///         }.Select((v, k) =&gt; new { Key = k, Value = v }).Select(entry =&gt; 
-    ///         {
-    ///             return new GitLab.Inputs.BranchProtectionAllowedToPushArgs
-    ///             {
-    ///                 UserId = entry.Value,
-    ///             };
-    ///         }).ToList(),
-    ///         Project = "12345",
-    ///         Branch = "main",
-    ///         PushAccessLevel = "maintainer",
-    ///         MergeAccessLevel = "maintainer",
-    ///         UnprotectAccessLevel = "maintainer",
-    ///     });
-    /// 
-    ///     // Example with admin push access level
+    ///     // EE example with admin push access level
     ///     var adminPush = new GitLab.BranchProtection("admin_push", new()
     ///     {
     ///         Project = "12345",
     ///         Branch = "admin-protected",
-    ///         PushAccessLevel = "admin",
-    ///         MergeAccessLevel = "maintainer",
-    ///         UnprotectAccessLevel = "maintainer",
+    ///         AllowedToPushes = new[]
+    ///         {
+    ///             new GitLab.Inputs.BranchProtectionAllowedToPushArgs
+    ///             {
+    ///                 AccessLevel = "admin",
+    ///             },
+    ///         },
+    ///         AllowedToMerges = new[]
+    ///         {
+    ///             new GitLab.Inputs.BranchProtectionAllowedToMergeArgs
+    ///             {
+    ///                 AccessLevel = "maintainer",
+    ///             },
+    ///         },
+    ///         AllowedToUnprotects = new[]
+    ///         {
+    ///             new GitLab.Inputs.BranchProtectionAllowedToUnprotectArgs
+    ///             {
+    ///                 AccessLevel = "maintainer",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -134,19 +152,19 @@ namespace Pulumi.GitLab
         public Output<bool> AllowForcePush { get; private set; } = null!;
 
         /// <summary>
-        /// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+        /// Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
         /// </summary>
         [Output("allowedToMerges")]
         public Output<ImmutableArray<Outputs.BranchProtectionAllowedToMerge>> AllowedToMerges { get; private set; } = null!;
 
         /// <summary>
-        /// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+        /// Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
         /// </summary>
         [Output("allowedToPushes")]
         public Output<ImmutableArray<Outputs.BranchProtectionAllowedToPush>> AllowedToPushes { get; private set; } = null!;
 
         /// <summary>
-        /// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+        /// Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
         /// </summary>
         [Output("allowedToUnprotects")]
         public Output<ImmutableArray<Outputs.BranchProtectionAllowedToUnprotect>> AllowedToUnprotects { get; private set; } = null!;
@@ -170,7 +188,7 @@ namespace Pulumi.GitLab
         public Output<bool> CodeOwnerApprovalRequired { get; private set; } = null!;
 
         /// <summary>
-        /// Access levels allowed to merge. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
+        /// Access levels allowed to merge. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`. Only available for CE instances.
         /// </summary>
         [Output("mergeAccessLevel")]
         public Output<string> MergeAccessLevel { get; private set; } = null!;
@@ -182,16 +200,10 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Access levels allowed to push. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
+        /// Access levels allowed to push. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`. Only available for CE instances.
         /// </summary>
         [Output("pushAccessLevel")]
         public Output<string> PushAccessLevel { get; private set; } = null!;
-
-        /// <summary>
-        /// Access levels allowed to unprotect. Valid values are: `Developer`, `Maintainer`, `Admin`.
-        /// </summary>
-        [Output("unprotectAccessLevel")]
-        public Output<string> UnprotectAccessLevel { get; private set; } = null!;
 
 
         /// <summary>
@@ -249,7 +261,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.BranchProtectionAllowedToMergeArgs>? _allowedToMerges;
 
         /// <summary>
-        /// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+        /// Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
         /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToMergeArgs> AllowedToMerges
         {
@@ -261,7 +273,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.BranchProtectionAllowedToPushArgs>? _allowedToPushes;
 
         /// <summary>
-        /// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+        /// Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
         /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToPushArgs> AllowedToPushes
         {
@@ -273,7 +285,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.BranchProtectionAllowedToUnprotectArgs>? _allowedToUnprotects;
 
         /// <summary>
-        /// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+        /// Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
         /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToUnprotectArgs> AllowedToUnprotects
         {
@@ -294,7 +306,7 @@ namespace Pulumi.GitLab
         public Input<bool>? CodeOwnerApprovalRequired { get; set; }
 
         /// <summary>
-        /// Access levels allowed to merge. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
+        /// Access levels allowed to merge. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`. Only available for CE instances.
         /// </summary>
         [Input("mergeAccessLevel")]
         public Input<string>? MergeAccessLevel { get; set; }
@@ -306,16 +318,10 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Access levels allowed to push. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
+        /// Access levels allowed to push. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`. Only available for CE instances.
         /// </summary>
         [Input("pushAccessLevel")]
         public Input<string>? PushAccessLevel { get; set; }
-
-        /// <summary>
-        /// Access levels allowed to unprotect. Valid values are: `Developer`, `Maintainer`, `Admin`.
-        /// </summary>
-        [Input("unprotectAccessLevel")]
-        public Input<string>? UnprotectAccessLevel { get; set; }
 
         public BranchProtectionArgs()
         {
@@ -335,7 +341,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.BranchProtectionAllowedToMergeGetArgs>? _allowedToMerges;
 
         /// <summary>
-        /// Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+        /// Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
         /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToMergeGetArgs> AllowedToMerges
         {
@@ -347,7 +353,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.BranchProtectionAllowedToPushGetArgs>? _allowedToPushes;
 
         /// <summary>
-        /// Array of access levels and user(s)/group(s) allowed to push to protected branch.
+        /// Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
         /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToPushGetArgs> AllowedToPushes
         {
@@ -359,7 +365,7 @@ namespace Pulumi.GitLab
         private InputList<Inputs.BranchProtectionAllowedToUnprotectGetArgs>? _allowedToUnprotects;
 
         /// <summary>
-        /// Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+        /// Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
         /// </summary>
         public InputList<Inputs.BranchProtectionAllowedToUnprotectGetArgs> AllowedToUnprotects
         {
@@ -386,7 +392,7 @@ namespace Pulumi.GitLab
         public Input<bool>? CodeOwnerApprovalRequired { get; set; }
 
         /// <summary>
-        /// Access levels allowed to merge. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
+        /// Access levels allowed to merge. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`. Only available for CE instances.
         /// </summary>
         [Input("mergeAccessLevel")]
         public Input<string>? MergeAccessLevel { get; set; }
@@ -398,16 +404,10 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Access levels allowed to push. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`.
+        /// Access levels allowed to push. Valid values are: `no one`, `Developer`, `Maintainer`, `Admin`. Only available for CE instances.
         /// </summary>
         [Input("pushAccessLevel")]
         public Input<string>? PushAccessLevel { get; set; }
-
-        /// <summary>
-        /// Access levels allowed to unprotect. Valid values are: `Developer`, `Maintainer`, `Admin`.
-        /// </summary>
-        [Input("unprotectAccessLevel")]
-        public Input<string>? UnprotectAccessLevel { get; set; }
 
         public BranchProtectionState()
         {

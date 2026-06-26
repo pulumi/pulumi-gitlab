@@ -10,7 +10,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectProtectedBranchesResult {
@@ -28,7 +27,7 @@ public final class GetProjectProtectedBranchesResult {
      * @return A list of protected branches, as defined below.
      * 
      */
-    private @Nullable List<GetProjectProtectedBranchesProtectedBranch> protectedBranches;
+    private List<GetProjectProtectedBranchesProtectedBranch> protectedBranches;
 
     private GetProjectProtectedBranchesResult() {}
     /**
@@ -50,7 +49,7 @@ public final class GetProjectProtectedBranchesResult {
      * 
      */
     public List<GetProjectProtectedBranchesProtectedBranch> protectedBranches() {
-        return this.protectedBranches == null ? List.of() : this.protectedBranches;
+        return this.protectedBranches;
     }
 
     public static Builder builder() {
@@ -64,7 +63,7 @@ public final class GetProjectProtectedBranchesResult {
     public static final class Builder {
         private Integer id;
         private String projectId;
-        private @Nullable List<GetProjectProtectedBranchesProtectedBranch> protectedBranches;
+        private List<GetProjectProtectedBranchesProtectedBranch> protectedBranches;
         public Builder() {}
         public Builder(GetProjectProtectedBranchesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -90,8 +89,10 @@ public final class GetProjectProtectedBranchesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder protectedBranches(@Nullable List<GetProjectProtectedBranchesProtectedBranch> protectedBranches) {
-
+        public Builder protectedBranches(List<GetProjectProtectedBranchesProtectedBranch> protectedBranches) {
+            if (protectedBranches == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchesResult", "protectedBranches");
+            }
             this.protectedBranches = protectedBranches;
             return this;
         }

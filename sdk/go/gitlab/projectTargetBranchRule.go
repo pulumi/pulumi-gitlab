@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -59,7 +59,7 @@ import (
 //
 // Importing using the CLI is supported with the following syntax:
 //
-// A GitLab Project targer branch rule can be imported using a key composed of `<project>:<target-branch-rule-id>`, for example:
+// A GitLab Project target branch rule can be imported using a key composed of `<project>:<target-branch-rule-id>`, for example:
 //
 // ```sh
 // $ pulumi import gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule example "12345:1"

@@ -92,6 +92,21 @@ public final class ProjectLabelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The priority of the label. Must be greater or equal than zero or null to remove the priority.
+     * 
+     */
+    @Import(name="priority")
+    private @Nullable Output<Integer> priority;
+
+    /**
+     * @return The priority of the label. Must be greater or equal than zero or null to remove the priority.
+     * 
+     */
+    public Optional<Output<Integer>> priority() {
+        return Optional.ofNullable(this.priority);
+    }
+
+    /**
      * The name or id of the project to add the label to.
      * 
      */
@@ -114,6 +129,7 @@ public final class ProjectLabelState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.labelId = $.labelId;
         this.name = $.name;
+        this.priority = $.priority;
         this.project = $.project;
     }
 
@@ -238,6 +254,27 @@ public final class ProjectLabelState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param priority The priority of the label. Must be greater or equal than zero or null to remove the priority.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(@Nullable Output<Integer> priority) {
+            $.priority = priority;
+            return this;
+        }
+
+        /**
+         * @param priority The priority of the label. Must be greater or equal than zero or null to remove the priority.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(Integer priority) {
+            return priority(Output.of(priority));
         }
 
         /**

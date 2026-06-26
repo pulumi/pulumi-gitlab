@@ -73,11 +73,13 @@ import * as utilities from "./utilities";
  *
  * Importing using the CLI is supported with the following syntax:
  *
- * GitLab project job token scopes can be imported using an id made up of just the `projectId`
+ * GitLab project job token scopes can be imported using an id made up of `{project}`, for example:
  *
  * ```sh
  * $ pulumi import gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes bar 123
  * ```
+ *
+ * Where `project` may be the project ID or path with namespace depending on what you have in your config.
  */
 export class ProjectJobTokenScopes extends pulumi.CustomResource {
     /**
@@ -116,12 +118,6 @@ export class ProjectJobTokenScopes extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The ID of the project. Use `project` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `project` instead. To be removed in 19.0.
-     */
-    declare public readonly projectId: pulumi.Output<number>;
-    /**
      * A set of group IDs that are in the CI/CD job token inbound allowlist.
      */
     declare public readonly targetGroupIds: pulumi.Output<number[]>;
@@ -137,7 +133,7 @@ export class ProjectJobTokenScopes extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ProjectJobTokenScopesArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: ProjectJobTokenScopesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectJobTokenScopesArgs | ProjectJobTokenScopesState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -145,14 +141,15 @@ export class ProjectJobTokenScopes extends pulumi.CustomResource {
             const state = argsOrState as ProjectJobTokenScopesState | undefined;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["project"] = state?.project;
-            resourceInputs["projectId"] = state?.projectId;
             resourceInputs["targetGroupIds"] = state?.targetGroupIds;
             resourceInputs["targetProjectIds"] = state?.targetProjectIds;
         } else {
             const args = argsOrState as ProjectJobTokenScopesArgs | undefined;
+            if (args?.project === undefined && !opts.urn) {
+                throw new Error("Missing required property 'project'");
+            }
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["project"] = args?.project;
-            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["targetGroupIds"] = args?.targetGroupIds;
             resourceInputs["targetProjectIds"] = args?.targetProjectIds;
         }
@@ -174,12 +171,6 @@ export interface ProjectJobTokenScopesState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the project. Use `project` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `project` instead. To be removed in 19.0.
-     */
-    projectId?: pulumi.Input<number | undefined>;
-    /**
      * A set of group IDs that are in the CI/CD job token inbound allowlist.
      */
     targetGroupIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
@@ -200,13 +191,7 @@ export interface ProjectJobTokenScopesArgs {
     /**
      * The ID or full path of the project.
      */
-    project?: pulumi.Input<string | undefined>;
-    /**
-     * The ID of the project. Use `project` instead. To be removed in 19.0.
-     *
-     * @deprecated Use `project` instead. To be removed in 19.0.
-     */
-    projectId?: pulumi.Input<number | undefined>;
+    project: pulumi.Input<string>;
     /**
      * A set of group IDs that are in the CI/CD job token inbound allowlist.
      */

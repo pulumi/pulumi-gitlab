@@ -27,19 +27,49 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, default_branch=None, default_branch_protection=None, description=None, extra_shared_runners_minutes_limit=None, full_name=None, full_path=None, group_id=None, id=None, lfs_enabled=None, membership_lock=None, name=None, parent_id=None, path=None, prevent_forking_outside_group=None, prevent_sharing_groups_outside_hierarchy=None, request_access_enabled=None, runners_token=None, shared_runners_minutes_limit=None, shared_runners_setting=None, shared_with_groups=None, visibility_level=None, web_url=None, wiki_access_level=None):
+    def __init__(__self__, allow_merge_on_skipped_pipeline=None, allowed_email_domains_list=None, auto_devops_enabled=None, avatar_url=None, created_at=None, custom_attributes=None, default_branch=None, default_branch_protection=None, default_branch_protection_defaults=None, description=None, emails_disabled=None, emails_enabled=None, extra_shared_runners_minutes_limit=None, file_template_project_id=None, full_name=None, full_path=None, group_id=None, id=None, ip_restriction_ranges=None, ldap_access=None, ldap_cn=None, lfs_enabled=None, marked_for_deletion_on=None, max_artifacts_size=None, membership_lock=None, mentions_disabled=None, name=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, parent_id=None, path=None, prevent_forking_outside_group=None, prevent_sharing_groups_outside_hierarchy=None, project_creation_level=None, push_rules=None, repository_storage=None, request_access_enabled=None, require_two_factor_authentication=None, runners_token=None, share_with_group_lock=None, shared_runners_minutes_limit=None, shared_runners_setting=None, shared_with_groups=None, statistics=None, subgroup_creation_level=None, two_factor_grace_period=None, visibility_level=None, web_url=None, wiki_access_level=None):
+        if allow_merge_on_skipped_pipeline and not isinstance(allow_merge_on_skipped_pipeline, bool):
+            raise TypeError("Expected argument 'allow_merge_on_skipped_pipeline' to be a bool")
+        pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
+        if allowed_email_domains_list and not isinstance(allowed_email_domains_list, str):
+            raise TypeError("Expected argument 'allowed_email_domains_list' to be a str")
+        pulumi.set(__self__, "allowed_email_domains_list", allowed_email_domains_list)
+        if auto_devops_enabled and not isinstance(auto_devops_enabled, bool):
+            raise TypeError("Expected argument 'auto_devops_enabled' to be a bool")
+        pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+        if avatar_url and not isinstance(avatar_url, str):
+            raise TypeError("Expected argument 'avatar_url' to be a str")
+        pulumi.set(__self__, "avatar_url", avatar_url)
+        if created_at and not isinstance(created_at, str):
+            raise TypeError("Expected argument 'created_at' to be a str")
+        pulumi.set(__self__, "created_at", created_at)
+        if custom_attributes and not isinstance(custom_attributes, list):
+            raise TypeError("Expected argument 'custom_attributes' to be a list")
+        pulumi.set(__self__, "custom_attributes", custom_attributes)
         if default_branch and not isinstance(default_branch, str):
             raise TypeError("Expected argument 'default_branch' to be a str")
         pulumi.set(__self__, "default_branch", default_branch)
         if default_branch_protection and not isinstance(default_branch_protection, int):
             raise TypeError("Expected argument 'default_branch_protection' to be a int")
         pulumi.set(__self__, "default_branch_protection", default_branch_protection)
+        if default_branch_protection_defaults and not isinstance(default_branch_protection_defaults, list):
+            raise TypeError("Expected argument 'default_branch_protection_defaults' to be a list")
+        pulumi.set(__self__, "default_branch_protection_defaults", default_branch_protection_defaults)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if emails_disabled and not isinstance(emails_disabled, bool):
+            raise TypeError("Expected argument 'emails_disabled' to be a bool")
+        pulumi.set(__self__, "emails_disabled", emails_disabled)
+        if emails_enabled and not isinstance(emails_enabled, bool):
+            raise TypeError("Expected argument 'emails_enabled' to be a bool")
+        pulumi.set(__self__, "emails_enabled", emails_enabled)
         if extra_shared_runners_minutes_limit and not isinstance(extra_shared_runners_minutes_limit, int):
             raise TypeError("Expected argument 'extra_shared_runners_minutes_limit' to be a int")
         pulumi.set(__self__, "extra_shared_runners_minutes_limit", extra_shared_runners_minutes_limit)
+        if file_template_project_id and not isinstance(file_template_project_id, int):
+            raise TypeError("Expected argument 'file_template_project_id' to be a int")
+        pulumi.set(__self__, "file_template_project_id", file_template_project_id)
         if full_name and not isinstance(full_name, str):
             raise TypeError("Expected argument 'full_name' to be a str")
         pulumi.set(__self__, "full_name", full_name)
@@ -52,15 +82,39 @@ class GetGroupResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ip_restriction_ranges and not isinstance(ip_restriction_ranges, str):
+            raise TypeError("Expected argument 'ip_restriction_ranges' to be a str")
+        pulumi.set(__self__, "ip_restriction_ranges", ip_restriction_ranges)
+        if ldap_access and not isinstance(ldap_access, int):
+            raise TypeError("Expected argument 'ldap_access' to be a int")
+        pulumi.set(__self__, "ldap_access", ldap_access)
+        if ldap_cn and not isinstance(ldap_cn, str):
+            raise TypeError("Expected argument 'ldap_cn' to be a str")
+        pulumi.set(__self__, "ldap_cn", ldap_cn)
         if lfs_enabled and not isinstance(lfs_enabled, bool):
             raise TypeError("Expected argument 'lfs_enabled' to be a bool")
         pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if marked_for_deletion_on and not isinstance(marked_for_deletion_on, str):
+            raise TypeError("Expected argument 'marked_for_deletion_on' to be a str")
+        pulumi.set(__self__, "marked_for_deletion_on", marked_for_deletion_on)
+        if max_artifacts_size and not isinstance(max_artifacts_size, int):
+            raise TypeError("Expected argument 'max_artifacts_size' to be a int")
+        pulumi.set(__self__, "max_artifacts_size", max_artifacts_size)
         if membership_lock and not isinstance(membership_lock, bool):
             raise TypeError("Expected argument 'membership_lock' to be a bool")
         pulumi.set(__self__, "membership_lock", membership_lock)
+        if mentions_disabled and not isinstance(mentions_disabled, bool):
+            raise TypeError("Expected argument 'mentions_disabled' to be a bool")
+        pulumi.set(__self__, "mentions_disabled", mentions_disabled)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if only_allow_merge_if_all_discussions_are_resolved and not isinstance(only_allow_merge_if_all_discussions_are_resolved, bool):
+            raise TypeError("Expected argument 'only_allow_merge_if_all_discussions_are_resolved' to be a bool")
+        pulumi.set(__self__, "only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
+        if only_allow_merge_if_pipeline_succeeds and not isinstance(only_allow_merge_if_pipeline_succeeds, bool):
+            raise TypeError("Expected argument 'only_allow_merge_if_pipeline_succeeds' to be a bool")
+        pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
         if parent_id and not isinstance(parent_id, int):
             raise TypeError("Expected argument 'parent_id' to be a int")
         pulumi.set(__self__, "parent_id", parent_id)
@@ -73,12 +127,27 @@ class GetGroupResult:
         if prevent_sharing_groups_outside_hierarchy and not isinstance(prevent_sharing_groups_outside_hierarchy, bool):
             raise TypeError("Expected argument 'prevent_sharing_groups_outside_hierarchy' to be a bool")
         pulumi.set(__self__, "prevent_sharing_groups_outside_hierarchy", prevent_sharing_groups_outside_hierarchy)
+        if project_creation_level and not isinstance(project_creation_level, str):
+            raise TypeError("Expected argument 'project_creation_level' to be a str")
+        pulumi.set(__self__, "project_creation_level", project_creation_level)
+        if push_rules and not isinstance(push_rules, list):
+            raise TypeError("Expected argument 'push_rules' to be a list")
+        pulumi.set(__self__, "push_rules", push_rules)
+        if repository_storage and not isinstance(repository_storage, str):
+            raise TypeError("Expected argument 'repository_storage' to be a str")
+        pulumi.set(__self__, "repository_storage", repository_storage)
         if request_access_enabled and not isinstance(request_access_enabled, bool):
             raise TypeError("Expected argument 'request_access_enabled' to be a bool")
         pulumi.set(__self__, "request_access_enabled", request_access_enabled)
+        if require_two_factor_authentication and not isinstance(require_two_factor_authentication, bool):
+            raise TypeError("Expected argument 'require_two_factor_authentication' to be a bool")
+        pulumi.set(__self__, "require_two_factor_authentication", require_two_factor_authentication)
         if runners_token and not isinstance(runners_token, str):
             raise TypeError("Expected argument 'runners_token' to be a str")
         pulumi.set(__self__, "runners_token", runners_token)
+        if share_with_group_lock and not isinstance(share_with_group_lock, bool):
+            raise TypeError("Expected argument 'share_with_group_lock' to be a bool")
+        pulumi.set(__self__, "share_with_group_lock", share_with_group_lock)
         if shared_runners_minutes_limit and not isinstance(shared_runners_minutes_limit, int):
             raise TypeError("Expected argument 'shared_runners_minutes_limit' to be a int")
         pulumi.set(__self__, "shared_runners_minutes_limit", shared_runners_minutes_limit)
@@ -88,6 +157,15 @@ class GetGroupResult:
         if shared_with_groups and not isinstance(shared_with_groups, list):
             raise TypeError("Expected argument 'shared_with_groups' to be a list")
         pulumi.set(__self__, "shared_with_groups", shared_with_groups)
+        if statistics and not isinstance(statistics, dict):
+            raise TypeError("Expected argument 'statistics' to be a dict")
+        pulumi.set(__self__, "statistics", statistics)
+        if subgroup_creation_level and not isinstance(subgroup_creation_level, str):
+            raise TypeError("Expected argument 'subgroup_creation_level' to be a str")
+        pulumi.set(__self__, "subgroup_creation_level", subgroup_creation_level)
+        if two_factor_grace_period and not isinstance(two_factor_grace_period, int):
+            raise TypeError("Expected argument 'two_factor_grace_period' to be a int")
+        pulumi.set(__self__, "two_factor_grace_period", two_factor_grace_period)
         if visibility_level and not isinstance(visibility_level, str):
             raise TypeError("Expected argument 'visibility_level' to be a str")
         pulumi.set(__self__, "visibility_level", visibility_level)
@@ -99,6 +177,54 @@ class GetGroupResult:
         pulumi.set(__self__, "wiki_access_level", wiki_access_level)
 
     @_builtins.property
+    @pulumi.getter(name="allowMergeOnSkippedPipeline")
+    def allow_merge_on_skipped_pipeline(self) -> _builtins.bool:
+        """
+        Default to allowing merge on a skipped pipeline for new projects in the group.
+        """
+        return pulumi.get(self, "allow_merge_on_skipped_pipeline")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedEmailDomainsList")
+    def allowed_email_domains_list(self) -> _builtins.str:
+        """
+        Comma-separated list of email address domains allowed to be added as group members.
+        """
+        return pulumi.get(self, "allowed_email_domains_list")
+
+    @_builtins.property
+    @pulumi.getter(name="autoDevopsEnabled")
+    def auto_devops_enabled(self) -> _builtins.bool:
+        """
+        Default to Auto DevOps pipeline for all projects within this group.
+        """
+        return pulumi.get(self, "auto_devops_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="avatarUrl")
+    def avatar_url(self) -> _builtins.str:
+        """
+        URL of the group avatar.
+        """
+        return pulumi.get(self, "avatar_url")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Timestamp at which the group was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Sequence[Mapping[str, _builtins.str]]:
+        """
+        Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @_builtins.property
     @pulumi.getter(name="defaultBranch")
     def default_branch(self) -> _builtins.str:
         """
@@ -108,11 +234,20 @@ class GetGroupResult:
 
     @_builtins.property
     @pulumi.getter(name="defaultBranchProtection")
+    @_utilities.deprecated("""Use `default_branch_protection_defaults` instead, to be removed in 19.0.""")
     def default_branch_protection(self) -> _builtins.int:
         """
-        Whether developers and maintainers can push to the applicable default branch.
+        Whether developers and maintainers can push to the applicable default branch. Use `default_branch_protection_defaults` instead, to be removed in 19.0.
         """
         return pulumi.get(self, "default_branch_protection")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultBranchProtectionDefaults")
+    def default_branch_protection_defaults(self) -> Sequence['outputs.GetGroupDefaultBranchProtectionDefaultResult']:
+        """
+        Default protection settings applied to the default branch of new projects in this group.
+        """
+        return pulumi.get(self, "default_branch_protection_defaults")
 
     @_builtins.property
     @pulumi.getter
@@ -123,12 +258,37 @@ class GetGroupResult:
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="emailsDisabled")
+    @_utilities.deprecated("""Use `emails_enabled` instead, to be removed in 19.0.""")
+    def emails_disabled(self) -> _builtins.bool:
+        """
+        Whether email notifications are disabled for this group. Use `emails_enabled` instead, to be removed in 19.0.
+        """
+        return pulumi.get(self, "emails_disabled")
+
+    @_builtins.property
+    @pulumi.getter(name="emailsEnabled")
+    def emails_enabled(self) -> _builtins.bool:
+        """
+        Whether email notifications are enabled for this group.
+        """
+        return pulumi.get(self, "emails_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="extraSharedRunnersMinutesLimit")
     def extra_shared_runners_minutes_limit(self) -> _builtins.int:
         """
         Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         """
         return pulumi.get(self, "extra_shared_runners_minutes_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="fileTemplateProjectId")
+    def file_template_project_id(self) -> _builtins.int:
+        """
+        The ID of the project used to load custom file templates.
+        """
+        return pulumi.get(self, "file_template_project_id")
 
     @_builtins.property
     @pulumi.getter(name="fullName")
@@ -163,12 +323,52 @@ class GetGroupResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="ipRestrictionRanges")
+    def ip_restriction_ranges(self) -> _builtins.str:
+        """
+        Comma-separated list of IP addresses or subnet masks that restrict access to the group.
+        """
+        return pulumi.get(self, "ip_restriction_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="ldapAccess")
+    def ldap_access(self) -> _builtins.int:
+        """
+        Default access level for members synced from LDAP.
+        """
+        return pulumi.get(self, "ldap_access")
+
+    @_builtins.property
+    @pulumi.getter(name="ldapCn")
+    def ldap_cn(self) -> _builtins.str:
+        """
+        LDAP common name used to sync members from an LDAP group.
+        """
+        return pulumi.get(self, "ldap_cn")
+
+    @_builtins.property
     @pulumi.getter(name="lfsEnabled")
     def lfs_enabled(self) -> _builtins.bool:
         """
         Boolean, is LFS enabled for projects in this group.
         """
         return pulumi.get(self, "lfs_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="markedForDeletionOn")
+    def marked_for_deletion_on(self) -> _builtins.str:
+        """
+        Date on which the group was marked for deletion.
+        """
+        return pulumi.get(self, "marked_for_deletion_on")
+
+    @_builtins.property
+    @pulumi.getter(name="maxArtifactsSize")
+    def max_artifacts_size(self) -> _builtins.int:
+        """
+        Maximum artifacts size for the group, in MB.
+        """
+        return pulumi.get(self, "max_artifacts_size")
 
     @_builtins.property
     @pulumi.getter(name="membershipLock")
@@ -179,12 +379,36 @@ class GetGroupResult:
         return pulumi.get(self, "membership_lock")
 
     @_builtins.property
+    @pulumi.getter(name="mentionsDisabled")
+    def mentions_disabled(self) -> _builtins.bool:
+        """
+        Whether mentions are disabled for this group.
+        """
+        return pulumi.get(self, "mentions_disabled")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
         The name of this group.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="onlyAllowMergeIfAllDiscussionsAreResolved")
+    def only_allow_merge_if_all_discussions_are_resolved(self) -> _builtins.bool:
+        """
+        Default to only allowing merge if all discussions are resolved for new projects in the group.
+        """
+        return pulumi.get(self, "only_allow_merge_if_all_discussions_are_resolved")
+
+    @_builtins.property
+    @pulumi.getter(name="onlyAllowMergeIfPipelineSucceeds")
+    def only_allow_merge_if_pipeline_succeeds(self) -> _builtins.bool:
+        """
+        Default to only allowing merge if the pipeline succeeds for new projects in the group.
+        """
+        return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
 
     @_builtins.property
     @pulumi.getter(name="parentId")
@@ -214,9 +438,33 @@ class GetGroupResult:
     @pulumi.getter(name="preventSharingGroupsOutsideHierarchy")
     def prevent_sharing_groups_outside_hierarchy(self) -> _builtins.bool:
         """
-        When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
+        When enabled, users cannot invite other groups outside of the top-level group's hierarchy. This option is only available for top-level groups.
         """
         return pulumi.get(self, "prevent_sharing_groups_outside_hierarchy")
+
+    @_builtins.property
+    @pulumi.getter(name="projectCreationLevel")
+    def project_creation_level(self) -> _builtins.str:
+        """
+        Determine which roles can create projects in the group. Possible values are `noone`, `maintainer`, `developer`, `owner`, `administrator`.
+        """
+        return pulumi.get(self, "project_creation_level")
+
+    @_builtins.property
+    @pulumi.getter(name="pushRules")
+    def push_rules(self) -> Sequence['outputs.GetGroupPushRuleResult']:
+        """
+        Push rules for the group. Push rules are only available on Premium and Ultimate plans, and only if the authenticated user has permission to read them.
+        """
+        return pulumi.get(self, "push_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="repositoryStorage")
+    def repository_storage(self) -> _builtins.str:
+        """
+        Repository storage shard the group's projects use. (admin only)
+        """
+        return pulumi.get(self, "repository_storage")
 
     @_builtins.property
     @pulumi.getter(name="requestAccessEnabled")
@@ -227,12 +475,28 @@ class GetGroupResult:
         return pulumi.get(self, "request_access_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="requireTwoFactorAuthentication")
+    def require_two_factor_authentication(self) -> _builtins.bool:
+        """
+        Require all users in this group to set up two-factor authentication.
+        """
+        return pulumi.get(self, "require_two_factor_authentication")
+
+    @_builtins.property
     @pulumi.getter(name="runnersToken")
     def runners_token(self) -> _builtins.str:
         """
         The group level registration token to use during runner setup.
         """
         return pulumi.get(self, "runners_token")
+
+    @_builtins.property
+    @pulumi.getter(name="shareWithGroupLock")
+    def share_with_group_lock(self) -> _builtins.bool:
+        """
+        Prevent sharing a project with another group within this group.
+        """
+        return pulumi.get(self, "share_with_group_lock")
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersMinutesLimit")
@@ -257,6 +521,30 @@ class GetGroupResult:
         Describes groups which have access shared to this group.
         """
         return pulumi.get(self, "shared_with_groups")
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> Mapping[str, _builtins.int]:
+        """
+        Statistics for the group. Keys: `commit_count`, `storage_size`, `repository_size`, `wiki_size`, `lfs_objects_size`, `job_artifacts_size`, `pipeline_artifacts_size`, `packages_size`, `snippets_size`, `uploads_size`, `container_registry_size`.
+        """
+        return pulumi.get(self, "statistics")
+
+    @_builtins.property
+    @pulumi.getter(name="subgroupCreationLevel")
+    def subgroup_creation_level(self) -> _builtins.str:
+        """
+        Determine which roles can create subgroups in the group. Possible values are `owner`, `maintainer`.
+        """
+        return pulumi.get(self, "subgroup_creation_level")
+
+    @_builtins.property
+    @pulumi.getter(name="twoFactorGracePeriod")
+    def two_factor_grace_period(self) -> _builtins.int:
+        """
+        Grace period, in hours, before enforcing two-factor authentication on group members.
+        """
+        return pulumi.get(self, "two_factor_grace_period")
 
     @_builtins.property
     @pulumi.getter(name="visibilityLevel")
@@ -289,26 +577,52 @@ class AwaitableGetGroupResult(GetGroupResult):
         if False:
             yield self
         return GetGroupResult(
+            allow_merge_on_skipped_pipeline=self.allow_merge_on_skipped_pipeline,
+            allowed_email_domains_list=self.allowed_email_domains_list,
+            auto_devops_enabled=self.auto_devops_enabled,
+            avatar_url=self.avatar_url,
+            created_at=self.created_at,
+            custom_attributes=self.custom_attributes,
             default_branch=self.default_branch,
             default_branch_protection=self.default_branch_protection,
+            default_branch_protection_defaults=self.default_branch_protection_defaults,
             description=self.description,
+            emails_disabled=self.emails_disabled,
+            emails_enabled=self.emails_enabled,
             extra_shared_runners_minutes_limit=self.extra_shared_runners_minutes_limit,
+            file_template_project_id=self.file_template_project_id,
             full_name=self.full_name,
             full_path=self.full_path,
             group_id=self.group_id,
             id=self.id,
+            ip_restriction_ranges=self.ip_restriction_ranges,
+            ldap_access=self.ldap_access,
+            ldap_cn=self.ldap_cn,
             lfs_enabled=self.lfs_enabled,
+            marked_for_deletion_on=self.marked_for_deletion_on,
+            max_artifacts_size=self.max_artifacts_size,
             membership_lock=self.membership_lock,
+            mentions_disabled=self.mentions_disabled,
             name=self.name,
+            only_allow_merge_if_all_discussions_are_resolved=self.only_allow_merge_if_all_discussions_are_resolved,
+            only_allow_merge_if_pipeline_succeeds=self.only_allow_merge_if_pipeline_succeeds,
             parent_id=self.parent_id,
             path=self.path,
             prevent_forking_outside_group=self.prevent_forking_outside_group,
             prevent_sharing_groups_outside_hierarchy=self.prevent_sharing_groups_outside_hierarchy,
+            project_creation_level=self.project_creation_level,
+            push_rules=self.push_rules,
+            repository_storage=self.repository_storage,
             request_access_enabled=self.request_access_enabled,
+            require_two_factor_authentication=self.require_two_factor_authentication,
             runners_token=self.runners_token,
+            share_with_group_lock=self.share_with_group_lock,
             shared_runners_minutes_limit=self.shared_runners_minutes_limit,
             shared_runners_setting=self.shared_runners_setting,
             shared_with_groups=self.shared_with_groups,
+            statistics=self.statistics,
+            subgroup_creation_level=self.subgroup_creation_level,
+            two_factor_grace_period=self.two_factor_grace_period,
             visibility_level=self.visibility_level,
             web_url=self.web_url,
             wiki_access_level=self.wiki_access_level)
@@ -333,26 +647,52 @@ def get_group(full_path: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
+        allow_merge_on_skipped_pipeline=pulumi.get(__ret__, 'allow_merge_on_skipped_pipeline'),
+        allowed_email_domains_list=pulumi.get(__ret__, 'allowed_email_domains_list'),
+        auto_devops_enabled=pulumi.get(__ret__, 'auto_devops_enabled'),
+        avatar_url=pulumi.get(__ret__, 'avatar_url'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        custom_attributes=pulumi.get(__ret__, 'custom_attributes'),
         default_branch=pulumi.get(__ret__, 'default_branch'),
         default_branch_protection=pulumi.get(__ret__, 'default_branch_protection'),
+        default_branch_protection_defaults=pulumi.get(__ret__, 'default_branch_protection_defaults'),
         description=pulumi.get(__ret__, 'description'),
+        emails_disabled=pulumi.get(__ret__, 'emails_disabled'),
+        emails_enabled=pulumi.get(__ret__, 'emails_enabled'),
         extra_shared_runners_minutes_limit=pulumi.get(__ret__, 'extra_shared_runners_minutes_limit'),
+        file_template_project_id=pulumi.get(__ret__, 'file_template_project_id'),
         full_name=pulumi.get(__ret__, 'full_name'),
         full_path=pulumi.get(__ret__, 'full_path'),
         group_id=pulumi.get(__ret__, 'group_id'),
         id=pulumi.get(__ret__, 'id'),
+        ip_restriction_ranges=pulumi.get(__ret__, 'ip_restriction_ranges'),
+        ldap_access=pulumi.get(__ret__, 'ldap_access'),
+        ldap_cn=pulumi.get(__ret__, 'ldap_cn'),
         lfs_enabled=pulumi.get(__ret__, 'lfs_enabled'),
+        marked_for_deletion_on=pulumi.get(__ret__, 'marked_for_deletion_on'),
+        max_artifacts_size=pulumi.get(__ret__, 'max_artifacts_size'),
         membership_lock=pulumi.get(__ret__, 'membership_lock'),
+        mentions_disabled=pulumi.get(__ret__, 'mentions_disabled'),
         name=pulumi.get(__ret__, 'name'),
+        only_allow_merge_if_all_discussions_are_resolved=pulumi.get(__ret__, 'only_allow_merge_if_all_discussions_are_resolved'),
+        only_allow_merge_if_pipeline_succeeds=pulumi.get(__ret__, 'only_allow_merge_if_pipeline_succeeds'),
         parent_id=pulumi.get(__ret__, 'parent_id'),
         path=pulumi.get(__ret__, 'path'),
         prevent_forking_outside_group=pulumi.get(__ret__, 'prevent_forking_outside_group'),
         prevent_sharing_groups_outside_hierarchy=pulumi.get(__ret__, 'prevent_sharing_groups_outside_hierarchy'),
+        project_creation_level=pulumi.get(__ret__, 'project_creation_level'),
+        push_rules=pulumi.get(__ret__, 'push_rules'),
+        repository_storage=pulumi.get(__ret__, 'repository_storage'),
         request_access_enabled=pulumi.get(__ret__, 'request_access_enabled'),
+        require_two_factor_authentication=pulumi.get(__ret__, 'require_two_factor_authentication'),
         runners_token=pulumi.get(__ret__, 'runners_token'),
+        share_with_group_lock=pulumi.get(__ret__, 'share_with_group_lock'),
         shared_runners_minutes_limit=pulumi.get(__ret__, 'shared_runners_minutes_limit'),
         shared_runners_setting=pulumi.get(__ret__, 'shared_runners_setting'),
         shared_with_groups=pulumi.get(__ret__, 'shared_with_groups'),
+        statistics=pulumi.get(__ret__, 'statistics'),
+        subgroup_creation_level=pulumi.get(__ret__, 'subgroup_creation_level'),
+        two_factor_grace_period=pulumi.get(__ret__, 'two_factor_grace_period'),
         visibility_level=pulumi.get(__ret__, 'visibility_level'),
         web_url=pulumi.get(__ret__, 'web_url'),
         wiki_access_level=pulumi.get(__ret__, 'wiki_access_level'))
@@ -374,26 +714,52 @@ def get_group_output(full_path: pulumi.Input[Optional[Optional[_builtins.str]]] 
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult)
     return __ret__.apply(lambda __response__: GetGroupResult(
+        allow_merge_on_skipped_pipeline=pulumi.get(__response__, 'allow_merge_on_skipped_pipeline'),
+        allowed_email_domains_list=pulumi.get(__response__, 'allowed_email_domains_list'),
+        auto_devops_enabled=pulumi.get(__response__, 'auto_devops_enabled'),
+        avatar_url=pulumi.get(__response__, 'avatar_url'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        custom_attributes=pulumi.get(__response__, 'custom_attributes'),
         default_branch=pulumi.get(__response__, 'default_branch'),
         default_branch_protection=pulumi.get(__response__, 'default_branch_protection'),
+        default_branch_protection_defaults=pulumi.get(__response__, 'default_branch_protection_defaults'),
         description=pulumi.get(__response__, 'description'),
+        emails_disabled=pulumi.get(__response__, 'emails_disabled'),
+        emails_enabled=pulumi.get(__response__, 'emails_enabled'),
         extra_shared_runners_minutes_limit=pulumi.get(__response__, 'extra_shared_runners_minutes_limit'),
+        file_template_project_id=pulumi.get(__response__, 'file_template_project_id'),
         full_name=pulumi.get(__response__, 'full_name'),
         full_path=pulumi.get(__response__, 'full_path'),
         group_id=pulumi.get(__response__, 'group_id'),
         id=pulumi.get(__response__, 'id'),
+        ip_restriction_ranges=pulumi.get(__response__, 'ip_restriction_ranges'),
+        ldap_access=pulumi.get(__response__, 'ldap_access'),
+        ldap_cn=pulumi.get(__response__, 'ldap_cn'),
         lfs_enabled=pulumi.get(__response__, 'lfs_enabled'),
+        marked_for_deletion_on=pulumi.get(__response__, 'marked_for_deletion_on'),
+        max_artifacts_size=pulumi.get(__response__, 'max_artifacts_size'),
         membership_lock=pulumi.get(__response__, 'membership_lock'),
+        mentions_disabled=pulumi.get(__response__, 'mentions_disabled'),
         name=pulumi.get(__response__, 'name'),
+        only_allow_merge_if_all_discussions_are_resolved=pulumi.get(__response__, 'only_allow_merge_if_all_discussions_are_resolved'),
+        only_allow_merge_if_pipeline_succeeds=pulumi.get(__response__, 'only_allow_merge_if_pipeline_succeeds'),
         parent_id=pulumi.get(__response__, 'parent_id'),
         path=pulumi.get(__response__, 'path'),
         prevent_forking_outside_group=pulumi.get(__response__, 'prevent_forking_outside_group'),
         prevent_sharing_groups_outside_hierarchy=pulumi.get(__response__, 'prevent_sharing_groups_outside_hierarchy'),
+        project_creation_level=pulumi.get(__response__, 'project_creation_level'),
+        push_rules=pulumi.get(__response__, 'push_rules'),
+        repository_storage=pulumi.get(__response__, 'repository_storage'),
         request_access_enabled=pulumi.get(__response__, 'request_access_enabled'),
+        require_two_factor_authentication=pulumi.get(__response__, 'require_two_factor_authentication'),
         runners_token=pulumi.get(__response__, 'runners_token'),
+        share_with_group_lock=pulumi.get(__response__, 'share_with_group_lock'),
         shared_runners_minutes_limit=pulumi.get(__response__, 'shared_runners_minutes_limit'),
         shared_runners_setting=pulumi.get(__response__, 'shared_runners_setting'),
         shared_with_groups=pulumi.get(__response__, 'shared_with_groups'),
+        statistics=pulumi.get(__response__, 'statistics'),
+        subgroup_creation_level=pulumi.get(__response__, 'subgroup_creation_level'),
+        two_factor_grace_period=pulumi.get(__response__, 'two_factor_grace_period'),
         visibility_level=pulumi.get(__response__, 'visibility_level'),
         web_url=pulumi.get(__response__, 'web_url'),
         wiki_access_level=pulumi.get(__response__, 'wiki_access_level')))

@@ -37,6 +37,7 @@ class GroupHookArgs:
                  job_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  member_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 milestone_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  note_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -44,9 +45,12 @@ class GroupHookArgs:
                  push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  push_events_branch_filter: pulumi.Input[Optional[_builtins.str]] = None,
                  releases_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_access_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 signing_token: pulumi.Input[Optional[_builtins.str]] = None,
                  subgroup_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_variables: pulumi.Input[Optional[Sequence[pulumi.Input['GroupHookUrlVariableArgs']]]] = None,
                  vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None):
         """
@@ -57,7 +61,7 @@ class GroupHookArgs:
         :param pulumi.Input[_builtins.str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]] custom_headers: Custom headers for the project webhook.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]] custom_headers: Custom headers for the group webhook.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: Description of the group webhook.
@@ -68,6 +72,7 @@ class GroupHookArgs:
         :param pulumi.Input[_builtins.bool] job_events: Invoke the hook for job events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] member_events: Invoke the hook for member events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Invoke the hook for merge requests events. Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] milestone_events: Invoke the hook for milestone events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] name: Name of the group webhook.
         :param pulumi.Input[_builtins.bool] note_events: Invoke the hook for note events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] pipeline_events: Invoke the hook for pipeline events. Defaults to `false`.
@@ -75,9 +80,12 @@ class GroupHookArgs:
         :param pulumi.Input[_builtins.bool] push_events: Invoke the hook for push events. Defaults to `true`.
         :param pulumi.Input[_builtins.str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
         :param pulumi.Input[_builtins.bool] releases_events: Invoke the hook for release events. Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] resource_access_token_events: Invoke the hook for resource access token expiry events. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
         :param pulumi.Input[_builtins.bool] subgroup_events: Invoke the hook for subgroup events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupHookUrlVariableArgs']]] url_variables: Array of sensitive portions of the webhook URL to mask.
         :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] wiki_page_events: Invoke the hook for wiki page events. Defaults to `false`.
         """
@@ -111,6 +119,8 @@ class GroupHookArgs:
             pulumi.set(__self__, "member_events", member_events)
         if merge_requests_events is not None:
             pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+        if milestone_events is not None:
+            pulumi.set(__self__, "milestone_events", milestone_events)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if note_events is not None:
@@ -125,12 +135,18 @@ class GroupHookArgs:
             pulumi.set(__self__, "push_events_branch_filter", push_events_branch_filter)
         if releases_events is not None:
             pulumi.set(__self__, "releases_events", releases_events)
+        if resource_access_token_events is not None:
+            pulumi.set(__self__, "resource_access_token_events", resource_access_token_events)
+        if signing_token is not None:
+            pulumi.set(__self__, "signing_token", signing_token)
         if subgroup_events is not None:
             pulumi.set(__self__, "subgroup_events", subgroup_events)
         if tag_push_events is not None:
             pulumi.set(__self__, "tag_push_events", tag_push_events)
         if token is not None:
             pulumi.set(__self__, "token", token)
+        if url_variables is not None:
+            pulumi.set(__self__, "url_variables", url_variables)
         if vulnerability_events is not None:
             pulumi.set(__self__, "vulnerability_events", vulnerability_events)
         if wiki_page_events is not None:
@@ -200,7 +216,7 @@ class GroupHookArgs:
     @pulumi.getter(name="customHeaders")
     def custom_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]]:
         """
-        Custom headers for the project webhook.
+        Custom headers for the group webhook.
         """
         return pulumi.get(self, "custom_headers")
 
@@ -329,6 +345,18 @@ class GroupHookArgs:
         pulumi.set(self, "merge_requests_events", value)
 
     @_builtins.property
+    @pulumi.getter(name="milestoneEvents")
+    def milestone_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Invoke the hook for milestone events. Defaults to `false`.
+        """
+        return pulumi.get(self, "milestone_events")
+
+    @milestone_events.setter
+    def milestone_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "milestone_events", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -413,6 +441,30 @@ class GroupHookArgs:
         pulumi.set(self, "releases_events", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceAccessTokenEvents")
+    def resource_access_token_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Invoke the hook for resource access token expiry events. Defaults to `false`.
+        """
+        return pulumi.get(self, "resource_access_token_events")
+
+    @resource_access_token_events.setter
+    def resource_access_token_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "resource_access_token_events", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signingToken")
+    def signing_token(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        """
+        return pulumi.get(self, "signing_token")
+
+    @signing_token.setter
+    def signing_token(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "signing_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="subgroupEvents")
     def subgroup_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -449,6 +501,18 @@ class GroupHookArgs:
         pulumi.set(self, "token", value)
 
     @_builtins.property
+    @pulumi.getter(name="urlVariables")
+    def url_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupHookUrlVariableArgs']]]]:
+        """
+        Array of sensitive portions of the webhook URL to mask.
+        """
+        return pulumi.get(self, "url_variables")
+
+    @url_variables.setter
+    def url_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupHookUrlVariableArgs']]]]):
+        pulumi.set(self, "url_variables", value)
+
+    @_builtins.property
     @pulumi.getter(name="vulnerabilityEvents")
     def vulnerability_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -476,6 +540,7 @@ class GroupHookArgs:
 @pulumi.input_type
 class _GroupHookState:
     def __init__(__self__, *,
+                 alert_status: pulumi.Input[Optional[_builtins.str]] = None,
                  branch_filter_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -483,6 +548,7 @@ class _GroupHookState:
                  custom_webhook_template: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled_until: pulumi.Input[Optional[_builtins.str]] = None,
                  emoji_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
                  feature_flag_events: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -493,6 +559,7 @@ class _GroupHookState:
                  job_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  member_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 milestone_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  note_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -500,22 +567,28 @@ class _GroupHookState:
                  push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  push_events_branch_filter: pulumi.Input[Optional[_builtins.str]] = None,
                  releases_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_access_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 signing_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 signing_token_present: pulumi.Input[Optional[_builtins.bool]] = None,
                  subgroup_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_variables: pulumi.Input[Optional[Sequence[pulumi.Input['GroupHookUrlVariableArgs']]]] = None,
                  vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GroupHook resources.
 
+        :param pulumi.Input[_builtins.str] alert_status: Lifecycle status of the webhook. Values include `executable` and `disabled`.
         :param pulumi.Input[_builtins.str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]] custom_headers: Custom headers for the project webhook.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]] custom_headers: Custom headers for the group webhook.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: Description of the group webhook.
+        :param pulumi.Input[_builtins.str] disabled_until: Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
         :param pulumi.Input[_builtins.bool] emoji_events: Invoke the hook for emoji events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] enable_ssl_verification: Enable SSL verification when invoking the hook. Defaults to `true`.
         :param pulumi.Input[_builtins.bool] feature_flag_events: Invoke the hook for feature flag events. Defaults to `false`.
@@ -526,6 +599,7 @@ class _GroupHookState:
         :param pulumi.Input[_builtins.bool] job_events: Invoke the hook for job events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] member_events: Invoke the hook for member events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Invoke the hook for merge requests events. Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] milestone_events: Invoke the hook for milestone events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] name: Name of the group webhook.
         :param pulumi.Input[_builtins.bool] note_events: Invoke the hook for note events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] pipeline_events: Invoke the hook for pipeline events. Defaults to `false`.
@@ -533,13 +607,19 @@ class _GroupHookState:
         :param pulumi.Input[_builtins.bool] push_events: Invoke the hook for push events. Defaults to `true`.
         :param pulumi.Input[_builtins.str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
         :param pulumi.Input[_builtins.bool] releases_events: Invoke the hook for release events. Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] resource_access_token_events: Invoke the hook for resource access token expiry events. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        :param pulumi.Input[_builtins.bool] signing_token_present: Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
         :param pulumi.Input[_builtins.bool] subgroup_events: Invoke the hook for subgroup events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
+        :param pulumi.Input[Sequence[pulumi.Input['GroupHookUrlVariableArgs']]] url_variables: Array of sensitive portions of the webhook URL to mask.
         :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] wiki_page_events: Invoke the hook for wiki page events. Defaults to `false`.
         """
+        if alert_status is not None:
+            pulumi.set(__self__, "alert_status", alert_status)
         if branch_filter_strategy is not None:
             pulumi.set(__self__, "branch_filter_strategy", branch_filter_strategy)
         if confidential_issues_events is not None:
@@ -554,6 +634,8 @@ class _GroupHookState:
             pulumi.set(__self__, "deployment_events", deployment_events)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disabled_until is not None:
+            pulumi.set(__self__, "disabled_until", disabled_until)
         if emoji_events is not None:
             pulumi.set(__self__, "emoji_events", emoji_events)
         if enable_ssl_verification is not None:
@@ -574,6 +656,8 @@ class _GroupHookState:
             pulumi.set(__self__, "member_events", member_events)
         if merge_requests_events is not None:
             pulumi.set(__self__, "merge_requests_events", merge_requests_events)
+        if milestone_events is not None:
+            pulumi.set(__self__, "milestone_events", milestone_events)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if note_events is not None:
@@ -588,6 +672,12 @@ class _GroupHookState:
             pulumi.set(__self__, "push_events_branch_filter", push_events_branch_filter)
         if releases_events is not None:
             pulumi.set(__self__, "releases_events", releases_events)
+        if resource_access_token_events is not None:
+            pulumi.set(__self__, "resource_access_token_events", resource_access_token_events)
+        if signing_token is not None:
+            pulumi.set(__self__, "signing_token", signing_token)
+        if signing_token_present is not None:
+            pulumi.set(__self__, "signing_token_present", signing_token_present)
         if subgroup_events is not None:
             pulumi.set(__self__, "subgroup_events", subgroup_events)
         if tag_push_events is not None:
@@ -596,10 +686,24 @@ class _GroupHookState:
             pulumi.set(__self__, "token", token)
         if url is not None:
             pulumi.set(__self__, "url", url)
+        if url_variables is not None:
+            pulumi.set(__self__, "url_variables", url_variables)
         if vulnerability_events is not None:
             pulumi.set(__self__, "vulnerability_events", vulnerability_events)
         if wiki_page_events is not None:
             pulumi.set(__self__, "wiki_page_events", wiki_page_events)
+
+    @_builtins.property
+    @pulumi.getter(name="alertStatus")
+    def alert_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Lifecycle status of the webhook. Values include `executable` and `disabled`.
+        """
+        return pulumi.get(self, "alert_status")
+
+    @alert_status.setter
+    def alert_status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "alert_status", value)
 
     @_builtins.property
     @pulumi.getter(name="branchFilterStrategy")
@@ -641,7 +745,7 @@ class _GroupHookState:
     @pulumi.getter(name="customHeaders")
     def custom_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupHookCustomHeaderArgs']]]]:
         """
-        Custom headers for the project webhook.
+        Custom headers for the group webhook.
         """
         return pulumi.get(self, "custom_headers")
 
@@ -684,6 +788,18 @@ class _GroupHookState:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disabledUntil")
+    def disabled_until(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+        """
+        return pulumi.get(self, "disabled_until")
+
+    @disabled_until.setter
+    def disabled_until(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "disabled_until", value)
 
     @_builtins.property
     @pulumi.getter(name="emojiEvents")
@@ -806,6 +922,18 @@ class _GroupHookState:
         pulumi.set(self, "merge_requests_events", value)
 
     @_builtins.property
+    @pulumi.getter(name="milestoneEvents")
+    def milestone_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Invoke the hook for milestone events. Defaults to `false`.
+        """
+        return pulumi.get(self, "milestone_events")
+
+    @milestone_events.setter
+    def milestone_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "milestone_events", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -890,6 +1018,42 @@ class _GroupHookState:
         pulumi.set(self, "releases_events", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceAccessTokenEvents")
+    def resource_access_token_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Invoke the hook for resource access token expiry events. Defaults to `false`.
+        """
+        return pulumi.get(self, "resource_access_token_events")
+
+    @resource_access_token_events.setter
+    def resource_access_token_events(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "resource_access_token_events", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signingToken")
+    def signing_token(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        """
+        return pulumi.get(self, "signing_token")
+
+    @signing_token.setter
+    def signing_token(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "signing_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signingTokenPresent")
+    def signing_token_present(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
+        """
+        return pulumi.get(self, "signing_token_present")
+
+    @signing_token_present.setter
+    def signing_token_present(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "signing_token_present", value)
+
+    @_builtins.property
     @pulumi.getter(name="subgroupEvents")
     def subgroup_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -938,6 +1102,18 @@ class _GroupHookState:
         pulumi.set(self, "url", value)
 
     @_builtins.property
+    @pulumi.getter(name="urlVariables")
+    def url_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupHookUrlVariableArgs']]]]:
+        """
+        Array of sensitive portions of the webhook URL to mask.
+        """
+        return pulumi.get(self, "url_variables")
+
+    @url_variables.setter
+    def url_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupHookUrlVariableArgs']]]]):
+        pulumi.set(self, "url_variables", value)
+
+    @_builtins.property
     @pulumi.getter(name="vulnerabilityEvents")
     def vulnerability_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -983,6 +1159,7 @@ class GroupHook(pulumi.CustomResource):
                  job_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  member_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 milestone_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  note_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -990,10 +1167,13 @@ class GroupHook(pulumi.CustomResource):
                  push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  push_events_branch_filter: pulumi.Input[Optional[_builtins.str]] = None,
                  releases_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_access_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 signing_token: pulumi.Input[Optional[_builtins.str]] = None,
                  subgroup_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookUrlVariableArgs', 'GroupHookUrlVariableArgsDict']]]]] = None,
                  vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -1024,7 +1204,7 @@ class GroupHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the group webhook.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: Description of the group webhook.
@@ -1036,6 +1216,7 @@ class GroupHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] job_events: Invoke the hook for job events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] member_events: Invoke the hook for member events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Invoke the hook for merge requests events. Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] milestone_events: Invoke the hook for milestone events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] name: Name of the group webhook.
         :param pulumi.Input[_builtins.bool] note_events: Invoke the hook for note events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] pipeline_events: Invoke the hook for pipeline events. Defaults to `false`.
@@ -1043,10 +1224,13 @@ class GroupHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] push_events: Invoke the hook for push events. Defaults to `true`.
         :param pulumi.Input[_builtins.str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
         :param pulumi.Input[_builtins.bool] releases_events: Invoke the hook for release events. Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] resource_access_token_events: Invoke the hook for resource access token expiry events. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
         :param pulumi.Input[_builtins.bool] subgroup_events: Invoke the hook for subgroup events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookUrlVariableArgs', 'GroupHookUrlVariableArgsDict']]]] url_variables: Array of sensitive portions of the webhook URL to mask.
         :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] wiki_page_events: Invoke the hook for wiki page events. Defaults to `false`.
         """
@@ -1108,6 +1292,7 @@ class GroupHook(pulumi.CustomResource):
                  job_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  member_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 milestone_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  note_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1115,10 +1300,13 @@ class GroupHook(pulumi.CustomResource):
                  push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  push_events_branch_filter: pulumi.Input[Optional[_builtins.str]] = None,
                  releases_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_access_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
+                 signing_token: pulumi.Input[Optional[_builtins.str]] = None,
                  subgroup_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookUrlVariableArgs', 'GroupHookUrlVariableArgsDict']]]]] = None,
                  vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -1147,6 +1335,7 @@ class GroupHook(pulumi.CustomResource):
             __props__.__dict__["job_events"] = job_events
             __props__.__dict__["member_events"] = member_events
             __props__.__dict__["merge_requests_events"] = merge_requests_events
+            __props__.__dict__["milestone_events"] = milestone_events
             __props__.__dict__["name"] = name
             __props__.__dict__["note_events"] = note_events
             __props__.__dict__["pipeline_events"] = pipeline_events
@@ -1154,17 +1343,23 @@ class GroupHook(pulumi.CustomResource):
             __props__.__dict__["push_events"] = push_events
             __props__.__dict__["push_events_branch_filter"] = push_events_branch_filter
             __props__.__dict__["releases_events"] = releases_events
+            __props__.__dict__["resource_access_token_events"] = resource_access_token_events
+            __props__.__dict__["signing_token"] = None if signing_token is None else pulumi.Output.secret(signing_token)
             __props__.__dict__["subgroup_events"] = subgroup_events
             __props__.__dict__["tag_push_events"] = tag_push_events
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
+            __props__.__dict__["url_variables"] = url_variables
             __props__.__dict__["vulnerability_events"] = vulnerability_events
             __props__.__dict__["wiki_page_events"] = wiki_page_events
+            __props__.__dict__["alert_status"] = None
+            __props__.__dict__["disabled_until"] = None
             __props__.__dict__["group_id"] = None
             __props__.__dict__["hook_id"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
+            __props__.__dict__["signing_token_present"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["signingToken", "token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(GroupHook, __self__).__init__(
             'gitlab:index/groupHook:GroupHook',
@@ -1176,6 +1371,7 @@ class GroupHook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            alert_status: pulumi.Input[Optional[_builtins.str]] = None,
             branch_filter_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
             confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1183,6 +1379,7 @@ class GroupHook(pulumi.CustomResource):
             custom_webhook_template: pulumi.Input[Optional[_builtins.str]] = None,
             deployment_events: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled_until: pulumi.Input[Optional[_builtins.str]] = None,
             emoji_events: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
             feature_flag_events: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1193,6 +1390,7 @@ class GroupHook(pulumi.CustomResource):
             job_events: pulumi.Input[Optional[_builtins.bool]] = None,
             member_events: pulumi.Input[Optional[_builtins.bool]] = None,
             merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            milestone_events: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             note_events: pulumi.Input[Optional[_builtins.bool]] = None,
             pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1200,10 +1398,14 @@ class GroupHook(pulumi.CustomResource):
             push_events: pulumi.Input[Optional[_builtins.bool]] = None,
             push_events_branch_filter: pulumi.Input[Optional[_builtins.str]] = None,
             releases_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_access_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            signing_token: pulumi.Input[Optional[_builtins.str]] = None,
+            signing_token_present: pulumi.Input[Optional[_builtins.bool]] = None,
             subgroup_events: pulumi.Input[Optional[_builtins.bool]] = None,
             tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
             token: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
+            url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookUrlVariableArgs', 'GroupHookUrlVariableArgsDict']]]]] = None,
             vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
             wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GroupHook':
         """
@@ -1213,13 +1415,15 @@ class GroupHook(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] alert_status: Lifecycle status of the webhook. Values include `executable` and `disabled`.
         :param pulumi.Input[_builtins.str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the group webhook.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: Description of the group webhook.
+        :param pulumi.Input[_builtins.str] disabled_until: Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
         :param pulumi.Input[_builtins.bool] emoji_events: Invoke the hook for emoji events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] enable_ssl_verification: Enable SSL verification when invoking the hook. Defaults to `true`.
         :param pulumi.Input[_builtins.bool] feature_flag_events: Invoke the hook for feature flag events. Defaults to `false`.
@@ -1230,6 +1434,7 @@ class GroupHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] job_events: Invoke the hook for job events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] member_events: Invoke the hook for member events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] merge_requests_events: Invoke the hook for merge requests events. Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] milestone_events: Invoke the hook for milestone events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] name: Name of the group webhook.
         :param pulumi.Input[_builtins.bool] note_events: Invoke the hook for note events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] pipeline_events: Invoke the hook for pipeline events. Defaults to `false`.
@@ -1237,10 +1442,14 @@ class GroupHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] push_events: Invoke the hook for push events. Defaults to `true`.
         :param pulumi.Input[_builtins.str] push_events_branch_filter: Invoke the hook for push events on matching branches only.
         :param pulumi.Input[_builtins.bool] releases_events: Invoke the hook for release events. Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] resource_access_token_events: Invoke the hook for resource access token expiry events. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        :param pulumi.Input[_builtins.bool] signing_token_present: Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
         :param pulumi.Input[_builtins.bool] subgroup_events: Invoke the hook for subgroup events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookUrlVariableArgs', 'GroupHookUrlVariableArgsDict']]]] url_variables: Array of sensitive portions of the webhook URL to mask.
         :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] wiki_page_events: Invoke the hook for wiki page events. Defaults to `false`.
         """
@@ -1248,6 +1457,7 @@ class GroupHook(pulumi.CustomResource):
 
         __props__ = _GroupHookState.__new__(_GroupHookState)
 
+        __props__.__dict__["alert_status"] = alert_status
         __props__.__dict__["branch_filter_strategy"] = branch_filter_strategy
         __props__.__dict__["confidential_issues_events"] = confidential_issues_events
         __props__.__dict__["confidential_note_events"] = confidential_note_events
@@ -1255,6 +1465,7 @@ class GroupHook(pulumi.CustomResource):
         __props__.__dict__["custom_webhook_template"] = custom_webhook_template
         __props__.__dict__["deployment_events"] = deployment_events
         __props__.__dict__["description"] = description
+        __props__.__dict__["disabled_until"] = disabled_until
         __props__.__dict__["emoji_events"] = emoji_events
         __props__.__dict__["enable_ssl_verification"] = enable_ssl_verification
         __props__.__dict__["feature_flag_events"] = feature_flag_events
@@ -1265,6 +1476,7 @@ class GroupHook(pulumi.CustomResource):
         __props__.__dict__["job_events"] = job_events
         __props__.__dict__["member_events"] = member_events
         __props__.__dict__["merge_requests_events"] = merge_requests_events
+        __props__.__dict__["milestone_events"] = milestone_events
         __props__.__dict__["name"] = name
         __props__.__dict__["note_events"] = note_events
         __props__.__dict__["pipeline_events"] = pipeline_events
@@ -1272,13 +1484,25 @@ class GroupHook(pulumi.CustomResource):
         __props__.__dict__["push_events"] = push_events
         __props__.__dict__["push_events_branch_filter"] = push_events_branch_filter
         __props__.__dict__["releases_events"] = releases_events
+        __props__.__dict__["resource_access_token_events"] = resource_access_token_events
+        __props__.__dict__["signing_token"] = signing_token
+        __props__.__dict__["signing_token_present"] = signing_token_present
         __props__.__dict__["subgroup_events"] = subgroup_events
         __props__.__dict__["tag_push_events"] = tag_push_events
         __props__.__dict__["token"] = token
         __props__.__dict__["url"] = url
+        __props__.__dict__["url_variables"] = url_variables
         __props__.__dict__["vulnerability_events"] = vulnerability_events
         __props__.__dict__["wiki_page_events"] = wiki_page_events
         return GroupHook(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="alertStatus")
+    def alert_status(self) -> pulumi.Output[_builtins.str]:
+        """
+        Lifecycle status of the webhook. Values include `executable` and `disabled`.
+        """
+        return pulumi.get(self, "alert_status")
 
     @_builtins.property
     @pulumi.getter(name="branchFilterStrategy")
@@ -1308,7 +1532,7 @@ class GroupHook(pulumi.CustomResource):
     @pulumi.getter(name="customHeaders")
     def custom_headers(self) -> pulumi.Output[Optional[Sequence['outputs.GroupHookCustomHeader']]]:
         """
-        Custom headers for the project webhook.
+        Custom headers for the group webhook.
         """
         return pulumi.get(self, "custom_headers")
 
@@ -1335,6 +1559,14 @@ class GroupHook(pulumi.CustomResource):
         Description of the group webhook.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="disabledUntil")
+    def disabled_until(self) -> pulumi.Output[_builtins.str]:
+        """
+        Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+        """
+        return pulumi.get(self, "disabled_until")
 
     @_builtins.property
     @pulumi.getter(name="emojiEvents")
@@ -1417,6 +1649,14 @@ class GroupHook(pulumi.CustomResource):
         return pulumi.get(self, "merge_requests_events")
 
     @_builtins.property
+    @pulumi.getter(name="milestoneEvents")
+    def milestone_events(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Invoke the hook for milestone events. Defaults to `false`.
+        """
+        return pulumi.get(self, "milestone_events")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1473,6 +1713,30 @@ class GroupHook(pulumi.CustomResource):
         return pulumi.get(self, "releases_events")
 
     @_builtins.property
+    @pulumi.getter(name="resourceAccessTokenEvents")
+    def resource_access_token_events(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Invoke the hook for resource access token expiry events. Defaults to `false`.
+        """
+        return pulumi.get(self, "resource_access_token_events")
+
+    @_builtins.property
+    @pulumi.getter(name="signingToken")
+    def signing_token(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        """
+        return pulumi.get(self, "signing_token")
+
+    @_builtins.property
+    @pulumi.getter(name="signingTokenPresent")
+    def signing_token_present(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
+        """
+        return pulumi.get(self, "signing_token_present")
+
+    @_builtins.property
     @pulumi.getter(name="subgroupEvents")
     def subgroup_events(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -1503,6 +1767,14 @@ class GroupHook(pulumi.CustomResource):
         The url of the hook to invoke. Forces re-creation to preserve `token`.
         """
         return pulumi.get(self, "url")
+
+    @_builtins.property
+    @pulumi.getter(name="urlVariables")
+    def url_variables(self) -> pulumi.Output[Optional[Sequence['outputs.GroupHookUrlVariable']]]:
+        """
+        Array of sensitive portions of the webhook URL to mask.
+        """
+        return pulumi.get(self, "url_variables")
 
     @_builtins.property
     @pulumi.getter(name="vulnerabilityEvents")

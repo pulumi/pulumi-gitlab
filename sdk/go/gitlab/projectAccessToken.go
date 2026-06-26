@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -103,7 +103,7 @@ type ProjectAccessToken struct {
 	Token pulumi.StringOutput `pulumi:"token"`
 	// The userId associated to the token.
 	UserId pulumi.IntOutput `pulumi:"userId"`
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate pulumi.BoolOutput `pulumi:"validatePastExpirationDate"`
 }
 
@@ -171,7 +171,7 @@ type projectAccessTokenState struct {
 	Token *string `pulumi:"token"`
 	// The userId associated to the token.
 	UserId *int `pulumi:"userId"`
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
@@ -200,7 +200,7 @@ type ProjectAccessTokenState struct {
 	Token pulumi.StringPtrInput
 	// The userId associated to the token.
 	UserId pulumi.IntPtrInput
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
@@ -223,7 +223,7 @@ type projectAccessTokenArgs struct {
 	RotationConfiguration *ProjectAccessTokenRotationConfiguration `pulumi:"rotationConfiguration"`
 	// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes []string `pulumi:"scopes"`
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
@@ -243,7 +243,7 @@ type ProjectAccessTokenArgs struct {
 	RotationConfiguration ProjectAccessTokenRotationConfigurationPtrInput
 	// The scopes of the project access token. valid values are: `api`, `readApi`, `readRegistry`, `writeRegistry`, `readRepository`, `writeRepository`, `createRunner`, `manageRunner`, `aiFeatures`, `k8sProxy`, `readObservability`, `writeObservability`, `selfRotate`
 	Scopes pulumi.StringArrayInput
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
@@ -396,7 +396,7 @@ func (o ProjectAccessTokenOutput) UserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectAccessToken) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
 }
 
-// Wether to validate if the expiration date is in the future.
+// Whether to validate if the expiration date is in the future.
 func (o ProjectAccessTokenOutput) ValidatePastExpirationDate() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectAccessToken) pulumi.BoolOutput { return v.ValidatePastExpirationDate }).(pulumi.BoolOutput)
 }

@@ -17,15 +17,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetProjectMembershipResult {
     /**
-     * @return The full path of the project. Use `project` instead. Will be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `project` instead. Will be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
-    private String fullPath;
-    /**
      * @return The ID of this datasource. In the format `&lt;project:query-hash&gt;` if query is set, otherwise `&lt;project&gt;`.
      * 
      */
@@ -46,15 +37,6 @@ public final class GetProjectMembershipResult {
      */
     private String project;
     /**
-     * @return The ID of the project. Use `project` instead. Will be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `project` instead. Will be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
-    private Integer projectId;
-    /**
      * @return A query string to search for members
      * 
      */
@@ -66,17 +48,6 @@ public final class GetProjectMembershipResult {
     private @Nullable List<Integer> userIds;
 
     private GetProjectMembershipResult() {}
-    /**
-     * @return The full path of the project. Use `project` instead. Will be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `project` instead. Will be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
-    public String fullPath() {
-        return this.fullPath;
-    }
     /**
      * @return The ID of this datasource. In the format `&lt;project:query-hash&gt;` if query is set, otherwise `&lt;project&gt;`.
      * 
@@ -106,17 +77,6 @@ public final class GetProjectMembershipResult {
         return this.project;
     }
     /**
-     * @return The ID of the project. Use `project` instead. Will be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `project` instead. Will be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `project` instead. Will be removed in 19.0. */
-    public Integer projectId() {
-        return this.projectId;
-    }
-    /**
      * @return A query string to search for members
      * 
      */
@@ -140,35 +100,23 @@ public final class GetProjectMembershipResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String fullPath;
         private String id;
         private @Nullable Boolean inherited;
         private List<GetProjectMembershipMember> members;
         private String project;
-        private Integer projectId;
         private @Nullable String query;
         private @Nullable List<Integer> userIds;
         public Builder() {}
         public Builder(GetProjectMembershipResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.fullPath = defaults.fullPath;
     	      this.id = defaults.id;
     	      this.inherited = defaults.inherited;
     	      this.members = defaults.members;
     	      this.project = defaults.project;
-    	      this.projectId = defaults.projectId;
     	      this.query = defaults.query;
     	      this.userIds = defaults.userIds;
         }
 
-        @CustomType.Setter
-        public Builder fullPath(String fullPath) {
-            if (fullPath == null) {
-              throw new MissingRequiredPropertyException("GetProjectMembershipResult", "fullPath");
-            }
-            this.fullPath = fullPath;
-            return this;
-        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -203,14 +151,6 @@ public final class GetProjectMembershipResult {
             return this;
         }
         @CustomType.Setter
-        public Builder projectId(Integer projectId) {
-            if (projectId == null) {
-              throw new MissingRequiredPropertyException("GetProjectMembershipResult", "projectId");
-            }
-            this.projectId = projectId;
-            return this;
-        }
-        @CustomType.Setter
         public Builder query(@Nullable String query) {
 
             this.query = query;
@@ -227,12 +167,10 @@ public final class GetProjectMembershipResult {
         }
         public GetProjectMembershipResult build() {
             final var _resultValue = new GetProjectMembershipResult();
-            _resultValue.fullPath = fullPath;
             _resultValue.id = id;
             _resultValue.inherited = inherited;
             _resultValue.members = members;
             _resultValue.project = project;
-            _resultValue.projectId = projectId;
             _resultValue.query = query;
             _resultValue.userIds = userIds;
             return _resultValue;

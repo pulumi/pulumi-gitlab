@@ -73,7 +73,7 @@ export class GroupSamlLink extends pulumi.CustomResource {
     }
 
     /**
-     * Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
      */
     declare public readonly accessLevel: pulumi.Output<string>;
     /**
@@ -132,7 +132,7 @@ export class GroupSamlLink extends pulumi.CustomResource {
  */
 export interface GroupSamlLinkState {
     /**
-     * Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
      */
     accessLevel?: pulumi.Input<string | undefined>;
     /**
@@ -154,7 +154,7 @@ export interface GroupSamlLinkState {
  */
 export interface GroupSamlLinkArgs {
     /**
-     * Access level for members of the SAML group. Valid values are: `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
      */
     accessLevel: pulumi.Input<string>;
     /**

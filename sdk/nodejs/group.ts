@@ -128,6 +128,10 @@ export class Group extends pulumi.CustomResource {
      */
     declare public readonly allowedEmailDomainsLists: pulumi.Output<string[]>;
     /**
+     * Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+     */
+    declare public readonly archiveOnDestroy: pulumi.Output<boolean | undefined>;
+    /**
      * Default to Auto DevOps pipeline for all projects within this group.
      */
     declare public readonly autoDevopsEnabled: pulumi.Output<boolean>;
@@ -297,6 +301,7 @@ export class Group extends pulumi.CustomResource {
             const state = argsOrState as GroupState | undefined;
             resourceInputs["allowMergeOnSkippedPipeline"] = state?.allowMergeOnSkippedPipeline;
             resourceInputs["allowedEmailDomainsLists"] = state?.allowedEmailDomainsLists;
+            resourceInputs["archiveOnDestroy"] = state?.archiveOnDestroy;
             resourceInputs["autoDevopsEnabled"] = state?.autoDevopsEnabled;
             resourceInputs["avatar"] = state?.avatar;
             resourceInputs["avatarHash"] = state?.avatarHash;
@@ -342,6 +347,7 @@ export class Group extends pulumi.CustomResource {
             }
             resourceInputs["allowMergeOnSkippedPipeline"] = args?.allowMergeOnSkippedPipeline;
             resourceInputs["allowedEmailDomainsLists"] = args?.allowedEmailDomainsLists;
+            resourceInputs["archiveOnDestroy"] = args?.archiveOnDestroy;
             resourceInputs["autoDevopsEnabled"] = args?.autoDevopsEnabled;
             resourceInputs["avatar"] = args?.avatar;
             resourceInputs["avatarHash"] = args?.avatarHash;
@@ -400,6 +406,10 @@ export interface GroupState {
      * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
      */
     allowedEmailDomainsLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+     */
+    archiveOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Default to Auto DevOps pipeline for all projects within this group.
      */
@@ -568,6 +578,10 @@ export interface GroupArgs {
      * A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
      */
     allowedEmailDomainsLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+     */
+    archiveOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Default to Auto DevOps pipeline for all projects within this group.
      */

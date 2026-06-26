@@ -107,7 +107,7 @@ export class UserImpersonationToken extends pulumi.CustomResource {
      */
     declare public readonly userId: pulumi.Output<number>;
     /**
-     * Wether to validate if the expiration date is in the future.
+     * Whether to validate if the expiration date is in the future.
      */
     declare public readonly validatePastExpirationDate: pulumi.Output<boolean>;
 
@@ -210,7 +210,7 @@ export interface UserImpersonationTokenState {
      */
     userId?: pulumi.Input<number | undefined>;
     /**
-     * Wether to validate if the expiration date is in the future.
+     * Whether to validate if the expiration date is in the future.
      */
     validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }
@@ -236,7 +236,7 @@ export interface UserImpersonationTokenArgs {
      */
     userId: pulumi.Input<number>;
     /**
-     * Wether to validate if the expiration date is in the future.
+     * Whether to validate if the expiration date is in the future.
      */
     validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }

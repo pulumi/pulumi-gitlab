@@ -122,12 +122,6 @@ export class IntegrationSlack extends pulumi.CustomResource {
      */
     declare public readonly notifyOnlyBrokenPipelines: pulumi.Output<boolean>;
     /**
-     * This parameter has been replaced with `branchesToBeNotified`.
-     *
-     * @deprecated use 'branches_to_be_notified' argument instead
-     */
-    declare public readonly notifyOnlyDefaultBranch: pulumi.Output<boolean>;
-    /**
      * The name of the channel to receive pipeline events notifications.
      */
     declare public readonly pipelineChannel: pulumi.Output<string | undefined>;
@@ -198,7 +192,6 @@ export class IntegrationSlack extends pulumi.CustomResource {
             resourceInputs["noteChannel"] = state?.noteChannel;
             resourceInputs["noteEvents"] = state?.noteEvents;
             resourceInputs["notifyOnlyBrokenPipelines"] = state?.notifyOnlyBrokenPipelines;
-            resourceInputs["notifyOnlyDefaultBranch"] = state?.notifyOnlyDefaultBranch;
             resourceInputs["pipelineChannel"] = state?.pipelineChannel;
             resourceInputs["pipelineEvents"] = state?.pipelineEvents;
             resourceInputs["project"] = state?.project;
@@ -230,7 +223,6 @@ export class IntegrationSlack extends pulumi.CustomResource {
             resourceInputs["noteChannel"] = args?.noteChannel;
             resourceInputs["noteEvents"] = args?.noteEvents;
             resourceInputs["notifyOnlyBrokenPipelines"] = args?.notifyOnlyBrokenPipelines;
-            resourceInputs["notifyOnlyDefaultBranch"] = args?.notifyOnlyDefaultBranch;
             resourceInputs["pipelineChannel"] = args?.pipelineChannel;
             resourceInputs["pipelineEvents"] = args?.pipelineEvents;
             resourceInputs["project"] = args?.project;
@@ -305,12 +297,6 @@ export interface IntegrationSlackState {
      * Send notifications for broken pipelines.
      */
     notifyOnlyBrokenPipelines?: pulumi.Input<boolean | undefined>;
-    /**
-     * This parameter has been replaced with `branchesToBeNotified`.
-     *
-     * @deprecated use 'branches_to_be_notified' argument instead
-     */
-    notifyOnlyDefaultBranch?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive pipeline events notifications.
      */
@@ -409,12 +395,6 @@ export interface IntegrationSlackArgs {
      * Send notifications for broken pipelines.
      */
     notifyOnlyBrokenPipelines?: pulumi.Input<boolean | undefined>;
-    /**
-     * This parameter has been replaced with `branchesToBeNotified`.
-     *
-     * @deprecated use 'branches_to_be_notified' argument instead
-     */
-    notifyOnlyDefaultBranch?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the channel to receive pipeline events notifications.
      */

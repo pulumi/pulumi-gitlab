@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.InstanceCluster` resource manages the lifecycle of an instance cluster.
     /// 
-    /// &gt; This is deprecated, due for removal in GitLab 19.0.
+    /// &gt; This is deprecated, due for removal in GitLab 20.0.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/instance_clusters/)
     /// 

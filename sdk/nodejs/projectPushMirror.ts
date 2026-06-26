@@ -76,6 +76,10 @@ export class ProjectPushMirror extends pulumi.CustomResource {
      */
     declare public readonly enabled: pulumi.Output<boolean>;
     /**
+     * SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+     */
+    declare public readonly hostKeys: pulumi.Output<string[] | undefined>;
+    /**
      * Determines if divergent refs are skipped.
      */
     declare public readonly keepDivergentRefs: pulumi.Output<boolean>;
@@ -115,6 +119,7 @@ export class ProjectPushMirror extends pulumi.CustomResource {
             const state = argsOrState as ProjectPushMirrorState | undefined;
             resourceInputs["authMethod"] = state?.authMethod;
             resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["hostKeys"] = state?.hostKeys;
             resourceInputs["keepDivergentRefs"] = state?.keepDivergentRefs;
             resourceInputs["mirrorBranchRegex"] = state?.mirrorBranchRegex;
             resourceInputs["mirrorId"] = state?.mirrorId;
@@ -131,6 +136,7 @@ export class ProjectPushMirror extends pulumi.CustomResource {
             }
             resourceInputs["authMethod"] = args?.authMethod;
             resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["hostKeys"] = args?.hostKeys;
             resourceInputs["keepDivergentRefs"] = args?.keepDivergentRefs;
             resourceInputs["mirrorBranchRegex"] = args?.mirrorBranchRegex;
             resourceInputs["onlyProtectedBranches"] = args?.onlyProtectedBranches;
@@ -157,6 +163,10 @@ export interface ProjectPushMirrorState {
      * Determines if the mirror is enabled.
      */
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+     */
+    hostKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Determines if divergent refs are skipped.
      */
@@ -195,6 +205,10 @@ export interface ProjectPushMirrorArgs {
      * Determines if the mirror is enabled.
      */
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * SSH host keys in bare format (`ssh-ed25519 AAAA...`) or full knownHosts format (`hostname ssh-ed25519 AAAA...`). Bare keys use the hostname from the mirror URL. This is a write-only attribute; the API converts host keys to the internal `sshKnownHosts` representation and does not return them.
+     */
+    hostKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Determines if divergent refs are skipped.
      */

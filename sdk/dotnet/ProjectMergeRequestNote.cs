@@ -65,7 +65,7 @@ namespace Pulumi.GitLab
         public Output<string> Body { get; private set; } = null!;
 
         /// <summary>
-        /// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+        /// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.GitLab
         public Input<string> Body { get; set; } = null!;
 
         /// <summary>
-        /// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+        /// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.GitLab
         public Input<string>? Body { get; set; }
 
         /// <summary>
-        /// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+        /// The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }

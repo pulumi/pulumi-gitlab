@@ -51,6 +51,10 @@ export interface GetProjectHookArgs {
  */
 export interface GetProjectHookResult {
     /**
+     * Lifecycle status of the webhook. Values include `executable` and `disabled`.
+     */
+    readonly alertStatus: string;
+    /**
      * Filter push events by branch.
      */
     readonly branchFilterStrategy: string;
@@ -63,6 +67,10 @@ export interface GetProjectHookResult {
      */
     readonly confidentialNoteEvents: boolean;
     /**
+     * The date and time the hook was created in ISO8601 format.
+     */
+    readonly createdAt: string;
+    /**
      * Set a custom webhook template.
      */
     readonly customWebhookTemplate: string;
@@ -71,6 +79,10 @@ export interface GetProjectHookResult {
      */
     readonly deploymentEvents: boolean;
     /**
+     * Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+     */
+    readonly disabledUntil: string;
+    /**
      * Invoke the hook for emoji events.
      */
     readonly emojiEvents: boolean;
@@ -78,6 +90,10 @@ export interface GetProjectHookResult {
      * Enable ssl verification when invoking the hook.
      */
     readonly enableSslVerification: boolean;
+    /**
+     * Invoke the hook for feature flag events.
+     */
+    readonly featureFlagEvents: boolean;
     /**
      * The id of the project hook.
      */
@@ -98,6 +114,10 @@ export interface GetProjectHookResult {
      * Invoke the hook for merge requests.
      */
     readonly mergeRequestsEvents: boolean;
+    /**
+     * Invoke the hook for milestone events.
+     */
+    readonly milestoneEvents: boolean;
     /**
      * Invoke the hook for notes events.
      */
@@ -127,15 +147,25 @@ export interface GetProjectHookResult {
      */
     readonly releasesEvents: boolean;
     /**
+     * Invoke the hook for repository update events.
+     */
+    readonly repositoryUpdateEvents: boolean;
+    /**
+     * Invoke the hook for project access token expiry events.
+     */
+    readonly resourceAccessTokenEvents: boolean;
+    /**
+     * Invoke the hook for resource deploy token events.
+     */
+    readonly resourceDeployTokenEvents: boolean;
+    /**
+     * Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+     */
+    readonly signingTokenPresent: boolean;
+    /**
      * Invoke the hook for tag push events.
      */
     readonly tagPushEvents: boolean;
-    /**
-     * A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
-     *
-     * @deprecated The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
-     */
-    readonly token: string;
     /**
      * The url of the hook to invoke.
      */

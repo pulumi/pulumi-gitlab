@@ -96,14 +96,14 @@ public class ProjectMergeRequestNote extends com.pulumi.resources.CustomResource
         return this.body;
     }
     /**
-     * The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+     * The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or hava a Project or Group Owner role.
+     * @return The creation date of the merge request note. Using this field requires the token used with the provider to either be an Admin, or have a Project or Group Owner role.
      * 
      */
     public Output<String> createdAt() {

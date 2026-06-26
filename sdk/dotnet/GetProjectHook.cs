@@ -154,6 +154,10 @@ namespace Pulumi.GitLab
     public sealed class GetProjectHookResult
     {
         /// <summary>
+        /// Lifecycle status of the webhook. Values include `Executable` and `Disabled`.
+        /// </summary>
+        public readonly string AlertStatus;
+        /// <summary>
         /// Filter push events by branch.
         /// </summary>
         public readonly string BranchFilterStrategy;
@@ -166,6 +170,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool ConfidentialNoteEvents;
         /// <summary>
+        /// The date and time the hook was created in ISO8601 format.
+        /// </summary>
+        public readonly string CreatedAt;
+        /// <summary>
         /// Set a custom webhook template.
         /// </summary>
         public readonly string CustomWebhookTemplate;
@@ -174,6 +182,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool DeploymentEvents;
         /// <summary>
+        /// Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+        /// </summary>
+        public readonly string DisabledUntil;
+        /// <summary>
         /// Invoke the hook for emoji events.
         /// </summary>
         public readonly bool EmojiEvents;
@@ -181,6 +193,10 @@ namespace Pulumi.GitLab
         /// Enable ssl verification when invoking the hook.
         /// </summary>
         public readonly bool EnableSslVerification;
+        /// <summary>
+        /// Invoke the hook for feature flag events.
+        /// </summary>
+        public readonly bool FeatureFlagEvents;
         /// <summary>
         /// The id of the project hook.
         /// </summary>
@@ -201,6 +217,10 @@ namespace Pulumi.GitLab
         /// Invoke the hook for merge requests.
         /// </summary>
         public readonly bool MergeRequestsEvents;
+        /// <summary>
+        /// Invoke the hook for milestone events.
+        /// </summary>
+        public readonly bool MilestoneEvents;
         /// <summary>
         /// Invoke the hook for notes events.
         /// </summary>
@@ -230,13 +250,25 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool ReleasesEvents;
         /// <summary>
+        /// Invoke the hook for repository update events.
+        /// </summary>
+        public readonly bool RepositoryUpdateEvents;
+        /// <summary>
+        /// Invoke the hook for project access token expiry events.
+        /// </summary>
+        public readonly bool ResourceAccessTokenEvents;
+        /// <summary>
+        /// Invoke the hook for resource deploy token events.
+        /// </summary>
+        public readonly bool ResourceDeployTokenEvents;
+        /// <summary>
+        /// Whether a `SigningToken` is configured server-side. Reflects the value returned by the GitLab API.
+        /// </summary>
+        public readonly bool SigningTokenPresent;
+        /// <summary>
         /// Invoke the hook for tag push events.
         /// </summary>
         public readonly bool TagPushEvents;
-        /// <summary>
-        /// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
-        /// </summary>
-        public readonly string Token;
         /// <summary>
         /// The url of the hook to invoke.
         /// </summary>
@@ -252,19 +284,27 @@ namespace Pulumi.GitLab
 
         [OutputConstructor]
         private GetProjectHookResult(
+            string alertStatus,
+
             string branchFilterStrategy,
 
             bool confidentialIssuesEvents,
 
             bool confidentialNoteEvents,
 
+            string createdAt,
+
             string customWebhookTemplate,
 
             bool deploymentEvents,
 
+            string disabledUntil,
+
             bool emojiEvents,
 
             bool enableSslVerification,
+
+            bool featureFlagEvents,
 
             int hookId,
 
@@ -275,6 +315,8 @@ namespace Pulumi.GitLab
             bool jobEvents,
 
             bool mergeRequestsEvents,
+
+            bool milestoneEvents,
 
             bool noteEvents,
 
@@ -290,9 +332,15 @@ namespace Pulumi.GitLab
 
             bool releasesEvents,
 
-            bool tagPushEvents,
+            bool repositoryUpdateEvents,
 
-            string token,
+            bool resourceAccessTokenEvents,
+
+            bool resourceDeployTokenEvents,
+
+            bool signingTokenPresent,
+
+            bool tagPushEvents,
 
             string url,
 
@@ -300,18 +348,23 @@ namespace Pulumi.GitLab
 
             bool wikiPageEvents)
         {
+            AlertStatus = alertStatus;
             BranchFilterStrategy = branchFilterStrategy;
             ConfidentialIssuesEvents = confidentialIssuesEvents;
             ConfidentialNoteEvents = confidentialNoteEvents;
+            CreatedAt = createdAt;
             CustomWebhookTemplate = customWebhookTemplate;
             DeploymentEvents = deploymentEvents;
+            DisabledUntil = disabledUntil;
             EmojiEvents = emojiEvents;
             EnableSslVerification = enableSslVerification;
+            FeatureFlagEvents = featureFlagEvents;
             HookId = hookId;
             Id = id;
             IssuesEvents = issuesEvents;
             JobEvents = jobEvents;
             MergeRequestsEvents = mergeRequestsEvents;
+            MilestoneEvents = milestoneEvents;
             NoteEvents = noteEvents;
             PipelineEvents = pipelineEvents;
             Project = project;
@@ -319,8 +372,11 @@ namespace Pulumi.GitLab
             PushEvents = pushEvents;
             PushEventsBranchFilter = pushEventsBranchFilter;
             ReleasesEvents = releasesEvents;
+            RepositoryUpdateEvents = repositoryUpdateEvents;
+            ResourceAccessTokenEvents = resourceAccessTokenEvents;
+            ResourceDeployTokenEvents = resourceDeployTokenEvents;
+            SigningTokenPresent = signingTokenPresent;
             TagPushEvents = tagPushEvents;
-            Token = token;
             Url = url;
             VulnerabilityEvents = vulnerabilityEvents;
             WikiPageEvents = wikiPageEvents;

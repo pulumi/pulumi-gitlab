@@ -8,13 +8,11 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProjectProtectedBranchMergeAccessLevel {
     /**
-     * @return Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * @return Access level allowed to perform the relevant action.
      * 
      */
     private String accessLevel;
@@ -24,19 +22,19 @@ public final class GetProjectProtectedBranchMergeAccessLevel {
      */
     private String accessLevelDescription;
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * @return The ID of a GitLab group allowed to perform the relevant action.
      * 
      */
-    private @Nullable Integer groupId;
+    private Integer groupId;
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * @return The ID of a GitLab user allowed to perform the relevant action.
      * 
      */
-    private @Nullable Integer userId;
+    private Integer userId;
 
     private GetProjectProtectedBranchMergeAccessLevel() {}
     /**
-     * @return Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * @return Access level allowed to perform the relevant action.
      * 
      */
     public String accessLevel() {
@@ -50,18 +48,18 @@ public final class GetProjectProtectedBranchMergeAccessLevel {
         return this.accessLevelDescription;
     }
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * @return The ID of a GitLab group allowed to perform the relevant action.
      * 
      */
-    public Optional<Integer> groupId() {
-        return Optional.ofNullable(this.groupId);
+    public Integer groupId() {
+        return this.groupId;
     }
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * @return The ID of a GitLab user allowed to perform the relevant action.
      * 
      */
-    public Optional<Integer> userId() {
-        return Optional.ofNullable(this.userId);
+    public Integer userId() {
+        return this.userId;
     }
 
     public static Builder builder() {
@@ -75,8 +73,8 @@ public final class GetProjectProtectedBranchMergeAccessLevel {
     public static final class Builder {
         private String accessLevel;
         private String accessLevelDescription;
-        private @Nullable Integer groupId;
-        private @Nullable Integer userId;
+        private Integer groupId;
+        private Integer userId;
         public Builder() {}
         public Builder(GetProjectProtectedBranchMergeAccessLevel defaults) {
     	      Objects.requireNonNull(defaults);
@@ -103,14 +101,18 @@ public final class GetProjectProtectedBranchMergeAccessLevel {
             return this;
         }
         @CustomType.Setter
-        public Builder groupId(@Nullable Integer groupId) {
-
+        public Builder groupId(Integer groupId) {
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchMergeAccessLevel", "groupId");
+            }
             this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
-        public Builder userId(@Nullable Integer userId) {
-
+        public Builder userId(Integer userId) {
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetProjectProtectedBranchMergeAccessLevel", "userId");
+            }
             this.userId = userId;
             return this;
         }

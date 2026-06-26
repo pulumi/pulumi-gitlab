@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -102,7 +102,7 @@ type GroupDeployToken struct {
 	Token pulumi.StringOutput `pulumi:"token"`
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username pulumi.StringOutput `pulumi:"username"`
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate pulumi.BoolOutput `pulumi:"validatePastExpirationDate"`
 }
 
@@ -162,7 +162,7 @@ type groupDeployTokenState struct {
 	Token *string `pulumi:"token"`
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username *string `pulumi:"username"`
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
@@ -183,7 +183,7 @@ type GroupDeployTokenState struct {
 	Token pulumi.StringPtrInput
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username pulumi.StringPtrInput
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
@@ -202,7 +202,7 @@ type groupDeployTokenArgs struct {
 	Scopes []string `pulumi:"scopes"`
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username *string `pulumi:"username"`
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate *bool `pulumi:"validatePastExpirationDate"`
 }
 
@@ -218,7 +218,7 @@ type GroupDeployTokenArgs struct {
 	Scopes pulumi.StringArrayInput
 	// A username for the deploy token. Default is `gitlab+deploy-token-{n}`.
 	Username pulumi.StringPtrInput
-	// Wether to validate if the expiration date is in the future.
+	// Whether to validate if the expiration date is in the future.
 	ValidatePastExpirationDate pulumi.BoolPtrInput
 }
 
@@ -349,7 +349,7 @@ func (o GroupDeployTokenOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupDeployToken) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
-// Wether to validate if the expiration date is in the future.
+// Whether to validate if the expiration date is in the future.
 func (o GroupDeployTokenOutput) ValidatePastExpirationDate() pulumi.BoolOutput {
 	return o.ApplyT(func(v *GroupDeployToken) pulumi.BoolOutput { return v.ValidatePastExpirationDate }).(pulumi.BoolOutput)
 }

@@ -55,11 +55,6 @@ export type DeployKeyEnable = import("./deployKeyEnable").DeployKeyEnable;
 export const DeployKeyEnable: typeof import("./deployKeyEnable").DeployKeyEnable = null as any;
 utilities.lazyLoad(exports, ["DeployKeyEnable"], () => require("./deployKeyEnable"));
 
-export { DeployTokenArgs, DeployTokenState } from "./deployToken";
-export type DeployToken = import("./deployToken").DeployToken;
-export const DeployToken: typeof import("./deployToken").DeployToken = null as any;
-utilities.lazyLoad(exports, ["DeployToken"], () => require("./deployToken"));
-
 export { GetApplicationArgs, GetApplicationResult, GetApplicationOutputArgs } from "./getApplication";
 export const getApplication: typeof import("./getApplication").getApplication = null as any;
 export const getApplicationOutput: typeof import("./getApplication").getApplicationOutput = null as any;
@@ -125,10 +120,30 @@ export const getGroupIds: typeof import("./getGroupIds").getGroupIds = null as a
 export const getGroupIdsOutput: typeof import("./getGroupIds").getGroupIdsOutput = null as any;
 utilities.lazyLoad(exports, ["getGroupIds","getGroupIdsOutput"], () => require("./getGroupIds"));
 
+export { GetGroupLabelArgs, GetGroupLabelResult, GetGroupLabelOutputArgs } from "./getGroupLabel";
+export const getGroupLabel: typeof import("./getGroupLabel").getGroupLabel = null as any;
+export const getGroupLabelOutput: typeof import("./getGroupLabel").getGroupLabelOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupLabel","getGroupLabelOutput"], () => require("./getGroupLabel"));
+
+export { GetGroupLabelsArgs, GetGroupLabelsResult, GetGroupLabelsOutputArgs } from "./getGroupLabels";
+export const getGroupLabels: typeof import("./getGroupLabels").getGroupLabels = null as any;
+export const getGroupLabelsOutput: typeof import("./getGroupLabels").getGroupLabelsOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupLabels","getGroupLabelsOutput"], () => require("./getGroupLabels"));
+
 export { GetGroupMembershipArgs, GetGroupMembershipResult, GetGroupMembershipOutputArgs } from "./getGroupMembership";
 export const getGroupMembership: typeof import("./getGroupMembership").getGroupMembership = null as any;
 export const getGroupMembershipOutput: typeof import("./getGroupMembership").getGroupMembershipOutput = null as any;
 utilities.lazyLoad(exports, ["getGroupMembership","getGroupMembershipOutput"], () => require("./getGroupMembership"));
+
+export { GetGroupProtectedBranchArgs, GetGroupProtectedBranchResult, GetGroupProtectedBranchOutputArgs } from "./getGroupProtectedBranch";
+export const getGroupProtectedBranch: typeof import("./getGroupProtectedBranch").getGroupProtectedBranch = null as any;
+export const getGroupProtectedBranchOutput: typeof import("./getGroupProtectedBranch").getGroupProtectedBranchOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupProtectedBranch","getGroupProtectedBranchOutput"], () => require("./getGroupProtectedBranch"));
+
+export { GetGroupProtectedBranchesArgs, GetGroupProtectedBranchesResult, GetGroupProtectedBranchesOutputArgs } from "./getGroupProtectedBranches";
+export const getGroupProtectedBranches: typeof import("./getGroupProtectedBranches").getGroupProtectedBranches = null as any;
+export const getGroupProtectedBranchesOutput: typeof import("./getGroupProtectedBranches").getGroupProtectedBranchesOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupProtectedBranches","getGroupProtectedBranchesOutput"], () => require("./getGroupProtectedBranches"));
 
 export { GetGroupProvisionedUsersArgs, GetGroupProvisionedUsersResult, GetGroupProvisionedUsersOutputArgs } from "./getGroupProvisionedUsers";
 export const getGroupProvisionedUsers: typeof import("./getGroupProvisionedUsers").getGroupProvisionedUsers = null as any;
@@ -330,6 +345,11 @@ export const getProjectSecureFile: typeof import("./getProjectSecureFile").getPr
 export const getProjectSecureFileOutput: typeof import("./getProjectSecureFile").getProjectSecureFileOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectSecureFile","getProjectSecureFileOutput"], () => require("./getProjectSecureFile"));
 
+export { GetProjectServiceAccountArgs, GetProjectServiceAccountResult, GetProjectServiceAccountOutputArgs } from "./getProjectServiceAccount";
+export const getProjectServiceAccount: typeof import("./getProjectServiceAccount").getProjectServiceAccount = null as any;
+export const getProjectServiceAccountOutput: typeof import("./getProjectServiceAccount").getProjectServiceAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectServiceAccount","getProjectServiceAccountOutput"], () => require("./getProjectServiceAccount"));
+
 export { GetProjectTagArgs, GetProjectTagResult, GetProjectTagOutputArgs } from "./getProjectTag";
 export const getProjectTag: typeof import("./getProjectTag").getProjectTag = null as any;
 export const getProjectTagOutput: typeof import("./getProjectTag").getProjectTagOutput = null as any;
@@ -405,6 +425,16 @@ export const getSecurityPolicyDocument: typeof import("./getSecurityPolicyDocume
 export const getSecurityPolicyDocumentOutput: typeof import("./getSecurityPolicyDocument").getSecurityPolicyDocumentOutput = null as any;
 utilities.lazyLoad(exports, ["getSecurityPolicyDocument","getSecurityPolicyDocumentOutput"], () => require("./getSecurityPolicyDocument"));
 
+export { GetSystemHookArgs, GetSystemHookResult, GetSystemHookOutputArgs } from "./getSystemHook";
+export const getSystemHook: typeof import("./getSystemHook").getSystemHook = null as any;
+export const getSystemHookOutput: typeof import("./getSystemHook").getSystemHookOutput = null as any;
+utilities.lazyLoad(exports, ["getSystemHook","getSystemHookOutput"], () => require("./getSystemHook"));
+
+export { GetSystemHooksResult } from "./getSystemHooks";
+export const getSystemHooks: typeof import("./getSystemHooks").getSystemHooks = null as any;
+export const getSystemHooksOutput: typeof import("./getSystemHooks").getSystemHooksOutput = null as any;
+utilities.lazyLoad(exports, ["getSystemHooks","getSystemHooksOutput"], () => require("./getSystemHooks"));
+
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
@@ -440,6 +470,11 @@ export type GroupBadge = import("./groupBadge").GroupBadge;
 export const GroupBadge: typeof import("./groupBadge").GroupBadge = null as any;
 utilities.lazyLoad(exports, ["GroupBadge"], () => require("./groupBadge"));
 
+export { GroupBranchProtectionArgs, GroupBranchProtectionState } from "./groupBranchProtection";
+export type GroupBranchProtection = import("./groupBranchProtection").GroupBranchProtection;
+export const GroupBranchProtection: typeof import("./groupBranchProtection").GroupBranchProtection = null as any;
+utilities.lazyLoad(exports, ["GroupBranchProtection"], () => require("./groupBranchProtection"));
+
 export { GroupClusterArgs, GroupClusterState } from "./groupCluster";
 export type GroupCluster = import("./groupCluster").GroupCluster;
 export const GroupCluster: typeof import("./groupCluster").GroupCluster = null as any;
@@ -469,6 +504,11 @@ export { GroupHookArgs, GroupHookState } from "./groupHook";
 export type GroupHook = import("./groupHook").GroupHook;
 export const GroupHook: typeof import("./groupHook").GroupHook = null as any;
 utilities.lazyLoad(exports, ["GroupHook"], () => require("./groupHook"));
+
+export { GroupIntegrationHarborArgs, GroupIntegrationHarborState } from "./groupIntegrationHarbor";
+export type GroupIntegrationHarbor = import("./groupIntegrationHarbor").GroupIntegrationHarbor;
+export const GroupIntegrationHarbor: typeof import("./groupIntegrationHarbor").GroupIntegrationHarbor = null as any;
+utilities.lazyLoad(exports, ["GroupIntegrationHarbor"], () => require("./groupIntegrationHarbor"));
 
 export { GroupIntegrationMattermostArgs, GroupIntegrationMattermostState } from "./groupIntegrationMattermost";
 export type GroupIntegrationMattermost = import("./groupIntegrationMattermost").GroupIntegrationMattermost;
@@ -520,6 +560,11 @@ export type GroupSamlLink = import("./groupSamlLink").GroupSamlLink;
 export const GroupSamlLink: typeof import("./groupSamlLink").GroupSamlLink = null as any;
 utilities.lazyLoad(exports, ["GroupSamlLink"], () => require("./groupSamlLink"));
 
+export { GroupSavedReplyArgs, GroupSavedReplyState } from "./groupSavedReply";
+export type GroupSavedReply = import("./groupSavedReply").GroupSavedReply;
+export const GroupSavedReply: typeof import("./groupSavedReply").GroupSavedReply = null as any;
+utilities.lazyLoad(exports, ["GroupSavedReply"], () => require("./groupSavedReply"));
+
 export { GroupSecurityPolicyAttachmentArgs, GroupSecurityPolicyAttachmentState } from "./groupSecurityPolicyAttachment";
 export type GroupSecurityPolicyAttachment = import("./groupSecurityPolicyAttachment").GroupSecurityPolicyAttachment;
 export const GroupSecurityPolicyAttachment: typeof import("./groupSecurityPolicyAttachment").GroupSecurityPolicyAttachment = null as any;
@@ -560,75 +605,10 @@ export type InstanceVariable = import("./instanceVariable").InstanceVariable;
 export const InstanceVariable: typeof import("./instanceVariable").InstanceVariable = null as any;
 utilities.lazyLoad(exports, ["InstanceVariable"], () => require("./instanceVariable"));
 
-export { IntegrationCustomIssueTrackerArgs, IntegrationCustomIssueTrackerState } from "./integrationCustomIssueTracker";
-export type IntegrationCustomIssueTracker = import("./integrationCustomIssueTracker").IntegrationCustomIssueTracker;
-export const IntegrationCustomIssueTracker: typeof import("./integrationCustomIssueTracker").IntegrationCustomIssueTracker = null as any;
-utilities.lazyLoad(exports, ["IntegrationCustomIssueTracker"], () => require("./integrationCustomIssueTracker"));
-
-export { IntegrationEmailsOnPushArgs, IntegrationEmailsOnPushState } from "./integrationEmailsOnPush";
-export type IntegrationEmailsOnPush = import("./integrationEmailsOnPush").IntegrationEmailsOnPush;
-export const IntegrationEmailsOnPush: typeof import("./integrationEmailsOnPush").IntegrationEmailsOnPush = null as any;
-utilities.lazyLoad(exports, ["IntegrationEmailsOnPush"], () => require("./integrationEmailsOnPush"));
-
-export { IntegrationExternalWikiArgs, IntegrationExternalWikiState } from "./integrationExternalWiki";
-export type IntegrationExternalWiki = import("./integrationExternalWiki").IntegrationExternalWiki;
-export const IntegrationExternalWiki: typeof import("./integrationExternalWiki").IntegrationExternalWiki = null as any;
-utilities.lazyLoad(exports, ["IntegrationExternalWiki"], () => require("./integrationExternalWiki"));
-
-export { IntegrationGithubArgs, IntegrationGithubState } from "./integrationGithub";
-export type IntegrationGithub = import("./integrationGithub").IntegrationGithub;
-export const IntegrationGithub: typeof import("./integrationGithub").IntegrationGithub = null as any;
-utilities.lazyLoad(exports, ["IntegrationGithub"], () => require("./integrationGithub"));
-
-export { IntegrationHarborArgs, IntegrationHarborState } from "./integrationHarbor";
-export type IntegrationHarbor = import("./integrationHarbor").IntegrationHarbor;
-export const IntegrationHarbor: typeof import("./integrationHarbor").IntegrationHarbor = null as any;
-utilities.lazyLoad(exports, ["IntegrationHarbor"], () => require("./integrationHarbor"));
-
-export { IntegrationJenkinsArgs, IntegrationJenkinsState } from "./integrationJenkins";
-export type IntegrationJenkins = import("./integrationJenkins").IntegrationJenkins;
-export const IntegrationJenkins: typeof import("./integrationJenkins").IntegrationJenkins = null as any;
-utilities.lazyLoad(exports, ["IntegrationJenkins"], () => require("./integrationJenkins"));
-
-export { IntegrationJiraArgs, IntegrationJiraState } from "./integrationJira";
-export type IntegrationJira = import("./integrationJira").IntegrationJira;
-export const IntegrationJira: typeof import("./integrationJira").IntegrationJira = null as any;
-utilities.lazyLoad(exports, ["IntegrationJira"], () => require("./integrationJira"));
-
-export { IntegrationMattermostArgs, IntegrationMattermostState } from "./integrationMattermost";
-export type IntegrationMattermost = import("./integrationMattermost").IntegrationMattermost;
-export const IntegrationMattermost: typeof import("./integrationMattermost").IntegrationMattermost = null as any;
-utilities.lazyLoad(exports, ["IntegrationMattermost"], () => require("./integrationMattermost"));
-
-export { IntegrationMicrosoftTeamsArgs, IntegrationMicrosoftTeamsState } from "./integrationMicrosoftTeams";
-export type IntegrationMicrosoftTeams = import("./integrationMicrosoftTeams").IntegrationMicrosoftTeams;
-export const IntegrationMicrosoftTeams: typeof import("./integrationMicrosoftTeams").IntegrationMicrosoftTeams = null as any;
-utilities.lazyLoad(exports, ["IntegrationMicrosoftTeams"], () => require("./integrationMicrosoftTeams"));
-
-export { IntegrationPipelinesEmailArgs, IntegrationPipelinesEmailState } from "./integrationPipelinesEmail";
-export type IntegrationPipelinesEmail = import("./integrationPipelinesEmail").IntegrationPipelinesEmail;
-export const IntegrationPipelinesEmail: typeof import("./integrationPipelinesEmail").IntegrationPipelinesEmail = null as any;
-utilities.lazyLoad(exports, ["IntegrationPipelinesEmail"], () => require("./integrationPipelinesEmail"));
-
-export { IntegrationRedmineArgs, IntegrationRedmineState } from "./integrationRedmine";
-export type IntegrationRedmine = import("./integrationRedmine").IntegrationRedmine;
-export const IntegrationRedmine: typeof import("./integrationRedmine").IntegrationRedmine = null as any;
-utilities.lazyLoad(exports, ["IntegrationRedmine"], () => require("./integrationRedmine"));
-
 export { IntegrationSlackArgs, IntegrationSlackState } from "./integrationSlack";
 export type IntegrationSlack = import("./integrationSlack").IntegrationSlack;
 export const IntegrationSlack: typeof import("./integrationSlack").IntegrationSlack = null as any;
 utilities.lazyLoad(exports, ["IntegrationSlack"], () => require("./integrationSlack"));
-
-export { IntegrationTelegramArgs, IntegrationTelegramState } from "./integrationTelegram";
-export type IntegrationTelegram = import("./integrationTelegram").IntegrationTelegram;
-export const IntegrationTelegram: typeof import("./integrationTelegram").IntegrationTelegram = null as any;
-utilities.lazyLoad(exports, ["IntegrationTelegram"], () => require("./integrationTelegram"));
-
-export { LabelArgs, LabelState } from "./label";
-export type Label = import("./label").Label;
-export const Label: typeof import("./label").Label = null as any;
-utilities.lazyLoad(exports, ["Label"], () => require("./label"));
 
 export { MemberRoleArgs, MemberRoleState } from "./memberRole";
 export type MemberRole = import("./memberRole").MemberRole;
@@ -740,6 +720,11 @@ export type ProjectIntegrationCustomIssueTracker = import("./projectIntegrationC
 export const ProjectIntegrationCustomIssueTracker: typeof import("./projectIntegrationCustomIssueTracker").ProjectIntegrationCustomIssueTracker = null as any;
 utilities.lazyLoad(exports, ["ProjectIntegrationCustomIssueTracker"], () => require("./projectIntegrationCustomIssueTracker"));
 
+export { ProjectIntegrationDatadogArgs, ProjectIntegrationDatadogState } from "./projectIntegrationDatadog";
+export type ProjectIntegrationDatadog = import("./projectIntegrationDatadog").ProjectIntegrationDatadog;
+export const ProjectIntegrationDatadog: typeof import("./projectIntegrationDatadog").ProjectIntegrationDatadog = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationDatadog"], () => require("./projectIntegrationDatadog"));
+
 export { ProjectIntegrationEmailsOnPushArgs, ProjectIntegrationEmailsOnPushState } from "./projectIntegrationEmailsOnPush";
 export type ProjectIntegrationEmailsOnPush = import("./projectIntegrationEmailsOnPush").ProjectIntegrationEmailsOnPush;
 export const ProjectIntegrationEmailsOnPush: typeof import("./projectIntegrationEmailsOnPush").ProjectIntegrationEmailsOnPush = null as any;
@@ -754,6 +739,11 @@ export { ProjectIntegrationGithubArgs, ProjectIntegrationGithubState } from "./p
 export type ProjectIntegrationGithub = import("./projectIntegrationGithub").ProjectIntegrationGithub;
 export const ProjectIntegrationGithub: typeof import("./projectIntegrationGithub").ProjectIntegrationGithub = null as any;
 utilities.lazyLoad(exports, ["ProjectIntegrationGithub"], () => require("./projectIntegrationGithub"));
+
+export { ProjectIntegrationGoogleChatArgs, ProjectIntegrationGoogleChatState } from "./projectIntegrationGoogleChat";
+export type ProjectIntegrationGoogleChat = import("./projectIntegrationGoogleChat").ProjectIntegrationGoogleChat;
+export const ProjectIntegrationGoogleChat: typeof import("./projectIntegrationGoogleChat").ProjectIntegrationGoogleChat = null as any;
+utilities.lazyLoad(exports, ["ProjectIntegrationGoogleChat"], () => require("./projectIntegrationGoogleChat"));
 
 export { ProjectIntegrationHarborArgs, ProjectIntegrationHarborState } from "./projectIntegrationHarbor";
 export type ProjectIntegrationHarbor = import("./projectIntegrationHarbor").ProjectIntegrationHarbor;
@@ -860,11 +850,6 @@ export type ProjectMilestone = import("./projectMilestone").ProjectMilestone;
 export const ProjectMilestone: typeof import("./projectMilestone").ProjectMilestone = null as any;
 utilities.lazyLoad(exports, ["ProjectMilestone"], () => require("./projectMilestone"));
 
-export { ProjectMirrorArgs, ProjectMirrorState } from "./projectMirror";
-export type ProjectMirror = import("./projectMirror").ProjectMirror;
-export const ProjectMirror: typeof import("./projectMirror").ProjectMirror = null as any;
-utilities.lazyLoad(exports, ["ProjectMirror"], () => require("./projectMirror"));
-
 export { ProjectPackageDependencyProxyArgs, ProjectPackageDependencyProxyState } from "./projectPackageDependencyProxy";
 export type ProjectPackageDependencyProxy = import("./projectPackageDependencyProxy").ProjectPackageDependencyProxy;
 export const ProjectPackageDependencyProxy: typeof import("./projectPackageDependencyProxy").ProjectPackageDependencyProxy = null as any;
@@ -905,6 +890,11 @@ export type ProjectRunnerEnablement = import("./projectRunnerEnablement").Projec
 export const ProjectRunnerEnablement: typeof import("./projectRunnerEnablement").ProjectRunnerEnablement = null as any;
 utilities.lazyLoad(exports, ["ProjectRunnerEnablement"], () => require("./projectRunnerEnablement"));
 
+export { ProjectSavedReplyArgs, ProjectSavedReplyState } from "./projectSavedReply";
+export type ProjectSavedReply = import("./projectSavedReply").ProjectSavedReply;
+export const ProjectSavedReply: typeof import("./projectSavedReply").ProjectSavedReply = null as any;
+utilities.lazyLoad(exports, ["ProjectSavedReply"], () => require("./projectSavedReply"));
+
 export { ProjectSecureFileArgs, ProjectSecureFileState } from "./projectSecureFile";
 export type ProjectSecureFile = import("./projectSecureFile").ProjectSecureFile;
 export const ProjectSecureFile: typeof import("./projectSecureFile").ProjectSecureFile = null as any;
@@ -914,6 +904,11 @@ export { ProjectSecurityPolicyAttachmentArgs, ProjectSecurityPolicyAttachmentSta
 export type ProjectSecurityPolicyAttachment = import("./projectSecurityPolicyAttachment").ProjectSecurityPolicyAttachment;
 export const ProjectSecurityPolicyAttachment: typeof import("./projectSecurityPolicyAttachment").ProjectSecurityPolicyAttachment = null as any;
 utilities.lazyLoad(exports, ["ProjectSecurityPolicyAttachment"], () => require("./projectSecurityPolicyAttachment"));
+
+export { ProjectServiceAccountArgs, ProjectServiceAccountState } from "./projectServiceAccount";
+export type ProjectServiceAccount = import("./projectServiceAccount").ProjectServiceAccount;
+export const ProjectServiceAccount: typeof import("./projectServiceAccount").ProjectServiceAccount = null as any;
+utilities.lazyLoad(exports, ["ProjectServiceAccount"], () => require("./projectServiceAccount"));
 
 export { ProjectShareGroupArgs, ProjectShareGroupState } from "./projectShareGroup";
 export type ProjectShareGroup = import("./projectShareGroup").ProjectShareGroup;
@@ -957,11 +952,6 @@ export { RepositoryFileArgs, RepositoryFileState } from "./repositoryFile";
 export type RepositoryFile = import("./repositoryFile").RepositoryFile;
 export const RepositoryFile: typeof import("./repositoryFile").RepositoryFile = null as any;
 utilities.lazyLoad(exports, ["RepositoryFile"], () => require("./repositoryFile"));
-
-export { RunnerArgs, RunnerState } from "./runner";
-export type Runner = import("./runner").Runner;
-export const Runner: typeof import("./runner").Runner = null as any;
-utilities.lazyLoad(exports, ["Runner"], () => require("./runner"));
 
 export { RunnerControllerArgs, RunnerControllerState } from "./runnerController";
 export type RunnerController = import("./runnerController").RunnerController;
@@ -1033,6 +1023,11 @@ export type UserRunner = import("./userRunner").UserRunner;
 export const UserRunner: typeof import("./userRunner").UserRunner = null as any;
 utilities.lazyLoad(exports, ["UserRunner"], () => require("./userRunner"));
 
+export { UserSavedReplyArgs, UserSavedReplyState } from "./userSavedReply";
+export type UserSavedReply = import("./userSavedReply").UserSavedReply;
+export const UserSavedReply: typeof import("./userSavedReply").UserSavedReply = null as any;
+utilities.lazyLoad(exports, ["UserSavedReply"], () => require("./userSavedReply"));
+
 export { UserSshKeyArgs, UserSshKeyState } from "./userSshKey";
 export type UserSshKey = import("./userSshKey").UserSshKey;
 export const UserSshKey: typeof import("./userSshKey").UserSshKey = null as any;
@@ -1077,8 +1072,6 @@ const _module = {
                 return new DeployKey(name, <any>undefined, { urn })
             case "gitlab:index/deployKeyEnable:DeployKeyEnable":
                 return new DeployKeyEnable(name, <any>undefined, { urn })
-            case "gitlab:index/deployToken:DeployToken":
-                return new DeployToken(name, <any>undefined, { urn })
             case "gitlab:index/globalLevelNotifications:GlobalLevelNotifications":
                 return new GlobalLevelNotifications(name, <any>undefined, { urn })
             case "gitlab:index/group:Group":
@@ -1087,6 +1080,8 @@ const _module = {
                 return new GroupAccessToken(name, <any>undefined, { urn })
             case "gitlab:index/groupBadge:GroupBadge":
                 return new GroupBadge(name, <any>undefined, { urn })
+            case "gitlab:index/groupBranchProtection:GroupBranchProtection":
+                return new GroupBranchProtection(name, <any>undefined, { urn })
             case "gitlab:index/groupCluster:GroupCluster":
                 return new GroupCluster(name, <any>undefined, { urn })
             case "gitlab:index/groupCustomAttribute:GroupCustomAttribute":
@@ -1099,6 +1094,8 @@ const _module = {
                 return new GroupEpicBoard(name, <any>undefined, { urn })
             case "gitlab:index/groupHook:GroupHook":
                 return new GroupHook(name, <any>undefined, { urn })
+            case "gitlab:index/groupIntegrationHarbor:GroupIntegrationHarbor":
+                return new GroupIntegrationHarbor(name, <any>undefined, { urn })
             case "gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost":
                 return new GroupIntegrationMattermost(name, <any>undefined, { urn })
             case "gitlab:index/groupIntegrationMicrosoftTeams:GroupIntegrationMicrosoftTeams":
@@ -1119,6 +1116,8 @@ const _module = {
                 return new GroupProtectedEnvironment(name, <any>undefined, { urn })
             case "gitlab:index/groupSamlLink:GroupSamlLink":
                 return new GroupSamlLink(name, <any>undefined, { urn })
+            case "gitlab:index/groupSavedReply:GroupSavedReply":
+                return new GroupSavedReply(name, <any>undefined, { urn })
             case "gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment":
                 return new GroupSecurityPolicyAttachment(name, <any>undefined, { urn })
             case "gitlab:index/groupServiceAccount:GroupServiceAccount":
@@ -1135,34 +1134,8 @@ const _module = {
                 return new InstanceServiceAccount(name, <any>undefined, { urn })
             case "gitlab:index/instanceVariable:InstanceVariable":
                 return new InstanceVariable(name, <any>undefined, { urn })
-            case "gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker":
-                return new IntegrationCustomIssueTracker(name, <any>undefined, { urn })
-            case "gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush":
-                return new IntegrationEmailsOnPush(name, <any>undefined, { urn })
-            case "gitlab:index/integrationExternalWiki:IntegrationExternalWiki":
-                return new IntegrationExternalWiki(name, <any>undefined, { urn })
-            case "gitlab:index/integrationGithub:IntegrationGithub":
-                return new IntegrationGithub(name, <any>undefined, { urn })
-            case "gitlab:index/integrationHarbor:IntegrationHarbor":
-                return new IntegrationHarbor(name, <any>undefined, { urn })
-            case "gitlab:index/integrationJenkins:IntegrationJenkins":
-                return new IntegrationJenkins(name, <any>undefined, { urn })
-            case "gitlab:index/integrationJira:IntegrationJira":
-                return new IntegrationJira(name, <any>undefined, { urn })
-            case "gitlab:index/integrationMattermost:IntegrationMattermost":
-                return new IntegrationMattermost(name, <any>undefined, { urn })
-            case "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams":
-                return new IntegrationMicrosoftTeams(name, <any>undefined, { urn })
-            case "gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail":
-                return new IntegrationPipelinesEmail(name, <any>undefined, { urn })
-            case "gitlab:index/integrationRedmine:IntegrationRedmine":
-                return new IntegrationRedmine(name, <any>undefined, { urn })
             case "gitlab:index/integrationSlack:IntegrationSlack":
                 return new IntegrationSlack(name, <any>undefined, { urn })
-            case "gitlab:index/integrationTelegram:IntegrationTelegram":
-                return new IntegrationTelegram(name, <any>undefined, { urn })
-            case "gitlab:index/label:Label":
-                return new Label(name, <any>undefined, { urn })
             case "gitlab:index/memberRole:MemberRole":
                 return new MemberRole(name, <any>undefined, { urn })
             case "gitlab:index/pagesDomain:PagesDomain":
@@ -1207,12 +1180,16 @@ const _module = {
                 return new ProjectHook(name, <any>undefined, { urn })
             case "gitlab:index/projectIntegrationCustomIssueTracker:ProjectIntegrationCustomIssueTracker":
                 return new ProjectIntegrationCustomIssueTracker(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationDatadog:ProjectIntegrationDatadog":
+                return new ProjectIntegrationDatadog(name, <any>undefined, { urn })
             case "gitlab:index/projectIntegrationEmailsOnPush:ProjectIntegrationEmailsOnPush":
                 return new ProjectIntegrationEmailsOnPush(name, <any>undefined, { urn })
             case "gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki":
                 return new ProjectIntegrationExternalWiki(name, <any>undefined, { urn })
             case "gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub":
                 return new ProjectIntegrationGithub(name, <any>undefined, { urn })
+            case "gitlab:index/projectIntegrationGoogleChat:ProjectIntegrationGoogleChat":
+                return new ProjectIntegrationGoogleChat(name, <any>undefined, { urn })
             case "gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor":
                 return new ProjectIntegrationHarbor(name, <any>undefined, { urn })
             case "gitlab:index/projectIntegrationJenkins:ProjectIntegrationJenkins":
@@ -1255,8 +1232,6 @@ const _module = {
                 return new ProjectMergeRequestNote(name, <any>undefined, { urn })
             case "gitlab:index/projectMilestone:ProjectMilestone":
                 return new ProjectMilestone(name, <any>undefined, { urn })
-            case "gitlab:index/projectMirror:ProjectMirror":
-                return new ProjectMirror(name, <any>undefined, { urn })
             case "gitlab:index/projectPackageDependencyProxy:ProjectPackageDependencyProxy":
                 return new ProjectPackageDependencyProxy(name, <any>undefined, { urn })
             case "gitlab:index/projectPackageProtectionRule:ProjectPackageProtectionRule":
@@ -1273,10 +1248,14 @@ const _module = {
                 return new ProjectPushRules(name, <any>undefined, { urn })
             case "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement":
                 return new ProjectRunnerEnablement(name, <any>undefined, { urn })
+            case "gitlab:index/projectSavedReply:ProjectSavedReply":
+                return new ProjectSavedReply(name, <any>undefined, { urn })
             case "gitlab:index/projectSecureFile:ProjectSecureFile":
                 return new ProjectSecureFile(name, <any>undefined, { urn })
             case "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment":
                 return new ProjectSecurityPolicyAttachment(name, <any>undefined, { urn })
+            case "gitlab:index/projectServiceAccount:ProjectServiceAccount":
+                return new ProjectServiceAccount(name, <any>undefined, { urn })
             case "gitlab:index/projectShareGroup:ProjectShareGroup":
                 return new ProjectShareGroup(name, <any>undefined, { urn })
             case "gitlab:index/projectTag:ProjectTag":
@@ -1293,8 +1272,6 @@ const _module = {
                 return new ReleaseLink(name, <any>undefined, { urn })
             case "gitlab:index/repositoryFile:RepositoryFile":
                 return new RepositoryFile(name, <any>undefined, { urn })
-            case "gitlab:index/runner:Runner":
-                return new Runner(name, <any>undefined, { urn })
             case "gitlab:index/runnerController:RunnerController":
                 return new RunnerController(name, <any>undefined, { urn })
             case "gitlab:index/runnerControllerInstanceScope:RunnerControllerInstanceScope":
@@ -1323,6 +1300,8 @@ const _module = {
                 return new UserImpersonationToken(name, <any>undefined, { urn })
             case "gitlab:index/userRunner:UserRunner":
                 return new UserRunner(name, <any>undefined, { urn })
+            case "gitlab:index/userSavedReply:UserSavedReply":
+                return new UserSavedReply(name, <any>undefined, { urn })
             case "gitlab:index/userSshKey:UserSshKey":
                 return new UserSshKey(name, <any>undefined, { urn })
             case "gitlab:index/valueStreamAnalytics:ValueStreamAnalytics":
@@ -1342,17 +1321,18 @@ pulumi.runtime.registerResourceModule("gitlab", "index/clusterAgentToken", _modu
 pulumi.runtime.registerResourceModule("gitlab", "index/complianceFramework", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployKey", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployKeyEnable", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/deployToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/globalLevelNotifications", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/group", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupAccessToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupBadge", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupBranchProtection", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupDependencyProxy", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupDeployToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupEpicBoard", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupHook", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupIntegrationHarbor", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupIntegrationMattermost", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupIntegrationMicrosoftTeams", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupIssueBoard", _module)
@@ -1363,6 +1343,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupMembership", _module
 pulumi.runtime.registerResourceModule("gitlab", "index/groupProjectFileTemplate", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupProtectedEnvironment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupSamlLink", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupSavedReply", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupSecurityPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupServiceAccount", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupServiceAccountAccessToken", _module)
@@ -1371,20 +1352,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupVariable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/instanceCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/instanceServiceAccount", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/instanceVariable", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/integrationCustomIssueTracker", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/integrationEmailsOnPush", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/integrationExternalWiki", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/integrationGithub", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/integrationHarbor", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/integrationJenkins", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/integrationJira", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/integrationMattermost", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/integrationMicrosoftTeams", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/integrationPipelinesEmail", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/integrationRedmine", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/integrationSlack", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/integrationTelegram", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/label", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/memberRole", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/pagesDomain", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/personalAccessToken", _module)
@@ -1407,9 +1375,11 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectExternalStatusChec
 pulumi.runtime.registerResourceModule("gitlab", "index/projectFreezePeriod", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationCustomIssueTracker", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationDatadog", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationEmailsOnPush", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationExternalWiki", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationGithub", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationGoogleChat", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationHarbor", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationJenkins", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationJira", _module)
@@ -1431,7 +1401,6 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectLevelNotifications
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMembership", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMergeRequestNote", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectMilestone", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/projectMirror", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectPackageDependencyProxy", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectPackageProtectionRule", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectPagesSettings", _module)
@@ -1440,8 +1409,10 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectPullMirror", _modu
 pulumi.runtime.registerResourceModule("gitlab", "index/projectPushMirror", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectPushRules", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectRunnerEnablement", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectSavedReply", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectSecureFile", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectSecurityPolicyAttachment", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectServiceAccount", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectShareGroup", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectTag", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectTargetBranchRule", _module)
@@ -1450,7 +1421,6 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectWikiPage", _module
 pulumi.runtime.registerResourceModule("gitlab", "index/release", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/releaseLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/repositoryFile", _module)
-pulumi.runtime.registerResourceModule("gitlab", "index/runner", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/runnerController", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/runnerControllerInstanceScope", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/runnerControllerRunnerScope", _module)
@@ -1465,6 +1435,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/userGpgKey", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userIdentity", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userImpersonationToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userRunner", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/userSavedReply", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/userSshKey", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/valueStreamAnalytics", _module)
 pulumi.runtime.registerResourcePackage("gitlab", {

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,18 +36,28 @@ type LookupGroupHookArgs struct {
 
 // A collection of values returned by getGroupHook.
 type LookupGroupHookResult struct {
+	// Lifecycle status of the webhook. Values include `executable` and `disabled`.
+	AlertStatus string `pulumi:"alertStatus"`
+	// Filter push events by branch.
+	BranchFilterStrategy string `pulumi:"branchFilterStrategy"`
 	// Invoke the hook for confidential issues events.
 	ConfidentialIssuesEvents bool `pulumi:"confidentialIssuesEvents"`
 	// Invoke the hook for confidential notes events.
 	ConfidentialNoteEvents bool `pulumi:"confidentialNoteEvents"`
+	// The date and time the hook was created in ISO8601 format.
+	CreatedAt string `pulumi:"createdAt"`
 	// Set a custom webhook template.
 	CustomWebhookTemplate string `pulumi:"customWebhookTemplate"`
 	// Invoke the hook for deployment events.
 	DeploymentEvents bool `pulumi:"deploymentEvents"`
+	// Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+	DisabledUntil string `pulumi:"disabledUntil"`
 	// Invoke the hook for emoji events.
 	EmojiEvents bool `pulumi:"emojiEvents"`
 	// Enable ssl verification when invoking the hook.
 	EnableSslVerification bool `pulumi:"enableSslVerification"`
+	// Invoke the hook for feature flag events.
+	FeatureFlagEvents bool `pulumi:"featureFlagEvents"`
 	// The ID or full path of the group.
 	Group string `pulumi:"group"`
 	// The id of the group for the hook.
@@ -60,26 +70,32 @@ type LookupGroupHookResult struct {
 	IssuesEvents bool `pulumi:"issuesEvents"`
 	// Invoke the hook for job events.
 	JobEvents bool `pulumi:"jobEvents"`
+	// Invoke the hook for member events.
+	MemberEvents bool `pulumi:"memberEvents"`
 	// Invoke the hook for merge requests.
 	MergeRequestsEvents bool `pulumi:"mergeRequestsEvents"`
+	// Invoke the hook for milestone events.
+	MilestoneEvents bool `pulumi:"milestoneEvents"`
 	// Invoke the hook for notes events.
 	NoteEvents bool `pulumi:"noteEvents"`
 	// Invoke the hook for pipeline events.
 	PipelineEvents bool `pulumi:"pipelineEvents"`
+	// Invoke the hook for project events.
+	ProjectEvents bool `pulumi:"projectEvents"`
 	// Invoke the hook for push events.
 	PushEvents bool `pulumi:"pushEvents"`
 	// Invoke the hook for push events on matching branches only.
 	PushEventsBranchFilter string `pulumi:"pushEventsBranchFilter"`
 	// Invoke the hook for releases events.
 	ReleasesEvents bool `pulumi:"releasesEvents"`
+	// Invoke the hook for resource access token expiry events.
+	ResourceAccessTokenEvents bool `pulumi:"resourceAccessTokenEvents"`
+	// Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+	SigningTokenPresent bool `pulumi:"signingTokenPresent"`
 	// Invoke the hook for subgroup events.
 	SubgroupEvents bool `pulumi:"subgroupEvents"`
 	// Invoke the hook for tag push events.
 	TagPushEvents bool `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
-	//
-	// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
-	Token string `pulumi:"token"`
 	// The url of the hook to invoke.
 	Url string `pulumi:"url"`
 	// Invoke the hook for vulnerability events.
@@ -124,6 +140,16 @@ func (o LookupGroupHookResultOutput) ToLookupGroupHookResultOutputWithContext(ct
 	return o
 }
 
+// Lifecycle status of the webhook. Values include `executable` and `disabled`.
+func (o LookupGroupHookResultOutput) AlertStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupHookResult) string { return v.AlertStatus }).(pulumi.StringOutput)
+}
+
+// Filter push events by branch.
+func (o LookupGroupHookResultOutput) BranchFilterStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupHookResult) string { return v.BranchFilterStrategy }).(pulumi.StringOutput)
+}
+
 // Invoke the hook for confidential issues events.
 func (o LookupGroupHookResultOutput) ConfidentialIssuesEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.ConfidentialIssuesEvents }).(pulumi.BoolOutput)
@@ -132,6 +158,11 @@ func (o LookupGroupHookResultOutput) ConfidentialIssuesEvents() pulumi.BoolOutpu
 // Invoke the hook for confidential notes events.
 func (o LookupGroupHookResultOutput) ConfidentialNoteEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.ConfidentialNoteEvents }).(pulumi.BoolOutput)
+}
+
+// The date and time the hook was created in ISO8601 format.
+func (o LookupGroupHookResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupHookResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // Set a custom webhook template.
@@ -144,6 +175,11 @@ func (o LookupGroupHookResultOutput) DeploymentEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.DeploymentEvents }).(pulumi.BoolOutput)
 }
 
+// Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+func (o LookupGroupHookResultOutput) DisabledUntil() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupHookResult) string { return v.DisabledUntil }).(pulumi.StringOutput)
+}
+
 // Invoke the hook for emoji events.
 func (o LookupGroupHookResultOutput) EmojiEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.EmojiEvents }).(pulumi.BoolOutput)
@@ -152,6 +188,11 @@ func (o LookupGroupHookResultOutput) EmojiEvents() pulumi.BoolOutput {
 // Enable ssl verification when invoking the hook.
 func (o LookupGroupHookResultOutput) EnableSslVerification() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.EnableSslVerification }).(pulumi.BoolOutput)
+}
+
+// Invoke the hook for feature flag events.
+func (o LookupGroupHookResultOutput) FeatureFlagEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.FeatureFlagEvents }).(pulumi.BoolOutput)
 }
 
 // The ID or full path of the group.
@@ -184,9 +225,19 @@ func (o LookupGroupHookResultOutput) JobEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.JobEvents }).(pulumi.BoolOutput)
 }
 
+// Invoke the hook for member events.
+func (o LookupGroupHookResultOutput) MemberEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.MemberEvents }).(pulumi.BoolOutput)
+}
+
 // Invoke the hook for merge requests.
 func (o LookupGroupHookResultOutput) MergeRequestsEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.MergeRequestsEvents }).(pulumi.BoolOutput)
+}
+
+// Invoke the hook for milestone events.
+func (o LookupGroupHookResultOutput) MilestoneEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.MilestoneEvents }).(pulumi.BoolOutput)
 }
 
 // Invoke the hook for notes events.
@@ -197,6 +248,11 @@ func (o LookupGroupHookResultOutput) NoteEvents() pulumi.BoolOutput {
 // Invoke the hook for pipeline events.
 func (o LookupGroupHookResultOutput) PipelineEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.PipelineEvents }).(pulumi.BoolOutput)
+}
+
+// Invoke the hook for project events.
+func (o LookupGroupHookResultOutput) ProjectEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.ProjectEvents }).(pulumi.BoolOutput)
 }
 
 // Invoke the hook for push events.
@@ -214,6 +270,16 @@ func (o LookupGroupHookResultOutput) ReleasesEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.ReleasesEvents }).(pulumi.BoolOutput)
 }
 
+// Invoke the hook for resource access token expiry events.
+func (o LookupGroupHookResultOutput) ResourceAccessTokenEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.ResourceAccessTokenEvents }).(pulumi.BoolOutput)
+}
+
+// Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+func (o LookupGroupHookResultOutput) SigningTokenPresent() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.SigningTokenPresent }).(pulumi.BoolOutput)
+}
+
 // Invoke the hook for subgroup events.
 func (o LookupGroupHookResultOutput) SubgroupEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.SubgroupEvents }).(pulumi.BoolOutput)
@@ -222,13 +288,6 @@ func (o LookupGroupHookResultOutput) SubgroupEvents() pulumi.BoolOutput {
 // Invoke the hook for tag push events.
 func (o LookupGroupHookResultOutput) TagPushEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupHookResult) bool { return v.TagPushEvents }).(pulumi.BoolOutput)
-}
-
-// A token to present when invoking the hook. The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
-//
-// Deprecated: The token is only available on resource creation, not in this datasource. It will always be blank. To be removed in 19.0.
-func (o LookupGroupHookResultOutput) Token() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGroupHookResult) string { return v.Token }).(pulumi.StringOutput)
 }
 
 // The url of the hook to invoke.

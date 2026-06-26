@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BranchProtectionAllowedToUnprotect {
     /**
-     * @return Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
+     * @return Access level allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. Valid values are: `developer`, `maintainer`, `admin`.
      * 
      */
     private @Nullable String accessLevel;
@@ -23,19 +23,19 @@ public final class BranchProtectionAllowedToUnprotect {
      */
     private @Nullable String accessLevelDescription;
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId` and `accessLevel`.
      * 
      */
     private @Nullable Integer groupId;
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId` and `accessLevel`.
      * 
      */
     private @Nullable Integer userId;
 
     private BranchProtectionAllowedToUnprotect() {}
     /**
-     * @return Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
+     * @return Access level allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. Valid values are: `developer`, `maintainer`, `admin`.
      * 
      */
     public Optional<String> accessLevel() {
@@ -49,14 +49,14 @@ public final class BranchProtectionAllowedToUnprotect {
         return Optional.ofNullable(this.accessLevelDescription);
     }
     /**
-     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * @return The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId` and `accessLevel`.
      * 
      */
     public Optional<Integer> groupId() {
         return Optional.ofNullable(this.groupId);
     }
     /**
-     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * @return The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId` and `accessLevel`.
      * 
      */
     public Optional<Integer> userId() {

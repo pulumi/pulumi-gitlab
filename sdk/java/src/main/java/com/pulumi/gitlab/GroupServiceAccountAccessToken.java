@@ -275,14 +275,14 @@ public class GroupServiceAccountAccessToken extends com.pulumi.resources.CustomR
         return this.userId;
     }
     /**
-     * Wether to validate if the expiration date is in the future.
+     * Whether to validate if the expiration date is in the future.
      * 
      */
     @Export(name="validatePastExpirationDate", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> validatePastExpirationDate;
 
     /**
-     * @return Wether to validate if the expiration date is in the future.
+     * @return Whether to validate if the expiration date is in the future.
      * 
      */
     public Output<Boolean> validatePastExpirationDate() {

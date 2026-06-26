@@ -50,12 +50,6 @@ namespace Pulumi.GitLab
     public partial class ProjectShareGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access level to grant the group for the project. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`
-        /// </summary>
-        [Output("accessLevel")]
-        public Output<string?> AccessLevel { get; private set; } = null!;
-
-        /// <summary>
         /// Share expiration date. Format: `YYYY-MM-DD`
         /// </summary>
         [Output("expiresAt")]
@@ -65,7 +59,7 @@ namespace Pulumi.GitLab
         /// The access level to grant the group for the project. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`
         /// </summary>
         [Output("groupAccess")]
-        public Output<string?> GroupAccess { get; private set; } = null!;
+        public Output<string> GroupAccess { get; private set; } = null!;
 
         /// <summary>
         /// The id of the group.
@@ -126,12 +120,6 @@ namespace Pulumi.GitLab
     public sealed class ProjectShareGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level to grant the group for the project. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`
-        /// </summary>
-        [Input("accessLevel")]
-        public Input<string>? AccessLevel { get; set; }
-
-        /// <summary>
         /// Share expiration date. Format: `YYYY-MM-DD`
         /// </summary>
         [Input("expiresAt")]
@@ -140,8 +128,8 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The access level to grant the group for the project. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`
         /// </summary>
-        [Input("groupAccess")]
-        public Input<string>? GroupAccess { get; set; }
+        [Input("groupAccess", required: true)]
+        public Input<string> GroupAccess { get; set; } = null!;
 
         /// <summary>
         /// The id of the group.
@@ -163,12 +151,6 @@ namespace Pulumi.GitLab
 
     public sealed class ProjectShareGroupState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The access level to grant the group for the project. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`
-        /// </summary>
-        [Input("accessLevel")]
-        public Input<string>? AccessLevel { get; set; }
-
         /// <summary>
         /// Share expiration date. Format: `YYYY-MM-DD`
         /// </summary>

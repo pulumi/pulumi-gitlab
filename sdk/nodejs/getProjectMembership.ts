@@ -11,14 +11,11 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
  */
-export function getProjectMembership(args?: GetProjectMembershipArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectMembershipResult> {
-    args = args || {};
+export function getProjectMembership(args: GetProjectMembershipArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectMembershipResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjectMembership:getProjectMembership", {
-        "fullPath": args.fullPath,
         "inherited": args.inherited,
         "project": args.project,
-        "projectId": args.projectId,
         "query": args.query,
         "userIds": args.userIds,
     }, opts);
@@ -29,25 +26,13 @@ export function getProjectMembership(args?: GetProjectMembershipArgs, opts?: pul
  */
 export interface GetProjectMembershipArgs {
     /**
-     * The full path of the project. Use `project` instead. Will be removed in 19.0.
-     *
-     * @deprecated Use `project` instead. Will be removed in 19.0.
-     */
-    fullPath?: string;
-    /**
      * Return all project members including members through ancestor groups
      */
     inherited?: boolean;
     /**
      * The ID or full path of the project.
      */
-    project?: string;
-    /**
-     * The ID of the project. Use `project` instead. Will be removed in 19.0.
-     *
-     * @deprecated Use `project` instead. Will be removed in 19.0.
-     */
-    projectId?: number;
+    project: string;
     /**
      * A query string to search for members
      */
@@ -62,12 +47,6 @@ export interface GetProjectMembershipArgs {
  * A collection of values returned by getProjectMembership.
  */
 export interface GetProjectMembershipResult {
-    /**
-     * The full path of the project. Use `project` instead. Will be removed in 19.0.
-     *
-     * @deprecated Use `project` instead. Will be removed in 19.0.
-     */
-    readonly fullPath: string;
     /**
      * The ID of this datasource. In the format `<project:query-hash>` if query is set, otherwise `<project>`.
      */
@@ -85,12 +64,6 @@ export interface GetProjectMembershipResult {
      */
     readonly project: string;
     /**
-     * The ID of the project. Use `project` instead. Will be removed in 19.0.
-     *
-     * @deprecated Use `project` instead. Will be removed in 19.0.
-     */
-    readonly projectId: number;
-    /**
      * A query string to search for members
      */
     readonly query?: string;
@@ -104,14 +77,11 @@ export interface GetProjectMembershipResult {
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
  */
-export function getProjectMembershipOutput(args?: GetProjectMembershipOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectMembershipResult> {
-    args = args || {};
+export function getProjectMembershipOutput(args: GetProjectMembershipOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectMembershipResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjectMembership:getProjectMembership", {
-        "fullPath": args.fullPath,
         "inherited": args.inherited,
         "project": args.project,
-        "projectId": args.projectId,
         "query": args.query,
         "userIds": args.userIds,
     }, opts);
@@ -122,25 +92,13 @@ export function getProjectMembershipOutput(args?: GetProjectMembershipOutputArgs
  */
 export interface GetProjectMembershipOutputArgs {
     /**
-     * The full path of the project. Use `project` instead. Will be removed in 19.0.
-     *
-     * @deprecated Use `project` instead. Will be removed in 19.0.
-     */
-    fullPath?: pulumi.Input<string | undefined>;
-    /**
      * Return all project members including members through ancestor groups
      */
     inherited?: pulumi.Input<boolean | undefined>;
     /**
      * The ID or full path of the project.
      */
-    project?: pulumi.Input<string | undefined>;
-    /**
-     * The ID of the project. Use `project` instead. Will be removed in 19.0.
-     *
-     * @deprecated Use `project` instead. Will be removed in 19.0.
-     */
-    projectId?: pulumi.Input<number | undefined>;
+    project: pulumi.Input<string>;
     /**
      * A query string to search for members
      */

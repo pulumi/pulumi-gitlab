@@ -77,7 +77,7 @@ export interface BranchCommit {
 
 export interface BranchProtectionAllowedToMerge {
     /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access level allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     accessLevel?: pulumi.Input<string | undefined>;
     /**
@@ -85,18 +85,18 @@ export interface BranchProtectionAllowedToMerge {
      */
     accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId` and `accessLevel`.
      */
     groupId?: pulumi.Input<number | undefined>;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId` and `accessLevel`.
      */
     userId?: pulumi.Input<number | undefined>;
 }
 
 export interface BranchProtectionAllowedToPush {
     /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access level allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
      */
     accessLevel?: pulumi.Input<string | undefined>;
     /**
@@ -104,22 +104,22 @@ export interface BranchProtectionAllowedToPush {
      */
     accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
-     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `userId`, `groupId`, and `accessLevel`. This field is read-only until Gitlab 17.5.
      */
     deployKeyId?: pulumi.Input<number | undefined>;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `userId`, and `accessLevel`.
      */
     groupId?: pulumi.Input<number | undefined>;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `accessLevel`.
      */
     userId?: pulumi.Input<number | undefined>;
 }
 
 export interface BranchProtectionAllowedToUnprotect {
     /**
-     * Access levels allowed to unprotect push to protected branch. Valid values are: `developer`, `maintainer`, `admin`.
+     * Access level allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. Valid values are: `developer`, `maintainer`, `admin`.
      */
     accessLevel?: pulumi.Input<string | undefined>;
     /**
@@ -127,11 +127,11 @@ export interface BranchProtectionAllowedToUnprotect {
      */
     accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId` and `accessLevel`.
      */
     groupId?: pulumi.Input<number | undefined>;
     /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId` and `accessLevel`.
      */
     userId?: pulumi.Input<number | undefined>;
 }
@@ -426,228 +426,6 @@ export interface GetProjectApprovalRulesApprovalRuleArgs {
      * List of user IDs that are eligible to approve this rule.
      */
     userIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
-}
-
-export interface GetProjectProtectedBranchMergeAccessLevel {
-    /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
-     */
-    accessLevel?: string;
-    /**
-     * Readable description of access level.
-     */
-    accessLevelDescription?: string;
-    /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
-     */
-    groupId?: number;
-    /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
-     */
-    userId?: number;
-}
-
-export interface GetProjectProtectedBranchMergeAccessLevelArgs {
-    /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
-     */
-    accessLevel?: pulumi.Input<string | undefined>;
-    /**
-     * Readable description of access level.
-     */
-    accessLevelDescription?: pulumi.Input<string | undefined>;
-    /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
-     */
-    groupId?: pulumi.Input<number | undefined>;
-    /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
-     */
-    userId?: pulumi.Input<number | undefined>;
-}
-
-export interface GetProjectProtectedBranchPushAccessLevel {
-    /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
-     */
-    accessLevel?: string;
-    /**
-     * Readable description of access level.
-     */
-    accessLevelDescription?: string;
-    /**
-     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
-     */
-    deployKeyId?: number;
-    /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
-     */
-    groupId?: number;
-    /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
-     */
-    userId?: number;
-}
-
-export interface GetProjectProtectedBranchPushAccessLevelArgs {
-    /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
-     */
-    accessLevel?: pulumi.Input<string | undefined>;
-    /**
-     * Readable description of access level.
-     */
-    accessLevelDescription?: pulumi.Input<string | undefined>;
-    /**
-     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
-     */
-    deployKeyId?: pulumi.Input<number | undefined>;
-    /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
-     */
-    groupId?: pulumi.Input<number | undefined>;
-    /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
-     */
-    userId?: pulumi.Input<number | undefined>;
-}
-
-export interface GetProjectProtectedBranchesProtectedBranch {
-    /**
-     * Whether force push is allowed.
-     */
-    allowForcePush?: boolean;
-    /**
-     * Reject code pushes that change files listed in the CODEOWNERS file.
-     */
-    codeOwnerApprovalRequired?: boolean;
-    /**
-     * The ID of this resource.
-     */
-    id?: number;
-    /**
-     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
-     */
-    mergeAccessLevels?: inputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevel[];
-    /**
-     * The name of the protected branch.
-     */
-    name?: string;
-    /**
-     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
-     */
-    pushAccessLevels?: inputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevel[];
-}
-
-export interface GetProjectProtectedBranchesProtectedBranchArgs {
-    /**
-     * Whether force push is allowed.
-     */
-    allowForcePush?: pulumi.Input<boolean | undefined>;
-    /**
-     * Reject code pushes that change files listed in the CODEOWNERS file.
-     */
-    codeOwnerApprovalRequired?: pulumi.Input<boolean | undefined>;
-    /**
-     * The ID of this resource.
-     */
-    id?: pulumi.Input<number | undefined>;
-    /**
-     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
-     */
-    mergeAccessLevels?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs>[] | undefined>;
-    /**
-     * The name of the protected branch.
-     */
-    name?: pulumi.Input<string | undefined>;
-    /**
-     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
-     */
-    pushAccessLevels?: pulumi.Input<pulumi.Input<inputs.GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs>[] | undefined>;
-}
-
-export interface GetProjectProtectedBranchesProtectedBranchMergeAccessLevel {
-    /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
-     */
-    accessLevel?: string;
-    /**
-     * Readable description of access level.
-     */
-    accessLevelDescription?: string;
-    /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
-     */
-    groupId?: number;
-    /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
-     */
-    userId?: number;
-}
-
-export interface GetProjectProtectedBranchesProtectedBranchMergeAccessLevelArgs {
-    /**
-     * Access levels allowed to merge to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
-     */
-    accessLevel?: pulumi.Input<string | undefined>;
-    /**
-     * Readable description of access level.
-     */
-    accessLevelDescription?: pulumi.Input<string | undefined>;
-    /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId`.
-     */
-    groupId?: pulumi.Input<number | undefined>;
-    /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId`.
-     */
-    userId?: pulumi.Input<number | undefined>;
-}
-
-export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevel {
-    /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
-     */
-    accessLevel?: string;
-    /**
-     * Readable description of access level.
-     */
-    accessLevelDescription?: string;
-    /**
-     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
-     */
-    deployKeyId?: number;
-    /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
-     */
-    groupId?: number;
-    /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
-     */
-    userId?: number;
-}
-
-export interface GetProjectProtectedBranchesProtectedBranchPushAccessLevelArgs {
-    /**
-     * Access levels allowed to push to protected branch. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
-     */
-    accessLevel?: pulumi.Input<string | undefined>;
-    /**
-     * Readable description of access level.
-     */
-    accessLevelDescription?: pulumi.Input<string | undefined>;
-    /**
-     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. This field is read-only until Gitlab 17.5.
-     */
-    deployKeyId?: pulumi.Input<number | undefined>;
-    /**
-     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `userId`.
-     */
-    groupId?: pulumi.Input<number | undefined>;
-    /**
-     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId` and `groupId`.
-     */
-    userId?: pulumi.Input<number | undefined>;
 }
 
 export interface GetReleaseAssets {
@@ -979,6 +757,67 @@ export interface GroupAccessTokenRotationConfiguration {
     rotateBeforeDays: pulumi.Input<number>;
 }
 
+export interface GroupBranchProtectionAllowedToMerge {
+    /**
+     * Access level allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     */
+    accessLevel?: pulumi.Input<string | undefined>;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId` and `accessLevel`.
+     */
+    groupId?: pulumi.Input<number | undefined>;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId` and `accessLevel`.
+     */
+    userId?: pulumi.Input<number | undefined>;
+}
+
+export interface GroupBranchProtectionAllowedToPush {
+    /**
+     * Access level allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `userId`. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     */
+    accessLevel?: pulumi.Input<string | undefined>;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of a GitLab deploy key allowed to perform the relevant action. Mutually exclusive with `userId`, `groupId`, and `accessLevel`.
+     */
+    deployKeyId?: pulumi.Input<number | undefined>;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `userId`, and `accessLevel`.
+     */
+    groupId?: pulumi.Input<number | undefined>;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `deployKeyId`, `groupId`, and `accessLevel`.
+     */
+    userId?: pulumi.Input<number | undefined>;
+}
+
+export interface GroupBranchProtectionAllowedToUnprotect {
+    /**
+     * Access level allowed to perform the relevant action. Mutually exclusive with `groupId` and `userId`. Valid values are: `developer`, `maintainer`, `admin`.
+     */
+    accessLevel?: pulumi.Input<string | undefined>;
+    /**
+     * Readable description of access level.
+     */
+    accessLevelDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of a GitLab group allowed to perform the relevant action. Mutually exclusive with `userId` and `accessLevel`.
+     */
+    groupId?: pulumi.Input<number | undefined>;
+    /**
+     * The ID of a GitLab user allowed to perform the relevant action. Mutually exclusive with `groupId` and `accessLevel`.
+     */
+    userId?: pulumi.Input<number | undefined>;
+}
+
 export interface GroupDefaultBranchProtectionDefaults {
     /**
      * Allow force push for all users with push access.
@@ -1028,6 +867,17 @@ export interface GroupHookCustomHeader {
     value: pulumi.Input<string>;
 }
 
+export interface GroupHookUrlVariable {
+    /**
+     * The value to display in place of the sensitive portion in the URL.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The sensitive portion of the webhook URL to mask.  This value cannot be imported.
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface GroupIssueBoardList {
     /**
      * The ID of the list.
@@ -1053,7 +903,7 @@ export interface GroupProtectedEnvironmentApprovalRule {
      */
     accessLevelDescription?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the group allowed to approve a deployment to this protected environment. TThe group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
+     * The ID of the group allowed to approve a deployment to this protected environment. The group must be a sub-group under the given group. Mutually exclusive with `accessLevel` and `userId`.
      */
     groupId?: pulumi.Input<number | undefined>;
     /**
@@ -1263,6 +1113,17 @@ export interface ProjectHookCustomHeader {
     value: pulumi.Input<string>;
 }
 
+export interface ProjectHookUrlVariable {
+    /**
+     * The value to display in place of the sensitive portion in the URL.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The sensitive portion of the webhook URL to mask.  This value cannot be imported.
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface ProjectIssueBoardList {
     /**
      * The ID of the assignee the list should be scoped to. Requires a GitLab EE license.
@@ -1351,33 +1212,6 @@ export interface ProjectProtectedEnvironmentApprovalRule {
     userId?: pulumi.Input<number | undefined>;
 }
 
-export interface ProjectProtectedEnvironmentDeployAccessLevel {
-    /**
-     * Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
-     */
-    accessLevel?: pulumi.Input<string | undefined>;
-    /**
-     * Readable description of level of access.
-     */
-    accessLevelDescription?: pulumi.Input<string | undefined>;
-    /**
-     * The ID of the group allowed to deploy to this protected environment. The project must be shared with the group. Mutually exclusive with `accessLevel` and `userId`.
-     */
-    groupId?: pulumi.Input<number | undefined>;
-    /**
-     * Group inheritance allows deploy access levels to take inherited group membership into account. Valid values are `0`, `1`. `0` => Direct group membership only, `1` => All inherited groups. Default: `0`
-     */
-    groupInheritanceType?: pulumi.Input<number | undefined>;
-    /**
-     * The unique ID of the Deploy Access Level object.
-     */
-    id?: pulumi.Input<number | undefined>;
-    /**
-     * The ID of the user allowed to deploy to this protected environment. The user must be a member of the project. Mutually exclusive with `accessLevel` and `groupId`.
-     */
-    userId?: pulumi.Input<number | undefined>;
-}
-
 export interface ProjectProtectedEnvironmentDeployAccessLevelsAttribute {
     /**
      * Levels of access required to deploy to this protected environment. Mutually exclusive with `userId` and `groupId`. Valid values are `developer`, `maintainer`.
@@ -1458,6 +1292,13 @@ export interface ProjectPushRules {
      * Reject commit when it's not signed through GPG.
      */
     rejectUnsignedCommits?: pulumi.Input<boolean | undefined>;
+}
+
+export interface ProjectServiceAccountTimeouts {
+    /**
+     * How long to wait for the service account to be fully deleted. Defaults to 10 minutes.
+     */
+    delete?: pulumi.Input<string | undefined>;
 }
 
 export interface ProjectTagCommit {

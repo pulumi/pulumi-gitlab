@@ -198,29 +198,6 @@ public final class IntegrationSlackArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * This parameter has been replaced with `branchesToBeNotified`.
-     * 
-     * @deprecated
-     * use &#39;branches_to_be_notified&#39; argument instead
-     * 
-     */
-    @Deprecated /* use 'branches_to_be_notified' argument instead */
-    @Import(name="notifyOnlyDefaultBranch")
-    private @Nullable Output<Boolean> notifyOnlyDefaultBranch;
-
-    /**
-     * @return This parameter has been replaced with `branchesToBeNotified`.
-     * 
-     * @deprecated
-     * use &#39;branches_to_be_notified&#39; argument instead
-     * 
-     */
-    @Deprecated /* use 'branches_to_be_notified' argument instead */
-    public Optional<Output<Boolean>> notifyOnlyDefaultBranch() {
-        return Optional.ofNullable(this.notifyOnlyDefaultBranch);
-    }
-
-    /**
      * The name of the channel to receive pipeline events notifications.
      * 
      */
@@ -400,7 +377,6 @@ public final class IntegrationSlackArgs extends com.pulumi.resources.ResourceArg
         this.noteChannel = $.noteChannel;
         this.noteEvents = $.noteEvents;
         this.notifyOnlyBrokenPipelines = $.notifyOnlyBrokenPipelines;
-        this.notifyOnlyDefaultBranch = $.notifyOnlyDefaultBranch;
         this.pipelineChannel = $.pipelineChannel;
         this.pipelineEvents = $.pipelineEvents;
         this.project = $.project;
@@ -682,35 +658,6 @@ public final class IntegrationSlackArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder notifyOnlyBrokenPipelines(Boolean notifyOnlyBrokenPipelines) {
             return notifyOnlyBrokenPipelines(Output.of(notifyOnlyBrokenPipelines));
-        }
-
-        /**
-         * @param notifyOnlyDefaultBranch This parameter has been replaced with `branchesToBeNotified`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * use &#39;branches_to_be_notified&#39; argument instead
-         * 
-         */
-        @Deprecated /* use 'branches_to_be_notified' argument instead */
-        public Builder notifyOnlyDefaultBranch(@Nullable Output<Boolean> notifyOnlyDefaultBranch) {
-            $.notifyOnlyDefaultBranch = notifyOnlyDefaultBranch;
-            return this;
-        }
-
-        /**
-         * @param notifyOnlyDefaultBranch This parameter has been replaced with `branchesToBeNotified`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * use &#39;branches_to_be_notified&#39; argument instead
-         * 
-         */
-        @Deprecated /* use 'branches_to_be_notified' argument instead */
-        public Builder notifyOnlyDefaultBranch(Boolean notifyOnlyDefaultBranch) {
-            return notifyOnlyDefaultBranch(Output.of(notifyOnlyDefaultBranch));
         }
 
         /**

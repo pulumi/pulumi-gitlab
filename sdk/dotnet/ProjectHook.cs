@@ -58,6 +58,23 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
+    ///     // Using URL variables
+    ///     // Values of URL variables can't be imported
+    ///     var urlVariables = new GitLab.ProjectHook("url_variables", new()
+    ///     {
+    ///         Project = "example/hooked",
+    ///         Url = "https://example.com/hook/example?token=secret",
+    ///         MergeRequestsEvents = true,
+    ///         UrlVariables = new[]
+    ///         {
+    ///             new GitLab.Inputs.ProjectHookUrlVariableArgs
+    ///             {
+    ///                 Key = "hidden",
+    ///                 Value = "token=secret",
+    ///             },
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -79,6 +96,12 @@ namespace Pulumi.GitLab
     [GitLabResourceType("gitlab:index/projectHook:ProjectHook")]
     public partial class ProjectHook : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Lifecycle status of the webhook. Values include `Executable` and `Disabled`.
+        /// </summary>
+        [Output("alertStatus")]
+        public Output<string> AlertStatus { get; private set; } = null!;
+
         /// <summary>
         /// Filter push events by branch. Valid values are: `Wildcard`, `Regex`, `AllBranches`.
         /// </summary>
@@ -122,6 +145,12 @@ namespace Pulumi.GitLab
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+        /// </summary>
+        [Output("disabledUntil")]
+        public Output<string> DisabledUntil { get; private set; } = null!;
+
+        /// <summary>
         /// Invoke the hook for emoji events. Defaults to `False`.
         /// </summary>
         [Output("emojiEvents")]
@@ -132,6 +161,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("enableSslVerification")]
         public Output<bool> EnableSslVerification { get; private set; } = null!;
+
+        /// <summary>
+        /// Invoke the hook for feature flag events. Defaults to `False`.
+        /// </summary>
+        [Output("featureFlagEvents")]
+        public Output<bool> FeatureFlagEvents { get; private set; } = null!;
 
         /// <summary>
         /// The id of the project hook.
@@ -156,6 +191,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("mergeRequestsEvents")]
         public Output<bool> MergeRequestsEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Invoke the hook for milestone events. Defaults to `False`.
+        /// </summary>
+        [Output("milestoneEvents")]
+        public Output<bool> MilestoneEvents { get; private set; } = null!;
 
         /// <summary>
         /// Name of the project webhook.
@@ -206,10 +247,34 @@ namespace Pulumi.GitLab
         public Output<bool> ReleasesEvents { get; private set; } = null!;
 
         /// <summary>
+        /// Invoke the hook for repository update events.
+        /// </summary>
+        [Output("repositoryUpdateEvents")]
+        public Output<bool> RepositoryUpdateEvents { get; private set; } = null!;
+
+        /// <summary>
         /// Invoke the hook for project access token expiry events. Defaults to `False`.
         /// </summary>
         [Output("resourceAccessTokenEvents")]
         public Output<bool> ResourceAccessTokenEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Invoke the hook for resource deploy token events. Defaults to `False`.
+        /// </summary>
+        [Output("resourceDeployTokenEvents")]
+        public Output<bool> ResourceDeployTokenEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `WebhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        /// </summary>
+        [Output("signingToken")]
+        public Output<string?> SigningToken { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether a `SigningToken` is configured server-side. Reflects the value returned by the GitLab API.
+        /// </summary>
+        [Output("signingTokenPresent")]
+        public Output<bool> SigningTokenPresent { get; private set; } = null!;
 
         /// <summary>
         /// Invoke the hook for tag push events. Defaults to `False`.
@@ -228,6 +293,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
+
+        /// <summary>
+        /// Array of sensitive portions of the webhook URL to mask.
+        /// </summary>
+        [Output("urlVariables")]
+        public Output<ImmutableArray<Outputs.ProjectHookUrlVariable>> UrlVariables { get; private set; } = null!;
 
         /// <summary>
         /// Invoke the hook for vulnerability events. Defaults to `False`.
@@ -266,6 +337,7 @@ namespace Pulumi.GitLab
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "signingToken",
                     "token",
                 },
             };
@@ -352,6 +424,12 @@ namespace Pulumi.GitLab
         public Input<bool>? EnableSslVerification { get; set; }
 
         /// <summary>
+        /// Invoke the hook for feature flag events. Defaults to `False`.
+        /// </summary>
+        [Input("featureFlagEvents")]
+        public Input<bool>? FeatureFlagEvents { get; set; }
+
+        /// <summary>
         /// Invoke the hook for issues events. Defaults to `False`.
         /// </summary>
         [Input("issuesEvents")]
@@ -368,6 +446,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mergeRequestsEvents")]
         public Input<bool>? MergeRequestsEvents { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for milestone events. Defaults to `False`.
+        /// </summary>
+        [Input("milestoneEvents")]
+        public Input<bool>? MilestoneEvents { get; set; }
 
         /// <summary>
         /// Name of the project webhook.
@@ -418,6 +502,28 @@ namespace Pulumi.GitLab
         public Input<bool>? ResourceAccessTokenEvents { get; set; }
 
         /// <summary>
+        /// Invoke the hook for resource deploy token events. Defaults to `False`.
+        /// </summary>
+        [Input("resourceDeployTokenEvents")]
+        public Input<bool>? ResourceDeployTokenEvents { get; set; }
+
+        [Input("signingToken")]
+        private Input<string>? _signingToken;
+
+        /// <summary>
+        /// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `WebhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        /// </summary>
+        public Input<string>? SigningToken
+        {
+            get => _signingToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _signingToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
         /// Invoke the hook for tag push events. Defaults to `False`.
         /// </summary>
         [Input("tagPushEvents")]
@@ -445,6 +551,18 @@ namespace Pulumi.GitLab
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
+        [Input("urlVariables")]
+        private InputList<Inputs.ProjectHookUrlVariableArgs>? _urlVariables;
+
+        /// <summary>
+        /// Array of sensitive portions of the webhook URL to mask.
+        /// </summary>
+        public InputList<Inputs.ProjectHookUrlVariableArgs> UrlVariables
+        {
+            get => _urlVariables ?? (_urlVariables = new InputList<Inputs.ProjectHookUrlVariableArgs>());
+            set => _urlVariables = value;
+        }
+
         /// <summary>
         /// Invoke the hook for vulnerability events. Defaults to `False`.
         /// </summary>
@@ -465,6 +583,12 @@ namespace Pulumi.GitLab
 
     public sealed class ProjectHookState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Lifecycle status of the webhook. Values include `Executable` and `Disabled`.
+        /// </summary>
+        [Input("alertStatus")]
+        public Input<string>? AlertStatus { get; set; }
+
         /// <summary>
         /// Filter push events by branch. Valid values are: `Wildcard`, `Regex`, `AllBranches`.
         /// </summary>
@@ -514,6 +638,12 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Time until the webhook is re-enabled after being automatically disabled due to failures, in ISO8601 format. Null when the webhook is enabled.
+        /// </summary>
+        [Input("disabledUntil")]
+        public Input<string>? DisabledUntil { get; set; }
+
+        /// <summary>
         /// Invoke the hook for emoji events. Defaults to `False`.
         /// </summary>
         [Input("emojiEvents")]
@@ -524,6 +654,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("enableSslVerification")]
         public Input<bool>? EnableSslVerification { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for feature flag events. Defaults to `False`.
+        /// </summary>
+        [Input("featureFlagEvents")]
+        public Input<bool>? FeatureFlagEvents { get; set; }
 
         /// <summary>
         /// The id of the project hook.
@@ -548,6 +684,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("mergeRequestsEvents")]
         public Input<bool>? MergeRequestsEvents { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for milestone events. Defaults to `False`.
+        /// </summary>
+        [Input("milestoneEvents")]
+        public Input<bool>? MilestoneEvents { get; set; }
 
         /// <summary>
         /// Name of the project webhook.
@@ -598,10 +740,44 @@ namespace Pulumi.GitLab
         public Input<bool>? ReleasesEvents { get; set; }
 
         /// <summary>
+        /// Invoke the hook for repository update events.
+        /// </summary>
+        [Input("repositoryUpdateEvents")]
+        public Input<bool>? RepositoryUpdateEvents { get; set; }
+
+        /// <summary>
         /// Invoke the hook for project access token expiry events. Defaults to `False`.
         /// </summary>
         [Input("resourceAccessTokenEvents")]
         public Input<bool>? ResourceAccessTokenEvents { get; set; }
+
+        /// <summary>
+        /// Invoke the hook for resource deploy token events. Defaults to `False`.
+        /// </summary>
+        [Input("resourceDeployTokenEvents")]
+        public Input<bool>? ResourceDeployTokenEvents { get; set; }
+
+        [Input("signingToken")]
+        private Input<string>? _signingToken;
+
+        /// <summary>
+        /// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `WebhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        /// </summary>
+        public Input<string>? SigningToken
+        {
+            get => _signingToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _signingToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Whether a `SigningToken` is configured server-side. Reflects the value returned by the GitLab API.
+        /// </summary>
+        [Input("signingTokenPresent")]
+        public Input<bool>? SigningTokenPresent { get; set; }
 
         /// <summary>
         /// Invoke the hook for tag push events. Defaults to `False`.
@@ -630,6 +806,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
+
+        [Input("urlVariables")]
+        private InputList<Inputs.ProjectHookUrlVariableGetArgs>? _urlVariables;
+
+        /// <summary>
+        /// Array of sensitive portions of the webhook URL to mask.
+        /// </summary>
+        public InputList<Inputs.ProjectHookUrlVariableGetArgs> UrlVariables
+        {
+            get => _urlVariables ?? (_urlVariables = new InputList<Inputs.ProjectHookUrlVariableGetArgs>());
+            set => _urlVariables = value;
+        }
 
         /// <summary>
         /// Invoke the hook for vulnerability events. Defaults to `False`.

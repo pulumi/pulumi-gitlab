@@ -24,6 +24,7 @@ class GroupServiceAccountArgs:
                  group: pulumi.Input[_builtins.str],
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait_for_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
                  timeouts: pulumi.Input[Optional['GroupServiceAccountTimeoutsArgs']] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -32,6 +33,7 @@ class GroupServiceAccountArgs:
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
         :param pulumi.Input[_builtins.str] email: User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not specified, the default Service account user name is used.
+        :param pulumi.Input[_builtins.bool] skip_wait_for_deletion: If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
         :param pulumi.Input[_builtins.str] username: The username of the user. If not specified, it’s automatically generated.
         """
         pulumi.set(__self__, "group", group)
@@ -39,6 +41,8 @@ class GroupServiceAccountArgs:
             pulumi.set(__self__, "email", email)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if skip_wait_for_deletion is not None:
+            pulumi.set(__self__, "skip_wait_for_deletion", skip_wait_for_deletion)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
         if username is not None:
@@ -81,6 +85,18 @@ class GroupServiceAccountArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipWaitForDeletion")
+    def skip_wait_for_deletion(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
+        """
+        return pulumi.get(self, "skip_wait_for_deletion")
+
+    @skip_wait_for_deletion.setter
+    def skip_wait_for_deletion(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "skip_wait_for_deletion", value)
+
+    @_builtins.property
     @pulumi.getter
     def timeouts(self) -> pulumi.Input[Optional['GroupServiceAccountTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
@@ -109,6 +125,7 @@ class _GroupServiceAccountState:
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait_for_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
                  timeouts: pulumi.Input[Optional['GroupServiceAccountTimeoutsArgs']] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -118,6 +135,7 @@ class _GroupServiceAccountState:
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not specified, the default Service account user name is used.
         :param pulumi.Input[_builtins.str] service_account_id: The service account id.
+        :param pulumi.Input[_builtins.bool] skip_wait_for_deletion: If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
         :param pulumi.Input[_builtins.str] username: The username of the user. If not specified, it’s automatically generated.
         """
         if email is not None:
@@ -128,6 +146,8 @@ class _GroupServiceAccountState:
             pulumi.set(__self__, "name", name)
         if service_account_id is not None:
             pulumi.set(__self__, "service_account_id", service_account_id)
+        if skip_wait_for_deletion is not None:
+            pulumi.set(__self__, "skip_wait_for_deletion", skip_wait_for_deletion)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
         if username is not None:
@@ -182,6 +202,18 @@ class _GroupServiceAccountState:
         pulumi.set(self, "service_account_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipWaitForDeletion")
+    def skip_wait_for_deletion(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
+        """
+        return pulumi.get(self, "skip_wait_for_deletion")
+
+    @skip_wait_for_deletion.setter
+    def skip_wait_for_deletion(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "skip_wait_for_deletion", value)
+
+    @_builtins.property
     @pulumi.getter
     def timeouts(self) -> pulumi.Input[Optional['GroupServiceAccountTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
@@ -212,6 +244,7 @@ class GroupServiceAccount(pulumi.CustomResource):
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait_for_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
                  timeouts: pulumi.Input[Optional[Union['GroupServiceAccountTimeoutsArgs', 'GroupServiceAccountTimeoutsArgsDict']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -267,6 +300,7 @@ class GroupServiceAccount(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] email: User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not specified, the default Service account user name is used.
+        :param pulumi.Input[_builtins.bool] skip_wait_for_deletion: If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
         :param pulumi.Input[_builtins.str] username: The username of the user. If not specified, it’s automatically generated.
         """
         ...
@@ -340,6 +374,7 @@ class GroupServiceAccount(pulumi.CustomResource):
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait_for_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
                  timeouts: pulumi.Input[Optional[Union['GroupServiceAccountTimeoutsArgs', 'GroupServiceAccountTimeoutsArgsDict']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -356,6 +391,7 @@ class GroupServiceAccount(pulumi.CustomResource):
                 raise TypeError("Missing required property 'group'")
             __props__.__dict__["group"] = group
             __props__.__dict__["name"] = name
+            __props__.__dict__["skip_wait_for_deletion"] = skip_wait_for_deletion
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["username"] = username
             __props__.__dict__["service_account_id"] = None
@@ -373,6 +409,7 @@ class GroupServiceAccount(pulumi.CustomResource):
             group: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_wait_for_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
             timeouts: pulumi.Input[Optional[Union['GroupServiceAccountTimeoutsArgs', 'GroupServiceAccountTimeoutsArgsDict']]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupServiceAccount':
         """
@@ -386,6 +423,7 @@ class GroupServiceAccount(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not specified, the default Service account user name is used.
         :param pulumi.Input[_builtins.str] service_account_id: The service account id.
+        :param pulumi.Input[_builtins.bool] skip_wait_for_deletion: If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
         :param pulumi.Input[_builtins.str] username: The username of the user. If not specified, it’s automatically generated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -396,6 +434,7 @@ class GroupServiceAccount(pulumi.CustomResource):
         __props__.__dict__["group"] = group
         __props__.__dict__["name"] = name
         __props__.__dict__["service_account_id"] = service_account_id
+        __props__.__dict__["skip_wait_for_deletion"] = skip_wait_for_deletion
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["username"] = username
         return GroupServiceAccount(resource_name, opts=opts, __props__=__props__)
@@ -431,6 +470,14 @@ class GroupServiceAccount(pulumi.CustomResource):
         The service account id.
         """
         return pulumi.get(self, "service_account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="skipWaitForDeletion")
+    def skip_wait_for_deletion(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
+        """
+        return pulumi.get(self, "skip_wait_for_deletion")
 
     @_builtins.property
     @pulumi.getter

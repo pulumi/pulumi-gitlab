@@ -102,11 +102,13 @@ namespace Pulumi.GitLab
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// GitLab project job token scopes can be imported using an id made up of just the `ProjectId`
+    /// GitLab project job token scopes can be imported using an id made up of `{project}`, for example:
     /// 
     /// ```sh
     /// $ pulumi import gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes bar 123
     /// ```
+    /// 
+    /// Where `Project` may be the project ID or path with namespace depending on what you have in your config.
     /// </summary>
     [GitLabResourceType("gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes")]
     public partial class ProjectJobTokenScopes : global::Pulumi.CustomResource
@@ -122,12 +124,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
-
-        /// <summary>
-        /// The ID of the project. Use `Project` instead. To be removed in 19.0.
-        /// </summary>
-        [Output("projectId")]
-        public Output<int> ProjectId { get; private set; } = null!;
 
         /// <summary>
         /// A set of group IDs that are in the CI/CD job token inbound allowlist.
@@ -149,7 +145,7 @@ namespace Pulumi.GitLab
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ProjectJobTokenScopes(string name, ProjectJobTokenScopesArgs? args = null, CustomResourceOptions? options = null)
+        public ProjectJobTokenScopes(string name, ProjectJobTokenScopesArgs args, CustomResourceOptions? options = null)
             : base("gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes", name, args ?? new ProjectJobTokenScopesArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -196,14 +192,8 @@ namespace Pulumi.GitLab
         /// <summary>
         /// The ID or full path of the project.
         /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// The ID of the project. Use `Project` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("projectId")]
-        public Input<int>? ProjectId { get; set; }
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("targetGroupIds")]
         private InputList<int>? _targetGroupIds;
@@ -248,12 +238,6 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// The ID of the project. Use `Project` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("projectId")]
-        public Input<int>? ProjectId { get; set; }
 
         [Input("targetGroupIds")]
         private InputList<int>? _targetGroupIds;

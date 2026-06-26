@@ -11,6 +11,7 @@ import com.pulumi.gitlab.GroupServiceAccountArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.GroupServiceAccountState;
 import com.pulumi.gitlab.outputs.GroupServiceAccountTimeouts;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -152,6 +153,20 @@ public class GroupServiceAccount extends com.pulumi.resources.CustomResource {
      */
     public Output<String> serviceAccountId() {
         return this.serviceAccountId;
+    }
+    /**
+     * If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
+     * 
+     */
+    @Export(name="skipWaitForDeletion", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> skipWaitForDeletion;
+
+    /**
+     * @return If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> skipWaitForDeletion() {
+        return Codegen.optional(this.skipWaitForDeletion);
     }
     @Export(name="timeouts", refs={GroupServiceAccountTimeouts.class}, tree="[0]")
     private Output</* @Nullable */ GroupServiceAccountTimeouts> timeouts;

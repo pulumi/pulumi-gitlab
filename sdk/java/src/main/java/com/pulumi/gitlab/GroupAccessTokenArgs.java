@@ -125,14 +125,14 @@ public final class GroupAccessTokenArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Wether to validate if the expiration date is in the future.
+     * Whether to validate if the expiration date is in the future.
      * 
      */
     @Import(name="validatePastExpirationDate")
     private @Nullable Output<Boolean> validatePastExpirationDate;
 
     /**
-     * @return Wether to validate if the expiration date is in the future.
+     * @return Whether to validate if the expiration date is in the future.
      * 
      */
     public Optional<Output<Boolean>> validatePastExpirationDate() {
@@ -328,7 +328,7 @@ public final class GroupAccessTokenArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * @param validatePastExpirationDate Whether to validate if the expiration date is in the future.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class GroupAccessTokenArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param validatePastExpirationDate Wether to validate if the expiration date is in the future.
+         * @param validatePastExpirationDate Whether to validate if the expiration date is in the future.
          * 
          * @return builder
          * 

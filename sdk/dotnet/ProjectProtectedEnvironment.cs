@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     /// <summary>
     /// The `gitlab.ProjectProtectedEnvironment` resource manages the lifecycle of a protected environment in a project.
     /// 
-    /// &gt; In order to use a user or group in the `DeployAccessLevels` configuration,
+    /// &gt; In order to use a user or group in the `DeployAccessLevelsAttribute` configuration,
     ///    you need to make sure that users have access to the project and groups must have this project shared.
     ///    You may use the `gitlab.ProjectMembership` and `GitlabProjectSharedGroup` resources to achieve this.
     ///    Unfortunately, the GitLab API does not complain about users and groups without access to the project and just ignores those.
@@ -42,13 +42,7 @@ namespace Pulumi.GitLab
         public Output<ImmutableArray<Outputs.ProjectProtectedEnvironmentApprovalRule>> ApprovalRules { get; private set; } = null!;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`. Use `DeployAccessLevelsAttribute` instead. To be removed in 19.0.
-        /// </summary>
-        [Output("deployAccessLevels")]
-        public Output<ImmutableArray<Outputs.ProjectProtectedEnvironmentDeployAccessLevel>> DeployAccessLevels { get; private set; } = null!;
-
-        /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`.
+        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevelsAttribute` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         [Output("deployAccessLevelsAttributes")]
         public Output<ImmutableArray<Outputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute>> DeployAccessLevelsAttributes { get; private set; } = null!;
@@ -123,24 +117,11 @@ namespace Pulumi.GitLab
             set => _approvalRules = value;
         }
 
-        [Input("deployAccessLevels")]
-        private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs>? _deployAccessLevels;
-
-        /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`. Use `DeployAccessLevelsAttribute` instead. To be removed in 19.0.
-        /// </summary>
-        [Obsolete(@"Use `DeployAccessLevelsAttribute` instead. To be removed in 19.0.")]
-        public InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs> DeployAccessLevels
-        {
-            get => _deployAccessLevels ?? (_deployAccessLevels = new InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelArgs>());
-            set => _deployAccessLevels = value;
-        }
-
         [Input("deployAccessLevelsAttributes")]
         private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs>? _deployAccessLevelsAttributes;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`.
+        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevelsAttribute` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         public InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs> DeployAccessLevelsAttributes
         {
@@ -180,24 +161,11 @@ namespace Pulumi.GitLab
             set => _approvalRules = value;
         }
 
-        [Input("deployAccessLevels")]
-        private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelGetArgs>? _deployAccessLevels;
-
-        /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`. Use `DeployAccessLevelsAttribute` instead. To be removed in 19.0.
-        /// </summary>
-        [Obsolete(@"Use `DeployAccessLevelsAttribute` instead. To be removed in 19.0.")]
-        public InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelGetArgs> DeployAccessLevels
-        {
-            get => _deployAccessLevels ?? (_deployAccessLevels = new InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelGetArgs>());
-            set => _deployAccessLevels = value;
-        }
-
         [Input("deployAccessLevelsAttributes")]
         private InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelsAttributeGetArgs>? _deployAccessLevelsAttributes;
 
         /// <summary>
-        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevels` should be one of `UserId`, `GroupId` or `AccessLevel`.
+        /// Array of access levels allowed to deploy, with each described by a hash.  Elements in the `DeployAccessLevelsAttribute` should be one of `UserId`, `GroupId` or `AccessLevel`.
         /// </summary>
         public InputList<Inputs.ProjectProtectedEnvironmentDeployAccessLevelsAttributeGetArgs> DeployAccessLevelsAttributes
         {

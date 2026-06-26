@@ -38,7 +38,7 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string PathWithNamespace;
         /// <summary>
-        /// The web url of the upstream project.
+        /// The web URL of the upstream project.
         /// </summary>
         public readonly string WebUrl;
 

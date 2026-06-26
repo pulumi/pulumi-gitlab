@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The `gitlab.ProjectCluster` resource manages the lifecycle of a project cluster.
  *
- * > This is deprecated, due for removal in GitLab 19.0.
+ * > This is deprecated, due for removal in GitLab 20.0.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_clusters/)
  *

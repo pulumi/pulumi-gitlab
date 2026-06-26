@@ -42,6 +42,7 @@ export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions)
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gitlab:index/getProjects:getProjects", {
+        "active": args.active,
         "archived": args.archived,
         "groupId": args.groupId,
         "includeSubgroups": args.includeSubgroups,
@@ -72,6 +73,10 @@ export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetProjectsArgs {
     /**
+     * Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+     */
+    active?: boolean;
+    /**
      * Limit by archived status.
      */
     archived?: boolean;
@@ -84,7 +89,7 @@ export interface GetProjectsArgs {
      */
     includeSubgroups?: boolean;
     /**
-     * The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+     * The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
      */
     maxQueryablePages?: number;
     /**
@@ -104,11 +109,11 @@ export interface GetProjectsArgs {
      */
     owned?: boolean;
     /**
-     * The first page to begin the query on.
+     * The first page to begin the query on (default 1).
      */
     page?: number;
     /**
-     * The number of results to return per page.
+     * The number of results to return per page (default 20, maximum 100).
      */
     perPage?: number;
     /**
@@ -166,6 +171,10 @@ export interface GetProjectsArgs {
  */
 export interface GetProjectsResult {
     /**
+     * Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+     */
+    readonly active?: boolean;
+    /**
      * Limit by archived status.
      */
     readonly archived?: boolean;
@@ -174,7 +183,7 @@ export interface GetProjectsResult {
      */
     readonly groupId?: number;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this datasource. In the format `<group_id-options_hash>`, where `optionsHash` is a hash of all the other search options provided.
      */
     readonly id: string;
     /**
@@ -182,7 +191,7 @@ export interface GetProjectsResult {
      */
     readonly includeSubgroups?: boolean;
     /**
-     * The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+     * The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
      */
     readonly maxQueryablePages?: number;
     /**
@@ -202,11 +211,11 @@ export interface GetProjectsResult {
      */
     readonly owned?: boolean;
     /**
-     * The first page to begin the query on.
+     * The first page to begin the query on (default 1).
      */
     readonly page?: number;
     /**
-     * The number of results to return per page.
+     * The number of results to return per page (default 20, maximum 100).
      */
     readonly perPage?: number;
     /**
@@ -298,6 +307,7 @@ export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.In
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gitlab:index/getProjects:getProjects", {
+        "active": args.active,
         "archived": args.archived,
         "groupId": args.groupId,
         "includeSubgroups": args.includeSubgroups,
@@ -328,6 +338,10 @@ export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.In
  */
 export interface GetProjectsOutputArgs {
     /**
+     * Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+     */
+    active?: pulumi.Input<boolean | undefined>;
+    /**
      * Limit by archived status.
      */
     archived?: pulumi.Input<boolean | undefined>;
@@ -340,7 +354,7 @@ export interface GetProjectsOutputArgs {
      */
     includeSubgroups?: pulumi.Input<boolean | undefined>;
     /**
-     * The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+     * The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
      */
     maxQueryablePages?: pulumi.Input<number | undefined>;
     /**
@@ -360,11 +374,11 @@ export interface GetProjectsOutputArgs {
      */
     owned?: pulumi.Input<boolean | undefined>;
     /**
-     * The first page to begin the query on.
+     * The first page to begin the query on (default 1).
      */
     page?: pulumi.Input<number | undefined>;
     /**
-     * The number of results to return per page.
+     * The number of results to return per page (default 20, maximum 100).
      */
     perPage?: pulumi.Input<number | undefined>;
     /**

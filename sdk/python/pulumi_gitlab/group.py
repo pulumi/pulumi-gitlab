@@ -24,6 +24,7 @@ class GroupArgs:
                  path: pulumi.Input[_builtins.str],
                  allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_email_domains_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 archive_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  avatar: pulumi.Input[Optional[_builtins.str]] = None,
                  avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
@@ -62,6 +63,7 @@ class GroupArgs:
         :param pulumi.Input[_builtins.str] path: The path of the group.
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+        :param pulumi.Input[_builtins.bool] archive_on_destroy: Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
@@ -100,6 +102,8 @@ class GroupArgs:
             pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         if allowed_email_domains_lists is not None:
             pulumi.set(__self__, "allowed_email_domains_lists", allowed_email_domains_lists)
+        if archive_on_destroy is not None:
+            pulumi.set(__self__, "archive_on_destroy", archive_on_destroy)
         if auto_devops_enabled is not None:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         if avatar is not None:
@@ -203,6 +207,18 @@ class GroupArgs:
     @allowed_email_domains_lists.setter
     def allowed_email_domains_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_email_domains_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="archiveOnDestroy")
+    def archive_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+        """
+        return pulumi.get(self, "archive_on_destroy")
+
+    @archive_on_destroy.setter
+    def archive_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "archive_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDevopsEnabled")
@@ -595,6 +611,7 @@ class _GroupState:
     def __init__(__self__, *,
                  allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_email_domains_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 archive_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  avatar: pulumi.Input[Optional[_builtins.str]] = None,
                  avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
@@ -638,6 +655,7 @@ class _GroupState:
 
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+        :param pulumi.Input[_builtins.bool] archive_on_destroy: Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
@@ -681,6 +699,8 @@ class _GroupState:
             pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         if allowed_email_domains_lists is not None:
             pulumi.set(__self__, "allowed_email_domains_lists", allowed_email_domains_lists)
+        if archive_on_destroy is not None:
+            pulumi.set(__self__, "archive_on_destroy", archive_on_destroy)
         if auto_devops_enabled is not None:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         if avatar is not None:
@@ -784,6 +804,18 @@ class _GroupState:
     @allowed_email_domains_lists.setter
     def allowed_email_domains_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_email_domains_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="archiveOnDestroy")
+    def archive_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+        """
+        return pulumi.get(self, "archive_on_destroy")
+
+    @archive_on_destroy.setter
+    def archive_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "archive_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDevopsEnabled")
@@ -1251,6 +1283,7 @@ class Group(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_email_domains_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 archive_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  avatar: pulumi.Input[Optional[_builtins.str]] = None,
                  avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1369,6 +1402,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+        :param pulumi.Input[_builtins.bool] archive_on_destroy: Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
@@ -1506,6 +1540,7 @@ class Group(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_email_domains_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 archive_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  avatar: pulumi.Input[Optional[_builtins.str]] = None,
                  avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1550,6 +1585,7 @@ class Group(pulumi.CustomResource):
 
             __props__.__dict__["allow_merge_on_skipped_pipeline"] = allow_merge_on_skipped_pipeline
             __props__.__dict__["allowed_email_domains_lists"] = allowed_email_domains_lists
+            __props__.__dict__["archive_on_destroy"] = archive_on_destroy
             __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
             __props__.__dict__["avatar"] = avatar
             __props__.__dict__["avatar_hash"] = avatar_hash
@@ -1604,6 +1640,7 @@ class Group(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
             allowed_email_domains_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            archive_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             avatar: pulumi.Input[Optional[_builtins.str]] = None,
             avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1651,6 +1688,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_merge_on_skipped_pipeline: Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_email_domains_lists: A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
+        :param pulumi.Input[_builtins.bool] archive_on_destroy: Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
@@ -1696,6 +1734,7 @@ class Group(pulumi.CustomResource):
 
         __props__.__dict__["allow_merge_on_skipped_pipeline"] = allow_merge_on_skipped_pipeline
         __props__.__dict__["allowed_email_domains_lists"] = allowed_email_domains_lists
+        __props__.__dict__["archive_on_destroy"] = archive_on_destroy
         __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
         __props__.__dict__["avatar"] = avatar
         __props__.__dict__["avatar_hash"] = avatar_hash
@@ -1751,6 +1790,14 @@ class Group(pulumi.CustomResource):
         A list of email address domains to allow group access. Will be concatenated together into a comma separated string.
         """
         return pulumi.get(self, "allowed_email_domains_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="archiveOnDestroy")
+    def archive_on_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Set to `true` to archive the group instead of deleting on destroy. If set to `true` it will entirely omit the `DELETE` operation.
+        """
+        return pulumi.get(self, "archive_on_destroy")
 
     @_builtins.property
     @pulumi.getter(name="autoDevopsEnabled")

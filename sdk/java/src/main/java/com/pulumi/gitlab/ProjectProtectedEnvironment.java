@@ -11,7 +11,6 @@ import com.pulumi.gitlab.ProjectProtectedEnvironmentArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentState;
 import com.pulumi.gitlab.outputs.ProjectProtectedEnvironmentApprovalRule;
-import com.pulumi.gitlab.outputs.ProjectProtectedEnvironmentDeployAccessLevel;
 import com.pulumi.gitlab.outputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute;
 import java.lang.String;
 import java.util.List;
@@ -21,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * The `gitlab.ProjectProtectedEnvironment` resource manages the lifecycle of a protected environment in a project.
  * 
- * &gt; In order to use a user or group in the `deployAccessLevels` configuration,
+ * &gt; In order to use a user or group in the `deployAccessLevelsAttribute` configuration,
  *    you need to make sure that users have access to the project and groups must have this project shared.
  *    You may use the `gitlab.ProjectMembership` and `gitlabProjectSharedGroup` resources to achieve this.
  *    Unfortunately, the GitLab API does not complain about users and groups without access to the project and just ignores those.
@@ -59,32 +58,14 @@ public class ProjectProtectedEnvironment extends com.pulumi.resources.CustomReso
         return this.approvalRules;
     }
     /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`. Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `deployAccessLevelsAttribute` instead. To be removed in 19.0. */
-    @Export(name="deployAccessLevels", refs={List.class,ProjectProtectedEnvironmentDeployAccessLevel.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ProjectProtectedEnvironmentDeployAccessLevel>> deployAccessLevels;
-
-    /**
-     * @return Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`. Use `deployAccessLevelsAttribute` instead. To be removed in 19.0.
-     * 
-     */
-    public Output<Optional<List<ProjectProtectedEnvironmentDeployAccessLevel>>> deployAccessLevels() {
-        return Codegen.optional(this.deployAccessLevels);
-    }
-    /**
-     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     * Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevelsAttribute` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     @Export(name="deployAccessLevelsAttributes", refs={List.class,ProjectProtectedEnvironmentDeployAccessLevelsAttribute.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ProjectProtectedEnvironmentDeployAccessLevelsAttribute>> deployAccessLevelsAttributes;
 
     /**
-     * @return Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevels` should be one of `userId`, `groupId` or `accessLevel`.
+     * @return Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deployAccessLevelsAttribute` should be one of `userId`, `groupId` or `accessLevel`.
      * 
      */
     public Output<Optional<List<ProjectProtectedEnvironmentDeployAccessLevelsAttribute>>> deployAccessLevelsAttributes() {

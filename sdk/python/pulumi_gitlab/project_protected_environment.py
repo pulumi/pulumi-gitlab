@@ -24,7 +24,6 @@ class ProjectProtectedEnvironmentArgs:
                  environment: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectProtectedEnvironmentApprovalRuleArgs']]]] = None,
-                 deploy_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]] = None,
                  deploy_access_levels_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs']]]] = None):
         """
         The set of arguments for constructing a ProjectProtectedEnvironment resource.
@@ -32,18 +31,12 @@ class ProjectProtectedEnvironmentArgs:
         :param pulumi.Input[_builtins.str] environment: The name of the environment.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project which the protected environment is created against.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentApprovalRuleArgs']]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`. Use `deploy_access_levels_attribute` instead. To be removed in 19.0.
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs']]] deploy_access_levels_attributes: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs']]] deploy_access_levels_attributes: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels_attribute` should be one of `user_id`, `group_id` or `access_level`.
         """
         pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "project", project)
         if approval_rules is not None:
             pulumi.set(__self__, "approval_rules", approval_rules)
-        if deploy_access_levels is not None:
-            warnings.warn("""Use `deploy_access_levels_attribute` instead. To be removed in 19.0.""", DeprecationWarning)
-            pulumi.log.warn("""deploy_access_levels is deprecated: Use `deploy_access_levels_attribute` instead. To be removed in 19.0.""")
-        if deploy_access_levels is not None:
-            pulumi.set(__self__, "deploy_access_levels", deploy_access_levels)
         if deploy_access_levels_attributes is not None:
             pulumi.set(__self__, "deploy_access_levels_attributes", deploy_access_levels_attributes)
 
@@ -84,23 +77,10 @@ class ProjectProtectedEnvironmentArgs:
         pulumi.set(self, "approval_rules", value)
 
     @_builtins.property
-    @pulumi.getter(name="deployAccessLevels")
-    @_utilities.deprecated("""Use `deploy_access_levels_attribute` instead. To be removed in 19.0.""")
-    def deploy_access_levels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]]:
-        """
-        Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`. Use `deploy_access_levels_attribute` instead. To be removed in 19.0.
-        """
-        return pulumi.get(self, "deploy_access_levels")
-
-    @deploy_access_levels.setter
-    def deploy_access_levels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]]):
-        pulumi.set(self, "deploy_access_levels", value)
-
-    @_builtins.property
     @pulumi.getter(name="deployAccessLevelsAttributes")
     def deploy_access_levels_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs']]]]:
         """
-        Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels_attribute` should be one of `user_id`, `group_id` or `access_level`.
         """
         return pulumi.get(self, "deploy_access_levels_attributes")
 
@@ -113,7 +93,6 @@ class ProjectProtectedEnvironmentArgs:
 class _ProjectProtectedEnvironmentState:
     def __init__(__self__, *,
                  approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectProtectedEnvironmentApprovalRuleArgs']]]] = None,
-                 deploy_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]] = None,
                  deploy_access_levels_attributes: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs']]]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -121,18 +100,12 @@ class _ProjectProtectedEnvironmentState:
         Input properties used for looking up and filtering ProjectProtectedEnvironment resources.
 
         :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentApprovalRuleArgs']]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`. Use `deploy_access_levels_attribute` instead. To be removed in 19.0.
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs']]] deploy_access_levels_attributes: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs']]] deploy_access_levels_attributes: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels_attribute` should be one of `user_id`, `group_id` or `access_level`.
         :param pulumi.Input[_builtins.str] environment: The name of the environment.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project which the protected environment is created against.
         """
         if approval_rules is not None:
             pulumi.set(__self__, "approval_rules", approval_rules)
-        if deploy_access_levels is not None:
-            warnings.warn("""Use `deploy_access_levels_attribute` instead. To be removed in 19.0.""", DeprecationWarning)
-            pulumi.log.warn("""deploy_access_levels is deprecated: Use `deploy_access_levels_attribute` instead. To be removed in 19.0.""")
-        if deploy_access_levels is not None:
-            pulumi.set(__self__, "deploy_access_levels", deploy_access_levels)
         if deploy_access_levels_attributes is not None:
             pulumi.set(__self__, "deploy_access_levels_attributes", deploy_access_levels_attributes)
         if environment is not None:
@@ -153,23 +126,10 @@ class _ProjectProtectedEnvironmentState:
         pulumi.set(self, "approval_rules", value)
 
     @_builtins.property
-    @pulumi.getter(name="deployAccessLevels")
-    @_utilities.deprecated("""Use `deploy_access_levels_attribute` instead. To be removed in 19.0.""")
-    def deploy_access_levels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]]:
-        """
-        Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`. Use `deploy_access_levels_attribute` instead. To be removed in 19.0.
-        """
-        return pulumi.get(self, "deploy_access_levels")
-
-    @deploy_access_levels.setter
-    def deploy_access_levels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelArgs']]]]):
-        pulumi.set(self, "deploy_access_levels", value)
-
-    @_builtins.property
     @pulumi.getter(name="deployAccessLevelsAttributes")
     def deploy_access_levels_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs']]]]:
         """
-        Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels_attribute` should be one of `user_id`, `group_id` or `access_level`.
         """
         return pulumi.get(self, "deploy_access_levels_attributes")
 
@@ -209,7 +169,6 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict']]]]] = None,
-                 deploy_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelArgs', 'ProjectProtectedEnvironmentDeployAccessLevelArgsDict']]]]] = None,
                  deploy_access_levels_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict']]]]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -217,7 +176,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         """
         The `ProjectProtectedEnvironment` resource manages the lifecycle of a protected environment in a project.
 
-        > In order to use a user or group in the `deploy_access_levels` configuration,
+        > In order to use a user or group in the `deploy_access_levels_attribute` configuration,
            you need to make sure that users have access to the project and groups must have this project shared.
            You may use the `ProjectMembership` and `gitlab_project_shared_group` resources to achieve this.
            Unfortunately, the GitLab API does not complain about users and groups without access to the project and just ignores those.
@@ -241,8 +200,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict']]]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelArgs', 'ProjectProtectedEnvironmentDeployAccessLevelArgsDict']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`. Use `deploy_access_levels_attribute` instead. To be removed in 19.0.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict']]]] deploy_access_levels_attributes: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict']]]] deploy_access_levels_attributes: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels_attribute` should be one of `user_id`, `group_id` or `access_level`.
         :param pulumi.Input[_builtins.str] environment: The name of the environment.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project which the protected environment is created against.
         """
@@ -255,7 +213,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         """
         The `ProjectProtectedEnvironment` resource manages the lifecycle of a protected environment in a project.
 
-        > In order to use a user or group in the `deploy_access_levels` configuration,
+        > In order to use a user or group in the `deploy_access_levels_attribute` configuration,
            you need to make sure that users have access to the project and groups must have this project shared.
            You may use the `ProjectMembership` and `gitlab_project_shared_group` resources to achieve this.
            Unfortunately, the GitLab API does not complain about users and groups without access to the project and just ignores those.
@@ -292,7 +250,6 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict']]]]] = None,
-                 deploy_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelArgs', 'ProjectProtectedEnvironmentDeployAccessLevelArgsDict']]]]] = None,
                  deploy_access_levels_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict']]]]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -306,7 +263,6 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
             __props__ = ProjectProtectedEnvironmentArgs.__new__(ProjectProtectedEnvironmentArgs)
 
             __props__.__dict__["approval_rules"] = approval_rules
-            __props__.__dict__["deploy_access_levels"] = deploy_access_levels
             __props__.__dict__["deploy_access_levels_attributes"] = deploy_access_levels_attributes
             if environment is None and not opts.urn:
                 raise TypeError("Missing required property 'environment'")
@@ -325,7 +281,6 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict']]]]] = None,
-            deploy_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelArgs', 'ProjectProtectedEnvironmentDeployAccessLevelArgsDict']]]]] = None,
             deploy_access_levels_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict']]]]] = None,
             environment: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectProtectedEnvironment':
@@ -337,8 +292,7 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict']]]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelArgs', 'ProjectProtectedEnvironmentDeployAccessLevelArgsDict']]]] deploy_access_levels: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`. Use `deploy_access_levels_attribute` instead. To be removed in 19.0.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict']]]] deploy_access_levels_attributes: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict']]]] deploy_access_levels_attributes: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels_attribute` should be one of `user_id`, `group_id` or `access_level`.
         :param pulumi.Input[_builtins.str] environment: The name of the environment.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project which the protected environment is created against.
         """
@@ -347,7 +301,6 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         __props__ = _ProjectProtectedEnvironmentState.__new__(_ProjectProtectedEnvironmentState)
 
         __props__.__dict__["approval_rules"] = approval_rules
-        __props__.__dict__["deploy_access_levels"] = deploy_access_levels
         __props__.__dict__["deploy_access_levels_attributes"] = deploy_access_levels_attributes
         __props__.__dict__["environment"] = environment
         __props__.__dict__["project"] = project
@@ -362,19 +315,10 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         return pulumi.get(self, "approval_rules")
 
     @_builtins.property
-    @pulumi.getter(name="deployAccessLevels")
-    @_utilities.deprecated("""Use `deploy_access_levels_attribute` instead. To be removed in 19.0.""")
-    def deploy_access_levels(self) -> pulumi.Output[Optional[Sequence['outputs.ProjectProtectedEnvironmentDeployAccessLevel']]]:
-        """
-        Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`. Use `deploy_access_levels_attribute` instead. To be removed in 19.0.
-        """
-        return pulumi.get(self, "deploy_access_levels")
-
-    @_builtins.property
     @pulumi.getter(name="deployAccessLevelsAttributes")
     def deploy_access_levels_attributes(self) -> pulumi.Output[Optional[Sequence['outputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute']]]:
         """
-        Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels` should be one of `user_id`, `group_id` or `access_level`.
+        Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels_attribute` should be one of `user_id`, `group_id` or `access_level`.
         """
         return pulumi.get(self, "deploy_access_levels_attributes")
 

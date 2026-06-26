@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -66,18 +66,26 @@ type SystemHook struct {
 
 	// The date and time the hook was created in ISO8601 format.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Description of the hook.
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Do SSL verification when triggering the hook.
-	EnableSslVerification pulumi.BoolPtrOutput `pulumi:"enableSslVerification"`
+	EnableSslVerification pulumi.BoolOutput `pulumi:"enableSslVerification"`
 	// Trigger hook on merge requests events.
-	MergeRequestsEvents pulumi.BoolPtrOutput `pulumi:"mergeRequestsEvents"`
+	MergeRequestsEvents pulumi.BoolOutput `pulumi:"mergeRequestsEvents"`
+	// Name of the hook.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// When true, the hook fires on push events.
-	PushEvents pulumi.BoolPtrOutput `pulumi:"pushEvents"`
+	PushEvents pulumi.BoolOutput `pulumi:"pushEvents"`
 	// Trigger hook on repository update events.
-	RepositoryUpdateEvents pulumi.BoolPtrOutput `pulumi:"repositoryUpdateEvents"`
+	RepositoryUpdateEvents pulumi.BoolOutput `pulumi:"repositoryUpdateEvents"`
+	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+	SigningToken pulumi.StringPtrOutput `pulumi:"signingToken"`
+	// Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+	SigningTokenPresent pulumi.BoolOutput `pulumi:"signingTokenPresent"`
 	// When true, the hook fires on new tags being pushed.
-	TagPushEvents pulumi.BoolPtrOutput `pulumi:"tagPushEvents"`
+	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
 	// Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
-	Token pulumi.StringPtrOutput `pulumi:"token"`
+	Token pulumi.StringOutput `pulumi:"token"`
 	// The hook URL.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
@@ -92,10 +100,14 @@ func NewSystemHook(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	if args.SigningToken != nil {
+		args.SigningToken = pulumi.ToSecret(args.SigningToken).(pulumi.StringPtrInput)
+	}
 	if args.Token != nil {
 		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"signingToken",
 		"token",
 	})
 	opts = append(opts, secrets)
@@ -124,14 +136,22 @@ func GetSystemHook(ctx *pulumi.Context,
 type systemHookState struct {
 	// The date and time the hook was created in ISO8601 format.
 	CreatedAt *string `pulumi:"createdAt"`
+	// Description of the hook.
+	Description *string `pulumi:"description"`
 	// Do SSL verification when triggering the hook.
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`
 	// Trigger hook on merge requests events.
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
+	// Name of the hook.
+	Name *string `pulumi:"name"`
 	// When true, the hook fires on push events.
 	PushEvents *bool `pulumi:"pushEvents"`
 	// Trigger hook on repository update events.
 	RepositoryUpdateEvents *bool `pulumi:"repositoryUpdateEvents"`
+	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+	SigningToken *string `pulumi:"signingToken"`
+	// Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+	SigningTokenPresent *bool `pulumi:"signingTokenPresent"`
 	// When true, the hook fires on new tags being pushed.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
@@ -143,14 +163,22 @@ type systemHookState struct {
 type SystemHookState struct {
 	// The date and time the hook was created in ISO8601 format.
 	CreatedAt pulumi.StringPtrInput
+	// Description of the hook.
+	Description pulumi.StringPtrInput
 	// Do SSL verification when triggering the hook.
 	EnableSslVerification pulumi.BoolPtrInput
 	// Trigger hook on merge requests events.
 	MergeRequestsEvents pulumi.BoolPtrInput
+	// Name of the hook.
+	Name pulumi.StringPtrInput
 	// When true, the hook fires on push events.
 	PushEvents pulumi.BoolPtrInput
 	// Trigger hook on repository update events.
 	RepositoryUpdateEvents pulumi.BoolPtrInput
+	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+	SigningToken pulumi.StringPtrInput
+	// Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+	SigningTokenPresent pulumi.BoolPtrInput
 	// When true, the hook fires on new tags being pushed.
 	TagPushEvents pulumi.BoolPtrInput
 	// Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
@@ -164,14 +192,20 @@ func (SystemHookState) ElementType() reflect.Type {
 }
 
 type systemHookArgs struct {
+	// Description of the hook.
+	Description *string `pulumi:"description"`
 	// Do SSL verification when triggering the hook.
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`
 	// Trigger hook on merge requests events.
 	MergeRequestsEvents *bool `pulumi:"mergeRequestsEvents"`
+	// Name of the hook.
+	Name *string `pulumi:"name"`
 	// When true, the hook fires on push events.
 	PushEvents *bool `pulumi:"pushEvents"`
 	// Trigger hook on repository update events.
 	RepositoryUpdateEvents *bool `pulumi:"repositoryUpdateEvents"`
+	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+	SigningToken *string `pulumi:"signingToken"`
 	// When true, the hook fires on new tags being pushed.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
 	// Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
@@ -182,14 +216,20 @@ type systemHookArgs struct {
 
 // The set of arguments for constructing a SystemHook resource.
 type SystemHookArgs struct {
+	// Description of the hook.
+	Description pulumi.StringPtrInput
 	// Do SSL verification when triggering the hook.
 	EnableSslVerification pulumi.BoolPtrInput
 	// Trigger hook on merge requests events.
 	MergeRequestsEvents pulumi.BoolPtrInput
+	// Name of the hook.
+	Name pulumi.StringPtrInput
 	// When true, the hook fires on push events.
 	PushEvents pulumi.BoolPtrInput
 	// Trigger hook on repository update events.
 	RepositoryUpdateEvents pulumi.BoolPtrInput
+	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+	SigningToken pulumi.StringPtrInput
 	// When true, the hook fires on new tags being pushed.
 	TagPushEvents pulumi.BoolPtrInput
 	// Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
@@ -290,34 +330,54 @@ func (o SystemHookOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *SystemHook) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Description of the hook.
+func (o SystemHookOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
 // Do SSL verification when triggering the hook.
-func (o SystemHookOutput) EnableSslVerification() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SystemHook) pulumi.BoolPtrOutput { return v.EnableSslVerification }).(pulumi.BoolPtrOutput)
+func (o SystemHookOutput) EnableSslVerification() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.BoolOutput { return v.EnableSslVerification }).(pulumi.BoolOutput)
 }
 
 // Trigger hook on merge requests events.
-func (o SystemHookOutput) MergeRequestsEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SystemHook) pulumi.BoolPtrOutput { return v.MergeRequestsEvents }).(pulumi.BoolPtrOutput)
+func (o SystemHookOutput) MergeRequestsEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.BoolOutput { return v.MergeRequestsEvents }).(pulumi.BoolOutput)
+}
+
+// Name of the hook.
+func (o SystemHookOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // When true, the hook fires on push events.
-func (o SystemHookOutput) PushEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SystemHook) pulumi.BoolPtrOutput { return v.PushEvents }).(pulumi.BoolPtrOutput)
+func (o SystemHookOutput) PushEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.BoolOutput { return v.PushEvents }).(pulumi.BoolOutput)
 }
 
 // Trigger hook on repository update events.
-func (o SystemHookOutput) RepositoryUpdateEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SystemHook) pulumi.BoolPtrOutput { return v.RepositoryUpdateEvents }).(pulumi.BoolPtrOutput)
+func (o SystemHookOutput) RepositoryUpdateEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.BoolOutput { return v.RepositoryUpdateEvents }).(pulumi.BoolOutput)
+}
+
+// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+func (o SystemHookOutput) SigningToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.StringPtrOutput { return v.SigningToken }).(pulumi.StringPtrOutput)
+}
+
+// Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
+func (o SystemHookOutput) SigningTokenPresent() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.BoolOutput { return v.SigningTokenPresent }).(pulumi.BoolOutput)
 }
 
 // When true, the hook fires on new tags being pushed.
-func (o SystemHookOutput) TagPushEvents() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SystemHook) pulumi.BoolPtrOutput { return v.TagPushEvents }).(pulumi.BoolPtrOutput)
+func (o SystemHookOutput) TagPushEvents() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.BoolOutput { return v.TagPushEvents }).(pulumi.BoolOutput)
 }
 
 // Secret token to validate received payloads; this isn't returned in the response. This attribute is not available for imported resources.
-func (o SystemHookOutput) Token() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemHook) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
+func (o SystemHookOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *SystemHook) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
 }
 
 // The hook URL.

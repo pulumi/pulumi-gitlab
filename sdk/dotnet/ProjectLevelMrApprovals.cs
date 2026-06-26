@@ -84,10 +84,16 @@ namespace Pulumi.GitLab
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `True` to require authentication to approve merge requests.
+        /// Set to `True` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `RequireReauthenticationToApprove` instead.
         /// </summary>
         [Output("requirePasswordToApprove")]
         public Output<bool> RequirePasswordToApprove { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, requires approver to reauthenticate before adding the approval.
+        /// </summary>
+        [Output("requireReauthenticationToApprove")]
+        public Output<bool> RequireReauthenticationToApprove { get; private set; } = null!;
 
         /// <summary>
         /// Set to `True` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `True`.
@@ -172,10 +178,16 @@ namespace Pulumi.GitLab
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Set to `True` to require authentication to approve merge requests.
+        /// Set to `True` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `RequireReauthenticationToApprove` instead.
         /// </summary>
         [Input("requirePasswordToApprove")]
         public Input<bool>? RequirePasswordToApprove { get; set; }
+
+        /// <summary>
+        /// If true, requires approver to reauthenticate before adding the approval.
+        /// </summary>
+        [Input("requireReauthenticationToApprove")]
+        public Input<bool>? RequireReauthenticationToApprove { get; set; }
 
         /// <summary>
         /// Set to `True` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `True`.
@@ -222,10 +234,16 @@ namespace Pulumi.GitLab
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Set to `True` to require authentication to approve merge requests.
+        /// Set to `True` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `RequireReauthenticationToApprove` instead.
         /// </summary>
         [Input("requirePasswordToApprove")]
         public Input<bool>? RequirePasswordToApprove { get; set; }
+
+        /// <summary>
+        /// If true, requires approver to reauthenticate before adding the approval.
+        /// </summary>
+        [Input("requireReauthenticationToApprove")]
+        public Input<bool>? RequireReauthenticationToApprove { get; set; }
 
         /// <summary>
         /// Set to `True` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `True`.

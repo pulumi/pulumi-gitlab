@@ -16,7 +16,9 @@ import * as utilities from "./utilities";
  *    automatically take ownership of the default branch without an explicit import by unprotecting and properly protecting it again.
  *    Having multiple `gitlab.BranchProtection` resources for the same project and default branch will result in them overriding each other - make sure to only have a single one.
  *
- * > The `allowedToPush`, `allowedToMerge`, `allowedToUnprotect`, `unprotectAccessLevel` and `codeOwnerApprovalRequired` attributes require a GitLab Enterprise instance.
+ * > The `allowedToPush`, `allowedToMerge`, `allowedToUnprotect` and `codeOwnerApprovalRequired` attributes require a GitLab Enterprise instance.
+ *
+ * > The `mergeAccessLevel` and `pushAccessLevel` attributes are not available for GitLab Enterprise.  Use `allowedToMerge` and `allowedToPush` instead.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_branches/)
  *
@@ -26,12 +28,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const branchProtect = new gitlab.BranchProtection("BranchProtect", {
+ * // CE example
+ * const ceBranch = new gitlab.BranchProtection("ce_branch", {
  *     project: "12345",
  *     branch: "BranchProtected",
  *     pushAccessLevel: "developer",
  *     mergeAccessLevel: "developer",
- *     unprotectAccessLevel: "developer",
+ *     allowForcePush: true,
+ * });
+ * // EE example
+ * const eeBranch = new gitlab.BranchProtection("ee_branch", {
+ *     project: "12345",
+ *     branch: "BranchProtected",
  *     allowForcePush: true,
  *     codeOwnerApprovalRequired: true,
  *     allowedToPushes: [
@@ -41,6 +49,9 @@ import * as utilities from "./utilities";
  *         {
  *             userId: 521,
  *         },
+ *         {
+ *             accessLevel: "no one",
+ *         },
  *     ],
  *     allowedToMerges: [
  *         {
@@ -48,6 +59,9 @@ import * as utilities from "./utilities";
  *         },
  *         {
  *             userId: 37,
+ *         },
+ *         {
+ *             accessLevel: "maintainer",
  *         },
  *     ],
  *     allowedToUnprotects: [
@@ -57,30 +71,24 @@ import * as utilities from "./utilities";
  *         {
  *             groupId: 42,
  *         },
+ *         {
+ *             accessLevel: "maintainer",
+ *         },
  *     ],
  * });
- * // Example using dynamic block
- * const main = new gitlab.BranchProtection("main", {
- *     allowedToPushes: [
- *         50,
- *         55,
- *         60,
- *     ].map((v, k) => ({key: k, value: v})).map(entry => ({
- *         userId: Number(entry.value),
- *     })),
- *     project: "12345",
- *     branch: "main",
- *     pushAccessLevel: "maintainer",
- *     mergeAccessLevel: "maintainer",
- *     unprotectAccessLevel: "maintainer",
- * });
- * // Example with admin push access level
+ * // EE example with admin push access level
  * const adminPush = new gitlab.BranchProtection("admin_push", {
  *     project: "12345",
  *     branch: "admin-protected",
- *     pushAccessLevel: "admin",
- *     mergeAccessLevel: "maintainer",
- *     unprotectAccessLevel: "maintainer",
+ *     allowedToPushes: [{
+ *         accessLevel: "admin",
+ *     }],
+ *     allowedToMerges: [{
+ *         accessLevel: "maintainer",
+ *     }],
+ *     allowedToUnprotects: [{
+ *         accessLevel: "maintainer",
+ *     }],
  * });
  * ```
  *
@@ -129,17 +137,17 @@ export class BranchProtection extends pulumi.CustomResource {
      */
     declare public readonly allowForcePush: pulumi.Output<boolean>;
     /**
-     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     * Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
      */
-    declare public readonly allowedToMerges: pulumi.Output<outputs.BranchProtectionAllowedToMerge[] | undefined>;
+    declare public readonly allowedToMerges: pulumi.Output<outputs.BranchProtectionAllowedToMerge[]>;
     /**
-     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     * Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
      */
-    declare public readonly allowedToPushes: pulumi.Output<outputs.BranchProtectionAllowedToPush[] | undefined>;
+    declare public readonly allowedToPushes: pulumi.Output<outputs.BranchProtectionAllowedToPush[]>;
     /**
-     * Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+     * Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
      */
-    declare public readonly allowedToUnprotects: pulumi.Output<outputs.BranchProtectionAllowedToUnprotect[] | undefined>;
+    declare public readonly allowedToUnprotects: pulumi.Output<outputs.BranchProtectionAllowedToUnprotect[]>;
     /**
      * Name of the branch.
      */
@@ -153,7 +161,7 @@ export class BranchProtection extends pulumi.CustomResource {
      */
     declare public readonly codeOwnerApprovalRequired: pulumi.Output<boolean>;
     /**
-     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
      */
     declare public readonly mergeAccessLevel: pulumi.Output<string>;
     /**
@@ -161,13 +169,9 @@ export class BranchProtection extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
      */
     declare public readonly pushAccessLevel: pulumi.Output<string>;
-    /**
-     * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-     */
-    declare public readonly unprotectAccessLevel: pulumi.Output<string>;
 
     /**
      * Create a BranchProtection resource with the given unique name, arguments, and options.
@@ -192,7 +196,6 @@ export class BranchProtection extends pulumi.CustomResource {
             resourceInputs["mergeAccessLevel"] = state?.mergeAccessLevel;
             resourceInputs["project"] = state?.project;
             resourceInputs["pushAccessLevel"] = state?.pushAccessLevel;
-            resourceInputs["unprotectAccessLevel"] = state?.unprotectAccessLevel;
         } else {
             const args = argsOrState as BranchProtectionArgs | undefined;
             if (args?.branch === undefined && !opts.urn) {
@@ -210,7 +213,6 @@ export class BranchProtection extends pulumi.CustomResource {
             resourceInputs["mergeAccessLevel"] = args?.mergeAccessLevel;
             resourceInputs["project"] = args?.project;
             resourceInputs["pushAccessLevel"] = args?.pushAccessLevel;
-            resourceInputs["unprotectAccessLevel"] = args?.unprotectAccessLevel;
             resourceInputs["branchProtectionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -227,15 +229,15 @@ export interface BranchProtectionState {
      */
     allowForcePush?: pulumi.Input<boolean | undefined>;
     /**
-     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     * Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
      */
     allowedToMerges?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToMerge>[] | undefined>;
     /**
-     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     * Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
      */
     allowedToPushes?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToPush>[] | undefined>;
     /**
-     * Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+     * Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
      */
     allowedToUnprotects?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToUnprotect>[] | undefined>;
     /**
@@ -251,7 +253,7 @@ export interface BranchProtectionState {
      */
     codeOwnerApprovalRequired?: pulumi.Input<boolean | undefined>;
     /**
-     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
      */
     mergeAccessLevel?: pulumi.Input<string | undefined>;
     /**
@@ -259,13 +261,9 @@ export interface BranchProtectionState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
      */
     pushAccessLevel?: pulumi.Input<string | undefined>;
-    /**
-     * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-     */
-    unprotectAccessLevel?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -277,15 +275,15 @@ export interface BranchProtectionArgs {
      */
     allowForcePush?: pulumi.Input<boolean | undefined>;
     /**
-     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     * Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
      */
     allowedToMerges?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToMerge>[] | undefined>;
     /**
-     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     * Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
      */
     allowedToPushes?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToPush>[] | undefined>;
     /**
-     * Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+     * Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
      */
     allowedToUnprotects?: pulumi.Input<pulumi.Input<inputs.BranchProtectionAllowedToUnprotect>[] | undefined>;
     /**
@@ -297,7 +295,7 @@ export interface BranchProtectionArgs {
      */
     codeOwnerApprovalRequired?: pulumi.Input<boolean | undefined>;
     /**
-     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
      */
     mergeAccessLevel?: pulumi.Input<string | undefined>;
     /**
@@ -305,11 +303,7 @@ export interface BranchProtectionArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
      */
     pushAccessLevel?: pulumi.Input<string | undefined>;
-    /**
-     * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-     */
-    unprotectAccessLevel?: pulumi.Input<string | undefined>;
 }

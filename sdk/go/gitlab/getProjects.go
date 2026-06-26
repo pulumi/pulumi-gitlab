@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab/internal"
+	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,7 +26,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gitlab/sdk/v9/go/gitlab"
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -74,13 +74,15 @@ func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getProjects.
 type GetProjectsArgs struct {
+	// Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+	Active *bool `pulumi:"active"`
 	// Limit by archived status.
 	Archived *bool `pulumi:"archived"`
 	// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
 	GroupId *int `pulumi:"groupId"`
 	// Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
 	IncludeSubgroups *bool `pulumi:"includeSubgroups"`
-	// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+	// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
 	MaxQueryablePages *int `pulumi:"maxQueryablePages"`
 	// Limit by projects that the current user is a member of.
 	Membership *bool `pulumi:"membership"`
@@ -90,9 +92,9 @@ type GetProjectsArgs struct {
 	OrderBy *string `pulumi:"orderBy"`
 	// Limit by projects owned by the current user.
 	Owned *bool `pulumi:"owned"`
-	// The first page to begin the query on.
+	// The first page to begin the query on (default 1).
 	Page *int `pulumi:"page"`
-	// The number of results to return per page.
+	// The number of results to return per page (default 20, maximum 100).
 	PerPage *int `pulumi:"perPage"`
 	// Return list of authorized projects matching the search criteria.
 	Search *string `pulumi:"search"`
@@ -122,15 +124,17 @@ type GetProjectsArgs struct {
 
 // A collection of values returned by getProjects.
 type GetProjectsResult struct {
+	// Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+	Active *bool `pulumi:"active"`
 	// Limit by archived status.
 	Archived *bool `pulumi:"archived"`
 	// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
 	GroupId *int `pulumi:"groupId"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this datasource. In the format `<group_id-options_hash>`, where `optionsHash` is a hash of all the other search options provided.
 	Id string `pulumi:"id"`
 	// Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
 	IncludeSubgroups *bool `pulumi:"includeSubgroups"`
-	// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+	// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
 	MaxQueryablePages *int `pulumi:"maxQueryablePages"`
 	// Limit by projects that the current user is a member of.
 	Membership *bool `pulumi:"membership"`
@@ -140,9 +144,9 @@ type GetProjectsResult struct {
 	OrderBy *string `pulumi:"orderBy"`
 	// Limit by projects owned by the current user.
 	Owned *bool `pulumi:"owned"`
-	// The first page to begin the query on.
+	// The first page to begin the query on (default 1).
 	Page *int `pulumi:"page"`
-	// The number of results to return per page.
+	// The number of results to return per page (default 20, maximum 100).
 	PerPage *int `pulumi:"perPage"`
 	// A list containing the projects matching the supplied arguments
 	Projects []GetProjectsProject `pulumi:"projects"`
@@ -183,13 +187,15 @@ func GetProjectsOutput(ctx *pulumi.Context, args GetProjectsOutputArgs, opts ...
 
 // A collection of arguments for invoking getProjects.
 type GetProjectsOutputArgs struct {
+	// Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+	Active pulumi.BoolPtrInput `pulumi:"active"`
 	// Limit by archived status.
 	Archived pulumi.BoolPtrInput `pulumi:"archived"`
 	// The ID of the group owned by the authenticated user to look projects for within. Cannot be used with `minAccessLevel`, `withProgrammingLanguage` or `statistics`.
 	GroupId pulumi.IntPtrInput `pulumi:"groupId"`
 	// Include projects in subgroups of this group. Default is `false`. Needs `groupId`.
 	IncludeSubgroups pulumi.BoolPtrInput `pulumi:"includeSubgroups"`
-	// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+	// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
 	MaxQueryablePages pulumi.IntPtrInput `pulumi:"maxQueryablePages"`
 	// Limit by projects that the current user is a member of.
 	Membership pulumi.BoolPtrInput `pulumi:"membership"`
@@ -199,9 +205,9 @@ type GetProjectsOutputArgs struct {
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 	// Limit by projects owned by the current user.
 	Owned pulumi.BoolPtrInput `pulumi:"owned"`
-	// The first page to begin the query on.
+	// The first page to begin the query on (default 1).
 	Page pulumi.IntPtrInput `pulumi:"page"`
-	// The number of results to return per page.
+	// The number of results to return per page (default 20, maximum 100).
 	PerPage pulumi.IntPtrInput `pulumi:"perPage"`
 	// Return list of authorized projects matching the search criteria.
 	Search pulumi.StringPtrInput `pulumi:"search"`
@@ -248,6 +254,11 @@ func (o GetProjectsResultOutput) ToGetProjectsResultOutputWithContext(ctx contex
 	return o
 }
 
+// Limit by projects that are not archived and not marked for deletion. If `false`, return only projects that are archived or marked for deletion.
+func (o GetProjectsResultOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProjectsResult) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
 // Limit by archived status.
 func (o GetProjectsResultOutput) Archived() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *bool { return v.Archived }).(pulumi.BoolPtrOutput)
@@ -258,7 +269,7 @@ func (o GetProjectsResultOutput) GroupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *int { return v.GroupId }).(pulumi.IntPtrOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this datasource. In the format `<group_id-options_hash>`, where `optionsHash` is a hash of all the other search options provided.
 func (o GetProjectsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -268,7 +279,7 @@ func (o GetProjectsResultOutput) IncludeSubgroups() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *bool { return v.IncludeSubgroups }).(pulumi.BoolPtrOutput)
 }
 
-// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration.
+// The maximum number of project results pages that may be queried. Prevents overloading your Gitlab instance in case of a misconfiguration (default 10).
 func (o GetProjectsResultOutput) MaxQueryablePages() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *int { return v.MaxQueryablePages }).(pulumi.IntPtrOutput)
 }
@@ -293,12 +304,12 @@ func (o GetProjectsResultOutput) Owned() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *bool { return v.Owned }).(pulumi.BoolPtrOutput)
 }
 
-// The first page to begin the query on.
+// The first page to begin the query on (default 1).
 func (o GetProjectsResultOutput) Page() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *int { return v.Page }).(pulumi.IntPtrOutput)
 }
 
-// The number of results to return per page.
+// The number of results to return per page (default 20, maximum 100).
 func (o GetProjectsResultOutput) PerPage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *int { return v.PerPage }).(pulumi.IntPtrOutput)
 }

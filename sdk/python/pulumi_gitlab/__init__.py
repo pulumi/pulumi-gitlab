@@ -16,7 +16,6 @@ from .cluster_agent_token import *
 from .compliance_framework import *
 from .deploy_key import *
 from .deploy_key_enable import *
-from .deploy_token import *
 from .get_application import *
 from .get_artifact_file import *
 from .get_branch import *
@@ -30,7 +29,11 @@ from .get_group_billable_member_memberships import *
 from .get_group_hook import *
 from .get_group_hooks import *
 from .get_group_ids import *
+from .get_group_label import *
+from .get_group_labels import *
 from .get_group_membership import *
+from .get_group_protected_branch import *
+from .get_group_protected_branches import *
 from .get_group_provisioned_users import *
 from .get_group_saml_links import *
 from .get_group_service_account import *
@@ -71,6 +74,7 @@ from .get_project_protected_branches import *
 from .get_project_protected_tag import *
 from .get_project_protected_tags import *
 from .get_project_secure_file import *
+from .get_project_service_account import *
 from .get_project_tag import *
 from .get_project_tags import *
 from .get_project_variable import *
@@ -86,6 +90,8 @@ from .get_runner_controller_scopes import *
 from .get_runner_controllers import *
 from .get_runners import *
 from .get_security_policy_document import *
+from .get_system_hook import *
+from .get_system_hooks import *
 from .get_user import *
 from .get_user_sshkeys import *
 from .get_users import *
@@ -93,12 +99,14 @@ from .global_level_notifications import *
 from .group import *
 from .group_access_token import *
 from .group_badge import *
+from .group_branch_protection import *
 from .group_cluster import *
 from .group_custom_attribute import *
 from .group_dependency_proxy import *
 from .group_deploy_token import *
 from .group_epic_board import *
 from .group_hook import *
+from .group_integration_harbor import *
 from .group_integration_mattermost import *
 from .group_integration_microsoft_teams import *
 from .group_issue_board import *
@@ -109,6 +117,7 @@ from .group_membership import *
 from .group_project_file_template import *
 from .group_protected_environment import *
 from .group_saml_link import *
+from .group_saved_reply import *
 from .group_security_policy_attachment import *
 from .group_service_account import *
 from .group_service_account_access_token import *
@@ -117,20 +126,7 @@ from .group_variable import *
 from .instance_cluster import *
 from .instance_service_account import *
 from .instance_variable import *
-from .integration_custom_issue_tracker import *
-from .integration_emails_on_push import *
-from .integration_external_wiki import *
-from .integration_github import *
-from .integration_harbor import *
-from .integration_jenkins import *
-from .integration_jira import *
-from .integration_mattermost import *
-from .integration_microsoft_teams import *
-from .integration_pipelines_email import *
-from .integration_redmine import *
 from .integration_slack import *
-from .integration_telegram import *
-from .label import *
 from .member_role import *
 from .pages_domain import *
 from .personal_access_token import *
@@ -153,9 +149,11 @@ from .project_external_status_check import *
 from .project_freeze_period import *
 from .project_hook import *
 from .project_integration_custom_issue_tracker import *
+from .project_integration_datadog import *
 from .project_integration_emails_on_push import *
 from .project_integration_external_wiki import *
 from .project_integration_github import *
+from .project_integration_google_chat import *
 from .project_integration_harbor import *
 from .project_integration_jenkins import *
 from .project_integration_jira import *
@@ -177,7 +175,6 @@ from .project_level_notifications import *
 from .project_membership import *
 from .project_merge_request_note import *
 from .project_milestone import *
-from .project_mirror import *
 from .project_package_dependency_proxy import *
 from .project_package_protection_rule import *
 from .project_pages_settings import *
@@ -186,8 +183,10 @@ from .project_pull_mirror import *
 from .project_push_mirror import *
 from .project_push_rules import *
 from .project_runner_enablement import *
+from .project_saved_reply import *
 from .project_secure_file import *
 from .project_security_policy_attachment import *
+from .project_service_account import *
 from .project_share_group import *
 from .project_tag import *
 from .project_target_branch_rule import *
@@ -197,7 +196,6 @@ from .provider import *
 from .release import *
 from .release_link import *
 from .repository_file import *
-from .runner import *
 from .runner_controller import *
 from .runner_controller_instance_scope import *
 from .runner_controller_runner_scope import *
@@ -212,6 +210,7 @@ from .user_gpg_key import *
 from .user_identity import *
 from .user_impersonation_token import *
 from .user_runner import *
+from .user_saved_reply import *
 from .user_ssh_key import *
 from .value_stream_analytics import *
 from ._inputs import *
@@ -309,14 +308,6 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
-  "mod": "index/deployToken",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/deployToken:DeployToken": "DeployToken"
-  }
- },
- {
-  "pkg": "gitlab",
   "mod": "index/globalLevelNotifications",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -345,6 +336,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/groupBadge:GroupBadge": "GroupBadge"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupBranchProtection",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupBranchProtection:GroupBranchProtection": "GroupBranchProtection"
   }
  },
  {
@@ -393,6 +392,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/groupHook:GroupHook": "GroupHook"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupIntegrationHarbor",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupIntegrationHarbor:GroupIntegrationHarbor": "GroupIntegrationHarbor"
   }
  },
  {
@@ -477,6 +484,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/groupSavedReply",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupSavedReply:GroupSavedReply": "GroupSavedReply"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/groupSecurityPolicyAttachment",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -541,114 +556,10 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
-  "mod": "index/integrationCustomIssueTracker",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/integrationCustomIssueTracker:IntegrationCustomIssueTracker": "IntegrationCustomIssueTracker"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/integrationEmailsOnPush",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/integrationEmailsOnPush:IntegrationEmailsOnPush": "IntegrationEmailsOnPush"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/integrationExternalWiki",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/integrationExternalWiki:IntegrationExternalWiki": "IntegrationExternalWiki"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/integrationGithub",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/integrationGithub:IntegrationGithub": "IntegrationGithub"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/integrationHarbor",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/integrationHarbor:IntegrationHarbor": "IntegrationHarbor"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/integrationJenkins",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/integrationJenkins:IntegrationJenkins": "IntegrationJenkins"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/integrationJira",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/integrationJira:IntegrationJira": "IntegrationJira"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/integrationMattermost",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/integrationMattermost:IntegrationMattermost": "IntegrationMattermost"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/integrationMicrosoftTeams",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/integrationMicrosoftTeams:IntegrationMicrosoftTeams": "IntegrationMicrosoftTeams"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/integrationPipelinesEmail",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/integrationPipelinesEmail:IntegrationPipelinesEmail": "IntegrationPipelinesEmail"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/integrationRedmine",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/integrationRedmine:IntegrationRedmine": "IntegrationRedmine"
-  }
- },
- {
-  "pkg": "gitlab",
   "mod": "index/integrationSlack",
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/integrationSlack:IntegrationSlack": "IntegrationSlack"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/integrationTelegram",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/integrationTelegram:IntegrationTelegram": "IntegrationTelegram"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/label",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/label:Label": "Label"
   }
  },
  {
@@ -829,6 +740,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectIntegrationDatadog",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationDatadog:ProjectIntegrationDatadog": "ProjectIntegrationDatadog"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectIntegrationEmailsOnPush",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -849,6 +768,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub": "ProjectIntegrationGithub"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectIntegrationGoogleChat",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectIntegrationGoogleChat:ProjectIntegrationGoogleChat": "ProjectIntegrationGoogleChat"
   }
  },
  {
@@ -1021,14 +948,6 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
-  "mod": "index/projectMirror",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/projectMirror:ProjectMirror": "ProjectMirror"
-  }
- },
- {
-  "pkg": "gitlab",
   "mod": "index/projectPackageDependencyProxy",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -1093,6 +1012,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectSavedReply",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectSavedReply:ProjectSavedReply": "ProjectSavedReply"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectSecureFile",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -1105,6 +1032,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment": "ProjectSecurityPolicyAttachment"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectServiceAccount",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectServiceAccount:ProjectServiceAccount": "ProjectServiceAccount"
   }
  },
  {
@@ -1169,14 +1104,6 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/repositoryFile:RepositoryFile": "RepositoryFile"
-  }
- },
- {
-  "pkg": "gitlab",
-  "mod": "index/runner",
-  "fqn": "pulumi_gitlab",
-  "classes": {
-   "gitlab:index/runner:Runner": "Runner"
   }
  },
  {
@@ -1289,6 +1216,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/userRunner:UserRunner": "UserRunner"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/userSavedReply",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/userSavedReply:UserSavedReply": "UserSavedReply"
   }
  },
  {

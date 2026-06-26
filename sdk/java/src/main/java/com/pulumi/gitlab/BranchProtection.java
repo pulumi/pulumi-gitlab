@@ -17,7 +17,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -30,11 +29,105 @@ import javax.annotation.Nullable;
  *    automatically take ownership of the default branch without an explicit import by unprotecting and properly protecting it again.
  *    Having multiple `gitlab.BranchProtection` resources for the same project and default branch will result in them overriding each other - make sure to only have a single one.
  * 
- * &gt; The `allowedToPush`, `allowedToMerge`, `allowedToUnprotect`, `unprotectAccessLevel` and `codeOwnerApprovalRequired` attributes require a GitLab Enterprise instance.
+ * &gt; The `allowedToPush`, `allowedToMerge`, `allowedToUnprotect` and `codeOwnerApprovalRequired` attributes require a GitLab Enterprise instance.
+ * 
+ * &gt; The `mergeAccessLevel` and `pushAccessLevel` attributes are not available for GitLab Enterprise.  Use `allowedToMerge` and `allowedToPush` instead.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_branches/)
  * 
  * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.BranchProtection;
+ * import com.pulumi.gitlab.BranchProtectionArgs;
+ * import com.pulumi.gitlab.inputs.BranchProtectionAllowedToPushArgs;
+ * import com.pulumi.gitlab.inputs.BranchProtectionAllowedToMergeArgs;
+ * import com.pulumi.gitlab.inputs.BranchProtectionAllowedToUnprotectArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // CE example
+ *         var ceBranch = new BranchProtection("ceBranch", BranchProtectionArgs.builder()
+ *             .project("12345")
+ *             .branch("BranchProtected")
+ *             .pushAccessLevel("developer")
+ *             .mergeAccessLevel("developer")
+ *             .allowForcePush(true)
+ *             .build());
+ * 
+ *         // EE example
+ *         var eeBranch = new BranchProtection("eeBranch", BranchProtectionArgs.builder()
+ *             .project("12345")
+ *             .branch("BranchProtected")
+ *             .allowForcePush(true)
+ *             .codeOwnerApprovalRequired(true)
+ *             .allowedToPushes(            
+ *                 BranchProtectionAllowedToPushArgs.builder()
+ *                     .userId(5)
+ *                     .build(),
+ *                 BranchProtectionAllowedToPushArgs.builder()
+ *                     .userId(521)
+ *                     .build(),
+ *                 BranchProtectionAllowedToPushArgs.builder()
+ *                     .accessLevel("no one")
+ *                     .build())
+ *             .allowedToMerges(            
+ *                 BranchProtectionAllowedToMergeArgs.builder()
+ *                     .userId(15)
+ *                     .build(),
+ *                 BranchProtectionAllowedToMergeArgs.builder()
+ *                     .userId(37)
+ *                     .build(),
+ *                 BranchProtectionAllowedToMergeArgs.builder()
+ *                     .accessLevel("maintainer")
+ *                     .build())
+ *             .allowedToUnprotects(            
+ *                 BranchProtectionAllowedToUnprotectArgs.builder()
+ *                     .userId(15)
+ *                     .build(),
+ *                 BranchProtectionAllowedToUnprotectArgs.builder()
+ *                     .groupId(42)
+ *                     .build(),
+ *                 BranchProtectionAllowedToUnprotectArgs.builder()
+ *                     .accessLevel("maintainer")
+ *                     .build())
+ *             .build());
+ * 
+ *         // EE example with admin push access level
+ *         var adminPush = new BranchProtection("adminPush", BranchProtectionArgs.builder()
+ *             .project("12345")
+ *             .branch("admin-protected")
+ *             .allowedToPushes(BranchProtectionAllowedToPushArgs.builder()
+ *                 .accessLevel("admin")
+ *                 .build())
+ *             .allowedToMerges(BranchProtectionAllowedToMergeArgs.builder()
+ *                 .accessLevel("maintainer")
+ *                 .build())
+ *             .allowedToUnprotects(BranchProtectionAllowedToUnprotectArgs.builder()
+ *                 .accessLevel("maintainer")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -66,46 +159,46 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
         return this.allowForcePush;
     }
     /**
-     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     * Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
      * 
      */
     @Export(name="allowedToMerges", refs={List.class,BranchProtectionAllowedToMerge.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<BranchProtectionAllowedToMerge>> allowedToMerges;
+    private Output<List<BranchProtectionAllowedToMerge>> allowedToMerges;
 
     /**
-     * @return Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     * @return Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
      * 
      */
-    public Output<Optional<List<BranchProtectionAllowedToMerge>>> allowedToMerges() {
-        return Codegen.optional(this.allowedToMerges);
+    public Output<List<BranchProtectionAllowedToMerge>> allowedToMerges() {
+        return this.allowedToMerges;
     }
     /**
-     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     * Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
      * 
      */
     @Export(name="allowedToPushes", refs={List.class,BranchProtectionAllowedToPush.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<BranchProtectionAllowedToPush>> allowedToPushes;
+    private Output<List<BranchProtectionAllowedToPush>> allowedToPushes;
 
     /**
-     * @return Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     * @return Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
      * 
      */
-    public Output<Optional<List<BranchProtectionAllowedToPush>>> allowedToPushes() {
-        return Codegen.optional(this.allowedToPushes);
+    public Output<List<BranchProtectionAllowedToPush>> allowedToPushes() {
+        return this.allowedToPushes;
     }
     /**
-     * Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+     * Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
      * 
      */
     @Export(name="allowedToUnprotects", refs={List.class,BranchProtectionAllowedToUnprotect.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<BranchProtectionAllowedToUnprotect>> allowedToUnprotects;
+    private Output<List<BranchProtectionAllowedToUnprotect>> allowedToUnprotects;
 
     /**
-     * @return Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+     * @return Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
      * 
      */
-    public Output<Optional<List<BranchProtectionAllowedToUnprotect>>> allowedToUnprotects() {
-        return Codegen.optional(this.allowedToUnprotects);
+    public Output<List<BranchProtectionAllowedToUnprotect>> allowedToUnprotects() {
+        return this.allowedToUnprotects;
     }
     /**
      * Name of the branch.
@@ -150,14 +243,14 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
         return this.codeOwnerApprovalRequired;
     }
     /**
-     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
      * 
      */
     @Export(name="mergeAccessLevel", refs={String.class}, tree="[0]")
     private Output<String> mergeAccessLevel;
 
     /**
-     * @return Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * @return Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
      * 
      */
     public Output<String> mergeAccessLevel() {
@@ -178,32 +271,18 @@ public class BranchProtection extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
      * 
      */
     @Export(name="pushAccessLevel", refs={String.class}, tree="[0]")
     private Output<String> pushAccessLevel;
 
     /**
-     * @return Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * @return Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
      * 
      */
     public Output<String> pushAccessLevel() {
         return this.pushAccessLevel;
-    }
-    /**
-     * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-     * 
-     */
-    @Export(name="unprotectAccessLevel", refs={String.class}, tree="[0]")
-    private Output<String> unprotectAccessLevel;
-
-    /**
-     * @return Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-     * 
-     */
-    public Output<String> unprotectAccessLevel() {
-        return this.unprotectAccessLevel;
     }
 
     /**

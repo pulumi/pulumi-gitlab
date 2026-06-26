@@ -305,12 +305,6 @@ namespace Pulumi.GitLab
         public Output<string> DefaultBranchName { get; private set; } = null!;
 
         /// <summary>
-        /// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `DefaultBranchProtectionDefaults` instead. To be removed in 19.0.
-        /// </summary>
-        [Output("defaultBranchProtection")]
-        public Output<int> DefaultBranchProtection { get; private set; } = null!;
-
-        /// <summary>
         /// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         /// </summary>
         [Output("defaultBranchProtectionDefaults")]
@@ -429,6 +423,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("disableOverridingApproversPerMergeRequest")]
         public Output<bool> DisableOverridingApproversPerMergeRequest { get; private set; } = null!;
+
+        /// <summary>
+        /// Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
+        /// </summary>
+        [Output("disablePasswordAuthenticationForUsersWithSsoIdentities")]
+        public Output<bool> DisablePasswordAuthenticationForUsersWithSsoIdentities { get; private set; } = null!;
 
         /// <summary>
         /// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
@@ -1241,6 +1241,12 @@ namespace Pulumi.GitLab
         public Output<bool> PagesDomainVerificationEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
+        /// </summary>
+        [Output("pagesUniqueDomainDefaultEnabled")]
+        public Output<bool> PagesUniqueDomainDefaultEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Enable authentication for Git over HTTP(S) via a GitLab account password.
         /// </summary>
         [Output("passwordAuthenticationEnabledForGit")]
@@ -1487,6 +1493,12 @@ namespace Pulumi.GitLab
         public Output<int> SearchRateLimitUnauthenticated { get; private set; } = null!;
 
         /// <summary>
+        /// Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
+        /// </summary>
+        [Output("secretPushProtectionAvailable")]
+        public Output<bool> SecretPushProtectionAvailable { get; private set; } = null!;
+
+        /// <summary>
         /// Maximum number of active merge request approval policies per security policy project. Maximum: 20
         /// </summary>
         [Output("securityApprovalPoliciesLimit")]
@@ -1521,6 +1533,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("sessionExpireDelay")]
         public Output<int> SessionExpireDelay { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
+        /// </summary>
+        [Output("sessionExpireFromInit")]
+        public Output<bool> SessionExpireFromInit { get; private set; } = null!;
 
         /// <summary>
         /// (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
@@ -2335,12 +2353,6 @@ namespace Pulumi.GitLab
         public Input<string>? DefaultBranchName { get; set; }
 
         /// <summary>
-        /// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `DefaultBranchProtectionDefaults` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("defaultBranchProtection")]
-        public Input<int>? DefaultBranchProtection { get; set; }
-
-        /// <summary>
         /// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         /// </summary>
         [Input("defaultBranchProtectionDefaults")]
@@ -2459,6 +2471,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("disableOverridingApproversPerMergeRequest")]
         public Input<bool>? DisableOverridingApproversPerMergeRequest { get; set; }
+
+        /// <summary>
+        /// Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
+        /// </summary>
+        [Input("disablePasswordAuthenticationForUsersWithSsoIdentities")]
+        public Input<bool>? DisablePasswordAuthenticationForUsersWithSsoIdentities { get; set; }
 
         /// <summary>
         /// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
@@ -3411,6 +3429,12 @@ namespace Pulumi.GitLab
         public Input<bool>? PagesDomainVerificationEnabled { get; set; }
 
         /// <summary>
+        /// Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
+        /// </summary>
+        [Input("pagesUniqueDomainDefaultEnabled")]
+        public Input<bool>? PagesUniqueDomainDefaultEnabled { get; set; }
+
+        /// <summary>
         /// Enable authentication for Git over HTTP(S) via a GitLab account password.
         /// </summary>
         [Input("passwordAuthenticationEnabledForGit")]
@@ -3689,6 +3713,12 @@ namespace Pulumi.GitLab
         public Input<int>? SearchRateLimitUnauthenticated { get; set; }
 
         /// <summary>
+        /// Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
+        /// </summary>
+        [Input("secretPushProtectionAvailable")]
+        public Input<bool>? SecretPushProtectionAvailable { get; set; }
+
+        /// <summary>
         /// Maximum number of active merge request approval policies per security policy project. Maximum: 20
         /// </summary>
         [Input("securityApprovalPoliciesLimit")]
@@ -3723,6 +3753,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("sessionExpireDelay")]
         public Input<int>? SessionExpireDelay { get; set; }
+
+        /// <summary>
+        /// Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
+        /// </summary>
+        [Input("sessionExpireFromInit")]
+        public Input<bool>? SessionExpireFromInit { get; set; }
 
         /// <summary>
         /// (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
@@ -4535,12 +4571,6 @@ namespace Pulumi.GitLab
         public Input<string>? DefaultBranchName { get; set; }
 
         /// <summary>
-        /// Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `DefaultBranchProtectionDefaults` instead. To be removed in 19.0.
-        /// </summary>
-        [Input("defaultBranchProtection")]
-        public Input<int>? DefaultBranchProtection { get; set; }
-
-        /// <summary>
         /// The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         /// </summary>
         [Input("defaultBranchProtectionDefaults")]
@@ -4659,6 +4689,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("disableOverridingApproversPerMergeRequest")]
         public Input<bool>? DisableOverridingApproversPerMergeRequest { get; set; }
+
+        /// <summary>
+        /// Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
+        /// </summary>
+        [Input("disablePasswordAuthenticationForUsersWithSsoIdentities")]
+        public Input<bool>? DisablePasswordAuthenticationForUsersWithSsoIdentities { get; set; }
 
         /// <summary>
         /// Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
@@ -5623,6 +5659,12 @@ namespace Pulumi.GitLab
         public Input<bool>? PagesDomainVerificationEnabled { get; set; }
 
         /// <summary>
+        /// Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
+        /// </summary>
+        [Input("pagesUniqueDomainDefaultEnabled")]
+        public Input<bool>? PagesUniqueDomainDefaultEnabled { get; set; }
+
+        /// <summary>
         /// Enable authentication for Git over HTTP(S) via a GitLab account password.
         /// </summary>
         [Input("passwordAuthenticationEnabledForGit")]
@@ -5901,6 +5943,12 @@ namespace Pulumi.GitLab
         public Input<int>? SearchRateLimitUnauthenticated { get; set; }
 
         /// <summary>
+        /// Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
+        /// </summary>
+        [Input("secretPushProtectionAvailable")]
+        public Input<bool>? SecretPushProtectionAvailable { get; set; }
+
+        /// <summary>
         /// Maximum number of active merge request approval policies per security policy project. Maximum: 20
         /// </summary>
         [Input("securityApprovalPoliciesLimit")]
@@ -5935,6 +5983,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("sessionExpireDelay")]
         public Input<int>? SessionExpireDelay { get; set; }
+
+        /// <summary>
+        /// Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
+        /// </summary>
+        [Input("sessionExpireFromInit")]
+        public Input<bool>? SessionExpireFromInit { get; set; }
 
         /// <summary>
         /// (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.

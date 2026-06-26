@@ -87,9 +87,15 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * Set to `true` to require authentication to approve merge requests.
+     * Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+     *
+     * @deprecated Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
      */
     declare public readonly requirePasswordToApprove: pulumi.Output<boolean>;
+    /**
+     * If true, requires approver to reauthenticate before adding the approval.
+     */
+    declare public readonly requireReauthenticationToApprove: pulumi.Output<boolean>;
     /**
      * Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      */
@@ -117,6 +123,7 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
             resourceInputs["mergeRequestsDisableCommittersApproval"] = state?.mergeRequestsDisableCommittersApproval;
             resourceInputs["project"] = state?.project;
             resourceInputs["requirePasswordToApprove"] = state?.requirePasswordToApprove;
+            resourceInputs["requireReauthenticationToApprove"] = state?.requireReauthenticationToApprove;
             resourceInputs["resetApprovalsOnPush"] = state?.resetApprovalsOnPush;
             resourceInputs["selectiveCodeOwnerRemovals"] = state?.selectiveCodeOwnerRemovals;
         } else {
@@ -129,6 +136,7 @@ export class ProjectLevelMrApprovals extends pulumi.CustomResource {
             resourceInputs["mergeRequestsDisableCommittersApproval"] = args?.mergeRequestsDisableCommittersApproval;
             resourceInputs["project"] = args?.project;
             resourceInputs["requirePasswordToApprove"] = args?.requirePasswordToApprove;
+            resourceInputs["requireReauthenticationToApprove"] = args?.requireReauthenticationToApprove;
             resourceInputs["resetApprovalsOnPush"] = args?.resetApprovalsOnPush;
             resourceInputs["selectiveCodeOwnerRemovals"] = args?.selectiveCodeOwnerRemovals;
         }
@@ -158,9 +166,15 @@ export interface ProjectLevelMrApprovalsState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * Set to `true` to require authentication to approve merge requests.
+     * Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+     *
+     * @deprecated Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
      */
     requirePasswordToApprove?: pulumi.Input<boolean | undefined>;
+    /**
+     * If true, requires approver to reauthenticate before adding the approval.
+     */
+    requireReauthenticationToApprove?: pulumi.Input<boolean | undefined>;
     /**
      * Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      */
@@ -192,9 +206,15 @@ export interface ProjectLevelMrApprovalsArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * Set to `true` to require authentication to approve merge requests.
+     * Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+     *
+     * @deprecated Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
      */
     requirePasswordToApprove?: pulumi.Input<boolean | undefined>;
+    /**
+     * If true, requires approver to reauthenticate before adding the approval.
+     */
+    requireReauthenticationToApprove?: pulumi.Input<boolean | undefined>;
     /**
      * Set to `true` to remove all approvals in a merge request when new commits are pushed to its source branch. Default is `true`.
      */

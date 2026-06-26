@@ -49,29 +49,6 @@ public final class ProjectJobTokenScopesState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The ID of the project. Use `project` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `project` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `project` instead. To be removed in 19.0. */
-    @Import(name="projectId")
-    private @Nullable Output<Integer> projectId;
-
-    /**
-     * @return The ID of the project. Use `project` instead. To be removed in 19.0.
-     * 
-     * @deprecated
-     * Use `project` instead. To be removed in 19.0.
-     * 
-     */
-    @Deprecated /* Use `project` instead. To be removed in 19.0. */
-    public Optional<Output<Integer>> projectId() {
-        return Optional.ofNullable(this.projectId);
-    }
-
-    /**
      * A set of group IDs that are in the CI/CD job token inbound allowlist.
      * 
      */
@@ -106,7 +83,6 @@ public final class ProjectJobTokenScopesState extends com.pulumi.resources.Resou
     private ProjectJobTokenScopesState(ProjectJobTokenScopesState $) {
         this.enabled = $.enabled;
         this.project = $.project;
-        this.projectId = $.projectId;
         this.targetGroupIds = $.targetGroupIds;
         this.targetProjectIds = $.targetProjectIds;
     }
@@ -169,35 +145,6 @@ public final class ProjectJobTokenScopesState extends com.pulumi.resources.Resou
          */
         public Builder project(String project) {
             return project(Output.of(project));
-        }
-
-        /**
-         * @param projectId The ID of the project. Use `project` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `project` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `project` instead. To be removed in 19.0. */
-        public Builder projectId(@Nullable Output<Integer> projectId) {
-            $.projectId = projectId;
-            return this;
-        }
-
-        /**
-         * @param projectId The ID of the project. Use `project` instead. To be removed in 19.0.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `project` instead. To be removed in 19.0.
-         * 
-         */
-        @Deprecated /* Use `project` instead. To be removed in 19.0. */
-        public Builder projectId(Integer projectId) {
-            return projectId(Output.of(projectId));
         }
 
         /**

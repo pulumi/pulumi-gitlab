@@ -6,6 +6,7 @@ package com.pulumi.gitlab;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,6 +63,21 @@ public final class ProjectLabelArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The priority of the label. Must be greater or equal than zero or null to remove the priority.
+     * 
+     */
+    @Import(name="priority")
+    private @Nullable Output<Integer> priority;
+
+    /**
+     * @return The priority of the label. Must be greater or equal than zero or null to remove the priority.
+     * 
+     */
+    public Optional<Output<Integer>> priority() {
+        return Optional.ofNullable(this.priority);
+    }
+
+    /**
      * The name or id of the project to add the label to.
      * 
      */
@@ -82,6 +98,7 @@ public final class ProjectLabelArgs extends com.pulumi.resources.ResourceArgs {
         this.color = $.color;
         this.description = $.description;
         this.name = $.name;
+        this.priority = $.priority;
         this.project = $.project;
     }
 
@@ -164,6 +181,27 @@ public final class ProjectLabelArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param priority The priority of the label. Must be greater or equal than zero or null to remove the priority.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(@Nullable Output<Integer> priority) {
+            $.priority = priority;
+            return this;
+        }
+
+        /**
+         * @param priority The priority of the label. Must be greater or equal than zero or null to remove the priority.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(Integer priority) {
+            return priority(Output.of(priority));
         }
 
         /**

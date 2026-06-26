@@ -37,14 +37,14 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     * Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
      * 
      */
     @Import(name="allowedToMerges")
     private @Nullable Output<List<BranchProtectionAllowedToMergeArgs>> allowedToMerges;
 
     /**
-     * @return Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+     * @return Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
      * 
      */
     public Optional<Output<List<BranchProtectionAllowedToMergeArgs>>> allowedToMerges() {
@@ -52,14 +52,14 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     * Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
      * 
      */
     @Import(name="allowedToPushes")
     private @Nullable Output<List<BranchProtectionAllowedToPushArgs>> allowedToPushes;
 
     /**
-     * @return Array of access levels and user(s)/group(s) allowed to push to protected branch.
+     * @return Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
      * 
      */
     public Optional<Output<List<BranchProtectionAllowedToPushArgs>>> allowedToPushes() {
@@ -67,14 +67,14 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+     * Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
      * 
      */
     @Import(name="allowedToUnprotects")
     private @Nullable Output<List<BranchProtectionAllowedToUnprotectArgs>> allowedToUnprotects;
 
     /**
-     * @return Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+     * @return Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
      * 
      */
     public Optional<Output<List<BranchProtectionAllowedToUnprotectArgs>>> allowedToUnprotects() {
@@ -127,14 +127,14 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
      * 
      */
     @Import(name="mergeAccessLevel")
     private @Nullable Output<String> mergeAccessLevel;
 
     /**
-     * @return Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * @return Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
      * 
      */
     public Optional<Output<String>> mergeAccessLevel() {
@@ -157,33 +157,18 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
      * 
      */
     @Import(name="pushAccessLevel")
     private @Nullable Output<String> pushAccessLevel;
 
     /**
-     * @return Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+     * @return Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
      * 
      */
     public Optional<Output<String>> pushAccessLevel() {
         return Optional.ofNullable(this.pushAccessLevel);
-    }
-
-    /**
-     * Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-     * 
-     */
-    @Import(name="unprotectAccessLevel")
-    private @Nullable Output<String> unprotectAccessLevel;
-
-    /**
-     * @return Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-     * 
-     */
-    public Optional<Output<String>> unprotectAccessLevel() {
-        return Optional.ofNullable(this.unprotectAccessLevel);
     }
 
     private BranchProtectionState() {}
@@ -199,7 +184,6 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         this.mergeAccessLevel = $.mergeAccessLevel;
         this.project = $.project;
         this.pushAccessLevel = $.pushAccessLevel;
-        this.unprotectAccessLevel = $.unprotectAccessLevel;
     }
 
     public static Builder builder() {
@@ -242,7 +226,7 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowedToMerges Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+         * @param allowedToMerges Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
          * 
          * @return builder
          * 
@@ -253,7 +237,7 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowedToMerges Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+         * @param allowedToMerges Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
          * 
          * @return builder
          * 
@@ -263,7 +247,7 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowedToMerges Array of access levels and user(s)/group(s) allowed to merge to protected branch.
+         * @param allowedToMerges Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
          * 
          * @return builder
          * 
@@ -273,7 +257,7 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowedToPushes Array of access levels and user(s)/group(s) allowed to push to protected branch.
+         * @param allowedToPushes Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
          * 
          * @return builder
          * 
@@ -284,7 +268,7 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowedToPushes Array of access levels and user(s)/group(s) allowed to push to protected branch.
+         * @param allowedToPushes Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
          * 
          * @return builder
          * 
@@ -294,7 +278,7 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowedToPushes Array of access levels and user(s)/group(s) allowed to push to protected branch.
+         * @param allowedToPushes Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
          * 
          * @return builder
          * 
@@ -304,7 +288,7 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowedToUnprotects Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+         * @param allowedToUnprotects Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
          * 
          * @return builder
          * 
@@ -315,7 +299,7 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowedToUnprotects Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+         * @param allowedToUnprotects Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
          * 
          * @return builder
          * 
@@ -325,7 +309,7 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param allowedToUnprotects Array of access levels and user(s)/group(s) allowed to unprotect push to protected branch.
+         * @param allowedToUnprotects Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
          * 
          * @return builder
          * 
@@ -398,7 +382,7 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mergeAccessLevel Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+         * @param mergeAccessLevel Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
          * 
          * @return builder
          * 
@@ -409,7 +393,7 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mergeAccessLevel Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+         * @param mergeAccessLevel Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
          * 
          * @return builder
          * 
@@ -440,7 +424,7 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param pushAccessLevel Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+         * @param pushAccessLevel Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
          * 
          * @return builder
          * 
@@ -451,34 +435,13 @@ public final class BranchProtectionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param pushAccessLevel Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
+         * @param pushAccessLevel Access levels allowed to push. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
          * 
          * @return builder
          * 
          */
         public Builder pushAccessLevel(String pushAccessLevel) {
             return pushAccessLevel(Output.of(pushAccessLevel));
-        }
-
-        /**
-         * @param unprotectAccessLevel Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder unprotectAccessLevel(@Nullable Output<String> unprotectAccessLevel) {
-            $.unprotectAccessLevel = unprotectAccessLevel;
-            return this;
-        }
-
-        /**
-         * @param unprotectAccessLevel Access levels allowed to unprotect. Valid values are: `developer`, `maintainer`, `admin`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder unprotectAccessLevel(String unprotectAccessLevel) {
-            return unprotectAccessLevel(Output.of(unprotectAccessLevel));
         }
 
         public BranchProtectionState build() {

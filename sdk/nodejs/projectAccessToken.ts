@@ -129,7 +129,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly userId: pulumi.Output<number>;
     /**
-     * Wether to validate if the expiration date is in the future.
+     * Whether to validate if the expiration date is in the future.
      */
     declare public readonly validatePastExpirationDate: pulumi.Output<boolean>;
 
@@ -241,7 +241,7 @@ export interface ProjectAccessTokenState {
      */
     userId?: pulumi.Input<number | undefined>;
     /**
-     * Wether to validate if the expiration date is in the future.
+     * Whether to validate if the expiration date is in the future.
      */
     validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }
@@ -279,7 +279,7 @@ export interface ProjectAccessTokenArgs {
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Wether to validate if the expiration date is in the future.
+     * Whether to validate if the expiration date is in the future.
      */
     validatePastExpirationDate?: pulumi.Input<boolean | undefined>;
 }

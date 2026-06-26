@@ -33,7 +33,6 @@ class IntegrationSlackArgs:
                  note_channel: pulumi.Input[Optional[_builtins.str]] = None,
                  note_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
-                 notify_only_default_branch: pulumi.Input[Optional[_builtins.bool]] = None,
                  pipeline_channel: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  push_channel: pulumi.Input[Optional[_builtins.str]] = None,
@@ -60,7 +59,6 @@ class IntegrationSlackArgs:
         :param pulumi.Input[_builtins.str] note_channel: The name of the channel to receive note events notifications.
         :param pulumi.Input[_builtins.bool] note_events: Enable notifications for note events.
         :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
-        :param pulumi.Input[_builtins.bool] notify_only_default_branch: This parameter has been replaced with `branches_to_be_notified`.
         :param pulumi.Input[_builtins.str] pipeline_channel: The name of the channel to receive pipeline events notifications.
         :param pulumi.Input[_builtins.bool] pipeline_events: Enable notifications for pipeline events.
         :param pulumi.Input[_builtins.str] push_channel: The name of the channel to receive push events notifications.
@@ -97,11 +95,6 @@ class IntegrationSlackArgs:
             pulumi.set(__self__, "note_events", note_events)
         if notify_only_broken_pipelines is not None:
             pulumi.set(__self__, "notify_only_broken_pipelines", notify_only_broken_pipelines)
-        if notify_only_default_branch is not None:
-            warnings.warn("""use 'branches_to_be_notified' argument instead""", DeprecationWarning)
-            pulumi.log.warn("""notify_only_default_branch is deprecated: use 'branches_to_be_notified' argument instead""")
-        if notify_only_default_branch is not None:
-            pulumi.set(__self__, "notify_only_default_branch", notify_only_default_branch)
         if pipeline_channel is not None:
             pulumi.set(__self__, "pipeline_channel", pipeline_channel)
         if pipeline_events is not None:
@@ -290,19 +283,6 @@ class IntegrationSlackArgs:
         pulumi.set(self, "notify_only_broken_pipelines", value)
 
     @_builtins.property
-    @pulumi.getter(name="notifyOnlyDefaultBranch")
-    @_utilities.deprecated("""use 'branches_to_be_notified' argument instead""")
-    def notify_only_default_branch(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        This parameter has been replaced with `branches_to_be_notified`.
-        """
-        return pulumi.get(self, "notify_only_default_branch")
-
-    @notify_only_default_branch.setter
-    def notify_only_default_branch(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "notify_only_default_branch", value)
-
-    @_builtins.property
     @pulumi.getter(name="pipelineChannel")
     def pipeline_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -427,7 +407,6 @@ class _IntegrationSlackState:
                  note_channel: pulumi.Input[Optional[_builtins.str]] = None,
                  note_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
-                 notify_only_default_branch: pulumi.Input[Optional[_builtins.bool]] = None,
                  pipeline_channel: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -455,7 +434,6 @@ class _IntegrationSlackState:
         :param pulumi.Input[_builtins.str] note_channel: The name of the channel to receive note events notifications.
         :param pulumi.Input[_builtins.bool] note_events: Enable notifications for note events.
         :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
-        :param pulumi.Input[_builtins.bool] notify_only_default_branch: This parameter has been replaced with `branches_to_be_notified`.
         :param pulumi.Input[_builtins.str] pipeline_channel: The name of the channel to receive pipeline events notifications.
         :param pulumi.Input[_builtins.bool] pipeline_events: Enable notifications for pipeline events.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
@@ -494,11 +472,6 @@ class _IntegrationSlackState:
             pulumi.set(__self__, "note_events", note_events)
         if notify_only_broken_pipelines is not None:
             pulumi.set(__self__, "notify_only_broken_pipelines", notify_only_broken_pipelines)
-        if notify_only_default_branch is not None:
-            warnings.warn("""use 'branches_to_be_notified' argument instead""", DeprecationWarning)
-            pulumi.log.warn("""notify_only_default_branch is deprecated: use 'branches_to_be_notified' argument instead""")
-        if notify_only_default_branch is not None:
-            pulumi.set(__self__, "notify_only_default_branch", notify_only_default_branch)
         if pipeline_channel is not None:
             pulumi.set(__self__, "pipeline_channel", pipeline_channel)
         if pipeline_events is not None:
@@ -679,19 +652,6 @@ class _IntegrationSlackState:
         pulumi.set(self, "notify_only_broken_pipelines", value)
 
     @_builtins.property
-    @pulumi.getter(name="notifyOnlyDefaultBranch")
-    @_utilities.deprecated("""use 'branches_to_be_notified' argument instead""")
-    def notify_only_default_branch(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        This parameter has been replaced with `branches_to_be_notified`.
-        """
-        return pulumi.get(self, "notify_only_default_branch")
-
-    @notify_only_default_branch.setter
-    def notify_only_default_branch(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "notify_only_default_branch", value)
-
-    @_builtins.property
     @pulumi.getter(name="pipelineChannel")
     def pipeline_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -842,7 +802,6 @@ class IntegrationSlack(pulumi.CustomResource):
                  note_channel: pulumi.Input[Optional[_builtins.str]] = None,
                  note_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
-                 notify_only_default_branch: pulumi.Input[Optional[_builtins.bool]] = None,
                  pipeline_channel: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -905,7 +864,6 @@ class IntegrationSlack(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] note_channel: The name of the channel to receive note events notifications.
         :param pulumi.Input[_builtins.bool] note_events: Enable notifications for note events.
         :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
-        :param pulumi.Input[_builtins.bool] notify_only_default_branch: This parameter has been replaced with `branches_to_be_notified`.
         :param pulumi.Input[_builtins.str] pipeline_channel: The name of the channel to receive pipeline events notifications.
         :param pulumi.Input[_builtins.bool] pipeline_events: Enable notifications for pipeline events.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
@@ -987,7 +945,6 @@ class IntegrationSlack(pulumi.CustomResource):
                  note_channel: pulumi.Input[Optional[_builtins.str]] = None,
                  note_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
-                 notify_only_default_branch: pulumi.Input[Optional[_builtins.bool]] = None,
                  pipeline_channel: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1020,7 +977,6 @@ class IntegrationSlack(pulumi.CustomResource):
             __props__.__dict__["note_channel"] = note_channel
             __props__.__dict__["note_events"] = note_events
             __props__.__dict__["notify_only_broken_pipelines"] = notify_only_broken_pipelines
-            __props__.__dict__["notify_only_default_branch"] = notify_only_default_branch
             __props__.__dict__["pipeline_channel"] = pipeline_channel
             __props__.__dict__["pipeline_events"] = pipeline_events
             if project is None and not opts.urn:
@@ -1060,7 +1016,6 @@ class IntegrationSlack(pulumi.CustomResource):
             note_channel: pulumi.Input[Optional[_builtins.str]] = None,
             note_events: pulumi.Input[Optional[_builtins.bool]] = None,
             notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
-            notify_only_default_branch: pulumi.Input[Optional[_builtins.bool]] = None,
             pipeline_channel: pulumi.Input[Optional[_builtins.str]] = None,
             pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1092,7 +1047,6 @@ class IntegrationSlack(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] note_channel: The name of the channel to receive note events notifications.
         :param pulumi.Input[_builtins.bool] note_events: Enable notifications for note events.
         :param pulumi.Input[_builtins.bool] notify_only_broken_pipelines: Send notifications for broken pipelines.
-        :param pulumi.Input[_builtins.bool] notify_only_default_branch: This parameter has been replaced with `branches_to_be_notified`.
         :param pulumi.Input[_builtins.str] pipeline_channel: The name of the channel to receive pipeline events notifications.
         :param pulumi.Input[_builtins.bool] pipeline_events: Enable notifications for pipeline events.
         :param pulumi.Input[_builtins.str] project: ID of the project you want to activate integration on.
@@ -1122,7 +1076,6 @@ class IntegrationSlack(pulumi.CustomResource):
         __props__.__dict__["note_channel"] = note_channel
         __props__.__dict__["note_events"] = note_events
         __props__.__dict__["notify_only_broken_pipelines"] = notify_only_broken_pipelines
-        __props__.__dict__["notify_only_default_branch"] = notify_only_default_branch
         __props__.__dict__["pipeline_channel"] = pipeline_channel
         __props__.__dict__["pipeline_events"] = pipeline_events
         __props__.__dict__["project"] = project
@@ -1239,15 +1192,6 @@ class IntegrationSlack(pulumi.CustomResource):
         Send notifications for broken pipelines.
         """
         return pulumi.get(self, "notify_only_broken_pipelines")
-
-    @_builtins.property
-    @pulumi.getter(name="notifyOnlyDefaultBranch")
-    @_utilities.deprecated("""use 'branches_to_be_notified' argument instead""")
-    def notify_only_default_branch(self) -> pulumi.Output[_builtins.bool]:
-        """
-        This parameter has been replaced with `branches_to_be_notified`.
-        """
-        return pulumi.get(self, "notify_only_default_branch")
 
     @_builtins.property
     @pulumi.getter(name="pipelineChannel")

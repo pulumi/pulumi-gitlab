@@ -32,9 +32,17 @@ import com.pulumi.gitlab.inputs.GetGroupHooksArgs;
 import com.pulumi.gitlab.inputs.GetGroupHooksPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupIdsArgs;
 import com.pulumi.gitlab.inputs.GetGroupIdsPlainArgs;
+import com.pulumi.gitlab.inputs.GetGroupLabelArgs;
+import com.pulumi.gitlab.inputs.GetGroupLabelPlainArgs;
+import com.pulumi.gitlab.inputs.GetGroupLabelsArgs;
+import com.pulumi.gitlab.inputs.GetGroupLabelsPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupMembershipArgs;
 import com.pulumi.gitlab.inputs.GetGroupMembershipPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupPlainArgs;
+import com.pulumi.gitlab.inputs.GetGroupProtectedBranchArgs;
+import com.pulumi.gitlab.inputs.GetGroupProtectedBranchPlainArgs;
+import com.pulumi.gitlab.inputs.GetGroupProtectedBranchesArgs;
+import com.pulumi.gitlab.inputs.GetGroupProtectedBranchesPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupProvisionedUsersArgs;
 import com.pulumi.gitlab.inputs.GetGroupProvisionedUsersPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupSamlLinksArgs;
@@ -111,6 +119,8 @@ import com.pulumi.gitlab.inputs.GetProjectProtectedTagsArgs;
 import com.pulumi.gitlab.inputs.GetProjectProtectedTagsPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectSecureFileArgs;
 import com.pulumi.gitlab.inputs.GetProjectSecureFilePlainArgs;
+import com.pulumi.gitlab.inputs.GetProjectServiceAccountArgs;
+import com.pulumi.gitlab.inputs.GetProjectServiceAccountPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectTagArgs;
 import com.pulumi.gitlab.inputs.GetProjectTagPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectTagsArgs;
@@ -139,6 +149,8 @@ import com.pulumi.gitlab.inputs.GetRunnersArgs;
 import com.pulumi.gitlab.inputs.GetRunnersPlainArgs;
 import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentArgs;
 import com.pulumi.gitlab.inputs.GetSecurityPolicyDocumentPlainArgs;
+import com.pulumi.gitlab.inputs.GetSystemHookArgs;
+import com.pulumi.gitlab.inputs.GetSystemHookPlainArgs;
 import com.pulumi.gitlab.inputs.GetUserArgs;
 import com.pulumi.gitlab.inputs.GetUserPlainArgs;
 import com.pulumi.gitlab.inputs.GetUserSshkeysArgs;
@@ -157,7 +169,11 @@ import com.pulumi.gitlab.outputs.GetGroupBillableMemberMembershipsResult;
 import com.pulumi.gitlab.outputs.GetGroupHookResult;
 import com.pulumi.gitlab.outputs.GetGroupHooksResult;
 import com.pulumi.gitlab.outputs.GetGroupIdsResult;
+import com.pulumi.gitlab.outputs.GetGroupLabelResult;
+import com.pulumi.gitlab.outputs.GetGroupLabelsResult;
 import com.pulumi.gitlab.outputs.GetGroupMembershipResult;
+import com.pulumi.gitlab.outputs.GetGroupProtectedBranchResult;
+import com.pulumi.gitlab.outputs.GetGroupProtectedBranchesResult;
 import com.pulumi.gitlab.outputs.GetGroupProvisionedUsersResult;
 import com.pulumi.gitlab.outputs.GetGroupResult;
 import com.pulumi.gitlab.outputs.GetGroupSamlLinksResult;
@@ -199,6 +215,7 @@ import com.pulumi.gitlab.outputs.GetProjectProtectedTagResult;
 import com.pulumi.gitlab.outputs.GetProjectProtectedTagsResult;
 import com.pulumi.gitlab.outputs.GetProjectResult;
 import com.pulumi.gitlab.outputs.GetProjectSecureFileResult;
+import com.pulumi.gitlab.outputs.GetProjectServiceAccountResult;
 import com.pulumi.gitlab.outputs.GetProjectTagResult;
 import com.pulumi.gitlab.outputs.GetProjectTagsResult;
 import com.pulumi.gitlab.outputs.GetProjectVariableResult;
@@ -214,6 +231,8 @@ import com.pulumi.gitlab.outputs.GetRunnerControllerScopesResult;
 import com.pulumi.gitlab.outputs.GetRunnerControllersResult;
 import com.pulumi.gitlab.outputs.GetRunnersResult;
 import com.pulumi.gitlab.outputs.GetSecurityPolicyDocumentResult;
+import com.pulumi.gitlab.outputs.GetSystemHookResult;
+import com.pulumi.gitlab.outputs.GetSystemHooksResult;
 import com.pulumi.gitlab.outputs.GetUserResult;
 import com.pulumi.gitlab.outputs.GetUserSshkeysResult;
 import com.pulumi.gitlab.outputs.GetUsersResult;
@@ -2638,6 +2657,471 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroupIds:getGroupIds", TypeShape.of(GetGroupIdsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `gitlab.GroupLabel` data source retrieves details about a group label.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupLabelArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Retrieve a group label by its ID
+     *         final var example = GitlabFunctions.getGroupLabel(GetGroupLabelArgs.builder()
+     *             .group("my-group")
+     *             .labelId(42)
+     *             .build());
+     * 
+     *         // Retrieve using group ID
+     *         final var byId = GitlabFunctions.getGroupLabel(GetGroupLabelArgs.builder()
+     *             .group("385")
+     *             .labelId(24)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGroupLabelResult> getGroupLabel(GetGroupLabelArgs args) {
+        return getGroupLabel(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.GroupLabel` data source retrieves details about a group label.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupLabelArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Retrieve a group label by its ID
+     *         final var example = GitlabFunctions.getGroupLabel(GetGroupLabelArgs.builder()
+     *             .group("my-group")
+     *             .labelId(42)
+     *             .build());
+     * 
+     *         // Retrieve using group ID
+     *         final var byId = GitlabFunctions.getGroupLabel(GetGroupLabelArgs.builder()
+     *             .group("385")
+     *             .labelId(24)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGroupLabelResult> getGroupLabelPlain(GetGroupLabelPlainArgs args) {
+        return getGroupLabelPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.GroupLabel` data source retrieves details about a group label.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupLabelArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Retrieve a group label by its ID
+     *         final var example = GitlabFunctions.getGroupLabel(GetGroupLabelArgs.builder()
+     *             .group("my-group")
+     *             .labelId(42)
+     *             .build());
+     * 
+     *         // Retrieve using group ID
+     *         final var byId = GitlabFunctions.getGroupLabel(GetGroupLabelArgs.builder()
+     *             .group("385")
+     *             .labelId(24)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGroupLabelResult> getGroupLabel(GetGroupLabelArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupLabel:getGroupLabel", TypeShape.of(GetGroupLabelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.GroupLabel` data source retrieves details about a group label.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupLabelArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Retrieve a group label by its ID
+     *         final var example = GitlabFunctions.getGroupLabel(GetGroupLabelArgs.builder()
+     *             .group("my-group")
+     *             .labelId(42)
+     *             .build());
+     * 
+     *         // Retrieve using group ID
+     *         final var byId = GitlabFunctions.getGroupLabel(GetGroupLabelArgs.builder()
+     *             .group("385")
+     *             .labelId(24)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGroupLabelResult> getGroupLabel(GetGroupLabelArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupLabel:getGroupLabel", TypeShape.of(GetGroupLabelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.GroupLabel` data source retrieves details about a group label.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupLabelArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Retrieve a group label by its ID
+     *         final var example = GitlabFunctions.getGroupLabel(GetGroupLabelArgs.builder()
+     *             .group("my-group")
+     *             .labelId(42)
+     *             .build());
+     * 
+     *         // Retrieve using group ID
+     *         final var byId = GitlabFunctions.getGroupLabel(GetGroupLabelArgs.builder()
+     *             .group("385")
+     *             .labelId(24)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGroupLabelResult> getGroupLabelPlain(GetGroupLabelPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getGroupLabel:getGroupLabel", TypeShape.of(GetGroupLabelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupLabels` data source retrieves a list of labels for a group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupLabelsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Retrieve all labels for a group
+     *         final var example = GitlabFunctions.getGroupLabels(GetGroupLabelsArgs.builder()
+     *             .group("my-group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGroupLabelsResult> getGroupLabels(GetGroupLabelsArgs args) {
+        return getGroupLabels(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupLabels` data source retrieves a list of labels for a group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupLabelsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Retrieve all labels for a group
+     *         final var example = GitlabFunctions.getGroupLabels(GetGroupLabelsArgs.builder()
+     *             .group("my-group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGroupLabelsResult> getGroupLabelsPlain(GetGroupLabelsPlainArgs args) {
+        return getGroupLabelsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupLabels` data source retrieves a list of labels for a group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupLabelsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Retrieve all labels for a group
+     *         final var example = GitlabFunctions.getGroupLabels(GetGroupLabelsArgs.builder()
+     *             .group("my-group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGroupLabelsResult> getGroupLabels(GetGroupLabelsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupLabels:getGroupLabels", TypeShape.of(GetGroupLabelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupLabels` data source retrieves a list of labels for a group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupLabelsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Retrieve all labels for a group
+     *         final var example = GitlabFunctions.getGroupLabels(GetGroupLabelsArgs.builder()
+     *             .group("my-group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGroupLabelsResult> getGroupLabels(GetGroupLabelsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupLabels:getGroupLabels", TypeShape.of(GetGroupLabelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupLabels` data source retrieves a list of labels for a group.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_labels/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupLabelsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Retrieve all labels for a group
+     *         final var example = GitlabFunctions.getGroupLabels(GetGroupLabelsArgs.builder()
+     *             .group("my-group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGroupLabelsResult> getGroupLabelsPlain(GetGroupLabelsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getGroupLabels:getGroupLabels", TypeShape.of(GetGroupLabelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * The `gitlab.GroupMembership` data source allows to list and filter all members of a group specified by either its id or full path.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_members/#list-all-members-of-a-group)
@@ -2699,6 +3183,116 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetGroupMembershipResult> getGroupMembershipPlain(GetGroupMembershipPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroupMembership:getGroupMembership", TypeShape.of(GetGroupMembershipResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupProtectedBranch` data source allows details of a group-level protected branch to be retrieved by its name and the group it belongs to.
+     * 
+     * &gt; This data source requires a GitLab Premium or Ultimate instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_protected_branches/#get-a-single-protected-branch-or-wildcard-protected-branch)
+     * 
+     */
+    public static Output<GetGroupProtectedBranchResult> getGroupProtectedBranch(GetGroupProtectedBranchArgs args) {
+        return getGroupProtectedBranch(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupProtectedBranch` data source allows details of a group-level protected branch to be retrieved by its name and the group it belongs to.
+     * 
+     * &gt; This data source requires a GitLab Premium or Ultimate instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_protected_branches/#get-a-single-protected-branch-or-wildcard-protected-branch)
+     * 
+     */
+    public static CompletableFuture<GetGroupProtectedBranchResult> getGroupProtectedBranchPlain(GetGroupProtectedBranchPlainArgs args) {
+        return getGroupProtectedBranchPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupProtectedBranch` data source allows details of a group-level protected branch to be retrieved by its name and the group it belongs to.
+     * 
+     * &gt; This data source requires a GitLab Premium or Ultimate instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_protected_branches/#get-a-single-protected-branch-or-wildcard-protected-branch)
+     * 
+     */
+    public static Output<GetGroupProtectedBranchResult> getGroupProtectedBranch(GetGroupProtectedBranchArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupProtectedBranch:getGroupProtectedBranch", TypeShape.of(GetGroupProtectedBranchResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupProtectedBranch` data source allows details of a group-level protected branch to be retrieved by its name and the group it belongs to.
+     * 
+     * &gt; This data source requires a GitLab Premium or Ultimate instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_protected_branches/#get-a-single-protected-branch-or-wildcard-protected-branch)
+     * 
+     */
+    public static Output<GetGroupProtectedBranchResult> getGroupProtectedBranch(GetGroupProtectedBranchArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupProtectedBranch:getGroupProtectedBranch", TypeShape.of(GetGroupProtectedBranchResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupProtectedBranch` data source allows details of a group-level protected branch to be retrieved by its name and the group it belongs to.
+     * 
+     * &gt; This data source requires a GitLab Premium or Ultimate instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_protected_branches/#get-a-single-protected-branch-or-wildcard-protected-branch)
+     * 
+     */
+    public static CompletableFuture<GetGroupProtectedBranchResult> getGroupProtectedBranchPlain(GetGroupProtectedBranchPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getGroupProtectedBranch:getGroupProtectedBranch", TypeShape.of(GetGroupProtectedBranchResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupProtectedBranches` data source allows details of the group-level protected branches of a given group.
+     * 
+     * &gt; This data source requires a GitLab Premium or Ultimate instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_protected_branches/#list-protected-branches)
+     * 
+     */
+    public static Output<GetGroupProtectedBranchesResult> getGroupProtectedBranches(GetGroupProtectedBranchesArgs args) {
+        return getGroupProtectedBranches(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupProtectedBranches` data source allows details of the group-level protected branches of a given group.
+     * 
+     * &gt; This data source requires a GitLab Premium or Ultimate instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_protected_branches/#list-protected-branches)
+     * 
+     */
+    public static CompletableFuture<GetGroupProtectedBranchesResult> getGroupProtectedBranchesPlain(GetGroupProtectedBranchesPlainArgs args) {
+        return getGroupProtectedBranchesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getGroupProtectedBranches` data source allows details of the group-level protected branches of a given group.
+     * 
+     * &gt; This data source requires a GitLab Premium or Ultimate instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_protected_branches/#list-protected-branches)
+     * 
+     */
+    public static Output<GetGroupProtectedBranchesResult> getGroupProtectedBranches(GetGroupProtectedBranchesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupProtectedBranches:getGroupProtectedBranches", TypeShape.of(GetGroupProtectedBranchesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupProtectedBranches` data source allows details of the group-level protected branches of a given group.
+     * 
+     * &gt; This data source requires a GitLab Premium or Ultimate instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_protected_branches/#list-protected-branches)
+     * 
+     */
+    public static Output<GetGroupProtectedBranchesResult> getGroupProtectedBranches(GetGroupProtectedBranchesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getGroupProtectedBranches:getGroupProtectedBranches", TypeShape.of(GetGroupProtectedBranchesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getGroupProtectedBranches` data source allows details of the group-level protected branches of a given group.
+     * 
+     * &gt; This data source requires a GitLab Premium or Ultimate instance.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_protected_branches/#list-protected-branches)
+     * 
+     */
+    public static CompletableFuture<GetGroupProtectedBranchesResult> getGroupProtectedBranchesPlain(GetGroupProtectedBranchesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getGroupProtectedBranches:getGroupProtectedBranches", TypeShape.of(GetGroupProtectedBranchesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.getGroupProvisionedUsers` data source retrieves details of the provisioned users in a given group.
@@ -8204,24 +8798,6 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
      * 
      */
-    public static Output<GetProjectMembershipResult> getProjectMembership() {
-        return getProjectMembership(GetProjectMembershipArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
-     * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
-     * 
-     */
-    public static CompletableFuture<GetProjectMembershipResult> getProjectMembershipPlain() {
-        return getProjectMembershipPlain(GetProjectMembershipPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * The `gitlab.ProjectMembership` data source allows you to list and filter all members of a project.
-     * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_members/#list-all-members-of-a-project)
-     * 
-     */
     public static Output<GetProjectMembershipResult> getProjectMembership(GetProjectMembershipArgs args) {
         return getProjectMembership(args, InvokeOptions.Empty);
     }
@@ -9325,6 +9901,251 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetProjectSecureFileResult> getProjectSecureFilePlain(GetProjectSecureFilePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectSecureFile:getProjectSecureFile", TypeShape.of(GetProjectSecureFileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.ProjectServiceAccount` data source retrieves information about a GitLab service account in a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-project-service-accounts)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectArgs;
+     * import com.pulumi.gitlab.inputs.GetProjectServiceAccountArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
+     *             .id("foo/bar")
+     *             .build());
+     * 
+     *         // Basic example
+     *         final var exampleGetProjectServiceAccount = GitlabFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .serviceAccountId("1")
+     *             .project(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectServiceAccountResult> getProjectServiceAccount(GetProjectServiceAccountArgs args) {
+        return getProjectServiceAccount(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.ProjectServiceAccount` data source retrieves information about a GitLab service account in a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-project-service-accounts)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectArgs;
+     * import com.pulumi.gitlab.inputs.GetProjectServiceAccountArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
+     *             .id("foo/bar")
+     *             .build());
+     * 
+     *         // Basic example
+     *         final var exampleGetProjectServiceAccount = GitlabFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .serviceAccountId("1")
+     *             .project(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProjectServiceAccountResult> getProjectServiceAccountPlain(GetProjectServiceAccountPlainArgs args) {
+        return getProjectServiceAccountPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.ProjectServiceAccount` data source retrieves information about a GitLab service account in a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-project-service-accounts)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectArgs;
+     * import com.pulumi.gitlab.inputs.GetProjectServiceAccountArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
+     *             .id("foo/bar")
+     *             .build());
+     * 
+     *         // Basic example
+     *         final var exampleGetProjectServiceAccount = GitlabFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .serviceAccountId("1")
+     *             .project(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectServiceAccountResult> getProjectServiceAccount(GetProjectServiceAccountArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectServiceAccount:getProjectServiceAccount", TypeShape.of(GetProjectServiceAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.ProjectServiceAccount` data source retrieves information about a GitLab service account in a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-project-service-accounts)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectArgs;
+     * import com.pulumi.gitlab.inputs.GetProjectServiceAccountArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
+     *             .id("foo/bar")
+     *             .build());
+     * 
+     *         // Basic example
+     *         final var exampleGetProjectServiceAccount = GitlabFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .serviceAccountId("1")
+     *             .project(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectServiceAccountResult> getProjectServiceAccount(GetProjectServiceAccountArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectServiceAccount:getProjectServiceAccount", TypeShape.of(GetProjectServiceAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.ProjectServiceAccount` data source retrieves information about a GitLab service account in a project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-project-service-accounts)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectArgs;
+     * import com.pulumi.gitlab.inputs.GetProjectServiceAccountArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
+     *             .id("foo/bar")
+     *             .build());
+     * 
+     *         // Basic example
+     *         final var exampleGetProjectServiceAccount = GitlabFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .serviceAccountId("1")
+     *             .project(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProjectServiceAccountResult> getProjectServiceAccountPlain(GetProjectServiceAccountPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getProjectServiceAccount:getProjectServiceAccount", TypeShape.of(GetProjectServiceAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.ProjectTag` data source allows details of a project tag to be retrieved by its name.
@@ -12716,6 +13537,513 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetSecurityPolicyDocumentResult> getSecurityPolicyDocumentPlain(GetSecurityPolicyDocumentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getSecurityPolicyDocument:getSecurityPolicyDocument", TypeShape.of(GetSecurityPolicyDocumentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.SystemHook` data source allows to retrieve details about a system hook.
+     * 
+     * &gt; This data source requires administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/#get-a-single-system-hook)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetSystemHookArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getSystemHook(GetSystemHookArgs.builder()
+     *             .hookId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSystemHookResult> getSystemHook(GetSystemHookArgs args) {
+        return getSystemHook(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.SystemHook` data source allows to retrieve details about a system hook.
+     * 
+     * &gt; This data source requires administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/#get-a-single-system-hook)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetSystemHookArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getSystemHook(GetSystemHookArgs.builder()
+     *             .hookId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSystemHookResult> getSystemHookPlain(GetSystemHookPlainArgs args) {
+        return getSystemHookPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.SystemHook` data source allows to retrieve details about a system hook.
+     * 
+     * &gt; This data source requires administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/#get-a-single-system-hook)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetSystemHookArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getSystemHook(GetSystemHookArgs.builder()
+     *             .hookId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSystemHookResult> getSystemHook(GetSystemHookArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getSystemHook:getSystemHook", TypeShape.of(GetSystemHookResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.SystemHook` data source allows to retrieve details about a system hook.
+     * 
+     * &gt; This data source requires administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/#get-a-single-system-hook)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetSystemHookArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getSystemHook(GetSystemHookArgs.builder()
+     *             .hookId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSystemHookResult> getSystemHook(GetSystemHookArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getSystemHook:getSystemHook", TypeShape.of(GetSystemHookResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.SystemHook` data source allows to retrieve details about a system hook.
+     * 
+     * &gt; This data source requires administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/#get-a-single-system-hook)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetSystemHookArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getSystemHook(GetSystemHookArgs.builder()
+     *             .hookId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSystemHookResult> getSystemHookPlain(GetSystemHookPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getSystemHook:getSystemHook", TypeShape.of(GetSystemHookResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getSystemHooks` data source retrieves details about all system hooks.
+     * 
+     * &gt; This data source requires administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/#list-system-hooks)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examples = GitlabFunctions.getSystemHooks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSystemHooksResult> getSystemHooks() {
+        return getSystemHooks(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getSystemHooks` data source retrieves details about all system hooks.
+     * 
+     * &gt; This data source requires administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/#list-system-hooks)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examples = GitlabFunctions.getSystemHooks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSystemHooksResult> getSystemHooksPlain() {
+        return getSystemHooksPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getSystemHooks` data source retrieves details about all system hooks.
+     * 
+     * &gt; This data source requires administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/#list-system-hooks)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examples = GitlabFunctions.getSystemHooks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSystemHooksResult> getSystemHooks(InvokeArgs args) {
+        return getSystemHooks(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getSystemHooks` data source retrieves details about all system hooks.
+     * 
+     * &gt; This data source requires administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/#list-system-hooks)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examples = GitlabFunctions.getSystemHooks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSystemHooksResult> getSystemHooksPlain(InvokeArgs args) {
+        return getSystemHooksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getSystemHooks` data source retrieves details about all system hooks.
+     * 
+     * &gt; This data source requires administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/#list-system-hooks)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examples = GitlabFunctions.getSystemHooks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSystemHooksResult> getSystemHooks(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getSystemHooks:getSystemHooks", TypeShape.of(GetSystemHooksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getSystemHooks` data source retrieves details about all system hooks.
+     * 
+     * &gt; This data source requires administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/#list-system-hooks)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examples = GitlabFunctions.getSystemHooks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSystemHooksResult> getSystemHooks(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getSystemHooks:getSystemHooks", TypeShape.of(GetSystemHooksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getSystemHooks` data source retrieves details about all system hooks.
+     * 
+     * &gt; This data source requires administrator privileges.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/system_hooks/#list-system-hooks)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var examples = GitlabFunctions.getSystemHooks(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSystemHooksResult> getSystemHooksPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getSystemHooks:getSystemHooks", TypeShape.of(GetSystemHooksResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.User` data source allows details of a user to be retrieved by either the user ID, username or email address.

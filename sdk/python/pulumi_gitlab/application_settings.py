@@ -67,7 +67,6 @@ class ApplicationSettingsArgs:
                  decompress_archive_file_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  default_artifacts_expire_in: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
                  default_branch_protection_defaults: pulumi.Input[Optional['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']] = None,
                  default_ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
                  default_group_visibility: pulumi.Input[Optional[_builtins.str]] = None,
@@ -88,6 +87,7 @@ class ApplicationSettingsArgs:
                  disable_admin_oauth_scopes: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_feed_token: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_password_authentication_for_users_with_sso_identities: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_personal_access_tokens: pulumi.Input[Optional[_builtins.bool]] = None,
                  disabled_oauth_sign_in_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_rebinding_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -221,6 +221,7 @@ class ApplicationSettingsArgs:
                  package_registry_allow_anyone_to_pull_option: pulumi.Input[Optional[_builtins.bool]] = None,
                  package_registry_cleanup_policies_worker_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  pages_domain_verification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pages_unique_domain_default_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  password_authentication_enabled_for_git: pulumi.Input[Optional[_builtins.bool]] = None,
                  password_authentication_enabled_for_web: pulumi.Input[Optional[_builtins.bool]] = None,
                  password_lowercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -262,12 +263,14 @@ class ApplicationSettingsArgs:
                  rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_push_protection_available: pulumi.Input[Optional[_builtins.bool]] = None,
                  security_approval_policies_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  security_policy_global_group_approvers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  security_txt_content: pulumi.Input[Optional[_builtins.str]] = None,
                  send_user_confirmation_email: pulumi.Input[Optional[_builtins.bool]] = None,
                  service_access_tokens_expiration_enforced: pulumi.Input[Optional[_builtins.bool]] = None,
                  session_expire_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 session_expire_from_init: pulumi.Input[Optional[_builtins.bool]] = None,
                  shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  shared_runners_minutes: pulumi.Input[Optional[_builtins.int]] = None,
                  shared_runners_text: pulumi.Input[Optional[_builtins.str]] = None,
@@ -391,7 +394,6 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.int] decompress_archive_file_timeout: Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
         :param pulumi.Input[_builtins.str] default_artifacts_expire_in: Set the default expiration time for each job’s artifacts.
         :param pulumi.Input[_builtins.str] default_branch_name: Instance-level custom initial branch name
-        :param pulumi.Input[_builtins.int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
         :param pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         :param pulumi.Input[_builtins.str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         :param pulumi.Input[_builtins.str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
@@ -412,6 +414,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.bool] disable_admin_oauth_scopes: Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
         :param pulumi.Input[_builtins.bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens.
         :param pulumi.Input[_builtins.bool] disable_overriding_approvers_per_merge_request: Prevent editing approval rules in projects and merge requests.
+        :param pulumi.Input[_builtins.bool] disable_password_authentication_for_users_with_sso_identities: Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
         :param pulumi.Input[_builtins.bool] disable_personal_access_tokens: Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[_builtins.bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
@@ -545,6 +548,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.bool] package_registry_allow_anyone_to_pull_option: Enable to allow anyone to pull from Package Registry visible and changeable.
         :param pulumi.Input[_builtins.int] package_registry_cleanup_policies_worker_capacity: Number of workers assigned to the packages cleanup policies.
         :param pulumi.Input[_builtins.bool] pages_domain_verification_enabled: Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
+        :param pulumi.Input[_builtins.bool] pages_unique_domain_default_enabled: Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
         :param pulumi.Input[_builtins.bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password.
         :param pulumi.Input[_builtins.bool] password_authentication_enabled_for_web: Enable authentication for the web interface via a GitLab account password.
         :param pulumi.Input[_builtins.bool] password_lowercase_required: Indicates whether passwords require at least one lowercase letter.
@@ -586,12 +590,14 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
         :param pulumi.Input[_builtins.int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         :param pulumi.Input[_builtins.int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
+        :param pulumi.Input[_builtins.bool] secret_push_protection_available: Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
         :param pulumi.Input[_builtins.int] security_approval_policies_limit: Maximum number of active merge request approval policies per security policy project. Maximum: 20
         :param pulumi.Input[_builtins.bool] security_policy_global_group_approvers_enabled: Whether to look up merge request approval policy approval groups globally or within project hierarchies.
         :param pulumi.Input[_builtins.str] security_txt_content: Public security contact information.
         :param pulumi.Input[_builtins.bool] send_user_confirmation_email: Send confirmation email on sign-up.
         :param pulumi.Input[_builtins.bool] service_access_tokens_expiration_enforced: Flag to indicate if token expiry date can be optional for service account users
         :param pulumi.Input[_builtins.int] session_expire_delay: Session duration in minutes. GitLab restart is required to apply changes.
+        :param pulumi.Input[_builtins.bool] session_expire_from_init: Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
         :param pulumi.Input[_builtins.int] shared_runners_minutes: Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
         :param pulumi.Input[_builtins.str] shared_runners_text: Shared runners text.
@@ -759,11 +765,6 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "default_artifacts_expire_in", default_artifacts_expire_in)
         if default_branch_name is not None:
             pulumi.set(__self__, "default_branch_name", default_branch_name)
-        if default_branch_protection is not None:
-            warnings.warn("""Use `default_branch_protection_defaults` instead. To be removed in 19.0.""", DeprecationWarning)
-            pulumi.log.warn("""default_branch_protection is deprecated: Use `default_branch_protection_defaults` instead. To be removed in 19.0.""")
-        if default_branch_protection is not None:
-            pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if default_branch_protection_defaults is not None:
             pulumi.set(__self__, "default_branch_protection_defaults", default_branch_protection_defaults)
         if default_ci_config_path is not None:
@@ -804,6 +805,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "disable_feed_token", disable_feed_token)
         if disable_overriding_approvers_per_merge_request is not None:
             pulumi.set(__self__, "disable_overriding_approvers_per_merge_request", disable_overriding_approvers_per_merge_request)
+        if disable_password_authentication_for_users_with_sso_identities is not None:
+            pulumi.set(__self__, "disable_password_authentication_for_users_with_sso_identities", disable_password_authentication_for_users_with_sso_identities)
         if disable_personal_access_tokens is not None:
             pulumi.set(__self__, "disable_personal_access_tokens", disable_personal_access_tokens)
         if disabled_oauth_sign_in_sources is not None:
@@ -1070,6 +1073,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "package_registry_cleanup_policies_worker_capacity", package_registry_cleanup_policies_worker_capacity)
         if pages_domain_verification_enabled is not None:
             pulumi.set(__self__, "pages_domain_verification_enabled", pages_domain_verification_enabled)
+        if pages_unique_domain_default_enabled is not None:
+            pulumi.set(__self__, "pages_unique_domain_default_enabled", pages_unique_domain_default_enabled)
         if password_authentication_enabled_for_git is not None:
             pulumi.set(__self__, "password_authentication_enabled_for_git", password_authentication_enabled_for_git)
         if password_authentication_enabled_for_web is not None:
@@ -1152,6 +1157,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "search_rate_limit", search_rate_limit)
         if search_rate_limit_unauthenticated is not None:
             pulumi.set(__self__, "search_rate_limit_unauthenticated", search_rate_limit_unauthenticated)
+        if secret_push_protection_available is not None:
+            pulumi.set(__self__, "secret_push_protection_available", secret_push_protection_available)
         if security_approval_policies_limit is not None:
             pulumi.set(__self__, "security_approval_policies_limit", security_approval_policies_limit)
         if security_policy_global_group_approvers_enabled is not None:
@@ -1164,6 +1171,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "service_access_tokens_expiration_enforced", service_access_tokens_expiration_enforced)
         if session_expire_delay is not None:
             pulumi.set(__self__, "session_expire_delay", session_expire_delay)
+        if session_expire_from_init is not None:
+            pulumi.set(__self__, "session_expire_from_init", session_expire_from_init)
         if shared_runners_enabled is not None:
             pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
         if shared_runners_minutes is not None:
@@ -1866,19 +1875,6 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "default_branch_name", value)
 
     @_builtins.property
-    @pulumi.getter(name="defaultBranchProtection")
-    @_utilities.deprecated("""Use `default_branch_protection_defaults` instead. To be removed in 19.0.""")
-    def default_branch_protection(self) -> pulumi.Input[Optional[_builtins.int]]:
-        """
-        Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
-        """
-        return pulumi.get(self, "default_branch_protection")
-
-    @default_branch_protection.setter
-    def default_branch_protection(self, value: pulumi.Input[Optional[_builtins.int]]):
-        pulumi.set(self, "default_branch_protection", value)
-
-    @_builtins.property
     @pulumi.getter(name="defaultBranchProtectionDefaults")
     def default_branch_protection_defaults(self) -> pulumi.Input[Optional['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']]:
         """
@@ -2117,6 +2113,18 @@ class ApplicationSettingsArgs:
     @disable_overriding_approvers_per_merge_request.setter
     def disable_overriding_approvers_per_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_overriding_approvers_per_merge_request", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disablePasswordAuthenticationForUsersWithSsoIdentities")
+    def disable_password_authentication_for_users_with_sso_identities(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
+        """
+        return pulumi.get(self, "disable_password_authentication_for_users_with_sso_identities")
+
+    @disable_password_authentication_for_users_with_sso_identities.setter
+    def disable_password_authentication_for_users_with_sso_identities(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disable_password_authentication_for_users_with_sso_identities", value)
 
     @_builtins.property
     @pulumi.getter(name="disablePersonalAccessTokens")
@@ -3715,6 +3723,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "pages_domain_verification_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="pagesUniqueDomainDefaultEnabled")
+    def pages_unique_domain_default_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
+        """
+        return pulumi.get(self, "pages_unique_domain_default_enabled")
+
+    @pages_unique_domain_default_enabled.setter
+    def pages_unique_domain_default_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "pages_unique_domain_default_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="passwordAuthenticationEnabledForGit")
     def password_authentication_enabled_for_git(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -4207,6 +4227,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "search_rate_limit_unauthenticated", value)
 
     @_builtins.property
+    @pulumi.getter(name="secretPushProtectionAvailable")
+    def secret_push_protection_available(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
+        """
+        return pulumi.get(self, "secret_push_protection_available")
+
+    @secret_push_protection_available.setter
+    def secret_push_protection_available(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "secret_push_protection_available", value)
+
+    @_builtins.property
     @pulumi.getter(name="securityApprovalPoliciesLimit")
     def security_approval_policies_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -4277,6 +4309,18 @@ class ApplicationSettingsArgs:
     @session_expire_delay.setter
     def session_expire_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_expire_delay", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sessionExpireFromInit")
+    def session_expire_from_init(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
+        """
+        return pulumi.get(self, "session_expire_from_init")
+
+    @session_expire_from_init.setter
+    def session_expire_from_init(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "session_expire_from_init", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersEnabled")
@@ -5216,7 +5260,6 @@ class _ApplicationSettingsState:
                  decompress_archive_file_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  default_artifacts_expire_in: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
                  default_branch_protection_defaults: pulumi.Input[Optional['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']] = None,
                  default_ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
                  default_group_visibility: pulumi.Input[Optional[_builtins.str]] = None,
@@ -5237,6 +5280,7 @@ class _ApplicationSettingsState:
                  disable_admin_oauth_scopes: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_feed_token: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_password_authentication_for_users_with_sso_identities: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_personal_access_tokens: pulumi.Input[Optional[_builtins.bool]] = None,
                  disabled_oauth_sign_in_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_rebinding_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -5372,6 +5416,7 @@ class _ApplicationSettingsState:
                  package_registry_allow_anyone_to_pull_option: pulumi.Input[Optional[_builtins.bool]] = None,
                  package_registry_cleanup_policies_worker_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  pages_domain_verification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pages_unique_domain_default_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  password_authentication_enabled_for_git: pulumi.Input[Optional[_builtins.bool]] = None,
                  password_authentication_enabled_for_web: pulumi.Input[Optional[_builtins.bool]] = None,
                  password_lowercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -5413,12 +5458,14 @@ class _ApplicationSettingsState:
                  rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_push_protection_available: pulumi.Input[Optional[_builtins.bool]] = None,
                  security_approval_policies_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  security_policy_global_group_approvers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  security_txt_content: pulumi.Input[Optional[_builtins.str]] = None,
                  send_user_confirmation_email: pulumi.Input[Optional[_builtins.bool]] = None,
                  service_access_tokens_expiration_enforced: pulumi.Input[Optional[_builtins.bool]] = None,
                  session_expire_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 session_expire_from_init: pulumi.Input[Optional[_builtins.bool]] = None,
                  shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  shared_runners_minutes: pulumi.Input[Optional[_builtins.int]] = None,
                  shared_runners_text: pulumi.Input[Optional[_builtins.str]] = None,
@@ -5542,7 +5589,6 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.int] decompress_archive_file_timeout: Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
         :param pulumi.Input[_builtins.str] default_artifacts_expire_in: Set the default expiration time for each job’s artifacts.
         :param pulumi.Input[_builtins.str] default_branch_name: Instance-level custom initial branch name
-        :param pulumi.Input[_builtins.int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
         :param pulumi.Input['ApplicationSettingsDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         :param pulumi.Input[_builtins.str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         :param pulumi.Input[_builtins.str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
@@ -5563,6 +5609,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.bool] disable_admin_oauth_scopes: Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
         :param pulumi.Input[_builtins.bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens.
         :param pulumi.Input[_builtins.bool] disable_overriding_approvers_per_merge_request: Prevent editing approval rules in projects and merge requests.
+        :param pulumi.Input[_builtins.bool] disable_password_authentication_for_users_with_sso_identities: Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
         :param pulumi.Input[_builtins.bool] disable_personal_access_tokens: Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[_builtins.bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
@@ -5698,6 +5745,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.bool] package_registry_allow_anyone_to_pull_option: Enable to allow anyone to pull from Package Registry visible and changeable.
         :param pulumi.Input[_builtins.int] package_registry_cleanup_policies_worker_capacity: Number of workers assigned to the packages cleanup policies.
         :param pulumi.Input[_builtins.bool] pages_domain_verification_enabled: Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
+        :param pulumi.Input[_builtins.bool] pages_unique_domain_default_enabled: Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
         :param pulumi.Input[_builtins.bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password.
         :param pulumi.Input[_builtins.bool] password_authentication_enabled_for_web: Enable authentication for the web interface via a GitLab account password.
         :param pulumi.Input[_builtins.bool] password_lowercase_required: Indicates whether passwords require at least one lowercase letter.
@@ -5739,12 +5787,14 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
         :param pulumi.Input[_builtins.int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         :param pulumi.Input[_builtins.int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
+        :param pulumi.Input[_builtins.bool] secret_push_protection_available: Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
         :param pulumi.Input[_builtins.int] security_approval_policies_limit: Maximum number of active merge request approval policies per security policy project. Maximum: 20
         :param pulumi.Input[_builtins.bool] security_policy_global_group_approvers_enabled: Whether to look up merge request approval policy approval groups globally or within project hierarchies.
         :param pulumi.Input[_builtins.str] security_txt_content: Public security contact information.
         :param pulumi.Input[_builtins.bool] send_user_confirmation_email: Send confirmation email on sign-up.
         :param pulumi.Input[_builtins.bool] service_access_tokens_expiration_enforced: Flag to indicate if token expiry date can be optional for service account users
         :param pulumi.Input[_builtins.int] session_expire_delay: Session duration in minutes. GitLab restart is required to apply changes.
+        :param pulumi.Input[_builtins.bool] session_expire_from_init: Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
         :param pulumi.Input[_builtins.int] shared_runners_minutes: Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
         :param pulumi.Input[_builtins.str] shared_runners_text: Shared runners text.
@@ -5912,11 +5962,6 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "default_artifacts_expire_in", default_artifacts_expire_in)
         if default_branch_name is not None:
             pulumi.set(__self__, "default_branch_name", default_branch_name)
-        if default_branch_protection is not None:
-            warnings.warn("""Use `default_branch_protection_defaults` instead. To be removed in 19.0.""", DeprecationWarning)
-            pulumi.log.warn("""default_branch_protection is deprecated: Use `default_branch_protection_defaults` instead. To be removed in 19.0.""")
-        if default_branch_protection is not None:
-            pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         if default_branch_protection_defaults is not None:
             pulumi.set(__self__, "default_branch_protection_defaults", default_branch_protection_defaults)
         if default_ci_config_path is not None:
@@ -5957,6 +6002,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "disable_feed_token", disable_feed_token)
         if disable_overriding_approvers_per_merge_request is not None:
             pulumi.set(__self__, "disable_overriding_approvers_per_merge_request", disable_overriding_approvers_per_merge_request)
+        if disable_password_authentication_for_users_with_sso_identities is not None:
+            pulumi.set(__self__, "disable_password_authentication_for_users_with_sso_identities", disable_password_authentication_for_users_with_sso_identities)
         if disable_personal_access_tokens is not None:
             pulumi.set(__self__, "disable_personal_access_tokens", disable_personal_access_tokens)
         if disabled_oauth_sign_in_sources is not None:
@@ -6227,6 +6274,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "package_registry_cleanup_policies_worker_capacity", package_registry_cleanup_policies_worker_capacity)
         if pages_domain_verification_enabled is not None:
             pulumi.set(__self__, "pages_domain_verification_enabled", pages_domain_verification_enabled)
+        if pages_unique_domain_default_enabled is not None:
+            pulumi.set(__self__, "pages_unique_domain_default_enabled", pages_unique_domain_default_enabled)
         if password_authentication_enabled_for_git is not None:
             pulumi.set(__self__, "password_authentication_enabled_for_git", password_authentication_enabled_for_git)
         if password_authentication_enabled_for_web is not None:
@@ -6309,6 +6358,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "search_rate_limit", search_rate_limit)
         if search_rate_limit_unauthenticated is not None:
             pulumi.set(__self__, "search_rate_limit_unauthenticated", search_rate_limit_unauthenticated)
+        if secret_push_protection_available is not None:
+            pulumi.set(__self__, "secret_push_protection_available", secret_push_protection_available)
         if security_approval_policies_limit is not None:
             pulumi.set(__self__, "security_approval_policies_limit", security_approval_policies_limit)
         if security_policy_global_group_approvers_enabled is not None:
@@ -6321,6 +6372,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "service_access_tokens_expiration_enforced", service_access_tokens_expiration_enforced)
         if session_expire_delay is not None:
             pulumi.set(__self__, "session_expire_delay", session_expire_delay)
+        if session_expire_from_init is not None:
+            pulumi.set(__self__, "session_expire_from_init", session_expire_from_init)
         if shared_runners_enabled is not None:
             pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
         if shared_runners_minutes is not None:
@@ -7023,19 +7076,6 @@ class _ApplicationSettingsState:
         pulumi.set(self, "default_branch_name", value)
 
     @_builtins.property
-    @pulumi.getter(name="defaultBranchProtection")
-    @_utilities.deprecated("""Use `default_branch_protection_defaults` instead. To be removed in 19.0.""")
-    def default_branch_protection(self) -> pulumi.Input[Optional[_builtins.int]]:
-        """
-        Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
-        """
-        return pulumi.get(self, "default_branch_protection")
-
-    @default_branch_protection.setter
-    def default_branch_protection(self, value: pulumi.Input[Optional[_builtins.int]]):
-        pulumi.set(self, "default_branch_protection", value)
-
-    @_builtins.property
     @pulumi.getter(name="defaultBranchProtectionDefaults")
     def default_branch_protection_defaults(self) -> pulumi.Input[Optional['ApplicationSettingsDefaultBranchProtectionDefaultsArgs']]:
         """
@@ -7274,6 +7314,18 @@ class _ApplicationSettingsState:
     @disable_overriding_approvers_per_merge_request.setter
     def disable_overriding_approvers_per_merge_request(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_overriding_approvers_per_merge_request", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disablePasswordAuthenticationForUsersWithSsoIdentities")
+    def disable_password_authentication_for_users_with_sso_identities(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
+        """
+        return pulumi.get(self, "disable_password_authentication_for_users_with_sso_identities")
+
+    @disable_password_authentication_for_users_with_sso_identities.setter
+    def disable_password_authentication_for_users_with_sso_identities(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disable_password_authentication_for_users_with_sso_identities", value)
 
     @_builtins.property
     @pulumi.getter(name="disablePersonalAccessTokens")
@@ -8896,6 +8948,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "pages_domain_verification_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="pagesUniqueDomainDefaultEnabled")
+    def pages_unique_domain_default_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
+        """
+        return pulumi.get(self, "pages_unique_domain_default_enabled")
+
+    @pages_unique_domain_default_enabled.setter
+    def pages_unique_domain_default_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "pages_unique_domain_default_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="passwordAuthenticationEnabledForGit")
     def password_authentication_enabled_for_git(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -9388,6 +9452,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "search_rate_limit_unauthenticated", value)
 
     @_builtins.property
+    @pulumi.getter(name="secretPushProtectionAvailable")
+    def secret_push_protection_available(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
+        """
+        return pulumi.get(self, "secret_push_protection_available")
+
+    @secret_push_protection_available.setter
+    def secret_push_protection_available(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "secret_push_protection_available", value)
+
+    @_builtins.property
     @pulumi.getter(name="securityApprovalPoliciesLimit")
     def security_approval_policies_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -9458,6 +9534,18 @@ class _ApplicationSettingsState:
     @session_expire_delay.setter
     def session_expire_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_expire_delay", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sessionExpireFromInit")
+    def session_expire_from_init(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
+        """
+        return pulumi.get(self, "session_expire_from_init")
+
+    @session_expire_from_init.setter
+    def session_expire_from_init(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "session_expire_from_init", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersEnabled")
@@ -10400,7 +10488,6 @@ class ApplicationSettings(pulumi.CustomResource):
                  decompress_archive_file_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  default_artifacts_expire_in: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
                  default_branch_protection_defaults: pulumi.Input[Optional[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']]] = None,
                  default_ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
                  default_group_visibility: pulumi.Input[Optional[_builtins.str]] = None,
@@ -10421,6 +10508,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  disable_admin_oauth_scopes: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_feed_token: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_password_authentication_for_users_with_sso_identities: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_personal_access_tokens: pulumi.Input[Optional[_builtins.bool]] = None,
                  disabled_oauth_sign_in_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_rebinding_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -10554,6 +10642,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  package_registry_allow_anyone_to_pull_option: pulumi.Input[Optional[_builtins.bool]] = None,
                  package_registry_cleanup_policies_worker_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  pages_domain_verification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pages_unique_domain_default_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  password_authentication_enabled_for_git: pulumi.Input[Optional[_builtins.bool]] = None,
                  password_authentication_enabled_for_web: pulumi.Input[Optional[_builtins.bool]] = None,
                  password_lowercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -10595,12 +10684,14 @@ class ApplicationSettings(pulumi.CustomResource):
                  rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_push_protection_available: pulumi.Input[Optional[_builtins.bool]] = None,
                  security_approval_policies_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  security_policy_global_group_approvers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  security_txt_content: pulumi.Input[Optional[_builtins.str]] = None,
                  send_user_confirmation_email: pulumi.Input[Optional[_builtins.bool]] = None,
                  service_access_tokens_expiration_enforced: pulumi.Input[Optional[_builtins.bool]] = None,
                  session_expire_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 session_expire_from_init: pulumi.Input[Optional[_builtins.bool]] = None,
                  shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  shared_runners_minutes: pulumi.Input[Optional[_builtins.int]] = None,
                  shared_runners_text: pulumi.Input[Optional[_builtins.str]] = None,
@@ -10741,7 +10832,6 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] decompress_archive_file_timeout: Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
         :param pulumi.Input[_builtins.str] default_artifacts_expire_in: Set the default expiration time for each job’s artifacts.
         :param pulumi.Input[_builtins.str] default_branch_name: Instance-level custom initial branch name
-        :param pulumi.Input[_builtins.int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
         :param pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         :param pulumi.Input[_builtins.str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         :param pulumi.Input[_builtins.str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
@@ -10762,6 +10852,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disable_admin_oauth_scopes: Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
         :param pulumi.Input[_builtins.bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens.
         :param pulumi.Input[_builtins.bool] disable_overriding_approvers_per_merge_request: Prevent editing approval rules in projects and merge requests.
+        :param pulumi.Input[_builtins.bool] disable_password_authentication_for_users_with_sso_identities: Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
         :param pulumi.Input[_builtins.bool] disable_personal_access_tokens: Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[_builtins.bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
@@ -10895,6 +10986,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] package_registry_allow_anyone_to_pull_option: Enable to allow anyone to pull from Package Registry visible and changeable.
         :param pulumi.Input[_builtins.int] package_registry_cleanup_policies_worker_capacity: Number of workers assigned to the packages cleanup policies.
         :param pulumi.Input[_builtins.bool] pages_domain_verification_enabled: Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
+        :param pulumi.Input[_builtins.bool] pages_unique_domain_default_enabled: Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
         :param pulumi.Input[_builtins.bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password.
         :param pulumi.Input[_builtins.bool] password_authentication_enabled_for_web: Enable authentication for the web interface via a GitLab account password.
         :param pulumi.Input[_builtins.bool] password_lowercase_required: Indicates whether passwords require at least one lowercase letter.
@@ -10936,12 +11028,14 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
         :param pulumi.Input[_builtins.int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         :param pulumi.Input[_builtins.int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
+        :param pulumi.Input[_builtins.bool] secret_push_protection_available: Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
         :param pulumi.Input[_builtins.int] security_approval_policies_limit: Maximum number of active merge request approval policies per security policy project. Maximum: 20
         :param pulumi.Input[_builtins.bool] security_policy_global_group_approvers_enabled: Whether to look up merge request approval policy approval groups globally or within project hierarchies.
         :param pulumi.Input[_builtins.str] security_txt_content: Public security contact information.
         :param pulumi.Input[_builtins.bool] send_user_confirmation_email: Send confirmation email on sign-up.
         :param pulumi.Input[_builtins.bool] service_access_tokens_expiration_enforced: Flag to indicate if token expiry date can be optional for service account users
         :param pulumi.Input[_builtins.int] session_expire_delay: Session duration in minutes. GitLab restart is required to apply changes.
+        :param pulumi.Input[_builtins.bool] session_expire_from_init: Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
         :param pulumi.Input[_builtins.int] shared_runners_minutes: Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
         :param pulumi.Input[_builtins.str] shared_runners_text: Shared runners text.
@@ -11101,7 +11195,6 @@ class ApplicationSettings(pulumi.CustomResource):
                  decompress_archive_file_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  default_artifacts_expire_in: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
                  default_branch_protection_defaults: pulumi.Input[Optional[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']]] = None,
                  default_ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
                  default_group_visibility: pulumi.Input[Optional[_builtins.str]] = None,
@@ -11122,6 +11215,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  disable_admin_oauth_scopes: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_feed_token: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_password_authentication_for_users_with_sso_identities: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_personal_access_tokens: pulumi.Input[Optional[_builtins.bool]] = None,
                  disabled_oauth_sign_in_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dns_rebinding_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -11255,6 +11349,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  package_registry_allow_anyone_to_pull_option: pulumi.Input[Optional[_builtins.bool]] = None,
                  package_registry_cleanup_policies_worker_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  pages_domain_verification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pages_unique_domain_default_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  password_authentication_enabled_for_git: pulumi.Input[Optional[_builtins.bool]] = None,
                  password_authentication_enabled_for_web: pulumi.Input[Optional[_builtins.bool]] = None,
                  password_lowercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -11296,12 +11391,14 @@ class ApplicationSettings(pulumi.CustomResource):
                  rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_push_protection_available: pulumi.Input[Optional[_builtins.bool]] = None,
                  security_approval_policies_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  security_policy_global_group_approvers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  security_txt_content: pulumi.Input[Optional[_builtins.str]] = None,
                  send_user_confirmation_email: pulumi.Input[Optional[_builtins.bool]] = None,
                  service_access_tokens_expiration_enforced: pulumi.Input[Optional[_builtins.bool]] = None,
                  session_expire_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 session_expire_from_init: pulumi.Input[Optional[_builtins.bool]] = None,
                  shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  shared_runners_minutes: pulumi.Input[Optional[_builtins.int]] = None,
                  shared_runners_text: pulumi.Input[Optional[_builtins.str]] = None,
@@ -11431,7 +11528,6 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["decompress_archive_file_timeout"] = decompress_archive_file_timeout
             __props__.__dict__["default_artifacts_expire_in"] = default_artifacts_expire_in
             __props__.__dict__["default_branch_name"] = default_branch_name
-            __props__.__dict__["default_branch_protection"] = default_branch_protection
             __props__.__dict__["default_branch_protection_defaults"] = default_branch_protection_defaults
             __props__.__dict__["default_ci_config_path"] = default_ci_config_path
             __props__.__dict__["default_group_visibility"] = default_group_visibility
@@ -11452,6 +11548,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["disable_admin_oauth_scopes"] = disable_admin_oauth_scopes
             __props__.__dict__["disable_feed_token"] = disable_feed_token
             __props__.__dict__["disable_overriding_approvers_per_merge_request"] = disable_overriding_approvers_per_merge_request
+            __props__.__dict__["disable_password_authentication_for_users_with_sso_identities"] = disable_password_authentication_for_users_with_sso_identities
             __props__.__dict__["disable_personal_access_tokens"] = disable_personal_access_tokens
             __props__.__dict__["disabled_oauth_sign_in_sources"] = disabled_oauth_sign_in_sources
             __props__.__dict__["dns_rebinding_protection_enabled"] = dns_rebinding_protection_enabled
@@ -11585,6 +11682,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["package_registry_allow_anyone_to_pull_option"] = package_registry_allow_anyone_to_pull_option
             __props__.__dict__["package_registry_cleanup_policies_worker_capacity"] = package_registry_cleanup_policies_worker_capacity
             __props__.__dict__["pages_domain_verification_enabled"] = pages_domain_verification_enabled
+            __props__.__dict__["pages_unique_domain_default_enabled"] = pages_unique_domain_default_enabled
             __props__.__dict__["password_authentication_enabled_for_git"] = password_authentication_enabled_for_git
             __props__.__dict__["password_authentication_enabled_for_web"] = password_authentication_enabled_for_web
             __props__.__dict__["password_lowercase_required"] = password_lowercase_required
@@ -11626,12 +11724,14 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["rsa_key_restriction"] = rsa_key_restriction
             __props__.__dict__["search_rate_limit"] = search_rate_limit
             __props__.__dict__["search_rate_limit_unauthenticated"] = search_rate_limit_unauthenticated
+            __props__.__dict__["secret_push_protection_available"] = secret_push_protection_available
             __props__.__dict__["security_approval_policies_limit"] = security_approval_policies_limit
             __props__.__dict__["security_policy_global_group_approvers_enabled"] = security_policy_global_group_approvers_enabled
             __props__.__dict__["security_txt_content"] = security_txt_content
             __props__.__dict__["send_user_confirmation_email"] = send_user_confirmation_email
             __props__.__dict__["service_access_tokens_expiration_enforced"] = service_access_tokens_expiration_enforced
             __props__.__dict__["session_expire_delay"] = session_expire_delay
+            __props__.__dict__["session_expire_from_init"] = session_expire_from_init
             __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
             __props__.__dict__["shared_runners_minutes"] = shared_runners_minutes
             __props__.__dict__["shared_runners_text"] = shared_runners_text
@@ -11766,7 +11866,6 @@ class ApplicationSettings(pulumi.CustomResource):
             decompress_archive_file_timeout: pulumi.Input[Optional[_builtins.int]] = None,
             default_artifacts_expire_in: pulumi.Input[Optional[_builtins.str]] = None,
             default_branch_name: pulumi.Input[Optional[_builtins.str]] = None,
-            default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
             default_branch_protection_defaults: pulumi.Input[Optional[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']]] = None,
             default_ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
             default_group_visibility: pulumi.Input[Optional[_builtins.str]] = None,
@@ -11787,6 +11886,7 @@ class ApplicationSettings(pulumi.CustomResource):
             disable_admin_oauth_scopes: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_feed_token: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_password_authentication_for_users_with_sso_identities: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_personal_access_tokens: pulumi.Input[Optional[_builtins.bool]] = None,
             disabled_oauth_sign_in_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             dns_rebinding_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -11922,6 +12022,7 @@ class ApplicationSettings(pulumi.CustomResource):
             package_registry_allow_anyone_to_pull_option: pulumi.Input[Optional[_builtins.bool]] = None,
             package_registry_cleanup_policies_worker_capacity: pulumi.Input[Optional[_builtins.int]] = None,
             pages_domain_verification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            pages_unique_domain_default_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             password_authentication_enabled_for_git: pulumi.Input[Optional[_builtins.bool]] = None,
             password_authentication_enabled_for_web: pulumi.Input[Optional[_builtins.bool]] = None,
             password_lowercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -11963,12 +12064,14 @@ class ApplicationSettings(pulumi.CustomResource):
             rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
             search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
             search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
+            secret_push_protection_available: pulumi.Input[Optional[_builtins.bool]] = None,
             security_approval_policies_limit: pulumi.Input[Optional[_builtins.int]] = None,
             security_policy_global_group_approvers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             security_txt_content: pulumi.Input[Optional[_builtins.str]] = None,
             send_user_confirmation_email: pulumi.Input[Optional[_builtins.bool]] = None,
             service_access_tokens_expiration_enforced: pulumi.Input[Optional[_builtins.bool]] = None,
             session_expire_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            session_expire_from_init: pulumi.Input[Optional[_builtins.bool]] = None,
             shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             shared_runners_minutes: pulumi.Input[Optional[_builtins.int]] = None,
             shared_runners_text: pulumi.Input[Optional[_builtins.str]] = None,
@@ -12096,7 +12199,6 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] decompress_archive_file_timeout: Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
         :param pulumi.Input[_builtins.str] default_artifacts_expire_in: Set the default expiration time for each job’s artifacts.
         :param pulumi.Input[_builtins.str] default_branch_name: Instance-level custom initial branch name
-        :param pulumi.Input[_builtins.int] default_branch_protection: Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
         :param pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         :param pulumi.Input[_builtins.str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         :param pulumi.Input[_builtins.str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
@@ -12117,6 +12219,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disable_admin_oauth_scopes: Stops administrators from connecting their GitLab accounts to non-trusted OAuth 2.0 applications that have the api, read*api, read*repository, write*repository, read*registry, write_registry, or sudo scopes.
         :param pulumi.Input[_builtins.bool] disable_feed_token: Disable display of RSS/Atom and calendar feed tokens.
         :param pulumi.Input[_builtins.bool] disable_overriding_approvers_per_merge_request: Prevent editing approval rules in projects and merge requests.
+        :param pulumi.Input[_builtins.bool] disable_password_authentication_for_users_with_sso_identities: Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
         :param pulumi.Input[_builtins.bool] disable_personal_access_tokens: Disable personal access tokens. Self-managed, Premium and Ultimate only. There is no method available to enable a personal access token that’s been disabled through the API. This is a known issue.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disabled_oauth_sign_in_sources: Disabled OAuth sign-in sources.
         :param pulumi.Input[_builtins.bool] dns_rebinding_protection_enabled: Enforce DNS rebinding attack protection.
@@ -12252,6 +12355,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] package_registry_allow_anyone_to_pull_option: Enable to allow anyone to pull from Package Registry visible and changeable.
         :param pulumi.Input[_builtins.int] package_registry_cleanup_policies_worker_capacity: Number of workers assigned to the packages cleanup policies.
         :param pulumi.Input[_builtins.bool] pages_domain_verification_enabled: Require users to prove ownership of custom domains. Domain verification is an essential security measure for public GitLab sites. Users are required to demonstrate they control a domain before it is enabled.
+        :param pulumi.Input[_builtins.bool] pages_unique_domain_default_enabled: Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
         :param pulumi.Input[_builtins.bool] password_authentication_enabled_for_git: Enable authentication for Git over HTTP(S) via a GitLab account password.
         :param pulumi.Input[_builtins.bool] password_authentication_enabled_for_web: Enable authentication for the web interface via a GitLab account password.
         :param pulumi.Input[_builtins.bool] password_lowercase_required: Indicates whether passwords require at least one lowercase letter.
@@ -12293,12 +12397,14 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
         :param pulumi.Input[_builtins.int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         :param pulumi.Input[_builtins.int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
+        :param pulumi.Input[_builtins.bool] secret_push_protection_available: Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
         :param pulumi.Input[_builtins.int] security_approval_policies_limit: Maximum number of active merge request approval policies per security policy project. Maximum: 20
         :param pulumi.Input[_builtins.bool] security_policy_global_group_approvers_enabled: Whether to look up merge request approval policy approval groups globally or within project hierarchies.
         :param pulumi.Input[_builtins.str] security_txt_content: Public security contact information.
         :param pulumi.Input[_builtins.bool] send_user_confirmation_email: Send confirmation email on sign-up.
         :param pulumi.Input[_builtins.bool] service_access_tokens_expiration_enforced: Flag to indicate if token expiry date can be optional for service account users
         :param pulumi.Input[_builtins.int] session_expire_delay: Session duration in minutes. GitLab restart is required to apply changes.
+        :param pulumi.Input[_builtins.bool] session_expire_from_init: Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: (If enabled, requires: shared*runners*text and shared*runners*minutes) Enable shared runners for new projects.
         :param pulumi.Input[_builtins.int] shared_runners_minutes: Set the maximum number of CI/CD minutes that a group can use on shared runners per month.
         :param pulumi.Input[_builtins.str] shared_runners_text: Shared runners text.
@@ -12424,7 +12530,6 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["decompress_archive_file_timeout"] = decompress_archive_file_timeout
         __props__.__dict__["default_artifacts_expire_in"] = default_artifacts_expire_in
         __props__.__dict__["default_branch_name"] = default_branch_name
-        __props__.__dict__["default_branch_protection"] = default_branch_protection
         __props__.__dict__["default_branch_protection_defaults"] = default_branch_protection_defaults
         __props__.__dict__["default_ci_config_path"] = default_ci_config_path
         __props__.__dict__["default_group_visibility"] = default_group_visibility
@@ -12445,6 +12550,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["disable_admin_oauth_scopes"] = disable_admin_oauth_scopes
         __props__.__dict__["disable_feed_token"] = disable_feed_token
         __props__.__dict__["disable_overriding_approvers_per_merge_request"] = disable_overriding_approvers_per_merge_request
+        __props__.__dict__["disable_password_authentication_for_users_with_sso_identities"] = disable_password_authentication_for_users_with_sso_identities
         __props__.__dict__["disable_personal_access_tokens"] = disable_personal_access_tokens
         __props__.__dict__["disabled_oauth_sign_in_sources"] = disabled_oauth_sign_in_sources
         __props__.__dict__["dns_rebinding_protection_enabled"] = dns_rebinding_protection_enabled
@@ -12580,6 +12686,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["package_registry_allow_anyone_to_pull_option"] = package_registry_allow_anyone_to_pull_option
         __props__.__dict__["package_registry_cleanup_policies_worker_capacity"] = package_registry_cleanup_policies_worker_capacity
         __props__.__dict__["pages_domain_verification_enabled"] = pages_domain_verification_enabled
+        __props__.__dict__["pages_unique_domain_default_enabled"] = pages_unique_domain_default_enabled
         __props__.__dict__["password_authentication_enabled_for_git"] = password_authentication_enabled_for_git
         __props__.__dict__["password_authentication_enabled_for_web"] = password_authentication_enabled_for_web
         __props__.__dict__["password_lowercase_required"] = password_lowercase_required
@@ -12621,12 +12728,14 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["rsa_key_restriction"] = rsa_key_restriction
         __props__.__dict__["search_rate_limit"] = search_rate_limit
         __props__.__dict__["search_rate_limit_unauthenticated"] = search_rate_limit_unauthenticated
+        __props__.__dict__["secret_push_protection_available"] = secret_push_protection_available
         __props__.__dict__["security_approval_policies_limit"] = security_approval_policies_limit
         __props__.__dict__["security_policy_global_group_approvers_enabled"] = security_policy_global_group_approvers_enabled
         __props__.__dict__["security_txt_content"] = security_txt_content
         __props__.__dict__["send_user_confirmation_email"] = send_user_confirmation_email
         __props__.__dict__["service_access_tokens_expiration_enforced"] = service_access_tokens_expiration_enforced
         __props__.__dict__["session_expire_delay"] = session_expire_delay
+        __props__.__dict__["session_expire_from_init"] = session_expire_from_init
         __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
         __props__.__dict__["shared_runners_minutes"] = shared_runners_minutes
         __props__.__dict__["shared_runners_text"] = shared_runners_text
@@ -13072,15 +13181,6 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "default_branch_name")
 
     @_builtins.property
-    @pulumi.getter(name="defaultBranchProtection")
-    @_utilities.deprecated("""Use `default_branch_protection_defaults` instead. To be removed in 19.0.""")
-    def default_branch_protection(self) -> pulumi.Output[_builtins.int]:
-        """
-        Determine if developers can push to the default branch. Can take: 0 (not protected, both users with the Developer role or Maintainer role can push new commits and force push), 1 (partially protected, users with the Developer role or Maintainer role can push new commits, but cannot force push) or 2 (fully protected, users with the Developer or Maintainer role cannot push new commits, but users with the Developer or Maintainer role can; no one can force push) as a parameter. Default is 2. Use `default_branch_protection_defaults` instead. To be removed in 19.0.
-        """
-        return pulumi.get(self, "default_branch_protection")
-
-    @_builtins.property
     @pulumi.getter(name="defaultBranchProtectionDefaults")
     def default_branch_protection_defaults(self) -> pulumi.Output['outputs.ApplicationSettingsDefaultBranchProtectionDefaults']:
         """
@@ -13239,6 +13339,14 @@ class ApplicationSettings(pulumi.CustomResource):
         Prevent editing approval rules in projects and merge requests.
         """
         return pulumi.get(self, "disable_overriding_approvers_per_merge_request")
+
+    @_builtins.property
+    @pulumi.getter(name="disablePasswordAuthenticationForUsersWithSsoIdentities")
+    def disable_password_authentication_for_users_with_sso_identities(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Disable password authentication in the web interface for users with an SSO identity. This does not affect Git operations over HTTP(S).
+        """
+        return pulumi.get(self, "disable_password_authentication_for_users_with_sso_identities")
 
     @_builtins.property
     @pulumi.getter(name="disablePersonalAccessTokens")
@@ -14321,6 +14429,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "pages_domain_verification_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="pagesUniqueDomainDefaultEnabled")
+    def pages_unique_domain_default_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Enable unique domains by default for Pages sites to avoid cookie sharing between sites under a given namespace.
+        """
+        return pulumi.get(self, "pages_unique_domain_default_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="passwordAuthenticationEnabledForGit")
     def password_authentication_enabled_for_git(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -14649,6 +14765,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "search_rate_limit_unauthenticated")
 
     @_builtins.property
+    @pulumi.getter(name="secretPushProtectionAvailable")
+    def secret_push_protection_available(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
+        """
+        return pulumi.get(self, "secret_push_protection_available")
+
+    @_builtins.property
     @pulumi.getter(name="securityApprovalPoliciesLimit")
     def security_approval_policies_limit(self) -> pulumi.Output[_builtins.int]:
         """
@@ -14695,6 +14819,14 @@ class ApplicationSettings(pulumi.CustomResource):
         Session duration in minutes. GitLab restart is required to apply changes.
         """
         return pulumi.get(self, "session_expire_delay")
+
+    @_builtins.property
+    @pulumi.getter(name="sessionExpireFromInit")
+    def session_expire_from_init(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether sessions expire from the moment of initial sign-in (true) or after inactivity (false).
+        """
+        return pulumi.get(self, "session_expire_from_init")
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersEnabled")

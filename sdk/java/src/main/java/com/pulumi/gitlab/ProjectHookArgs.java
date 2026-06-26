@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gitlab.inputs.ProjectHookCustomHeaderArgs;
+import com.pulumi.gitlab.inputs.ProjectHookUrlVariableArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -155,6 +156,21 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Invoke the hook for feature flag events. Defaults to `false`.
+     * 
+     */
+    @Import(name="featureFlagEvents")
+    private @Nullable Output<Boolean> featureFlagEvents;
+
+    /**
+     * @return Invoke the hook for feature flag events. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> featureFlagEvents() {
+        return Optional.ofNullable(this.featureFlagEvents);
+    }
+
+    /**
      * Invoke the hook for issues events. Defaults to `false`.
      * 
      */
@@ -197,6 +213,21 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> mergeRequestsEvents() {
         return Optional.ofNullable(this.mergeRequestsEvents);
+    }
+
+    /**
+     * Invoke the hook for milestone events. Defaults to `false`.
+     * 
+     */
+    @Import(name="milestoneEvents")
+    private @Nullable Output<Boolean> milestoneEvents;
+
+    /**
+     * @return Invoke the hook for milestone events. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> milestoneEvents() {
+        return Optional.ofNullable(this.milestoneEvents);
     }
 
     /**
@@ -320,6 +351,36 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Invoke the hook for resource deploy token events. Defaults to `false`.
+     * 
+     */
+    @Import(name="resourceDeployTokenEvents")
+    private @Nullable Output<Boolean> resourceDeployTokenEvents;
+
+    /**
+     * @return Invoke the hook for resource deploy token events. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> resourceDeployTokenEvents() {
+        return Optional.ofNullable(this.resourceDeployTokenEvents);
+    }
+
+    /**
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * 
+     */
+    @Import(name="signingToken")
+    private @Nullable Output<String> signingToken;
+
+    /**
+     * @return Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * 
+     */
+    public Optional<Output<String>> signingToken() {
+        return Optional.ofNullable(this.signingToken);
+    }
+
+    /**
      * Invoke the hook for tag push events. Defaults to `false`.
      * 
      */
@@ -365,6 +426,21 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Array of sensitive portions of the webhook URL to mask.
+     * 
+     */
+    @Import(name="urlVariables")
+    private @Nullable Output<List<ProjectHookUrlVariableArgs>> urlVariables;
+
+    /**
+     * @return Array of sensitive portions of the webhook URL to mask.
+     * 
+     */
+    public Optional<Output<List<ProjectHookUrlVariableArgs>>> urlVariables() {
+        return Optional.ofNullable(this.urlVariables);
+    }
+
+    /**
      * Invoke the hook for vulnerability events. Defaults to `false`.
      * 
      */
@@ -406,9 +482,11 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.emojiEvents = $.emojiEvents;
         this.enableSslVerification = $.enableSslVerification;
+        this.featureFlagEvents = $.featureFlagEvents;
         this.issuesEvents = $.issuesEvents;
         this.jobEvents = $.jobEvents;
         this.mergeRequestsEvents = $.mergeRequestsEvents;
+        this.milestoneEvents = $.milestoneEvents;
         this.name = $.name;
         this.noteEvents = $.noteEvents;
         this.pipelineEvents = $.pipelineEvents;
@@ -417,9 +495,12 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
         this.pushEventsBranchFilter = $.pushEventsBranchFilter;
         this.releasesEvents = $.releasesEvents;
         this.resourceAccessTokenEvents = $.resourceAccessTokenEvents;
+        this.resourceDeployTokenEvents = $.resourceDeployTokenEvents;
+        this.signingToken = $.signingToken;
         this.tagPushEvents = $.tagPushEvents;
         this.token = $.token;
         this.url = $.url;
+        this.urlVariables = $.urlVariables;
         this.vulnerabilityEvents = $.vulnerabilityEvents;
         this.wikiPageEvents = $.wikiPageEvents;
     }
@@ -642,6 +723,27 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param featureFlagEvents Invoke the hook for feature flag events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder featureFlagEvents(@Nullable Output<Boolean> featureFlagEvents) {
+            $.featureFlagEvents = featureFlagEvents;
+            return this;
+        }
+
+        /**
+         * @param featureFlagEvents Invoke the hook for feature flag events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder featureFlagEvents(Boolean featureFlagEvents) {
+            return featureFlagEvents(Output.of(featureFlagEvents));
+        }
+
+        /**
          * @param issuesEvents Invoke the hook for issues events. Defaults to `false`.
          * 
          * @return builder
@@ -702,6 +804,27 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mergeRequestsEvents(Boolean mergeRequestsEvents) {
             return mergeRequestsEvents(Output.of(mergeRequestsEvents));
+        }
+
+        /**
+         * @param milestoneEvents Invoke the hook for milestone events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder milestoneEvents(@Nullable Output<Boolean> milestoneEvents) {
+            $.milestoneEvents = milestoneEvents;
+            return this;
+        }
+
+        /**
+         * @param milestoneEvents Invoke the hook for milestone events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder milestoneEvents(Boolean milestoneEvents) {
+            return milestoneEvents(Output.of(milestoneEvents));
         }
 
         /**
@@ -873,6 +996,48 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param resourceDeployTokenEvents Invoke the hook for resource deploy token events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceDeployTokenEvents(@Nullable Output<Boolean> resourceDeployTokenEvents) {
+            $.resourceDeployTokenEvents = resourceDeployTokenEvents;
+            return this;
+        }
+
+        /**
+         * @param resourceDeployTokenEvents Invoke the hook for resource deploy token events. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceDeployTokenEvents(Boolean resourceDeployTokenEvents) {
+            return resourceDeployTokenEvents(Output.of(resourceDeployTokenEvents));
+        }
+
+        /**
+         * @param signingToken Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingToken(@Nullable Output<String> signingToken) {
+            $.signingToken = signingToken;
+            return this;
+        }
+
+        /**
+         * @param signingToken Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingToken(String signingToken) {
+            return signingToken(Output.of(signingToken));
+        }
+
+        /**
          * @param tagPushEvents Invoke the hook for tag push events. Defaults to `false`.
          * 
          * @return builder
@@ -933,6 +1098,37 @@ public final class ProjectHookArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder url(String url) {
             return url(Output.of(url));
+        }
+
+        /**
+         * @param urlVariables Array of sensitive portions of the webhook URL to mask.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlVariables(@Nullable Output<List<ProjectHookUrlVariableArgs>> urlVariables) {
+            $.urlVariables = urlVariables;
+            return this;
+        }
+
+        /**
+         * @param urlVariables Array of sensitive portions of the webhook URL to mask.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlVariables(List<ProjectHookUrlVariableArgs> urlVariables) {
+            return urlVariables(Output.of(urlVariables));
+        }
+
+        /**
+         * @param urlVariables Array of sensitive portions of the webhook URL to mask.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urlVariables(ProjectHookUrlVariableArgs... urlVariables) {
+            return urlVariables(List.of(urlVariables));
         }
 
         /**
