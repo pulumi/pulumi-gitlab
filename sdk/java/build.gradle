@@ -95,7 +95,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-gitlab"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing GitLab resources."
+                description = $/A Pulumi package for creating and managing GitLab resources./$
 
                 url = "https://github.com/pulumi/pulumi-gitlab"
 
