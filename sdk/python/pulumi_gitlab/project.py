@@ -65,6 +65,7 @@ class ProjectArgs:
                  import_url_username: pulumi.Input[Optional[_builtins.str]] = None,
                  infrastructure_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  initialize_with_readme: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issue_branch_template: pulumi.Input[Optional[_builtins.str]] = None,
                  issues_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  issues_template: pulumi.Input[Optional[_builtins.str]] = None,
                  keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -167,6 +168,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] initialize_with_readme: Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
+        :param pulumi.Input[_builtins.str] issue_branch_template: Sets the template for branch names suggested when creating a branch from an issue.
         :param pulumi.Input[_builtins.str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
@@ -315,6 +317,8 @@ class ProjectArgs:
             pulumi.set(__self__, "infrastructure_access_level", infrastructure_access_level)
         if initialize_with_readme is not None:
             pulumi.set(__self__, "initialize_with_readme", initialize_with_readme)
+        if issue_branch_template is not None:
+            pulumi.set(__self__, "issue_branch_template", issue_branch_template)
         if issues_access_level is not None:
             pulumi.set(__self__, "issues_access_level", issues_access_level)
         if issues_template is not None:
@@ -956,6 +960,18 @@ class ProjectArgs:
     @initialize_with_readme.setter
     def initialize_with_readme(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "initialize_with_readme", value)
+
+    @_builtins.property
+    @pulumi.getter(name="issueBranchTemplate")
+    def issue_branch_template(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sets the template for branch names suggested when creating a branch from an issue.
+        """
+        return pulumi.get(self, "issue_branch_template")
+
+    @issue_branch_template.setter
+    def issue_branch_template(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "issue_branch_template", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesAccessLevel")
@@ -1673,6 +1689,7 @@ class _ProjectState:
                  import_url_username: pulumi.Input[Optional[_builtins.str]] = None,
                  infrastructure_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  initialize_with_readme: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issue_branch_template: pulumi.Input[Optional[_builtins.str]] = None,
                  issues_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  issues_template: pulumi.Input[Optional[_builtins.str]] = None,
                  keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1782,6 +1799,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] initialize_with_readme: Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
+        :param pulumi.Input[_builtins.str] issue_branch_template: Sets the template for branch names suggested when creating a branch from an issue.
         :param pulumi.Input[_builtins.str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
@@ -1940,6 +1958,8 @@ class _ProjectState:
             pulumi.set(__self__, "infrastructure_access_level", infrastructure_access_level)
         if initialize_with_readme is not None:
             pulumi.set(__self__, "initialize_with_readme", initialize_with_readme)
+        if issue_branch_template is not None:
+            pulumi.set(__self__, "issue_branch_template", issue_branch_template)
         if issues_access_level is not None:
             pulumi.set(__self__, "issues_access_level", issues_access_level)
         if issues_template is not None:
@@ -2625,6 +2645,18 @@ class _ProjectState:
     @initialize_with_readme.setter
     def initialize_with_readme(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "initialize_with_readme", value)
+
+    @_builtins.property
+    @pulumi.getter(name="issueBranchTemplate")
+    def issue_branch_template(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sets the template for branch names suggested when creating a branch from an issue.
+        """
+        return pulumi.get(self, "issue_branch_template")
+
+    @issue_branch_template.setter
+    def issue_branch_template(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "issue_branch_template", value)
 
     @_builtins.property
     @pulumi.getter(name="issuesAccessLevel")
@@ -3390,6 +3422,7 @@ class Project(pulumi.CustomResource):
                  import_url_username: pulumi.Input[Optional[_builtins.str]] = None,
                  infrastructure_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  initialize_with_readme: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issue_branch_template: pulumi.Input[Optional[_builtins.str]] = None,
                  issues_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  issues_template: pulumi.Input[Optional[_builtins.str]] = None,
                  keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3522,6 +3555,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] initialize_with_readme: Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
+        :param pulumi.Input[_builtins.str] issue_branch_template: Sets the template for branch names suggested when creating a branch from an issue.
         :param pulumi.Input[_builtins.str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
@@ -3677,6 +3711,7 @@ class Project(pulumi.CustomResource):
                  import_url_username: pulumi.Input[Optional[_builtins.str]] = None,
                  infrastructure_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  initialize_with_readme: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issue_branch_template: pulumi.Input[Optional[_builtins.str]] = None,
                  issues_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  issues_template: pulumi.Input[Optional[_builtins.str]] = None,
                  keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3785,6 +3820,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["import_url_username"] = import_url_username
             __props__.__dict__["infrastructure_access_level"] = infrastructure_access_level
             __props__.__dict__["initialize_with_readme"] = initialize_with_readme
+            __props__.__dict__["issue_branch_template"] = issue_branch_template
             __props__.__dict__["issues_access_level"] = issues_access_level
             __props__.__dict__["issues_template"] = issues_template
             __props__.__dict__["keep_latest_artifact"] = keep_latest_artifact
@@ -3906,6 +3942,7 @@ class Project(pulumi.CustomResource):
             import_url_username: pulumi.Input[Optional[_builtins.str]] = None,
             infrastructure_access_level: pulumi.Input[Optional[_builtins.str]] = None,
             initialize_with_readme: pulumi.Input[Optional[_builtins.bool]] = None,
+            issue_branch_template: pulumi.Input[Optional[_builtins.str]] = None,
             issues_access_level: pulumi.Input[Optional[_builtins.str]] = None,
             issues_template: pulumi.Input[Optional[_builtins.str]] = None,
             keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -4019,6 +4056,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] import_url_username: The username for the `import_url`. The value of this field is used to construct a valid `import_url` and is only related to the provider. This field cannot be imported using `pulumi import`.  See the examples section for how to properly use it.
         :param pulumi.Input[_builtins.str] infrastructure_access_level: Set the infrastructure access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] initialize_with_readme: Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
+        :param pulumi.Input[_builtins.str] issue_branch_template: Sets the template for branch names suggested when creating a branch from an issue.
         :param pulumi.Input[_builtins.str] issues_access_level: Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] issues_template: Sets the template for new issues in the project.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Disable or enable the ability to keep the latest artifact for this project.
@@ -4134,6 +4172,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["import_url_username"] = import_url_username
         __props__.__dict__["infrastructure_access_level"] = infrastructure_access_level
         __props__.__dict__["initialize_with_readme"] = initialize_with_readme
+        __props__.__dict__["issue_branch_template"] = issue_branch_template
         __props__.__dict__["issues_access_level"] = issues_access_level
         __props__.__dict__["issues_template"] = issues_template
         __props__.__dict__["keep_latest_artifact"] = keep_latest_artifact
@@ -4570,6 +4609,14 @@ class Project(pulumi.CustomResource):
         Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `default_branch`.
         """
         return pulumi.get(self, "initialize_with_readme")
+
+    @_builtins.property
+    @pulumi.getter(name="issueBranchTemplate")
+    def issue_branch_template(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Sets the template for branch names suggested when creating a branch from an issue.
+        """
+        return pulumi.get(self, "issue_branch_template")
 
     @_builtins.property
     @pulumi.getter(name="issuesAccessLevel")

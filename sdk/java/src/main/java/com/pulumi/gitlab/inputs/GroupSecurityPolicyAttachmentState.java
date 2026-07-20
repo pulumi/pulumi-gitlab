@@ -5,6 +5,7 @@ package com.pulumi.gitlab.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gitlab.inputs.GroupSecurityPolicyAttachmentTimeoutsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -75,6 +76,13 @@ public final class GroupSecurityPolicyAttachmentState extends com.pulumi.resourc
         return Optional.ofNullable(this.policyProjectGraphqlId);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<GroupSecurityPolicyAttachmentTimeoutsArgs> timeouts;
+
+    public Optional<Output<GroupSecurityPolicyAttachmentTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private GroupSecurityPolicyAttachmentState() {}
 
     private GroupSecurityPolicyAttachmentState(GroupSecurityPolicyAttachmentState $) {
@@ -82,6 +90,7 @@ public final class GroupSecurityPolicyAttachmentState extends com.pulumi.resourc
         this.groupGraphqlId = $.groupGraphqlId;
         this.policyProject = $.policyProject;
         this.policyProjectGraphqlId = $.policyProjectGraphqlId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -184,6 +193,15 @@ public final class GroupSecurityPolicyAttachmentState extends com.pulumi.resourc
          */
         public Builder policyProjectGraphqlId(String policyProjectGraphqlId) {
             return policyProjectGraphqlId(Output.of(policyProjectGraphqlId));
+        }
+
+        public Builder timeouts(@Nullable Output<GroupSecurityPolicyAttachmentTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GroupSecurityPolicyAttachmentTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public GroupSecurityPolicyAttachmentState build() {

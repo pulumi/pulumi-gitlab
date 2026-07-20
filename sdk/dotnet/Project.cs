@@ -324,6 +324,12 @@ namespace Pulumi.GitLab
         public Output<bool?> InitializeWithReadme { get; private set; } = null!;
 
         /// <summary>
+        /// Sets the template for branch names suggested when creating a branch from an issue.
+        /// </summary>
+        [Output("issueBranchTemplate")]
+        public Output<string?> IssueBranchTemplate { get; private set; } = null!;
+
+        /// <summary>
         /// Set the issues access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         [Output("issuesAccessLevel")]
@@ -1013,6 +1019,12 @@ namespace Pulumi.GitLab
         public Input<bool>? InitializeWithReadme { get; set; }
 
         /// <summary>
+        /// Sets the template for branch names suggested when creating a branch from an issue.
+        /// </summary>
+        [Input("issueBranchTemplate")]
+        public Input<string>? IssueBranchTemplate { get; set; }
+
+        /// <summary>
         /// Set the issues access level. Valid values are `Disabled`, `Private`, `Enabled`.
         /// </summary>
         [Input("issuesAccessLevel")]
@@ -1657,6 +1669,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("initializeWithReadme")]
         public Input<bool>? InitializeWithReadme { get; set; }
+
+        /// <summary>
+        /// Sets the template for branch names suggested when creating a branch from an issue.
+        /// </summary>
+        [Input("issueBranchTemplate")]
+        public Input<string>? IssueBranchTemplate { get; set; }
 
         /// <summary>
         /// Set the issues access level. Valid values are `Disabled`, `Private`, `Enabled`.

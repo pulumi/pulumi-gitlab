@@ -71,7 +71,7 @@ export class ProjectMembership extends pulumi.CustomResource {
     }
 
     /**
-     * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+     * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`
      */
     declare public readonly accessLevel: pulumi.Output<string>;
     /**
@@ -136,7 +136,7 @@ export class ProjectMembership extends pulumi.CustomResource {
  */
 export interface ProjectMembershipState {
     /**
-     * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+     * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`
      */
     accessLevel?: pulumi.Input<string | undefined>;
     /**
@@ -162,7 +162,7 @@ export interface ProjectMembershipState {
  */
 export interface ProjectMembershipArgs {
     /**
-     * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+     * The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`
      */
     accessLevel: pulumi.Input<string>;
     /**

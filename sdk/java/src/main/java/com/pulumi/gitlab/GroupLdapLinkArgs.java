@@ -79,14 +79,14 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+     * Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`
      * 
      */
     @Import(name="groupAccess", required=true)
     private Output<String> groupAccess;
 
     /**
-     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+     * @return Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`
      * 
      */
     public Output<String> groupAccess() {
@@ -238,7 +238,7 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupAccess Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+         * @param groupAccess Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class GroupLdapLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupAccess Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+         * @param groupAccess Minimum access level for members of the LDAP group. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 

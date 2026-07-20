@@ -26,7 +26,7 @@ class ProjectShareGroupArgs:
         """
         The set of arguments for constructing a ProjectShareGroup resource.
 
-        :param pulumi.Input[_builtins.str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[_builtins.str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.int] group_id: The id of the group.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
         :param pulumi.Input[_builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
@@ -41,7 +41,7 @@ class ProjectShareGroupArgs:
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> pulumi.Input[_builtins.str]:
         """
-        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "group_access")
 
@@ -97,7 +97,7 @@ class _ProjectShareGroupState:
         Input properties used for looking up and filtering ProjectShareGroup resources.
 
         :param pulumi.Input[_builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
-        :param pulumi.Input[_builtins.str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[_builtins.str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.int] group_id: The id of the group.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
         """
@@ -126,7 +126,7 @@ class _ProjectShareGroupState:
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "group_access")
 
@@ -203,7 +203,7 @@ class ProjectShareGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
-        :param pulumi.Input[_builtins.str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[_builtins.str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.int] group_id: The id of the group.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
         """
@@ -303,7 +303,7 @@ class ProjectShareGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] expires_at: Share expiration date. Format: `YYYY-MM-DD`
-        :param pulumi.Input[_builtins.str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+        :param pulumi.Input[_builtins.str] group_access: The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`
         :param pulumi.Input[_builtins.int] group_id: The id of the group.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
         """
@@ -329,7 +329,7 @@ class ProjectShareGroup(pulumi.CustomResource):
     @pulumi.getter(name="groupAccess")
     def group_access(self) -> pulumi.Output[_builtins.str]:
         """
-        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+        The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`
         """
         return pulumi.get(self, "group_access")
 

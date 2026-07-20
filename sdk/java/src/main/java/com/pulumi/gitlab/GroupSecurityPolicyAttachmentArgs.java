@@ -6,8 +6,11 @@ package com.pulumi.gitlab;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gitlab.inputs.GroupSecurityPolicyAttachmentTimeoutsArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GroupSecurityPolicyAttachmentArgs extends com.pulumi.resources.ResourceArgs {
@@ -44,11 +47,19 @@ public final class GroupSecurityPolicyAttachmentArgs extends com.pulumi.resource
         return this.policyProject;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<GroupSecurityPolicyAttachmentTimeoutsArgs> timeouts;
+
+    public Optional<Output<GroupSecurityPolicyAttachmentTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private GroupSecurityPolicyAttachmentArgs() {}
 
     private GroupSecurityPolicyAttachmentArgs(GroupSecurityPolicyAttachmentArgs $) {
         this.group = $.group;
         this.policyProject = $.policyProject;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -109,6 +120,15 @@ public final class GroupSecurityPolicyAttachmentArgs extends com.pulumi.resource
          */
         public Builder policyProject(String policyProject) {
             return policyProject(Output.of(policyProject));
+        }
+
+        public Builder timeouts(@Nullable Output<GroupSecurityPolicyAttachmentTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GroupSecurityPolicyAttachmentTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public GroupSecurityPolicyAttachmentArgs build() {

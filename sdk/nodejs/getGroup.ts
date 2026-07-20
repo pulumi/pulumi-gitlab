@@ -47,6 +47,10 @@ export interface GetGroupResult {
      */
     readonly allowedEmailDomainsList: string;
     /**
+     * Whether the group is archived.
+     */
+    readonly archived: boolean;
+    /**
      * Default to Auto DevOps pipeline for all projects within this group.
      */
     readonly autoDevopsEnabled: boolean;
@@ -81,6 +85,14 @@ export interface GetGroupResult {
      */
     readonly description: string;
     /**
+     * Indicates whether GitLab Duo features are enabled for the group. Valid values are `defaultOn`, `defaultOff`, `neverOn`.
+     */
+    readonly duoAvailability: string;
+    /**
+     * Whether GitLab Duo features are enabled for the group.
+     */
+    readonly duoFeaturesEnabled: boolean;
+    /**
      * Whether email notifications are disabled for this group. Use `emailsEnabled` instead, to be removed in 19.0.
      *
      * @deprecated Use `emailsEnabled` instead, to be removed in 19.0.
@@ -90,6 +102,14 @@ export interface GetGroupResult {
      * Whether email notifications are enabled for this group.
      */
     readonly emailsEnabled: boolean;
+    /**
+     * Restrict access to group by allowing only certain protocols. Valid values are `ssh`, `http`, `all`.
+     */
+    readonly enabledGitAccessProtocol: string;
+    /**
+     * Whether experimental features are enabled for the group.
+     */
+    readonly experimentFeaturesEnabled: boolean;
     /**
      * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      */
@@ -131,9 +151,21 @@ export interface GetGroupResult {
      */
     readonly lfsEnabled: boolean;
     /**
+     * Whether the GitLab Duo features setting is enforced for all subgroups.
+     */
+    readonly lockDuoFeaturesEnabled: boolean;
+    /**
+     * Whether the math rendering limits setting is enforced for all subgroups.
+     */
+    readonly lockMathRenderingLimitsEnabled: boolean;
+    /**
      * Date on which the group was marked for deletion.
      */
     readonly markedForDeletionOn: string;
+    /**
+     * Whether math rendering limits are enabled for the group.
+     */
+    readonly mathRenderingLimitsEnabled: boolean;
     /**
      * Maximum artifacts size for the group, in MB.
      */
@@ -158,6 +190,10 @@ export interface GetGroupResult {
      * Default to only allowing merge if the pipeline succeeds for new projects in the group.
      */
     readonly onlyAllowMergeIfPipelineSucceeds: boolean;
+    /**
+     * The ID of the organization this group belongs to.
+     */
+    readonly organizationId: number;
     /**
      * Integer, ID of the parent group.
      */

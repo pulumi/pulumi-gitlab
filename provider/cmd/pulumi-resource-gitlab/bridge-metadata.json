@@ -1,6 +1,15 @@
 {
     "auto-aliasing": {
         "resources": {
+            "gitlab_admin_role": {
+                "current": "gitlab:index/adminRole:AdminRole",
+                "majorVersion": 10,
+                "fields": {
+                    "enabled_permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "gitlab_application": {
                 "current": "gitlab:index/application:Application",
                 "majorVersion": 10,
@@ -460,6 +469,14 @@
                 "current": "gitlab:index/projectEnvironment:ProjectEnvironment",
                 "majorVersion": 10
             },
+            "gitlab_project_error_tracking_client_key": {
+                "current": "gitlab:index/projectErrorTrackingClientKey:ProjectErrorTrackingClientKey",
+                "majorVersion": 10
+            },
+            "gitlab_project_error_tracking_settings": {
+                "current": "gitlab:index/projectErrorTrackingSettings:ProjectErrorTrackingSettings",
+                "majorVersion": 10
+            },
             "gitlab_project_external_status_check": {
                 "current": "gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck",
                 "majorVersion": 10,
@@ -682,6 +699,10 @@
             },
             "gitlab_project_saved_reply": {
                 "current": "gitlab:index/projectSavedReply:ProjectSavedReply",
+                "majorVersion": 10
+            },
+            "gitlab_project_secret_detection_validity_checks": {
+                "current": "gitlab:index/projectSecretDetectionValidityChecks:ProjectSecretDetectionValidityChecks",
                 "majorVersion": 10
             },
             "gitlab_project_secure_file": {
@@ -1299,6 +1320,10 @@
                     }
                 }
             },
+            "gitlab_project_error_tracking_settings": {
+                "current": "gitlab:index/getProjectErrorTrackingSettings:getProjectErrorTrackingSettings",
+                "majorVersion": 10
+            },
             "gitlab_project_hook": {
                 "current": "gitlab:index/getProjectHook:getProjectHook",
                 "majorVersion": 10
@@ -1796,6 +1821,7 @@
     "auto-settings": {},
     "default-resource-schema-fixups": {
         "resources": {
+            "gitlab_admin_role": {},
             "gitlab_application": {},
             "gitlab_application_appearance": {},
             "gitlab_branch": {},
@@ -1841,6 +1867,8 @@
             "gitlab_project_container_tag_protection": {},
             "gitlab_project_deploy_token": {},
             "gitlab_project_environment": {},
+            "gitlab_project_error_tracking_client_key": {},
+            "gitlab_project_error_tracking_settings": {},
             "gitlab_project_external_status_check": {},
             "gitlab_project_freeze_period": {},
             "gitlab_project_hook": {},
@@ -1876,6 +1904,7 @@
             "gitlab_project_push_mirror": {},
             "gitlab_project_push_rules": {},
             "gitlab_project_saved_reply": {},
+            "gitlab_project_secret_detection_validity_checks": {},
             "gitlab_project_secure_file": {},
             "gitlab_project_security_policy_attachment": {},
             "gitlab_project_service_account": {},
@@ -1901,6 +1930,7 @@
     },
     "mux": {
         "resources": {
+            "gitlab:index/adminRole:AdminRole": 1,
             "gitlab:index/application:Application": 1,
             "gitlab:index/applicationAppearance:ApplicationAppearance": 1,
             "gitlab:index/applicationSettings:ApplicationSettings": 0,
@@ -1961,6 +1991,8 @@
             "gitlab:index/projectCustomAttribute:ProjectCustomAttribute": 0,
             "gitlab:index/projectDeployToken:ProjectDeployToken": 1,
             "gitlab:index/projectEnvironment:ProjectEnvironment": 1,
+            "gitlab:index/projectErrorTrackingClientKey:ProjectErrorTrackingClientKey": 1,
+            "gitlab:index/projectErrorTrackingSettings:ProjectErrorTrackingSettings": 1,
             "gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck": 1,
             "gitlab:index/projectFreezePeriod:ProjectFreezePeriod": 1,
             "gitlab:index/projectHook:ProjectHook": 1,
@@ -2000,6 +2032,7 @@
             "gitlab:index/projectPushRules:ProjectPushRules": 1,
             "gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement": 0,
             "gitlab:index/projectSavedReply:ProjectSavedReply": 1,
+            "gitlab:index/projectSecretDetectionValidityChecks:ProjectSecretDetectionValidityChecks": 1,
             "gitlab:index/projectSecureFile:ProjectSecureFile": 1,
             "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment": 1,
             "gitlab:index/projectServiceAccount:ProjectServiceAccount": 1,
@@ -2069,6 +2102,7 @@
             "gitlab:index/getProjectApprovalRules:getProjectApprovalRules": 1,
             "gitlab:index/getProjectBranches:getProjectBranches": 1,
             "gitlab:index/getProjectEnvironments:getProjectEnvironments": 1,
+            "gitlab:index/getProjectErrorTrackingSettings:getProjectErrorTrackingSettings": 1,
             "gitlab:index/getProjectHook:getProjectHook": 1,
             "gitlab:index/getProjectHooks:getProjectHooks": 1,
             "gitlab:index/getProjectIds:getProjectIds": 1,

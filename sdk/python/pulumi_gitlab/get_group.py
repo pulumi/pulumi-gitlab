@@ -27,13 +27,16 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, allow_merge_on_skipped_pipeline=None, allowed_email_domains_list=None, auto_devops_enabled=None, avatar_url=None, created_at=None, custom_attributes=None, default_branch=None, default_branch_protection=None, default_branch_protection_defaults=None, description=None, emails_disabled=None, emails_enabled=None, extra_shared_runners_minutes_limit=None, file_template_project_id=None, full_name=None, full_path=None, group_id=None, id=None, ip_restriction_ranges=None, ldap_access=None, ldap_cn=None, lfs_enabled=None, marked_for_deletion_on=None, max_artifacts_size=None, membership_lock=None, mentions_disabled=None, name=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, parent_id=None, path=None, prevent_forking_outside_group=None, prevent_sharing_groups_outside_hierarchy=None, project_creation_level=None, push_rules=None, repository_storage=None, request_access_enabled=None, require_two_factor_authentication=None, runners_token=None, share_with_group_lock=None, shared_runners_minutes_limit=None, shared_runners_setting=None, shared_with_groups=None, statistics=None, subgroup_creation_level=None, two_factor_grace_period=None, visibility_level=None, web_url=None, wiki_access_level=None):
+    def __init__(__self__, allow_merge_on_skipped_pipeline=None, allowed_email_domains_list=None, archived=None, auto_devops_enabled=None, avatar_url=None, created_at=None, custom_attributes=None, default_branch=None, default_branch_protection=None, default_branch_protection_defaults=None, description=None, duo_availability=None, duo_features_enabled=None, emails_disabled=None, emails_enabled=None, enabled_git_access_protocol=None, experiment_features_enabled=None, extra_shared_runners_minutes_limit=None, file_template_project_id=None, full_name=None, full_path=None, group_id=None, id=None, ip_restriction_ranges=None, ldap_access=None, ldap_cn=None, lfs_enabled=None, lock_duo_features_enabled=None, lock_math_rendering_limits_enabled=None, marked_for_deletion_on=None, math_rendering_limits_enabled=None, max_artifacts_size=None, membership_lock=None, mentions_disabled=None, name=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, organization_id=None, parent_id=None, path=None, prevent_forking_outside_group=None, prevent_sharing_groups_outside_hierarchy=None, project_creation_level=None, push_rules=None, repository_storage=None, request_access_enabled=None, require_two_factor_authentication=None, runners_token=None, share_with_group_lock=None, shared_runners_minutes_limit=None, shared_runners_setting=None, shared_with_groups=None, statistics=None, subgroup_creation_level=None, two_factor_grace_period=None, visibility_level=None, web_url=None, wiki_access_level=None):
         if allow_merge_on_skipped_pipeline and not isinstance(allow_merge_on_skipped_pipeline, bool):
             raise TypeError("Expected argument 'allow_merge_on_skipped_pipeline' to be a bool")
         pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         if allowed_email_domains_list and not isinstance(allowed_email_domains_list, str):
             raise TypeError("Expected argument 'allowed_email_domains_list' to be a str")
         pulumi.set(__self__, "allowed_email_domains_list", allowed_email_domains_list)
+        if archived and not isinstance(archived, bool):
+            raise TypeError("Expected argument 'archived' to be a bool")
+        pulumi.set(__self__, "archived", archived)
         if auto_devops_enabled and not isinstance(auto_devops_enabled, bool):
             raise TypeError("Expected argument 'auto_devops_enabled' to be a bool")
         pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
@@ -58,12 +61,24 @@ class GetGroupResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if duo_availability and not isinstance(duo_availability, str):
+            raise TypeError("Expected argument 'duo_availability' to be a str")
+        pulumi.set(__self__, "duo_availability", duo_availability)
+        if duo_features_enabled and not isinstance(duo_features_enabled, bool):
+            raise TypeError("Expected argument 'duo_features_enabled' to be a bool")
+        pulumi.set(__self__, "duo_features_enabled", duo_features_enabled)
         if emails_disabled and not isinstance(emails_disabled, bool):
             raise TypeError("Expected argument 'emails_disabled' to be a bool")
         pulumi.set(__self__, "emails_disabled", emails_disabled)
         if emails_enabled and not isinstance(emails_enabled, bool):
             raise TypeError("Expected argument 'emails_enabled' to be a bool")
         pulumi.set(__self__, "emails_enabled", emails_enabled)
+        if enabled_git_access_protocol and not isinstance(enabled_git_access_protocol, str):
+            raise TypeError("Expected argument 'enabled_git_access_protocol' to be a str")
+        pulumi.set(__self__, "enabled_git_access_protocol", enabled_git_access_protocol)
+        if experiment_features_enabled and not isinstance(experiment_features_enabled, bool):
+            raise TypeError("Expected argument 'experiment_features_enabled' to be a bool")
+        pulumi.set(__self__, "experiment_features_enabled", experiment_features_enabled)
         if extra_shared_runners_minutes_limit and not isinstance(extra_shared_runners_minutes_limit, int):
             raise TypeError("Expected argument 'extra_shared_runners_minutes_limit' to be a int")
         pulumi.set(__self__, "extra_shared_runners_minutes_limit", extra_shared_runners_minutes_limit)
@@ -94,9 +109,18 @@ class GetGroupResult:
         if lfs_enabled and not isinstance(lfs_enabled, bool):
             raise TypeError("Expected argument 'lfs_enabled' to be a bool")
         pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if lock_duo_features_enabled and not isinstance(lock_duo_features_enabled, bool):
+            raise TypeError("Expected argument 'lock_duo_features_enabled' to be a bool")
+        pulumi.set(__self__, "lock_duo_features_enabled", lock_duo_features_enabled)
+        if lock_math_rendering_limits_enabled and not isinstance(lock_math_rendering_limits_enabled, bool):
+            raise TypeError("Expected argument 'lock_math_rendering_limits_enabled' to be a bool")
+        pulumi.set(__self__, "lock_math_rendering_limits_enabled", lock_math_rendering_limits_enabled)
         if marked_for_deletion_on and not isinstance(marked_for_deletion_on, str):
             raise TypeError("Expected argument 'marked_for_deletion_on' to be a str")
         pulumi.set(__self__, "marked_for_deletion_on", marked_for_deletion_on)
+        if math_rendering_limits_enabled and not isinstance(math_rendering_limits_enabled, bool):
+            raise TypeError("Expected argument 'math_rendering_limits_enabled' to be a bool")
+        pulumi.set(__self__, "math_rendering_limits_enabled", math_rendering_limits_enabled)
         if max_artifacts_size and not isinstance(max_artifacts_size, int):
             raise TypeError("Expected argument 'max_artifacts_size' to be a int")
         pulumi.set(__self__, "max_artifacts_size", max_artifacts_size)
@@ -115,6 +139,9 @@ class GetGroupResult:
         if only_allow_merge_if_pipeline_succeeds and not isinstance(only_allow_merge_if_pipeline_succeeds, bool):
             raise TypeError("Expected argument 'only_allow_merge_if_pipeline_succeeds' to be a bool")
         pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
+        if organization_id and not isinstance(organization_id, int):
+            raise TypeError("Expected argument 'organization_id' to be a int")
+        pulumi.set(__self__, "organization_id", organization_id)
         if parent_id and not isinstance(parent_id, int):
             raise TypeError("Expected argument 'parent_id' to be a int")
         pulumi.set(__self__, "parent_id", parent_id)
@@ -193,6 +220,14 @@ class GetGroupResult:
         return pulumi.get(self, "allowed_email_domains_list")
 
     @_builtins.property
+    @pulumi.getter
+    def archived(self) -> _builtins.bool:
+        """
+        Whether the group is archived.
+        """
+        return pulumi.get(self, "archived")
+
+    @_builtins.property
     @pulumi.getter(name="autoDevopsEnabled")
     def auto_devops_enabled(self) -> _builtins.bool:
         """
@@ -258,6 +293,22 @@ class GetGroupResult:
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="duoAvailability")
+    def duo_availability(self) -> _builtins.str:
+        """
+        Indicates whether GitLab Duo features are enabled for the group. Valid values are `default_on`, `default_off`, `never_on`.
+        """
+        return pulumi.get(self, "duo_availability")
+
+    @_builtins.property
+    @pulumi.getter(name="duoFeaturesEnabled")
+    def duo_features_enabled(self) -> _builtins.bool:
+        """
+        Whether GitLab Duo features are enabled for the group.
+        """
+        return pulumi.get(self, "duo_features_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="emailsDisabled")
     @_utilities.deprecated("""Use `emails_enabled` instead, to be removed in 19.0.""")
     def emails_disabled(self) -> _builtins.bool:
@@ -273,6 +324,22 @@ class GetGroupResult:
         Whether email notifications are enabled for this group.
         """
         return pulumi.get(self, "emails_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledGitAccessProtocol")
+    def enabled_git_access_protocol(self) -> _builtins.str:
+        """
+        Restrict access to group by allowing only certain protocols. Valid values are `ssh`, `http`, `all`.
+        """
+        return pulumi.get(self, "enabled_git_access_protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="experimentFeaturesEnabled")
+    def experiment_features_enabled(self) -> _builtins.bool:
+        """
+        Whether experimental features are enabled for the group.
+        """
+        return pulumi.get(self, "experiment_features_enabled")
 
     @_builtins.property
     @pulumi.getter(name="extraSharedRunnersMinutesLimit")
@@ -355,12 +422,36 @@ class GetGroupResult:
         return pulumi.get(self, "lfs_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="lockDuoFeaturesEnabled")
+    def lock_duo_features_enabled(self) -> _builtins.bool:
+        """
+        Whether the GitLab Duo features setting is enforced for all subgroups.
+        """
+        return pulumi.get(self, "lock_duo_features_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="lockMathRenderingLimitsEnabled")
+    def lock_math_rendering_limits_enabled(self) -> _builtins.bool:
+        """
+        Whether the math rendering limits setting is enforced for all subgroups.
+        """
+        return pulumi.get(self, "lock_math_rendering_limits_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="markedForDeletionOn")
     def marked_for_deletion_on(self) -> _builtins.str:
         """
         Date on which the group was marked for deletion.
         """
         return pulumi.get(self, "marked_for_deletion_on")
+
+    @_builtins.property
+    @pulumi.getter(name="mathRenderingLimitsEnabled")
+    def math_rendering_limits_enabled(self) -> _builtins.bool:
+        """
+        Whether math rendering limits are enabled for the group.
+        """
+        return pulumi.get(self, "math_rendering_limits_enabled")
 
     @_builtins.property
     @pulumi.getter(name="maxArtifactsSize")
@@ -409,6 +500,14 @@ class GetGroupResult:
         Default to only allowing merge if the pipeline succeeds for new projects in the group.
         """
         return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> _builtins.int:
+        """
+        The ID of the organization this group belongs to.
+        """
+        return pulumi.get(self, "organization_id")
 
     @_builtins.property
     @pulumi.getter(name="parentId")
@@ -579,6 +678,7 @@ class AwaitableGetGroupResult(GetGroupResult):
         return GetGroupResult(
             allow_merge_on_skipped_pipeline=self.allow_merge_on_skipped_pipeline,
             allowed_email_domains_list=self.allowed_email_domains_list,
+            archived=self.archived,
             auto_devops_enabled=self.auto_devops_enabled,
             avatar_url=self.avatar_url,
             created_at=self.created_at,
@@ -587,8 +687,12 @@ class AwaitableGetGroupResult(GetGroupResult):
             default_branch_protection=self.default_branch_protection,
             default_branch_protection_defaults=self.default_branch_protection_defaults,
             description=self.description,
+            duo_availability=self.duo_availability,
+            duo_features_enabled=self.duo_features_enabled,
             emails_disabled=self.emails_disabled,
             emails_enabled=self.emails_enabled,
+            enabled_git_access_protocol=self.enabled_git_access_protocol,
+            experiment_features_enabled=self.experiment_features_enabled,
             extra_shared_runners_minutes_limit=self.extra_shared_runners_minutes_limit,
             file_template_project_id=self.file_template_project_id,
             full_name=self.full_name,
@@ -599,13 +703,17 @@ class AwaitableGetGroupResult(GetGroupResult):
             ldap_access=self.ldap_access,
             ldap_cn=self.ldap_cn,
             lfs_enabled=self.lfs_enabled,
+            lock_duo_features_enabled=self.lock_duo_features_enabled,
+            lock_math_rendering_limits_enabled=self.lock_math_rendering_limits_enabled,
             marked_for_deletion_on=self.marked_for_deletion_on,
+            math_rendering_limits_enabled=self.math_rendering_limits_enabled,
             max_artifacts_size=self.max_artifacts_size,
             membership_lock=self.membership_lock,
             mentions_disabled=self.mentions_disabled,
             name=self.name,
             only_allow_merge_if_all_discussions_are_resolved=self.only_allow_merge_if_all_discussions_are_resolved,
             only_allow_merge_if_pipeline_succeeds=self.only_allow_merge_if_pipeline_succeeds,
+            organization_id=self.organization_id,
             parent_id=self.parent_id,
             path=self.path,
             prevent_forking_outside_group=self.prevent_forking_outside_group,
@@ -649,6 +757,7 @@ def get_group(full_path: Optional[_builtins.str] = None,
     return AwaitableGetGroupResult(
         allow_merge_on_skipped_pipeline=pulumi.get(__ret__, 'allow_merge_on_skipped_pipeline'),
         allowed_email_domains_list=pulumi.get(__ret__, 'allowed_email_domains_list'),
+        archived=pulumi.get(__ret__, 'archived'),
         auto_devops_enabled=pulumi.get(__ret__, 'auto_devops_enabled'),
         avatar_url=pulumi.get(__ret__, 'avatar_url'),
         created_at=pulumi.get(__ret__, 'created_at'),
@@ -657,8 +766,12 @@ def get_group(full_path: Optional[_builtins.str] = None,
         default_branch_protection=pulumi.get(__ret__, 'default_branch_protection'),
         default_branch_protection_defaults=pulumi.get(__ret__, 'default_branch_protection_defaults'),
         description=pulumi.get(__ret__, 'description'),
+        duo_availability=pulumi.get(__ret__, 'duo_availability'),
+        duo_features_enabled=pulumi.get(__ret__, 'duo_features_enabled'),
         emails_disabled=pulumi.get(__ret__, 'emails_disabled'),
         emails_enabled=pulumi.get(__ret__, 'emails_enabled'),
+        enabled_git_access_protocol=pulumi.get(__ret__, 'enabled_git_access_protocol'),
+        experiment_features_enabled=pulumi.get(__ret__, 'experiment_features_enabled'),
         extra_shared_runners_minutes_limit=pulumi.get(__ret__, 'extra_shared_runners_minutes_limit'),
         file_template_project_id=pulumi.get(__ret__, 'file_template_project_id'),
         full_name=pulumi.get(__ret__, 'full_name'),
@@ -669,13 +782,17 @@ def get_group(full_path: Optional[_builtins.str] = None,
         ldap_access=pulumi.get(__ret__, 'ldap_access'),
         ldap_cn=pulumi.get(__ret__, 'ldap_cn'),
         lfs_enabled=pulumi.get(__ret__, 'lfs_enabled'),
+        lock_duo_features_enabled=pulumi.get(__ret__, 'lock_duo_features_enabled'),
+        lock_math_rendering_limits_enabled=pulumi.get(__ret__, 'lock_math_rendering_limits_enabled'),
         marked_for_deletion_on=pulumi.get(__ret__, 'marked_for_deletion_on'),
+        math_rendering_limits_enabled=pulumi.get(__ret__, 'math_rendering_limits_enabled'),
         max_artifacts_size=pulumi.get(__ret__, 'max_artifacts_size'),
         membership_lock=pulumi.get(__ret__, 'membership_lock'),
         mentions_disabled=pulumi.get(__ret__, 'mentions_disabled'),
         name=pulumi.get(__ret__, 'name'),
         only_allow_merge_if_all_discussions_are_resolved=pulumi.get(__ret__, 'only_allow_merge_if_all_discussions_are_resolved'),
         only_allow_merge_if_pipeline_succeeds=pulumi.get(__ret__, 'only_allow_merge_if_pipeline_succeeds'),
+        organization_id=pulumi.get(__ret__, 'organization_id'),
         parent_id=pulumi.get(__ret__, 'parent_id'),
         path=pulumi.get(__ret__, 'path'),
         prevent_forking_outside_group=pulumi.get(__ret__, 'prevent_forking_outside_group'),
@@ -716,6 +833,7 @@ def get_group_output(full_path: pulumi.Input[Optional[Optional[_builtins.str]]] 
     return __ret__.apply(lambda __response__: GetGroupResult(
         allow_merge_on_skipped_pipeline=pulumi.get(__response__, 'allow_merge_on_skipped_pipeline'),
         allowed_email_domains_list=pulumi.get(__response__, 'allowed_email_domains_list'),
+        archived=pulumi.get(__response__, 'archived'),
         auto_devops_enabled=pulumi.get(__response__, 'auto_devops_enabled'),
         avatar_url=pulumi.get(__response__, 'avatar_url'),
         created_at=pulumi.get(__response__, 'created_at'),
@@ -724,8 +842,12 @@ def get_group_output(full_path: pulumi.Input[Optional[Optional[_builtins.str]]] 
         default_branch_protection=pulumi.get(__response__, 'default_branch_protection'),
         default_branch_protection_defaults=pulumi.get(__response__, 'default_branch_protection_defaults'),
         description=pulumi.get(__response__, 'description'),
+        duo_availability=pulumi.get(__response__, 'duo_availability'),
+        duo_features_enabled=pulumi.get(__response__, 'duo_features_enabled'),
         emails_disabled=pulumi.get(__response__, 'emails_disabled'),
         emails_enabled=pulumi.get(__response__, 'emails_enabled'),
+        enabled_git_access_protocol=pulumi.get(__response__, 'enabled_git_access_protocol'),
+        experiment_features_enabled=pulumi.get(__response__, 'experiment_features_enabled'),
         extra_shared_runners_minutes_limit=pulumi.get(__response__, 'extra_shared_runners_minutes_limit'),
         file_template_project_id=pulumi.get(__response__, 'file_template_project_id'),
         full_name=pulumi.get(__response__, 'full_name'),
@@ -736,13 +858,17 @@ def get_group_output(full_path: pulumi.Input[Optional[Optional[_builtins.str]]] 
         ldap_access=pulumi.get(__response__, 'ldap_access'),
         ldap_cn=pulumi.get(__response__, 'ldap_cn'),
         lfs_enabled=pulumi.get(__response__, 'lfs_enabled'),
+        lock_duo_features_enabled=pulumi.get(__response__, 'lock_duo_features_enabled'),
+        lock_math_rendering_limits_enabled=pulumi.get(__response__, 'lock_math_rendering_limits_enabled'),
         marked_for_deletion_on=pulumi.get(__response__, 'marked_for_deletion_on'),
+        math_rendering_limits_enabled=pulumi.get(__response__, 'math_rendering_limits_enabled'),
         max_artifacts_size=pulumi.get(__response__, 'max_artifacts_size'),
         membership_lock=pulumi.get(__response__, 'membership_lock'),
         mentions_disabled=pulumi.get(__response__, 'mentions_disabled'),
         name=pulumi.get(__response__, 'name'),
         only_allow_merge_if_all_discussions_are_resolved=pulumi.get(__response__, 'only_allow_merge_if_all_discussions_are_resolved'),
         only_allow_merge_if_pipeline_succeeds=pulumi.get(__response__, 'only_allow_merge_if_pipeline_succeeds'),
+        organization_id=pulumi.get(__response__, 'organization_id'),
         parent_id=pulumi.get(__response__, 'parent_id'),
         path=pulumi.get(__response__, 'path'),
         prevent_forking_outside_group=pulumi.get(__response__, 'prevent_forking_outside_group'),

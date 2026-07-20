@@ -81,7 +81,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
     }
 
     /**
-     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
     declare public readonly accessLevel: pulumi.Output<string>;
     /**
@@ -193,7 +193,7 @@ export class ProjectAccessToken extends pulumi.CustomResource {
  */
 export interface ProjectAccessTokenState {
     /**
-     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
     accessLevel?: pulumi.Input<string | undefined>;
     /**
@@ -251,7 +251,7 @@ export interface ProjectAccessTokenState {
  */
 export interface ProjectAccessTokenArgs {
     /**
-     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
     accessLevel?: pulumi.Input<string | undefined>;
     /**

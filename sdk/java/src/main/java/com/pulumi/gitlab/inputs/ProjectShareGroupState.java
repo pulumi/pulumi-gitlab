@@ -32,14 +32,14 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+     * The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`
      * 
      */
     @Import(name="groupAccess")
     private @Nullable Output<String> groupAccess;
 
     /**
-     * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+     * @return The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`
      * 
      */
     public Optional<Output<String>> groupAccess() {
@@ -125,7 +125,7 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param groupAccess The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+         * @param groupAccess The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ProjectShareGroupState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param groupAccess The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`
+         * @param groupAccess The access level to grant the group for the project. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`
          * 
          * @return builder
          * 

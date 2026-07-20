@@ -33,6 +33,7 @@ __all__ = [
     'GroupProtectedEnvironmentApprovalRule',
     'GroupProtectedEnvironmentDeployAccessLevel',
     'GroupPushRules',
+    'GroupSecurityPolicyAttachmentTimeouts',
     'GroupServiceAccountAccessTokenRotationConfiguration',
     'GroupServiceAccountTimeouts',
     'InstanceServiceAccountTimeouts',
@@ -1675,6 +1676,49 @@ class GroupPushRules(dict):
         Only commits signed through GPG are allowed.
         """
         return pulumi.get(self, "reject_unsigned_commits")
+
+
+@pulumi.output_type
+class GroupSecurityPolicyAttachmentTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+        :param _builtins.str delete: How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+        :param _builtins.str update: How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -6053,6 +6097,7 @@ class GetGroupsGroupResult(dict):
     def __init__(__self__, *,
                  allow_merge_on_skipped_pipeline: _builtins.bool,
                  allowed_email_domains_list: _builtins.str,
+                 archived: _builtins.bool,
                  auto_devops_enabled: _builtins.bool,
                  avatar_url: _builtins.str,
                  created_at: _builtins.str,
@@ -6061,8 +6106,12 @@ class GetGroupsGroupResult(dict):
                  default_branch_protection: _builtins.int,
                  default_branch_protection_defaults: Sequence['outputs.GetGroupsGroupDefaultBranchProtectionDefaultResult'],
                  description: _builtins.str,
+                 duo_availability: _builtins.str,
+                 duo_features_enabled: _builtins.bool,
                  emails_disabled: _builtins.bool,
                  emails_enabled: _builtins.bool,
+                 enabled_git_access_protocol: _builtins.str,
+                 experiment_features_enabled: _builtins.bool,
                  extra_shared_runners_minutes_limit: _builtins.int,
                  file_template_project_id: _builtins.int,
                  full_name: _builtins.str,
@@ -6072,13 +6121,17 @@ class GetGroupsGroupResult(dict):
                  ldap_access: _builtins.int,
                  ldap_cn: _builtins.str,
                  lfs_enabled: _builtins.bool,
+                 lock_duo_features_enabled: _builtins.bool,
+                 lock_math_rendering_limits_enabled: _builtins.bool,
                  marked_for_deletion_on: _builtins.str,
+                 math_rendering_limits_enabled: _builtins.bool,
                  max_artifacts_size: _builtins.int,
                  membership_lock: _builtins.bool,
                  mentions_disabled: _builtins.bool,
                  name: _builtins.str,
                  only_allow_merge_if_all_discussions_are_resolved: _builtins.bool,
                  only_allow_merge_if_pipeline_succeeds: _builtins.bool,
+                 organization_id: _builtins.int,
                  parent_id: _builtins.int,
                  path: _builtins.str,
                  prevent_forking_outside_group: _builtins.bool,
@@ -6101,6 +6154,7 @@ class GetGroupsGroupResult(dict):
         """
         :param _builtins.bool allow_merge_on_skipped_pipeline: Default to allowing merge on a skipped pipeline for new projects in the group.
         :param _builtins.str allowed_email_domains_list: Comma-separated list of email address domains allowed to be added as group members.
+        :param _builtins.bool archived: Whether the group is archived.
         :param _builtins.bool auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param _builtins.str avatar_url: URL of the group avatar.
         :param _builtins.str created_at: Timestamp at which the group was created.
@@ -6109,8 +6163,12 @@ class GetGroupsGroupResult(dict):
         :param _builtins.int default_branch_protection: Whether developers and maintainers can push to the applicable default branch. Use `default_branch_protection_defaults` instead, to be removed in 19.0.
         :param Sequence['GetGroupsGroupDefaultBranchProtectionDefaultArgs'] default_branch_protection_defaults: Default protection settings applied to the default branch of new projects in this group.
         :param _builtins.str description: The description of the group.
+        :param _builtins.str duo_availability: Indicates whether GitLab Duo features are enabled for the group. Valid values are `default_on`, `default_off`, `never_on`.
+        :param _builtins.bool duo_features_enabled: Whether GitLab Duo features are enabled for the group.
         :param _builtins.bool emails_disabled: Whether email notifications are disabled for this group. Use `emails_enabled` instead, to be removed in 19.0.
         :param _builtins.bool emails_enabled: Whether email notifications are enabled for this group.
+        :param _builtins.str enabled_git_access_protocol: Restrict access to group by allowing only certain protocols. Valid values are `ssh`, `http`, `all`.
+        :param _builtins.bool experiment_features_enabled: Whether experimental features are enabled for the group.
         :param _builtins.int extra_shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         :param _builtins.int file_template_project_id: The ID of the project used to load custom file templates.
         :param _builtins.str full_name: The full name of the group.
@@ -6120,13 +6178,17 @@ class GetGroupsGroupResult(dict):
         :param _builtins.int ldap_access: Default access level for members synced from LDAP.
         :param _builtins.str ldap_cn: LDAP common name used to sync members from an LDAP group.
         :param _builtins.bool lfs_enabled: Boolean, is LFS enabled for projects in this group.
+        :param _builtins.bool lock_duo_features_enabled: Whether the GitLab Duo features setting is enforced for all subgroups.
+        :param _builtins.bool lock_math_rendering_limits_enabled: Whether the math rendering limits setting is enforced for all subgroups.
         :param _builtins.str marked_for_deletion_on: Date on which the group was marked for deletion.
+        :param _builtins.bool math_rendering_limits_enabled: Whether math rendering limits are enabled for the group.
         :param _builtins.int max_artifacts_size: Maximum artifacts size for the group, in MB.
         :param _builtins.bool membership_lock: Users cannot be added to projects in this group.
         :param _builtins.bool mentions_disabled: Whether mentions are disabled for this group.
         :param _builtins.str name: The name of this group.
         :param _builtins.bool only_allow_merge_if_all_discussions_are_resolved: Default to only allowing merge if all discussions are resolved for new projects in the group.
         :param _builtins.bool only_allow_merge_if_pipeline_succeeds: Default to only allowing merge if the pipeline succeeds for new projects in the group.
+        :param _builtins.int organization_id: The ID of the organization this group belongs to.
         :param _builtins.int parent_id: Integer, ID of the parent group.
         :param _builtins.str path: The path of the group.
         :param _builtins.bool prevent_forking_outside_group: When enabled, users can not fork projects from this group to external namespaces.
@@ -6149,6 +6211,7 @@ class GetGroupsGroupResult(dict):
         """
         pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
         pulumi.set(__self__, "allowed_email_domains_list", allowed_email_domains_list)
+        pulumi.set(__self__, "archived", archived)
         pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
         pulumi.set(__self__, "avatar_url", avatar_url)
         pulumi.set(__self__, "created_at", created_at)
@@ -6157,8 +6220,12 @@ class GetGroupsGroupResult(dict):
         pulumi.set(__self__, "default_branch_protection", default_branch_protection)
         pulumi.set(__self__, "default_branch_protection_defaults", default_branch_protection_defaults)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "duo_availability", duo_availability)
+        pulumi.set(__self__, "duo_features_enabled", duo_features_enabled)
         pulumi.set(__self__, "emails_disabled", emails_disabled)
         pulumi.set(__self__, "emails_enabled", emails_enabled)
+        pulumi.set(__self__, "enabled_git_access_protocol", enabled_git_access_protocol)
+        pulumi.set(__self__, "experiment_features_enabled", experiment_features_enabled)
         pulumi.set(__self__, "extra_shared_runners_minutes_limit", extra_shared_runners_minutes_limit)
         pulumi.set(__self__, "file_template_project_id", file_template_project_id)
         pulumi.set(__self__, "full_name", full_name)
@@ -6168,13 +6235,17 @@ class GetGroupsGroupResult(dict):
         pulumi.set(__self__, "ldap_access", ldap_access)
         pulumi.set(__self__, "ldap_cn", ldap_cn)
         pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        pulumi.set(__self__, "lock_duo_features_enabled", lock_duo_features_enabled)
+        pulumi.set(__self__, "lock_math_rendering_limits_enabled", lock_math_rendering_limits_enabled)
         pulumi.set(__self__, "marked_for_deletion_on", marked_for_deletion_on)
+        pulumi.set(__self__, "math_rendering_limits_enabled", math_rendering_limits_enabled)
         pulumi.set(__self__, "max_artifacts_size", max_artifacts_size)
         pulumi.set(__self__, "membership_lock", membership_lock)
         pulumi.set(__self__, "mentions_disabled", mentions_disabled)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "only_allow_merge_if_all_discussions_are_resolved", only_allow_merge_if_all_discussions_are_resolved)
         pulumi.set(__self__, "only_allow_merge_if_pipeline_succeeds", only_allow_merge_if_pipeline_succeeds)
+        pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "parent_id", parent_id)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "prevent_forking_outside_group", prevent_forking_outside_group)
@@ -6210,6 +6281,14 @@ class GetGroupsGroupResult(dict):
         Comma-separated list of email address domains allowed to be added as group members.
         """
         return pulumi.get(self, "allowed_email_domains_list")
+
+    @_builtins.property
+    @pulumi.getter
+    def archived(self) -> _builtins.bool:
+        """
+        Whether the group is archived.
+        """
+        return pulumi.get(self, "archived")
 
     @_builtins.property
     @pulumi.getter(name="autoDevopsEnabled")
@@ -6277,6 +6356,22 @@ class GetGroupsGroupResult(dict):
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="duoAvailability")
+    def duo_availability(self) -> _builtins.str:
+        """
+        Indicates whether GitLab Duo features are enabled for the group. Valid values are `default_on`, `default_off`, `never_on`.
+        """
+        return pulumi.get(self, "duo_availability")
+
+    @_builtins.property
+    @pulumi.getter(name="duoFeaturesEnabled")
+    def duo_features_enabled(self) -> _builtins.bool:
+        """
+        Whether GitLab Duo features are enabled for the group.
+        """
+        return pulumi.get(self, "duo_features_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="emailsDisabled")
     @_utilities.deprecated("""Use `emails_enabled` instead, to be removed in 19.0.""")
     def emails_disabled(self) -> _builtins.bool:
@@ -6292,6 +6387,22 @@ class GetGroupsGroupResult(dict):
         Whether email notifications are enabled for this group.
         """
         return pulumi.get(self, "emails_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledGitAccessProtocol")
+    def enabled_git_access_protocol(self) -> _builtins.str:
+        """
+        Restrict access to group by allowing only certain protocols. Valid values are `ssh`, `http`, `all`.
+        """
+        return pulumi.get(self, "enabled_git_access_protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="experimentFeaturesEnabled")
+    def experiment_features_enabled(self) -> _builtins.bool:
+        """
+        Whether experimental features are enabled for the group.
+        """
+        return pulumi.get(self, "experiment_features_enabled")
 
     @_builtins.property
     @pulumi.getter(name="extraSharedRunnersMinutesLimit")
@@ -6366,12 +6477,36 @@ class GetGroupsGroupResult(dict):
         return pulumi.get(self, "lfs_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="lockDuoFeaturesEnabled")
+    def lock_duo_features_enabled(self) -> _builtins.bool:
+        """
+        Whether the GitLab Duo features setting is enforced for all subgroups.
+        """
+        return pulumi.get(self, "lock_duo_features_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="lockMathRenderingLimitsEnabled")
+    def lock_math_rendering_limits_enabled(self) -> _builtins.bool:
+        """
+        Whether the math rendering limits setting is enforced for all subgroups.
+        """
+        return pulumi.get(self, "lock_math_rendering_limits_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="markedForDeletionOn")
     def marked_for_deletion_on(self) -> _builtins.str:
         """
         Date on which the group was marked for deletion.
         """
         return pulumi.get(self, "marked_for_deletion_on")
+
+    @_builtins.property
+    @pulumi.getter(name="mathRenderingLimitsEnabled")
+    def math_rendering_limits_enabled(self) -> _builtins.bool:
+        """
+        Whether math rendering limits are enabled for the group.
+        """
+        return pulumi.get(self, "math_rendering_limits_enabled")
 
     @_builtins.property
     @pulumi.getter(name="maxArtifactsSize")
@@ -6420,6 +6555,14 @@ class GetGroupsGroupResult(dict):
         Default to only allowing merge if the pipeline succeeds for new projects in the group.
         """
         return pulumi.get(self, "only_allow_merge_if_pipeline_succeeds")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> _builtins.int:
+        """
+        The ID of the organization this group belongs to.
+        """
+        return pulumi.get(self, "organization_id")
 
     @_builtins.property
     @pulumi.getter(name="parentId")

@@ -66,7 +66,7 @@ export class GroupMembership extends pulumi.CustomResource {
     }
 
     /**
-     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
      */
     declare public readonly accessLevel: pulumi.Output<string>;
     /**
@@ -143,7 +143,7 @@ export class GroupMembership extends pulumi.CustomResource {
  */
 export interface GroupMembershipState {
     /**
-     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
      */
     accessLevel?: pulumi.Input<string | undefined>;
     /**
@@ -177,7 +177,7 @@ export interface GroupMembershipState {
  */
 export interface GroupMembershipArgs {
     /**
-     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+     * Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
      */
     accessLevel: pulumi.Input<string>;
     /**
