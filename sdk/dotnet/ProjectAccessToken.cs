@@ -71,7 +71,7 @@ namespace Pulumi.GitLab
     public partial class ProjectAccessToken : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access level for the project access token. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`. Default is `Maintainer`.
+        /// The access level for the project access token. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `SecurityManager`, `Developer`, `Maintainer`, `Owner`. Default is `Maintainer`.
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectAccessTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the project access token. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`. Default is `Maintainer`.
+        /// The access level for the project access token. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `SecurityManager`, `Developer`, `Maintainer`, `Owner`. Default is `Maintainer`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -261,7 +261,7 @@ namespace Pulumi.GitLab
     public sealed class ProjectAccessTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the project access token. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`. Default is `Maintainer`.
+        /// The access level for the project access token. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `SecurityManager`, `Developer`, `Maintainer`, `Owner`. Default is `Maintainer`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }

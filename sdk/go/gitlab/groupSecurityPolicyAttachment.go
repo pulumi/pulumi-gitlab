@@ -129,7 +129,8 @@ type GroupSecurityPolicyAttachment struct {
 	// The ID or Full Path of the security policy project.
 	PolicyProject pulumi.StringOutput `pulumi:"policyProject"`
 	// The GraphQL ID of the security policy project.
-	PolicyProjectGraphqlId pulumi.StringOutput `pulumi:"policyProjectGraphqlId"`
+	PolicyProjectGraphqlId pulumi.StringOutput                            `pulumi:"policyProjectGraphqlId"`
+	Timeouts               GroupSecurityPolicyAttachmentTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewGroupSecurityPolicyAttachment registers a new resource with the given unique name, arguments, and options.
@@ -175,7 +176,8 @@ type groupSecurityPolicyAttachmentState struct {
 	// The ID or Full Path of the security policy project.
 	PolicyProject *string `pulumi:"policyProject"`
 	// The GraphQL ID of the security policy project.
-	PolicyProjectGraphqlId *string `pulumi:"policyProjectGraphqlId"`
+	PolicyProjectGraphqlId *string                                `pulumi:"policyProjectGraphqlId"`
+	Timeouts               *GroupSecurityPolicyAttachmentTimeouts `pulumi:"timeouts"`
 }
 
 type GroupSecurityPolicyAttachmentState struct {
@@ -187,6 +189,7 @@ type GroupSecurityPolicyAttachmentState struct {
 	PolicyProject pulumi.StringPtrInput
 	// The GraphQL ID of the security policy project.
 	PolicyProjectGraphqlId pulumi.StringPtrInput
+	Timeouts               GroupSecurityPolicyAttachmentTimeoutsPtrInput
 }
 
 func (GroupSecurityPolicyAttachmentState) ElementType() reflect.Type {
@@ -197,7 +200,8 @@ type groupSecurityPolicyAttachmentArgs struct {
 	// The ID or Full Path of the group which will have the security policy project assigned to it.
 	Group string `pulumi:"group"`
 	// The ID or Full Path of the security policy project.
-	PolicyProject string `pulumi:"policyProject"`
+	PolicyProject string                                 `pulumi:"policyProject"`
+	Timeouts      *GroupSecurityPolicyAttachmentTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a GroupSecurityPolicyAttachment resource.
@@ -206,6 +210,7 @@ type GroupSecurityPolicyAttachmentArgs struct {
 	Group pulumi.StringInput
 	// The ID or Full Path of the security policy project.
 	PolicyProject pulumi.StringInput
+	Timeouts      GroupSecurityPolicyAttachmentTimeoutsPtrInput
 }
 
 func (GroupSecurityPolicyAttachmentArgs) ElementType() reflect.Type {
@@ -313,6 +318,12 @@ func (o GroupSecurityPolicyAttachmentOutput) PolicyProject() pulumi.StringOutput
 // The GraphQL ID of the security policy project.
 func (o GroupSecurityPolicyAttachmentOutput) PolicyProjectGraphqlId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupSecurityPolicyAttachment) pulumi.StringOutput { return v.PolicyProjectGraphqlId }).(pulumi.StringOutput)
+}
+
+func (o GroupSecurityPolicyAttachmentOutput) Timeouts() GroupSecurityPolicyAttachmentTimeoutsPtrOutput {
+	return o.ApplyT(func(v *GroupSecurityPolicyAttachment) GroupSecurityPolicyAttachmentTimeoutsPtrOutput {
+		return v.Timeouts
+	}).(GroupSecurityPolicyAttachmentTimeoutsPtrOutput)
 }
 
 type GroupSecurityPolicyAttachmentArrayOutput struct{ *pulumi.OutputState }

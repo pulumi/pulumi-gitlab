@@ -1007,6 +1007,10 @@ export interface GetGroupsGroup {
      */
     allowedEmailDomainsList: string;
     /**
+     * Whether the group is archived.
+     */
+    archived: boolean;
+    /**
      * Default to Auto DevOps pipeline for all projects within this group.
      */
     autoDevopsEnabled: boolean;
@@ -1041,6 +1045,14 @@ export interface GetGroupsGroup {
      */
     description: string;
     /**
+     * Indicates whether GitLab Duo features are enabled for the group. Valid values are `defaultOn`, `defaultOff`, `neverOn`.
+     */
+    duoAvailability: string;
+    /**
+     * Whether GitLab Duo features are enabled for the group.
+     */
+    duoFeaturesEnabled: boolean;
+    /**
      * Whether email notifications are disabled for this group. Use `emailsEnabled` instead, to be removed in 19.0.
      *
      * @deprecated Use `emailsEnabled` instead, to be removed in 19.0.
@@ -1050,6 +1062,14 @@ export interface GetGroupsGroup {
      * Whether email notifications are enabled for this group.
      */
     emailsEnabled: boolean;
+    /**
+     * Restrict access to group by allowing only certain protocols. Valid values are `ssh`, `http`, `all`.
+     */
+    enabledGitAccessProtocol: string;
+    /**
+     * Whether experimental features are enabled for the group.
+     */
+    experimentFeaturesEnabled: boolean;
     /**
      * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      */
@@ -1087,9 +1107,21 @@ export interface GetGroupsGroup {
      */
     lfsEnabled: boolean;
     /**
+     * Whether the GitLab Duo features setting is enforced for all subgroups.
+     */
+    lockDuoFeaturesEnabled: boolean;
+    /**
+     * Whether the math rendering limits setting is enforced for all subgroups.
+     */
+    lockMathRenderingLimitsEnabled: boolean;
+    /**
      * Date on which the group was marked for deletion.
      */
     markedForDeletionOn: string;
+    /**
+     * Whether math rendering limits are enabled for the group.
+     */
+    mathRenderingLimitsEnabled: boolean;
     /**
      * Maximum artifacts size for the group, in MB.
      */
@@ -1114,6 +1146,10 @@ export interface GetGroupsGroup {
      * Default to only allowing merge if the pipeline succeeds for new projects in the group.
      */
     onlyAllowMergeIfPipelineSucceeds: boolean;
+    /**
+     * The ID of the organization this group belongs to.
+     */
+    organizationId: number;
     /**
      * Integer, ID of the parent group.
      */
@@ -4650,6 +4686,21 @@ export interface GroupPushRules {
      * Only commits signed through GPG are allowed.
      */
     rejectUnsignedCommits: boolean;
+}
+
+export interface GroupSecurityPolicyAttachmentTimeouts {
+    /**
+     * How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+     */
+    create?: string;
+    /**
+     * How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+     */
+    delete?: string;
+    /**
+     * How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+     */
+    update?: string;
 }
 
 export interface GroupServiceAccountAccessTokenRotationConfiguration {

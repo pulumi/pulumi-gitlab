@@ -22,6 +22,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string AllowedEmailDomainsList;
         /// <summary>
+        /// Whether the group is archived.
+        /// </summary>
+        public readonly bool Archived;
+        /// <summary>
         /// Default to Auto DevOps pipeline for all projects within this group.
         /// </summary>
         public readonly bool AutoDevopsEnabled;
@@ -54,6 +58,14 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Indicates whether GitLab Duo features are enabled for the group. Valid values are `DefaultOn`, `DefaultOff`, `NeverOn`.
+        /// </summary>
+        public readonly string DuoAvailability;
+        /// <summary>
+        /// Whether GitLab Duo features are enabled for the group.
+        /// </summary>
+        public readonly bool DuoFeaturesEnabled;
+        /// <summary>
         /// Whether email notifications are disabled for this group. Use `EmailsEnabled` instead, to be removed in 19.0.
         /// </summary>
         public readonly bool EmailsDisabled;
@@ -61,6 +73,14 @@ namespace Pulumi.GitLab.Outputs
         /// Whether email notifications are enabled for this group.
         /// </summary>
         public readonly bool EmailsEnabled;
+        /// <summary>
+        /// Restrict access to group by allowing only certain protocols. Valid values are `Ssh`, `Http`, `All`.
+        /// </summary>
+        public readonly string EnabledGitAccessProtocol;
+        /// <summary>
+        /// Whether experimental features are enabled for the group.
+        /// </summary>
+        public readonly bool ExperimentFeaturesEnabled;
         /// <summary>
         /// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         /// </summary>
@@ -98,9 +118,21 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly bool LfsEnabled;
         /// <summary>
+        /// Whether the GitLab Duo features setting is enforced for all subgroups.
+        /// </summary>
+        public readonly bool LockDuoFeaturesEnabled;
+        /// <summary>
+        /// Whether the math rendering limits setting is enforced for all subgroups.
+        /// </summary>
+        public readonly bool LockMathRenderingLimitsEnabled;
+        /// <summary>
         /// Date on which the group was marked for deletion.
         /// </summary>
         public readonly string MarkedForDeletionOn;
+        /// <summary>
+        /// Whether math rendering limits are enabled for the group.
+        /// </summary>
+        public readonly bool MathRenderingLimitsEnabled;
         /// <summary>
         /// Maximum artifacts size for the group, in MB.
         /// </summary>
@@ -125,6 +157,10 @@ namespace Pulumi.GitLab.Outputs
         /// Default to only allowing merge if the pipeline succeeds for new projects in the group.
         /// </summary>
         public readonly bool OnlyAllowMergeIfPipelineSucceeds;
+        /// <summary>
+        /// The ID of the organization this group belongs to.
+        /// </summary>
+        public readonly int OrganizationId;
         /// <summary>
         /// Integer, ID of the parent group.
         /// </summary>
@@ -208,6 +244,8 @@ namespace Pulumi.GitLab.Outputs
 
             string allowedEmailDomainsList,
 
+            bool archived,
+
             bool autoDevopsEnabled,
 
             string avatarUrl,
@@ -224,9 +262,17 @@ namespace Pulumi.GitLab.Outputs
 
             string description,
 
+            string duoAvailability,
+
+            bool duoFeaturesEnabled,
+
             bool emailsDisabled,
 
             bool emailsEnabled,
+
+            string enabledGitAccessProtocol,
+
+            bool experimentFeaturesEnabled,
 
             int extraSharedRunnersMinutesLimit,
 
@@ -246,7 +292,13 @@ namespace Pulumi.GitLab.Outputs
 
             bool lfsEnabled,
 
+            bool lockDuoFeaturesEnabled,
+
+            bool lockMathRenderingLimitsEnabled,
+
             string markedForDeletionOn,
+
+            bool mathRenderingLimitsEnabled,
 
             int maxArtifactsSize,
 
@@ -259,6 +311,8 @@ namespace Pulumi.GitLab.Outputs
             bool onlyAllowMergeIfAllDiscussionsAreResolved,
 
             bool onlyAllowMergeIfPipelineSucceeds,
+
+            int organizationId,
 
             int parentId,
 
@@ -300,6 +354,7 @@ namespace Pulumi.GitLab.Outputs
         {
             AllowMergeOnSkippedPipeline = allowMergeOnSkippedPipeline;
             AllowedEmailDomainsList = allowedEmailDomainsList;
+            Archived = archived;
             AutoDevopsEnabled = autoDevopsEnabled;
             AvatarUrl = avatarUrl;
             CreatedAt = createdAt;
@@ -308,8 +363,12 @@ namespace Pulumi.GitLab.Outputs
             DefaultBranchProtection = defaultBranchProtection;
             DefaultBranchProtectionDefaults = defaultBranchProtectionDefaults;
             Description = description;
+            DuoAvailability = duoAvailability;
+            DuoFeaturesEnabled = duoFeaturesEnabled;
             EmailsDisabled = emailsDisabled;
             EmailsEnabled = emailsEnabled;
+            EnabledGitAccessProtocol = enabledGitAccessProtocol;
+            ExperimentFeaturesEnabled = experimentFeaturesEnabled;
             ExtraSharedRunnersMinutesLimit = extraSharedRunnersMinutesLimit;
             FileTemplateProjectId = fileTemplateProjectId;
             FullName = fullName;
@@ -319,13 +378,17 @@ namespace Pulumi.GitLab.Outputs
             LdapAccess = ldapAccess;
             LdapCn = ldapCn;
             LfsEnabled = lfsEnabled;
+            LockDuoFeaturesEnabled = lockDuoFeaturesEnabled;
+            LockMathRenderingLimitsEnabled = lockMathRenderingLimitsEnabled;
             MarkedForDeletionOn = markedForDeletionOn;
+            MathRenderingLimitsEnabled = mathRenderingLimitsEnabled;
             MaxArtifactsSize = maxArtifactsSize;
             MembershipLock = membershipLock;
             MentionsDisabled = mentionsDisabled;
             Name = name;
             OnlyAllowMergeIfAllDiscussionsAreResolved = onlyAllowMergeIfAllDiscussionsAreResolved;
             OnlyAllowMergeIfPipelineSucceeds = onlyAllowMergeIfPipelineSucceeds;
+            OrganizationId = organizationId;
             ParentId = parentId;
             Path = path;
             PreventForkingOutsideGroup = preventForkingOutsideGroup;

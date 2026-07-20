@@ -726,6 +726,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Sets the template for branch names suggested when creating a branch from an issue.
+     * 
+     */
+    @Import(name="issueBranchTemplate")
+    private @Nullable Output<String> issueBranchTemplate;
+
+    /**
+     * @return Sets the template for branch names suggested when creating a branch from an issue.
+     * 
+     */
+    public Optional<Output<String>> issueBranchTemplate() {
+        return Optional.ofNullable(this.issueBranchTemplate);
+    }
+
+    /**
      * Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */
@@ -1676,6 +1691,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.importUrlUsername = $.importUrlUsername;
         this.infrastructureAccessLevel = $.infrastructureAccessLevel;
         this.initializeWithReadme = $.initializeWithReadme;
+        this.issueBranchTemplate = $.issueBranchTemplate;
         this.issuesAccessLevel = $.issuesAccessLevel;
         this.issuesTemplate = $.issuesTemplate;
         this.keepLatestArtifact = $.keepLatestArtifact;
@@ -2750,6 +2766,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder initializeWithReadme(Boolean initializeWithReadme) {
             return initializeWithReadme(Output.of(initializeWithReadme));
+        }
+
+        /**
+         * @param issueBranchTemplate Sets the template for branch names suggested when creating a branch from an issue.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issueBranchTemplate(@Nullable Output<String> issueBranchTemplate) {
+            $.issueBranchTemplate = issueBranchTemplate;
+            return this;
+        }
+
+        /**
+         * @param issueBranchTemplate Sets the template for branch names suggested when creating a branch from an issue.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issueBranchTemplate(String issueBranchTemplate) {
+            return issueBranchTemplate(Output.of(issueBranchTemplate));
         }
 
         /**

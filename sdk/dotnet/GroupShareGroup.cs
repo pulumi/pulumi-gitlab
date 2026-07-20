@@ -59,7 +59,7 @@ namespace Pulumi.GitLab
         public Output<string?> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
-        /// The access level to grant the group. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`
+        /// The access level to grant the group. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `SecurityManager`, `Developer`, `Maintainer`, `Owner`
         /// </summary>
         [Output("groupAccess")]
         public Output<string> GroupAccess { get; private set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.GitLab
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The access level to grant the group. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`
+        /// The access level to grant the group. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `SecurityManager`, `Developer`, `Maintainer`, `Owner`
         /// </summary>
         [Input("groupAccess", required: true)]
         public Input<string> GroupAccess { get; set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.GitLab
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The access level to grant the group. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`
+        /// The access level to grant the group. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `SecurityManager`, `Developer`, `Maintainer`, `Owner`
         /// </summary>
         [Input("groupAccess")]
         public Input<string>? GroupAccess { get; set; }

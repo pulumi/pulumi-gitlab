@@ -124,6 +124,9 @@ namespace Pulumi.GitLab
         [Output("policyProjectGraphqlId")]
         public Output<string> PolicyProjectGraphqlId { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.GroupSecurityPolicyAttachmentTimeouts?> Timeouts { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a GroupSecurityPolicyAttachment resource with the given unique name, arguments, and options.
@@ -182,6 +185,9 @@ namespace Pulumi.GitLab
         [Input("policyProject", required: true)]
         public Input<string> PolicyProject { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.GroupSecurityPolicyAttachmentTimeoutsArgs>? Timeouts { get; set; }
+
         public GroupSecurityPolicyAttachmentArgs()
         {
         }
@@ -213,6 +219,9 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("policyProjectGraphqlId")]
         public Input<string>? PolicyProjectGraphqlId { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.GroupSecurityPolicyAttachmentTimeoutsGetArgs>? Timeouts { get; set; }
 
         public GroupSecurityPolicyAttachmentState()
         {

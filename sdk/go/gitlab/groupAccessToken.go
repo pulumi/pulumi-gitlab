@@ -78,7 +78,7 @@ import (
 type GroupAccessToken struct {
 	pulumi.CustomResourceState
 
-	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
@@ -146,7 +146,7 @@ func GetGroupAccessToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupAccessToken resources.
 type groupAccessTokenState struct {
-	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active *bool `pulumi:"active"`
@@ -175,7 +175,7 @@ type groupAccessTokenState struct {
 }
 
 type GroupAccessTokenState struct {
-	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel pulumi.StringPtrInput
 	// True if the token is active.
 	Active pulumi.BoolPtrInput
@@ -208,7 +208,7 @@ func (GroupAccessTokenState) ElementType() reflect.Type {
 }
 
 type groupAccessTokenArgs struct {
-	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The description of the group access token.
 	Description *string `pulumi:"description"`
@@ -228,7 +228,7 @@ type groupAccessTokenArgs struct {
 
 // The set of arguments for constructing a GroupAccessToken resource.
 type GroupAccessTokenArgs struct {
-	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel pulumi.StringPtrInput
 	// The description of the group access token.
 	Description pulumi.StringPtrInput
@@ -333,7 +333,7 @@ func (o GroupAccessTokenOutput) ToGroupAccessTokenOutputWithContext(ctx context.
 	return o
 }
 
-// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 func (o GroupAccessTokenOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupAccessToken) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
 }

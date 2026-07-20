@@ -49,6 +49,8 @@ __all__ = [
     'GroupProtectedEnvironmentDeployAccessLevelArgsDict',
     'GroupPushRulesArgs',
     'GroupPushRulesArgsDict',
+    'GroupSecurityPolicyAttachmentTimeoutsArgs',
+    'GroupSecurityPolicyAttachmentTimeoutsArgsDict',
     'GroupServiceAccountAccessTokenRotationConfigurationArgs',
     'GroupServiceAccountAccessTokenRotationConfigurationArgsDict',
     'GroupServiceAccountTimeoutsArgs',
@@ -1968,6 +1970,75 @@ class GroupPushRulesArgs:
     @reject_unsigned_commits.setter
     def reject_unsigned_commits(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reject_unsigned_commits", value)
+
+
+class GroupSecurityPolicyAttachmentTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+    """
+    delete: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+    """
+    update: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+    """
+
+@pulumi.input_type
+class GroupSecurityPolicyAttachmentTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 update: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+        :param pulumi.Input[_builtins.str] delete: How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+        :param pulumi.Input[_builtins.str] update: How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "update", value)
 
 
 class GroupServiceAccountAccessTokenRotationConfigurationArgsDict(TypedDict):

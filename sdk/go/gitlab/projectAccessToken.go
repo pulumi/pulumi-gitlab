@@ -79,7 +79,7 @@ import (
 type ProjectAccessToken struct {
 	pulumi.CustomResourceState
 
-	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active pulumi.BoolOutput `pulumi:"active"`
@@ -147,7 +147,7 @@ func GetProjectAccessToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectAccessToken resources.
 type projectAccessTokenState struct {
-	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// True if the token is active.
 	Active *bool `pulumi:"active"`
@@ -176,7 +176,7 @@ type projectAccessTokenState struct {
 }
 
 type ProjectAccessTokenState struct {
-	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel pulumi.StringPtrInput
 	// True if the token is active.
 	Active pulumi.BoolPtrInput
@@ -209,7 +209,7 @@ func (ProjectAccessTokenState) ElementType() reflect.Type {
 }
 
 type projectAccessTokenArgs struct {
-	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The description of the project access token.
 	Description *string `pulumi:"description"`
@@ -229,7 +229,7 @@ type projectAccessTokenArgs struct {
 
 // The set of arguments for constructing a ProjectAccessToken resource.
 type ProjectAccessTokenArgs struct {
-	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel pulumi.StringPtrInput
 	// The description of the project access token.
 	Description pulumi.StringPtrInput
@@ -334,7 +334,7 @@ func (o ProjectAccessTokenOutput) ToProjectAccessTokenOutputWithContext(ctx cont
 	return o
 }
 
-// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 func (o ProjectAccessTokenOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectAccessToken) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
 }

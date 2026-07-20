@@ -710,6 +710,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.initializeWithReadme);
     }
     /**
+     * Sets the template for branch names suggested when creating a branch from an issue.
+     * 
+     */
+    @Export(name="issueBranchTemplate", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> issueBranchTemplate;
+
+    /**
+     * @return Sets the template for branch names suggested when creating a branch from an issue.
+     * 
+     */
+    public Output<Optional<String>> issueBranchTemplate() {
+        return Codegen.optional(this.issueBranchTemplate);
+    }
+    /**
      * Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      * 
      */

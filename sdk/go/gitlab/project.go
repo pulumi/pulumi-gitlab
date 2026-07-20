@@ -135,6 +135,8 @@ type Project struct {
 	InfrastructureAccessLevel pulumi.StringOutput `pulumi:"infrastructureAccessLevel"`
 	// Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
 	InitializeWithReadme pulumi.BoolPtrOutput `pulumi:"initializeWithReadme"`
+	// Sets the template for branch names suggested when creating a branch from an issue.
+	IssueBranchTemplate pulumi.StringPtrOutput `pulumi:"issueBranchTemplate"`
 	// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
 	IssuesAccessLevel pulumi.StringOutput `pulumi:"issuesAccessLevel"`
 	// Sets the template for new issues in the project.
@@ -393,6 +395,8 @@ type projectState struct {
 	InfrastructureAccessLevel *string `pulumi:"infrastructureAccessLevel"`
 	// Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
 	InitializeWithReadme *bool `pulumi:"initializeWithReadme"`
+	// Sets the template for branch names suggested when creating a branch from an issue.
+	IssueBranchTemplate *string `pulumi:"issueBranchTemplate"`
 	// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
 	IssuesAccessLevel *string `pulumi:"issuesAccessLevel"`
 	// Sets the template for new issues in the project.
@@ -614,6 +618,8 @@ type ProjectState struct {
 	InfrastructureAccessLevel pulumi.StringPtrInput
 	// Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
 	InitializeWithReadme pulumi.BoolPtrInput
+	// Sets the template for branch names suggested when creating a branch from an issue.
+	IssueBranchTemplate pulumi.StringPtrInput
 	// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
 	IssuesAccessLevel pulumi.StringPtrInput
 	// Sets the template for new issues in the project.
@@ -833,6 +839,8 @@ type projectArgs struct {
 	InfrastructureAccessLevel *string `pulumi:"infrastructureAccessLevel"`
 	// Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
 	InitializeWithReadme *bool `pulumi:"initializeWithReadme"`
+	// Sets the template for branch names suggested when creating a branch from an issue.
+	IssueBranchTemplate *string `pulumi:"issueBranchTemplate"`
 	// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
 	IssuesAccessLevel *string `pulumi:"issuesAccessLevel"`
 	// Sets the template for new issues in the project.
@@ -1041,6 +1049,8 @@ type ProjectArgs struct {
 	InfrastructureAccessLevel pulumi.StringPtrInput
 	// Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
 	InitializeWithReadme pulumi.BoolPtrInput
+	// Sets the template for branch names suggested when creating a branch from an issue.
+	IssueBranchTemplate pulumi.StringPtrInput
 	// Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
 	IssuesAccessLevel pulumi.StringPtrInput
 	// Sets the template for new issues in the project.
@@ -1479,6 +1489,11 @@ func (o ProjectOutput) InfrastructureAccessLevel() pulumi.StringOutput {
 // Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
 func (o ProjectOutput) InitializeWithReadme() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.InitializeWithReadme }).(pulumi.BoolPtrOutput)
+}
+
+// Sets the template for branch names suggested when creating a branch from an issue.
+func (o ProjectOutput) IssueBranchTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.IssueBranchTemplate }).(pulumi.StringPtrOutput)
 }
 
 // Set the issues access level. Valid values are `disabled`, `private`, `enabled`.

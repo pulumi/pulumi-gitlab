@@ -38,6 +38,8 @@ type LookupGroupResult struct {
 	AllowMergeOnSkippedPipeline bool `pulumi:"allowMergeOnSkippedPipeline"`
 	// Comma-separated list of email address domains allowed to be added as group members.
 	AllowedEmailDomainsList string `pulumi:"allowedEmailDomainsList"`
+	// Whether the group is archived.
+	Archived bool `pulumi:"archived"`
 	// Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled bool `pulumi:"autoDevopsEnabled"`
 	// URL of the group avatar.
@@ -56,12 +58,20 @@ type LookupGroupResult struct {
 	DefaultBranchProtectionDefaults []GetGroupDefaultBranchProtectionDefault `pulumi:"defaultBranchProtectionDefaults"`
 	// The description of the group.
 	Description string `pulumi:"description"`
+	// Indicates whether GitLab Duo features are enabled for the group. Valid values are `defaultOn`, `defaultOff`, `neverOn`.
+	DuoAvailability string `pulumi:"duoAvailability"`
+	// Whether GitLab Duo features are enabled for the group.
+	DuoFeaturesEnabled bool `pulumi:"duoFeaturesEnabled"`
 	// Whether email notifications are disabled for this group. Use `emailsEnabled` instead, to be removed in 19.0.
 	//
 	// Deprecated: Use `emailsEnabled` instead, to be removed in 19.0.
 	EmailsDisabled bool `pulumi:"emailsDisabled"`
 	// Whether email notifications are enabled for this group.
 	EmailsEnabled bool `pulumi:"emailsEnabled"`
+	// Restrict access to group by allowing only certain protocols. Valid values are `ssh`, `http`, `all`.
+	EnabledGitAccessProtocol string `pulumi:"enabledGitAccessProtocol"`
+	// Whether experimental features are enabled for the group.
+	ExperimentFeaturesEnabled bool `pulumi:"experimentFeaturesEnabled"`
 	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit int `pulumi:"extraSharedRunnersMinutesLimit"`
 	// The ID of the project used to load custom file templates.
@@ -82,8 +92,14 @@ type LookupGroupResult struct {
 	LdapCn string `pulumi:"ldapCn"`
 	// Boolean, is LFS enabled for projects in this group.
 	LfsEnabled bool `pulumi:"lfsEnabled"`
+	// Whether the GitLab Duo features setting is enforced for all subgroups.
+	LockDuoFeaturesEnabled bool `pulumi:"lockDuoFeaturesEnabled"`
+	// Whether the math rendering limits setting is enforced for all subgroups.
+	LockMathRenderingLimitsEnabled bool `pulumi:"lockMathRenderingLimitsEnabled"`
 	// Date on which the group was marked for deletion.
 	MarkedForDeletionOn string `pulumi:"markedForDeletionOn"`
+	// Whether math rendering limits are enabled for the group.
+	MathRenderingLimitsEnabled bool `pulumi:"mathRenderingLimitsEnabled"`
 	// Maximum artifacts size for the group, in MB.
 	MaxArtifactsSize int `pulumi:"maxArtifactsSize"`
 	// Users cannot be added to projects in this group.
@@ -96,6 +112,8 @@ type LookupGroupResult struct {
 	OnlyAllowMergeIfAllDiscussionsAreResolved bool `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
 	// Default to only allowing merge if the pipeline succeeds for new projects in the group.
 	OnlyAllowMergeIfPipelineSucceeds bool `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
+	// The ID of the organization this group belongs to.
+	OrganizationId int `pulumi:"organizationId"`
 	// Integer, ID of the parent group.
 	ParentId int `pulumi:"parentId"`
 	// The path of the group.
@@ -184,6 +202,11 @@ func (o LookupGroupResultOutput) AllowedEmailDomainsList() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.AllowedEmailDomainsList }).(pulumi.StringOutput)
 }
 
+// Whether the group is archived.
+func (o LookupGroupResultOutput) Archived() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.Archived }).(pulumi.BoolOutput)
+}
+
 // Default to Auto DevOps pipeline for all projects within this group.
 func (o LookupGroupResultOutput) AutoDevopsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupResult) bool { return v.AutoDevopsEnabled }).(pulumi.BoolOutput)
@@ -228,6 +251,16 @@ func (o LookupGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Indicates whether GitLab Duo features are enabled for the group. Valid values are `defaultOn`, `defaultOff`, `neverOn`.
+func (o LookupGroupResultOutput) DuoAvailability() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.DuoAvailability }).(pulumi.StringOutput)
+}
+
+// Whether GitLab Duo features are enabled for the group.
+func (o LookupGroupResultOutput) DuoFeaturesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.DuoFeaturesEnabled }).(pulumi.BoolOutput)
+}
+
 // Whether email notifications are disabled for this group. Use `emailsEnabled` instead, to be removed in 19.0.
 //
 // Deprecated: Use `emailsEnabled` instead, to be removed in 19.0.
@@ -238,6 +271,16 @@ func (o LookupGroupResultOutput) EmailsDisabled() pulumi.BoolOutput {
 // Whether email notifications are enabled for this group.
 func (o LookupGroupResultOutput) EmailsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupResult) bool { return v.EmailsEnabled }).(pulumi.BoolOutput)
+}
+
+// Restrict access to group by allowing only certain protocols. Valid values are `ssh`, `http`, `all`.
+func (o LookupGroupResultOutput) EnabledGitAccessProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.EnabledGitAccessProtocol }).(pulumi.StringOutput)
+}
+
+// Whether experimental features are enabled for the group.
+func (o LookupGroupResultOutput) ExperimentFeaturesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.ExperimentFeaturesEnabled }).(pulumi.BoolOutput)
 }
 
 // Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -290,9 +333,24 @@ func (o LookupGroupResultOutput) LfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupResult) bool { return v.LfsEnabled }).(pulumi.BoolOutput)
 }
 
+// Whether the GitLab Duo features setting is enforced for all subgroups.
+func (o LookupGroupResultOutput) LockDuoFeaturesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.LockDuoFeaturesEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether the math rendering limits setting is enforced for all subgroups.
+func (o LookupGroupResultOutput) LockMathRenderingLimitsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.LockMathRenderingLimitsEnabled }).(pulumi.BoolOutput)
+}
+
 // Date on which the group was marked for deletion.
 func (o LookupGroupResultOutput) MarkedForDeletionOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.MarkedForDeletionOn }).(pulumi.StringOutput)
+}
+
+// Whether math rendering limits are enabled for the group.
+func (o LookupGroupResultOutput) MathRenderingLimitsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.MathRenderingLimitsEnabled }).(pulumi.BoolOutput)
 }
 
 // Maximum artifacts size for the group, in MB.
@@ -323,6 +381,11 @@ func (o LookupGroupResultOutput) OnlyAllowMergeIfAllDiscussionsAreResolved() pul
 // Default to only allowing merge if the pipeline succeeds for new projects in the group.
 func (o LookupGroupResultOutput) OnlyAllowMergeIfPipelineSucceeds() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupResult) bool { return v.OnlyAllowMergeIfPipelineSucceeds }).(pulumi.BoolOutput)
+}
+
+// The ID of the organization this group belongs to.
+func (o LookupGroupResultOutput) OrganizationId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGroupResult) int { return v.OrganizationId }).(pulumi.IntOutput)
 }
 
 // Integer, ID of the parent group.

@@ -1006,6 +1006,21 @@ export interface GroupPushRules {
     rejectUnsignedCommits?: pulumi.Input<boolean | undefined>;
 }
 
+export interface GroupSecurityPolicyAttachmentTimeouts {
+    /**
+     * How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
 export interface GroupServiceAccountAccessTokenRotationConfiguration {
     /**
      * The duration (in days) the new token should be valid for.

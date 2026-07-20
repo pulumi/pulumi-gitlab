@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gitlab.GroupSecurityPolicyAttachmentArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.GroupSecurityPolicyAttachmentState;
+import com.pulumi.gitlab.outputs.GroupSecurityPolicyAttachmentTimeouts;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -176,6 +178,12 @@ public class GroupSecurityPolicyAttachment extends com.pulumi.resources.CustomRe
      */
     public Output<String> policyProjectGraphqlId() {
         return this.policyProjectGraphqlId;
+    }
+    @Export(name="timeouts", refs={GroupSecurityPolicyAttachmentTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ GroupSecurityPolicyAttachmentTimeouts> timeouts;
+
+    public Output<Optional<GroupSecurityPolicyAttachmentTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
 
     /**

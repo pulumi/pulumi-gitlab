@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -121,6 +123,7 @@ export class GroupSecurityPolicyAttachment extends pulumi.CustomResource {
      * The GraphQL ID of the security policy project.
      */
     declare public /*out*/ readonly policyProjectGraphqlId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.GroupSecurityPolicyAttachmentTimeouts | undefined>;
 
     /**
      * Create a GroupSecurityPolicyAttachment resource with the given unique name, arguments, and options.
@@ -139,6 +142,7 @@ export class GroupSecurityPolicyAttachment extends pulumi.CustomResource {
             resourceInputs["groupGraphqlId"] = state?.groupGraphqlId;
             resourceInputs["policyProject"] = state?.policyProject;
             resourceInputs["policyProjectGraphqlId"] = state?.policyProjectGraphqlId;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as GroupSecurityPolicyAttachmentArgs | undefined;
             if (args?.group === undefined && !opts.urn) {
@@ -149,6 +153,7 @@ export class GroupSecurityPolicyAttachment extends pulumi.CustomResource {
             }
             resourceInputs["group"] = args?.group;
             resourceInputs["policyProject"] = args?.policyProject;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["groupGraphqlId"] = undefined /*out*/;
             resourceInputs["policyProjectGraphqlId"] = undefined /*out*/;
         }
@@ -177,6 +182,7 @@ export interface GroupSecurityPolicyAttachmentState {
      * The GraphQL ID of the security policy project.
      */
     policyProjectGraphqlId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.GroupSecurityPolicyAttachmentTimeouts | undefined>;
 }
 
 /**
@@ -191,4 +197,5 @@ export interface GroupSecurityPolicyAttachmentArgs {
      * The ID or Full Path of the security policy project.
      */
     policyProject: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GroupSecurityPolicyAttachmentTimeouts | undefined>;
 }

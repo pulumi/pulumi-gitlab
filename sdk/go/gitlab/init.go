@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gitlab:index/adminRole:AdminRole":
+		r = &AdminRole{}
 	case "gitlab:index/application:Application":
 		r = &Application{}
 	case "gitlab:index/applicationAppearance:ApplicationAppearance":
@@ -141,6 +143,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectDeployToken{}
 	case "gitlab:index/projectEnvironment:ProjectEnvironment":
 		r = &ProjectEnvironment{}
+	case "gitlab:index/projectErrorTrackingClientKey:ProjectErrorTrackingClientKey":
+		r = &ProjectErrorTrackingClientKey{}
+	case "gitlab:index/projectErrorTrackingSettings:ProjectErrorTrackingSettings":
+		r = &ProjectErrorTrackingSettings{}
 	case "gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck":
 		r = &ProjectExternalStatusCheck{}
 	case "gitlab:index/projectFreezePeriod:ProjectFreezePeriod":
@@ -219,6 +225,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectRunnerEnablement{}
 	case "gitlab:index/projectSavedReply:ProjectSavedReply":
 		r = &ProjectSavedReply{}
+	case "gitlab:index/projectSecretDetectionValidityChecks:ProjectSecretDetectionValidityChecks":
+		r = &ProjectSecretDetectionValidityChecks{}
 	case "gitlab:index/projectSecureFile:ProjectSecureFile":
 		r = &ProjectSecureFile{}
 	case "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment":
@@ -306,6 +314,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/adminRole",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/application",
@@ -608,6 +621,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectErrorTrackingClientKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectErrorTrackingSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectExternalStatusCheck",
 		&module{version},
 	)
@@ -799,6 +822,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectSavedReply",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectSecretDetectionValidityChecks",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

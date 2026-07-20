@@ -70,7 +70,7 @@ namespace Pulumi.GitLab
     public partial class GroupAccessToken : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access level for the group access token. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`. Default is `Maintainer`.
+        /// The access level for the group access token. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `SecurityManager`, `Developer`, `Maintainer`, `Owner`. Default is `Maintainer`.
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.GitLab
     public sealed class GroupAccessTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the group access token. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`. Default is `Maintainer`.
+        /// The access level for the group access token. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `SecurityManager`, `Developer`, `Maintainer`, `Owner`. Default is `Maintainer`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.GitLab
     public sealed class GroupAccessTokenState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level for the group access token. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `Developer`, `Maintainer`, `Owner`. Default is `Maintainer`.
+        /// The access level for the group access token. Valid values are: `no one`, `Minimal`, `Guest`, `Planner`, `Reporter`, `SecurityManager`, `Developer`, `Maintainer`, `Owner`. Default is `Maintainer`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }

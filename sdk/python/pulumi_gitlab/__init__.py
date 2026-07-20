@@ -6,6 +6,7 @@ import builtins as _builtins
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .admin_role import *
 from .application import *
 from .application_appearance import *
 from .application_settings import *
@@ -55,6 +56,7 @@ from .get_project_access_tokens import *
 from .get_project_approval_rules import *
 from .get_project_branches import *
 from .get_project_environments import *
+from .get_project_error_tracking_settings import *
 from .get_project_hook import *
 from .get_project_hooks import *
 from .get_project_ids import *
@@ -145,6 +147,8 @@ from .project_container_tag_protection import *
 from .project_custom_attribute import *
 from .project_deploy_token import *
 from .project_environment import *
+from .project_error_tracking_client_key import *
+from .project_error_tracking_settings import *
 from .project_external_status_check import *
 from .project_freeze_period import *
 from .project_hook import *
@@ -184,6 +188,7 @@ from .project_push_mirror import *
 from .project_push_rules import *
 from .project_runner_enablement import *
 from .project_saved_reply import *
+from .project_secret_detection_validity_checks import *
 from .project_secure_file import *
 from .project_security_policy_attachment import *
 from .project_service_account import *
@@ -226,6 +231,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "gitlab",
+  "mod": "index/adminRole",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/adminRole:AdminRole": "AdminRole"
+  }
+ },
  {
   "pkg": "gitlab",
   "mod": "index/application",
@@ -708,6 +721,22 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectErrorTrackingClientKey",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectErrorTrackingClientKey:ProjectErrorTrackingClientKey": "ProjectErrorTrackingClientKey"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectErrorTrackingSettings",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectErrorTrackingSettings:ProjectErrorTrackingSettings": "ProjectErrorTrackingSettings"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectExternalStatusCheck",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -1016,6 +1045,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectSavedReply:ProjectSavedReply": "ProjectSavedReply"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectSecretDetectionValidityChecks",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectSecretDetectionValidityChecks:ProjectSecretDetectionValidityChecks": "ProjectSecretDetectionValidityChecks"
   }
  },
  {

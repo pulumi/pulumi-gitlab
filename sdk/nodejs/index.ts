@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AdminRoleArgs, AdminRoleState } from "./adminRole";
+export type AdminRole = import("./adminRole").AdminRole;
+export const AdminRole: typeof import("./adminRole").AdminRole = null as any;
+utilities.lazyLoad(exports, ["AdminRole"], () => require("./adminRole"));
+
 export { ApplicationArgs, ApplicationState } from "./application";
 export type Application = import("./application").Application;
 export const Application: typeof import("./application").Application = null as any;
@@ -249,6 +254,11 @@ export { GetProjectEnvironmentsArgs, GetProjectEnvironmentsResult, GetProjectEnv
 export const getProjectEnvironments: typeof import("./getProjectEnvironments").getProjectEnvironments = null as any;
 export const getProjectEnvironmentsOutput: typeof import("./getProjectEnvironments").getProjectEnvironmentsOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectEnvironments","getProjectEnvironmentsOutput"], () => require("./getProjectEnvironments"));
+
+export { GetProjectErrorTrackingSettingsArgs, GetProjectErrorTrackingSettingsResult, GetProjectErrorTrackingSettingsOutputArgs } from "./getProjectErrorTrackingSettings";
+export const getProjectErrorTrackingSettings: typeof import("./getProjectErrorTrackingSettings").getProjectErrorTrackingSettings = null as any;
+export const getProjectErrorTrackingSettingsOutput: typeof import("./getProjectErrorTrackingSettings").getProjectErrorTrackingSettingsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectErrorTrackingSettings","getProjectErrorTrackingSettingsOutput"], () => require("./getProjectErrorTrackingSettings"));
 
 export { GetProjectHookArgs, GetProjectHookResult, GetProjectHookOutputArgs } from "./getProjectHook";
 export const getProjectHook: typeof import("./getProjectHook").getProjectHook = null as any;
@@ -700,6 +710,16 @@ export type ProjectEnvironment = import("./projectEnvironment").ProjectEnvironme
 export const ProjectEnvironment: typeof import("./projectEnvironment").ProjectEnvironment = null as any;
 utilities.lazyLoad(exports, ["ProjectEnvironment"], () => require("./projectEnvironment"));
 
+export { ProjectErrorTrackingClientKeyArgs, ProjectErrorTrackingClientKeyState } from "./projectErrorTrackingClientKey";
+export type ProjectErrorTrackingClientKey = import("./projectErrorTrackingClientKey").ProjectErrorTrackingClientKey;
+export const ProjectErrorTrackingClientKey: typeof import("./projectErrorTrackingClientKey").ProjectErrorTrackingClientKey = null as any;
+utilities.lazyLoad(exports, ["ProjectErrorTrackingClientKey"], () => require("./projectErrorTrackingClientKey"));
+
+export { ProjectErrorTrackingSettingsArgs, ProjectErrorTrackingSettingsState } from "./projectErrorTrackingSettings";
+export type ProjectErrorTrackingSettings = import("./projectErrorTrackingSettings").ProjectErrorTrackingSettings;
+export const ProjectErrorTrackingSettings: typeof import("./projectErrorTrackingSettings").ProjectErrorTrackingSettings = null as any;
+utilities.lazyLoad(exports, ["ProjectErrorTrackingSettings"], () => require("./projectErrorTrackingSettings"));
+
 export { ProjectExternalStatusCheckArgs, ProjectExternalStatusCheckState } from "./projectExternalStatusCheck";
 export type ProjectExternalStatusCheck = import("./projectExternalStatusCheck").ProjectExternalStatusCheck;
 export const ProjectExternalStatusCheck: typeof import("./projectExternalStatusCheck").ProjectExternalStatusCheck = null as any;
@@ -895,6 +915,11 @@ export type ProjectSavedReply = import("./projectSavedReply").ProjectSavedReply;
 export const ProjectSavedReply: typeof import("./projectSavedReply").ProjectSavedReply = null as any;
 utilities.lazyLoad(exports, ["ProjectSavedReply"], () => require("./projectSavedReply"));
 
+export { ProjectSecretDetectionValidityChecksArgs, ProjectSecretDetectionValidityChecksState } from "./projectSecretDetectionValidityChecks";
+export type ProjectSecretDetectionValidityChecks = import("./projectSecretDetectionValidityChecks").ProjectSecretDetectionValidityChecks;
+export const ProjectSecretDetectionValidityChecks: typeof import("./projectSecretDetectionValidityChecks").ProjectSecretDetectionValidityChecks = null as any;
+utilities.lazyLoad(exports, ["ProjectSecretDetectionValidityChecks"], () => require("./projectSecretDetectionValidityChecks"));
+
 export { ProjectSecureFileArgs, ProjectSecureFileState } from "./projectSecureFile";
 export type ProjectSecureFile = import("./projectSecureFile").ProjectSecureFile;
 export const ProjectSecureFile: typeof import("./projectSecureFile").ProjectSecureFile = null as any;
@@ -1052,6 +1077,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gitlab:index/adminRole:AdminRole":
+                return new AdminRole(name, <any>undefined, { urn })
             case "gitlab:index/application:Application":
                 return new Application(name, <any>undefined, { urn })
             case "gitlab:index/applicationAppearance:ApplicationAppearance":
@@ -1172,6 +1199,10 @@ const _module = {
                 return new ProjectDeployToken(name, <any>undefined, { urn })
             case "gitlab:index/projectEnvironment:ProjectEnvironment":
                 return new ProjectEnvironment(name, <any>undefined, { urn })
+            case "gitlab:index/projectErrorTrackingClientKey:ProjectErrorTrackingClientKey":
+                return new ProjectErrorTrackingClientKey(name, <any>undefined, { urn })
+            case "gitlab:index/projectErrorTrackingSettings:ProjectErrorTrackingSettings":
+                return new ProjectErrorTrackingSettings(name, <any>undefined, { urn })
             case "gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck":
                 return new ProjectExternalStatusCheck(name, <any>undefined, { urn })
             case "gitlab:index/projectFreezePeriod:ProjectFreezePeriod":
@@ -1250,6 +1281,8 @@ const _module = {
                 return new ProjectRunnerEnablement(name, <any>undefined, { urn })
             case "gitlab:index/projectSavedReply:ProjectSavedReply":
                 return new ProjectSavedReply(name, <any>undefined, { urn })
+            case "gitlab:index/projectSecretDetectionValidityChecks:ProjectSecretDetectionValidityChecks":
+                return new ProjectSecretDetectionValidityChecks(name, <any>undefined, { urn })
             case "gitlab:index/projectSecureFile:ProjectSecureFile":
                 return new ProjectSecureFile(name, <any>undefined, { urn })
             case "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment":
@@ -1311,6 +1344,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gitlab", "index/adminRole", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/application", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/applicationAppearance", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/applicationSettings", _module)
@@ -1371,6 +1405,8 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectContainerTagProtec
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectDeployToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectEnvironment", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectErrorTrackingClientKey", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectErrorTrackingSettings", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectExternalStatusCheck", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectFreezePeriod", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectHook", _module)
@@ -1410,6 +1446,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectPushMirror", _modu
 pulumi.runtime.registerResourceModule("gitlab", "index/projectPushRules", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectRunnerEnablement", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectSavedReply", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectSecretDetectionValidityChecks", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectSecureFile", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectSecurityPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectServiceAccount", _module)

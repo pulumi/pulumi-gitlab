@@ -61,7 +61,7 @@ import (
 type GroupMembership struct {
 	pulumi.CustomResourceState
 
-	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
@@ -116,7 +116,7 @@ func GetGroupMembership(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupMembership resources.
 type groupMembershipState struct {
-	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
@@ -133,7 +133,7 @@ type groupMembershipState struct {
 }
 
 type GroupMembershipState struct {
-	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
 	AccessLevel pulumi.StringPtrInput
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
@@ -154,7 +154,7 @@ func (GroupMembershipState) ElementType() reflect.Type {
 }
 
 type groupMembershipArgs struct {
-	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
 	AccessLevel string `pulumi:"accessLevel"`
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`
@@ -172,7 +172,7 @@ type groupMembershipArgs struct {
 
 // The set of arguments for constructing a GroupMembership resource.
 type GroupMembershipArgs struct {
-	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
 	AccessLevel pulumi.StringInput
 	// Expiration date for the group membership. Format: `YYYY-MM-DD`
 	ExpiresAt pulumi.StringPtrInput
@@ -275,7 +275,7 @@ func (o GroupMembershipOutput) ToGroupMembershipOutputWithContext(ctx context.Co
 	return o
 }
 
-// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`.
+// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
 func (o GroupMembershipOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMembership) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
 }

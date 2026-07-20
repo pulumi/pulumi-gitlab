@@ -2644,6 +2644,181 @@ func (o GroupPushRulesPtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GroupSecurityPolicyAttachmentTimeouts struct {
+	// How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+	Create *string `pulumi:"create"`
+	// How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+	Delete *string `pulumi:"delete"`
+	// How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+	Update *string `pulumi:"update"`
+}
+
+// GroupSecurityPolicyAttachmentTimeoutsInput is an input type that accepts GroupSecurityPolicyAttachmentTimeoutsArgs and GroupSecurityPolicyAttachmentTimeoutsOutput values.
+// You can construct a concrete instance of `GroupSecurityPolicyAttachmentTimeoutsInput` via:
+//
+//	GroupSecurityPolicyAttachmentTimeoutsArgs{...}
+type GroupSecurityPolicyAttachmentTimeoutsInput interface {
+	pulumi.Input
+
+	ToGroupSecurityPolicyAttachmentTimeoutsOutput() GroupSecurityPolicyAttachmentTimeoutsOutput
+	ToGroupSecurityPolicyAttachmentTimeoutsOutputWithContext(context.Context) GroupSecurityPolicyAttachmentTimeoutsOutput
+}
+
+type GroupSecurityPolicyAttachmentTimeoutsArgs struct {
+	// How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (GroupSecurityPolicyAttachmentTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupSecurityPolicyAttachmentTimeouts)(nil)).Elem()
+}
+
+func (i GroupSecurityPolicyAttachmentTimeoutsArgs) ToGroupSecurityPolicyAttachmentTimeoutsOutput() GroupSecurityPolicyAttachmentTimeoutsOutput {
+	return i.ToGroupSecurityPolicyAttachmentTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GroupSecurityPolicyAttachmentTimeoutsArgs) ToGroupSecurityPolicyAttachmentTimeoutsOutputWithContext(ctx context.Context) GroupSecurityPolicyAttachmentTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupSecurityPolicyAttachmentTimeoutsOutput)
+}
+
+func (i GroupSecurityPolicyAttachmentTimeoutsArgs) ToGroupSecurityPolicyAttachmentTimeoutsPtrOutput() GroupSecurityPolicyAttachmentTimeoutsPtrOutput {
+	return i.ToGroupSecurityPolicyAttachmentTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GroupSecurityPolicyAttachmentTimeoutsArgs) ToGroupSecurityPolicyAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) GroupSecurityPolicyAttachmentTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupSecurityPolicyAttachmentTimeoutsOutput).ToGroupSecurityPolicyAttachmentTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GroupSecurityPolicyAttachmentTimeoutsPtrInput is an input type that accepts GroupSecurityPolicyAttachmentTimeoutsArgs, GroupSecurityPolicyAttachmentTimeoutsPtr and GroupSecurityPolicyAttachmentTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GroupSecurityPolicyAttachmentTimeoutsPtrInput` via:
+//
+//	        GroupSecurityPolicyAttachmentTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GroupSecurityPolicyAttachmentTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGroupSecurityPolicyAttachmentTimeoutsPtrOutput() GroupSecurityPolicyAttachmentTimeoutsPtrOutput
+	ToGroupSecurityPolicyAttachmentTimeoutsPtrOutputWithContext(context.Context) GroupSecurityPolicyAttachmentTimeoutsPtrOutput
+}
+
+type groupSecurityPolicyAttachmentTimeoutsPtrType GroupSecurityPolicyAttachmentTimeoutsArgs
+
+func GroupSecurityPolicyAttachmentTimeoutsPtr(v *GroupSecurityPolicyAttachmentTimeoutsArgs) GroupSecurityPolicyAttachmentTimeoutsPtrInput {
+	return (*groupSecurityPolicyAttachmentTimeoutsPtrType)(v)
+}
+
+func (*groupSecurityPolicyAttachmentTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupSecurityPolicyAttachmentTimeouts)(nil)).Elem()
+}
+
+func (i *groupSecurityPolicyAttachmentTimeoutsPtrType) ToGroupSecurityPolicyAttachmentTimeoutsPtrOutput() GroupSecurityPolicyAttachmentTimeoutsPtrOutput {
+	return i.ToGroupSecurityPolicyAttachmentTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *groupSecurityPolicyAttachmentTimeoutsPtrType) ToGroupSecurityPolicyAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) GroupSecurityPolicyAttachmentTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupSecurityPolicyAttachmentTimeoutsPtrOutput)
+}
+
+type GroupSecurityPolicyAttachmentTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GroupSecurityPolicyAttachmentTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupSecurityPolicyAttachmentTimeouts)(nil)).Elem()
+}
+
+func (o GroupSecurityPolicyAttachmentTimeoutsOutput) ToGroupSecurityPolicyAttachmentTimeoutsOutput() GroupSecurityPolicyAttachmentTimeoutsOutput {
+	return o
+}
+
+func (o GroupSecurityPolicyAttachmentTimeoutsOutput) ToGroupSecurityPolicyAttachmentTimeoutsOutputWithContext(ctx context.Context) GroupSecurityPolicyAttachmentTimeoutsOutput {
+	return o
+}
+
+func (o GroupSecurityPolicyAttachmentTimeoutsOutput) ToGroupSecurityPolicyAttachmentTimeoutsPtrOutput() GroupSecurityPolicyAttachmentTimeoutsPtrOutput {
+	return o.ToGroupSecurityPolicyAttachmentTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GroupSecurityPolicyAttachmentTimeoutsOutput) ToGroupSecurityPolicyAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) GroupSecurityPolicyAttachmentTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupSecurityPolicyAttachmentTimeouts) *GroupSecurityPolicyAttachmentTimeouts {
+		return &v
+	}).(GroupSecurityPolicyAttachmentTimeoutsPtrOutput)
+}
+
+// How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+func (o GroupSecurityPolicyAttachmentTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupSecurityPolicyAttachmentTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+func (o GroupSecurityPolicyAttachmentTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupSecurityPolicyAttachmentTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+func (o GroupSecurityPolicyAttachmentTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupSecurityPolicyAttachmentTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type GroupSecurityPolicyAttachmentTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupSecurityPolicyAttachmentTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupSecurityPolicyAttachmentTimeouts)(nil)).Elem()
+}
+
+func (o GroupSecurityPolicyAttachmentTimeoutsPtrOutput) ToGroupSecurityPolicyAttachmentTimeoutsPtrOutput() GroupSecurityPolicyAttachmentTimeoutsPtrOutput {
+	return o
+}
+
+func (o GroupSecurityPolicyAttachmentTimeoutsPtrOutput) ToGroupSecurityPolicyAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) GroupSecurityPolicyAttachmentTimeoutsPtrOutput {
+	return o
+}
+
+func (o GroupSecurityPolicyAttachmentTimeoutsPtrOutput) Elem() GroupSecurityPolicyAttachmentTimeoutsOutput {
+	return o.ApplyT(func(v *GroupSecurityPolicyAttachmentTimeouts) GroupSecurityPolicyAttachmentTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GroupSecurityPolicyAttachmentTimeouts
+		return ret
+	}).(GroupSecurityPolicyAttachmentTimeoutsOutput)
+}
+
+// How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+func (o GroupSecurityPolicyAttachmentTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupSecurityPolicyAttachmentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+func (o GroupSecurityPolicyAttachmentTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupSecurityPolicyAttachmentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// How long to wait for the security policy attachment eventual consistency check. Defaults to 5 minutes.
+func (o GroupSecurityPolicyAttachmentTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupSecurityPolicyAttachmentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type GroupServiceAccountAccessTokenRotationConfiguration struct {
 	// The duration (in days) the new token should be valid for.
 	ExpirationDays *int `pulumi:"expirationDays"`
@@ -10855,6 +11030,8 @@ type GetGroupsGroup struct {
 	AllowMergeOnSkippedPipeline bool `pulumi:"allowMergeOnSkippedPipeline"`
 	// Comma-separated list of email address domains allowed to be added as group members.
 	AllowedEmailDomainsList string `pulumi:"allowedEmailDomainsList"`
+	// Whether the group is archived.
+	Archived bool `pulumi:"archived"`
 	// Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled bool `pulumi:"autoDevopsEnabled"`
 	// URL of the group avatar.
@@ -10873,12 +11050,20 @@ type GetGroupsGroup struct {
 	DefaultBranchProtectionDefaults []GetGroupsGroupDefaultBranchProtectionDefault `pulumi:"defaultBranchProtectionDefaults"`
 	// The description of the group.
 	Description string `pulumi:"description"`
+	// Indicates whether GitLab Duo features are enabled for the group. Valid values are `defaultOn`, `defaultOff`, `neverOn`.
+	DuoAvailability string `pulumi:"duoAvailability"`
+	// Whether GitLab Duo features are enabled for the group.
+	DuoFeaturesEnabled bool `pulumi:"duoFeaturesEnabled"`
 	// Whether email notifications are disabled for this group. Use `emailsEnabled` instead, to be removed in 19.0.
 	//
 	// Deprecated: Use `emailsEnabled` instead, to be removed in 19.0.
 	EmailsDisabled bool `pulumi:"emailsDisabled"`
 	// Whether email notifications are enabled for this group.
 	EmailsEnabled bool `pulumi:"emailsEnabled"`
+	// Restrict access to group by allowing only certain protocols. Valid values are `ssh`, `http`, `all`.
+	EnabledGitAccessProtocol string `pulumi:"enabledGitAccessProtocol"`
+	// Whether experimental features are enabled for the group.
+	ExperimentFeaturesEnabled bool `pulumi:"experimentFeaturesEnabled"`
 	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit int `pulumi:"extraSharedRunnersMinutesLimit"`
 	// The ID of the project used to load custom file templates.
@@ -10897,8 +11082,14 @@ type GetGroupsGroup struct {
 	LdapCn string `pulumi:"ldapCn"`
 	// Boolean, is LFS enabled for projects in this group.
 	LfsEnabled bool `pulumi:"lfsEnabled"`
+	// Whether the GitLab Duo features setting is enforced for all subgroups.
+	LockDuoFeaturesEnabled bool `pulumi:"lockDuoFeaturesEnabled"`
+	// Whether the math rendering limits setting is enforced for all subgroups.
+	LockMathRenderingLimitsEnabled bool `pulumi:"lockMathRenderingLimitsEnabled"`
 	// Date on which the group was marked for deletion.
 	MarkedForDeletionOn string `pulumi:"markedForDeletionOn"`
+	// Whether math rendering limits are enabled for the group.
+	MathRenderingLimitsEnabled bool `pulumi:"mathRenderingLimitsEnabled"`
 	// Maximum artifacts size for the group, in MB.
 	MaxArtifactsSize int `pulumi:"maxArtifactsSize"`
 	// Users cannot be added to projects in this group.
@@ -10911,6 +11102,8 @@ type GetGroupsGroup struct {
 	OnlyAllowMergeIfAllDiscussionsAreResolved bool `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
 	// Default to only allowing merge if the pipeline succeeds for new projects in the group.
 	OnlyAllowMergeIfPipelineSucceeds bool `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
+	// The ID of the organization this group belongs to.
+	OrganizationId int `pulumi:"organizationId"`
 	// Integer, ID of the parent group.
 	ParentId int `pulumi:"parentId"`
 	// The path of the group.
@@ -10967,6 +11160,8 @@ type GetGroupsGroupArgs struct {
 	AllowMergeOnSkippedPipeline pulumi.BoolInput `pulumi:"allowMergeOnSkippedPipeline"`
 	// Comma-separated list of email address domains allowed to be added as group members.
 	AllowedEmailDomainsList pulumi.StringInput `pulumi:"allowedEmailDomainsList"`
+	// Whether the group is archived.
+	Archived pulumi.BoolInput `pulumi:"archived"`
 	// Default to Auto DevOps pipeline for all projects within this group.
 	AutoDevopsEnabled pulumi.BoolInput `pulumi:"autoDevopsEnabled"`
 	// URL of the group avatar.
@@ -10985,12 +11180,20 @@ type GetGroupsGroupArgs struct {
 	DefaultBranchProtectionDefaults GetGroupsGroupDefaultBranchProtectionDefaultArrayInput `pulumi:"defaultBranchProtectionDefaults"`
 	// The description of the group.
 	Description pulumi.StringInput `pulumi:"description"`
+	// Indicates whether GitLab Duo features are enabled for the group. Valid values are `defaultOn`, `defaultOff`, `neverOn`.
+	DuoAvailability pulumi.StringInput `pulumi:"duoAvailability"`
+	// Whether GitLab Duo features are enabled for the group.
+	DuoFeaturesEnabled pulumi.BoolInput `pulumi:"duoFeaturesEnabled"`
 	// Whether email notifications are disabled for this group. Use `emailsEnabled` instead, to be removed in 19.0.
 	//
 	// Deprecated: Use `emailsEnabled` instead, to be removed in 19.0.
 	EmailsDisabled pulumi.BoolInput `pulumi:"emailsDisabled"`
 	// Whether email notifications are enabled for this group.
 	EmailsEnabled pulumi.BoolInput `pulumi:"emailsEnabled"`
+	// Restrict access to group by allowing only certain protocols. Valid values are `ssh`, `http`, `all`.
+	EnabledGitAccessProtocol pulumi.StringInput `pulumi:"enabledGitAccessProtocol"`
+	// Whether experimental features are enabled for the group.
+	ExperimentFeaturesEnabled pulumi.BoolInput `pulumi:"experimentFeaturesEnabled"`
 	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit pulumi.IntInput `pulumi:"extraSharedRunnersMinutesLimit"`
 	// The ID of the project used to load custom file templates.
@@ -11009,8 +11212,14 @@ type GetGroupsGroupArgs struct {
 	LdapCn pulumi.StringInput `pulumi:"ldapCn"`
 	// Boolean, is LFS enabled for projects in this group.
 	LfsEnabled pulumi.BoolInput `pulumi:"lfsEnabled"`
+	// Whether the GitLab Duo features setting is enforced for all subgroups.
+	LockDuoFeaturesEnabled pulumi.BoolInput `pulumi:"lockDuoFeaturesEnabled"`
+	// Whether the math rendering limits setting is enforced for all subgroups.
+	LockMathRenderingLimitsEnabled pulumi.BoolInput `pulumi:"lockMathRenderingLimitsEnabled"`
 	// Date on which the group was marked for deletion.
 	MarkedForDeletionOn pulumi.StringInput `pulumi:"markedForDeletionOn"`
+	// Whether math rendering limits are enabled for the group.
+	MathRenderingLimitsEnabled pulumi.BoolInput `pulumi:"mathRenderingLimitsEnabled"`
 	// Maximum artifacts size for the group, in MB.
 	MaxArtifactsSize pulumi.IntInput `pulumi:"maxArtifactsSize"`
 	// Users cannot be added to projects in this group.
@@ -11023,6 +11232,8 @@ type GetGroupsGroupArgs struct {
 	OnlyAllowMergeIfAllDiscussionsAreResolved pulumi.BoolInput `pulumi:"onlyAllowMergeIfAllDiscussionsAreResolved"`
 	// Default to only allowing merge if the pipeline succeeds for new projects in the group.
 	OnlyAllowMergeIfPipelineSucceeds pulumi.BoolInput `pulumi:"onlyAllowMergeIfPipelineSucceeds"`
+	// The ID of the organization this group belongs to.
+	OrganizationId pulumi.IntInput `pulumi:"organizationId"`
 	// Integer, ID of the parent group.
 	ParentId pulumi.IntInput `pulumi:"parentId"`
 	// The path of the group.
@@ -11124,6 +11335,11 @@ func (o GetGroupsGroupOutput) AllowedEmailDomainsList() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.AllowedEmailDomainsList }).(pulumi.StringOutput)
 }
 
+// Whether the group is archived.
+func (o GetGroupsGroupOutput) Archived() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupsGroup) bool { return v.Archived }).(pulumi.BoolOutput)
+}
+
 // Default to Auto DevOps pipeline for all projects within this group.
 func (o GetGroupsGroupOutput) AutoDevopsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupsGroup) bool { return v.AutoDevopsEnabled }).(pulumi.BoolOutput)
@@ -11168,6 +11384,16 @@ func (o GetGroupsGroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Indicates whether GitLab Duo features are enabled for the group. Valid values are `defaultOn`, `defaultOff`, `neverOn`.
+func (o GetGroupsGroupOutput) DuoAvailability() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.DuoAvailability }).(pulumi.StringOutput)
+}
+
+// Whether GitLab Duo features are enabled for the group.
+func (o GetGroupsGroupOutput) DuoFeaturesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupsGroup) bool { return v.DuoFeaturesEnabled }).(pulumi.BoolOutput)
+}
+
 // Whether email notifications are disabled for this group. Use `emailsEnabled` instead, to be removed in 19.0.
 //
 // Deprecated: Use `emailsEnabled` instead, to be removed in 19.0.
@@ -11178,6 +11404,16 @@ func (o GetGroupsGroupOutput) EmailsDisabled() pulumi.BoolOutput {
 // Whether email notifications are enabled for this group.
 func (o GetGroupsGroupOutput) EmailsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupsGroup) bool { return v.EmailsEnabled }).(pulumi.BoolOutput)
+}
+
+// Restrict access to group by allowing only certain protocols. Valid values are `ssh`, `http`, `all`.
+func (o GetGroupsGroupOutput) EnabledGitAccessProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.EnabledGitAccessProtocol }).(pulumi.StringOutput)
+}
+
+// Whether experimental features are enabled for the group.
+func (o GetGroupsGroupOutput) ExperimentFeaturesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupsGroup) bool { return v.ExperimentFeaturesEnabled }).(pulumi.BoolOutput)
 }
 
 // Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -11225,9 +11461,24 @@ func (o GetGroupsGroupOutput) LfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupsGroup) bool { return v.LfsEnabled }).(pulumi.BoolOutput)
 }
 
+// Whether the GitLab Duo features setting is enforced for all subgroups.
+func (o GetGroupsGroupOutput) LockDuoFeaturesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupsGroup) bool { return v.LockDuoFeaturesEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether the math rendering limits setting is enforced for all subgroups.
+func (o GetGroupsGroupOutput) LockMathRenderingLimitsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupsGroup) bool { return v.LockMathRenderingLimitsEnabled }).(pulumi.BoolOutput)
+}
+
 // Date on which the group was marked for deletion.
 func (o GetGroupsGroupOutput) MarkedForDeletionOn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.MarkedForDeletionOn }).(pulumi.StringOutput)
+}
+
+// Whether math rendering limits are enabled for the group.
+func (o GetGroupsGroupOutput) MathRenderingLimitsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupsGroup) bool { return v.MathRenderingLimitsEnabled }).(pulumi.BoolOutput)
 }
 
 // Maximum artifacts size for the group, in MB.
@@ -11258,6 +11509,11 @@ func (o GetGroupsGroupOutput) OnlyAllowMergeIfAllDiscussionsAreResolved() pulumi
 // Default to only allowing merge if the pipeline succeeds for new projects in the group.
 func (o GetGroupsGroupOutput) OnlyAllowMergeIfPipelineSucceeds() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupsGroup) bool { return v.OnlyAllowMergeIfPipelineSucceeds }).(pulumi.BoolOutput)
+}
+
+// The ID of the organization this group belongs to.
+func (o GetGroupsGroupOutput) OrganizationId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupsGroup) int { return v.OrganizationId }).(pulumi.IntOutput)
 }
 
 // Integer, ID of the parent group.
@@ -25568,6 +25824,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupProtectedEnvironmentDeployAccessLevelArrayInput)(nil)).Elem(), GroupProtectedEnvironmentDeployAccessLevelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupPushRulesInput)(nil)).Elem(), GroupPushRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupPushRulesPtrInput)(nil)).Elem(), GroupPushRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupSecurityPolicyAttachmentTimeoutsInput)(nil)).Elem(), GroupSecurityPolicyAttachmentTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupSecurityPolicyAttachmentTimeoutsPtrInput)(nil)).Elem(), GroupSecurityPolicyAttachmentTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupServiceAccountAccessTokenRotationConfigurationInput)(nil)).Elem(), GroupServiceAccountAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupServiceAccountAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), GroupServiceAccountAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupServiceAccountTimeoutsInput)(nil)).Elem(), GroupServiceAccountTimeoutsArgs{})
@@ -25868,6 +26126,8 @@ func init() {
 	pulumi.RegisterOutputType(GroupProtectedEnvironmentDeployAccessLevelArrayOutput{})
 	pulumi.RegisterOutputType(GroupPushRulesOutput{})
 	pulumi.RegisterOutputType(GroupPushRulesPtrOutput{})
+	pulumi.RegisterOutputType(GroupSecurityPolicyAttachmentTimeoutsOutput{})
+	pulumi.RegisterOutputType(GroupSecurityPolicyAttachmentTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GroupServiceAccountAccessTokenRotationConfigurationOutput{})
 	pulumi.RegisterOutputType(GroupServiceAccountAccessTokenRotationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GroupServiceAccountTimeoutsOutput{})

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GroupSecurityPolicyAttachmentArgs', 'GroupSecurityPolicyAttachment']
 
@@ -20,7 +22,8 @@ __all__ = ['GroupSecurityPolicyAttachmentArgs', 'GroupSecurityPolicyAttachment']
 class GroupSecurityPolicyAttachmentArgs:
     def __init__(__self__, *,
                  group: pulumi.Input[_builtins.str],
-                 policy_project: pulumi.Input[_builtins.str]):
+                 policy_project: pulumi.Input[_builtins.str],
+                 timeouts: pulumi.Input[Optional['GroupSecurityPolicyAttachmentTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a GroupSecurityPolicyAttachment resource.
 
@@ -29,6 +32,8 @@ class GroupSecurityPolicyAttachmentArgs:
         """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "policy_project", policy_project)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
@@ -54,6 +59,15 @@ class GroupSecurityPolicyAttachmentArgs:
     def policy_project(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "policy_project", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['GroupSecurityPolicyAttachmentTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['GroupSecurityPolicyAttachmentTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _GroupSecurityPolicyAttachmentState:
@@ -61,7 +75,8 @@ class _GroupSecurityPolicyAttachmentState:
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  group_graphql_id: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_project: pulumi.Input[Optional[_builtins.str]] = None,
-                 policy_project_graphql_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 policy_project_graphql_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['GroupSecurityPolicyAttachmentTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering GroupSecurityPolicyAttachment resources.
 
@@ -78,6 +93,8 @@ class _GroupSecurityPolicyAttachmentState:
             pulumi.set(__self__, "policy_project", policy_project)
         if policy_project_graphql_id is not None:
             pulumi.set(__self__, "policy_project_graphql_id", policy_project_graphql_id)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
@@ -127,6 +144,15 @@ class _GroupSecurityPolicyAttachmentState:
     def policy_project_graphql_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_project_graphql_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['GroupSecurityPolicyAttachmentTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['GroupSecurityPolicyAttachmentTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.type_token("gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment")
 class GroupSecurityPolicyAttachment(pulumi.CustomResource):
@@ -136,6 +162,7 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['GroupSecurityPolicyAttachmentTimeoutsArgs', 'GroupSecurityPolicyAttachmentTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         The `GroupSecurityPolicyAttachment` resource allows to attach a security policy project to a group.
@@ -307,6 +334,7 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['GroupSecurityPolicyAttachmentTimeoutsArgs', 'GroupSecurityPolicyAttachmentTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -322,6 +350,7 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
             if policy_project is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_project'")
             __props__.__dict__["policy_project"] = policy_project
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["group_graphql_id"] = None
             __props__.__dict__["policy_project_graphql_id"] = None
         super(GroupSecurityPolicyAttachment, __self__).__init__(
@@ -337,7 +366,8 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
             group: pulumi.Input[Optional[_builtins.str]] = None,
             group_graphql_id: pulumi.Input[Optional[_builtins.str]] = None,
             policy_project: pulumi.Input[Optional[_builtins.str]] = None,
-            policy_project_graphql_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupSecurityPolicyAttachment':
+            policy_project_graphql_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['GroupSecurityPolicyAttachmentTimeoutsArgs', 'GroupSecurityPolicyAttachmentTimeoutsArgsDict']]] = None) -> 'GroupSecurityPolicyAttachment':
         """
         Get an existing GroupSecurityPolicyAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -358,6 +388,7 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
         __props__.__dict__["group_graphql_id"] = group_graphql_id
         __props__.__dict__["policy_project"] = policy_project
         __props__.__dict__["policy_project_graphql_id"] = policy_project_graphql_id
+        __props__.__dict__["timeouts"] = timeouts
         return GroupSecurityPolicyAttachment(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -391,4 +422,9 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
         The GraphQL ID of the security policy project.
         """
         return pulumi.get(self, "policy_project_graphql_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.GroupSecurityPolicyAttachmentTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

@@ -19,6 +19,7 @@
         "skipLibCheck": true
     },
     "files": [
+        "adminRole.ts",
         "application.ts",
         "applicationAppearance.ts",
         "applicationSettings.ts",
@@ -70,6 +71,7 @@
         "getProjectApprovalRules.ts",
         "getProjectBranches.ts",
         "getProjectEnvironments.ts",
+        "getProjectErrorTrackingSettings.ts",
         "getProjectHook.ts",
         "getProjectHooks.ts",
         "getProjectIds.ts",
@@ -161,6 +163,8 @@
         "projectCustomAttribute.ts",
         "projectDeployToken.ts",
         "projectEnvironment.ts",
+        "projectErrorTrackingClientKey.ts",
+        "projectErrorTrackingSettings.ts",
         "projectExternalStatusCheck.ts",
         "projectFreezePeriod.ts",
         "projectHook.ts",
@@ -200,6 +204,7 @@
         "projectPushRules.ts",
         "projectRunnerEnablement.ts",
         "projectSavedReply.ts",
+        "projectSecretDetectionValidityChecks.ts",
         "projectSecureFile.ts",
         "projectSecurityPolicyAttachment.ts",
         "projectServiceAccount.ts",

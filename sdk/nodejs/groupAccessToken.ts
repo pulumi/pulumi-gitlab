@@ -80,7 +80,7 @@ export class GroupAccessToken extends pulumi.CustomResource {
     }
 
     /**
-     * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
     declare public readonly accessLevel: pulumi.Output<string>;
     /**
@@ -192,7 +192,7 @@ export class GroupAccessToken extends pulumi.CustomResource {
  */
 export interface GroupAccessTokenState {
     /**
-     * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
     accessLevel?: pulumi.Input<string | undefined>;
     /**
@@ -250,7 +250,7 @@ export interface GroupAccessTokenState {
  */
 export interface GroupAccessTokenArgs {
     /**
-     * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+     * The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
      */
     accessLevel?: pulumi.Input<string | undefined>;
     /**

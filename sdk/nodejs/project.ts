@@ -252,6 +252,10 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly initializeWithReadme: pulumi.Output<boolean | undefined>;
     /**
+     * Sets the template for branch names suggested when creating a branch from an issue.
+     */
+    declare public readonly issueBranchTemplate: pulumi.Output<string | undefined>;
+    /**
      * Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      */
     declare public readonly issuesAccessLevel: pulumi.Output<string>;
@@ -554,6 +558,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["importUrlUsername"] = state?.importUrlUsername;
             resourceInputs["infrastructureAccessLevel"] = state?.infrastructureAccessLevel;
             resourceInputs["initializeWithReadme"] = state?.initializeWithReadme;
+            resourceInputs["issueBranchTemplate"] = state?.issueBranchTemplate;
             resourceInputs["issuesAccessLevel"] = state?.issuesAccessLevel;
             resourceInputs["issuesTemplate"] = state?.issuesTemplate;
             resourceInputs["keepLatestArtifact"] = state?.keepLatestArtifact;
@@ -659,6 +664,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["importUrlUsername"] = args?.importUrlUsername;
             resourceInputs["infrastructureAccessLevel"] = args?.infrastructureAccessLevel;
             resourceInputs["initializeWithReadme"] = args?.initializeWithReadme;
+            resourceInputs["issueBranchTemplate"] = args?.issueBranchTemplate;
             resourceInputs["issuesAccessLevel"] = args?.issuesAccessLevel;
             resourceInputs["issuesTemplate"] = args?.issuesTemplate;
             resourceInputs["keepLatestArtifact"] = args?.keepLatestArtifact;
@@ -921,6 +927,10 @@ export interface ProjectState {
      * Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
      */
     initializeWithReadme?: pulumi.Input<boolean | undefined>;
+    /**
+     * Sets the template for branch names suggested when creating a branch from an issue.
+     */
+    issueBranchTemplate?: pulumi.Input<string | undefined>;
     /**
      * Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      */
@@ -1345,6 +1355,10 @@ export interface ProjectArgs {
      * Create main branch with first commit containing a README.md file. Must be set to `true` if importing an uninitialized project with a different `defaultBranch`.
      */
     initializeWithReadme?: pulumi.Input<boolean | undefined>;
+    /**
+     * Sets the template for branch names suggested when creating a branch from an issue.
+     */
+    issueBranchTemplate?: pulumi.Input<string | undefined>;
     /**
      * Set the issues access level. Valid values are `disabled`, `private`, `enabled`.
      */

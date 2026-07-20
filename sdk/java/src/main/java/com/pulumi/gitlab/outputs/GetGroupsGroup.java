@@ -27,6 +27,11 @@ public final class GetGroupsGroup {
      */
     private String allowedEmailDomainsList;
     /**
+     * @return Whether the group is archived.
+     * 
+     */
+    private Boolean archived;
+    /**
      * @return Default to Auto DevOps pipeline for all projects within this group.
      * 
      */
@@ -71,6 +76,16 @@ public final class GetGroupsGroup {
      */
     private String description;
     /**
+     * @return Indicates whether GitLab Duo features are enabled for the group. Valid values are `defaultOn`, `defaultOff`, `neverOn`.
+     * 
+     */
+    private String duoAvailability;
+    /**
+     * @return Whether GitLab Duo features are enabled for the group.
+     * 
+     */
+    private Boolean duoFeaturesEnabled;
+    /**
      * @return Whether email notifications are disabled for this group. Use `emailsEnabled` instead, to be removed in 19.0.
      * 
      * @deprecated
@@ -84,6 +99,16 @@ public final class GetGroupsGroup {
      * 
      */
     private Boolean emailsEnabled;
+    /**
+     * @return Restrict access to group by allowing only certain protocols. Valid values are `ssh`, `http`, `all`.
+     * 
+     */
+    private String enabledGitAccessProtocol;
+    /**
+     * @return Whether experimental features are enabled for the group.
+     * 
+     */
+    private Boolean experimentFeaturesEnabled;
     /**
      * @return Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      * 
@@ -130,10 +155,25 @@ public final class GetGroupsGroup {
      */
     private Boolean lfsEnabled;
     /**
+     * @return Whether the GitLab Duo features setting is enforced for all subgroups.
+     * 
+     */
+    private Boolean lockDuoFeaturesEnabled;
+    /**
+     * @return Whether the math rendering limits setting is enforced for all subgroups.
+     * 
+     */
+    private Boolean lockMathRenderingLimitsEnabled;
+    /**
      * @return Date on which the group was marked for deletion.
      * 
      */
     private String markedForDeletionOn;
+    /**
+     * @return Whether math rendering limits are enabled for the group.
+     * 
+     */
+    private Boolean mathRenderingLimitsEnabled;
     /**
      * @return Maximum artifacts size for the group, in MB.
      * 
@@ -164,6 +204,11 @@ public final class GetGroupsGroup {
      * 
      */
     private Boolean onlyAllowMergeIfPipelineSucceeds;
+    /**
+     * @return The ID of the organization this group belongs to.
+     * 
+     */
+    private Integer organizationId;
     /**
      * @return Integer, ID of the parent group.
      * 
@@ -276,6 +321,13 @@ public final class GetGroupsGroup {
         return this.allowedEmailDomainsList;
     }
     /**
+     * @return Whether the group is archived.
+     * 
+     */
+    public Boolean archived() {
+        return this.archived;
+    }
+    /**
      * @return Default to Auto DevOps pipeline for all projects within this group.
      * 
      */
@@ -336,6 +388,20 @@ public final class GetGroupsGroup {
         return this.description;
     }
     /**
+     * @return Indicates whether GitLab Duo features are enabled for the group. Valid values are `defaultOn`, `defaultOff`, `neverOn`.
+     * 
+     */
+    public String duoAvailability() {
+        return this.duoAvailability;
+    }
+    /**
+     * @return Whether GitLab Duo features are enabled for the group.
+     * 
+     */
+    public Boolean duoFeaturesEnabled() {
+        return this.duoFeaturesEnabled;
+    }
+    /**
      * @return Whether email notifications are disabled for this group. Use `emailsEnabled` instead, to be removed in 19.0.
      * 
      * @deprecated
@@ -352,6 +418,20 @@ public final class GetGroupsGroup {
      */
     public Boolean emailsEnabled() {
         return this.emailsEnabled;
+    }
+    /**
+     * @return Restrict access to group by allowing only certain protocols. Valid values are `ssh`, `http`, `all`.
+     * 
+     */
+    public String enabledGitAccessProtocol() {
+        return this.enabledGitAccessProtocol;
+    }
+    /**
+     * @return Whether experimental features are enabled for the group.
+     * 
+     */
+    public Boolean experimentFeaturesEnabled() {
+        return this.experimentFeaturesEnabled;
     }
     /**
      * @return Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -417,11 +497,32 @@ public final class GetGroupsGroup {
         return this.lfsEnabled;
     }
     /**
+     * @return Whether the GitLab Duo features setting is enforced for all subgroups.
+     * 
+     */
+    public Boolean lockDuoFeaturesEnabled() {
+        return this.lockDuoFeaturesEnabled;
+    }
+    /**
+     * @return Whether the math rendering limits setting is enforced for all subgroups.
+     * 
+     */
+    public Boolean lockMathRenderingLimitsEnabled() {
+        return this.lockMathRenderingLimitsEnabled;
+    }
+    /**
      * @return Date on which the group was marked for deletion.
      * 
      */
     public String markedForDeletionOn() {
         return this.markedForDeletionOn;
+    }
+    /**
+     * @return Whether math rendering limits are enabled for the group.
+     * 
+     */
+    public Boolean mathRenderingLimitsEnabled() {
+        return this.mathRenderingLimitsEnabled;
     }
     /**
      * @return Maximum artifacts size for the group, in MB.
@@ -464,6 +565,13 @@ public final class GetGroupsGroup {
      */
     public Boolean onlyAllowMergeIfPipelineSucceeds() {
         return this.onlyAllowMergeIfPipelineSucceeds;
+    }
+    /**
+     * @return The ID of the organization this group belongs to.
+     * 
+     */
+    public Integer organizationId() {
+        return this.organizationId;
     }
     /**
      * @return Integer, ID of the parent group.
@@ -610,6 +718,7 @@ public final class GetGroupsGroup {
     public static final class Builder {
         private Boolean allowMergeOnSkippedPipeline;
         private String allowedEmailDomainsList;
+        private Boolean archived;
         private Boolean autoDevopsEnabled;
         private String avatarUrl;
         private String createdAt;
@@ -618,8 +727,12 @@ public final class GetGroupsGroup {
         private Integer defaultBranchProtection;
         private List<GetGroupsGroupDefaultBranchProtectionDefault> defaultBranchProtectionDefaults;
         private String description;
+        private String duoAvailability;
+        private Boolean duoFeaturesEnabled;
         private Boolean emailsDisabled;
         private Boolean emailsEnabled;
+        private String enabledGitAccessProtocol;
+        private Boolean experimentFeaturesEnabled;
         private Integer extraSharedRunnersMinutesLimit;
         private Integer fileTemplateProjectId;
         private String fullName;
@@ -629,13 +742,17 @@ public final class GetGroupsGroup {
         private Integer ldapAccess;
         private String ldapCn;
         private Boolean lfsEnabled;
+        private Boolean lockDuoFeaturesEnabled;
+        private Boolean lockMathRenderingLimitsEnabled;
         private String markedForDeletionOn;
+        private Boolean mathRenderingLimitsEnabled;
         private Integer maxArtifactsSize;
         private Boolean membershipLock;
         private Boolean mentionsDisabled;
         private String name;
         private Boolean onlyAllowMergeIfAllDiscussionsAreResolved;
         private Boolean onlyAllowMergeIfPipelineSucceeds;
+        private Integer organizationId;
         private Integer parentId;
         private String path;
         private Boolean preventForkingOutsideGroup;
@@ -660,6 +777,7 @@ public final class GetGroupsGroup {
     	      Objects.requireNonNull(defaults);
     	      this.allowMergeOnSkippedPipeline = defaults.allowMergeOnSkippedPipeline;
     	      this.allowedEmailDomainsList = defaults.allowedEmailDomainsList;
+    	      this.archived = defaults.archived;
     	      this.autoDevopsEnabled = defaults.autoDevopsEnabled;
     	      this.avatarUrl = defaults.avatarUrl;
     	      this.createdAt = defaults.createdAt;
@@ -668,8 +786,12 @@ public final class GetGroupsGroup {
     	      this.defaultBranchProtection = defaults.defaultBranchProtection;
     	      this.defaultBranchProtectionDefaults = defaults.defaultBranchProtectionDefaults;
     	      this.description = defaults.description;
+    	      this.duoAvailability = defaults.duoAvailability;
+    	      this.duoFeaturesEnabled = defaults.duoFeaturesEnabled;
     	      this.emailsDisabled = defaults.emailsDisabled;
     	      this.emailsEnabled = defaults.emailsEnabled;
+    	      this.enabledGitAccessProtocol = defaults.enabledGitAccessProtocol;
+    	      this.experimentFeaturesEnabled = defaults.experimentFeaturesEnabled;
     	      this.extraSharedRunnersMinutesLimit = defaults.extraSharedRunnersMinutesLimit;
     	      this.fileTemplateProjectId = defaults.fileTemplateProjectId;
     	      this.fullName = defaults.fullName;
@@ -679,13 +801,17 @@ public final class GetGroupsGroup {
     	      this.ldapAccess = defaults.ldapAccess;
     	      this.ldapCn = defaults.ldapCn;
     	      this.lfsEnabled = defaults.lfsEnabled;
+    	      this.lockDuoFeaturesEnabled = defaults.lockDuoFeaturesEnabled;
+    	      this.lockMathRenderingLimitsEnabled = defaults.lockMathRenderingLimitsEnabled;
     	      this.markedForDeletionOn = defaults.markedForDeletionOn;
+    	      this.mathRenderingLimitsEnabled = defaults.mathRenderingLimitsEnabled;
     	      this.maxArtifactsSize = defaults.maxArtifactsSize;
     	      this.membershipLock = defaults.membershipLock;
     	      this.mentionsDisabled = defaults.mentionsDisabled;
     	      this.name = defaults.name;
     	      this.onlyAllowMergeIfAllDiscussionsAreResolved = defaults.onlyAllowMergeIfAllDiscussionsAreResolved;
     	      this.onlyAllowMergeIfPipelineSucceeds = defaults.onlyAllowMergeIfPipelineSucceeds;
+    	      this.organizationId = defaults.organizationId;
     	      this.parentId = defaults.parentId;
     	      this.path = defaults.path;
     	      this.preventForkingOutsideGroup = defaults.preventForkingOutsideGroup;
@@ -721,6 +847,14 @@ public final class GetGroupsGroup {
               throw new MissingRequiredPropertyException("GetGroupsGroup", "allowedEmailDomainsList");
             }
             this.allowedEmailDomainsList = allowedEmailDomainsList;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder archived(Boolean archived) {
+            if (archived == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "archived");
+            }
+            this.archived = archived;
             return this;
         }
         @CustomType.Setter
@@ -791,6 +925,22 @@ public final class GetGroupsGroup {
             return this;
         }
         @CustomType.Setter
+        public Builder duoAvailability(String duoAvailability) {
+            if (duoAvailability == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "duoAvailability");
+            }
+            this.duoAvailability = duoAvailability;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder duoFeaturesEnabled(Boolean duoFeaturesEnabled) {
+            if (duoFeaturesEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "duoFeaturesEnabled");
+            }
+            this.duoFeaturesEnabled = duoFeaturesEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder emailsDisabled(Boolean emailsDisabled) {
             if (emailsDisabled == null) {
               throw new MissingRequiredPropertyException("GetGroupsGroup", "emailsDisabled");
@@ -804,6 +954,22 @@ public final class GetGroupsGroup {
               throw new MissingRequiredPropertyException("GetGroupsGroup", "emailsEnabled");
             }
             this.emailsEnabled = emailsEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enabledGitAccessProtocol(String enabledGitAccessProtocol) {
+            if (enabledGitAccessProtocol == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "enabledGitAccessProtocol");
+            }
+            this.enabledGitAccessProtocol = enabledGitAccessProtocol;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder experimentFeaturesEnabled(Boolean experimentFeaturesEnabled) {
+            if (experimentFeaturesEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "experimentFeaturesEnabled");
+            }
+            this.experimentFeaturesEnabled = experimentFeaturesEnabled;
             return this;
         }
         @CustomType.Setter
@@ -879,11 +1045,35 @@ public final class GetGroupsGroup {
             return this;
         }
         @CustomType.Setter
+        public Builder lockDuoFeaturesEnabled(Boolean lockDuoFeaturesEnabled) {
+            if (lockDuoFeaturesEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "lockDuoFeaturesEnabled");
+            }
+            this.lockDuoFeaturesEnabled = lockDuoFeaturesEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lockMathRenderingLimitsEnabled(Boolean lockMathRenderingLimitsEnabled) {
+            if (lockMathRenderingLimitsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "lockMathRenderingLimitsEnabled");
+            }
+            this.lockMathRenderingLimitsEnabled = lockMathRenderingLimitsEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder markedForDeletionOn(String markedForDeletionOn) {
             if (markedForDeletionOn == null) {
               throw new MissingRequiredPropertyException("GetGroupsGroup", "markedForDeletionOn");
             }
             this.markedForDeletionOn = markedForDeletionOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mathRenderingLimitsEnabled(Boolean mathRenderingLimitsEnabled) {
+            if (mathRenderingLimitsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "mathRenderingLimitsEnabled");
+            }
+            this.mathRenderingLimitsEnabled = mathRenderingLimitsEnabled;
             return this;
         }
         @CustomType.Setter
@@ -932,6 +1122,14 @@ public final class GetGroupsGroup {
               throw new MissingRequiredPropertyException("GetGroupsGroup", "onlyAllowMergeIfPipelineSucceeds");
             }
             this.onlyAllowMergeIfPipelineSucceeds = onlyAllowMergeIfPipelineSucceeds;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder organizationId(Integer organizationId) {
+            if (organizationId == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "organizationId");
+            }
+            this.organizationId = organizationId;
             return this;
         }
         @CustomType.Setter
@@ -1093,6 +1291,7 @@ public final class GetGroupsGroup {
             final var _resultValue = new GetGroupsGroup();
             _resultValue.allowMergeOnSkippedPipeline = allowMergeOnSkippedPipeline;
             _resultValue.allowedEmailDomainsList = allowedEmailDomainsList;
+            _resultValue.archived = archived;
             _resultValue.autoDevopsEnabled = autoDevopsEnabled;
             _resultValue.avatarUrl = avatarUrl;
             _resultValue.createdAt = createdAt;
@@ -1101,8 +1300,12 @@ public final class GetGroupsGroup {
             _resultValue.defaultBranchProtection = defaultBranchProtection;
             _resultValue.defaultBranchProtectionDefaults = defaultBranchProtectionDefaults;
             _resultValue.description = description;
+            _resultValue.duoAvailability = duoAvailability;
+            _resultValue.duoFeaturesEnabled = duoFeaturesEnabled;
             _resultValue.emailsDisabled = emailsDisabled;
             _resultValue.emailsEnabled = emailsEnabled;
+            _resultValue.enabledGitAccessProtocol = enabledGitAccessProtocol;
+            _resultValue.experimentFeaturesEnabled = experimentFeaturesEnabled;
             _resultValue.extraSharedRunnersMinutesLimit = extraSharedRunnersMinutesLimit;
             _resultValue.fileTemplateProjectId = fileTemplateProjectId;
             _resultValue.fullName = fullName;
@@ -1112,13 +1315,17 @@ public final class GetGroupsGroup {
             _resultValue.ldapAccess = ldapAccess;
             _resultValue.ldapCn = ldapCn;
             _resultValue.lfsEnabled = lfsEnabled;
+            _resultValue.lockDuoFeaturesEnabled = lockDuoFeaturesEnabled;
+            _resultValue.lockMathRenderingLimitsEnabled = lockMathRenderingLimitsEnabled;
             _resultValue.markedForDeletionOn = markedForDeletionOn;
+            _resultValue.mathRenderingLimitsEnabled = mathRenderingLimitsEnabled;
             _resultValue.maxArtifactsSize = maxArtifactsSize;
             _resultValue.membershipLock = membershipLock;
             _resultValue.mentionsDisabled = mentionsDisabled;
             _resultValue.name = name;
             _resultValue.onlyAllowMergeIfAllDiscussionsAreResolved = onlyAllowMergeIfAllDiscussionsAreResolved;
             _resultValue.onlyAllowMergeIfPipelineSucceeds = onlyAllowMergeIfPipelineSucceeds;
+            _resultValue.organizationId = organizationId;
             _resultValue.parentId = parentId;
             _resultValue.path = path;
             _resultValue.preventForkingOutsideGroup = preventForkingOutsideGroup;

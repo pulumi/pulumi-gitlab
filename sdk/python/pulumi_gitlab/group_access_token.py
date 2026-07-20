@@ -34,7 +34,7 @@ class GroupAccessTokenArgs:
 
         :param pulumi.Input[_builtins.str] group: The ID or full path of the group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
-        :param pulumi.Input[_builtins.str] access_level: The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        :param pulumi.Input[_builtins.str] access_level: The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         :param pulumi.Input[_builtins.str] description: The description of the group access token.
         :param pulumi.Input[_builtins.str] expires_at: When the token will expire, YYYY-MM-DD format.
         :param pulumi.Input[_builtins.str] name: The name of the group access token.
@@ -84,7 +84,7 @@ class GroupAccessTokenArgs:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
@@ -172,7 +172,7 @@ class _GroupAccessTokenState:
         """
         Input properties used for looking up and filtering GroupAccessToken resources.
 
-        :param pulumi.Input[_builtins.str] access_level: The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        :param pulumi.Input[_builtins.str] access_level: The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         :param pulumi.Input[_builtins.bool] active: True if the token is active.
         :param pulumi.Input[_builtins.str] created_at: Time the token has been created, RFC3339 format.
         :param pulumi.Input[_builtins.str] description: The description of the group access token.
@@ -217,7 +217,7 @@ class _GroupAccessTokenState:
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         """
         return pulumi.get(self, "access_level")
 
@@ -431,7 +431,7 @@ class GroupAccessToken(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_level: The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        :param pulumi.Input[_builtins.str] access_level: The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         :param pulumi.Input[_builtins.str] description: The description of the group access token.
         :param pulumi.Input[_builtins.str] expires_at: When the token will expire, YYYY-MM-DD format.
         :param pulumi.Input[_builtins.str] group: The ID or full path of the group.
@@ -571,7 +571,7 @@ class GroupAccessToken(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_level: The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        :param pulumi.Input[_builtins.str] access_level: The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         :param pulumi.Input[_builtins.bool] active: True if the token is active.
         :param pulumi.Input[_builtins.str] created_at: Time the token has been created, RFC3339 format.
         :param pulumi.Input[_builtins.str] description: The description of the group access token.
@@ -608,7 +608,7 @@ class GroupAccessToken(pulumi.CustomResource):
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Output[_builtins.str]:
         """
-        The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
+        The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `security_manager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
         """
         return pulumi.get(self, "access_level")
 

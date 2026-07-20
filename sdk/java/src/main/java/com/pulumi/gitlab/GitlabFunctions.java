@@ -80,6 +80,8 @@ import com.pulumi.gitlab.inputs.GetProjectBranchesArgs;
 import com.pulumi.gitlab.inputs.GetProjectBranchesPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectEnvironmentsArgs;
 import com.pulumi.gitlab.inputs.GetProjectEnvironmentsPlainArgs;
+import com.pulumi.gitlab.inputs.GetProjectErrorTrackingSettingsArgs;
+import com.pulumi.gitlab.inputs.GetProjectErrorTrackingSettingsPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectHookArgs;
 import com.pulumi.gitlab.inputs.GetProjectHookPlainArgs;
 import com.pulumi.gitlab.inputs.GetProjectHooksArgs;
@@ -195,6 +197,7 @@ import com.pulumi.gitlab.outputs.GetProjectAccessTokensResult;
 import com.pulumi.gitlab.outputs.GetProjectApprovalRulesResult;
 import com.pulumi.gitlab.outputs.GetProjectBranchesResult;
 import com.pulumi.gitlab.outputs.GetProjectEnvironmentsResult;
+import com.pulumi.gitlab.outputs.GetProjectErrorTrackingSettingsResult;
 import com.pulumi.gitlab.outputs.GetProjectHookResult;
 import com.pulumi.gitlab.outputs.GetProjectHooksResult;
 import com.pulumi.gitlab.outputs.GetProjectIdsResult;
@@ -6901,6 +6904,216 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetProjectEnvironmentsResult> getProjectEnvironmentsPlain(GetProjectEnvironmentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectEnvironments:getProjectEnvironments", TypeShape.of(GetProjectEnvironmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.ProjectErrorTrackingSettings` data source retrieves error tracking settings for a GitLab project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/error_tracking/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectErrorTrackingSettingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectErrorTrackingSettings(GetProjectErrorTrackingSettingsArgs.builder()
+     *             .project("mygroup/myproject")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectErrorTrackingSettingsResult> getProjectErrorTrackingSettings(GetProjectErrorTrackingSettingsArgs args) {
+        return getProjectErrorTrackingSettings(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.ProjectErrorTrackingSettings` data source retrieves error tracking settings for a GitLab project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/error_tracking/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectErrorTrackingSettingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectErrorTrackingSettings(GetProjectErrorTrackingSettingsArgs.builder()
+     *             .project("mygroup/myproject")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProjectErrorTrackingSettingsResult> getProjectErrorTrackingSettingsPlain(GetProjectErrorTrackingSettingsPlainArgs args) {
+        return getProjectErrorTrackingSettingsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.ProjectErrorTrackingSettings` data source retrieves error tracking settings for a GitLab project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/error_tracking/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectErrorTrackingSettingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectErrorTrackingSettings(GetProjectErrorTrackingSettingsArgs.builder()
+     *             .project("mygroup/myproject")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectErrorTrackingSettingsResult> getProjectErrorTrackingSettings(GetProjectErrorTrackingSettingsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectErrorTrackingSettings:getProjectErrorTrackingSettings", TypeShape.of(GetProjectErrorTrackingSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.ProjectErrorTrackingSettings` data source retrieves error tracking settings for a GitLab project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/error_tracking/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectErrorTrackingSettingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectErrorTrackingSettings(GetProjectErrorTrackingSettingsArgs.builder()
+     *             .project("mygroup/myproject")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProjectErrorTrackingSettingsResult> getProjectErrorTrackingSettings(GetProjectErrorTrackingSettingsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getProjectErrorTrackingSettings:getProjectErrorTrackingSettings", TypeShape.of(GetProjectErrorTrackingSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.ProjectErrorTrackingSettings` data source retrieves error tracking settings for a GitLab project.
+     * 
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/error_tracking/)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetProjectErrorTrackingSettingsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getProjectErrorTrackingSettings(GetProjectErrorTrackingSettingsArgs.builder()
+     *             .project("mygroup/myproject")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProjectErrorTrackingSettingsResult> getProjectErrorTrackingSettingsPlain(GetProjectErrorTrackingSettingsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getProjectErrorTrackingSettings:getProjectErrorTrackingSettings", TypeShape.of(GetProjectErrorTrackingSettingsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.ProjectHook` data source retrieves details about a hook in a project.
