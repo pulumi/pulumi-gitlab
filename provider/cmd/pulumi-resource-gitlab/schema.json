@@ -36151,10 +36151,6 @@
                         "description": "Return merge requests created before the given time. Expected in RFC3339 format (2006-01-02T15:04:05Z).\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "iids": {
                         "description": "The unique internal IDs of the merge requests.\n",
                         "items": {
@@ -36228,8 +36224,7 @@
                 },
                 "required": [
                     "mergeRequests",
-                    "project",
-                    "id"
+                    "project"
                 ],
                 "type": "object"
             }
