@@ -158,10 +158,6 @@ export interface GetProjectMergeRequestsResult {
      */
     readonly createdBefore?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The unique internal IDs of the merge requests.
      */
     readonly iids?: number[];
