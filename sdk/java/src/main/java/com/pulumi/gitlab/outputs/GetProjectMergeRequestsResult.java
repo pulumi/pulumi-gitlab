@@ -36,11 +36,6 @@ public final class GetProjectMergeRequestsResult {
      */
     private @Nullable String createdBefore;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The unique internal IDs of the merge requests.
      * 
      */
@@ -149,13 +144,6 @@ public final class GetProjectMergeRequestsResult {
      */
     public Optional<String> createdBefore() {
         return Optional.ofNullable(this.createdBefore);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return The unique internal IDs of the merge requests.
@@ -283,7 +271,6 @@ public final class GetProjectMergeRequestsResult {
         private @Nullable String authorUsername;
         private @Nullable String createdAfter;
         private @Nullable String createdBefore;
-        private String id;
         private @Nullable List<Integer> iids;
         private List<GetProjectMergeRequestsMergeRequest> mergeRequests;
         private @Nullable String milestone;
@@ -307,7 +294,6 @@ public final class GetProjectMergeRequestsResult {
     	      this.authorUsername = defaults.authorUsername;
     	      this.createdAfter = defaults.createdAfter;
     	      this.createdBefore = defaults.createdBefore;
-    	      this.id = defaults.id;
     	      this.iids = defaults.iids;
     	      this.mergeRequests = defaults.mergeRequests;
     	      this.milestone = defaults.milestone;
@@ -348,14 +334,6 @@ public final class GetProjectMergeRequestsResult {
         public Builder createdBefore(@Nullable String createdBefore) {
 
             this.createdBefore = createdBefore;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetProjectMergeRequestsResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -470,7 +448,6 @@ public final class GetProjectMergeRequestsResult {
             _resultValue.authorUsername = authorUsername;
             _resultValue.createdAfter = createdAfter;
             _resultValue.createdBefore = createdBefore;
-            _resultValue.id = id;
             _resultValue.iids = iids;
             _resultValue.mergeRequests = mergeRequests;
             _resultValue.milestone = milestone;

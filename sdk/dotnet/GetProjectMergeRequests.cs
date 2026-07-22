@@ -398,10 +398,6 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string? CreatedBefore;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The unique internal IDs of the merge requests.
         /// </summary>
         public readonly ImmutableArray<int> Iids;
@@ -476,8 +472,6 @@ namespace Pulumi.GitLab
 
             string? createdBefore,
 
-            string id,
-
             ImmutableArray<int> iids,
 
             ImmutableArray<Outputs.GetProjectMergeRequestsMergeRequestResult> mergeRequests,
@@ -514,7 +508,6 @@ namespace Pulumi.GitLab
             AuthorUsername = authorUsername;
             CreatedAfter = createdAfter;
             CreatedBefore = createdBefore;
-            Id = id;
             Iids = iids;
             MergeRequests = mergeRequests;
             Milestone = milestone;

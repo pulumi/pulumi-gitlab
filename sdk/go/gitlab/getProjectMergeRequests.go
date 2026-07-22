@@ -113,8 +113,6 @@ type GetProjectMergeRequestsResult struct {
 	CreatedAfter *string `pulumi:"createdAfter"`
 	// Return merge requests created before the given time. Expected in RFC3339 format (2006-01-02T15:04:05Z).
 	CreatedBefore *string `pulumi:"createdBefore"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The unique internal IDs of the merge requests.
 	Iids []int `pulumi:"iids"`
 	// The list of merge requests.
@@ -237,11 +235,6 @@ func (o GetProjectMergeRequestsResultOutput) CreatedAfter() pulumi.StringPtrOutp
 // Return merge requests created before the given time. Expected in RFC3339 format (2006-01-02T15:04:05Z).
 func (o GetProjectMergeRequestsResultOutput) CreatedBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectMergeRequestsResult) *string { return v.CreatedBefore }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetProjectMergeRequestsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectMergeRequestsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The unique internal IDs of the merge requests.

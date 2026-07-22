@@ -27,7 +27,7 @@ class GetProjectMergeRequestsResult:
     """
     A collection of values returned by getProjectMergeRequests.
     """
-    def __init__(__self__, author_id=None, author_username=None, created_after=None, created_before=None, id=None, iids=None, merge_requests=None, milestone=None, my_reaction_emoji=None, order_by=None, project=None, reviewer_username=None, scope=None, search=None, sort=None, source_branch=None, state=None, target_branch=None, updated_after=None, updated_before=None, wip=None):
+    def __init__(__self__, author_id=None, author_username=None, created_after=None, created_before=None, iids=None, merge_requests=None, milestone=None, my_reaction_emoji=None, order_by=None, project=None, reviewer_username=None, scope=None, search=None, sort=None, source_branch=None, state=None, target_branch=None, updated_after=None, updated_before=None, wip=None):
         if author_id and not isinstance(author_id, int):
             raise TypeError("Expected argument 'author_id' to be a int")
         pulumi.set(__self__, "author_id", author_id)
@@ -40,9 +40,6 @@ class GetProjectMergeRequestsResult:
         if created_before and not isinstance(created_before, str):
             raise TypeError("Expected argument 'created_before' to be a str")
         pulumi.set(__self__, "created_before", created_before)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if iids and not isinstance(iids, list):
             raise TypeError("Expected argument 'iids' to be a list")
         pulumi.set(__self__, "iids", iids)
@@ -123,14 +120,6 @@ class GetProjectMergeRequestsResult:
         Return merge requests created before the given time. Expected in RFC3339 format (2006-01-02T15:04:05Z).
         """
         return pulumi.get(self, "created_before")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -271,7 +260,6 @@ class AwaitableGetProjectMergeRequestsResult(GetProjectMergeRequestsResult):
             author_username=self.author_username,
             created_after=self.created_after,
             created_before=self.created_before,
-            id=self.id,
             iids=self.iids,
             merge_requests=self.merge_requests,
             milestone=self.milestone,
@@ -379,7 +367,6 @@ def get_project_merge_requests(author_id: Optional[_builtins.int] = None,
         author_username=pulumi.get(__ret__, 'author_username'),
         created_after=pulumi.get(__ret__, 'created_after'),
         created_before=pulumi.get(__ret__, 'created_before'),
-        id=pulumi.get(__ret__, 'id'),
         iids=pulumi.get(__ret__, 'iids'),
         merge_requests=pulumi.get(__ret__, 'merge_requests'),
         milestone=pulumi.get(__ret__, 'milestone'),
@@ -484,7 +471,6 @@ def get_project_merge_requests_output(author_id: pulumi.Input[Optional[Optional[
         author_username=pulumi.get(__response__, 'author_username'),
         created_after=pulumi.get(__response__, 'created_after'),
         created_before=pulumi.get(__response__, 'created_before'),
-        id=pulumi.get(__response__, 'id'),
         iids=pulumi.get(__response__, 'iids'),
         merge_requests=pulumi.get(__response__, 'merge_requests'),
         milestone=pulumi.get(__response__, 'milestone'),
