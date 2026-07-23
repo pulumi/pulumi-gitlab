@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-gitlab/provider/v10
 
-go 1.26.3
+go 1.26.5
 
 require (
 	github.com/pulumi/providertest v0.7.0
@@ -226,7 +226,7 @@ require (
 	github.com/yuin/goldmark v1.7.17 // indirect
 	github.com/zalando/go-keyring v0.2.8 // indirect
 	github.com/zclconf/go-cty v1.18.1 // indirect
-	gitlab.com/gitlab-org/api/client-go/v2 v2.44.0 // indirect
+	gitlab.com/gitlab-org/api/client-go/v2 v2.46.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/collector/featuregate v1.62.0 // indirect
 	go.opentelemetry.io/collector/pdata v1.62.0 // indirect
