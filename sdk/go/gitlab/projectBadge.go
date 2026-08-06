@@ -37,7 +37,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectBadge(ctx, "example", &gitlab.ProjectBadgeArgs{
-//				Project:  foo.ID(),
+//				Project:  foo.ID().ToIDOutput().ToStringOutput(),
 //				LinkUrl:  pulumi.String("https://example.com/badge-123"),
 //				ImageUrl: pulumi.String("https://example.com/badge-123.svg"),
 //				Name:     pulumi.String("badge-123"),
@@ -47,7 +47,7 @@ import (
 //			}
 //			// Pipeline status badges with placeholders will be enabled
 //			_, err = gitlab.NewProjectBadge(ctx, "gitlab_pipeline", &gitlab.ProjectBadgeArgs{
-//				Project:  foo.ID(),
+//				Project:  foo.ID().ToIDOutput().ToStringOutput(),
 //				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}"),
 //				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg"),
 //				Name:     pulumi.String("badge-pipeline"),
@@ -57,7 +57,7 @@ import (
 //			}
 //			// Test coverage report badges with placeholders will be enabled
 //			_, err = gitlab.NewProjectBadge(ctx, "gitlab_coverage", &gitlab.ProjectBadgeArgs{
-//				Project:  foo.ID(),
+//				Project:  foo.ID().ToIDOutput().ToStringOutput(),
 //				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/jobs"),
 //				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg"),
 //				Name:     pulumi.String("badge-coverage"),
@@ -67,7 +67,7 @@ import (
 //			}
 //			// Latest release badges with placeholders will be enabled
 //			_, err = gitlab.NewProjectBadge(ctx, "gitlab_release", &gitlab.ProjectBadgeArgs{
-//				Project:  foo.ID(),
+//				Project:  foo.ID().ToIDOutput().ToStringOutput(),
 //				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/releases"),
 //				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/-/badges/release.svg"),
 //				Name:     pulumi.String("badge-release"),

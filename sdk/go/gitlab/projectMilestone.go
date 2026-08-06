@@ -41,7 +41,7 @@ import (
 //			}
 //			// Basic milestone with required fields only
 //			_, err = gitlab.NewProjectMilestone(ctx, "example", &gitlab.ProjectMilestoneArgs{
-//				Project: example.ID(),
+//				Project: example.ID().ToIDOutput().ToStringOutput(),
 //				Title:   pulumi.String("example"),
 //			})
 //			if err != nil {
@@ -49,7 +49,7 @@ import (
 //			}
 //			// Comprehensive milestone with all optional fields
 //			_, err = gitlab.NewProjectMilestone(ctx, "comprehensive", &gitlab.ProjectMilestoneArgs{
-//				Project:     example.ID(),
+//				Project:     example.ID().ToIDOutput().ToStringOutput(),
 //				Title:       pulumi.String("Q4 2024 Release"),
 //				Description: pulumi.String("Major release for Q4 2024"),
 //				StartDate:   pulumi.String("2024-01-01"),

@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIntegrationEmailsOnPush(ctx, "emails", &gitlab.ProjectIntegrationEmailsOnPushArgs{
-//				Project:                awesomeProject.ID(),
+//				Project:                awesomeProject.ID().ToIDOutput().ToStringOutput(),
 //				Recipients:             pulumi.String("myrecipient@example.com myotherrecipient@example.com"),
 //				DisableDiffs:           pulumi.Bool(false),
 //				SendFromCommitterEmail: pulumi.Bool(false),

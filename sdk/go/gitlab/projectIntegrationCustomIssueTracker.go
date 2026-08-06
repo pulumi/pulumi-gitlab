@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIntegrationCustomIssueTracker(ctx, "tracker", &gitlab.ProjectIntegrationCustomIssueTrackerArgs{
-//				Project:    awesomeProject.ID(),
+//				Project:    awesomeProject.ID().ToIDOutput().ToStringOutput(),
 //				ProjectUrl: pulumi.String("https://customtracker.com/issues"),
 //				IssuesUrl:  pulumi.String("https://customtracker.com/TEST-:id"),
 //			})

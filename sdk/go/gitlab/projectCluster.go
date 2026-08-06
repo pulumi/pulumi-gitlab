@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectCluster(ctx, "bar", &gitlab.ProjectClusterArgs{
-//				Project:                     foo.ID(),
+//				Project:                     foo.ID().ToIDOutput().ToStringOutput(),
 //				Name:                        pulumi.String("bar-cluster"),
 //				Domain:                      pulumi.String("example.com"),
 //				Enabled:                     pulumi.Bool(true),

@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIntegrationYoutrack(ctx, "default", &gitlab.ProjectIntegrationYoutrackArgs{
-//				Project:    myProject.ID(),
+//				Project:    myProject.ID().ToIDOutput().ToStringOutput(),
 //				IssuesUrl:  pulumi.String("https://my.youtrack.com/issue/:id"),
 //				ProjectUrl: pulumi.String("https://my.youtrack.com"),
 //			})

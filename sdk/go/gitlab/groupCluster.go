@@ -40,7 +40,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewGroupCluster(ctx, "bar", &gitlab.GroupClusterArgs{
-//				Group:                       foo.ID(),
+//				Group:                       foo.ID().ToIDOutput().ToStringOutput(),
 //				Name:                        pulumi.String("bar-cluster"),
 //				Domain:                      pulumi.String("example.com"),
 //				Enabled:                     pulumi.Bool(true),

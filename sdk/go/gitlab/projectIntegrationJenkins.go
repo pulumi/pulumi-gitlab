@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIntegrationJenkins(ctx, "jenkins", &gitlab.ProjectIntegrationJenkinsArgs{
-//				Project:     awesomeProject.ID(),
+//				Project:     awesomeProject.ID().ToIDOutput().ToStringOutput(),
 //				JenkinsUrl:  pulumi.String("http://jenkins.example.com"),
 //				ProjectName: pulumi.String("my_project_name"),
 //			})

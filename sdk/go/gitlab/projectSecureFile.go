@@ -23,6 +23,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -41,7 +43,7 @@ import (
 //			}
 //			thisProject, err := gitlab.NewProject(ctx, "this", &gitlab.ProjectArgs{
 //				Name:                 pulumi.String("example"),
-//				NamespaceId:          this.ID(),
+//				NamespaceId:          this.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				InitializeWithReadme: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -55,7 +57,7 @@ import (
 //			}
 //			_, err = gitlab.NewProjectSecureFile(ctx, "this", &gitlab.ProjectSecureFileArgs{
 //				Name:    pulumi.String("my-secure-file"),
-//				Project: thisProject.ID(),
+//				Project: thisProject.ID().ToIDOutput().ToStringOutput(),
 //				Content: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
@@ -69,7 +71,7 @@ import (
 //			}
 //			_, err = gitlab.NewProjectSecureFile(ctx, "disable_poll_for_metadata", &gitlab.ProjectSecureFileArgs{
 //				Name:                             pulumi.String("my-secure-file"),
-//				Project:                          thisProject.ID(),
+//				Project:                          thisProject.ID().ToIDOutput().ToStringOutput(),
 //				Content:                          pulumi.String(invokeFile1.Result),
 //				PollForMetadataDurationInSeconds: 0,
 //			})

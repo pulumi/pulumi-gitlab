@@ -46,7 +46,7 @@ import (
 //			}
 //			// Upload a deployment key for the parent repo
 //			parentDeployKey, err := gitlab.NewDeployKey(ctx, "parent", &gitlab.DeployKeyArgs{
-//				Project: parent.ID(),
+//				Project: parent.ID().ToIDOutput().ToStringOutput(),
 //				Title:   pulumi.String("Example deploy key"),
 //				Key:     pulumi.String("ssh-ed25519 AAAA..."),
 //			})
@@ -55,7 +55,7 @@ import (
 //			}
 //			// Enable the deployment key on the second repo
 //			_, err = gitlab.NewDeployKeyEnable(ctx, "foo", &gitlab.DeployKeyEnableArgs{
-//				Project: foo.ID(),
+//				Project: foo.ID().ToIDOutput().ToStringOutput(),
 //				KeyId:   parentDeployKey.DeployKeyId,
 //			})
 //			if err != nil {

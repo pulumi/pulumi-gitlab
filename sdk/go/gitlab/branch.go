@@ -44,7 +44,7 @@ import (
 //			_, err = gitlab.NewBranch(ctx, "example", &gitlab.BranchArgs{
 //				Name:    pulumi.String("example"),
 //				Ref:     pulumi.String("main"),
-//				Project: example.ID(),
+//				Project: example.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewGroupIntegrationMicrosoftTeams(ctx, "teams", &gitlab.GroupIntegrationMicrosoftTeamsArgs{
-//				Group:                     exampleGroup.ID(),
+//				Group:                     exampleGroup.ID().ToIDOutput().ToStringOutput(),
 //				Webhook:                   pulumi.String("https://outlook.office.com/webhook/..."),
 //				NotifyOnlyBrokenPipelines: pulumi.Bool(false),
 //				BranchesToBeNotified:      pulumi.String("all"),

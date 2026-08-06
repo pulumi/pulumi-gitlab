@@ -25,6 +25,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -50,26 +52,26 @@ import (
 //				return err
 //			}
 //			exampleProjectMembership, err := gitlab.NewProjectMembership(ctx, "example", &gitlab.ProjectMembershipArgs{
-//				Project:     example.ID(),
-//				UserId:      exampleUser.ID(),
+//				Project:     example.ID().ToIDOutput().ToStringOutput(),
+//				UserId:      exampleUser.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				AccessLevel: pulumi.String("developer"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleProjectMilestone, err := gitlab.NewProjectMilestone(ctx, "example", &gitlab.ProjectMilestoneArgs{
-//				Project: example.ID(),
+//				Project: example.ID().ToIDOutput().ToStringOutput(),
 //				Title:   pulumi.String("m1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIssueBoard(ctx, "this", &gitlab.ProjectIssueBoardArgs{
-//				Project: example.ID(),
+//				Project: example.ID().ToIDOutput().ToStringOutput(),
 //				Name:    pulumi.String("Test Issue Board"),
 //				Lists: gitlab.ProjectIssueBoardListArray{
 //					&gitlab.ProjectIssueBoardListArgs{
-//						AssigneeId: exampleUser.ID(),
+//						AssigneeId: exampleUser.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //					},
 //					&gitlab.ProjectIssueBoardListArgs{
 //						MilestoneId: exampleProjectMilestone.MilestoneId,
@@ -82,11 +84,11 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIssueBoard(ctx, "list_syntax", &gitlab.ProjectIssueBoardArgs{
-//				Project: example.ID(),
+//				Project: example.ID().ToIDOutput().ToStringOutput(),
 //				Name:    pulumi.String("Test Issue Board with list syntax"),
 //				Lists: gitlab.ProjectIssueBoardListArray{
 //					&gitlab.ProjectIssueBoardListArgs{
-//						AssigneeId: exampleUser.ID(),
+//						AssigneeId: exampleUser.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //					},
 //					&gitlab.ProjectIssueBoardListArgs{
 //						MilestoneId: exampleProjectMilestone.MilestoneId,

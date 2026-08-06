@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIntegrationMatrix(ctx, "matrix", &gitlab.ProjectIntegrationMatrixArgs{
-//				Project:  awesomeProject.ID(),
+//				Project:  awesomeProject.ID().ToIDOutput().ToStringOutput(),
 //				Hostname: pulumi.String("https://matrix.org"),
 //				Token:    pulumi.String("your-matrix-token"),
 //				Room:     pulumi.String("!abcdefg:matrix.org"),

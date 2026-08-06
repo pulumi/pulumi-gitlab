@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewGroupBadge(ctx, "example", &gitlab.GroupBadgeArgs{
-//				Group:    foo.ID(),
+//				Group:    foo.ID().ToIDOutput().ToStringOutput(),
 //				LinkUrl:  pulumi.String("https://example.com/badge-123"),
 //				ImageUrl: pulumi.String("https://example.com/badge-123.svg"),
 //			})
@@ -47,7 +47,7 @@ import (
 //			}
 //			// Pipeline status badges with placeholders will be enabled for each project
 //			_, err = gitlab.NewGroupBadge(ctx, "gitlab_pipeline", &gitlab.GroupBadgeArgs{
-//				Group:    foo.ID(),
+//				Group:    foo.ID().ToIDOutput().ToStringOutput(),
 //				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/pipelines?ref=%{default_branch}"),
 //				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/pipeline.svg"),
 //			})
@@ -56,7 +56,7 @@ import (
 //			}
 //			// Test coverage report badges with placeholders will be enabled for each project
 //			_, err = gitlab.NewGroupBadge(ctx, "gitlab_coverage", &gitlab.GroupBadgeArgs{
-//				Group:    foo.ID(),
+//				Group:    foo.ID().ToIDOutput().ToStringOutput(),
 //				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/jobs"),
 //				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/badges/%{default_branch}/coverage.svg"),
 //			})
@@ -65,7 +65,7 @@ import (
 //			}
 //			// Latest release badges with placeholders will be enabled for each project
 //			_, err = gitlab.NewGroupBadge(ctx, "gitlab_release", &gitlab.GroupBadgeArgs{
-//				Group:    foo.ID(),
+//				Group:    foo.ID().ToIDOutput().ToStringOutput(),
 //				LinkUrl:  pulumi.String("https://gitlab.example.com/%{project_path}/-/releases"),
 //				ImageUrl: pulumi.String("https://gitlab.example.com/%{project_path}/-/badges/release.svg"),
 //			})

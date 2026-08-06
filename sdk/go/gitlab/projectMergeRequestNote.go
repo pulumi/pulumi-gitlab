@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectMergeRequestNote(ctx, "example", &gitlab.ProjectMergeRequestNoteArgs{
-//				Project:         example.ID(),
+//				Project:         example.ID().ToIDOutput().ToStringOutput(),
 //				MergeRequestIid: pulumi.Int(456),
 //				Body:            pulumi.String("Example note"),
 //			})

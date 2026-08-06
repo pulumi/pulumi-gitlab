@@ -23,6 +23,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -41,7 +43,7 @@ import (
 //			}
 //			// The service account against the top-level group
 //			exampleSa, err := gitlab.NewGroupServiceAccount(ctx, "example_sa", &gitlab.GroupServiceAccountArgs{
-//				Group:    example.ID(),
+//				Group:    example.ID().ToIDOutput().ToStringOutput(),
 //				Name:     pulumi.String("example-name"),
 //				Username: pulumi.String("example-username"),
 //			})
@@ -59,7 +61,7 @@ import (
 //			}
 //			// To assign the service account to a group
 //			_, err = gitlab.NewGroupMembership(ctx, "example_membership", &gitlab.GroupMembershipArgs{
-//				GroupId:     exampleSubgroup.ID(),
+//				GroupId:     exampleSubgroup.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				UserId:      exampleSa.ServiceAccountId,
 //				AccessLevel: pulumi.String("developer"),
 //				ExpiresAt:   pulumi.String("2020-03-14"),

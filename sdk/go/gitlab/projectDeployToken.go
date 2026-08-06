@@ -46,7 +46,7 @@ import (
 //				return err
 //			}
 //			invokeTimeadd, err := std.Timeadd(ctx, &std.TimeaddArgs{
-//				Duration:  std.Timestamp(ctx, &std.TimestampArgs{}, nil).Result,
+//				Duration:  std.Timestamp(ctx, std.TimestampArgs{}, nil).Result,
 //				Timestamp: "24h",
 //			}, nil)
 //			if err != nil {
