@@ -37,7 +37,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectLabel(ctx, "fixme", &gitlab.ProjectLabelArgs{
-//				Project:     example.ID(),
+//				Project:     example.ID().ToIDOutput().ToStringOutput(),
 //				Name:        pulumi.String("fixme"),
 //				Description: pulumi.String("issue with failing tests"),
 //				Color:       pulumi.String("#ffcc00"),
@@ -47,7 +47,7 @@ import (
 //			}
 //			// Scoped label
 //			_, err = gitlab.NewProjectLabel(ctx, "devops_create", &gitlab.ProjectLabelArgs{
-//				Project:     example.ID(),
+//				Project:     example.ID().ToIDOutput().ToStringOutput(),
 //				Name:        pulumi.String("devops::create"),
 //				Description: pulumi.String("issue for creating infrastructure resources"),
 //				Color:       pulumi.String("#ffa500"),

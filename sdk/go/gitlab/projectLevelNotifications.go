@@ -42,7 +42,7 @@ import (
 //			}
 //			// Basic example
 //			_, err = gitlab.NewProjectLevelNotifications(ctx, "notifications", &gitlab.ProjectLevelNotificationsArgs{
-//				Project: example.ID(),
+//				Project: example.ID().ToIDOutput().ToStringOutput(),
 //				Level:   pulumi.String("global"),
 //			})
 //			if err != nil {
@@ -50,7 +50,7 @@ import (
 //			}
 //			// Custom notification example
 //			_, err = gitlab.NewProjectLevelNotifications(ctx, "custom", &gitlab.ProjectLevelNotificationsArgs{
-//				Project:         example.ID(),
+//				Project:         example.ID().ToIDOutput().ToStringOutput(),
 //				Level:           pulumi.String("custom"),
 //				NewMergeRequest: pulumi.Bool(true),
 //			})

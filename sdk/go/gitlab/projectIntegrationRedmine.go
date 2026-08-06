@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIntegrationRedmine(ctx, "redmine", &gitlab.ProjectIntegrationRedmineArgs{
-//				Project:     awesomeProject.ID(),
+//				Project:     awesomeProject.ID().ToIDOutput().ToStringOutput(),
 //				NewIssueUrl: pulumi.String("https://redmine.example.com/issue"),
 //				ProjectUrl:  pulumi.String("https://redmine.example.com/project"),
 //				IssuesUrl:   pulumi.String("https://redmine.example.com/issue/:id"),

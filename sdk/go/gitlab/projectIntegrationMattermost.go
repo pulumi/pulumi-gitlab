@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIntegrationMattermost(ctx, "mattermost", &gitlab.ProjectIntegrationMattermostArgs{
-//				Project:     awesomeProject.ID(),
+//				Project:     awesomeProject.ID().ToIDOutput().ToStringOutput(),
 //				Webhook:     pulumi.String("https://webhook.com"),
 //				Username:    pulumi.String("myuser"),
 //				PushEvents:  pulumi.Bool(true),

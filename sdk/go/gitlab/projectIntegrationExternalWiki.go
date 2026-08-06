@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIntegrationExternalWiki(ctx, "wiki", &gitlab.ProjectIntegrationExternalWikiArgs{
-//				Project:         awesomeProject.ID(),
+//				Project:         awesomeProject.ID().ToIDOutput().ToStringOutput(),
 //				ExternalWikiUrl: pulumi.String("https://MyAwesomeExternalWikiURL.com"),
 //			})
 //			if err != nil {

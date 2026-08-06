@@ -41,7 +41,7 @@ import (
 //			}
 //			// Create source issue
 //			source, err := gitlab.NewProjectIssue(ctx, "source", &gitlab.ProjectIssueArgs{
-//				Project: example.ID(),
+//				Project: example.ID().ToIDOutput().ToStringOutput(),
 //				Title:   pulumi.String("Source Issue"),
 //			})
 //			if err != nil {
@@ -49,7 +49,7 @@ import (
 //			}
 //			// Create target issue
 //			target, err := gitlab.NewProjectIssue(ctx, "target", &gitlab.ProjectIssueArgs{
-//				Project: example.ID(),
+//				Project: example.ID().ToIDOutput().ToStringOutput(),
 //				Title:   pulumi.String("Target Issue"),
 //			})
 //			if err != nil {
@@ -57,9 +57,9 @@ import (
 //			}
 //			// Link issues with "relates_to" link type (default)
 //			_, err = gitlab.NewProjectIssueLink(ctx, "relates_to", &gitlab.ProjectIssueLinkArgs{
-//				Project:         example.ID(),
+//				Project:         example.ID().ToIDOutput().ToStringOutput(),
 //				IssueIid:        source.Iid,
-//				TargetProjectId: example.ID(),
+//				TargetProjectId: example.ID().ToIDOutput().ToStringOutput(),
 //				TargetIssueIid:  target.Iid,
 //				LinkType:        pulumi.String("relates_to"),
 //			})
@@ -75,16 +75,16 @@ import (
 //				return err
 //			}
 //			crossTarget, err := gitlab.NewProjectIssue(ctx, "cross_target", &gitlab.ProjectIssueArgs{
-//				Project: otherProject.ID(),
+//				Project: otherProject.ID().ToIDOutput().ToStringOutput(),
 //				Title:   pulumi.String("Cross-Project Target Issue"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIssueLink(ctx, "cross_project_relates_to", &gitlab.ProjectIssueLinkArgs{
-//				Project:         example.ID(),
+//				Project:         example.ID().ToIDOutput().ToStringOutput(),
 //				IssueIid:        source.Iid,
-//				TargetProjectId: otherProject.ID(),
+//				TargetProjectId: otherProject.ID().ToIDOutput().ToStringOutput(),
 //				TargetIssueIid:  crossTarget.Iid,
 //				LinkType:        pulumi.String("relates_to"),
 //			})

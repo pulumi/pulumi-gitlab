@@ -25,6 +25,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -45,7 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewUserIdentity(ctx, "example", &gitlab.UserIdentityArgs{
-//				UserId:           example.ID(),
+//				UserId:           example.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				ExternalProvider: pulumi.String("google"),
 //				ExternalUid:      pulumi.String("1234567890"),
 //			})

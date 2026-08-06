@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectErrorTrackingSettings(ctx, "example", &gitlab.ProjectErrorTrackingSettingsArgs{
-//				Project:    example.ID(),
+//				Project:    example.ID().ToIDOutput().ToStringOutput(),
 //				Active:     pulumi.Bool(true),
 //				Integrated: pulumi.Bool(true),
 //			})

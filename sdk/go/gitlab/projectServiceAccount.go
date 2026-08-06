@@ -39,7 +39,7 @@ import (
 //			}
 //			// The service account against the project
 //			exampleSa, err := gitlab.NewProjectServiceAccount(ctx, "example_sa", &gitlab.ProjectServiceAccountArgs{
-//				Project:  example.ID(),
+//				Project:  example.ID().ToIDOutput().ToStringOutput(),
 //				Name:     pulumi.String("example-name"),
 //				Username: pulumi.String("example-username"),
 //			})
@@ -48,7 +48,7 @@ import (
 //			}
 //			// To assign the service account to a project as a member
 //			_, err = gitlab.NewProjectMembership(ctx, "example_membership", &gitlab.ProjectMembershipArgs{
-//				Project:     example.ID(),
+//				Project:     example.ID().ToIDOutput().ToStringOutput(),
 //				UserId:      exampleSa.ServiceAccountId,
 //				AccessLevel: pulumi.String("developer"),
 //				ExpiresAt:   pulumi.String("2020-03-14"),

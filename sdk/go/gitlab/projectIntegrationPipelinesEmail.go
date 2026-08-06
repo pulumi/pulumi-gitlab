@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIntegrationPipelinesEmail(ctx, "email", &gitlab.ProjectIntegrationPipelinesEmailArgs{
-//				Project: awesomeProject.ID(),
+//				Project: awesomeProject.ID().ToIDOutput().ToStringOutput(),
 //				Recipients: pulumi.StringArray{
 //					pulumi.String("gitlab@user.create"),
 //				},

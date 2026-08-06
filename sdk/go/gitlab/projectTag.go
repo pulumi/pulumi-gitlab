@@ -42,7 +42,7 @@ import (
 //			_, err = gitlab.NewProjectTag(ctx, "example", &gitlab.ProjectTagArgs{
 //				Name:    pulumi.String("example"),
 //				Ref:     pulumi.String("main"),
-//				Project: example.ID(),
+//				Project: example.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

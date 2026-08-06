@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIntegrationDatadog(ctx, "example", &gitlab.ProjectIntegrationDatadogArgs{
-//				Project:     example.ID(),
+//				Project:     example.ID().ToIDOutput().ToStringOutput(),
 //				ApiKey:      pulumi.String("secret-datadog-api-key"),
 //				DatadogSite: pulumi.String("datadoghq.com"),
 //				DatadogEnv:  pulumi.String("production"),

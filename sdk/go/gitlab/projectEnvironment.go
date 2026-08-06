@@ -28,6 +28,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -45,14 +47,14 @@ import (
 //			}
 //			thisProject, err := gitlab.NewProject(ctx, "this", &gitlab.ProjectArgs{
 //				Name:                 pulumi.String("example"),
-//				NamespaceId:          this.ID(),
+//				NamespaceId:          this.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				InitializeWithReadme: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gitlab.NewProjectEnvironment(ctx, "this", &gitlab.ProjectEnvironmentArgs{
-//				Project:     thisProject.ID(),
+//				Project:     thisProject.ID().ToIDOutput().ToStringOutput(),
 //				Name:        pulumi.String("example"),
 //				ExternalUrl: pulumi.String("www.example.com"),
 //			})

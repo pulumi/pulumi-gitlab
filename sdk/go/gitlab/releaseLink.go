@@ -40,7 +40,7 @@ import (
 //			}
 //			// Can create release link only to a tag associated with a release
 //			_, err = gitlab.NewReleaseLink(ctx, "example", &gitlab.ReleaseLinkArgs{
-//				Project: example.ID(),
+//				Project: example.ID().ToIDOutput().ToStringOutput(),
 //				TagName: pulumi.String("tag_name_associated_with_release"),
 //				Name:    pulumi.String("test"),
 //				Url:     pulumi.String("https://test/"),
