@@ -109,10 +109,10 @@ namespace Pulumi.GitLab
         public Output<Outputs.GroupServiceAccountTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// The username of the user. If not specified, it’s automatically generated.
+        /// The username of the user. If not specified, it's automatically generated.
         /// </summary>
         [Output("username")]
-        public Output<string?> Username { get; private set; } = null!;
+        public Output<string> Username { get; private set; } = null!;
 
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace Pulumi.GitLab
         public Input<Inputs.GroupServiceAccountTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The username of the user. If not specified, it’s automatically generated.
+        /// The username of the user. If not specified, it's automatically generated.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
@@ -235,7 +235,7 @@ namespace Pulumi.GitLab
         public Input<Inputs.GroupServiceAccountTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The username of the user. If not specified, it’s automatically generated.
+        /// The username of the user. If not specified, it's automatically generated.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

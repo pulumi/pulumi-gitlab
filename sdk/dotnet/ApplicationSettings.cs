@@ -1157,6 +1157,18 @@ namespace Pulumi.GitLab
         public Output<int> MaxTerraformStateSizeBytes { get; private set; } = null!;
 
         /// <summary>
+        /// The maximum depth of nested CI/CD configuration added with the `Include` keyword.
+        /// </summary>
+        [Output("maxYamlDepth")]
+        public Output<int> MaxYamlDepth { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum size in bytes of a single CI/CD configuration file.
+        /// </summary>
+        [Output("maxYamlSizeBytes")]
+        public Output<int> MaxYamlSizeBytes { get; private set; } = null!;
+
+        /// <summary>
         /// A method call is only tracked when it takes longer than the given amount of milliseconds.
         /// </summary>
         [Output("metricsMethodCallThreshold")]
@@ -3331,6 +3343,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("maxTerraformStateSizeBytes")]
         public Input<int>? MaxTerraformStateSizeBytes { get; set; }
+
+        /// <summary>
+        /// The maximum depth of nested CI/CD configuration added with the `Include` keyword.
+        /// </summary>
+        [Input("maxYamlDepth")]
+        public Input<int>? MaxYamlDepth { get; set; }
+
+        /// <summary>
+        /// The maximum size in bytes of a single CI/CD configuration file.
+        /// </summary>
+        [Input("maxYamlSizeBytes")]
+        public Input<int>? MaxYamlSizeBytes { get; set; }
 
         /// <summary>
         /// A method call is only tracked when it takes longer than the given amount of milliseconds.
@@ -5561,6 +5585,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("maxTerraformStateSizeBytes")]
         public Input<int>? MaxTerraformStateSizeBytes { get; set; }
+
+        /// <summary>
+        /// The maximum depth of nested CI/CD configuration added with the `Include` keyword.
+        /// </summary>
+        [Input("maxYamlDepth")]
+        public Input<int>? MaxYamlDepth { get; set; }
+
+        /// <summary>
+        /// The maximum size in bytes of a single CI/CD configuration file.
+        /// </summary>
+        [Input("maxYamlSizeBytes")]
+        public Input<int>? MaxYamlSizeBytes { get; set; }
 
         /// <summary>
         /// A method call is only tracked when it takes longer than the given amount of milliseconds.

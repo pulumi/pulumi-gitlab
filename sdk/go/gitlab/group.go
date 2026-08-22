@@ -150,6 +150,8 @@ type Group struct {
 	AvatarHash pulumi.StringOutput `pulumi:"avatarHash"`
 	// The URL of the avatar image.
 	AvatarUrl pulumi.StringOutput `pulumi:"avatarUrl"`
+	// Enable customer relations management (CRM) for the group.
+	CrmEnabled pulumi.BoolOutput `pulumi:"crmEnabled"`
 	// Initial default branch name.
 	DefaultBranch pulumi.StringPtrOutput `pulumi:"defaultBranch"`
 	// See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
@@ -273,6 +275,8 @@ type groupState struct {
 	AvatarHash *string `pulumi:"avatarHash"`
 	// The URL of the avatar image.
 	AvatarUrl *string `pulumi:"avatarUrl"`
+	// Enable customer relations management (CRM) for the group.
+	CrmEnabled *bool `pulumi:"crmEnabled"`
 	// Initial default branch name.
 	DefaultBranch *string `pulumi:"defaultBranch"`
 	// See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
@@ -360,6 +364,8 @@ type GroupState struct {
 	AvatarHash pulumi.StringPtrInput
 	// The URL of the avatar image.
 	AvatarUrl pulumi.StringPtrInput
+	// Enable customer relations management (CRM) for the group.
+	CrmEnabled pulumi.BoolPtrInput
 	// Initial default branch name.
 	DefaultBranch pulumi.StringPtrInput
 	// See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
@@ -449,6 +455,8 @@ type groupArgs struct {
 	Avatar *string `pulumi:"avatar"`
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash *string `pulumi:"avatarHash"`
+	// Enable customer relations management (CRM) for the group.
+	CrmEnabled *bool `pulumi:"crmEnabled"`
 	// Initial default branch name.
 	DefaultBranch *string `pulumi:"defaultBranch"`
 	// See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
@@ -527,6 +535,8 @@ type GroupArgs struct {
 	Avatar pulumi.StringPtrInput
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
 	AvatarHash pulumi.StringPtrInput
+	// Enable customer relations management (CRM) for the group.
+	CrmEnabled pulumi.BoolPtrInput
 	// Initial default branch name.
 	DefaultBranch pulumi.StringPtrInput
 	// See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
@@ -711,6 +721,11 @@ func (o GroupOutput) AvatarHash() pulumi.StringOutput {
 // The URL of the avatar image.
 func (o GroupOutput) AvatarUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.AvatarUrl }).(pulumi.StringOutput)
+}
+
+// Enable customer relations management (CRM) for the group.
+func (o GroupOutput) CrmEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.CrmEnabled }).(pulumi.BoolOutput)
 }
 
 // Initial default branch name.

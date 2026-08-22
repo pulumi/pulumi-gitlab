@@ -415,6 +415,10 @@ export interface GetProjectResult {
      */
     readonly mrDefaultTargetSelf: boolean;
     /**
+     * Template used to set the default title of merge requests.
+     */
+    readonly mrDefaultTitleTemplate: string;
+    /**
      * The name of the project.
      */
     readonly name: string;
@@ -558,6 +562,10 @@ export interface GetProjectResult {
      * @deprecated Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0.
      */
     readonly restrictUserDefinedVariables: boolean;
+    /**
+     * The strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+     */
+    readonly reviewerAssignmentStrategy: string;
     /**
      * Runner token expiration interval, in seconds.
      */

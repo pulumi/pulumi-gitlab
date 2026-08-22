@@ -38,6 +38,10 @@ export interface GetGroupServiceAccountArgs {
  */
 export interface GetGroupServiceAccountResult {
     /**
+     * The email of the service account user.
+     */
+    readonly email: string;
+    /**
      * The ID or URL-encoded path of the target group. Must be a top-level group.
      */
     readonly group: string;

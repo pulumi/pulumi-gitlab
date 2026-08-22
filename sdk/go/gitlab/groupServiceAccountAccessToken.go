@@ -70,9 +70,10 @@ import (
 //			}
 //			// The service account access token with no expiry
 //			_, err = gitlab.NewGroupServiceAccountAccessToken(ctx, "example_sa_token_no_expiry", &gitlab.GroupServiceAccountAccessTokenArgs{
-//				Group:  example.ID().ToIDOutput().ToStringOutput(),
-//				UserId: exampleSa.ServiceAccountId,
-//				Name:   pulumi.String("Example service account access token"),
+//				Group:       example.ID().ToIDOutput().ToStringOutput(),
+//				UserId:      exampleSa.ServiceAccountId,
+//				Name:        pulumi.String("Example service account access token"),
+//				Description: pulumi.String("Example service account access token description"),
 //				Scopes: pulumi.StringArray{
 //					pulumi.String("api"),
 //				},
@@ -134,6 +135,8 @@ type GroupServiceAccountAccessToken struct {
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The description of the group service account access token.
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// The ID or URL-encoded path of the group containing the service account. Must be a top level group.
@@ -201,6 +204,8 @@ type groupServiceAccountAccessTokenState struct {
 	Active *bool `pulumi:"active"`
 	// Time the token has been created, RFC3339 format.
 	CreatedAt *string `pulumi:"createdAt"`
+	// The description of the group service account access token.
+	Description *string `pulumi:"description"`
 	// The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The ID or URL-encoded path of the group containing the service account. Must be a top level group.
@@ -226,6 +231,8 @@ type GroupServiceAccountAccessTokenState struct {
 	Active pulumi.BoolPtrInput
 	// Time the token has been created, RFC3339 format.
 	CreatedAt pulumi.StringPtrInput
+	// The description of the group service account access token.
+	Description pulumi.StringPtrInput
 	// The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
 	ExpiresAt pulumi.StringPtrInput
 	// The ID or URL-encoded path of the group containing the service account. Must be a top level group.
@@ -251,6 +258,8 @@ func (GroupServiceAccountAccessTokenState) ElementType() reflect.Type {
 }
 
 type groupServiceAccountAccessTokenArgs struct {
+	// The description of the group service account access token.
+	Description *string `pulumi:"description"`
 	// The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The ID or URL-encoded path of the group containing the service account. Must be a top level group.
@@ -269,6 +278,8 @@ type groupServiceAccountAccessTokenArgs struct {
 
 // The set of arguments for constructing a GroupServiceAccountAccessToken resource.
 type GroupServiceAccountAccessTokenArgs struct {
+	// The description of the group service account access token.
+	Description pulumi.StringPtrInput
 	// The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
 	ExpiresAt pulumi.StringPtrInput
 	// The ID or URL-encoded path of the group containing the service account. Must be a top level group.
@@ -380,6 +391,11 @@ func (o GroupServiceAccountAccessTokenOutput) Active() pulumi.BoolOutput {
 // Time the token has been created, RFC3339 format.
 func (o GroupServiceAccountAccessTokenOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupServiceAccountAccessToken) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The description of the group service account access token.
+func (o GroupServiceAccountAccessTokenOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupServiceAccountAccessToken) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.

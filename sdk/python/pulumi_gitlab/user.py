@@ -24,6 +24,7 @@ class UserArgs:
                  can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_random_password: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_auditor: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_external: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -41,6 +42,7 @@ class UserArgs:
         :param pulumi.Input[_builtins.bool] can_create_group: Boolean, defaults to false. Whether to allow the user to create groups.
         :param pulumi.Input[_builtins.bool] force_random_password: Set user password to a random value
         :param pulumi.Input[_builtins.bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
+        :param pulumi.Input[_builtins.bool] is_auditor: Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
         :param pulumi.Input[_builtins.bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[_builtins.str] name: The name of the user.
         :param pulumi.Input[_builtins.int] namespace_id: The ID of the user's namespace.
@@ -59,6 +61,8 @@ class UserArgs:
             pulumi.set(__self__, "force_random_password", force_random_password)
         if is_admin is not None:
             pulumi.set(__self__, "is_admin", is_admin)
+        if is_auditor is not None:
+            pulumi.set(__self__, "is_auditor", is_auditor)
         if is_external is not None:
             pulumi.set(__self__, "is_external", is_external)
         if name is not None:
@@ -137,6 +141,18 @@ class UserArgs:
     @is_admin.setter
     def is_admin(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_admin", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isAuditor")
+    def is_auditor(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+        """
+        return pulumi.get(self, "is_auditor")
+
+    @is_auditor.setter
+    def is_auditor(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "is_auditor", value)
 
     @_builtins.property
     @pulumi.getter(name="isExternal")
@@ -254,6 +270,7 @@ class _UserState:
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  force_random_password: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_auditor: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_external: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -271,6 +288,7 @@ class _UserState:
         :param pulumi.Input[_builtins.str] email: The e-mail address of the user.
         :param pulumi.Input[_builtins.bool] force_random_password: Set user password to a random value
         :param pulumi.Input[_builtins.bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
+        :param pulumi.Input[_builtins.bool] is_auditor: Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
         :param pulumi.Input[_builtins.bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[_builtins.str] name: The name of the user.
         :param pulumi.Input[_builtins.int] namespace_id: The ID of the user's namespace.
@@ -290,6 +308,8 @@ class _UserState:
             pulumi.set(__self__, "force_random_password", force_random_password)
         if is_admin is not None:
             pulumi.set(__self__, "is_admin", is_admin)
+        if is_auditor is not None:
+            pulumi.set(__self__, "is_auditor", is_auditor)
         if is_external is not None:
             pulumi.set(__self__, "is_external", is_external)
         if name is not None:
@@ -358,6 +378,18 @@ class _UserState:
     @is_admin.setter
     def is_admin(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_admin", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isAuditor")
+    def is_auditor(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+        """
+        return pulumi.get(self, "is_auditor")
+
+    @is_auditor.setter
+    def is_auditor(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "is_auditor", value)
 
     @_builtins.property
     @pulumi.getter(name="isExternal")
@@ -490,6 +522,7 @@ class User(pulumi.CustomResource):
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  force_random_password: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_auditor: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_external: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -525,6 +558,7 @@ class User(pulumi.CustomResource):
             projects_limit=4,
             can_create_group=False,
             is_external=True,
+            is_auditor=False,
             reset_password=False)
         ```
 
@@ -548,6 +582,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] email: The e-mail address of the user.
         :param pulumi.Input[_builtins.bool] force_random_password: Set user password to a random value
         :param pulumi.Input[_builtins.bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
+        :param pulumi.Input[_builtins.bool] is_auditor: Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
         :param pulumi.Input[_builtins.bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[_builtins.str] name: The name of the user.
         :param pulumi.Input[_builtins.int] namespace_id: The ID of the user's namespace.
@@ -589,6 +624,7 @@ class User(pulumi.CustomResource):
             projects_limit=4,
             can_create_group=False,
             is_external=True,
+            is_auditor=False,
             reset_password=False)
         ```
 
@@ -625,6 +661,7 @@ class User(pulumi.CustomResource):
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  force_random_password: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_auditor: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_external: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -650,6 +687,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["email"] = email
             __props__.__dict__["force_random_password"] = force_random_password
             __props__.__dict__["is_admin"] = is_admin
+            __props__.__dict__["is_auditor"] = is_auditor
             __props__.__dict__["is_external"] = is_external
             __props__.__dict__["name"] = name
             __props__.__dict__["namespace_id"] = namespace_id
@@ -678,6 +716,7 @@ class User(pulumi.CustomResource):
             email: pulumi.Input[Optional[_builtins.str]] = None,
             force_random_password: pulumi.Input[Optional[_builtins.bool]] = None,
             is_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_auditor: pulumi.Input[Optional[_builtins.bool]] = None,
             is_external: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -699,6 +738,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] email: The e-mail address of the user.
         :param pulumi.Input[_builtins.bool] force_random_password: Set user password to a random value
         :param pulumi.Input[_builtins.bool] is_admin: Boolean, defaults to false.  Whether to enable administrative privileges
+        :param pulumi.Input[_builtins.bool] is_auditor: Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
         :param pulumi.Input[_builtins.bool] is_external: Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         :param pulumi.Input[_builtins.str] name: The name of the user.
         :param pulumi.Input[_builtins.int] namespace_id: The ID of the user's namespace.
@@ -718,6 +758,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["email"] = email
         __props__.__dict__["force_random_password"] = force_random_password
         __props__.__dict__["is_admin"] = is_admin
+        __props__.__dict__["is_auditor"] = is_auditor
         __props__.__dict__["is_external"] = is_external
         __props__.__dict__["name"] = name
         __props__.__dict__["namespace_id"] = namespace_id
@@ -761,6 +802,14 @@ class User(pulumi.CustomResource):
         Boolean, defaults to false.  Whether to enable administrative privileges
         """
         return pulumi.get(self, "is_admin")
+
+    @_builtins.property
+    @pulumi.getter(name="isAuditor")
+    def is_auditor(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+        """
+        return pulumi.get(self, "is_auditor")
 
     @_builtins.property
     @pulumi.getter(name="isExternal")

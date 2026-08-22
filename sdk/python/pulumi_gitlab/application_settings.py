@@ -207,6 +207,8 @@ class ApplicationSettingsArgs:
                  max_personal_access_token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
                  max_ssh_key_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
                  max_terraform_state_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_yaml_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  metrics_method_call_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  minimum_password_length: pulumi.Input[Optional[_builtins.int]] = None,
                  mirror_available: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -534,6 +536,8 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[_builtins.int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days.
         :param pulumi.Input[_builtins.int] max_terraform_state_size_bytes: Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+        :param pulumi.Input[_builtins.int] max_yaml_depth: The maximum depth of nested CI/CD configuration added with the `include` keyword.
+        :param pulumi.Input[_builtins.int] max_yaml_size_bytes: The maximum size in bytes of a single CI/CD configuration file.
         :param pulumi.Input[_builtins.int] metrics_method_call_threshold: A method call is only tracked when it takes longer than the given amount of milliseconds.
         :param pulumi.Input[_builtins.int] minimum_password_length: Indicates whether passwords require a minimum length. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] mirror_available: Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
@@ -1045,6 +1049,10 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "max_ssh_key_lifetime", max_ssh_key_lifetime)
         if max_terraform_state_size_bytes is not None:
             pulumi.set(__self__, "max_terraform_state_size_bytes", max_terraform_state_size_bytes)
+        if max_yaml_depth is not None:
+            pulumi.set(__self__, "max_yaml_depth", max_yaml_depth)
+        if max_yaml_size_bytes is not None:
+            pulumi.set(__self__, "max_yaml_size_bytes", max_yaml_size_bytes)
         if metrics_method_call_threshold is not None:
             pulumi.set(__self__, "metrics_method_call_threshold", metrics_method_call_threshold)
         if minimum_password_length is not None:
@@ -3555,6 +3563,30 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "max_terraform_state_size_bytes", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxYamlDepth")
+    def max_yaml_depth(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum depth of nested CI/CD configuration added with the `include` keyword.
+        """
+        return pulumi.get(self, "max_yaml_depth")
+
+    @max_yaml_depth.setter
+    def max_yaml_depth(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_yaml_depth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxYamlSizeBytes")
+    def max_yaml_size_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum size in bytes of a single CI/CD configuration file.
+        """
+        return pulumi.get(self, "max_yaml_size_bytes")
+
+    @max_yaml_size_bytes.setter
+    def max_yaml_size_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_yaml_size_bytes", value)
+
+    @_builtins.property
     @pulumi.getter(name="metricsMethodCallThreshold")
     def metrics_method_call_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -5402,6 +5434,8 @@ class _ApplicationSettingsState:
                  max_personal_access_token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
                  max_ssh_key_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
                  max_terraform_state_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_yaml_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  metrics_method_call_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  minimum_password_length: pulumi.Input[Optional[_builtins.int]] = None,
                  mirror_available: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -5731,6 +5765,8 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[_builtins.int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days.
         :param pulumi.Input[_builtins.int] max_terraform_state_size_bytes: Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+        :param pulumi.Input[_builtins.int] max_yaml_depth: The maximum depth of nested CI/CD configuration added with the `include` keyword.
+        :param pulumi.Input[_builtins.int] max_yaml_size_bytes: The maximum size in bytes of a single CI/CD configuration file.
         :param pulumi.Input[_builtins.int] metrics_method_call_threshold: A method call is only tracked when it takes longer than the given amount of milliseconds.
         :param pulumi.Input[_builtins.int] minimum_password_length: Indicates whether passwords require a minimum length. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] mirror_available: Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
@@ -6246,6 +6282,10 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "max_ssh_key_lifetime", max_ssh_key_lifetime)
         if max_terraform_state_size_bytes is not None:
             pulumi.set(__self__, "max_terraform_state_size_bytes", max_terraform_state_size_bytes)
+        if max_yaml_depth is not None:
+            pulumi.set(__self__, "max_yaml_depth", max_yaml_depth)
+        if max_yaml_size_bytes is not None:
+            pulumi.set(__self__, "max_yaml_size_bytes", max_yaml_size_bytes)
         if metrics_method_call_threshold is not None:
             pulumi.set(__self__, "metrics_method_call_threshold", metrics_method_call_threshold)
         if minimum_password_length is not None:
@@ -8780,6 +8820,30 @@ class _ApplicationSettingsState:
         pulumi.set(self, "max_terraform_state_size_bytes", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxYamlDepth")
+    def max_yaml_depth(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum depth of nested CI/CD configuration added with the `include` keyword.
+        """
+        return pulumi.get(self, "max_yaml_depth")
+
+    @max_yaml_depth.setter
+    def max_yaml_depth(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_yaml_depth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxYamlSizeBytes")
+    def max_yaml_size_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum size in bytes of a single CI/CD configuration file.
+        """
+        return pulumi.get(self, "max_yaml_size_bytes")
+
+    @max_yaml_size_bytes.setter
+    def max_yaml_size_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_yaml_size_bytes", value)
+
+    @_builtins.property
     @pulumi.getter(name="metricsMethodCallThreshold")
     def metrics_method_call_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -10628,6 +10692,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  max_personal_access_token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
                  max_ssh_key_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
                  max_terraform_state_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_yaml_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  metrics_method_call_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  minimum_password_length: pulumi.Input[Optional[_builtins.int]] = None,
                  mirror_available: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -10972,6 +11038,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[_builtins.int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days.
         :param pulumi.Input[_builtins.int] max_terraform_state_size_bytes: Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+        :param pulumi.Input[_builtins.int] max_yaml_depth: The maximum depth of nested CI/CD configuration added with the `include` keyword.
+        :param pulumi.Input[_builtins.int] max_yaml_size_bytes: The maximum size in bytes of a single CI/CD configuration file.
         :param pulumi.Input[_builtins.int] metrics_method_call_threshold: A method call is only tracked when it takes longer than the given amount of milliseconds.
         :param pulumi.Input[_builtins.int] minimum_password_length: Indicates whether passwords require a minimum length. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] mirror_available: Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
@@ -11335,6 +11403,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  max_personal_access_token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
                  max_ssh_key_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
                  max_terraform_state_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_yaml_depth: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  metrics_method_call_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  minimum_password_length: pulumi.Input[Optional[_builtins.int]] = None,
                  mirror_available: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -11668,6 +11738,8 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["max_personal_access_token_lifetime"] = max_personal_access_token_lifetime
             __props__.__dict__["max_ssh_key_lifetime"] = max_ssh_key_lifetime
             __props__.__dict__["max_terraform_state_size_bytes"] = max_terraform_state_size_bytes
+            __props__.__dict__["max_yaml_depth"] = max_yaml_depth
+            __props__.__dict__["max_yaml_size_bytes"] = max_yaml_size_bytes
             __props__.__dict__["metrics_method_call_threshold"] = metrics_method_call_threshold
             __props__.__dict__["minimum_password_length"] = minimum_password_length
             __props__.__dict__["mirror_available"] = mirror_available
@@ -12008,6 +12080,8 @@ class ApplicationSettings(pulumi.CustomResource):
             max_personal_access_token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
             max_ssh_key_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
             max_terraform_state_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            max_yaml_depth: pulumi.Input[Optional[_builtins.int]] = None,
+            max_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
             metrics_method_call_threshold: pulumi.Input[Optional[_builtins.int]] = None,
             minimum_password_length: pulumi.Input[Optional[_builtins.int]] = None,
             mirror_available: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -12341,6 +12415,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_personal_access_token_lifetime: Maximum allowable lifetime for access tokens in days.
         :param pulumi.Input[_builtins.int] max_ssh_key_lifetime: Maximum allowable lifetime for SSH keys in days.
         :param pulumi.Input[_builtins.int] max_terraform_state_size_bytes: Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
+        :param pulumi.Input[_builtins.int] max_yaml_depth: The maximum depth of nested CI/CD configuration added with the `include` keyword.
+        :param pulumi.Input[_builtins.int] max_yaml_size_bytes: The maximum size in bytes of a single CI/CD configuration file.
         :param pulumi.Input[_builtins.int] metrics_method_call_threshold: A method call is only tracked when it takes longer than the given amount of milliseconds.
         :param pulumi.Input[_builtins.int] minimum_password_length: Indicates whether passwords require a minimum length. Premium and Ultimate only.
         :param pulumi.Input[_builtins.bool] mirror_available: Allow repository mirroring to configured by project Maintainers. If disabled, only Administrators can configure repository mirroring.
@@ -12672,6 +12748,8 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["max_personal_access_token_lifetime"] = max_personal_access_token_lifetime
         __props__.__dict__["max_ssh_key_lifetime"] = max_ssh_key_lifetime
         __props__.__dict__["max_terraform_state_size_bytes"] = max_terraform_state_size_bytes
+        __props__.__dict__["max_yaml_depth"] = max_yaml_depth
+        __props__.__dict__["max_yaml_size_bytes"] = max_yaml_size_bytes
         __props__.__dict__["metrics_method_call_threshold"] = metrics_method_call_threshold
         __props__.__dict__["minimum_password_length"] = minimum_password_length
         __props__.__dict__["mirror_available"] = mirror_available
@@ -14315,6 +14393,22 @@ class ApplicationSettings(pulumi.CustomResource):
         Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
         """
         return pulumi.get(self, "max_terraform_state_size_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="maxYamlDepth")
+    def max_yaml_depth(self) -> pulumi.Output[_builtins.int]:
+        """
+        The maximum depth of nested CI/CD configuration added with the `include` keyword.
+        """
+        return pulumi.get(self, "max_yaml_depth")
+
+    @_builtins.property
+    @pulumi.getter(name="maxYamlSizeBytes")
+    def max_yaml_size_bytes(self) -> pulumi.Output[_builtins.int]:
+        """
+        The maximum size in bytes of a single CI/CD configuration file.
+        """
+        return pulumi.get(self, "max_yaml_size_bytes")
 
     @_builtins.property
     @pulumi.getter(name="metricsMethodCallThreshold")

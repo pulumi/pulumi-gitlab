@@ -49,6 +49,7 @@ import * as utilities from "./utilities";
  *     group: example.id,
  *     userId: exampleSa.serviceAccountId.apply(x =>Number(x)),
  *     name: "Example service account access token",
+ *     description: "Example service account access token description",
  *     scopes: ["api"],
  * });
  * // The service account access token with expires at
@@ -122,6 +123,10 @@ export class GroupServiceAccountAccessToken extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
+     * The description of the group service account access token.
+     */
+    declare public readonly description: pulumi.Output<string>;
+    /**
      * The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
      */
     declare public readonly expiresAt: pulumi.Output<string>;
@@ -173,6 +178,7 @@ export class GroupServiceAccountAccessToken extends pulumi.CustomResource {
             const state = argsOrState as GroupServiceAccountAccessTokenState | undefined;
             resourceInputs["active"] = state?.active;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
             resourceInputs["expiresAt"] = state?.expiresAt;
             resourceInputs["group"] = state?.group;
             resourceInputs["name"] = state?.name;
@@ -193,6 +199,7 @@ export class GroupServiceAccountAccessToken extends pulumi.CustomResource {
             if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
+            resourceInputs["description"] = args?.description;
             resourceInputs["expiresAt"] = args?.expiresAt;
             resourceInputs["group"] = args?.group;
             resourceInputs["name"] = args?.name;
@@ -224,6 +231,10 @@ export interface GroupServiceAccountAccessTokenState {
      * Time the token has been created, RFC3339 format.
      */
     createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * The description of the group service account access token.
+     */
+    description?: pulumi.Input<string | undefined>;
     /**
      * The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
      */
@@ -266,6 +277,10 @@ export interface GroupServiceAccountAccessTokenState {
  * The set of arguments for constructing a GroupServiceAccountAccessToken resource.
  */
 export interface GroupServiceAccountAccessTokenArgs {
+    /**
+     * The description of the group service account access token.
+     */
+    description?: pulumi.Input<string | undefined>;
     /**
      * The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
      */

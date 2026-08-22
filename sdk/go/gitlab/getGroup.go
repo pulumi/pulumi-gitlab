@@ -46,6 +46,8 @@ type LookupGroupResult struct {
 	AvatarUrl string `pulumi:"avatarUrl"`
 	// Timestamp at which the group was created.
 	CreatedAt string `pulumi:"createdAt"`
+	// Whether customer relations management (CRM) is enabled for the group.
+	CrmEnabled bool `pulumi:"crmEnabled"`
 	// Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.
 	CustomAttributes []map[string]string `pulumi:"customAttributes"`
 	// The default branch of the group.
@@ -220,6 +222,11 @@ func (o LookupGroupResultOutput) AvatarUrl() pulumi.StringOutput {
 // Timestamp at which the group was created.
 func (o LookupGroupResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Whether customer relations management (CRM) is enabled for the group.
+func (o LookupGroupResultOutput) CrmEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.CrmEnabled }).(pulumi.BoolOutput)
 }
 
 // Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.

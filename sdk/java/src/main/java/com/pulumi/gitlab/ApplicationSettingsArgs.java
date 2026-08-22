@@ -2812,6 +2812,36 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * The maximum depth of nested CI/CD configuration added with the `include` keyword.
+     * 
+     */
+    @Import(name="maxYamlDepth")
+    private @Nullable Output<Integer> maxYamlDepth;
+
+    /**
+     * @return The maximum depth of nested CI/CD configuration added with the `include` keyword.
+     * 
+     */
+    public Optional<Output<Integer>> maxYamlDepth() {
+        return Optional.ofNullable(this.maxYamlDepth);
+    }
+
+    /**
+     * The maximum size in bytes of a single CI/CD configuration file.
+     * 
+     */
+    @Import(name="maxYamlSizeBytes")
+    private @Nullable Output<Integer> maxYamlSizeBytes;
+
+    /**
+     * @return The maximum size in bytes of a single CI/CD configuration file.
+     * 
+     */
+    public Optional<Output<Integer>> maxYamlSizeBytes() {
+        return Optional.ofNullable(this.maxYamlSizeBytes);
+    }
+
+    /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      * 
      */
@@ -5070,6 +5100,8 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         this.maxPersonalAccessTokenLifetime = $.maxPersonalAccessTokenLifetime;
         this.maxSshKeyLifetime = $.maxSshKeyLifetime;
         this.maxTerraformStateSizeBytes = $.maxTerraformStateSizeBytes;
+        this.maxYamlDepth = $.maxYamlDepth;
+        this.maxYamlSizeBytes = $.maxYamlSizeBytes;
         this.metricsMethodCallThreshold = $.metricsMethodCallThreshold;
         this.minimumPasswordLength = $.minimumPasswordLength;
         this.mirrorAvailable = $.mirrorAvailable;
@@ -9232,6 +9264,48 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
          */
         public Builder maxTerraformStateSizeBytes(Integer maxTerraformStateSizeBytes) {
             return maxTerraformStateSizeBytes(Output.of(maxTerraformStateSizeBytes));
+        }
+
+        /**
+         * @param maxYamlDepth The maximum depth of nested CI/CD configuration added with the `include` keyword.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxYamlDepth(@Nullable Output<Integer> maxYamlDepth) {
+            $.maxYamlDepth = maxYamlDepth;
+            return this;
+        }
+
+        /**
+         * @param maxYamlDepth The maximum depth of nested CI/CD configuration added with the `include` keyword.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxYamlDepth(Integer maxYamlDepth) {
+            return maxYamlDepth(Output.of(maxYamlDepth));
+        }
+
+        /**
+         * @param maxYamlSizeBytes The maximum size in bytes of a single CI/CD configuration file.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxYamlSizeBytes(@Nullable Output<Integer> maxYamlSizeBytes) {
+            $.maxYamlSizeBytes = maxYamlSizeBytes;
+            return this;
+        }
+
+        /**
+         * @param maxYamlSizeBytes The maximum size in bytes of a single CI/CD configuration file.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxYamlSizeBytes(Integer maxYamlSizeBytes) {
+            return maxYamlSizeBytes(Output.of(maxYamlSizeBytes));
         }
 
         /**

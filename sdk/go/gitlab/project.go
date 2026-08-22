@@ -173,6 +173,8 @@ type Project struct {
 	MonitorAccessLevel pulumi.StringOutput `pulumi:"monitorAccessLevel"`
 	// For forked projects, target merge requests to this project. If false, the target will be the upstream project.
 	MrDefaultTargetSelf pulumi.BoolPtrOutput `pulumi:"mrDefaultTargetSelf"`
+	// Template used to set the default title of merge requests.
+	MrDefaultTitleTemplate pulumi.StringPtrOutput `pulumi:"mrDefaultTitleTemplate"`
 	// The name of the project.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
@@ -194,6 +196,8 @@ type Project struct {
 	// Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
 	PermanentlyDeleteOnDestroy pulumi.BoolPtrOutput `pulumi:"permanentlyDeleteOnDestroy"`
 	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
+	//
+	// Deprecated: The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead.
 	PreReceiveSecretDetectionEnabled pulumi.BoolOutput `pulumi:"preReceiveSecretDetectionEnabled"`
 	// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
 	PreventMergeWithoutJiraIssue pulumi.BoolOutput `pulumi:"preventMergeWithoutJiraIssue"`
@@ -225,6 +229,8 @@ type Project struct {
 	ResolveOutdatedDiffDiscussions pulumi.BoolPtrOutput `pulumi:"resolveOutdatedDiffDiscussions"`
 	// The default resource group process mode for the project.
 	ResourceGroupDefaultProcessMode pulumi.StringOutput `pulumi:"resourceGroupDefaultProcessMode"`
+	// Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+	ReviewerAssignmentStrategy pulumi.StringOutput `pulumi:"reviewerAssignmentStrategy"`
 	// Registration token to use during runner setup.
 	RunnersToken pulumi.StringOutput `pulumi:"runnersToken"`
 	// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
@@ -433,6 +439,8 @@ type projectState struct {
 	MonitorAccessLevel *string `pulumi:"monitorAccessLevel"`
 	// For forked projects, target merge requests to this project. If false, the target will be the upstream project.
 	MrDefaultTargetSelf *bool `pulumi:"mrDefaultTargetSelf"`
+	// Template used to set the default title of merge requests.
+	MrDefaultTitleTemplate *string `pulumi:"mrDefaultTitleTemplate"`
 	// The name of the project.
 	Name *string `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
@@ -454,6 +462,8 @@ type projectState struct {
 	// Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
 	PermanentlyDeleteOnDestroy *bool `pulumi:"permanentlyDeleteOnDestroy"`
 	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
+	//
+	// Deprecated: The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead.
 	PreReceiveSecretDetectionEnabled *bool `pulumi:"preReceiveSecretDetectionEnabled"`
 	// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
 	PreventMergeWithoutJiraIssue *bool `pulumi:"preventMergeWithoutJiraIssue"`
@@ -485,6 +495,8 @@ type projectState struct {
 	ResolveOutdatedDiffDiscussions *bool `pulumi:"resolveOutdatedDiffDiscussions"`
 	// The default resource group process mode for the project.
 	ResourceGroupDefaultProcessMode *string `pulumi:"resourceGroupDefaultProcessMode"`
+	// Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+	ReviewerAssignmentStrategy *string `pulumi:"reviewerAssignmentStrategy"`
 	// Registration token to use during runner setup.
 	RunnersToken *string `pulumi:"runnersToken"`
 	// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
@@ -656,6 +668,8 @@ type ProjectState struct {
 	MonitorAccessLevel pulumi.StringPtrInput
 	// For forked projects, target merge requests to this project. If false, the target will be the upstream project.
 	MrDefaultTargetSelf pulumi.BoolPtrInput
+	// Template used to set the default title of merge requests.
+	MrDefaultTitleTemplate pulumi.StringPtrInput
 	// The name of the project.
 	Name pulumi.StringPtrInput
 	// The namespace (group or user) of the project. Defaults to your user.
@@ -677,6 +691,8 @@ type ProjectState struct {
 	// Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
 	PermanentlyDeleteOnDestroy pulumi.BoolPtrInput
 	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
+	//
+	// Deprecated: The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead.
 	PreReceiveSecretDetectionEnabled pulumi.BoolPtrInput
 	// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
 	PreventMergeWithoutJiraIssue pulumi.BoolPtrInput
@@ -708,6 +724,8 @@ type ProjectState struct {
 	ResolveOutdatedDiffDiscussions pulumi.BoolPtrInput
 	// The default resource group process mode for the project.
 	ResourceGroupDefaultProcessMode pulumi.StringPtrInput
+	// Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+	ReviewerAssignmentStrategy pulumi.StringPtrInput
 	// Registration token to use during runner setup.
 	RunnersToken pulumi.StringPtrInput
 	// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
@@ -877,6 +895,8 @@ type projectArgs struct {
 	MonitorAccessLevel *string `pulumi:"monitorAccessLevel"`
 	// For forked projects, target merge requests to this project. If false, the target will be the upstream project.
 	MrDefaultTargetSelf *bool `pulumi:"mrDefaultTargetSelf"`
+	// Template used to set the default title of merge requests.
+	MrDefaultTitleTemplate *string `pulumi:"mrDefaultTitleTemplate"`
 	// The name of the project.
 	Name *string `pulumi:"name"`
 	// The namespace (group or user) of the project. Defaults to your user.
@@ -896,6 +916,8 @@ type projectArgs struct {
 	// Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
 	PermanentlyDeleteOnDestroy *bool `pulumi:"permanentlyDeleteOnDestroy"`
 	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
+	//
+	// Deprecated: The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead.
 	PreReceiveSecretDetectionEnabled *bool `pulumi:"preReceiveSecretDetectionEnabled"`
 	// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
 	PreventMergeWithoutJiraIssue *bool `pulumi:"preventMergeWithoutJiraIssue"`
@@ -927,6 +949,8 @@ type projectArgs struct {
 	ResolveOutdatedDiffDiscussions *bool `pulumi:"resolveOutdatedDiffDiscussions"`
 	// The default resource group process mode for the project.
 	ResourceGroupDefaultProcessMode *string `pulumi:"resourceGroupDefaultProcessMode"`
+	// Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+	ReviewerAssignmentStrategy *string `pulumi:"reviewerAssignmentStrategy"`
 	// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
 	SecurityAndComplianceAccessLevel *string `pulumi:"securityAndComplianceAccessLevel"`
 	// Enable shared runners for this project.
@@ -1087,6 +1111,8 @@ type ProjectArgs struct {
 	MonitorAccessLevel pulumi.StringPtrInput
 	// For forked projects, target merge requests to this project. If false, the target will be the upstream project.
 	MrDefaultTargetSelf pulumi.BoolPtrInput
+	// Template used to set the default title of merge requests.
+	MrDefaultTitleTemplate pulumi.StringPtrInput
 	// The name of the project.
 	Name pulumi.StringPtrInput
 	// The namespace (group or user) of the project. Defaults to your user.
@@ -1106,6 +1132,8 @@ type ProjectArgs struct {
 	// Set to `true` to immediately permanently delete the project instead of scheduling a delete for Premium and Ultimate tiers.
 	PermanentlyDeleteOnDestroy pulumi.BoolPtrInput
 	// Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
+	//
+	// Deprecated: The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead.
 	PreReceiveSecretDetectionEnabled pulumi.BoolPtrInput
 	// Set whether merge requests require an associated issue from Jira. Premium and Ultimate only.
 	PreventMergeWithoutJiraIssue pulumi.BoolPtrInput
@@ -1137,6 +1165,8 @@ type ProjectArgs struct {
 	ResolveOutdatedDiffDiscussions pulumi.BoolPtrInput
 	// The default resource group process mode for the project.
 	ResourceGroupDefaultProcessMode pulumi.StringPtrInput
+	// Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+	ReviewerAssignmentStrategy pulumi.StringPtrInput
 	// Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
 	SecurityAndComplianceAccessLevel pulumi.StringPtrInput
 	// Enable shared runners for this project.
@@ -1586,6 +1616,11 @@ func (o ProjectOutput) MrDefaultTargetSelf() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.MrDefaultTargetSelf }).(pulumi.BoolPtrOutput)
 }
 
+// Template used to set the default title of merge requests.
+func (o ProjectOutput) MrDefaultTitleTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.MrDefaultTitleTemplate }).(pulumi.StringPtrOutput)
+}
+
 // The name of the project.
 func (o ProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -1637,6 +1672,8 @@ func (o ProjectOutput) PermanentlyDeleteOnDestroy() pulumi.BoolPtrOutput {
 }
 
 // Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
+//
+// Deprecated: The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead.
 func (o ProjectOutput) PreReceiveSecretDetectionEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PreReceiveSecretDetectionEnabled }).(pulumi.BoolOutput)
 }
@@ -1711,6 +1748,11 @@ func (o ProjectOutput) ResolveOutdatedDiffDiscussions() pulumi.BoolPtrOutput {
 // The default resource group process mode for the project.
 func (o ProjectOutput) ResourceGroupDefaultProcessMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ResourceGroupDefaultProcessMode }).(pulumi.StringOutput)
+}
+
+// Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+func (o ProjectOutput) ReviewerAssignmentStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ReviewerAssignmentStrategy }).(pulumi.StringOutput)
 }
 
 // Registration token to use during runner setup.

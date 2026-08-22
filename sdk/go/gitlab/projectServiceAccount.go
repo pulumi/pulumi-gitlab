@@ -87,8 +87,8 @@ type ProjectServiceAccount struct {
 	// If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
 	SkipWaitForDeletion pulumi.BoolPtrOutput                   `pulumi:"skipWaitForDeletion"`
 	Timeouts            ProjectServiceAccountTimeoutsPtrOutput `pulumi:"timeouts"`
-	// The username of the user. If not specified, it’s automatically generated.
-	Username pulumi.StringPtrOutput `pulumi:"username"`
+	// The username of the user. If not specified, it's automatically generated.
+	Username pulumi.StringOutput `pulumi:"username"`
 }
 
 // NewProjectServiceAccount registers a new resource with the given unique name, arguments, and options.
@@ -135,7 +135,7 @@ type projectServiceAccountState struct {
 	// If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
 	SkipWaitForDeletion *bool                          `pulumi:"skipWaitForDeletion"`
 	Timeouts            *ProjectServiceAccountTimeouts `pulumi:"timeouts"`
-	// The username of the user. If not specified, it’s automatically generated.
+	// The username of the user. If not specified, it's automatically generated.
 	Username *string `pulumi:"username"`
 }
 
@@ -151,7 +151,7 @@ type ProjectServiceAccountState struct {
 	// If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
 	SkipWaitForDeletion pulumi.BoolPtrInput
 	Timeouts            ProjectServiceAccountTimeoutsPtrInput
-	// The username of the user. If not specified, it’s automatically generated.
+	// The username of the user. If not specified, it's automatically generated.
 	Username pulumi.StringPtrInput
 }
 
@@ -169,7 +169,7 @@ type projectServiceAccountArgs struct {
 	// If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
 	SkipWaitForDeletion *bool                          `pulumi:"skipWaitForDeletion"`
 	Timeouts            *ProjectServiceAccountTimeouts `pulumi:"timeouts"`
-	// The username of the user. If not specified, it’s automatically generated.
+	// The username of the user. If not specified, it's automatically generated.
 	Username *string `pulumi:"username"`
 }
 
@@ -184,7 +184,7 @@ type ProjectServiceAccountArgs struct {
 	// If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
 	SkipWaitForDeletion pulumi.BoolPtrInput
 	Timeouts            ProjectServiceAccountTimeoutsPtrInput
-	// The username of the user. If not specified, it’s automatically generated.
+	// The username of the user. If not specified, it's automatically generated.
 	Username pulumi.StringPtrInput
 }
 
@@ -304,9 +304,9 @@ func (o ProjectServiceAccountOutput) Timeouts() ProjectServiceAccountTimeoutsPtr
 	return o.ApplyT(func(v *ProjectServiceAccount) ProjectServiceAccountTimeoutsPtrOutput { return v.Timeouts }).(ProjectServiceAccountTimeoutsPtrOutput)
 }
 
-// The username of the user. If not specified, it’s automatically generated.
-func (o ProjectServiceAccountOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProjectServiceAccount) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
+// The username of the user. If not specified, it's automatically generated.
+func (o ProjectServiceAccountOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectServiceAccount) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
 type ProjectServiceAccountArrayOutput struct{ *pulumi.OutputState }

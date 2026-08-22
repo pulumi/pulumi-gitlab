@@ -98,9 +98,9 @@ export class ProjectServiceAccount extends pulumi.CustomResource {
     declare public readonly skipWaitForDeletion: pulumi.Output<boolean | undefined>;
     declare public readonly timeouts: pulumi.Output<outputs.ProjectServiceAccountTimeouts | undefined>;
     /**
-     * The username of the user. If not specified, it’s automatically generated.
+     * The username of the user. If not specified, it's automatically generated.
      */
-    declare public readonly username: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a ProjectServiceAccount resource with the given unique name, arguments, and options.
@@ -166,7 +166,7 @@ export interface ProjectServiceAccountState {
     skipWaitForDeletion?: pulumi.Input<boolean | undefined>;
     timeouts?: pulumi.Input<inputs.ProjectServiceAccountTimeouts | undefined>;
     /**
-     * The username of the user. If not specified, it’s automatically generated.
+     * The username of the user. If not specified, it's automatically generated.
      */
     username?: pulumi.Input<string | undefined>;
 }
@@ -193,7 +193,7 @@ export interface ProjectServiceAccountArgs {
     skipWaitForDeletion?: pulumi.Input<boolean | undefined>;
     timeouts?: pulumi.Input<inputs.ProjectServiceAccountTimeouts | undefined>;
     /**
-     * The username of the user. If not specified, it’s automatically generated.
+     * The username of the user. If not specified, it's automatically generated.
      */
     username?: pulumi.Input<string | undefined>;
 }

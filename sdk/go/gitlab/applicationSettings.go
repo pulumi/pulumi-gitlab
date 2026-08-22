@@ -406,6 +406,10 @@ type ApplicationSettings struct {
 	MaxSshKeyLifetime pulumi.IntOutput `pulumi:"maxSshKeyLifetime"`
 	// Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
 	MaxTerraformStateSizeBytes pulumi.IntOutput `pulumi:"maxTerraformStateSizeBytes"`
+	// The maximum depth of nested CI/CD configuration added with the `include` keyword.
+	MaxYamlDepth pulumi.IntOutput `pulumi:"maxYamlDepth"`
+	// The maximum size in bytes of a single CI/CD configuration file.
+	MaxYamlSizeBytes pulumi.IntOutput `pulumi:"maxYamlSizeBytes"`
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold pulumi.IntOutput `pulumi:"metricsMethodCallThreshold"`
 	// Indicates whether passwords require a minimum length. Premium and Ultimate only.
@@ -1161,6 +1165,10 @@ type applicationSettingsState struct {
 	MaxSshKeyLifetime *int `pulumi:"maxSshKeyLifetime"`
 	// Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
 	MaxTerraformStateSizeBytes *int `pulumi:"maxTerraformStateSizeBytes"`
+	// The maximum depth of nested CI/CD configuration added with the `include` keyword.
+	MaxYamlDepth *int `pulumi:"maxYamlDepth"`
+	// The maximum size in bytes of a single CI/CD configuration file.
+	MaxYamlSizeBytes *int `pulumi:"maxYamlSizeBytes"`
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold *int `pulumi:"metricsMethodCallThreshold"`
 	// Indicates whether passwords require a minimum length. Premium and Ultimate only.
@@ -1816,6 +1824,10 @@ type ApplicationSettingsState struct {
 	MaxSshKeyLifetime pulumi.IntPtrInput
 	// Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
 	MaxTerraformStateSizeBytes pulumi.IntPtrInput
+	// The maximum depth of nested CI/CD configuration added with the `include` keyword.
+	MaxYamlDepth pulumi.IntPtrInput
+	// The maximum size in bytes of a single CI/CD configuration file.
+	MaxYamlSizeBytes pulumi.IntPtrInput
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold pulumi.IntPtrInput
 	// Indicates whether passwords require a minimum length. Premium and Ultimate only.
@@ -2471,6 +2483,10 @@ type applicationSettingsArgs struct {
 	MaxSshKeyLifetime *int `pulumi:"maxSshKeyLifetime"`
 	// Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
 	MaxTerraformStateSizeBytes *int `pulumi:"maxTerraformStateSizeBytes"`
+	// The maximum depth of nested CI/CD configuration added with the `include` keyword.
+	MaxYamlDepth *int `pulumi:"maxYamlDepth"`
+	// The maximum size in bytes of a single CI/CD configuration file.
+	MaxYamlSizeBytes *int `pulumi:"maxYamlSizeBytes"`
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold *int `pulumi:"metricsMethodCallThreshold"`
 	// Indicates whether passwords require a minimum length. Premium and Ultimate only.
@@ -3123,6 +3139,10 @@ type ApplicationSettingsArgs struct {
 	MaxSshKeyLifetime pulumi.IntPtrInput
 	// Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
 	MaxTerraformStateSizeBytes pulumi.IntPtrInput
+	// The maximum depth of nested CI/CD configuration added with the `include` keyword.
+	MaxYamlDepth pulumi.IntPtrInput
+	// The maximum size in bytes of a single CI/CD configuration file.
+	MaxYamlSizeBytes pulumi.IntPtrInput
 	// A method call is only tracked when it takes longer than the given amount of milliseconds.
 	MetricsMethodCallThreshold pulumi.IntPtrInput
 	// Indicates whether passwords require a minimum length. Premium and Ultimate only.
@@ -4436,6 +4456,16 @@ func (o ApplicationSettingsOutput) MaxSshKeyLifetime() pulumi.IntOutput {
 // Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
 func (o ApplicationSettingsOutput) MaxTerraformStateSizeBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.MaxTerraformStateSizeBytes }).(pulumi.IntOutput)
+}
+
+// The maximum depth of nested CI/CD configuration added with the `include` keyword.
+func (o ApplicationSettingsOutput) MaxYamlDepth() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.MaxYamlDepth }).(pulumi.IntOutput)
+}
+
+// The maximum size in bytes of a single CI/CD configuration file.
+func (o ApplicationSettingsOutput) MaxYamlSizeBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.MaxYamlSizeBytes }).(pulumi.IntOutput)
 }
 
 // A method call is only tracked when it takes longer than the given amount of milliseconds.

@@ -43,6 +43,7 @@ import (
 //				ProjectsLimit:  pulumi.Int(4),
 //				CanCreateGroup: pulumi.Bool(false),
 //				IsExternal:     pulumi.Bool(true),
+//				IsAuditor:      pulumi.Bool(false),
 //				ResetPassword:  pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -77,6 +78,8 @@ type User struct {
 	ForceRandomPassword pulumi.BoolPtrOutput `pulumi:"forceRandomPassword"`
 	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin pulumi.BoolPtrOutput `pulumi:"isAdmin"`
+	// Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+	IsAuditor pulumi.BoolPtrOutput `pulumi:"isAuditor"`
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
 	IsExternal pulumi.BoolPtrOutput `pulumi:"isExternal"`
 	// The name of the user.
@@ -150,6 +153,8 @@ type userState struct {
 	ForceRandomPassword *bool `pulumi:"forceRandomPassword"`
 	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin *bool `pulumi:"isAdmin"`
+	// Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+	IsAuditor *bool `pulumi:"isAuditor"`
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
 	IsExternal *bool `pulumi:"isExternal"`
 	// The name of the user.
@@ -181,6 +186,8 @@ type UserState struct {
 	ForceRandomPassword pulumi.BoolPtrInput
 	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin pulumi.BoolPtrInput
+	// Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+	IsAuditor pulumi.BoolPtrInput
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
 	IsExternal pulumi.BoolPtrInput
 	// The name of the user.
@@ -216,6 +223,8 @@ type userArgs struct {
 	ForceRandomPassword *bool `pulumi:"forceRandomPassword"`
 	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin *bool `pulumi:"isAdmin"`
+	// Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+	IsAuditor *bool `pulumi:"isAuditor"`
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
 	IsExternal *bool `pulumi:"isExternal"`
 	// The name of the user.
@@ -248,6 +257,8 @@ type UserArgs struct {
 	ForceRandomPassword pulumi.BoolPtrInput
 	// Boolean, defaults to false.  Whether to enable administrative privileges
 	IsAdmin pulumi.BoolPtrInput
+	// Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+	IsAuditor pulumi.BoolPtrInput
 	// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
 	IsExternal pulumi.BoolPtrInput
 	// The name of the user.
@@ -375,6 +386,11 @@ func (o UserOutput) ForceRandomPassword() pulumi.BoolPtrOutput {
 // Boolean, defaults to false.  Whether to enable administrative privileges
 func (o UserOutput) IsAdmin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.IsAdmin }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+func (o UserOutput) IsAuditor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.IsAuditor }).(pulumi.BoolPtrOutput)
 }
 
 // Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
