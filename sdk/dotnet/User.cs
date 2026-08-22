@@ -38,6 +38,7 @@ namespace Pulumi.GitLab
     ///         ProjectsLimit = 4,
     ///         CanCreateGroup = false,
     ///         IsExternal = true,
+    ///         IsAuditor = false,
     ///         ResetPassword = false,
     ///     });
     /// 
@@ -83,6 +84,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("isAdmin")]
         public Output<bool?> IsAdmin { get; private set; } = null!;
+
+        /// <summary>
+        /// Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+        /// </summary>
+        [Output("isAuditor")]
+        public Output<bool?> IsAuditor { get; private set; } = null!;
 
         /// <summary>
         /// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
@@ -219,6 +226,12 @@ namespace Pulumi.GitLab
         public Input<bool>? IsAdmin { get; set; }
 
         /// <summary>
+        /// Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+        /// </summary>
+        [Input("isAuditor")]
+        public Input<bool>? IsAuditor { get; set; }
+
+        /// <summary>
         /// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
         /// </summary>
         [Input("isExternal")]
@@ -319,6 +332,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("isAdmin")]
         public Input<bool>? IsAdmin { get; set; }
+
+        /// <summary>
+        /// Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+        /// </summary>
+        [Input("isAuditor")]
+        public Input<bool>? IsAuditor { get; set; }
 
         /// <summary>
         /// Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.

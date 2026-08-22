@@ -228,6 +228,8 @@ type LookupProjectResult struct {
 	MonitorAccessLevel string `pulumi:"monitorAccessLevel"`
 	// For forks, whether merge requests target the fork itself rather than the upstream project by default.
 	MrDefaultTargetSelf bool `pulumi:"mrDefaultTargetSelf"`
+	// Template used to set the default title of merge requests.
+	MrDefaultTitleTemplate string `pulumi:"mrDefaultTitleTemplate"`
 	// The name of the project.
 	Name string `pulumi:"name"`
 	// In `group / subgroup / project` or `user / project` format.
@@ -304,6 +306,8 @@ type LookupProjectResult struct {
 	//
 	// Deprecated: Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0.
 	RestrictUserDefinedVariables bool `pulumi:"restrictUserDefinedVariables"`
+	// The strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+	ReviewerAssignmentStrategy string `pulumi:"reviewerAssignmentStrategy"`
 	// Runner token expiration interval, in seconds.
 	RunnerTokenExpirationInterval int `pulumi:"runnerTokenExpirationInterval"`
 	// Registration token to use during runner setup.
@@ -867,6 +871,11 @@ func (o LookupProjectResultOutput) MrDefaultTargetSelf() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.MrDefaultTargetSelf }).(pulumi.BoolOutput)
 }
 
+// Template used to set the default title of merge requests.
+func (o LookupProjectResultOutput) MrDefaultTitleTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.MrDefaultTitleTemplate }).(pulumi.StringOutput)
+}
+
 // The name of the project.
 func (o LookupProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Name }).(pulumi.StringOutput)
@@ -1043,6 +1052,11 @@ func (o LookupProjectResultOutput) ResourceGroupDefaultProcessMode() pulumi.Stri
 // Deprecated: Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0.
 func (o LookupProjectResultOutput) RestrictUserDefinedVariables() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.RestrictUserDefinedVariables }).(pulumi.BoolOutput)
+}
+
+// The strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+func (o LookupProjectResultOutput) ReviewerAssignmentStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.ReviewerAssignmentStrategy }).(pulumi.StringOutput)
 }
 
 // Runner token expiration interval, in seconds.

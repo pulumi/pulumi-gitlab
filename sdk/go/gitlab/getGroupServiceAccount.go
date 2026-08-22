@@ -36,6 +36,8 @@ type LookupGroupServiceAccountArgs struct {
 
 // A collection of values returned by getGroupServiceAccount.
 type LookupGroupServiceAccountResult struct {
+	// The email of the service account user.
+	Email string `pulumi:"email"`
 	// The ID or URL-encoded path of the target group. Must be a top-level group.
 	Group string `pulumi:"group"`
 	// The ID of this Terraform resource. In the format of `<group>:<service_account_id>`.
@@ -82,6 +84,11 @@ func (o LookupGroupServiceAccountResultOutput) ToLookupGroupServiceAccountResult
 
 func (o LookupGroupServiceAccountResultOutput) ToLookupGroupServiceAccountResultOutputWithContext(ctx context.Context) LookupGroupServiceAccountResultOutput {
 	return o
+}
+
+// The email of the service account user.
+func (o LookupGroupServiceAccountResultOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupServiceAccountResult) string { return v.Email }).(pulumi.StringOutput)
 }
 
 // The ID or URL-encoded path of the target group. Must be a top-level group.

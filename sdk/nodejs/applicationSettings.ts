@@ -803,6 +803,14 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     declare public readonly maxTerraformStateSizeBytes: pulumi.Output<number>;
     /**
+     * The maximum depth of nested CI/CD configuration added with the `include` keyword.
+     */
+    declare public readonly maxYamlDepth: pulumi.Output<number>;
+    /**
+     * The maximum size in bytes of a single CI/CD configuration file.
+     */
+    declare public readonly maxYamlSizeBytes: pulumi.Output<number>;
+    /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      */
     declare public readonly metricsMethodCallThreshold: pulumi.Output<number>;
@@ -1556,6 +1564,8 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["maxPersonalAccessTokenLifetime"] = state?.maxPersonalAccessTokenLifetime;
             resourceInputs["maxSshKeyLifetime"] = state?.maxSshKeyLifetime;
             resourceInputs["maxTerraformStateSizeBytes"] = state?.maxTerraformStateSizeBytes;
+            resourceInputs["maxYamlDepth"] = state?.maxYamlDepth;
+            resourceInputs["maxYamlSizeBytes"] = state?.maxYamlSizeBytes;
             resourceInputs["metricsMethodCallThreshold"] = state?.metricsMethodCallThreshold;
             resourceInputs["minimumPasswordLength"] = state?.minimumPasswordLength;
             resourceInputs["mirrorAvailable"] = state?.mirrorAvailable;
@@ -1882,6 +1892,8 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["maxPersonalAccessTokenLifetime"] = args?.maxPersonalAccessTokenLifetime;
             resourceInputs["maxSshKeyLifetime"] = args?.maxSshKeyLifetime;
             resourceInputs["maxTerraformStateSizeBytes"] = args?.maxTerraformStateSizeBytes;
+            resourceInputs["maxYamlDepth"] = args?.maxYamlDepth;
+            resourceInputs["maxYamlSizeBytes"] = args?.maxYamlSizeBytes;
             resourceInputs["metricsMethodCallThreshold"] = args?.metricsMethodCallThreshold;
             resourceInputs["minimumPasswordLength"] = args?.minimumPasswordLength;
             resourceInputs["mirrorAvailable"] = args?.mirrorAvailable;
@@ -2786,6 +2798,14 @@ export interface ApplicationSettingsState {
      * Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
      */
     maxTerraformStateSizeBytes?: pulumi.Input<number | undefined>;
+    /**
+     * The maximum depth of nested CI/CD configuration added with the `include` keyword.
+     */
+    maxYamlDepth?: pulumi.Input<number | undefined>;
+    /**
+     * The maximum size in bytes of a single CI/CD configuration file.
+     */
+    maxYamlSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      */
@@ -4088,6 +4108,14 @@ export interface ApplicationSettingsArgs {
      * Maximum size in bytes of the Terraform state files. Set this to 0 for unlimited file size.
      */
     maxTerraformStateSizeBytes?: pulumi.Input<number | undefined>;
+    /**
+     * The maximum depth of nested CI/CD configuration added with the `include` keyword.
+     */
+    maxYamlDepth?: pulumi.Input<number | undefined>;
+    /**
+     * The maximum size in bytes of a single CI/CD configuration file.
+     */
+    maxYamlSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      */

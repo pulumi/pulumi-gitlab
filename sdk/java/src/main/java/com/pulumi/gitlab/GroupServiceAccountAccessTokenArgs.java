@@ -21,6 +21,21 @@ public final class GroupServiceAccountAccessTokenArgs extends com.pulumi.resourc
     public static final GroupServiceAccountAccessTokenArgs Empty = new GroupServiceAccountAccessTokenArgs();
 
     /**
+     * The description of the group service account access token.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the group service account access token.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
      * 
      */
@@ -128,6 +143,7 @@ public final class GroupServiceAccountAccessTokenArgs extends com.pulumi.resourc
     private GroupServiceAccountAccessTokenArgs() {}
 
     private GroupServiceAccountAccessTokenArgs(GroupServiceAccountAccessTokenArgs $) {
+        this.description = $.description;
         this.expiresAt = $.expiresAt;
         this.group = $.group;
         this.name = $.name;
@@ -153,6 +169,27 @@ public final class GroupServiceAccountAccessTokenArgs extends com.pulumi.resourc
 
         public Builder(GroupServiceAccountAccessTokenArgs defaults) {
             $ = new GroupServiceAccountAccessTokenArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param description The description of the group service account access token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the group service account access token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

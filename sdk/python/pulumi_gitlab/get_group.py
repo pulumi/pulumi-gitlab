@@ -27,7 +27,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, allow_merge_on_skipped_pipeline=None, allowed_email_domains_list=None, archived=None, auto_devops_enabled=None, avatar_url=None, created_at=None, custom_attributes=None, default_branch=None, default_branch_protection=None, default_branch_protection_defaults=None, description=None, duo_availability=None, duo_features_enabled=None, emails_disabled=None, emails_enabled=None, enabled_git_access_protocol=None, experiment_features_enabled=None, extra_shared_runners_minutes_limit=None, file_template_project_id=None, full_name=None, full_path=None, group_id=None, id=None, ip_restriction_ranges=None, ldap_access=None, ldap_cn=None, lfs_enabled=None, lock_duo_features_enabled=None, lock_math_rendering_limits_enabled=None, marked_for_deletion_on=None, math_rendering_limits_enabled=None, max_artifacts_size=None, membership_lock=None, mentions_disabled=None, name=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, organization_id=None, parent_id=None, path=None, prevent_forking_outside_group=None, prevent_sharing_groups_outside_hierarchy=None, project_creation_level=None, push_rules=None, repository_storage=None, request_access_enabled=None, require_two_factor_authentication=None, runners_token=None, share_with_group_lock=None, shared_runners_minutes_limit=None, shared_runners_setting=None, shared_with_groups=None, statistics=None, subgroup_creation_level=None, two_factor_grace_period=None, visibility_level=None, web_url=None, wiki_access_level=None):
+    def __init__(__self__, allow_merge_on_skipped_pipeline=None, allowed_email_domains_list=None, archived=None, auto_devops_enabled=None, avatar_url=None, created_at=None, crm_enabled=None, custom_attributes=None, default_branch=None, default_branch_protection=None, default_branch_protection_defaults=None, description=None, duo_availability=None, duo_features_enabled=None, emails_disabled=None, emails_enabled=None, enabled_git_access_protocol=None, experiment_features_enabled=None, extra_shared_runners_minutes_limit=None, file_template_project_id=None, full_name=None, full_path=None, group_id=None, id=None, ip_restriction_ranges=None, ldap_access=None, ldap_cn=None, lfs_enabled=None, lock_duo_features_enabled=None, lock_math_rendering_limits_enabled=None, marked_for_deletion_on=None, math_rendering_limits_enabled=None, max_artifacts_size=None, membership_lock=None, mentions_disabled=None, name=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, organization_id=None, parent_id=None, path=None, prevent_forking_outside_group=None, prevent_sharing_groups_outside_hierarchy=None, project_creation_level=None, push_rules=None, repository_storage=None, request_access_enabled=None, require_two_factor_authentication=None, runners_token=None, share_with_group_lock=None, shared_runners_minutes_limit=None, shared_runners_setting=None, shared_with_groups=None, statistics=None, subgroup_creation_level=None, two_factor_grace_period=None, visibility_level=None, web_url=None, wiki_access_level=None):
         if allow_merge_on_skipped_pipeline and not isinstance(allow_merge_on_skipped_pipeline, bool):
             raise TypeError("Expected argument 'allow_merge_on_skipped_pipeline' to be a bool")
         pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
@@ -46,6 +46,9 @@ class GetGroupResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if crm_enabled and not isinstance(crm_enabled, bool):
+            raise TypeError("Expected argument 'crm_enabled' to be a bool")
+        pulumi.set(__self__, "crm_enabled", crm_enabled)
         if custom_attributes and not isinstance(custom_attributes, list):
             raise TypeError("Expected argument 'custom_attributes' to be a list")
         pulumi.set(__self__, "custom_attributes", custom_attributes)
@@ -250,6 +253,14 @@ class GetGroupResult:
         Timestamp at which the group was created.
         """
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="crmEnabled")
+    def crm_enabled(self) -> _builtins.bool:
+        """
+        Whether customer relations management (CRM) is enabled for the group.
+        """
+        return pulumi.get(self, "crm_enabled")
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
@@ -682,6 +693,7 @@ class AwaitableGetGroupResult(GetGroupResult):
             auto_devops_enabled=self.auto_devops_enabled,
             avatar_url=self.avatar_url,
             created_at=self.created_at,
+            crm_enabled=self.crm_enabled,
             custom_attributes=self.custom_attributes,
             default_branch=self.default_branch,
             default_branch_protection=self.default_branch_protection,
@@ -761,6 +773,7 @@ def get_group(full_path: Optional[_builtins.str] = None,
         auto_devops_enabled=pulumi.get(__ret__, 'auto_devops_enabled'),
         avatar_url=pulumi.get(__ret__, 'avatar_url'),
         created_at=pulumi.get(__ret__, 'created_at'),
+        crm_enabled=pulumi.get(__ret__, 'crm_enabled'),
         custom_attributes=pulumi.get(__ret__, 'custom_attributes'),
         default_branch=pulumi.get(__ret__, 'default_branch'),
         default_branch_protection=pulumi.get(__ret__, 'default_branch_protection'),
@@ -837,6 +850,7 @@ def get_group_output(full_path: pulumi.Input[Optional[Optional[_builtins.str]]] 
         auto_devops_enabled=pulumi.get(__response__, 'auto_devops_enabled'),
         avatar_url=pulumi.get(__response__, 'avatar_url'),
         created_at=pulumi.get(__response__, 'created_at'),
+        crm_enabled=pulumi.get(__response__, 'crm_enabled'),
         custom_attributes=pulumi.get(__response__, 'custom_attributes'),
         default_branch=pulumi.get(__response__, 'default_branch'),
         default_branch_protection=pulumi.get(__response__, 'default_branch_protection'),

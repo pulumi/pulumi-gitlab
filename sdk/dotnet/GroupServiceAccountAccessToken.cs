@@ -63,6 +63,7 @@ namespace Pulumi.GitLab
     ///         Group = example.Id,
     ///         UserId = exampleSa.ServiceAccountId,
     ///         Name = "Example service account access token",
+    ///         Description = "Example service account access token description",
     ///         Scopes = new[]
     ///         {
     ///             "api",
@@ -129,6 +130,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the group service account access token.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
@@ -235,6 +242,12 @@ namespace Pulumi.GitLab
     public sealed class GroupServiceAccountAccessTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The description of the group service account access token.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         /// </summary>
         [Input("expiresAt")]
@@ -301,6 +314,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// The description of the group service account access token.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.

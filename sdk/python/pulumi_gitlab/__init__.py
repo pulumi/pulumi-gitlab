@@ -15,6 +15,7 @@ from .branch_protection import *
 from .cluster_agent import *
 from .cluster_agent_token import *
 from .compliance_framework import *
+from .compliance_requirement import *
 from .deploy_key import *
 from .deploy_key_enable import *
 from .get_application import *
@@ -105,10 +106,12 @@ from .group_branch_protection import *
 from .group_cluster import *
 from .group_custom_attribute import *
 from .group_dependency_proxy import *
+from .group_dependency_proxy_image_ttl_policy import *
 from .group_deploy_token import *
 from .group_epic_board import *
 from .group_hook import *
 from .group_integration_harbor import *
+from .group_integration_jira import *
 from .group_integration_mattermost import *
 from .group_integration_microsoft_teams import *
 from .group_issue_board import *
@@ -150,6 +153,8 @@ from .project_environment import *
 from .project_error_tracking_client_key import *
 from .project_error_tracking_settings import *
 from .project_external_status_check import *
+from .project_feature_flag import *
+from .project_feature_flag_user_list import *
 from .project_freeze_period import *
 from .project_hook import *
 from .project_integration_custom_issue_tracker import *
@@ -191,7 +196,9 @@ from .project_saved_reply import *
 from .project_secret_detection_validity_checks import *
 from .project_secure_file import *
 from .project_security_policy_attachment import *
+from .project_security_settings import *
 from .project_service_account import *
+from .project_service_account_access_token import *
 from .project_share_group import *
 from .project_tag import *
 from .project_target_branch_rule import *
@@ -305,6 +312,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/complianceRequirement",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/complianceRequirement:ComplianceRequirement": "ComplianceRequirement"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/deployKey",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -385,6 +400,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/groupDependencyProxyImageTtlPolicy",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupDependencyProxyImageTtlPolicy:GroupDependencyProxyImageTtlPolicy": "GroupDependencyProxyImageTtlPolicy"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/groupDeployToken",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -413,6 +436,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/groupIntegrationHarbor:GroupIntegrationHarbor": "GroupIntegrationHarbor"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupIntegrationJira",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupIntegrationJira:GroupIntegrationJira": "GroupIntegrationJira"
   }
  },
  {
@@ -745,6 +776,22 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectFeatureFlag",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectFeatureFlag:ProjectFeatureFlag": "ProjectFeatureFlag"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectFeatureFlagUserList",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectFeatureFlagUserList:ProjectFeatureFlagUserList": "ProjectFeatureFlagUserList"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectFreezePeriod",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -1073,10 +1120,26 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/projectSecuritySettings",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectSecuritySettings:ProjectSecuritySettings": "ProjectSecuritySettings"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/projectServiceAccount",
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectServiceAccount:ProjectServiceAccount": "ProjectServiceAccount"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectServiceAccountAccessToken",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectServiceAccountAccessToken:ProjectServiceAccountAccessToken": "ProjectServiceAccountAccessToken"
   }
  },
  {

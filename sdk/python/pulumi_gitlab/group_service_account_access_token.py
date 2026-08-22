@@ -24,6 +24,7 @@ class GroupServiceAccountAccessTokenArgs:
                  group: pulumi.Input[_builtins.str],
                  scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  user_id: pulumi.Input[_builtins.int],
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  rotation_configuration: pulumi.Input[Optional['GroupServiceAccountAccessTokenRotationConfigurationArgs']] = None,
@@ -34,6 +35,7 @@ class GroupServiceAccountAccessTokenArgs:
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group containing the service account. Must be a top level group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group service account access token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`. If `self_rotate` is included, you must also provide either `expires_at` or `rotation_configuration`.
         :param pulumi.Input[_builtins.int] user_id: The ID of a service account user.
+        :param pulumi.Input[_builtins.str] description: The description of the group service account access token.
         :param pulumi.Input[_builtins.str] expires_at: The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         :param pulumi.Input[_builtins.str] name: The name of the personal access token.
         :param pulumi.Input['GroupServiceAccountAccessTokenRotationConfigurationArgs'] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
@@ -42,6 +44,8 @@ class GroupServiceAccountAccessTokenArgs:
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "scopes", scopes)
         pulumi.set(__self__, "user_id", user_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
         if name is not None:
@@ -86,6 +90,18 @@ class GroupServiceAccountAccessTokenArgs:
     @user_id.setter
     def user_id(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "user_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the group service account access token.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
@@ -141,6 +157,7 @@ class _GroupServiceAccountAccessTokenState:
     def __init__(__self__, *,
                  active: pulumi.Input[Optional[_builtins.bool]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -155,6 +172,7 @@ class _GroupServiceAccountAccessTokenState:
 
         :param pulumi.Input[_builtins.bool] active: True if the token is active.
         :param pulumi.Input[_builtins.str] created_at: Time the token has been created, RFC3339 format.
+        :param pulumi.Input[_builtins.str] description: The description of the group service account access token.
         :param pulumi.Input[_builtins.str] expires_at: The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group containing the service account. Must be a top level group.
         :param pulumi.Input[_builtins.str] name: The name of the personal access token.
@@ -169,6 +187,8 @@ class _GroupServiceAccountAccessTokenState:
             pulumi.set(__self__, "active", active)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
         if group is not None:
@@ -211,6 +231,18 @@ class _GroupServiceAccountAccessTokenState:
     @created_at.setter
     def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the group service account access token.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
@@ -327,6 +359,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -375,6 +408,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
             group=example.id,
             user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example service account access token",
+            description="Example service account access token description",
             scopes=["api"])
         # The service account access token with expires at
         example_sa_token_expires_at = gitlab.GroupServiceAccountAccessToken("example_sa_token_expires_at",
@@ -411,6 +445,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] description: The description of the group service account access token.
         :param pulumi.Input[_builtins.str] expires_at: The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group containing the service account. Must be a top level group.
         :param pulumi.Input[_builtins.str] name: The name of the personal access token.
@@ -465,6 +500,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
             group=example.id,
             user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example service account access token",
+            description="Example service account access token description",
             scopes=["api"])
         # The service account access token with expires at
         example_sa_token_expires_at = gitlab.GroupServiceAccountAccessToken("example_sa_token_expires_at",
@@ -514,6 +550,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -530,6 +567,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupServiceAccountAccessTokenArgs.__new__(GroupServiceAccountAccessTokenArgs)
 
+            __props__.__dict__["description"] = description
             __props__.__dict__["expires_at"] = expires_at
             if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")
@@ -561,6 +599,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             active: pulumi.Input[Optional[_builtins.bool]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
             expires_at: pulumi.Input[Optional[_builtins.str]] = None,
             group: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -579,6 +618,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: True if the token is active.
         :param pulumi.Input[_builtins.str] created_at: Time the token has been created, RFC3339 format.
+        :param pulumi.Input[_builtins.str] description: The description of the group service account access token.
         :param pulumi.Input[_builtins.str] expires_at: The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group containing the service account. Must be a top level group.
         :param pulumi.Input[_builtins.str] name: The name of the personal access token.
@@ -595,6 +635,7 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
 
         __props__.__dict__["active"] = active
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["description"] = description
         __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["group"] = group
         __props__.__dict__["name"] = name
@@ -621,6 +662,14 @@ class GroupServiceAccountAccessToken(pulumi.CustomResource):
         Time the token has been created, RFC3339 format.
         """
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[_builtins.str]:
+        """
+        The description of the group service account access token.
+        """
+        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")

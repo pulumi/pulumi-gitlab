@@ -50,6 +50,21 @@ public final class GroupServiceAccountAccessTokenState extends com.pulumi.resour
     }
 
     /**
+     * The description of the group service account access token.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the group service account access token.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
      * 
      */
@@ -189,6 +204,7 @@ public final class GroupServiceAccountAccessTokenState extends com.pulumi.resour
     private GroupServiceAccountAccessTokenState(GroupServiceAccountAccessTokenState $) {
         this.active = $.active;
         this.createdAt = $.createdAt;
+        this.description = $.description;
         this.expiresAt = $.expiresAt;
         this.group = $.group;
         this.name = $.name;
@@ -258,6 +274,27 @@ public final class GroupServiceAccountAccessTokenState extends com.pulumi.resour
          */
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param description The description of the group service account access token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the group service account access token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

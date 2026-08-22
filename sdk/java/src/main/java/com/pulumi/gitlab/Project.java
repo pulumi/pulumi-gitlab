@@ -976,6 +976,20 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mrDefaultTargetSelf);
     }
     /**
+     * Template used to set the default title of merge requests.
+     * 
+     */
+    @Export(name="mrDefaultTitleTemplate", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> mrDefaultTitleTemplate;
+
+    /**
+     * @return Template used to set the default title of merge requests.
+     * 
+     */
+    public Output<Optional<String>> mrDefaultTitleTemplate() {
+        return Codegen.optional(this.mrDefaultTitleTemplate);
+    }
+    /**
      * The name of the project.
      * 
      */
@@ -1118,7 +1132,11 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      * 
+     * @deprecated
+     * The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource&#39;s `secretPushProtectionEnabled` attribute instead.
+     * 
      */
+    @Deprecated /* The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead. */
     @Export(name="preReceiveSecretDetectionEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> preReceiveSecretDetectionEnabled;
 
@@ -1328,6 +1346,20 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<String> resourceGroupDefaultProcessMode() {
         return this.resourceGroupDefaultProcessMode;
+    }
+    /**
+     * Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+     * 
+     */
+    @Export(name="reviewerAssignmentStrategy", refs={String.class}, tree="[0]")
+    private Output<String> reviewerAssignmentStrategy;
+
+    /**
+     * @return Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+     * 
+     */
+    public Output<String> reviewerAssignmentStrategy() {
+        return this.reviewerAssignmentStrategy;
     }
     /**
      * Registration token to use during runner setup.

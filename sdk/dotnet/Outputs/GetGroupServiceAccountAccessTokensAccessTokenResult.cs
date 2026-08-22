@@ -15,6 +15,7 @@ namespace Pulumi.GitLab.Outputs
     {
         public readonly bool Active;
         public readonly string CreatedAt;
+        public readonly string Description;
         public readonly string ExpiresAt;
         public readonly string Id;
         public readonly string Name;
@@ -26,6 +27,8 @@ namespace Pulumi.GitLab.Outputs
             bool active,
 
             string createdAt,
+
+            string description,
 
             string expiresAt,
 
@@ -39,6 +42,7 @@ namespace Pulumi.GitLab.Outputs
         {
             Active = active;
             CreatedAt = createdAt;
+            Description = description;
             ExpiresAt = expiresAt;
             Id = id;
             Name = name;

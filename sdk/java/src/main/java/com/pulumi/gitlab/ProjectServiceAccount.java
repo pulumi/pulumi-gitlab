@@ -166,18 +166,18 @@ public class ProjectServiceAccount extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timeouts);
     }
     /**
-     * The username of the user. If not specified, it’s automatically generated.
+     * The username of the user. If not specified, it&#39;s automatically generated.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> username;
+    private Output<String> username;
 
     /**
-     * @return The username of the user. If not specified, it’s automatically generated.
+     * @return The username of the user. If not specified, it&#39;s automatically generated.
      * 
      */
-    public Output<Optional<String>> username() {
-        return Codegen.optional(this.username);
+    public Output<String> username() {
+        return this.username;
     }
 
     /**

@@ -86,14 +86,14 @@ public final class ProjectServiceAccountArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The username of the user. If not specified, it’s automatically generated.
+     * The username of the user. If not specified, it&#39;s automatically generated.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The username of the user. If not specified, it’s automatically generated.
+     * @return The username of the user. If not specified, it&#39;s automatically generated.
      * 
      */
     public Optional<Output<String>> username() {
@@ -223,7 +223,7 @@ public final class ProjectServiceAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param username The username of the user. If not specified, it’s automatically generated.
+         * @param username The username of the user. If not specified, it&#39;s automatically generated.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class ProjectServiceAccountArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param username The username of the user. If not specified, it’s automatically generated.
+         * @param username The username of the user. If not specified, it&#39;s automatically generated.
          * 
          * @return builder
          * 

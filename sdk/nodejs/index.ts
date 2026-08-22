@@ -50,6 +50,11 @@ export type ComplianceFramework = import("./complianceFramework").ComplianceFram
 export const ComplianceFramework: typeof import("./complianceFramework").ComplianceFramework = null as any;
 utilities.lazyLoad(exports, ["ComplianceFramework"], () => require("./complianceFramework"));
 
+export { ComplianceRequirementArgs, ComplianceRequirementState } from "./complianceRequirement";
+export type ComplianceRequirement = import("./complianceRequirement").ComplianceRequirement;
+export const ComplianceRequirement: typeof import("./complianceRequirement").ComplianceRequirement = null as any;
+utilities.lazyLoad(exports, ["ComplianceRequirement"], () => require("./complianceRequirement"));
+
 export { DeployKeyArgs, DeployKeyState } from "./deployKey";
 export type DeployKey = import("./deployKey").DeployKey;
 export const DeployKey: typeof import("./deployKey").DeployKey = null as any;
@@ -500,6 +505,11 @@ export type GroupDependencyProxy = import("./groupDependencyProxy").GroupDepende
 export const GroupDependencyProxy: typeof import("./groupDependencyProxy").GroupDependencyProxy = null as any;
 utilities.lazyLoad(exports, ["GroupDependencyProxy"], () => require("./groupDependencyProxy"));
 
+export { GroupDependencyProxyImageTtlPolicyArgs, GroupDependencyProxyImageTtlPolicyState } from "./groupDependencyProxyImageTtlPolicy";
+export type GroupDependencyProxyImageTtlPolicy = import("./groupDependencyProxyImageTtlPolicy").GroupDependencyProxyImageTtlPolicy;
+export const GroupDependencyProxyImageTtlPolicy: typeof import("./groupDependencyProxyImageTtlPolicy").GroupDependencyProxyImageTtlPolicy = null as any;
+utilities.lazyLoad(exports, ["GroupDependencyProxyImageTtlPolicy"], () => require("./groupDependencyProxyImageTtlPolicy"));
+
 export { GroupDeployTokenArgs, GroupDeployTokenState } from "./groupDeployToken";
 export type GroupDeployToken = import("./groupDeployToken").GroupDeployToken;
 export const GroupDeployToken: typeof import("./groupDeployToken").GroupDeployToken = null as any;
@@ -519,6 +529,11 @@ export { GroupIntegrationHarborArgs, GroupIntegrationHarborState } from "./group
 export type GroupIntegrationHarbor = import("./groupIntegrationHarbor").GroupIntegrationHarbor;
 export const GroupIntegrationHarbor: typeof import("./groupIntegrationHarbor").GroupIntegrationHarbor = null as any;
 utilities.lazyLoad(exports, ["GroupIntegrationHarbor"], () => require("./groupIntegrationHarbor"));
+
+export { GroupIntegrationJiraArgs, GroupIntegrationJiraState } from "./groupIntegrationJira";
+export type GroupIntegrationJira = import("./groupIntegrationJira").GroupIntegrationJira;
+export const GroupIntegrationJira: typeof import("./groupIntegrationJira").GroupIntegrationJira = null as any;
+utilities.lazyLoad(exports, ["GroupIntegrationJira"], () => require("./groupIntegrationJira"));
 
 export { GroupIntegrationMattermostArgs, GroupIntegrationMattermostState } from "./groupIntegrationMattermost";
 export type GroupIntegrationMattermost = import("./groupIntegrationMattermost").GroupIntegrationMattermost;
@@ -725,6 +740,16 @@ export type ProjectExternalStatusCheck = import("./projectExternalStatusCheck").
 export const ProjectExternalStatusCheck: typeof import("./projectExternalStatusCheck").ProjectExternalStatusCheck = null as any;
 utilities.lazyLoad(exports, ["ProjectExternalStatusCheck"], () => require("./projectExternalStatusCheck"));
 
+export { ProjectFeatureFlagArgs, ProjectFeatureFlagState } from "./projectFeatureFlag";
+export type ProjectFeatureFlag = import("./projectFeatureFlag").ProjectFeatureFlag;
+export const ProjectFeatureFlag: typeof import("./projectFeatureFlag").ProjectFeatureFlag = null as any;
+utilities.lazyLoad(exports, ["ProjectFeatureFlag"], () => require("./projectFeatureFlag"));
+
+export { ProjectFeatureFlagUserListArgs, ProjectFeatureFlagUserListState } from "./projectFeatureFlagUserList";
+export type ProjectFeatureFlagUserList = import("./projectFeatureFlagUserList").ProjectFeatureFlagUserList;
+export const ProjectFeatureFlagUserList: typeof import("./projectFeatureFlagUserList").ProjectFeatureFlagUserList = null as any;
+utilities.lazyLoad(exports, ["ProjectFeatureFlagUserList"], () => require("./projectFeatureFlagUserList"));
+
 export { ProjectFreezePeriodArgs, ProjectFreezePeriodState } from "./projectFreezePeriod";
 export type ProjectFreezePeriod = import("./projectFreezePeriod").ProjectFreezePeriod;
 export const ProjectFreezePeriod: typeof import("./projectFreezePeriod").ProjectFreezePeriod = null as any;
@@ -930,10 +955,20 @@ export type ProjectSecurityPolicyAttachment = import("./projectSecurityPolicyAtt
 export const ProjectSecurityPolicyAttachment: typeof import("./projectSecurityPolicyAttachment").ProjectSecurityPolicyAttachment = null as any;
 utilities.lazyLoad(exports, ["ProjectSecurityPolicyAttachment"], () => require("./projectSecurityPolicyAttachment"));
 
+export { ProjectSecuritySettingsArgs, ProjectSecuritySettingsState } from "./projectSecuritySettings";
+export type ProjectSecuritySettings = import("./projectSecuritySettings").ProjectSecuritySettings;
+export const ProjectSecuritySettings: typeof import("./projectSecuritySettings").ProjectSecuritySettings = null as any;
+utilities.lazyLoad(exports, ["ProjectSecuritySettings"], () => require("./projectSecuritySettings"));
+
 export { ProjectServiceAccountArgs, ProjectServiceAccountState } from "./projectServiceAccount";
 export type ProjectServiceAccount = import("./projectServiceAccount").ProjectServiceAccount;
 export const ProjectServiceAccount: typeof import("./projectServiceAccount").ProjectServiceAccount = null as any;
 utilities.lazyLoad(exports, ["ProjectServiceAccount"], () => require("./projectServiceAccount"));
+
+export { ProjectServiceAccountAccessTokenArgs, ProjectServiceAccountAccessTokenState } from "./projectServiceAccountAccessToken";
+export type ProjectServiceAccountAccessToken = import("./projectServiceAccountAccessToken").ProjectServiceAccountAccessToken;
+export const ProjectServiceAccountAccessToken: typeof import("./projectServiceAccountAccessToken").ProjectServiceAccountAccessToken = null as any;
+utilities.lazyLoad(exports, ["ProjectServiceAccountAccessToken"], () => require("./projectServiceAccountAccessToken"));
 
 export { ProjectShareGroupArgs, ProjectShareGroupState } from "./projectShareGroup";
 export type ProjectShareGroup = import("./projectShareGroup").ProjectShareGroup;
@@ -1095,6 +1130,8 @@ const _module = {
                 return new ClusterAgentToken(name, <any>undefined, { urn })
             case "gitlab:index/complianceFramework:ComplianceFramework":
                 return new ComplianceFramework(name, <any>undefined, { urn })
+            case "gitlab:index/complianceRequirement:ComplianceRequirement":
+                return new ComplianceRequirement(name, <any>undefined, { urn })
             case "gitlab:index/deployKey:DeployKey":
                 return new DeployKey(name, <any>undefined, { urn })
             case "gitlab:index/deployKeyEnable:DeployKeyEnable":
@@ -1115,6 +1152,8 @@ const _module = {
                 return new GroupCustomAttribute(name, <any>undefined, { urn })
             case "gitlab:index/groupDependencyProxy:GroupDependencyProxy":
                 return new GroupDependencyProxy(name, <any>undefined, { urn })
+            case "gitlab:index/groupDependencyProxyImageTtlPolicy:GroupDependencyProxyImageTtlPolicy":
+                return new GroupDependencyProxyImageTtlPolicy(name, <any>undefined, { urn })
             case "gitlab:index/groupDeployToken:GroupDeployToken":
                 return new GroupDeployToken(name, <any>undefined, { urn })
             case "gitlab:index/groupEpicBoard:GroupEpicBoard":
@@ -1123,6 +1162,8 @@ const _module = {
                 return new GroupHook(name, <any>undefined, { urn })
             case "gitlab:index/groupIntegrationHarbor:GroupIntegrationHarbor":
                 return new GroupIntegrationHarbor(name, <any>undefined, { urn })
+            case "gitlab:index/groupIntegrationJira:GroupIntegrationJira":
+                return new GroupIntegrationJira(name, <any>undefined, { urn })
             case "gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost":
                 return new GroupIntegrationMattermost(name, <any>undefined, { urn })
             case "gitlab:index/groupIntegrationMicrosoftTeams:GroupIntegrationMicrosoftTeams":
@@ -1205,6 +1246,10 @@ const _module = {
                 return new ProjectErrorTrackingSettings(name, <any>undefined, { urn })
             case "gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck":
                 return new ProjectExternalStatusCheck(name, <any>undefined, { urn })
+            case "gitlab:index/projectFeatureFlag:ProjectFeatureFlag":
+                return new ProjectFeatureFlag(name, <any>undefined, { urn })
+            case "gitlab:index/projectFeatureFlagUserList:ProjectFeatureFlagUserList":
+                return new ProjectFeatureFlagUserList(name, <any>undefined, { urn })
             case "gitlab:index/projectFreezePeriod:ProjectFreezePeriod":
                 return new ProjectFreezePeriod(name, <any>undefined, { urn })
             case "gitlab:index/projectHook:ProjectHook":
@@ -1287,8 +1332,12 @@ const _module = {
                 return new ProjectSecureFile(name, <any>undefined, { urn })
             case "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment":
                 return new ProjectSecurityPolicyAttachment(name, <any>undefined, { urn })
+            case "gitlab:index/projectSecuritySettings:ProjectSecuritySettings":
+                return new ProjectSecuritySettings(name, <any>undefined, { urn })
             case "gitlab:index/projectServiceAccount:ProjectServiceAccount":
                 return new ProjectServiceAccount(name, <any>undefined, { urn })
+            case "gitlab:index/projectServiceAccountAccessToken:ProjectServiceAccountAccessToken":
+                return new ProjectServiceAccountAccessToken(name, <any>undefined, { urn })
             case "gitlab:index/projectShareGroup:ProjectShareGroup":
                 return new ProjectShareGroup(name, <any>undefined, { urn })
             case "gitlab:index/projectTag:ProjectTag":
@@ -1353,6 +1402,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/branchProtection", _modul
 pulumi.runtime.registerResourceModule("gitlab", "index/clusterAgent", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/clusterAgentToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/complianceFramework", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/complianceRequirement", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployKey", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployKeyEnable", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/globalLevelNotifications", _module)
@@ -1363,10 +1413,12 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupBranchProtection", _
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupDependencyProxy", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupDependencyProxyImageTtlPolicy", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupDeployToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupEpicBoard", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupIntegrationHarbor", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupIntegrationJira", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupIntegrationMattermost", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupIntegrationMicrosoftTeams", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupIssueBoard", _module)
@@ -1408,6 +1460,8 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectEnvironment", _mod
 pulumi.runtime.registerResourceModule("gitlab", "index/projectErrorTrackingClientKey", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectErrorTrackingSettings", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectExternalStatusCheck", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectFeatureFlag", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectFeatureFlagUserList", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectFreezePeriod", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectHook", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectIntegrationCustomIssueTracker", _module)
@@ -1449,7 +1503,9 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectSavedReply", _modu
 pulumi.runtime.registerResourceModule("gitlab", "index/projectSecretDetectionValidityChecks", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectSecureFile", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectSecurityPolicyAttachment", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectSecuritySettings", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectServiceAccount", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectServiceAccountAccessToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectShareGroup", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectTag", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectTargetBranchRule", _module)

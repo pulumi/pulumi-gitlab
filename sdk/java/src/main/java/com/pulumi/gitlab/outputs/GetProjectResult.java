@@ -502,6 +502,11 @@ public final class GetProjectResult {
      */
     private Boolean mrDefaultTargetSelf;
     /**
+     * @return Template used to set the default title of merge requests.
+     * 
+     */
+    private String mrDefaultTitleTemplate;
+    /**
      * @return The name of the project.
      * 
      */
@@ -687,6 +692,11 @@ public final class GetProjectResult {
      */
     @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0. */
     private Boolean restrictUserDefinedVariables;
+    /**
+     * @return The strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+     * 
+     */
+    private String reviewerAssignmentStrategy;
     /**
      * @return Runner token expiration interval, in seconds.
      * 
@@ -1487,6 +1497,13 @@ public final class GetProjectResult {
         return this.mrDefaultTargetSelf;
     }
     /**
+     * @return Template used to set the default title of merge requests.
+     * 
+     */
+    public String mrDefaultTitleTemplate() {
+        return this.mrDefaultTitleTemplate;
+    }
+    /**
      * @return The name of the project.
      * 
      */
@@ -1739,6 +1756,13 @@ public final class GetProjectResult {
     @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0. */
     public Boolean restrictUserDefinedVariables() {
         return this.restrictUserDefinedVariables;
+    }
+    /**
+     * @return The strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+     * 
+     */
+    public String reviewerAssignmentStrategy() {
+        return this.reviewerAssignmentStrategy;
     }
     /**
      * @return Runner token expiration interval, in seconds.
@@ -2025,6 +2049,7 @@ public final class GetProjectResult {
         private String modelRegistryAccessLevel;
         private String monitorAccessLevel;
         private Boolean mrDefaultTargetSelf;
+        private String mrDefaultTitleTemplate;
         private String name;
         private String nameWithNamespace;
         private Integer namespaceId;
@@ -2059,6 +2084,7 @@ public final class GetProjectResult {
         private Boolean resolveOutdatedDiffDiscussions;
         private String resourceGroupDefaultProcessMode;
         private Boolean restrictUserDefinedVariables;
+        private String reviewerAssignmentStrategy;
         private Integer runnerTokenExpirationInterval;
         private String runnersToken;
         private String securityAndComplianceAccessLevel;
@@ -2177,6 +2203,7 @@ public final class GetProjectResult {
     	      this.modelRegistryAccessLevel = defaults.modelRegistryAccessLevel;
     	      this.monitorAccessLevel = defaults.monitorAccessLevel;
     	      this.mrDefaultTargetSelf = defaults.mrDefaultTargetSelf;
+    	      this.mrDefaultTitleTemplate = defaults.mrDefaultTitleTemplate;
     	      this.name = defaults.name;
     	      this.nameWithNamespace = defaults.nameWithNamespace;
     	      this.namespaceId = defaults.namespaceId;
@@ -2211,6 +2238,7 @@ public final class GetProjectResult {
     	      this.resolveOutdatedDiffDiscussions = defaults.resolveOutdatedDiffDiscussions;
     	      this.resourceGroupDefaultProcessMode = defaults.resourceGroupDefaultProcessMode;
     	      this.restrictUserDefinedVariables = defaults.restrictUserDefinedVariables;
+    	      this.reviewerAssignmentStrategy = defaults.reviewerAssignmentStrategy;
     	      this.runnerTokenExpirationInterval = defaults.runnerTokenExpirationInterval;
     	      this.runnersToken = defaults.runnersToken;
     	      this.securityAndComplianceAccessLevel = defaults.securityAndComplianceAccessLevel;
@@ -2981,6 +3009,14 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
+        public Builder mrDefaultTitleTemplate(String mrDefaultTitleTemplate) {
+            if (mrDefaultTitleTemplate == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "mrDefaultTitleTemplate");
+            }
+            this.mrDefaultTitleTemplate = mrDefaultTitleTemplate;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetProjectResult", "name");
@@ -3262,6 +3298,14 @@ public final class GetProjectResult {
               throw new MissingRequiredPropertyException("GetProjectResult", "restrictUserDefinedVariables");
             }
             this.restrictUserDefinedVariables = restrictUserDefinedVariables;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder reviewerAssignmentStrategy(String reviewerAssignmentStrategy) {
+            if (reviewerAssignmentStrategy == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "reviewerAssignmentStrategy");
+            }
+            this.reviewerAssignmentStrategy = reviewerAssignmentStrategy;
             return this;
         }
         @CustomType.Setter
@@ -3558,6 +3602,7 @@ public final class GetProjectResult {
             _resultValue.modelRegistryAccessLevel = modelRegistryAccessLevel;
             _resultValue.monitorAccessLevel = monitorAccessLevel;
             _resultValue.mrDefaultTargetSelf = mrDefaultTargetSelf;
+            _resultValue.mrDefaultTitleTemplate = mrDefaultTitleTemplate;
             _resultValue.name = name;
             _resultValue.nameWithNamespace = nameWithNamespace;
             _resultValue.namespaceId = namespaceId;
@@ -3592,6 +3637,7 @@ public final class GetProjectResult {
             _resultValue.resolveOutdatedDiffDiscussions = resolveOutdatedDiffDiscussions;
             _resultValue.resourceGroupDefaultProcessMode = resourceGroupDefaultProcessMode;
             _resultValue.restrictUserDefinedVariables = restrictUserDefinedVariables;
+            _resultValue.reviewerAssignmentStrategy = reviewerAssignmentStrategy;
             _resultValue.runnerTokenExpirationInterval = runnerTokenExpirationInterval;
             _resultValue.runnersToken = runnersToken;
             _resultValue.securityAndComplianceAccessLevel = securityAndComplianceAccessLevel;

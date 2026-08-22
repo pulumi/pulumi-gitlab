@@ -52,6 +52,10 @@ export interface GetProjectServiceAccountArgs {
  */
 export interface GetProjectServiceAccountResult {
     /**
+     * The email of the service account user.
+     */
+    readonly email: string;
+    /**
      * The ID of this Terraform resource. In the format of `<project>:<service_account_id>`.
      */
     readonly id: string;

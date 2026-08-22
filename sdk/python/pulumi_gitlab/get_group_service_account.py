@@ -26,7 +26,10 @@ class GetGroupServiceAccountResult:
     """
     A collection of values returned by getGroupServiceAccount.
     """
-    def __init__(__self__, group=None, id=None, name=None, service_account_id=None, username=None):
+    def __init__(__self__, email=None, group=None, id=None, name=None, service_account_id=None, username=None):
+        if email and not isinstance(email, str):
+            raise TypeError("Expected argument 'email' to be a str")
+        pulumi.set(__self__, "email", email)
         if group and not isinstance(group, str):
             raise TypeError("Expected argument 'group' to be a str")
         pulumi.set(__self__, "group", group)
@@ -42,6 +45,14 @@ class GetGroupServiceAccountResult:
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        The email of the service account user.
+        """
+        return pulumi.get(self, "email")
 
     @_builtins.property
     @pulumi.getter
@@ -90,6 +101,7 @@ class AwaitableGetGroupServiceAccountResult(GetGroupServiceAccountResult):
         if False:
             yield self
         return GetGroupServiceAccountResult(
+            email=self.email,
             group=self.group,
             id=self.id,
             name=self.name,
@@ -118,6 +130,7 @@ def get_group_service_account(group: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getGroupServiceAccount:getGroupServiceAccount', __args__, opts=opts, typ=GetGroupServiceAccountResult).value
 
     return AwaitableGetGroupServiceAccountResult(
+        email=pulumi.get(__ret__, 'email'),
         group=pulumi.get(__ret__, 'group'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
@@ -143,6 +156,7 @@ def get_group_service_account_output(group: pulumi.Input[Optional[_builtins.str]
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getGroupServiceAccount:getGroupServiceAccount', __args__, opts=opts, typ=GetGroupServiceAccountResult)
     return __ret__.apply(lambda __response__: GetGroupServiceAccountResult(
+        email=pulumi.get(__response__, 'email'),
         group=pulumi.get(__response__, 'group'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),

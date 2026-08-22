@@ -328,6 +328,10 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly mrDefaultTargetSelf: pulumi.Output<boolean | undefined>;
     /**
+     * Template used to set the default title of merge requests.
+     */
+    declare public readonly mrDefaultTitleTemplate: pulumi.Output<string | undefined>;
+    /**
      * The name of the project.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -369,6 +373,8 @@ export class Project extends pulumi.CustomResource {
     declare public readonly permanentlyDeleteOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
+     *
+     * @deprecated The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead.
      */
     declare public readonly preReceiveSecretDetectionEnabled: pulumi.Output<boolean>;
     /**
@@ -429,6 +435,10 @@ export class Project extends pulumi.CustomResource {
      * The default resource group process mode for the project.
      */
     declare public readonly resourceGroupDefaultProcessMode: pulumi.Output<string>;
+    /**
+     * Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+     */
+    declare public readonly reviewerAssignmentStrategy: pulumi.Output<string>;
     /**
      * Registration token to use during runner setup.
      */
@@ -577,6 +587,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["modelRegistryAccessLevel"] = state?.modelRegistryAccessLevel;
             resourceInputs["monitorAccessLevel"] = state?.monitorAccessLevel;
             resourceInputs["mrDefaultTargetSelf"] = state?.mrDefaultTargetSelf;
+            resourceInputs["mrDefaultTitleTemplate"] = state?.mrDefaultTitleTemplate;
             resourceInputs["name"] = state?.name;
             resourceInputs["namespaceId"] = state?.namespaceId;
             resourceInputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = state?.onlyAllowMergeIfAllDiscussionsAreResolved;
@@ -602,6 +613,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["requirementsAccessLevel"] = state?.requirementsAccessLevel;
             resourceInputs["resolveOutdatedDiffDiscussions"] = state?.resolveOutdatedDiffDiscussions;
             resourceInputs["resourceGroupDefaultProcessMode"] = state?.resourceGroupDefaultProcessMode;
+            resourceInputs["reviewerAssignmentStrategy"] = state?.reviewerAssignmentStrategy;
             resourceInputs["runnersToken"] = state?.runnersToken;
             resourceInputs["securityAndComplianceAccessLevel"] = state?.securityAndComplianceAccessLevel;
             resourceInputs["sharedRunnersEnabled"] = state?.sharedRunnersEnabled;
@@ -683,6 +695,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["modelRegistryAccessLevel"] = args?.modelRegistryAccessLevel;
             resourceInputs["monitorAccessLevel"] = args?.monitorAccessLevel;
             resourceInputs["mrDefaultTargetSelf"] = args?.mrDefaultTargetSelf;
+            resourceInputs["mrDefaultTitleTemplate"] = args?.mrDefaultTitleTemplate;
             resourceInputs["name"] = args?.name;
             resourceInputs["namespaceId"] = args?.namespaceId;
             resourceInputs["onlyAllowMergeIfAllDiscussionsAreResolved"] = args?.onlyAllowMergeIfAllDiscussionsAreResolved;
@@ -707,6 +720,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["requirementsAccessLevel"] = args?.requirementsAccessLevel;
             resourceInputs["resolveOutdatedDiffDiscussions"] = args?.resolveOutdatedDiffDiscussions;
             resourceInputs["resourceGroupDefaultProcessMode"] = args?.resourceGroupDefaultProcessMode;
+            resourceInputs["reviewerAssignmentStrategy"] = args?.reviewerAssignmentStrategy;
             resourceInputs["securityAndComplianceAccessLevel"] = args?.securityAndComplianceAccessLevel;
             resourceInputs["sharedRunnersEnabled"] = args?.sharedRunnersEnabled;
             resourceInputs["skipWaitForDefaultBranchProtection"] = args?.skipWaitForDefaultBranchProtection;
@@ -1004,6 +1018,10 @@ export interface ProjectState {
      */
     mrDefaultTargetSelf?: pulumi.Input<boolean | undefined>;
     /**
+     * Template used to set the default title of merge requests.
+     */
+    mrDefaultTitleTemplate?: pulumi.Input<string | undefined>;
+    /**
      * The name of the project.
      */
     name?: pulumi.Input<string | undefined>;
@@ -1045,6 +1063,8 @@ export interface ProjectState {
     permanentlyDeleteOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
+     *
+     * @deprecated The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead.
      */
     preReceiveSecretDetectionEnabled?: pulumi.Input<boolean | undefined>;
     /**
@@ -1105,6 +1125,10 @@ export interface ProjectState {
      * The default resource group process mode for the project.
      */
     resourceGroupDefaultProcessMode?: pulumi.Input<string | undefined>;
+    /**
+     * Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+     */
+    reviewerAssignmentStrategy?: pulumi.Input<string | undefined>;
     /**
      * Registration token to use during runner setup.
      */
@@ -1432,6 +1456,10 @@ export interface ProjectArgs {
      */
     mrDefaultTargetSelf?: pulumi.Input<boolean | undefined>;
     /**
+     * Template used to set the default title of merge requests.
+     */
+    mrDefaultTitleTemplate?: pulumi.Input<string | undefined>;
+    /**
      * The name of the project.
      */
     name?: pulumi.Input<string | undefined>;
@@ -1469,6 +1497,8 @@ export interface ProjectArgs {
     permanentlyDeleteOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
+     *
+     * @deprecated The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead.
      */
     preReceiveSecretDetectionEnabled?: pulumi.Input<boolean | undefined>;
     /**
@@ -1529,6 +1559,10 @@ export interface ProjectArgs {
      * The default resource group process mode for the project.
      */
     resourceGroupDefaultProcessMode?: pulumi.Input<string | undefined>;
+    /**
+     * Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+     */
+    reviewerAssignmentStrategy?: pulumi.Input<string | undefined>;
     /**
      * Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
      */

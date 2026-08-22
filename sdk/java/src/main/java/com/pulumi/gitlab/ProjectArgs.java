@@ -966,6 +966,21 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Template used to set the default title of merge requests.
+     * 
+     */
+    @Import(name="mrDefaultTitleTemplate")
+    private @Nullable Output<String> mrDefaultTitleTemplate;
+
+    /**
+     * @return Template used to set the default title of merge requests.
+     * 
+     */
+    public Optional<Output<String>> mrDefaultTitleTemplate() {
+        return Optional.ofNullable(this.mrDefaultTitleTemplate);
+    }
+
+    /**
      * The name of the project.
      * 
      */
@@ -1103,14 +1118,22 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      * 
+     * @deprecated
+     * The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource&#39;s `secretPushProtectionEnabled` attribute instead.
+     * 
      */
+    @Deprecated /* The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead. */
     @Import(name="preReceiveSecretDetectionEnabled")
     private @Nullable Output<Boolean> preReceiveSecretDetectionEnabled;
 
     /**
      * @return Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      * 
+     * @deprecated
+     * The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource&#39;s `secretPushProtectionEnabled` attribute instead.
+     * 
      */
+    @Deprecated /* The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead. */
     public Optional<Output<Boolean>> preReceiveSecretDetectionEnabled() {
         return Optional.ofNullable(this.preReceiveSecretDetectionEnabled);
     }
@@ -1331,6 +1354,21 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> resourceGroupDefaultProcessMode() {
         return Optional.ofNullable(this.resourceGroupDefaultProcessMode);
+    }
+
+    /**
+     * Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+     * 
+     */
+    @Import(name="reviewerAssignmentStrategy")
+    private @Nullable Output<String> reviewerAssignmentStrategy;
+
+    /**
+     * @return Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+     * 
+     */
+    public Optional<Output<String>> reviewerAssignmentStrategy() {
+        return Optional.ofNullable(this.reviewerAssignmentStrategy);
     }
 
     /**
@@ -1602,6 +1640,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.modelRegistryAccessLevel = $.modelRegistryAccessLevel;
         this.monitorAccessLevel = $.monitorAccessLevel;
         this.mrDefaultTargetSelf = $.mrDefaultTargetSelf;
+        this.mrDefaultTitleTemplate = $.mrDefaultTitleTemplate;
         this.name = $.name;
         this.namespaceId = $.namespaceId;
         this.onlyAllowMergeIfAllDiscussionsAreResolved = $.onlyAllowMergeIfAllDiscussionsAreResolved;
@@ -1626,6 +1665,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.requirementsAccessLevel = $.requirementsAccessLevel;
         this.resolveOutdatedDiffDiscussions = $.resolveOutdatedDiffDiscussions;
         this.resourceGroupDefaultProcessMode = $.resourceGroupDefaultProcessMode;
+        this.reviewerAssignmentStrategy = $.reviewerAssignmentStrategy;
         this.securityAndComplianceAccessLevel = $.securityAndComplianceAccessLevel;
         this.sharedRunnersEnabled = $.sharedRunnersEnabled;
         this.skipWaitForDefaultBranchProtection = $.skipWaitForDefaultBranchProtection;
@@ -2993,6 +3033,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param mrDefaultTitleTemplate Template used to set the default title of merge requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mrDefaultTitleTemplate(@Nullable Output<String> mrDefaultTitleTemplate) {
+            $.mrDefaultTitleTemplate = mrDefaultTitleTemplate;
+            return this;
+        }
+
+        /**
+         * @param mrDefaultTitleTemplate Template used to set the default title of merge requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mrDefaultTitleTemplate(String mrDefaultTitleTemplate) {
+            return mrDefaultTitleTemplate(Output.of(mrDefaultTitleTemplate));
+        }
+
+        /**
          * @param name The name of the project.
          * 
          * @return builder
@@ -3186,7 +3247,11 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource&#39;s `secretPushProtectionEnabled` attribute instead.
+         * 
          */
+        @Deprecated /* The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead. */
         public Builder preReceiveSecretDetectionEnabled(@Nullable Output<Boolean> preReceiveSecretDetectionEnabled) {
             $.preReceiveSecretDetectionEnabled = preReceiveSecretDetectionEnabled;
             return this;
@@ -3197,7 +3262,11 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource&#39;s `secretPushProtectionEnabled` attribute instead.
+         * 
          */
+        @Deprecated /* The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead. */
         public Builder preReceiveSecretDetectionEnabled(Boolean preReceiveSecretDetectionEnabled) {
             return preReceiveSecretDetectionEnabled(Output.of(preReceiveSecretDetectionEnabled));
         }
@@ -3502,6 +3571,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceGroupDefaultProcessMode(String resourceGroupDefaultProcessMode) {
             return resourceGroupDefaultProcessMode(Output.of(resourceGroupDefaultProcessMode));
+        }
+
+        /**
+         * @param reviewerAssignmentStrategy Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reviewerAssignmentStrategy(@Nullable Output<String> reviewerAssignmentStrategy) {
+            $.reviewerAssignmentStrategy = reviewerAssignmentStrategy;
+            return this;
+        }
+
+        /**
+         * @param reviewerAssignmentStrategy Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reviewerAssignmentStrategy(String reviewerAssignmentStrategy) {
+            return reviewerAssignmentStrategy(Output.of(reviewerAssignmentStrategy));
         }
 
         /**

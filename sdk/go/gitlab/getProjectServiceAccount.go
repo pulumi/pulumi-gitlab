@@ -68,6 +68,8 @@ type LookupProjectServiceAccountArgs struct {
 
 // A collection of values returned by getProjectServiceAccount.
 type LookupProjectServiceAccountResult struct {
+	// The email of the service account user.
+	Email string `pulumi:"email"`
 	// The ID of this Terraform resource. In the format of `<project>:<service_account_id>`.
 	Id string `pulumi:"id"`
 	// The name of the user. If not specified, the default Service account user name is used.
@@ -114,6 +116,11 @@ func (o LookupProjectServiceAccountResultOutput) ToLookupProjectServiceAccountRe
 
 func (o LookupProjectServiceAccountResultOutput) ToLookupProjectServiceAccountResultOutputWithContext(ctx context.Context) LookupProjectServiceAccountResultOutput {
 	return o
+}
+
+// The email of the service account user.
+func (o LookupProjectServiceAccountResultOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectServiceAccountResult) string { return v.Email }).(pulumi.StringOutput)
 }
 
 // The ID of this Terraform resource. In the format of `<project>:<service_account_id>`.

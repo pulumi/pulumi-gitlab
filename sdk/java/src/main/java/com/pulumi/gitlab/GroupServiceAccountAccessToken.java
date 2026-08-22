@@ -89,6 +89,7 @@ import javax.annotation.Nullable;
  *             .group(example.id())
  *             .userId(exampleSa.serviceAccountId())
  *             .name("Example service account access token")
+ *             .description("Example service account access token description")
  *             .scopes("api")
  *             .build());
  * 
@@ -161,6 +162,20 @@ public class GroupServiceAccountAccessToken extends com.pulumi.resources.CustomR
      */
     public Output<String> createdAt() {
         return this.createdAt;
+    }
+    /**
+     * The description of the group service account access token.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    /**
+     * @return The description of the group service account access token.
+     * 
+     */
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
