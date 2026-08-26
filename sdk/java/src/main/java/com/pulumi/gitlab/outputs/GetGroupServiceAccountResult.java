@@ -11,6 +11,11 @@ import java.util.Objects;
 @CustomType
 public final class GetGroupServiceAccountResult {
     /**
+     * @return The email of the service account user.
+     * 
+     */
+    private String email;
+    /**
      * @return The ID or URL-encoded path of the target group. Must be a top-level group.
      * 
      */
@@ -37,6 +42,13 @@ public final class GetGroupServiceAccountResult {
     private String username;
 
     private GetGroupServiceAccountResult() {}
+    /**
+     * @return The email of the service account user.
+     * 
+     */
+    public String email() {
+        return this.email;
+    }
     /**
      * @return The ID or URL-encoded path of the target group. Must be a top-level group.
      * 
@@ -82,6 +94,7 @@ public final class GetGroupServiceAccountResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String email;
         private String group;
         private String id;
         private String name;
@@ -90,6 +103,7 @@ public final class GetGroupServiceAccountResult {
         public Builder() {}
         public Builder(GetGroupServiceAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.email = defaults.email;
     	      this.group = defaults.group;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -97,6 +111,14 @@ public final class GetGroupServiceAccountResult {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
+        public Builder email(String email) {
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetGroupServiceAccountResult", "email");
+            }
+            this.email = email;
+            return this;
+        }
         @CustomType.Setter
         public Builder group(String group) {
             if (group == null) {
@@ -139,6 +161,7 @@ public final class GetGroupServiceAccountResult {
         }
         public GetGroupServiceAccountResult build() {
             final var _resultValue = new GetGroupServiceAccountResult();
+            _resultValue.email = email;
             _resultValue.group = group;
             _resultValue.id = id;
             _resultValue.name = name;

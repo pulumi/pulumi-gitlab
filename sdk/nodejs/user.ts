@@ -28,6 +28,7 @@ import * as utilities from "./utilities";
  *     projectsLimit: 4,
  *     canCreateGroup: false,
  *     isExternal: true,
+ *     isAuditor: false,
  *     resetPassword: false,
  * });
  * ```
@@ -90,6 +91,10 @@ export class User extends pulumi.CustomResource {
      */
     declare public readonly isAdmin: pulumi.Output<boolean | undefined>;
     /**
+     * Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+     */
+    declare public readonly isAuditor: pulumi.Output<boolean | undefined>;
+    /**
      * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
      */
     declare public readonly isExternal: pulumi.Output<boolean | undefined>;
@@ -147,6 +152,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["email"] = state?.email;
             resourceInputs["forceRandomPassword"] = state?.forceRandomPassword;
             resourceInputs["isAdmin"] = state?.isAdmin;
+            resourceInputs["isAuditor"] = state?.isAuditor;
             resourceInputs["isExternal"] = state?.isExternal;
             resourceInputs["name"] = state?.name;
             resourceInputs["namespaceId"] = state?.namespaceId;
@@ -169,6 +175,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["email"] = args?.email;
             resourceInputs["forceRandomPassword"] = args?.forceRandomPassword;
             resourceInputs["isAdmin"] = args?.isAdmin;
+            resourceInputs["isAuditor"] = args?.isAuditor;
             resourceInputs["isExternal"] = args?.isExternal;
             resourceInputs["name"] = args?.name;
             resourceInputs["namespaceId"] = args?.namespaceId;
@@ -207,6 +214,10 @@ export interface UserState {
      * Boolean, defaults to false.  Whether to enable administrative privileges
      */
     isAdmin?: pulumi.Input<boolean | undefined>;
+    /**
+     * Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+     */
+    isAuditor?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
      */
@@ -269,6 +280,10 @@ export interface UserArgs {
      * Boolean, defaults to false.  Whether to enable administrative privileges
      */
     isAdmin?: pulumi.Input<boolean | undefined>;
+    /**
+     * Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+     */
+    isAuditor?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
      */

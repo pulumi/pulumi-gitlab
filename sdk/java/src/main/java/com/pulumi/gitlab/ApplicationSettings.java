@@ -2672,6 +2672,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.maxTerraformStateSizeBytes;
     }
     /**
+     * The maximum depth of nested CI/CD configuration added with the `include` keyword.
+     * 
+     */
+    @Export(name="maxYamlDepth", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxYamlDepth;
+
+    /**
+     * @return The maximum depth of nested CI/CD configuration added with the `include` keyword.
+     * 
+     */
+    public Output<Integer> maxYamlDepth() {
+        return this.maxYamlDepth;
+    }
+    /**
+     * The maximum size in bytes of a single CI/CD configuration file.
+     * 
+     */
+    @Export(name="maxYamlSizeBytes", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxYamlSizeBytes;
+
+    /**
+     * @return The maximum size in bytes of a single CI/CD configuration file.
+     * 
+     */
+    public Output<Integer> maxYamlSizeBytes() {
+        return this.maxYamlSizeBytes;
+    }
+    /**
      * A method call is only tracked when it takes longer than the given amount of milliseconds.
      * 
      */

@@ -438,6 +438,12 @@ namespace Pulumi.GitLab
         public Output<bool?> MrDefaultTargetSelf { get; private set; } = null!;
 
         /// <summary>
+        /// Template used to set the default title of merge requests.
+        /// </summary>
+        [Output("mrDefaultTitleTemplate")]
+        public Output<string?> MrDefaultTitleTemplate { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the project.
         /// </summary>
         [Output("name")]
@@ -586,6 +592,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("resourceGroupDefaultProcessMode")]
         public Output<string> ResourceGroupDefaultProcessMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the strategy used to automatically assign reviewers to merge requests. Valid values are `Disabled`, `CodeOwners`, `DapPowered`. Premium and Ultimate only.
+        /// </summary>
+        [Output("reviewerAssignmentStrategy")]
+        public Output<string> ReviewerAssignmentStrategy { get; private set; } = null!;
 
         /// <summary>
         /// Registration token to use during runner setup.
@@ -1133,6 +1145,12 @@ namespace Pulumi.GitLab
         public Input<bool>? MrDefaultTargetSelf { get; set; }
 
         /// <summary>
+        /// Template used to set the default title of merge requests.
+        /// </summary>
+        [Input("mrDefaultTitleTemplate")]
+        public Input<string>? MrDefaultTitleTemplate { get; set; }
+
+        /// <summary>
         /// The name of the project.
         /// </summary>
         [Input("name")]
@@ -1275,6 +1293,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("resourceGroupDefaultProcessMode")]
         public Input<string>? ResourceGroupDefaultProcessMode { get; set; }
+
+        /// <summary>
+        /// Set the strategy used to automatically assign reviewers to merge requests. Valid values are `Disabled`, `CodeOwners`, `DapPowered`. Premium and Ultimate only.
+        /// </summary>
+        [Input("reviewerAssignmentStrategy")]
+        public Input<string>? ReviewerAssignmentStrategy { get; set; }
 
         /// <summary>
         /// Set the security and compliance access level. Valid values are `Disabled`, `Private`, `Enabled`.
@@ -1785,6 +1809,12 @@ namespace Pulumi.GitLab
         public Input<bool>? MrDefaultTargetSelf { get; set; }
 
         /// <summary>
+        /// Template used to set the default title of merge requests.
+        /// </summary>
+        [Input("mrDefaultTitleTemplate")]
+        public Input<string>? MrDefaultTitleTemplate { get; set; }
+
+        /// <summary>
         /// The name of the project.
         /// </summary>
         [Input("name")]
@@ -1933,6 +1963,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("resourceGroupDefaultProcessMode")]
         public Input<string>? ResourceGroupDefaultProcessMode { get; set; }
+
+        /// <summary>
+        /// Set the strategy used to automatically assign reviewers to merge requests. Valid values are `Disabled`, `CodeOwners`, `DapPowered`. Premium and Ultimate only.
+        /// </summary>
+        [Input("reviewerAssignmentStrategy")]
+        public Input<string>? ReviewerAssignmentStrategy { get; set; }
 
         [Input("runnersToken")]
         private Input<string>? _runnersToken;

@@ -34,7 +34,7 @@ class GroupServiceAccountArgs:
         :param pulumi.Input[_builtins.str] email: User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not specified, the default Service account user name is used.
         :param pulumi.Input[_builtins.bool] skip_wait_for_deletion: If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] username: The username of the user. If not specified, it’s automatically generated.
+        :param pulumi.Input[_builtins.str] username: The username of the user. If not specified, it's automatically generated.
         """
         pulumi.set(__self__, "group", group)
         if email is not None:
@@ -109,7 +109,7 @@ class GroupServiceAccountArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The username of the user. If not specified, it’s automatically generated.
+        The username of the user. If not specified, it's automatically generated.
         """
         return pulumi.get(self, "username")
 
@@ -136,7 +136,7 @@ class _GroupServiceAccountState:
         :param pulumi.Input[_builtins.str] name: The name of the user. If not specified, the default Service account user name is used.
         :param pulumi.Input[_builtins.str] service_account_id: The service account id.
         :param pulumi.Input[_builtins.bool] skip_wait_for_deletion: If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] username: The username of the user. If not specified, it’s automatically generated.
+        :param pulumi.Input[_builtins.str] username: The username of the user. If not specified, it's automatically generated.
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -226,7 +226,7 @@ class _GroupServiceAccountState:
     @pulumi.getter
     def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The username of the user. If not specified, it’s automatically generated.
+        The username of the user. If not specified, it's automatically generated.
         """
         return pulumi.get(self, "username")
 
@@ -301,7 +301,7 @@ class GroupServiceAccount(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group that the service account is created in. Must be a top level group.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not specified, the default Service account user name is used.
         :param pulumi.Input[_builtins.bool] skip_wait_for_deletion: If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] username: The username of the user. If not specified, it’s automatically generated.
+        :param pulumi.Input[_builtins.str] username: The username of the user. If not specified, it's automatically generated.
         """
         ...
     @overload
@@ -424,7 +424,7 @@ class GroupServiceAccount(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the user. If not specified, the default Service account user name is used.
         :param pulumi.Input[_builtins.str] service_account_id: The service account id.
         :param pulumi.Input[_builtins.bool] skip_wait_for_deletion: If set to `true`, skip waiting for the service account to be fully deleted. This is recommended for gitlab.com where deletion can take a while due to asynchronous processing. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] username: The username of the user. If not specified, it’s automatically generated.
+        :param pulumi.Input[_builtins.str] username: The username of the user. If not specified, it's automatically generated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -486,9 +486,9 @@ class GroupServiceAccount(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def username(self) -> pulumi.Output[_builtins.str]:
         """
-        The username of the user. If not specified, it’s automatically generated.
+        The username of the user. If not specified, it's automatically generated.
         """
         return pulumi.get(self, "username")
 

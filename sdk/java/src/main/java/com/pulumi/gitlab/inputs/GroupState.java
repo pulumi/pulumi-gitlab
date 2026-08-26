@@ -126,6 +126,21 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable customer relations management (CRM) for the group.
+     * 
+     */
+    @Import(name="crmEnabled")
+    private @Nullable Output<Boolean> crmEnabled;
+
+    /**
+     * @return Enable customer relations management (CRM) for the group.
+     * 
+     */
+    public Optional<Output<Boolean>> crmEnabled() {
+        return Optional.ofNullable(this.crmEnabled);
+    }
+
+    /**
      * Initial default branch name.
      * 
      */
@@ -653,6 +668,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         this.avatar = $.avatar;
         this.avatarHash = $.avatarHash;
         this.avatarUrl = $.avatarUrl;
+        this.crmEnabled = $.crmEnabled;
         this.defaultBranch = $.defaultBranch;
         this.defaultBranchProtection = $.defaultBranchProtection;
         this.defaultBranchProtectionDefaults = $.defaultBranchProtectionDefaults;
@@ -862,6 +878,27 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder avatarUrl(String avatarUrl) {
             return avatarUrl(Output.of(avatarUrl));
+        }
+
+        /**
+         * @param crmEnabled Enable customer relations management (CRM) for the group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crmEnabled(@Nullable Output<Boolean> crmEnabled) {
+            $.crmEnabled = crmEnabled;
+            return this;
+        }
+
+        /**
+         * @param crmEnabled Enable customer relations management (CRM) for the group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crmEnabled(Boolean crmEnabled) {
+            return crmEnabled(Output.of(crmEnabled));
         }
 
         /**

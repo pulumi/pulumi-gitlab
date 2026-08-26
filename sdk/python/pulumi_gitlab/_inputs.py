@@ -25,6 +25,12 @@ __all__ = [
     'BranchProtectionAllowedToPushArgsDict',
     'BranchProtectionAllowedToUnprotectArgs',
     'BranchProtectionAllowedToUnprotectArgsDict',
+    'ComplianceRequirementExternalControlArgs',
+    'ComplianceRequirementExternalControlArgsDict',
+    'ComplianceRequirementInternalControlArgs',
+    'ComplianceRequirementInternalControlArgsDict',
+    'ComplianceRequirementInternalControlExpressionArgs',
+    'ComplianceRequirementInternalControlExpressionArgsDict',
     'GroupAccessTokenRotationConfigurationArgs',
     'GroupAccessTokenRotationConfigurationArgsDict',
     'GroupBranchProtectionAllowedToMergeArgs',
@@ -67,6 +73,12 @@ __all__ = [
     'ProjectContainerExpirationPolicyArgsDict',
     'ProjectContainerTagProtectionTimeoutsArgs',
     'ProjectContainerTagProtectionTimeoutsArgsDict',
+    'ProjectFeatureFlagStrategyArgs',
+    'ProjectFeatureFlagStrategyArgsDict',
+    'ProjectFeatureFlagStrategyParametersArgs',
+    'ProjectFeatureFlagStrategyParametersArgsDict',
+    'ProjectFeatureFlagStrategyScopeArgs',
+    'ProjectFeatureFlagStrategyScopeArgsDict',
     'ProjectHookCustomHeaderArgs',
     'ProjectHookCustomHeaderArgsDict',
     'ProjectHookUrlVariableArgs',
@@ -83,6 +95,8 @@ __all__ = [
     'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict',
     'ProjectPushRulesArgs',
     'ProjectPushRulesArgsDict',
+    'ProjectServiceAccountAccessTokenRotationConfigurationArgs',
+    'ProjectServiceAccountAccessTokenRotationConfigurationArgsDict',
     'ProjectServiceAccountTimeoutsArgs',
     'ProjectServiceAccountTimeoutsArgsDict',
     'ProjectTagCommitArgs',
@@ -748,6 +762,265 @@ class BranchProtectionAllowedToUnprotectArgs:
     @user_id.setter
     def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
+
+
+class ComplianceRequirementExternalControlArgsDict(TypedDict):
+    external_url: pulumi.Input[_builtins.str]
+    """
+    External URL for external controls.
+    """
+    ping_enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether ping is enabled for external controls.
+    """
+    secret_token: pulumi.Input[_builtins.str]
+    """
+    Secret token for external controls. The `secret_token` is not available in imported resources.
+    """
+    external_control_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Name of the external control.
+    """
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Compliance requirements control ID.
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Name of the control.  Set to `external_control` from the API.
+    """
+
+@pulumi.input_type
+class ComplianceRequirementExternalControlArgs:
+    def __init__(__self__, *,
+                 external_url: pulumi.Input[_builtins.str],
+                 ping_enabled: pulumi.Input[_builtins.bool],
+                 secret_token: pulumi.Input[_builtins.str],
+                 external_control_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] external_url: External URL for external controls.
+        :param pulumi.Input[_builtins.bool] ping_enabled: Whether ping is enabled for external controls.
+        :param pulumi.Input[_builtins.str] secret_token: Secret token for external controls. The `secret_token` is not available in imported resources.
+        :param pulumi.Input[_builtins.str] external_control_name: Name of the external control.
+        :param pulumi.Input[_builtins.str] id: Compliance requirements control ID.
+        :param pulumi.Input[_builtins.str] name: Name of the control.  Set to `external_control` from the API.
+        """
+        pulumi.set(__self__, "external_url", external_url)
+        pulumi.set(__self__, "ping_enabled", ping_enabled)
+        pulumi.set(__self__, "secret_token", secret_token)
+        if external_control_name is not None:
+            pulumi.set(__self__, "external_control_name", external_control_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="externalUrl")
+    def external_url(self) -> pulumi.Input[_builtins.str]:
+        """
+        External URL for external controls.
+        """
+        return pulumi.get(self, "external_url")
+
+    @external_url.setter
+    def external_url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "external_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pingEnabled")
+    def ping_enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether ping is enabled for external controls.
+        """
+        return pulumi.get(self, "ping_enabled")
+
+    @ping_enabled.setter
+    def ping_enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "ping_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretToken")
+    def secret_token(self) -> pulumi.Input[_builtins.str]:
+        """
+        Secret token for external controls. The `secret_token` is not available in imported resources.
+        """
+        return pulumi.get(self, "secret_token")
+
+    @secret_token.setter
+    def secret_token(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "secret_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalControlName")
+    def external_control_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the external control.
+        """
+        return pulumi.get(self, "external_control_name")
+
+    @external_control_name.setter
+    def external_control_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "external_control_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Compliance requirements control ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the control.  Set to `external_control` from the API.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+class ComplianceRequirementInternalControlArgsDict(TypedDict):
+    expression: pulumi.Input['ComplianceRequirementInternalControlExpressionArgsDict']
+    """
+    Expression for internal controls.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the control, from the list of Control IDs here: [GitLab Compliance Controls](https://docs.gitlab.com/user/compliance/compliance_frameworks/#gitlab-compliance-controls)
+    """
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Compliance requirements control ID.
+    """
+
+@pulumi.input_type
+class ComplianceRequirementInternalControlArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input['ComplianceRequirementInternalControlExpressionArgs'],
+                 name: pulumi.Input[_builtins.str],
+                 id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['ComplianceRequirementInternalControlExpressionArgs'] expression: Expression for internal controls.
+        :param pulumi.Input[_builtins.str] name: Name of the control, from the list of Control IDs here: [GitLab Compliance Controls](https://docs.gitlab.com/user/compliance/compliance_frameworks/#gitlab-compliance-controls)
+        :param pulumi.Input[_builtins.str] id: Compliance requirements control ID.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "name", name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input['ComplianceRequirementInternalControlExpressionArgs']:
+        """
+        Expression for internal controls.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input['ComplianceRequirementInternalControlExpressionArgs']):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the control, from the list of Control IDs here: [GitLab Compliance Controls](https://docs.gitlab.com/user/compliance/compliance_frameworks/#gitlab-compliance-controls)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Compliance requirements control ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+
+class ComplianceRequirementInternalControlExpressionArgsDict(TypedDict):
+    field: pulumi.Input[_builtins.str]
+    """
+    The field to evaluate (e.g., `scanner_dep_scanning_running`).
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    The operator for comparison. Valid values are `=`, `!=`, `>`, `<`, `>=`, `<=`.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value to compare against. Use `true` or `false` for boolean values.
+    """
+
+@pulumi.input_type
+class ComplianceRequirementInternalControlExpressionArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input[_builtins.str],
+                 operator: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] field: The field to evaluate (e.g., `scanner_dep_scanning_running`).
+        :param pulumi.Input[_builtins.str] operator: The operator for comparison. Valid values are `=`, `!=`, `>`, `<`, `>=`, `<=`.
+        :param pulumi.Input[_builtins.str] value: The value to compare against. Use `true` or `false` for boolean values.
+        """
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[_builtins.str]:
+        """
+        The field to evaluate (e.g., `scanner_dep_scanning_running`).
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        The operator for comparison. Valid values are `=`, `!=`, `>`, `<`, `>=`, `<=`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The value to compare against. Use `true` or `false` for boolean values.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
 
 
 class GroupAccessTokenRotationConfigurationArgsDict(TypedDict):
@@ -2466,6 +2739,240 @@ class ProjectContainerTagProtectionTimeoutsArgs:
         pulumi.set(self, "create", value)
 
 
+class ProjectFeatureFlagStrategyArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the strategy. Valid values are: `default`, `gradualRolloutUserId`, `userWithId`, `flexibleRollout`, `gitlabUserList`.
+    """
+    parameters: NotRequired[pulumi.Input[Optional['ProjectFeatureFlagStrategyParametersArgsDict']]]
+    """
+    Parameters for the strategy. Required fields depend on the strategy name:
+      - gradualRolloutUserId: set percentage (required); group_id defaults to "default" if omitted.
+      - userWithId: set user_ids (required, comma-separated).
+      - flexibleRollout: set rollout, group_id, and stickiness.
+    """
+    scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ProjectFeatureFlagStrategyScopeArgsDict']]]]]
+    """
+    Scopes define which environments the strategy applies to.
+    """
+    user_list_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The ID of the `ProjectFeatureFlagUserList` to bind to this strategy (its `list_id` attribute, not `iid`). Required when `name` is `gitlabUserList`, and not usable otherwise.
+    """
+
+@pulumi.input_type
+class ProjectFeatureFlagStrategyArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 parameters: pulumi.Input[Optional['ProjectFeatureFlagStrategyParametersArgs']] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectFeatureFlagStrategyScopeArgs']]]] = None,
+                 user_list_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the strategy. Valid values are: `default`, `gradualRolloutUserId`, `userWithId`, `flexibleRollout`, `gitlabUserList`.
+        :param pulumi.Input['ProjectFeatureFlagStrategyParametersArgs'] parameters: Parameters for the strategy. Required fields depend on the strategy name:
+                 - gradualRolloutUserId: set percentage (required); group_id defaults to "default" if omitted.
+                 - userWithId: set user_ids (required, comma-separated).
+                 - flexibleRollout: set rollout, group_id, and stickiness.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectFeatureFlagStrategyScopeArgs']]] scopes: Scopes define which environments the strategy applies to.
+        :param pulumi.Input[_builtins.int] user_list_id: The ID of the `ProjectFeatureFlagUserList` to bind to this strategy (its `list_id` attribute, not `iid`). Required when `name` is `gitlabUserList`, and not usable otherwise.
+        """
+        pulumi.set(__self__, "name", name)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if user_list_id is not None:
+            pulumi.set(__self__, "user_list_id", user_list_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the strategy. Valid values are: `default`, `gradualRolloutUserId`, `userWithId`, `flexibleRollout`, `gitlabUserList`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Input[Optional['ProjectFeatureFlagStrategyParametersArgs']]:
+        """
+        Parameters for the strategy. Required fields depend on the strategy name:
+          - gradualRolloutUserId: set percentage (required); group_id defaults to "default" if omitted.
+          - userWithId: set user_ids (required, comma-separated).
+          - flexibleRollout: set rollout, group_id, and stickiness.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: pulumi.Input[Optional['ProjectFeatureFlagStrategyParametersArgs']]):
+        pulumi.set(self, "parameters", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectFeatureFlagStrategyScopeArgs']]]]:
+        """
+        Scopes define which environments the strategy applies to.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectFeatureFlagStrategyScopeArgs']]]]):
+        pulumi.set(self, "scopes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userListId")
+    def user_list_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The ID of the `ProjectFeatureFlagUserList` to bind to this strategy (its `list_id` attribute, not `iid`). Required when `name` is `gitlabUserList`, and not usable otherwise.
+        """
+        return pulumi.get(self, "user_list_id")
+
+    @user_list_id.setter
+    def user_list_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "user_list_id", value)
+
+
+class ProjectFeatureFlagStrategyParametersArgsDict(TypedDict):
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Unleash group ID. Used by `gradualRolloutUserId` and `flexibleRollout`. Computed when omitted.
+    """
+    percentage: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Percentage (as a string) of users to activate. Used by `gradualRolloutUserId` and `flexibleRollout`.
+    """
+    rollout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Rollout percentage for `flexibleRollout`.
+    """
+    stickiness: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Stickiness setting for `flexibleRollout`. Computed when omitted.
+    """
+    user_ids: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Comma-separated list of user IDs. Used by `userWithId`.
+    """
+
+@pulumi.input_type
+class ProjectFeatureFlagStrategyParametersArgs:
+    def __init__(__self__, *,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 percentage: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout: pulumi.Input[Optional[_builtins.str]] = None,
+                 stickiness: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_ids: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] group_id: The Unleash group ID. Used by `gradualRolloutUserId` and `flexibleRollout`. Computed when omitted.
+        :param pulumi.Input[_builtins.str] percentage: Percentage (as a string) of users to activate. Used by `gradualRolloutUserId` and `flexibleRollout`.
+        :param pulumi.Input[_builtins.str] rollout: Rollout percentage for `flexibleRollout`.
+        :param pulumi.Input[_builtins.str] stickiness: Stickiness setting for `flexibleRollout`. Computed when omitted.
+        :param pulumi.Input[_builtins.str] user_ids: Comma-separated list of user IDs. Used by `userWithId`.
+        """
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+        if rollout is not None:
+            pulumi.set(__self__, "rollout", rollout)
+        if stickiness is not None:
+            pulumi.set(__self__, "stickiness", stickiness)
+        if user_ids is not None:
+            pulumi.set(__self__, "user_ids", user_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Unleash group ID. Used by `gradualRolloutUserId` and `flexibleRollout`. Computed when omitted.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "group_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def percentage(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Percentage (as a string) of users to activate. Used by `gradualRolloutUserId` and `flexibleRollout`.
+        """
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "percentage", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rollout(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Rollout percentage for `flexibleRollout`.
+        """
+        return pulumi.get(self, "rollout")
+
+    @rollout.setter
+    def rollout(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "rollout", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def stickiness(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Stickiness setting for `flexibleRollout`. Computed when omitted.
+        """
+        return pulumi.get(self, "stickiness")
+
+    @stickiness.setter
+    def stickiness(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "stickiness", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userIds")
+    def user_ids(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Comma-separated list of user IDs. Used by `userWithId`.
+        """
+        return pulumi.get(self, "user_ids")
+
+    @user_ids.setter
+    def user_ids(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "user_ids", value)
+
+
+class ProjectFeatureFlagStrategyScopeArgsDict(TypedDict):
+    environment_scope: pulumi.Input[_builtins.str]
+    """
+    The environment scope, e.g. `*`, `production`, `staging`.
+    """
+
+@pulumi.input_type
+class ProjectFeatureFlagStrategyScopeArgs:
+    def __init__(__self__, *,
+                 environment_scope: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] environment_scope: The environment scope, e.g. `*`, `production`, `staging`.
+        """
+        pulumi.set(__self__, "environment_scope", environment_scope)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentScope")
+    def environment_scope(self) -> pulumi.Input[_builtins.str]:
+        """
+        The environment scope, e.g. `*`, `production`, `staging`.
+        """
+        return pulumi.get(self, "environment_scope")
+
+    @environment_scope.setter
+    def environment_scope(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "environment_scope", value)
+
+
 class ProjectHookCustomHeaderArgsDict(TypedDict):
     key: pulumi.Input[_builtins.str]
     """
@@ -3372,6 +3879,54 @@ class ProjectPushRulesArgs:
     @reject_unsigned_commits.setter
     def reject_unsigned_commits(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reject_unsigned_commits", value)
+
+
+class ProjectServiceAccountAccessTokenRotationConfigurationArgsDict(TypedDict):
+    rotate_before_days: pulumi.Input[_builtins.int]
+    """
+    The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+    """
+    expiration_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The duration (in days) the new token should be valid for.
+    """
+
+@pulumi.input_type
+class ProjectServiceAccountAccessTokenRotationConfigurationArgs:
+    def __init__(__self__, *,
+                 rotate_before_days: pulumi.Input[_builtins.int],
+                 expiration_days: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] rotate_before_days: The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        :param pulumi.Input[_builtins.int] expiration_days: The duration (in days) the new token should be valid for.
+        """
+        pulumi.set(__self__, "rotate_before_days", rotate_before_days)
+        if expiration_days is not None:
+            pulumi.set(__self__, "expiration_days", expiration_days)
+
+    @_builtins.property
+    @pulumi.getter(name="rotateBeforeDays")
+    def rotate_before_days(self) -> pulumi.Input[_builtins.int]:
+        """
+        The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+        """
+        return pulumi.get(self, "rotate_before_days")
+
+    @rotate_before_days.setter
+    def rotate_before_days(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "rotate_before_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expirationDays")
+    def expiration_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The duration (in days) the new token should be valid for.
+        """
+        return pulumi.get(self, "expiration_days")
+
+    @expiration_days.setter
+    def expiration_days(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "expiration_days", value)
 
 
 class ProjectServiceAccountTimeoutsArgsDict(TypedDict):

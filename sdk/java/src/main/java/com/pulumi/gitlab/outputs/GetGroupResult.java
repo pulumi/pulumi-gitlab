@@ -48,6 +48,11 @@ public final class GetGroupResult {
      */
     private String createdAt;
     /**
+     * @return Whether customer relations management (CRM) is enabled for the group.
+     * 
+     */
+    private Boolean crmEnabled;
+    /**
      * @return Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.
      * 
      */
@@ -358,6 +363,13 @@ public final class GetGroupResult {
      */
     public String createdAt() {
         return this.createdAt;
+    }
+    /**
+     * @return Whether customer relations management (CRM) is enabled for the group.
+     * 
+     */
+    public Boolean crmEnabled() {
+        return this.crmEnabled;
     }
     /**
      * @return Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.
@@ -747,6 +759,7 @@ public final class GetGroupResult {
         private Boolean autoDevopsEnabled;
         private String avatarUrl;
         private String createdAt;
+        private Boolean crmEnabled;
         private List<Map<String,String>> customAttributes;
         private String defaultBranch;
         private Integer defaultBranchProtection;
@@ -808,6 +821,7 @@ public final class GetGroupResult {
     	      this.autoDevopsEnabled = defaults.autoDevopsEnabled;
     	      this.avatarUrl = defaults.avatarUrl;
     	      this.createdAt = defaults.createdAt;
+    	      this.crmEnabled = defaults.crmEnabled;
     	      this.customAttributes = defaults.customAttributes;
     	      this.defaultBranch = defaults.defaultBranch;
     	      this.defaultBranchProtection = defaults.defaultBranchProtection;
@@ -908,6 +922,14 @@ public final class GetGroupResult {
               throw new MissingRequiredPropertyException("GetGroupResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder crmEnabled(Boolean crmEnabled) {
+            if (crmEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "crmEnabled");
+            }
+            this.crmEnabled = crmEnabled;
             return this;
         }
         @CustomType.Setter
@@ -1343,6 +1365,7 @@ public final class GetGroupResult {
             _resultValue.autoDevopsEnabled = autoDevopsEnabled;
             _resultValue.avatarUrl = avatarUrl;
             _resultValue.createdAt = createdAt;
+            _resultValue.crmEnabled = crmEnabled;
             _resultValue.customAttributes = customAttributes;
             _resultValue.defaultBranch = defaultBranch;
             _resultValue.defaultBranchProtection = defaultBranchProtection;

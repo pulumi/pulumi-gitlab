@@ -170,6 +170,12 @@ namespace Pulumi.GitLab
         public Output<string> AvatarUrl { get; private set; } = null!;
 
         /// <summary>
+        /// Enable customer relations management (CRM) for the group.
+        /// </summary>
+        [Output("crmEnabled")]
+        public Output<bool> CrmEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Initial default branch name.
         /// </summary>
         [Output("defaultBranch")]
@@ -466,6 +472,12 @@ namespace Pulumi.GitLab
         public Input<string>? AvatarHash { get; set; }
 
         /// <summary>
+        /// Enable customer relations management (CRM) for the group.
+        /// </summary>
+        [Input("crmEnabled")]
+        public Input<bool>? CrmEnabled { get; set; }
+
+        /// <summary>
         /// Initial default branch name.
         /// </summary>
         [Input("defaultBranch")]
@@ -706,6 +718,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("avatarUrl")]
         public Input<string>? AvatarUrl { get; set; }
+
+        /// <summary>
+        /// Enable customer relations management (CRM) for the group.
+        /// </summary>
+        [Input("crmEnabled")]
+        public Input<bool>? CrmEnabled { get; set; }
 
         /// <summary>
         /// Initial default branch name.

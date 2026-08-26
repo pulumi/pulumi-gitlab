@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClusterAgentToken{}
 	case "gitlab:index/complianceFramework:ComplianceFramework":
 		r = &ComplianceFramework{}
+	case "gitlab:index/complianceRequirement:ComplianceRequirement":
+		r = &ComplianceRequirement{}
 	case "gitlab:index/deployKey:DeployKey":
 		r = &DeployKey{}
 	case "gitlab:index/deployKeyEnable:DeployKeyEnable":
@@ -59,6 +61,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupCustomAttribute{}
 	case "gitlab:index/groupDependencyProxy:GroupDependencyProxy":
 		r = &GroupDependencyProxy{}
+	case "gitlab:index/groupDependencyProxyImageTtlPolicy:GroupDependencyProxyImageTtlPolicy":
+		r = &GroupDependencyProxyImageTtlPolicy{}
 	case "gitlab:index/groupDeployToken:GroupDeployToken":
 		r = &GroupDeployToken{}
 	case "gitlab:index/groupEpicBoard:GroupEpicBoard":
@@ -67,6 +71,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupHook{}
 	case "gitlab:index/groupIntegrationHarbor:GroupIntegrationHarbor":
 		r = &GroupIntegrationHarbor{}
+	case "gitlab:index/groupIntegrationJira:GroupIntegrationJira":
+		r = &GroupIntegrationJira{}
 	case "gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost":
 		r = &GroupIntegrationMattermost{}
 	case "gitlab:index/groupIntegrationMicrosoftTeams:GroupIntegrationMicrosoftTeams":
@@ -149,6 +155,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectErrorTrackingSettings{}
 	case "gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck":
 		r = &ProjectExternalStatusCheck{}
+	case "gitlab:index/projectFeatureFlag:ProjectFeatureFlag":
+		r = &ProjectFeatureFlag{}
+	case "gitlab:index/projectFeatureFlagUserList:ProjectFeatureFlagUserList":
+		r = &ProjectFeatureFlagUserList{}
 	case "gitlab:index/projectFreezePeriod:ProjectFreezePeriod":
 		r = &ProjectFreezePeriod{}
 	case "gitlab:index/projectHook:ProjectHook":
@@ -231,8 +241,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectSecureFile{}
 	case "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment":
 		r = &ProjectSecurityPolicyAttachment{}
+	case "gitlab:index/projectSecuritySettings:ProjectSecuritySettings":
+		r = &ProjectSecuritySettings{}
 	case "gitlab:index/projectServiceAccount:ProjectServiceAccount":
 		r = &ProjectServiceAccount{}
+	case "gitlab:index/projectServiceAccountAccessToken:ProjectServiceAccountAccessToken":
+		r = &ProjectServiceAccountAccessToken{}
 	case "gitlab:index/projectShareGroup:ProjectShareGroup":
 		r = &ProjectShareGroup{}
 	case "gitlab:index/projectTag:ProjectTag":
@@ -361,6 +375,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/complianceRequirement",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/deployKey",
 		&module{version},
 	)
@@ -411,6 +430,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/groupDependencyProxyImageTtlPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/groupDeployToken",
 		&module{version},
 	)
@@ -427,6 +451,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/groupIntegrationHarbor",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupIntegrationJira",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -636,6 +665,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectFeatureFlag",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectFeatureFlagUserList",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectFreezePeriod",
 		&module{version},
 	)
@@ -841,7 +880,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/projectSecuritySettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/projectServiceAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectServiceAccountAccessToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

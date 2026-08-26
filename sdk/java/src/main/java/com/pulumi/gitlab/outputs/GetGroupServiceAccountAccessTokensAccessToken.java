@@ -14,6 +14,7 @@ import java.util.Objects;
 public final class GetGroupServiceAccountAccessTokensAccessToken {
     private Boolean active;
     private String createdAt;
+    private String description;
     private String expiresAt;
     private String id;
     private String name;
@@ -26,6 +27,9 @@ public final class GetGroupServiceAccountAccessTokensAccessToken {
     }
     public String createdAt() {
         return this.createdAt;
+    }
+    public String description() {
+        return this.description;
     }
     public String expiresAt() {
         return this.expiresAt;
@@ -54,6 +58,7 @@ public final class GetGroupServiceAccountAccessTokensAccessToken {
     public static final class Builder {
         private Boolean active;
         private String createdAt;
+        private String description;
         private String expiresAt;
         private String id;
         private String name;
@@ -64,6 +69,7 @@ public final class GetGroupServiceAccountAccessTokensAccessToken {
     	      Objects.requireNonNull(defaults);
     	      this.active = defaults.active;
     	      this.createdAt = defaults.createdAt;
+    	      this.description = defaults.description;
     	      this.expiresAt = defaults.expiresAt;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -85,6 +91,14 @@ public final class GetGroupServiceAccountAccessTokensAccessToken {
               throw new MissingRequiredPropertyException("GetGroupServiceAccountAccessTokensAccessToken", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetGroupServiceAccountAccessTokensAccessToken", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
@@ -134,6 +148,7 @@ public final class GetGroupServiceAccountAccessTokensAccessToken {
             final var _resultValue = new GetGroupServiceAccountAccessTokensAccessToken();
             _resultValue.active = active;
             _resultValue.createdAt = createdAt;
+            _resultValue.description = description;
             _resultValue.expiresAt = expiresAt;
             _resultValue.id = id;
             _resultValue.name = name;

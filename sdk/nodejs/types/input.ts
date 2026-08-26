@@ -136,6 +136,63 @@ export interface BranchProtectionAllowedToUnprotect {
     userId?: pulumi.Input<number | undefined>;
 }
 
+export interface ComplianceRequirementExternalControl {
+    /**
+     * Name of the external control.
+     */
+    externalControlName?: pulumi.Input<string | undefined>;
+    /**
+     * External URL for external controls.
+     */
+    externalUrl: pulumi.Input<string>;
+    /**
+     * Compliance requirements control ID.
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the control.  Set to `externalControl` from the API.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Whether ping is enabled for external controls.
+     */
+    pingEnabled: pulumi.Input<boolean>;
+    /**
+     * Secret token for external controls. The `secretToken` is not available in imported resources.
+     */
+    secretToken: pulumi.Input<string>;
+}
+
+export interface ComplianceRequirementInternalControl {
+    /**
+     * Expression for internal controls.
+     */
+    expression: pulumi.Input<inputs.ComplianceRequirementInternalControlExpression>;
+    /**
+     * Compliance requirements control ID.
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the control, from the list of Control IDs here: [GitLab Compliance Controls](https://docs.gitlab.com/user/compliance/compliance_frameworks/#gitlab-compliance-controls)
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface ComplianceRequirementInternalControlExpression {
+    /**
+     * The field to evaluate (e.g., `scannerDepScanningRunning`).
+     */
+    field: pulumi.Input<string>;
+    /**
+     * The operator for comparison. Valid values are `=`, `!=`, `>`, `<`, `>=`, `<=`.
+     */
+    operator: pulumi.Input<string>;
+    /**
+     * The value to compare against. Use `true` or `false` for boolean values.
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface GetGroupProvisionedUsersProvisionedUser {
     /**
      * The avatar URL of the provisioned user.
@@ -1117,6 +1174,58 @@ export interface ProjectContainerTagProtectionTimeouts {
     create?: pulumi.Input<string | undefined>;
 }
 
+export interface ProjectFeatureFlagStrategy {
+    /**
+     * The name of the strategy. Valid values are: `default`, `gradualRolloutUserId`, `userWithId`, `flexibleRollout`, `gitlabUserList`.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Parameters for the strategy. Required fields depend on the strategy name:
+     *   - gradualRolloutUserId: set percentage (required); groupId defaults to "default" if omitted.
+     *   - userWithId: set userIds (required, comma-separated).
+     *   - flexibleRollout: set rollout, group_id, and stickiness.
+     */
+    parameters?: pulumi.Input<inputs.ProjectFeatureFlagStrategyParameters | undefined>;
+    /**
+     * Scopes define which environments the strategy applies to.
+     */
+    scopes?: pulumi.Input<pulumi.Input<inputs.ProjectFeatureFlagStrategyScope>[] | undefined>;
+    /**
+     * The ID of the `gitlab.ProjectFeatureFlagUserList` to bind to this strategy (its `listId` attribute, not `iid`). Required when `name` is `gitlabUserList`, and not usable otherwise.
+     */
+    userListId?: pulumi.Input<number | undefined>;
+}
+
+export interface ProjectFeatureFlagStrategyParameters {
+    /**
+     * The Unleash group ID. Used by `gradualRolloutUserId` and `flexibleRollout`. Computed when omitted.
+     */
+    groupId?: pulumi.Input<string | undefined>;
+    /**
+     * Percentage (as a string) of users to activate. Used by `gradualRolloutUserId` and `flexibleRollout`.
+     */
+    percentage?: pulumi.Input<string | undefined>;
+    /**
+     * Rollout percentage for `flexibleRollout`.
+     */
+    rollout?: pulumi.Input<string | undefined>;
+    /**
+     * Stickiness setting for `flexibleRollout`. Computed when omitted.
+     */
+    stickiness?: pulumi.Input<string | undefined>;
+    /**
+     * Comma-separated list of user IDs. Used by `userWithId`.
+     */
+    userIds?: pulumi.Input<string | undefined>;
+}
+
+export interface ProjectFeatureFlagStrategyScope {
+    /**
+     * The environment scope, e.g. `*`, `production`, `staging`.
+     */
+    environmentScope: pulumi.Input<string>;
+}
+
 export interface ProjectHookCustomHeader {
     /**
      * Key of the custom header.
@@ -1307,6 +1416,17 @@ export interface ProjectPushRules {
      * Reject commit when it's not signed through GPG.
      */
     rejectUnsignedCommits?: pulumi.Input<boolean | undefined>;
+}
+
+export interface ProjectServiceAccountAccessTokenRotationConfiguration {
+    /**
+     * The duration (in days) the new token should be valid for.
+     */
+    expirationDays?: pulumi.Input<number | undefined>;
+    /**
+     * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+     */
+    rotateBeforeDays: pulumi.Input<number>;
 }
 
 export interface ProjectServiceAccountTimeouts {

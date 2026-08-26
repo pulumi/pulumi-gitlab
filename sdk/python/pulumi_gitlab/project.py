@@ -84,6 +84,7 @@ class ProjectArgs:
                  model_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  monitor_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  mr_default_target_self: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mr_default_title_template: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
                  only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -108,6 +109,7 @@ class ProjectArgs:
                  requirements_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  resolve_outdated_diff_discussions: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_default_process_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 reviewer_assignment_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  skip_wait_for_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -187,6 +189,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.str] model_registry_access_level: Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] mr_default_target_self: For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+        :param pulumi.Input[_builtins.str] mr_default_title_template: Template used to set the default title of merge requests.
         :param pulumi.Input[_builtins.str] name: The name of the project.
         :param pulumi.Input[_builtins.int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
         :param pulumi.Input[_builtins.bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
@@ -211,6 +214,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.str] requirements_access_level: Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] resolve_outdated_diff_discussions: Automatically resolve merge request diffs discussions on lines changed with a push.
         :param pulumi.Input[_builtins.str] resource_group_default_process_mode: The default resource group process mode for the project.
+        :param pulumi.Input[_builtins.str] reviewer_assignment_strategy: Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `code_owners`, `dap_powered`. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[_builtins.bool] skip_wait_for_default_branch_protection: If `true`, the default behavior to wait for the default branch protection to be created is skipped.
@@ -355,6 +359,8 @@ class ProjectArgs:
             pulumi.set(__self__, "monitor_access_level", monitor_access_level)
         if mr_default_target_self is not None:
             pulumi.set(__self__, "mr_default_target_self", mr_default_target_self)
+        if mr_default_title_template is not None:
+            pulumi.set(__self__, "mr_default_title_template", mr_default_title_template)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if namespace_id is not None:
@@ -373,6 +379,9 @@ class ProjectArgs:
             pulumi.set(__self__, "path", path)
         if permanently_delete_on_destroy is not None:
             pulumi.set(__self__, "permanently_delete_on_destroy", permanently_delete_on_destroy)
+        if pre_receive_secret_detection_enabled is not None:
+            warnings.warn("""The `pre_receive_secret_detection_enabled` attribute is deprecated. Use the `ProjectSecuritySettings` resource's `secret_push_protection_enabled` attribute instead.""", DeprecationWarning)
+            pulumi.log.warn("""pre_receive_secret_detection_enabled is deprecated: The `pre_receive_secret_detection_enabled` attribute is deprecated. Use the `ProjectSecuritySettings` resource's `secret_push_protection_enabled` attribute instead.""")
         if pre_receive_secret_detection_enabled is not None:
             pulumi.set(__self__, "pre_receive_secret_detection_enabled", pre_receive_secret_detection_enabled)
         if prevent_merge_without_jira_issue is not None:
@@ -406,6 +415,8 @@ class ProjectArgs:
             pulumi.set(__self__, "resolve_outdated_diff_discussions", resolve_outdated_diff_discussions)
         if resource_group_default_process_mode is not None:
             pulumi.set(__self__, "resource_group_default_process_mode", resource_group_default_process_mode)
+        if reviewer_assignment_strategy is not None:
+            pulumi.set(__self__, "reviewer_assignment_strategy", reviewer_assignment_strategy)
         if security_and_compliance_access_level is not None:
             pulumi.set(__self__, "security_and_compliance_access_level", security_and_compliance_access_level)
         if shared_runners_enabled is not None:
@@ -1190,6 +1201,18 @@ class ProjectArgs:
         pulumi.set(self, "mr_default_target_self", value)
 
     @_builtins.property
+    @pulumi.getter(name="mrDefaultTitleTemplate")
+    def mr_default_title_template(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Template used to set the default title of merge requests.
+        """
+        return pulumi.get(self, "mr_default_title_template")
+
+    @mr_default_title_template.setter
+    def mr_default_title_template(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mr_default_title_template", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1299,6 +1322,7 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="preReceiveSecretDetectionEnabled")
+    @_utilities.deprecated("""The `pre_receive_secret_detection_enabled` attribute is deprecated. Use the `ProjectSecuritySettings` resource's `secret_push_protection_enabled` attribute instead.""")
     def pre_receive_secret_detection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
@@ -1477,6 +1501,18 @@ class ProjectArgs:
     @resource_group_default_process_mode.setter
     def resource_group_default_process_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_default_process_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reviewerAssignmentStrategy")
+    def reviewer_assignment_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `code_owners`, `dap_powered`. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "reviewer_assignment_strategy")
+
+    @reviewer_assignment_strategy.setter
+    def reviewer_assignment_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "reviewer_assignment_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="securityAndComplianceAccessLevel")
@@ -1708,6 +1744,7 @@ class _ProjectState:
                  model_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  monitor_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  mr_default_target_self: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mr_default_title_template: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
                  only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1733,6 +1770,7 @@ class _ProjectState:
                  requirements_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  resolve_outdated_diff_discussions: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_default_process_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 reviewer_assignment_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  runners_token: pulumi.Input[Optional[_builtins.str]] = None,
                  security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1818,6 +1856,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.str] model_registry_access_level: Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] mr_default_target_self: For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+        :param pulumi.Input[_builtins.str] mr_default_title_template: Template used to set the default title of merge requests.
         :param pulumi.Input[_builtins.str] name: The name of the project.
         :param pulumi.Input[_builtins.int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
         :param pulumi.Input[_builtins.bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
@@ -1843,6 +1882,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.str] requirements_access_level: Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] resolve_outdated_diff_discussions: Automatically resolve merge request diffs discussions on lines changed with a push.
         :param pulumi.Input[_builtins.str] resource_group_default_process_mode: The default resource group process mode for the project.
+        :param pulumi.Input[_builtins.str] reviewer_assignment_strategy: Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `code_owners`, `dap_powered`. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[_builtins.str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: Enable shared runners for this project.
@@ -1996,6 +2036,8 @@ class _ProjectState:
             pulumi.set(__self__, "monitor_access_level", monitor_access_level)
         if mr_default_target_self is not None:
             pulumi.set(__self__, "mr_default_target_self", mr_default_target_self)
+        if mr_default_title_template is not None:
+            pulumi.set(__self__, "mr_default_title_template", mr_default_title_template)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if namespace_id is not None:
@@ -2016,6 +2058,9 @@ class _ProjectState:
             pulumi.set(__self__, "path_with_namespace", path_with_namespace)
         if permanently_delete_on_destroy is not None:
             pulumi.set(__self__, "permanently_delete_on_destroy", permanently_delete_on_destroy)
+        if pre_receive_secret_detection_enabled is not None:
+            warnings.warn("""The `pre_receive_secret_detection_enabled` attribute is deprecated. Use the `ProjectSecuritySettings` resource's `secret_push_protection_enabled` attribute instead.""", DeprecationWarning)
+            pulumi.log.warn("""pre_receive_secret_detection_enabled is deprecated: The `pre_receive_secret_detection_enabled` attribute is deprecated. Use the `ProjectSecuritySettings` resource's `secret_push_protection_enabled` attribute instead.""")
         if pre_receive_secret_detection_enabled is not None:
             pulumi.set(__self__, "pre_receive_secret_detection_enabled", pre_receive_secret_detection_enabled)
         if prevent_merge_without_jira_issue is not None:
@@ -2049,6 +2094,8 @@ class _ProjectState:
             pulumi.set(__self__, "resolve_outdated_diff_discussions", resolve_outdated_diff_discussions)
         if resource_group_default_process_mode is not None:
             pulumi.set(__self__, "resource_group_default_process_mode", resource_group_default_process_mode)
+        if reviewer_assignment_strategy is not None:
+            pulumi.set(__self__, "reviewer_assignment_strategy", reviewer_assignment_strategy)
         if runners_token is not None:
             pulumi.set(__self__, "runners_token", runners_token)
         if security_and_compliance_access_level is not None:
@@ -2875,6 +2922,18 @@ class _ProjectState:
         pulumi.set(self, "mr_default_target_self", value)
 
     @_builtins.property
+    @pulumi.getter(name="mrDefaultTitleTemplate")
+    def mr_default_title_template(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Template used to set the default title of merge requests.
+        """
+        return pulumi.get(self, "mr_default_title_template")
+
+    @mr_default_title_template.setter
+    def mr_default_title_template(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mr_default_title_template", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -2996,6 +3055,7 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="preReceiveSecretDetectionEnabled")
+    @_utilities.deprecated("""The `pre_receive_secret_detection_enabled` attribute is deprecated. Use the `ProjectSecuritySettings` resource's `secret_push_protection_enabled` attribute instead.""")
     def pre_receive_secret_detection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
@@ -3174,6 +3234,18 @@ class _ProjectState:
     @resource_group_default_process_mode.setter
     def resource_group_default_process_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_default_process_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="reviewerAssignmentStrategy")
+    def reviewer_assignment_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `code_owners`, `dap_powered`. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "reviewer_assignment_strategy")
+
+    @reviewer_assignment_strategy.setter
+    def reviewer_assignment_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "reviewer_assignment_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="runnersToken")
@@ -3441,6 +3513,7 @@ class Project(pulumi.CustomResource):
                  model_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  monitor_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  mr_default_target_self: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mr_default_title_template: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
                  only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3465,6 +3538,7 @@ class Project(pulumi.CustomResource):
                  requirements_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  resolve_outdated_diff_discussions: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_default_process_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 reviewer_assignment_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  skip_wait_for_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3574,6 +3648,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] model_registry_access_level: Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] mr_default_target_self: For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+        :param pulumi.Input[_builtins.str] mr_default_title_template: Template used to set the default title of merge requests.
         :param pulumi.Input[_builtins.str] name: The name of the project.
         :param pulumi.Input[_builtins.int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
         :param pulumi.Input[_builtins.bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
@@ -3598,6 +3673,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] requirements_access_level: Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] resolve_outdated_diff_discussions: Automatically resolve merge request diffs discussions on lines changed with a push.
         :param pulumi.Input[_builtins.str] resource_group_default_process_mode: The default resource group process mode for the project.
+        :param pulumi.Input[_builtins.str] reviewer_assignment_strategy: Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `code_owners`, `dap_powered`. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[_builtins.bool] skip_wait_for_default_branch_protection: If `true`, the default behavior to wait for the default branch protection to be created is skipped.
@@ -3730,6 +3806,7 @@ class Project(pulumi.CustomResource):
                  model_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  monitor_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  mr_default_target_self: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mr_default_title_template: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
                  only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3754,6 +3831,7 @@ class Project(pulumi.CustomResource):
                  requirements_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  resolve_outdated_diff_discussions: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_default_process_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 reviewer_assignment_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  skip_wait_for_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3839,6 +3917,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["model_registry_access_level"] = model_registry_access_level
             __props__.__dict__["monitor_access_level"] = monitor_access_level
             __props__.__dict__["mr_default_target_self"] = mr_default_target_self
+            __props__.__dict__["mr_default_title_template"] = mr_default_title_template
             __props__.__dict__["name"] = name
             __props__.__dict__["namespace_id"] = namespace_id
             __props__.__dict__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
@@ -3863,6 +3942,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["requirements_access_level"] = requirements_access_level
             __props__.__dict__["resolve_outdated_diff_discussions"] = resolve_outdated_diff_discussions
             __props__.__dict__["resource_group_default_process_mode"] = resource_group_default_process_mode
+            __props__.__dict__["reviewer_assignment_strategy"] = reviewer_assignment_strategy
             __props__.__dict__["security_and_compliance_access_level"] = security_and_compliance_access_level
             __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
             __props__.__dict__["skip_wait_for_default_branch_protection"] = skip_wait_for_default_branch_protection
@@ -3961,6 +4041,7 @@ class Project(pulumi.CustomResource):
             model_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
             monitor_access_level: pulumi.Input[Optional[_builtins.str]] = None,
             mr_default_target_self: pulumi.Input[Optional[_builtins.bool]] = None,
+            mr_default_title_template: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
             only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3986,6 +4067,7 @@ class Project(pulumi.CustomResource):
             requirements_access_level: pulumi.Input[Optional[_builtins.str]] = None,
             resolve_outdated_diff_discussions: pulumi.Input[Optional[_builtins.bool]] = None,
             resource_group_default_process_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            reviewer_assignment_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             runners_token: pulumi.Input[Optional[_builtins.str]] = None,
             security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
             shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -4075,6 +4157,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] model_registry_access_level: Set visibility of machine learning model registry. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] monitor_access_level: Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] mr_default_target_self: For forked projects, target merge requests to this project. If false, the target will be the upstream project.
+        :param pulumi.Input[_builtins.str] mr_default_title_template: Template used to set the default title of merge requests.
         :param pulumi.Input[_builtins.str] name: The name of the project.
         :param pulumi.Input[_builtins.int] namespace_id: The namespace (group or user) of the project. Defaults to your user.
         :param pulumi.Input[_builtins.bool] only_allow_merge_if_all_discussions_are_resolved: Set to true if you want allow merges only if all discussions are resolved.
@@ -4100,6 +4183,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] requirements_access_level: Set the requirements access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] resolve_outdated_diff_discussions: Automatically resolve merge request diffs discussions on lines changed with a push.
         :param pulumi.Input[_builtins.str] resource_group_default_process_mode: The default resource group process mode for the project.
+        :param pulumi.Input[_builtins.str] reviewer_assignment_strategy: Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `code_owners`, `dap_powered`. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[_builtins.str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: Enable shared runners for this project.
@@ -4191,6 +4275,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["model_registry_access_level"] = model_registry_access_level
         __props__.__dict__["monitor_access_level"] = monitor_access_level
         __props__.__dict__["mr_default_target_self"] = mr_default_target_self
+        __props__.__dict__["mr_default_title_template"] = mr_default_title_template
         __props__.__dict__["name"] = name
         __props__.__dict__["namespace_id"] = namespace_id
         __props__.__dict__["only_allow_merge_if_all_discussions_are_resolved"] = only_allow_merge_if_all_discussions_are_resolved
@@ -4216,6 +4301,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["requirements_access_level"] = requirements_access_level
         __props__.__dict__["resolve_outdated_diff_discussions"] = resolve_outdated_diff_discussions
         __props__.__dict__["resource_group_default_process_mode"] = resource_group_default_process_mode
+        __props__.__dict__["reviewer_assignment_strategy"] = reviewer_assignment_strategy
         __props__.__dict__["runners_token"] = runners_token
         __props__.__dict__["security_and_compliance_access_level"] = security_and_compliance_access_level
         __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
@@ -4763,6 +4849,14 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "mr_default_target_self")
 
     @_builtins.property
+    @pulumi.getter(name="mrDefaultTitleTemplate")
+    def mr_default_title_template(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Template used to set the default title of merge requests.
+        """
+        return pulumi.get(self, "mr_default_title_template")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
@@ -4844,6 +4938,7 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="preReceiveSecretDetectionEnabled")
+    @_utilities.deprecated("""The `pre_receive_secret_detection_enabled` attribute is deprecated. Use the `ProjectSecuritySettings` resource's `secret_push_protection_enabled` attribute instead.""")
     def pre_receive_secret_detection_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
@@ -4962,6 +5057,14 @@ class Project(pulumi.CustomResource):
         The default resource group process mode for the project.
         """
         return pulumi.get(self, "resource_group_default_process_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewerAssignmentStrategy")
+    def reviewer_assignment_strategy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `code_owners`, `dap_powered`. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "reviewer_assignment_strategy")
 
     @_builtins.property
     @pulumi.getter(name="runnersToken")

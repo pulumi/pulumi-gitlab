@@ -79,6 +79,21 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+     * 
+     */
+    @Import(name="isAuditor")
+    private @Nullable Output<Boolean> isAuditor;
+
+    /**
+     * @return Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+     * 
+     */
+    public Optional<Output<Boolean>> isAuditor() {
+        return Optional.ofNullable(this.isAuditor);
+    }
+
+    /**
      * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.
      * 
      */
@@ -235,6 +250,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         this.email = $.email;
         this.forceRandomPassword = $.forceRandomPassword;
         this.isAdmin = $.isAdmin;
+        this.isAuditor = $.isAuditor;
         this.isExternal = $.isExternal;
         this.name = $.name;
         this.namespaceId = $.namespaceId;
@@ -347,6 +363,27 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder isAdmin(Boolean isAdmin) {
             return isAdmin(Output.of(isAdmin));
+        }
+
+        /**
+         * @param isAuditor Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAuditor(@Nullable Output<Boolean> isAuditor) {
+            $.isAuditor = isAuditor;
+            return this;
+        }
+
+        /**
+         * @param isAuditor Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAuditor(Boolean isAuditor) {
+            return isAuditor(Output.of(isAuditor));
         }
 
         /**
