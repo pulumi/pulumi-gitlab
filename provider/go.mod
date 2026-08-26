@@ -6,7 +6,7 @@ require (
 	github.com/pulumi/providertest v0.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.137.0
 	github.com/pulumi/pulumi/sdk/v3 v3.256.0
-	github.com/stretchr/testify v1.11.1
+	github.com/stretchr/testify v1.12.0
 	gitlab.com/gitlab-org/terraform-provider-gitlab v0.0.0
 )
 
@@ -20,7 +20,7 @@ replace (
 )
 
 require (
-	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.11-20260415201107-50325440f8f2.1 // indirect
+	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.11-20260709200747-435963d16310.1 // indirect
 	buf.build/go/protovalidate v1.2.0 // indirect
 	buf.build/go/protoyaml v0.7.0 // indirect
 	cel.dev/expr v0.25.2 // indirect
@@ -83,7 +83,6 @@ require (
 	github.com/cloudflare/circl v1.6.3 // indirect
 	github.com/cncf/xds/go v0.0.0-20260202195803-dba9d589def2 // indirect
 	github.com/danieljoos/wincred v1.2.3 // indirect
-	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/dcarbone/terraform-plugin-framework-utils/v3 v3.9.0 // indirect
 	github.com/deckarep/golang-set/v2 v2.5.0 // indirect
 	github.com/djherbis/times v1.6.0 // indirect
@@ -106,7 +105,7 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/glog v1.2.5 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
-	github.com/google/cel-go v0.28.1 // indirect
+	github.com/google/cel-go v0.30.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/go-querystring v1.2.0 // indirect
 	github.com/google/s2a-go v0.1.9 // indirect
@@ -136,7 +135,7 @@ require (
 	github.com/hashicorp/terraform-plugin-framework-timetypes v0.5.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.19.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.31.0 // indirect
-	github.com/hashicorp/terraform-plugin-log v0.10.0 // indirect
+	github.com/hashicorp/terraform-plugin-log v0.11.0 // indirect
 	github.com/hashicorp/terraform-plugin-mux v0.23.1 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.40.1 // indirect
 	github.com/hashicorp/terraform-registry-address v0.4.0 // indirect
@@ -189,7 +188,6 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/planetscale/vtprotobuf v0.6.1-0.20240319094008-0393e58bdf10 // indirect
-	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi-labs/pulumi-hcl v0.3.1 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
@@ -225,7 +223,7 @@ require (
 	github.com/yuin/goldmark v1.7.17 // indirect
 	github.com/zalando/go-keyring v0.2.8 // indirect
 	github.com/zclconf/go-cty v1.18.1 // indirect
-	gitlab.com/gitlab-org/api/client-go/v2 v2.46.0 // indirect
+	gitlab.com/gitlab-org/api/client-go/v2 v2.57.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/collector/featuregate v1.64.0 // indirect
 	go.opentelemetry.io/collector/pdata v1.64.0 // indirect
@@ -247,7 +245,7 @@ require (
 	go.opentelemetry.io/proto/otlp v1.11.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	go.yaml.in/yaml/v3 v3.0.4 // indirect
+	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/crypto v0.54.0 // indirect
 	golang.org/x/exp v0.0.0-20260611194520-c48552f49976 // indirect
 	golang.org/x/mod v0.37.0 // indirect
