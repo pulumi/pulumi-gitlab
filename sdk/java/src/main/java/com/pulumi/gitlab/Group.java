@@ -236,6 +236,20 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.avatarUrl;
     }
     /**
+     * Enable customer relations management (CRM) for the group.
+     * 
+     */
+    @Export(name="crmEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> crmEnabled;
+
+    /**
+     * @return Enable customer relations management (CRM) for the group.
+     * 
+     */
+    public Output<Boolean> crmEnabled() {
+        return this.crmEnabled;
+    }
+    /**
      * Initial default branch name.
      * 
      */

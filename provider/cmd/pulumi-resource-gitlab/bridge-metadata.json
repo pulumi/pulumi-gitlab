@@ -127,6 +127,18 @@
                 "current": "gitlab:index/complianceFramework:ComplianceFramework",
                 "majorVersion": 10
             },
+            "gitlab_compliance_requirement": {
+                "current": "gitlab:index/complianceRequirement:ComplianceRequirement",
+                "majorVersion": 10,
+                "fields": {
+                    "external_controls": {
+                        "maxItemsOne": false
+                    },
+                    "internal_controls": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "gitlab_deploy_key": {
                 "current": "gitlab:index/deployKey:DeployKey",
                 "majorVersion": 10
@@ -207,6 +219,10 @@
                 "current": "gitlab:index/groupDependencyProxy:GroupDependencyProxy",
                 "majorVersion": 10
             },
+            "gitlab_group_dependency_proxy_image_ttl_policy": {
+                "current": "gitlab:index/groupDependencyProxyImageTtlPolicy:GroupDependencyProxyImageTtlPolicy",
+                "majorVersion": 10
+            },
             "gitlab_group_deploy_token": {
                 "current": "gitlab:index/groupDeployToken:GroupDeployToken",
                 "majorVersion": 10,
@@ -240,6 +256,15 @@
             "gitlab_group_integration_harbor": {
                 "current": "gitlab:index/groupIntegrationHarbor:GroupIntegrationHarbor",
                 "majorVersion": 10
+            },
+            "gitlab_group_integration_jira": {
+                "current": "gitlab:index/groupIntegrationJira:GroupIntegrationJira",
+                "majorVersion": 10,
+                "fields": {
+                    "project_keys": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_group_integration_mattermost": {
                 "current": "gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost",
@@ -486,6 +511,26 @@
                     }
                 }
             },
+            "gitlab_project_feature_flag": {
+                "current": "gitlab:index/projectFeatureFlag:ProjectFeatureFlag",
+                "majorVersion": 10,
+                "fields": {
+                    "strategies": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "gitlab_project_feature_flag_user_list": {
+                "current": "gitlab:index/projectFeatureFlagUserList:ProjectFeatureFlagUserList",
+                "majorVersion": 10
+            },
             "gitlab_project_freeze_period": {
                 "current": "gitlab:index/projectFreezePeriod:ProjectFreezePeriod",
                 "majorVersion": 10
@@ -713,9 +758,22 @@
                 "current": "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment",
                 "majorVersion": 10
             },
+            "gitlab_project_security_settings": {
+                "current": "gitlab:index/projectSecuritySettings:ProjectSecuritySettings",
+                "majorVersion": 10
+            },
             "gitlab_project_service_account": {
                 "current": "gitlab:index/projectServiceAccount:ProjectServiceAccount",
                 "majorVersion": 10
+            },
+            "gitlab_project_service_account_access_token": {
+                "current": "gitlab:index/projectServiceAccountAccessToken:ProjectServiceAccountAccessToken",
+                "majorVersion": 10,
+                "fields": {
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_project_share_group": {
                 "current": "gitlab:index/projectShareGroup:ProjectShareGroup",
@@ -1829,16 +1887,19 @@
             "gitlab_cluster_agent": {},
             "gitlab_cluster_agent_token": {},
             "gitlab_compliance_framework": {},
+            "gitlab_compliance_requirement": {},
             "gitlab_deploy_key_enable": {},
             "gitlab_global_level_notifications": {},
             "gitlab_group_access_token": {},
             "gitlab_group_badge": {},
             "gitlab_group_branch_protection": {},
             "gitlab_group_dependency_proxy": {},
+            "gitlab_group_dependency_proxy_image_ttl_policy": {},
             "gitlab_group_deploy_token": {},
             "gitlab_group_epic_board": {},
             "gitlab_group_hook": {},
             "gitlab_group_integration_harbor": {},
+            "gitlab_group_integration_jira": {},
             "gitlab_group_integration_mattermost": {},
             "gitlab_group_integration_microsoft_teams": {},
             "gitlab_group_issue_board": {},
@@ -1870,6 +1931,8 @@
             "gitlab_project_error_tracking_client_key": {},
             "gitlab_project_error_tracking_settings": {},
             "gitlab_project_external_status_check": {},
+            "gitlab_project_feature_flag": {},
+            "gitlab_project_feature_flag_user_list": {},
             "gitlab_project_freeze_period": {},
             "gitlab_project_hook": {},
             "gitlab_project_integration_custom_issue_tracker": {},
@@ -1907,7 +1970,9 @@
             "gitlab_project_secret_detection_validity_checks": {},
             "gitlab_project_secure_file": {},
             "gitlab_project_security_policy_attachment": {},
+            "gitlab_project_security_settings": {},
             "gitlab_project_service_account": {},
+            "gitlab_project_service_account_access_token": {},
             "gitlab_project_tag": {},
             "gitlab_project_target_branch_rule": {},
             "gitlab_project_variable": {},
@@ -1939,6 +2004,7 @@
             "gitlab:index/clusterAgent:ClusterAgent": 1,
             "gitlab:index/clusterAgentToken:ClusterAgentToken": 1,
             "gitlab:index/complianceFramework:ComplianceFramework": 1,
+            "gitlab:index/complianceRequirement:ComplianceRequirement": 1,
             "gitlab:index/deployKey:DeployKey": 0,
             "gitlab:index/deployKeyEnable:DeployKeyEnable": 1,
             "gitlab:index/globalLevelNotifications:GlobalLevelNotifications": 1,
@@ -1949,10 +2015,12 @@
             "gitlab:index/groupCluster:GroupCluster": 0,
             "gitlab:index/groupCustomAttribute:GroupCustomAttribute": 0,
             "gitlab:index/groupDependencyProxy:GroupDependencyProxy": 1,
+            "gitlab:index/groupDependencyProxyImageTtlPolicy:GroupDependencyProxyImageTtlPolicy": 1,
             "gitlab:index/groupDeployToken:GroupDeployToken": 1,
             "gitlab:index/groupEpicBoard:GroupEpicBoard": 1,
             "gitlab:index/groupHook:GroupHook": 1,
             "gitlab:index/groupIntegrationHarbor:GroupIntegrationHarbor": 1,
+            "gitlab:index/groupIntegrationJira:GroupIntegrationJira": 1,
             "gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost": 1,
             "gitlab:index/groupIntegrationMicrosoftTeams:GroupIntegrationMicrosoftTeams": 1,
             "gitlab:index/groupIssueBoard:GroupIssueBoard": 1,
@@ -1994,6 +2062,8 @@
             "gitlab:index/projectErrorTrackingClientKey:ProjectErrorTrackingClientKey": 1,
             "gitlab:index/projectErrorTrackingSettings:ProjectErrorTrackingSettings": 1,
             "gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck": 1,
+            "gitlab:index/projectFeatureFlag:ProjectFeatureFlag": 1,
+            "gitlab:index/projectFeatureFlagUserList:ProjectFeatureFlagUserList": 1,
             "gitlab:index/projectFreezePeriod:ProjectFreezePeriod": 1,
             "gitlab:index/projectHook:ProjectHook": 1,
             "gitlab:index/projectIntegrationCustomIssueTracker:ProjectIntegrationCustomIssueTracker": 1,
@@ -2035,7 +2105,9 @@
             "gitlab:index/projectSecretDetectionValidityChecks:ProjectSecretDetectionValidityChecks": 1,
             "gitlab:index/projectSecureFile:ProjectSecureFile": 1,
             "gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment": 1,
+            "gitlab:index/projectSecuritySettings:ProjectSecuritySettings": 1,
             "gitlab:index/projectServiceAccount:ProjectServiceAccount": 1,
+            "gitlab:index/projectServiceAccountAccessToken:ProjectServiceAccountAccessToken": 1,
             "gitlab:index/projectShareGroup:ProjectShareGroup": 0,
             "gitlab:index/projectTag:ProjectTag": 1,
             "gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule": 1,

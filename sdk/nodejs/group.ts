@@ -148,6 +148,10 @@ export class Group extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly avatarUrl: pulumi.Output<string>;
     /**
+     * Enable customer relations management (CRM) for the group.
+     */
+    declare public readonly crmEnabled: pulumi.Output<boolean>;
+    /**
      * Initial default branch name.
      */
     declare public readonly defaultBranch: pulumi.Output<string | undefined>;
@@ -306,6 +310,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["avatar"] = state?.avatar;
             resourceInputs["avatarHash"] = state?.avatarHash;
             resourceInputs["avatarUrl"] = state?.avatarUrl;
+            resourceInputs["crmEnabled"] = state?.crmEnabled;
             resourceInputs["defaultBranch"] = state?.defaultBranch;
             resourceInputs["defaultBranchProtection"] = state?.defaultBranchProtection;
             resourceInputs["defaultBranchProtectionDefaults"] = state?.defaultBranchProtectionDefaults;
@@ -351,6 +356,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["autoDevopsEnabled"] = args?.autoDevopsEnabled;
             resourceInputs["avatar"] = args?.avatar;
             resourceInputs["avatarHash"] = args?.avatarHash;
+            resourceInputs["crmEnabled"] = args?.crmEnabled;
             resourceInputs["defaultBranch"] = args?.defaultBranch;
             resourceInputs["defaultBranchProtection"] = args?.defaultBranchProtection;
             resourceInputs["defaultBranchProtectionDefaults"] = args?.defaultBranchProtectionDefaults;
@@ -426,6 +432,10 @@ export interface GroupState {
      * The URL of the avatar image.
      */
     avatarUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Enable customer relations management (CRM) for the group.
+     */
+    crmEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Initial default branch name.
      */
@@ -594,6 +604,10 @@ export interface GroupArgs {
      * The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
      */
     avatarHash?: pulumi.Input<string | undefined>;
+    /**
+     * Enable customer relations management (CRM) for the group.
+     */
+    crmEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Initial default branch name.
      */

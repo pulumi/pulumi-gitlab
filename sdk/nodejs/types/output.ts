@@ -136,6 +136,63 @@ export interface BranchProtectionAllowedToUnprotect {
     userId?: number;
 }
 
+export interface ComplianceRequirementExternalControl {
+    /**
+     * Name of the external control.
+     */
+    externalControlName: string;
+    /**
+     * External URL for external controls.
+     */
+    externalUrl: string;
+    /**
+     * Compliance requirements control ID.
+     */
+    id: string;
+    /**
+     * Name of the control.  Set to `externalControl` from the API.
+     */
+    name: string;
+    /**
+     * Whether ping is enabled for external controls.
+     */
+    pingEnabled: boolean;
+    /**
+     * Secret token for external controls. The `secretToken` is not available in imported resources.
+     */
+    secretToken: string;
+}
+
+export interface ComplianceRequirementInternalControl {
+    /**
+     * Expression for internal controls.
+     */
+    expression: outputs.ComplianceRequirementInternalControlExpression;
+    /**
+     * Compliance requirements control ID.
+     */
+    id: string;
+    /**
+     * Name of the control, from the list of Control IDs here: [GitLab Compliance Controls](https://docs.gitlab.com/user/compliance/compliance_frameworks/#gitlab-compliance-controls)
+     */
+    name: string;
+}
+
+export interface ComplianceRequirementInternalControlExpression {
+    /**
+     * The field to evaluate (e.g., `scannerDepScanningRunning`).
+     */
+    field: string;
+    /**
+     * The operator for comparison. Valid values are `=`, `!=`, `>`, `<`, `>=`, `<=`.
+     */
+    operator: string;
+    /**
+     * The value to compare against. Use `true` or `false` for boolean values.
+     */
+    value: string;
+}
+
 export interface GetBranchCommit {
     /**
      * The email of the author.
@@ -840,6 +897,7 @@ export interface GetGroupSamlLinksSamlLink {
 export interface GetGroupServiceAccountAccessTokensAccessToken {
     active: boolean;
     createdAt: string;
+    description: string;
     expiresAt: string;
     id: string;
     name: string;
@@ -1022,6 +1080,10 @@ export interface GetGroupsGroup {
      * Timestamp at which the group was created.
      */
     createdAt: string;
+    /**
+     * Whether customer relations management (CRM) is enabled for the group.
+     */
+    crmEnabled: boolean;
     /**
      * Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.
      */
@@ -3522,6 +3584,10 @@ export interface GetProjectsProject {
      */
     mrDefaultTargetSelf: boolean;
     /**
+     * Template used to set the default title of merge requests.
+     */
+    mrDefaultTitleTemplate: string;
+    /**
      * The name of the project.
      */
     name: string;
@@ -3661,6 +3727,10 @@ export interface GetProjectsProject {
      * @deprecated Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0.
      */
     restrictUserDefinedVariables: boolean;
+    /**
+     * The strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+     */
+    reviewerAssignmentStrategy: string;
     /**
      * Runner token expiration interval, in seconds.
      */
@@ -4799,6 +4869,58 @@ export interface ProjectContainerTagProtectionTimeouts {
     create?: string;
 }
 
+export interface ProjectFeatureFlagStrategy {
+    /**
+     * The name of the strategy. Valid values are: `default`, `gradualRolloutUserId`, `userWithId`, `flexibleRollout`, `gitlabUserList`.
+     */
+    name: string;
+    /**
+     * Parameters for the strategy. Required fields depend on the strategy name:
+     *   - gradualRolloutUserId: set percentage (required); groupId defaults to "default" if omitted.
+     *   - userWithId: set userIds (required, comma-separated).
+     *   - flexibleRollout: set rollout, group_id, and stickiness.
+     */
+    parameters?: outputs.ProjectFeatureFlagStrategyParameters;
+    /**
+     * Scopes define which environments the strategy applies to.
+     */
+    scopes?: outputs.ProjectFeatureFlagStrategyScope[];
+    /**
+     * The ID of the `gitlab.ProjectFeatureFlagUserList` to bind to this strategy (its `listId` attribute, not `iid`). Required when `name` is `gitlabUserList`, and not usable otherwise.
+     */
+    userListId?: number;
+}
+
+export interface ProjectFeatureFlagStrategyParameters {
+    /**
+     * The Unleash group ID. Used by `gradualRolloutUserId` and `flexibleRollout`. Computed when omitted.
+     */
+    groupId: string;
+    /**
+     * Percentage (as a string) of users to activate. Used by `gradualRolloutUserId` and `flexibleRollout`.
+     */
+    percentage?: string;
+    /**
+     * Rollout percentage for `flexibleRollout`.
+     */
+    rollout?: string;
+    /**
+     * Stickiness setting for `flexibleRollout`. Computed when omitted.
+     */
+    stickiness: string;
+    /**
+     * Comma-separated list of user IDs. Used by `userWithId`.
+     */
+    userIds?: string;
+}
+
+export interface ProjectFeatureFlagStrategyScope {
+    /**
+     * The environment scope, e.g. `*`, `production`, `staging`.
+     */
+    environmentScope: string;
+}
+
 export interface ProjectHookCustomHeader {
     /**
      * Key of the custom header.
@@ -4989,6 +5111,17 @@ export interface ProjectPushRules {
      * Reject commit when it's not signed through GPG.
      */
     rejectUnsignedCommits?: boolean;
+}
+
+export interface ProjectServiceAccountAccessTokenRotationConfiguration {
+    /**
+     * The duration (in days) the new token should be valid for.
+     */
+    expirationDays?: number;
+    /**
+     * The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+     */
+    rotateBeforeDays: number;
 }
 
 export interface ProjectServiceAccountTimeouts {

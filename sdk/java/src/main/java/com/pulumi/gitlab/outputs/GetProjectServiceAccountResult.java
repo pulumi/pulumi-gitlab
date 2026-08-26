@@ -11,6 +11,11 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectServiceAccountResult {
     /**
+     * @return The email of the service account user.
+     * 
+     */
+    private String email;
+    /**
      * @return The ID of this Terraform resource. In the format of `&lt;project&gt;:&lt;service_account_id&gt;`.
      * 
      */
@@ -37,6 +42,13 @@ public final class GetProjectServiceAccountResult {
     private String username;
 
     private GetProjectServiceAccountResult() {}
+    /**
+     * @return The email of the service account user.
+     * 
+     */
+    public String email() {
+        return this.email;
+    }
     /**
      * @return The ID of this Terraform resource. In the format of `&lt;project&gt;:&lt;service_account_id&gt;`.
      * 
@@ -82,6 +94,7 @@ public final class GetProjectServiceAccountResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String email;
         private String id;
         private String name;
         private String project;
@@ -90,6 +103,7 @@ public final class GetProjectServiceAccountResult {
         public Builder() {}
         public Builder(GetProjectServiceAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.email = defaults.email;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
@@ -97,6 +111,14 @@ public final class GetProjectServiceAccountResult {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
+        public Builder email(String email) {
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetProjectServiceAccountResult", "email");
+            }
+            this.email = email;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -139,6 +161,7 @@ public final class GetProjectServiceAccountResult {
         }
         public GetProjectServiceAccountResult build() {
             final var _resultValue = new GetProjectServiceAccountResult();
+            _resultValue.email = email;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.project = project;

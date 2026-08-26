@@ -157,6 +157,10 @@ namespace Pulumi.GitLab
     public sealed class GetProjectServiceAccountResult
     {
         /// <summary>
+        /// The email of the service account user.
+        /// </summary>
+        public readonly string Email;
+        /// <summary>
         /// The ID of this Terraform resource. In the format of `&lt;project&gt;:&lt;service_account_id&gt;`.
         /// </summary>
         public readonly string Id;
@@ -179,6 +183,8 @@ namespace Pulumi.GitLab
 
         [OutputConstructor]
         private GetProjectServiceAccountResult(
+            string email,
+
             string id,
 
             string name,
@@ -189,6 +195,7 @@ namespace Pulumi.GitLab
 
             string username)
         {
+            Email = email;
             Id = id;
             Name = name;
             Project = project;

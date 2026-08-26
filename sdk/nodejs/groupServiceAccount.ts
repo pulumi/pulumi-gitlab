@@ -106,9 +106,9 @@ export class GroupServiceAccount extends pulumi.CustomResource {
     declare public readonly skipWaitForDeletion: pulumi.Output<boolean | undefined>;
     declare public readonly timeouts: pulumi.Output<outputs.GroupServiceAccountTimeouts | undefined>;
     /**
-     * The username of the user. If not specified, it’s automatically generated.
+     * The username of the user. If not specified, it's automatically generated.
      */
-    declare public readonly username: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a GroupServiceAccount resource with the given unique name, arguments, and options.
@@ -174,7 +174,7 @@ export interface GroupServiceAccountState {
     skipWaitForDeletion?: pulumi.Input<boolean | undefined>;
     timeouts?: pulumi.Input<inputs.GroupServiceAccountTimeouts | undefined>;
     /**
-     * The username of the user. If not specified, it’s automatically generated.
+     * The username of the user. If not specified, it's automatically generated.
      */
     username?: pulumi.Input<string | undefined>;
 }
@@ -201,7 +201,7 @@ export interface GroupServiceAccountArgs {
     skipWaitForDeletion?: pulumi.Input<boolean | undefined>;
     timeouts?: pulumi.Input<inputs.GroupServiceAccountTimeouts | undefined>;
     /**
-     * The username of the user. If not specified, it’s automatically generated.
+     * The username of the user. If not specified, it's automatically generated.
      */
     username?: pulumi.Input<string | undefined>;
 }

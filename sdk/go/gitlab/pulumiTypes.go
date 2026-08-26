@@ -794,6 +794,335 @@ func (o BranchProtectionAllowedToUnprotectArrayOutput) Index(i pulumi.IntInput) 
 	}).(BranchProtectionAllowedToUnprotectOutput)
 }
 
+type ComplianceRequirementExternalControl struct {
+	// Name of the external control.
+	ExternalControlName *string `pulumi:"externalControlName"`
+	// External URL for external controls.
+	ExternalUrl string `pulumi:"externalUrl"`
+	// Compliance requirements control ID.
+	Id *string `pulumi:"id"`
+	// Name of the control.  Set to `externalControl` from the API.
+	Name *string `pulumi:"name"`
+	// Whether ping is enabled for external controls.
+	PingEnabled bool `pulumi:"pingEnabled"`
+	// Secret token for external controls. The `secretToken` is not available in imported resources.
+	SecretToken string `pulumi:"secretToken"`
+}
+
+// ComplianceRequirementExternalControlInput is an input type that accepts ComplianceRequirementExternalControlArgs and ComplianceRequirementExternalControlOutput values.
+// You can construct a concrete instance of `ComplianceRequirementExternalControlInput` via:
+//
+//	ComplianceRequirementExternalControlArgs{...}
+type ComplianceRequirementExternalControlInput interface {
+	pulumi.Input
+
+	ToComplianceRequirementExternalControlOutput() ComplianceRequirementExternalControlOutput
+	ToComplianceRequirementExternalControlOutputWithContext(context.Context) ComplianceRequirementExternalControlOutput
+}
+
+type ComplianceRequirementExternalControlArgs struct {
+	// Name of the external control.
+	ExternalControlName pulumi.StringPtrInput `pulumi:"externalControlName"`
+	// External URL for external controls.
+	ExternalUrl pulumi.StringInput `pulumi:"externalUrl"`
+	// Compliance requirements control ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Name of the control.  Set to `externalControl` from the API.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Whether ping is enabled for external controls.
+	PingEnabled pulumi.BoolInput `pulumi:"pingEnabled"`
+	// Secret token for external controls. The `secretToken` is not available in imported resources.
+	SecretToken pulumi.StringInput `pulumi:"secretToken"`
+}
+
+func (ComplianceRequirementExternalControlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceRequirementExternalControl)(nil)).Elem()
+}
+
+func (i ComplianceRequirementExternalControlArgs) ToComplianceRequirementExternalControlOutput() ComplianceRequirementExternalControlOutput {
+	return i.ToComplianceRequirementExternalControlOutputWithContext(context.Background())
+}
+
+func (i ComplianceRequirementExternalControlArgs) ToComplianceRequirementExternalControlOutputWithContext(ctx context.Context) ComplianceRequirementExternalControlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceRequirementExternalControlOutput)
+}
+
+// ComplianceRequirementExternalControlArrayInput is an input type that accepts ComplianceRequirementExternalControlArray and ComplianceRequirementExternalControlArrayOutput values.
+// You can construct a concrete instance of `ComplianceRequirementExternalControlArrayInput` via:
+//
+//	ComplianceRequirementExternalControlArray{ ComplianceRequirementExternalControlArgs{...} }
+type ComplianceRequirementExternalControlArrayInput interface {
+	pulumi.Input
+
+	ToComplianceRequirementExternalControlArrayOutput() ComplianceRequirementExternalControlArrayOutput
+	ToComplianceRequirementExternalControlArrayOutputWithContext(context.Context) ComplianceRequirementExternalControlArrayOutput
+}
+
+type ComplianceRequirementExternalControlArray []ComplianceRequirementExternalControlInput
+
+func (ComplianceRequirementExternalControlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComplianceRequirementExternalControl)(nil)).Elem()
+}
+
+func (i ComplianceRequirementExternalControlArray) ToComplianceRequirementExternalControlArrayOutput() ComplianceRequirementExternalControlArrayOutput {
+	return i.ToComplianceRequirementExternalControlArrayOutputWithContext(context.Background())
+}
+
+func (i ComplianceRequirementExternalControlArray) ToComplianceRequirementExternalControlArrayOutputWithContext(ctx context.Context) ComplianceRequirementExternalControlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceRequirementExternalControlArrayOutput)
+}
+
+type ComplianceRequirementExternalControlOutput struct{ *pulumi.OutputState }
+
+func (ComplianceRequirementExternalControlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceRequirementExternalControl)(nil)).Elem()
+}
+
+func (o ComplianceRequirementExternalControlOutput) ToComplianceRequirementExternalControlOutput() ComplianceRequirementExternalControlOutput {
+	return o
+}
+
+func (o ComplianceRequirementExternalControlOutput) ToComplianceRequirementExternalControlOutputWithContext(ctx context.Context) ComplianceRequirementExternalControlOutput {
+	return o
+}
+
+// Name of the external control.
+func (o ComplianceRequirementExternalControlOutput) ExternalControlName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComplianceRequirementExternalControl) *string { return v.ExternalControlName }).(pulumi.StringPtrOutput)
+}
+
+// External URL for external controls.
+func (o ComplianceRequirementExternalControlOutput) ExternalUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ComplianceRequirementExternalControl) string { return v.ExternalUrl }).(pulumi.StringOutput)
+}
+
+// Compliance requirements control ID.
+func (o ComplianceRequirementExternalControlOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComplianceRequirementExternalControl) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the control.  Set to `externalControl` from the API.
+func (o ComplianceRequirementExternalControlOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComplianceRequirementExternalControl) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Whether ping is enabled for external controls.
+func (o ComplianceRequirementExternalControlOutput) PingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ComplianceRequirementExternalControl) bool { return v.PingEnabled }).(pulumi.BoolOutput)
+}
+
+// Secret token for external controls. The `secretToken` is not available in imported resources.
+func (o ComplianceRequirementExternalControlOutput) SecretToken() pulumi.StringOutput {
+	return o.ApplyT(func(v ComplianceRequirementExternalControl) string { return v.SecretToken }).(pulumi.StringOutput)
+}
+
+type ComplianceRequirementExternalControlArrayOutput struct{ *pulumi.OutputState }
+
+func (ComplianceRequirementExternalControlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComplianceRequirementExternalControl)(nil)).Elem()
+}
+
+func (o ComplianceRequirementExternalControlArrayOutput) ToComplianceRequirementExternalControlArrayOutput() ComplianceRequirementExternalControlArrayOutput {
+	return o
+}
+
+func (o ComplianceRequirementExternalControlArrayOutput) ToComplianceRequirementExternalControlArrayOutputWithContext(ctx context.Context) ComplianceRequirementExternalControlArrayOutput {
+	return o
+}
+
+func (o ComplianceRequirementExternalControlArrayOutput) Index(i pulumi.IntInput) ComplianceRequirementExternalControlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComplianceRequirementExternalControl {
+		return vs[0].([]ComplianceRequirementExternalControl)[vs[1].(int)]
+	}).(ComplianceRequirementExternalControlOutput)
+}
+
+type ComplianceRequirementInternalControl struct {
+	// Expression for internal controls.
+	Expression ComplianceRequirementInternalControlExpression `pulumi:"expression"`
+	// Compliance requirements control ID.
+	Id *string `pulumi:"id"`
+	// Name of the control, from the list of Control IDs here: [GitLab Compliance Controls](https://docs.gitlab.com/user/compliance/compliance_frameworks/#gitlab-compliance-controls)
+	Name string `pulumi:"name"`
+}
+
+// ComplianceRequirementInternalControlInput is an input type that accepts ComplianceRequirementInternalControlArgs and ComplianceRequirementInternalControlOutput values.
+// You can construct a concrete instance of `ComplianceRequirementInternalControlInput` via:
+//
+//	ComplianceRequirementInternalControlArgs{...}
+type ComplianceRequirementInternalControlInput interface {
+	pulumi.Input
+
+	ToComplianceRequirementInternalControlOutput() ComplianceRequirementInternalControlOutput
+	ToComplianceRequirementInternalControlOutputWithContext(context.Context) ComplianceRequirementInternalControlOutput
+}
+
+type ComplianceRequirementInternalControlArgs struct {
+	// Expression for internal controls.
+	Expression ComplianceRequirementInternalControlExpressionInput `pulumi:"expression"`
+	// Compliance requirements control ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Name of the control, from the list of Control IDs here: [GitLab Compliance Controls](https://docs.gitlab.com/user/compliance/compliance_frameworks/#gitlab-compliance-controls)
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ComplianceRequirementInternalControlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceRequirementInternalControl)(nil)).Elem()
+}
+
+func (i ComplianceRequirementInternalControlArgs) ToComplianceRequirementInternalControlOutput() ComplianceRequirementInternalControlOutput {
+	return i.ToComplianceRequirementInternalControlOutputWithContext(context.Background())
+}
+
+func (i ComplianceRequirementInternalControlArgs) ToComplianceRequirementInternalControlOutputWithContext(ctx context.Context) ComplianceRequirementInternalControlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceRequirementInternalControlOutput)
+}
+
+// ComplianceRequirementInternalControlArrayInput is an input type that accepts ComplianceRequirementInternalControlArray and ComplianceRequirementInternalControlArrayOutput values.
+// You can construct a concrete instance of `ComplianceRequirementInternalControlArrayInput` via:
+//
+//	ComplianceRequirementInternalControlArray{ ComplianceRequirementInternalControlArgs{...} }
+type ComplianceRequirementInternalControlArrayInput interface {
+	pulumi.Input
+
+	ToComplianceRequirementInternalControlArrayOutput() ComplianceRequirementInternalControlArrayOutput
+	ToComplianceRequirementInternalControlArrayOutputWithContext(context.Context) ComplianceRequirementInternalControlArrayOutput
+}
+
+type ComplianceRequirementInternalControlArray []ComplianceRequirementInternalControlInput
+
+func (ComplianceRequirementInternalControlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComplianceRequirementInternalControl)(nil)).Elem()
+}
+
+func (i ComplianceRequirementInternalControlArray) ToComplianceRequirementInternalControlArrayOutput() ComplianceRequirementInternalControlArrayOutput {
+	return i.ToComplianceRequirementInternalControlArrayOutputWithContext(context.Background())
+}
+
+func (i ComplianceRequirementInternalControlArray) ToComplianceRequirementInternalControlArrayOutputWithContext(ctx context.Context) ComplianceRequirementInternalControlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceRequirementInternalControlArrayOutput)
+}
+
+type ComplianceRequirementInternalControlOutput struct{ *pulumi.OutputState }
+
+func (ComplianceRequirementInternalControlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceRequirementInternalControl)(nil)).Elem()
+}
+
+func (o ComplianceRequirementInternalControlOutput) ToComplianceRequirementInternalControlOutput() ComplianceRequirementInternalControlOutput {
+	return o
+}
+
+func (o ComplianceRequirementInternalControlOutput) ToComplianceRequirementInternalControlOutputWithContext(ctx context.Context) ComplianceRequirementInternalControlOutput {
+	return o
+}
+
+// Expression for internal controls.
+func (o ComplianceRequirementInternalControlOutput) Expression() ComplianceRequirementInternalControlExpressionOutput {
+	return o.ApplyT(func(v ComplianceRequirementInternalControl) ComplianceRequirementInternalControlExpression {
+		return v.Expression
+	}).(ComplianceRequirementInternalControlExpressionOutput)
+}
+
+// Compliance requirements control ID.
+func (o ComplianceRequirementInternalControlOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComplianceRequirementInternalControl) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the control, from the list of Control IDs here: [GitLab Compliance Controls](https://docs.gitlab.com/user/compliance/compliance_frameworks/#gitlab-compliance-controls)
+func (o ComplianceRequirementInternalControlOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ComplianceRequirementInternalControl) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ComplianceRequirementInternalControlArrayOutput struct{ *pulumi.OutputState }
+
+func (ComplianceRequirementInternalControlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComplianceRequirementInternalControl)(nil)).Elem()
+}
+
+func (o ComplianceRequirementInternalControlArrayOutput) ToComplianceRequirementInternalControlArrayOutput() ComplianceRequirementInternalControlArrayOutput {
+	return o
+}
+
+func (o ComplianceRequirementInternalControlArrayOutput) ToComplianceRequirementInternalControlArrayOutputWithContext(ctx context.Context) ComplianceRequirementInternalControlArrayOutput {
+	return o
+}
+
+func (o ComplianceRequirementInternalControlArrayOutput) Index(i pulumi.IntInput) ComplianceRequirementInternalControlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComplianceRequirementInternalControl {
+		return vs[0].([]ComplianceRequirementInternalControl)[vs[1].(int)]
+	}).(ComplianceRequirementInternalControlOutput)
+}
+
+type ComplianceRequirementInternalControlExpression struct {
+	// The field to evaluate (e.g., `scannerDepScanningRunning`).
+	Field string `pulumi:"field"`
+	// The operator for comparison. Valid values are `=`, `!=`, `>`, `<`, `>=`, `<=`.
+	Operator string `pulumi:"operator"`
+	// The value to compare against. Use `true` or `false` for boolean values.
+	Value string `pulumi:"value"`
+}
+
+// ComplianceRequirementInternalControlExpressionInput is an input type that accepts ComplianceRequirementInternalControlExpressionArgs and ComplianceRequirementInternalControlExpressionOutput values.
+// You can construct a concrete instance of `ComplianceRequirementInternalControlExpressionInput` via:
+//
+//	ComplianceRequirementInternalControlExpressionArgs{...}
+type ComplianceRequirementInternalControlExpressionInput interface {
+	pulumi.Input
+
+	ToComplianceRequirementInternalControlExpressionOutput() ComplianceRequirementInternalControlExpressionOutput
+	ToComplianceRequirementInternalControlExpressionOutputWithContext(context.Context) ComplianceRequirementInternalControlExpressionOutput
+}
+
+type ComplianceRequirementInternalControlExpressionArgs struct {
+	// The field to evaluate (e.g., `scannerDepScanningRunning`).
+	Field pulumi.StringInput `pulumi:"field"`
+	// The operator for comparison. Valid values are `=`, `!=`, `>`, `<`, `>=`, `<=`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The value to compare against. Use `true` or `false` for boolean values.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ComplianceRequirementInternalControlExpressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceRequirementInternalControlExpression)(nil)).Elem()
+}
+
+func (i ComplianceRequirementInternalControlExpressionArgs) ToComplianceRequirementInternalControlExpressionOutput() ComplianceRequirementInternalControlExpressionOutput {
+	return i.ToComplianceRequirementInternalControlExpressionOutputWithContext(context.Background())
+}
+
+func (i ComplianceRequirementInternalControlExpressionArgs) ToComplianceRequirementInternalControlExpressionOutputWithContext(ctx context.Context) ComplianceRequirementInternalControlExpressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceRequirementInternalControlExpressionOutput)
+}
+
+type ComplianceRequirementInternalControlExpressionOutput struct{ *pulumi.OutputState }
+
+func (ComplianceRequirementInternalControlExpressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceRequirementInternalControlExpression)(nil)).Elem()
+}
+
+func (o ComplianceRequirementInternalControlExpressionOutput) ToComplianceRequirementInternalControlExpressionOutput() ComplianceRequirementInternalControlExpressionOutput {
+	return o
+}
+
+func (o ComplianceRequirementInternalControlExpressionOutput) ToComplianceRequirementInternalControlExpressionOutputWithContext(ctx context.Context) ComplianceRequirementInternalControlExpressionOutput {
+	return o
+}
+
+// The field to evaluate (e.g., `scannerDepScanningRunning`).
+func (o ComplianceRequirementInternalControlExpressionOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v ComplianceRequirementInternalControlExpression) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// The operator for comparison. Valid values are `=`, `!=`, `>`, `<`, `>=`, `<=`.
+func (o ComplianceRequirementInternalControlExpressionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ComplianceRequirementInternalControlExpression) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The value to compare against. Use `true` or `false` for boolean values.
+func (o ComplianceRequirementInternalControlExpressionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ComplianceRequirementInternalControlExpression) string { return v.Value }).(pulumi.StringOutput)
+}
+
 type GroupAccessTokenRotationConfiguration struct {
 	// The duration (in days) the new token should be valid for.
 	ExpirationDays int `pulumi:"expirationDays"`
@@ -4055,6 +4384,449 @@ func (o ProjectContainerTagProtectionTimeoutsPtrOutput) Create() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+type ProjectFeatureFlagStrategy struct {
+	// The name of the strategy. Valid values are: `default`, `gradualRolloutUserId`, `userWithId`, `flexibleRollout`, `gitlabUserList`.
+	Name string `pulumi:"name"`
+	// Parameters for the strategy. Required fields depend on the strategy name:
+	//   - gradualRolloutUserId: set percentage (required); groupId defaults to "default" if omitted.
+	//   - userWithId: set userIds (required, comma-separated).
+	//   - flexibleRollout: set rollout, group_id, and stickiness.
+	Parameters *ProjectFeatureFlagStrategyParameters `pulumi:"parameters"`
+	// Scopes define which environments the strategy applies to.
+	Scopes []ProjectFeatureFlagStrategyScope `pulumi:"scopes"`
+	// The ID of the `ProjectFeatureFlagUserList` to bind to this strategy (its `listId` attribute, not `iid`). Required when `name` is `gitlabUserList`, and not usable otherwise.
+	UserListId *int `pulumi:"userListId"`
+}
+
+// ProjectFeatureFlagStrategyInput is an input type that accepts ProjectFeatureFlagStrategyArgs and ProjectFeatureFlagStrategyOutput values.
+// You can construct a concrete instance of `ProjectFeatureFlagStrategyInput` via:
+//
+//	ProjectFeatureFlagStrategyArgs{...}
+type ProjectFeatureFlagStrategyInput interface {
+	pulumi.Input
+
+	ToProjectFeatureFlagStrategyOutput() ProjectFeatureFlagStrategyOutput
+	ToProjectFeatureFlagStrategyOutputWithContext(context.Context) ProjectFeatureFlagStrategyOutput
+}
+
+type ProjectFeatureFlagStrategyArgs struct {
+	// The name of the strategy. Valid values are: `default`, `gradualRolloutUserId`, `userWithId`, `flexibleRollout`, `gitlabUserList`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Parameters for the strategy. Required fields depend on the strategy name:
+	//   - gradualRolloutUserId: set percentage (required); groupId defaults to "default" if omitted.
+	//   - userWithId: set userIds (required, comma-separated).
+	//   - flexibleRollout: set rollout, group_id, and stickiness.
+	Parameters ProjectFeatureFlagStrategyParametersPtrInput `pulumi:"parameters"`
+	// Scopes define which environments the strategy applies to.
+	Scopes ProjectFeatureFlagStrategyScopeArrayInput `pulumi:"scopes"`
+	// The ID of the `ProjectFeatureFlagUserList` to bind to this strategy (its `listId` attribute, not `iid`). Required when `name` is `gitlabUserList`, and not usable otherwise.
+	UserListId pulumi.IntPtrInput `pulumi:"userListId"`
+}
+
+func (ProjectFeatureFlagStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectFeatureFlagStrategy)(nil)).Elem()
+}
+
+func (i ProjectFeatureFlagStrategyArgs) ToProjectFeatureFlagStrategyOutput() ProjectFeatureFlagStrategyOutput {
+	return i.ToProjectFeatureFlagStrategyOutputWithContext(context.Background())
+}
+
+func (i ProjectFeatureFlagStrategyArgs) ToProjectFeatureFlagStrategyOutputWithContext(ctx context.Context) ProjectFeatureFlagStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeatureFlagStrategyOutput)
+}
+
+// ProjectFeatureFlagStrategyArrayInput is an input type that accepts ProjectFeatureFlagStrategyArray and ProjectFeatureFlagStrategyArrayOutput values.
+// You can construct a concrete instance of `ProjectFeatureFlagStrategyArrayInput` via:
+//
+//	ProjectFeatureFlagStrategyArray{ ProjectFeatureFlagStrategyArgs{...} }
+type ProjectFeatureFlagStrategyArrayInput interface {
+	pulumi.Input
+
+	ToProjectFeatureFlagStrategyArrayOutput() ProjectFeatureFlagStrategyArrayOutput
+	ToProjectFeatureFlagStrategyArrayOutputWithContext(context.Context) ProjectFeatureFlagStrategyArrayOutput
+}
+
+type ProjectFeatureFlagStrategyArray []ProjectFeatureFlagStrategyInput
+
+func (ProjectFeatureFlagStrategyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectFeatureFlagStrategy)(nil)).Elem()
+}
+
+func (i ProjectFeatureFlagStrategyArray) ToProjectFeatureFlagStrategyArrayOutput() ProjectFeatureFlagStrategyArrayOutput {
+	return i.ToProjectFeatureFlagStrategyArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectFeatureFlagStrategyArray) ToProjectFeatureFlagStrategyArrayOutputWithContext(ctx context.Context) ProjectFeatureFlagStrategyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeatureFlagStrategyArrayOutput)
+}
+
+type ProjectFeatureFlagStrategyOutput struct{ *pulumi.OutputState }
+
+func (ProjectFeatureFlagStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectFeatureFlagStrategy)(nil)).Elem()
+}
+
+func (o ProjectFeatureFlagStrategyOutput) ToProjectFeatureFlagStrategyOutput() ProjectFeatureFlagStrategyOutput {
+	return o
+}
+
+func (o ProjectFeatureFlagStrategyOutput) ToProjectFeatureFlagStrategyOutputWithContext(ctx context.Context) ProjectFeatureFlagStrategyOutput {
+	return o
+}
+
+// The name of the strategy. Valid values are: `default`, `gradualRolloutUserId`, `userWithId`, `flexibleRollout`, `gitlabUserList`.
+func (o ProjectFeatureFlagStrategyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ProjectFeatureFlagStrategy) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Parameters for the strategy. Required fields depend on the strategy name:
+//   - gradualRolloutUserId: set percentage (required); groupId defaults to "default" if omitted.
+//   - userWithId: set userIds (required, comma-separated).
+//   - flexibleRollout: set rollout, group_id, and stickiness.
+func (o ProjectFeatureFlagStrategyOutput) Parameters() ProjectFeatureFlagStrategyParametersPtrOutput {
+	return o.ApplyT(func(v ProjectFeatureFlagStrategy) *ProjectFeatureFlagStrategyParameters { return v.Parameters }).(ProjectFeatureFlagStrategyParametersPtrOutput)
+}
+
+// Scopes define which environments the strategy applies to.
+func (o ProjectFeatureFlagStrategyOutput) Scopes() ProjectFeatureFlagStrategyScopeArrayOutput {
+	return o.ApplyT(func(v ProjectFeatureFlagStrategy) []ProjectFeatureFlagStrategyScope { return v.Scopes }).(ProjectFeatureFlagStrategyScopeArrayOutput)
+}
+
+// The ID of the `ProjectFeatureFlagUserList` to bind to this strategy (its `listId` attribute, not `iid`). Required when `name` is `gitlabUserList`, and not usable otherwise.
+func (o ProjectFeatureFlagStrategyOutput) UserListId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectFeatureFlagStrategy) *int { return v.UserListId }).(pulumi.IntPtrOutput)
+}
+
+type ProjectFeatureFlagStrategyArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectFeatureFlagStrategyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectFeatureFlagStrategy)(nil)).Elem()
+}
+
+func (o ProjectFeatureFlagStrategyArrayOutput) ToProjectFeatureFlagStrategyArrayOutput() ProjectFeatureFlagStrategyArrayOutput {
+	return o
+}
+
+func (o ProjectFeatureFlagStrategyArrayOutput) ToProjectFeatureFlagStrategyArrayOutputWithContext(ctx context.Context) ProjectFeatureFlagStrategyArrayOutput {
+	return o
+}
+
+func (o ProjectFeatureFlagStrategyArrayOutput) Index(i pulumi.IntInput) ProjectFeatureFlagStrategyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectFeatureFlagStrategy {
+		return vs[0].([]ProjectFeatureFlagStrategy)[vs[1].(int)]
+	}).(ProjectFeatureFlagStrategyOutput)
+}
+
+type ProjectFeatureFlagStrategyParameters struct {
+	// The Unleash group ID. Used by `gradualRolloutUserId` and `flexibleRollout`. Computed when omitted.
+	GroupId *string `pulumi:"groupId"`
+	// Percentage (as a string) of users to activate. Used by `gradualRolloutUserId` and `flexibleRollout`.
+	Percentage *string `pulumi:"percentage"`
+	// Rollout percentage for `flexibleRollout`.
+	Rollout *string `pulumi:"rollout"`
+	// Stickiness setting for `flexibleRollout`. Computed when omitted.
+	Stickiness *string `pulumi:"stickiness"`
+	// Comma-separated list of user IDs. Used by `userWithId`.
+	UserIds *string `pulumi:"userIds"`
+}
+
+// ProjectFeatureFlagStrategyParametersInput is an input type that accepts ProjectFeatureFlagStrategyParametersArgs and ProjectFeatureFlagStrategyParametersOutput values.
+// You can construct a concrete instance of `ProjectFeatureFlagStrategyParametersInput` via:
+//
+//	ProjectFeatureFlagStrategyParametersArgs{...}
+type ProjectFeatureFlagStrategyParametersInput interface {
+	pulumi.Input
+
+	ToProjectFeatureFlagStrategyParametersOutput() ProjectFeatureFlagStrategyParametersOutput
+	ToProjectFeatureFlagStrategyParametersOutputWithContext(context.Context) ProjectFeatureFlagStrategyParametersOutput
+}
+
+type ProjectFeatureFlagStrategyParametersArgs struct {
+	// The Unleash group ID. Used by `gradualRolloutUserId` and `flexibleRollout`. Computed when omitted.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// Percentage (as a string) of users to activate. Used by `gradualRolloutUserId` and `flexibleRollout`.
+	Percentage pulumi.StringPtrInput `pulumi:"percentage"`
+	// Rollout percentage for `flexibleRollout`.
+	Rollout pulumi.StringPtrInput `pulumi:"rollout"`
+	// Stickiness setting for `flexibleRollout`. Computed when omitted.
+	Stickiness pulumi.StringPtrInput `pulumi:"stickiness"`
+	// Comma-separated list of user IDs. Used by `userWithId`.
+	UserIds pulumi.StringPtrInput `pulumi:"userIds"`
+}
+
+func (ProjectFeatureFlagStrategyParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectFeatureFlagStrategyParameters)(nil)).Elem()
+}
+
+func (i ProjectFeatureFlagStrategyParametersArgs) ToProjectFeatureFlagStrategyParametersOutput() ProjectFeatureFlagStrategyParametersOutput {
+	return i.ToProjectFeatureFlagStrategyParametersOutputWithContext(context.Background())
+}
+
+func (i ProjectFeatureFlagStrategyParametersArgs) ToProjectFeatureFlagStrategyParametersOutputWithContext(ctx context.Context) ProjectFeatureFlagStrategyParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeatureFlagStrategyParametersOutput)
+}
+
+func (i ProjectFeatureFlagStrategyParametersArgs) ToProjectFeatureFlagStrategyParametersPtrOutput() ProjectFeatureFlagStrategyParametersPtrOutput {
+	return i.ToProjectFeatureFlagStrategyParametersPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectFeatureFlagStrategyParametersArgs) ToProjectFeatureFlagStrategyParametersPtrOutputWithContext(ctx context.Context) ProjectFeatureFlagStrategyParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeatureFlagStrategyParametersOutput).ToProjectFeatureFlagStrategyParametersPtrOutputWithContext(ctx)
+}
+
+// ProjectFeatureFlagStrategyParametersPtrInput is an input type that accepts ProjectFeatureFlagStrategyParametersArgs, ProjectFeatureFlagStrategyParametersPtr and ProjectFeatureFlagStrategyParametersPtrOutput values.
+// You can construct a concrete instance of `ProjectFeatureFlagStrategyParametersPtrInput` via:
+//
+//	        ProjectFeatureFlagStrategyParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProjectFeatureFlagStrategyParametersPtrInput interface {
+	pulumi.Input
+
+	ToProjectFeatureFlagStrategyParametersPtrOutput() ProjectFeatureFlagStrategyParametersPtrOutput
+	ToProjectFeatureFlagStrategyParametersPtrOutputWithContext(context.Context) ProjectFeatureFlagStrategyParametersPtrOutput
+}
+
+type projectFeatureFlagStrategyParametersPtrType ProjectFeatureFlagStrategyParametersArgs
+
+func ProjectFeatureFlagStrategyParametersPtr(v *ProjectFeatureFlagStrategyParametersArgs) ProjectFeatureFlagStrategyParametersPtrInput {
+	return (*projectFeatureFlagStrategyParametersPtrType)(v)
+}
+
+func (*projectFeatureFlagStrategyParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectFeatureFlagStrategyParameters)(nil)).Elem()
+}
+
+func (i *projectFeatureFlagStrategyParametersPtrType) ToProjectFeatureFlagStrategyParametersPtrOutput() ProjectFeatureFlagStrategyParametersPtrOutput {
+	return i.ToProjectFeatureFlagStrategyParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *projectFeatureFlagStrategyParametersPtrType) ToProjectFeatureFlagStrategyParametersPtrOutputWithContext(ctx context.Context) ProjectFeatureFlagStrategyParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeatureFlagStrategyParametersPtrOutput)
+}
+
+type ProjectFeatureFlagStrategyParametersOutput struct{ *pulumi.OutputState }
+
+func (ProjectFeatureFlagStrategyParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectFeatureFlagStrategyParameters)(nil)).Elem()
+}
+
+func (o ProjectFeatureFlagStrategyParametersOutput) ToProjectFeatureFlagStrategyParametersOutput() ProjectFeatureFlagStrategyParametersOutput {
+	return o
+}
+
+func (o ProjectFeatureFlagStrategyParametersOutput) ToProjectFeatureFlagStrategyParametersOutputWithContext(ctx context.Context) ProjectFeatureFlagStrategyParametersOutput {
+	return o
+}
+
+func (o ProjectFeatureFlagStrategyParametersOutput) ToProjectFeatureFlagStrategyParametersPtrOutput() ProjectFeatureFlagStrategyParametersPtrOutput {
+	return o.ToProjectFeatureFlagStrategyParametersPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectFeatureFlagStrategyParametersOutput) ToProjectFeatureFlagStrategyParametersPtrOutputWithContext(ctx context.Context) ProjectFeatureFlagStrategyParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectFeatureFlagStrategyParameters) *ProjectFeatureFlagStrategyParameters {
+		return &v
+	}).(ProjectFeatureFlagStrategyParametersPtrOutput)
+}
+
+// The Unleash group ID. Used by `gradualRolloutUserId` and `flexibleRollout`. Computed when omitted.
+func (o ProjectFeatureFlagStrategyParametersOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectFeatureFlagStrategyParameters) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// Percentage (as a string) of users to activate. Used by `gradualRolloutUserId` and `flexibleRollout`.
+func (o ProjectFeatureFlagStrategyParametersOutput) Percentage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectFeatureFlagStrategyParameters) *string { return v.Percentage }).(pulumi.StringPtrOutput)
+}
+
+// Rollout percentage for `flexibleRollout`.
+func (o ProjectFeatureFlagStrategyParametersOutput) Rollout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectFeatureFlagStrategyParameters) *string { return v.Rollout }).(pulumi.StringPtrOutput)
+}
+
+// Stickiness setting for `flexibleRollout`. Computed when omitted.
+func (o ProjectFeatureFlagStrategyParametersOutput) Stickiness() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectFeatureFlagStrategyParameters) *string { return v.Stickiness }).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of user IDs. Used by `userWithId`.
+func (o ProjectFeatureFlagStrategyParametersOutput) UserIds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectFeatureFlagStrategyParameters) *string { return v.UserIds }).(pulumi.StringPtrOutput)
+}
+
+type ProjectFeatureFlagStrategyParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectFeatureFlagStrategyParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectFeatureFlagStrategyParameters)(nil)).Elem()
+}
+
+func (o ProjectFeatureFlagStrategyParametersPtrOutput) ToProjectFeatureFlagStrategyParametersPtrOutput() ProjectFeatureFlagStrategyParametersPtrOutput {
+	return o
+}
+
+func (o ProjectFeatureFlagStrategyParametersPtrOutput) ToProjectFeatureFlagStrategyParametersPtrOutputWithContext(ctx context.Context) ProjectFeatureFlagStrategyParametersPtrOutput {
+	return o
+}
+
+func (o ProjectFeatureFlagStrategyParametersPtrOutput) Elem() ProjectFeatureFlagStrategyParametersOutput {
+	return o.ApplyT(func(v *ProjectFeatureFlagStrategyParameters) ProjectFeatureFlagStrategyParameters {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectFeatureFlagStrategyParameters
+		return ret
+	}).(ProjectFeatureFlagStrategyParametersOutput)
+}
+
+// The Unleash group ID. Used by `gradualRolloutUserId` and `flexibleRollout`. Computed when omitted.
+func (o ProjectFeatureFlagStrategyParametersPtrOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectFeatureFlagStrategyParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Percentage (as a string) of users to activate. Used by `gradualRolloutUserId` and `flexibleRollout`.
+func (o ProjectFeatureFlagStrategyParametersPtrOutput) Percentage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectFeatureFlagStrategyParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Percentage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Rollout percentage for `flexibleRollout`.
+func (o ProjectFeatureFlagStrategyParametersPtrOutput) Rollout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectFeatureFlagStrategyParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Rollout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Stickiness setting for `flexibleRollout`. Computed when omitted.
+func (o ProjectFeatureFlagStrategyParametersPtrOutput) Stickiness() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectFeatureFlagStrategyParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Stickiness
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of user IDs. Used by `userWithId`.
+func (o ProjectFeatureFlagStrategyParametersPtrOutput) UserIds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectFeatureFlagStrategyParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserIds
+	}).(pulumi.StringPtrOutput)
+}
+
+type ProjectFeatureFlagStrategyScope struct {
+	// The environment scope, e.g. `*`, `production`, `staging`.
+	EnvironmentScope string `pulumi:"environmentScope"`
+}
+
+// ProjectFeatureFlagStrategyScopeInput is an input type that accepts ProjectFeatureFlagStrategyScopeArgs and ProjectFeatureFlagStrategyScopeOutput values.
+// You can construct a concrete instance of `ProjectFeatureFlagStrategyScopeInput` via:
+//
+//	ProjectFeatureFlagStrategyScopeArgs{...}
+type ProjectFeatureFlagStrategyScopeInput interface {
+	pulumi.Input
+
+	ToProjectFeatureFlagStrategyScopeOutput() ProjectFeatureFlagStrategyScopeOutput
+	ToProjectFeatureFlagStrategyScopeOutputWithContext(context.Context) ProjectFeatureFlagStrategyScopeOutput
+}
+
+type ProjectFeatureFlagStrategyScopeArgs struct {
+	// The environment scope, e.g. `*`, `production`, `staging`.
+	EnvironmentScope pulumi.StringInput `pulumi:"environmentScope"`
+}
+
+func (ProjectFeatureFlagStrategyScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectFeatureFlagStrategyScope)(nil)).Elem()
+}
+
+func (i ProjectFeatureFlagStrategyScopeArgs) ToProjectFeatureFlagStrategyScopeOutput() ProjectFeatureFlagStrategyScopeOutput {
+	return i.ToProjectFeatureFlagStrategyScopeOutputWithContext(context.Background())
+}
+
+func (i ProjectFeatureFlagStrategyScopeArgs) ToProjectFeatureFlagStrategyScopeOutputWithContext(ctx context.Context) ProjectFeatureFlagStrategyScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeatureFlagStrategyScopeOutput)
+}
+
+// ProjectFeatureFlagStrategyScopeArrayInput is an input type that accepts ProjectFeatureFlagStrategyScopeArray and ProjectFeatureFlagStrategyScopeArrayOutput values.
+// You can construct a concrete instance of `ProjectFeatureFlagStrategyScopeArrayInput` via:
+//
+//	ProjectFeatureFlagStrategyScopeArray{ ProjectFeatureFlagStrategyScopeArgs{...} }
+type ProjectFeatureFlagStrategyScopeArrayInput interface {
+	pulumi.Input
+
+	ToProjectFeatureFlagStrategyScopeArrayOutput() ProjectFeatureFlagStrategyScopeArrayOutput
+	ToProjectFeatureFlagStrategyScopeArrayOutputWithContext(context.Context) ProjectFeatureFlagStrategyScopeArrayOutput
+}
+
+type ProjectFeatureFlagStrategyScopeArray []ProjectFeatureFlagStrategyScopeInput
+
+func (ProjectFeatureFlagStrategyScopeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectFeatureFlagStrategyScope)(nil)).Elem()
+}
+
+func (i ProjectFeatureFlagStrategyScopeArray) ToProjectFeatureFlagStrategyScopeArrayOutput() ProjectFeatureFlagStrategyScopeArrayOutput {
+	return i.ToProjectFeatureFlagStrategyScopeArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectFeatureFlagStrategyScopeArray) ToProjectFeatureFlagStrategyScopeArrayOutputWithContext(ctx context.Context) ProjectFeatureFlagStrategyScopeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeatureFlagStrategyScopeArrayOutput)
+}
+
+type ProjectFeatureFlagStrategyScopeOutput struct{ *pulumi.OutputState }
+
+func (ProjectFeatureFlagStrategyScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectFeatureFlagStrategyScope)(nil)).Elem()
+}
+
+func (o ProjectFeatureFlagStrategyScopeOutput) ToProjectFeatureFlagStrategyScopeOutput() ProjectFeatureFlagStrategyScopeOutput {
+	return o
+}
+
+func (o ProjectFeatureFlagStrategyScopeOutput) ToProjectFeatureFlagStrategyScopeOutputWithContext(ctx context.Context) ProjectFeatureFlagStrategyScopeOutput {
+	return o
+}
+
+// The environment scope, e.g. `*`, `production`, `staging`.
+func (o ProjectFeatureFlagStrategyScopeOutput) EnvironmentScope() pulumi.StringOutput {
+	return o.ApplyT(func(v ProjectFeatureFlagStrategyScope) string { return v.EnvironmentScope }).(pulumi.StringOutput)
+}
+
+type ProjectFeatureFlagStrategyScopeArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectFeatureFlagStrategyScopeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectFeatureFlagStrategyScope)(nil)).Elem()
+}
+
+func (o ProjectFeatureFlagStrategyScopeArrayOutput) ToProjectFeatureFlagStrategyScopeArrayOutput() ProjectFeatureFlagStrategyScopeArrayOutput {
+	return o
+}
+
+func (o ProjectFeatureFlagStrategyScopeArrayOutput) ToProjectFeatureFlagStrategyScopeArrayOutputWithContext(ctx context.Context) ProjectFeatureFlagStrategyScopeArrayOutput {
+	return o
+}
+
+func (o ProjectFeatureFlagStrategyScopeArrayOutput) Index(i pulumi.IntInput) ProjectFeatureFlagStrategyScopeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectFeatureFlagStrategyScope {
+		return vs[0].([]ProjectFeatureFlagStrategyScope)[vs[1].(int)]
+	}).(ProjectFeatureFlagStrategyScopeOutput)
+}
+
 type ProjectHookCustomHeader struct {
 	// Key of the custom header.
 	Key string `pulumi:"key"`
@@ -5297,6 +6069,162 @@ func (o ProjectPushRulesTypePtrOutput) RejectUnsignedCommits() pulumi.BoolPtrOut
 		}
 		return v.RejectUnsignedCommits
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ProjectServiceAccountAccessTokenRotationConfiguration struct {
+	// The duration (in days) the new token should be valid for.
+	ExpirationDays *int `pulumi:"expirationDays"`
+	// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+	RotateBeforeDays int `pulumi:"rotateBeforeDays"`
+}
+
+// ProjectServiceAccountAccessTokenRotationConfigurationInput is an input type that accepts ProjectServiceAccountAccessTokenRotationConfigurationArgs and ProjectServiceAccountAccessTokenRotationConfigurationOutput values.
+// You can construct a concrete instance of `ProjectServiceAccountAccessTokenRotationConfigurationInput` via:
+//
+//	ProjectServiceAccountAccessTokenRotationConfigurationArgs{...}
+type ProjectServiceAccountAccessTokenRotationConfigurationInput interface {
+	pulumi.Input
+
+	ToProjectServiceAccountAccessTokenRotationConfigurationOutput() ProjectServiceAccountAccessTokenRotationConfigurationOutput
+	ToProjectServiceAccountAccessTokenRotationConfigurationOutputWithContext(context.Context) ProjectServiceAccountAccessTokenRotationConfigurationOutput
+}
+
+type ProjectServiceAccountAccessTokenRotationConfigurationArgs struct {
+	// The duration (in days) the new token should be valid for.
+	ExpirationDays pulumi.IntPtrInput `pulumi:"expirationDays"`
+	// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+	RotateBeforeDays pulumi.IntInput `pulumi:"rotateBeforeDays"`
+}
+
+func (ProjectServiceAccountAccessTokenRotationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectServiceAccountAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (i ProjectServiceAccountAccessTokenRotationConfigurationArgs) ToProjectServiceAccountAccessTokenRotationConfigurationOutput() ProjectServiceAccountAccessTokenRotationConfigurationOutput {
+	return i.ToProjectServiceAccountAccessTokenRotationConfigurationOutputWithContext(context.Background())
+}
+
+func (i ProjectServiceAccountAccessTokenRotationConfigurationArgs) ToProjectServiceAccountAccessTokenRotationConfigurationOutputWithContext(ctx context.Context) ProjectServiceAccountAccessTokenRotationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectServiceAccountAccessTokenRotationConfigurationOutput)
+}
+
+func (i ProjectServiceAccountAccessTokenRotationConfigurationArgs) ToProjectServiceAccountAccessTokenRotationConfigurationPtrOutput() ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return i.ToProjectServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectServiceAccountAccessTokenRotationConfigurationArgs) ToProjectServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectServiceAccountAccessTokenRotationConfigurationOutput).ToProjectServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(ctx)
+}
+
+// ProjectServiceAccountAccessTokenRotationConfigurationPtrInput is an input type that accepts ProjectServiceAccountAccessTokenRotationConfigurationArgs, ProjectServiceAccountAccessTokenRotationConfigurationPtr and ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput values.
+// You can construct a concrete instance of `ProjectServiceAccountAccessTokenRotationConfigurationPtrInput` via:
+//
+//	        ProjectServiceAccountAccessTokenRotationConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProjectServiceAccountAccessTokenRotationConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToProjectServiceAccountAccessTokenRotationConfigurationPtrOutput() ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput
+	ToProjectServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(context.Context) ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput
+}
+
+type projectServiceAccountAccessTokenRotationConfigurationPtrType ProjectServiceAccountAccessTokenRotationConfigurationArgs
+
+func ProjectServiceAccountAccessTokenRotationConfigurationPtr(v *ProjectServiceAccountAccessTokenRotationConfigurationArgs) ProjectServiceAccountAccessTokenRotationConfigurationPtrInput {
+	return (*projectServiceAccountAccessTokenRotationConfigurationPtrType)(v)
+}
+
+func (*projectServiceAccountAccessTokenRotationConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectServiceAccountAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (i *projectServiceAccountAccessTokenRotationConfigurationPtrType) ToProjectServiceAccountAccessTokenRotationConfigurationPtrOutput() ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return i.ToProjectServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *projectServiceAccountAccessTokenRotationConfigurationPtrType) ToProjectServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput)
+}
+
+type ProjectServiceAccountAccessTokenRotationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ProjectServiceAccountAccessTokenRotationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectServiceAccountAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (o ProjectServiceAccountAccessTokenRotationConfigurationOutput) ToProjectServiceAccountAccessTokenRotationConfigurationOutput() ProjectServiceAccountAccessTokenRotationConfigurationOutput {
+	return o
+}
+
+func (o ProjectServiceAccountAccessTokenRotationConfigurationOutput) ToProjectServiceAccountAccessTokenRotationConfigurationOutputWithContext(ctx context.Context) ProjectServiceAccountAccessTokenRotationConfigurationOutput {
+	return o
+}
+
+func (o ProjectServiceAccountAccessTokenRotationConfigurationOutput) ToProjectServiceAccountAccessTokenRotationConfigurationPtrOutput() ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return o.ToProjectServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectServiceAccountAccessTokenRotationConfigurationOutput) ToProjectServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectServiceAccountAccessTokenRotationConfiguration) *ProjectServiceAccountAccessTokenRotationConfiguration {
+		return &v
+	}).(ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput)
+}
+
+// The duration (in days) the new token should be valid for.
+func (o ProjectServiceAccountAccessTokenRotationConfigurationOutput) ExpirationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectServiceAccountAccessTokenRotationConfiguration) *int { return v.ExpirationDays }).(pulumi.IntPtrOutput)
+}
+
+// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+func (o ProjectServiceAccountAccessTokenRotationConfigurationOutput) RotateBeforeDays() pulumi.IntOutput {
+	return o.ApplyT(func(v ProjectServiceAccountAccessTokenRotationConfiguration) int { return v.RotateBeforeDays }).(pulumi.IntOutput)
+}
+
+type ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectServiceAccountAccessTokenRotationConfiguration)(nil)).Elem()
+}
+
+func (o ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput) ToProjectServiceAccountAccessTokenRotationConfigurationPtrOutput() ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return o
+}
+
+func (o ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput) ToProjectServiceAccountAccessTokenRotationConfigurationPtrOutputWithContext(ctx context.Context) ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput {
+	return o
+}
+
+func (o ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput) Elem() ProjectServiceAccountAccessTokenRotationConfigurationOutput {
+	return o.ApplyT(func(v *ProjectServiceAccountAccessTokenRotationConfiguration) ProjectServiceAccountAccessTokenRotationConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectServiceAccountAccessTokenRotationConfiguration
+		return ret
+	}).(ProjectServiceAccountAccessTokenRotationConfigurationOutput)
+}
+
+// The duration (in days) the new token should be valid for.
+func (o ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput) ExpirationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectServiceAccountAccessTokenRotationConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
+func (o ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput) RotateBeforeDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProjectServiceAccountAccessTokenRotationConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RotateBeforeDays
+	}).(pulumi.IntPtrOutput)
 }
 
 type ProjectServiceAccountTimeouts struct {
@@ -10281,13 +11209,14 @@ func (o GetGroupSamlLinksSamlLinkArrayOutput) Index(i pulumi.IntInput) GetGroupS
 }
 
 type GetGroupServiceAccountAccessTokensAccessToken struct {
-	Active    bool     `pulumi:"active"`
-	CreatedAt string   `pulumi:"createdAt"`
-	ExpiresAt string   `pulumi:"expiresAt"`
-	Id        string   `pulumi:"id"`
-	Name      string   `pulumi:"name"`
-	Revoked   bool     `pulumi:"revoked"`
-	Scopes    []string `pulumi:"scopes"`
+	Active      bool     `pulumi:"active"`
+	CreatedAt   string   `pulumi:"createdAt"`
+	Description string   `pulumi:"description"`
+	ExpiresAt   string   `pulumi:"expiresAt"`
+	Id          string   `pulumi:"id"`
+	Name        string   `pulumi:"name"`
+	Revoked     bool     `pulumi:"revoked"`
+	Scopes      []string `pulumi:"scopes"`
 }
 
 // GetGroupServiceAccountAccessTokensAccessTokenInput is an input type that accepts GetGroupServiceAccountAccessTokensAccessTokenArgs and GetGroupServiceAccountAccessTokensAccessTokenOutput values.
@@ -10302,13 +11231,14 @@ type GetGroupServiceAccountAccessTokensAccessTokenInput interface {
 }
 
 type GetGroupServiceAccountAccessTokensAccessTokenArgs struct {
-	Active    pulumi.BoolInput        `pulumi:"active"`
-	CreatedAt pulumi.StringInput      `pulumi:"createdAt"`
-	ExpiresAt pulumi.StringInput      `pulumi:"expiresAt"`
-	Id        pulumi.StringInput      `pulumi:"id"`
-	Name      pulumi.StringInput      `pulumi:"name"`
-	Revoked   pulumi.BoolInput        `pulumi:"revoked"`
-	Scopes    pulumi.StringArrayInput `pulumi:"scopes"`
+	Active      pulumi.BoolInput        `pulumi:"active"`
+	CreatedAt   pulumi.StringInput      `pulumi:"createdAt"`
+	Description pulumi.StringInput      `pulumi:"description"`
+	ExpiresAt   pulumi.StringInput      `pulumi:"expiresAt"`
+	Id          pulumi.StringInput      `pulumi:"id"`
+	Name        pulumi.StringInput      `pulumi:"name"`
+	Revoked     pulumi.BoolInput        `pulumi:"revoked"`
+	Scopes      pulumi.StringArrayInput `pulumi:"scopes"`
 }
 
 func (GetGroupServiceAccountAccessTokensAccessTokenArgs) ElementType() reflect.Type {
@@ -10368,6 +11298,10 @@ func (o GetGroupServiceAccountAccessTokensAccessTokenOutput) Active() pulumi.Boo
 
 func (o GetGroupServiceAccountAccessTokensAccessTokenOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupServiceAccountAccessTokensAccessToken) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o GetGroupServiceAccountAccessTokensAccessTokenOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupServiceAccountAccessTokensAccessToken) string { return v.Description }).(pulumi.StringOutput)
 }
 
 func (o GetGroupServiceAccountAccessTokensAccessTokenOutput) ExpiresAt() pulumi.StringOutput {
@@ -11038,6 +11972,8 @@ type GetGroupsGroup struct {
 	AvatarUrl string `pulumi:"avatarUrl"`
 	// Timestamp at which the group was created.
 	CreatedAt string `pulumi:"createdAt"`
+	// Whether customer relations management (CRM) is enabled for the group.
+	CrmEnabled bool `pulumi:"crmEnabled"`
 	// Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.
 	CustomAttributes []map[string]string `pulumi:"customAttributes"`
 	// The default branch of the group.
@@ -11168,6 +12104,8 @@ type GetGroupsGroupArgs struct {
 	AvatarUrl pulumi.StringInput `pulumi:"avatarUrl"`
 	// Timestamp at which the group was created.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Whether customer relations management (CRM) is enabled for the group.
+	CrmEnabled pulumi.BoolInput `pulumi:"crmEnabled"`
 	// Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.
 	CustomAttributes pulumi.StringMapArrayInput `pulumi:"customAttributes"`
 	// The default branch of the group.
@@ -11353,6 +12291,11 @@ func (o GetGroupsGroupOutput) AvatarUrl() pulumi.StringOutput {
 // Timestamp at which the group was created.
 func (o GetGroupsGroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Whether customer relations management (CRM) is enabled for the group.
+func (o GetGroupsGroupOutput) CrmEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupsGroup) bool { return v.CrmEnabled }).(pulumi.BoolOutput)
 }
 
 // Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.
@@ -20746,6 +21689,8 @@ type GetProjectsProject struct {
 	MonitorAccessLevel string `pulumi:"monitorAccessLevel"`
 	// For forks, whether merge requests target the fork itself rather than the upstream project by default.
 	MrDefaultTargetSelf bool `pulumi:"mrDefaultTargetSelf"`
+	// Template used to set the default title of merge requests.
+	MrDefaultTitleTemplate string `pulumi:"mrDefaultTitleTemplate"`
 	// The name of the project.
 	Name string `pulumi:"name"`
 	// In `group / subgroup / project` or `user / project` format.
@@ -20820,6 +21765,8 @@ type GetProjectsProject struct {
 	//
 	// Deprecated: Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0.
 	RestrictUserDefinedVariables bool `pulumi:"restrictUserDefinedVariables"`
+	// The strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+	ReviewerAssignmentStrategy string `pulumi:"reviewerAssignmentStrategy"`
 	// Runner token expiration interval, in seconds.
 	RunnerTokenExpirationInterval int `pulumi:"runnerTokenExpirationInterval"`
 	// Registration token to use during runner setup.
@@ -21084,6 +22031,8 @@ type GetProjectsProjectArgs struct {
 	MonitorAccessLevel pulumi.StringInput `pulumi:"monitorAccessLevel"`
 	// For forks, whether merge requests target the fork itself rather than the upstream project by default.
 	MrDefaultTargetSelf pulumi.BoolInput `pulumi:"mrDefaultTargetSelf"`
+	// Template used to set the default title of merge requests.
+	MrDefaultTitleTemplate pulumi.StringInput `pulumi:"mrDefaultTitleTemplate"`
 	// The name of the project.
 	Name pulumi.StringInput `pulumi:"name"`
 	// In `group / subgroup / project` or `user / project` format.
@@ -21158,6 +22107,8 @@ type GetProjectsProjectArgs struct {
 	//
 	// Deprecated: Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0.
 	RestrictUserDefinedVariables pulumi.BoolInput `pulumi:"restrictUserDefinedVariables"`
+	// The strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+	ReviewerAssignmentStrategy pulumi.StringInput `pulumi:"reviewerAssignmentStrategy"`
 	// Runner token expiration interval, in seconds.
 	RunnerTokenExpirationInterval pulumi.IntInput `pulumi:"runnerTokenExpirationInterval"`
 	// Registration token to use during runner setup.
@@ -21736,6 +22687,11 @@ func (o GetProjectsProjectOutput) MrDefaultTargetSelf() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.MrDefaultTargetSelf }).(pulumi.BoolOutput)
 }
 
+// Template used to set the default title of merge requests.
+func (o GetProjectsProjectOutput) MrDefaultTitleTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.MrDefaultTitleTemplate }).(pulumi.StringOutput)
+}
+
 // The name of the project.
 func (o GetProjectsProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Name }).(pulumi.StringOutput)
@@ -21907,6 +22863,11 @@ func (o GetProjectsProjectOutput) ResourceGroupDefaultProcessMode() pulumi.Strin
 // Deprecated: Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0.
 func (o GetProjectsProjectOutput) RestrictUserDefinedVariables() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetProjectsProject) bool { return v.RestrictUserDefinedVariables }).(pulumi.BoolOutput)
+}
+
+// The strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
+func (o GetProjectsProjectOutput) ReviewerAssignmentStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.ReviewerAssignmentStrategy }).(pulumi.StringOutput)
 }
 
 // Runner token expiration interval, in seconds.
@@ -25800,6 +26761,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToPushArrayInput)(nil)).Elem(), BranchProtectionAllowedToPushArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToUnprotectInput)(nil)).Elem(), BranchProtectionAllowedToUnprotectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BranchProtectionAllowedToUnprotectArrayInput)(nil)).Elem(), BranchProtectionAllowedToUnprotectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceRequirementExternalControlInput)(nil)).Elem(), ComplianceRequirementExternalControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceRequirementExternalControlArrayInput)(nil)).Elem(), ComplianceRequirementExternalControlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceRequirementInternalControlInput)(nil)).Elem(), ComplianceRequirementInternalControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceRequirementInternalControlArrayInput)(nil)).Elem(), ComplianceRequirementInternalControlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ComplianceRequirementInternalControlExpressionInput)(nil)).Elem(), ComplianceRequirementInternalControlExpressionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupAccessTokenRotationConfigurationInput)(nil)).Elem(), GroupAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), GroupAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupBranchProtectionAllowedToMergeInput)(nil)).Elem(), GroupBranchProtectionAllowedToMergeArgs{})
@@ -25842,6 +26808,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyPtrInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerTagProtectionTimeoutsInput)(nil)).Elem(), ProjectContainerTagProtectionTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerTagProtectionTimeoutsPtrInput)(nil)).Elem(), ProjectContainerTagProtectionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeatureFlagStrategyInput)(nil)).Elem(), ProjectFeatureFlagStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeatureFlagStrategyArrayInput)(nil)).Elem(), ProjectFeatureFlagStrategyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeatureFlagStrategyParametersInput)(nil)).Elem(), ProjectFeatureFlagStrategyParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeatureFlagStrategyParametersPtrInput)(nil)).Elem(), ProjectFeatureFlagStrategyParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeatureFlagStrategyScopeInput)(nil)).Elem(), ProjectFeatureFlagStrategyScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectFeatureFlagStrategyScopeArrayInput)(nil)).Elem(), ProjectFeatureFlagStrategyScopeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectHookCustomHeaderInput)(nil)).Elem(), ProjectHookCustomHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectHookCustomHeaderArrayInput)(nil)).Elem(), ProjectHookCustomHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectHookUrlVariableInput)(nil)).Elem(), ProjectHookUrlVariableArgs{})
@@ -25858,6 +26830,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayInput)(nil)).Elem(), ProjectProtectedEnvironmentDeployAccessLevelsAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesTypeInput)(nil)).Elem(), ProjectPushRulesTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectPushRulesTypePtrInput)(nil)).Elem(), ProjectPushRulesTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectServiceAccountAccessTokenRotationConfigurationInput)(nil)).Elem(), ProjectServiceAccountAccessTokenRotationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectServiceAccountAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), ProjectServiceAccountAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectServiceAccountTimeoutsInput)(nil)).Elem(), ProjectServiceAccountTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectServiceAccountTimeoutsPtrInput)(nil)).Elem(), ProjectServiceAccountTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectTagCommitInput)(nil)).Elem(), ProjectTagCommitArgs{})
@@ -26102,6 +27076,11 @@ func init() {
 	pulumi.RegisterOutputType(BranchProtectionAllowedToPushArrayOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToUnprotectOutput{})
 	pulumi.RegisterOutputType(BranchProtectionAllowedToUnprotectArrayOutput{})
+	pulumi.RegisterOutputType(ComplianceRequirementExternalControlOutput{})
+	pulumi.RegisterOutputType(ComplianceRequirementExternalControlArrayOutput{})
+	pulumi.RegisterOutputType(ComplianceRequirementInternalControlOutput{})
+	pulumi.RegisterOutputType(ComplianceRequirementInternalControlArrayOutput{})
+	pulumi.RegisterOutputType(ComplianceRequirementInternalControlExpressionOutput{})
 	pulumi.RegisterOutputType(GroupAccessTokenRotationConfigurationOutput{})
 	pulumi.RegisterOutputType(GroupAccessTokenRotationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GroupBranchProtectionAllowedToMergeOutput{})
@@ -26144,6 +27123,12 @@ func init() {
 	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ProjectContainerTagProtectionTimeoutsOutput{})
 	pulumi.RegisterOutputType(ProjectContainerTagProtectionTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(ProjectFeatureFlagStrategyOutput{})
+	pulumi.RegisterOutputType(ProjectFeatureFlagStrategyArrayOutput{})
+	pulumi.RegisterOutputType(ProjectFeatureFlagStrategyParametersOutput{})
+	pulumi.RegisterOutputType(ProjectFeatureFlagStrategyParametersPtrOutput{})
+	pulumi.RegisterOutputType(ProjectFeatureFlagStrategyScopeOutput{})
+	pulumi.RegisterOutputType(ProjectFeatureFlagStrategyScopeArrayOutput{})
 	pulumi.RegisterOutputType(ProjectHookCustomHeaderOutput{})
 	pulumi.RegisterOutputType(ProjectHookCustomHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ProjectHookUrlVariableOutput{})
@@ -26160,6 +27145,8 @@ func init() {
 	pulumi.RegisterOutputType(ProjectProtectedEnvironmentDeployAccessLevelsAttributeArrayOutput{})
 	pulumi.RegisterOutputType(ProjectPushRulesTypeOutput{})
 	pulumi.RegisterOutputType(ProjectPushRulesTypePtrOutput{})
+	pulumi.RegisterOutputType(ProjectServiceAccountAccessTokenRotationConfigurationOutput{})
+	pulumi.RegisterOutputType(ProjectServiceAccountAccessTokenRotationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ProjectServiceAccountTimeoutsOutput{})
 	pulumi.RegisterOutputType(ProjectServiceAccountTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(ProjectTagCommitOutput{})

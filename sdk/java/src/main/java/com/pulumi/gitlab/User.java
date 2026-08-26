@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  *             .projectsLimit(4)
  *             .canCreateGroup(false)
  *             .isExternal(true)
+ *             .isAuditor(false)
  *             .resetPassword(false)
  *             .build());
  * 
@@ -138,6 +139,20 @@ public class User extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> isAdmin() {
         return Codegen.optional(this.isAdmin);
+    }
+    /**
+     * Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+     * 
+     */
+    @Export(name="isAuditor", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isAuditor;
+
+    /**
+     * @return Boolean, defaults to false. Whether the user is an auditor. Requires GitLab 15.3+ and a Premium or Ultimate license.
+     * 
+     */
+    public Output<Optional<Boolean>> isAuditor() {
+        return Codegen.optional(this.isAuditor);
     }
     /**
      * Boolean, defaults to false. Whether a user has access only to some internal or private projects. External users can only access projects to which they are explicitly granted access.

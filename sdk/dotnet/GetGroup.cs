@@ -106,6 +106,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
+        /// Whether customer relations management (CRM) is enabled for the group.
+        /// </summary>
+        public readonly bool CrmEnabled;
+        /// <summary>
         /// Custom attributes attached to the group. Each entry is a map with `Key` and `Value`. Requires administrator privileges to read.
         /// </summary>
         public readonly ImmutableArray<ImmutableDictionary<string, string>> CustomAttributes;
@@ -328,6 +332,8 @@ namespace Pulumi.GitLab
 
             string createdAt,
 
+            bool crmEnabled,
+
             ImmutableArray<ImmutableDictionary<string, string>> customAttributes,
 
             string defaultBranch,
@@ -438,6 +444,7 @@ namespace Pulumi.GitLab
             AutoDevopsEnabled = autoDevopsEnabled;
             AvatarUrl = avatarUrl;
             CreatedAt = createdAt;
+            CrmEnabled = crmEnabled;
             CustomAttributes = customAttributes;
             DefaultBranch = defaultBranch;
             DefaultBranchProtection = defaultBranchProtection;

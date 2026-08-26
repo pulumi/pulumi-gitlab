@@ -27,7 +27,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, allow_merge_on_skipped_pipeline=None, allow_pipeline_trigger_approve_deployment=None, analytics_access_level=None, approvals_before_merge=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, auto_duo_code_review_enabled=None, autoclose_referenced_issues=None, avatar_url=None, build_coverage_regex=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, can_create_merge_request_in=None, ci_allow_fork_pipelines_to_run_in_parent_project=None, ci_config_path=None, ci_default_git_depth=None, ci_delete_pipelines_in_seconds=None, ci_display_pipeline_variables=None, ci_forward_deployment_enabled=None, ci_forward_deployment_rollback_allowed=None, ci_id_token_sub_claim_components=None, ci_job_token_scope_enabled=None, ci_opt_in_jwt=None, ci_pipeline_variables_minimum_override_role=None, ci_push_repository_for_job_token_allowed=None, ci_restrict_pipeline_cancellation_role=None, ci_separated_caches=None, compliance_frameworks=None, container_expiration_policies=None, container_registry_access_level=None, container_registry_enabled=None, container_registry_image_prefix=None, created_at=None, creator_id=None, custom_attributes=None, default_branch=None, description=None, emails_disabled=None, emails_enabled=None, empty_repo=None, enforce_auth_checks_on_uploads=None, environments_access_level=None, external_authorization_classification_label=None, feature_flags_access_level=None, forked_from_projects=None, forking_access_level=None, forks_count=None, group_runners_enabled=None, http_url_to_repo=None, id=None, import_error=None, import_status=None, import_type=None, import_url=None, infrastructure_access_level=None, issue_branch_template=None, issues_access_level=None, issues_enabled=None, issues_template=None, jobs_enabled=None, keep_latest_artifact=None, last_activity_at=None, lfs_enabled=None, license_url=None, licenses=None, links=None, marked_for_deletion=None, marked_for_deletion_at=None, marked_for_deletion_on=None, max_artifacts_size=None, merge_commit_template=None, merge_method=None, merge_pipelines_enabled=None, merge_request_title_regex=None, merge_request_title_regex_description=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_requests_template=None, merge_trains_enabled=None, merge_trains_skip_train_allowed=None, mirror=None, mirror_overwrites_diverged_branches=None, mirror_trigger_builds=None, mirror_user_id=None, model_experiments_access_level=None, model_registry_access_level=None, monitor_access_level=None, mr_default_target_self=None, name=None, name_with_namespace=None, namespace_id=None, namespaces=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, only_mirror_protected_branches=None, open_issues_count=None, operations_access_level=None, owners=None, package_registry_access_level=None, packages_enabled=None, pages_access_level=None, path=None, path_with_namespace=None, permissions=None, pre_receive_secret_detection_enabled=None, prevent_merge_without_jira_issue=None, printing_merge_request_link_enabled=None, protect_merge_request_pipelines=None, public_builds=None, public_jobs=None, push_rules=None, readme_url=None, releases_access_level=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, requirements_enabled=None, resolve_outdated_diff_discussions=None, resource_group_default_process_mode=None, restrict_user_defined_variables=None, runner_token_expiration_interval=None, runners_token=None, security_and_compliance_access_level=None, security_and_compliance_enabled=None, service_desk_address=None, service_desk_enabled=None, shared_runners_enabled=None, shared_with_groups=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, squash_option=None, ssh_url_to_repo=None, star_count=None, statistics=None, suggestion_commit_message=None, tag_lists=None, topics=None, updated_at=None, visibility=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
+    def __init__(__self__, allow_merge_on_skipped_pipeline=None, allow_pipeline_trigger_approve_deployment=None, analytics_access_level=None, approvals_before_merge=None, archived=None, auto_cancel_pending_pipelines=None, auto_devops_deploy_strategy=None, auto_devops_enabled=None, auto_duo_code_review_enabled=None, autoclose_referenced_issues=None, avatar_url=None, build_coverage_regex=None, build_git_strategy=None, build_timeout=None, builds_access_level=None, can_create_merge_request_in=None, ci_allow_fork_pipelines_to_run_in_parent_project=None, ci_config_path=None, ci_default_git_depth=None, ci_delete_pipelines_in_seconds=None, ci_display_pipeline_variables=None, ci_forward_deployment_enabled=None, ci_forward_deployment_rollback_allowed=None, ci_id_token_sub_claim_components=None, ci_job_token_scope_enabled=None, ci_opt_in_jwt=None, ci_pipeline_variables_minimum_override_role=None, ci_push_repository_for_job_token_allowed=None, ci_restrict_pipeline_cancellation_role=None, ci_separated_caches=None, compliance_frameworks=None, container_expiration_policies=None, container_registry_access_level=None, container_registry_enabled=None, container_registry_image_prefix=None, created_at=None, creator_id=None, custom_attributes=None, default_branch=None, description=None, emails_disabled=None, emails_enabled=None, empty_repo=None, enforce_auth_checks_on_uploads=None, environments_access_level=None, external_authorization_classification_label=None, feature_flags_access_level=None, forked_from_projects=None, forking_access_level=None, forks_count=None, group_runners_enabled=None, http_url_to_repo=None, id=None, import_error=None, import_status=None, import_type=None, import_url=None, infrastructure_access_level=None, issue_branch_template=None, issues_access_level=None, issues_enabled=None, issues_template=None, jobs_enabled=None, keep_latest_artifact=None, last_activity_at=None, lfs_enabled=None, license_url=None, licenses=None, links=None, marked_for_deletion=None, marked_for_deletion_at=None, marked_for_deletion_on=None, max_artifacts_size=None, merge_commit_template=None, merge_method=None, merge_pipelines_enabled=None, merge_request_title_regex=None, merge_request_title_regex_description=None, merge_requests_access_level=None, merge_requests_enabled=None, merge_requests_template=None, merge_trains_enabled=None, merge_trains_skip_train_allowed=None, mirror=None, mirror_overwrites_diverged_branches=None, mirror_trigger_builds=None, mirror_user_id=None, model_experiments_access_level=None, model_registry_access_level=None, monitor_access_level=None, mr_default_target_self=None, mr_default_title_template=None, name=None, name_with_namespace=None, namespace_id=None, namespaces=None, only_allow_merge_if_all_discussions_are_resolved=None, only_allow_merge_if_pipeline_succeeds=None, only_mirror_protected_branches=None, open_issues_count=None, operations_access_level=None, owners=None, package_registry_access_level=None, packages_enabled=None, pages_access_level=None, path=None, path_with_namespace=None, permissions=None, pre_receive_secret_detection_enabled=None, prevent_merge_without_jira_issue=None, printing_merge_request_link_enabled=None, protect_merge_request_pipelines=None, public_builds=None, public_jobs=None, push_rules=None, readme_url=None, releases_access_level=None, remove_source_branch_after_merge=None, repository_access_level=None, repository_storage=None, request_access_enabled=None, requirements_access_level=None, requirements_enabled=None, resolve_outdated_diff_discussions=None, resource_group_default_process_mode=None, restrict_user_defined_variables=None, reviewer_assignment_strategy=None, runner_token_expiration_interval=None, runners_token=None, security_and_compliance_access_level=None, security_and_compliance_enabled=None, service_desk_address=None, service_desk_enabled=None, shared_runners_enabled=None, shared_with_groups=None, snippets_access_level=None, snippets_enabled=None, squash_commit_template=None, squash_option=None, ssh_url_to_repo=None, star_count=None, statistics=None, suggestion_commit_message=None, tag_lists=None, topics=None, updated_at=None, visibility=None, visibility_level=None, web_url=None, wiki_access_level=None, wiki_enabled=None):
         if allow_merge_on_skipped_pipeline and not isinstance(allow_merge_on_skipped_pipeline, bool):
             raise TypeError("Expected argument 'allow_merge_on_skipped_pipeline' to be a bool")
         pulumi.set(__self__, "allow_merge_on_skipped_pipeline", allow_merge_on_skipped_pipeline)
@@ -301,6 +301,9 @@ class GetProjectResult:
         if mr_default_target_self and not isinstance(mr_default_target_self, bool):
             raise TypeError("Expected argument 'mr_default_target_self' to be a bool")
         pulumi.set(__self__, "mr_default_target_self", mr_default_target_self)
+        if mr_default_title_template and not isinstance(mr_default_title_template, str):
+            raise TypeError("Expected argument 'mr_default_title_template' to be a str")
+        pulumi.set(__self__, "mr_default_title_template", mr_default_title_template)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -403,6 +406,9 @@ class GetProjectResult:
         if restrict_user_defined_variables and not isinstance(restrict_user_defined_variables, bool):
             raise TypeError("Expected argument 'restrict_user_defined_variables' to be a bool")
         pulumi.set(__self__, "restrict_user_defined_variables", restrict_user_defined_variables)
+        if reviewer_assignment_strategy and not isinstance(reviewer_assignment_strategy, str):
+            raise TypeError("Expected argument 'reviewer_assignment_strategy' to be a str")
+        pulumi.set(__self__, "reviewer_assignment_strategy", reviewer_assignment_strategy)
         if runner_token_expiration_interval and not isinstance(runner_token_expiration_interval, int):
             raise TypeError("Expected argument 'runner_token_expiration_interval' to be a int")
         pulumi.set(__self__, "runner_token_expiration_interval", runner_token_expiration_interval)
@@ -1211,6 +1217,14 @@ class GetProjectResult:
         return pulumi.get(self, "mr_default_target_self")
 
     @_builtins.property
+    @pulumi.getter(name="mrDefaultTitleTemplate")
+    def mr_default_title_template(self) -> _builtins.str:
+        """
+        Template used to set the default title of merge requests.
+        """
+        return pulumi.get(self, "mr_default_title_template")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
@@ -1485,6 +1499,14 @@ class GetProjectResult:
         Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
         """
         return pulumi.get(self, "restrict_user_defined_variables")
+
+    @_builtins.property
+    @pulumi.getter(name="reviewerAssignmentStrategy")
+    def reviewer_assignment_strategy(self) -> _builtins.str:
+        """
+        The strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `code_owners`, `dap_powered`. Premium and Ultimate only.
+        """
+        return pulumi.get(self, "reviewer_assignment_strategy")
 
     @_builtins.property
     @pulumi.getter(name="runnerTokenExpirationInterval")
@@ -1780,6 +1802,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             model_registry_access_level=self.model_registry_access_level,
             monitor_access_level=self.monitor_access_level,
             mr_default_target_self=self.mr_default_target_self,
+            mr_default_title_template=self.mr_default_title_template,
             name=self.name,
             name_with_namespace=self.name_with_namespace,
             namespace_id=self.namespace_id,
@@ -1814,6 +1837,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             resolve_outdated_diff_discussions=self.resolve_outdated_diff_discussions,
             resource_group_default_process_mode=self.resource_group_default_process_mode,
             restrict_user_defined_variables=self.restrict_user_defined_variables,
+            reviewer_assignment_strategy=self.reviewer_assignment_strategy,
             runner_token_expiration_interval=self.runner_token_expiration_interval,
             runners_token=self.runners_token,
             security_and_compliance_access_level=self.security_and_compliance_access_level,
@@ -1950,6 +1974,7 @@ def get_project(id: Optional[_builtins.str] = None,
         model_registry_access_level=pulumi.get(__ret__, 'model_registry_access_level'),
         monitor_access_level=pulumi.get(__ret__, 'monitor_access_level'),
         mr_default_target_self=pulumi.get(__ret__, 'mr_default_target_self'),
+        mr_default_title_template=pulumi.get(__ret__, 'mr_default_title_template'),
         name=pulumi.get(__ret__, 'name'),
         name_with_namespace=pulumi.get(__ret__, 'name_with_namespace'),
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
@@ -1984,6 +2009,7 @@ def get_project(id: Optional[_builtins.str] = None,
         resolve_outdated_diff_discussions=pulumi.get(__ret__, 'resolve_outdated_diff_discussions'),
         resource_group_default_process_mode=pulumi.get(__ret__, 'resource_group_default_process_mode'),
         restrict_user_defined_variables=pulumi.get(__ret__, 'restrict_user_defined_variables'),
+        reviewer_assignment_strategy=pulumi.get(__ret__, 'reviewer_assignment_strategy'),
         runner_token_expiration_interval=pulumi.get(__ret__, 'runner_token_expiration_interval'),
         runners_token=pulumi.get(__ret__, 'runners_token'),
         security_and_compliance_access_level=pulumi.get(__ret__, 'security_and_compliance_access_level'),
@@ -2117,6 +2143,7 @@ def get_project_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = Non
         model_registry_access_level=pulumi.get(__response__, 'model_registry_access_level'),
         monitor_access_level=pulumi.get(__response__, 'monitor_access_level'),
         mr_default_target_self=pulumi.get(__response__, 'mr_default_target_self'),
+        mr_default_title_template=pulumi.get(__response__, 'mr_default_title_template'),
         name=pulumi.get(__response__, 'name'),
         name_with_namespace=pulumi.get(__response__, 'name_with_namespace'),
         namespace_id=pulumi.get(__response__, 'namespace_id'),
@@ -2151,6 +2178,7 @@ def get_project_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = Non
         resolve_outdated_diff_discussions=pulumi.get(__response__, 'resolve_outdated_diff_discussions'),
         resource_group_default_process_mode=pulumi.get(__response__, 'resource_group_default_process_mode'),
         restrict_user_defined_variables=pulumi.get(__response__, 'restrict_user_defined_variables'),
+        reviewer_assignment_strategy=pulumi.get(__response__, 'reviewer_assignment_strategy'),
         runner_token_expiration_interval=pulumi.get(__response__, 'runner_token_expiration_interval'),
         runners_token=pulumi.get(__response__, 'runners_token'),
         security_and_compliance_access_level=pulumi.get(__response__, 'security_and_compliance_access_level'),

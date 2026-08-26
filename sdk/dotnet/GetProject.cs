@@ -446,6 +446,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly bool MrDefaultTargetSelf;
         /// <summary>
+        /// Template used to set the default title of merge requests.
+        /// </summary>
+        public readonly string MrDefaultTitleTemplate;
+        /// <summary>
         /// The name of the project.
         /// </summary>
         public readonly string Name;
@@ -581,6 +585,10 @@ namespace Pulumi.GitLab
         /// Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
         /// </summary>
         public readonly bool RestrictUserDefinedVariables;
+        /// <summary>
+        /// The strategy used to automatically assign reviewers to merge requests. Valid values are `Disabled`, `CodeOwners`, `DapPowered`. Premium and Ultimate only.
+        /// </summary>
+        public readonly string ReviewerAssignmentStrategy;
         /// <summary>
         /// Runner token expiration interval, in seconds.
         /// </summary>
@@ -862,6 +870,8 @@ namespace Pulumi.GitLab
 
             bool mrDefaultTargetSelf,
 
+            string mrDefaultTitleTemplate,
+
             string name,
 
             string nameWithNamespace,
@@ -929,6 +939,8 @@ namespace Pulumi.GitLab
             string resourceGroupDefaultProcessMode,
 
             bool restrictUserDefinedVariables,
+
+            string reviewerAssignmentStrategy,
 
             int runnerTokenExpirationInterval,
 
@@ -1069,6 +1081,7 @@ namespace Pulumi.GitLab
             ModelRegistryAccessLevel = modelRegistryAccessLevel;
             MonitorAccessLevel = monitorAccessLevel;
             MrDefaultTargetSelf = mrDefaultTargetSelf;
+            MrDefaultTitleTemplate = mrDefaultTitleTemplate;
             Name = name;
             NameWithNamespace = nameWithNamespace;
             NamespaceId = namespaceId;
@@ -1103,6 +1116,7 @@ namespace Pulumi.GitLab
             ResolveOutdatedDiffDiscussions = resolveOutdatedDiffDiscussions;
             ResourceGroupDefaultProcessMode = resourceGroupDefaultProcessMode;
             RestrictUserDefinedVariables = restrictUserDefinedVariables;
+            ReviewerAssignmentStrategy = reviewerAssignmentStrategy;
             RunnerTokenExpirationInterval = runnerTokenExpirationInterval;
             RunnersToken = runnersToken;
             SecurityAndComplianceAccessLevel = securityAndComplianceAccessLevel;

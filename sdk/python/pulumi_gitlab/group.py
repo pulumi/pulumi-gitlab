@@ -28,6 +28,7 @@ class GroupArgs:
                  auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  avatar: pulumi.Input[Optional[_builtins.str]] = None,
                  avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 crm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
                  default_branch_protection_defaults: pulumi.Input[Optional['GroupDefaultBranchProtectionDefaultsArgs']] = None,
@@ -67,6 +68,7 @@ class GroupArgs:
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        :param pulumi.Input[_builtins.bool] crm_enabled: Enable customer relations management (CRM) for the group.
         :param pulumi.Input[_builtins.str] default_branch: Initial default branch name.
         :param pulumi.Input[_builtins.int] default_branch_protection: See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default branch protection defaults
@@ -110,6 +112,8 @@ class GroupArgs:
             pulumi.set(__self__, "avatar", avatar)
         if avatar_hash is not None:
             pulumi.set(__self__, "avatar_hash", avatar_hash)
+        if crm_enabled is not None:
+            pulumi.set(__self__, "crm_enabled", crm_enabled)
         if default_branch is not None:
             pulumi.set(__self__, "default_branch", default_branch)
         if default_branch_protection is not None:
@@ -255,6 +259,18 @@ class GroupArgs:
     @avatar_hash.setter
     def avatar_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar_hash", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crmEnabled")
+    def crm_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable customer relations management (CRM) for the group.
+        """
+        return pulumi.get(self, "crm_enabled")
+
+    @crm_enabled.setter
+    def crm_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "crm_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranch")
@@ -616,6 +632,7 @@ class _GroupState:
                  avatar: pulumi.Input[Optional[_builtins.str]] = None,
                  avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
                  avatar_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 crm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
                  default_branch_protection_defaults: pulumi.Input[Optional['GroupDefaultBranchProtectionDefaultsArgs']] = None,
@@ -660,6 +677,7 @@ class _GroupState:
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[_builtins.str] avatar_url: The URL of the avatar image.
+        :param pulumi.Input[_builtins.bool] crm_enabled: Enable customer relations management (CRM) for the group.
         :param pulumi.Input[_builtins.str] default_branch: Initial default branch name.
         :param pulumi.Input[_builtins.int] default_branch_protection: See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default branch protection defaults
@@ -709,6 +727,8 @@ class _GroupState:
             pulumi.set(__self__, "avatar_hash", avatar_hash)
         if avatar_url is not None:
             pulumi.set(__self__, "avatar_url", avatar_url)
+        if crm_enabled is not None:
+            pulumi.set(__self__, "crm_enabled", crm_enabled)
         if default_branch is not None:
             pulumi.set(__self__, "default_branch", default_branch)
         if default_branch_protection is not None:
@@ -864,6 +884,18 @@ class _GroupState:
     @avatar_url.setter
     def avatar_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "avatar_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crmEnabled")
+    def crm_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable customer relations management (CRM) for the group.
+        """
+        return pulumi.get(self, "crm_enabled")
+
+    @crm_enabled.setter
+    def crm_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "crm_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranch")
@@ -1287,6 +1319,7 @@ class Group(pulumi.CustomResource):
                  auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  avatar: pulumi.Input[Optional[_builtins.str]] = None,
                  avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 crm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
                  default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
@@ -1406,6 +1439,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Default to Auto DevOps pipeline for all projects within this group.
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
+        :param pulumi.Input[_builtins.bool] crm_enabled: Enable customer relations management (CRM) for the group.
         :param pulumi.Input[_builtins.str] default_branch: Initial default branch name.
         :param pulumi.Input[_builtins.int] default_branch_protection: See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default branch protection defaults
@@ -1544,6 +1578,7 @@ class Group(pulumi.CustomResource):
                  auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  avatar: pulumi.Input[Optional[_builtins.str]] = None,
                  avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 crm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
                  default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
@@ -1589,6 +1624,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
             __props__.__dict__["avatar"] = avatar
             __props__.__dict__["avatar_hash"] = avatar_hash
+            __props__.__dict__["crm_enabled"] = crm_enabled
             __props__.__dict__["default_branch"] = default_branch
             __props__.__dict__["default_branch_protection"] = default_branch_protection
             __props__.__dict__["default_branch_protection_defaults"] = default_branch_protection_defaults
@@ -1645,6 +1681,7 @@ class Group(pulumi.CustomResource):
             avatar: pulumi.Input[Optional[_builtins.str]] = None,
             avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
             avatar_url: pulumi.Input[Optional[_builtins.str]] = None,
+            crm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             default_branch: pulumi.Input[Optional[_builtins.str]] = None,
             default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
             default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
@@ -1693,6 +1730,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[_builtins.str] avatar_url: The URL of the avatar image.
+        :param pulumi.Input[_builtins.bool] crm_enabled: Enable customer relations management (CRM) for the group.
         :param pulumi.Input[_builtins.str] default_branch: Initial default branch name.
         :param pulumi.Input[_builtins.int] default_branch_protection: See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default branch protection defaults
@@ -1739,6 +1777,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["avatar"] = avatar
         __props__.__dict__["avatar_hash"] = avatar_hash
         __props__.__dict__["avatar_url"] = avatar_url
+        __props__.__dict__["crm_enabled"] = crm_enabled
         __props__.__dict__["default_branch"] = default_branch
         __props__.__dict__["default_branch_protection"] = default_branch_protection
         __props__.__dict__["default_branch_protection_defaults"] = default_branch_protection_defaults
@@ -1830,6 +1869,14 @@ class Group(pulumi.CustomResource):
         The URL of the avatar image.
         """
         return pulumi.get(self, "avatar_url")
+
+    @_builtins.property
+    @pulumi.getter(name="crmEnabled")
+    def crm_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Enable customer relations management (CRM) for the group.
+        """
+        return pulumi.get(self, "crm_enabled")
 
     @_builtins.property
     @pulumi.getter(name="defaultBranch")

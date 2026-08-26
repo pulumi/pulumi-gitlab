@@ -63,6 +63,10 @@ export interface GetGroupResult {
      */
     readonly createdAt: string;
     /**
+     * Whether customer relations management (CRM) is enabled for the group.
+     */
+    readonly crmEnabled: boolean;
+    /**
      * Custom attributes attached to the group. Each entry is a map with `key` and `value`. Requires administrator privileges to read.
      */
     readonly customAttributes: {[key: string]: string}[];

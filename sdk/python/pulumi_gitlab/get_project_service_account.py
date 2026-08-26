@@ -26,7 +26,10 @@ class GetProjectServiceAccountResult:
     """
     A collection of values returned by getProjectServiceAccount.
     """
-    def __init__(__self__, id=None, name=None, project=None, service_account_id=None, username=None):
+    def __init__(__self__, email=None, id=None, name=None, project=None, service_account_id=None, username=None):
+        if email and not isinstance(email, str):
+            raise TypeError("Expected argument 'email' to be a str")
+        pulumi.set(__self__, "email", email)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -42,6 +45,14 @@ class GetProjectServiceAccountResult:
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        The email of the service account user.
+        """
+        return pulumi.get(self, "email")
 
     @_builtins.property
     @pulumi.getter
@@ -90,6 +101,7 @@ class AwaitableGetProjectServiceAccountResult(GetProjectServiceAccountResult):
         if False:
             yield self
         return GetProjectServiceAccountResult(
+            email=self.email,
             id=self.id,
             name=self.name,
             project=self.project,
@@ -128,6 +140,7 @@ def get_project_service_account(project: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gitlab:index/getProjectServiceAccount:getProjectServiceAccount', __args__, opts=opts, typ=GetProjectServiceAccountResult).value
 
     return AwaitableGetProjectServiceAccountResult(
+        email=pulumi.get(__ret__, 'email'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
@@ -163,6 +176,7 @@ def get_project_service_account_output(project: pulumi.Input[Optional[_builtins.
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gitlab:index/getProjectServiceAccount:getProjectServiceAccount', __args__, opts=opts, typ=GetProjectServiceAccountResult)
     return __ret__.apply(lambda __response__: GetProjectServiceAccountResult(
+        email=pulumi.get(__response__, 'email'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),

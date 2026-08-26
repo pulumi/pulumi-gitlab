@@ -88,6 +88,10 @@ namespace Pulumi.GitLab
     public sealed class GetGroupServiceAccountResult
     {
         /// <summary>
+        /// The email of the service account user.
+        /// </summary>
+        public readonly string Email;
+        /// <summary>
         /// The ID or URL-encoded path of the target group. Must be a top-level group.
         /// </summary>
         public readonly string Group;
@@ -110,6 +114,8 @@ namespace Pulumi.GitLab
 
         [OutputConstructor]
         private GetGroupServiceAccountResult(
+            string email,
+
             string group,
 
             string id,
@@ -120,6 +126,7 @@ namespace Pulumi.GitLab
 
             string username)
         {
+            Email = email;
             Group = group;
             Id = id;
             Name = name;
