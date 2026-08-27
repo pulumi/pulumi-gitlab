@@ -96,12 +96,8 @@ type GetProjectMergeRequestResult struct {
 }
 
 func GetProjectMergeRequestOutput(ctx *pulumi.Context, args GetProjectMergeRequestOutputArgs, opts ...pulumi.InvokeOption) GetProjectMergeRequestResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectMergeRequestResultOutput, error) {
-			args := v.(GetProjectMergeRequestArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectMergeRequest:getProjectMergeRequest", args, GetProjectMergeRequestResultOutput{}, options).(GetProjectMergeRequestResultOutput), nil
-		}).(GetProjectMergeRequestResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectMergeRequest:getProjectMergeRequest", args, GetProjectMergeRequestResultOutput{}, options).(GetProjectMergeRequestResultOutput)
 }
 
 // A collection of arguments for invoking getProjectMergeRequest.

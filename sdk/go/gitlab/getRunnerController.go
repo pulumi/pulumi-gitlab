@@ -75,12 +75,8 @@ type LookupRunnerControllerResult struct {
 }
 
 func LookupRunnerControllerOutput(ctx *pulumi.Context, args LookupRunnerControllerOutputArgs, opts ...pulumi.InvokeOption) LookupRunnerControllerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRunnerControllerResultOutput, error) {
-			args := v.(LookupRunnerControllerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getRunnerController:getRunnerController", args, LookupRunnerControllerResultOutput{}, options).(LookupRunnerControllerResultOutput), nil
-		}).(LookupRunnerControllerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getRunnerController:getRunnerController", args, LookupRunnerControllerResultOutput{}, options).(LookupRunnerControllerResultOutput)
 }
 
 // A collection of arguments for invoking getRunnerController.

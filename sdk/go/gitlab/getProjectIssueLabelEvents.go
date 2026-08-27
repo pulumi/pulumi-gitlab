@@ -76,12 +76,8 @@ type GetProjectIssueLabelEventsResult struct {
 }
 
 func GetProjectIssueLabelEventsOutput(ctx *pulumi.Context, args GetProjectIssueLabelEventsOutputArgs, opts ...pulumi.InvokeOption) GetProjectIssueLabelEventsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectIssueLabelEventsResultOutput, error) {
-			args := v.(GetProjectIssueLabelEventsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectIssueLabelEvents:getProjectIssueLabelEvents", args, GetProjectIssueLabelEventsResultOutput{}, options).(GetProjectIssueLabelEventsResultOutput), nil
-		}).(GetProjectIssueLabelEventsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectIssueLabelEvents:getProjectIssueLabelEvents", args, GetProjectIssueLabelEventsResultOutput{}, options).(GetProjectIssueLabelEventsResultOutput)
 }
 
 // A collection of arguments for invoking getProjectIssueLabelEvents.

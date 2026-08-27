@@ -75,12 +75,8 @@ type LookupProjectErrorTrackingSettingsResult struct {
 }
 
 func LookupProjectErrorTrackingSettingsOutput(ctx *pulumi.Context, args LookupProjectErrorTrackingSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupProjectErrorTrackingSettingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProjectErrorTrackingSettingsResultOutput, error) {
-			args := v.(LookupProjectErrorTrackingSettingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectErrorTrackingSettings:getProjectErrorTrackingSettings", args, LookupProjectErrorTrackingSettingsResultOutput{}, options).(LookupProjectErrorTrackingSettingsResultOutput), nil
-		}).(LookupProjectErrorTrackingSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectErrorTrackingSettings:getProjectErrorTrackingSettings", args, LookupProjectErrorTrackingSettingsResultOutput{}, options).(LookupProjectErrorTrackingSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getProjectErrorTrackingSettings.

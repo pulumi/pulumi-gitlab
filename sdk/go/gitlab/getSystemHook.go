@@ -87,12 +87,8 @@ type LookupSystemHookResult struct {
 }
 
 func LookupSystemHookOutput(ctx *pulumi.Context, args LookupSystemHookOutputArgs, opts ...pulumi.InvokeOption) LookupSystemHookResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSystemHookResultOutput, error) {
-			args := v.(LookupSystemHookArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getSystemHook:getSystemHook", args, LookupSystemHookResultOutput{}, options).(LookupSystemHookResultOutput), nil
-		}).(LookupSystemHookResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getSystemHook:getSystemHook", args, LookupSystemHookResultOutput{}, options).(LookupSystemHookResultOutput)
 }
 
 // A collection of arguments for invoking getSystemHook.

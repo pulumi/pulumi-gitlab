@@ -121,12 +121,8 @@ type GetArtifactFileResult struct {
 }
 
 func GetArtifactFileOutput(ctx *pulumi.Context, args GetArtifactFileOutputArgs, opts ...pulumi.InvokeOption) GetArtifactFileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetArtifactFileResultOutput, error) {
-			args := v.(GetArtifactFileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getArtifactFile:getArtifactFile", args, GetArtifactFileResultOutput{}, options).(GetArtifactFileResultOutput), nil
-		}).(GetArtifactFileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getArtifactFile:getArtifactFile", args, GetArtifactFileResultOutput{}, options).(GetArtifactFileResultOutput)
 }
 
 // A collection of arguments for invoking getArtifactFile.

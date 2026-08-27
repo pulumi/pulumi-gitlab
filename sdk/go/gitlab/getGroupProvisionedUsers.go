@@ -65,12 +65,8 @@ type GetGroupProvisionedUsersResult struct {
 }
 
 func GetGroupProvisionedUsersOutput(ctx *pulumi.Context, args GetGroupProvisionedUsersOutputArgs, opts ...pulumi.InvokeOption) GetGroupProvisionedUsersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGroupProvisionedUsersResultOutput, error) {
-			args := v.(GetGroupProvisionedUsersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers", args, GetGroupProvisionedUsersResultOutput{}, options).(GetGroupProvisionedUsersResultOutput), nil
-		}).(GetGroupProvisionedUsersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getGroupProvisionedUsers:getGroupProvisionedUsers", args, GetGroupProvisionedUsersResultOutput{}, options).(GetGroupProvisionedUsersResultOutput)
 }
 
 // A collection of arguments for invoking getGroupProvisionedUsers.

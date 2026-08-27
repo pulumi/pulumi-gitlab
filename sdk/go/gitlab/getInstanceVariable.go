@@ -77,12 +77,8 @@ type LookupInstanceVariableResult struct {
 }
 
 func LookupInstanceVariableOutput(ctx *pulumi.Context, args LookupInstanceVariableOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceVariableResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInstanceVariableResultOutput, error) {
-			args := v.(LookupInstanceVariableArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getInstanceVariable:getInstanceVariable", args, LookupInstanceVariableResultOutput{}, options).(LookupInstanceVariableResultOutput), nil
-		}).(LookupInstanceVariableResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getInstanceVariable:getInstanceVariable", args, LookupInstanceVariableResultOutput{}, options).(LookupInstanceVariableResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceVariable.

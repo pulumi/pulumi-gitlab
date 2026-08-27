@@ -45,12 +45,8 @@ type GetProjectAccessTokensResult struct {
 }
 
 func GetProjectAccessTokensOutput(ctx *pulumi.Context, args GetProjectAccessTokensOutputArgs, opts ...pulumi.InvokeOption) GetProjectAccessTokensResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectAccessTokensResultOutput, error) {
-			args := v.(GetProjectAccessTokensArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectAccessTokens:getProjectAccessTokens", args, GetProjectAccessTokensResultOutput{}, options).(GetProjectAccessTokensResultOutput), nil
-		}).(GetProjectAccessTokensResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectAccessTokens:getProjectAccessTokens", args, GetProjectAccessTokensResultOutput{}, options).(GetProjectAccessTokensResultOutput)
 }
 
 // A collection of arguments for invoking getProjectAccessTokens.

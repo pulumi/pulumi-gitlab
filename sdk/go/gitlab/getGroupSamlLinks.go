@@ -43,12 +43,8 @@ type GetGroupSamlLinksResult struct {
 }
 
 func GetGroupSamlLinksOutput(ctx *pulumi.Context, args GetGroupSamlLinksOutputArgs, opts ...pulumi.InvokeOption) GetGroupSamlLinksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGroupSamlLinksResultOutput, error) {
-			args := v.(GetGroupSamlLinksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getGroupSamlLinks:getGroupSamlLinks", args, GetGroupSamlLinksResultOutput{}, options).(GetGroupSamlLinksResultOutput), nil
-		}).(GetGroupSamlLinksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getGroupSamlLinks:getGroupSamlLinks", args, GetGroupSamlLinksResultOutput{}, options).(GetGroupSamlLinksResultOutput)
 }
 
 // A collection of arguments for invoking getGroupSamlLinks.

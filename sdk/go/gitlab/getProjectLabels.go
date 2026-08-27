@@ -67,12 +67,8 @@ type GetProjectLabelsResult struct {
 }
 
 func GetProjectLabelsOutput(ctx *pulumi.Context, args GetProjectLabelsOutputArgs, opts ...pulumi.InvokeOption) GetProjectLabelsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectLabelsResultOutput, error) {
-			args := v.(GetProjectLabelsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectLabels:getProjectLabels", args, GetProjectLabelsResultOutput{}, options).(GetProjectLabelsResultOutput), nil
-		}).(GetProjectLabelsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectLabels:getProjectLabels", args, GetProjectLabelsResultOutput{}, options).(GetProjectLabelsResultOutput)
 }
 
 // A collection of arguments for invoking getProjectLabels.

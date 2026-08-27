@@ -105,12 +105,8 @@ type LookupGroupHookResult struct {
 }
 
 func LookupGroupHookOutput(ctx *pulumi.Context, args LookupGroupHookOutputArgs, opts ...pulumi.InvokeOption) LookupGroupHookResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGroupHookResultOutput, error) {
-			args := v.(LookupGroupHookArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getGroupHook:getGroupHook", args, LookupGroupHookResultOutput{}, options).(LookupGroupHookResultOutput), nil
-		}).(LookupGroupHookResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getGroupHook:getGroupHook", args, LookupGroupHookResultOutput{}, options).(LookupGroupHookResultOutput)
 }
 
 // A collection of arguments for invoking getGroupHook.

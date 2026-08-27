@@ -45,12 +45,8 @@ type GetProjectProtectedTagResult struct {
 }
 
 func GetProjectProtectedTagOutput(ctx *pulumi.Context, args GetProjectProtectedTagOutputArgs, opts ...pulumi.InvokeOption) GetProjectProtectedTagResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectProtectedTagResultOutput, error) {
-			args := v.(GetProjectProtectedTagArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectProtectedTag:getProjectProtectedTag", args, GetProjectProtectedTagResultOutput{}, options).(GetProjectProtectedTagResultOutput), nil
-		}).(GetProjectProtectedTagResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectProtectedTag:getProjectProtectedTag", args, GetProjectProtectedTagResultOutput{}, options).(GetProjectProtectedTagResultOutput)
 }
 
 // A collection of arguments for invoking getProjectProtectedTag.

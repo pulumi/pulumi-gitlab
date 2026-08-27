@@ -45,12 +45,8 @@ type GetUserSshkeysResult struct {
 }
 
 func GetUserSshkeysOutput(ctx *pulumi.Context, args GetUserSshkeysOutputArgs, opts ...pulumi.InvokeOption) GetUserSshkeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetUserSshkeysResultOutput, error) {
-			args := v.(GetUserSshkeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getUserSshkeys:getUserSshkeys", args, GetUserSshkeysResultOutput{}, options).(GetUserSshkeysResultOutput), nil
-		}).(GetUserSshkeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getUserSshkeys:getUserSshkeys", args, GetUserSshkeysResultOutput{}, options).(GetUserSshkeysResultOutput)
 }
 
 // A collection of arguments for invoking getUserSshkeys.

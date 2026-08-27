@@ -75,12 +75,8 @@ type GetProjectApprovalRulesResult struct {
 }
 
 func GetProjectApprovalRulesOutput(ctx *pulumi.Context, args GetProjectApprovalRulesOutputArgs, opts ...pulumi.InvokeOption) GetProjectApprovalRulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectApprovalRulesResultOutput, error) {
-			args := v.(GetProjectApprovalRulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectApprovalRules:getProjectApprovalRules", args, GetProjectApprovalRulesResultOutput{}, options).(GetProjectApprovalRulesResultOutput), nil
-		}).(GetProjectApprovalRulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectApprovalRules:getProjectApprovalRules", args, GetProjectApprovalRulesResultOutput{}, options).(GetProjectApprovalRulesResultOutput)
 }
 
 // A collection of arguments for invoking getProjectApprovalRules.

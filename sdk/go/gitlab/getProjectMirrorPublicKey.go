@@ -47,12 +47,8 @@ type GetProjectMirrorPublicKeyResult struct {
 }
 
 func GetProjectMirrorPublicKeyOutput(ctx *pulumi.Context, args GetProjectMirrorPublicKeyOutputArgs, opts ...pulumi.InvokeOption) GetProjectMirrorPublicKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectMirrorPublicKeyResultOutput, error) {
-			args := v.(GetProjectMirrorPublicKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectMirrorPublicKey:getProjectMirrorPublicKey", args, GetProjectMirrorPublicKeyResultOutput{}, options).(GetProjectMirrorPublicKeyResultOutput), nil
-		}).(GetProjectMirrorPublicKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectMirrorPublicKey:getProjectMirrorPublicKey", args, GetProjectMirrorPublicKeyResultOutput{}, options).(GetProjectMirrorPublicKeyResultOutput)
 }
 
 // A collection of arguments for invoking getProjectMirrorPublicKey.

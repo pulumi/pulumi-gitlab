@@ -73,12 +73,8 @@ type GetRunnerControllerScopesResult struct {
 }
 
 func GetRunnerControllerScopesOutput(ctx *pulumi.Context, args GetRunnerControllerScopesOutputArgs, opts ...pulumi.InvokeOption) GetRunnerControllerScopesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRunnerControllerScopesResultOutput, error) {
-			args := v.(GetRunnerControllerScopesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getRunnerControllerScopes:getRunnerControllerScopes", args, GetRunnerControllerScopesResultOutput{}, options).(GetRunnerControllerScopesResultOutput), nil
-		}).(GetRunnerControllerScopesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getRunnerControllerScopes:getRunnerControllerScopes", args, GetRunnerControllerScopesResultOutput{}, options).(GetRunnerControllerScopesResultOutput)
 }
 
 // A collection of arguments for invoking getRunnerControllerScopes.

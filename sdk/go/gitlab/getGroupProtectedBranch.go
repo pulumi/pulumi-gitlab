@@ -55,12 +55,8 @@ type GetGroupProtectedBranchResult struct {
 }
 
 func GetGroupProtectedBranchOutput(ctx *pulumi.Context, args GetGroupProtectedBranchOutputArgs, opts ...pulumi.InvokeOption) GetGroupProtectedBranchResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGroupProtectedBranchResultOutput, error) {
-			args := v.(GetGroupProtectedBranchArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getGroupProtectedBranch:getGroupProtectedBranch", args, GetGroupProtectedBranchResultOutput{}, options).(GetGroupProtectedBranchResultOutput), nil
-		}).(GetGroupProtectedBranchResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getGroupProtectedBranch:getGroupProtectedBranch", args, GetGroupProtectedBranchResultOutput{}, options).(GetGroupProtectedBranchResultOutput)
 }
 
 // A collection of arguments for invoking getGroupProtectedBranch.

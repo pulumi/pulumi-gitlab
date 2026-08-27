@@ -93,12 +93,8 @@ type LookupProjectSecureFileResult struct {
 }
 
 func LookupProjectSecureFileOutput(ctx *pulumi.Context, args LookupProjectSecureFileOutputArgs, opts ...pulumi.InvokeOption) LookupProjectSecureFileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProjectSecureFileResultOutput, error) {
-			args := v.(LookupProjectSecureFileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectSecureFile:getProjectSecureFile", args, LookupProjectSecureFileResultOutput{}, options).(LookupProjectSecureFileResultOutput), nil
-		}).(LookupProjectSecureFileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectSecureFile:getProjectSecureFile", args, LookupProjectSecureFileResultOutput{}, options).(LookupProjectSecureFileResultOutput)
 }
 
 // A collection of arguments for invoking getProjectSecureFile.

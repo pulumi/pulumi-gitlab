@@ -57,10 +57,8 @@ type GetInstanceVariablesResult struct {
 }
 
 func GetInstanceVariablesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetInstanceVariablesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetInstanceVariablesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("gitlab:index/getInstanceVariables:getInstanceVariables", nil, GetInstanceVariablesResultOutput{}, options).(GetInstanceVariablesResultOutput), nil
-	}).(GetInstanceVariablesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getInstanceVariables:getInstanceVariables", nil, GetInstanceVariablesResultOutput{}, options).(GetInstanceVariablesResultOutput)
 }
 
 // A collection of values returned by getInstanceVariables.

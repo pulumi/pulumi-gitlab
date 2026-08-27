@@ -79,12 +79,8 @@ type GetProjectVariablesResult struct {
 }
 
 func GetProjectVariablesOutput(ctx *pulumi.Context, args GetProjectVariablesOutputArgs, opts ...pulumi.InvokeOption) GetProjectVariablesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectVariablesResultOutput, error) {
-			args := v.(GetProjectVariablesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectVariables:getProjectVariables", args, GetProjectVariablesResultOutput{}, options).(GetProjectVariablesResultOutput), nil
-		}).(GetProjectVariablesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectVariables:getProjectVariables", args, GetProjectVariablesResultOutput{}, options).(GetProjectVariablesResultOutput)
 }
 
 // A collection of arguments for invoking getProjectVariables.
