@@ -96,12 +96,8 @@ type GetSecurityPolicyDocumentResult struct {
 }
 
 func GetSecurityPolicyDocumentOutput(ctx *pulumi.Context, args GetSecurityPolicyDocumentOutputArgs, opts ...pulumi.InvokeOption) GetSecurityPolicyDocumentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSecurityPolicyDocumentResultOutput, error) {
-			args := v.(GetSecurityPolicyDocumentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getSecurityPolicyDocument:getSecurityPolicyDocument", args, GetSecurityPolicyDocumentResultOutput{}, options).(GetSecurityPolicyDocumentResultOutput), nil
-		}).(GetSecurityPolicyDocumentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getSecurityPolicyDocument:getSecurityPolicyDocument", args, GetSecurityPolicyDocumentResultOutput{}, options).(GetSecurityPolicyDocumentResultOutput)
 }
 
 // A collection of arguments for invoking getSecurityPolicyDocument.

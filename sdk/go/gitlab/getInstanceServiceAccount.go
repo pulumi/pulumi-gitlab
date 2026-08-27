@@ -73,12 +73,8 @@ type LookupInstanceServiceAccountResult struct {
 }
 
 func LookupInstanceServiceAccountOutput(ctx *pulumi.Context, args LookupInstanceServiceAccountOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceServiceAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInstanceServiceAccountResultOutput, error) {
-			args := v.(LookupInstanceServiceAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getInstanceServiceAccount:getInstanceServiceAccount", args, LookupInstanceServiceAccountResultOutput{}, options).(LookupInstanceServiceAccountResultOutput), nil
-		}).(LookupInstanceServiceAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getInstanceServiceAccount:getInstanceServiceAccount", args, LookupInstanceServiceAccountResultOutput{}, options).(LookupInstanceServiceAccountResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceServiceAccount.

@@ -96,12 +96,8 @@ type LookupPipelineScheduleResult struct {
 }
 
 func LookupPipelineScheduleOutput(ctx *pulumi.Context, args LookupPipelineScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineScheduleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPipelineScheduleResultOutput, error) {
-			args := v.(LookupPipelineScheduleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getPipelineSchedule:getPipelineSchedule", args, LookupPipelineScheduleResultOutput{}, options).(LookupPipelineScheduleResultOutput), nil
-		}).(LookupPipelineScheduleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getPipelineSchedule:getPipelineSchedule", args, LookupPipelineScheduleResultOutput{}, options).(LookupPipelineScheduleResultOutput)
 }
 
 // A collection of arguments for invoking getPipelineSchedule.

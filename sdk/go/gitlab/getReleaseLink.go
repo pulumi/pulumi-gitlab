@@ -59,12 +59,8 @@ type LookupReleaseLinkResult struct {
 }
 
 func LookupReleaseLinkOutput(ctx *pulumi.Context, args LookupReleaseLinkOutputArgs, opts ...pulumi.InvokeOption) LookupReleaseLinkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReleaseLinkResultOutput, error) {
-			args := v.(LookupReleaseLinkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getReleaseLink:getReleaseLink", args, LookupReleaseLinkResultOutput{}, options).(LookupReleaseLinkResultOutput), nil
-		}).(LookupReleaseLinkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getReleaseLink:getReleaseLink", args, LookupReleaseLinkResultOutput{}, options).(LookupReleaseLinkResultOutput)
 }
 
 // A collection of arguments for invoking getReleaseLink.

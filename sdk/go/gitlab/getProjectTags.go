@@ -53,12 +53,8 @@ type GetProjectTagsResult struct {
 }
 
 func GetProjectTagsOutput(ctx *pulumi.Context, args GetProjectTagsOutputArgs, opts ...pulumi.InvokeOption) GetProjectTagsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectTagsResultOutput, error) {
-			args := v.(GetProjectTagsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectTags:getProjectTags", args, GetProjectTagsResultOutput{}, options).(GetProjectTagsResultOutput), nil
-		}).(GetProjectTagsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectTags:getProjectTags", args, GetProjectTagsResultOutput{}, options).(GetProjectTagsResultOutput)
 }
 
 // A collection of arguments for invoking getProjectTags.

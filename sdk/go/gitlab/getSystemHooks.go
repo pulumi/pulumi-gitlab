@@ -59,10 +59,8 @@ type GetSystemHooksResult struct {
 }
 
 func GetSystemHooksOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetSystemHooksResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetSystemHooksResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("gitlab:index/getSystemHooks:getSystemHooks", nil, GetSystemHooksResultOutput{}, options).(GetSystemHooksResultOutput), nil
-	}).(GetSystemHooksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getSystemHooks:getSystemHooks", nil, GetSystemHooksResultOutput{}, options).(GetSystemHooksResultOutput)
 }
 
 // A collection of values returned by getSystemHooks.

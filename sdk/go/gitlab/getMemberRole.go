@@ -77,12 +77,8 @@ type LookupMemberRoleResult struct {
 }
 
 func LookupMemberRoleOutput(ctx *pulumi.Context, args LookupMemberRoleOutputArgs, opts ...pulumi.InvokeOption) LookupMemberRoleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMemberRoleResultOutput, error) {
-			args := v.(LookupMemberRoleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getMemberRole:getMemberRole", args, LookupMemberRoleResultOutput{}, options).(LookupMemberRoleResultOutput), nil
-		}).(LookupMemberRoleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getMemberRole:getMemberRole", args, LookupMemberRoleResultOutput{}, options).(LookupMemberRoleResultOutput)
 }
 
 // A collection of arguments for invoking getMemberRole.

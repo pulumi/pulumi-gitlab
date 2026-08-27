@@ -61,10 +61,8 @@ type GetRunnerControllersResult struct {
 }
 
 func GetRunnerControllersOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetRunnerControllersResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetRunnerControllersResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("gitlab:index/getRunnerControllers:getRunnerControllers", nil, GetRunnerControllersResultOutput{}, options).(GetRunnerControllersResultOutput), nil
-	}).(GetRunnerControllersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getRunnerControllers:getRunnerControllers", nil, GetRunnerControllersResultOutput{}, options).(GetRunnerControllersResultOutput)
 }
 
 // A collection of values returned by getRunnerControllers.

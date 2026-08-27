@@ -151,12 +151,8 @@ type LookupProjectIssueResult struct {
 }
 
 func LookupProjectIssueOutput(ctx *pulumi.Context, args LookupProjectIssueOutputArgs, opts ...pulumi.InvokeOption) LookupProjectIssueResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProjectIssueResultOutput, error) {
-			args := v.(LookupProjectIssueArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectIssue:getProjectIssue", args, LookupProjectIssueResultOutput{}, options).(LookupProjectIssueResultOutput), nil
-		}).(LookupProjectIssueResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectIssue:getProjectIssue", args, LookupProjectIssueResultOutput{}, options).(LookupProjectIssueResultOutput)
 }
 
 // A collection of arguments for invoking getProjectIssue.

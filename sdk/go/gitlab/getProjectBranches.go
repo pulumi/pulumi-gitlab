@@ -49,12 +49,8 @@ type GetProjectBranchesResult struct {
 }
 
 func GetProjectBranchesOutput(ctx *pulumi.Context, args GetProjectBranchesOutputArgs, opts ...pulumi.InvokeOption) GetProjectBranchesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectBranchesResultOutput, error) {
-			args := v.(GetProjectBranchesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectBranches:getProjectBranches", args, GetProjectBranchesResultOutput{}, options).(GetProjectBranchesResultOutput), nil
-		}).(GetProjectBranchesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectBranches:getProjectBranches", args, GetProjectBranchesResultOutput{}, options).(GetProjectBranchesResultOutput)
 }
 
 // A collection of arguments for invoking getProjectBranches.

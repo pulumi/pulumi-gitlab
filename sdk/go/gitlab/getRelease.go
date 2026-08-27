@@ -83,12 +83,8 @@ type LookupReleaseResult struct {
 }
 
 func LookupReleaseOutput(ctx *pulumi.Context, args LookupReleaseOutputArgs, opts ...pulumi.InvokeOption) LookupReleaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupReleaseResultOutput, error) {
-			args := v.(LookupReleaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getRelease:getRelease", args, LookupReleaseResultOutput{}, options).(LookupReleaseResultOutput), nil
-		}).(LookupReleaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getRelease:getRelease", args, LookupReleaseResultOutput{}, options).(LookupReleaseResultOutput)
 }
 
 // A collection of arguments for invoking getRelease.

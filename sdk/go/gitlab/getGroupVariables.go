@@ -79,12 +79,8 @@ type GetGroupVariablesResult struct {
 }
 
 func GetGroupVariablesOutput(ctx *pulumi.Context, args GetGroupVariablesOutputArgs, opts ...pulumi.InvokeOption) GetGroupVariablesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGroupVariablesResultOutput, error) {
-			args := v.(GetGroupVariablesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getGroupVariables:getGroupVariables", args, GetGroupVariablesResultOutput{}, options).(GetGroupVariablesResultOutput), nil
-		}).(GetGroupVariablesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getGroupVariables:getGroupVariables", args, GetGroupVariablesResultOutput{}, options).(GetGroupVariablesResultOutput)
 }
 
 // A collection of arguments for invoking getGroupVariables.

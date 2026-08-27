@@ -53,12 +53,8 @@ type LookupProjectMembershipResult struct {
 }
 
 func LookupProjectMembershipOutput(ctx *pulumi.Context, args LookupProjectMembershipOutputArgs, opts ...pulumi.InvokeOption) LookupProjectMembershipResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProjectMembershipResultOutput, error) {
-			args := v.(LookupProjectMembershipArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectMembership:getProjectMembership", args, LookupProjectMembershipResultOutput{}, options).(LookupProjectMembershipResultOutput), nil
-		}).(LookupProjectMembershipResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectMembership:getProjectMembership", args, LookupProjectMembershipResultOutput{}, options).(LookupProjectMembershipResultOutput)
 }
 
 // A collection of arguments for invoking getProjectMembership.

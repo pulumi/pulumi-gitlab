@@ -76,12 +76,8 @@ type LookupClusterAgentResult struct {
 }
 
 func LookupClusterAgentOutput(ctx *pulumi.Context, args LookupClusterAgentOutputArgs, opts ...pulumi.InvokeOption) LookupClusterAgentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupClusterAgentResultOutput, error) {
-			args := v.(LookupClusterAgentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getClusterAgent:getClusterAgent", args, LookupClusterAgentResultOutput{}, options).(LookupClusterAgentResultOutput), nil
-		}).(LookupClusterAgentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getClusterAgent:getClusterAgent", args, LookupClusterAgentResultOutput{}, options).(LookupClusterAgentResultOutput)
 }
 
 // A collection of arguments for invoking getClusterAgent.

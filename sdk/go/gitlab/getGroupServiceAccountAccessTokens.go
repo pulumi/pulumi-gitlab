@@ -51,12 +51,8 @@ type GetGroupServiceAccountAccessTokensResult struct {
 }
 
 func GetGroupServiceAccountAccessTokensOutput(ctx *pulumi.Context, args GetGroupServiceAccountAccessTokensOutputArgs, opts ...pulumi.InvokeOption) GetGroupServiceAccountAccessTokensResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGroupServiceAccountAccessTokensResultOutput, error) {
-			args := v.(GetGroupServiceAccountAccessTokensArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getGroupServiceAccountAccessTokens:getGroupServiceAccountAccessTokens", args, GetGroupServiceAccountAccessTokensResultOutput{}, options).(GetGroupServiceAccountAccessTokensResultOutput), nil
-		}).(GetGroupServiceAccountAccessTokensResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getGroupServiceAccountAccessTokens:getGroupServiceAccountAccessTokens", args, GetGroupServiceAccountAccessTokensResultOutput{}, options).(GetGroupServiceAccountAccessTokensResultOutput)
 }
 
 // A collection of arguments for invoking getGroupServiceAccountAccessTokens.

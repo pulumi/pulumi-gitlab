@@ -83,12 +83,8 @@ type GetProjectEnvironmentsResult struct {
 }
 
 func GetProjectEnvironmentsOutput(ctx *pulumi.Context, args GetProjectEnvironmentsOutputArgs, opts ...pulumi.InvokeOption) GetProjectEnvironmentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectEnvironmentsResultOutput, error) {
-			args := v.(GetProjectEnvironmentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectEnvironments:getProjectEnvironments", args, GetProjectEnvironmentsResultOutput{}, options).(GetProjectEnvironmentsResultOutput), nil
-		}).(GetProjectEnvironmentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectEnvironments:getProjectEnvironments", args, GetProjectEnvironmentsResultOutput{}, options).(GetProjectEnvironmentsResultOutput)
 }
 
 // A collection of arguments for invoking getProjectEnvironments.

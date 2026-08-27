@@ -68,12 +68,8 @@ type GetGroupLabelsResult struct {
 }
 
 func GetGroupLabelsOutput(ctx *pulumi.Context, args GetGroupLabelsOutputArgs, opts ...pulumi.InvokeOption) GetGroupLabelsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGroupLabelsResultOutput, error) {
-			args := v.(GetGroupLabelsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getGroupLabels:getGroupLabels", args, GetGroupLabelsResultOutput{}, options).(GetGroupLabelsResultOutput), nil
-		}).(GetGroupLabelsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getGroupLabels:getGroupLabels", args, GetGroupLabelsResultOutput{}, options).(GetGroupLabelsResultOutput)
 }
 
 // A collection of arguments for invoking getGroupLabels.

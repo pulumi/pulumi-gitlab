@@ -95,12 +95,8 @@ type LookupGroupLabelResult struct {
 }
 
 func LookupGroupLabelOutput(ctx *pulumi.Context, args LookupGroupLabelOutputArgs, opts ...pulumi.InvokeOption) LookupGroupLabelResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGroupLabelResultOutput, error) {
-			args := v.(LookupGroupLabelArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getGroupLabel:getGroupLabel", args, LookupGroupLabelResultOutput{}, options).(LookupGroupLabelResultOutput), nil
-		}).(LookupGroupLabelResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getGroupLabel:getGroupLabel", args, LookupGroupLabelResultOutput{}, options).(LookupGroupLabelResultOutput)
 }
 
 // A collection of arguments for invoking getGroupLabel.

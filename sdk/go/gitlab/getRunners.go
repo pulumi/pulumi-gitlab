@@ -95,12 +95,8 @@ type GetRunnersResult struct {
 }
 
 func GetRunnersOutput(ctx *pulumi.Context, args GetRunnersOutputArgs, opts ...pulumi.InvokeOption) GetRunnersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRunnersResultOutput, error) {
-			args := v.(GetRunnersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getRunners:getRunners", args, GetRunnersResultOutput{}, options).(GetRunnersResultOutput), nil
-		}).(GetRunnersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getRunners:getRunners", args, GetRunnersResultOutput{}, options).(GetRunnersResultOutput)
 }
 
 // A collection of arguments for invoking getRunners.

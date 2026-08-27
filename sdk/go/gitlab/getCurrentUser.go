@@ -71,10 +71,8 @@ type GetCurrentUserResult struct {
 }
 
 func GetCurrentUserOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetCurrentUserResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetCurrentUserResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("gitlab:index/getCurrentUser:getCurrentUser", nil, GetCurrentUserResultOutput{}, options).(GetCurrentUserResultOutput), nil
-	}).(GetCurrentUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getCurrentUser:getCurrentUser", nil, GetCurrentUserResultOutput{}, options).(GetCurrentUserResultOutput)
 }
 
 // A collection of values returned by getCurrentUser.

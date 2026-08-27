@@ -83,12 +83,8 @@ type LookupProjectServiceAccountResult struct {
 }
 
 func LookupProjectServiceAccountOutput(ctx *pulumi.Context, args LookupProjectServiceAccountOutputArgs, opts ...pulumi.InvokeOption) LookupProjectServiceAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProjectServiceAccountResultOutput, error) {
-			args := v.(LookupProjectServiceAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectServiceAccount:getProjectServiceAccount", args, LookupProjectServiceAccountResultOutput{}, options).(LookupProjectServiceAccountResultOutput), nil
-		}).(LookupProjectServiceAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectServiceAccount:getProjectServiceAccount", args, LookupProjectServiceAccountResultOutput{}, options).(LookupProjectServiceAccountResultOutput)
 }
 
 // A collection of arguments for invoking getProjectServiceAccount.

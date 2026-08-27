@@ -65,12 +65,8 @@ type LookupProjectMilestoneResult struct {
 }
 
 func LookupProjectMilestoneOutput(ctx *pulumi.Context, args LookupProjectMilestoneOutputArgs, opts ...pulumi.InvokeOption) LookupProjectMilestoneResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProjectMilestoneResultOutput, error) {
-			args := v.(LookupProjectMilestoneArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("gitlab:index/getProjectMilestone:getProjectMilestone", args, LookupProjectMilestoneResultOutput{}, options).(LookupProjectMilestoneResultOutput), nil
-		}).(LookupProjectMilestoneResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("gitlab:index/getProjectMilestone:getProjectMilestone", args, LookupProjectMilestoneResultOutput{}, options).(LookupProjectMilestoneResultOutput)
 }
 
 // A collection of arguments for invoking getProjectMilestone.
