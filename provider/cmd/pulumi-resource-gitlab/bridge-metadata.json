@@ -127,6 +127,10 @@
                 "current": "gitlab:index/complianceFramework:ComplianceFramework",
                 "majorVersion": 10
             },
+            "gitlab_compliance_framework_from_template": {
+                "current": "gitlab:index/complianceFrameworkFromTemplate:ComplianceFrameworkFromTemplate",
+                "majorVersion": 10
+            },
             "gitlab_compliance_requirement": {
                 "current": "gitlab:index/complianceRequirement:ComplianceRequirement",
                 "majorVersion": 10,
@@ -252,6 +256,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "gitlab_group_integration_datadog": {
+                "current": "gitlab:index/groupIntegrationDatadog:GroupIntegrationDatadog",
+                "majorVersion": 10
             },
             "gitlab_group_integration_harbor": {
                 "current": "gitlab:index/groupIntegrationHarbor:GroupIntegrationHarbor",
@@ -445,6 +453,28 @@
                     },
                     "user_ids": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "gitlab_project_approval_rules": {
+                "current": "gitlab:index/projectApprovalRules:ProjectApprovalRules",
+                "majorVersion": 10,
+                "fields": {
+                    "approval_rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "group_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "protected_branch_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "user_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1887,6 +1917,7 @@
             "gitlab_cluster_agent": {},
             "gitlab_cluster_agent_token": {},
             "gitlab_compliance_framework": {},
+            "gitlab_compliance_framework_from_template": {},
             "gitlab_compliance_requirement": {},
             "gitlab_deploy_key_enable": {},
             "gitlab_global_level_notifications": {},
@@ -1898,6 +1929,7 @@
             "gitlab_group_deploy_token": {},
             "gitlab_group_epic_board": {},
             "gitlab_group_hook": {},
+            "gitlab_group_integration_datadog": {},
             "gitlab_group_integration_harbor": {},
             "gitlab_group_integration_jira": {},
             "gitlab_group_integration_mattermost": {},
@@ -1921,6 +1953,8 @@
             "gitlab_pipeline_schedule": {},
             "gitlab_pipeline_trigger": {},
             "gitlab_project_access_token": {},
+            "gitlab_project_approval_rule": {},
+            "gitlab_project_approval_rules": {},
             "gitlab_project_badge": {},
             "gitlab_project_cicd_catalog": {},
             "gitlab_project_compliance_frameworks": {},
@@ -2004,6 +2038,7 @@
             "gitlab:index/clusterAgent:ClusterAgent": 1,
             "gitlab:index/clusterAgentToken:ClusterAgentToken": 1,
             "gitlab:index/complianceFramework:ComplianceFramework": 1,
+            "gitlab:index/complianceFrameworkFromTemplate:ComplianceFrameworkFromTemplate": 1,
             "gitlab:index/complianceRequirement:ComplianceRequirement": 1,
             "gitlab:index/deployKey:DeployKey": 0,
             "gitlab:index/deployKeyEnable:DeployKeyEnable": 1,
@@ -2019,6 +2054,7 @@
             "gitlab:index/groupDeployToken:GroupDeployToken": 1,
             "gitlab:index/groupEpicBoard:GroupEpicBoard": 1,
             "gitlab:index/groupHook:GroupHook": 1,
+            "gitlab:index/groupIntegrationDatadog:GroupIntegrationDatadog": 1,
             "gitlab:index/groupIntegrationHarbor:GroupIntegrationHarbor": 1,
             "gitlab:index/groupIntegrationJira:GroupIntegrationJira": 1,
             "gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost": 1,
@@ -2049,7 +2085,8 @@
             "gitlab:index/pipelineTrigger:PipelineTrigger": 1,
             "gitlab:index/project:Project": 0,
             "gitlab:index/projectAccessToken:ProjectAccessToken": 1,
-            "gitlab:index/projectApprovalRule:ProjectApprovalRule": 0,
+            "gitlab:index/projectApprovalRule:ProjectApprovalRule": 1,
+            "gitlab:index/projectApprovalRules:ProjectApprovalRules": 1,
             "gitlab:index/projectBadge:ProjectBadge": 1,
             "gitlab:index/projectCicdCatalog:ProjectCicdCatalog": 1,
             "gitlab:index/projectCluster:ProjectCluster": 0,
