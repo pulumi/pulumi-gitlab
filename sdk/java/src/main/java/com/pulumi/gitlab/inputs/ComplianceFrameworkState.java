@@ -107,16 +107,24 @@ public final class ComplianceFrameworkState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name` **Note**: Ultimate license required.
+     * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
+     * 
+     * @deprecated
+     * Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
      * 
      */
+    @Deprecated /* Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. */
     @Import(name="pipelineConfigurationFullPath")
     private @Nullable Output<String> pipelineConfigurationFullPath;
 
     /**
-     * @return Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name` **Note**: Ultimate license required.
+     * @return Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
+     * 
+     * @deprecated
+     * Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
      * 
      */
+    @Deprecated /* Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. */
     public Optional<Output<String>> pipelineConfigurationFullPath() {
         return Optional.ofNullable(this.pipelineConfigurationFullPath);
     }
@@ -278,22 +286,30 @@ public final class ComplianceFrameworkState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pipelineConfigurationFullPath Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name` **Note**: Ultimate license required.
+         * @param pipelineConfigurationFullPath Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
+         * 
          */
+        @Deprecated /* Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. */
         public Builder pipelineConfigurationFullPath(@Nullable Output<String> pipelineConfigurationFullPath) {
             $.pipelineConfigurationFullPath = pipelineConfigurationFullPath;
             return this;
         }
 
         /**
-         * @param pipelineConfigurationFullPath Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name` **Note**: Ultimate license required.
+         * @param pipelineConfigurationFullPath Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
+         * 
          */
+        @Deprecated /* Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. */
         public Builder pipelineConfigurationFullPath(String pipelineConfigurationFullPath) {
             return pipelineConfigurationFullPath(Output.of(pipelineConfigurationFullPath));
         }

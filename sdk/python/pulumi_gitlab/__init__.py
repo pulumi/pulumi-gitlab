@@ -15,6 +15,7 @@ from .branch_protection import *
 from .cluster_agent import *
 from .cluster_agent_token import *
 from .compliance_framework import *
+from .compliance_framework_from_template import *
 from .compliance_requirement import *
 from .deploy_key import *
 from .deploy_key_enable import *
@@ -110,6 +111,7 @@ from .group_dependency_proxy_image_ttl_policy import *
 from .group_deploy_token import *
 from .group_epic_board import *
 from .group_hook import *
+from .group_integration_datadog import *
 from .group_integration_harbor import *
 from .group_integration_jira import *
 from .group_integration_mattermost import *
@@ -141,6 +143,7 @@ from .pipeline_trigger import *
 from .project import *
 from .project_access_token import *
 from .project_approval_rule import *
+from .project_approval_rules import *
 from .project_badge import *
 from .project_cicd_catalog import *
 from .project_cluster import *
@@ -312,6 +315,14 @@ _utilities.register(
  },
  {
   "pkg": "gitlab",
+  "mod": "index/complianceFrameworkFromTemplate",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/complianceFrameworkFromTemplate:ComplianceFrameworkFromTemplate": "ComplianceFrameworkFromTemplate"
+  }
+ },
+ {
+  "pkg": "gitlab",
   "mod": "index/complianceRequirement",
   "fqn": "pulumi_gitlab",
   "classes": {
@@ -428,6 +439,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/groupHook:GroupHook": "GroupHook"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupIntegrationDatadog",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupIntegrationDatadog:GroupIntegrationDatadog": "GroupIntegrationDatadog"
   }
  },
  {
@@ -676,6 +695,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectApprovalRule:ProjectApprovalRule": "ProjectApprovalRule"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectApprovalRules",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectApprovalRules:ProjectApprovalRules": "ProjectApprovalRules"
   }
  },
  {

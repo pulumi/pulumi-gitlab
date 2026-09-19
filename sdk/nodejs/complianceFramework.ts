@@ -96,7 +96,9 @@ export class ComplianceFramework extends pulumi.CustomResource {
      */
     declare public readonly namespacePath: pulumi.Output<string>;
     /**
-     * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+     * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
+     *
+     * @deprecated Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
      */
     declare public readonly pipelineConfigurationFullPath: pulumi.Output<string | undefined>;
 
@@ -173,7 +175,9 @@ export interface ComplianceFrameworkState {
      */
     namespacePath?: pulumi.Input<string | undefined>;
     /**
-     * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+     * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
+     *
+     * @deprecated Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
      */
     pipelineConfigurationFullPath?: pulumi.Input<string | undefined>;
 }
@@ -203,7 +207,9 @@ export interface ComplianceFrameworkArgs {
      */
     namespacePath: pulumi.Input<string>;
     /**
-     * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+     * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
+     *
+     * @deprecated Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
      */
     pipelineConfigurationFullPath?: pulumi.Input<string | undefined>;
 }

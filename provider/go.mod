@@ -1,12 +1,12 @@
 module github.com/pulumi/pulumi-gitlab/provider/v10
 
-go 1.26.5
+go 1.27.0
 
 require (
 	github.com/pulumi/providertest v0.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.139.0
 	github.com/pulumi/pulumi/sdk/v3 v3.259.0
-	github.com/stretchr/testify v1.12.0
+	github.com/stretchr/testify v1.12.1
 	gitlab.com/gitlab-org/terraform-provider-gitlab v0.0.0
 )
 
@@ -20,10 +20,11 @@ replace (
 )
 
 require (
-	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.11-20260709200747-435963d16310.1 // indirect
-	buf.build/go/protovalidate v1.2.0 // indirect
+	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.12-20260825204119-511051f7f437.2 // indirect
+	buf.build/go/protovalidate v1.4.0 // indirect
 	buf.build/go/protoyaml v0.7.0 // indirect
-	cel.dev/expr v0.25.2 // indirect
+	cel.dev/cel-go v0.32.0 // indirect
+	cel.dev/expr v0.25.3 // indirect
 	cloud.google.com/go v0.123.0 // indirect
 	cloud.google.com/go/auth v0.22.0 // indirect
 	cloud.google.com/go/auth/oauth2adapt v0.2.8 // indirect
@@ -45,6 +46,7 @@ require (
 	github.com/antlr4-go/antlr/v4 v4.13.1 // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
+	github.com/apparentlymart/go-textseg/v17 v17.0.1 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/aws/aws-sdk-go-v2 v1.43.0 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.7.14 // indirect
@@ -105,7 +107,6 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/glog v1.2.5 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
-	github.com/google/cel-go v0.30.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/go-querystring v1.2.0 // indirect
 	github.com/google/go-tpm v0.9.8 // indirect
@@ -139,7 +140,7 @@ require (
 	github.com/hashicorp/terraform-plugin-log v0.11.0 // indirect
 	github.com/hashicorp/terraform-plugin-mux v0.23.1 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.40.1 // indirect
-	github.com/hashicorp/terraform-registry-address v0.4.0 // indirect
+	github.com/hashicorp/terraform-registry-address v0.5.0 // indirect
 	github.com/hashicorp/terraform-svchost v0.2.1 // indirect
 	github.com/hashicorp/yamux v0.1.2 // indirect
 	github.com/huandu/xstrings v1.3.3 // indirect
@@ -223,8 +224,8 @@ require (
 	github.com/xo/terminfo v1.0.0 // indirect
 	github.com/yuin/goldmark v1.7.17 // indirect
 	github.com/zalando/go-keyring v0.2.8 // indirect
-	github.com/zclconf/go-cty v1.18.1 // indirect
-	gitlab.com/gitlab-org/api/client-go/v2 v2.57.0 // indirect
+	github.com/zclconf/go-cty v1.19.0 // indirect
+	gitlab.com/gitlab-org/api/client-go/v2 v2.64.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/collector/featuregate v1.65.0 // indirect
 	go.opentelemetry.io/collector/pdata v1.65.0 // indirect
@@ -248,7 +249,7 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/crypto v0.55.0 // indirect
-	golang.org/x/exp v0.0.0-20260611194520-c48552f49976 // indirect
+	golang.org/x/exp v0.0.0-20260824195058-e88cd73687aa // indirect
 	golang.org/x/mod v0.40.0 // indirect
 	golang.org/x/net v0.58.0 // indirect
 	golang.org/x/oauth2 v0.36.0 // indirect
@@ -261,9 +262,9 @@ require (
 	google.golang.org/api v0.290.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/genproto v0.0.0-20260724162435-b2f20204f0df // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20260819154853-08b0e4226688 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260819154853-08b0e4226688 // indirect
-	google.golang.org/grpc v1.83.1 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20260904194346-d0f1323225a4 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260904194346-d0f1323225a4 // indirect
+	google.golang.org/grpc v1.83.2 // indirect
 	google.golang.org/protobuf v1.36.12 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect

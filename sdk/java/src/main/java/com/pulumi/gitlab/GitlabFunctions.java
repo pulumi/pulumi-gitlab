@@ -6386,7 +6386,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invokeAsync("gitlab:index/getProjectAccessTokens:getProjectAccessTokens", TypeShape.of(GetProjectAccessTokensResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.getProjectApprovalRules` data source retrieves all approval rules of a given project.
+     * The `gitlab.ProjectApprovalRules` data source retrieves all approval rules of a given project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
      * 
@@ -6432,7 +6432,7 @@ public final class GitlabFunctions {
         return getProjectApprovalRules(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab.getProjectApprovalRules` data source retrieves all approval rules of a given project.
+     * The `gitlab.ProjectApprovalRules` data source retrieves all approval rules of a given project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
      * 
@@ -6478,7 +6478,7 @@ public final class GitlabFunctions {
         return getProjectApprovalRulesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `gitlab.getProjectApprovalRules` data source retrieves all approval rules of a given project.
+     * The `gitlab.ProjectApprovalRules` data source retrieves all approval rules of a given project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
      * 
@@ -6524,7 +6524,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getProjectApprovalRules:getProjectApprovalRules", TypeShape.of(GetProjectApprovalRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.getProjectApprovalRules` data source retrieves all approval rules of a given project.
+     * The `gitlab.ProjectApprovalRules` data source retrieves all approval rules of a given project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
      * 
@@ -6570,7 +6570,7 @@ public final class GitlabFunctions {
         return Deployment.getInstance().invoke("gitlab:index/getProjectApprovalRules:getProjectApprovalRules", TypeShape.of(GetProjectApprovalRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `gitlab.getProjectApprovalRules` data source retrieves all approval rules of a given project.
+     * The `gitlab.ProjectApprovalRules` data source retrieves all approval rules of a given project.
      * 
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
      * 

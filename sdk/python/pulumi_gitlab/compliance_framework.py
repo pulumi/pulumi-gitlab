@@ -33,7 +33,7 @@ class ComplianceFrameworkArgs:
         :param pulumi.Input[_builtins.str] namespace_path: Full path of the namespace to add the compliance framework to.
         :param pulumi.Input[_builtins.bool] default: Set this compliance framework as the default framework for the group. Default: `false`
         :param pulumi.Input[_builtins.str] name: Name for the compliance framework.
-        :param pulumi.Input[_builtins.str] pipeline_configuration_full_path: Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+        :param pulumi.Input[_builtins.str] pipeline_configuration_full_path: Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
         """
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "description", description)
@@ -42,6 +42,9 @@ class ComplianceFrameworkArgs:
             pulumi.set(__self__, "default", default)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if pipeline_configuration_full_path is not None:
+            warnings.warn("""Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.""", DeprecationWarning)
+            pulumi.log.warn("""pipeline_configuration_full_path is deprecated: Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.""")
         if pipeline_configuration_full_path is not None:
             pulumi.set(__self__, "pipeline_configuration_full_path", pipeline_configuration_full_path)
 
@@ -107,9 +110,10 @@ class ComplianceFrameworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="pipelineConfigurationFullPath")
+    @_utilities.deprecated("""Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.""")
     def pipeline_configuration_full_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+        Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
         """
         return pulumi.get(self, "pipeline_configuration_full_path")
 
@@ -137,7 +141,7 @@ class _ComplianceFrameworkState:
         :param pulumi.Input[_builtins.str] framework_id: Globally unique ID of the compliance framework.
         :param pulumi.Input[_builtins.str] name: Name for the compliance framework.
         :param pulumi.Input[_builtins.str] namespace_path: Full path of the namespace to add the compliance framework to.
-        :param pulumi.Input[_builtins.str] pipeline_configuration_full_path: Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+        :param pulumi.Input[_builtins.str] pipeline_configuration_full_path: Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
         """
         if color is not None:
             pulumi.set(__self__, "color", color)
@@ -151,6 +155,9 @@ class _ComplianceFrameworkState:
             pulumi.set(__self__, "name", name)
         if namespace_path is not None:
             pulumi.set(__self__, "namespace_path", namespace_path)
+        if pipeline_configuration_full_path is not None:
+            warnings.warn("""Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.""", DeprecationWarning)
+            pulumi.log.warn("""pipeline_configuration_full_path is deprecated: Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.""")
         if pipeline_configuration_full_path is not None:
             pulumi.set(__self__, "pipeline_configuration_full_path", pipeline_configuration_full_path)
 
@@ -228,9 +235,10 @@ class _ComplianceFrameworkState:
 
     @_builtins.property
     @pulumi.getter(name="pipelineConfigurationFullPath")
+    @_utilities.deprecated("""Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.""")
     def pipeline_configuration_full_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+        Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
         """
         return pulumi.get(self, "pipeline_configuration_full_path")
 
@@ -298,7 +306,7 @@ class ComplianceFramework(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description for the compliance framework.
         :param pulumi.Input[_builtins.str] name: Name for the compliance framework.
         :param pulumi.Input[_builtins.str] namespace_path: Full path of the namespace to add the compliance framework to.
-        :param pulumi.Input[_builtins.str] pipeline_configuration_full_path: Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+        :param pulumi.Input[_builtins.str] pipeline_configuration_full_path: Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
         """
         ...
     @overload
@@ -418,7 +426,7 @@ class ComplianceFramework(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] framework_id: Globally unique ID of the compliance framework.
         :param pulumi.Input[_builtins.str] name: Name for the compliance framework.
         :param pulumi.Input[_builtins.str] namespace_path: Full path of the namespace to add the compliance framework to.
-        :param pulumi.Input[_builtins.str] pipeline_configuration_full_path: Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+        :param pulumi.Input[_builtins.str] pipeline_configuration_full_path: Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -483,9 +491,10 @@ class ComplianceFramework(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="pipelineConfigurationFullPath")
+    @_utilities.deprecated("""Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.""")
     def pipeline_configuration_full_path(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+        Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
         """
         return pulumi.get(self, "pipeline_configuration_full_path")
 

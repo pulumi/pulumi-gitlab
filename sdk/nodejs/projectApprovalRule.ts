@@ -10,8 +10,8 @@ import * as utilities from "./utilities";
  * > This resource requires a GitLab Enterprise instance.
  *
  * > A project is limited to one "anyApprover" rule at a time, any attempt to create a second rule of type "anyApprover" will fail. As a result, if
- *    an "anyApprover" rule is already present on a project at creation time, and that rule requires 0 approvers, the rule will be automatically imported
- *    to prevent a common error with this resource.
+ *   an "anyApprover" rule is already present on a project at creation time, and that rule requires 0 approvers, the rule will be automatically imported
+ *   to prevent a common error with this resource.
  *
  * > Since a project is limited to one "anyApprover" rule, attempting to add two "anyApprover" rules to the same project in terraform will result in
  *    terraform identifying changes with every "plan" operation, and may result in an error during the "apply" operation.
@@ -135,7 +135,7 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
     /**
      * Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
      */
-    declare public readonly appliesToAllProtectedBranches: pulumi.Output<boolean | undefined>;
+    declare public readonly appliesToAllProtectedBranches: pulumi.Output<boolean>;
     /**
      * The number of approvals required for this rule.
      */
@@ -143,11 +143,11 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
     /**
      * When this flag is set, the default `anyApprover` rule will not be imported if present.
      */
-    declare public readonly disableImportingDefaultAnyApproverRuleOnCreate: pulumi.Output<boolean | undefined>;
+    declare public readonly disableImportingDefaultAnyApproverRuleOnCreate: pulumi.Output<boolean>;
     /**
      * A list of group IDs whose members can approve of the merge request.
      */
-    declare public readonly groupIds: pulumi.Output<number[] | undefined>;
+    declare public readonly groupIds: pulumi.Output<number[]>;
     /**
      * The name of the approval rule.
      */
@@ -159,19 +159,19 @@ export class ProjectApprovalRule extends pulumi.CustomResource {
     /**
      * A list of protected branch IDs (not branch names) for which the rule applies.
      */
-    declare public readonly protectedBranchIds: pulumi.Output<number[] | undefined>;
+    declare public readonly protectedBranchIds: pulumi.Output<number[]>;
     /**
      * Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
      */
     declare public readonly reportType: pulumi.Output<string>;
     /**
-     * String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
+     * The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
      */
     declare public readonly ruleType: pulumi.Output<string>;
     /**
      * A list of specific User IDs to add to the list of approvers.
      */
-    declare public readonly userIds: pulumi.Output<number[] | undefined>;
+    declare public readonly userIds: pulumi.Output<number[]>;
 
     /**
      * Create a ProjectApprovalRule resource with the given unique name, arguments, and options.
@@ -257,7 +257,7 @@ export interface ProjectApprovalRuleState {
      */
     reportType?: pulumi.Input<string | undefined>;
     /**
-     * String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
+     * The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
      */
     ruleType?: pulumi.Input<string | undefined>;
     /**
@@ -303,7 +303,7 @@ export interface ProjectApprovalRuleArgs {
      */
     reportType?: pulumi.Input<string | undefined>;
     /**
-     * String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
+     * The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
      */
     ruleType?: pulumi.Input<string | undefined>;
     /**

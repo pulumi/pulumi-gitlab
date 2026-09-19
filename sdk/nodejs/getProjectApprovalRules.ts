@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The `gitlab.getProjectApprovalRules` data source retrieves all approval rules of a given project.
+ * The `gitlab.ProjectApprovalRules` data source retrieves all approval rules of a given project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
  *
@@ -65,7 +65,7 @@ export interface GetProjectApprovalRulesResult {
     readonly project: string;
 }
 /**
- * The `gitlab.getProjectApprovalRules` data source retrieves all approval rules of a given project.
+ * The `gitlab.ProjectApprovalRules` data source retrieves all approval rules of a given project.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
  *

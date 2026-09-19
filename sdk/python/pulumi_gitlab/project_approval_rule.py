@@ -40,7 +40,7 @@ class ProjectApprovalRuleArgs:
         :param pulumi.Input[_builtins.str] name: The name of the approval rule.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] protected_branch_ids: A list of protected branch IDs (not branch names) for which the rule applies.
         :param pulumi.Input[_builtins.str] report_type: Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
-        :param pulumi.Input[_builtins.str] rule_type: String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+        :param pulumi.Input[_builtins.str] rule_type: The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] user_ids: A list of specific User IDs to add to the list of approvers.
         """
         pulumi.set(__self__, "approvals_required", approvals_required)
@@ -162,7 +162,7 @@ class ProjectApprovalRuleArgs:
     @pulumi.getter(name="ruleType")
     def rule_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+        The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         """
         return pulumi.get(self, "rule_type")
 
@@ -207,7 +207,7 @@ class _ProjectApprovalRuleState:
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the approval rules.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] protected_branch_ids: A list of protected branch IDs (not branch names) for which the rule applies.
         :param pulumi.Input[_builtins.str] report_type: Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
-        :param pulumi.Input[_builtins.str] rule_type: String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+        :param pulumi.Input[_builtins.str] rule_type: The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] user_ids: A list of specific User IDs to add to the list of approvers.
         """
         if applies_to_all_protected_branches is not None:
@@ -331,7 +331,7 @@ class _ProjectApprovalRuleState:
     @pulumi.getter(name="ruleType")
     def rule_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+        The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         """
         return pulumi.get(self, "rule_type")
 
@@ -375,8 +375,8 @@ class ProjectApprovalRule(pulumi.CustomResource):
         > This resource requires a GitLab Enterprise instance.
 
         > A project is limited to one "any_approver" rule at a time, any attempt to create a second rule of type "any_approver" will fail. As a result, if
-           an "any_approver" rule is already present on a project at creation time, and that rule requires 0 approvers, the rule will be automatically imported
-           to prevent a common error with this resource.
+          an "any_approver" rule is already present on a project at creation time, and that rule requires 0 approvers, the rule will be automatically imported
+          to prevent a common error with this resource.
 
         > Since a project is limited to one "any_approver" rule, attempting to add two "any_approver" rules to the same project in terraform will result in
            terraform identifying changes with every "plan" operation, and may result in an error during the "apply" operation.
@@ -470,7 +470,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the approval rules.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] protected_branch_ids: A list of protected branch IDs (not branch names) for which the rule applies.
         :param pulumi.Input[_builtins.str] report_type: Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
-        :param pulumi.Input[_builtins.str] rule_type: String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+        :param pulumi.Input[_builtins.str] rule_type: The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] user_ids: A list of specific User IDs to add to the list of approvers.
         """
         ...
@@ -485,8 +485,8 @@ class ProjectApprovalRule(pulumi.CustomResource):
         > This resource requires a GitLab Enterprise instance.
 
         > A project is limited to one "any_approver" rule at a time, any attempt to create a second rule of type "any_approver" will fail. As a result, if
-           an "any_approver" rule is already present on a project at creation time, and that rule requires 0 approvers, the rule will be automatically imported
-           to prevent a common error with this resource.
+          an "any_approver" rule is already present on a project at creation time, and that rule requires 0 approvers, the rule will be automatically imported
+          to prevent a common error with this resource.
 
         > Since a project is limited to one "any_approver" rule, attempting to add two "any_approver" rules to the same project in terraform will result in
            terraform identifying changes with every "plan" operation, and may result in an error during the "apply" operation.
@@ -653,7 +653,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the approval rules.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] protected_branch_ids: A list of protected branch IDs (not branch names) for which the rule applies.
         :param pulumi.Input[_builtins.str] report_type: Report type is required when the rule_type is `report_approver`. Valid values are `code_coverage`.
-        :param pulumi.Input[_builtins.str] rule_type: String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+        :param pulumi.Input[_builtins.str] rule_type: The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] user_ids: A list of specific User IDs to add to the list of approvers.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -674,7 +674,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="appliesToAllProtectedBranches")
-    def applies_to_all_protected_branches(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def applies_to_all_protected_branches(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether the rule is applied to all protected branches. If set to 'true', the value of `protected_branch_ids` is ignored. Default is 'false'.
         """
@@ -690,7 +690,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="disableImportingDefaultAnyApproverRuleOnCreate")
-    def disable_importing_default_any_approver_rule_on_create(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def disable_importing_default_any_approver_rule_on_create(self) -> pulumi.Output[_builtins.bool]:
         """
         When this flag is set, the default `any_approver` rule will not be imported if present.
         """
@@ -698,7 +698,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="groupIds")
-    def group_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.int]]]:
+    def group_ids(self) -> pulumi.Output[Sequence[_builtins.int]]:
         """
         A list of group IDs whose members can approve of the merge request.
         """
@@ -722,7 +722,7 @@ class ProjectApprovalRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="protectedBranchIds")
-    def protected_branch_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.int]]]:
+    def protected_branch_ids(self) -> pulumi.Output[Sequence[_builtins.int]]:
         """
         A list of protected branch IDs (not branch names) for which the rule applies.
         """
@@ -740,13 +740,13 @@ class ProjectApprovalRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleType")
     def rule_type(self) -> pulumi.Output[_builtins.str]:
         """
-        String, defaults to 'regular'. The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
+        The type of rule. `any_approver` is a pre-configured default rule with `approvals_required` at `0`. Valid values are `regular`, `any_approver`, `report_approver`.
         """
         return pulumi.get(self, "rule_type")
 
     @_builtins.property
     @pulumi.getter(name="userIds")
-    def user_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.int]]]:
+    def user_ids(self) -> pulumi.Output[Sequence[_builtins.int]]:
         """
         A list of specific User IDs to add to the list of approvers.
         """

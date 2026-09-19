@@ -79,7 +79,9 @@ type ComplianceFramework struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Full path of the namespace to add the compliance framework to.
 	NamespacePath pulumi.StringOutput `pulumi:"namespacePath"`
-	// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+	// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
+	//
+	// Deprecated: Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
 	PipelineConfigurationFullPath pulumi.StringPtrOutput `pulumi:"pipelineConfigurationFullPath"`
 }
 
@@ -134,7 +136,9 @@ type complianceFrameworkState struct {
 	Name *string `pulumi:"name"`
 	// Full path of the namespace to add the compliance framework to.
 	NamespacePath *string `pulumi:"namespacePath"`
-	// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+	// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
+	//
+	// Deprecated: Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
 	PipelineConfigurationFullPath *string `pulumi:"pipelineConfigurationFullPath"`
 }
 
@@ -151,7 +155,9 @@ type ComplianceFrameworkState struct {
 	Name pulumi.StringPtrInput
 	// Full path of the namespace to add the compliance framework to.
 	NamespacePath pulumi.StringPtrInput
-	// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+	// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
+	//
+	// Deprecated: Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
 	PipelineConfigurationFullPath pulumi.StringPtrInput
 }
 
@@ -170,7 +176,9 @@ type complianceFrameworkArgs struct {
 	Name *string `pulumi:"name"`
 	// Full path of the namespace to add the compliance framework to.
 	NamespacePath string `pulumi:"namespacePath"`
-	// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+	// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
+	//
+	// Deprecated: Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
 	PipelineConfigurationFullPath *string `pulumi:"pipelineConfigurationFullPath"`
 }
 
@@ -186,7 +194,9 @@ type ComplianceFrameworkArgs struct {
 	Name pulumi.StringPtrInput
 	// Full path of the namespace to add the compliance framework to.
 	NamespacePath pulumi.StringInput
-	// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+	// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
+	//
+	// Deprecated: Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
 	PipelineConfigurationFullPath pulumi.StringPtrInput
 }
 
@@ -307,7 +317,9 @@ func (o ComplianceFrameworkOutput) NamespacePath() pulumi.StringOutput {
 	return o.ApplyT(func(v *ComplianceFramework) pulumi.StringOutput { return v.NamespacePath }).(pulumi.StringOutput)
 }
 
-// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
+//
+// Deprecated: Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
 func (o ComplianceFrameworkOutput) PipelineConfigurationFullPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ComplianceFramework) pulumi.StringPtrOutput { return v.PipelineConfigurationFullPath }).(pulumi.StringPtrOutput)
 }

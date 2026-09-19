@@ -4831,6 +4831,45 @@ export interface ProjectAccessTokenRotationConfiguration {
     rotateBeforeDays: number;
 }
 
+export interface ProjectApprovalRulesApprovalRule {
+    /**
+     * Whether the rule is applied to all protected branches. Conflicts with `protectedBranchIds`. Defaults to `false`.
+     */
+    appliesToAllProtectedBranches: boolean;
+    /**
+     * The number of approvals required for this rule.
+     */
+    approvalsRequired: number;
+    /**
+     * A set of group IDs whose members can approve of the merge request.
+     */
+    groupIds?: number[];
+    /**
+     * The ID of the approval rule.
+     */
+    id: number;
+    /**
+     * The name of the approval rule. Names are used to match the configuration to existing rules, so they must be unique among all declared rules other than the `anyApprover` rule.
+     */
+    name: string;
+    /**
+     * A set of protected branch IDs (not branch names) for which the rule applies. Conflicts with `appliesToAllProtectedBranches` being set to `true`.
+     */
+    protectedBranchIds?: number[];
+    /**
+     * The report type used when the `ruleType` is `reportApprover`, in which case it is required. The only value accepted by the GitLab API is `codeCoverage`, and GitLab reserves the name `Coverage-Check` for such rules: a `codeCoverage` rule must use that name, and no other rule may.
+     */
+    reportType: string;
+    /**
+     * The type of the rule. Valid values are `regular`, `anyApprover`, `reportApprover`. Defaults to `regular`. The value is always sent to the API: were it omitted, GitLab would silently create an `anyApprover` rule instead whenever the rule declares no `userIds` and no `groupIds`.
+     */
+    ruleType: string;
+    /**
+     * A set of specific User IDs to add to the list of approvers.
+     */
+    userIds?: number[];
+}
+
 export interface ProjectContainerExpirationPolicy {
     /**
      * The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.

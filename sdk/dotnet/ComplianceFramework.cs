@@ -95,7 +95,7 @@ namespace Pulumi.GitLab
         public Output<string> NamespacePath { get; private set; } = null!;
 
         /// <summary>
-        /// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+        /// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
         /// </summary>
         [Output("pipelineConfigurationFullPath")]
         public Output<string?> PipelineConfigurationFullPath { get; private set; } = null!;
@@ -177,7 +177,7 @@ namespace Pulumi.GitLab
         public Input<string> NamespacePath { get; set; } = null!;
 
         /// <summary>
-        /// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+        /// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
         /// </summary>
         [Input("pipelineConfigurationFullPath")]
         public Input<string>? PipelineConfigurationFullPath { get; set; }
@@ -227,7 +227,7 @@ namespace Pulumi.GitLab
         public Input<string>? NamespacePath { get; set; }
 
         /// <summary>
-        /// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name` **Note**: Ultimate license required.
+        /// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
         /// </summary>
         [Input("pipelineConfigurationFullPath")]
         public Input<string>? PipelineConfigurationFullPath { get; set; }

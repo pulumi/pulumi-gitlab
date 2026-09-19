@@ -1136,6 +1136,45 @@ export interface ProjectAccessTokenRotationConfiguration {
     rotateBeforeDays: pulumi.Input<number>;
 }
 
+export interface ProjectApprovalRulesApprovalRule {
+    /**
+     * Whether the rule is applied to all protected branches. Conflicts with `protectedBranchIds`. Defaults to `false`.
+     */
+    appliesToAllProtectedBranches?: pulumi.Input<boolean | undefined>;
+    /**
+     * The number of approvals required for this rule.
+     */
+    approvalsRequired: pulumi.Input<number>;
+    /**
+     * A set of group IDs whose members can approve of the merge request.
+     */
+    groupIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * The ID of the approval rule.
+     */
+    id?: pulumi.Input<number | undefined>;
+    /**
+     * The name of the approval rule. Names are used to match the configuration to existing rules, so they must be unique among all declared rules other than the `anyApprover` rule.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A set of protected branch IDs (not branch names) for which the rule applies. Conflicts with `appliesToAllProtectedBranches` being set to `true`.
+     */
+    protectedBranchIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * The report type used when the `ruleType` is `reportApprover`, in which case it is required. The only value accepted by the GitLab API is `codeCoverage`, and GitLab reserves the name `Coverage-Check` for such rules: a `codeCoverage` rule must use that name, and no other rule may.
+     */
+    reportType?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the rule. Valid values are `regular`, `anyApprover`, `reportApprover`. Defaults to `regular`. The value is always sent to the API: were it omitted, GitLab would silently create an `anyApprover` rule instead whenever the rule declares no `userIds` and no `groupIds`.
+     */
+    ruleType?: pulumi.Input<string | undefined>;
+    /**
+     * A set of specific User IDs to add to the list of approvers.
+     */
+    userIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+}
+
 export interface ProjectContainerExpirationPolicy {
     /**
      * The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.

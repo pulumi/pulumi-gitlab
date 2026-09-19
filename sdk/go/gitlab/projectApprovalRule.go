@@ -46,11 +46,11 @@ type ProjectApprovalRule struct {
 	pulumi.CustomResourceState
 
 	// Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
-	AppliesToAllProtectedBranches pulumi.BoolPtrOutput `pulumi:"appliesToAllProtectedBranches"`
+	AppliesToAllProtectedBranches pulumi.BoolOutput `pulumi:"appliesToAllProtectedBranches"`
 	// The number of approvals required for this rule.
 	ApprovalsRequired pulumi.IntOutput `pulumi:"approvalsRequired"`
 	// When this flag is set, the default `anyApprover` rule will not be imported if present.
-	DisableImportingDefaultAnyApproverRuleOnCreate pulumi.BoolPtrOutput `pulumi:"disableImportingDefaultAnyApproverRuleOnCreate"`
+	DisableImportingDefaultAnyApproverRuleOnCreate pulumi.BoolOutput `pulumi:"disableImportingDefaultAnyApproverRuleOnCreate"`
 	// A list of group IDs whose members can approve of the merge request.
 	GroupIds pulumi.IntArrayOutput `pulumi:"groupIds"`
 	// The name of the approval rule.
@@ -61,7 +61,7 @@ type ProjectApprovalRule struct {
 	ProtectedBranchIds pulumi.IntArrayOutput `pulumi:"protectedBranchIds"`
 	// Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
 	ReportType pulumi.StringOutput `pulumi:"reportType"`
-	// String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
+	// The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
 	RuleType pulumi.StringOutput `pulumi:"ruleType"`
 	// A list of specific User IDs to add to the list of approvers.
 	UserIds pulumi.IntArrayOutput `pulumi:"userIds"`
@@ -119,7 +119,7 @@ type projectApprovalRuleState struct {
 	ProtectedBranchIds []int `pulumi:"protectedBranchIds"`
 	// Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
 	ReportType *string `pulumi:"reportType"`
-	// String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
+	// The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
 	RuleType *string `pulumi:"ruleType"`
 	// A list of specific User IDs to add to the list of approvers.
 	UserIds []int `pulumi:"userIds"`
@@ -142,7 +142,7 @@ type ProjectApprovalRuleState struct {
 	ProtectedBranchIds pulumi.IntArrayInput
 	// Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
 	ReportType pulumi.StringPtrInput
-	// String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
+	// The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
 	RuleType pulumi.StringPtrInput
 	// A list of specific User IDs to add to the list of approvers.
 	UserIds pulumi.IntArrayInput
@@ -169,7 +169,7 @@ type projectApprovalRuleArgs struct {
 	ProtectedBranchIds []int `pulumi:"protectedBranchIds"`
 	// Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
 	ReportType *string `pulumi:"reportType"`
-	// String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
+	// The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
 	RuleType *string `pulumi:"ruleType"`
 	// A list of specific User IDs to add to the list of approvers.
 	UserIds []int `pulumi:"userIds"`
@@ -193,7 +193,7 @@ type ProjectApprovalRuleArgs struct {
 	ProtectedBranchIds pulumi.IntArrayInput
 	// Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
 	ReportType pulumi.StringPtrInput
-	// String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
+	// The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
 	RuleType pulumi.StringPtrInput
 	// A list of specific User IDs to add to the list of approvers.
 	UserIds pulumi.IntArrayInput
@@ -287,8 +287,8 @@ func (o ProjectApprovalRuleOutput) ToProjectApprovalRuleOutputWithContext(ctx co
 }
 
 // Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
-func (o ProjectApprovalRuleOutput) AppliesToAllProtectedBranches() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.BoolPtrOutput { return v.AppliesToAllProtectedBranches }).(pulumi.BoolPtrOutput)
+func (o ProjectApprovalRuleOutput) AppliesToAllProtectedBranches() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.BoolOutput { return v.AppliesToAllProtectedBranches }).(pulumi.BoolOutput)
 }
 
 // The number of approvals required for this rule.
@@ -297,10 +297,10 @@ func (o ProjectApprovalRuleOutput) ApprovalsRequired() pulumi.IntOutput {
 }
 
 // When this flag is set, the default `anyApprover` rule will not be imported if present.
-func (o ProjectApprovalRuleOutput) DisableImportingDefaultAnyApproverRuleOnCreate() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.BoolPtrOutput {
+func (o ProjectApprovalRuleOutput) DisableImportingDefaultAnyApproverRuleOnCreate() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.BoolOutput {
 		return v.DisableImportingDefaultAnyApproverRuleOnCreate
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.BoolOutput)
 }
 
 // A list of group IDs whose members can approve of the merge request.
@@ -328,7 +328,7 @@ func (o ProjectApprovalRuleOutput) ReportType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.StringOutput { return v.ReportType }).(pulumi.StringOutput)
 }
 
-// String, defaults to 'regular'. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
+// The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
 func (o ProjectApprovalRuleOutput) RuleType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectApprovalRule) pulumi.StringOutput { return v.RuleType }).(pulumi.StringOutput)
 }

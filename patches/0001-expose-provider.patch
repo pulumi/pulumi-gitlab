@@ -6,7 +6,7 @@ Subject: [PATCH] expose-provider
 
 diff --git a/shim/shim.go b/shim/shim.go
 new file mode 100644
-index 00000000..79644333
+index 000000000000..796443336743
 --- /dev/null
 +++ b/shim/shim.go
 @@ -0,0 +1,17 @@

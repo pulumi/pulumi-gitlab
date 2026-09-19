@@ -15,8 +15,8 @@ namespace Pulumi.GitLab
     /// &gt; This resource requires a GitLab Enterprise instance.
     /// 
     /// &gt; A project is limited to one "AnyApprover" rule at a time, any attempt to create a second rule of type "AnyApprover" will fail. As a result, if
-    ///    an "AnyApprover" rule is already present on a project at creation time, and that rule requires 0 approvers, the rule will be automatically imported
-    ///    to prevent a common error with this resource.
+    ///   an "AnyApprover" rule is already present on a project at creation time, and that rule requires 0 approvers, the rule will be automatically imported
+    ///   to prevent a common error with this resource.
     /// 
     /// &gt; Since a project is limited to one "AnyApprover" rule, attempting to add two "AnyApprover" rules to the same project in terraform will result in
     ///    terraform identifying changes with every "plan" operation, and may result in an error during the "apply" operation.
@@ -152,7 +152,7 @@ namespace Pulumi.GitLab
         /// Whether the rule is applied to all protected branches. If set to 'true', the value of `ProtectedBranchIds` is ignored. Default is 'false'.
         /// </summary>
         [Output("appliesToAllProtectedBranches")]
-        public Output<bool?> AppliesToAllProtectedBranches { get; private set; } = null!;
+        public Output<bool> AppliesToAllProtectedBranches { get; private set; } = null!;
 
         /// <summary>
         /// The number of approvals required for this rule.
@@ -164,7 +164,7 @@ namespace Pulumi.GitLab
         /// When this flag is set, the default `AnyApprover` rule will not be imported if present.
         /// </summary>
         [Output("disableImportingDefaultAnyApproverRuleOnCreate")]
-        public Output<bool?> DisableImportingDefaultAnyApproverRuleOnCreate { get; private set; } = null!;
+        public Output<bool> DisableImportingDefaultAnyApproverRuleOnCreate { get; private set; } = null!;
 
         /// <summary>
         /// A list of group IDs whose members can approve of the merge request.
@@ -197,7 +197,7 @@ namespace Pulumi.GitLab
         public Output<string> ReportType { get; private set; } = null!;
 
         /// <summary>
-        /// String, defaults to 'regular'. The type of rule. `AnyApprover` is a pre-configured default rule with `ApprovalsRequired` at `0`. Valid values are `Regular`, `AnyApprover`, `ReportApprover`.
+        /// The type of rule. `AnyApprover` is a pre-configured default rule with `ApprovalsRequired` at `0`. Valid values are `Regular`, `AnyApprover`, `ReportApprover`.
         /// </summary>
         [Output("ruleType")]
         public Output<string> RuleType { get; private set; } = null!;
@@ -315,7 +315,7 @@ namespace Pulumi.GitLab
         public Input<string>? ReportType { get; set; }
 
         /// <summary>
-        /// String, defaults to 'regular'. The type of rule. `AnyApprover` is a pre-configured default rule with `ApprovalsRequired` at `0`. Valid values are `Regular`, `AnyApprover`, `ReportApprover`.
+        /// The type of rule. `AnyApprover` is a pre-configured default rule with `ApprovalsRequired` at `0`. Valid values are `Regular`, `AnyApprover`, `ReportApprover`.
         /// </summary>
         [Input("ruleType")]
         public Input<string>? RuleType { get; set; }
@@ -401,7 +401,7 @@ namespace Pulumi.GitLab
         public Input<string>? ReportType { get; set; }
 
         /// <summary>
-        /// String, defaults to 'regular'. The type of rule. `AnyApprover` is a pre-configured default rule with `ApprovalsRequired` at `0`. Valid values are `Regular`, `AnyApprover`, `ReportApprover`.
+        /// The type of rule. `AnyApprover` is a pre-configured default rule with `ApprovalsRequired` at `0`. Valid values are `Regular`, `AnyApprover`, `ReportApprover`.
         /// </summary>
         [Input("ruleType")]
         public Input<string>? RuleType { get; set; }

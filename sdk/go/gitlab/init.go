@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClusterAgentToken{}
 	case "gitlab:index/complianceFramework:ComplianceFramework":
 		r = &ComplianceFramework{}
+	case "gitlab:index/complianceFrameworkFromTemplate:ComplianceFrameworkFromTemplate":
+		r = &ComplianceFrameworkFromTemplate{}
 	case "gitlab:index/complianceRequirement:ComplianceRequirement":
 		r = &ComplianceRequirement{}
 	case "gitlab:index/deployKey:DeployKey":
@@ -69,6 +71,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupEpicBoard{}
 	case "gitlab:index/groupHook:GroupHook":
 		r = &GroupHook{}
+	case "gitlab:index/groupIntegrationDatadog:GroupIntegrationDatadog":
+		r = &GroupIntegrationDatadog{}
 	case "gitlab:index/groupIntegrationHarbor:GroupIntegrationHarbor":
 		r = &GroupIntegrationHarbor{}
 	case "gitlab:index/groupIntegrationJira:GroupIntegrationJira":
@@ -131,6 +135,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectAccessToken{}
 	case "gitlab:index/projectApprovalRule:ProjectApprovalRule":
 		r = &ProjectApprovalRule{}
+	case "gitlab:index/projectApprovalRules:ProjectApprovalRules":
+		r = &ProjectApprovalRules{}
 	case "gitlab:index/projectBadge:ProjectBadge":
 		r = &ProjectBadge{}
 	case "gitlab:index/projectCicdCatalog:ProjectCicdCatalog":
@@ -375,6 +381,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gitlab",
+		"index/complianceFrameworkFromTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
 		"index/complianceRequirement",
 		&module{version},
 	)
@@ -446,6 +457,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/groupHook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupIntegrationDatadog",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -601,6 +617,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectApprovalRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectApprovalRules",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
