@@ -1,3 +1,0 @@
-name: gitlab
-description: A Pulumi resource provider for gitlab.
-language: nodejs
