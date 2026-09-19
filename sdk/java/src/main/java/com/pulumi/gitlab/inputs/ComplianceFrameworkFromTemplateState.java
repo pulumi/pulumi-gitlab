@@ -12,19 +12,19 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class ComplianceFrameworkState extends com.pulumi.resources.ResourceArgs {
+public final class ComplianceFrameworkFromTemplateState extends com.pulumi.resources.ResourceArgs {
 
-    public static final ComplianceFrameworkState Empty = new ComplianceFrameworkState();
+    public static final ComplianceFrameworkFromTemplateState Empty = new ComplianceFrameworkFromTemplateState();
 
     /**
-     * New color representation of the compliance framework in hex format. e.g. #FCA121.
+     * Override the color of the compliance framework in hex format. e.g. #FCA121.
      * 
      */
     @Import(name="color")
     private @Nullable Output<String> color;
 
     /**
-     * @return New color representation of the compliance framework in hex format. e.g. #FCA121.
+     * @return Override the color of the compliance framework in hex format. e.g. #FCA121.
      * 
      */
     public Optional<Output<String>> color() {
@@ -47,14 +47,14 @@ public final class ComplianceFrameworkState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Description for the compliance framework.
+     * Override the description of the compliance framework.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description for the compliance framework.
+     * @return Override the description of the compliance framework.
      * 
      */
     public Optional<Output<String>> description() {
@@ -77,14 +77,14 @@ public final class ComplianceFrameworkState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name for the compliance framework.
+     * Override the name of the compliance framework.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name for the compliance framework.
+     * @return Override the name of the compliance framework.
      * 
      */
     public Optional<Output<String>> name() {
@@ -107,60 +107,52 @@ public final class ComplianceFrameworkState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
-     * 
-     * @deprecated
-     * Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
+     * Unique identifier of the template to create the framework from.  In the format of: `gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/&lt;template id&gt;`
      * 
      */
-    @Deprecated /* Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. */
-    @Import(name="pipelineConfigurationFullPath")
-    private @Nullable Output<String> pipelineConfigurationFullPath;
+    @Import(name="templateId")
+    private @Nullable Output<String> templateId;
 
     /**
-     * @return Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
-     * 
-     * @deprecated
-     * Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
+     * @return Unique identifier of the template to create the framework from.  In the format of: `gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/&lt;template id&gt;`
      * 
      */
-    @Deprecated /* Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. */
-    public Optional<Output<String>> pipelineConfigurationFullPath() {
-        return Optional.ofNullable(this.pipelineConfigurationFullPath);
+    public Optional<Output<String>> templateId() {
+        return Optional.ofNullable(this.templateId);
     }
 
-    private ComplianceFrameworkState() {}
+    private ComplianceFrameworkFromTemplateState() {}
 
-    private ComplianceFrameworkState(ComplianceFrameworkState $) {
+    private ComplianceFrameworkFromTemplateState(ComplianceFrameworkFromTemplateState $) {
         this.color = $.color;
         this.default_ = $.default_;
         this.description = $.description;
         this.frameworkId = $.frameworkId;
         this.name = $.name;
         this.namespacePath = $.namespacePath;
-        this.pipelineConfigurationFullPath = $.pipelineConfigurationFullPath;
+        this.templateId = $.templateId;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ComplianceFrameworkState defaults) {
+    public static Builder builder(ComplianceFrameworkFromTemplateState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ComplianceFrameworkState $;
+        private ComplianceFrameworkFromTemplateState $;
 
         public Builder() {
-            $ = new ComplianceFrameworkState();
+            $ = new ComplianceFrameworkFromTemplateState();
         }
 
-        public Builder(ComplianceFrameworkState defaults) {
-            $ = new ComplianceFrameworkState(Objects.requireNonNull(defaults));
+        public Builder(ComplianceFrameworkFromTemplateState defaults) {
+            $ = new ComplianceFrameworkFromTemplateState(Objects.requireNonNull(defaults));
         }
 
         /**
-         * @param color New color representation of the compliance framework in hex format. e.g. #FCA121.
+         * @param color Override the color of the compliance framework in hex format. e.g. #FCA121.
          * 
          * @return builder
          * 
@@ -171,7 +163,7 @@ public final class ComplianceFrameworkState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param color New color representation of the compliance framework in hex format. e.g. #FCA121.
+         * @param color Override the color of the compliance framework in hex format. e.g. #FCA121.
          * 
          * @return builder
          * 
@@ -202,7 +194,7 @@ public final class ComplianceFrameworkState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description Description for the compliance framework.
+         * @param description Override the description of the compliance framework.
          * 
          * @return builder
          * 
@@ -213,7 +205,7 @@ public final class ComplianceFrameworkState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description Description for the compliance framework.
+         * @param description Override the description of the compliance framework.
          * 
          * @return builder
          * 
@@ -244,7 +236,7 @@ public final class ComplianceFrameworkState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name for the compliance framework.
+         * @param name Override the name of the compliance framework.
          * 
          * @return builder
          * 
@@ -255,7 +247,7 @@ public final class ComplianceFrameworkState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name for the compliance framework.
+         * @param name Override the name of the compliance framework.
          * 
          * @return builder
          * 
@@ -286,35 +278,27 @@ public final class ComplianceFrameworkState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pipelineConfigurationFullPath Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
+         * @param templateId Unique identifier of the template to create the framework from.  In the format of: `gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/&lt;template id&gt;`
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
-         * 
          */
-        @Deprecated /* Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. */
-        public Builder pipelineConfigurationFullPath(@Nullable Output<String> pipelineConfigurationFullPath) {
-            $.pipelineConfigurationFullPath = pipelineConfigurationFullPath;
+        public Builder templateId(@Nullable Output<String> templateId) {
+            $.templateId = templateId;
             return this;
         }
 
         /**
-         * @param pipelineConfigurationFullPath Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
+         * @param templateId Unique identifier of the template to create the framework from.  In the format of: `gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/&lt;template id&gt;`
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
-         * 
          */
-        @Deprecated /* Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. */
-        public Builder pipelineConfigurationFullPath(String pipelineConfigurationFullPath) {
-            return pipelineConfigurationFullPath(Output.of(pipelineConfigurationFullPath));
+        public Builder templateId(String templateId) {
+            return templateId(Output.of(templateId));
         }
 
-        public ComplianceFrameworkState build() {
+        public ComplianceFrameworkFromTemplateState build() {
             return $;
         }
     }

@@ -79,7 +79,7 @@ def get_project_approval_rules(approval_rules: Optional[Sequence[Union['GetProje
                                project: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectApprovalRulesResult:
     """
-    The `get_project_approval_rules` data source retrieves all approval rules of a given project.
+    The `ProjectApprovalRules` data source retrieves all approval rules of a given project.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
 
@@ -111,7 +111,7 @@ def get_project_approval_rules_output(approval_rules: pulumi.Input[Optional[Opti
                                       project: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectApprovalRulesResult]:
     """
-    The `get_project_approval_rules` data source retrieves all approval rules of a given project.
+    The `ProjectApprovalRules` data source retrieves all approval rules of a given project.
 
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
 

@@ -43,6 +43,7 @@ __all__ = [
     'PersonalAccessTokenRotationConfiguration',
     'PipelineScheduleInput',
     'ProjectAccessTokenRotationConfiguration',
+    'ProjectApprovalRulesApprovalRule',
     'ProjectContainerExpirationPolicy',
     'ProjectContainerTagProtectionTimeouts',
     'ProjectFeatureFlagStrategy',
@@ -2118,6 +2119,148 @@ class ProjectAccessTokenRotationConfiguration(dict):
         The duration (in days) before the expiration when the token should be rotated. As an example, if set to 7 days, the token will rotate 7 days before the expiration date, but only when `pulumi up` is run in that timeframe.
         """
         return pulumi.get(self, "rotate_before_days")
+
+
+@pulumi.output_type
+class ProjectApprovalRulesApprovalRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "approvalsRequired":
+            suggest = "approvals_required"
+        elif key == "appliesToAllProtectedBranches":
+            suggest = "applies_to_all_protected_branches"
+        elif key == "groupIds":
+            suggest = "group_ids"
+        elif key == "protectedBranchIds":
+            suggest = "protected_branch_ids"
+        elif key == "reportType":
+            suggest = "report_type"
+        elif key == "ruleType":
+            suggest = "rule_type"
+        elif key == "userIds":
+            suggest = "user_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectApprovalRulesApprovalRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectApprovalRulesApprovalRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectApprovalRulesApprovalRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 approvals_required: _builtins.int,
+                 name: _builtins.str,
+                 applies_to_all_protected_branches: Optional[_builtins.bool] = None,
+                 group_ids: Optional[Sequence[_builtins.int]] = None,
+                 id: Optional[_builtins.int] = None,
+                 protected_branch_ids: Optional[Sequence[_builtins.int]] = None,
+                 report_type: Optional[_builtins.str] = None,
+                 rule_type: Optional[_builtins.str] = None,
+                 user_ids: Optional[Sequence[_builtins.int]] = None):
+        """
+        :param _builtins.int approvals_required: The number of approvals required for this rule.
+        :param _builtins.str name: The name of the approval rule. Names are used to match the configuration to existing rules, so they must be unique among all declared rules other than the `any_approver` rule.
+        :param _builtins.bool applies_to_all_protected_branches: Whether the rule is applied to all protected branches. Conflicts with `protected_branch_ids`. Defaults to `false`.
+        :param Sequence[_builtins.int] group_ids: A set of group IDs whose members can approve of the merge request.
+        :param _builtins.int id: The ID of the approval rule.
+        :param Sequence[_builtins.int] protected_branch_ids: A set of protected branch IDs (not branch names) for which the rule applies. Conflicts with `applies_to_all_protected_branches` being set to `true`.
+        :param _builtins.str report_type: The report type used when the `rule_type` is `report_approver`, in which case it is required. The only value accepted by the GitLab API is `code_coverage`, and GitLab reserves the name `Coverage-Check` for such rules: a `code_coverage` rule must use that name, and no other rule may.
+        :param _builtins.str rule_type: The type of the rule. Valid values are `regular`, `any_approver`, `report_approver`. Defaults to `regular`. The value is always sent to the API: were it omitted, GitLab would silently create an `any_approver` rule instead whenever the rule declares no `user_ids` and no `group_ids`.
+        :param Sequence[_builtins.int] user_ids: A set of specific User IDs to add to the list of approvers.
+        """
+        pulumi.set(__self__, "approvals_required", approvals_required)
+        pulumi.set(__self__, "name", name)
+        if applies_to_all_protected_branches is not None:
+            pulumi.set(__self__, "applies_to_all_protected_branches", applies_to_all_protected_branches)
+        if group_ids is not None:
+            pulumi.set(__self__, "group_ids", group_ids)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if protected_branch_ids is not None:
+            pulumi.set(__self__, "protected_branch_ids", protected_branch_ids)
+        if report_type is not None:
+            pulumi.set(__self__, "report_type", report_type)
+        if rule_type is not None:
+            pulumi.set(__self__, "rule_type", rule_type)
+        if user_ids is not None:
+            pulumi.set(__self__, "user_ids", user_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="approvalsRequired")
+    def approvals_required(self) -> _builtins.int:
+        """
+        The number of approvals required for this rule.
+        """
+        return pulumi.get(self, "approvals_required")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the approval rule. Names are used to match the configuration to existing rules, so they must be unique among all declared rules other than the `any_approver` rule.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="appliesToAllProtectedBranches")
+    def applies_to_all_protected_branches(self) -> Optional[_builtins.bool]:
+        """
+        Whether the rule is applied to all protected branches. Conflicts with `protected_branch_ids`. Defaults to `false`.
+        """
+        return pulumi.get(self, "applies_to_all_protected_branches")
+
+    @_builtins.property
+    @pulumi.getter(name="groupIds")
+    def group_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        A set of group IDs whose members can approve of the merge request.
+        """
+        return pulumi.get(self, "group_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.int]:
+        """
+        The ID of the approval rule.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="protectedBranchIds")
+    def protected_branch_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        A set of protected branch IDs (not branch names) for which the rule applies. Conflicts with `applies_to_all_protected_branches` being set to `true`.
+        """
+        return pulumi.get(self, "protected_branch_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="reportType")
+    def report_type(self) -> Optional[_builtins.str]:
+        """
+        The report type used when the `rule_type` is `report_approver`, in which case it is required. The only value accepted by the GitLab API is `code_coverage`, and GitLab reserves the name `Coverage-Check` for such rules: a `code_coverage` rule must use that name, and no other rule may.
+        """
+        return pulumi.get(self, "report_type")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleType")
+    def rule_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the rule. Valid values are `regular`, `any_approver`, `report_approver`. Defaults to `regular`. The value is always sent to the API: were it omitted, GitLab would silently create an `any_approver` rule instead whenever the rule declares no `user_ids` and no `group_ids`.
+        """
+        return pulumi.get(self, "rule_type")
+
+    @_builtins.property
+    @pulumi.getter(name="userIds")
+    def user_ids(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        A set of specific User IDs to add to the list of approvers.
+        """
+        return pulumi.get(self, "user_ids")
 
 
 @pulumi.output_type

@@ -50,6 +50,11 @@ export type ComplianceFramework = import("./complianceFramework").ComplianceFram
 export const ComplianceFramework: typeof import("./complianceFramework").ComplianceFramework = null as any;
 utilities.lazyLoad(exports, ["ComplianceFramework"], () => require("./complianceFramework"));
 
+export { ComplianceFrameworkFromTemplateArgs, ComplianceFrameworkFromTemplateState } from "./complianceFrameworkFromTemplate";
+export type ComplianceFrameworkFromTemplate = import("./complianceFrameworkFromTemplate").ComplianceFrameworkFromTemplate;
+export const ComplianceFrameworkFromTemplate: typeof import("./complianceFrameworkFromTemplate").ComplianceFrameworkFromTemplate = null as any;
+utilities.lazyLoad(exports, ["ComplianceFrameworkFromTemplate"], () => require("./complianceFrameworkFromTemplate"));
+
 export { ComplianceRequirementArgs, ComplianceRequirementState } from "./complianceRequirement";
 export type ComplianceRequirement = import("./complianceRequirement").ComplianceRequirement;
 export const ComplianceRequirement: typeof import("./complianceRequirement").ComplianceRequirement = null as any;
@@ -525,6 +530,11 @@ export type GroupHook = import("./groupHook").GroupHook;
 export const GroupHook: typeof import("./groupHook").GroupHook = null as any;
 utilities.lazyLoad(exports, ["GroupHook"], () => require("./groupHook"));
 
+export { GroupIntegrationDatadogArgs, GroupIntegrationDatadogState } from "./groupIntegrationDatadog";
+export type GroupIntegrationDatadog = import("./groupIntegrationDatadog").GroupIntegrationDatadog;
+export const GroupIntegrationDatadog: typeof import("./groupIntegrationDatadog").GroupIntegrationDatadog = null as any;
+utilities.lazyLoad(exports, ["GroupIntegrationDatadog"], () => require("./groupIntegrationDatadog"));
+
 export { GroupIntegrationHarborArgs, GroupIntegrationHarborState } from "./groupIntegrationHarbor";
 export type GroupIntegrationHarbor = import("./groupIntegrationHarbor").GroupIntegrationHarbor;
 export const GroupIntegrationHarbor: typeof import("./groupIntegrationHarbor").GroupIntegrationHarbor = null as any;
@@ -679,6 +689,11 @@ export { ProjectApprovalRuleArgs, ProjectApprovalRuleState } from "./projectAppr
 export type ProjectApprovalRule = import("./projectApprovalRule").ProjectApprovalRule;
 export const ProjectApprovalRule: typeof import("./projectApprovalRule").ProjectApprovalRule = null as any;
 utilities.lazyLoad(exports, ["ProjectApprovalRule"], () => require("./projectApprovalRule"));
+
+export { ProjectApprovalRulesArgs, ProjectApprovalRulesState } from "./projectApprovalRules";
+export type ProjectApprovalRules = import("./projectApprovalRules").ProjectApprovalRules;
+export const ProjectApprovalRules: typeof import("./projectApprovalRules").ProjectApprovalRules = null as any;
+utilities.lazyLoad(exports, ["ProjectApprovalRules"], () => require("./projectApprovalRules"));
 
 export { ProjectBadgeArgs, ProjectBadgeState } from "./projectBadge";
 export type ProjectBadge = import("./projectBadge").ProjectBadge;
@@ -1130,6 +1145,8 @@ const _module = {
                 return new ClusterAgentToken(name, <any>undefined, { urn })
             case "gitlab:index/complianceFramework:ComplianceFramework":
                 return new ComplianceFramework(name, <any>undefined, { urn })
+            case "gitlab:index/complianceFrameworkFromTemplate:ComplianceFrameworkFromTemplate":
+                return new ComplianceFrameworkFromTemplate(name, <any>undefined, { urn })
             case "gitlab:index/complianceRequirement:ComplianceRequirement":
                 return new ComplianceRequirement(name, <any>undefined, { urn })
             case "gitlab:index/deployKey:DeployKey":
@@ -1160,6 +1177,8 @@ const _module = {
                 return new GroupEpicBoard(name, <any>undefined, { urn })
             case "gitlab:index/groupHook:GroupHook":
                 return new GroupHook(name, <any>undefined, { urn })
+            case "gitlab:index/groupIntegrationDatadog:GroupIntegrationDatadog":
+                return new GroupIntegrationDatadog(name, <any>undefined, { urn })
             case "gitlab:index/groupIntegrationHarbor:GroupIntegrationHarbor":
                 return new GroupIntegrationHarbor(name, <any>undefined, { urn })
             case "gitlab:index/groupIntegrationJira:GroupIntegrationJira":
@@ -1222,6 +1241,8 @@ const _module = {
                 return new ProjectAccessToken(name, <any>undefined, { urn })
             case "gitlab:index/projectApprovalRule:ProjectApprovalRule":
                 return new ProjectApprovalRule(name, <any>undefined, { urn })
+            case "gitlab:index/projectApprovalRules:ProjectApprovalRules":
+                return new ProjectApprovalRules(name, <any>undefined, { urn })
             case "gitlab:index/projectBadge:ProjectBadge":
                 return new ProjectBadge(name, <any>undefined, { urn })
             case "gitlab:index/projectCicdCatalog:ProjectCicdCatalog":
@@ -1402,6 +1423,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/branchProtection", _modul
 pulumi.runtime.registerResourceModule("gitlab", "index/clusterAgent", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/clusterAgentToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/complianceFramework", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/complianceFrameworkFromTemplate", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/complianceRequirement", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployKey", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/deployKeyEnable", _module)
@@ -1417,6 +1439,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/groupDependencyProxyImage
 pulumi.runtime.registerResourceModule("gitlab", "index/groupDeployToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupEpicBoard", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupHook", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupIntegrationDatadog", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupIntegrationHarbor", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupIntegrationJira", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupIntegrationMattermost", _module)
@@ -1448,6 +1471,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/pipelineTrigger", _module
 pulumi.runtime.registerResourceModule("gitlab", "index/project", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectAccessToken", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectApprovalRule", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectApprovalRules", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectBadge", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCicdCatalog", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCluster", _module)

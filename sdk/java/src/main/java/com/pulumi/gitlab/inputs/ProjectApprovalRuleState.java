@@ -139,14 +139,14 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * String, defaults to &#39;regular&#39;. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
+     * The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
      * 
      */
     @Import(name="ruleType")
     private @Nullable Output<String> ruleType;
 
     /**
-     * @return String, defaults to &#39;regular&#39;. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
+     * @return The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
      * 
      */
     public Optional<Output<String>> ruleType() {
@@ -390,7 +390,7 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ruleType String, defaults to &#39;regular&#39;. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
+         * @param ruleType The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class ProjectApprovalRuleState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ruleType String, defaults to &#39;regular&#39;. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
+         * @param ruleType The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
          * 
          * @return builder
          * 

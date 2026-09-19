@@ -3996,6 +3996,175 @@ func (o ProjectAccessTokenRotationConfigurationPtrOutput) RotateBeforeDays() pul
 	}).(pulumi.IntPtrOutput)
 }
 
+type ProjectApprovalRulesApprovalRule struct {
+	// Whether the rule is applied to all protected branches. Conflicts with `protectedBranchIds`. Defaults to `false`.
+	AppliesToAllProtectedBranches *bool `pulumi:"appliesToAllProtectedBranches"`
+	// The number of approvals required for this rule.
+	ApprovalsRequired int `pulumi:"approvalsRequired"`
+	// A set of group IDs whose members can approve of the merge request.
+	GroupIds []int `pulumi:"groupIds"`
+	// The ID of the approval rule.
+	Id *int `pulumi:"id"`
+	// The name of the approval rule. Names are used to match the configuration to existing rules, so they must be unique among all declared rules other than the `anyApprover` rule.
+	Name string `pulumi:"name"`
+	// A set of protected branch IDs (not branch names) for which the rule applies. Conflicts with `appliesToAllProtectedBranches` being set to `true`.
+	ProtectedBranchIds []int `pulumi:"protectedBranchIds"`
+	// The report type used when the `ruleType` is `reportApprover`, in which case it is required. The only value accepted by the GitLab API is `codeCoverage`, and GitLab reserves the name `Coverage-Check` for such rules: a `codeCoverage` rule must use that name, and no other rule may.
+	ReportType *string `pulumi:"reportType"`
+	// The type of the rule. Valid values are `regular`, `anyApprover`, `reportApprover`. Defaults to `regular`. The value is always sent to the API: were it omitted, GitLab would silently create an `anyApprover` rule instead whenever the rule declares no `userIds` and no `groupIds`.
+	RuleType *string `pulumi:"ruleType"`
+	// A set of specific User IDs to add to the list of approvers.
+	UserIds []int `pulumi:"userIds"`
+}
+
+// ProjectApprovalRulesApprovalRuleInput is an input type that accepts ProjectApprovalRulesApprovalRuleArgs and ProjectApprovalRulesApprovalRuleOutput values.
+// You can construct a concrete instance of `ProjectApprovalRulesApprovalRuleInput` via:
+//
+//	ProjectApprovalRulesApprovalRuleArgs{...}
+type ProjectApprovalRulesApprovalRuleInput interface {
+	pulumi.Input
+
+	ToProjectApprovalRulesApprovalRuleOutput() ProjectApprovalRulesApprovalRuleOutput
+	ToProjectApprovalRulesApprovalRuleOutputWithContext(context.Context) ProjectApprovalRulesApprovalRuleOutput
+}
+
+type ProjectApprovalRulesApprovalRuleArgs struct {
+	// Whether the rule is applied to all protected branches. Conflicts with `protectedBranchIds`. Defaults to `false`.
+	AppliesToAllProtectedBranches pulumi.BoolPtrInput `pulumi:"appliesToAllProtectedBranches"`
+	// The number of approvals required for this rule.
+	ApprovalsRequired pulumi.IntInput `pulumi:"approvalsRequired"`
+	// A set of group IDs whose members can approve of the merge request.
+	GroupIds pulumi.IntArrayInput `pulumi:"groupIds"`
+	// The ID of the approval rule.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The name of the approval rule. Names are used to match the configuration to existing rules, so they must be unique among all declared rules other than the `anyApprover` rule.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A set of protected branch IDs (not branch names) for which the rule applies. Conflicts with `appliesToAllProtectedBranches` being set to `true`.
+	ProtectedBranchIds pulumi.IntArrayInput `pulumi:"protectedBranchIds"`
+	// The report type used when the `ruleType` is `reportApprover`, in which case it is required. The only value accepted by the GitLab API is `codeCoverage`, and GitLab reserves the name `Coverage-Check` for such rules: a `codeCoverage` rule must use that name, and no other rule may.
+	ReportType pulumi.StringPtrInput `pulumi:"reportType"`
+	// The type of the rule. Valid values are `regular`, `anyApprover`, `reportApprover`. Defaults to `regular`. The value is always sent to the API: were it omitted, GitLab would silently create an `anyApprover` rule instead whenever the rule declares no `userIds` and no `groupIds`.
+	RuleType pulumi.StringPtrInput `pulumi:"ruleType"`
+	// A set of specific User IDs to add to the list of approvers.
+	UserIds pulumi.IntArrayInput `pulumi:"userIds"`
+}
+
+func (ProjectApprovalRulesApprovalRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectApprovalRulesApprovalRule)(nil)).Elem()
+}
+
+func (i ProjectApprovalRulesApprovalRuleArgs) ToProjectApprovalRulesApprovalRuleOutput() ProjectApprovalRulesApprovalRuleOutput {
+	return i.ToProjectApprovalRulesApprovalRuleOutputWithContext(context.Background())
+}
+
+func (i ProjectApprovalRulesApprovalRuleArgs) ToProjectApprovalRulesApprovalRuleOutputWithContext(ctx context.Context) ProjectApprovalRulesApprovalRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectApprovalRulesApprovalRuleOutput)
+}
+
+// ProjectApprovalRulesApprovalRuleArrayInput is an input type that accepts ProjectApprovalRulesApprovalRuleArray and ProjectApprovalRulesApprovalRuleArrayOutput values.
+// You can construct a concrete instance of `ProjectApprovalRulesApprovalRuleArrayInput` via:
+//
+//	ProjectApprovalRulesApprovalRuleArray{ ProjectApprovalRulesApprovalRuleArgs{...} }
+type ProjectApprovalRulesApprovalRuleArrayInput interface {
+	pulumi.Input
+
+	ToProjectApprovalRulesApprovalRuleArrayOutput() ProjectApprovalRulesApprovalRuleArrayOutput
+	ToProjectApprovalRulesApprovalRuleArrayOutputWithContext(context.Context) ProjectApprovalRulesApprovalRuleArrayOutput
+}
+
+type ProjectApprovalRulesApprovalRuleArray []ProjectApprovalRulesApprovalRuleInput
+
+func (ProjectApprovalRulesApprovalRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectApprovalRulesApprovalRule)(nil)).Elem()
+}
+
+func (i ProjectApprovalRulesApprovalRuleArray) ToProjectApprovalRulesApprovalRuleArrayOutput() ProjectApprovalRulesApprovalRuleArrayOutput {
+	return i.ToProjectApprovalRulesApprovalRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectApprovalRulesApprovalRuleArray) ToProjectApprovalRulesApprovalRuleArrayOutputWithContext(ctx context.Context) ProjectApprovalRulesApprovalRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectApprovalRulesApprovalRuleArrayOutput)
+}
+
+type ProjectApprovalRulesApprovalRuleOutput struct{ *pulumi.OutputState }
+
+func (ProjectApprovalRulesApprovalRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectApprovalRulesApprovalRule)(nil)).Elem()
+}
+
+func (o ProjectApprovalRulesApprovalRuleOutput) ToProjectApprovalRulesApprovalRuleOutput() ProjectApprovalRulesApprovalRuleOutput {
+	return o
+}
+
+func (o ProjectApprovalRulesApprovalRuleOutput) ToProjectApprovalRulesApprovalRuleOutputWithContext(ctx context.Context) ProjectApprovalRulesApprovalRuleOutput {
+	return o
+}
+
+// Whether the rule is applied to all protected branches. Conflicts with `protectedBranchIds`. Defaults to `false`.
+func (o ProjectApprovalRulesApprovalRuleOutput) AppliesToAllProtectedBranches() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProjectApprovalRulesApprovalRule) *bool { return v.AppliesToAllProtectedBranches }).(pulumi.BoolPtrOutput)
+}
+
+// The number of approvals required for this rule.
+func (o ProjectApprovalRulesApprovalRuleOutput) ApprovalsRequired() pulumi.IntOutput {
+	return o.ApplyT(func(v ProjectApprovalRulesApprovalRule) int { return v.ApprovalsRequired }).(pulumi.IntOutput)
+}
+
+// A set of group IDs whose members can approve of the merge request.
+func (o ProjectApprovalRulesApprovalRuleOutput) GroupIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v ProjectApprovalRulesApprovalRule) []int { return v.GroupIds }).(pulumi.IntArrayOutput)
+}
+
+// The ID of the approval rule.
+func (o ProjectApprovalRulesApprovalRuleOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ProjectApprovalRulesApprovalRule) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// The name of the approval rule. Names are used to match the configuration to existing rules, so they must be unique among all declared rules other than the `anyApprover` rule.
+func (o ProjectApprovalRulesApprovalRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ProjectApprovalRulesApprovalRule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A set of protected branch IDs (not branch names) for which the rule applies. Conflicts with `appliesToAllProtectedBranches` being set to `true`.
+func (o ProjectApprovalRulesApprovalRuleOutput) ProtectedBranchIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v ProjectApprovalRulesApprovalRule) []int { return v.ProtectedBranchIds }).(pulumi.IntArrayOutput)
+}
+
+// The report type used when the `ruleType` is `reportApprover`, in which case it is required. The only value accepted by the GitLab API is `codeCoverage`, and GitLab reserves the name `Coverage-Check` for such rules: a `codeCoverage` rule must use that name, and no other rule may.
+func (o ProjectApprovalRulesApprovalRuleOutput) ReportType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectApprovalRulesApprovalRule) *string { return v.ReportType }).(pulumi.StringPtrOutput)
+}
+
+// The type of the rule. Valid values are `regular`, `anyApprover`, `reportApprover`. Defaults to `regular`. The value is always sent to the API: were it omitted, GitLab would silently create an `anyApprover` rule instead whenever the rule declares no `userIds` and no `groupIds`.
+func (o ProjectApprovalRulesApprovalRuleOutput) RuleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectApprovalRulesApprovalRule) *string { return v.RuleType }).(pulumi.StringPtrOutput)
+}
+
+// A set of specific User IDs to add to the list of approvers.
+func (o ProjectApprovalRulesApprovalRuleOutput) UserIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v ProjectApprovalRulesApprovalRule) []int { return v.UserIds }).(pulumi.IntArrayOutput)
+}
+
+type ProjectApprovalRulesApprovalRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectApprovalRulesApprovalRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectApprovalRulesApprovalRule)(nil)).Elem()
+}
+
+func (o ProjectApprovalRulesApprovalRuleArrayOutput) ToProjectApprovalRulesApprovalRuleArrayOutput() ProjectApprovalRulesApprovalRuleArrayOutput {
+	return o
+}
+
+func (o ProjectApprovalRulesApprovalRuleArrayOutput) ToProjectApprovalRulesApprovalRuleArrayOutputWithContext(ctx context.Context) ProjectApprovalRulesApprovalRuleArrayOutput {
+	return o
+}
+
+func (o ProjectApprovalRulesApprovalRuleArrayOutput) Index(i pulumi.IntInput) ProjectApprovalRulesApprovalRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectApprovalRulesApprovalRule {
+		return vs[0].([]ProjectApprovalRulesApprovalRule)[vs[1].(int)]
+	}).(ProjectApprovalRulesApprovalRuleOutput)
+}
+
 type ProjectContainerExpirationPolicy struct {
 	// The cadence of the policy. Valid values are: `1d`, `7d`, `14d`, `1month`, `3month`.
 	Cadence *string `pulumi:"cadence"`
@@ -26804,6 +26973,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineScheduleInputTypeArrayInput)(nil)).Elem(), PipelineScheduleInputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessTokenRotationConfigurationInput)(nil)).Elem(), ProjectAccessTokenRotationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessTokenRotationConfigurationPtrInput)(nil)).Elem(), ProjectAccessTokenRotationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectApprovalRulesApprovalRuleInput)(nil)).Elem(), ProjectApprovalRulesApprovalRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectApprovalRulesApprovalRuleArrayInput)(nil)).Elem(), ProjectApprovalRulesApprovalRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerExpirationPolicyPtrInput)(nil)).Elem(), ProjectContainerExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectContainerTagProtectionTimeoutsInput)(nil)).Elem(), ProjectContainerTagProtectionTimeoutsArgs{})
@@ -27119,6 +27290,8 @@ func init() {
 	pulumi.RegisterOutputType(PipelineScheduleInputTypeArrayOutput{})
 	pulumi.RegisterOutputType(ProjectAccessTokenRotationConfigurationOutput{})
 	pulumi.RegisterOutputType(ProjectAccessTokenRotationConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ProjectApprovalRulesApprovalRuleOutput{})
+	pulumi.RegisterOutputType(ProjectApprovalRulesApprovalRuleArrayOutput{})
 	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyOutput{})
 	pulumi.RegisterOutputType(ProjectContainerExpirationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ProjectContainerTagProtectionTimeoutsOutput{})

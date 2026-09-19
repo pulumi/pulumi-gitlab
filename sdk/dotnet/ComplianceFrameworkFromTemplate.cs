@@ -10,15 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.GitLab
 {
     /// <summary>
-    /// The `gitlab.ComplianceFramework` resource manages the lifecycle of a compliance framework on top-level groups.
+    /// The `gitlab.ComplianceFrameworkFromTemplate` resource manages the lifecycle of a compliance framework created from a template on top-level groups.
     /// 
-    /// There can be only one `Default` compliance framework. Of all the configured compliance frameworks marked as default, the last one applied will be the default compliance framework.
+    /// There can be only one `Default` compliance framework. Of all the configured compliance frameworks marked as default, the last one applied will be the default compliance framework. This may be a different framework with every apply, so you should only use the default once per config.
     /// 
-    /// &gt; This resource requires a GitLab Enterprise instance with a Premium license to create the compliance framework.
+    /// &gt; This resource requires a GitLab Enterprise instance with an Ultimate license.
     /// 
-    /// &gt; This resource requires a GitLab Enterprise instance with an Ultimate license to specify a compliance pipeline configuration in the compliance framework.
-    /// 
-    /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationcreatecomplianceframework)
+    /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationcreatecomplianceframeworkfromtemplate)
     /// 
     /// ## Example Usage
     /// 
@@ -30,14 +28,21 @@ namespace Pulumi.GitLab
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var sample = new GitLab.ComplianceFramework("sample", new()
+    ///     var sample = new GitLab.ComplianceFrameworkFromTemplate("sample", new()
     ///     {
     ///         NamespacePath = "top-level-group",
+    ///         TemplateId = "gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/soc2",
+    ///     });
+    /// 
+    ///     // Example: create from template and override template defaults
+    ///     var sampleWithOverrides = new GitLab.ComplianceFrameworkFromTemplate("sample_with_overrides", new()
+    ///     {
+    ///         NamespacePath = "top-level-group",
+    ///         TemplateId = "gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/iso_27001-2022",
     ///         Name = "HIPAA",
     ///         Description = "A HIPAA Compliance Framework",
     ///         Color = "#87BEEF",
     ///         Default = false,
-    ///         PipelineConfigurationFullPath = ".hipaa.yml@top-level-group/compliance-frameworks",
     ///     });
     /// 
     /// });
@@ -45,21 +50,21 @@ namespace Pulumi.GitLab
     /// 
     /// ## Import
     /// 
-    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ComplianceFramework`. For example:
+    /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ComplianceFrameworkFromTemplate`. For example:
     /// 
     /// Importing using the CLI is supported with the following syntax:
     /// 
-    /// Gitlab compliance frameworks can be imported with a key composed of `&lt;namespace_path&gt;:&lt;framework_id&gt;`, for example:
+    /// Gitlab compliance frameworks created from templates can be imported with a key composed of `&lt;namespace_path&gt;|&lt;framework_id&gt;|&lt;template_id&gt;`, for example:
     /// 
     /// ```sh
-    /// $ pulumi import gitlab:index/complianceFramework:ComplianceFramework sample "top-level-group:gid://gitlab/ComplianceManagement::Framework/12345"
+    /// $ pulumi import gitlab:index/complianceFrameworkFromTemplate:ComplianceFrameworkFromTemplate sample "top-level-group|gid://gitlab/ComplianceManagement::Framework/12345|gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/soc2"
     /// ```
     /// </summary>
-    [GitLabResourceType("gitlab:index/complianceFramework:ComplianceFramework")]
-    public partial class ComplianceFramework : global::Pulumi.CustomResource
+    [GitLabResourceType("gitlab:index/complianceFrameworkFromTemplate:ComplianceFrameworkFromTemplate")]
+    public partial class ComplianceFrameworkFromTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// New color representation of the compliance framework in hex format. e.g. #FCA121.
+        /// Override the color of the compliance framework in hex format. e.g. #FCA121.
         /// </summary>
         [Output("color")]
         public Output<string> Color { get; private set; } = null!;
@@ -71,7 +76,7 @@ namespace Pulumi.GitLab
         public Output<bool> Default { get; private set; } = null!;
 
         /// <summary>
-        /// Description for the compliance framework.
+        /// Override the description of the compliance framework.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -83,7 +88,7 @@ namespace Pulumi.GitLab
         public Output<string> FrameworkId { get; private set; } = null!;
 
         /// <summary>
-        /// Name for the compliance framework.
+        /// Override the name of the compliance framework.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -95,26 +100,26 @@ namespace Pulumi.GitLab
         public Output<string> NamespacePath { get; private set; } = null!;
 
         /// <summary>
-        /// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
+        /// Unique identifier of the template to create the framework from.  In the format of: `gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/&lt;template id&gt;`
         /// </summary>
-        [Output("pipelineConfigurationFullPath")]
-        public Output<string?> PipelineConfigurationFullPath { get; private set; } = null!;
+        [Output("templateId")]
+        public Output<string> TemplateId { get; private set; } = null!;
 
 
         /// <summary>
-        /// Create a ComplianceFramework resource with the given unique name, arguments, and options.
+        /// Create a ComplianceFrameworkFromTemplate resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ComplianceFramework(string name, ComplianceFrameworkArgs args, CustomResourceOptions? options = null)
-            : base("gitlab:index/complianceFramework:ComplianceFramework", name, args ?? new ComplianceFrameworkArgs(), MakeResourceOptions(options, ""))
+        public ComplianceFrameworkFromTemplate(string name, ComplianceFrameworkFromTemplateArgs args, CustomResourceOptions? options = null)
+            : base("gitlab:index/complianceFrameworkFromTemplate:ComplianceFrameworkFromTemplate", name, args ?? new ComplianceFrameworkFromTemplateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private ComplianceFramework(string name, Input<string> id, ComplianceFrameworkState? state = null, CustomResourceOptions? options = null)
-            : base("gitlab:index/complianceFramework:ComplianceFramework", name, state, MakeResourceOptions(options, id))
+        private ComplianceFrameworkFromTemplate(string name, Input<string> id, ComplianceFrameworkFromTemplateState? state = null, CustomResourceOptions? options = null)
+            : base("gitlab:index/complianceFrameworkFromTemplate:ComplianceFrameworkFromTemplate", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -130,7 +135,7 @@ namespace Pulumi.GitLab
             return merged;
         }
         /// <summary>
-        /// Get an existing ComplianceFramework resource's state with the given name, ID, and optional extra
+        /// Get an existing ComplianceFrameworkFromTemplate resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -138,60 +143,16 @@ namespace Pulumi.GitLab
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static ComplianceFramework Get(string name, Input<string> id, ComplianceFrameworkState? state = null, CustomResourceOptions? options = null)
+        public static ComplianceFrameworkFromTemplate Get(string name, Input<string> id, ComplianceFrameworkFromTemplateState? state = null, CustomResourceOptions? options = null)
         {
-            return new ComplianceFramework(name, id, state, options);
+            return new ComplianceFrameworkFromTemplate(name, id, state, options);
         }
     }
 
-    public sealed class ComplianceFrameworkArgs : global::Pulumi.ResourceArgs
+    public sealed class ComplianceFrameworkFromTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// New color representation of the compliance framework in hex format. e.g. #FCA121.
-        /// </summary>
-        [Input("color", required: true)]
-        public Input<string> Color { get; set; } = null!;
-
-        /// <summary>
-        /// Set this compliance framework as the default framework for the group. Default: `False`
-        /// </summary>
-        [Input("default")]
-        public Input<bool>? Default { get; set; }
-
-        /// <summary>
-        /// Description for the compliance framework.
-        /// </summary>
-        [Input("description", required: true)]
-        public Input<string> Description { get; set; } = null!;
-
-        /// <summary>
-        /// Name for the compliance framework.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Full path of the namespace to add the compliance framework to.
-        /// </summary>
-        [Input("namespacePath", required: true)]
-        public Input<string> NamespacePath { get; set; } = null!;
-
-        /// <summary>
-        /// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
-        /// </summary>
-        [Input("pipelineConfigurationFullPath")]
-        public Input<string>? PipelineConfigurationFullPath { get; set; }
-
-        public ComplianceFrameworkArgs()
-        {
-        }
-        public static new ComplianceFrameworkArgs Empty => new ComplianceFrameworkArgs();
-    }
-
-    public sealed class ComplianceFrameworkState : global::Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// New color representation of the compliance framework in hex format. e.g. #FCA121.
+        /// Override the color of the compliance framework in hex format. e.g. #FCA121.
         /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
@@ -203,7 +164,51 @@ namespace Pulumi.GitLab
         public Input<bool>? Default { get; set; }
 
         /// <summary>
-        /// Description for the compliance framework.
+        /// Override the description of the compliance framework.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Override the name of the compliance framework.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Full path of the namespace to add the compliance framework to.
+        /// </summary>
+        [Input("namespacePath", required: true)]
+        public Input<string> NamespacePath { get; set; } = null!;
+
+        /// <summary>
+        /// Unique identifier of the template to create the framework from.  In the format of: `gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/&lt;template id&gt;`
+        /// </summary>
+        [Input("templateId", required: true)]
+        public Input<string> TemplateId { get; set; } = null!;
+
+        public ComplianceFrameworkFromTemplateArgs()
+        {
+        }
+        public static new ComplianceFrameworkFromTemplateArgs Empty => new ComplianceFrameworkFromTemplateArgs();
+    }
+
+    public sealed class ComplianceFrameworkFromTemplateState : global::Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Override the color of the compliance framework in hex format. e.g. #FCA121.
+        /// </summary>
+        [Input("color")]
+        public Input<string>? Color { get; set; }
+
+        /// <summary>
+        /// Set this compliance framework as the default framework for the group. Default: `False`
+        /// </summary>
+        [Input("default")]
+        public Input<bool>? Default { get; set; }
+
+        /// <summary>
+        /// Override the description of the compliance framework.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -215,7 +220,7 @@ namespace Pulumi.GitLab
         public Input<string>? FrameworkId { get; set; }
 
         /// <summary>
-        /// Name for the compliance framework.
+        /// Override the name of the compliance framework.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -227,14 +232,14 @@ namespace Pulumi.GitLab
         public Input<string>? NamespacePath { get; set; }
 
         /// <summary>
-        /// Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml@compliance/hipaa`. Required format: `path/file.y[a]ml@group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
+        /// Unique identifier of the template to create the framework from.  In the format of: `gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/&lt;template id&gt;`
         /// </summary>
-        [Input("pipelineConfigurationFullPath")]
-        public Input<string>? PipelineConfigurationFullPath { get; set; }
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
 
-        public ComplianceFrameworkState()
+        public ComplianceFrameworkFromTemplateState()
         {
         }
-        public static new ComplianceFrameworkState Empty => new ComplianceFrameworkState();
+        public static new ComplianceFrameworkFromTemplateState Empty => new ComplianceFrameworkFromTemplateState();
     }
 }

@@ -12,7 +12,7 @@ namespace Pulumi.GitLab
     public static class GetProjectApprovalRules
     {
         /// <summary>
-        /// The `gitlab.getProjectApprovalRules` data source retrieves all approval rules of a given project.
+        /// The `gitlab.ProjectApprovalRules` data source retrieves all approval rules of a given project.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectApprovalRulesResult>("gitlab:index/getProjectApprovalRules:getProjectApprovalRules", args ?? new GetProjectApprovalRulesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.getProjectApprovalRules` data source retrieves all approval rules of a given project.
+        /// The `gitlab.ProjectApprovalRules` data source retrieves all approval rules of a given project.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.GitLab
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectApprovalRulesResult>("gitlab:index/getProjectApprovalRules:getProjectApprovalRules", args ?? new GetProjectApprovalRulesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `gitlab.getProjectApprovalRules` data source retrieves all approval rules of a given project.
+        /// The `gitlab.ProjectApprovalRules` data source retrieves all approval rules of a given project.
         /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
         /// 

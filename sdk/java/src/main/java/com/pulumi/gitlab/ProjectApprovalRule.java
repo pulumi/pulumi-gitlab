@@ -14,7 +14,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -23,8 +22,8 @@ import javax.annotation.Nullable;
  * &gt; This resource requires a GitLab Enterprise instance.
  * 
  * &gt; A project is limited to one &#34;anyApprover&#34; rule at a time, any attempt to create a second rule of type &#34;anyApprover&#34; will fail. As a result, if
- *    an &#34;anyApprover&#34; rule is already present on a project at creation time, and that rule requires 0 approvers, the rule will be automatically imported
- *    to prevent a common error with this resource.
+ *   an &#34;anyApprover&#34; rule is already present on a project at creation time, and that rule requires 0 approvers, the rule will be automatically imported
+ *   to prevent a common error with this resource.
  * 
  * &gt; Since a project is limited to one &#34;anyApprover&#34; rule, attempting to add two &#34;anyApprover&#34; rules to the same project in terraform will result in
  *    terraform identifying changes with every &#34;plan&#34; operation, and may result in an error during the &#34;apply&#34; operation.
@@ -55,14 +54,14 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="appliesToAllProtectedBranches", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> appliesToAllProtectedBranches;
+    private Output<Boolean> appliesToAllProtectedBranches;
 
     /**
      * @return Whether the rule is applied to all protected branches. If set to &#39;true&#39;, the value of `protectedBranchIds` is ignored. Default is &#39;false&#39;.
      * 
      */
-    public Output<Optional<Boolean>> appliesToAllProtectedBranches() {
-        return Codegen.optional(this.appliesToAllProtectedBranches);
+    public Output<Boolean> appliesToAllProtectedBranches() {
+        return this.appliesToAllProtectedBranches;
     }
     /**
      * The number of approvals required for this rule.
@@ -83,28 +82,28 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="disableImportingDefaultAnyApproverRuleOnCreate", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> disableImportingDefaultAnyApproverRuleOnCreate;
+    private Output<Boolean> disableImportingDefaultAnyApproverRuleOnCreate;
 
     /**
      * @return When this flag is set, the default `anyApprover` rule will not be imported if present.
      * 
      */
-    public Output<Optional<Boolean>> disableImportingDefaultAnyApproverRuleOnCreate() {
-        return Codegen.optional(this.disableImportingDefaultAnyApproverRuleOnCreate);
+    public Output<Boolean> disableImportingDefaultAnyApproverRuleOnCreate() {
+        return this.disableImportingDefaultAnyApproverRuleOnCreate;
     }
     /**
      * A list of group IDs whose members can approve of the merge request.
      * 
      */
     @Export(name="groupIds", refs={List.class,Integer.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<Integer>> groupIds;
+    private Output<List<Integer>> groupIds;
 
     /**
      * @return A list of group IDs whose members can approve of the merge request.
      * 
      */
-    public Output<Optional<List<Integer>>> groupIds() {
-        return Codegen.optional(this.groupIds);
+    public Output<List<Integer>> groupIds() {
+        return this.groupIds;
     }
     /**
      * The name of the approval rule.
@@ -139,14 +138,14 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="protectedBranchIds", refs={List.class,Integer.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<Integer>> protectedBranchIds;
+    private Output<List<Integer>> protectedBranchIds;
 
     /**
      * @return A list of protected branch IDs (not branch names) for which the rule applies.
      * 
      */
-    public Output<Optional<List<Integer>>> protectedBranchIds() {
-        return Codegen.optional(this.protectedBranchIds);
+    public Output<List<Integer>> protectedBranchIds() {
+        return this.protectedBranchIds;
     }
     /**
      * Report type is required when the ruleType is `reportApprover`. Valid values are `codeCoverage`.
@@ -163,14 +162,14 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
         return this.reportType;
     }
     /**
-     * String, defaults to &#39;regular&#39;. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
+     * The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
      * 
      */
     @Export(name="ruleType", refs={String.class}, tree="[0]")
     private Output<String> ruleType;
 
     /**
-     * @return String, defaults to &#39;regular&#39;. The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
+     * @return The type of rule. `anyApprover` is a pre-configured default rule with `approvalsRequired` at `0`. Valid values are `regular`, `anyApprover`, `reportApprover`.
      * 
      */
     public Output<String> ruleType() {
@@ -181,14 +180,14 @@ public class ProjectApprovalRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="userIds", refs={List.class,Integer.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<Integer>> userIds;
+    private Output<List<Integer>> userIds;
 
     /**
      * @return A list of specific User IDs to add to the list of approvers.
      * 
      */
-    public Output<Optional<List<Integer>>> userIds() {
-        return Codegen.optional(this.userIds);
+    public Output<List<Integer>> userIds() {
+        return this.userIds;
     }
 
     /**

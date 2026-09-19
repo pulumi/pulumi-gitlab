@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `getProjectApprovalRules` data source retrieves all approval rules of a given project.
+// The `ProjectApprovalRules` data source retrieves all approval rules of a given project.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/merge_request_approvals/#list-all-approval-rules-for-a-project)
 //
@@ -29,13 +29,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gitlab.GetProjectApprovalRules(ctx, &gitlab.GetProjectApprovalRulesArgs{
+//			_, err := gitlab.GetProjectApprovalRules(ctx, &gitlab.LookupProjectApprovalRulesArgs{
 //				Project: "12345",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.GetProjectApprovalRules(ctx, &gitlab.GetProjectApprovalRulesArgs{
+//			_, err = gitlab.GetProjectApprovalRules(ctx, &gitlab.LookupProjectApprovalRulesArgs{
 //				Project: "my-group/my-project",
 //			}, nil)
 //			if err != nil {
@@ -46,9 +46,9 @@ import (
 //	}
 //
 // ```
-func GetProjectApprovalRules(ctx *pulumi.Context, args *GetProjectApprovalRulesArgs, opts ...pulumi.InvokeOption) (*GetProjectApprovalRulesResult, error) {
+func LookupProjectApprovalRules(ctx *pulumi.Context, args *LookupProjectApprovalRulesArgs, opts ...pulumi.InvokeOption) (*LookupProjectApprovalRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetProjectApprovalRulesResult
+	var rv LookupProjectApprovalRulesResult
 	err := ctx.Invoke("gitlab:index/getProjectApprovalRules:getProjectApprovalRules", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -57,7 +57,7 @@ func GetProjectApprovalRules(ctx *pulumi.Context, args *GetProjectApprovalRulesA
 }
 
 // A collection of arguments for invoking getProjectApprovalRules.
-type GetProjectApprovalRulesArgs struct {
+type LookupProjectApprovalRulesArgs struct {
 	// A list of project approval rules, as defined below.
 	ApprovalRules []GetProjectApprovalRulesApprovalRule `pulumi:"approvalRules"`
 	// The ID or path with namespace that identifies the project.
@@ -65,7 +65,7 @@ type GetProjectApprovalRulesArgs struct {
 }
 
 // A collection of values returned by getProjectApprovalRules.
-type GetProjectApprovalRulesResult struct {
+type LookupProjectApprovalRulesResult struct {
 	// A list of project approval rules, as defined below.
 	ApprovalRules []GetProjectApprovalRulesApprovalRule `pulumi:"approvalRules"`
 	// The ID of this Terraform resource.
@@ -74,53 +74,53 @@ type GetProjectApprovalRulesResult struct {
 	Project string `pulumi:"project"`
 }
 
-func GetProjectApprovalRulesOutput(ctx *pulumi.Context, args GetProjectApprovalRulesOutputArgs, opts ...pulumi.InvokeOption) GetProjectApprovalRulesResultOutput {
+func LookupProjectApprovalRulesOutput(ctx *pulumi.Context, args LookupProjectApprovalRulesOutputArgs, opts ...pulumi.InvokeOption) LookupProjectApprovalRulesResultOutput {
 	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("gitlab:index/getProjectApprovalRules:getProjectApprovalRules", args, GetProjectApprovalRulesResultOutput{}, options).(GetProjectApprovalRulesResultOutput)
+	return ctx.InvokeOutput("gitlab:index/getProjectApprovalRules:getProjectApprovalRules", args, LookupProjectApprovalRulesResultOutput{}, options).(LookupProjectApprovalRulesResultOutput)
 }
 
 // A collection of arguments for invoking getProjectApprovalRules.
-type GetProjectApprovalRulesOutputArgs struct {
+type LookupProjectApprovalRulesOutputArgs struct {
 	// A list of project approval rules, as defined below.
 	ApprovalRules GetProjectApprovalRulesApprovalRuleArrayInput `pulumi:"approvalRules"`
 	// The ID or path with namespace that identifies the project.
 	Project pulumi.StringInput `pulumi:"project"`
 }
 
-func (GetProjectApprovalRulesOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProjectApprovalRulesArgs)(nil)).Elem()
+func (LookupProjectApprovalRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectApprovalRulesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getProjectApprovalRules.
-type GetProjectApprovalRulesResultOutput struct{ *pulumi.OutputState }
+type LookupProjectApprovalRulesResultOutput struct{ *pulumi.OutputState }
 
-func (GetProjectApprovalRulesResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProjectApprovalRulesResult)(nil)).Elem()
+func (LookupProjectApprovalRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupProjectApprovalRulesResult)(nil)).Elem()
 }
 
-func (o GetProjectApprovalRulesResultOutput) ToGetProjectApprovalRulesResultOutput() GetProjectApprovalRulesResultOutput {
+func (o LookupProjectApprovalRulesResultOutput) ToLookupProjectApprovalRulesResultOutput() LookupProjectApprovalRulesResultOutput {
 	return o
 }
 
-func (o GetProjectApprovalRulesResultOutput) ToGetProjectApprovalRulesResultOutputWithContext(ctx context.Context) GetProjectApprovalRulesResultOutput {
+func (o LookupProjectApprovalRulesResultOutput) ToLookupProjectApprovalRulesResultOutputWithContext(ctx context.Context) LookupProjectApprovalRulesResultOutput {
 	return o
 }
 
 // A list of project approval rules, as defined below.
-func (o GetProjectApprovalRulesResultOutput) ApprovalRules() GetProjectApprovalRulesApprovalRuleArrayOutput {
-	return o.ApplyT(func(v GetProjectApprovalRulesResult) []GetProjectApprovalRulesApprovalRule { return v.ApprovalRules }).(GetProjectApprovalRulesApprovalRuleArrayOutput)
+func (o LookupProjectApprovalRulesResultOutput) ApprovalRules() GetProjectApprovalRulesApprovalRuleArrayOutput {
+	return o.ApplyT(func(v LookupProjectApprovalRulesResult) []GetProjectApprovalRulesApprovalRule { return v.ApprovalRules }).(GetProjectApprovalRulesApprovalRuleArrayOutput)
 }
 
 // The ID of this Terraform resource.
-func (o GetProjectApprovalRulesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectApprovalRulesResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupProjectApprovalRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectApprovalRulesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The ID or path with namespace that identifies the project.
-func (o GetProjectApprovalRulesResultOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectApprovalRulesResult) string { return v.Project }).(pulumi.StringOutput)
+func (o LookupProjectApprovalRulesResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectApprovalRulesResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetProjectApprovalRulesResultOutput{})
+	pulumi.RegisterOutputType(LookupProjectApprovalRulesResultOutput{})
 }
