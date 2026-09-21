@@ -1147,7 +1147,7 @@ class GroupHook(pulumi.CustomResource):
                  branch_filter_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
-                 custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]]] = None,
+                 custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict', 'outputs.GroupHookCustomHeader']]]]] = None,
                  custom_webhook_template: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1173,7 +1173,7 @@ class GroupHook(pulumi.CustomResource):
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
-                 url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookUrlVariableArgs', 'GroupHookUrlVariableArgsDict']]]]] = None,
+                 url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookUrlVariableArgs', 'GroupHookUrlVariableArgsDict', 'outputs.GroupHookUrlVariable']]]]] = None,
                  vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -1204,7 +1204,7 @@ class GroupHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the group webhook.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict', 'outputs.GroupHookCustomHeader']]]] custom_headers: Custom headers for the group webhook.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: Description of the group webhook.
@@ -1230,7 +1230,7 @@ class GroupHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookUrlVariableArgs', 'GroupHookUrlVariableArgsDict']]]] url_variables: Array of sensitive portions of the webhook URL to mask.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookUrlVariableArgs', 'GroupHookUrlVariableArgsDict', 'outputs.GroupHookUrlVariable']]]] url_variables: Array of sensitive portions of the webhook URL to mask.
         :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] wiki_page_events: Invoke the hook for wiki page events. Defaults to `false`.
         """
@@ -1280,7 +1280,7 @@ class GroupHook(pulumi.CustomResource):
                  branch_filter_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
-                 custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]]] = None,
+                 custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict', 'outputs.GroupHookCustomHeader']]]]] = None,
                  custom_webhook_template: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1306,7 +1306,7 @@ class GroupHook(pulumi.CustomResource):
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
-                 url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookUrlVariableArgs', 'GroupHookUrlVariableArgsDict']]]]] = None,
+                 url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookUrlVariableArgs', 'GroupHookUrlVariableArgsDict', 'outputs.GroupHookUrlVariable']]]]] = None,
                  vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -1375,7 +1375,7 @@ class GroupHook(pulumi.CustomResource):
             branch_filter_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
             confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
-            custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]]] = None,
+            custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict', 'outputs.GroupHookCustomHeader']]]]] = None,
             custom_webhook_template: pulumi.Input[Optional[_builtins.str]] = None,
             deployment_events: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1405,7 +1405,7 @@ class GroupHook(pulumi.CustomResource):
             tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
             token: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
-            url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookUrlVariableArgs', 'GroupHookUrlVariableArgsDict']]]]] = None,
+            url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupHookUrlVariableArgs', 'GroupHookUrlVariableArgsDict', 'outputs.GroupHookUrlVariable']]]]] = None,
             vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
             wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GroupHook':
         """
@@ -1419,7 +1419,7 @@ class GroupHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the group webhook.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookCustomHeaderArgs', 'GroupHookCustomHeaderArgsDict', 'outputs.GroupHookCustomHeader']]]] custom_headers: Custom headers for the group webhook.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: Description of the group webhook.
@@ -1449,7 +1449,7 @@ class GroupHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookUrlVariableArgs', 'GroupHookUrlVariableArgsDict']]]] url_variables: Array of sensitive portions of the webhook URL to mask.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupHookUrlVariableArgs', 'GroupHookUrlVariableArgsDict', 'outputs.GroupHookUrlVariable']]]] url_variables: Array of sensitive portions of the webhook URL to mask.
         :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] wiki_page_events: Invoke the hook for wiki page events. Defaults to `false`.
         """

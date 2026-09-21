@@ -10552,7 +10552,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  decompress_archive_file_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  default_artifacts_expire_in: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 default_branch_protection_defaults: pulumi.Input[Optional[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']]] = None,
+                 default_branch_protection_defaults: pulumi.Input[Optional[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict', 'outputs.ApplicationSettingsDefaultBranchProtectionDefaults']]] = None,
                  default_ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
                  default_group_visibility: pulumi.Input[Optional[_builtins.str]] = None,
                  default_preferred_language: pulumi.Input[Optional[_builtins.str]] = None,
@@ -10898,7 +10898,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] decompress_archive_file_timeout: Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
         :param pulumi.Input[_builtins.str] default_artifacts_expire_in: Set the default expiration time for each job’s artifacts.
         :param pulumi.Input[_builtins.str] default_branch_name: Instance-level custom initial branch name
-        :param pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+        :param pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict', 'outputs.ApplicationSettingsDefaultBranchProtectionDefaults']] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         :param pulumi.Input[_builtins.str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         :param pulumi.Input[_builtins.str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
         :param pulumi.Input[_builtins.str] default_preferred_language: Default preferred language for users who are not logged in.
@@ -11263,7 +11263,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  decompress_archive_file_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  default_artifacts_expire_in: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 default_branch_protection_defaults: pulumi.Input[Optional[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']]] = None,
+                 default_branch_protection_defaults: pulumi.Input[Optional[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict', 'outputs.ApplicationSettingsDefaultBranchProtectionDefaults']]] = None,
                  default_ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
                  default_group_visibility: pulumi.Input[Optional[_builtins.str]] = None,
                  default_preferred_language: pulumi.Input[Optional[_builtins.str]] = None,
@@ -11938,7 +11938,7 @@ class ApplicationSettings(pulumi.CustomResource):
             decompress_archive_file_timeout: pulumi.Input[Optional[_builtins.int]] = None,
             default_artifacts_expire_in: pulumi.Input[Optional[_builtins.str]] = None,
             default_branch_name: pulumi.Input[Optional[_builtins.str]] = None,
-            default_branch_protection_defaults: pulumi.Input[Optional[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']]] = None,
+            default_branch_protection_defaults: pulumi.Input[Optional[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict', 'outputs.ApplicationSettingsDefaultBranchProtectionDefaults']]] = None,
             default_ci_config_path: pulumi.Input[Optional[_builtins.str]] = None,
             default_group_visibility: pulumi.Input[Optional[_builtins.str]] = None,
             default_preferred_language: pulumi.Input[Optional[_builtins.str]] = None,
@@ -12273,7 +12273,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] decompress_archive_file_timeout: Default timeout for decompressing archived files, in seconds. Set to 0 to disable timeouts.
         :param pulumi.Input[_builtins.str] default_artifacts_expire_in: Set the default expiration time for each job’s artifacts.
         :param pulumi.Input[_builtins.str] default_branch_name: Instance-level custom initial branch name
-        :param pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
+        :param pulumi.Input[Union['ApplicationSettingsDefaultBranchProtectionDefaultsArgs', 'ApplicationSettingsDefaultBranchProtectionDefaultsArgsDict', 'outputs.ApplicationSettingsDefaultBranchProtectionDefaults']] default_branch_protection_defaults: The default*branch*protection*defaults attribute describes the default branch protection defaults. All parameters are optional.
         :param pulumi.Input[_builtins.str] default_ci_config_path: Default CI/CD configuration file and path for new projects (.gitlab-ci.yml if not set).
         :param pulumi.Input[_builtins.str] default_group_visibility: What visibility level new groups receive. Can take private, internal and public as a parameter.
         :param pulumi.Input[_builtins.str] default_preferred_language: Default preferred language for users who are not logged in.

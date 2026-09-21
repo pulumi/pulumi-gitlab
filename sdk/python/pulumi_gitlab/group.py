@@ -1322,7 +1322,7 @@ class Group(pulumi.CustomResource):
                  crm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
-                 default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
+                 default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict', 'outputs.GroupDefaultBranchProtectionDefaults']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  extra_shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1340,7 +1340,7 @@ class Group(pulumi.CustomResource):
                  prevent_forking_outside_group: pulumi.Input[Optional[_builtins.bool]] = None,
                  prevent_sharing_groups_outside_hierarchy: pulumi.Input[Optional[_builtins.bool]] = None,
                  project_creation_level: pulumi.Input[Optional[_builtins.str]] = None,
-                 push_rules: pulumi.Input[Optional[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']]] = None,
+                 push_rules: pulumi.Input[Optional[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict', 'outputs.GroupPushRules']]] = None,
                  request_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
                  share_with_group_lock: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1442,7 +1442,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] crm_enabled: Enable customer relations management (CRM) for the group.
         :param pulumi.Input[_builtins.str] default_branch: Initial default branch name.
         :param pulumi.Input[_builtins.int] default_branch_protection: See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
-        :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default branch protection defaults
+        :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict', 'outputs.GroupDefaultBranchProtectionDefaults']] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[_builtins.str] description: The group's description.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -1460,7 +1460,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         :param pulumi.Input[_builtins.bool] prevent_sharing_groups_outside_hierarchy: Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
         :param pulumi.Input[_builtins.str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
-        :param pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']] push_rules: Push rules for the group.
+        :param pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict', 'outputs.GroupPushRules']] push_rules: Push rules for the group.
         :param pulumi.Input[_builtins.bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[_builtins.bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[_builtins.bool] share_with_group_lock: Prevent sharing a project with another group within this group.
@@ -1581,7 +1581,7 @@ class Group(pulumi.CustomResource):
                  crm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
-                 default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
+                 default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict', 'outputs.GroupDefaultBranchProtectionDefaults']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  extra_shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1599,7 +1599,7 @@ class Group(pulumi.CustomResource):
                  prevent_forking_outside_group: pulumi.Input[Optional[_builtins.bool]] = None,
                  prevent_sharing_groups_outside_hierarchy: pulumi.Input[Optional[_builtins.bool]] = None,
                  project_creation_level: pulumi.Input[Optional[_builtins.str]] = None,
-                 push_rules: pulumi.Input[Optional[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']]] = None,
+                 push_rules: pulumi.Input[Optional[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict', 'outputs.GroupPushRules']]] = None,
                  request_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
                  share_with_group_lock: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1684,7 +1684,7 @@ class Group(pulumi.CustomResource):
             crm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             default_branch: pulumi.Input[Optional[_builtins.str]] = None,
             default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
-            default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']]] = None,
+            default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict', 'outputs.GroupDefaultBranchProtectionDefaults']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             extra_shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1704,7 +1704,7 @@ class Group(pulumi.CustomResource):
             prevent_forking_outside_group: pulumi.Input[Optional[_builtins.bool]] = None,
             prevent_sharing_groups_outside_hierarchy: pulumi.Input[Optional[_builtins.bool]] = None,
             project_creation_level: pulumi.Input[Optional[_builtins.str]] = None,
-            push_rules: pulumi.Input[Optional[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']]] = None,
+            push_rules: pulumi.Input[Optional[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict', 'outputs.GroupPushRules']]] = None,
             request_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
             runners_token: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1733,7 +1733,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] crm_enabled: Enable customer relations management (CRM) for the group.
         :param pulumi.Input[_builtins.str] default_branch: Initial default branch name.
         :param pulumi.Input[_builtins.int] default_branch_protection: See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
-        :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict']] default_branch_protection_defaults: The default branch protection defaults
+        :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict', 'outputs.GroupDefaultBranchProtectionDefaults']] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[_builtins.str] description: The group's description.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -1753,7 +1753,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] prevent_forking_outside_group: Defaults to false. When enabled, users can not fork projects from this group to external namespaces.
         :param pulumi.Input[_builtins.bool] prevent_sharing_groups_outside_hierarchy: Defaults to false. When enabled, users cannot invite other groups outside of the top-level group’s hierarchy. This option is only available for top-level groups.
         :param pulumi.Input[_builtins.str] project_creation_level: Determine if developers can create projects in the group. Valid values are: `noone`, `owner`, `maintainer`, `developer`, `administrator`
-        :param pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict']] push_rules: Push rules for the group.
+        :param pulumi.Input[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict', 'outputs.GroupPushRules']] push_rules: Push rules for the group.
         :param pulumi.Input[_builtins.bool] request_access_enabled: Allow users to request member access.
         :param pulumi.Input[_builtins.bool] require_two_factor_authentication: Require all users in this group to setup Two-factor authentication.
         :param pulumi.Input[_builtins.str] runners_token: The group level registration token to use during runner setup.

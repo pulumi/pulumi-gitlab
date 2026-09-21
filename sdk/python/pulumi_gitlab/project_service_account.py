@@ -245,7 +245,7 @@ class ProjectServiceAccount(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_wait_for_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ProjectServiceAccountTimeoutsArgs', 'ProjectServiceAccountTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ProjectServiceAccountTimeoutsArgs', 'ProjectServiceAccountTimeoutsArgsDict', 'outputs.ProjectServiceAccountTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -361,7 +361,7 @@ class ProjectServiceAccount(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_wait_for_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ProjectServiceAccountTimeoutsArgs', 'ProjectServiceAccountTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ProjectServiceAccountTimeoutsArgs', 'ProjectServiceAccountTimeoutsArgsDict', 'outputs.ProjectServiceAccountTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -396,7 +396,7 @@ class ProjectServiceAccount(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
             skip_wait_for_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
-            timeouts: pulumi.Input[Optional[Union['ProjectServiceAccountTimeoutsArgs', 'ProjectServiceAccountTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['ProjectServiceAccountTimeoutsArgs', 'ProjectServiceAccountTimeoutsArgsDict', 'outputs.ProjectServiceAccountTimeouts']]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectServiceAccount':
         """
         Get an existing ProjectServiceAccount resource's state with the given name, id, and optional extra

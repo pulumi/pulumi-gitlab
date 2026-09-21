@@ -381,7 +381,7 @@ class ProjectAccessToken(pulumi.CustomResource):
                  expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rotation_configuration: pulumi.Input[Optional[Union['ProjectAccessTokenRotationConfigurationArgs', 'ProjectAccessTokenRotationConfigurationArgsDict']]] = None,
+                 rotation_configuration: pulumi.Input[Optional[Union['ProjectAccessTokenRotationConfigurationArgs', 'ProjectAccessTokenRotationConfigurationArgsDict', 'outputs.ProjectAccessTokenRotationConfiguration']]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  validate_past_expiration_date: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -437,7 +437,7 @@ class ProjectAccessToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expires_at: When the token will expire, YYYY-MM-DD format. Is automatically set when `rotation_configuration` is used.
         :param pulumi.Input[_builtins.str] name: The name of the project access token.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project.
-        :param pulumi.Input[Union['ProjectAccessTokenRotationConfigurationArgs', 'ProjectAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        :param pulumi.Input[Union['ProjectAccessTokenRotationConfigurationArgs', 'ProjectAccessTokenRotationConfigurationArgsDict', 'outputs.ProjectAccessTokenRotationConfiguration']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
         :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Whether to validate if the expiration date is in the future.
         """
@@ -512,7 +512,7 @@ class ProjectAccessToken(pulumi.CustomResource):
                  expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rotation_configuration: pulumi.Input[Optional[Union['ProjectAccessTokenRotationConfigurationArgs', 'ProjectAccessTokenRotationConfigurationArgsDict']]] = None,
+                 rotation_configuration: pulumi.Input[Optional[Union['ProjectAccessTokenRotationConfigurationArgs', 'ProjectAccessTokenRotationConfigurationArgsDict', 'outputs.ProjectAccessTokenRotationConfiguration']]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  validate_past_expiration_date: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -561,7 +561,7 @@ class ProjectAccessToken(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             revoked: pulumi.Input[Optional[_builtins.bool]] = None,
-            rotation_configuration: pulumi.Input[Optional[Union['ProjectAccessTokenRotationConfigurationArgs', 'ProjectAccessTokenRotationConfigurationArgsDict']]] = None,
+            rotation_configuration: pulumi.Input[Optional[Union['ProjectAccessTokenRotationConfigurationArgs', 'ProjectAccessTokenRotationConfigurationArgsDict', 'outputs.ProjectAccessTokenRotationConfiguration']]] = None,
             scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             token: pulumi.Input[Optional[_builtins.str]] = None,
             user_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -581,7 +581,7 @@ class ProjectAccessToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the project access token.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project.
         :param pulumi.Input[_builtins.bool] revoked: True if the token is revoked.
-        :param pulumi.Input[Union['ProjectAccessTokenRotationConfigurationArgs', 'ProjectAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        :param pulumi.Input[Union['ProjectAccessTokenRotationConfigurationArgs', 'ProjectAccessTokenRotationConfigurationArgsDict', 'outputs.ProjectAccessTokenRotationConfiguration']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the project access token. valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
         :param pulumi.Input[_builtins.str] token: The token of the project access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[_builtins.int] user_id: The user_id associated to the token.

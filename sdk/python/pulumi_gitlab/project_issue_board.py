@@ -267,7 +267,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignee_id: pulumi.Input[Optional[_builtins.int]] = None,
                  labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]]] = None,
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict', 'outputs.ProjectIssueBoardList']]]]] = None,
                  milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -347,7 +347,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] assignee_id: The assignee the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] labels: The list of label names which the board should be scoped to. Requires a GitLab EE license.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]] lists: The list of issue board lists
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict', 'outputs.ProjectIssueBoardList']]]] lists: The list of issue board lists
         :param pulumi.Input[_builtins.int] milestone_id: The milestone the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[_builtins.str] name: The name of the board.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project maintained by the authenticated user.
@@ -446,7 +446,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignee_id: pulumi.Input[Optional[_builtins.int]] = None,
                  labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]]] = None,
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict', 'outputs.ProjectIssueBoardList']]]]] = None,
                  milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -481,7 +481,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             assignee_id: pulumi.Input[Optional[_builtins.int]] = None,
             labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]]] = None,
+            lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict', 'outputs.ProjectIssueBoardList']]]]] = None,
             milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -495,7 +495,7 @@ class ProjectIssueBoard(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] assignee_id: The assignee the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] labels: The list of label names which the board should be scoped to. Requires a GitLab EE license.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict']]]] lists: The list of issue board lists
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueBoardListArgs', 'ProjectIssueBoardListArgsDict', 'outputs.ProjectIssueBoardList']]]] lists: The list of issue board lists
         :param pulumi.Input[_builtins.int] milestone_id: The milestone the board should be scoped to. Requires a GitLab EE license.
         :param pulumi.Input[_builtins.str] name: The name of the board.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project maintained by the authenticated user.

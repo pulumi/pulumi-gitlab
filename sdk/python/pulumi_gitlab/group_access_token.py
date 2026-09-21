@@ -381,7 +381,7 @@ class GroupAccessToken(pulumi.CustomResource):
                  expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 rotation_configuration: pulumi.Input[Optional[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict']]] = None,
+                 rotation_configuration: pulumi.Input[Optional[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict', 'outputs.GroupAccessTokenRotationConfiguration']]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  validate_past_expiration_date: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -436,7 +436,7 @@ class GroupAccessToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expires_at: When the token will expire, YYYY-MM-DD format.
         :param pulumi.Input[_builtins.str] group: The ID or full path of the group.
         :param pulumi.Input[_builtins.str] name: The name of the group access token.
-        :param pulumi.Input[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        :param pulumi.Input[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict', 'outputs.GroupAccessTokenRotationConfiguration']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
         :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Whether to validate if the expiration date is in the future.
         """
@@ -510,7 +510,7 @@ class GroupAccessToken(pulumi.CustomResource):
                  expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 rotation_configuration: pulumi.Input[Optional[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict']]] = None,
+                 rotation_configuration: pulumi.Input[Optional[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict', 'outputs.GroupAccessTokenRotationConfiguration']]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  validate_past_expiration_date: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -559,7 +559,7 @@ class GroupAccessToken(pulumi.CustomResource):
             group: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             revoked: pulumi.Input[Optional[_builtins.bool]] = None,
-            rotation_configuration: pulumi.Input[Optional[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict']]] = None,
+            rotation_configuration: pulumi.Input[Optional[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict', 'outputs.GroupAccessTokenRotationConfiguration']]] = None,
             scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             token: pulumi.Input[Optional[_builtins.str]] = None,
             user_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -579,7 +579,7 @@ class GroupAccessToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] group: The ID or full path of the group.
         :param pulumi.Input[_builtins.str] name: The name of the group access token.
         :param pulumi.Input[_builtins.bool] revoked: True if the token is revoked.
-        :param pulumi.Input[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        :param pulumi.Input[Union['GroupAccessTokenRotationConfigurationArgs', 'GroupAccessTokenRotationConfigurationArgsDict', 'outputs.GroupAccessTokenRotationConfiguration']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the group access token. Valid values are: `api`, `read_api`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `read_repository`, `write_repository`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `read_observability`, `write_observability`, `self_rotate`
         :param pulumi.Input[_builtins.str] token: The token of the group access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[_builtins.int] user_id: The user_id associated to the token.

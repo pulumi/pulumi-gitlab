@@ -180,7 +180,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict', 'outputs.InstanceServiceAccountTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -294,7 +294,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict', 'outputs.InstanceServiceAccountTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -323,7 +323,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
             email: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict', 'outputs.InstanceServiceAccountTimeouts']]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceServiceAccount':
         """
         Get an existing InstanceServiceAccount resource's state with the given name, id, and optional extra

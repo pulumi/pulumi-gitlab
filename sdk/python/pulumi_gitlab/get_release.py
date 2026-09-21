@@ -135,7 +135,7 @@ class AwaitableGetReleaseResult(GetReleaseResult):
             tag_name=self.tag_name)
 
 
-def get_release(assets: Optional[Union['GetReleaseAssetsArgs', 'GetReleaseAssetsArgsDict']] = None,
+def get_release(assets: Optional[Union['GetReleaseAssetsArgs', 'GetReleaseAssetsArgsDict', 'outputs.GetReleaseAssetsResult']] = None,
                 project_id: Optional[_builtins.str] = None,
                 tag_name: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetReleaseResult:
@@ -156,7 +156,7 @@ def get_release(assets: Optional[Union['GetReleaseAssetsArgs', 'GetReleaseAssets
     ```
 
 
-    :param Union['GetReleaseAssetsArgs', 'GetReleaseAssetsArgsDict'] assets: The assets for a release
+    :param Union['GetReleaseAssetsArgs', 'GetReleaseAssetsArgsDict', 'outputs.GetReleaseAssetsResult'] assets: The assets for a release
     :param _builtins.str project_id: The ID or URL-encoded path of the project.
     :param _builtins.str tag_name: The Git tag the release is associated with.
     """
@@ -176,7 +176,7 @@ def get_release(assets: Optional[Union['GetReleaseAssetsArgs', 'GetReleaseAssets
         project_id=pulumi.get(__ret__, 'project_id'),
         released_at=pulumi.get(__ret__, 'released_at'),
         tag_name=pulumi.get(__ret__, 'tag_name'))
-def get_release_output(assets: pulumi.Input[Optional[Optional[Union['GetReleaseAssetsArgs', 'GetReleaseAssetsArgsDict']]]] = None,
+def get_release_output(assets: pulumi.Input[Optional[Optional[Union['GetReleaseAssetsArgs', 'GetReleaseAssetsArgsDict', 'outputs.GetReleaseAssetsResult']]]] = None,
                        project_id: pulumi.Input[Optional[_builtins.str]] = None,
                        tag_name: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReleaseResult]:
@@ -197,7 +197,7 @@ def get_release_output(assets: pulumi.Input[Optional[Optional[Union['GetReleaseA
     ```
 
 
-    :param Union['GetReleaseAssetsArgs', 'GetReleaseAssetsArgsDict'] assets: The assets for a release
+    :param Union['GetReleaseAssetsArgs', 'GetReleaseAssetsArgsDict', 'outputs.GetReleaseAssetsResult'] assets: The assets for a release
     :param _builtins.str project_id: The ID or URL-encoded path of the project.
     :param _builtins.str tag_name: The Git tag the release is associated with.
     """

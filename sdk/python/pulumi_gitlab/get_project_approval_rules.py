@@ -75,7 +75,7 @@ class AwaitableGetProjectApprovalRulesResult(GetProjectApprovalRulesResult):
             project=self.project)
 
 
-def get_project_approval_rules(approval_rules: Optional[Sequence[Union['GetProjectApprovalRulesApprovalRuleArgs', 'GetProjectApprovalRulesApprovalRuleArgsDict']]] = None,
+def get_project_approval_rules(approval_rules: Optional[Sequence[Union['GetProjectApprovalRulesApprovalRuleArgs', 'GetProjectApprovalRulesApprovalRuleArgsDict', 'outputs.GetProjectApprovalRulesApprovalRuleResult']]] = None,
                                project: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectApprovalRulesResult:
     """
@@ -94,7 +94,7 @@ def get_project_approval_rules(approval_rules: Optional[Sequence[Union['GetProje
     ```
 
 
-    :param Sequence[Union['GetProjectApprovalRulesApprovalRuleArgs', 'GetProjectApprovalRulesApprovalRuleArgsDict']] approval_rules: A list of project approval rules, as defined below.
+    :param Sequence[Union['GetProjectApprovalRulesApprovalRuleArgs', 'GetProjectApprovalRulesApprovalRuleArgsDict', 'outputs.GetProjectApprovalRulesApprovalRuleResult']] approval_rules: A list of project approval rules, as defined below.
     :param _builtins.str project: The ID or path with namespace that identifies the project.
     """
     __args__ = dict()
@@ -107,7 +107,7 @@ def get_project_approval_rules(approval_rules: Optional[Sequence[Union['GetProje
         approval_rules=pulumi.get(__ret__, 'approval_rules'),
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'))
-def get_project_approval_rules_output(approval_rules: pulumi.Input[Optional[Optional[Sequence[Union['GetProjectApprovalRulesApprovalRuleArgs', 'GetProjectApprovalRulesApprovalRuleArgsDict']]]]] = None,
+def get_project_approval_rules_output(approval_rules: pulumi.Input[Optional[Optional[Sequence[Union['GetProjectApprovalRulesApprovalRuleArgs', 'GetProjectApprovalRulesApprovalRuleArgsDict', 'outputs.GetProjectApprovalRulesApprovalRuleResult']]]]] = None,
                                       project: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectApprovalRulesResult]:
     """
@@ -126,7 +126,7 @@ def get_project_approval_rules_output(approval_rules: pulumi.Input[Optional[Opti
     ```
 
 
-    :param Sequence[Union['GetProjectApprovalRulesApprovalRuleArgs', 'GetProjectApprovalRulesApprovalRuleArgsDict']] approval_rules: A list of project approval rules, as defined below.
+    :param Sequence[Union['GetProjectApprovalRulesApprovalRuleArgs', 'GetProjectApprovalRulesApprovalRuleArgsDict', 'outputs.GetProjectApprovalRulesApprovalRuleResult']] approval_rules: A list of project approval rules, as defined below.
     :param _builtins.str project: The ID or path with namespace that identifies the project.
     """
     __args__ = dict()

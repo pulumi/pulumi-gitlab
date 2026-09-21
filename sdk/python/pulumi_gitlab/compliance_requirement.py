@@ -232,9 +232,9 @@ class ComplianceRequirement(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 external_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComplianceRequirementExternalControlArgs', 'ComplianceRequirementExternalControlArgsDict']]]]] = None,
+                 external_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComplianceRequirementExternalControlArgs', 'ComplianceRequirementExternalControlArgsDict', 'outputs.ComplianceRequirementExternalControl']]]]] = None,
                  framework_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 internal_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComplianceRequirementInternalControlArgs', 'ComplianceRequirementInternalControlArgsDict']]]]] = None,
+                 internal_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComplianceRequirementInternalControlArgs', 'ComplianceRequirementInternalControlArgsDict', 'outputs.ComplianceRequirementInternalControl']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_path: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -328,9 +328,9 @@ class ComplianceRequirement(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description for the compliance requirement.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ComplianceRequirementExternalControlArgs', 'ComplianceRequirementExternalControlArgsDict']]]] external_controls: Set of external controls for this compliance requirement. Controls define how compliance is verified.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComplianceRequirementExternalControlArgs', 'ComplianceRequirementExternalControlArgsDict', 'outputs.ComplianceRequirementExternalControl']]]] external_controls: Set of external controls for this compliance requirement. Controls define how compliance is verified.
         :param pulumi.Input[_builtins.str] framework_id: The globally unique ID of the compliance framework to add the requirement to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ComplianceRequirementInternalControlArgs', 'ComplianceRequirementInternalControlArgsDict']]]] internal_controls: Set of internal controls for this compliance requirement. Controls define how compliance is verified.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComplianceRequirementInternalControlArgs', 'ComplianceRequirementInternalControlArgsDict', 'outputs.ComplianceRequirementInternalControl']]]] internal_controls: Set of internal controls for this compliance requirement. Controls define how compliance is verified.
         :param pulumi.Input[_builtins.str] name: Name for the compliance requirement.
         :param pulumi.Input[_builtins.str] namespace_path: Full path of the namespace where the compliance framework resides.
         """
@@ -443,9 +443,9 @@ class ComplianceRequirement(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 external_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComplianceRequirementExternalControlArgs', 'ComplianceRequirementExternalControlArgsDict']]]]] = None,
+                 external_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComplianceRequirementExternalControlArgs', 'ComplianceRequirementExternalControlArgsDict', 'outputs.ComplianceRequirementExternalControl']]]]] = None,
                  framework_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 internal_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComplianceRequirementInternalControlArgs', 'ComplianceRequirementInternalControlArgsDict']]]]] = None,
+                 internal_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComplianceRequirementInternalControlArgs', 'ComplianceRequirementInternalControlArgsDict', 'outputs.ComplianceRequirementInternalControl']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace_path: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -480,9 +480,9 @@ class ComplianceRequirement(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            external_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComplianceRequirementExternalControlArgs', 'ComplianceRequirementExternalControlArgsDict']]]]] = None,
+            external_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComplianceRequirementExternalControlArgs', 'ComplianceRequirementExternalControlArgsDict', 'outputs.ComplianceRequirementExternalControl']]]]] = None,
             framework_id: pulumi.Input[Optional[_builtins.str]] = None,
-            internal_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComplianceRequirementInternalControlArgs', 'ComplianceRequirementInternalControlArgsDict']]]]] = None,
+            internal_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ComplianceRequirementInternalControlArgs', 'ComplianceRequirementInternalControlArgsDict', 'outputs.ComplianceRequirementInternalControl']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             namespace_path: pulumi.Input[Optional[_builtins.str]] = None) -> 'ComplianceRequirement':
         """
@@ -493,9 +493,9 @@ class ComplianceRequirement(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description for the compliance requirement.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ComplianceRequirementExternalControlArgs', 'ComplianceRequirementExternalControlArgsDict']]]] external_controls: Set of external controls for this compliance requirement. Controls define how compliance is verified.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComplianceRequirementExternalControlArgs', 'ComplianceRequirementExternalControlArgsDict', 'outputs.ComplianceRequirementExternalControl']]]] external_controls: Set of external controls for this compliance requirement. Controls define how compliance is verified.
         :param pulumi.Input[_builtins.str] framework_id: The globally unique ID of the compliance framework to add the requirement to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ComplianceRequirementInternalControlArgs', 'ComplianceRequirementInternalControlArgsDict']]]] internal_controls: Set of internal controls for this compliance requirement. Controls define how compliance is verified.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ComplianceRequirementInternalControlArgs', 'ComplianceRequirementInternalControlArgsDict', 'outputs.ComplianceRequirementInternalControl']]]] internal_controls: Set of internal controls for this compliance requirement. Controls define how compliance is verified.
         :param pulumi.Input[_builtins.str] name: Name for the compliance requirement.
         :param pulumi.Input[_builtins.str] namespace_path: Full path of the namespace where the compliance framework resides.
         """

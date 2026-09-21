@@ -75,7 +75,7 @@ class AwaitableGetSecurityPolicyDocumentResult(GetSecurityPolicyDocumentResult):
             yaml=self.yaml)
 
 
-def get_security_policy_document(scan_execution_policies: Optional[Sequence[Union['GetSecurityPolicyDocumentScanExecutionPolicyArgs', 'GetSecurityPolicyDocumentScanExecutionPolicyArgsDict']]] = None,
+def get_security_policy_document(scan_execution_policies: Optional[Sequence[Union['GetSecurityPolicyDocumentScanExecutionPolicyArgs', 'GetSecurityPolicyDocumentScanExecutionPolicyArgsDict', 'outputs.GetSecurityPolicyDocumentScanExecutionPolicyResult']]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecurityPolicyDocumentResult:
     """
     Generates a GitLab security policy YAML document from structured configuration.
@@ -111,7 +111,7 @@ def get_security_policy_document(scan_execution_policies: Optional[Sequence[Unio
     ```
 
 
-    :param Sequence[Union['GetSecurityPolicyDocumentScanExecutionPolicyArgs', 'GetSecurityPolicyDocumentScanExecutionPolicyArgsDict']] scan_execution_policies: Scan execution policy configuration. Multiple policies can be specified.
+    :param Sequence[Union['GetSecurityPolicyDocumentScanExecutionPolicyArgs', 'GetSecurityPolicyDocumentScanExecutionPolicyArgsDict', 'outputs.GetSecurityPolicyDocumentScanExecutionPolicyResult']] scan_execution_policies: Scan execution policy configuration. Multiple policies can be specified.
     """
     __args__ = dict()
     __args__['scanExecutionPolicies'] = scan_execution_policies
@@ -122,7 +122,7 @@ def get_security_policy_document(scan_execution_policies: Optional[Sequence[Unio
         id=pulumi.get(__ret__, 'id'),
         scan_execution_policies=pulumi.get(__ret__, 'scan_execution_policies'),
         yaml=pulumi.get(__ret__, 'yaml'))
-def get_security_policy_document_output(scan_execution_policies: pulumi.Input[Optional[Optional[Sequence[Union['GetSecurityPolicyDocumentScanExecutionPolicyArgs', 'GetSecurityPolicyDocumentScanExecutionPolicyArgsDict']]]]] = None,
+def get_security_policy_document_output(scan_execution_policies: pulumi.Input[Optional[Optional[Sequence[Union['GetSecurityPolicyDocumentScanExecutionPolicyArgs', 'GetSecurityPolicyDocumentScanExecutionPolicyArgsDict', 'outputs.GetSecurityPolicyDocumentScanExecutionPolicyResult']]]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityPolicyDocumentResult]:
     """
     Generates a GitLab security policy YAML document from structured configuration.
@@ -158,7 +158,7 @@ def get_security_policy_document_output(scan_execution_policies: pulumi.Input[Op
     ```
 
 
-    :param Sequence[Union['GetSecurityPolicyDocumentScanExecutionPolicyArgs', 'GetSecurityPolicyDocumentScanExecutionPolicyArgsDict']] scan_execution_policies: Scan execution policy configuration. Multiple policies can be specified.
+    :param Sequence[Union['GetSecurityPolicyDocumentScanExecutionPolicyArgs', 'GetSecurityPolicyDocumentScanExecutionPolicyArgsDict', 'outputs.GetSecurityPolicyDocumentScanExecutionPolicyResult']] scan_execution_policies: Scan execution policy configuration. Multiple policies can be specified.
     """
     __args__ = dict()
     __args__['scanExecutionPolicies'] = scan_execution_policies
