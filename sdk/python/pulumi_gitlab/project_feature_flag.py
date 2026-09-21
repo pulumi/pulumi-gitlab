@@ -221,7 +221,7 @@ class ProjectFeatureFlag(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectFeatureFlagStrategyArgs', 'ProjectFeatureFlagStrategyArgsDict']]]]] = None,
+                 strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectFeatureFlagStrategyArgs', 'ProjectFeatureFlagStrategyArgsDict', 'outputs.ProjectFeatureFlagStrategy']]]]] = None,
                  __props__=None):
         """
         The `ProjectFeatureFlag` resource manages the lifecycle of a project-level feature flag.
@@ -293,7 +293,7 @@ class ProjectFeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the feature flag.
         :param pulumi.Input[_builtins.str] name: The name of the feature flag.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectFeatureFlagStrategyArgs', 'ProjectFeatureFlagStrategyArgsDict']]]] strategies: A set of feature flag strategies. Updating this set replaces every strategy it previously managed in a single API call: strategies no longer present are removed (via the GitLab API's `_destroy` flag) and the rest are recreated, but the feature flag itself (`name`, `description`, `active`, `created_at`) is left untouched. Leaving `strategies` unconfigured (the default) leaves any existing strategies - including `gitlabUserList` bindings made outside of Terraform - alone.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectFeatureFlagStrategyArgs', 'ProjectFeatureFlagStrategyArgsDict', 'outputs.ProjectFeatureFlagStrategy']]]] strategies: A set of feature flag strategies. Updating this set replaces every strategy it previously managed in a single API call: strategies no longer present are removed (via the GitLab API's `_destroy` flag) and the rest are recreated, but the feature flag itself (`name`, `description`, `active`, `created_at`) is left untouched. Leaving `strategies` unconfigured (the default) leaves any existing strategies - including `gitlabUserList` bindings made outside of Terraform - alone.
         """
         ...
     @overload
@@ -384,7 +384,7 @@ class ProjectFeatureFlag(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectFeatureFlagStrategyArgs', 'ProjectFeatureFlagStrategyArgsDict']]]]] = None,
+                 strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectFeatureFlagStrategyArgs', 'ProjectFeatureFlagStrategyArgsDict', 'outputs.ProjectFeatureFlagStrategy']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -417,7 +417,7 @@ class ProjectFeatureFlag(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectFeatureFlagStrategyArgs', 'ProjectFeatureFlagStrategyArgsDict']]]]] = None) -> 'ProjectFeatureFlag':
+            strategies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectFeatureFlagStrategyArgs', 'ProjectFeatureFlagStrategyArgsDict', 'outputs.ProjectFeatureFlagStrategy']]]]] = None) -> 'ProjectFeatureFlag':
         """
         Get an existing ProjectFeatureFlag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -430,7 +430,7 @@ class ProjectFeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the feature flag.
         :param pulumi.Input[_builtins.str] name: The name of the feature flag.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectFeatureFlagStrategyArgs', 'ProjectFeatureFlagStrategyArgsDict']]]] strategies: A set of feature flag strategies. Updating this set replaces every strategy it previously managed in a single API call: strategies no longer present are removed (via the GitLab API's `_destroy` flag) and the rest are recreated, but the feature flag itself (`name`, `description`, `active`, `created_at`) is left untouched. Leaving `strategies` unconfigured (the default) leaves any existing strategies - including `gitlabUserList` bindings made outside of Terraform - alone.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectFeatureFlagStrategyArgs', 'ProjectFeatureFlagStrategyArgsDict', 'outputs.ProjectFeatureFlagStrategy']]]] strategies: A set of feature flag strategies. Updating this set replaces every strategy it previously managed in a single API call: strategies no longer present are removed (via the GitLab API's `_destroy` flag) and the rest are recreated, but the feature flag itself (`name`, `description`, `active`, `created_at`) is left untouched. Leaving `strategies` unconfigured (the default) leaves any existing strategies - including `gitlabUserList` bindings made outside of Terraform - alone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -1248,7 +1248,7 @@ class ProjectIssue(pulumi.CustomResource):
             references: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             subscribed: pulumi.Input[Optional[_builtins.bool]] = None,
-            task_completion_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectIssueTaskCompletionStatusArgs', 'ProjectIssueTaskCompletionStatusArgsDict']]]]] = None,
+            task_completion_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectIssueTaskCompletionStatusArgs', 'ProjectIssueTaskCompletionStatusArgsDict', 'outputs.ProjectIssueTaskCompletionStatus']]]]] = None,
             time_estimate: pulumi.Input[Optional[_builtins.int]] = None,
             title: pulumi.Input[Optional[_builtins.str]] = None,
             total_time_spent: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1295,7 +1295,7 @@ class ProjectIssue(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] references: The references of the issue.
         :param pulumi.Input[_builtins.str] state: The state of the issue. Valid values are: `opened`, `closed`.
         :param pulumi.Input[_builtins.bool] subscribed: Whether the authenticated user is subscribed to the issue or not.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueTaskCompletionStatusArgs', 'ProjectIssueTaskCompletionStatusArgsDict']]]] task_completion_statuses: The task completion status. It's always a one element list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectIssueTaskCompletionStatusArgs', 'ProjectIssueTaskCompletionStatusArgsDict', 'outputs.ProjectIssueTaskCompletionStatus']]]] task_completion_statuses: The task completion status. It's always a one element list.
         :param pulumi.Input[_builtins.int] time_estimate: The time estimate of the issue.
         :param pulumi.Input[_builtins.str] title: The title of the issue.
         :param pulumi.Input[_builtins.int] total_time_spent: The total time spent of the issue.

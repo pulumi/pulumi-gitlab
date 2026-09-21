@@ -172,7 +172,7 @@ class ValueStreamAnalytics(pulumi.CustomResource):
                  group_full_path: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_full_path: pulumi.Input[Optional[_builtins.str]] = None,
-                 stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict']]]]] = None,
+                 stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict', 'outputs.ValueStreamAnalyticsStage']]]]] = None,
                  __props__=None):
         """
         The `ValueStreamAnalytics` resource manages the lifecycle of value stream analytics.
@@ -247,7 +247,7 @@ class ValueStreamAnalytics(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] group_full_path: Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
         :param pulumi.Input[_builtins.str] name: The name of the value stream
         :param pulumi.Input[_builtins.str] project_full_path: Full path of the project the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict']]]] stages: Stages of the value stream
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict', 'outputs.ValueStreamAnalyticsStage']]]] stages: Stages of the value stream
         """
         ...
     @overload
@@ -341,7 +341,7 @@ class ValueStreamAnalytics(pulumi.CustomResource):
                  group_full_path: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_full_path: pulumi.Input[Optional[_builtins.str]] = None,
-                 stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict']]]]] = None,
+                 stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict', 'outputs.ValueStreamAnalyticsStage']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -370,7 +370,7 @@ class ValueStreamAnalytics(pulumi.CustomResource):
             group_full_path: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_full_path: pulumi.Input[Optional[_builtins.str]] = None,
-            stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict']]]]] = None) -> 'ValueStreamAnalytics':
+            stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict', 'outputs.ValueStreamAnalyticsStage']]]]] = None) -> 'ValueStreamAnalytics':
         """
         Get an existing ValueStreamAnalytics resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -381,7 +381,7 @@ class ValueStreamAnalytics(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] group_full_path: Full path of the group the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
         :param pulumi.Input[_builtins.str] name: The name of the value stream
         :param pulumi.Input[_builtins.str] project_full_path: Full path of the project the value stream is created in. **One of `group_full_path` OR `project_full_path` is required.**
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict']]]] stages: Stages of the value stream
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict', 'outputs.ValueStreamAnalyticsStage']]]] stages: Stages of the value stream
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

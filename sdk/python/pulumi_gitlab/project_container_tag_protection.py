@@ -245,7 +245,7 @@ class ProjectContainerTagProtection(pulumi.CustomResource):
                  minimum_access_level_for_push: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ProjectContainerTagProtectionTimeoutsArgs', 'ProjectContainerTagProtectionTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ProjectContainerTagProtectionTimeoutsArgs', 'ProjectContainerTagProtectionTimeoutsArgsDict', 'outputs.ProjectContainerTagProtectionTimeouts']]] = None,
                  __props__=None):
         """
         The `ProjectContainerTagProtection` resource allows managing the lifecycle of a container tag protection rule.
@@ -371,7 +371,7 @@ class ProjectContainerTagProtection(pulumi.CustomResource):
                  minimum_access_level_for_push: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ProjectContainerTagProtectionTimeoutsArgs', 'ProjectContainerTagProtectionTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ProjectContainerTagProtectionTimeoutsArgs', 'ProjectContainerTagProtectionTimeoutsArgsDict', 'outputs.ProjectContainerTagProtectionTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -408,7 +408,7 @@ class ProjectContainerTagProtection(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             protection_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
             tag_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['ProjectContainerTagProtectionTimeoutsArgs', 'ProjectContainerTagProtectionTimeoutsArgsDict']]] = None) -> 'ProjectContainerTagProtection':
+            timeouts: pulumi.Input[Optional[Union['ProjectContainerTagProtectionTimeoutsArgs', 'ProjectContainerTagProtectionTimeoutsArgsDict', 'outputs.ProjectContainerTagProtectionTimeouts']]] = None) -> 'ProjectContainerTagProtection':
         """
         Get an existing ProjectContainerTagProtection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

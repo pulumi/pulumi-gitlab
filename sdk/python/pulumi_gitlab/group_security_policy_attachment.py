@@ -162,7 +162,7 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_project: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['GroupSecurityPolicyAttachmentTimeoutsArgs', 'GroupSecurityPolicyAttachmentTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['GroupSecurityPolicyAttachmentTimeoutsArgs', 'GroupSecurityPolicyAttachmentTimeoutsArgsDict', 'outputs.GroupSecurityPolicyAttachmentTimeouts']]] = None,
                  __props__=None):
         """
         The `GroupSecurityPolicyAttachment` resource allows to attach a security policy project to a group.
@@ -334,7 +334,7 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_project: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['GroupSecurityPolicyAttachmentTimeoutsArgs', 'GroupSecurityPolicyAttachmentTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['GroupSecurityPolicyAttachmentTimeoutsArgs', 'GroupSecurityPolicyAttachmentTimeoutsArgsDict', 'outputs.GroupSecurityPolicyAttachmentTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -367,7 +367,7 @@ class GroupSecurityPolicyAttachment(pulumi.CustomResource):
             group_graphql_id: pulumi.Input[Optional[_builtins.str]] = None,
             policy_project: pulumi.Input[Optional[_builtins.str]] = None,
             policy_project_graphql_id: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['GroupSecurityPolicyAttachmentTimeoutsArgs', 'GroupSecurityPolicyAttachmentTimeoutsArgsDict']]] = None) -> 'GroupSecurityPolicyAttachment':
+            timeouts: pulumi.Input[Optional[Union['GroupSecurityPolicyAttachmentTimeoutsArgs', 'GroupSecurityPolicyAttachmentTimeoutsArgsDict', 'outputs.GroupSecurityPolicyAttachmentTimeouts']]] = None) -> 'GroupSecurityPolicyAttachment':
         """
         Get an existing GroupSecurityPolicyAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

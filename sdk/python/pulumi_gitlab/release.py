@@ -456,7 +456,7 @@ class Release(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assets: pulumi.Input[Optional[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict']]] = None,
+                 assets: pulumi.Input[Optional[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict', 'outputs.ReleaseAssets']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  milestones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -505,7 +505,7 @@ class Release(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict']] assets: The release assets.
+        :param pulumi.Input[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict', 'outputs.ReleaseAssets']] assets: The release assets.
         :param pulumi.Input[_builtins.str] description: The description of the release. You can use Markdown.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] milestones: The title of each milestone the release is associated with. GitLab Premium customers can specify group milestones.
         :param pulumi.Input[_builtins.str] name: The name of the release.
@@ -573,7 +573,7 @@ class Release(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assets: pulumi.Input[Optional[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict']]] = None,
+                 assets: pulumi.Input[Optional[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict', 'outputs.ReleaseAssets']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  milestones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -622,14 +622,14 @@ class Release(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assets: pulumi.Input[Optional[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict']]] = None,
-            author: pulumi.Input[Optional[Union['ReleaseAuthorArgs', 'ReleaseAuthorArgsDict']]] = None,
-            commit: pulumi.Input[Optional[Union['ReleaseCommitArgs', 'ReleaseCommitArgsDict']]] = None,
+            assets: pulumi.Input[Optional[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict', 'outputs.ReleaseAssets']]] = None,
+            author: pulumi.Input[Optional[Union['ReleaseAuthorArgs', 'ReleaseAuthorArgsDict', 'outputs.ReleaseAuthor']]] = None,
+            commit: pulumi.Input[Optional[Union['ReleaseCommitArgs', 'ReleaseCommitArgsDict', 'outputs.ReleaseCommit']]] = None,
             commit_path: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             description_html: pulumi.Input[Optional[_builtins.str]] = None,
-            links: pulumi.Input[Optional[Union['ReleaseLinksArgs', 'ReleaseLinksArgsDict']]] = None,
+            links: pulumi.Input[Optional[Union['ReleaseLinksArgs', 'ReleaseLinksArgsDict', 'outputs.ReleaseLinks']]] = None,
             milestones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -646,14 +646,14 @@ class Release(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict']] assets: The release assets.
-        :param pulumi.Input[Union['ReleaseAuthorArgs', 'ReleaseAuthorArgsDict']] author: The author of the release.
-        :param pulumi.Input[Union['ReleaseCommitArgs', 'ReleaseCommitArgsDict']] commit: The release commit.
+        :param pulumi.Input[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict', 'outputs.ReleaseAssets']] assets: The release assets.
+        :param pulumi.Input[Union['ReleaseAuthorArgs', 'ReleaseAuthorArgsDict', 'outputs.ReleaseAuthor']] author: The author of the release.
+        :param pulumi.Input[Union['ReleaseCommitArgs', 'ReleaseCommitArgsDict', 'outputs.ReleaseCommit']] commit: The release commit.
         :param pulumi.Input[_builtins.str] commit_path: The path to the commit
         :param pulumi.Input[_builtins.str] created_at: Date and time the release was created. In ISO 8601 format (2019-03-15T08:00:00Z).
         :param pulumi.Input[_builtins.str] description: The description of the release. You can use Markdown.
         :param pulumi.Input[_builtins.str] description_html: HTML rendered Markdown of the release description.
-        :param pulumi.Input[Union['ReleaseLinksArgs', 'ReleaseLinksArgsDict']] links: Links of the release
+        :param pulumi.Input[Union['ReleaseLinksArgs', 'ReleaseLinksArgsDict', 'outputs.ReleaseLinks']] links: Links of the release
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] milestones: The title of each milestone the release is associated with. GitLab Premium customers can specify group milestones.
         :param pulumi.Input[_builtins.str] name: The name of the release.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project.

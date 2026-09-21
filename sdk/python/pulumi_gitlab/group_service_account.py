@@ -245,7 +245,7 @@ class GroupServiceAccount(pulumi.CustomResource):
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_wait_for_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['GroupServiceAccountTimeoutsArgs', 'GroupServiceAccountTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['GroupServiceAccountTimeoutsArgs', 'GroupServiceAccountTimeoutsArgsDict', 'outputs.GroupServiceAccountTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -375,7 +375,7 @@ class GroupServiceAccount(pulumi.CustomResource):
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_wait_for_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['GroupServiceAccountTimeoutsArgs', 'GroupServiceAccountTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['GroupServiceAccountTimeoutsArgs', 'GroupServiceAccountTimeoutsArgsDict', 'outputs.GroupServiceAccountTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -410,7 +410,7 @@ class GroupServiceAccount(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
             skip_wait_for_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
-            timeouts: pulumi.Input[Optional[Union['GroupServiceAccountTimeoutsArgs', 'GroupServiceAccountTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['GroupServiceAccountTimeoutsArgs', 'GroupServiceAccountTimeoutsArgsDict', 'outputs.GroupServiceAccountTimeouts']]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupServiceAccount':
         """
         Get an existing GroupServiceAccount resource's state with the given name, id, and optional extra

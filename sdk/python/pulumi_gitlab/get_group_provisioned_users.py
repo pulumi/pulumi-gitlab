@@ -140,7 +140,7 @@ def get_group_provisioned_users(active: Optional[_builtins.bool] = None,
                                 created_after: Optional[_builtins.str] = None,
                                 created_before: Optional[_builtins.str] = None,
                                 id: Optional[_builtins.str] = None,
-                                provisioned_users: Optional[Sequence[Union['GetGroupProvisionedUsersProvisionedUserArgs', 'GetGroupProvisionedUsersProvisionedUserArgsDict']]] = None,
+                                provisioned_users: Optional[Sequence[Union['GetGroupProvisionedUsersProvisionedUserArgs', 'GetGroupProvisionedUsersProvisionedUserArgsDict', 'outputs.GetGroupProvisionedUsersProvisionedUserResult']]] = None,
                                 search: Optional[_builtins.str] = None,
                                 username: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupProvisionedUsersResult:
@@ -155,7 +155,7 @@ def get_group_provisioned_users(active: Optional[_builtins.bool] = None,
     :param _builtins.str created_after: Return only provisioned users created on or after the specified date. Expected in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ).
     :param _builtins.str created_before: Return only provisioned users created on or before the specified date. Expected in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ).
     :param _builtins.str id: The ID or URL-encoded path of the group.
-    :param Sequence[Union['GetGroupProvisionedUsersProvisionedUserArgs', 'GetGroupProvisionedUsersProvisionedUserArgsDict']] provisioned_users: The list of provisioned users.
+    :param Sequence[Union['GetGroupProvisionedUsersProvisionedUserArgs', 'GetGroupProvisionedUsersProvisionedUserArgsDict', 'outputs.GetGroupProvisionedUsersProvisionedUserResult']] provisioned_users: The list of provisioned users.
     :param _builtins.str search: The search query to filter the provisioned users.
     :param _builtins.str username: The username of the provisioned user.
     """
@@ -185,7 +185,7 @@ def get_group_provisioned_users_output(active: pulumi.Input[Optional[Optional[_b
                                        created_after: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        created_before: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        id: pulumi.Input[Optional[_builtins.str]] = None,
-                                       provisioned_users: pulumi.Input[Optional[Optional[Sequence[Union['GetGroupProvisionedUsersProvisionedUserArgs', 'GetGroupProvisionedUsersProvisionedUserArgsDict']]]]] = None,
+                                       provisioned_users: pulumi.Input[Optional[Optional[Sequence[Union['GetGroupProvisionedUsersProvisionedUserArgs', 'GetGroupProvisionedUsersProvisionedUserArgsDict', 'outputs.GetGroupProvisionedUsersProvisionedUserResult']]]]] = None,
                                        search: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        username: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupProvisionedUsersResult]:
@@ -200,7 +200,7 @@ def get_group_provisioned_users_output(active: pulumi.Input[Optional[Optional[_b
     :param _builtins.str created_after: Return only provisioned users created on or after the specified date. Expected in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ).
     :param _builtins.str created_before: Return only provisioned users created on or before the specified date. Expected in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ).
     :param _builtins.str id: The ID or URL-encoded path of the group.
-    :param Sequence[Union['GetGroupProvisionedUsersProvisionedUserArgs', 'GetGroupProvisionedUsersProvisionedUserArgsDict']] provisioned_users: The list of provisioned users.
+    :param Sequence[Union['GetGroupProvisionedUsersProvisionedUserArgs', 'GetGroupProvisionedUsersProvisionedUserArgsDict', 'outputs.GetGroupProvisionedUsersProvisionedUserResult']] provisioned_users: The list of provisioned users.
     :param _builtins.str search: The search query to filter the provisioned users.
     :param _builtins.str username: The username of the provisioned user.
     """

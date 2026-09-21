@@ -168,8 +168,8 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict']]]]] = None,
-                 deploy_access_levels_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict']]]]] = None,
+                 approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict', 'outputs.ProjectProtectedEnvironmentApprovalRule']]]]] = None,
+                 deploy_access_levels_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict', 'outputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute']]]]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -199,8 +199,8 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict']]]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict']]]] deploy_access_levels_attributes: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels_attribute` should be one of `user_id`, `group_id` or `access_level`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict', 'outputs.ProjectProtectedEnvironmentApprovalRule']]]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict', 'outputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute']]]] deploy_access_levels_attributes: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels_attribute` should be one of `user_id`, `group_id` or `access_level`.
         :param pulumi.Input[_builtins.str] environment: The name of the environment.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project which the protected environment is created against.
         """
@@ -249,8 +249,8 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict']]]]] = None,
-                 deploy_access_levels_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict']]]]] = None,
+                 approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict', 'outputs.ProjectProtectedEnvironmentApprovalRule']]]]] = None,
+                 deploy_access_levels_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict', 'outputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute']]]]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -280,8 +280,8 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict']]]]] = None,
-            deploy_access_levels_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict']]]]] = None,
+            approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict', 'outputs.ProjectProtectedEnvironmentApprovalRule']]]]] = None,
+            deploy_access_levels_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict', 'outputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute']]]]] = None,
             environment: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectProtectedEnvironment':
         """
@@ -291,8 +291,8 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict']]]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict']]]] deploy_access_levels_attributes: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels_attribute` should be one of `user_id`, `group_id` or `access_level`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict', 'outputs.ProjectProtectedEnvironmentApprovalRule']]]] approval_rules: Array of approval rules to deploy, with each described by a hash. Elements in the `approval_rules` should be one of `user_id`, `group_id` or `access_level`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict', 'outputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute']]]] deploy_access_levels_attributes: Array of access levels allowed to deploy, with each described by a hash.  Elements in the `deploy_access_levels_attribute` should be one of `user_id`, `group_id` or `access_level`.
         :param pulumi.Input[_builtins.str] environment: The name of the environment.
         :param pulumi.Input[_builtins.str] project: The ID or full path of the project which the protected environment is created against.
         """

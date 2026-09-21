@@ -311,7 +311,7 @@ class ProjectPagesSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectPagesSettingsDeploymentArgs', 'ProjectPagesSettingsDeploymentArgsDict']]]]] = None,
+            deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectPagesSettingsDeploymentArgs', 'ProjectPagesSettingsDeploymentArgsDict', 'outputs.ProjectPagesSettingsDeployment']]]]] = None,
             force_https: pulumi.Input[Optional[_builtins.bool]] = None,
             is_unique_domain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -324,7 +324,7 @@ class ProjectPagesSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectPagesSettingsDeploymentArgs', 'ProjectPagesSettingsDeploymentArgsDict']]]] deployments: List of current active deployments.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectPagesSettingsDeploymentArgs', 'ProjectPagesSettingsDeploymentArgsDict', 'outputs.ProjectPagesSettingsDeployment']]]] deployments: List of current active deployments.
         :param pulumi.Input[_builtins.bool] force_https: Boolean indicating if the project is set to force https. Requires `external_https` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
         :param pulumi.Input[_builtins.bool] is_unique_domain_enabled: Boolean indicating if a unique domain is enabled.
         :param pulumi.Input[_builtins.bool] keep_settings_on_destroy: Set to true if the pages settings should not be reset to their pre-terraform defaults on destroy.

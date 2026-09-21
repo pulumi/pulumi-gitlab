@@ -345,9 +345,9 @@ class BranchProtection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_force_push: pulumi.Input[Optional[_builtins.bool]] = None,
-                 allowed_to_merges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]]] = None,
-                 allowed_to_pushes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]]] = None,
-                 allowed_to_unprotects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]]] = None,
+                 allowed_to_merges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict', 'outputs.BranchProtectionAllowedToMerge']]]]] = None,
+                 allowed_to_pushes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict', 'outputs.BranchProtectionAllowedToPush']]]]] = None,
+                 allowed_to_unprotects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict', 'outputs.BranchProtectionAllowedToUnprotect']]]]] = None,
                  branch: pulumi.Input[Optional[_builtins.str]] = None,
                  code_owner_approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  merge_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -453,9 +453,9 @@ class BranchProtection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_force_push: Can be set to true to allow users with push access to force push.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]] allowed_to_merges: Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]] allowed_to_pushes: Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]] allowed_to_unprotects: Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict', 'outputs.BranchProtectionAllowedToMerge']]]] allowed_to_merges: Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict', 'outputs.BranchProtectionAllowedToPush']]]] allowed_to_pushes: Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict', 'outputs.BranchProtectionAllowedToUnprotect']]]] allowed_to_unprotects: Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
         :param pulumi.Input[_builtins.str] branch: Name of the branch.
         :param pulumi.Input[_builtins.bool] code_owner_approval_required: Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.
         :param pulumi.Input[_builtins.str] merge_access_level: Access levels allowed to merge. Valid values are: `no one`, `developer`, `maintainer`, `admin`. Only available for CE instances.
@@ -580,9 +580,9 @@ class BranchProtection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_force_push: pulumi.Input[Optional[_builtins.bool]] = None,
-                 allowed_to_merges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]]] = None,
-                 allowed_to_pushes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]]] = None,
-                 allowed_to_unprotects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]]] = None,
+                 allowed_to_merges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict', 'outputs.BranchProtectionAllowedToMerge']]]]] = None,
+                 allowed_to_pushes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict', 'outputs.BranchProtectionAllowedToPush']]]]] = None,
+                 allowed_to_unprotects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict', 'outputs.BranchProtectionAllowedToUnprotect']]]]] = None,
                  branch: pulumi.Input[Optional[_builtins.str]] = None,
                  code_owner_approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  merge_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -622,9 +622,9 @@ class BranchProtection(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_force_push: pulumi.Input[Optional[_builtins.bool]] = None,
-            allowed_to_merges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]]] = None,
-            allowed_to_pushes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]]] = None,
-            allowed_to_unprotects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]]] = None,
+            allowed_to_merges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict', 'outputs.BranchProtectionAllowedToMerge']]]]] = None,
+            allowed_to_pushes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict', 'outputs.BranchProtectionAllowedToPush']]]]] = None,
+            allowed_to_unprotects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict', 'outputs.BranchProtectionAllowedToUnprotect']]]]] = None,
             branch: pulumi.Input[Optional[_builtins.str]] = None,
             branch_protection_id: pulumi.Input[Optional[_builtins.int]] = None,
             code_owner_approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -639,9 +639,9 @@ class BranchProtection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_force_push: Can be set to true to allow users with push access to force push.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict']]]] allowed_to_merges: Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict']]]] allowed_to_pushes: Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict']]]] allowed_to_unprotects: Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict', 'outputs.BranchProtectionAllowedToMerge']]]] allowed_to_merges: Array of merge access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict', 'outputs.BranchProtectionAllowedToPush']]]] allowed_to_pushes: Array of push access levels/users/groups/deploy keys allowed for the protected branch. Only available for Premium and Ultimate instances.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict', 'outputs.BranchProtectionAllowedToUnprotect']]]] allowed_to_unprotects: Array of unprotect access levels/users/groups allowed for the protected branch. Only available for Premium and Ultimate instances.
         :param pulumi.Input[_builtins.str] branch: Name of the branch.
         :param pulumi.Input[_builtins.int] branch_protection_id: The ID of the branch protection (not the branch name).
         :param pulumi.Input[_builtins.bool] code_owner_approval_required: Can be set to true to require code owner approval before merging. Only available for Premium and Ultimate instances.

@@ -330,7 +330,7 @@ class ProjectServiceAccountAccessToken(pulumi.CustomResource):
                  expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rotation_configuration: pulumi.Input[Optional[Union['ProjectServiceAccountAccessTokenRotationConfigurationArgs', 'ProjectServiceAccountAccessTokenRotationConfigurationArgsDict']]] = None,
+                 rotation_configuration: pulumi.Input[Optional[Union['ProjectServiceAccountAccessTokenRotationConfigurationArgs', 'ProjectServiceAccountAccessTokenRotationConfigurationArgsDict', 'outputs.ProjectServiceAccountAccessTokenRotationConfiguration']]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  user_id: pulumi.Input[Optional[_builtins.int]] = None,
                  validate_past_expiration_date: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -410,7 +410,7 @@ class ProjectServiceAccountAccessToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expires_at: The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
         :param pulumi.Input[_builtins.str] name: The name of the personal access token.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project containing the service account.
-        :param pulumi.Input[Union['ProjectServiceAccountAccessTokenRotationConfigurationArgs', 'ProjectServiceAccountAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        :param pulumi.Input[Union['ProjectServiceAccountAccessTokenRotationConfigurationArgs', 'ProjectServiceAccountAccessTokenRotationConfigurationArgsDict', 'outputs.ProjectServiceAccountAccessTokenRotationConfiguration']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the project service account access token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`. If `self_rotate` is included, you must also provide either `expires_at` or `rotation_configuration`.
         :param pulumi.Input[_builtins.int] user_id: The ID of a service account user.
         :param pulumi.Input[_builtins.bool] validate_past_expiration_date: Whether to validate if the expiration date is in the future.
@@ -509,7 +509,7 @@ class ProjectServiceAccountAccessToken(pulumi.CustomResource):
                  expires_at: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 rotation_configuration: pulumi.Input[Optional[Union['ProjectServiceAccountAccessTokenRotationConfigurationArgs', 'ProjectServiceAccountAccessTokenRotationConfigurationArgsDict']]] = None,
+                 rotation_configuration: pulumi.Input[Optional[Union['ProjectServiceAccountAccessTokenRotationConfigurationArgs', 'ProjectServiceAccountAccessTokenRotationConfigurationArgsDict', 'outputs.ProjectServiceAccountAccessTokenRotationConfiguration']]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  user_id: pulumi.Input[Optional[_builtins.int]] = None,
                  validate_past_expiration_date: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -557,7 +557,7 @@ class ProjectServiceAccountAccessToken(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             revoked: pulumi.Input[Optional[_builtins.bool]] = None,
-            rotation_configuration: pulumi.Input[Optional[Union['ProjectServiceAccountAccessTokenRotationConfigurationArgs', 'ProjectServiceAccountAccessTokenRotationConfigurationArgsDict']]] = None,
+            rotation_configuration: pulumi.Input[Optional[Union['ProjectServiceAccountAccessTokenRotationConfigurationArgs', 'ProjectServiceAccountAccessTokenRotationConfigurationArgsDict', 'outputs.ProjectServiceAccountAccessTokenRotationConfiguration']]] = None,
             scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             token: pulumi.Input[Optional[_builtins.str]] = None,
             user_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -575,7 +575,7 @@ class ProjectServiceAccountAccessToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the personal access token.
         :param pulumi.Input[_builtins.str] project: The ID or URL-encoded path of the project containing the service account.
         :param pulumi.Input[_builtins.bool] revoked: True if the token is revoked.
-        :param pulumi.Input[Union['ProjectServiceAccountAccessTokenRotationConfigurationArgs', 'ProjectServiceAccountAccessTokenRotationConfigurationArgsDict']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
+        :param pulumi.Input[Union['ProjectServiceAccountAccessTokenRotationConfigurationArgs', 'ProjectServiceAccountAccessTokenRotationConfigurationArgsDict', 'outputs.ProjectServiceAccountAccessTokenRotationConfiguration']] rotation_configuration: The configuration for when to rotate a token automatically. Will not rotate a token until `pulumi up` is run.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: The scopes of the project service account access token. Valid values are: `api`, `read_user`, `read_api`, `read_repository`, `write_repository`, `read_registry`, `write_registry`, `read_virtual_registry`, `write_virtual_registry`, `sudo`, `admin_mode`, `create_runner`, `manage_runner`, `ai_features`, `k8s_proxy`, `self_rotate`, `read_service_ping`. If `self_rotate` is included, you must also provide either `expires_at` or `rotation_configuration`.
         :param pulumi.Input[_builtins.str] token: The token of the project service account access token. **Note**: the token is not available for imported resources.
         :param pulumi.Input[_builtins.int] user_id: The ID of a service account user.

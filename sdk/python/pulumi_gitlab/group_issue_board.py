@@ -203,7 +203,7 @@ class GroupIssueBoard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]]] = None,
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict', 'outputs.GroupIssueBoardList']]]]] = None,
                  milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -231,7 +231,7 @@ class GroupIssueBoard(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group owned by the authenticated user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] labels: The list of label names which the board should be scoped to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]] lists: The list of issue board lists.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict', 'outputs.GroupIssueBoardList']]]] lists: The list of issue board lists.
         :param pulumi.Input[_builtins.int] milestone_id: The milestone the board should be scoped to.
         :param pulumi.Input[_builtins.str] name: The name of the board.
         """
@@ -278,7 +278,7 @@ class GroupIssueBoard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]]] = None,
+                 lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict', 'outputs.GroupIssueBoardList']]]]] = None,
                  milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -309,7 +309,7 @@ class GroupIssueBoard(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             group: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]]] = None,
+            lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict', 'outputs.GroupIssueBoardList']]]]] = None,
             milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupIssueBoard':
         """
@@ -321,7 +321,7 @@ class GroupIssueBoard(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group: The ID or URL-encoded path of the group owned by the authenticated user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] labels: The list of label names which the board should be scoped to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict']]]] lists: The list of issue board lists.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupIssueBoardListArgs', 'GroupIssueBoardListArgsDict', 'outputs.GroupIssueBoardList']]]] lists: The list of issue board lists.
         :param pulumi.Input[_builtins.int] milestone_id: The milestone the board should be scoped to.
         :param pulumi.Input[_builtins.str] name: The name of the board.
         """

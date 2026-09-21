@@ -3477,7 +3477,7 @@ class Project(pulumi.CustomResource):
                  ci_push_repository_for_job_token_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
                  ci_restrict_pipeline_cancellation_role: pulumi.Input[Optional[_builtins.str]] = None,
                  ci_separated_caches: pulumi.Input[Optional[_builtins.bool]] = None,
-                 container_expiration_policy: pulumi.Input[Optional[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
+                 container_expiration_policy: pulumi.Input[Optional[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict', 'outputs.ProjectContainerExpirationPolicy']]] = None,
                  container_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3529,7 +3529,7 @@ class Project(pulumi.CustomResource):
                  protect_merge_request_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
                  public_builds: pulumi.Input[Optional[_builtins.bool]] = None,
                  public_jobs: pulumi.Input[Optional[_builtins.bool]] = None,
-                 push_rules: pulumi.Input[Optional[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']]] = None,
+                 push_rules: pulumi.Input[Optional[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict', 'outputs.ProjectPushRules']]] = None,
                  releases_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  remove_source_branch_after_merge: pulumi.Input[Optional[_builtins.bool]] = None,
                  repository_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3612,7 +3612,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] ci_push_repository_for_job_token_allowed: Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
         :param pulumi.Input[_builtins.str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no_one`
         :param pulumi.Input[_builtins.bool] ci_separated_caches: Use separate caches for protected branches.
-        :param pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+        :param pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict', 'outputs.ProjectContainerExpirationPolicy']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[_builtins.str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] default_branch: The default branch for the project.
         :param pulumi.Input[_builtins.str] description: A description of the project.
@@ -3664,7 +3664,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] protect_merge_request_pipelines: Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
         :param pulumi.Input[_builtins.bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[_builtins.bool] public_jobs: If true, jobs can be viewed by non-project members.
-        :param pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']] push_rules: Push rules for the project.
+        :param pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict', 'outputs.ProjectPushRules']] push_rules: Push rules for the project.
         :param pulumi.Input[_builtins.str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[_builtins.str] repository_access_level: Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
@@ -3770,7 +3770,7 @@ class Project(pulumi.CustomResource):
                  ci_push_repository_for_job_token_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
                  ci_restrict_pipeline_cancellation_role: pulumi.Input[Optional[_builtins.str]] = None,
                  ci_separated_caches: pulumi.Input[Optional[_builtins.bool]] = None,
-                 container_expiration_policy: pulumi.Input[Optional[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
+                 container_expiration_policy: pulumi.Input[Optional[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict', 'outputs.ProjectContainerExpirationPolicy']]] = None,
                  container_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3822,7 +3822,7 @@ class Project(pulumi.CustomResource):
                  protect_merge_request_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
                  public_builds: pulumi.Input[Optional[_builtins.bool]] = None,
                  public_jobs: pulumi.Input[Optional[_builtins.bool]] = None,
-                 push_rules: pulumi.Input[Optional[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']]] = None,
+                 push_rules: pulumi.Input[Optional[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict', 'outputs.ProjectPushRules']]] = None,
                  releases_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  remove_source_branch_after_merge: pulumi.Input[Optional[_builtins.bool]] = None,
                  repository_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4003,7 +4003,7 @@ class Project(pulumi.CustomResource):
             ci_push_repository_for_job_token_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
             ci_restrict_pipeline_cancellation_role: pulumi.Input[Optional[_builtins.str]] = None,
             ci_separated_caches: pulumi.Input[Optional[_builtins.bool]] = None,
-            container_expiration_policy: pulumi.Input[Optional[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']]] = None,
+            container_expiration_policy: pulumi.Input[Optional[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict', 'outputs.ProjectContainerExpirationPolicy']]] = None,
             container_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
             default_branch: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4058,7 +4058,7 @@ class Project(pulumi.CustomResource):
             protect_merge_request_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
             public_builds: pulumi.Input[Optional[_builtins.bool]] = None,
             public_jobs: pulumi.Input[Optional[_builtins.bool]] = None,
-            push_rules: pulumi.Input[Optional[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']]] = None,
+            push_rules: pulumi.Input[Optional[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict', 'outputs.ProjectPushRules']]] = None,
             releases_access_level: pulumi.Input[Optional[_builtins.str]] = None,
             remove_source_branch_after_merge: pulumi.Input[Optional[_builtins.bool]] = None,
             repository_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4119,7 +4119,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] ci_push_repository_for_job_token_allowed: Allow Git push requests to your project repository that are authenticated with a CI/CD job token.
         :param pulumi.Input[_builtins.str] ci_restrict_pipeline_cancellation_role: The role required to cancel a pipeline or job. Premium and Ultimate only. Valid values are `developer`, `maintainer`, `no_one`
         :param pulumi.Input[_builtins.bool] ci_separated_caches: Use separate caches for protected branches.
-        :param pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
+        :param pulumi.Input[Union['ProjectContainerExpirationPolicyArgs', 'ProjectContainerExpirationPolicyArgsDict', 'outputs.ProjectContainerExpirationPolicy']] container_expiration_policy: Set the image cleanup policy for this project. **Note**: this field is sometimes named `container_expiration_policy_attributes` in the GitLab Upstream API.
         :param pulumi.Input[_builtins.str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] default_branch: The default branch for the project.
         :param pulumi.Input[_builtins.str] description: A description of the project.
@@ -4174,7 +4174,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] protect_merge_request_pipelines: Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
         :param pulumi.Input[_builtins.bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[_builtins.bool] public_jobs: If true, jobs can be viewed by non-project members.
-        :param pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict']] push_rules: Push rules for the project.
+        :param pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict', 'outputs.ProjectPushRules']] push_rules: Push rules for the project.
         :param pulumi.Input[_builtins.str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[_builtins.str] repository_access_level: Set the repository access level. Valid values are `disabled`, `private`, `enabled`.

@@ -1099,7 +1099,7 @@ class ProjectHook(pulumi.CustomResource):
                  branch_filter_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
-                 custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]]] = None,
+                 custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict', 'outputs.ProjectHookCustomHeader']]]]] = None,
                  custom_webhook_template: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1123,7 +1123,7 @@ class ProjectHook(pulumi.CustomResource):
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
-                 url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict']]]]] = None,
+                 url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict', 'outputs.ProjectHookUrlVariable']]]]] = None,
                  vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -1196,7 +1196,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook. Available from GitLab 17.1 onwards.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict', 'outputs.ProjectHookCustomHeader']]]] custom_headers: Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: Description of the webhook.
@@ -1220,7 +1220,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict']]]] url_variables: Array of sensitive portions of the webhook URL to mask.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict', 'outputs.ProjectHookUrlVariable']]]] url_variables: Array of sensitive portions of the webhook URL to mask.
         :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] wiki_page_events: Invoke the hook for wiki page events. Defaults to `false`.
         """
@@ -1312,7 +1312,7 @@ class ProjectHook(pulumi.CustomResource):
                  branch_filter_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
-                 custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]]] = None,
+                 custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict', 'outputs.ProjectHookCustomHeader']]]]] = None,
                  custom_webhook_template: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1336,7 +1336,7 @@ class ProjectHook(pulumi.CustomResource):
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
-                 url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict']]]]] = None,
+                 url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict', 'outputs.ProjectHookUrlVariable']]]]] = None,
                  vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -1404,7 +1404,7 @@ class ProjectHook(pulumi.CustomResource):
             branch_filter_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
             confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
-            custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]]] = None,
+            custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict', 'outputs.ProjectHookCustomHeader']]]]] = None,
             custom_webhook_template: pulumi.Input[Optional[_builtins.str]] = None,
             deployment_events: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1433,7 +1433,7 @@ class ProjectHook(pulumi.CustomResource):
             tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
             token: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
-            url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict']]]]] = None,
+            url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict', 'outputs.ProjectHookUrlVariable']]]]] = None,
             vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
             wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ProjectHook':
         """
@@ -1447,7 +1447,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] branch_filter_strategy: Filter push events by branch. Valid values are: `wildcard`, `regex`, `all_branches`.
         :param pulumi.Input[_builtins.bool] confidential_issues_events: Invoke the hook for confidential issues events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] confidential_note_events: Invoke the hook for confidential note events. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict']]]] custom_headers: Custom headers for the project webhook. Available from GitLab 17.1 onwards.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict', 'outputs.ProjectHookCustomHeader']]]] custom_headers: Custom headers for the project webhook. Available from GitLab 17.1 onwards.
         :param pulumi.Input[_builtins.str] custom_webhook_template: Custom webhook template.
         :param pulumi.Input[_builtins.bool] deployment_events: Invoke the hook for deployment events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] description: Description of the webhook.
@@ -1476,7 +1476,7 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
         :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict']]]] url_variables: Array of sensitive portions of the webhook URL to mask.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict', 'outputs.ProjectHookUrlVariable']]]] url_variables: Array of sensitive portions of the webhook URL to mask.
         :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] wiki_page_events: Invoke the hook for wiki page events. Defaults to `false`.
         """

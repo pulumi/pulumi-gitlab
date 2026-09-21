@@ -330,7 +330,7 @@ class PipelineSchedule(pulumi.CustomResource):
                  cron: pulumi.Input[Optional[_builtins.str]] = None,
                  cron_timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]]] = None,
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict', 'outputs.PipelineScheduleInput']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  ref: pulumi.Input[Optional[_builtins.str]] = None,
                  take_ownership: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -382,7 +382,7 @@ class PipelineSchedule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cron: The cron (e.g. `0 1 * * *`).
         :param pulumi.Input[_builtins.str] cron_timezone: The timezone.
         :param pulumi.Input[_builtins.str] description: The description of the pipeline schedule.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]] inputs: List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict', 'outputs.PipelineScheduleInput']]]] inputs: List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the schedule to.
         :param pulumi.Input[_builtins.str] ref: The branch/tag name to be triggered. This must be the full branch reference, for example: `refs/heads/main`, not `main`.
         :param pulumi.Input[_builtins.bool] take_ownership: When set to `true`, the user represented by the token running Terraform will take ownership of the scheduled pipeline prior to editing it. This can help when managing scheduled pipeline drift when other users are making changes outside Terraform.
@@ -453,7 +453,7 @@ class PipelineSchedule(pulumi.CustomResource):
                  cron: pulumi.Input[Optional[_builtins.str]] = None,
                  cron_timezone: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]]] = None,
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict', 'outputs.PipelineScheduleInput']]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  ref: pulumi.Input[Optional[_builtins.str]] = None,
                  take_ownership: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -498,7 +498,7 @@ class PipelineSchedule(pulumi.CustomResource):
             cron: pulumi.Input[Optional[_builtins.str]] = None,
             cron_timezone: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            inputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]]] = None,
+            inputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict', 'outputs.PipelineScheduleInput']]]]] = None,
             owner: pulumi.Input[Optional[_builtins.int]] = None,
             pipeline_schedule_id: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -515,7 +515,7 @@ class PipelineSchedule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cron: The cron (e.g. `0 1 * * *`).
         :param pulumi.Input[_builtins.str] cron_timezone: The timezone.
         :param pulumi.Input[_builtins.str] description: The description of the pipeline schedule.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict']]]] inputs: List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict', 'outputs.PipelineScheduleInput']]]] inputs: List of pipeline schedule inputs. Each element in `inputs` has `name` and `value`. Maximum of 20 inputs allowed.
         :param pulumi.Input[_builtins.int] owner: The ID of the user that owns the pipeline schedule.
         :param pulumi.Input[_builtins.int] pipeline_schedule_id: The pipeline schedule id.
         :param pulumi.Input[_builtins.str] project: The name or id of the project to add the schedule to.
