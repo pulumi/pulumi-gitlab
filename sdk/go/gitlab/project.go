@@ -211,7 +211,9 @@ type Project struct {
 	PublicBuilds pulumi.BoolOutput `pulumi:"publicBuilds"`
 	// If true, jobs can be viewed by non-project members.
 	PublicJobs pulumi.BoolOutput `pulumi:"publicJobs"`
-	// Push rules for the project.
+	// Push rules for the project. Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
+	//
+	// Deprecated: Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
 	PushRules ProjectPushRulesTypeOutput `pulumi:"pushRules"`
 	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
 	ReleasesAccessLevel pulumi.StringOutput `pulumi:"releasesAccessLevel"`
@@ -477,7 +479,9 @@ type projectState struct {
 	PublicBuilds *bool `pulumi:"publicBuilds"`
 	// If true, jobs can be viewed by non-project members.
 	PublicJobs *bool `pulumi:"publicJobs"`
-	// Push rules for the project.
+	// Push rules for the project. Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
+	//
+	// Deprecated: Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
 	PushRules *ProjectPushRulesType `pulumi:"pushRules"`
 	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
 	ReleasesAccessLevel *string `pulumi:"releasesAccessLevel"`
@@ -706,7 +710,9 @@ type ProjectState struct {
 	PublicBuilds pulumi.BoolPtrInput
 	// If true, jobs can be viewed by non-project members.
 	PublicJobs pulumi.BoolPtrInput
-	// Push rules for the project.
+	// Push rules for the project. Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
+	//
+	// Deprecated: Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
 	PushRules ProjectPushRulesTypePtrInput
 	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
 	ReleasesAccessLevel pulumi.StringPtrInput
@@ -931,7 +937,9 @@ type projectArgs struct {
 	PublicBuilds *bool `pulumi:"publicBuilds"`
 	// If true, jobs can be viewed by non-project members.
 	PublicJobs *bool `pulumi:"publicJobs"`
-	// Push rules for the project.
+	// Push rules for the project. Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
+	//
+	// Deprecated: Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
 	PushRules *ProjectPushRulesType `pulumi:"pushRules"`
 	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
 	ReleasesAccessLevel *string `pulumi:"releasesAccessLevel"`
@@ -1147,7 +1155,9 @@ type ProjectArgs struct {
 	PublicBuilds pulumi.BoolPtrInput
 	// If true, jobs can be viewed by non-project members.
 	PublicJobs pulumi.BoolPtrInput
-	// Push rules for the project.
+	// Push rules for the project. Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
+	//
+	// Deprecated: Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
 	PushRules ProjectPushRulesTypePtrInput
 	// Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
 	ReleasesAccessLevel pulumi.StringPtrInput
@@ -1705,7 +1715,9 @@ func (o ProjectOutput) PublicJobs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.PublicJobs }).(pulumi.BoolOutput)
 }
 
-// Push rules for the project.
+// Push rules for the project. Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
+//
+// Deprecated: Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
 func (o ProjectOutput) PushRules() ProjectPushRulesTypeOutput {
 	return o.ApplyT(func(v *Project) ProjectPushRulesTypeOutput { return v.PushRules }).(ProjectPushRulesTypeOutput)
 }

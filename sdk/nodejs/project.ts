@@ -400,7 +400,9 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly publicJobs: pulumi.Output<boolean>;
     /**
-     * Push rules for the project.
+     * Push rules for the project. Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
+     *
+     * @deprecated Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
      */
     declare public readonly pushRules: pulumi.Output<outputs.ProjectPushRules>;
     /**
@@ -1090,7 +1092,9 @@ export interface ProjectState {
      */
     publicJobs?: pulumi.Input<boolean | undefined>;
     /**
-     * Push rules for the project.
+     * Push rules for the project. Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
+     *
+     * @deprecated Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
      */
     pushRules?: pulumi.Input<inputs.ProjectPushRules | undefined>;
     /**
@@ -1524,7 +1528,9 @@ export interface ProjectArgs {
      */
     publicJobs?: pulumi.Input<boolean | undefined>;
     /**
-     * Push rules for the project.
+     * Push rules for the project. Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
+     *
+     * @deprecated Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
      */
     pushRules?: pulumi.Input<inputs.ProjectPushRules | undefined>;
     /**

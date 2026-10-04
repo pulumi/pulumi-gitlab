@@ -1222,16 +1222,24 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Push rules for the project.
+     * Push rules for the project. Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
+     * 
+     * @deprecated
+     * Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
      * 
      */
+    @Deprecated /* Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead. */
     @Import(name="pushRules")
     private @Nullable Output<ProjectPushRulesArgs> pushRules;
 
     /**
-     * @return Push rules for the project.
+     * @return Push rules for the project. Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
+     * 
+     * @deprecated
+     * Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
      * 
      */
+    @Deprecated /* Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead. */
     public Optional<Output<ProjectPushRulesArgs>> pushRules() {
         return Optional.ofNullable(this.pushRules);
     }
@@ -3385,22 +3393,30 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pushRules Push rules for the project.
+         * @param pushRules Push rules for the project. Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
+         * 
          */
+        @Deprecated /* Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead. */
         public Builder pushRules(@Nullable Output<ProjectPushRulesArgs> pushRules) {
             $.pushRules = pushRules;
             return this;
         }
 
         /**
-         * @param pushRules Push rules for the project.
+         * @param pushRules Push rules for the project. Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
+         * 
          */
+        @Deprecated /* Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead. */
         public Builder pushRules(ProjectPushRulesArgs pushRules) {
             return pushRules(Output.of(pushRules));
         }

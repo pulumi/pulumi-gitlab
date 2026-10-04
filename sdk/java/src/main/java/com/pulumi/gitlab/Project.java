@@ -1222,14 +1222,18 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.publicJobs;
     }
     /**
-     * Push rules for the project.
+     * Push rules for the project. Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
+     * 
+     * @deprecated
+     * Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
      * 
      */
+    @Deprecated /* Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead. */
     @Export(name="pushRules", refs={ProjectPushRules.class}, tree="[0]")
     private Output<ProjectPushRules> pushRules;
 
     /**
-     * @return Push rules for the project.
+     * @return Push rules for the project. Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
      * 
      */
     public Output<ProjectPushRules> pushRules() {

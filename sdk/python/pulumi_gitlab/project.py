@@ -205,7 +205,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.bool] protect_merge_request_pipelines: Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
         :param pulumi.Input[_builtins.bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[_builtins.bool] public_jobs: If true, jobs can be viewed by non-project members.
-        :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project.
+        :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project. Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
         :param pulumi.Input[_builtins.str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[_builtins.str] repository_access_level: Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
@@ -397,6 +397,9 @@ class ProjectArgs:
             pulumi.set(__self__, "public_builds", public_builds)
         if public_jobs is not None:
             pulumi.set(__self__, "public_jobs", public_jobs)
+        if push_rules is not None:
+            warnings.warn("""Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.""", DeprecationWarning)
+            pulumi.log.warn("""push_rules is deprecated: Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.""")
         if push_rules is not None:
             pulumi.set(__self__, "push_rules", push_rules)
         if releases_access_level is not None:
@@ -1396,9 +1399,10 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="pushRules")
+    @_utilities.deprecated("""Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.""")
     def push_rules(self) -> pulumi.Input[Optional['ProjectPushRulesArgs']]:
         """
-        Push rules for the project.
+        Push rules for the project. Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
         """
         return pulumi.get(self, "push_rules")
 
@@ -1873,7 +1877,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.bool] protect_merge_request_pipelines: Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
         :param pulumi.Input[_builtins.bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[_builtins.bool] public_jobs: If true, jobs can be viewed by non-project members.
-        :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project.
+        :param pulumi.Input['ProjectPushRulesArgs'] push_rules: Push rules for the project. Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
         :param pulumi.Input[_builtins.str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[_builtins.str] repository_access_level: Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
@@ -2076,6 +2080,9 @@ class _ProjectState:
             pulumi.set(__self__, "public_builds", public_builds)
         if public_jobs is not None:
             pulumi.set(__self__, "public_jobs", public_jobs)
+        if push_rules is not None:
+            warnings.warn("""Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.""", DeprecationWarning)
+            pulumi.log.warn("""push_rules is deprecated: Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.""")
         if push_rules is not None:
             pulumi.set(__self__, "push_rules", push_rules)
         if releases_access_level is not None:
@@ -3129,9 +3136,10 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="pushRules")
+    @_utilities.deprecated("""Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.""")
     def push_rules(self) -> pulumi.Input[Optional['ProjectPushRulesArgs']]:
         """
-        Push rules for the project.
+        Push rules for the project. Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
         """
         return pulumi.get(self, "push_rules")
 
@@ -3664,7 +3672,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] protect_merge_request_pipelines: Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
         :param pulumi.Input[_builtins.bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[_builtins.bool] public_jobs: If true, jobs can be viewed by non-project members.
-        :param pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict', 'outputs.ProjectPushRules']] push_rules: Push rules for the project.
+        :param pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict', 'outputs.ProjectPushRules']] push_rules: Push rules for the project. Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
         :param pulumi.Input[_builtins.str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[_builtins.str] repository_access_level: Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
@@ -4174,7 +4182,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] protect_merge_request_pipelines: Whether pipelines triggered for merge requests run with project secrets and protected variables, instead of the contributor's lower-privileged context.
         :param pulumi.Input[_builtins.bool] public_builds: If true, jobs can be viewed by non-project members.
         :param pulumi.Input[_builtins.bool] public_jobs: If true, jobs can be viewed by non-project members.
-        :param pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict', 'outputs.ProjectPushRules']] push_rules: Push rules for the project.
+        :param pulumi.Input[Union['ProjectPushRulesArgs', 'ProjectPushRulesArgsDict', 'outputs.ProjectPushRules']] push_rules: Push rules for the project. Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
         :param pulumi.Input[_builtins.str] releases_access_level: Set the releases access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.bool] remove_source_branch_after_merge: Enable `Delete source branch` option by default for all new merge requests.
         :param pulumi.Input[_builtins.str] repository_access_level: Set the repository access level. Valid values are `disabled`, `private`, `enabled`.
@@ -4988,9 +4996,10 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="pushRules")
+    @_utilities.deprecated("""Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.""")
     def push_rules(self) -> pulumi.Output['outputs.ProjectPushRules']:
         """
-        Push rules for the project.
+        Push rules for the project. Deprecated, to be removed in 20.0. Use `ProjectPushRules` instead.
         """
         return pulumi.get(self, "push_rules")
 
