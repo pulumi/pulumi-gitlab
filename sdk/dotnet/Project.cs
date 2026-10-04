@@ -540,7 +540,7 @@ namespace Pulumi.GitLab
         public Output<bool> PublicJobs { get; private set; } = null!;
 
         /// <summary>
-        /// Push rules for the project.
+        /// Push rules for the project. Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
         /// </summary>
         [Output("pushRules")]
         public Output<Outputs.ProjectPushRules> PushRules { get; private set; } = null!;
@@ -1241,7 +1241,7 @@ namespace Pulumi.GitLab
         public Input<bool>? PublicJobs { get; set; }
 
         /// <summary>
-        /// Push rules for the project.
+        /// Push rules for the project. Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
         /// </summary>
         [Input("pushRules")]
         public Input<Inputs.ProjectPushRulesArgs>? PushRules { get; set; }
@@ -1911,7 +1911,7 @@ namespace Pulumi.GitLab
         public Input<bool>? PublicJobs { get; set; }
 
         /// <summary>
-        /// Push rules for the project.
+        /// Push rules for the project. Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
         /// </summary>
         [Input("pushRules")]
         public Input<Inputs.ProjectPushRulesGetArgs>? PushRules { get; set; }

@@ -20872,7 +20872,8 @@
                 },
                 "pushRules": {
                     "$ref": "#/types/gitlab:index/ProjectPushRules:ProjectPushRules",
-                    "description": "Push rules for the project.\n"
+                    "description": "Push rules for the project. Deprecated, to be removed in 20.0. Use \u003cspan pulumi-lang-nodejs=\"`gitlab.ProjectPushRules`\" pulumi-lang-dotnet=\"`gitlab.ProjectPushRules`\" pulumi-lang-go=\"`ProjectPushRules`\" pulumi-lang-python=\"`ProjectPushRules`\" pulumi-lang-yaml=\"`gitlab.ProjectPushRules`\" pulumi-lang-java=\"`gitlab.ProjectPushRules`\" pulumi-lang-hcl=\"`gitlab_project_push_rules`\"\u003e`gitlab.ProjectPushRules`\u003c/span\u003e instead.\n",
+                    "deprecationMessage": "Deprecated, to be removed in 20.0. Use \u003cspan pulumi-lang-nodejs=\"`gitlab.ProjectPushRules`\" pulumi-lang-dotnet=\"`gitlab.ProjectPushRules`\" pulumi-lang-go=\"`ProjectPushRules`\" pulumi-lang-python=\"`ProjectPushRules`\" pulumi-lang-yaml=\"`gitlab.ProjectPushRules`\" pulumi-lang-java=\"`gitlab.ProjectPushRules`\" pulumi-lang-hcl=\"`gitlab_project_push_rules`\"\u003e`gitlab.ProjectPushRules`\u003c/span\u003e instead."
                 },
                 "releasesAccessLevel": {
                     "type": "string",
@@ -21388,7 +21389,8 @@
                 },
                 "pushRules": {
                     "$ref": "#/types/gitlab:index/ProjectPushRules:ProjectPushRules",
-                    "description": "Push rules for the project.\n"
+                    "description": "Push rules for the project. Deprecated, to be removed in 20.0. Use \u003cspan pulumi-lang-nodejs=\"`gitlab.ProjectPushRules`\" pulumi-lang-dotnet=\"`gitlab.ProjectPushRules`\" pulumi-lang-go=\"`ProjectPushRules`\" pulumi-lang-python=\"`ProjectPushRules`\" pulumi-lang-yaml=\"`gitlab.ProjectPushRules`\" pulumi-lang-java=\"`gitlab.ProjectPushRules`\" pulumi-lang-hcl=\"`gitlab_project_push_rules`\"\u003e`gitlab.ProjectPushRules`\u003c/span\u003e instead.\n",
+                    "deprecationMessage": "Deprecated, to be removed in 20.0. Use \u003cspan pulumi-lang-nodejs=\"`gitlab.ProjectPushRules`\" pulumi-lang-dotnet=\"`gitlab.ProjectPushRules`\" pulumi-lang-go=\"`ProjectPushRules`\" pulumi-lang-python=\"`ProjectPushRules`\" pulumi-lang-yaml=\"`gitlab.ProjectPushRules`\" pulumi-lang-java=\"`gitlab.ProjectPushRules`\" pulumi-lang-hcl=\"`gitlab_project_push_rules`\"\u003e`gitlab.ProjectPushRules`\u003c/span\u003e instead."
                 },
                 "releasesAccessLevel": {
                     "type": "string",
@@ -21827,7 +21829,8 @@
                     },
                     "pushRules": {
                         "$ref": "#/types/gitlab:index/ProjectPushRules:ProjectPushRules",
-                        "description": "Push rules for the project.\n"
+                        "description": "Push rules for the project. Deprecated, to be removed in 20.0. Use \u003cspan pulumi-lang-nodejs=\"`gitlab.ProjectPushRules`\" pulumi-lang-dotnet=\"`gitlab.ProjectPushRules`\" pulumi-lang-go=\"`ProjectPushRules`\" pulumi-lang-python=\"`ProjectPushRules`\" pulumi-lang-yaml=\"`gitlab.ProjectPushRules`\" pulumi-lang-java=\"`gitlab.ProjectPushRules`\" pulumi-lang-hcl=\"`gitlab_project_push_rules`\"\u003e`gitlab.ProjectPushRules`\u003c/span\u003e instead.\n",
+                        "deprecationMessage": "Deprecated, to be removed in 20.0. Use \u003cspan pulumi-lang-nodejs=\"`gitlab.ProjectPushRules`\" pulumi-lang-dotnet=\"`gitlab.ProjectPushRules`\" pulumi-lang-go=\"`ProjectPushRules`\" pulumi-lang-python=\"`ProjectPushRules`\" pulumi-lang-yaml=\"`gitlab.ProjectPushRules`\" pulumi-lang-java=\"`gitlab.ProjectPushRules`\" pulumi-lang-hcl=\"`gitlab_project_push_rules`\"\u003e`gitlab.ProjectPushRules`\u003c/span\u003e instead."
                     },
                     "releasesAccessLevel": {
                         "type": "string",
