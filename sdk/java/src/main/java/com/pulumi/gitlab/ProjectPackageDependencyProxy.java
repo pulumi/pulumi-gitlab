@@ -51,14 +51,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Configure the project package dependency proxy for Maven packages
  *         var example = new ProjectPackageDependencyProxy("example", ProjectPackageDependencyProxyArgs.builder()
- *             .project(exampleGitlabProject.id())
+ *             .project(exampleGitlabProject.get("id"))
  *             .enabled(true)
  *             .mavenExternalRegistryUrl("https://repo.maven.apache.org/maven2/")
  *             .build());
  * 
  *         // With authentication credentials for the external registry
  *         var authenticated = new ProjectPackageDependencyProxy("authenticated", ProjectPackageDependencyProxyArgs.builder()
- *             .project(exampleGitlabProject.id())
+ *             .project(exampleGitlabProject.get("id"))
  *             .enabled(true)
  *             .mavenExternalRegistryUrl("https://private-repo.example.com/maven/")
  *             .mavenExternalRegistryUsername("maven_user")

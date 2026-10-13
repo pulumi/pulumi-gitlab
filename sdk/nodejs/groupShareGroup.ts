@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *
  * const test = new gitlab.GroupShareGroup("test", {
  *     groupId: foo.id,
- *     shareGroupId: Number(bar.id),
+ *     shareGroupId: bar.id,
  *     groupAccess: "guest",
  *     expiresAt: "2099-01-01",
  * });

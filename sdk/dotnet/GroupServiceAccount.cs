@@ -51,8 +51,8 @@ namespace Pulumi.GitLab
     ///     // To assign the service account to a group
     ///     var exampleMembership = new GitLab.GroupMembership("example_membership", new()
     ///     {
-    ///         GroupId = exampleSubgroup.Id,
-    ///         UserId = exampleSa.ServiceAccountId,
+    ///         GroupId = exampleSubgroup.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+    ///         UserId = exampleSa.ServiceAccountId.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         AccessLevel = "developer",
     ///         ExpiresAt = "2020-03-14",
     ///     });

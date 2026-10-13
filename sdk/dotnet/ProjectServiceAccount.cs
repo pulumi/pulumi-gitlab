@@ -42,7 +42,7 @@ namespace Pulumi.GitLab
     ///     var exampleMembership = new GitLab.ProjectMembership("example_membership", new()
     ///     {
     ///         Project = example.Id,
-    ///         UserId = exampleSa.ServiceAccountId,
+    ///         UserId = exampleSa.ServiceAccountId.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         AccessLevel = "developer",
     ///         ExpiresAt = "2020-03-14",
     ///     });

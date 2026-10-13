@@ -53,7 +53,7 @@ namespace Pulumi.GitLab
     ///     var allowedMultipleGroups = new GitLab.ProjectJobTokenScopes("allowed_multiple_groups", new()
     ///     {
     ///         Project = "111",
-    ///         TargetProjectIds = new[] {},
+    ///         TargetProjectIds = new() {},
     ///         TargetGroupIds = new[]
     ///         {
     ///             321,
@@ -65,7 +65,7 @@ namespace Pulumi.GitLab
     ///     var explicitDeny = new GitLab.ProjectJobTokenScopes("explicit_deny", new()
     ///     {
     ///         Project = "111",
-    ///         TargetProjectIds = new[] {},
+    ///         TargetProjectIds = new() {},
     ///     });
     /// 
     ///     // This shows the explicit behavior of the enabled flag with a list of projects and groups.

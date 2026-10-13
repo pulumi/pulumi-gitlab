@@ -51,8 +51,8 @@ namespace Pulumi.GitLab
     ///     // To assign the service account to a group
     ///     var exampleMembership = new GitLab.GroupMembership("example_membership", new()
     ///     {
-    ///         GroupId = example.Id,
-    ///         UserId = exampleSa.ServiceAccountId,
+    ///         GroupId = example.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+    ///         UserId = exampleSa.ServiceAccountId.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         AccessLevel = "developer",
     ///         ExpiresAt = "2020-03-14",
     ///     });
@@ -61,7 +61,7 @@ namespace Pulumi.GitLab
     ///     var exampleSaTokenNoExpiry = new GitLab.GroupServiceAccountAccessToken("example_sa_token_no_expiry", new()
     ///     {
     ///         Group = example.Id,
-    ///         UserId = exampleSa.ServiceAccountId,
+    ///         UserId = exampleSa.ServiceAccountId.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Name = "Example service account access token",
     ///         Description = "Example service account access token description",
     ///         Scopes = new[]
@@ -74,7 +74,7 @@ namespace Pulumi.GitLab
     ///     var exampleSaTokenExpiresAt = new GitLab.GroupServiceAccountAccessToken("example_sa_token_expires_at", new()
     ///     {
     ///         Group = example.Id,
-    ///         UserId = exampleSa.ServiceAccountId,
+    ///         UserId = exampleSa.ServiceAccountId.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Name = "Example service account access token",
     ///         ExpiresAt = "2020-03-14",
     ///         Scopes = new[]
@@ -87,7 +87,7 @@ namespace Pulumi.GitLab
     ///     var exampleSaTokenRotationConfiguration = new GitLab.GroupServiceAccountAccessToken("example_sa_token_rotation_configuration", new()
     ///     {
     ///         Group = example.Id,
-    ///         UserId = exampleSa.ServiceAccountId,
+    ///         UserId = exampleSa.ServiceAccountId.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Name = "Example service account access token",
     ///         RotationConfiguration = new GitLab.Inputs.GroupServiceAccountAccessTokenRotationConfigurationArgs
     ///         {

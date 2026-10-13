@@ -39,7 +39,7 @@ namespace Pulumi.GitLab
     ///     var thisProject = new GitLab.Project("this", new()
     ///     {
     ///         Name = "example",
-    ///         NamespaceId = @this.Id,
+    ///         NamespaceId = @this.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         InitializeWithReadme = true,
     ///     });
     /// 

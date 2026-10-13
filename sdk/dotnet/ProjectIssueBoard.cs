@@ -44,7 +44,7 @@ namespace Pulumi.GitLab
     ///     var exampleProjectMembership = new GitLab.ProjectMembership("example", new()
     ///     {
     ///         Project = example.Id,
-    ///         UserId = exampleUser.Id,
+    ///         UserId = exampleUser.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         AccessLevel = "developer",
     ///     });
     /// 
@@ -62,7 +62,7 @@ namespace Pulumi.GitLab
     ///         {
     ///             new GitLab.Inputs.ProjectIssueBoardListArgs
     ///             {
-    ///                 AssigneeId = exampleUser.Id,
+    ///                 AssigneeId = exampleUser.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///             },
     ///             new GitLab.Inputs.ProjectIssueBoardListArgs
     ///             {
@@ -85,7 +85,7 @@ namespace Pulumi.GitLab
     ///         {
     ///             new GitLab.Inputs.ProjectIssueBoardListArgs
     ///             {
-    ///                 AssigneeId = exampleUser.Id,
+    ///                 AssigneeId = exampleUser.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///             },
     ///             new GitLab.Inputs.ProjectIssueBoardListArgs
     ///             {

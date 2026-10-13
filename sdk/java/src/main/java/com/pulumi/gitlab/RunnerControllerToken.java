@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new RunnerControllerToken("example", RunnerControllerTokenArgs.builder()
- *             .runnerControllerId(exampleGitlabRunnerController.id())
+ *             .runnerControllerId(exampleGitlabRunnerController.get("id"))
  *             .description("My controller token")
  *             .build());
  * 

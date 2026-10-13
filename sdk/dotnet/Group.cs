@@ -38,7 +38,7 @@ namespace Pulumi.GitLab
     ///     {
     ///         Name = "example",
     ///         Description = "An example project",
-    ///         NamespaceId = example.Id,
+    ///         NamespaceId = example.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     ///     // Group with custom push rules

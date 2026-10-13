@@ -34,7 +34,7 @@ namespace Pulumi.GitLab
     ///     // Manages a GPG key for the specified user. An admin token is required if `user_id` is specified.
     ///     var exampleUserGpgKey = new GitLab.UserGpgKey("example", new()
     ///     {
-    ///         UserId = example.Apply(getUserResult =&gt; getUserResult.Id),
+    ///         UserId = Output.Create(example.Apply(getUserResult =&gt; getUserResult.Id)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Key = @"-----BEGIN PGP PUBLIC KEY BLOCK-----
     /// ...
     /// -----END PGP PUBLIC KEY BLOCK-----",

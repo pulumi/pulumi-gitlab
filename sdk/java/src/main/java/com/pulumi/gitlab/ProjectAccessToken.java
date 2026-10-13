@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleProjectVariable = new ProjectVariable("exampleProjectVariable", ProjectVariableArgs.builder()
- *             .project(exampleGitlabProject.id())
+ *             .project(exampleGitlabProject.get("id"))
  *             .key("pat")
  *             .value(example.token())
  *             .build());

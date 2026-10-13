@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *     project: "1234",
  *     policyProject: "4567",
  * });
- * // Or Terraform can create a new project, add a policy to that project,
+ * // Or Pulumi can create a new project, add a policy to that project,
  * // then attach that policy project to other projects.
  * const my_policy_project = new gitlab.Project("my-policy-project", {name: "security-policy-project"});
  * const policy_yml = new gitlab.RepositoryFile("policy-yml", {

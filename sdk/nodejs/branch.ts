@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * const example = new gitlab.Project("example", {
  *     name: "example",
  *     description: "An example project",
- *     namespaceId: Number(exampleGitlabGroup.id),
+ *     namespaceId: exampleGitlabGroup.id,
  * });
  * const exampleBranch = new gitlab.Branch("example", {
  *     name: "example",

@@ -42,13 +42,13 @@ namespace Pulumi.GitLab
     ///         Name = "template project",
     ///         Description = "contains file templates",
     ///         VisibilityLevel = "public",
-    ///         NamespaceId = foo.Id,
+    ///         NamespaceId = foo.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     ///     var templateLink = new GitLab.GroupProjectFileTemplate("template_link", new()
     ///     {
-    ///         GroupId = foo.Id,
-    ///         FileTemplateProjectId = bar.Id,
+    ///         GroupId = foo.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+    ///         FileTemplateProjectId = bar.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     /// });

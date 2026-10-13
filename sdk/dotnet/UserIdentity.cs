@@ -39,7 +39,7 @@ namespace Pulumi.GitLab
     /// 
     ///     var exampleUserIdentity = new GitLab.UserIdentity("example", new()
     ///     {
-    ///         UserId = example.Id,
+    ///         UserId = example.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         ExternalProvider = "google",
     ///         ExternalUid = "1234567890",
     ///     });

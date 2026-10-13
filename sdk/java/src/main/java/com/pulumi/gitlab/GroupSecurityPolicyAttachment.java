@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .policyProject("4567")
  *             .build());
  * 
- *         // Or Terraform can create a new project, add a policy to that project,
+ *         // Or Pulumi can create a new project, add a policy to that project,
  *         // then attach that policy project to other groups.
  *         var my_policy_project = new Project("my-policy-project", ProjectArgs.builder()
  *             .name("security-policy-project")
