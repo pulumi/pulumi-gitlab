@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *         // Basic pull mirror from GitHub
  *         // Note: Unspecified options will use GitLab's defaults
  *         var github = new ProjectPullMirror("github", ProjectPullMirrorArgs.builder()
- *             .project(example.id())
+ *             .project(example.get("id"))
  *             .url("https://github.com/example/repo.git")
  *             .authUser("github-username")
  *             .authPassword(githubToken)
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *         // Pull mirror with explicit options
  *         // Only specify options you want to control; omit others to use GitLab defaults
  *         var advanced = new ProjectPullMirror("advanced", ProjectPullMirrorArgs.builder()
- *             .project(example.id())
+ *             .project(example.get("id"))
  *             .url("https://github.com/example/repo.git")
  *             .enabled(true)
  *             .authUser("github-username")
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * 
  *         // Pull mirror with branch regex (Premium/Ultimate)
  *         var regex = new ProjectPullMirror("regex", ProjectPullMirrorArgs.builder()
- *             .project(example.id())
+ *             .project(example.get("id"))
  *             .url("https://github.com/example/repo.git")
  *             .authUser("github-username")
  *             .authPassword(githubToken)

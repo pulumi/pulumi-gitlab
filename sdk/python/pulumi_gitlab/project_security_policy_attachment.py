@@ -155,7 +155,7 @@ class ProjectSecurityPolicyAttachment(pulumi.CustomResource):
         foo = gitlab.ProjectSecurityPolicyAttachment("foo",
             project="1234",
             policy_project="4567")
-        # Or Terraform can create a new project, add a policy to that project,
+        # Or Pulumi can create a new project, add a policy to that project,
         # then attach that policy project to other projects.
         my_policy_project = gitlab.Project("my-policy-project", name="security-policy-project")
         policy_yml = gitlab.RepositoryFile("policy-yml",
@@ -233,7 +233,7 @@ class ProjectSecurityPolicyAttachment(pulumi.CustomResource):
         foo = gitlab.ProjectSecurityPolicyAttachment("foo",
             project="1234",
             policy_project="4567")
-        # Or Terraform can create a new project, add a policy to that project,
+        # Or Pulumi can create a new project, add a policy to that project,
         # then attach that policy project to other projects.
         my_policy_project = gitlab.Project("my-policy-project", name="security-policy-project")
         policy_yml = gitlab.RepositoryFile("policy-yml",

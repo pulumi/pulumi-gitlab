@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new RunnerControllerInstanceScope("example", RunnerControllerInstanceScopeArgs.builder()
- *             .runnerControllerId(exampleGitlabRunnerController.id())
+ *             .runnerControllerId(exampleGitlabRunnerController.get("id"))
  *             .build());
  * 
  *     }

@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Or Terraform can create a new project, add a policy to that project,
+//			// Or Pulumi can create a new project, add a policy to that project,
 //			// then attach that policy project to other groups.
 //			my_policy_project, err := gitlab.NewProject(ctx, "my-policy-project", &gitlab.ProjectArgs{
 //				Name: pulumi.String("security-policy-project"),

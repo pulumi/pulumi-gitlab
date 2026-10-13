@@ -38,7 +38,7 @@ namespace Pulumi.GitLab
         /// 
         ///     var groupProjects = GitLab.GetProjects.Invoke(new()
         ///     {
-        ///         GroupId = mygroup.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         GroupId = Output.Create(mygroup.Apply(getGroupResult =&gt; getGroupResult.Id)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
         ///         OrderBy = "name",
         ///         IncludeSubgroups = true,
         ///         WithShared = false,
@@ -84,7 +84,7 @@ namespace Pulumi.GitLab
         /// 
         ///     var groupProjects = GitLab.GetProjects.Invoke(new()
         ///     {
-        ///         GroupId = mygroup.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         GroupId = Output.Create(mygroup.Apply(getGroupResult =&gt; getGroupResult.Id)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
         ///         OrderBy = "name",
         ///         IncludeSubgroups = true,
         ///         WithShared = false,
@@ -130,7 +130,7 @@ namespace Pulumi.GitLab
         /// 
         ///     var groupProjects = GitLab.GetProjects.Invoke(new()
         ///     {
-        ///         GroupId = mygroup.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         GroupId = Output.Create(mygroup.Apply(getGroupResult =&gt; getGroupResult.Id)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
         ///         OrderBy = "name",
         ///         IncludeSubgroups = true,
         ///         WithShared = false,

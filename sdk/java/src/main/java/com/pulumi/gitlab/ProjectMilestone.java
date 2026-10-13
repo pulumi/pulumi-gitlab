@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *         var example = new Project("example", ProjectArgs.builder()
  *             .name("example")
  *             .description("An example project")
- *             .namespaceId(exampleGitlabGroup.id())
+ *             .namespaceId(exampleGitlabGroup.get("id"))
  *             .build());
  * 
  *         // Basic milestone with required fields only

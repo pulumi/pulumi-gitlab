@@ -31,7 +31,7 @@ namespace Pulumi.GitLab
     /// 
     ///     var exampleUserSshKey = new GitLab.UserSshKey("example", new()
     ///     {
-    ///         UserId = example.Apply(getUserResult =&gt; getUserResult.Id),
+    ///         UserId = Output.Create(example.Apply(getUserResult =&gt; getUserResult.Id)).Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Title = "example-key",
     ///         Key = "ssh-ed25519 AAAA...",
     ///         ExpiresAt = "2016-01-21T00:00:00.000Z",

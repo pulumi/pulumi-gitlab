@@ -48,7 +48,7 @@ namespace Pulumi.GitLab
     ///     var exampleMembership = new GitLab.ProjectMembership("example_membership", new()
     ///     {
     ///         Project = example.Id,
-    ///         UserId = exampleSa.ServiceAccountId,
+    ///         UserId = exampleSa.ServiceAccountId.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         AccessLevel = "developer",
     ///         ExpiresAt = "2020-03-14",
     ///     });
@@ -57,7 +57,7 @@ namespace Pulumi.GitLab
     ///     var exampleSaTokenNoExpiry = new GitLab.ProjectServiceAccountAccessToken("example_sa_token_no_expiry", new()
     ///     {
     ///         Project = example.Id,
-    ///         UserId = exampleSa.ServiceAccountId,
+    ///         UserId = exampleSa.ServiceAccountId.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Name = "Example service account access token",
     ///         Scopes = new[]
     ///         {
@@ -69,7 +69,7 @@ namespace Pulumi.GitLab
     ///     var exampleSaTokenExpiresAt = new GitLab.ProjectServiceAccountAccessToken("example_sa_token_expires_at", new()
     ///     {
     ///         Project = example.Id,
-    ///         UserId = exampleSa.ServiceAccountId,
+    ///         UserId = exampleSa.ServiceAccountId.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Name = "Example service account access token",
     ///         ExpiresAt = "2020-03-14",
     ///         Scopes = new[]
@@ -82,7 +82,7 @@ namespace Pulumi.GitLab
     ///     var exampleSaTokenRotationConfiguration = new GitLab.ProjectServiceAccountAccessToken("example_sa_token_rotation_configuration", new()
     ///     {
     ///         Project = example.Id,
-    ///         UserId = exampleSa.ServiceAccountId,
+    ///         UserId = exampleSa.ServiceAccountId.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Name = "Example service account access token",
     ///         RotationConfiguration = new GitLab.Inputs.ProjectServiceAccountAccessTokenRotationConfigurationArgs
     ///         {

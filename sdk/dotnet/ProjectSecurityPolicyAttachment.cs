@@ -34,7 +34,7 @@ namespace Pulumi.GitLab
     ///         PolicyProject = "4567",
     ///     });
     /// 
-    ///     // Or Terraform can create a new project, add a policy to that project,
+    ///     // Or Pulumi can create a new project, add a policy to that project,
     ///     // then attach that policy project to other projects.
     ///     var my_policy_project = new GitLab.Project("my-policy-project", new()
     ///     {

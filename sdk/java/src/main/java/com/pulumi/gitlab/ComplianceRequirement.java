@@ -55,8 +55,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Example: Create a compliance requirement with an internal control
  *         var internalControl = new ComplianceRequirement("internalControl", ComplianceRequirementArgs.builder()
- *             .frameworkId(example.frameworkId())
- *             .namespacePath(example.namespacePath())
+ *             .frameworkId(example.get("frameworkId"))
+ *             .namespacePath(example.get("namespacePath"))
  *             .name("Dependency Scanning Required")
  *             .description("Ensures dependency scanning is enabled and running")
  *             .internalControls(ComplianceRequirementInternalControlArgs.builder()
@@ -71,8 +71,8 @@ import javax.annotation.Nullable;
  * 
  *         // Example: Create a compliance requirement with an external control
  *         var externalControl = new ComplianceRequirement("externalControl", ComplianceRequirementArgs.builder()
- *             .frameworkId(example.frameworkId())
- *             .namespacePath(example.namespacePath())
+ *             .frameworkId(example.get("frameworkId"))
+ *             .namespacePath(example.get("namespacePath"))
  *             .name("External Security Check")
  *             .description("Verifies compliance via an external security service")
  *             .externalControls(ComplianceRequirementExternalControlArgs.builder()
@@ -84,8 +84,8 @@ import javax.annotation.Nullable;
  * 
  *         // Example: Create a compliance requirement with an external control with all options
  *         var externalControlAllOptions = new ComplianceRequirement("externalControlAllOptions", ComplianceRequirementArgs.builder()
- *             .frameworkId(example.frameworkId())
- *             .namespacePath(example.namespacePath())
+ *             .frameworkId(example.get("frameworkId"))
+ *             .namespacePath(example.get("namespacePath"))
  *             .name("External Security Check with All Options")
  *             .description("Verifies compliance via an external security service with all options configured")
  *             .externalControls(ComplianceRequirementExternalControlArgs.builder()
@@ -98,8 +98,8 @@ import javax.annotation.Nullable;
  * 
  *         // Example: Create a compliance requriement with both internal and external controls
  *         var internalAndExternalControls = new ComplianceRequirement("internalAndExternalControls", ComplianceRequirementArgs.builder()
- *             .frameworkId(example.frameworkId())
- *             .namespacePath(example.namespacePath())
+ *             .frameworkId(example.get("frameworkId"))
+ *             .namespacePath(example.get("namespacePath"))
  *             .name("Combined Security Check")
  *             .description("Verifies compliance via both internal and external controls")
  *             .internalControls(ComplianceRequirementInternalControlArgs.builder()

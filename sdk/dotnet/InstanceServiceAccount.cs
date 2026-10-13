@@ -40,7 +40,7 @@ namespace Pulumi.GitLab
     /// 
     ///     var exampleToken = new GitLab.PersonalAccessToken("example_token", new()
     ///     {
-    ///         UserId = exampleSa.ServiceAccountId,
+    ///         UserId = exampleSa.ServiceAccountId.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Name = "Example personal access token for a service account",
     ///         ExpiresAt = "2026-01-01",
     ///         Scopes = new[]

@@ -76,7 +76,7 @@ import (
 //				Chart:           "gitlab-agent",
 //				Version:         "1.2.0",
 //				Set: []map[string]interface{}{
-//					map[string]interface{}{
+//					map[string]string{
 //						"name":  "config.token",
 //						"value": thisClusterAgentToken.Token,
 //					},
