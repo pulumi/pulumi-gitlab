@@ -23,6 +23,136 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_environments/)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := gitlab.NewProjectEnvironment(ctx, "this", &gitlab.ProjectEnvironmentArgs{
+//				Project:     pulumi.String("123"),
+//				Name:        pulumi.String("example"),
+//				ExternalUrl: pulumi.String("www.example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example with access-level based approval rules
+//			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "example_with_access_level", &gitlab.ProjectProtectedEnvironmentArgs{
+//				Project:     this.Project,
+//				Environment: this.Name,
+//				DeployAccessLevelsAttributes: gitlab.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArray{
+//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs{
+//						AccessLevel: pulumi.String("developer"),
+//					},
+//				},
+//				ApprovalRules: gitlab.ProjectProtectedEnvironmentApprovalRuleArray{
+//					&gitlab.ProjectProtectedEnvironmentApprovalRuleArgs{
+//						AccessLevel:       pulumi.String("developer"),
+//						RequiredApprovals: pulumi.Int(2),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example with multiple approval rules, using access level, user, and group
+//			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "example_with_multiple", &gitlab.ProjectProtectedEnvironmentArgs{
+//				Project:     this.Project,
+//				Environment: this.Name,
+//				DeployAccessLevelsAttributes: gitlab.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArray{
+//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs{
+//						AccessLevel: pulumi.String("developer"),
+//					},
+//				},
+//				ApprovalRules: gitlab.ProjectProtectedEnvironmentApprovalRuleArray{
+//					&gitlab.ProjectProtectedEnvironmentApprovalRuleArgs{
+//						UserId: pulumi.Int(789),
+//					},
+//					&gitlab.ProjectProtectedEnvironmentApprovalRuleArgs{
+//						AccessLevel:       pulumi.String("developer"),
+//						RequiredApprovals: pulumi.Int(2),
+//					},
+//					&gitlab.ProjectProtectedEnvironmentApprovalRuleArgs{
+//						GroupId: pulumi.Int(456),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example with deployment access level attribute
+//			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "example_access_levels_attribute", &gitlab.ProjectProtectedEnvironmentArgs{
+//				Project:     this.Project,
+//				Environment: this.Name,
+//				DeployAccessLevelsAttributes: gitlab.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArray{
+//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs{
+//						AccessLevel: pulumi.String("developer"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example with group-based deployment level attribute
+//			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "example_access_levels_attribute_with_group", &gitlab.ProjectProtectedEnvironmentArgs{
+//				Project:     this.Project,
+//				Environment: this.Name,
+//				DeployAccessLevelsAttributes: gitlab.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArray{
+//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs{
+//						GroupId: pulumi.Int(456),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example with user-based deployment level attribute
+//			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "example_access_levels_attribute_with_user", &gitlab.ProjectProtectedEnvironmentArgs{
+//				Project:     this.Project,
+//				Environment: this.Name,
+//				DeployAccessLevelsAttributes: gitlab.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArray{
+//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs{
+//						UserId: pulumi.Int(789),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example with multiple deployment access levels attribute
+//			_, err = gitlab.NewProjectProtectedEnvironment(ctx, "example_access_levels_attribute_with_multiple", &gitlab.ProjectProtectedEnvironmentArgs{
+//				Project:     this.Project,
+//				Environment: this.Name,
+//				DeployAccessLevelsAttributes: gitlab.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArray{
+//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs{
+//						AccessLevel: pulumi.String("developer"),
+//					},
+//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs{
+//						GroupId: pulumi.Int(456),
+//					},
+//					&gitlab.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs{
+//						UserId: pulumi.Int(789),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Starting in Terraform v1.5.0, you can use an import block to import `ProjectProtectedEnvironment`. For example:

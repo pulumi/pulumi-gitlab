@@ -33,6 +33,129 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/)
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.Project;
+ * import com.pulumi.gitlab.ProjectArgs;
+ * import com.pulumi.gitlab.inputs.ProjectPushRulesArgs;
+ * import com.pulumi.gitlab.GitlabFunctions;
+ * import com.pulumi.gitlab.inputs.GetUserArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var example = new Project("example", ProjectArgs.builder()
+ *             .name("example")
+ *             .description("My awesome codebase")
+ *             .visibilityLevel("public")
+ *             .build());
+ * 
+ *         // Project with custom push rules
+ *         var example_two = new Project("example-two", ProjectArgs.builder()
+ *             .name("example-two")
+ *             .pushRules(ProjectPushRulesArgs.builder()
+ *                 .authorEmailRegex("}{@literal @}{@code example\\.com$")
+ *                 .commitCommitterCheck(true)
+ *                 .memberCheck(true)
+ *                 .preventSecrets(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         // Project which automatically rebases the source branch before merging
+ *         // NOTE: `automatic_rebase_enabled` requires GitLab 19.4 or later and only applies when
+ *         //       `merge_method` is `ff` or `rebase_merge`.
+ *         var example_automatic_rebase = new Project("example-automatic-rebase", ProjectArgs.builder()
+ *             .name("example-automatic-rebase")
+ *             .mergeMethod("ff")
+ *             .automaticRebaseEnabled(true)
+ *             .build());
+ * 
+ *         // Create a project for a given user (requires admin access)
+ *         final var peterParker = GitlabFunctions.getUser(GetUserArgs.builder()
+ *             .username("peter_parker")
+ *             .build());
+ * 
+ *         var petersRepo = new Project("petersRepo", ProjectArgs.builder()
+ *             .name("peters-repo")
+ *             .description("This is a description")
+ *             .namespaceId(peterParker.namespaceId())
+ *             .build());
+ * 
+ *         // Fork a project
+ *         var fork = new Project("fork", ProjectArgs.builder()
+ *             .name("my-fork")
+ *             .description("This is a fork")
+ *             .forkedFromProjectId(example.id())
+ *             .build());
+ * 
+ *         // Fork a project and setup a pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+ *         var forkWithMirror = new Project("forkWithMirror", ProjectArgs.builder()
+ *             .name("my-fork")
+ *             .description("This is a fork")
+ *             .forkedFromProjectId(example.id())
+ *             .importUrl(example.httpUrlToRepo())
+ *             .mirror(true)
+ *             .build());
+ * 
+ *         // Create a project by importing it from a public project
+ *         var importPublic = new Project("importPublic", ProjectArgs.builder()
+ *             .name("import-from-public-project")
+ *             .importUrl("https://gitlab.example.com/repo.git")
+ *             .build());
+ * 
+ *         // Create a project by importing it from a public project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+ *         var importPublicWithMirror = new Project("importPublicWithMirror", ProjectArgs.builder()
+ *             .name("import-from-public-project")
+ *             .importUrl("https://gitlab.example.com/repo.git")
+ *             .mirror(true)
+ *             .build());
+ * 
+ *         // Create a project by importing it from a private project
+ *         var importPrivate = new Project("importPrivate", ProjectArgs.builder()
+ *             .name("import-from-public-project")
+ *             .importUrl("https://gitlab.example.com/repo.git")
+ *             .importUrlUsername("user")
+ *             .importUrlPassword("pass")
+ *             .build());
+ * 
+ *         // Create a project by importing it from a private project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+ *         var importPrivateWithMirror = new Project("importPrivateWithMirror", ProjectArgs.builder()
+ *             .name("import-from-public-project")
+ *             .importUrl("https://gitlab.example.com/repo.git")
+ *             .importUrlUsername("user")
+ *             .importUrlPassword("pass")
+ *             .mirror(true)
+ *             .build());
+ * 
+ *         // Create a project by importing it from a private project and provide credentials in `import_url`
+ *         // NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
+ *         //       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
+ *         var importPrivateCredentialsInUrl = new Project("importPrivateCredentialsInUrl", ProjectArgs.builder()
+ *             .name("import-from-public-project")
+ *             .importUrl("https://user:pass}{@literal @}{@code gitlab.example.com/repo.git")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.Project`. For example:
@@ -190,6 +313,26 @@ public class Project extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> autocloseReferencedIssues() {
         return this.autocloseReferencedIssues;
+    }
+    /**
+     * Set to true to automatically rebase the source branch onto the target branch before merging.
+     * Only applies when `mergeMethod` is `ff` or `rebaseMerge`.
+     * Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+     * so setting it there surfaces as a permanent difference on every plan.
+     * 
+     */
+    @Export(name="automaticRebaseEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> automaticRebaseEnabled;
+
+    /**
+     * @return Set to true to automatically rebase the source branch onto the target branch before merging.
+     * Only applies when `mergeMethod` is `ff` or `rebaseMerge`.
+     * Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+     * so setting it there surfaces as a permanent difference on every plan.
+     * 
+     */
+    public Output<Boolean> automaticRebaseEnabled() {
+        return this.automaticRebaseEnabled;
     }
     /**
      * A local path to the avatar image to upload. **Note**: not available for imported resources.

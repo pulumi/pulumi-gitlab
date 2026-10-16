@@ -373,6 +373,29 @@ class GroupVariable(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.GroupVariable("example",
+            group="12345",
+            key="group_variable_key",
+            value="group_variable_value",
+            protected=False,
+            masked=False,
+            environment_scope="*")
+        # Example  with masked and hidden
+        masked_and_hidden = gitlab.GroupVariable("masked_and_hidden",
+            group="12345",
+            key="group_variable_key",
+            value="group_variable_value",
+            masked=True,
+            hidden=True,
+            protected=False)
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `GroupVariable`. For example:
@@ -409,6 +432,29 @@ class GroupVariable(pulumi.CustomResource):
         The `GroupVariable` resource allows creating a GitLab group level variables.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.GroupVariable("example",
+            group="12345",
+            key="group_variable_key",
+            value="group_variable_value",
+            protected=False,
+            masked=False,
+            environment_scope="*")
+        # Example  with masked and hidden
+        masked_and_hidden = gitlab.GroupVariable("masked_and_hidden",
+            group="12345",
+            key="group_variable_key",
+            value="group_variable_value",
+            masked=True,
+            hidden=True,
+            protected=False)
+        ```
 
         ## Import
 

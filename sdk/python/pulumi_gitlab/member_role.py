@@ -267,6 +267,30 @@ class MemberRole(pulumi.CustomResource):
 
         **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationmemberrolecreate)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Example is creating a role for a security analyst to be able to read vulnerabilities for repos in example-org on gitlab.com.
+        security_analyst = gitlab.MemberRole("security_analyst",
+            name="Security Analyst",
+            description="This is a read only role for security analysts",
+            group_path="example-org",
+            base_access_level="REPORTER",
+            enabled_permissions=["READ_VULNERABILITY"])
+        # Example is creating a role for an enhanced developer to be able to manage CI/CD variables and vulnerabilities on self managed gitlab instance.
+        enhanced_developer = gitlab.MemberRole("enhanced_developer",
+            name="Enhanced Developer",
+            description="This role gives the developers additional access to manage CI/CD variables and vulnerabilities",
+            base_access_level="DEVELOPER",
+            enabled_permissions=[
+                "ADMIN_CICD_VARIABLES",
+                "ADMIN_VULNERABILITY",
+            ])
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `MemberRole`. For example:
@@ -308,6 +332,30 @@ class MemberRole(pulumi.CustomResource):
         > `READ_ADMIN_*` permissions grant read-only access to the Admin Area and cannot be used on a member role. Use the `AdminRole` resource to create a custom admin role instead.
 
         **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationmemberrolecreate)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Example is creating a role for a security analyst to be able to read vulnerabilities for repos in example-org on gitlab.com.
+        security_analyst = gitlab.MemberRole("security_analyst",
+            name="Security Analyst",
+            description="This is a read only role for security analysts",
+            group_path="example-org",
+            base_access_level="REPORTER",
+            enabled_permissions=["READ_VULNERABILITY"])
+        # Example is creating a role for an enhanced developer to be able to manage CI/CD variables and vulnerabilities on self managed gitlab instance.
+        enhanced_developer = gitlab.MemberRole("enhanced_developer",
+            name="Enhanced Developer",
+            description="This role gives the developers additional access to manage CI/CD variables and vulnerabilities",
+            base_access_level="DEVELOPER",
+            enabled_permissions=[
+                "ADMIN_CICD_VARIABLES",
+                "ADMIN_VULNERABILITY",
+            ])
+        ```
 
         ## Import
 

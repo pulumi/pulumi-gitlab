@@ -28,11 +28,13 @@ class ApplicationSettingsArgs:
                  akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_all_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_group_owners_to_manage_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_local_requests_from_system_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_local_requests_from_web_hooks_and_services: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_project_creation_for_guest_and_below: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_runner_registration_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_integrations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  archive_builds_in_human_readable: pulumi.Input[Optional[_builtins.str]] = None,
                  asciidoc_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
                  asset_proxy_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -357,11 +359,13 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.str] akismet_api_key: API key for Akismet spam protection.
         :param pulumi.Input[_builtins.bool] akismet_enabled: (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
         :param pulumi.Input[_builtins.bool] allow_account_deletion: Set to true to allow users to delete their accounts. Premium and Ultimate only.
+        :param pulumi.Input[_builtins.bool] allow_all_integrations: Allow all project integrations instance-wide. Ultimate only.
         :param pulumi.Input[_builtins.bool] allow_group_owners_to_manage_ldap: Set to true to allow group owners to manage LDAP.
         :param pulumi.Input[_builtins.bool] allow_local_requests_from_system_hooks: Allow requests to the local network from system hooks.
         :param pulumi.Input[_builtins.bool] allow_local_requests_from_web_hooks_and_services: Allow requests to the local network from web hooks and services.
         :param pulumi.Input[_builtins.bool] allow_project_creation_for_guest_and_below: Indicates whether users assigned up to the Guest role can create groups and personal projects.
         :param pulumi.Input[_builtins.bool] allow_runner_registration_token: Allow using a registration token to create a runner.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_integrations: List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
         :param pulumi.Input[_builtins.str] archive_builds_in_human_readable: Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
         :param pulumi.Input[_builtins.int] asciidoc_max_includes: Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] asset_proxy_allowlists: Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
@@ -691,6 +695,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "akismet_enabled", akismet_enabled)
         if allow_account_deletion is not None:
             pulumi.set(__self__, "allow_account_deletion", allow_account_deletion)
+        if allow_all_integrations is not None:
+            pulumi.set(__self__, "allow_all_integrations", allow_all_integrations)
         if allow_group_owners_to_manage_ldap is not None:
             pulumi.set(__self__, "allow_group_owners_to_manage_ldap", allow_group_owners_to_manage_ldap)
         if allow_local_requests_from_system_hooks is not None:
@@ -701,6 +707,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "allow_project_creation_for_guest_and_below", allow_project_creation_for_guest_and_below)
         if allow_runner_registration_token is not None:
             pulumi.set(__self__, "allow_runner_registration_token", allow_runner_registration_token)
+        if allowed_integrations is not None:
+            pulumi.set(__self__, "allowed_integrations", allowed_integrations)
         if archive_builds_in_human_readable is not None:
             pulumi.set(__self__, "archive_builds_in_human_readable", archive_builds_in_human_readable)
         if asciidoc_max_includes is not None:
@@ -1415,6 +1423,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "allow_account_deletion", value)
 
     @_builtins.property
+    @pulumi.getter(name="allowAllIntegrations")
+    def allow_all_integrations(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Allow all project integrations instance-wide. Ultimate only.
+        """
+        return pulumi.get(self, "allow_all_integrations")
+
+    @allow_all_integrations.setter
+    def allow_all_integrations(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "allow_all_integrations", value)
+
+    @_builtins.property
     @pulumi.getter(name="allowGroupOwnersToManageLdap")
     def allow_group_owners_to_manage_ldap(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -1473,6 +1493,18 @@ class ApplicationSettingsArgs:
     @allow_runner_registration_token.setter
     def allow_runner_registration_token(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_runner_registration_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedIntegrations")
+    def allowed_integrations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+        """
+        return pulumi.get(self, "allowed_integrations")
+
+    @allowed_integrations.setter
+    def allowed_integrations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowed_integrations", value)
 
     @_builtins.property
     @pulumi.getter(name="archiveBuildsInHumanReadable")
@@ -5253,11 +5285,13 @@ class _ApplicationSettingsState:
                  akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_all_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_group_owners_to_manage_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_local_requests_from_system_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_local_requests_from_web_hooks_and_services: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_project_creation_for_guest_and_below: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_runner_registration_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_integrations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  archive_builds_in_human_readable: pulumi.Input[Optional[_builtins.str]] = None,
                  asciidoc_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
                  asset_proxy_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -5584,11 +5618,13 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.str] akismet_api_key: API key for Akismet spam protection.
         :param pulumi.Input[_builtins.bool] akismet_enabled: (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
         :param pulumi.Input[_builtins.bool] allow_account_deletion: Set to true to allow users to delete their accounts. Premium and Ultimate only.
+        :param pulumi.Input[_builtins.bool] allow_all_integrations: Allow all project integrations instance-wide. Ultimate only.
         :param pulumi.Input[_builtins.bool] allow_group_owners_to_manage_ldap: Set to true to allow group owners to manage LDAP.
         :param pulumi.Input[_builtins.bool] allow_local_requests_from_system_hooks: Allow requests to the local network from system hooks.
         :param pulumi.Input[_builtins.bool] allow_local_requests_from_web_hooks_and_services: Allow requests to the local network from web hooks and services.
         :param pulumi.Input[_builtins.bool] allow_project_creation_for_guest_and_below: Indicates whether users assigned up to the Guest role can create groups and personal projects.
         :param pulumi.Input[_builtins.bool] allow_runner_registration_token: Allow using a registration token to create a runner.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_integrations: List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
         :param pulumi.Input[_builtins.str] archive_builds_in_human_readable: Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
         :param pulumi.Input[_builtins.int] asciidoc_max_includes: Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] asset_proxy_allowlists: Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
@@ -5920,6 +5956,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "akismet_enabled", akismet_enabled)
         if allow_account_deletion is not None:
             pulumi.set(__self__, "allow_account_deletion", allow_account_deletion)
+        if allow_all_integrations is not None:
+            pulumi.set(__self__, "allow_all_integrations", allow_all_integrations)
         if allow_group_owners_to_manage_ldap is not None:
             pulumi.set(__self__, "allow_group_owners_to_manage_ldap", allow_group_owners_to_manage_ldap)
         if allow_local_requests_from_system_hooks is not None:
@@ -5930,6 +5968,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "allow_project_creation_for_guest_and_below", allow_project_creation_for_guest_and_below)
         if allow_runner_registration_token is not None:
             pulumi.set(__self__, "allow_runner_registration_token", allow_runner_registration_token)
+        if allowed_integrations is not None:
+            pulumi.set(__self__, "allowed_integrations", allowed_integrations)
         if archive_builds_in_human_readable is not None:
             pulumi.set(__self__, "archive_builds_in_human_readable", archive_builds_in_human_readable)
         if asciidoc_max_includes is not None:
@@ -6648,6 +6688,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "allow_account_deletion", value)
 
     @_builtins.property
+    @pulumi.getter(name="allowAllIntegrations")
+    def allow_all_integrations(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Allow all project integrations instance-wide. Ultimate only.
+        """
+        return pulumi.get(self, "allow_all_integrations")
+
+    @allow_all_integrations.setter
+    def allow_all_integrations(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "allow_all_integrations", value)
+
+    @_builtins.property
     @pulumi.getter(name="allowGroupOwnersToManageLdap")
     def allow_group_owners_to_manage_ldap(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -6706,6 +6758,18 @@ class _ApplicationSettingsState:
     @allow_runner_registration_token.setter
     def allow_runner_registration_token(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_runner_registration_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedIntegrations")
+    def allowed_integrations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+        """
+        return pulumi.get(self, "allowed_integrations")
+
+    @allowed_integrations.setter
+    def allowed_integrations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowed_integrations", value)
 
     @_builtins.property
     @pulumi.getter(name="archiveBuildsInHumanReadable")
@@ -10513,11 +10577,13 @@ class ApplicationSettings(pulumi.CustomResource):
                  akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_all_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_group_owners_to_manage_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_local_requests_from_system_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_local_requests_from_web_hooks_and_services: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_project_creation_for_guest_and_below: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_runner_registration_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_integrations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  archive_builds_in_human_readable: pulumi.Input[Optional[_builtins.str]] = None,
                  asciidoc_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
                  asset_proxy_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -10849,6 +10915,26 @@ class ApplicationSettings(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Set the default branch
+        default_branch = gitlab.ApplicationSettings("default_branch", default_branch_name="main")
+        # Set the 2FA settings
+        two_factor = gitlab.ApplicationSettings("two_factor",
+            require_two_factor_authentication=True,
+            two_factor_grace_period=24)
+        # Example Allow custom integrations
+        allow_custom_integrations = gitlab.ApplicationSettings("allow_custom_integrations",
+            allow_all_integrations=False,
+            allowed_integrations=["jira"])
+        # Example allowing all integrations:
+        allow_all_integrations = gitlab.ApplicationSettings("allow_all_integrations", allow_all_integrations=True)
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -10859,11 +10945,13 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] akismet_api_key: API key for Akismet spam protection.
         :param pulumi.Input[_builtins.bool] akismet_enabled: (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
         :param pulumi.Input[_builtins.bool] allow_account_deletion: Set to true to allow users to delete their accounts. Premium and Ultimate only.
+        :param pulumi.Input[_builtins.bool] allow_all_integrations: Allow all project integrations instance-wide. Ultimate only.
         :param pulumi.Input[_builtins.bool] allow_group_owners_to_manage_ldap: Set to true to allow group owners to manage LDAP.
         :param pulumi.Input[_builtins.bool] allow_local_requests_from_system_hooks: Allow requests to the local network from system hooks.
         :param pulumi.Input[_builtins.bool] allow_local_requests_from_web_hooks_and_services: Allow requests to the local network from web hooks and services.
         :param pulumi.Input[_builtins.bool] allow_project_creation_for_guest_and_below: Indicates whether users assigned up to the Guest role can create groups and personal projects.
         :param pulumi.Input[_builtins.bool] allow_runner_registration_token: Allow using a registration token to create a runner.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_integrations: List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
         :param pulumi.Input[_builtins.str] archive_builds_in_human_readable: Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
         :param pulumi.Input[_builtins.int] asciidoc_max_includes: Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] asset_proxy_allowlists: Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
@@ -11201,6 +11289,26 @@ class ApplicationSettings(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Set the default branch
+        default_branch = gitlab.ApplicationSettings("default_branch", default_branch_name="main")
+        # Set the 2FA settings
+        two_factor = gitlab.ApplicationSettings("two_factor",
+            require_two_factor_authentication=True,
+            two_factor_grace_period=24)
+        # Example Allow custom integrations
+        allow_custom_integrations = gitlab.ApplicationSettings("allow_custom_integrations",
+            allow_all_integrations=False,
+            allowed_integrations=["jira"])
+        # Example allowing all integrations:
+        allow_all_integrations = gitlab.ApplicationSettings("allow_all_integrations", allow_all_integrations=True)
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationSettingsArgs args: The arguments to use to populate this resource's properties.
@@ -11224,11 +11332,13 @@ class ApplicationSettings(pulumi.CustomResource):
                  akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_all_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_group_owners_to_manage_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_local_requests_from_system_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_local_requests_from_web_hooks_and_services: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_project_creation_for_guest_and_below: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_runner_registration_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_integrations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  archive_builds_in_human_readable: pulumi.Input[Optional[_builtins.str]] = None,
                  asciidoc_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
                  asset_proxy_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -11559,11 +11669,13 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["akismet_api_key"] = None if akismet_api_key is None else pulumi.Output.secret(akismet_api_key)
             __props__.__dict__["akismet_enabled"] = akismet_enabled
             __props__.__dict__["allow_account_deletion"] = allow_account_deletion
+            __props__.__dict__["allow_all_integrations"] = allow_all_integrations
             __props__.__dict__["allow_group_owners_to_manage_ldap"] = allow_group_owners_to_manage_ldap
             __props__.__dict__["allow_local_requests_from_system_hooks"] = allow_local_requests_from_system_hooks
             __props__.__dict__["allow_local_requests_from_web_hooks_and_services"] = allow_local_requests_from_web_hooks_and_services
             __props__.__dict__["allow_project_creation_for_guest_and_below"] = allow_project_creation_for_guest_and_below
             __props__.__dict__["allow_runner_registration_token"] = allow_runner_registration_token
+            __props__.__dict__["allowed_integrations"] = allowed_integrations
             __props__.__dict__["archive_builds_in_human_readable"] = archive_builds_in_human_readable
             __props__.__dict__["asciidoc_max_includes"] = asciidoc_max_includes
             __props__.__dict__["asset_proxy_allowlists"] = asset_proxy_allowlists
@@ -11899,11 +12011,13 @@ class ApplicationSettings(pulumi.CustomResource):
             akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
             akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_all_integrations: pulumi.Input[Optional[_builtins.bool]] = None,
             allow_group_owners_to_manage_ldap: pulumi.Input[Optional[_builtins.bool]] = None,
             allow_local_requests_from_system_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
             allow_local_requests_from_web_hooks_and_services: pulumi.Input[Optional[_builtins.bool]] = None,
             allow_project_creation_for_guest_and_below: pulumi.Input[Optional[_builtins.bool]] = None,
             allow_runner_registration_token: pulumi.Input[Optional[_builtins.bool]] = None,
+            allowed_integrations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             archive_builds_in_human_readable: pulumi.Input[Optional[_builtins.str]] = None,
             asciidoc_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
             asset_proxy_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -12234,11 +12348,13 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] akismet_api_key: API key for Akismet spam protection.
         :param pulumi.Input[_builtins.bool] akismet_enabled: (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
         :param pulumi.Input[_builtins.bool] allow_account_deletion: Set to true to allow users to delete their accounts. Premium and Ultimate only.
+        :param pulumi.Input[_builtins.bool] allow_all_integrations: Allow all project integrations instance-wide. Ultimate only.
         :param pulumi.Input[_builtins.bool] allow_group_owners_to_manage_ldap: Set to true to allow group owners to manage LDAP.
         :param pulumi.Input[_builtins.bool] allow_local_requests_from_system_hooks: Allow requests to the local network from system hooks.
         :param pulumi.Input[_builtins.bool] allow_local_requests_from_web_hooks_and_services: Allow requests to the local network from web hooks and services.
         :param pulumi.Input[_builtins.bool] allow_project_creation_for_guest_and_below: Indicates whether users assigned up to the Guest role can create groups and personal projects.
         :param pulumi.Input[_builtins.bool] allow_runner_registration_token: Allow using a registration token to create a runner.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_integrations: List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
         :param pulumi.Input[_builtins.str] archive_builds_in_human_readable: Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
         :param pulumi.Input[_builtins.int] asciidoc_max_includes: Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] asset_proxy_allowlists: Assets that match these domains are not proxied. Wildcards allowed. Your GitLab installation URL is automatically allowlisted. GitLab restart is required to apply changes.
@@ -12567,11 +12683,13 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["akismet_api_key"] = akismet_api_key
         __props__.__dict__["akismet_enabled"] = akismet_enabled
         __props__.__dict__["allow_account_deletion"] = allow_account_deletion
+        __props__.__dict__["allow_all_integrations"] = allow_all_integrations
         __props__.__dict__["allow_group_owners_to_manage_ldap"] = allow_group_owners_to_manage_ldap
         __props__.__dict__["allow_local_requests_from_system_hooks"] = allow_local_requests_from_system_hooks
         __props__.__dict__["allow_local_requests_from_web_hooks_and_services"] = allow_local_requests_from_web_hooks_and_services
         __props__.__dict__["allow_project_creation_for_guest_and_below"] = allow_project_creation_for_guest_and_below
         __props__.__dict__["allow_runner_registration_token"] = allow_runner_registration_token
+        __props__.__dict__["allowed_integrations"] = allowed_integrations
         __props__.__dict__["archive_builds_in_human_readable"] = archive_builds_in_human_readable
         __props__.__dict__["asciidoc_max_includes"] = asciidoc_max_includes
         __props__.__dict__["asset_proxy_allowlists"] = asset_proxy_allowlists
@@ -12947,6 +13065,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "allow_account_deletion")
 
     @_builtins.property
+    @pulumi.getter(name="allowAllIntegrations")
+    def allow_all_integrations(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Allow all project integrations instance-wide. Ultimate only.
+        """
+        return pulumi.get(self, "allow_all_integrations")
+
+    @_builtins.property
     @pulumi.getter(name="allowGroupOwnersToManageLdap")
     def allow_group_owners_to_manage_ldap(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -12985,6 +13111,14 @@ class ApplicationSettings(pulumi.CustomResource):
         Allow using a registration token to create a runner.
         """
         return pulumi.get(self, "allow_runner_registration_token")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedIntegrations")
+    def allowed_integrations(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+        """
+        return pulumi.get(self, "allowed_integrations")
 
     @_builtins.property
     @pulumi.getter(name="archiveBuildsInHumanReadable")

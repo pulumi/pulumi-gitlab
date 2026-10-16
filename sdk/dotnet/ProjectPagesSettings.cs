@@ -19,6 +19,39 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages/)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new GitLab.Project("example", new()
+    ///     {
+    ///         Name = "project",
+    ///     });
+    /// 
+    ///     // Example where the resource will not reset the settings on destroy
+    ///     var @this = new GitLab.ProjectPagesSettings("this", new()
+    ///     {
+    ///         Project = example.Id,
+    ///         IsUniqueDomainEnabled = true,
+    ///     });
+    /// 
+    ///     // Example where the resource will reset the settings to their original values on destroy
+    ///     var resetOnDestroy = new GitLab.ProjectPagesSettings("reset_on_destroy", new()
+    ///     {
+    ///         Project = example.Id,
+    ///         IsUniqueDomainEnabled = true,
+    ///         KeepSettingsOnDestroy = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectPagesSettings`. For example:

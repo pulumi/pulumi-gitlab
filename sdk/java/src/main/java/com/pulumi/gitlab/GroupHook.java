@@ -26,6 +26,104 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/)
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.GroupHook;
+ * import com.pulumi.gitlab.GroupHookArgs;
+ * import com.pulumi.gitlab.inputs.GroupHookCustomHeaderArgs;
+ * import com.pulumi.gitlab.inputs.GroupHookUrlVariableArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new GroupHook("example", GroupHookArgs.builder()
+ *             .group("example/hooked")
+ *             .url("https://example.com/hook/example")
+ *             .name("Example")
+ *             .description("Example Group Webhook")
+ *             .mergeRequestsEvents(true)
+ *             .pushEvents(false)
+ *             .build());
+ * 
+ *         // Setting all attributes
+ *         var allAttributes = new GroupHook("allAttributes", GroupHookArgs.builder()
+ *             .group("1")
+ *             .url("http://example.com")
+ *             .name("Example")
+ *             .description("Example Group Webhook")
+ *             .token("supersecret")
+ *             .enableSslVerification(false)
+ *             .pushEvents(true)
+ *             .pushEventsBranchFilter("devel")
+ *             .issuesEvents(false)
+ *             .confidentialIssuesEvents(false)
+ *             .mergeRequestsEvents(true)
+ *             .tagPushEvents(true)
+ *             .noteEvents(true)
+ *             .confidentialNoteEvents(true)
+ *             .jobEvents(true)
+ *             .pipelineEvents(true)
+ *             .wikiPageEvents(true)
+ *             .deploymentEvents(true)
+ *             .releasesEvents(true)
+ *             .subgroupEvents(true)
+ *             .emojiEvents(true)
+ *             .featureFlagEvents(true)
+ *             .milestoneEvents(true)
+ *             .resourceAccessTokenEvents(true)
+ *             .branchFilterStrategy("wildcard")
+ *             .build());
+ * 
+ *         // Using Custom Headers
+ *         // Values of headers can't be imported
+ *         var customHeaders = new GroupHook("customHeaders", GroupHookArgs.builder()
+ *             .group("example/hooked")
+ *             .url("https://example.com/hook/example")
+ *             .mergeRequestsEvents(true)
+ *             .customHeaders(            
+ *                 GroupHookCustomHeaderArgs.builder()
+ *                     .key("X-Custom-Header")
+ *                     .value("example")
+ *                     .build(),
+ *                 GroupHookCustomHeaderArgs.builder()
+ *                     .key("X-Custom-Header-Second")
+ *                     .value("example-second")
+ *                     .build())
+ *             .build());
+ * 
+ *         // Using URL variables
+ *         // Values of URL variables can't be imported
+ *         var urlVariables = new GroupHook("urlVariables", GroupHookArgs.builder()
+ *             .group("example/hooked")
+ *             .url("https://example.com/hook/example?token=secret")
+ *             .mergeRequestsEvents(true)
+ *             .urlVariables(GroupHookUrlVariableArgs.builder()
+ *                 .key("hidden")
+ *                 .value("token=secret")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupHook`. For example:

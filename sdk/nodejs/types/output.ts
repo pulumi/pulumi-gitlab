@@ -263,6 +263,33 @@ export interface GetClusterAgentsClusterAgent {
     project: string;
 }
 
+export interface GetComplianceFrameworkTemplatesTemplate {
+    /**
+     * Hexadecimal representation of the template’s label color. e.g. #FCA121.
+     */
+    color: string;
+    /**
+     * Description of the compliance framework template.
+     */
+    description: string;
+    /**
+     * ID of the compliance framework template.
+     */
+    id: string;
+    /**
+     * Full JSON representation of the compliance framework template.
+     */
+    json: string;
+    /**
+     * Name of the compliance framework template.
+     */
+    name: string;
+    /**
+     * Version of the template.
+     */
+    templateVersion: number;
+}
+
 export interface GetGroupAccessTokensAccessToken {
     accessLevel: string;
     active: boolean;

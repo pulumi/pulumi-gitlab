@@ -31,6 +31,7 @@ class ProjectArgs:
                  auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_duo_code_review_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  autoclose_referenced_issues: pulumi.Input[Optional[_builtins.bool]] = None,
+                 automatic_rebase_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  avatar: pulumi.Input[Optional[_builtins.str]] = None,
                  avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
                  branches: pulumi.Input[Optional[_builtins.str]] = None,
@@ -136,6 +137,10 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[_builtins.bool] auto_duo_code_review_enabled: Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
         :param pulumi.Input[_builtins.bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
+        :param pulumi.Input[_builtins.bool] automatic_rebase_enabled: Set to true to automatically rebase the source branch onto the target branch before merging.
+               Only applies when `merge_method` is `ff` or `rebase_merge`.
+               Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+               so setting it there surfaces as a permanent difference on every plan.
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[_builtins.str] branches: Branches to fork (empty for all branches).
@@ -253,6 +258,8 @@ class ProjectArgs:
             pulumi.set(__self__, "auto_duo_code_review_enabled", auto_duo_code_review_enabled)
         if autoclose_referenced_issues is not None:
             pulumi.set(__self__, "autoclose_referenced_issues", autoclose_referenced_issues)
+        if automatic_rebase_enabled is not None:
+            pulumi.set(__self__, "automatic_rebase_enabled", automatic_rebase_enabled)
         if avatar is not None:
             pulumi.set(__self__, "avatar", avatar)
         if avatar_hash is not None:
@@ -566,6 +573,21 @@ class ProjectArgs:
     @autoclose_referenced_issues.setter
     def autoclose_referenced_issues(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autoclose_referenced_issues", value)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticRebaseEnabled")
+    def automatic_rebase_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Set to true to automatically rebase the source branch onto the target branch before merging.
+        Only applies when `merge_method` is `ff` or `rebase_merge`.
+        Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+        so setting it there surfaces as a permanent difference on every plan.
+        """
+        return pulumi.get(self, "automatic_rebase_enabled")
+
+    @automatic_rebase_enabled.setter
+    def automatic_rebase_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "automatic_rebase_enabled", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1692,6 +1714,7 @@ class _ProjectState:
                  auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_duo_code_review_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  autoclose_referenced_issues: pulumi.Input[Optional[_builtins.bool]] = None,
+                 automatic_rebase_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  avatar: pulumi.Input[Optional[_builtins.str]] = None,
                  avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
                  avatar_url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1804,6 +1827,10 @@ class _ProjectState:
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[_builtins.bool] auto_duo_code_review_enabled: Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
         :param pulumi.Input[_builtins.bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
+        :param pulumi.Input[_builtins.bool] automatic_rebase_enabled: Set to true to automatically rebase the source branch onto the target branch before merging.
+               Only applies when `merge_method` is `ff` or `rebase_merge`.
+               Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+               so setting it there surfaces as a permanent difference on every plan.
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[_builtins.str] avatar_url: The URL of the avatar image.
@@ -1928,6 +1955,8 @@ class _ProjectState:
             pulumi.set(__self__, "auto_duo_code_review_enabled", auto_duo_code_review_enabled)
         if autoclose_referenced_issues is not None:
             pulumi.set(__self__, "autoclose_referenced_issues", autoclose_referenced_issues)
+        if automatic_rebase_enabled is not None:
+            pulumi.set(__self__, "automatic_rebase_enabled", automatic_rebase_enabled)
         if avatar is not None:
             pulumi.set(__self__, "avatar", avatar)
         if avatar_hash is not None:
@@ -2255,6 +2284,21 @@ class _ProjectState:
     @autoclose_referenced_issues.setter
     def autoclose_referenced_issues(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autoclose_referenced_issues", value)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticRebaseEnabled")
+    def automatic_rebase_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Set to true to automatically rebase the source branch onto the target branch before merging.
+        Only applies when `merge_method` is `ff` or `rebase_merge`.
+        Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+        so setting it there surfaces as a permanent difference on every plan.
+        """
+        return pulumi.get(self, "automatic_rebase_enabled")
+
+    @automatic_rebase_enabled.setter
+    def automatic_rebase_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "automatic_rebase_enabled", value)
 
     @_builtins.property
     @pulumi.getter
@@ -3468,6 +3512,7 @@ class Project(pulumi.CustomResource):
                  auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_duo_code_review_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  autoclose_referenced_issues: pulumi.Input[Optional[_builtins.bool]] = None,
+                 automatic_rebase_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  avatar: pulumi.Input[Optional[_builtins.str]] = None,
                  avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
                  branches: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3575,6 +3620,80 @@ class Project(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.Project("example",
+            name="example",
+            description="My awesome codebase",
+            visibility_level="public")
+        # Project with custom push rules
+        example_two = gitlab.Project("example-two",
+            name="example-two",
+            push_rules={
+                "author_email_regex": "@example\\\\.com$",
+                "commit_committer_check": True,
+                "member_check": True,
+                "prevent_secrets": True,
+            })
+        # Project which automatically rebases the source branch before merging
+        # NOTE: `automatic_rebase_enabled` requires GitLab 19.4 or later and only applies when
+        #       `merge_method` is `ff` or `rebase_merge`.
+        example_automatic_rebase = gitlab.Project("example-automatic-rebase",
+            name="example-automatic-rebase",
+            merge_method="ff",
+            automatic_rebase_enabled=True)
+        # Create a project for a given user (requires admin access)
+        peter_parker = gitlab.get_user(username="peter_parker")
+        peters_repo = gitlab.Project("peters_repo",
+            name="peters-repo",
+            description="This is a description",
+            namespace_id=peter_parker.namespace_id)
+        # Fork a project
+        fork = gitlab.Project("fork",
+            name="my-fork",
+            description="This is a fork",
+            forked_from_project_id=example.id.apply(lambda x: int(x)))
+        # Fork a project and setup a pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+        fork_with_mirror = gitlab.Project("fork_with_mirror",
+            name="my-fork",
+            description="This is a fork",
+            forked_from_project_id=example.id.apply(lambda x: int(x)),
+            import_url=example.http_url_to_repo,
+            mirror=True)
+        # Create a project by importing it from a public project
+        import_public = gitlab.Project("import_public",
+            name="import-from-public-project",
+            import_url="https://gitlab.example.com/repo.git")
+        # Create a project by importing it from a public project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+        import_public_with_mirror = gitlab.Project("import_public_with_mirror",
+            name="import-from-public-project",
+            import_url="https://gitlab.example.com/repo.git",
+            mirror=True)
+        # Create a project by importing it from a private project
+        import_private = gitlab.Project("import_private",
+            name="import-from-public-project",
+            import_url="https://gitlab.example.com/repo.git",
+            import_url_username="user",
+            import_url_password="pass")
+        # Create a project by importing it from a private project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+        import_private_with_mirror = gitlab.Project("import_private_with_mirror",
+            name="import-from-public-project",
+            import_url="https://gitlab.example.com/repo.git",
+            import_url_username="user",
+            import_url_password="pass",
+            mirror=True)
+        # Create a project by importing it from a private project and provide credentials in `import_url`
+        # NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
+        #       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
+        import_private_credentials_in_url = gitlab.Project("import_private_credentials_in_url",
+            name="import-from-public-project",
+            import_url="https://user:pass@gitlab.example.com/repo.git")
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `Project`. For example:
@@ -3603,6 +3722,10 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[_builtins.bool] auto_duo_code_review_enabled: Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
         :param pulumi.Input[_builtins.bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
+        :param pulumi.Input[_builtins.bool] automatic_rebase_enabled: Set to true to automatically rebase the source branch onto the target branch before merging.
+               Only applies when `merge_method` is `ff` or `rebase_merge`.
+               Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+               so setting it there surfaces as a permanent difference on every plan.
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[_builtins.str] branches: Branches to fork (empty for all branches).
@@ -3720,6 +3843,80 @@ class Project(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.Project("example",
+            name="example",
+            description="My awesome codebase",
+            visibility_level="public")
+        # Project with custom push rules
+        example_two = gitlab.Project("example-two",
+            name="example-two",
+            push_rules={
+                "author_email_regex": "@example\\\\.com$",
+                "commit_committer_check": True,
+                "member_check": True,
+                "prevent_secrets": True,
+            })
+        # Project which automatically rebases the source branch before merging
+        # NOTE: `automatic_rebase_enabled` requires GitLab 19.4 or later and only applies when
+        #       `merge_method` is `ff` or `rebase_merge`.
+        example_automatic_rebase = gitlab.Project("example-automatic-rebase",
+            name="example-automatic-rebase",
+            merge_method="ff",
+            automatic_rebase_enabled=True)
+        # Create a project for a given user (requires admin access)
+        peter_parker = gitlab.get_user(username="peter_parker")
+        peters_repo = gitlab.Project("peters_repo",
+            name="peters-repo",
+            description="This is a description",
+            namespace_id=peter_parker.namespace_id)
+        # Fork a project
+        fork = gitlab.Project("fork",
+            name="my-fork",
+            description="This is a fork",
+            forked_from_project_id=example.id.apply(lambda x: int(x)))
+        # Fork a project and setup a pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+        fork_with_mirror = gitlab.Project("fork_with_mirror",
+            name="my-fork",
+            description="This is a fork",
+            forked_from_project_id=example.id.apply(lambda x: int(x)),
+            import_url=example.http_url_to_repo,
+            mirror=True)
+        # Create a project by importing it from a public project
+        import_public = gitlab.Project("import_public",
+            name="import-from-public-project",
+            import_url="https://gitlab.example.com/repo.git")
+        # Create a project by importing it from a public project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+        import_public_with_mirror = gitlab.Project("import_public_with_mirror",
+            name="import-from-public-project",
+            import_url="https://gitlab.example.com/repo.git",
+            mirror=True)
+        # Create a project by importing it from a private project
+        import_private = gitlab.Project("import_private",
+            name="import-from-public-project",
+            import_url="https://gitlab.example.com/repo.git",
+            import_url_username="user",
+            import_url_password="pass")
+        # Create a project by importing it from a private project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+        import_private_with_mirror = gitlab.Project("import_private_with_mirror",
+            name="import-from-public-project",
+            import_url="https://gitlab.example.com/repo.git",
+            import_url_username="user",
+            import_url_password="pass",
+            mirror=True)
+        # Create a project by importing it from a private project and provide credentials in `import_url`
+        # NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
+        #       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
+        import_private_credentials_in_url = gitlab.Project("import_private_credentials_in_url",
+            name="import-from-public-project",
+            import_url="https://user:pass@gitlab.example.com/repo.git")
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `Project`. For example:
@@ -3761,6 +3958,7 @@ class Project(pulumi.CustomResource):
                  auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_duo_code_review_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  autoclose_referenced_issues: pulumi.Input[Optional[_builtins.bool]] = None,
+                 automatic_rebase_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  avatar: pulumi.Input[Optional[_builtins.str]] = None,
                  avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
                  branches: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3872,6 +4070,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
             __props__.__dict__["auto_duo_code_review_enabled"] = auto_duo_code_review_enabled
             __props__.__dict__["autoclose_referenced_issues"] = autoclose_referenced_issues
+            __props__.__dict__["automatic_rebase_enabled"] = automatic_rebase_enabled
             __props__.__dict__["avatar"] = avatar
             __props__.__dict__["avatar_hash"] = avatar_hash
             __props__.__dict__["branches"] = branches
@@ -3993,6 +4192,7 @@ class Project(pulumi.CustomResource):
             auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_duo_code_review_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             autoclose_referenced_issues: pulumi.Input[Optional[_builtins.bool]] = None,
+            automatic_rebase_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             avatar: pulumi.Input[Optional[_builtins.str]] = None,
             avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
             avatar_url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4109,6 +4309,10 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Enable Auto DevOps for this project.
         :param pulumi.Input[_builtins.bool] auto_duo_code_review_enabled: Enable automatic reviews by GitLab Duo on merge requests. Ultimate only. Automatic reviews only work with the GitLab Duo Enterprise add-on.
         :param pulumi.Input[_builtins.bool] autoclose_referenced_issues: Set whether auto-closing referenced issues on default branch.
+        :param pulumi.Input[_builtins.bool] automatic_rebase_enabled: Set to true to automatically rebase the source branch onto the target branch before merging.
+               Only applies when `merge_method` is `ff` or `rebase_merge`.
+               Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+               so setting it there surfaces as a permanent difference on every plan.
         :param pulumi.Input[_builtins.str] avatar: A local path to the avatar image to upload. **Note**: not available for imported resources.
         :param pulumi.Input[_builtins.str] avatar_hash: The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
         :param pulumi.Input[_builtins.str] avatar_url: The URL of the avatar image.
@@ -4227,6 +4431,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
         __props__.__dict__["auto_duo_code_review_enabled"] = auto_duo_code_review_enabled
         __props__.__dict__["autoclose_referenced_issues"] = autoclose_referenced_issues
+        __props__.__dict__["automatic_rebase_enabled"] = automatic_rebase_enabled
         __props__.__dict__["avatar"] = avatar
         __props__.__dict__["avatar_hash"] = avatar_hash
         __props__.__dict__["avatar_url"] = avatar_url
@@ -4407,6 +4612,17 @@ class Project(pulumi.CustomResource):
         Set whether auto-closing referenced issues on default branch.
         """
         return pulumi.get(self, "autoclose_referenced_issues")
+
+    @_builtins.property
+    @pulumi.getter(name="automaticRebaseEnabled")
+    def automatic_rebase_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Set to true to automatically rebase the source branch onto the target branch before merging.
+        Only applies when `merge_method` is `ff` or `rebase_merge`.
+        Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+        so setting it there surfaces as a permanent difference on every plan.
+        """
+        return pulumi.get(self, "automatic_rebase_enabled")
 
     @_builtins.property
     @pulumi.getter

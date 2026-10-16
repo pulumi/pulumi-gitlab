@@ -1184,6 +1184,74 @@ class GroupHook(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.GroupHook("example",
+            group="example/hooked",
+            url="https://example.com/hook/example",
+            name="Example",
+            description="Example Group Webhook",
+            merge_requests_events=True,
+            push_events=False)
+        # Setting all attributes
+        all_attributes = gitlab.GroupHook("all_attributes",
+            group="1",
+            url="http://example.com",
+            name="Example",
+            description="Example Group Webhook",
+            token="supersecret",
+            enable_ssl_verification=False,
+            push_events=True,
+            push_events_branch_filter="devel",
+            issues_events=False,
+            confidential_issues_events=False,
+            merge_requests_events=True,
+            tag_push_events=True,
+            note_events=True,
+            confidential_note_events=True,
+            job_events=True,
+            pipeline_events=True,
+            wiki_page_events=True,
+            deployment_events=True,
+            releases_events=True,
+            subgroup_events=True,
+            emoji_events=True,
+            feature_flag_events=True,
+            milestone_events=True,
+            resource_access_token_events=True,
+            branch_filter_strategy="wildcard")
+        # Using Custom Headers
+        # Values of headers can't be imported
+        custom_headers = gitlab.GroupHook("custom_headers",
+            group="example/hooked",
+            url="https://example.com/hook/example",
+            merge_requests_events=True,
+            custom_headers=[
+                {
+                    "key": "X-Custom-Header",
+                    "value": "example",
+                },
+                {
+                    "key": "X-Custom-Header-Second",
+                    "value": "example-second",
+                },
+            ])
+        # Using URL variables
+        # Values of URL variables can't be imported
+        url_variables = gitlab.GroupHook("url_variables",
+            group="example/hooked",
+            url="https://example.com/hook/example?token=secret",
+            merge_requests_events=True,
+            url_variables=[{
+                "key": "hidden",
+                "value": "token=secret",
+            }])
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `GroupHook`. For example:
@@ -1246,6 +1314,74 @@ class GroupHook(pulumi.CustomResource):
         > Note that `push_events` defaults to `true`.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.GroupHook("example",
+            group="example/hooked",
+            url="https://example.com/hook/example",
+            name="Example",
+            description="Example Group Webhook",
+            merge_requests_events=True,
+            push_events=False)
+        # Setting all attributes
+        all_attributes = gitlab.GroupHook("all_attributes",
+            group="1",
+            url="http://example.com",
+            name="Example",
+            description="Example Group Webhook",
+            token="supersecret",
+            enable_ssl_verification=False,
+            push_events=True,
+            push_events_branch_filter="devel",
+            issues_events=False,
+            confidential_issues_events=False,
+            merge_requests_events=True,
+            tag_push_events=True,
+            note_events=True,
+            confidential_note_events=True,
+            job_events=True,
+            pipeline_events=True,
+            wiki_page_events=True,
+            deployment_events=True,
+            releases_events=True,
+            subgroup_events=True,
+            emoji_events=True,
+            feature_flag_events=True,
+            milestone_events=True,
+            resource_access_token_events=True,
+            branch_filter_strategy="wildcard")
+        # Using Custom Headers
+        # Values of headers can't be imported
+        custom_headers = gitlab.GroupHook("custom_headers",
+            group="example/hooked",
+            url="https://example.com/hook/example",
+            merge_requests_events=True,
+            custom_headers=[
+                {
+                    "key": "X-Custom-Header",
+                    "value": "example",
+                },
+                {
+                    "key": "X-Custom-Header-Second",
+                    "value": "example-second",
+                },
+            ])
+        # Using URL variables
+        # Values of URL variables can't be imported
+        url_variables = gitlab.GroupHook("url_variables",
+            group="example/hooked",
+            url="https://example.com/hook/example?token=secret",
+            merge_requests_events=True,
+            url_variables=[{
+                "key": "hidden",
+                "value": "token=secret",
+            }])
+        ```
 
         ## Import
 

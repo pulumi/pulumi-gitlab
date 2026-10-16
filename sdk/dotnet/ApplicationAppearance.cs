@@ -23,6 +23,38 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/appearance/)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Example where the resource will not update the appearance on destroy
+    ///     var @this = new GitLab.ApplicationAppearance("this", new()
+    ///     {
+    ///         Title = "My GitLab",
+    ///         Description = "My GitLab instance",
+    ///         HeaderMessage = "This is a header message",
+    ///         MessageFontColor = "#FFFF00",
+    ///     });
+    /// 
+    ///     // Example where the resource will revert the appearance to its original values on destroy
+    ///     var revertOnDestroy = new GitLab.ApplicationAppearance("revert_on_destroy", new()
+    ///     {
+    ///         Title = "My GitLab",
+    ///         KeepSettingsOnDestroy = false,
+    ///         Description = "My GitLab instance",
+    ///         HeaderMessage = "This is a header message",
+    ///         MessageFontColor = "#FFFF00",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ApplicationAppearance`. For example:

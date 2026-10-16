@@ -8405,6 +8405,148 @@ func (o GetClusterAgentsClusterAgentArrayOutput) Index(i pulumi.IntInput) GetClu
 	}).(GetClusterAgentsClusterAgentOutput)
 }
 
+type GetComplianceFrameworkTemplatesTemplate struct {
+	// Hexadecimal representation of the template’s label color. e.g. #FCA121.
+	Color string `pulumi:"color"`
+	// Description of the compliance framework template.
+	Description string `pulumi:"description"`
+	// ID of the compliance framework template.
+	Id string `pulumi:"id"`
+	// Full JSON representation of the compliance framework template.
+	Json string `pulumi:"json"`
+	// Name of the compliance framework template.
+	Name string `pulumi:"name"`
+	// Version of the template.
+	TemplateVersion int `pulumi:"templateVersion"`
+}
+
+// GetComplianceFrameworkTemplatesTemplateInput is an input type that accepts GetComplianceFrameworkTemplatesTemplateArgs and GetComplianceFrameworkTemplatesTemplateOutput values.
+// You can construct a concrete instance of `GetComplianceFrameworkTemplatesTemplateInput` via:
+//
+//	GetComplianceFrameworkTemplatesTemplateArgs{...}
+type GetComplianceFrameworkTemplatesTemplateInput interface {
+	pulumi.Input
+
+	ToGetComplianceFrameworkTemplatesTemplateOutput() GetComplianceFrameworkTemplatesTemplateOutput
+	ToGetComplianceFrameworkTemplatesTemplateOutputWithContext(context.Context) GetComplianceFrameworkTemplatesTemplateOutput
+}
+
+type GetComplianceFrameworkTemplatesTemplateArgs struct {
+	// Hexadecimal representation of the template’s label color. e.g. #FCA121.
+	Color pulumi.StringInput `pulumi:"color"`
+	// Description of the compliance framework template.
+	Description pulumi.StringInput `pulumi:"description"`
+	// ID of the compliance framework template.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Full JSON representation of the compliance framework template.
+	Json pulumi.StringInput `pulumi:"json"`
+	// Name of the compliance framework template.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Version of the template.
+	TemplateVersion pulumi.IntInput `pulumi:"templateVersion"`
+}
+
+func (GetComplianceFrameworkTemplatesTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetComplianceFrameworkTemplatesTemplate)(nil)).Elem()
+}
+
+func (i GetComplianceFrameworkTemplatesTemplateArgs) ToGetComplianceFrameworkTemplatesTemplateOutput() GetComplianceFrameworkTemplatesTemplateOutput {
+	return i.ToGetComplianceFrameworkTemplatesTemplateOutputWithContext(context.Background())
+}
+
+func (i GetComplianceFrameworkTemplatesTemplateArgs) ToGetComplianceFrameworkTemplatesTemplateOutputWithContext(ctx context.Context) GetComplianceFrameworkTemplatesTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetComplianceFrameworkTemplatesTemplateOutput)
+}
+
+// GetComplianceFrameworkTemplatesTemplateArrayInput is an input type that accepts GetComplianceFrameworkTemplatesTemplateArray and GetComplianceFrameworkTemplatesTemplateArrayOutput values.
+// You can construct a concrete instance of `GetComplianceFrameworkTemplatesTemplateArrayInput` via:
+//
+//	GetComplianceFrameworkTemplatesTemplateArray{ GetComplianceFrameworkTemplatesTemplateArgs{...} }
+type GetComplianceFrameworkTemplatesTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetComplianceFrameworkTemplatesTemplateArrayOutput() GetComplianceFrameworkTemplatesTemplateArrayOutput
+	ToGetComplianceFrameworkTemplatesTemplateArrayOutputWithContext(context.Context) GetComplianceFrameworkTemplatesTemplateArrayOutput
+}
+
+type GetComplianceFrameworkTemplatesTemplateArray []GetComplianceFrameworkTemplatesTemplateInput
+
+func (GetComplianceFrameworkTemplatesTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetComplianceFrameworkTemplatesTemplate)(nil)).Elem()
+}
+
+func (i GetComplianceFrameworkTemplatesTemplateArray) ToGetComplianceFrameworkTemplatesTemplateArrayOutput() GetComplianceFrameworkTemplatesTemplateArrayOutput {
+	return i.ToGetComplianceFrameworkTemplatesTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetComplianceFrameworkTemplatesTemplateArray) ToGetComplianceFrameworkTemplatesTemplateArrayOutputWithContext(ctx context.Context) GetComplianceFrameworkTemplatesTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetComplianceFrameworkTemplatesTemplateArrayOutput)
+}
+
+type GetComplianceFrameworkTemplatesTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetComplianceFrameworkTemplatesTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetComplianceFrameworkTemplatesTemplate)(nil)).Elem()
+}
+
+func (o GetComplianceFrameworkTemplatesTemplateOutput) ToGetComplianceFrameworkTemplatesTemplateOutput() GetComplianceFrameworkTemplatesTemplateOutput {
+	return o
+}
+
+func (o GetComplianceFrameworkTemplatesTemplateOutput) ToGetComplianceFrameworkTemplatesTemplateOutputWithContext(ctx context.Context) GetComplianceFrameworkTemplatesTemplateOutput {
+	return o
+}
+
+// Hexadecimal representation of the template’s label color. e.g. #FCA121.
+func (o GetComplianceFrameworkTemplatesTemplateOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComplianceFrameworkTemplatesTemplate) string { return v.Color }).(pulumi.StringOutput)
+}
+
+// Description of the compliance framework template.
+func (o GetComplianceFrameworkTemplatesTemplateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComplianceFrameworkTemplatesTemplate) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// ID of the compliance framework template.
+func (o GetComplianceFrameworkTemplatesTemplateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComplianceFrameworkTemplatesTemplate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Full JSON representation of the compliance framework template.
+func (o GetComplianceFrameworkTemplatesTemplateOutput) Json() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComplianceFrameworkTemplatesTemplate) string { return v.Json }).(pulumi.StringOutput)
+}
+
+// Name of the compliance framework template.
+func (o GetComplianceFrameworkTemplatesTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetComplianceFrameworkTemplatesTemplate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Version of the template.
+func (o GetComplianceFrameworkTemplatesTemplateOutput) TemplateVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetComplianceFrameworkTemplatesTemplate) int { return v.TemplateVersion }).(pulumi.IntOutput)
+}
+
+type GetComplianceFrameworkTemplatesTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetComplianceFrameworkTemplatesTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetComplianceFrameworkTemplatesTemplate)(nil)).Elem()
+}
+
+func (o GetComplianceFrameworkTemplatesTemplateArrayOutput) ToGetComplianceFrameworkTemplatesTemplateArrayOutput() GetComplianceFrameworkTemplatesTemplateArrayOutput {
+	return o
+}
+
+func (o GetComplianceFrameworkTemplatesTemplateArrayOutput) ToGetComplianceFrameworkTemplatesTemplateArrayOutputWithContext(ctx context.Context) GetComplianceFrameworkTemplatesTemplateArrayOutput {
+	return o
+}
+
+func (o GetComplianceFrameworkTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetComplianceFrameworkTemplatesTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetComplianceFrameworkTemplatesTemplate {
+		return vs[0].([]GetComplianceFrameworkTemplatesTemplate)[vs[1].(int)]
+	}).(GetComplianceFrameworkTemplatesTemplateOutput)
+}
+
 type GetGroupAccessTokensAccessToken struct {
 	AccessLevel string   `pulumi:"accessLevel"`
 	Active      bool     `pulumi:"active"`
@@ -27025,6 +27167,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBranchCommitArrayInput)(nil)).Elem(), GetBranchCommitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAgentsClusterAgentInput)(nil)).Elem(), GetClusterAgentsClusterAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAgentsClusterAgentArrayInput)(nil)).Elem(), GetClusterAgentsClusterAgentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComplianceFrameworkTemplatesTemplateInput)(nil)).Elem(), GetComplianceFrameworkTemplatesTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetComplianceFrameworkTemplatesTemplateArrayInput)(nil)).Elem(), GetComplianceFrameworkTemplatesTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupAccessTokensAccessTokenInput)(nil)).Elem(), GetGroupAccessTokensAccessTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupAccessTokensAccessTokenArrayInput)(nil)).Elem(), GetGroupAccessTokensAccessTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupBillableMemberMembershipsMembershipInput)(nil)).Elem(), GetGroupBillableMemberMembershipsMembershipArgs{})
@@ -27342,6 +27486,8 @@ func init() {
 	pulumi.RegisterOutputType(GetBranchCommitArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAgentsClusterAgentOutput{})
 	pulumi.RegisterOutputType(GetClusterAgentsClusterAgentArrayOutput{})
+	pulumi.RegisterOutputType(GetComplianceFrameworkTemplatesTemplateOutput{})
+	pulumi.RegisterOutputType(GetComplianceFrameworkTemplatesTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupAccessTokensAccessTokenOutput{})
 	pulumi.RegisterOutputType(GetGroupAccessTokensAccessTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupBillableMemberMembershipsMembershipOutput{})

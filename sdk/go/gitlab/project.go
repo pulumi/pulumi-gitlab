@@ -24,6 +24,143 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"strconv"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := gitlab.NewProject(ctx, "example", &gitlab.ProjectArgs{
+//				Name:            pulumi.String("example"),
+//				Description:     pulumi.String("My awesome codebase"),
+//				VisibilityLevel: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Project with custom push rules
+//			_, err = gitlab.NewProject(ctx, "example-two", &gitlab.ProjectArgs{
+//				Name: pulumi.String("example-two"),
+//				PushRules: &gitlab.ProjectPushRulesTypeArgs{
+//					AuthorEmailRegex:     pulumi.String("@example\\.com$"),
+//					CommitCommitterCheck: pulumi.Bool(true),
+//					MemberCheck:          pulumi.Bool(true),
+//					PreventSecrets:       pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Project which automatically rebases the source branch before merging
+//			// NOTE: `automatic_rebase_enabled` requires GitLab 19.4 or later and only applies when
+//			//       `merge_method` is `ff` or `rebase_merge`.
+//			_, err = gitlab.NewProject(ctx, "example-automatic-rebase", &gitlab.ProjectArgs{
+//				Name:                   pulumi.String("example-automatic-rebase"),
+//				MergeMethod:            pulumi.String("ff"),
+//				AutomaticRebaseEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a project for a given user (requires admin access)
+//			peterParker, err := gitlab.GetUser(ctx, &gitlab.LookupUserArgs{
+//				Username: pulumi.StringRef("peter_parker"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.NewProject(ctx, "peters_repo", &gitlab.ProjectArgs{
+//				Name:        pulumi.String("peters-repo"),
+//				Description: pulumi.String("This is a description"),
+//				NamespaceId: pulumi.Int(peterParker.NamespaceId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Fork a project
+//			_, err = gitlab.NewProject(ctx, "fork", &gitlab.ProjectArgs{
+//				Name:                pulumi.String("my-fork"),
+//				Description:         pulumi.String("This is a fork"),
+//				ForkedFromProjectId: example.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Fork a project and setup a pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+//			_, err = gitlab.NewProject(ctx, "fork_with_mirror", &gitlab.ProjectArgs{
+//				Name:                pulumi.String("my-fork"),
+//				Description:         pulumi.String("This is a fork"),
+//				ForkedFromProjectId: example.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				ImportUrl:           example.HttpUrlToRepo,
+//				Mirror:              true,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a project by importing it from a public project
+//			_, err = gitlab.NewProject(ctx, "import_public", &gitlab.ProjectArgs{
+//				Name:      pulumi.String("import-from-public-project"),
+//				ImportUrl: pulumi.String("https://gitlab.example.com/repo.git"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a project by importing it from a public project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+//			_, err = gitlab.NewProject(ctx, "import_public_with_mirror", &gitlab.ProjectArgs{
+//				Name:      pulumi.String("import-from-public-project"),
+//				ImportUrl: pulumi.String("https://gitlab.example.com/repo.git"),
+//				Mirror:    true,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a project by importing it from a private project
+//			_, err = gitlab.NewProject(ctx, "import_private", &gitlab.ProjectArgs{
+//				Name:              pulumi.String("import-from-public-project"),
+//				ImportUrl:         pulumi.String("https://gitlab.example.com/repo.git"),
+//				ImportUrlUsername: pulumi.String("user"),
+//				ImportUrlPassword: pulumi.String("pass"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a project by importing it from a private project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+//			_, err = gitlab.NewProject(ctx, "import_private_with_mirror", &gitlab.ProjectArgs{
+//				Name:              pulumi.String("import-from-public-project"),
+//				ImportUrl:         pulumi.String("https://gitlab.example.com/repo.git"),
+//				ImportUrlUsername: pulumi.String("user"),
+//				ImportUrlPassword: pulumi.String("pass"),
+//				Mirror:            true,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a project by importing it from a private project and provide credentials in `import_url`
+//			// NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
+//			//       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
+//			_, err = gitlab.NewProject(ctx, "import_private_credentials_in_url", &gitlab.ProjectArgs{
+//				Name:      pulumi.String("import-from-public-project"),
+//				ImportUrl: pulumi.String("https://user:pass@gitlab.example.com/repo.git"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Starting in Terraform v1.5.0, you can use an import block to import `Project`. For example:
@@ -61,6 +198,11 @@ type Project struct {
 	AutoDuoCodeReviewEnabled pulumi.BoolOutput `pulumi:"autoDuoCodeReviewEnabled"`
 	// Set whether auto-closing referenced issues on default branch.
 	AutocloseReferencedIssues pulumi.BoolOutput `pulumi:"autocloseReferencedIssues"`
+	// Set to true to automatically rebase the source branch onto the target branch before merging.
+	// Only applies when `mergeMethod` is `ff` or `rebaseMerge`.
+	// Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+	// so setting it there surfaces as a permanent difference on every plan.
+	AutomaticRebaseEnabled pulumi.BoolOutput `pulumi:"automaticRebaseEnabled"`
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
 	Avatar pulumi.StringPtrOutput `pulumi:"avatar"`
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
@@ -329,6 +471,11 @@ type projectState struct {
 	AutoDuoCodeReviewEnabled *bool `pulumi:"autoDuoCodeReviewEnabled"`
 	// Set whether auto-closing referenced issues on default branch.
 	AutocloseReferencedIssues *bool `pulumi:"autocloseReferencedIssues"`
+	// Set to true to automatically rebase the source branch onto the target branch before merging.
+	// Only applies when `mergeMethod` is `ff` or `rebaseMerge`.
+	// Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+	// so setting it there surfaces as a permanent difference on every plan.
+	AutomaticRebaseEnabled *bool `pulumi:"automaticRebaseEnabled"`
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
 	Avatar *string `pulumi:"avatar"`
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
@@ -560,6 +707,11 @@ type ProjectState struct {
 	AutoDuoCodeReviewEnabled pulumi.BoolPtrInput
 	// Set whether auto-closing referenced issues on default branch.
 	AutocloseReferencedIssues pulumi.BoolPtrInput
+	// Set to true to automatically rebase the source branch onto the target branch before merging.
+	// Only applies when `mergeMethod` is `ff` or `rebaseMerge`.
+	// Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+	// so setting it there surfaces as a permanent difference on every plan.
+	AutomaticRebaseEnabled pulumi.BoolPtrInput
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
 	Avatar pulumi.StringPtrInput
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
@@ -795,6 +947,11 @@ type projectArgs struct {
 	AutoDuoCodeReviewEnabled *bool `pulumi:"autoDuoCodeReviewEnabled"`
 	// Set whether auto-closing referenced issues on default branch.
 	AutocloseReferencedIssues *bool `pulumi:"autocloseReferencedIssues"`
+	// Set to true to automatically rebase the source branch onto the target branch before merging.
+	// Only applies when `mergeMethod` is `ff` or `rebaseMerge`.
+	// Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+	// so setting it there surfaces as a permanent difference on every plan.
+	AutomaticRebaseEnabled *bool `pulumi:"automaticRebaseEnabled"`
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
 	Avatar *string `pulumi:"avatar"`
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
@@ -1013,6 +1170,11 @@ type ProjectArgs struct {
 	AutoDuoCodeReviewEnabled pulumi.BoolPtrInput
 	// Set whether auto-closing referenced issues on default branch.
 	AutocloseReferencedIssues pulumi.BoolPtrInput
+	// Set to true to automatically rebase the source branch onto the target branch before merging.
+	// Only applies when `mergeMethod` is `ff` or `rebaseMerge`.
+	// Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+	// so setting it there surfaces as a permanent difference on every plan.
+	AutomaticRebaseEnabled pulumi.BoolPtrInput
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
 	Avatar pulumi.StringPtrInput
 	// The hash of the avatar image. Use `filesha256("path/to/avatar.png")` whenever possible. **Note**: this is used to trigger an update of the avatar. If it's not given, but an avatar is given, the avatar will be updated each time.
@@ -1344,6 +1506,14 @@ func (o ProjectOutput) AutoDuoCodeReviewEnabled() pulumi.BoolOutput {
 // Set whether auto-closing referenced issues on default branch.
 func (o ProjectOutput) AutocloseReferencedIssues() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.AutocloseReferencedIssues }).(pulumi.BoolOutput)
+}
+
+// Set to true to automatically rebase the source branch onto the target branch before merging.
+// Only applies when `mergeMethod` is `ff` or `rebaseMerge`.
+// Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+// so setting it there surfaces as a permanent difference on every plan.
+func (o ProjectOutput) AutomaticRebaseEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.AutomaticRebaseEnabled }).(pulumi.BoolOutput)
 }
 
 // A local path to the avatar image to upload. **Note**: not available for imported resources.

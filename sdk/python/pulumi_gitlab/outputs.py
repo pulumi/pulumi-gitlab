@@ -69,6 +69,7 @@ __all__ = [
     'ValueStreamAnalyticsStage',
     'GetBranchCommitResult',
     'GetClusterAgentsClusterAgentResult',
+    'GetComplianceFrameworkTemplatesTemplateResult',
     'GetGroupAccessTokensAccessTokenResult',
     'GetGroupBillableMemberMembershipsMembershipResult',
     'GetGroupDefaultBranchProtectionDefaultResult',
@@ -4416,6 +4417,79 @@ class GetClusterAgentsClusterAgentResult(dict):
         ID or full path of the project maintained by the authenticated user.
         """
         return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class GetComplianceFrameworkTemplatesTemplateResult(dict):
+    def __init__(__self__, *,
+                 color: _builtins.str,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 json: _builtins.str,
+                 name: _builtins.str,
+                 template_version: _builtins.int):
+        """
+        :param _builtins.str color: Hexadecimal representation of the template’s label color. e.g. #FCA121.
+        :param _builtins.str description: Description of the compliance framework template.
+        :param _builtins.str id: ID of the compliance framework template.
+        :param _builtins.str json: Full JSON representation of the compliance framework template.
+        :param _builtins.str name: Name of the compliance framework template.
+        :param _builtins.int template_version: Version of the template.
+        """
+        pulumi.set(__self__, "color", color)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "json", json)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "template_version", template_version)
+
+    @_builtins.property
+    @pulumi.getter
+    def color(self) -> _builtins.str:
+        """
+        Hexadecimal representation of the template’s label color. e.g. #FCA121.
+        """
+        return pulumi.get(self, "color")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the compliance framework template.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the compliance framework template.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def json(self) -> _builtins.str:
+        """
+        Full JSON representation of the compliance framework template.
+        """
+        return pulumi.get(self, "json")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the compliance framework template.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="templateVersion")
+    def template_version(self) -> _builtins.int:
+        """
+        Version of the template.
+        """
+        return pulumi.get(self, "template_version")
 
 
 @pulumi.output_type

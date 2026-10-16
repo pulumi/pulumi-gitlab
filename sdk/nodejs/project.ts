@@ -20,6 +20,93 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = new gitlab.Project("example", {
+ *     name: "example",
+ *     description: "My awesome codebase",
+ *     visibilityLevel: "public",
+ * });
+ * // Project with custom push rules
+ * const example_two = new gitlab.Project("example-two", {
+ *     name: "example-two",
+ *     pushRules: {
+ *         authorEmailRegex: "@example\\.com$",
+ *         commitCommitterCheck: true,
+ *         memberCheck: true,
+ *         preventSecrets: true,
+ *     },
+ * });
+ * // Project which automatically rebases the source branch before merging
+ * // NOTE: `automatic_rebase_enabled` requires GitLab 19.4 or later and only applies when
+ * //       `merge_method` is `ff` or `rebase_merge`.
+ * const example_automatic_rebase = new gitlab.Project("example-automatic-rebase", {
+ *     name: "example-automatic-rebase",
+ *     mergeMethod: "ff",
+ *     automaticRebaseEnabled: true,
+ * });
+ * // Create a project for a given user (requires admin access)
+ * const peterParker = gitlab.getUser({
+ *     username: "peter_parker",
+ * });
+ * const petersRepo = new gitlab.Project("peters_repo", {
+ *     name: "peters-repo",
+ *     description: "This is a description",
+ *     namespaceId: peterParker.then(peterParker => peterParker.namespaceId),
+ * });
+ * // Fork a project
+ * const fork = new gitlab.Project("fork", {
+ *     name: "my-fork",
+ *     description: "This is a fork",
+ *     forkedFromProjectId: example.id.apply(x =>Number(x)),
+ * });
+ * // Fork a project and setup a pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+ * const forkWithMirror = new gitlab.Project("fork_with_mirror", {
+ *     name: "my-fork",
+ *     description: "This is a fork",
+ *     forkedFromProjectId: example.id.apply(x =>Number(x)),
+ *     importUrl: example.httpUrlToRepo,
+ *     mirror: true,
+ * });
+ * // Create a project by importing it from a public project
+ * const importPublic = new gitlab.Project("import_public", {
+ *     name: "import-from-public-project",
+ *     importUrl: "https://gitlab.example.com/repo.git",
+ * });
+ * // Create a project by importing it from a public project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+ * const importPublicWithMirror = new gitlab.Project("import_public_with_mirror", {
+ *     name: "import-from-public-project",
+ *     importUrl: "https://gitlab.example.com/repo.git",
+ *     mirror: true,
+ * });
+ * // Create a project by importing it from a private project
+ * const importPrivate = new gitlab.Project("import_private", {
+ *     name: "import-from-public-project",
+ *     importUrl: "https://gitlab.example.com/repo.git",
+ *     importUrlUsername: "user",
+ *     importUrlPassword: "pass",
+ * });
+ * // Create a project by importing it from a private project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+ * const importPrivateWithMirror = new gitlab.Project("import_private_with_mirror", {
+ *     name: "import-from-public-project",
+ *     importUrl: "https://gitlab.example.com/repo.git",
+ *     importUrlUsername: "user",
+ *     importUrlPassword: "pass",
+ *     mirror: true,
+ * });
+ * // Create a project by importing it from a private project and provide credentials in `import_url`
+ * // NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
+ * //       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
+ * const importPrivateCredentialsInUrl = new gitlab.Project("import_private_credentials_in_url", {
+ *     name: "import-from-public-project",
+ *     importUrl: "https://user:pass@gitlab.example.com/repo.git",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.Project`. For example:
@@ -103,6 +190,13 @@ export class Project extends pulumi.CustomResource {
      * Set whether auto-closing referenced issues on default branch.
      */
     declare public readonly autocloseReferencedIssues: pulumi.Output<boolean>;
+    /**
+     * Set to true to automatically rebase the source branch onto the target branch before merging.
+     * Only applies when `mergeMethod` is `ff` or `rebaseMerge`.
+     * Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+     * so setting it there surfaces as a permanent difference on every plan.
+     */
+    declare public readonly automaticRebaseEnabled: pulumi.Output<boolean>;
     /**
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      */
@@ -533,6 +627,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["autoDevopsEnabled"] = state?.autoDevopsEnabled;
             resourceInputs["autoDuoCodeReviewEnabled"] = state?.autoDuoCodeReviewEnabled;
             resourceInputs["autocloseReferencedIssues"] = state?.autocloseReferencedIssues;
+            resourceInputs["automaticRebaseEnabled"] = state?.automaticRebaseEnabled;
             resourceInputs["avatar"] = state?.avatar;
             resourceInputs["avatarHash"] = state?.avatarHash;
             resourceInputs["avatarUrl"] = state?.avatarUrl;
@@ -644,6 +739,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["autoDevopsEnabled"] = args?.autoDevopsEnabled;
             resourceInputs["autoDuoCodeReviewEnabled"] = args?.autoDuoCodeReviewEnabled;
             resourceInputs["autocloseReferencedIssues"] = args?.autocloseReferencedIssues;
+            resourceInputs["automaticRebaseEnabled"] = args?.automaticRebaseEnabled;
             resourceInputs["avatar"] = args?.avatar;
             resourceInputs["avatarHash"] = args?.avatarHash;
             resourceInputs["branches"] = args?.branches;
@@ -795,6 +891,13 @@ export interface ProjectState {
      * Set whether auto-closing referenced issues on default branch.
      */
     autocloseReferencedIssues?: pulumi.Input<boolean | undefined>;
+    /**
+     * Set to true to automatically rebase the source branch onto the target branch before merging.
+     * Only applies when `mergeMethod` is `ff` or `rebaseMerge`.
+     * Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+     * so setting it there surfaces as a permanent difference on every plan.
+     */
+    automaticRebaseEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      */
@@ -1247,6 +1350,13 @@ export interface ProjectArgs {
      * Set whether auto-closing referenced issues on default branch.
      */
     autocloseReferencedIssues?: pulumi.Input<boolean | undefined>;
+    /**
+     * Set to true to automatically rebase the source branch onto the target branch before merging.
+     * Only applies when `mergeMethod` is `ff` or `rebaseMerge`.
+     * Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+     * so setting it there surfaces as a permanent difference on every plan.
+     */
+    automaticRebaseEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      */

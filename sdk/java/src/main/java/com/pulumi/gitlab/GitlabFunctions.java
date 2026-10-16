@@ -21,6 +21,8 @@ import com.pulumi.gitlab.inputs.GetClusterAgentsArgs;
 import com.pulumi.gitlab.inputs.GetClusterAgentsPlainArgs;
 import com.pulumi.gitlab.inputs.GetComplianceFrameworkArgs;
 import com.pulumi.gitlab.inputs.GetComplianceFrameworkPlainArgs;
+import com.pulumi.gitlab.inputs.GetComplianceFrameworkTemplatesArgs;
+import com.pulumi.gitlab.inputs.GetComplianceFrameworkTemplatesPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupAccessTokensArgs;
 import com.pulumi.gitlab.inputs.GetGroupAccessTokensPlainArgs;
 import com.pulumi.gitlab.inputs.GetGroupArgs;
@@ -165,6 +167,7 @@ import com.pulumi.gitlab.outputs.GetBranchResult;
 import com.pulumi.gitlab.outputs.GetClusterAgentResult;
 import com.pulumi.gitlab.outputs.GetClusterAgentsResult;
 import com.pulumi.gitlab.outputs.GetComplianceFrameworkResult;
+import com.pulumi.gitlab.outputs.GetComplianceFrameworkTemplatesResult;
 import com.pulumi.gitlab.outputs.GetCurrentUserResult;
 import com.pulumi.gitlab.outputs.GetGroupAccessTokensResult;
 import com.pulumi.gitlab.outputs.GetGroupBillableMemberMembershipsResult;
@@ -1497,6 +1500,349 @@ public final class GitlabFunctions {
      */
     public static CompletableFuture<GetComplianceFrameworkResult> getComplianceFrameworkPlain(GetComplianceFrameworkPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getComplianceFramework:getComplianceFramework", TypeShape.of(GetComplianceFrameworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getComplianceFrameworkTemplates` data source allows details of the GitLab compliance framework templates to be retrieved given some optional filter criteria.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#querycomplianceframeworktemplates)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetComplianceFrameworkTemplatesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         final var exampleByTemplateId = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .templateId("gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/soc2")
+     *             .build());
+     * 
+     *         final var exampleByName = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .name("NIST 800-171 Rev. 3 CMMC")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetComplianceFrameworkTemplatesResult> getComplianceFrameworkTemplates() {
+        return getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getComplianceFrameworkTemplates` data source allows details of the GitLab compliance framework templates to be retrieved given some optional filter criteria.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#querycomplianceframeworktemplates)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetComplianceFrameworkTemplatesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         final var exampleByTemplateId = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .templateId("gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/soc2")
+     *             .build());
+     * 
+     *         final var exampleByName = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .name("NIST 800-171 Rev. 3 CMMC")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetComplianceFrameworkTemplatesResult> getComplianceFrameworkTemplatesPlain() {
+        return getComplianceFrameworkTemplatesPlain(GetComplianceFrameworkTemplatesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getComplianceFrameworkTemplates` data source allows details of the GitLab compliance framework templates to be retrieved given some optional filter criteria.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#querycomplianceframeworktemplates)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetComplianceFrameworkTemplatesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         final var exampleByTemplateId = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .templateId("gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/soc2")
+     *             .build());
+     * 
+     *         final var exampleByName = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .name("NIST 800-171 Rev. 3 CMMC")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetComplianceFrameworkTemplatesResult> getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs args) {
+        return getComplianceFrameworkTemplates(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getComplianceFrameworkTemplates` data source allows details of the GitLab compliance framework templates to be retrieved given some optional filter criteria.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#querycomplianceframeworktemplates)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetComplianceFrameworkTemplatesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         final var exampleByTemplateId = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .templateId("gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/soc2")
+     *             .build());
+     * 
+     *         final var exampleByName = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .name("NIST 800-171 Rev. 3 CMMC")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetComplianceFrameworkTemplatesResult> getComplianceFrameworkTemplatesPlain(GetComplianceFrameworkTemplatesPlainArgs args) {
+        return getComplianceFrameworkTemplatesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * The `gitlab.getComplianceFrameworkTemplates` data source allows details of the GitLab compliance framework templates to be retrieved given some optional filter criteria.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#querycomplianceframeworktemplates)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetComplianceFrameworkTemplatesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         final var exampleByTemplateId = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .templateId("gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/soc2")
+     *             .build());
+     * 
+     *         final var exampleByName = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .name("NIST 800-171 Rev. 3 CMMC")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetComplianceFrameworkTemplatesResult> getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getComplianceFrameworkTemplates:getComplianceFrameworkTemplates", TypeShape.of(GetComplianceFrameworkTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getComplianceFrameworkTemplates` data source allows details of the GitLab compliance framework templates to be retrieved given some optional filter criteria.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#querycomplianceframeworktemplates)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetComplianceFrameworkTemplatesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         final var exampleByTemplateId = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .templateId("gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/soc2")
+     *             .build());
+     * 
+     *         final var exampleByName = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .name("NIST 800-171 Rev. 3 CMMC")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetComplianceFrameworkTemplatesResult> getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gitlab:index/getComplianceFrameworkTemplates:getComplianceFrameworkTemplates", TypeShape.of(GetComplianceFrameworkTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The `gitlab.getComplianceFrameworkTemplates` data source allows details of the GitLab compliance framework templates to be retrieved given some optional filter criteria.
+     * 
+     * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#querycomplianceframeworktemplates)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetComplianceFrameworkTemplatesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         final var exampleByTemplateId = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .templateId("gid://gitlab/ComplianceManagement::Frameworks::TemplateRegistry::Template/soc2")
+     *             .build());
+     * 
+     *         final var exampleByName = GitlabFunctions.getComplianceFrameworkTemplates(GetComplianceFrameworkTemplatesArgs.builder()
+     *             .name("NIST 800-171 Rev. 3 CMMC")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetComplianceFrameworkTemplatesResult> getComplianceFrameworkTemplatesPlain(GetComplianceFrameworkTemplatesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gitlab:index/getComplianceFrameworkTemplates:getComplianceFrameworkTemplates", TypeShape.of(GetComplianceFrameworkTemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The `gitlab.getCurrentUser` data source allows details of the current user (determined by `token` provider attribute) to be retrieved.

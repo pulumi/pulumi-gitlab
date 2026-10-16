@@ -18,6 +18,104 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewGroupHook(ctx, "example", &gitlab.GroupHookArgs{
+//				Group:               pulumi.String("example/hooked"),
+//				Url:                 pulumi.String("https://example.com/hook/example"),
+//				Name:                pulumi.String("Example"),
+//				Description:         pulumi.String("Example Group Webhook"),
+//				MergeRequestsEvents: pulumi.Bool(true),
+//				PushEvents:          pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Setting all attributes
+//			_, err = gitlab.NewGroupHook(ctx, "all_attributes", &gitlab.GroupHookArgs{
+//				Group:                     pulumi.String("1"),
+//				Url:                       pulumi.String("http://example.com"),
+//				Name:                      pulumi.String("Example"),
+//				Description:               pulumi.String("Example Group Webhook"),
+//				Token:                     pulumi.String("supersecret"),
+//				EnableSslVerification:     pulumi.Bool(false),
+//				PushEvents:                pulumi.Bool(true),
+//				PushEventsBranchFilter:    pulumi.String("devel"),
+//				IssuesEvents:              pulumi.Bool(false),
+//				ConfidentialIssuesEvents:  pulumi.Bool(false),
+//				MergeRequestsEvents:       pulumi.Bool(true),
+//				TagPushEvents:             pulumi.Bool(true),
+//				NoteEvents:                pulumi.Bool(true),
+//				ConfidentialNoteEvents:    pulumi.Bool(true),
+//				JobEvents:                 pulumi.Bool(true),
+//				PipelineEvents:            pulumi.Bool(true),
+//				WikiPageEvents:            pulumi.Bool(true),
+//				DeploymentEvents:          pulumi.Bool(true),
+//				ReleasesEvents:            pulumi.Bool(true),
+//				SubgroupEvents:            pulumi.Bool(true),
+//				EmojiEvents:               pulumi.Bool(true),
+//				FeatureFlagEvents:         pulumi.Bool(true),
+//				MilestoneEvents:           pulumi.Bool(true),
+//				ResourceAccessTokenEvents: pulumi.Bool(true),
+//				BranchFilterStrategy:      pulumi.String("wildcard"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Using Custom Headers
+//			// Values of headers can't be imported
+//			_, err = gitlab.NewGroupHook(ctx, "custom_headers", &gitlab.GroupHookArgs{
+//				Group:               pulumi.String("example/hooked"),
+//				Url:                 pulumi.String("https://example.com/hook/example"),
+//				MergeRequestsEvents: pulumi.Bool(true),
+//				CustomHeaders: gitlab.GroupHookCustomHeaderArray{
+//					&gitlab.GroupHookCustomHeaderArgs{
+//						Key:   pulumi.String("X-Custom-Header"),
+//						Value: pulumi.String("example"),
+//					},
+//					&gitlab.GroupHookCustomHeaderArgs{
+//						Key:   pulumi.String("X-Custom-Header-Second"),
+//						Value: pulumi.String("example-second"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Using URL variables
+//			// Values of URL variables can't be imported
+//			_, err = gitlab.NewGroupHook(ctx, "url_variables", &gitlab.GroupHookArgs{
+//				Group:               pulumi.String("example/hooked"),
+//				Url:                 pulumi.String("https://example.com/hook/example?token=secret"),
+//				MergeRequestsEvents: pulumi.Bool(true),
+//				UrlVariables: gitlab.GroupHookUrlVariableArray{
+//					&gitlab.GroupHookUrlVariableArgs{
+//						Key:   pulumi.String("hidden"),
+//						Value: pulumi.String("token=secret"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Starting in Terraform v1.5.0, you can use an import block to import `GroupHook`. For example:

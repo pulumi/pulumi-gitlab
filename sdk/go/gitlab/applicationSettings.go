@@ -27,6 +27,58 @@ import (
 // > Requires at administrative privileges on GitLab.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Set the default branch
+//			_, err := gitlab.NewApplicationSettings(ctx, "default_branch", &gitlab.ApplicationSettingsArgs{
+//				DefaultBranchName: pulumi.String("main"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Set the 2FA settings
+//			_, err = gitlab.NewApplicationSettings(ctx, "two_factor", &gitlab.ApplicationSettingsArgs{
+//				RequireTwoFactorAuthentication: pulumi.Bool(true),
+//				TwoFactorGracePeriod:           pulumi.Int(24),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example Allow custom integrations
+//			_, err = gitlab.NewApplicationSettings(ctx, "allow_custom_integrations", &gitlab.ApplicationSettingsArgs{
+//				AllowAllIntegrations: pulumi.Bool(false),
+//				AllowedIntegrations: pulumi.StringArray{
+//					pulumi.String("jira"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example allowing all integrations:
+//			_, err = gitlab.NewApplicationSettings(ctx, "allow_all_integrations", &gitlab.ApplicationSettingsArgs{
+//				AllowAllIntegrations: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ApplicationSettings struct {
 	pulumi.CustomResourceState
 
@@ -44,6 +96,8 @@ type ApplicationSettings struct {
 	AkismetEnabled pulumi.BoolOutput `pulumi:"akismetEnabled"`
 	// Set to true to allow users to delete their accounts. Premium and Ultimate only.
 	AllowAccountDeletion pulumi.BoolOutput `pulumi:"allowAccountDeletion"`
+	// Allow all project integrations instance-wide. Ultimate only.
+	AllowAllIntegrations pulumi.BoolOutput `pulumi:"allowAllIntegrations"`
 	// Set to true to allow group owners to manage LDAP.
 	AllowGroupOwnersToManageLdap pulumi.BoolOutput `pulumi:"allowGroupOwnersToManageLdap"`
 	// Allow requests to the local network from system hooks.
@@ -54,6 +108,8 @@ type ApplicationSettings struct {
 	AllowProjectCreationForGuestAndBelow pulumi.BoolOutput `pulumi:"allowProjectCreationForGuestAndBelow"`
 	// Allow using a registration token to create a runner.
 	AllowRunnerRegistrationToken pulumi.BoolOutput `pulumi:"allowRunnerRegistrationToken"`
+	// List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+	AllowedIntegrations pulumi.StringArrayOutput `pulumi:"allowedIntegrations"`
 	// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
 	ArchiveBuildsInHumanReadable pulumi.StringOutput `pulumi:"archiveBuildsInHumanReadable"`
 	// Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
@@ -803,6 +859,8 @@ type applicationSettingsState struct {
 	AkismetEnabled *bool `pulumi:"akismetEnabled"`
 	// Set to true to allow users to delete their accounts. Premium and Ultimate only.
 	AllowAccountDeletion *bool `pulumi:"allowAccountDeletion"`
+	// Allow all project integrations instance-wide. Ultimate only.
+	AllowAllIntegrations *bool `pulumi:"allowAllIntegrations"`
 	// Set to true to allow group owners to manage LDAP.
 	AllowGroupOwnersToManageLdap *bool `pulumi:"allowGroupOwnersToManageLdap"`
 	// Allow requests to the local network from system hooks.
@@ -813,6 +871,8 @@ type applicationSettingsState struct {
 	AllowProjectCreationForGuestAndBelow *bool `pulumi:"allowProjectCreationForGuestAndBelow"`
 	// Allow using a registration token to create a runner.
 	AllowRunnerRegistrationToken *bool `pulumi:"allowRunnerRegistrationToken"`
+	// List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+	AllowedIntegrations []string `pulumi:"allowedIntegrations"`
 	// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
 	ArchiveBuildsInHumanReadable *string `pulumi:"archiveBuildsInHumanReadable"`
 	// Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
@@ -1462,6 +1522,8 @@ type ApplicationSettingsState struct {
 	AkismetEnabled pulumi.BoolPtrInput
 	// Set to true to allow users to delete their accounts. Premium and Ultimate only.
 	AllowAccountDeletion pulumi.BoolPtrInput
+	// Allow all project integrations instance-wide. Ultimate only.
+	AllowAllIntegrations pulumi.BoolPtrInput
 	// Set to true to allow group owners to manage LDAP.
 	AllowGroupOwnersToManageLdap pulumi.BoolPtrInput
 	// Allow requests to the local network from system hooks.
@@ -1472,6 +1534,8 @@ type ApplicationSettingsState struct {
 	AllowProjectCreationForGuestAndBelow pulumi.BoolPtrInput
 	// Allow using a registration token to create a runner.
 	AllowRunnerRegistrationToken pulumi.BoolPtrInput
+	// List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+	AllowedIntegrations pulumi.StringArrayInput
 	// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
 	ArchiveBuildsInHumanReadable pulumi.StringPtrInput
 	// Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
@@ -2125,6 +2189,8 @@ type applicationSettingsArgs struct {
 	AkismetEnabled *bool `pulumi:"akismetEnabled"`
 	// Set to true to allow users to delete their accounts. Premium and Ultimate only.
 	AllowAccountDeletion *bool `pulumi:"allowAccountDeletion"`
+	// Allow all project integrations instance-wide. Ultimate only.
+	AllowAllIntegrations *bool `pulumi:"allowAllIntegrations"`
 	// Set to true to allow group owners to manage LDAP.
 	AllowGroupOwnersToManageLdap *bool `pulumi:"allowGroupOwnersToManageLdap"`
 	// Allow requests to the local network from system hooks.
@@ -2135,6 +2201,8 @@ type applicationSettingsArgs struct {
 	AllowProjectCreationForGuestAndBelow *bool `pulumi:"allowProjectCreationForGuestAndBelow"`
 	// Allow using a registration token to create a runner.
 	AllowRunnerRegistrationToken *bool `pulumi:"allowRunnerRegistrationToken"`
+	// List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+	AllowedIntegrations []string `pulumi:"allowedIntegrations"`
 	// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
 	ArchiveBuildsInHumanReadable *string `pulumi:"archiveBuildsInHumanReadable"`
 	// Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
@@ -2781,6 +2849,8 @@ type ApplicationSettingsArgs struct {
 	AkismetEnabled pulumi.BoolPtrInput
 	// Set to true to allow users to delete their accounts. Premium and Ultimate only.
 	AllowAccountDeletion pulumi.BoolPtrInput
+	// Allow all project integrations instance-wide. Ultimate only.
+	AllowAllIntegrations pulumi.BoolPtrInput
 	// Set to true to allow group owners to manage LDAP.
 	AllowGroupOwnersToManageLdap pulumi.BoolPtrInput
 	// Allow requests to the local network from system hooks.
@@ -2791,6 +2861,8 @@ type ApplicationSettingsArgs struct {
 	AllowProjectCreationForGuestAndBelow pulumi.BoolPtrInput
 	// Allow using a registration token to create a runner.
 	AllowRunnerRegistrationToken pulumi.BoolPtrInput
+	// List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+	AllowedIntegrations pulumi.StringArrayInput
 	// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
 	ArchiveBuildsInHumanReadable pulumi.StringPtrInput
 	// Maximum limit of AsciiDoc include directives being processed in any one document. Maximum: 64.
@@ -3543,6 +3615,11 @@ func (o ApplicationSettingsOutput) AllowAccountDeletion() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.AllowAccountDeletion }).(pulumi.BoolOutput)
 }
 
+// Allow all project integrations instance-wide. Ultimate only.
+func (o ApplicationSettingsOutput) AllowAllIntegrations() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.AllowAllIntegrations }).(pulumi.BoolOutput)
+}
+
 // Set to true to allow group owners to manage LDAP.
 func (o ApplicationSettingsOutput) AllowGroupOwnersToManageLdap() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.AllowGroupOwnersToManageLdap }).(pulumi.BoolOutput)
@@ -3566,6 +3643,11 @@ func (o ApplicationSettingsOutput) AllowProjectCreationForGuestAndBelow() pulumi
 // Allow using a registration token to create a runner.
 func (o ApplicationSettingsOutput) AllowRunnerRegistrationToken() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.AllowRunnerRegistrationToken }).(pulumi.BoolOutput)
+}
+
+// List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+func (o ApplicationSettingsOutput) AllowedIntegrations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringArrayOutput { return v.AllowedIntegrations }).(pulumi.StringArrayOutput)
 }
 
 // Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.

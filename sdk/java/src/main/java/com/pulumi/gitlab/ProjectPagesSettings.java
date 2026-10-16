@@ -26,6 +26,54 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages/)
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.Project;
+ * import com.pulumi.gitlab.ProjectArgs;
+ * import com.pulumi.gitlab.ProjectPagesSettings;
+ * import com.pulumi.gitlab.ProjectPagesSettingsArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Project("example", ProjectArgs.builder()
+ *             .name("project")
+ *             .build());
+ * 
+ *         // Example where the resource will not reset the settings on destroy
+ *         var this_ = new ProjectPagesSettings("this", ProjectPagesSettingsArgs.builder()
+ *             .project(example.id())
+ *             .isUniqueDomainEnabled(true)
+ *             .build());
+ * 
+ *         // Example where the resource will reset the settings to their original values on destroy
+ *         var resetOnDestroy = new ProjectPagesSettings("resetOnDestroy", ProjectPagesSettingsArgs.builder()
+ *             .project(example.id())
+ *             .isUniqueDomainEnabled(true)
+ *             .keepSettingsOnDestroy(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectPagesSettings`. For example:

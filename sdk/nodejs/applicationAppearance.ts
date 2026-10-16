@@ -18,6 +18,29 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/appearance/)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * // Example where the resource will not update the appearance on destroy
+ * const _this = new gitlab.ApplicationAppearance("this", {
+ *     title: "My GitLab",
+ *     description: "My GitLab instance",
+ *     headerMessage: "This is a header message",
+ *     messageFontColor: "#FFFF00",
+ * });
+ * // Example where the resource will revert the appearance to its original values on destroy
+ * const revertOnDestroy = new gitlab.ApplicationAppearance("revert_on_destroy", {
+ *     title: "My GitLab",
+ *     keepSettingsOnDestroy: false,
+ *     description: "My GitLab instance",
+ *     headerMessage: "This is a header message",
+ *     messageFontColor: "#FFFF00",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ApplicationAppearance`. For example:

@@ -26,6 +26,52 @@ import (
 //
 // **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationmemberrolecreate)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Example is creating a role for a security analyst to be able to read vulnerabilities for repos in example-org on gitlab.com.
+//			_, err := gitlab.NewMemberRole(ctx, "security_analyst", &gitlab.MemberRoleArgs{
+//				Name:            pulumi.String("Security Analyst"),
+//				Description:     pulumi.String("This is a read only role for security analysts"),
+//				GroupPath:       pulumi.String("example-org"),
+//				BaseAccessLevel: pulumi.String("REPORTER"),
+//				EnabledPermissions: pulumi.StringArray{
+//					pulumi.String("READ_VULNERABILITY"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example is creating a role for an enhanced developer to be able to manage CI/CD variables and vulnerabilities on self managed gitlab instance.
+//			_, err = gitlab.NewMemberRole(ctx, "enhanced_developer", &gitlab.MemberRoleArgs{
+//				Name:            pulumi.String("Enhanced Developer"),
+//				Description:     pulumi.String("This role gives the developers additional access to manage CI/CD variables and vulnerabilities"),
+//				BaseAccessLevel: pulumi.String("DEVELOPER"),
+//				EnabledPermissions: pulumi.StringArray{
+//					pulumi.String("ADMIN_CICD_VARIABLES"),
+//					pulumi.String("ADMIN_VULNERABILITY"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Starting in Terraform v1.5.0, you can use an import block to import `MemberRole`. For example:

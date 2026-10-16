@@ -30,6 +30,54 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationmemberrolecreate)
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.MemberRole;
+ * import com.pulumi.gitlab.MemberRoleArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Example is creating a role for a security analyst to be able to read vulnerabilities for repos in example-org on gitlab.com.
+ *         var securityAnalyst = new MemberRole("securityAnalyst", MemberRoleArgs.builder()
+ *             .name("Security Analyst")
+ *             .description("This is a read only role for security analysts")
+ *             .groupPath("example-org")
+ *             .baseAccessLevel("REPORTER")
+ *             .enabledPermissions("READ_VULNERABILITY")
+ *             .build());
+ * 
+ *         // Example is creating a role for an enhanced developer to be able to manage CI/CD variables and vulnerabilities on self managed gitlab instance.
+ *         var enhancedDeveloper = new MemberRole("enhancedDeveloper", MemberRoleArgs.builder()
+ *             .name("Enhanced Developer")
+ *             .description("This role gives the developers additional access to manage CI/CD variables and vulnerabilities")
+ *             .baseAccessLevel("DEVELOPER")
+ *             .enabledPermissions(            
+ *                 "ADMIN_CICD_VARIABLES",
+ *                 "ADMIN_VULNERABILITY")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.MemberRole`. For example:

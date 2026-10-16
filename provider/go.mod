@@ -227,7 +227,7 @@ require (
 	github.com/zclconf/go-cty v1.19.0 // indirect
 	github.com/zclconf/go-cty-yaml v1.2.0 // indirect
 	gitlab.com/gitlab-org/api/client-go/config/v2 v2.1.0 // indirect
-	gitlab.com/gitlab-org/api/client-go/v3 v3.13.1 // indirect
+	gitlab.com/gitlab-org/api/client-go/v3 v3.15.0 // indirect
 	go.mongodb.org/mongo-driver v1.17.10 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/collector/featuregate v1.68.0 // indirect

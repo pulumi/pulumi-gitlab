@@ -19,6 +19,32 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationmemberrolecreate)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * // Example is creating a role for a security analyst to be able to read vulnerabilities for repos in example-org on gitlab.com.
+ * const securityAnalyst = new gitlab.MemberRole("security_analyst", {
+ *     name: "Security Analyst",
+ *     description: "This is a read only role for security analysts",
+ *     groupPath: "example-org",
+ *     baseAccessLevel: "REPORTER",
+ *     enabledPermissions: ["READ_VULNERABILITY"],
+ * });
+ * // Example is creating a role for an enhanced developer to be able to manage CI/CD variables and vulnerabilities on self managed gitlab instance.
+ * const enhancedDeveloper = new gitlab.MemberRole("enhanced_developer", {
+ *     name: "Enhanced Developer",
+ *     description: "This role gives the developers additional access to manage CI/CD variables and vulnerabilities",
+ *     baseAccessLevel: "DEVELOPER",
+ *     enabledPermissions: [
+ *         "ADMIN_CICD_VARIABLES",
+ *         "ADMIN_VULNERABILITY",
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.MemberRole`. For example:

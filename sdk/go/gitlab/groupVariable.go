@@ -16,6 +16,49 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewGroupVariable(ctx, "example", &gitlab.GroupVariableArgs{
+//				Group:            pulumi.String("12345"),
+//				Key:              pulumi.String("group_variable_key"),
+//				Value:            pulumi.String("group_variable_value"),
+//				Protected:        pulumi.Bool(false),
+//				Masked:           pulumi.Bool(false),
+//				EnvironmentScope: pulumi.String("*"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example  with masked and hidden
+//			_, err = gitlab.NewGroupVariable(ctx, "masked_and_hidden", &gitlab.GroupVariableArgs{
+//				Group:     pulumi.String("12345"),
+//				Key:       pulumi.String("group_variable_key"),
+//				Value:     pulumi.String("group_variable_value"),
+//				Masked:    pulumi.Bool(true),
+//				Hidden:    pulumi.Bool(true),
+//				Protected: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Starting in Terraform v1.5.0, you can use an import block to import `GroupVariable`. For example:

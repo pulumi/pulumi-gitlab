@@ -17,6 +17,91 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_environments/)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const _this = new gitlab.ProjectEnvironment("this", {
+ *     project: "123",
+ *     name: "example",
+ *     externalUrl: "www.example.com",
+ * });
+ * // Example with access-level based approval rules
+ * const exampleWithAccessLevel = new gitlab.ProjectProtectedEnvironment("example_with_access_level", {
+ *     project: _this.project,
+ *     environment: _this.name,
+ *     deployAccessLevelsAttributes: [{
+ *         accessLevel: "developer",
+ *     }],
+ *     approvalRules: [{
+ *         accessLevel: "developer",
+ *         requiredApprovals: 2,
+ *     }],
+ * });
+ * // Example with multiple approval rules, using access level, user, and group
+ * const exampleWithMultiple = new gitlab.ProjectProtectedEnvironment("example_with_multiple", {
+ *     project: _this.project,
+ *     environment: _this.name,
+ *     deployAccessLevelsAttributes: [{
+ *         accessLevel: "developer",
+ *     }],
+ *     approvalRules: [
+ *         {
+ *             userId: 789,
+ *         },
+ *         {
+ *             accessLevel: "developer",
+ *             requiredApprovals: 2,
+ *         },
+ *         {
+ *             groupId: 456,
+ *         },
+ *     ],
+ * });
+ * // Example with deployment access level attribute
+ * const exampleAccessLevelsAttribute = new gitlab.ProjectProtectedEnvironment("example_access_levels_attribute", {
+ *     project: _this.project,
+ *     environment: _this.name,
+ *     deployAccessLevelsAttributes: [{
+ *         accessLevel: "developer",
+ *     }],
+ * });
+ * // Example with group-based deployment level attribute
+ * const exampleAccessLevelsAttributeWithGroup = new gitlab.ProjectProtectedEnvironment("example_access_levels_attribute_with_group", {
+ *     project: _this.project,
+ *     environment: _this.name,
+ *     deployAccessLevelsAttributes: [{
+ *         groupId: 456,
+ *     }],
+ * });
+ * // Example with user-based deployment level attribute
+ * const exampleAccessLevelsAttributeWithUser = new gitlab.ProjectProtectedEnvironment("example_access_levels_attribute_with_user", {
+ *     project: _this.project,
+ *     environment: _this.name,
+ *     deployAccessLevelsAttributes: [{
+ *         userId: 789,
+ *     }],
+ * });
+ * // Example with multiple deployment access levels attribute
+ * const exampleAccessLevelsAttributeWithMultiple = new gitlab.ProjectProtectedEnvironment("example_access_levels_attribute_with_multiple", {
+ *     project: _this.project,
+ *     environment: _this.name,
+ *     deployAccessLevelsAttributes: [
+ *         {
+ *             accessLevel: "developer",
+ *         },
+ *         {
+ *             groupId: 456,
+ *         },
+ *         {
+ *             userId: 789,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectProtectedEnvironment`. For example:

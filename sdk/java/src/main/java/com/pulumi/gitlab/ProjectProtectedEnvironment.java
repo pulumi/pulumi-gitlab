@@ -28,6 +28,121 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_environments/)
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.ProjectEnvironment;
+ * import com.pulumi.gitlab.ProjectEnvironmentArgs;
+ * import com.pulumi.gitlab.ProjectProtectedEnvironment;
+ * import com.pulumi.gitlab.ProjectProtectedEnvironmentArgs;
+ * import com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs;
+ * import com.pulumi.gitlab.inputs.ProjectProtectedEnvironmentApprovalRuleArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new ProjectEnvironment("this", ProjectEnvironmentArgs.builder()
+ *             .project("123")
+ *             .name("example")
+ *             .externalUrl("www.example.com")
+ *             .build());
+ * 
+ *         // Example with access-level based approval rules
+ *         var exampleWithAccessLevel = new ProjectProtectedEnvironment("exampleWithAccessLevel", ProjectProtectedEnvironmentArgs.builder()
+ *             .project(this_.project())
+ *             .environment(this_.name())
+ *             .deployAccessLevelsAttributes(ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs.builder()
+ *                 .accessLevel("developer")
+ *                 .build())
+ *             .approvalRules(ProjectProtectedEnvironmentApprovalRuleArgs.builder()
+ *                 .accessLevel("developer")
+ *                 .requiredApprovals(2)
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example with multiple approval rules, using access level, user, and group
+ *         var exampleWithMultiple = new ProjectProtectedEnvironment("exampleWithMultiple", ProjectProtectedEnvironmentArgs.builder()
+ *             .project(this_.project())
+ *             .environment(this_.name())
+ *             .deployAccessLevelsAttributes(ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs.builder()
+ *                 .accessLevel("developer")
+ *                 .build())
+ *             .approvalRules(            
+ *                 ProjectProtectedEnvironmentApprovalRuleArgs.builder()
+ *                     .userId(789)
+ *                     .build(),
+ *                 ProjectProtectedEnvironmentApprovalRuleArgs.builder()
+ *                     .accessLevel("developer")
+ *                     .requiredApprovals(2)
+ *                     .build(),
+ *                 ProjectProtectedEnvironmentApprovalRuleArgs.builder()
+ *                     .groupId(456)
+ *                     .build())
+ *             .build());
+ * 
+ *         // Example with deployment access level attribute
+ *         var exampleAccessLevelsAttribute = new ProjectProtectedEnvironment("exampleAccessLevelsAttribute", ProjectProtectedEnvironmentArgs.builder()
+ *             .project(this_.project())
+ *             .environment(this_.name())
+ *             .deployAccessLevelsAttributes(ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs.builder()
+ *                 .accessLevel("developer")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example with group-based deployment level attribute
+ *         var exampleAccessLevelsAttributeWithGroup = new ProjectProtectedEnvironment("exampleAccessLevelsAttributeWithGroup", ProjectProtectedEnvironmentArgs.builder()
+ *             .project(this_.project())
+ *             .environment(this_.name())
+ *             .deployAccessLevelsAttributes(ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs.builder()
+ *                 .groupId(456)
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example with user-based deployment level attribute
+ *         var exampleAccessLevelsAttributeWithUser = new ProjectProtectedEnvironment("exampleAccessLevelsAttributeWithUser", ProjectProtectedEnvironmentArgs.builder()
+ *             .project(this_.project())
+ *             .environment(this_.name())
+ *             .deployAccessLevelsAttributes(ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs.builder()
+ *                 .userId(789)
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example with multiple deployment access levels attribute
+ *         var exampleAccessLevelsAttributeWithMultiple = new ProjectProtectedEnvironment("exampleAccessLevelsAttributeWithMultiple", ProjectProtectedEnvironmentArgs.builder()
+ *             .project(this_.project())
+ *             .environment(this_.name())
+ *             .deployAccessLevelsAttributes(            
+ *                 ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs.builder()
+ *                     .accessLevel("developer")
+ *                     .build(),
+ *                 ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs.builder()
+ *                     .groupId(456)
+ *                     .build(),
+ *                 ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs.builder()
+ *                     .userId(789)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectProtectedEnvironment`. For example:
