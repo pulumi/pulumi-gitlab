@@ -665,8 +665,8 @@ github.com/olekukonko/ll v0.1.4-0.20260115111900-9e59c2286df0 h1:jrYnow5+hy3WRDC
 github.com/olekukonko/ll v0.1.4-0.20260115111900-9e59c2286df0/go.mod h1:b52bVQRRPObe+yyBl0TxNfhesL0nedD4Cht0/zx55Ew=
 github.com/olekukonko/tablewriter v1.1.3 h1:VSHhghXxrP0JHl+0NnKid7WoEmd9/urKRJLysb70nnA=
 github.com/olekukonko/tablewriter v1.1.3/go.mod h1:9VU0knjhmMkXjnMKrZ3+L2JhhtsQ/L38BbL3CRNE8tM=
-github.com/onsi/gomega v1.43.0 h1:VlG/1FxqNxhSO+lq/OHBNaaqwiBK/mO8JbVkX9Y+FeU=
-github.com/onsi/gomega v1.43.0/go.mod h1:REff/hsDsodHoKlWsP2mAPhu1+5/6hVYNf9rIEBpeSg=
+github.com/onsi/gomega v1.44.0 h1:eAiGl3Pw5jz5GQdDff0BcxYpAX1JxW8xD7mFUuwNfZQ=
+github.com/onsi/gomega v1.44.0/go.mod h1:e/C2HwaZ1DhvjzXXuFhcR7hY7Sh9pl7MmoWKEjzwcdA=
 github.com/opentofu/registry-address/v2 v2.0.0-20250611143131-d0a99bd8acdd h1:YAAnzmyOoMvm5SuGXL4hhlfBgqz92XDfORGPV3kmQFc=
 github.com/opentofu/registry-address/v2 v2.0.0-20250611143131-d0a99bd8acdd/go.mod h1:7M92SvuJm1WBriIpa4j0XmruU9pxkgPXmRdc6FfAvAk=
 github.com/opentofu/svchost v0.0.0-20250610175836-86c9e5e3d8c8 h1:J3pmsVB+nGdfNp5HWdEAC96asYgc7S6J724ICrYDCTk=
@@ -858,8 +858,8 @@ github.com/zclconf/go-cty-yaml v1.2.0 h1:GDyL4+e/Qe/S0B7YaecMLbVvAR/Mp21CXMOSiCT
 github.com/zclconf/go-cty-yaml v1.2.0/go.mod h1:9YLUH4g7lOhVWqUbctnVlZ5KLpg7JAprQNgxSZ1Gyxs=
 gitlab.com/gitlab-org/api/client-go/config/v2 v2.1.0 h1:y7VCnR765f4dRFP5mLIy5zNx79KP59sYpGsOT9XNeq8=
 gitlab.com/gitlab-org/api/client-go/config/v2 v2.1.0/go.mod h1:muEH+CWYLkQHLgvIUSCp/aGsOUXdbzAu3a/87iRxBvs=
-gitlab.com/gitlab-org/api/client-go/v3 v3.13.1 h1:Kia+v6gp1FgiHmHTDN5dS91qhJKCBEdT8TFz1TwKayo=
-gitlab.com/gitlab-org/api/client-go/v3 v3.13.1/go.mod h1:k7uYxRoIeuSqyWZSJfAPZlf0L32OH0lUBImAl4gWUFc=
+gitlab.com/gitlab-org/api/client-go/v3 v3.15.0 h1:67OL6f2VrQJ4sBYBLgZPpP4XEbnA5qfCBKbbn46GBoU=
+gitlab.com/gitlab-org/api/client-go/v3 v3.15.0/go.mod h1:k7uYxRoIeuSqyWZSJfAPZlf0L32OH0lUBImAl4gWUFc=
 go.mongodb.org/mongo-driver v1.17.10 h1:kdAgQvu8TROXZpSkJQd5wzfaNCCrMbpZyKFtQ6qkPCE=
 go.mongodb.org/mongo-driver v1.17.10/go.mod h1:LlOhpH5NUEfhxcAwG0UEkMqwYcc4JU18gtCdGudk/tQ=
 go.opencensus.io v0.21.0/go.mod h1:mSImk1erAIZhrmZN+AvHh14ztQfjbGwt4TtuofqLduU=

@@ -27,6 +27,9 @@
                 "current": "gitlab:index/applicationSettings:ApplicationSettings",
                 "majorVersion": 10,
                 "fields": {
+                    "allowed_integrations": {
+                        "maxItemsOne": false
+                    },
                     "asset_proxy_allowlist": {
                         "maxItemsOne": false
                     },
@@ -501,6 +504,10 @@
             },
             "gitlab_project_container_repository_protection": {
                 "current": "gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection",
+                "majorVersion": 10
+            },
+            "gitlab_project_container_scanning": {
+                "current": "gitlab:index/projectContainerScanning:ProjectContainerScanning",
                 "majorVersion": 10
             },
             "gitlab_project_container_tag_protection": {
@@ -994,6 +1001,15 @@
             "gitlab_compliance_framework": {
                 "current": "gitlab:index/getComplianceFramework:getComplianceFramework",
                 "majorVersion": 10
+            },
+            "gitlab_compliance_framework_templates": {
+                "current": "gitlab:index/getComplianceFrameworkTemplates:getComplianceFrameworkTemplates",
+                "majorVersion": 10,
+                "fields": {
+                    "templates": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_current_user": {
                 "current": "gitlab:index/getCurrentUser:getCurrentUser",
@@ -1959,6 +1975,7 @@
             "gitlab_project_cicd_catalog": {},
             "gitlab_project_compliance_frameworks": {},
             "gitlab_project_container_repository_protection": {},
+            "gitlab_project_container_scanning": {},
             "gitlab_project_container_tag_protection": {},
             "gitlab_project_deploy_token": {},
             "gitlab_project_environment": {},
@@ -2092,6 +2109,7 @@
             "gitlab:index/projectCluster:ProjectCluster": 0,
             "gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks": 1,
             "gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection": 1,
+            "gitlab:index/projectContainerScanning:ProjectContainerScanning": 1,
             "gitlab:index/projectContainerTagProtection:ProjectContainerTagProtection": 1,
             "gitlab:index/projectCustomAttribute:ProjectCustomAttribute": 0,
             "gitlab:index/projectDeployToken:ProjectDeployToken": 1,
@@ -2178,6 +2196,7 @@
             "gitlab:index/getClusterAgent:getClusterAgent": 1,
             "gitlab:index/getClusterAgents:getClusterAgents": 1,
             "gitlab:index/getComplianceFramework:getComplianceFramework": 1,
+            "gitlab:index/getComplianceFrameworkTemplates:getComplianceFrameworkTemplates": 1,
             "gitlab:index/getCurrentUser:getCurrentUser": 1,
             "gitlab:index/getGroup:getGroup": 1,
             "gitlab:index/getGroupAccessTokens:getGroupAccessTokens": 1,
