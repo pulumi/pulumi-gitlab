@@ -24,6 +24,48 @@ namespace Pulumi.GitLab
     /// &gt; Requires at administrative privileges on GitLab.
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Set the default branch
+    ///     var defaultBranch = new GitLab.ApplicationSettings("default_branch", new()
+    ///     {
+    ///         DefaultBranchName = "main",
+    ///     });
+    /// 
+    ///     // Set the 2FA settings
+    ///     var twoFactor = new GitLab.ApplicationSettings("two_factor", new()
+    ///     {
+    ///         RequireTwoFactorAuthentication = true,
+    ///         TwoFactorGracePeriod = 24,
+    ///     });
+    /// 
+    ///     // Example Allow custom integrations
+    ///     var allowCustomIntegrations = new GitLab.ApplicationSettings("allow_custom_integrations", new()
+    ///     {
+    ///         AllowAllIntegrations = false,
+    ///         AllowedIntegrations = new[]
+    ///         {
+    ///             "jira",
+    ///         },
+    ///     });
+    /// 
+    ///     // Example allowing all integrations:
+    ///     var allowAllIntegrations = new GitLab.ApplicationSettings("allow_all_integrations", new()
+    ///     {
+    ///         AllowAllIntegrations = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [GitLabResourceType("gitlab:index/applicationSettings:ApplicationSettings")]
     public partial class ApplicationSettings : global::Pulumi.CustomResource
@@ -71,6 +113,12 @@ namespace Pulumi.GitLab
         public Output<bool> AllowAccountDeletion { get; private set; } = null!;
 
         /// <summary>
+        /// Allow all project integrations instance-wide. Ultimate only.
+        /// </summary>
+        [Output("allowAllIntegrations")]
+        public Output<bool> AllowAllIntegrations { get; private set; } = null!;
+
+        /// <summary>
         /// Set to true to allow group owners to manage LDAP.
         /// </summary>
         [Output("allowGroupOwnersToManageLdap")]
@@ -99,6 +147,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("allowRunnerRegistrationToken")]
         public Output<bool> AllowRunnerRegistrationToken { get; private set; } = null!;
+
+        /// <summary>
+        /// List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+        /// </summary>
+        [Output("allowedIntegrations")]
+        public Output<ImmutableArray<string>> AllowedIntegrations { get; private set; } = null!;
 
         /// <summary>
         /// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
@@ -2115,6 +2169,12 @@ namespace Pulumi.GitLab
         public Input<bool>? AllowAccountDeletion { get; set; }
 
         /// <summary>
+        /// Allow all project integrations instance-wide. Ultimate only.
+        /// </summary>
+        [Input("allowAllIntegrations")]
+        public Input<bool>? AllowAllIntegrations { get; set; }
+
+        /// <summary>
         /// Set to true to allow group owners to manage LDAP.
         /// </summary>
         [Input("allowGroupOwnersToManageLdap")]
@@ -2143,6 +2203,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("allowRunnerRegistrationToken")]
         public Input<bool>? AllowRunnerRegistrationToken { get; set; }
+
+        [Input("allowedIntegrations")]
+        private InputList<string>? _allowedIntegrations;
+
+        /// <summary>
+        /// List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+        /// </summary>
+        public InputList<string> AllowedIntegrations
+        {
+            get => _allowedIntegrations ?? (_allowedIntegrations = new InputList<string>());
+            set => _allowedIntegrations = value;
+        }
 
         /// <summary>
         /// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
@@ -4345,6 +4417,12 @@ namespace Pulumi.GitLab
         public Input<bool>? AllowAccountDeletion { get; set; }
 
         /// <summary>
+        /// Allow all project integrations instance-wide. Ultimate only.
+        /// </summary>
+        [Input("allowAllIntegrations")]
+        public Input<bool>? AllowAllIntegrations { get; set; }
+
+        /// <summary>
         /// Set to true to allow group owners to manage LDAP.
         /// </summary>
         [Input("allowGroupOwnersToManageLdap")]
@@ -4373,6 +4451,18 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("allowRunnerRegistrationToken")]
         public Input<bool>? AllowRunnerRegistrationToken { get; set; }
+
+        [Input("allowedIntegrations")]
+        private InputList<string>? _allowedIntegrations;
+
+        /// <summary>
+        /// List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+        /// </summary>
+        public InputList<string> AllowedIntegrations
+        {
+            get => _allowedIntegrations ?? (_allowedIntegrations = new InputList<string>());
+            set => _allowedIntegrations = value;
+        }
 
         /// <summary>
         /// Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.

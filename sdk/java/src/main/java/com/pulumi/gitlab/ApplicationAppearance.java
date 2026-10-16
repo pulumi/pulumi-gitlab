@@ -28,6 +28,52 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/appearance/)
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.ApplicationAppearance;
+ * import com.pulumi.gitlab.ApplicationAppearanceArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Example where the resource will not update the appearance on destroy
+ *         var this_ = new ApplicationAppearance("this", ApplicationAppearanceArgs.builder()
+ *             .title("My GitLab")
+ *             .description("My GitLab instance")
+ *             .headerMessage("This is a header message")
+ *             .messageFontColor("#FFFF00")
+ *             .build());
+ * 
+ *         // Example where the resource will revert the appearance to its original values on destroy
+ *         var revertOnDestroy = new ApplicationAppearance("revertOnDestroy", ApplicationAppearanceArgs.builder()
+ *             .title("My GitLab")
+ *             .keepSettingsOnDestroy(false)
+ *             .description("My GitLab instance")
+ *             .headerMessage("This is a header message")
+ *             .messageFontColor("#FFFF00")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ApplicationAppearance`. For example:

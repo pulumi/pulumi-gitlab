@@ -127,6 +127,21 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Allow all project integrations instance-wide. Ultimate only.
+     * 
+     */
+    @Import(name="allowAllIntegrations")
+    private @Nullable Output<Boolean> allowAllIntegrations;
+
+    /**
+     * @return Allow all project integrations instance-wide. Ultimate only.
+     * 
+     */
+    public Optional<Output<Boolean>> allowAllIntegrations() {
+        return Optional.ofNullable(this.allowAllIntegrations);
+    }
+
+    /**
      * Set to true to allow group owners to manage LDAP.
      * 
      */
@@ -199,6 +214,21 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<Boolean>> allowRunnerRegistrationToken() {
         return Optional.ofNullable(this.allowRunnerRegistrationToken);
+    }
+
+    /**
+     * List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+     * 
+     */
+    @Import(name="allowedIntegrations")
+    private @Nullable Output<List<String>> allowedIntegrations;
+
+    /**
+     * @return List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+     * 
+     */
+    public Optional<Output<List<String>>> allowedIntegrations() {
+        return Optional.ofNullable(this.allowedIntegrations);
     }
 
     /**
@@ -4921,11 +4951,13 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         this.akismetApiKey = $.akismetApiKey;
         this.akismetEnabled = $.akismetEnabled;
         this.allowAccountDeletion = $.allowAccountDeletion;
+        this.allowAllIntegrations = $.allowAllIntegrations;
         this.allowGroupOwnersToManageLdap = $.allowGroupOwnersToManageLdap;
         this.allowLocalRequestsFromSystemHooks = $.allowLocalRequestsFromSystemHooks;
         this.allowLocalRequestsFromWebHooksAndServices = $.allowLocalRequestsFromWebHooksAndServices;
         this.allowProjectCreationForGuestAndBelow = $.allowProjectCreationForGuestAndBelow;
         this.allowRunnerRegistrationToken = $.allowRunnerRegistrationToken;
+        this.allowedIntegrations = $.allowedIntegrations;
         this.archiveBuildsInHumanReadable = $.archiveBuildsInHumanReadable;
         this.asciidocMaxIncludes = $.asciidocMaxIncludes;
         this.assetProxyAllowlists = $.assetProxyAllowlists;
@@ -5408,6 +5440,27 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param allowAllIntegrations Allow all project integrations instance-wide. Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAllIntegrations(@Nullable Output<Boolean> allowAllIntegrations) {
+            $.allowAllIntegrations = allowAllIntegrations;
+            return this;
+        }
+
+        /**
+         * @param allowAllIntegrations Allow all project integrations instance-wide. Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAllIntegrations(Boolean allowAllIntegrations) {
+            return allowAllIntegrations(Output.of(allowAllIntegrations));
+        }
+
+        /**
          * @param allowGroupOwnersToManageLdap Set to true to allow group owners to manage LDAP.
          * 
          * @return builder
@@ -5510,6 +5563,37 @@ public final class ApplicationSettingsArgs extends com.pulumi.resources.Resource
          */
         public Builder allowRunnerRegistrationToken(Boolean allowRunnerRegistrationToken) {
             return allowRunnerRegistrationToken(Output.of(allowRunnerRegistrationToken));
+        }
+
+        /**
+         * @param allowedIntegrations List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedIntegrations(@Nullable Output<List<String>> allowedIntegrations) {
+            $.allowedIntegrations = allowedIntegrations;
+            return this;
+        }
+
+        /**
+         * @param allowedIntegrations List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedIntegrations(List<String> allowedIntegrations) {
+            return allowedIntegrations(Output.of(allowedIntegrations));
+        }
+
+        /**
+         * @param allowedIntegrations List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedIntegrations(String... allowedIntegrations) {
+            return allowedIntegrations(List.of(allowedIntegrations));
         }
 
         /**

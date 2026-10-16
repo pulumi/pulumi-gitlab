@@ -13,6 +13,78 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = new gitlab.GroupHook("example", {
+ *     group: "example/hooked",
+ *     url: "https://example.com/hook/example",
+ *     name: "Example",
+ *     description: "Example Group Webhook",
+ *     mergeRequestsEvents: true,
+ *     pushEvents: false,
+ * });
+ * // Setting all attributes
+ * const allAttributes = new gitlab.GroupHook("all_attributes", {
+ *     group: "1",
+ *     url: "http://example.com",
+ *     name: "Example",
+ *     description: "Example Group Webhook",
+ *     token: "supersecret",
+ *     enableSslVerification: false,
+ *     pushEvents: true,
+ *     pushEventsBranchFilter: "devel",
+ *     issuesEvents: false,
+ *     confidentialIssuesEvents: false,
+ *     mergeRequestsEvents: true,
+ *     tagPushEvents: true,
+ *     noteEvents: true,
+ *     confidentialNoteEvents: true,
+ *     jobEvents: true,
+ *     pipelineEvents: true,
+ *     wikiPageEvents: true,
+ *     deploymentEvents: true,
+ *     releasesEvents: true,
+ *     subgroupEvents: true,
+ *     emojiEvents: true,
+ *     featureFlagEvents: true,
+ *     milestoneEvents: true,
+ *     resourceAccessTokenEvents: true,
+ *     branchFilterStrategy: "wildcard",
+ * });
+ * // Using Custom Headers
+ * // Values of headers can't be imported
+ * const customHeaders = new gitlab.GroupHook("custom_headers", {
+ *     group: "example/hooked",
+ *     url: "https://example.com/hook/example",
+ *     mergeRequestsEvents: true,
+ *     customHeaders: [
+ *         {
+ *             key: "X-Custom-Header",
+ *             value: "example",
+ *         },
+ *         {
+ *             key: "X-Custom-Header-Second",
+ *             value: "example-second",
+ *         },
+ *     ],
+ * });
+ * // Using URL variables
+ * // Values of URL variables can't be imported
+ * const urlVariables = new gitlab.GroupHook("url_variables", {
+ *     group: "example/hooked",
+ *     url: "https://example.com/hook/example?token=secret",
+ *     mergeRequestsEvents: true,
+ *     urlVariables: [{
+ *         key: "hidden",
+ *         value: "token=secret",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupHook`. For example:

@@ -16,6 +16,98 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new GitLab.GroupHook("example", new()
+    ///     {
+    ///         Group = "example/hooked",
+    ///         Url = "https://example.com/hook/example",
+    ///         Name = "Example",
+    ///         Description = "Example Group Webhook",
+    ///         MergeRequestsEvents = true,
+    ///         PushEvents = false,
+    ///     });
+    /// 
+    ///     // Setting all attributes
+    ///     var allAttributes = new GitLab.GroupHook("all_attributes", new()
+    ///     {
+    ///         Group = "1",
+    ///         Url = "http://example.com",
+    ///         Name = "Example",
+    ///         Description = "Example Group Webhook",
+    ///         Token = "supersecret",
+    ///         EnableSslVerification = false,
+    ///         PushEvents = true,
+    ///         PushEventsBranchFilter = "devel",
+    ///         IssuesEvents = false,
+    ///         ConfidentialIssuesEvents = false,
+    ///         MergeRequestsEvents = true,
+    ///         TagPushEvents = true,
+    ///         NoteEvents = true,
+    ///         ConfidentialNoteEvents = true,
+    ///         JobEvents = true,
+    ///         PipelineEvents = true,
+    ///         WikiPageEvents = true,
+    ///         DeploymentEvents = true,
+    ///         ReleasesEvents = true,
+    ///         SubgroupEvents = true,
+    ///         EmojiEvents = true,
+    ///         FeatureFlagEvents = true,
+    ///         MilestoneEvents = true,
+    ///         ResourceAccessTokenEvents = true,
+    ///         BranchFilterStrategy = "wildcard",
+    ///     });
+    /// 
+    ///     // Using Custom Headers
+    ///     // Values of headers can't be imported
+    ///     var customHeaders = new GitLab.GroupHook("custom_headers", new()
+    ///     {
+    ///         Group = "example/hooked",
+    ///         Url = "https://example.com/hook/example",
+    ///         MergeRequestsEvents = true,
+    ///         CustomHeaders = new[]
+    ///         {
+    ///             new GitLab.Inputs.GroupHookCustomHeaderArgs
+    ///             {
+    ///                 Key = "X-Custom-Header",
+    ///                 Value = "example",
+    ///             },
+    ///             new GitLab.Inputs.GroupHookCustomHeaderArgs
+    ///             {
+    ///                 Key = "X-Custom-Header-Second",
+    ///                 Value = "example-second",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Using URL variables
+    ///     // Values of URL variables can't be imported
+    ///     var urlVariables = new GitLab.GroupHook("url_variables", new()
+    ///     {
+    ///         Group = "example/hooked",
+    ///         Url = "https://example.com/hook/example?token=secret",
+    ///         MergeRequestsEvents = true,
+    ///         UrlVariables = new[]
+    ///         {
+    ///             new GitLab.Inputs.GroupHookUrlVariableArgs
+    ///             {
+    ///                 Key = "hidden",
+    ///                 Value = "token=secret",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupHook`. For example:

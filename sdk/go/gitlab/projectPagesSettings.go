@@ -21,6 +21,49 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages/)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := gitlab.NewProject(ctx, "example", &gitlab.ProjectArgs{
+//				Name: pulumi.String("project"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example where the resource will not reset the settings on destroy
+//			_, err = gitlab.NewProjectPagesSettings(ctx, "this", &gitlab.ProjectPagesSettingsArgs{
+//				Project:               example.ID().ToIDOutput().ToStringOutput(),
+//				IsUniqueDomainEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example where the resource will reset the settings to their original values on destroy
+//			_, err = gitlab.NewProjectPagesSettings(ctx, "reset_on_destroy", &gitlab.ProjectPagesSettingsArgs{
+//				Project:               example.ID().ToIDOutput().ToStringOutput(),
+//				IsUniqueDomainEnabled: pulumi.Bool(true),
+//				KeepSettingsOnDestroy: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Starting in Terraform v1.5.0, you can use an import block to import `ProjectPagesSettings`. For example:

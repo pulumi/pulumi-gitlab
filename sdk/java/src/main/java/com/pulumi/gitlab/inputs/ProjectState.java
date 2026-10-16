@@ -171,6 +171,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set to true to automatically rebase the source branch onto the target branch before merging.
+     * Only applies when `mergeMethod` is `ff` or `rebaseMerge`.
+     * Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+     * so setting it there surfaces as a permanent difference on every plan.
+     * 
+     */
+    @Import(name="automaticRebaseEnabled")
+    private @Nullable Output<Boolean> automaticRebaseEnabled;
+
+    /**
+     * @return Set to true to automatically rebase the source branch onto the target branch before merging.
+     * Only applies when `mergeMethod` is `ff` or `rebaseMerge`.
+     * Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+     * so setting it there surfaces as a permanent difference on every plan.
+     * 
+     */
+    public Optional<Output<Boolean>> automaticRebaseEnabled() {
+        return Optional.ofNullable(this.automaticRebaseEnabled);
+    }
+
+    /**
      * A local path to the avatar image to upload. **Note**: not available for imported resources.
      * 
      */
@@ -1700,6 +1721,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.autoDevopsEnabled = $.autoDevopsEnabled;
         this.autoDuoCodeReviewEnabled = $.autoDuoCodeReviewEnabled;
         this.autocloseReferencedIssues = $.autocloseReferencedIssues;
+        this.automaticRebaseEnabled = $.automaticRebaseEnabled;
         this.avatar = $.avatar;
         this.avatarHash = $.avatarHash;
         this.avatarUrl = $.avatarUrl;
@@ -2027,6 +2049,33 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autocloseReferencedIssues(Boolean autocloseReferencedIssues) {
             return autocloseReferencedIssues(Output.of(autocloseReferencedIssues));
+        }
+
+        /**
+         * @param automaticRebaseEnabled Set to true to automatically rebase the source branch onto the target branch before merging.
+         * Only applies when `mergeMethod` is `ff` or `rebaseMerge`.
+         * Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+         * so setting it there surfaces as a permanent difference on every plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticRebaseEnabled(@Nullable Output<Boolean> automaticRebaseEnabled) {
+            $.automaticRebaseEnabled = automaticRebaseEnabled;
+            return this;
+        }
+
+        /**
+         * @param automaticRebaseEnabled Set to true to automatically rebase the source branch onto the target branch before merging.
+         * Only applies when `mergeMethod` is `ff` or `rebaseMerge`.
+         * Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+         * so setting it there surfaces as a permanent difference on every plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder automaticRebaseEnabled(Boolean automaticRebaseEnabled) {
+            return automaticRebaseEnabled(Output.of(automaticRebaseEnabled));
         }
 
         /**

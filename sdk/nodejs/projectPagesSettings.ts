@@ -16,6 +16,26 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages/)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = new gitlab.Project("example", {name: "project"});
+ * // Example where the resource will not reset the settings on destroy
+ * const _this = new gitlab.ProjectPagesSettings("this", {
+ *     project: example.id,
+ *     isUniqueDomainEnabled: true,
+ * });
+ * // Example where the resource will reset the settings to their original values on destroy
+ * const resetOnDestroy = new gitlab.ProjectPagesSettings("reset_on_destroy", {
+ *     project: example.id,
+ *     isUniqueDomainEnabled: true,
+ *     keepSettingsOnDestroy: false,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectPagesSettings`. For example:

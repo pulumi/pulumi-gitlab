@@ -9,6 +9,31 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = new gitlab.GroupVariable("example", {
+ *     group: "12345",
+ *     key: "group_variable_key",
+ *     value: "group_variable_value",
+ *     "protected": false,
+ *     masked: false,
+ *     environmentScope: "*",
+ * });
+ * // Example  with masked and hidden
+ * const maskedAndHidden = new gitlab.GroupVariable("masked_and_hidden", {
+ *     group: "12345",
+ *     key: "group_variable_key",
+ *     value: "group_variable_value",
+ *     masked: true,
+ *     hidden: true,
+ *     "protected": false,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupVariable`. For example:

@@ -21,6 +21,28 @@ import * as utilities from "./utilities";
  * > Requires at administrative privileges on GitLab.
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * // Set the default branch
+ * const defaultBranch = new gitlab.ApplicationSettings("default_branch", {defaultBranchName: "main"});
+ * // Set the 2FA settings
+ * const twoFactor = new gitlab.ApplicationSettings("two_factor", {
+ *     requireTwoFactorAuthentication: true,
+ *     twoFactorGracePeriod: 24,
+ * });
+ * // Example Allow custom integrations
+ * const allowCustomIntegrations = new gitlab.ApplicationSettings("allow_custom_integrations", {
+ *     allowAllIntegrations: false,
+ *     allowedIntegrations: ["jira"],
+ * });
+ * // Example allowing all integrations:
+ * const allowAllIntegrations = new gitlab.ApplicationSettings("allow_all_integrations", {allowAllIntegrations: true});
+ * ```
  */
 export class ApplicationSettings extends pulumi.CustomResource {
     /**
@@ -79,6 +101,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      */
     declare public readonly allowAccountDeletion: pulumi.Output<boolean>;
     /**
+     * Allow all project integrations instance-wide. Ultimate only.
+     */
+    declare public readonly allowAllIntegrations: pulumi.Output<boolean>;
+    /**
      * Set to true to allow group owners to manage LDAP.
      */
     declare public readonly allowGroupOwnersToManageLdap: pulumi.Output<boolean>;
@@ -98,6 +124,10 @@ export class ApplicationSettings extends pulumi.CustomResource {
      * Allow using a registration token to create a runner.
      */
     declare public readonly allowRunnerRegistrationToken: pulumi.Output<boolean>;
+    /**
+     * List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+     */
+    declare public readonly allowedIntegrations: pulumi.Output<string[]>;
     /**
      * Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
      */
@@ -1383,11 +1413,13 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["akismetApiKey"] = state?.akismetApiKey;
             resourceInputs["akismetEnabled"] = state?.akismetEnabled;
             resourceInputs["allowAccountDeletion"] = state?.allowAccountDeletion;
+            resourceInputs["allowAllIntegrations"] = state?.allowAllIntegrations;
             resourceInputs["allowGroupOwnersToManageLdap"] = state?.allowGroupOwnersToManageLdap;
             resourceInputs["allowLocalRequestsFromSystemHooks"] = state?.allowLocalRequestsFromSystemHooks;
             resourceInputs["allowLocalRequestsFromWebHooksAndServices"] = state?.allowLocalRequestsFromWebHooksAndServices;
             resourceInputs["allowProjectCreationForGuestAndBelow"] = state?.allowProjectCreationForGuestAndBelow;
             resourceInputs["allowRunnerRegistrationToken"] = state?.allowRunnerRegistrationToken;
+            resourceInputs["allowedIntegrations"] = state?.allowedIntegrations;
             resourceInputs["archiveBuildsInHumanReadable"] = state?.archiveBuildsInHumanReadable;
             resourceInputs["asciidocMaxIncludes"] = state?.asciidocMaxIncludes;
             resourceInputs["assetProxyAllowlists"] = state?.assetProxyAllowlists;
@@ -1713,11 +1745,13 @@ export class ApplicationSettings extends pulumi.CustomResource {
             resourceInputs["akismetApiKey"] = args?.akismetApiKey ? pulumi.secret(args.akismetApiKey) : undefined;
             resourceInputs["akismetEnabled"] = args?.akismetEnabled;
             resourceInputs["allowAccountDeletion"] = args?.allowAccountDeletion;
+            resourceInputs["allowAllIntegrations"] = args?.allowAllIntegrations;
             resourceInputs["allowGroupOwnersToManageLdap"] = args?.allowGroupOwnersToManageLdap;
             resourceInputs["allowLocalRequestsFromSystemHooks"] = args?.allowLocalRequestsFromSystemHooks;
             resourceInputs["allowLocalRequestsFromWebHooksAndServices"] = args?.allowLocalRequestsFromWebHooksAndServices;
             resourceInputs["allowProjectCreationForGuestAndBelow"] = args?.allowProjectCreationForGuestAndBelow;
             resourceInputs["allowRunnerRegistrationToken"] = args?.allowRunnerRegistrationToken;
+            resourceInputs["allowedIntegrations"] = args?.allowedIntegrations;
             resourceInputs["archiveBuildsInHumanReadable"] = args?.archiveBuildsInHumanReadable;
             resourceInputs["asciidocMaxIncludes"] = args?.asciidocMaxIncludes;
             resourceInputs["assetProxyAllowlists"] = args?.assetProxyAllowlists;
@@ -2075,6 +2109,10 @@ export interface ApplicationSettingsState {
      */
     allowAccountDeletion?: pulumi.Input<boolean | undefined>;
     /**
+     * Allow all project integrations instance-wide. Ultimate only.
+     */
+    allowAllIntegrations?: pulumi.Input<boolean | undefined>;
+    /**
      * Set to true to allow group owners to manage LDAP.
      */
     allowGroupOwnersToManageLdap?: pulumi.Input<boolean | undefined>;
@@ -2094,6 +2132,10 @@ export interface ApplicationSettingsState {
      * Allow using a registration token to create a runner.
      */
     allowRunnerRegistrationToken?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+     */
+    allowedIntegrations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
      */
@@ -3393,6 +3435,10 @@ export interface ApplicationSettingsArgs {
      */
     allowAccountDeletion?: pulumi.Input<boolean | undefined>;
     /**
+     * Allow all project integrations instance-wide. Ultimate only.
+     */
+    allowAllIntegrations?: pulumi.Input<boolean | undefined>;
+    /**
      * Set to true to allow group owners to manage LDAP.
      */
     allowGroupOwnersToManageLdap?: pulumi.Input<boolean | undefined>;
@@ -3412,6 +3458,10 @@ export interface ApplicationSettingsArgs {
      * Allow using a registration token to create a runner.
      */
     allowRunnerRegistrationToken?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+     */
+    allowedIntegrations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.
      */

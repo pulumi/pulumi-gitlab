@@ -517,6 +517,27 @@ class ApplicationAppearance(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/appearance/)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Example where the resource will not update the appearance on destroy
+        this = gitlab.ApplicationAppearance("this",
+            title="My GitLab",
+            description="My GitLab instance",
+            header_message="This is a header message",
+            message_font_color="#FFFF00")
+        # Example where the resource will revert the appearance to its original values on destroy
+        revert_on_destroy = gitlab.ApplicationAppearance("revert_on_destroy",
+            title="My GitLab",
+            keep_settings_on_destroy=False,
+            description="My GitLab instance",
+            header_message="This is a header message",
+            message_font_color="#FFFF00")
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `ApplicationAppearance`. For example:
@@ -566,6 +587,27 @@ class ApplicationAppearance(pulumi.CustomResource):
         > Requires administrative privileges on GitLab.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/appearance/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        # Example where the resource will not update the appearance on destroy
+        this = gitlab.ApplicationAppearance("this",
+            title="My GitLab",
+            description="My GitLab instance",
+            header_message="This is a header message",
+            message_font_color="#FFFF00")
+        # Example where the resource will revert the appearance to its original values on destroy
+        revert_on_destroy = gitlab.ApplicationAppearance("revert_on_destroy",
+            title="My GitLab",
+            keep_settings_on_destroy=False,
+            description="My GitLab instance",
+            header_message="This is a header message",
+            message_font_color="#FFFF00")
+        ```
 
         ## Import
 

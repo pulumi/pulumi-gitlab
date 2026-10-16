@@ -36,6 +36,57 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.ApplicationSettings;
+ * import com.pulumi.gitlab.ApplicationSettingsArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Set the default branch
+ *         var defaultBranch = new ApplicationSettings("defaultBranch", ApplicationSettingsArgs.builder()
+ *             .defaultBranchName("main")
+ *             .build());
+ * 
+ *         // Set the 2FA settings
+ *         var twoFactor = new ApplicationSettings("twoFactor", ApplicationSettingsArgs.builder()
+ *             .requireTwoFactorAuthentication(true)
+ *             .twoFactorGracePeriod(24)
+ *             .build());
+ * 
+ *         // Example Allow custom integrations
+ *         var allowCustomIntegrations = new ApplicationSettings("allowCustomIntegrations", ApplicationSettingsArgs.builder()
+ *             .allowAllIntegrations(false)
+ *             .allowedIntegrations("jira")
+ *             .build());
+ * 
+ *         // Example allowing all integrations:
+ *         var allowAllIntegrations = new ApplicationSettings("allowAllIntegrations", ApplicationSettingsArgs.builder()
+ *             .allowAllIntegrations(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="gitlab:index/applicationSettings:ApplicationSettings")
 public class ApplicationSettings extends com.pulumi.resources.CustomResource {
@@ -138,6 +189,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.allowAccountDeletion;
     }
     /**
+     * Allow all project integrations instance-wide. Ultimate only.
+     * 
+     */
+    @Export(name="allowAllIntegrations", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> allowAllIntegrations;
+
+    /**
+     * @return Allow all project integrations instance-wide. Ultimate only.
+     * 
+     */
+    public Output<Boolean> allowAllIntegrations() {
+        return this.allowAllIntegrations;
+    }
+    /**
      * Set to true to allow group owners to manage LDAP.
      * 
      */
@@ -206,6 +271,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> allowRunnerRegistrationToken() {
         return this.allowRunnerRegistrationToken;
+    }
+    /**
+     * List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+     * 
+     */
+    @Export(name="allowedIntegrations", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> allowedIntegrations;
+
+    /**
+     * @return List of project integrations allowed instance-wide when allow*all*integrations is false. Ultimate only.
+     * 
+     */
+    public Output<List<String>> allowedIntegrations() {
+        return this.allowedIntegrations;
     }
     /**
      * Set the duration for which the jobs are considered as old and expired. After that time passes, the jobs are archived and no longer able to be retried. Make it empty to never expire jobs. It has to be no less than 1 day, for example: 15 days, 1 month, 2 years.

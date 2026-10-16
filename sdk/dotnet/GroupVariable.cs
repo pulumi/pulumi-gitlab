@@ -14,6 +14,40 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_level_variables/)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new GitLab.GroupVariable("example", new()
+    ///     {
+    ///         Group = "12345",
+    ///         Key = "group_variable_key",
+    ///         Value = "group_variable_value",
+    ///         Protected = false,
+    ///         Masked = false,
+    ///         EnvironmentScope = "*",
+    ///     });
+    /// 
+    ///     // Example  with masked and hidden
+    ///     var maskedAndHidden = new GitLab.GroupVariable("masked_and_hidden", new()
+    ///     {
+    ///         Group = "12345",
+    ///         Key = "group_variable_key",
+    ///         Value = "group_variable_value",
+    ///         Masked = true,
+    ///         Hidden = true,
+    ///         Protected = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.GroupVariable`. For example:

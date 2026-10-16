@@ -23,6 +23,123 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/projects/)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new GitLab.Project("example", new()
+    ///     {
+    ///         Name = "example",
+    ///         Description = "My awesome codebase",
+    ///         VisibilityLevel = "public",
+    ///     });
+    /// 
+    ///     // Project with custom push rules
+    ///     var example_two = new GitLab.Project("example-two", new()
+    ///     {
+    ///         Name = "example-two",
+    ///         PushRules = new GitLab.Inputs.ProjectPushRulesArgs
+    ///         {
+    ///             AuthorEmailRegex = "@example\\.com$",
+    ///             CommitCommitterCheck = true,
+    ///             MemberCheck = true,
+    ///             PreventSecrets = true,
+    ///         },
+    ///     });
+    /// 
+    ///     // Project which automatically rebases the source branch before merging
+    ///     // NOTE: `automatic_rebase_enabled` requires GitLab 19.4 or later and only applies when
+    ///     //       `merge_method` is `ff` or `rebase_merge`.
+    ///     var example_automatic_rebase = new GitLab.Project("example-automatic-rebase", new()
+    ///     {
+    ///         Name = "example-automatic-rebase",
+    ///         MergeMethod = "ff",
+    ///         AutomaticRebaseEnabled = true,
+    ///     });
+    /// 
+    ///     // Create a project for a given user (requires admin access)
+    ///     var peterParker = GitLab.GetUser.Invoke(new()
+    ///     {
+    ///         Username = "peter_parker",
+    ///     });
+    /// 
+    ///     var petersRepo = new GitLab.Project("peters_repo", new()
+    ///     {
+    ///         Name = "peters-repo",
+    ///         Description = "This is a description",
+    ///         NamespaceId = peterParker.Apply(getUserResult =&gt; getUserResult.NamespaceId),
+    ///     });
+    /// 
+    ///     // Fork a project
+    ///     var fork = new GitLab.Project("fork", new()
+    ///     {
+    ///         Name = "my-fork",
+    ///         Description = "This is a fork",
+    ///         ForkedFromProjectId = example.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+    ///     });
+    /// 
+    ///     // Fork a project and setup a pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+    ///     var forkWithMirror = new GitLab.Project("fork_with_mirror", new()
+    ///     {
+    ///         Name = "my-fork",
+    ///         Description = "This is a fork",
+    ///         ForkedFromProjectId = example.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+    ///         ImportUrl = example.HttpUrlToRepo,
+    ///         Mirror = true,
+    ///     });
+    /// 
+    ///     // Create a project by importing it from a public project
+    ///     var importPublic = new GitLab.Project("import_public", new()
+    ///     {
+    ///         Name = "import-from-public-project",
+    ///         ImportUrl = "https://gitlab.example.com/repo.git",
+    ///     });
+    /// 
+    ///     // Create a project by importing it from a public project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+    ///     var importPublicWithMirror = new GitLab.Project("import_public_with_mirror", new()
+    ///     {
+    ///         Name = "import-from-public-project",
+    ///         ImportUrl = "https://gitlab.example.com/repo.git",
+    ///         Mirror = true,
+    ///     });
+    /// 
+    ///     // Create a project by importing it from a private project
+    ///     var importPrivate = new GitLab.Project("import_private", new()
+    ///     {
+    ///         Name = "import-from-public-project",
+    ///         ImportUrl = "https://gitlab.example.com/repo.git",
+    ///         ImportUrlUsername = "user",
+    ///         ImportUrlPassword = "pass",
+    ///     });
+    /// 
+    ///     // Create a project by importing it from a private project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
+    ///     var importPrivateWithMirror = new GitLab.Project("import_private_with_mirror", new()
+    ///     {
+    ///         Name = "import-from-public-project",
+    ///         ImportUrl = "https://gitlab.example.com/repo.git",
+    ///         ImportUrlUsername = "user",
+    ///         ImportUrlPassword = "pass",
+    ///         Mirror = true,
+    ///     });
+    /// 
+    ///     // Create a project by importing it from a private project and provide credentials in `import_url`
+    ///     // NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
+    ///     //       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
+    ///     var importPrivateCredentialsInUrl = new GitLab.Project("import_private_credentials_in_url", new()
+    ///     {
+    ///         Name = "import-from-public-project",
+    ///         ImportUrl = "https://user:pass@gitlab.example.com/repo.git",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.Project`. For example:
@@ -100,6 +217,15 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("autocloseReferencedIssues")]
         public Output<bool> AutocloseReferencedIssues { get; private set; } = null!;
+
+        /// <summary>
+        /// Set to true to automatically rebase the source branch onto the target branch before merging.
+        /// Only applies when `MergeMethod` is `Ff` or `RebaseMerge`.
+        /// Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+        /// so setting it there surfaces as a permanent difference on every plan.
+        /// </summary>
+        [Output("automaticRebaseEnabled")]
+        public Output<bool> AutomaticRebaseEnabled { get; private set; } = null!;
 
         /// <summary>
         /// A local path to the avatar image to upload. **Note**: not available for imported resources.
@@ -811,6 +937,15 @@ namespace Pulumi.GitLab
         public Input<bool>? AutocloseReferencedIssues { get; set; }
 
         /// <summary>
+        /// Set to true to automatically rebase the source branch onto the target branch before merging.
+        /// Only applies when `MergeMethod` is `Ff` or `RebaseMerge`.
+        /// Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+        /// so setting it there surfaces as a permanent difference on every plan.
+        /// </summary>
+        [Input("automaticRebaseEnabled")]
+        public Input<bool>? AutomaticRebaseEnabled { get; set; }
+
+        /// <summary>
         /// A local path to the avatar image to upload. **Note**: not available for imported resources.
         /// </summary>
         [Input("avatar")]
@@ -1455,6 +1590,15 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("autocloseReferencedIssues")]
         public Input<bool>? AutocloseReferencedIssues { get; set; }
+
+        /// <summary>
+        /// Set to true to automatically rebase the source branch onto the target branch before merging.
+        /// Only applies when `MergeMethod` is `Ff` or `RebaseMerge`.
+        /// Requires GitLab 19.4 or later; older instances ignore the attribute on write and omit it on read,
+        /// so setting it there surfaces as a permanent difference on every plan.
+        /// </summary>
+        [Input("automaticRebaseEnabled")]
+        public Input<bool>? AutomaticRebaseEnabled { get; set; }
 
         /// <summary>
         /// A local path to the avatar image to upload. **Note**: not available for imported resources.

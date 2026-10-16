@@ -147,6 +147,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectComplianceFrameworks{}
 	case "gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection":
 		r = &ProjectContainerRepositoryProtection{}
+	case "gitlab:index/projectContainerScanning:ProjectContainerScanning":
+		r = &ProjectContainerScanning{}
 	case "gitlab:index/projectContainerTagProtection:ProjectContainerTagProtection":
 		r = &ProjectContainerTagProtection{}
 	case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
@@ -647,6 +649,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/projectContainerRepositoryProtection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/projectContainerScanning",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

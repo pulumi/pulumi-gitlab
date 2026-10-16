@@ -24,6 +24,45 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationmemberrolecreate)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Example is creating a role for a security analyst to be able to read vulnerabilities for repos in example-org on gitlab.com.
+    ///     var securityAnalyst = new GitLab.MemberRole("security_analyst", new()
+    ///     {
+    ///         Name = "Security Analyst",
+    ///         Description = "This is a read only role for security analysts",
+    ///         GroupPath = "example-org",
+    ///         BaseAccessLevel = "REPORTER",
+    ///         EnabledPermissions = new[]
+    ///         {
+    ///             "READ_VULNERABILITY",
+    ///         },
+    ///     });
+    /// 
+    ///     // Example is creating a role for an enhanced developer to be able to manage CI/CD variables and vulnerabilities on self managed gitlab instance.
+    ///     var enhancedDeveloper = new GitLab.MemberRole("enhanced_developer", new()
+    ///     {
+    ///         Name = "Enhanced Developer",
+    ///         Description = "This role gives the developers additional access to manage CI/CD variables and vulnerabilities",
+    ///         BaseAccessLevel = "DEVELOPER",
+    ///         EnabledPermissions = new[]
+    ///         {
+    ///             "ADMIN_CICD_VARIABLES",
+    ///             "ADMIN_VULNERABILITY",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.MemberRole`. For example:

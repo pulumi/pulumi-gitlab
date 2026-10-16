@@ -100,6 +100,11 @@ export const getComplianceFramework: typeof import("./getComplianceFramework").g
 export const getComplianceFrameworkOutput: typeof import("./getComplianceFramework").getComplianceFrameworkOutput = null as any;
 utilities.lazyLoad(exports, ["getComplianceFramework","getComplianceFrameworkOutput"], () => require("./getComplianceFramework"));
 
+export { GetComplianceFrameworkTemplatesArgs, GetComplianceFrameworkTemplatesResult, GetComplianceFrameworkTemplatesOutputArgs } from "./getComplianceFrameworkTemplates";
+export const getComplianceFrameworkTemplates: typeof import("./getComplianceFrameworkTemplates").getComplianceFrameworkTemplates = null as any;
+export const getComplianceFrameworkTemplatesOutput: typeof import("./getComplianceFrameworkTemplates").getComplianceFrameworkTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getComplianceFrameworkTemplates","getComplianceFrameworkTemplatesOutput"], () => require("./getComplianceFrameworkTemplates"));
+
 export { GetCurrentUserResult } from "./getCurrentUser";
 export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = null as any;
 export const getCurrentUserOutput: typeof import("./getCurrentUser").getCurrentUserOutput = null as any;
@@ -720,6 +725,11 @@ export type ProjectContainerRepositoryProtection = import("./projectContainerRep
 export const ProjectContainerRepositoryProtection: typeof import("./projectContainerRepositoryProtection").ProjectContainerRepositoryProtection = null as any;
 utilities.lazyLoad(exports, ["ProjectContainerRepositoryProtection"], () => require("./projectContainerRepositoryProtection"));
 
+export { ProjectContainerScanningArgs, ProjectContainerScanningState } from "./projectContainerScanning";
+export type ProjectContainerScanning = import("./projectContainerScanning").ProjectContainerScanning;
+export const ProjectContainerScanning: typeof import("./projectContainerScanning").ProjectContainerScanning = null as any;
+utilities.lazyLoad(exports, ["ProjectContainerScanning"], () => require("./projectContainerScanning"));
+
 export { ProjectContainerTagProtectionArgs, ProjectContainerTagProtectionState } from "./projectContainerTagProtection";
 export type ProjectContainerTagProtection = import("./projectContainerTagProtection").ProjectContainerTagProtection;
 export const ProjectContainerTagProtection: typeof import("./projectContainerTagProtection").ProjectContainerTagProtection = null as any;
@@ -1253,6 +1263,8 @@ const _module = {
                 return new ProjectComplianceFrameworks(name, <any>undefined, { urn })
             case "gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection":
                 return new ProjectContainerRepositoryProtection(name, <any>undefined, { urn })
+            case "gitlab:index/projectContainerScanning:ProjectContainerScanning":
+                return new ProjectContainerScanning(name, <any>undefined, { urn })
             case "gitlab:index/projectContainerTagProtection:ProjectContainerTagProtection":
                 return new ProjectContainerTagProtection(name, <any>undefined, { urn })
             case "gitlab:index/projectCustomAttribute:ProjectCustomAttribute":
@@ -1477,6 +1489,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectCicdCatalog", _mod
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCluster", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectComplianceFrameworks", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectContainerRepositoryProtection", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/projectContainerScanning", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectContainerTagProtection", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectCustomAttribute", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/projectDeployToken", _module)

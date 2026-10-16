@@ -184,6 +184,84 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_environments/)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        this = gitlab.ProjectEnvironment("this",
+            project="123",
+            name="example",
+            external_url="www.example.com")
+        # Example with access-level based approval rules
+        example_with_access_level = gitlab.ProjectProtectedEnvironment("example_with_access_level",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels_attributes=[{
+                "access_level": "developer",
+            }],
+            approval_rules=[{
+                "access_level": "developer",
+                "required_approvals": 2,
+            }])
+        # Example with multiple approval rules, using access level, user, and group
+        example_with_multiple = gitlab.ProjectProtectedEnvironment("example_with_multiple",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels_attributes=[{
+                "access_level": "developer",
+            }],
+            approval_rules=[
+                {
+                    "user_id": 789,
+                },
+                {
+                    "access_level": "developer",
+                    "required_approvals": 2,
+                },
+                {
+                    "group_id": 456,
+                },
+            ])
+        # Example with deployment access level attribute
+        example_access_levels_attribute = gitlab.ProjectProtectedEnvironment("example_access_levels_attribute",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels_attributes=[{
+                "access_level": "developer",
+            }])
+        # Example with group-based deployment level attribute
+        example_access_levels_attribute_with_group = gitlab.ProjectProtectedEnvironment("example_access_levels_attribute_with_group",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels_attributes=[{
+                "group_id": 456,
+            }])
+        # Example with user-based deployment level attribute
+        example_access_levels_attribute_with_user = gitlab.ProjectProtectedEnvironment("example_access_levels_attribute_with_user",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels_attributes=[{
+                "user_id": 789,
+            }])
+        # Example with multiple deployment access levels attribute
+        example_access_levels_attribute_with_multiple = gitlab.ProjectProtectedEnvironment("example_access_levels_attribute_with_multiple",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels_attributes=[
+                {
+                    "access_level": "developer",
+                },
+                {
+                    "group_id": 456,
+                },
+                {
+                    "user_id": 789,
+                },
+            ])
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `ProjectProtectedEnvironment`. For example:
@@ -220,6 +298,84 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
            In case this happens you will get perpetual state diffs.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/protected_environments/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        this = gitlab.ProjectEnvironment("this",
+            project="123",
+            name="example",
+            external_url="www.example.com")
+        # Example with access-level based approval rules
+        example_with_access_level = gitlab.ProjectProtectedEnvironment("example_with_access_level",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels_attributes=[{
+                "access_level": "developer",
+            }],
+            approval_rules=[{
+                "access_level": "developer",
+                "required_approvals": 2,
+            }])
+        # Example with multiple approval rules, using access level, user, and group
+        example_with_multiple = gitlab.ProjectProtectedEnvironment("example_with_multiple",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels_attributes=[{
+                "access_level": "developer",
+            }],
+            approval_rules=[
+                {
+                    "user_id": 789,
+                },
+                {
+                    "access_level": "developer",
+                    "required_approvals": 2,
+                },
+                {
+                    "group_id": 456,
+                },
+            ])
+        # Example with deployment access level attribute
+        example_access_levels_attribute = gitlab.ProjectProtectedEnvironment("example_access_levels_attribute",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels_attributes=[{
+                "access_level": "developer",
+            }])
+        # Example with group-based deployment level attribute
+        example_access_levels_attribute_with_group = gitlab.ProjectProtectedEnvironment("example_access_levels_attribute_with_group",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels_attributes=[{
+                "group_id": 456,
+            }])
+        # Example with user-based deployment level attribute
+        example_access_levels_attribute_with_user = gitlab.ProjectProtectedEnvironment("example_access_levels_attribute_with_user",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels_attributes=[{
+                "user_id": 789,
+            }])
+        # Example with multiple deployment access levels attribute
+        example_access_levels_attribute_with_multiple = gitlab.ProjectProtectedEnvironment("example_access_levels_attribute_with_multiple",
+            project=this.project,
+            environment=this.name,
+            deploy_access_levels_attributes=[
+                {
+                    "access_level": "developer",
+                },
+                {
+                    "group_id": 456,
+                },
+                {
+                    "user_id": 789,
+                },
+            ])
+        ```
 
         ## Import
 

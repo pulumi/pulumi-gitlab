@@ -24,6 +24,47 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/appearance/)
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Example where the resource will not update the appearance on destroy
+//			_, err := gitlab.NewApplicationAppearance(ctx, "this", &gitlab.ApplicationAppearanceArgs{
+//				Title:            pulumi.String("My GitLab"),
+//				Description:      pulumi.String("My GitLab instance"),
+//				HeaderMessage:    pulumi.String("This is a header message"),
+//				MessageFontColor: pulumi.String("#FFFF00"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example where the resource will revert the appearance to its original values on destroy
+//			_, err = gitlab.NewApplicationAppearance(ctx, "revert_on_destroy", &gitlab.ApplicationAppearanceArgs{
+//				Title:                 pulumi.String("My GitLab"),
+//				KeepSettingsOnDestroy: pulumi.Bool(false),
+//				Description:           pulumi.String("My GitLab instance"),
+//				HeaderMessage:         pulumi.String("This is a header message"),
+//				MessageFontColor:      pulumi.String("#FFFF00"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Starting in Terraform v1.5.0, you can use an import block to import `ApplicationAppearance`. For example:

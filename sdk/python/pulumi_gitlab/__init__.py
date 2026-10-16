@@ -25,6 +25,7 @@ from .get_branch import *
 from .get_cluster_agent import *
 from .get_cluster_agents import *
 from .get_compliance_framework import *
+from .get_compliance_framework_templates import *
 from .get_current_user import *
 from .get_group import *
 from .get_group_access_tokens import *
@@ -149,6 +150,7 @@ from .project_cicd_catalog import *
 from .project_cluster import *
 from .project_compliance_frameworks import *
 from .project_container_repository_protection import *
+from .project_container_scanning import *
 from .project_container_tag_protection import *
 from .project_custom_attribute import *
 from .project_deploy_token import *
@@ -743,6 +745,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection": "ProjectContainerRepositoryProtection"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/projectContainerScanning",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/projectContainerScanning:ProjectContainerScanning": "ProjectContainerScanning"
   }
  },
  {

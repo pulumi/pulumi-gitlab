@@ -216,6 +216,24 @@ class ProjectPagesSettings(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages/)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.Project("example", name="project")
+        # Example where the resource will not reset the settings on destroy
+        this = gitlab.ProjectPagesSettings("this",
+            project=example.id,
+            is_unique_domain_enabled=True)
+        # Example where the resource will reset the settings to their original values on destroy
+        reset_on_destroy = gitlab.ProjectPagesSettings("reset_on_destroy",
+            project=example.id,
+            is_unique_domain_enabled=True,
+            keep_settings_on_destroy=False)
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `ProjectPagesSettings`. For example:
@@ -251,6 +269,24 @@ class ProjectPagesSettings(pulumi.CustomResource):
         The original values are saved in state when you create the resource. You can change the `keep_settings_on_destroy` value before destroying the resource to control this behavior.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/pages/)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gitlab as gitlab
+
+        example = gitlab.Project("example", name="project")
+        # Example where the resource will not reset the settings on destroy
+        this = gitlab.ProjectPagesSettings("this",
+            project=example.id,
+            is_unique_domain_enabled=True)
+        # Example where the resource will reset the settings to their original values on destroy
+        reset_on_destroy = gitlab.ProjectPagesSettings("reset_on_destroy",
+            project=example.id,
+            is_unique_domain_enabled=True,
+            keep_settings_on_destroy=False)
+        ```
 
         ## Import
 
