@@ -88,17 +88,26 @@ namespace Pulumi.GitLab
     ///             "user2",
     ///             "user3",
     ///         },
-    ///     }).Apply(invoke =&gt; );
+    ///     }).Apply(invoke =&gt; .ToDictionary(item =&gt; {
+    ///         var __key = item.Key;
+    ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+    ///     }, item =&gt; {
+    ///         var __value = item.Value;
+    ///         return GitLab.GetUser.Invoke(new()
+    ///         {
+    ///             Username = __value,
+    ///         });
+    ///     }));
     /// 
     ///     var example_three = new GitLab.ProjectApprovalRule("example-three", new()
     ///     {
     ///         Project = "5",
     ///         Name = "Example Rule 3",
     ///         ApprovalsRequired = 3,
-    ///         UserIds = users.Apply(users =&gt; (users).Values.Select(user =&gt; 
+    ///         UserIds = (users).Values.Select(user =&gt; 
     ///         {
     ///             return user.Id;
-    ///         }).ToList()),
+    ///         }).ToList(),
     ///     });
     /// 
     ///     // Example using `approval_rule` using `any_approver` as rule type

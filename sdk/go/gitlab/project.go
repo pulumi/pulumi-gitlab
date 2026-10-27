@@ -91,7 +91,7 @@ import (
 //			_, err = gitlab.NewProject(ctx, "fork", &gitlab.ProjectArgs{
 //				Name:                pulumi.String("my-fork"),
 //				Description:         pulumi.String("This is a fork"),
-//				ForkedFromProjectId: example.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				ForkedFromProjectId: example.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -100,7 +100,7 @@ import (
 //			_, err = gitlab.NewProject(ctx, "fork_with_mirror", &gitlab.ProjectArgs{
 //				Name:                pulumi.String("my-fork"),
 //				Description:         pulumi.String("This is a fork"),
-//				ForkedFromProjectId: example.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				ForkedFromProjectId: example.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				ImportUrl:           example.HttpUrlToRepo,
 //				Mirror:              true,
 //			})

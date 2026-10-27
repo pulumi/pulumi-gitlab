@@ -45,7 +45,7 @@ import (
 //			}
 //			// The service account against the project
 //			exampleSa, err := gitlab.NewProjectServiceAccount(ctx, "example_sa", &gitlab.ProjectServiceAccountArgs{
-//				Project:  example.ID().ToIDOutput().ToStringOutput(),
+//				Project:  example.ID(),
 //				Name:     pulumi.String("example-name"),
 //				Username: pulumi.String("example-username"),
 //			})
@@ -54,7 +54,7 @@ import (
 //			}
 //			// To assign the service account to a project as a member
 //			_, err = gitlab.NewProjectMembership(ctx, "example_membership", &gitlab.ProjectMembershipArgs{
-//				Project:     example.ID().ToIDOutput().ToStringOutput(),
+//				Project:     example.ID(),
 //				UserId:      exampleSa.ServiceAccountId,
 //				AccessLevel: pulumi.String("developer"),
 //				ExpiresAt:   pulumi.String("2020-03-14"),
@@ -64,7 +64,7 @@ import (
 //			}
 //			// The service account access token with no expiry
 //			_, err = gitlab.NewProjectServiceAccountAccessToken(ctx, "example_sa_token_no_expiry", &gitlab.ProjectServiceAccountAccessTokenArgs{
-//				Project: example.ID().ToIDOutput().ToStringOutput(),
+//				Project: example.ID(),
 //				UserId:  exampleSa.ServiceAccountId,
 //				Name:    pulumi.String("Example service account access token"),
 //				Scopes: pulumi.StringArray{
@@ -76,7 +76,7 @@ import (
 //			}
 //			// The service account access token with expires at
 //			_, err = gitlab.NewProjectServiceAccountAccessToken(ctx, "example_sa_token_expires_at", &gitlab.ProjectServiceAccountAccessTokenArgs{
-//				Project:   example.ID().ToIDOutput().ToStringOutput(),
+//				Project:   example.ID(),
 //				UserId:    exampleSa.ServiceAccountId,
 //				Name:      pulumi.String("Example service account access token"),
 //				ExpiresAt: pulumi.String("2020-03-14"),
@@ -89,7 +89,7 @@ import (
 //			}
 //			// The service account access token with rotation configuration
 //			_, err = gitlab.NewProjectServiceAccountAccessToken(ctx, "example_sa_token_rotation_configuration", &gitlab.ProjectServiceAccountAccessTokenArgs{
-//				Project: example.ID().ToIDOutput().ToStringOutput(),
+//				Project: example.ID(),
 //				UserId:  exampleSa.ServiceAccountId,
 //				Name:    pulumi.String("Example service account access token"),
 //				RotationConfiguration: &gitlab.ProjectServiceAccountAccessTokenRotationConfigurationArgs{

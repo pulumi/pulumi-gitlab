@@ -83,6 +83,14 @@ def get_group_saml_links(group: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_group(id="foo/bar/baz")
+    example_get_group_saml_links = gitlab.get_group_saml_links(group=example.id)
+    ```
+
 
     :param _builtins.str group: The name or id of the group.
     """
@@ -103,6 +111,14 @@ def get_group_saml_links_output(group: pulumi.Input[Optional[_builtins.str]] = N
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_group(id="foo/bar/baz")
+    example_get_group_saml_links = gitlab.get_group_saml_links(group=example.id)
+    ```
 
 
     :param _builtins.str group: The name or id of the group.

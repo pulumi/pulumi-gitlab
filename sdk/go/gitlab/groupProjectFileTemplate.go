@@ -50,14 +50,14 @@ import (
 //				Name:            pulumi.String("template project"),
 //				Description:     pulumi.String("contains file templates"),
 //				VisibilityLevel: pulumi.String("public"),
-//				NamespaceId:     foo.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				NamespaceId:     foo.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = gitlab.NewGroupProjectFileTemplate(ctx, "template_link", &gitlab.GroupProjectFileTemplateArgs{
-//				GroupId:               foo.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
-//				FileTemplateProjectId: bar.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				GroupId:               foo.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
+//				FileTemplateProjectId: bar.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err

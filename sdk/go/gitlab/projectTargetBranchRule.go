@@ -40,7 +40,7 @@ import (
 //			}
 //			// Basic example
 //			_, err = gitlab.NewProjectTargetBranchRule(ctx, "rule", &gitlab.ProjectTargetBranchRuleArgs{
-//				Project:             example.ID().ToIDOutput().ToStringOutput(),
+//				Project:             example.ID(),
 //				SourceBranchPattern: pulumi.String("develop"),
 //				TargetBranchName:    pulumi.String("release"),
 //			})

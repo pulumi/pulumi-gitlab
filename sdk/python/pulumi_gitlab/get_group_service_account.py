@@ -119,6 +119,16 @@ def get_group_service_account(group: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_group(id="foo/bar/baz")
+    # Basic example
+    example_get_group_service_account = gitlab.get_group_service_account(service_account_id="1",
+        group=example.id)
+    ```
+
 
     :param _builtins.str group: The ID or URL-encoded path of the target group. Must be a top-level group.
     :param _builtins.str service_account_id: The service account id.
@@ -145,6 +155,16 @@ def get_group_service_account_output(group: pulumi.Input[Optional[_builtins.str]
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_group(id="foo/bar/baz")
+    # Basic example
+    example_get_group_service_account = gitlab.get_group_service_account(service_account_id="1",
+        group=example.id)
+    ```
 
 
     :param _builtins.str group: The ID or URL-encoded path of the target group. Must be a top-level group.

@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewRepositoryFile(ctx, "policy-yml", &gitlab.RepositoryFileArgs{
-//				Project:  my_policy_project.ID().ToIDOutput().ToStringOutput(),
+//				Project:  my_policy_project.ID(),
 //				FilePath: pulumi.String(".gitlab/security-policies/my-policy.yml"),
 //				Branch:   pulumi.String("master"),
 //				Encoding: pulumi.String("text"),
@@ -91,7 +91,7 @@ import (
 //			// Multiple policies can be attached to a single project by repeating this resource or using a `for_each`
 //			_, err = gitlab.NewProjectSecurityPolicyAttachment(ctx, "my-policy", &gitlab.ProjectSecurityPolicyAttachmentArgs{
 //				Project:       pulumi.String("1234"),
-//				PolicyProject: my_policy_project.ID().ToIDOutput().ToStringOutput(),
+//				PolicyProject: my_policy_project.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.GetProjects(ctx, &gitlab.GetProjectsArgs{
-//				GroupId:          pulumi.IntRef(pulumi.Int(mygroup.Id)),
+//				GroupId:          pulumi.IntRef(mygroup.Id),
 //				OrderBy:          pulumi.StringRef("name"),
 //				IncludeSubgroups: pulumi.BoolRef(true),
 //				WithShared:       pulumi.BoolRef(false),

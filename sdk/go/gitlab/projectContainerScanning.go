@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectContainerScanning(ctx, "example", &gitlab.ProjectContainerScanningArgs{
-//				Project:                             example.ID().ToIDOutput().ToStringOutput(),
+//				Project:                             example.ID(),
 //				ContainerScanningForRegistryEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {

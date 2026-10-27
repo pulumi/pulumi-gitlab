@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIntegrationHarbor(ctx, "harbor", &gitlab.ProjectIntegrationHarborArgs{
-//				Project:     awesomeProject.ID().ToIDOutput().ToStringOutput(),
+//				Project:     awesomeProject.ID(),
 //				Url:         pulumi.String("http://harbor.example.com"),
 //				ProjectName: pulumi.String("my_project_name"),
 //			})

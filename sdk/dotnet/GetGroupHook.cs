@@ -17,6 +17,28 @@ namespace Pulumi.GitLab
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetGroup.Invoke(new()
+        ///     {
+        ///         Id = "foo/bar/baz",
+        ///     });
+        /// 
+        ///     var exampleGetGroupHook = GitLab.GetGroupHook.Invoke(new()
+        ///     {
+        ///         Group = example.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         HookId = 1,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetGroupHookResult> InvokeAsync(GetGroupHookArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupHookResult>("gitlab:index/getGroupHook:getGroupHook", args ?? new GetGroupHookArgs(), options.WithDefaults());
@@ -27,6 +49,28 @@ namespace Pulumi.GitLab
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetGroup.Invoke(new()
+        ///     {
+        ///         Id = "foo/bar/baz",
+        ///     });
+        /// 
+        ///     var exampleGetGroupHook = GitLab.GetGroupHook.Invoke(new()
+        ///     {
+        ///         Group = example.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         HookId = 1,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGroupHookResult> Invoke(GetGroupHookInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupHookResult>("gitlab:index/getGroupHook:getGroupHook", args ?? new GetGroupHookInvokeArgs(), options.WithDefaults());
@@ -37,6 +81,28 @@ namespace Pulumi.GitLab
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetGroup.Invoke(new()
+        ///     {
+        ///         Id = "foo/bar/baz",
+        ///     });
+        /// 
+        ///     var exampleGetGroupHook = GitLab.GetGroupHook.Invoke(new()
+        ///     {
+        ///         Group = example.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         HookId = 1,
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGroupHookResult> Invoke(GetGroupHookInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupHookResult>("gitlab:index/getGroupHook:getGroupHook", args ?? new GetGroupHookInvokeArgs(), options.WithDefaults());

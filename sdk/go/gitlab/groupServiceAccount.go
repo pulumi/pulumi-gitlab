@@ -43,7 +43,7 @@ import (
 //			}
 //			// The service account against the top-level group
 //			exampleSa, err := gitlab.NewGroupServiceAccount(ctx, "example_sa", &gitlab.GroupServiceAccountArgs{
-//				Group:    example.ID().ToIDOutput().ToStringOutput(),
+//				Group:    example.ID(),
 //				Name:     pulumi.String("example-name"),
 //				Username: pulumi.String("example-username"),
 //			})
@@ -61,7 +61,7 @@ import (
 //			}
 //			// To assign the service account to a group
 //			_, err = gitlab.NewGroupMembership(ctx, "example_membership", &gitlab.GroupMembershipArgs{
-//				GroupId:     exampleSubgroup.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				GroupId:     exampleSubgroup.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				UserId:      exampleSa.ServiceAccountId,
 //				AccessLevel: pulumi.String("developer"),
 //				ExpiresAt:   pulumi.String("2020-03-14"),

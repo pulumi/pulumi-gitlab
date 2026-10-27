@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIntegrationMicrosoftTeams(ctx, "teams", &gitlab.ProjectIntegrationMicrosoftTeamsArgs{
-//				Project:    awesomeProject.ID().ToIDOutput().ToStringOutput(),
+//				Project:    awesomeProject.ID(),
 //				Webhook:    pulumi.String("https://testurl.com/?token=XYZ"),
 //				PushEvents: pulumi.Bool(true),
 //			})

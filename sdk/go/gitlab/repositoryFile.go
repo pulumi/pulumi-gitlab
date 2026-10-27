@@ -51,7 +51,7 @@ import (
 //			}
 //			thisProject, err := gitlab.NewProject(ctx, "this", &gitlab.ProjectArgs{
 //				Name:                 pulumi.String("example"),
-//				NamespaceId:          this.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				NamespaceId:          this.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				InitializeWithReadme: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewRepositoryFile(ctx, "this", &gitlab.RepositoryFileArgs{
-//				Project:       thisProject.ID().ToIDOutput().ToStringOutput(),
+//				Project:       thisProject.ID(),
 //				FilePath:      pulumi.String("meow.txt"),
 //				Branch:        pulumi.String("main"),
 //				Encoding:      pulumi.String("base64"),
@@ -77,7 +77,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewRepositoryFile(ctx, "readme", &gitlab.RepositoryFileArgs{
-//				Project:       thisProject.ID().ToIDOutput().ToStringOutput(),
+//				Project:       thisProject.ID(),
 //				FilePath:      pulumi.String("readme.txt"),
 //				Branch:        pulumi.String("main"),
 //				Encoding:      pulumi.String("text"),
@@ -90,7 +90,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewRepositoryFile(ctx, "readme_for_dogs", &gitlab.RepositoryFileArgs{
-//				Project:           thisProject.ID().ToIDOutput().ToStringOutput(),
+//				Project:           thisProject.ID(),
 //				FilePath:          pulumi.String("readme.txt"),
 //				Branch:            pulumi.String("main"),
 //				Encoding:          pulumi.String("text"),

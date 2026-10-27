@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewGroupIntegrationMattermost(ctx, "mattermost", &gitlab.GroupIntegrationMattermostArgs{
-//				Group:    example.ID().ToIDOutput().ToStringOutput(),
+//				Group:    example.ID(),
 //				Webhook:  pulumi.String("https://mattermost.example.com/hooks/..."),
 //				Username: pulumi.String("my-username"),
 //			})

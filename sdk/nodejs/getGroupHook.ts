@@ -10,6 +10,19 @@ import * as utilities from "./utilities";
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getGroup({
+ *     id: "foo/bar/baz",
+ * });
+ * const exampleGetGroupHook = example.then(example => gitlab.getGroupHook({
+ *     group: example.id,
+ *     hookId: 1,
+ * }));
+ * ```
  */
 export function getGroupHook(args: GetGroupHookArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupHookResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -176,6 +189,19 @@ export interface GetGroupHookResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getGroup({
+ *     id: "foo/bar/baz",
+ * });
+ * const exampleGetGroupHook = example.then(example => gitlab.getGroupHook({
+ *     group: example.id,
+ *     hookId: 1,
+ * }));
+ * ```
  */
 export function getGroupHookOutput(args: GetGroupHookOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupHookResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

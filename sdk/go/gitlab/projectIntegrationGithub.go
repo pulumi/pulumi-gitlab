@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIntegrationGithub(ctx, "github", &gitlab.ProjectIntegrationGithubArgs{
-//				Project:       awesomeProject.ID().ToIDOutput().ToStringOutput(),
+//				Project:       awesomeProject.ID(),
 //				Token:         pulumi.String("REDACTED"),
 //				RepositoryUrl: pulumi.String("https://github.com/gitlabhq/terraform-provider-gitlab"),
 //			})

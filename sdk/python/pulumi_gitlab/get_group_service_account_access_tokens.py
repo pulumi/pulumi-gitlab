@@ -100,6 +100,18 @@ def get_group_service_account_access_tokens(group: Optional[_builtins.str] = Non
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_group(id="foo/bar/baz")
+    # List all access tokens for a group service account
+    example_get_group_service_account_access_tokens = gitlab.get_group_service_account_access_tokens(group=example.id,
+        service_account_id=123)
+    pulumi.export("tokenNames", [token.name for token in example_get_group_service_account_access_tokens.access_tokens])
+    pulumi.export("activeTokens", [token for token in example_get_group_service_account_access_tokens.access_tokens if token.active])
+    ```
+
 
     :param _builtins.str group: The ID or URL-encoded path of the group containing the service account. Must be a top level group.
     :param _builtins.int service_account_id: The ID of the service account user.
@@ -128,6 +140,18 @@ def get_group_service_account_access_tokens_output(group: pulumi.Input[Optional[
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_group(id="foo/bar/baz")
+    # List all access tokens for a group service account
+    example_get_group_service_account_access_tokens = gitlab.get_group_service_account_access_tokens(group=example.id,
+        service_account_id=123)
+    pulumi.export("tokenNames", [token.name for token in example_get_group_service_account_access_tokens.access_tokens])
+    pulumi.export("activeTokens", [token for token in example_get_group_service_account_access_tokens.access_tokens if token.active])
+    ```
 
 
     :param _builtins.str group: The ID or URL-encoded path of the group containing the service account. Must be a top level group.

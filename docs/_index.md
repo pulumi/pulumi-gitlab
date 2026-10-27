@@ -251,7 +251,7 @@ func main() {
 		}
 		// Add a hook to the project
 		_, err = gitlab.NewProjectHook(ctx, "sample_project_hook", &gitlab.ProjectHookArgs{
-			Project: sampleProject.ID().ToIDOutput().ToStringOutput(),
+			Project: sampleProject.ID(),
 			Url:     pulumi.String("https://example.com/project_hook"),
 		})
 		if err != nil {
@@ -259,7 +259,7 @@ func main() {
 		}
 		// Add a variable to the project
 		_, err = gitlab.NewProjectVariable(ctx, "sample_project_variable", &gitlab.ProjectVariableArgs{
-			Project: sampleProject.ID().ToIDOutput().ToStringOutput(),
+			Project: sampleProject.ID(),
 			Key:     pulumi.String("project_variable_key"),
 			Value:   pulumi.String("project_variable_value"),
 		})
@@ -268,7 +268,7 @@ func main() {
 		}
 		// Add a deploy key to the project
 		_, err = gitlab.NewDeployKey(ctx, "sample_deploy_key", &gitlab.DeployKeyArgs{
-			Project: sampleProject.ID().ToIDOutput().ToStringOutput(),
+			Project: sampleProject.ID(),
 			Title:   pulumi.String("terraform example"),
 			Key:     pulumi.String("ssh-ed25519 AAAA..."),
 		})
@@ -287,7 +287,7 @@ func main() {
 		// Add a project to the group - example/example
 		_, err = gitlab.NewProject(ctx, "sample_group_project", &gitlab.ProjectArgs{
 			Name:        pulumi.String("example"),
-			NamespaceId: sampleGroup.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+			NamespaceId: sampleGroup.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 		})
 		if err != nil {
 			return err

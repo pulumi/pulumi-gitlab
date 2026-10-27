@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewIntegrationSlack(ctx, "slack", &gitlab.IntegrationSlackArgs{
-//				Project:     awesomeProject.ID().ToIDOutput().ToStringOutput(),
+//				Project:     awesomeProject.ID(),
 //				Webhook:     pulumi.String("https://webhook.com"),
 //				Username:    pulumi.String("myuser"),
 //				PushEvents:  pulumi.Bool(true),

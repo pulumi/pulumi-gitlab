@@ -51,7 +51,7 @@ import (
 //			}
 //			// The service account against the top-level group
 //			exampleSa, err := gitlab.NewGroupServiceAccount(ctx, "example_sa", &gitlab.GroupServiceAccountArgs{
-//				Group:    example.ID().ToIDOutput().ToStringOutput(),
+//				Group:    example.ID(),
 //				Name:     pulumi.String("example-name"),
 //				Username: pulumi.String("example-username"),
 //			})
@@ -60,7 +60,7 @@ import (
 //			}
 //			// To assign the service account to a group
 //			_, err = gitlab.NewGroupMembership(ctx, "example_membership", &gitlab.GroupMembershipArgs{
-//				GroupId:     example.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				GroupId:     example.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				UserId:      exampleSa.ServiceAccountId,
 //				AccessLevel: pulumi.String("developer"),
 //				ExpiresAt:   pulumi.String("2020-03-14"),
@@ -70,7 +70,7 @@ import (
 //			}
 //			// The service account access token with no expiry
 //			_, err = gitlab.NewGroupServiceAccountAccessToken(ctx, "example_sa_token_no_expiry", &gitlab.GroupServiceAccountAccessTokenArgs{
-//				Group:       example.ID().ToIDOutput().ToStringOutput(),
+//				Group:       example.ID(),
 //				UserId:      exampleSa.ServiceAccountId,
 //				Name:        pulumi.String("Example service account access token"),
 //				Description: pulumi.String("Example service account access token description"),
@@ -83,7 +83,7 @@ import (
 //			}
 //			// The service account access token with expires at
 //			_, err = gitlab.NewGroupServiceAccountAccessToken(ctx, "example_sa_token_expires_at", &gitlab.GroupServiceAccountAccessTokenArgs{
-//				Group:     example.ID().ToIDOutput().ToStringOutput(),
+//				Group:     example.ID(),
 //				UserId:    exampleSa.ServiceAccountId,
 //				Name:      pulumi.String("Example service account access token"),
 //				ExpiresAt: pulumi.String("2020-03-14"),
@@ -96,7 +96,7 @@ import (
 //			}
 //			// The service account access token with rotation configuration
 //			_, err = gitlab.NewGroupServiceAccountAccessToken(ctx, "example_sa_token_rotation_configuration", &gitlab.GroupServiceAccountAccessTokenArgs{
-//				Group:  example.ID().ToIDOutput().ToStringOutput(),
+//				Group:  example.ID(),
 //				UserId: exampleSa.ServiceAccountId,
 //				Name:   pulumi.String("Example service account access token"),
 //				RotationConfiguration: &gitlab.GroupServiceAccountAccessTokenRotationConfigurationArgs{

@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIssue(ctx, "welcome_issue", &gitlab.ProjectIssueArgs{
-//				Project: foo.ID().ToIDOutput().ToStringOutput(),
+//				Project: foo.ID(),
 //				Title:   pulumi.String("Welcome!"),
 //				Description: foo.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("  Welcome to the %v project!\n\n", name), nil

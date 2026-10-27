@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewGroupIntegrationJira(ctx, "jira", &gitlab.GroupIntegrationJiraArgs{
-//				Group:    example.ID().ToIDOutput().ToStringOutput(),
+//				Group:    example.ID(),
 //				Url:      pulumi.String("https://jira.example.com"),
 //				Username: pulumi.String("user"),
 //				Password: pulumi.String("mypass"),

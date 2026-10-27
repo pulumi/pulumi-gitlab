@@ -42,7 +42,7 @@ import (
 //			}
 //			// Minimal example: a feature flag with no rollout strategies.
 //			_, err = gitlab.NewProjectFeatureFlag(ctx, "minimal", &gitlab.ProjectFeatureFlagArgs{
-//				Project: example.ID().ToIDOutput().ToStringOutput(),
+//				Project: example.ID(),
 //				Name:    pulumi.String("my_feature"),
 //			})
 //			if err != nil {
@@ -50,7 +50,7 @@ import (
 //			}
 //			// Full example: a feature flag with a gradual rollout strategy.
 //			_, err = gitlab.NewProjectFeatureFlag(ctx, "example", &gitlab.ProjectFeatureFlagArgs{
-//				Project:     example.ID().ToIDOutput().ToStringOutput(),
+//				Project:     example.ID(),
 //				Name:        pulumi.String("gradual_rollout_feature"),
 //				Description: pulumi.String("Gradual rollout of the new checkout flow"),
 //				Active:      pulumi.Bool(true),
@@ -73,7 +73,7 @@ import (
 //			}
 //			// Example targeting a fixed set of users via a gitlab_project_feature_flag_user_list.
 //			betaTesters, err := gitlab.NewProjectFeatureFlagUserList(ctx, "beta_testers", &gitlab.ProjectFeatureFlagUserListArgs{
-//				Project:  example.ID().ToIDOutput().ToStringOutput(),
+//				Project:  example.ID(),
 //				Name:     pulumi.String("beta_testers"),
 //				UserXids: pulumi.String("user1,user2,user3"),
 //			})
@@ -81,7 +81,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectFeatureFlag(ctx, "user_list_example", &gitlab.ProjectFeatureFlagArgs{
-//				Project: example.ID().ToIDOutput().ToStringOutput(),
+//				Project: example.ID(),
 //				Name:    pulumi.String("user_list_feature"),
 //				Strategies: gitlab.ProjectFeatureFlagStrategyArray{
 //					&gitlab.ProjectFeatureFlagStrategyArgs{

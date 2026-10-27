@@ -43,7 +43,7 @@ import (
 //			}
 //			// Example where the resource will not reset the settings on destroy
 //			_, err = gitlab.NewProjectPagesSettings(ctx, "this", &gitlab.ProjectPagesSettingsArgs{
-//				Project:               example.ID().ToIDOutput().ToStringOutput(),
+//				Project:               example.ID(),
 //				IsUniqueDomainEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -51,7 +51,7 @@ import (
 //			}
 //			// Example where the resource will reset the settings to their original values on destroy
 //			_, err = gitlab.NewProjectPagesSettings(ctx, "reset_on_destroy", &gitlab.ProjectPagesSettingsArgs{
-//				Project:               example.ID().ToIDOutput().ToStringOutput(),
+//				Project:               example.ID(),
 //				IsUniqueDomainEnabled: pulumi.Bool(true),
 //				KeepSettingsOnDestroy: pulumi.Bool(false),
 //			})

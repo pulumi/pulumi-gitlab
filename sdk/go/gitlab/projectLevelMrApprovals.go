@@ -40,7 +40,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectLevelMrApprovals(ctx, "foo", &gitlab.ProjectLevelMrApprovalsArgs{
-//				Project:              foo.ID().ToIDOutput().ToStringOutput(),
+//				Project:              foo.ID(),
 //				ResetApprovalsOnPush: pulumi.Bool(true),
 //				DisableOverridingApproversPerMergeRequest: pulumi.Bool(false),
 //				MergeRequestsAuthorApproval:               pulumi.Bool(false),

@@ -149,6 +149,38 @@ class ProjectJobTokenScope(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        from typing import Any
+        import pulumi_gitlab as gitlab
+        import pulumi_std as std
+
+        allowed_single_project = gitlab.ProjectJobTokenScope("allowed_single_project",
+            project="gitlab-org/gitlab",
+            target_project_id=123)
+        allowed_project_ids = [
+            123,
+            456,
+            789,
+        ]
+        allowed_group_ids = [
+            123,
+            456,
+            789,
+        ]
+        deployment_project = gitlab.get_project(name="example-project")
+        allowed_project: list[gitlab.ProjectJobTokenScope] = []
+        for allowed_project_range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=allowed_project_ids).result)]:
+            allowed_project.append(gitlab.ProjectJobTokenScope(f"allowed_project-{allowed_project_range['key']}",
+                project=deployment_project.id,
+                target_project_id=allowed_project_range["key"]))
+        allowed_group: list[gitlab.ProjectJobTokenScope] = []
+        for allowed_group_range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=allowed_group_ids).result)]:
+            allowed_group.append(gitlab.ProjectJobTokenScope(f"allowed_group-{allowed_group_range['key']}",
+                project=deployment_project.id,
+                target_group_id=allowed_group_range["key"]))
+        ```
+
         ## Import
 
         Starting in Terraform v1.5.0, you can use an import block to import `ProjectJobTokenScope`. For example:
@@ -191,6 +223,38 @@ class ProjectJobTokenScope(pulumi.CustomResource):
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_job_token_scopes/)
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        from typing import Any
+        import pulumi_gitlab as gitlab
+        import pulumi_std as std
+
+        allowed_single_project = gitlab.ProjectJobTokenScope("allowed_single_project",
+            project="gitlab-org/gitlab",
+            target_project_id=123)
+        allowed_project_ids = [
+            123,
+            456,
+            789,
+        ]
+        allowed_group_ids = [
+            123,
+            456,
+            789,
+        ]
+        deployment_project = gitlab.get_project(name="example-project")
+        allowed_project: list[gitlab.ProjectJobTokenScope] = []
+        for allowed_project_range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=allowed_project_ids).result)]:
+            allowed_project.append(gitlab.ProjectJobTokenScope(f"allowed_project-{allowed_project_range['key']}",
+                project=deployment_project.id,
+                target_project_id=allowed_project_range["key"]))
+        allowed_group: list[gitlab.ProjectJobTokenScope] = []
+        for allowed_group_range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=allowed_group_ids).result)]:
+            allowed_group.append(gitlab.ProjectJobTokenScope(f"allowed_group-{allowed_group_range['key']}",
+                project=deployment_project.id,
+                target_group_id=allowed_group_range["key"]))
+        ```
 
         ## Import
 

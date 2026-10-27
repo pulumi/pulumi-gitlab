@@ -21,6 +21,76 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gitlab.NewProjectJobTokenScope(ctx, "allowed_single_project", &gitlab.ProjectJobTokenScopeArgs{
+//				Project:         pulumi.String("gitlab-org/gitlab"),
+//				TargetProjectId: pulumi.Int(123),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			allowedProjectIds := []int{
+//				123,
+//				456,
+//				789,
+//			}
+//			allowedGroupIds := []int{
+//				123,
+//				456,
+//				789,
+//			}
+//			deploymentProject, err := gitlab.GetProject(ctx, &gitlab.LookupProjectArgs{
+//				Name: "example-project",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var allowedProject []*gitlab.ProjectJobTokenScope
+//			for key0, _ := range []interface{}(std.Toset(ctx, &std.TosetArgs{
+//				Input: allowedProjectIds,
+//			}, nil).Result) {
+//				__res, err := gitlab.NewProjectJobTokenScope(ctx, fmt.Sprintf("allowed_project-%v", key0), &gitlab.ProjectJobTokenScopeArgs{
+//					Project:         pulumi.String(deploymentProject.Id),
+//					TargetProjectId: pulumi.Int(key0),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				allowedProject = append(allowedProject, __res)
+//			}
+//			var allowedGroup []*gitlab.ProjectJobTokenScope
+//			for key0, _ := range []interface{}(std.Toset(ctx, &std.TosetArgs{
+//				Input: allowedGroupIds,
+//			}, nil).Result) {
+//				__res, err := gitlab.NewProjectJobTokenScope(ctx, fmt.Sprintf("allowed_group-%v", key0), &gitlab.ProjectJobTokenScopeArgs{
+//					Project:       pulumi.String(deploymentProject.Id),
+//					TargetGroupId: pulumi.Int(key0),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				allowedGroup = append(allowedGroup, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Starting in Terraform v1.5.0, you can use an import block to import `ProjectJobTokenScope`. For example:

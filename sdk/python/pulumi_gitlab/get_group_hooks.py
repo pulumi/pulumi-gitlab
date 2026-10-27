@@ -83,6 +83,14 @@ def get_group_hooks(group: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_group(id="foo/bar/baz")
+    examples = gitlab.get_group_hooks(group=example.id)
+    ```
+
 
     :param _builtins.str group: The ID or full path of the group.
     """
@@ -103,6 +111,14 @@ def get_group_hooks_output(group: pulumi.Input[Optional[_builtins.str]] = None,
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_group(id="foo/bar/baz")
+    examples = gitlab.get_group_hooks(group=example.id)
+    ```
 
 
     :param _builtins.str group: The ID or full path of the group.

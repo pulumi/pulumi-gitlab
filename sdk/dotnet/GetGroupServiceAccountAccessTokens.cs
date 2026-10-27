@@ -21,6 +21,40 @@ namespace Pulumi.GitLab
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetGroup.Invoke(new()
+        ///     {
+        ///         Id = "foo/bar/baz",
+        ///     });
+        /// 
+        ///     // List all access tokens for a group service account
+        ///     var exampleGetGroupServiceAccountAccessTokens = GitLab.GetGroupServiceAccountAccessTokens.Invoke(new()
+        ///     {
+        ///         Group = example.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         ServiceAccountId = 123,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["tokenNames"] = .Select(token =&gt; 
+        ///         {
+        ///             return token.Name;
+        ///         }).ToList(),
+        ///         ["activeTokens"] = .Where(token =&gt; token.Active).Select(token =&gt; 
+        ///         {
+        ///             return token;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetGroupServiceAccountAccessTokensResult> InvokeAsync(GetGroupServiceAccountAccessTokensArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupServiceAccountAccessTokensResult>("gitlab:index/getGroupServiceAccountAccessTokens:getGroupServiceAccountAccessTokens", args ?? new GetGroupServiceAccountAccessTokensArgs(), options.WithDefaults());
@@ -35,6 +69,40 @@ namespace Pulumi.GitLab
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetGroup.Invoke(new()
+        ///     {
+        ///         Id = "foo/bar/baz",
+        ///     });
+        /// 
+        ///     // List all access tokens for a group service account
+        ///     var exampleGetGroupServiceAccountAccessTokens = GitLab.GetGroupServiceAccountAccessTokens.Invoke(new()
+        ///     {
+        ///         Group = example.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         ServiceAccountId = 123,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["tokenNames"] = .Select(token =&gt; 
+        ///         {
+        ///             return token.Name;
+        ///         }).ToList(),
+        ///         ["activeTokens"] = .Where(token =&gt; token.Active).Select(token =&gt; 
+        ///         {
+        ///             return token;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGroupServiceAccountAccessTokensResult> Invoke(GetGroupServiceAccountAccessTokensInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupServiceAccountAccessTokensResult>("gitlab:index/getGroupServiceAccountAccessTokens:getGroupServiceAccountAccessTokens", args ?? new GetGroupServiceAccountAccessTokensInvokeArgs(), options.WithDefaults());
@@ -49,6 +117,40 @@ namespace Pulumi.GitLab
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetGroup.Invoke(new()
+        ///     {
+        ///         Id = "foo/bar/baz",
+        ///     });
+        /// 
+        ///     // List all access tokens for a group service account
+        ///     var exampleGetGroupServiceAccountAccessTokens = GitLab.GetGroupServiceAccountAccessTokens.Invoke(new()
+        ///     {
+        ///         Group = example.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///         ServiceAccountId = 123,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["tokenNames"] = .Select(token =&gt; 
+        ///         {
+        ///             return token.Name;
+        ///         }).ToList(),
+        ///         ["activeTokens"] = .Where(token =&gt; token.Active).Select(token =&gt; 
+        ///         {
+        ///             return token;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGroupServiceAccountAccessTokensResult> Invoke(GetGroupServiceAccountAccessTokensInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupServiceAccountAccessTokensResult>("gitlab:index/getGroupServiceAccountAccessTokens:getGroupServiceAccountAccessTokens", args ?? new GetGroupServiceAccountAccessTokensInvokeArgs(), options.WithDefaults());
