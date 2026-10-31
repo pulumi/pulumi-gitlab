@@ -12,6 +12,18 @@ import * as utilities from "./utilities";
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getGroup({
+ *     id: "foo/bar/baz",
+ * });
+ * const exampleGetGroupSamlLinks = example.then(example => gitlab.getGroupSamlLinks({
+ *     group: example.id,
+ * }));
+ * ```
  */
 export function getGroupSamlLinks(args: GetGroupSamlLinksArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupSamlLinksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -53,6 +65,18 @@ export interface GetGroupSamlLinksResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getGroup({
+ *     id: "foo/bar/baz",
+ * });
+ * const exampleGetGroupSamlLinks = example.then(example => gitlab.getGroupSamlLinks({
+ *     group: example.id,
+ * }));
+ * ```
  */
 export function getGroupSamlLinksOutput(args: GetGroupSamlLinksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupSamlLinksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

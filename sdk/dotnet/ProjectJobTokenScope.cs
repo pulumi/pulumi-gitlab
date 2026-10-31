@@ -19,6 +19,62 @@ namespace Pulumi.GitLab
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Threading.Tasks;
+    /// using Pulumi;
+    /// using GitLab = Pulumi.GitLab;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(async() =&gt; 
+    /// {
+    ///     var allowedSingleProject = new GitLab.ProjectJobTokenScope("allowed_single_project", new()
+    ///     {
+    ///         Project = "gitlab-org/gitlab",
+    ///         TargetProjectId = 123,
+    ///     });
+    /// 
+    ///     var allowedProjectIds = new[]
+    ///     {
+    ///         123,
+    ///         456,
+    ///         789,
+    ///     };
+    /// 
+    ///     var allowedGroupIds = new[]
+    ///     {
+    ///         123,
+    ///         456,
+    ///         789,
+    ///     };
+    /// 
+    ///     var deploymentProject = await GitLab.GetProject.InvokeAsync(new()
+    ///     {
+    ///         Name = "example-project",
+    ///     });
+    /// 
+    ///     var allowedProject = new List&lt;GitLab.ProjectJobTokenScope&gt;();
+    ///     foreach (var range in )
+    ///     {
+    ///         allowedProject.Add(new GitLab.ProjectJobTokenScope($"allowed_project-{range.Key}", new()
+    ///         {
+    ///             Project = deploymentProject.Id,
+    ///             TargetProjectId = range.Key,
+    ///         }));
+    ///     }
+    ///     var allowedGroup = new List&lt;GitLab.ProjectJobTokenScope&gt;();
+    ///     foreach (var range in )
+    ///     {
+    ///         allowedGroup.Add(new GitLab.ProjectJobTokenScope($"allowed_group-{range.Key}", new()
+    ///         {
+    ///             Project = deploymentProject.Id,
+    ///             TargetGroupId = range.Key,
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectJobTokenScope`. For example:

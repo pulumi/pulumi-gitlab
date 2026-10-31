@@ -25,6 +25,73 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gitlab.ProjectJobTokenScope;
+ * import com.pulumi.gitlab.ProjectJobTokenScopeArgs;
+ * import com.pulumi.gitlab.GitlabFunctions;
+ * import com.pulumi.gitlab.inputs.GetProjectArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var allowedSingleProject = new ProjectJobTokenScope("allowedSingleProject", ProjectJobTokenScopeArgs.builder()
+ *             .project("gitlab-org/gitlab")
+ *             .targetProjectId(123)
+ *             .build());
+ * 
+ *         final var allowedProjectIds =         
+ *             123,
+ *             456,
+ *             789;
+ * 
+ *         final var allowedGroupIds =         
+ *             123,
+ *             456,
+ *             789;
+ * 
+ *         final var deploymentProject = GitlabFunctions.getProject(GetProjectArgs.builder()
+ *             .name("example-project")
+ *             .build());
+ * 
+ *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
+ *             .input(allowedProjectIds)
+ *             .build()).result())) {
+ *             new ProjectJobTokenScope("allowedProject-" + range.key(), ProjectJobTokenScopeArgs.builder()
+ *                 .project(deploymentProject.id())
+ *                 .targetProjectId(range.key())
+ *                 .build());
+ *         }
+ * 
+ *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()
+ *             .input(allowedGroupIds)
+ *             .build()).result())) {
+ *             new ProjectJobTokenScope("allowedGroup-" + range.key(), ProjectJobTokenScopeArgs.builder()
+ *                 .project(deploymentProject.id())
+ *                 .targetGroupId(range.key())
+ *                 .build());
+ *         }
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectJobTokenScope`. For example:

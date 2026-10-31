@@ -443,6 +443,15 @@ def get_group_hook(group: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_group(id="foo/bar/baz")
+    example_get_group_hook = gitlab.get_group_hook(group=example.id,
+        hook_id=1)
+    ```
+
 
     :param _builtins.str group: The ID or full path of the group.
     :param _builtins.int hook_id: The id of the group hook.
@@ -496,6 +505,15 @@ def get_group_hook_output(group: pulumi.Input[Optional[_builtins.str]] = None,
     **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gitlab as gitlab
+
+    example = gitlab.get_group(id="foo/bar/baz")
+    example_get_group_hook = gitlab.get_group_hook(group=example.id,
+        hook_id=1)
+    ```
 
 
     :param _builtins.str group: The ID or full path of the group.

@@ -67,7 +67,7 @@ import * as utilities from "./utilities";
  *     project: "5",
  *     name: "Example Rule 3",
  *     approvalsRequired: 3,
- *     userIds: users.apply(users => Object.values(users).map(user => (user.id))),
+ *     userIds: Object.values(users).map(user => (user.id)),
  * });
  * // Example using `approval_rule` using `any_approver` as rule type
  * const anyApprover = new gitlab.ProjectApprovalRule("any_approver", {

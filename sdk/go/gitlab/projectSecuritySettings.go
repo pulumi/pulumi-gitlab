@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectSecuritySettings(ctx, "example", &gitlab.ProjectSecuritySettingsArgs{
-//				Project:                     example.ID().ToIDOutput().ToStringOutput(),
+//				Project:                     example.ID(),
 //				SecretPushProtectionEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {

@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewGroupLevelMrApprovals(ctx, "foo", &gitlab.GroupLevelMrApprovalsArgs{
-//				Group:                  foo.ID().ToIDOutput().ToStringOutput(),
+//				Group:                  foo.ID(),
 //				AllowAuthorApproval:    pulumi.Bool(true),
 //				AllowCommitterApproval: pulumi.Bool(true),
 //				AllowOverridesToApproverListPerMergeRequest: pulumi.Bool(true),

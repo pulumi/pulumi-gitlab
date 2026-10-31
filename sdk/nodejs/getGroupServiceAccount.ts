@@ -10,6 +10,20 @@ import * as utilities from "./utilities";
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getGroup({
+ *     id: "foo/bar/baz",
+ * });
+ * // Basic example
+ * const exampleGetGroupServiceAccount = example.then(example => gitlab.getGroupServiceAccount({
+ *     serviceAccountId: "1",
+ *     group: example.id,
+ * }));
+ * ```
  */
 export function getGroupServiceAccount(args: GetGroupServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupServiceAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -68,6 +82,20 @@ export interface GetGroupServiceAccountResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getGroup({
+ *     id: "foo/bar/baz",
+ * });
+ * // Basic example
+ * const exampleGetGroupServiceAccount = example.then(example => gitlab.getGroupServiceAccount({
+ *     serviceAccountId: "1",
+ *     group: example.id,
+ * }));
+ * ```
  */
 export function getGroupServiceAccountOutput(args: GetGroupServiceAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupServiceAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

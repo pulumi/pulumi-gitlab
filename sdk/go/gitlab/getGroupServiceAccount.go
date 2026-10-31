@@ -16,6 +16,38 @@ import (
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := gitlab.GetGroup(ctx, &gitlab.LookupGroupArgs{
+//				Id: "foo/bar/baz",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Basic example
+//			_, err = gitlab.GetGroupServiceAccount(ctx, &gitlab.LookupGroupServiceAccountArgs{
+//				ServiceAccountId: "1",
+//				Group:            example.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupGroupServiceAccount(ctx *pulumi.Context, args *LookupGroupServiceAccountArgs, opts ...pulumi.InvokeOption) (*LookupGroupServiceAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupServiceAccountResult

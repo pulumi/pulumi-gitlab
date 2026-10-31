@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectFeatureFlagUserList(ctx, "example", &gitlab.ProjectFeatureFlagUserListArgs{
-//				Project:  example.ID().ToIDOutput().ToStringOutput(),
+//				Project:  example.ID(),
 //				Name:     pulumi.String("beta_testers"),
 //				UserXids: pulumi.String("user1,user2,user3"),
 //			})

@@ -40,7 +40,7 @@ import (
 //			}
 //			// Create a release
 //			_, err = gitlab.NewRelease(ctx, "example", &gitlab.ReleaseArgs{
-//				Project:     example.ID().ToIDOutput().ToStringOutput(),
+//				Project:     example.ID(),
 //				Name:        pulumi.String("test-release"),
 //				TagName:     pulumi.String("v1.0.0"),
 //				Description: pulumi.String("Test release description"),

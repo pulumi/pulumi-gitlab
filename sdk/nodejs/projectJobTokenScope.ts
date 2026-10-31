@@ -14,6 +14,50 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ * import * as std from "@pulumi/std";
+ *
+ * export = async () => {
+ *     const allowedSingleProject = new gitlab.ProjectJobTokenScope("allowed_single_project", {
+ *         project: "gitlab-org/gitlab",
+ *         targetProjectId: 123,
+ *     });
+ *     const allowedProjectIds = [
+ *         123,
+ *         456,
+ *         789,
+ *     ];
+ *     const allowedGroupIds = [
+ *         123,
+ *         456,
+ *         789,
+ *     ];
+ *     const deploymentProject = await gitlab.getProject({
+ *         name: "example-project",
+ *     });
+ *     const allowedProject: gitlab.ProjectJobTokenScope[] = [];
+ *     for (const range of std.toset({
+ *         input: allowedProjectIds,
+ *     }).result.map((v, k) => ({key: k, value: v}))) {
+ *         allowedProject.push(new gitlab.ProjectJobTokenScope(`allowed_project-${range.key}`, {
+ *             project: deploymentProject.id,
+ *             targetProjectId: range.key,
+ *         }));
+ *     }
+ *     const allowedGroup: gitlab.ProjectJobTokenScope[] = [];
+ *     for (const range of std.toset({
+ *         input: allowedGroupIds,
+ *     }).result.map((v, k) => ({key: k, value: v}))) {
+ *         allowedGroup.push(new gitlab.ProjectJobTokenScope(`allowed_group-${range.key}`, {
+ *             project: deploymentProject.id,
+ *             targetGroupId: range.key,
+ *         }));
+ *     }
+ * }
+ * ```
+ *
  * ## Import
  *
  * Starting in Terraform v1.5.0, you can use an import block to import `gitlab.ProjectJobTokenScope`. For example:

@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectIntegrationJira(ctx, "jira", &gitlab.ProjectIntegrationJiraArgs{
-//				Project:  awesomeProject.ID().ToIDOutput().ToStringOutput(),
+//				Project:  awesomeProject.ID(),
 //				Url:      pulumi.String("https://jira.example.com"),
 //				Username: pulumi.String("user"),
 //				Password: pulumi.String("mypass"),

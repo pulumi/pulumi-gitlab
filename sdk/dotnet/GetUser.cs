@@ -45,7 +45,16 @@ namespace Pulumi.GitLab
         ///             "user2",
         ///             "user3",
         ///         },
-        ///     }).Apply(invoke =&gt; );
+        ///     }).Apply(invoke =&gt; .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
+        ///         return GitLab.GetUser.Invoke(new()
+        ///         {
+        ///             Username = __value,
+        ///         });
+        ///     }));
         /// 
         /// });
         /// ```
@@ -87,7 +96,16 @@ namespace Pulumi.GitLab
         ///             "user2",
         ///             "user3",
         ///         },
-        ///     }).Apply(invoke =&gt; );
+        ///     }).Apply(invoke =&gt; .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
+        ///         return GitLab.GetUser.Invoke(new()
+        ///         {
+        ///             Username = __value,
+        ///         });
+        ///     }));
         /// 
         /// });
         /// ```
@@ -129,7 +147,16 @@ namespace Pulumi.GitLab
         ///             "user2",
         ///             "user3",
         ///         },
-        ///     }).Apply(invoke =&gt; );
+        ///     }).Apply(invoke =&gt; .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
+        ///         return GitLab.GetUser.Invoke(new()
+        ///         {
+        ///             Username = __value,
+        ///         });
+        ///     }));
         /// 
         /// });
         /// ```

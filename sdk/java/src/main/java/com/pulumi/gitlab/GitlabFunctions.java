@@ -2637,6 +2637,43 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupHookArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
+     *             .group(example.id())
+     *             .hookId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetGroupHookResult> getGroupHook(GetGroupHookArgs args) {
         return getGroupHook(args, InvokeOptions.Empty);
@@ -2647,6 +2684,43 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupHookArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
+     *             .group(example.id())
+     *             .hookId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetGroupHookResult> getGroupHookPlain(GetGroupHookPlainArgs args) {
@@ -2659,6 +2733,43 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupHookArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
+     *             .group(example.id())
+     *             .hookId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetGroupHookResult> getGroupHook(GetGroupHookArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getGroupHook:getGroupHook", TypeShape.of(GetGroupHookResult.class), args, Utilities.withVersion(options));
@@ -2669,6 +2780,43 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupHookArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
+     *             .group(example.id())
+     *             .hookId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetGroupHookResult> getGroupHook(GetGroupHookArgs args, InvokeOutputOptions options) {
@@ -2681,6 +2829,43 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupHookArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
+     *             .group(example.id())
+     *             .hookId(1)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetGroupHookResult> getGroupHookPlain(GetGroupHookPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroupHook:getGroupHook", TypeShape.of(GetGroupHookResult.class), args, Utilities.withVersion(options));
@@ -2691,6 +2876,42 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupHooksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
+     *             .group(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetGroupHooksResult> getGroupHooks(GetGroupHooksArgs args) {
@@ -2703,6 +2924,42 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupHooksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
+     *             .group(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetGroupHooksResult> getGroupHooksPlain(GetGroupHooksPlainArgs args) {
         return getGroupHooksPlain(args, InvokeOptions.Empty);
@@ -2713,6 +2970,42 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupHooksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
+     *             .group(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetGroupHooksResult> getGroupHooks(GetGroupHooksArgs args, InvokeOptions options) {
@@ -2725,6 +3018,42 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupHooksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
+     *             .group(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetGroupHooksResult> getGroupHooks(GetGroupHooksArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getGroupHooks:getGroupHooks", TypeShape.of(GetGroupHooksResult.class), args, Utilities.withVersion(options));
@@ -2735,6 +3064,42 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#list-group-hooks)
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupHooksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
+     *             .group(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetGroupHooksResult> getGroupHooksPlain(GetGroupHooksPlainArgs args, InvokeOptions options) {
@@ -3695,6 +4060,42 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupSamlLinksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         final var exampleGetGroupSamlLinks = GitlabFunctions.getGroupSamlLinks(GetGroupSamlLinksArgs.builder()
+     *             .group(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetGroupSamlLinksResult> getGroupSamlLinks(GetGroupSamlLinksArgs args) {
         return getGroupSamlLinks(args, InvokeOptions.Empty);
@@ -3705,6 +4106,42 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupSamlLinksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         final var exampleGetGroupSamlLinks = GitlabFunctions.getGroupSamlLinks(GetGroupSamlLinksArgs.builder()
+     *             .group(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetGroupSamlLinksResult> getGroupSamlLinksPlain(GetGroupSamlLinksPlainArgs args) {
@@ -3717,6 +4154,42 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupSamlLinksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         final var exampleGetGroupSamlLinks = GitlabFunctions.getGroupSamlLinks(GetGroupSamlLinksArgs.builder()
+     *             .group(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetGroupSamlLinksResult> getGroupSamlLinks(GetGroupSamlLinksArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getGroupSamlLinks:getGroupSamlLinks", TypeShape.of(GetGroupSamlLinksResult.class), args, Utilities.withVersion(options));
@@ -3727,6 +4200,42 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupSamlLinksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         final var exampleGetGroupSamlLinks = GitlabFunctions.getGroupSamlLinks(GetGroupSamlLinksArgs.builder()
+     *             .group(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetGroupSamlLinksResult> getGroupSamlLinks(GetGroupSamlLinksArgs args, InvokeOutputOptions options) {
@@ -3739,6 +4248,42 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupSamlLinksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         final var exampleGetGroupSamlLinks = GitlabFunctions.getGroupSamlLinks(GetGroupSamlLinksArgs.builder()
+     *             .group(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetGroupSamlLinksResult> getGroupSamlLinksPlain(GetGroupSamlLinksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gitlab:index/getGroupSamlLinks:getGroupSamlLinks", TypeShape.of(GetGroupSamlLinksResult.class), args, Utilities.withVersion(options));
@@ -3749,6 +4294,44 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupServiceAccountArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         // Basic example
+     *         final var exampleGetGroupServiceAccount = GitlabFunctions.getGroupServiceAccount(GetGroupServiceAccountArgs.builder()
+     *             .serviceAccountId("1")
+     *             .group(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetGroupServiceAccountResult> getGroupServiceAccount(GetGroupServiceAccountArgs args) {
@@ -3761,6 +4344,44 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupServiceAccountArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         // Basic example
+     *         final var exampleGetGroupServiceAccount = GitlabFunctions.getGroupServiceAccount(GetGroupServiceAccountArgs.builder()
+     *             .serviceAccountId("1")
+     *             .group(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetGroupServiceAccountResult> getGroupServiceAccountPlain(GetGroupServiceAccountPlainArgs args) {
         return getGroupServiceAccountPlain(args, InvokeOptions.Empty);
@@ -3771,6 +4392,44 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupServiceAccountArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         // Basic example
+     *         final var exampleGetGroupServiceAccount = GitlabFunctions.getGroupServiceAccount(GetGroupServiceAccountArgs.builder()
+     *             .serviceAccountId("1")
+     *             .group(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetGroupServiceAccountResult> getGroupServiceAccount(GetGroupServiceAccountArgs args, InvokeOptions options) {
@@ -3783,6 +4442,44 @@ public final class GitlabFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupServiceAccountArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         // Basic example
+     *         final var exampleGetGroupServiceAccount = GitlabFunctions.getGroupServiceAccount(GetGroupServiceAccountArgs.builder()
+     *             .serviceAccountId("1")
+     *             .group(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetGroupServiceAccountResult> getGroupServiceAccount(GetGroupServiceAccountArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", TypeShape.of(GetGroupServiceAccountResult.class), args, Utilities.withVersion(options));
@@ -3793,6 +4490,44 @@ public final class GitlabFunctions {
      * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gitlab.GitlabFunctions;
+     * import com.pulumi.gitlab.inputs.GetGroupArgs;
+     * import com.pulumi.gitlab.inputs.GetGroupServiceAccountArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
+     *             .id("foo/bar/baz")
+     *             .build());
+     * 
+     *         // Basic example
+     *         final var exampleGetGroupServiceAccount = GitlabFunctions.getGroupServiceAccount(GetGroupServiceAccountArgs.builder()
+     *             .serviceAccountId("1")
+     *             .group(example.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetGroupServiceAccountResult> getGroupServiceAccountPlain(GetGroupServiceAccountPlainArgs args, InvokeOptions options) {

@@ -16,6 +16,37 @@ import (
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/group_webhooks/#get-a-group-hook)
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := gitlab.GetGroup(ctx, &gitlab.LookupGroupArgs{
+//				Id: "foo/bar/baz",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gitlab.GetGroupHook(ctx, &gitlab.LookupGroupHookArgs{
+//				Group:  example.Id,
+//				HookId: 1,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupGroupHook(ctx *pulumi.Context, args *LookupGroupHookArgs, opts ...pulumi.InvokeOption) (*LookupGroupHookResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupHookResult

@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			label1, err := gitlab.NewGroupLabel(ctx, "label_1", &gitlab.GroupLabelArgs{
-//				Group: example.ID().ToIDOutput().ToStringOutput(),
+//				Group: example.ID(),
 //				Color: pulumi.String("#FF0000"),
 //				Name:  pulumi.String("red-label"),
 //			})
@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewGroupLabel(ctx, "label_3", &gitlab.GroupLabelArgs{
-//				Group: example.ID().ToIDOutput().ToStringOutput(),
+//				Group: example.ID(),
 //				Name:  pulumi.String("label-3"),
 //				Color: pulumi.String("#003000"),
 //			})

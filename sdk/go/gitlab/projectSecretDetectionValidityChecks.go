@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = gitlab.NewProjectSecretDetectionValidityChecks(ctx, "example", &gitlab.ProjectSecretDetectionValidityChecksArgs{
-//				Project:               example.ID().ToIDOutput().ToStringOutput(),
+//				Project:               example.ID(),
 //				ValidityChecksEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {

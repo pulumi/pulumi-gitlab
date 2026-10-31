@@ -46,7 +46,7 @@ import (
 //			_, err = gitlab.NewProject(ctx, "example", &gitlab.ProjectArgs{
 //				Name:        pulumi.String("example"),
 //				Description: pulumi.String("An example project"),
-//				NamespaceId: example.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				NamespaceId: example.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err

@@ -17,6 +17,29 @@ namespace Pulumi.GitLab
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetGroup.Invoke(new()
+        ///     {
+        ///         Id = "foo/bar/baz",
+        ///     });
+        /// 
+        ///     // Basic example
+        ///     var exampleGetGroupServiceAccount = GitLab.GetGroupServiceAccount.Invoke(new()
+        ///     {
+        ///         ServiceAccountId = "1",
+        ///         Group = example.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetGroupServiceAccountResult> InvokeAsync(GetGroupServiceAccountArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupServiceAccountResult>("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", args ?? new GetGroupServiceAccountArgs(), options.WithDefaults());
@@ -27,6 +50,29 @@ namespace Pulumi.GitLab
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetGroup.Invoke(new()
+        ///     {
+        ///         Id = "foo/bar/baz",
+        ///     });
+        /// 
+        ///     // Basic example
+        ///     var exampleGetGroupServiceAccount = GitLab.GetGroupServiceAccount.Invoke(new()
+        ///     {
+        ///         ServiceAccountId = "1",
+        ///         Group = example.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGroupServiceAccountResult> Invoke(GetGroupServiceAccountInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupServiceAccountResult>("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", args ?? new GetGroupServiceAccountInvokeArgs(), options.WithDefaults());
@@ -37,6 +83,29 @@ namespace Pulumi.GitLab
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-group-service-accounts)
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using GitLab = Pulumi.GitLab;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = GitLab.GetGroup.Invoke(new()
+        ///     {
+        ///         Id = "foo/bar/baz",
+        ///     });
+        /// 
+        ///     // Basic example
+        ///     var exampleGetGroupServiceAccount = GitLab.GetGroupServiceAccount.Invoke(new()
+        ///     {
+        ///         ServiceAccountId = "1",
+        ///         Group = example.Apply(getGroupResult =&gt; getGroupResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGroupServiceAccountResult> Invoke(GetGroupServiceAccountInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupServiceAccountResult>("gitlab:index/getGroupServiceAccount:getGroupServiceAccount", args ?? new GetGroupServiceAccountInvokeArgs(), options.WithDefaults());

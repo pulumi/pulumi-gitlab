@@ -16,6 +16,22 @@ import * as utilities from "./utilities";
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getGroup({
+ *     id: "foo/bar/baz",
+ * });
+ * // List all access tokens for a group service account
+ * const exampleGetGroupServiceAccountAccessTokens = example.then(example => gitlab.getGroupServiceAccountAccessTokens({
+ *     group: example.id,
+ *     serviceAccountId: 123,
+ * }));
+ * export const tokenNames = exampleGetGroupServiceAccountAccessTokens.then(exampleGetGroupServiceAccountAccessTokens => .map(token => (token.name)));
+ * export const activeTokens = exampleGetGroupServiceAccountAccessTokens.then(exampleGetGroupServiceAccountAccessTokens => .filter(token => token.active).map(token => (token)));
+ * ```
  */
 export function getGroupServiceAccountAccessTokens(args: GetGroupServiceAccountAccessTokensArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupServiceAccountAccessTokensResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -70,6 +86,22 @@ export interface GetGroupServiceAccountAccessTokensResult {
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gitlab from "@pulumi/gitlab";
+ *
+ * const example = gitlab.getGroup({
+ *     id: "foo/bar/baz",
+ * });
+ * // List all access tokens for a group service account
+ * const exampleGetGroupServiceAccountAccessTokens = example.then(example => gitlab.getGroupServiceAccountAccessTokens({
+ *     group: example.id,
+ *     serviceAccountId: 123,
+ * }));
+ * export const tokenNames = exampleGetGroupServiceAccountAccessTokens.then(exampleGetGroupServiceAccountAccessTokens => .map(token => (token.name)));
+ * export const activeTokens = exampleGetGroupServiceAccountAccessTokens.then(exampleGetGroupServiceAccountAccessTokens => .filter(token => token.active).map(token => (token)));
+ * ```
  */
 export function getGroupServiceAccountAccessTokensOutput(args: GetGroupServiceAccountAccessTokensOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupServiceAccountAccessTokensResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
