@@ -162,6 +162,12 @@ func (ComplianceFrameworkFromTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*complianceFrameworkFromTemplateState)(nil)).Elem()
 }
 
+// ComplianceFrameworkFromTemplateExists checks whether an existing ComplianceFrameworkFromTemplate resource with the given ID exists.
+func ComplianceFrameworkFromTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ComplianceFrameworkFromTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/complianceFrameworkFromTemplate:ComplianceFrameworkFromTemplate", id, state, "", opts...)
+}
+
 type complianceFrameworkFromTemplateArgs struct {
 	// Override the color of the compliance framework in hex format. e.g. #FCA121.
 	Color *string `pulumi:"color"`

@@ -207,6 +207,12 @@ func (GroupAccessTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupAccessTokenState)(nil)).Elem()
 }
 
+// GroupAccessTokenExists checks whether an existing GroupAccessToken resource with the given ID exists.
+func GroupAccessTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupAccessTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupAccessToken:GroupAccessToken", id, state, "", opts...)
+}
+
 type groupAccessTokenArgs struct {
 	// The access level for the group access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`

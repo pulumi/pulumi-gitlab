@@ -198,6 +198,12 @@ func (PersonalAccessTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*personalAccessTokenState)(nil)).Elem()
 }
 
+// PersonalAccessTokenExists checks whether an existing PersonalAccessToken resource with the given ID exists.
+func PersonalAccessTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PersonalAccessTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/personalAccessToken:PersonalAccessToken", id, state, "", opts...)
+}
+
 type personalAccessTokenArgs struct {
 	// The description of the personal access token.
 	Description *string `pulumi:"description"`

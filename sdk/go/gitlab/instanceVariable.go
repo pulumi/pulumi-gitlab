@@ -148,6 +148,12 @@ func (InstanceVariableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceVariableState)(nil)).Elem()
 }
 
+// InstanceVariableExists checks whether an existing InstanceVariable resource with the given ID exists.
+func InstanceVariableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceVariableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/instanceVariable:InstanceVariable", id, state, "", opts...)
+}
+
 type instanceVariableArgs struct {
 	// The description of the variable. Maximum of 255 characters.
 	Description *string `pulumi:"description"`

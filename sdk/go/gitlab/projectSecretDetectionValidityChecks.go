@@ -134,6 +134,12 @@ func (ProjectSecretDetectionValidityChecksState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectSecretDetectionValidityChecksState)(nil)).Elem()
 }
 
+// ProjectSecretDetectionValidityChecksExists checks whether an existing ProjectSecretDetectionValidityChecks resource with the given ID exists.
+func ProjectSecretDetectionValidityChecksExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectSecretDetectionValidityChecksState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectSecretDetectionValidityChecks:ProjectSecretDetectionValidityChecks", id, state, "", opts...)
+}
+
 type projectSecretDetectionValidityChecksArgs struct {
 	// Set to `true` if the validity checks setting should not be reset to its pre-Terraform value on destroy.
 	KeepSettingsOnDestroy *bool `pulumi:"keepSettingsOnDestroy"`

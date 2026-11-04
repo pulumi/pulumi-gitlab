@@ -292,6 +292,18 @@ class ProjectTargetBranchRule(pulumi.CustomResource):
         __props__.__dict__["target_branch_name"] = target_branch_name
         return ProjectTargetBranchRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            source_branch_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+            target_branch_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["project"] = project
+        __props__["sourceBranchPattern"] = source_branch_pattern
+        __props__["targetBranchName"] = target_branch_name
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:

@@ -169,6 +169,12 @@ func (ProjectVariableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectVariableState)(nil)).Elem()
 }
 
+// ProjectVariableExists checks whether an existing ProjectVariable resource with the given ID exists.
+func ProjectVariableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectVariableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectVariable:ProjectVariable", id, state, "", opts...)
+}
+
 type projectVariableArgs struct {
 	// The description of the variable.
 	Description *string `pulumi:"description"`

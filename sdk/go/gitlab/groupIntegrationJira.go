@@ -244,6 +244,12 @@ func (GroupIntegrationJiraState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupIntegrationJiraState)(nil)).Elem()
 }
 
+// GroupIntegrationJiraExists checks whether an existing GroupIntegrationJira resource with the given ID exists.
+func GroupIntegrationJiraExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupIntegrationJiraState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupIntegrationJira:GroupIntegrationJira", id, state, "", opts...)
+}
+
 type groupIntegrationJiraArgs struct {
 	// The base URL to the Jira instance API. Web URL value is used if not set. For example, https://jira-api.example.com. Required if jira*auth*type is 2.
 	ApiUrl *string `pulumi:"apiUrl"`

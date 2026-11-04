@@ -344,6 +344,26 @@ class ProjectIntegrationExternalWiki(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return ProjectIntegrationExternalWiki(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            external_wiki_url: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            slug: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["createdAt"] = created_at
+        __props__["externalWikiUrl"] = external_wiki_url
+        __props__["project"] = project
+        __props__["slug"] = slug
+        __props__["title"] = title
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

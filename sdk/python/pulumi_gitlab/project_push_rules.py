@@ -739,6 +739,40 @@ class ProjectPushRules(pulumi.CustomResource):
         __props__.__dict__["reject_unsigned_commits"] = reject_unsigned_commits
         return ProjectPushRules(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            author_email_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            branch_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            commit_committer_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            commit_committer_name_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            commit_message_negative_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            commit_message_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            deny_delete_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            max_file_size: pulumi.Input[Optional[_builtins.int]] = None,
+            member_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            prevent_secrets: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reject_non_dco_commits: pulumi.Input[Optional[_builtins.bool]] = None,
+            reject_unsigned_commits: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authorEmailRegex"] = author_email_regex
+        __props__["branchNameRegex"] = branch_name_regex
+        __props__["commitCommitterCheck"] = commit_committer_check
+        __props__["commitCommitterNameCheck"] = commit_committer_name_check
+        __props__["commitMessageNegativeRegex"] = commit_message_negative_regex
+        __props__["commitMessageRegex"] = commit_message_regex
+        __props__["denyDeleteTag"] = deny_delete_tag
+        __props__["fileNameRegex"] = file_name_regex
+        __props__["maxFileSize"] = max_file_size
+        __props__["memberCheck"] = member_check
+        __props__["preventSecrets"] = prevent_secrets
+        __props__["project"] = project
+        __props__["rejectNonDcoCommits"] = reject_non_dco_commits
+        __props__["rejectUnsignedCommits"] = reject_unsigned_commits
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectPushRules:ProjectPushRules', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authorEmailRegex")
     def author_email_regex(self) -> pulumi.Output[_builtins.str]:

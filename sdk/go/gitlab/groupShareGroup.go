@@ -141,6 +141,12 @@ func (GroupShareGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupShareGroupState)(nil)).Elem()
 }
 
+// GroupShareGroupExists checks whether an existing GroupShareGroup resource with the given ID exists.
+func GroupShareGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupShareGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupShareGroup:GroupShareGroup", id, state, "", opts...)
+}
+
 type groupShareGroupArgs struct {
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`

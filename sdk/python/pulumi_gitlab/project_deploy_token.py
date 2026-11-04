@@ -492,6 +492,30 @@ class ProjectDeployToken(pulumi.CustomResource):
         __props__.__dict__["validate_past_expiration_date"] = validate_past_expiration_date
         return ProjectDeployToken(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            expired: pulumi.Input[Optional[_builtins.bool]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            revoked: pulumi.Input[Optional[_builtins.bool]] = None,
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            validate_past_expiration_date: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["expired"] = expired
+        __props__["expiresAt"] = expires_at
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["revoked"] = revoked
+        __props__["scopes"] = scopes
+        __props__["token"] = token
+        __props__["username"] = username
+        __props__["validatePastExpirationDate"] = validate_past_expiration_date
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectDeployToken:ProjectDeployToken', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def expired(self) -> pulumi.Output[_builtins.bool]:

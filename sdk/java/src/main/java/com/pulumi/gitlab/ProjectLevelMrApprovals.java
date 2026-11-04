@@ -139,11 +139,10 @@ public class ProjectLevelMrApprovals extends com.pulumi.resources.CustomResource
     /**
      * Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
      * 
-     * @deprecated
-     * Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+     * @deprecated Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
      * 
      */
-    @Deprecated /* Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead. */
+    @Deprecated
     @Export(name="requirePasswordToApprove", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> requirePasswordToApprove;
 

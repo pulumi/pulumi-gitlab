@@ -135,6 +135,12 @@ func (GroupProjectFileTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupProjectFileTemplateState)(nil)).Elem()
 }
 
+// GroupProjectFileTemplateExists checks whether an existing GroupProjectFileTemplate resource with the given ID exists.
+func GroupProjectFileTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupProjectFileTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate", id, state, "", opts...)
+}
+
 type groupProjectFileTemplateArgs struct {
 	// The ID of the project that will be used for file templates. This project must be the direct
 	// 			child of the project defined by the group_id

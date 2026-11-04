@@ -142,6 +142,12 @@ func (InstanceServiceAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceServiceAccountState)(nil)).Elem()
 }
 
+// InstanceServiceAccountExists checks whether an existing InstanceServiceAccount resource with the given ID exists.
+func InstanceServiceAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceServiceAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/instanceServiceAccount:InstanceServiceAccount", id, state, "", opts...)
+}
+
 type instanceServiceAccountArgs struct {
 	// The email of the user account. If not set, generates a no-reply email address.
 	Email *string `pulumi:"email"`

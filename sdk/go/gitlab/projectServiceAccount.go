@@ -159,6 +159,12 @@ func (ProjectServiceAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectServiceAccountState)(nil)).Elem()
 }
 
+// ProjectServiceAccountExists checks whether an existing ProjectServiceAccount resource with the given ID exists.
+func ProjectServiceAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectServiceAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectServiceAccount:ProjectServiceAccount", id, state, "", opts...)
+}
+
 type projectServiceAccountArgs struct {
 	// User account email. If not specified, generates an email prepended with `service_account_project_`. Custom email addresses require confirmation before the account is active, unless the parent group has a matching verified domain.
 	Email *string `pulumi:"email"`

@@ -467,6 +467,30 @@ class ReleaseLink(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return ReleaseLink(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            direct_asset_url: pulumi.Input[Optional[_builtins.str]] = None,
+            external: pulumi.Input[Optional[_builtins.bool]] = None,
+            filepath: pulumi.Input[Optional[_builtins.str]] = None,
+            link_id: pulumi.Input[Optional[_builtins.int]] = None,
+            link_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_name: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["directAssetUrl"] = direct_asset_url
+        __props__["external"] = external
+        __props__["filepath"] = filepath
+        __props__["linkId"] = link_id
+        __props__["linkType"] = link_type
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["tagName"] = tag_name
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/releaseLink:ReleaseLink', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="directAssetUrl")
     def direct_asset_url(self) -> pulumi.Output[_builtins.str]:

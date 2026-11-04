@@ -18,7 +18,7 @@ public final class GetProjectPushRule {
      */
     private String authorEmailRegex;
     /**
-     * @return All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+     * @return All branch names must match this regex, e.g. `(feature|hotfix)&#92;/*`.
      * 
      */
     private String branchNameRegex;
@@ -33,12 +33,12 @@ public final class GetProjectPushRule {
      */
     private Boolean commitCommitterNameCheck;
     /**
-     * @return No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     * @return No commit message is allowed to match this regex, for example `ssh&#92;:&#92;/&#92;/`.
      * 
      */
     private String commitMessageNegativeRegex;
     /**
-     * @return All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     * @return All commit messages must match this regex, e.g. `Fixed &#92;d+&#92;..*`.
      * 
      */
     private String commitMessageRegex;
@@ -87,7 +87,7 @@ public final class GetProjectPushRule {
         return this.authorEmailRegex;
     }
     /**
-     * @return All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+     * @return All branch names must match this regex, e.g. `(feature|hotfix)&#92;/*`.
      * 
      */
     public String branchNameRegex() {
@@ -108,14 +108,14 @@ public final class GetProjectPushRule {
         return this.commitCommitterNameCheck;
     }
     /**
-     * @return No commit message is allowed to match this regex, for example `ssh\:\/\/`.
+     * @return No commit message is allowed to match this regex, for example `ssh&#92;:&#92;/&#92;/`.
      * 
      */
     public String commitMessageNegativeRegex() {
         return this.commitMessageNegativeRegex;
     }
     /**
-     * @return All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     * @return All commit messages must match this regex, e.g. `Fixed &#92;d+&#92;..*`.
      * 
      */
     public String commitMessageRegex() {

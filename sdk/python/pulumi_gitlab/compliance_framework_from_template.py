@@ -436,6 +436,26 @@ class ComplianceFrameworkFromTemplate(pulumi.CustomResource):
         __props__.__dict__["template_id"] = template_id
         return ComplianceFrameworkFromTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            color: pulumi.Input[Optional[_builtins.str]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            framework_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_path: pulumi.Input[Optional[_builtins.str]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["color"] = color
+        __props__["default"] = default
+        __props__["description"] = description
+        __props__["frameworkId"] = framework_id
+        __props__["name"] = name
+        __props__["namespacePath"] = namespace_path
+        __props__["templateId"] = template_id
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/complianceFrameworkFromTemplate:ComplianceFrameworkFromTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def color(self) -> pulumi.Output[_builtins.str]:

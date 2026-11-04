@@ -399,6 +399,20 @@ class ProjectJobTokenScopes(pulumi.CustomResource):
         __props__.__dict__["target_project_ids"] = target_project_ids
         return ProjectJobTokenScopes(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            target_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            target_project_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enabled"] = enabled
+        __props__["project"] = project
+        __props__["targetGroupIds"] = target_group_ids
+        __props__["targetProjectIds"] = target_project_ids
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[_builtins.bool]:

@@ -393,6 +393,24 @@ class GroupBadge(pulumi.CustomResource):
         __props__.__dict__["rendered_link_url"] = rendered_link_url
         return GroupBadge(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            image_url: pulumi.Input[Optional[_builtins.str]] = None,
+            link_url: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            rendered_image_url: pulumi.Input[Optional[_builtins.str]] = None,
+            rendered_link_url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["group"] = group
+        __props__["imageUrl"] = image_url
+        __props__["linkUrl"] = link_url
+        __props__["name"] = name
+        __props__["renderedImageUrl"] = rendered_image_url
+        __props__["renderedLinkUrl"] = rendered_link_url
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/groupBadge:GroupBadge', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def group(self) -> pulumi.Output[_builtins.str]:

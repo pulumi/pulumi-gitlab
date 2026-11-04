@@ -79,22 +79,20 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
     /**
      * Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
      * 
-     * @deprecated
-     * Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+     * @deprecated Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
      * 
      */
-    @Deprecated /* Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead. */
+    @Deprecated
     @Import(name="requirePasswordToApprove")
     private @Nullable Output<Boolean> requirePasswordToApprove;
 
     /**
      * @return Set to `true` to require authentication to approve merge requests. Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
      * 
-     * @deprecated
-     * Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+     * @deprecated Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
      * 
      */
-    @Deprecated /* Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead. */
+    @Deprecated
     public Optional<Output<Boolean>> requirePasswordToApprove() {
         return Optional.ofNullable(this.requirePasswordToApprove);
     }
@@ -264,11 +262,10 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+         * @deprecated Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
          * 
          */
-        @Deprecated /* Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead. */
+        @Deprecated
         public Builder requirePasswordToApprove(@Nullable Output<Boolean> requirePasswordToApprove) {
             $.requirePasswordToApprove = requirePasswordToApprove;
             return this;
@@ -279,11 +276,10 @@ public final class ProjectLevelMrApprovalsState extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
+         * @deprecated Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead.
          * 
          */
-        @Deprecated /* Deprecated, to be removed in 20.0. Use `requireReauthenticationToApprove` instead. */
+        @Deprecated
         public Builder requirePasswordToApprove(Boolean requirePasswordToApprove) {
             return requirePasswordToApprove(Output.of(requirePasswordToApprove));
         }

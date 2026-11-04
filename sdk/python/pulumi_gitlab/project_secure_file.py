@@ -407,6 +407,28 @@ class ProjectSecureFile(pulumi.CustomResource):
         __props__.__dict__["secure_file_id"] = secure_file_id
         return ProjectSecureFile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            checksum: pulumi.Input[Optional[_builtins.str]] = None,
+            checksum_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            secure_file_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["checksum"] = checksum
+        __props__["checksumAlgorithm"] = checksum_algorithm
+        __props__["content"] = content
+        __props__["createdAt"] = created_at
+        __props__["expiresAt"] = expires_at
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["secureFileId"] = secure_file_id
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectSecureFile:ProjectSecureFile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def checksum(self) -> pulumi.Output[_builtins.str]:

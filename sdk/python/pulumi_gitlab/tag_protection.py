@@ -344,6 +344,20 @@ class TagProtection(pulumi.CustomResource):
         __props__.__dict__["tag"] = tag
         return TagProtection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_to_creates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TagProtectionAllowedToCreateArgs', 'TagProtectionAllowedToCreateArgsDict', 'outputs.TagProtectionAllowedToCreate']]]]] = None,
+            create_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            tag: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedToCreates"] = allowed_to_creates
+        __props__["createAccessLevel"] = create_access_level
+        __props__["project"] = project
+        __props__["tag"] = tag
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/tagProtection:TagProtection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedToCreates")
     def allowed_to_creates(self) -> pulumi.Output[Optional[Sequence['outputs.TagProtectionAllowedToCreate']]]:

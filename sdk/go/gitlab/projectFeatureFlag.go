@@ -194,6 +194,12 @@ func (ProjectFeatureFlagState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectFeatureFlagState)(nil)).Elem()
 }
 
+// ProjectFeatureFlagExists checks whether an existing ProjectFeatureFlag resource with the given ID exists.
+func ProjectFeatureFlagExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectFeatureFlagState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectFeatureFlag:ProjectFeatureFlag", id, state, "", opts...)
+}
+
 type projectFeatureFlagArgs struct {
 	// Whether the feature flag is active. Defaults to `true`.
 	Active *bool `pulumi:"active"`

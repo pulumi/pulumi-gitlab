@@ -171,6 +171,12 @@ func (GroupIntegrationHarborState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupIntegrationHarborState)(nil)).Elem()
 }
 
+// GroupIntegrationHarborExists checks whether an existing GroupIntegrationHarbor resource with the given ID exists.
+func GroupIntegrationHarborExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupIntegrationHarborState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupIntegrationHarbor:GroupIntegrationHarbor", id, state, "", opts...)
+}
+
 type groupIntegrationHarborArgs struct {
 	// The ID or full path of the group to integrate with Harbor.
 	Group string `pulumi:"group"`

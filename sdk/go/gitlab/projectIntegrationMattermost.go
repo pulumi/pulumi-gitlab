@@ -260,6 +260,12 @@ func (ProjectIntegrationMattermostState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIntegrationMattermostState)(nil)).Elem()
 }
 
+// ProjectIntegrationMattermostExists checks whether an existing ProjectIntegrationMattermost resource with the given ID exists.
+func ProjectIntegrationMattermostExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIntegrationMattermostState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIntegrationMattermost:ProjectIntegrationMattermost", id, state, "", opts...)
+}
+
 type projectIntegrationMattermostArgs struct {
 	// Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`

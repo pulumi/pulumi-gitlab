@@ -40,12 +40,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // Create a project runner
  *         var projectRunner = new UserRunner("projectRunner", UserRunnerArgs.builder()
  *             .runnerType("project_type")
@@ -76,10 +76,10 @@ import javax.annotation.Nullable;
  *   session_timeout = 1800
  * 
  * [[runners]]
- *   name = \"my_gitlab_runner\"
- *   url = \"https://example.gitlab.com\"
- *   token = \"%s\"
- *   executor = \"docker\"
+ *   name = }&#92;{@code "my_gitlab_runner}&#92;{@code "
+ *   url = }&#92;{@code "https://example.gitlab.com}&#92;{@code "
+ *   token = }&#92;{@code "%s}&#92;{@code "
+ *   executor = }&#92;{@code "docker}&#92;{@code "
  * 
  *   [runners.custom_build_dir]
  *   [runners.cache]
@@ -88,17 +88,17 @@ import javax.annotation.Nullable;
  *     [runners.cache.azure]
  *   [runners.docker]
  *     tls_verify = false
- *     image = \"ubuntu\"
+ *     image = }&#92;{@code "ubuntu}&#92;{@code "
  *     privileged = true
  *     disable_entrypoint_overwrite = false
  *     oom_kill_disable = false
  *     disable_cache = false
- *     volumes = [\"/cache\", \"/certs/client\"]
+ *     volumes = [}&#92;{@code "/cache}&#92;{@code ", }&#92;{@code "/certs/client}&#92;{@code "]
  *     shm_size = 0
  * ", _token));
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

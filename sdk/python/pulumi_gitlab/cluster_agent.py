@@ -333,6 +333,22 @@ class ClusterAgent(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return ClusterAgent(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            agent_id: pulumi.Input[Optional[_builtins.int]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["agentId"] = agent_id
+        __props__["createdAt"] = created_at
+        __props__["createdByUserId"] = created_by_user_id
+        __props__["name"] = name
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/clusterAgent:ClusterAgent', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Output[_builtins.int]:

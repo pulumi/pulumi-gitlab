@@ -18,7 +18,7 @@ public final class GetGroupSamlLinksResult {
      */
     private String group;
     /**
-     * @return The ID of this Terraform resource. In the format \n\n
+     * @return The ID of this Terraform resource. In the format &#92;n&#92;n
      * 
      */
     private String id;
@@ -37,7 +37,7 @@ public final class GetGroupSamlLinksResult {
         return this.group;
     }
     /**
-     * @return The ID of this Terraform resource. In the format \n\n
+     * @return The ID of this Terraform resource. In the format &#92;n&#92;n
      * 
      */
     public String id() {

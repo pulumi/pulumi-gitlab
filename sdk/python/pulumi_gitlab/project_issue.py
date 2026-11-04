@@ -1351,6 +1351,92 @@ class ProjectIssue(pulumi.CustomResource):
         __props__.__dict__["weight"] = weight
         return ProjectIssue(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assignee_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            author_id: pulumi.Input[Optional[_builtins.int]] = None,
+            closed_at: pulumi.Input[Optional[_builtins.str]] = None,
+            closed_by_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+            confidential: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            discussion_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            discussion_to_resolve: pulumi.Input[Optional[_builtins.str]] = None,
+            downvotes: pulumi.Input[Optional[_builtins.int]] = None,
+            due_date: pulumi.Input[Optional[_builtins.str]] = None,
+            epic_id: pulumi.Input[Optional[_builtins.int]] = None,
+            epic_issue_id: pulumi.Input[Optional[_builtins.int]] = None,
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            human_time_estimate: pulumi.Input[Optional[_builtins.str]] = None,
+            human_total_time_spent: pulumi.Input[Optional[_builtins.str]] = None,
+            iid: pulumi.Input[Optional[_builtins.int]] = None,
+            issue_id: pulumi.Input[Optional[_builtins.int]] = None,
+            issue_link_id: pulumi.Input[Optional[_builtins.int]] = None,
+            issue_type: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            links: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            merge_request_to_resolve_discussions_of: pulumi.Input[Optional[_builtins.int]] = None,
+            merge_requests_count: pulumi.Input[Optional[_builtins.int]] = None,
+            milestone_id: pulumi.Input[Optional[_builtins.int]] = None,
+            moved_to_id: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            references: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subscribed: pulumi.Input[Optional[_builtins.bool]] = None,
+            task_completion_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectIssueTaskCompletionStatusArgs', 'ProjectIssueTaskCompletionStatusArgsDict', 'outputs.ProjectIssueTaskCompletionStatus']]]]] = None,
+            time_estimate: pulumi.Input[Optional[_builtins.int]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            total_time_spent: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            upvotes: pulumi.Input[Optional[_builtins.int]] = None,
+            user_notes_count: pulumi.Input[Optional[_builtins.int]] = None,
+            web_url: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assigneeIds"] = assignee_ids
+        __props__["authorId"] = author_id
+        __props__["closedAt"] = closed_at
+        __props__["closedByUserId"] = closed_by_user_id
+        __props__["confidential"] = confidential
+        __props__["createdAt"] = created_at
+        __props__["deleteOnDestroy"] = delete_on_destroy
+        __props__["description"] = description
+        __props__["discussionLocked"] = discussion_locked
+        __props__["discussionToResolve"] = discussion_to_resolve
+        __props__["downvotes"] = downvotes
+        __props__["dueDate"] = due_date
+        __props__["epicId"] = epic_id
+        __props__["epicIssueId"] = epic_issue_id
+        __props__["externalId"] = external_id
+        __props__["humanTimeEstimate"] = human_time_estimate
+        __props__["humanTotalTimeSpent"] = human_total_time_spent
+        __props__["iid"] = iid
+        __props__["issueId"] = issue_id
+        __props__["issueLinkId"] = issue_link_id
+        __props__["issueType"] = issue_type
+        __props__["labels"] = labels
+        __props__["links"] = links
+        __props__["mergeRequestToResolveDiscussionsOf"] = merge_request_to_resolve_discussions_of
+        __props__["mergeRequestsCount"] = merge_requests_count
+        __props__["milestoneId"] = milestone_id
+        __props__["movedToId"] = moved_to_id
+        __props__["project"] = project
+        __props__["references"] = references
+        __props__["state"] = state
+        __props__["subscribed"] = subscribed
+        __props__["taskCompletionStatuses"] = task_completion_statuses
+        __props__["timeEstimate"] = time_estimate
+        __props__["title"] = title
+        __props__["totalTimeSpent"] = total_time_spent
+        __props__["updatedAt"] = updated_at
+        __props__["upvotes"] = upvotes
+        __props__["userNotesCount"] = user_notes_count
+        __props__["webUrl"] = web_url
+        __props__["weight"] = weight
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectIssue:ProjectIssue', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="assigneeIds")
     def assignee_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.int]]]:

@@ -127,6 +127,12 @@ func (RunnerControllerTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*runnerControllerTokenState)(nil)).Elem()
 }
 
+// RunnerControllerTokenExists checks whether an existing RunnerControllerToken resource with the given ID exists.
+func RunnerControllerTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RunnerControllerTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/runnerControllerToken:RunnerControllerToken", id, state, "", opts...)
+}
+
 type runnerControllerTokenArgs struct {
 	// The description of the runner controller token.
 	Description *string `pulumi:"description"`

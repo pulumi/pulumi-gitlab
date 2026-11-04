@@ -154,6 +154,12 @@ func (ProjectIntegrationExternalWikiState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIntegrationExternalWikiState)(nil)).Elem()
 }
 
+// ProjectIntegrationExternalWikiExists checks whether an existing ProjectIntegrationExternalWiki resource with the given ID exists.
+func ProjectIntegrationExternalWikiExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIntegrationExternalWikiState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIntegrationExternalWiki:ProjectIntegrationExternalWiki", id, state, "", opts...)
+}
+
 type projectIntegrationExternalWikiArgs struct {
 	// The URL of the external wiki.
 	ExternalWikiUrl string `pulumi:"externalWikiUrl"`

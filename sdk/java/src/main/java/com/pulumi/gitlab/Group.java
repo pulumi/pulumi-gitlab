@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .path("example-two")
  *             .description("An example group with push rules")
  *             .pushRules(GroupPushRulesArgs.builder()
- *                 .authorEmailRegex("}{@literal @}{@code example\\.com$")
+ *                 .authorEmailRegex("}{@literal @}{@code example}&#92;&#92;{@code .com$")
  *                 .commitCommitterCheck(true)
  *                 .memberCheck(true)
  *                 .preventSecrets(true)
@@ -266,11 +266,10 @@ public class Group extends com.pulumi.resources.CustomResource {
     /**
      * See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
      * 
-     * @deprecated
-     * Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead.
+     * @deprecated Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead.
      * 
      */
-    @Deprecated /* Deprecated in GitLab 17.0, due for removal in v5 of the API. Use defaultBranchProtectionDefaults instead. */
+    @Deprecated
     @Export(name="defaultBranchProtection", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultBranchProtection;
 

@@ -328,6 +328,22 @@ class UserAvatar(pulumi.CustomResource):
         __props__.__dict__["user_id"] = user_id
         return UserAvatar(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            avatar: pulumi.Input[Optional[_builtins.str]] = None,
+            avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            avatar_url: pulumi.Input[Optional[_builtins.str]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["avatar"] = avatar
+        __props__["avatarHash"] = avatar_hash
+        __props__["avatarUrl"] = avatar_url
+        __props__["token"] = token
+        __props__["userId"] = user_id
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/userAvatar:UserAvatar', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def avatar(self) -> pulumi.Output[_builtins.str]:

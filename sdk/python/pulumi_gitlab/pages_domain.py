@@ -432,6 +432,30 @@ class PagesDomain(pulumi.CustomResource):
         __props__.__dict__["verified"] = verified
         return PagesDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_ssl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            expired: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            verification_code: pulumi.Input[Optional[_builtins.str]] = None,
+            verified: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoSslEnabled"] = auto_ssl_enabled
+        __props__["certificate"] = certificate
+        __props__["domain"] = domain
+        __props__["expired"] = expired
+        __props__["key"] = key
+        __props__["project"] = project
+        __props__["url"] = url
+        __props__["verificationCode"] = verification_code
+        __props__["verified"] = verified
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/pagesDomain:PagesDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoSslEnabled")
     def auto_ssl_enabled(self) -> pulumi.Output[_builtins.bool]:

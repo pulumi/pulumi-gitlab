@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *         var example_two = new Project("example-two", ProjectArgs.builder()
  *             .name("example-two")
  *             .pushRules(ProjectPushRulesArgs.builder()
- *                 .authorEmailRegex("}{@literal @}{@code example\\.com$")
+ *                 .authorEmailRegex("}{@literal @}{@code example}&#92;&#92;{@code .com$")
  *                 .commitCommitterCheck(true)
  *                 .memberCheck(true)
  *                 .preventSecrets(true)
@@ -1275,11 +1275,10 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      * 
-     * @deprecated
-     * The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource&#39;s `secretPushProtectionEnabled` attribute instead.
+     * @deprecated The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource&#39;s `secretPushProtectionEnabled` attribute instead.
      * 
      */
-    @Deprecated /* The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead. */
+    @Deprecated
     @Export(name="preReceiveSecretDetectionEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> preReceiveSecretDetectionEnabled;
 
@@ -1335,11 +1334,10 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * If true, jobs can be viewed by non-project members.
      * 
-     * @deprecated
-     * The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
+     * @deprecated The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider. */
+    @Deprecated
     @Export(name="publicBuilds", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> publicBuilds;
 
@@ -1367,11 +1365,10 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * Push rules for the project. Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
      * 
-     * @deprecated
-     * Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
+     * @deprecated Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
      * 
      */
-    @Deprecated /* Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead. */
+    @Deprecated
     @Export(name="pushRules", refs={ProjectPushRules.class}, tree="[0]")
     private Output<ProjectPushRules> pushRules;
 

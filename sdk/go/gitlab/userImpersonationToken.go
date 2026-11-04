@@ -184,6 +184,12 @@ func (UserImpersonationTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userImpersonationTokenState)(nil)).Elem()
 }
 
+// UserImpersonationTokenExists checks whether an existing UserImpersonationToken resource with the given ID exists.
+func UserImpersonationTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserImpersonationTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/userImpersonationToken:UserImpersonationToken", id, state, "", opts...)
+}
+
 type userImpersonationTokenArgs struct {
 	// Expiration date of the impersonation token in ISO format (YYYY-MM-DD).
 	ExpiresAt string `pulumi:"expiresAt"`

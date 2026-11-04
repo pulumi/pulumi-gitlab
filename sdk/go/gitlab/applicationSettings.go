@@ -2174,6 +2174,12 @@ func (ApplicationSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationSettingsState)(nil)).Elem()
 }
 
+// ApplicationSettingsExists checks whether an existing ApplicationSettings resource with the given ID exists.
+func ApplicationSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/applicationSettings:ApplicationSettings", id, state, "", opts...)
+}
+
 type applicationSettingsArgs struct {
 	// If set, abuse reports are sent to this address. Abuse reports are always available in the Admin Area.
 	AbuseNotificationEmail *string `pulumi:"abuseNotificationEmail"`

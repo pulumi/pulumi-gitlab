@@ -136,6 +136,12 @@ func (ProjectContainerScanningState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectContainerScanningState)(nil)).Elem()
 }
 
+// ProjectContainerScanningExists checks whether an existing ProjectContainerScanning resource with the given ID exists.
+func ProjectContainerScanningExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectContainerScanningState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectContainerScanning:ProjectContainerScanning", id, state, "", opts...)
+}
+
 type projectContainerScanningArgs struct {
 	// Whether to enable container scanning for registry for the project. Requires a GitLab Ultimate license.
 	ContainerScanningForRegistryEnabled bool `pulumi:"containerScanningForRegistryEnabled"`

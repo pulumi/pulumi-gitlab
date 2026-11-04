@@ -665,6 +665,32 @@ class BranchProtection(pulumi.CustomResource):
         __props__.__dict__["push_access_level"] = push_access_level
         return BranchProtection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_force_push: pulumi.Input[Optional[_builtins.bool]] = None,
+            allowed_to_merges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToMergeArgs', 'BranchProtectionAllowedToMergeArgsDict', 'outputs.BranchProtectionAllowedToMerge']]]]] = None,
+            allowed_to_pushes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToPushArgs', 'BranchProtectionAllowedToPushArgsDict', 'outputs.BranchProtectionAllowedToPush']]]]] = None,
+            allowed_to_unprotects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchProtectionAllowedToUnprotectArgs', 'BranchProtectionAllowedToUnprotectArgsDict', 'outputs.BranchProtectionAllowedToUnprotect']]]]] = None,
+            branch: pulumi.Input[Optional[_builtins.str]] = None,
+            branch_protection_id: pulumi.Input[Optional[_builtins.int]] = None,
+            code_owner_approval_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            push_access_level: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowForcePush"] = allow_force_push
+        __props__["allowedToMerges"] = allowed_to_merges
+        __props__["allowedToPushes"] = allowed_to_pushes
+        __props__["allowedToUnprotects"] = allowed_to_unprotects
+        __props__["branch"] = branch
+        __props__["branchProtectionId"] = branch_protection_id
+        __props__["codeOwnerApprovalRequired"] = code_owner_approval_required
+        __props__["mergeAccessLevel"] = merge_access_level
+        __props__["project"] = project
+        __props__["pushAccessLevel"] = push_access_level
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/branchProtection:BranchProtection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowForcePush")
     def allow_force_push(self) -> pulumi.Output[_builtins.bool]:

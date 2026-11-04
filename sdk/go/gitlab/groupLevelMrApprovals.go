@@ -161,6 +161,12 @@ func (GroupLevelMrApprovalsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupLevelMrApprovalsState)(nil)).Elem()
 }
 
+// GroupLevelMrApprovalsExists checks whether an existing GroupLevelMrApprovals resource with the given ID exists.
+func GroupLevelMrApprovalsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupLevelMrApprovalsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupLevelMrApprovals:GroupLevelMrApprovals", id, state, "", opts...)
+}
+
 type groupLevelMrApprovalsArgs struct {
 	// Allow or prevent authors from self approving merge requests; `true` means authors can self approve.
 	AllowAuthorApproval *bool `pulumi:"allowAuthorApproval"`

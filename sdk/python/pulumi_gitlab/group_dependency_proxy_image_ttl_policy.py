@@ -280,6 +280,18 @@ class GroupDependencyProxyImageTtlPolicy(pulumi.CustomResource):
         __props__.__dict__["ttl"] = ttl
         return GroupDependencyProxyImageTtlPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enabled"] = enabled
+        __props__["group"] = group
+        __props__["ttl"] = ttl
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/groupDependencyProxyImageTtlPolicy:GroupDependencyProxyImageTtlPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[_builtins.bool]:

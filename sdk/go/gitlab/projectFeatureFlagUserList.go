@@ -157,6 +157,12 @@ func (ProjectFeatureFlagUserListState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectFeatureFlagUserListState)(nil)).Elem()
 }
 
+// ProjectFeatureFlagUserListExists checks whether an existing ProjectFeatureFlagUserList resource with the given ID exists.
+func ProjectFeatureFlagUserListExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectFeatureFlagUserListState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectFeatureFlagUserList:ProjectFeatureFlagUserList", id, state, "", opts...)
+}
+
 type projectFeatureFlagUserListArgs struct {
 	// The name of the user list.
 	Name *string `pulumi:"name"`

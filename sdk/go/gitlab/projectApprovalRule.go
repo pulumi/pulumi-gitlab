@@ -152,6 +152,12 @@ func (ProjectApprovalRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectApprovalRuleState)(nil)).Elem()
 }
 
+// ProjectApprovalRuleExists checks whether an existing ProjectApprovalRule resource with the given ID exists.
+func ProjectApprovalRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectApprovalRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectApprovalRule:ProjectApprovalRule", id, state, "", opts...)
+}
+
 type projectApprovalRuleArgs struct {
 	// Whether the rule is applied to all protected branches. If set to 'true', the value of `protectedBranchIds` is ignored. Default is 'false'.
 	AppliesToAllProtectedBranches *bool `pulumi:"appliesToAllProtectedBranches"`

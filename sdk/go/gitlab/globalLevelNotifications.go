@@ -180,6 +180,12 @@ func (GlobalLevelNotificationsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalLevelNotificationsState)(nil)).Elem()
 }
 
+// GlobalLevelNotificationsExists checks whether an existing GlobalLevelNotifications resource with the given ID exists.
+func GlobalLevelNotificationsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GlobalLevelNotificationsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/globalLevelNotifications:GlobalLevelNotifications", id, state, "", opts...)
+}
+
 type globalLevelNotificationsArgs struct {
 	// Enable notifications for closed issues. Can only be used when `level` is `custom`.
 	CloseIssue *bool `pulumi:"closeIssue"`

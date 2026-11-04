@@ -586,6 +586,34 @@ class GroupIntegrationDatadog(pulumi.CustomResource):
         __props__.__dict__["use_inherited_settings"] = use_inherited_settings
         return GroupIntegrationDatadog(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            api_url: pulumi.Input[Optional[_builtins.str]] = None,
+            archive_trace_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            datadog_ci_visibility: pulumi.Input[Optional[_builtins.bool]] = None,
+            datadog_env: pulumi.Input[Optional[_builtins.str]] = None,
+            datadog_service: pulumi.Input[Optional[_builtins.str]] = None,
+            datadog_site: pulumi.Input[Optional[_builtins.str]] = None,
+            datadog_tags: pulumi.Input[Optional[_builtins.str]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            use_inherited_settings: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["apiKey"] = api_key
+        __props__["apiUrl"] = api_url
+        __props__["archiveTraceEvents"] = archive_trace_events
+        __props__["datadogCiVisibility"] = datadog_ci_visibility
+        __props__["datadogEnv"] = datadog_env
+        __props__["datadogService"] = datadog_service
+        __props__["datadogSite"] = datadog_site
+        __props__["datadogTags"] = datadog_tags
+        __props__["group"] = group
+        __props__["useInheritedSettings"] = use_inherited_settings
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/groupIntegrationDatadog:GroupIntegrationDatadog', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

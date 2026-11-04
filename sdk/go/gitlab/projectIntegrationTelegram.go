@@ -244,6 +244,12 @@ func (ProjectIntegrationTelegramState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIntegrationTelegramState)(nil)).Elem()
 }
 
+// ProjectIntegrationTelegramExists checks whether an existing ProjectIntegrationTelegram resource with the given ID exists.
+func ProjectIntegrationTelegramExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIntegrationTelegramState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIntegrationTelegram:ProjectIntegrationTelegram", id, state, "", opts...)
+}
+
 type projectIntegrationTelegramArgs struct {
 	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`.
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`

@@ -208,6 +208,12 @@ func (ProjectIssueBoardState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIssueBoardState)(nil)).Elem()
 }
 
+// ProjectIssueBoardExists checks whether an existing ProjectIssueBoard resource with the given ID exists.
+func ProjectIssueBoardExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIssueBoardState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIssueBoard:ProjectIssueBoard", id, state, "", opts...)
+}
+
 type projectIssueBoardArgs struct {
 	// The assignee the board should be scoped to. Requires a GitLab EE license.
 	AssigneeId *int `pulumi:"assigneeId"`

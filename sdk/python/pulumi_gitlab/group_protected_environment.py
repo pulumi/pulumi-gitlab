@@ -305,6 +305,20 @@ class GroupProtectedEnvironment(pulumi.CustomResource):
         __props__.__dict__["group"] = group
         return GroupProtectedEnvironment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentApprovalRuleArgs', 'GroupProtectedEnvironmentApprovalRuleArgsDict', 'outputs.GroupProtectedEnvironmentApprovalRule']]]]] = None,
+            deploy_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupProtectedEnvironmentDeployAccessLevelArgs', 'GroupProtectedEnvironmentDeployAccessLevelArgsDict', 'outputs.GroupProtectedEnvironmentDeployAccessLevel']]]]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["approvalRules"] = approval_rules
+        __props__["deployAccessLevels"] = deploy_access_levels
+        __props__["environment"] = environment
+        __props__["group"] = group
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="approvalRules")
     def approval_rules(self) -> pulumi.Output[Sequence['outputs.GroupProtectedEnvironmentApprovalRule']]:

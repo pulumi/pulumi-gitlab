@@ -270,6 +270,16 @@ class ProjectComplianceFrameworks(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return ProjectComplianceFrameworks(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            compliance_framework_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["complianceFrameworkIds"] = compliance_framework_ids
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="complianceFrameworkIds")
     def compliance_framework_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:

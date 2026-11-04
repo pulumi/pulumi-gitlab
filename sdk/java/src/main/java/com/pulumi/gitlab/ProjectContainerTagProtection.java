@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new ProjectContainerTagProtection("example", ProjectContainerTagProtectionArgs.builder()
  *             .project("123")
  *             .tagNameRegex("^v[0-9]+$")
@@ -64,13 +64,13 @@ import javax.annotation.Nullable;
  * 
  *         var protected_ = new ProjectContainerTagProtection("protected", ProjectContainerTagProtectionArgs.builder()
  *             .project("123")
- *             .tagNameRegex("^v[0-9]+\\-rc[0-9]+$")
+ *             .tagNameRegex("^v[0-9]+}&#92;&#92;{@code -rc[0-9]+$")
  *             .minimumAccessLevelForPush("MAINTAINER")
  *             .minimumAccessLevelForDelete("OWNER")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

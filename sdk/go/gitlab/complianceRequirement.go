@@ -223,6 +223,12 @@ func (ComplianceRequirementState) ElementType() reflect.Type {
 	return reflect.TypeOf((*complianceRequirementState)(nil)).Elem()
 }
 
+// ComplianceRequirementExists checks whether an existing ComplianceRequirement resource with the given ID exists.
+func ComplianceRequirementExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ComplianceRequirementState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/complianceRequirement:ComplianceRequirement", id, state, "", opts...)
+}
+
 type complianceRequirementArgs struct {
 	// Description for the compliance requirement.
 	Description string `pulumi:"description"`

@@ -411,6 +411,26 @@ class ProjectLabel(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return ProjectLabel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            color: pulumi.Input[Optional[_builtins.str]] = None,
+            color_hex: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            label_id: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["color"] = color
+        __props__["colorHex"] = color_hex
+        __props__["description"] = description
+        __props__["labelId"] = label_id
+        __props__["name"] = name
+        __props__["priority"] = priority
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectLabel:ProjectLabel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def color(self) -> pulumi.Output[_builtins.str]:

@@ -192,14 +192,14 @@ public class ProjectIntegrationDatadog extends com.pulumi.resources.CustomResour
         return this.datadogSite;
     }
     /**
-     * Custom tags in Datadog. Specify one tag per line in the format `key:value\nkey2:value2`.
+     * Custom tags in Datadog. Specify one tag per line in the format `key:value&#92;nkey2:value2`.
      * 
      */
     @Export(name="datadogTags", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> datadogTags;
 
     /**
-     * @return Custom tags in Datadog. Specify one tag per line in the format `key:value\nkey2:value2`.
+     * @return Custom tags in Datadog. Specify one tag per line in the format `key:value&#92;nkey2:value2`.
      * 
      */
     public Output<Optional<String>> datadogTags() {

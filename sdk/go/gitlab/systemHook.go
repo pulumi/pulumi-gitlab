@@ -191,6 +191,12 @@ func (SystemHookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*systemHookState)(nil)).Elem()
 }
 
+// SystemHookExists checks whether an existing SystemHook resource with the given ID exists.
+func SystemHookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SystemHookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/systemHook:SystemHook", id, state, "", opts...)
+}
+
 type systemHookArgs struct {
 	// Description of the hook.
 	Description *string `pulumi:"description"`

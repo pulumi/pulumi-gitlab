@@ -366,6 +366,28 @@ class ProjectSecuritySettings(pulumi.CustomResource):
         __props__.__dict__["secret_push_protection_enabled"] = secret_push_protection_enabled
         return ProjectSecuritySettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_fix_container_scanning: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_fix_dast: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_fix_dependency_scanning: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_fix_sast: pulumi.Input[Optional[_builtins.bool]] = None,
+            container_scanning_for_registry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            continuous_vulnerability_scans_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_push_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoFixContainerScanning"] = auto_fix_container_scanning
+        __props__["autoFixDast"] = auto_fix_dast
+        __props__["autoFixDependencyScanning"] = auto_fix_dependency_scanning
+        __props__["autoFixSast"] = auto_fix_sast
+        __props__["containerScanningForRegistryEnabled"] = container_scanning_for_registry_enabled
+        __props__["continuousVulnerabilityScansEnabled"] = continuous_vulnerability_scans_enabled
+        __props__["project"] = project
+        __props__["secretPushProtectionEnabled"] = secret_push_protection_enabled
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectSecuritySettings:ProjectSecuritySettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoFixContainerScanning")
     def auto_fix_container_scanning(self) -> pulumi.Output[_builtins.bool]:

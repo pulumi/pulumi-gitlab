@@ -200,6 +200,12 @@ func (ProjectSecureFileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectSecureFileState)(nil)).Elem()
 }
 
+// ProjectSecureFileExists checks whether an existing ProjectSecureFile resource with the given ID exists.
+func ProjectSecureFileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectSecureFileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectSecureFile:ProjectSecureFile", id, state, "", opts...)
+}
+
 type projectSecureFileArgs struct {
 	// The contents of the secure file
 	Content string `pulumi:"content"`

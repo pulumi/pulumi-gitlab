@@ -158,6 +158,12 @@ func (ProjectPagesSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectPagesSettingsState)(nil)).Elem()
 }
 
+// ProjectPagesSettingsExists checks whether an existing ProjectPagesSettings resource with the given ID exists.
+func ProjectPagesSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectPagesSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectPagesSettings:ProjectPagesSettings", id, state, "", opts...)
+}
+
 type projectPagesSettingsArgs struct {
 	// Boolean indicating if the project is set to force https. Requires `externalHttps` to be configured in the GitLab instance: https://docs.gitlab.com/administration/pages/#custom-domains-with-tls-support.
 	ForceHttps *bool `pulumi:"forceHttps"`

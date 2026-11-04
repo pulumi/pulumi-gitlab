@@ -877,6 +877,52 @@ class ProjectIntegrationJira(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return ProjectIntegrationJira(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            api_url: pulumi.Input[Optional[_builtins.str]] = None,
+            comment_on_event_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            commit_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            issues_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            jira_auth_type: pulumi.Input[Optional[_builtins.int]] = None,
+            jira_issue_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            jira_issue_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            jira_issue_transition_automatic: pulumi.Input[Optional[_builtins.bool]] = None,
+            jira_issue_transition_id: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            use_inherited_settings: pulumi.Input[Optional[_builtins.bool]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["apiUrl"] = api_url
+        __props__["commentOnEventEnabled"] = comment_on_event_enabled
+        __props__["commitEvents"] = commit_events
+        __props__["createdAt"] = created_at
+        __props__["issuesEnabled"] = issues_enabled
+        __props__["jiraAuthType"] = jira_auth_type
+        __props__["jiraIssuePrefix"] = jira_issue_prefix
+        __props__["jiraIssueRegex"] = jira_issue_regex
+        __props__["jiraIssueTransitionAutomatic"] = jira_issue_transition_automatic
+        __props__["jiraIssueTransitionId"] = jira_issue_transition_id
+        __props__["mergeRequestsEvents"] = merge_requests_events
+        __props__["password"] = password
+        __props__["project"] = project
+        __props__["projectKeys"] = project_keys
+        __props__["title"] = title
+        __props__["updatedAt"] = updated_at
+        __props__["url"] = url
+        __props__["useInheritedSettings"] = use_inherited_settings
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectIntegrationJira:ProjectIntegrationJira', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

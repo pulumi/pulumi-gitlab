@@ -152,6 +152,12 @@ func (ProjectIntegrationRedmineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIntegrationRedmineState)(nil)).Elem()
 }
 
+// ProjectIntegrationRedmineExists checks whether an existing ProjectIntegrationRedmine resource with the given ID exists.
+func ProjectIntegrationRedmineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIntegrationRedmineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIntegrationRedmine:ProjectIntegrationRedmine", id, state, "", opts...)
+}
+
 type projectIntegrationRedmineArgs struct {
 	// The URL to the Redmine project issue to link to this GitLab project.
 	IssuesUrl string `pulumi:"issuesUrl"`

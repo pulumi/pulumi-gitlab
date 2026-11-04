@@ -162,6 +162,12 @@ func (ProjectSecuritySettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectSecuritySettingsState)(nil)).Elem()
 }
 
+// ProjectSecuritySettingsExists checks whether an existing ProjectSecuritySettings resource with the given ID exists.
+func ProjectSecuritySettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectSecuritySettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectSecuritySettings:ProjectSecuritySettings", id, state, "", opts...)
+}
+
 type projectSecuritySettingsArgs struct {
 	// The ID or full path of the project to change the security settings of.
 	Project string `pulumi:"project"`

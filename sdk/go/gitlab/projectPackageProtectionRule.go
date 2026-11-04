@@ -149,6 +149,12 @@ func (ProjectPackageProtectionRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectPackageProtectionRuleState)(nil)).Elem()
 }
 
+// ProjectPackageProtectionRuleExists checks whether an existing ProjectPackageProtectionRule resource with the given ID exists.
+func ProjectPackageProtectionRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectPackageProtectionRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectPackageProtectionRule:ProjectPackageProtectionRule", id, state, "", opts...)
+}
+
 type projectPackageProtectionRuleArgs struct {
 	// Minimum GitLab access level required to delete packages from the package registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForPush` is not set.
 	MinimumAccessLevelForDelete *string `pulumi:"minimumAccessLevelForDelete"`

@@ -139,6 +139,12 @@ func (ProjectContainerRepositoryProtectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectContainerRepositoryProtectionState)(nil)).Elem()
 }
 
+// ProjectContainerRepositoryProtectionExists checks whether an existing ProjectContainerRepositoryProtection resource with the given ID exists.
+func ProjectContainerRepositoryProtectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectContainerRepositoryProtectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectContainerRepositoryProtection:ProjectContainerRepositoryProtection", id, state, "", opts...)
+}
+
 type projectContainerRepositoryProtectionArgs struct {
 	// Minimum GitLab access level required to delete container images in the container registry. Valid values are: `maintainer`, `owner`, `admin`. Must be provided when `minimumAccessLevelForPush` is not set.
 	MinimumAccessLevelForDelete *string `pulumi:"minimumAccessLevelForDelete"`

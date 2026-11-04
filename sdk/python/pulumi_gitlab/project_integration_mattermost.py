@@ -1071,6 +1071,58 @@ class ProjectIntegrationMattermost(pulumi.CustomResource):
         __props__.__dict__["wiki_page_events"] = wiki_page_events
         return ProjectIntegrationMattermost(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+            confidential_issue_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            confidential_note_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            issue_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_request_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            note_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+            pipeline_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            push_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            tag_push_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            webhook: pulumi.Input[Optional[_builtins.str]] = None,
+            wiki_page_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["branchesToBeNotified"] = branches_to_be_notified
+        __props__["confidentialIssueChannel"] = confidential_issue_channel
+        __props__["confidentialIssuesEvents"] = confidential_issues_events
+        __props__["confidentialNoteChannel"] = confidential_note_channel
+        __props__["confidentialNoteEvents"] = confidential_note_events
+        __props__["issueChannel"] = issue_channel
+        __props__["issuesEvents"] = issues_events
+        __props__["mergeRequestChannel"] = merge_request_channel
+        __props__["mergeRequestsEvents"] = merge_requests_events
+        __props__["noteChannel"] = note_channel
+        __props__["noteEvents"] = note_events
+        __props__["notifyOnlyBrokenPipelines"] = notify_only_broken_pipelines
+        __props__["pipelineChannel"] = pipeline_channel
+        __props__["pipelineEvents"] = pipeline_events
+        __props__["project"] = project
+        __props__["pushChannel"] = push_channel
+        __props__["pushEvents"] = push_events
+        __props__["tagPushChannel"] = tag_push_channel
+        __props__["tagPushEvents"] = tag_push_events
+        __props__["username"] = username
+        __props__["webhook"] = webhook
+        __props__["wikiPageChannel"] = wiki_page_channel
+        __props__["wikiPageEvents"] = wiki_page_events
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectIntegrationMattermost:ProjectIntegrationMattermost', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> pulumi.Output[_builtins.str]:

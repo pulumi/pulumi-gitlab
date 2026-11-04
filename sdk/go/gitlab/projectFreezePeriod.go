@@ -133,6 +133,12 @@ func (ProjectFreezePeriodState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectFreezePeriodState)(nil)).Elem()
 }
 
+// ProjectFreezePeriodExists checks whether an existing ProjectFreezePeriod resource with the given ID exists.
+func ProjectFreezePeriodExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectFreezePeriodState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectFreezePeriod:ProjectFreezePeriod", id, state, "", opts...)
+}
+
 type projectFreezePeriodArgs struct {
 	// The timezone.
 	CronTimezone *string `pulumi:"cronTimezone"`

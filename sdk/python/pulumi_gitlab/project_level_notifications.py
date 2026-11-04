@@ -926,6 +926,50 @@ class ProjectLevelNotifications(pulumi.CustomResource):
         __props__.__dict__["success_pipeline"] = success_pipeline
         return ProjectLevelNotifications(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            close_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+            close_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            failed_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+            fixed_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+            issue_due: pulumi.Input[Optional[_builtins.bool]] = None,
+            level: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_when_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+            moved_project: pulumi.Input[Optional[_builtins.bool]] = None,
+            new_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+            new_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            new_note: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            push_to_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            reassign_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+            reassign_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            reopen_issue: pulumi.Input[Optional[_builtins.bool]] = None,
+            reopen_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            success_pipeline: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["closeIssue"] = close_issue
+        __props__["closeMergeRequest"] = close_merge_request
+        __props__["failedPipeline"] = failed_pipeline
+        __props__["fixedPipeline"] = fixed_pipeline
+        __props__["issueDue"] = issue_due
+        __props__["level"] = level
+        __props__["mergeMergeRequest"] = merge_merge_request
+        __props__["mergeWhenPipelineSucceeds"] = merge_when_pipeline_succeeds
+        __props__["movedProject"] = moved_project
+        __props__["newIssue"] = new_issue
+        __props__["newMergeRequest"] = new_merge_request
+        __props__["newNote"] = new_note
+        __props__["project"] = project
+        __props__["pushToMergeRequest"] = push_to_merge_request
+        __props__["reassignIssue"] = reassign_issue
+        __props__["reassignMergeRequest"] = reassign_merge_request
+        __props__["reopenIssue"] = reopen_issue
+        __props__["reopenMergeRequest"] = reopen_merge_request
+        __props__["successPipeline"] = success_pipeline
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectLevelNotifications:ProjectLevelNotifications', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="closeIssue")
     def close_issue(self) -> pulumi.Output[_builtins.bool]:

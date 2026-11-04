@@ -150,6 +150,12 @@ func (ProjectIntegrationGoogleChatState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIntegrationGoogleChatState)(nil)).Elem()
 }
 
+// ProjectIntegrationGoogleChatExists checks whether an existing ProjectIntegrationGoogleChat resource with the given ID exists.
+func ProjectIntegrationGoogleChatExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIntegrationGoogleChatState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIntegrationGoogleChat:ProjectIntegrationGoogleChat", id, state, "", opts...)
+}
+
 type projectIntegrationGoogleChatArgs struct {
 	// Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`.
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`

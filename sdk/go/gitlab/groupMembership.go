@@ -153,6 +153,12 @@ func (GroupMembershipState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupMembershipState)(nil)).Elem()
 }
 
+// GroupMembershipExists checks whether an existing GroupMembership resource with the given ID exists.
+func GroupMembershipExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupMembershipState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupMembership:GroupMembership", id, state, "", opts...)
+}
+
 type groupMembershipArgs struct {
 	// Access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
 	AccessLevel string `pulumi:"accessLevel"`

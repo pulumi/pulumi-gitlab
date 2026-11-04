@@ -412,6 +412,28 @@ class ProjectTag(pulumi.CustomResource):
         __props__.__dict__["target"] = target
         return ProjectTag(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            commits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectTagCommitArgs', 'ProjectTagCommitArgsDict', 'outputs.ProjectTagCommit']]]]] = None,
+            message: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protected: pulumi.Input[Optional[_builtins.bool]] = None,
+            ref: pulumi.Input[Optional[_builtins.str]] = None,
+            releases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectTagReleaseArgs', 'ProjectTagReleaseArgsDict', 'outputs.ProjectTagRelease']]]]] = None,
+            target: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["commits"] = commits
+        __props__["message"] = message
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["protected"] = protected
+        __props__["ref"] = ref
+        __props__["releases"] = releases
+        __props__["target"] = target
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectTag:ProjectTag', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def commits(self) -> pulumi.Output[Sequence['outputs.ProjectTagCommit']]:

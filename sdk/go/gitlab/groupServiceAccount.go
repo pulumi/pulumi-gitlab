@@ -172,6 +172,12 @@ func (GroupServiceAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupServiceAccountState)(nil)).Elem()
 }
 
+// GroupServiceAccountExists checks whether an existing GroupServiceAccount resource with the given ID exists.
+func GroupServiceAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupServiceAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupServiceAccount:GroupServiceAccount", id, state, "", opts...)
+}
+
 type groupServiceAccountArgs struct {
 	// User account email. If not specified, generates an email prepended with `service_account_group_`. Custom email addresses require confirmation before the account is active, unless the group has a matching verified domain.
 	Email *string `pulumi:"email"`

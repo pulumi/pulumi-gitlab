@@ -211,6 +211,12 @@ func (InstanceClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceClusterState)(nil)).Elem()
 }
 
+// InstanceClusterExists checks whether an existing InstanceCluster resource with the given ID exists.
+func InstanceClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/instanceCluster:InstanceCluster", id, state, "", opts...)
+}
+
 type instanceClusterArgs struct {
 	// The base domain of the cluster.
 	Domain *string `pulumi:"domain"`

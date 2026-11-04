@@ -136,6 +136,12 @@ func (ProjectErrorTrackingClientKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectErrorTrackingClientKeyState)(nil)).Elem()
 }
 
+// ProjectErrorTrackingClientKeyExists checks whether an existing ProjectErrorTrackingClientKey resource with the given ID exists.
+func ProjectErrorTrackingClientKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectErrorTrackingClientKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectErrorTrackingClientKey:ProjectErrorTrackingClientKey", id, state, "", opts...)
+}
+
 type projectErrorTrackingClientKeyArgs struct {
 	// The ID or URL-encoded path of the project.
 	Project string `pulumi:"project"`

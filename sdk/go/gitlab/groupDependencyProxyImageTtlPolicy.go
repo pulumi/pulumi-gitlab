@@ -122,6 +122,12 @@ func (GroupDependencyProxyImageTtlPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupDependencyProxyImageTtlPolicyState)(nil)).Elem()
 }
 
+// GroupDependencyProxyImageTtlPolicyExists checks whether an existing GroupDependencyProxyImageTtlPolicy resource with the given ID exists.
+func GroupDependencyProxyImageTtlPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupDependencyProxyImageTtlPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupDependencyProxyImageTtlPolicy:GroupDependencyProxyImageTtlPolicy", id, state, "", opts...)
+}
+
 type groupDependencyProxyImageTtlPolicyArgs struct {
 	// Indicates whether the policy is enabled or disabled.
 	Enabled *bool `pulumi:"enabled"`

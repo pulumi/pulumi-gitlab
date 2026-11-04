@@ -411,6 +411,28 @@ class ProjectIntegrationGithub(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return ProjectIntegrationGithub(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_url: pulumi.Input[Optional[_builtins.str]] = None,
+            static_context: pulumi.Input[Optional[_builtins.bool]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["createdAt"] = created_at
+        __props__["project"] = project
+        __props__["repositoryUrl"] = repository_url
+        __props__["staticContext"] = static_context
+        __props__["title"] = title
+        __props__["token"] = token
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

@@ -188,6 +188,12 @@ func (BranchState) ElementType() reflect.Type {
 	return reflect.TypeOf((*branchState)(nil)).Elem()
 }
 
+// BranchExists checks whether an existing Branch resource with the given ID exists.
+func BranchExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BranchState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/branch:Branch", id, state, "", opts...)
+}
+
 type branchArgs struct {
 	// Indicates whether the branch is kept once the resource destroyed (must be applied before a destroy).
 	KeepOnDestroy *bool `pulumi:"keepOnDestroy"`

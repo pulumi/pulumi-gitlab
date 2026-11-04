@@ -442,6 +442,12 @@ func (GroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupState)(nil)).Elem()
 }
 
+// GroupExists checks whether an existing Group resource with the given ID exists.
+func GroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/group:Group", id, state, "", opts...)
+}
+
 type groupArgs struct {
 	// Allow merging merge requests when the pipeline is skipped. Only applies when only*allow*merge*if*pipeline_succeeds is true. Premium and Ultimate only.
 	AllowMergeOnSkippedPipeline *bool `pulumi:"allowMergeOnSkippedPipeline"`

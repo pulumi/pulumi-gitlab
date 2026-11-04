@@ -307,6 +307,12 @@ func (RepositoryFileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryFileState)(nil)).Elem()
 }
 
+// RepositoryFileExists checks whether an existing RepositoryFile resource with the given ID exists.
+func RepositoryFileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepositoryFileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/repositoryFile:RepositoryFile", id, state, "", opts...)
+}
+
 type repositoryFileArgs struct {
 	// Email of the commit author.
 	AuthorEmail *string `pulumi:"authorEmail"`

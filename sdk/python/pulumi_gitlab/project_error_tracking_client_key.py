@@ -260,6 +260,22 @@ class ProjectErrorTrackingClientKey(pulumi.CustomResource):
         __props__.__dict__["sentry_dsn"] = sentry_dsn
         return ProjectErrorTrackingClientKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            key_id: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            sentry_dsn: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["keyId"] = key_id
+        __props__["project"] = project
+        __props__["publicKey"] = public_key
+        __props__["sentryDsn"] = sentry_dsn
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectErrorTrackingClientKey:ProjectErrorTrackingClientKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

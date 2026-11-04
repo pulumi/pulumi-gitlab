@@ -172,6 +172,12 @@ func (ReleaseLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*releaseLinkState)(nil)).Elem()
 }
 
+// ReleaseLinkExists checks whether an existing ReleaseLink resource with the given ID exists.
+func ReleaseLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReleaseLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/releaseLink:ReleaseLink", id, state, "", opts...)
+}
+
 type releaseLinkArgs struct {
 	// Relative path for a [Direct Asset link](https://docs.gitlab.com/user/project/releases/release_fields/#permanent-links-to-latest-release-assets).
 	Filepath *string `pulumi:"filepath"`

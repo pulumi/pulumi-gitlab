@@ -487,6 +487,32 @@ class ProjectMergeRequestNote(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return ProjectMergeRequestNote(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            body: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            internal: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_request_diff_head_sha: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_request_iid: pulumi.Input[Optional[_builtins.int]] = None,
+            note_id: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            resolvable: pulumi.Input[Optional[_builtins.bool]] = None,
+            system: pulumi.Input[Optional[_builtins.bool]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["body"] = body
+        __props__["createdAt"] = created_at
+        __props__["internal"] = internal
+        __props__["mergeRequestDiffHeadSha"] = merge_request_diff_head_sha
+        __props__["mergeRequestIid"] = merge_request_iid
+        __props__["noteId"] = note_id
+        __props__["project"] = project
+        __props__["resolvable"] = resolvable
+        __props__["system"] = system
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectMergeRequestNote:ProjectMergeRequestNote', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def body(self) -> pulumi.Output[_builtins.str]:

@@ -462,6 +462,20 @@ class ProjectProtectedEnvironment(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return ProjectProtectedEnvironment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            approval_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentApprovalRuleArgs', 'ProjectProtectedEnvironmentApprovalRuleArgsDict', 'outputs.ProjectProtectedEnvironmentApprovalRule']]]]] = None,
+            deploy_access_levels_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgs', 'ProjectProtectedEnvironmentDeployAccessLevelsAttributeArgsDict', 'outputs.ProjectProtectedEnvironmentDeployAccessLevelsAttribute']]]]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["approvalRules"] = approval_rules
+        __props__["deployAccessLevelsAttributes"] = deploy_access_levels_attributes
+        __props__["environment"] = environment
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="approvalRules")
     def approval_rules(self) -> pulumi.Output[Sequence['outputs.ProjectProtectedEnvironmentApprovalRule']]:

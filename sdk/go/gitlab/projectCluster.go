@@ -227,6 +227,12 @@ func (ProjectClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectClusterState)(nil)).Elem()
 }
 
+// ProjectClusterExists checks whether an existing ProjectCluster resource with the given ID exists.
+func ProjectClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectCluster:ProjectCluster", id, state, "", opts...)
+}
+
 type projectClusterArgs struct {
 	// The base domain of the cluster.
 	Domain *string `pulumi:"domain"`

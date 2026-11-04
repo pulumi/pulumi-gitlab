@@ -363,6 +363,24 @@ class ProjectWikiPage(pulumi.CustomResource):
         __props__.__dict__["title"] = title
         return ProjectWikiPage(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            format: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            slug: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["content"] = content
+        __props__["encoding"] = encoding
+        __props__["format"] = format
+        __props__["project"] = project
+        __props__["slug"] = slug
+        __props__["title"] = title
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectWikiPage:ProjectWikiPage', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def content(self) -> pulumi.Output[_builtins.str]:

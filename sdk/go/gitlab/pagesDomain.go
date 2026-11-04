@@ -135,6 +135,12 @@ func (PagesDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pagesDomainState)(nil)).Elem()
 }
 
+// PagesDomainExists checks whether an existing PagesDomain resource with the given ID exists.
+func PagesDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PagesDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/pagesDomain:PagesDomain", id, state, "", opts...)
+}
+
 type pagesDomainArgs struct {
 	// Enables [automatic generation](https://docs.gitlab.com/user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration/) of SSL certificates issued by Let’s Encrypt for custom domains. When this is set to "true", certificate can't be provided.
 	AutoSslEnabled *bool `pulumi:"autoSslEnabled"`

@@ -189,6 +189,12 @@ func (ProjectIntegrationEmailsOnPushState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIntegrationEmailsOnPushState)(nil)).Elem()
 }
 
+// ProjectIntegrationEmailsOnPushExists checks whether an existing ProjectIntegrationEmailsOnPush resource with the given ID exists.
+func ProjectIntegrationEmailsOnPushExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIntegrationEmailsOnPushState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIntegrationEmailsOnPush:ProjectIntegrationEmailsOnPush", id, state, "", opts...)
+}
+
 type projectIntegrationEmailsOnPushArgs struct {
 	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Notifications are always fired for tag pushes.
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`

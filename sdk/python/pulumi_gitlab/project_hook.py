@@ -1522,6 +1522,84 @@ class ProjectHook(pulumi.CustomResource):
         __props__.__dict__["wiki_page_events"] = wiki_page_events
         return ProjectHook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alert_status: pulumi.Input[Optional[_builtins.str]] = None,
+            branch_filter_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookCustomHeaderArgs', 'ProjectHookCustomHeaderArgsDict', 'outputs.ProjectHookCustomHeader']]]]] = None,
+            custom_webhook_template: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled_until: pulumi.Input[Optional[_builtins.str]] = None,
+            emoji_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+            feature_flag_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            hook_id: pulumi.Input[Optional[_builtins.int]] = None,
+            issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            job_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            milestone_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.int]] = None,
+            push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            push_events_branch_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            releases_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            repository_update_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_access_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_deploy_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            signing_token: pulumi.Input[Optional[_builtins.str]] = None,
+            signing_token_present: pulumi.Input[Optional[_builtins.bool]] = None,
+            tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict', 'outputs.ProjectHookUrlVariable']]]]] = None,
+            vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alertStatus"] = alert_status
+        __props__["branchFilterStrategy"] = branch_filter_strategy
+        __props__["confidentialIssuesEvents"] = confidential_issues_events
+        __props__["confidentialNoteEvents"] = confidential_note_events
+        __props__["customHeaders"] = custom_headers
+        __props__["customWebhookTemplate"] = custom_webhook_template
+        __props__["deploymentEvents"] = deployment_events
+        __props__["description"] = description
+        __props__["disabledUntil"] = disabled_until
+        __props__["emojiEvents"] = emoji_events
+        __props__["enableSslVerification"] = enable_ssl_verification
+        __props__["featureFlagEvents"] = feature_flag_events
+        __props__["hookId"] = hook_id
+        __props__["issuesEvents"] = issues_events
+        __props__["jobEvents"] = job_events
+        __props__["mergeRequestsEvents"] = merge_requests_events
+        __props__["milestoneEvents"] = milestone_events
+        __props__["name"] = name
+        __props__["noteEvents"] = note_events
+        __props__["pipelineEvents"] = pipeline_events
+        __props__["project"] = project
+        __props__["projectId"] = project_id
+        __props__["pushEvents"] = push_events
+        __props__["pushEventsBranchFilter"] = push_events_branch_filter
+        __props__["releasesEvents"] = releases_events
+        __props__["repositoryUpdateEvents"] = repository_update_events
+        __props__["resourceAccessTokenEvents"] = resource_access_token_events
+        __props__["resourceDeployTokenEvents"] = resource_deploy_token_events
+        __props__["signingToken"] = signing_token
+        __props__["signingTokenPresent"] = signing_token_present
+        __props__["tagPushEvents"] = tag_push_events
+        __props__["token"] = token
+        __props__["url"] = url
+        __props__["urlVariables"] = url_variables
+        __props__["vulnerabilityEvents"] = vulnerability_events
+        __props__["wikiPageEvents"] = wiki_page_events
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectHook:ProjectHook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alertStatus")
     def alert_status(self) -> pulumi.Output[_builtins.str]:

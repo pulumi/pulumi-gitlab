@@ -254,6 +254,16 @@ class GroupProjectFileTemplate(pulumi.CustomResource):
         __props__.__dict__["group_id"] = group_id
         return GroupProjectFileTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            file_template_project_id: pulumi.Input[Optional[_builtins.int]] = None,
+            group_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["fileTemplateProjectId"] = file_template_project_id
+        __props__["groupId"] = group_id
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/groupProjectFileTemplate:GroupProjectFileTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="fileTemplateProjectId")
     def file_template_project_id(self) -> pulumi.Output[_builtins.int]:

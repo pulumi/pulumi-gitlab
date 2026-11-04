@@ -244,6 +244,12 @@ func (ProjectServiceAccountAccessTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectServiceAccountAccessTokenState)(nil)).Elem()
 }
 
+// ProjectServiceAccountAccessTokenExists checks whether an existing ProjectServiceAccountAccessToken resource with the given ID exists.
+func ProjectServiceAccountAccessTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectServiceAccountAccessTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectServiceAccountAccessToken:ProjectServiceAccountAccessToken", id, state, "", opts...)
+}
+
 type projectServiceAccountAccessTokenArgs struct {
 	// The service account access token expiry date. When left blank, the token follows the standard rule of expiry for personal access tokens.
 	ExpiresAt *string `pulumi:"expiresAt"`

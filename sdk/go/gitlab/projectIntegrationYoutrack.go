@@ -134,6 +134,12 @@ func (ProjectIntegrationYoutrackState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIntegrationYoutrackState)(nil)).Elem()
 }
 
+// ProjectIntegrationYoutrackExists checks whether an existing ProjectIntegrationYoutrack resource with the given ID exists.
+func ProjectIntegrationYoutrackExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIntegrationYoutrackState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIntegrationYoutrack:ProjectIntegrationYoutrack", id, state, "", opts...)
+}
+
 type projectIntegrationYoutrackArgs struct {
 	// URL to view an issue in the external issue tracker. Must contain :id.
 	IssuesUrl string `pulumi:"issuesUrl"`

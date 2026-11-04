@@ -214,6 +214,12 @@ func (UserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userState)(nil)).Elem()
 }
 
+// UserExists checks whether an existing User resource with the given ID exists.
+func UserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/user:User", id, state, "", opts...)
+}
+
 type userArgs struct {
 	// Boolean, defaults to false. Whether to allow the user to create groups.
 	CanCreateGroup *bool `pulumi:"canCreateGroup"`

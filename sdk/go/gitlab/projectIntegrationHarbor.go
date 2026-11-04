@@ -171,6 +171,12 @@ func (ProjectIntegrationHarborState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIntegrationHarborState)(nil)).Elem()
 }
 
+// ProjectIntegrationHarborExists checks whether an existing ProjectIntegrationHarbor resource with the given ID exists.
+func ProjectIntegrationHarborExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIntegrationHarborState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor", id, state, "", opts...)
+}
+
 type projectIntegrationHarborArgs struct {
 	// Password for authentication with the Harbor server, if authentication is required by the server.
 	Password string `pulumi:"password"`

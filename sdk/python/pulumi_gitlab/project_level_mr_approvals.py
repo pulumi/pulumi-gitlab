@@ -493,6 +493,28 @@ class ProjectLevelMrApprovals(pulumi.CustomResource):
         __props__.__dict__["selective_code_owner_removals"] = selective_code_owner_removals
         return ProjectLevelMrApprovals(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            disable_overriding_approvers_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_requests_disable_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            require_password_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+            require_reauthentication_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+            reset_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None,
+            selective_code_owner_removals: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["disableOverridingApproversPerMergeRequest"] = disable_overriding_approvers_per_merge_request
+        __props__["mergeRequestsAuthorApproval"] = merge_requests_author_approval
+        __props__["mergeRequestsDisableCommittersApproval"] = merge_requests_disable_committers_approval
+        __props__["project"] = project
+        __props__["requirePasswordToApprove"] = require_password_to_approve
+        __props__["requireReauthenticationToApprove"] = require_reauthentication_to_approve
+        __props__["resetApprovalsOnPush"] = reset_approvals_on_push
+        __props__["selectiveCodeOwnerRemovals"] = selective_code_owner_removals
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="disableOverridingApproversPerMergeRequest")
     def disable_overriding_approvers_per_merge_request(self) -> pulumi.Output[_builtins.bool]:

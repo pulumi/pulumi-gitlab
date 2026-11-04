@@ -215,6 +215,12 @@ func (ProjectEnvironmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectEnvironmentState)(nil)).Elem()
 }
 
+// ProjectEnvironmentExists checks whether an existing ProjectEnvironment resource with the given ID exists.
+func ProjectEnvironmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectEnvironmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectEnvironment:ProjectEnvironment", id, state, "", opts...)
+}
+
 type projectEnvironmentArgs struct {
 	// The auto stop setting for the environment. Allowed values are `always`, `withAction`. If this is set to `withAction` and `stopBeforeDestroy` is `true`, the environment will be force-stopped.
 	AutoStopSetting *string `pulumi:"autoStopSetting"`

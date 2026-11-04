@@ -205,6 +205,12 @@ func (ProjectIssueLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIssueLinkState)(nil)).Elem()
 }
 
+// ProjectIssueLinkExists checks whether an existing ProjectIssueLink resource with the given ID exists.
+func ProjectIssueLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIssueLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIssueLink:ProjectIssueLink", id, state, "", opts...)
+}
+
 type projectIssueLinkArgs struct {
 	// The internal ID of a project's issue.
 	IssueIid int `pulumi:"issueIid"`

@@ -427,6 +427,26 @@ class ProjectIntegrationHarbor(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return ProjectIntegrationHarbor(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            use_inherited_settings: pulumi.Input[Optional[_builtins.bool]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["password"] = password
+        __props__["project"] = project
+        __props__["projectName"] = project_name
+        __props__["url"] = url
+        __props__["useInheritedSettings"] = use_inherited_settings
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectIntegrationHarbor:ProjectIntegrationHarbor', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

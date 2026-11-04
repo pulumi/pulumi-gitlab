@@ -145,6 +145,12 @@ func (ProjectWikiPageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectWikiPageState)(nil)).Elem()
 }
 
+// ProjectWikiPageExists checks whether an existing ProjectWikiPage resource with the given ID exists.
+func ProjectWikiPageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectWikiPageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectWikiPage:ProjectWikiPage", id, state, "", opts...)
+}
+
 type projectWikiPageArgs struct {
 	// Content of the wiki page. Must be at least 1 character long.
 	Content string `pulumi:"content"`

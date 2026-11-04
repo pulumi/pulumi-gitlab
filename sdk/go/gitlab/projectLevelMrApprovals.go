@@ -167,6 +167,12 @@ func (ProjectLevelMrApprovalsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectLevelMrApprovalsState)(nil)).Elem()
 }
 
+// ProjectLevelMrApprovalsExists checks whether an existing ProjectLevelMrApprovals resource with the given ID exists.
+func ProjectLevelMrApprovalsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectLevelMrApprovalsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectLevelMrApprovals:ProjectLevelMrApprovals", id, state, "", opts...)
+}
+
 type projectLevelMrApprovalsArgs struct {
 	// Set to `true` to disable overriding approvers per merge request.
 	DisableOverridingApproversPerMergeRequest *bool `pulumi:"disableOverridingApproversPerMergeRequest"`

@@ -140,6 +140,12 @@ func (ProjectIntegrationPipelinesEmailState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIntegrationPipelinesEmailState)(nil)).Elem()
 }
 
+// ProjectIntegrationPipelinesEmailExists checks whether an existing ProjectIntegrationPipelinesEmail resource with the given ID exists.
+func ProjectIntegrationPipelinesEmailExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIntegrationPipelinesEmailState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIntegrationPipelinesEmail:ProjectIntegrationPipelinesEmail", id, state, "", opts...)
+}
+
 type projectIntegrationPipelinesEmailArgs struct {
 	// Branches to send notifications for. Valid options are `all`, `default`, `protected`, `defaultAndProtected`. Default is `default`.
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`

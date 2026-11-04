@@ -178,6 +178,12 @@ func (ProjectMergeRequestNoteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectMergeRequestNoteState)(nil)).Elem()
 }
 
+// ProjectMergeRequestNoteExists checks whether an existing ProjectMergeRequestNote resource with the given ID exists.
+func ProjectMergeRequestNoteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectMergeRequestNoteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectMergeRequestNote:ProjectMergeRequestNote", id, state, "", opts...)
+}
+
 type projectMergeRequestNoteArgs struct {
 	// The body of the merge request note.
 	Body string `pulumi:"body"`

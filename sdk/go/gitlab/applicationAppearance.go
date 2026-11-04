@@ -204,6 +204,12 @@ func (ApplicationAppearanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationAppearanceState)(nil)).Elem()
 }
 
+// ApplicationAppearanceExists checks whether an existing ApplicationAppearance resource with the given ID exists.
+func ApplicationAppearanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationAppearanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/applicationAppearance:ApplicationAppearance", id, state, "", opts...)
+}
+
 type applicationAppearanceArgs struct {
 	// Markdown text shown on the sign-in and sign-up page.
 	Description *string `pulumi:"description"`

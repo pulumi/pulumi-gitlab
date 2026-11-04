@@ -116,6 +116,12 @@ func (ProjectRunnerEnablementState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectRunnerEnablementState)(nil)).Elem()
 }
 
+// ProjectRunnerEnablementExists checks whether an existing ProjectRunnerEnablement resource with the given ID exists.
+func ProjectRunnerEnablementExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectRunnerEnablementState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectRunnerEnablement:ProjectRunnerEnablement", id, state, "", opts...)
+}
+
 type projectRunnerEnablementArgs struct {
 	// The ID or URL-encoded path of the project owned by the authenticated user.
 	Project string `pulumi:"project"`

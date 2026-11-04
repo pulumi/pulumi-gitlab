@@ -538,6 +538,32 @@ class PipelineSchedule(pulumi.CustomResource):
         __props__.__dict__["take_ownership"] = take_ownership
         return PipelineSchedule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            cron: pulumi.Input[Optional[_builtins.str]] = None,
+            cron_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            inputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineScheduleInputArgs', 'PipelineScheduleInputArgsDict', 'outputs.PipelineScheduleInput']]]]] = None,
+            owner: pulumi.Input[Optional[_builtins.int]] = None,
+            pipeline_schedule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            ref: pulumi.Input[Optional[_builtins.str]] = None,
+            take_ownership: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["cron"] = cron
+        __props__["cronTimezone"] = cron_timezone
+        __props__["description"] = description
+        __props__["inputs"] = inputs
+        __props__["owner"] = owner
+        __props__["pipelineScheduleId"] = pipeline_schedule_id
+        __props__["project"] = project
+        __props__["ref"] = ref
+        __props__["takeOwnership"] = take_ownership
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/pipelineSchedule:PipelineSchedule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

@@ -326,6 +326,20 @@ class ProjectIntegrationPipelinesEmail(pulumi.CustomResource):
         __props__.__dict__["recipients"] = recipients
         return ProjectIntegrationPipelinesEmail(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            recipients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["branchesToBeNotified"] = branches_to_be_notified
+        __props__["notifyOnlyBrokenPipelines"] = notify_only_broken_pipelines
+        __props__["project"] = project
+        __props__["recipients"] = recipients
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectIntegrationPipelinesEmail:ProjectIntegrationPipelinesEmail', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> pulumi.Output[_builtins.str]:

@@ -95,22 +95,20 @@ public final class ComplianceFrameworkArgs extends com.pulumi.resources.Resource
     /**
      * Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
      * 
-     * @deprecated
-     * Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
+     * @deprecated Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
      * 
      */
-    @Deprecated /* Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. */
+    @Deprecated
     @Import(name="pipelineConfigurationFullPath")
     private @Nullable Output<String> pipelineConfigurationFullPath;
 
     /**
      * @return Full path of the compliance pipeline configuration stored in a project repository, such as `.gitlab/.compliance-gitlab-ci.yml{@literal @}compliance/hipaa`. Required format: `path/file.y[a]ml{@literal @}group-name/project-name`. Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. **Note**: Ultimate license required.
      * 
-     * @deprecated
-     * Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
+     * @deprecated Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
      * 
      */
-    @Deprecated /* Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. */
+    @Deprecated
     public Optional<Output<String>> pipelineConfigurationFullPath() {
         return Optional.ofNullable(this.pipelineConfigurationFullPath);
     }
@@ -254,11 +252,10 @@ public final class ComplianceFrameworkArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
+         * @deprecated Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
          * 
          */
-        @Deprecated /* Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. */
+        @Deprecated
         public Builder pipelineConfigurationFullPath(@Nullable Output<String> pipelineConfigurationFullPath) {
             $.pipelineConfigurationFullPath = pipelineConfigurationFullPath;
             return this;
@@ -269,11 +266,10 @@ public final class ComplianceFrameworkArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
+         * @deprecated Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead.
          * 
          */
-        @Deprecated /* Deprecated in GitLab 17.4, to be removed in 20.0. Use pipeline execution policies instead. */
+        @Deprecated
         public Builder pipelineConfigurationFullPath(String pipelineConfigurationFullPath) {
             return pipelineConfigurationFullPath(Output.of(pipelineConfigurationFullPath));
         }

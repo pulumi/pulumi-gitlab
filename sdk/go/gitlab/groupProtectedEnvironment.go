@@ -110,6 +110,12 @@ func (GroupProtectedEnvironmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupProtectedEnvironmentState)(nil)).Elem()
 }
 
+// GroupProtectedEnvironmentExists checks whether an existing GroupProtectedEnvironment resource with the given ID exists.
+func GroupProtectedEnvironmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupProtectedEnvironmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupProtectedEnvironment:GroupProtectedEnvironment", id, state, "", opts...)
+}
+
 type groupProtectedEnvironmentArgs struct {
 	// Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
 	ApprovalRules []GroupProtectedEnvironmentApprovalRule `pulumi:"approvalRules"`
