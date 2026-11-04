@@ -151,6 +151,12 @@ func (PipelineScheduleVariableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineScheduleVariableState)(nil)).Elem()
 }
 
+// PipelineScheduleVariableExists checks whether an existing PipelineScheduleVariable resource with the given ID exists.
+func PipelineScheduleVariableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PipelineScheduleVariableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/pipelineScheduleVariable:PipelineScheduleVariable", id, state, "", opts...)
+}
+
 type pipelineScheduleVariableArgs struct {
 	// Name of the variable.
 	Key string `pulumi:"key"`

@@ -335,6 +335,20 @@ class GroupSamlLink(pulumi.CustomResource):
         __props__.__dict__["saml_group_name"] = saml_group_name
         return GroupSamlLink(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+            saml_group_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessLevel"] = access_level
+        __props__["group"] = group
+        __props__["memberRoleId"] = member_role_id
+        __props__["samlGroupName"] = saml_group_name
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/groupSamlLink:GroupSamlLink', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Output[_builtins.str]:

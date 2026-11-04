@@ -148,6 +148,12 @@ func (UserSshKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userSshKeyState)(nil)).Elem()
 }
 
+// UserSshKeyExists checks whether an existing UserSshKey resource with the given ID exists.
+func UserSshKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserSshKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/userSshKey:UserSshKey", id, state, "", opts...)
+}
+
 type userSshKeyArgs struct {
 	// The expiration date of the SSH key in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
 	ExpiresAt *string `pulumi:"expiresAt"`

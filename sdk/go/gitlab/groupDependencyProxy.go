@@ -138,6 +138,12 @@ func (GroupDependencyProxyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupDependencyProxyState)(nil)).Elem()
 }
 
+// GroupDependencyProxyExists checks whether an existing GroupDependencyProxy resource with the given ID exists.
+func GroupDependencyProxyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupDependencyProxyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupDependencyProxy:GroupDependencyProxy", id, state, "", opts...)
+}
+
 type groupDependencyProxyArgs struct {
 	// Indicates whether the proxy is enabled.
 	Enabled *bool `pulumi:"enabled"`

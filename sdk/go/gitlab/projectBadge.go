@@ -181,6 +181,12 @@ func (ProjectBadgeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectBadgeState)(nil)).Elem()
 }
 
+// ProjectBadgeExists checks whether an existing ProjectBadge resource with the given ID exists.
+func ProjectBadgeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectBadgeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectBadge:ProjectBadge", id, state, "", opts...)
+}
+
 type projectBadgeArgs struct {
 	// The image url which will be presented on project overview.
 	ImageUrl string `pulumi:"imageUrl"`

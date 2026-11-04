@@ -216,6 +216,12 @@ func (ProjectIntegrationMicrosoftTeamsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIntegrationMicrosoftTeamsState)(nil)).Elem()
 }
 
+// ProjectIntegrationMicrosoftTeamsExists checks whether an existing ProjectIntegrationMicrosoftTeams resource with the given ID exists.
+func ProjectIntegrationMicrosoftTeamsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIntegrationMicrosoftTeamsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIntegrationMicrosoftTeams:ProjectIntegrationMicrosoftTeams", id, state, "", opts...)
+}
+
 type projectIntegrationMicrosoftTeamsArgs struct {
 	// Branches to send notifications for. Valid values are: `all`, `default`, `protected`, `defaultAndProtected`
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`

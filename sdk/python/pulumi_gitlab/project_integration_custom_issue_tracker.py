@@ -366,6 +366,26 @@ class ProjectIntegrationCustomIssueTracker(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return ProjectIntegrationCustomIssueTracker(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            issues_url: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_url: pulumi.Input[Optional[_builtins.str]] = None,
+            slug: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["createdAt"] = created_at
+        __props__["issuesUrl"] = issues_url
+        __props__["project"] = project
+        __props__["projectUrl"] = project_url
+        __props__["slug"] = slug
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectIntegrationCustomIssueTracker:ProjectIntegrationCustomIssueTracker', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

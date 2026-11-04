@@ -282,6 +282,12 @@ func (GroupIntegrationMattermostState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupIntegrationMattermostState)(nil)).Elem()
 }
 
+// GroupIntegrationMattermostExists checks whether an existing GroupIntegrationMattermost resource with the given ID exists.
+func GroupIntegrationMattermostExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupIntegrationMattermostState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupIntegrationMattermost:GroupIntegrationMattermost", id, state, "", opts...)
+}
+
 type groupIntegrationMattermostArgs struct {
 	// Branches to send notifications for. Valid values are `all`, `default`, `protected`, `defaultAndProtected`.
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`

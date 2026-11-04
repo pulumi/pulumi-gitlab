@@ -771,6 +771,42 @@ class User(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return User(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            force_random_password: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_auditor: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_external: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_id: pulumi.Input[Optional[_builtins.int]] = None,
+            note: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            projects_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            reset_password: pulumi.Input[Optional[_builtins.bool]] = None,
+            skip_confirmation: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["canCreateGroup"] = can_create_group
+        __props__["email"] = email
+        __props__["forceRandomPassword"] = force_random_password
+        __props__["isAdmin"] = is_admin
+        __props__["isAuditor"] = is_auditor
+        __props__["isExternal"] = is_external
+        __props__["name"] = name
+        __props__["namespaceId"] = namespace_id
+        __props__["note"] = note
+        __props__["password"] = password
+        __props__["projectsLimit"] = projects_limit
+        __props__["resetPassword"] = reset_password
+        __props__["skipConfirmation"] = skip_confirmation
+        __props__["state"] = state
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/user:User', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="canCreateGroup")
     def can_create_group(self) -> pulumi.Output[Optional[_builtins.bool]]:

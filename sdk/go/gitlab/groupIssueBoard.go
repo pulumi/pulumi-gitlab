@@ -106,6 +106,12 @@ func (GroupIssueBoardState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupIssueBoardState)(nil)).Elem()
 }
 
+// GroupIssueBoardExists checks whether an existing GroupIssueBoard resource with the given ID exists.
+func GroupIssueBoardExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupIssueBoardState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupIssueBoard:GroupIssueBoard", id, state, "", opts...)
+}
+
 type groupIssueBoardArgs struct {
 	// The ID or URL-encoded path of the group owned by the authenticated user.
 	Group string `pulumi:"group"`

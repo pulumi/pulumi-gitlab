@@ -319,6 +319,20 @@ class ProjectFreezePeriod(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return ProjectFreezePeriod(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cron_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            freeze_end: pulumi.Input[Optional[_builtins.str]] = None,
+            freeze_start: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cronTimezone"] = cron_timezone
+        __props__["freezeEnd"] = freeze_end
+        __props__["freezeStart"] = freeze_start
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectFreezePeriod:ProjectFreezePeriod', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cronTimezone")
     def cron_timezone(self) -> pulumi.Output[_builtins.str]:

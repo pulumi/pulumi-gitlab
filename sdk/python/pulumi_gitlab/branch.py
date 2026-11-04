@@ -492,6 +492,36 @@ class Branch(pulumi.CustomResource):
         __props__.__dict__["web_url"] = web_url
         return Branch(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            can_push: pulumi.Input[Optional[_builtins.bool]] = None,
+            commits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BranchCommitArgs', 'BranchCommitArgsDict', 'outputs.BranchCommit']]]]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            developer_can_merge: pulumi.Input[Optional[_builtins.bool]] = None,
+            developer_can_push: pulumi.Input[Optional[_builtins.bool]] = None,
+            keep_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            merged: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protected: pulumi.Input[Optional[_builtins.bool]] = None,
+            ref: pulumi.Input[Optional[_builtins.str]] = None,
+            web_url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["canPush"] = can_push
+        __props__["commits"] = commits
+        __props__["default"] = default
+        __props__["developerCanMerge"] = developer_can_merge
+        __props__["developerCanPush"] = developer_can_push
+        __props__["keepOnDestroy"] = keep_on_destroy
+        __props__["merged"] = merged
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["protected"] = protected
+        __props__["ref"] = ref
+        __props__["webUrl"] = web_url
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/branch:Branch', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="canPush")
     def can_push(self) -> pulumi.Output[_builtins.bool]:

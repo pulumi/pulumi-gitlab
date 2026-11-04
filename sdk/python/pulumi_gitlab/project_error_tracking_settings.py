@@ -358,6 +358,26 @@ class ProjectErrorTrackingSettings(pulumi.CustomResource):
         __props__.__dict__["sentry_external_url"] = sentry_external_url
         return ProjectErrorTrackingSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            api_url: pulumi.Input[Optional[_builtins.str]] = None,
+            integrated: pulumi.Input[Optional[_builtins.bool]] = None,
+            keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sentry_external_url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["apiUrl"] = api_url
+        __props__["integrated"] = integrated
+        __props__["keepSettingsOnDestroy"] = keep_settings_on_destroy
+        __props__["project"] = project
+        __props__["projectName"] = project_name
+        __props__["sentryExternalUrl"] = sentry_external_url
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectErrorTrackingSettings:ProjectErrorTrackingSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

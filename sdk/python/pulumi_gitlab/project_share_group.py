@@ -317,6 +317,20 @@ class ProjectShareGroup(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return ProjectShareGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            group_access: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["expiresAt"] = expires_at
+        __props__["groupAccess"] = group_access
+        __props__["groupId"] = group_id
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectShareGroup:ProjectShareGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> pulumi.Output[Optional[_builtins.str]]:

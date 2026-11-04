@@ -113,6 +113,12 @@ func (TopicState) ElementType() reflect.Type {
 	return reflect.TypeOf((*topicState)(nil)).Elem()
 }
 
+// TopicExists checks whether an existing Topic resource with the given ID exists.
+func TopicExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TopicState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/topic:Topic", id, state, "", opts...)
+}
+
 type topicArgs struct {
 	// A local path to the avatar image to upload. **Note**: not available for imported resources.
 	Avatar *string `pulumi:"avatar"`

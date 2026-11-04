@@ -365,6 +365,12 @@ func (ProjectIssueState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIssueState)(nil)).Elem()
 }
 
+// ProjectIssueExists checks whether an existing ProjectIssue resource with the given ID exists.
+func ProjectIssueExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIssueState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIssue:ProjectIssue", id, state, "", opts...)
+}
+
 type projectIssueArgs struct {
 	// The IDs of the users to assign the issue to.
 	AssigneeIds []int `pulumi:"assigneeIds"`

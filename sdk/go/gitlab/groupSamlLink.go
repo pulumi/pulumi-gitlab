@@ -145,6 +145,12 @@ func (GroupSamlLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupSamlLinkState)(nil)).Elem()
 }
 
+// GroupSamlLinkExists checks whether an existing GroupSamlLink resource with the given ID exists.
+func GroupSamlLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupSamlLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupSamlLink:GroupSamlLink", id, state, "", opts...)
+}
+
 type groupSamlLinkArgs struct {
 	// Access level for members of the SAML group. Valid values are: `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`.
 	AccessLevel string `pulumi:"accessLevel"`

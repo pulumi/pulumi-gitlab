@@ -176,6 +176,12 @@ func (ProjectApprovalRulesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectApprovalRulesState)(nil)).Elem()
 }
 
+// ProjectApprovalRulesExists checks whether an existing ProjectApprovalRules resource with the given ID exists.
+func ProjectApprovalRulesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectApprovalRulesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectApprovalRules:ProjectApprovalRules", id, state, "", opts...)
+}
+
 type projectApprovalRulesArgs struct {
 	// The complete set of approval rules of the project. Declaring an empty set removes every approval rule from the project.
 	ApprovalRules []ProjectApprovalRulesApprovalRule `pulumi:"approvalRules"`

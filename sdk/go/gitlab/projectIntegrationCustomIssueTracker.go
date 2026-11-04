@@ -158,6 +158,12 @@ func (ProjectIntegrationCustomIssueTrackerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIntegrationCustomIssueTrackerState)(nil)).Elem()
 }
 
+// ProjectIntegrationCustomIssueTrackerExists checks whether an existing ProjectIntegrationCustomIssueTracker resource with the given ID exists.
+func ProjectIntegrationCustomIssueTrackerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIntegrationCustomIssueTrackerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIntegrationCustomIssueTracker:ProjectIntegrationCustomIssueTracker", id, state, "", opts...)
+}
+
 type projectIntegrationCustomIssueTrackerArgs struct {
 	// The URL to view an issue in the external issue tracker. Must contain :id.
 	IssuesUrl string `pulumi:"issuesUrl"`

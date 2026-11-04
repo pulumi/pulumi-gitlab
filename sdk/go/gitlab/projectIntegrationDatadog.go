@@ -186,6 +186,12 @@ func (ProjectIntegrationDatadogState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIntegrationDatadogState)(nil)).Elem()
 }
 
+// ProjectIntegrationDatadogExists checks whether an existing ProjectIntegrationDatadog resource with the given ID exists.
+func ProjectIntegrationDatadogExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIntegrationDatadogState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIntegrationDatadog:ProjectIntegrationDatadog", id, state, "", opts...)
+}
+
 type projectIntegrationDatadogArgs struct {
 	// API key used for authentication with Datadog.
 	ApiKey string `pulumi:"apiKey"`

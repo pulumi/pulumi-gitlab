@@ -123,14 +123,14 @@ public final class ProjectIntegrationDatadogArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Custom tags in Datadog. Specify one tag per line in the format `key:value\nkey2:value2`.
+     * Custom tags in Datadog. Specify one tag per line in the format `key:value&#92;nkey2:value2`.
      * 
      */
     @Import(name="datadogTags")
     private @Nullable Output<String> datadogTags;
 
     /**
-     * @return Custom tags in Datadog. Specify one tag per line in the format `key:value\nkey2:value2`.
+     * @return Custom tags in Datadog. Specify one tag per line in the format `key:value&#92;nkey2:value2`.
      * 
      */
     public Optional<Output<String>> datadogTags() {
@@ -348,7 +348,7 @@ public final class ProjectIntegrationDatadogArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param datadogTags Custom tags in Datadog. Specify one tag per line in the format `key:value\nkey2:value2`.
+         * @param datadogTags Custom tags in Datadog. Specify one tag per line in the format `key:value&#92;nkey2:value2`.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class ProjectIntegrationDatadogArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param datadogTags Custom tags in Datadog. Specify one tag per line in the format `key:value\nkey2:value2`.
+         * @param datadogTags Custom tags in Datadog. Specify one tag per line in the format `key:value&#92;nkey2:value2`.
          * 
          * @return builder
          * 

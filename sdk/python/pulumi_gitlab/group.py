@@ -1814,6 +1814,96 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["wiki_access_level"] = wiki_access_level
         return Group(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_merge_on_skipped_pipeline: pulumi.Input[Optional[_builtins.bool]] = None,
+            allowed_email_domains_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            archive_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            avatar: pulumi.Input[Optional[_builtins.str]] = None,
+            avatar_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            avatar_url: pulumi.Input[Optional[_builtins.str]] = None,
+            crm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
+            default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict', 'outputs.GroupDefaultBranchProtectionDefaults']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            extra_shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            full_name: pulumi.Input[Optional[_builtins.str]] = None,
+            full_path: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_restriction_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
+            membership_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+            mentions_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            only_allow_merge_if_all_discussions_are_resolved: pulumi.Input[Optional[_builtins.bool]] = None,
+            only_allow_merge_if_pipeline_succeeds: pulumi.Input[Optional[_builtins.bool]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.int]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            permanently_remove_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            prevent_forking_outside_group: pulumi.Input[Optional[_builtins.bool]] = None,
+            prevent_sharing_groups_outside_hierarchy: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_creation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            push_rules: pulumi.Input[Optional[Union['GroupPushRulesArgs', 'GroupPushRulesArgsDict', 'outputs.GroupPushRules']]] = None,
+            request_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
+            runners_token: pulumi.Input[Optional[_builtins.str]] = None,
+            share_with_group_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+            shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            shared_runners_setting: pulumi.Input[Optional[_builtins.str]] = None,
+            subgroup_creation_level: pulumi.Input[Optional[_builtins.str]] = None,
+            two_factor_grace_period: pulumi.Input[Optional[_builtins.int]] = None,
+            visibility_level: pulumi.Input[Optional[_builtins.str]] = None,
+            web_url: pulumi.Input[Optional[_builtins.str]] = None,
+            wiki_access_level: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowMergeOnSkippedPipeline"] = allow_merge_on_skipped_pipeline
+        __props__["allowedEmailDomainsLists"] = allowed_email_domains_lists
+        __props__["archiveOnDestroy"] = archive_on_destroy
+        __props__["autoDevopsEnabled"] = auto_devops_enabled
+        __props__["avatar"] = avatar
+        __props__["avatarHash"] = avatar_hash
+        __props__["avatarUrl"] = avatar_url
+        __props__["crmEnabled"] = crm_enabled
+        __props__["defaultBranch"] = default_branch
+        __props__["defaultBranchProtection"] = default_branch_protection
+        __props__["defaultBranchProtectionDefaults"] = default_branch_protection_defaults
+        __props__["description"] = description
+        __props__["emailsEnabled"] = emails_enabled
+        __props__["extraSharedRunnersMinutesLimit"] = extra_shared_runners_minutes_limit
+        __props__["fullName"] = full_name
+        __props__["fullPath"] = full_path
+        __props__["ipRestrictionRanges"] = ip_restriction_ranges
+        __props__["lfsEnabled"] = lfs_enabled
+        __props__["maxArtifactsSize"] = max_artifacts_size
+        __props__["membershipLock"] = membership_lock
+        __props__["mentionsDisabled"] = mentions_disabled
+        __props__["name"] = name
+        __props__["onlyAllowMergeIfAllDiscussionsAreResolved"] = only_allow_merge_if_all_discussions_are_resolved
+        __props__["onlyAllowMergeIfPipelineSucceeds"] = only_allow_merge_if_pipeline_succeeds
+        __props__["parentId"] = parent_id
+        __props__["path"] = path
+        __props__["permanentlyRemoveOnDelete"] = permanently_remove_on_delete
+        __props__["preventForkingOutsideGroup"] = prevent_forking_outside_group
+        __props__["preventSharingGroupsOutsideHierarchy"] = prevent_sharing_groups_outside_hierarchy
+        __props__["projectCreationLevel"] = project_creation_level
+        __props__["pushRules"] = push_rules
+        __props__["requestAccessEnabled"] = request_access_enabled
+        __props__["requireTwoFactorAuthentication"] = require_two_factor_authentication
+        __props__["runnersToken"] = runners_token
+        __props__["shareWithGroupLock"] = share_with_group_lock
+        __props__["sharedRunnersMinutesLimit"] = shared_runners_minutes_limit
+        __props__["sharedRunnersSetting"] = shared_runners_setting
+        __props__["subgroupCreationLevel"] = subgroup_creation_level
+        __props__["twoFactorGracePeriod"] = two_factor_grace_period
+        __props__["visibilityLevel"] = visibility_level
+        __props__["webUrl"] = web_url
+        __props__["wikiAccessLevel"] = wiki_access_level
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/group:Group', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowMergeOnSkippedPipeline")
     def allow_merge_on_skipped_pipeline(self) -> pulumi.Output[_builtins.bool]:

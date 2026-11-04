@@ -165,6 +165,12 @@ func (ProjectExternalStatusCheckState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectExternalStatusCheckState)(nil)).Elem()
 }
 
+// ProjectExternalStatusCheckExists checks whether an existing ProjectExternalStatusCheck resource with the given ID exists.
+func ProjectExternalStatusCheckExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectExternalStatusCheckState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck", id, state, "", opts...)
+}
+
 type projectExternalStatusCheckArgs struct {
 	// The URL of the external status check service.
 	ExternalUrl string `pulumi:"externalUrl"`

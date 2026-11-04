@@ -196,6 +196,12 @@ func (GroupSecurityPolicyAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupSecurityPolicyAttachmentState)(nil)).Elem()
 }
 
+// GroupSecurityPolicyAttachmentExists checks whether an existing GroupSecurityPolicyAttachment resource with the given ID exists.
+func GroupSecurityPolicyAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupSecurityPolicyAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupSecurityPolicyAttachment:GroupSecurityPolicyAttachment", id, state, "", opts...)
+}
+
 type groupSecurityPolicyAttachmentArgs struct {
 	// The ID or Full Path of the group which will have the security policy project assigned to it.
 	Group string `pulumi:"group"`

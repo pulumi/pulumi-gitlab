@@ -603,6 +603,36 @@ class SystemHook(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return SystemHook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            repository_update_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            signing_token: pulumi.Input[Optional[_builtins.str]] = None,
+            signing_token_present: pulumi.Input[Optional[_builtins.bool]] = None,
+            tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdAt"] = created_at
+        __props__["description"] = description
+        __props__["enableSslVerification"] = enable_ssl_verification
+        __props__["mergeRequestsEvents"] = merge_requests_events
+        __props__["name"] = name
+        __props__["pushEvents"] = push_events
+        __props__["repositoryUpdateEvents"] = repository_update_events
+        __props__["signingToken"] = signing_token
+        __props__["signingTokenPresent"] = signing_token_present
+        __props__["tagPushEvents"] = tag_push_events
+        __props__["token"] = token
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/systemHook:SystemHook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:

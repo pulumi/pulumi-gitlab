@@ -675,6 +675,42 @@ class ProjectEnvironment(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return ProjectEnvironment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_stop_at: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_stop_setting: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_agent_id: pulumi.Input[Optional[_builtins.int]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            external_url: pulumi.Input[Optional[_builtins.str]] = None,
+            flux_resource_path: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            slug: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            stop_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            tier: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoStopAt"] = auto_stop_at
+        __props__["autoStopSetting"] = auto_stop_setting
+        __props__["clusterAgentId"] = cluster_agent_id
+        __props__["createdAt"] = created_at
+        __props__["description"] = description
+        __props__["externalUrl"] = external_url
+        __props__["fluxResourcePath"] = flux_resource_path
+        __props__["kubernetesNamespace"] = kubernetes_namespace
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["slug"] = slug
+        __props__["state"] = state
+        __props__["stopBeforeDestroy"] = stop_before_destroy
+        __props__["tier"] = tier
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectEnvironment:ProjectEnvironment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoStopAt")
     def auto_stop_at(self) -> pulumi.Output[_builtins.str]:

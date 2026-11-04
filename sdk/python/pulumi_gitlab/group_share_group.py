@@ -362,6 +362,22 @@ class GroupShareGroup(pulumi.CustomResource):
         __props__.__dict__["share_group_id"] = share_group_id
         return GroupShareGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            group_access: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+            share_group_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["expiresAt"] = expires_at
+        __props__["groupAccess"] = group_access
+        __props__["groupId"] = group_id
+        __props__["memberRoleId"] = member_role_id
+        __props__["shareGroupId"] = share_group_id
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/groupShareGroup:GroupShareGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> pulumi.Output[Optional[_builtins.str]]:

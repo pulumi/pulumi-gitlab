@@ -236,6 +236,12 @@ func (UserRunnerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userRunnerState)(nil)).Elem()
 }
 
+// UserRunnerExists checks whether an existing UserRunner resource with the given ID exists.
+func UserRunnerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserRunnerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/userRunner:UserRunner", id, state, "", opts...)
+}
+
 type userRunnerArgs struct {
 	// The access level of the runner. Valid values are: `notProtected`, `refProtected`.
 	AccessLevel *string `pulumi:"accessLevel"`

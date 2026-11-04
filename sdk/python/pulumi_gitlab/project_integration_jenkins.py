@@ -542,6 +542,32 @@ class ProjectIntegrationJenkins(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return ProjectIntegrationJenkins(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_ssl_verification: pulumi.Input[Optional[_builtins.bool]] = None,
+            jenkins_url: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_request_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["enableSslVerification"] = enable_ssl_verification
+        __props__["jenkinsUrl"] = jenkins_url
+        __props__["mergeRequestEvents"] = merge_request_events
+        __props__["password"] = password
+        __props__["project"] = project
+        __props__["projectName"] = project_name
+        __props__["pushEvents"] = push_events
+        __props__["tagPushEvents"] = tag_push_events
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectIntegrationJenkins:ProjectIntegrationJenkins', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

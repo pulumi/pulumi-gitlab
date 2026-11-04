@@ -687,6 +687,46 @@ class Release(pulumi.CustomResource):
         __props__.__dict__["upcoming_release"] = upcoming_release
         return Release(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assets: pulumi.Input[Optional[Union['ReleaseAssetsArgs', 'ReleaseAssetsArgsDict', 'outputs.ReleaseAssets']]] = None,
+            author: pulumi.Input[Optional[Union['ReleaseAuthorArgs', 'ReleaseAuthorArgsDict', 'outputs.ReleaseAuthor']]] = None,
+            commit: pulumi.Input[Optional[Union['ReleaseCommitArgs', 'ReleaseCommitArgsDict', 'outputs.ReleaseCommit']]] = None,
+            commit_path: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            description_html: pulumi.Input[Optional[_builtins.str]] = None,
+            links: pulumi.Input[Optional[Union['ReleaseLinksArgs', 'ReleaseLinksArgsDict', 'outputs.ReleaseLinks']]] = None,
+            milestones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            ref: pulumi.Input[Optional[_builtins.str]] = None,
+            released_at: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_message: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_path: pulumi.Input[Optional[_builtins.str]] = None,
+            upcoming_release: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assets"] = assets
+        __props__["author"] = author
+        __props__["commit"] = commit
+        __props__["commitPath"] = commit_path
+        __props__["createdAt"] = created_at
+        __props__["description"] = description
+        __props__["descriptionHtml"] = description_html
+        __props__["links"] = links
+        __props__["milestones"] = milestones
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["ref"] = ref
+        __props__["releasedAt"] = released_at
+        __props__["tagMessage"] = tag_message
+        __props__["tagName"] = tag_name
+        __props__["tagPath"] = tag_path
+        __props__["upcomingRelease"] = upcoming_release
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/release:Release', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def assets(self) -> pulumi.Output['outputs.ReleaseAssets']:

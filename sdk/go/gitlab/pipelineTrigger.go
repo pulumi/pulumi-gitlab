@@ -132,6 +132,12 @@ func (PipelineTriggerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineTriggerState)(nil)).Elem()
 }
 
+// PipelineTriggerExists checks whether an existing PipelineTrigger resource with the given ID exists.
+func PipelineTriggerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PipelineTriggerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/pipelineTrigger:PipelineTrigger", id, state, "", opts...)
+}
+
 type pipelineTriggerArgs struct {
 	// The description of the pipeline trigger.
 	Description string `pulumi:"description"`

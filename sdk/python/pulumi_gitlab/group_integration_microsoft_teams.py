@@ -794,6 +794,46 @@ class GroupIntegrationMicrosoftTeams(pulumi.CustomResource):
         __props__.__dict__["wiki_page_events"] = wiki_page_events
         return GroupIntegrationMicrosoftTeams(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+            confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+            pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            use_inherited_settings: pulumi.Input[Optional[_builtins.bool]] = None,
+            webhook: pulumi.Input[Optional[_builtins.str]] = None,
+            wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["branchesToBeNotified"] = branches_to_be_notified
+        __props__["confidentialIssuesEvents"] = confidential_issues_events
+        __props__["confidentialNoteEvents"] = confidential_note_events
+        __props__["createdAt"] = created_at
+        __props__["group"] = group
+        __props__["issuesEvents"] = issues_events
+        __props__["mergeRequestsEvents"] = merge_requests_events
+        __props__["noteEvents"] = note_events
+        __props__["notifyOnlyBrokenPipelines"] = notify_only_broken_pipelines
+        __props__["pipelineEvents"] = pipeline_events
+        __props__["pushEvents"] = push_events
+        __props__["tagPushEvents"] = tag_push_events
+        __props__["updatedAt"] = updated_at
+        __props__["useInheritedSettings"] = use_inherited_settings
+        __props__["webhook"] = webhook
+        __props__["wikiPageEvents"] = wiki_page_events
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/groupIntegrationMicrosoftTeams:GroupIntegrationMicrosoftTeams', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

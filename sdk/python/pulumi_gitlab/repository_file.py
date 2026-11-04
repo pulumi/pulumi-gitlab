@@ -933,6 +933,54 @@ class RepositoryFile(pulumi.CustomResource):
         __props__.__dict__["update_commit_message"] = update_commit_message
         return RepositoryFile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            author_email: pulumi.Input[Optional[_builtins.str]] = None,
+            author_name: pulumi.Input[Optional[_builtins.str]] = None,
+            blob_id: pulumi.Input[Optional[_builtins.str]] = None,
+            branch: pulumi.Input[Optional[_builtins.str]] = None,
+            commit_id: pulumi.Input[Optional[_builtins.str]] = None,
+            commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            content_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+            create_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+            encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_filemode: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_name: pulumi.Input[Optional[_builtins.str]] = None,
+            file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            last_commit_id: pulumi.Input[Optional[_builtins.str]] = None,
+            overwrite_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            ref: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            start_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            update_commit_message: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authorEmail"] = author_email
+        __props__["authorName"] = author_name
+        __props__["blobId"] = blob_id
+        __props__["branch"] = branch
+        __props__["commitId"] = commit_id
+        __props__["commitMessage"] = commit_message
+        __props__["content"] = content
+        __props__["contentSha256"] = content_sha256
+        __props__["createCommitMessage"] = create_commit_message
+        __props__["deleteCommitMessage"] = delete_commit_message
+        __props__["encoding"] = encoding
+        __props__["executeFilemode"] = execute_filemode
+        __props__["fileName"] = file_name
+        __props__["filePath"] = file_path
+        __props__["lastCommitId"] = last_commit_id
+        __props__["overwriteOnCreate"] = overwrite_on_create
+        __props__["project"] = project
+        __props__["ref"] = ref
+        __props__["size"] = size
+        __props__["startBranch"] = start_branch
+        __props__["updateCommitMessage"] = update_commit_message
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/repositoryFile:RepositoryFile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authorEmail")
     def author_email(self) -> pulumi.Output[Optional[_builtins.str]]:

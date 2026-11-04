@@ -63,6 +63,17 @@ export class ProjectIntegrationTelegram extends pulumi.CustomResource {
         return new ProjectIntegrationTelegram(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing ProjectIntegrationTelegram resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ProjectIntegrationTelegramState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("gitlab:index/projectIntegrationTelegram:ProjectIntegrationTelegram", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'gitlab:index/projectIntegrationTelegram:ProjectIntegrationTelegram';
 

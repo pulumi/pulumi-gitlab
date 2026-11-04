@@ -167,6 +167,12 @@ func (ClusterAgentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterAgentState)(nil)).Elem()
 }
 
+// ClusterAgentExists checks whether an existing ClusterAgent resource with the given ID exists.
+func ClusterAgentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterAgentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/clusterAgent:ClusterAgent", id, state, "", opts...)
+}
+
 type clusterAgentArgs struct {
 	// The Name of the agent.
 	Name *string `pulumi:"name"`

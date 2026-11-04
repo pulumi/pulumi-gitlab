@@ -412,6 +412,12 @@ func (GroupHookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupHookState)(nil)).Elem()
 }
 
+// GroupHookExists checks whether an existing GroupHook resource with the given ID exists.
+func GroupHookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupHookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupHook:GroupHook", id, state, "", opts...)
+}
+
 type groupHookArgs struct {
 	// Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
 	BranchFilterStrategy *string `pulumi:"branchFilterStrategy"`

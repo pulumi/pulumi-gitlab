@@ -221,6 +221,12 @@ func (GroupClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupClusterState)(nil)).Elem()
 }
 
+// GroupClusterExists checks whether an existing GroupCluster resource with the given ID exists.
+func GroupClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupCluster:GroupCluster", id, state, "", opts...)
+}
+
 type groupClusterArgs struct {
 	// The base domain of the cluster.
 	Domain *string `pulumi:"domain"`

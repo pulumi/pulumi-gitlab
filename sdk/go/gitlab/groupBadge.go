@@ -178,6 +178,12 @@ func (GroupBadgeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupBadgeState)(nil)).Elem()
 }
 
+// GroupBadgeExists checks whether an existing GroupBadge resource with the given ID exists.
+func GroupBadgeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupBadgeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupBadge:GroupBadge", id, state, "", opts...)
+}
+
 type groupBadgeArgs struct {
 	// The ID or URL-encoded path of the group to add the badge to.
 	Group string `pulumi:"group"`

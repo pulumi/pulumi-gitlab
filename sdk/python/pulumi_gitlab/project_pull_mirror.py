@@ -695,6 +695,42 @@ class ProjectPullMirror(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return ProjectPullMirror(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_password: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_user: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_error: pulumi.Input[Optional[_builtins.str]] = None,
+            last_successful_update_at: pulumi.Input[Optional[_builtins.str]] = None,
+            last_update_at: pulumi.Input[Optional[_builtins.str]] = None,
+            last_update_started_at: pulumi.Input[Optional[_builtins.str]] = None,
+            mirror_branch_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            mirror_id: pulumi.Input[Optional[_builtins.int]] = None,
+            mirror_overwrites_diverged_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+            mirror_trigger_builds: pulumi.Input[Optional[_builtins.bool]] = None,
+            only_mirror_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            update_status: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authPassword"] = auth_password
+        __props__["authUser"] = auth_user
+        __props__["enabled"] = enabled
+        __props__["lastError"] = last_error
+        __props__["lastSuccessfulUpdateAt"] = last_successful_update_at
+        __props__["lastUpdateAt"] = last_update_at
+        __props__["lastUpdateStartedAt"] = last_update_started_at
+        __props__["mirrorBranchRegex"] = mirror_branch_regex
+        __props__["mirrorId"] = mirror_id
+        __props__["mirrorOverwritesDivergedBranches"] = mirror_overwrites_diverged_branches
+        __props__["mirrorTriggerBuilds"] = mirror_trigger_builds
+        __props__["onlyMirrorProtectedBranches"] = only_mirror_protected_branches
+        __props__["project"] = project
+        __props__["updateStatus"] = update_status
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectPullMirror:ProjectPullMirror', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authPassword")
     def auth_password(self) -> pulumi.Output[Optional[_builtins.str]]:

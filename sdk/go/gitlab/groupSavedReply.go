@@ -83,6 +83,12 @@ func (GroupSavedReplyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupSavedReplyState)(nil)).Elem()
 }
 
+// GroupSavedReplyExists checks whether an existing GroupSavedReply resource with the given ID exists.
+func GroupSavedReplyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupSavedReplyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupSavedReply:GroupSavedReply", id, state, "", opts...)
+}
+
 type groupSavedReplyArgs struct {
 	// The content of the saved reply.
 	Content string `pulumi:"content"`

@@ -126,6 +126,12 @@ func (ProjectCustomAttributeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectCustomAttributeState)(nil)).Elem()
 }
 
+// ProjectCustomAttributeExists checks whether an existing ProjectCustomAttribute resource with the given ID exists.
+func ProjectCustomAttributeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectCustomAttributeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectCustomAttribute:ProjectCustomAttribute", id, state, "", opts...)
+}
+
 type projectCustomAttributeArgs struct {
 	// Key for the Custom Attribute.
 	Key string `pulumi:"key"`

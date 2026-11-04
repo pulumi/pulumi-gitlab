@@ -386,6 +386,24 @@ class ProjectPackageProtectionRule(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return ProjectPackageProtectionRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            minimum_access_level_for_delete: pulumi.Input[Optional[_builtins.str]] = None,
+            minimum_access_level_for_push: pulumi.Input[Optional[_builtins.str]] = None,
+            package_name_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+            package_protection_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            package_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["minimumAccessLevelForDelete"] = minimum_access_level_for_delete
+        __props__["minimumAccessLevelForPush"] = minimum_access_level_for_push
+        __props__["packageNamePattern"] = package_name_pattern
+        __props__["packageProtectionRuleId"] = package_protection_rule_id
+        __props__["packageType"] = package_type
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectPackageProtectionRule:ProjectPackageProtectionRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="minimumAccessLevelForDelete")
     def minimum_access_level_for_delete(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -164,6 +164,12 @@ func (ProjectLabelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectLabelState)(nil)).Elem()
 }
 
+// ProjectLabelExists checks whether an existing ProjectLabel resource with the given ID exists.
+func ProjectLabelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectLabelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectLabel:ProjectLabel", id, state, "", opts...)
+}
+
 type projectLabelArgs struct {
 	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
 	Color string `pulumi:"color"`

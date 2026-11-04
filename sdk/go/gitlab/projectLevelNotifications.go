@@ -237,6 +237,12 @@ func (ProjectLevelNotificationsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectLevelNotificationsState)(nil)).Elem()
 }
 
+// ProjectLevelNotificationsExists checks whether an existing ProjectLevelNotifications resource with the given ID exists.
+func ProjectLevelNotificationsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectLevelNotificationsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectLevelNotifications:ProjectLevelNotifications", id, state, "", opts...)
+}
+
 type projectLevelNotificationsArgs struct {
 	// Enable notifications for closed issues. Can only be used when `level` is `custom`.
 	CloseIssue *bool `pulumi:"closeIssue"`

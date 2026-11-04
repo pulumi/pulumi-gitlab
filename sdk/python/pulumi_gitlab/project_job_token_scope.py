@@ -342,6 +342,18 @@ class ProjectJobTokenScope(pulumi.CustomResource):
         __props__.__dict__["target_project_id"] = target_project_id
         return ProjectJobTokenScope(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            target_group_id: pulumi.Input[Optional[_builtins.int]] = None,
+            target_project_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["project"] = project
+        __props__["targetGroupId"] = target_group_id
+        __props__["targetProjectId"] = target_project_id
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectJobTokenScope:ProjectJobTokenScope', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:

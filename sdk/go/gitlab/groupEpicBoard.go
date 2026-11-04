@@ -150,6 +150,12 @@ func (GroupEpicBoardState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupEpicBoardState)(nil)).Elem()
 }
 
+// GroupEpicBoardExists checks whether an existing GroupEpicBoard resource with the given ID exists.
+func GroupEpicBoardExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupEpicBoardState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupEpicBoard:GroupEpicBoard", id, state, "", opts...)
+}
+
 type groupEpicBoardArgs struct {
 	// The ID or URL-encoded path of the group owned by the authenticated user.
 	Group string `pulumi:"group"`

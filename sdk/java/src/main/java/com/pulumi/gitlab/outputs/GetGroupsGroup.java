@@ -64,11 +64,10 @@ public final class GetGroupsGroup {
     /**
      * @return Whether developers and maintainers can push to the applicable default branch. Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0.
      * 
-     * @deprecated
-     * Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0.
+     * @deprecated Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0.
      * 
      */
-    @Deprecated /* Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0. */
+    @Deprecated
     private Integer defaultBranchProtection;
     /**
      * @return Default protection settings applied to the default branch of new projects in this group.
@@ -93,11 +92,10 @@ public final class GetGroupsGroup {
     /**
      * @return Whether email notifications are disabled for this group. Use `emailsEnabled` instead, to be removed in 19.0.
      * 
-     * @deprecated
-     * Use `emailsEnabled` instead, to be removed in 19.0.
+     * @deprecated Use `emailsEnabled` instead, to be removed in 19.0.
      * 
      */
-    @Deprecated /* Use `emailsEnabled` instead, to be removed in 19.0. */
+    @Deprecated
     private Boolean emailsDisabled;
     /**
      * @return Whether email notifications are enabled for this group.
@@ -377,11 +375,10 @@ public final class GetGroupsGroup {
     /**
      * @return Whether developers and maintainers can push to the applicable default branch. Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0.
      * 
-     * @deprecated
-     * Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0.
+     * @deprecated Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0.
      * 
      */
-    @Deprecated /* Use `defaultBranchProtectionDefaults` instead, to be removed in 19.0. */
+    @Deprecated
     public Integer defaultBranchProtection() {
         return this.defaultBranchProtection;
     }
@@ -416,11 +413,10 @@ public final class GetGroupsGroup {
     /**
      * @return Whether email notifications are disabled for this group. Use `emailsEnabled` instead, to be removed in 19.0.
      * 
-     * @deprecated
-     * Use `emailsEnabled` instead, to be removed in 19.0.
+     * @deprecated Use `emailsEnabled` instead, to be removed in 19.0.
      * 
      */
-    @Deprecated /* Use `emailsEnabled` instead, to be removed in 19.0. */
+    @Deprecated
     public Boolean emailsDisabled() {
         return this.emailsDisabled;
     }

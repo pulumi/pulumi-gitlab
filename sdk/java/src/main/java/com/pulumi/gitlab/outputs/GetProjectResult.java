@@ -40,11 +40,10 @@ public final class GetProjectResult {
     /**
      * @return The number of approvals needed in a merge request.
      * 
-     * @deprecated
-     * Use the Merge Request Approvals API instead, to be removed in 20.0.
+     * @deprecated Use the Merge Request Approvals API instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use the Merge Request Approvals API instead, to be removed in 20.0. */
+    @Deprecated
     private Integer approvalsBeforeMerge;
     /**
      * @return Whether the project is in read-only mode (archived).
@@ -194,11 +193,10 @@ public final class GetProjectResult {
     /**
      * @return Whether the container registry is enabled for the project.
      * 
-     * @deprecated
-     * Use `containerRegistryAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `containerRegistryAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `containerRegistryAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     private Boolean containerRegistryEnabled;
     /**
      * @return The image prefix used by the container registry for this project.
@@ -333,11 +331,10 @@ public final class GetProjectResult {
     /**
      * @return Whether issues are enabled for the project.
      * 
-     * @deprecated
-     * Use `issuesAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `issuesAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `issuesAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     private Boolean issuesEnabled;
     /**
      * @return Default description template for new issues.
@@ -347,11 +344,10 @@ public final class GetProjectResult {
     /**
      * @return Whether jobs are enabled for the project.
      * 
-     * @deprecated
-     * Use `buildsAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `buildsAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `buildsAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     private Boolean jobsEnabled;
     /**
      * @return Disable or enable the ability to keep the latest artifact for this project.
@@ -391,11 +387,10 @@ public final class GetProjectResult {
     /**
      * @return Timestamp at which the project was marked for deletion. Premium and Ultimate only.
      * 
-     * @deprecated
-     * Use `markedForDeletionOn` instead, to be removed in 20.0.
+     * @deprecated Use `markedForDeletionOn` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `markedForDeletionOn` instead, to be removed in 20.0. */
+    @Deprecated
     private String markedForDeletionAt;
     /**
      * @return Timestamp at which the project was marked for deletion. Premium and Ultimate only.
@@ -440,11 +435,10 @@ public final class GetProjectResult {
     /**
      * @return Whether merge requests are enabled for the project.
      * 
-     * @deprecated
-     * Use `mergeRequestsAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `mergeRequestsAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `mergeRequestsAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     private Boolean mergeRequestsEnabled;
     /**
      * @return Default description template for new merge requests.
@@ -519,11 +513,10 @@ public final class GetProjectResult {
     /**
      * @return The namespace (group or user) ID of the project. Alias for `namespace[0].id`.
      * 
-     * @deprecated
-     * Use `namespace[0].id` instead, to be removed in 20.0.
+     * @deprecated Use `namespace[0].id` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `namespace[0].id` instead, to be removed in 20.0. */
+    @Deprecated
     private Integer namespaceId;
     /**
      * @return Namespace of the project (parent group/s).
@@ -568,11 +561,10 @@ public final class GetProjectResult {
     /**
      * @return Whether packages are enabled for the project.
      * 
-     * @deprecated
-     * Use `packageRegistryAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `packageRegistryAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `packageRegistryAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     private Boolean packagesEnabled;
     /**
      * @return Set the GitLab Pages access level. Valid values are `disabled`, `private`, `enabled`.
@@ -617,11 +609,10 @@ public final class GetProjectResult {
     /**
      * @return If true, jobs can be viewed by non-project members. Alias for `publicJobs`.
      * 
-     * @deprecated
-     * Use `publicJobs` instead, to be removed in 20.0.
+     * @deprecated Use `publicJobs` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `publicJobs` instead, to be removed in 20.0. */
+    @Deprecated
     private Boolean publicBuilds;
     /**
      * @return If true, jobs can be viewed by non-project members.
@@ -686,11 +677,10 @@ public final class GetProjectResult {
     /**
      * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
      * 
-     * @deprecated
-     * Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0.
+     * @deprecated Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0. */
+    @Deprecated
     private Boolean restrictUserDefinedVariables;
     /**
      * @return The strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `codeOwners`, `dapPowered`. Premium and Ultimate only.
@@ -745,11 +735,10 @@ public final class GetProjectResult {
     /**
      * @return Whether snippets are enabled for the project.
      * 
-     * @deprecated
-     * Use `snippetsAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `snippetsAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `snippetsAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     private Boolean snippetsEnabled;
     /**
      * @return Template used to create squash commit message in merge requests.
@@ -784,11 +773,10 @@ public final class GetProjectResult {
     /**
      * @return The list of project topics (formerly project tags).
      * 
-     * @deprecated
-     * Use `topics` instead, to be removed in 20.0.
+     * @deprecated Use `topics` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `topics` instead, to be removed in 20.0. */
+    @Deprecated
     private List<String> tagLists;
     /**
      * @return The list of topics for the project.
@@ -808,11 +796,10 @@ public final class GetProjectResult {
     /**
      * @return The visibility of the project. Alias for `visibility`.
      * 
-     * @deprecated
-     * Use `visibility` instead, to be removed in 20.0.
+     * @deprecated Use `visibility` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `visibility` instead, to be removed in 20.0. */
+    @Deprecated
     private String visibilityLevel;
     /**
      * @return URL that can be used to find the project in a browser.
@@ -827,11 +814,10 @@ public final class GetProjectResult {
     /**
      * @return Whether wiki is enabled for the project.
      * 
-     * @deprecated
-     * Use `wikiAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `wikiAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `wikiAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     private Boolean wikiEnabled;
 
     private GetProjectResult() {}
@@ -859,11 +845,10 @@ public final class GetProjectResult {
     /**
      * @return The number of approvals needed in a merge request.
      * 
-     * @deprecated
-     * Use the Merge Request Approvals API instead, to be removed in 20.0.
+     * @deprecated Use the Merge Request Approvals API instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use the Merge Request Approvals API instead, to be removed in 20.0. */
+    @Deprecated
     public Integer approvalsBeforeMerge() {
         return this.approvalsBeforeMerge;
     }
@@ -1073,11 +1058,10 @@ public final class GetProjectResult {
     /**
      * @return Whether the container registry is enabled for the project.
      * 
-     * @deprecated
-     * Use `containerRegistryAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `containerRegistryAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `containerRegistryAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     public Boolean containerRegistryEnabled() {
         return this.containerRegistryEnabled;
     }
@@ -1266,11 +1250,10 @@ public final class GetProjectResult {
     /**
      * @return Whether issues are enabled for the project.
      * 
-     * @deprecated
-     * Use `issuesAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `issuesAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `issuesAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     public Boolean issuesEnabled() {
         return this.issuesEnabled;
     }
@@ -1284,11 +1267,10 @@ public final class GetProjectResult {
     /**
      * @return Whether jobs are enabled for the project.
      * 
-     * @deprecated
-     * Use `buildsAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `buildsAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `buildsAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     public Boolean jobsEnabled() {
         return this.jobsEnabled;
     }
@@ -1344,11 +1326,10 @@ public final class GetProjectResult {
     /**
      * @return Timestamp at which the project was marked for deletion. Premium and Ultimate only.
      * 
-     * @deprecated
-     * Use `markedForDeletionOn` instead, to be removed in 20.0.
+     * @deprecated Use `markedForDeletionOn` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `markedForDeletionOn` instead, to be removed in 20.0. */
+    @Deprecated
     public String markedForDeletionAt() {
         return this.markedForDeletionAt;
     }
@@ -1411,11 +1392,10 @@ public final class GetProjectResult {
     /**
      * @return Whether merge requests are enabled for the project.
      * 
-     * @deprecated
-     * Use `mergeRequestsAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `mergeRequestsAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `mergeRequestsAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     public Boolean mergeRequestsEnabled() {
         return this.mergeRequestsEnabled;
     }
@@ -1520,11 +1500,10 @@ public final class GetProjectResult {
     /**
      * @return The namespace (group or user) ID of the project. Alias for `namespace[0].id`.
      * 
-     * @deprecated
-     * Use `namespace[0].id` instead, to be removed in 20.0.
+     * @deprecated Use `namespace[0].id` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `namespace[0].id` instead, to be removed in 20.0. */
+    @Deprecated
     public Integer namespaceId() {
         return this.namespaceId;
     }
@@ -1587,11 +1566,10 @@ public final class GetProjectResult {
     /**
      * @return Whether packages are enabled for the project.
      * 
-     * @deprecated
-     * Use `packageRegistryAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `packageRegistryAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `packageRegistryAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     public Boolean packagesEnabled() {
         return this.packagesEnabled;
     }
@@ -1654,11 +1632,10 @@ public final class GetProjectResult {
     /**
      * @return If true, jobs can be viewed by non-project members. Alias for `publicJobs`.
      * 
-     * @deprecated
-     * Use `publicJobs` instead, to be removed in 20.0.
+     * @deprecated Use `publicJobs` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `publicJobs` instead, to be removed in 20.0. */
+    @Deprecated
     public Boolean publicBuilds() {
         return this.publicBuilds;
     }
@@ -1749,11 +1726,10 @@ public final class GetProjectResult {
     /**
      * @return Allow only users with the Maintainer role to pass user-defined variables when triggering a pipeline.
      * 
-     * @deprecated
-     * Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0.
+     * @deprecated Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `ciPipelineVariablesMinimumOverrideRole` instead, to be removed in 20.0. */
+    @Deprecated
     public Boolean restrictUserDefinedVariables() {
         return this.restrictUserDefinedVariables;
     }
@@ -1830,11 +1806,10 @@ public final class GetProjectResult {
     /**
      * @return Whether snippets are enabled for the project.
      * 
-     * @deprecated
-     * Use `snippetsAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `snippetsAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `snippetsAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     public Boolean snippetsEnabled() {
         return this.snippetsEnabled;
     }
@@ -1883,11 +1858,10 @@ public final class GetProjectResult {
     /**
      * @return The list of project topics (formerly project tags).
      * 
-     * @deprecated
-     * Use `topics` instead, to be removed in 20.0.
+     * @deprecated Use `topics` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `topics` instead, to be removed in 20.0. */
+    @Deprecated
     public List<String> tagLists() {
         return this.tagLists;
     }
@@ -1915,11 +1889,10 @@ public final class GetProjectResult {
     /**
      * @return The visibility of the project. Alias for `visibility`.
      * 
-     * @deprecated
-     * Use `visibility` instead, to be removed in 20.0.
+     * @deprecated Use `visibility` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `visibility` instead, to be removed in 20.0. */
+    @Deprecated
     public String visibilityLevel() {
         return this.visibilityLevel;
     }
@@ -1940,11 +1913,10 @@ public final class GetProjectResult {
     /**
      * @return Whether wiki is enabled for the project.
      * 
-     * @deprecated
-     * Use `wikiAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `wikiAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `wikiAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     public Boolean wikiEnabled() {
         return this.wikiEnabled;
     }

@@ -370,6 +370,22 @@ class ProjectMembership(pulumi.CustomResource):
         __props__.__dict__["user_id"] = user_id
         return ProjectMembership(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            member_role_id: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessLevel"] = access_level
+        __props__["expiresAt"] = expires_at
+        __props__["memberRoleId"] = member_role_id
+        __props__["project"] = project
+        __props__["userId"] = user_id
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectMembership:ProjectMembership', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Output[_builtins.str]:

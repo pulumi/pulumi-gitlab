@@ -220,6 +220,12 @@ func (ProjectIntegrationMatrixState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIntegrationMatrixState)(nil)).Elem()
 }
 
+// ProjectIntegrationMatrixExists checks whether an existing ProjectIntegrationMatrix resource with the given ID exists.
+func ProjectIntegrationMatrixExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIntegrationMatrixState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIntegrationMatrix:ProjectIntegrationMatrix", id, state, "", opts...)
+}
+
 type projectIntegrationMatrixArgs struct {
 	// Branches to send notifications for. Valid options are: `all`, `default`, `protected`, `defaultAndProtected`. The default value is "default"
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`

@@ -160,6 +160,12 @@ func (DeployKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*deployKeyState)(nil)).Elem()
 }
 
+// DeployKeyExists checks whether an existing DeployKey resource with the given ID exists.
+func DeployKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DeployKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/deployKey:DeployKey", id, state, "", opts...)
+}
+
 type deployKeyArgs struct {
 	// Allow this deploy key to be used to push changes to the project. Defaults to `false`.
 	CanPush *bool `pulumi:"canPush"`

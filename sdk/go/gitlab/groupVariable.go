@@ -183,6 +183,12 @@ func (GroupVariableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupVariableState)(nil)).Elem()
 }
 
+// GroupVariableExists checks whether an existing GroupVariable resource with the given ID exists.
+func GroupVariableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupVariableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupVariable:GroupVariable", id, state, "", opts...)
+}
+
 type groupVariableArgs struct {
 	// The description of the variable.
 	Description *string `pulumi:"description"`

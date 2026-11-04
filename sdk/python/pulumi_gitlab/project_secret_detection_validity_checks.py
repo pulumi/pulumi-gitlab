@@ -289,6 +289,18 @@ class ProjectSecretDetectionValidityChecks(pulumi.CustomResource):
         __props__.__dict__["validity_checks_enabled"] = validity_checks_enabled
         return ProjectSecretDetectionValidityChecks(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            validity_checks_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["keepSettingsOnDestroy"] = keep_settings_on_destroy
+        __props__["project"] = project
+        __props__["validityChecksEnabled"] = validity_checks_enabled
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectSecretDetectionValidityChecks:ProjectSecretDetectionValidityChecks', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="keepSettingsOnDestroy")
     def keep_settings_on_destroy(self) -> pulumi.Output[_builtins.bool]:

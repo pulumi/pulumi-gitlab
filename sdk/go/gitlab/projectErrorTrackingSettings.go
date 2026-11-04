@@ -143,6 +143,12 @@ func (ProjectErrorTrackingSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectErrorTrackingSettingsState)(nil)).Elem()
 }
 
+// ProjectErrorTrackingSettingsExists checks whether an existing ProjectErrorTrackingSettings resource with the given ID exists.
+func ProjectErrorTrackingSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectErrorTrackingSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectErrorTrackingSettings:ProjectErrorTrackingSettings", id, state, "", opts...)
+}
+
 type projectErrorTrackingSettingsArgs struct {
 	// Enable or disable error tracking for the project.
 	Active bool `pulumi:"active"`

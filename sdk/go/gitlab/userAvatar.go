@@ -121,6 +121,12 @@ func (UserAvatarState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userAvatarState)(nil)).Elem()
 }
 
+// UserAvatarExists checks whether an existing UserAvatar resource with the given ID exists.
+func UserAvatarExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserAvatarState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/userAvatar:UserAvatar", id, state, "", opts...)
+}
+
 type userAvatarArgs struct {
 	// A local path to the avatar image to upload. **Note**: the avatar is not available for imported resources.
 	Avatar string `pulumi:"avatar"`

@@ -400,6 +400,24 @@ class DeployKey(pulumi.CustomResource):
         __props__.__dict__["title"] = title
         return DeployKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            can_push: pulumi.Input[Optional[_builtins.bool]] = None,
+            deploy_key_id: pulumi.Input[Optional[_builtins.int]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["canPush"] = can_push
+        __props__["deployKeyId"] = deploy_key_id
+        __props__["expiresAt"] = expires_at
+        __props__["key"] = key
+        __props__["project"] = project
+        __props__["title"] = title
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/deployKey:DeployKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="canPush")
     def can_push(self) -> pulumi.Output[Optional[_builtins.bool]]:

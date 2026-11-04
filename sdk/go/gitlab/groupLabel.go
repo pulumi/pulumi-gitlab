@@ -142,6 +142,12 @@ func (GroupLabelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupLabelState)(nil)).Elem()
 }
 
+// GroupLabelExists checks whether an existing GroupLabel resource with the given ID exists.
+func GroupLabelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupLabelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupLabel:GroupLabel", id, state, "", opts...)
+}
+
 type groupLabelArgs struct {
 	// The color of the label given in 6-digit hex notation with leading '#' sign (e.g. #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value#Color_keywords).
 	Color string `pulumi:"color"`

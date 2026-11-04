@@ -172,6 +172,12 @@ func (ProjectPushMirrorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectPushMirrorState)(nil)).Elem()
 }
 
+// ProjectPushMirrorExists checks whether an existing ProjectPushMirror resource with the given ID exists.
+func ProjectPushMirrorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectPushMirrorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectPushMirror:ProjectPushMirror", id, state, "", opts...)
+}
+
 type projectPushMirrorArgs struct {
 	// Determines the mirror authentication method. Valid values are: `sshPublicKey`, `password`.
 	AuthMethod *string `pulumi:"authMethod"`

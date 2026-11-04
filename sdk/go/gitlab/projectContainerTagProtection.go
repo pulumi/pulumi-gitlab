@@ -163,6 +163,12 @@ func (ProjectContainerTagProtectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectContainerTagProtectionState)(nil)).Elem()
 }
 
+// ProjectContainerTagProtectionExists checks whether an existing ProjectContainerTagProtection resource with the given ID exists.
+func ProjectContainerTagProtectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectContainerTagProtectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectContainerTagProtection:ProjectContainerTagProtection", id, state, "", opts...)
+}
+
 type projectContainerTagProtectionArgs struct {
 	// Whether the container tag is immutable. If set, the container tag cannot be deleted or overwritten. Conflicts with `minimumAccessLevelForPush` and `minimumAccessLevelForDelete`.
 	Immutable *bool `pulumi:"immutable"`

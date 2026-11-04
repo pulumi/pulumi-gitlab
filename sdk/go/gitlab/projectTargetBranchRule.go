@@ -137,6 +137,12 @@ func (ProjectTargetBranchRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectTargetBranchRuleState)(nil)).Elem()
 }
 
+// ProjectTargetBranchRuleExists checks whether an existing ProjectTargetBranchRule resource with the given ID exists.
+func ProjectTargetBranchRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectTargetBranchRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectTargetBranchRule:ProjectTargetBranchRule", id, state, "", opts...)
+}
+
 type projectTargetBranchRuleArgs struct {
 	// The ID or URL-encoded path of the project.
 	Project string `pulumi:"project"`

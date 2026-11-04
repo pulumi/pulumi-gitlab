@@ -327,6 +327,20 @@ class GroupDependencyProxy(pulumi.CustomResource):
         __props__.__dict__["secret"] = secret
         return GroupDependencyProxy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enabled"] = enabled
+        __props__["group"] = group
+        __props__["identity"] = identity
+        __props__["secret"] = secret
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/groupDependencyProxy:GroupDependencyProxy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[_builtins.bool]:

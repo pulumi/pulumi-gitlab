@@ -74,6 +74,12 @@ func (UserSavedReplyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userSavedReplyState)(nil)).Elem()
 }
 
+// UserSavedReplyExists checks whether an existing UserSavedReply resource with the given ID exists.
+func UserSavedReplyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserSavedReplyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/userSavedReply:UserSavedReply", id, state, "", opts...)
+}
+
 type userSavedReplyArgs struct {
 	// The content of the saved reply.
 	Content string `pulumi:"content"`

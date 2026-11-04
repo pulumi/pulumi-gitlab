@@ -147,6 +147,12 @@ func (UserGpgKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userGpgKeyState)(nil)).Elem()
 }
 
+// UserGpgKeyExists checks whether an existing UserGpgKey resource with the given ID exists.
+func UserGpgKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserGpgKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/userGpgKey:UserGpgKey", id, state, "", opts...)
+}
+
 type userGpgKeyArgs struct {
 	// The armored GPG public key.
 	Key string `pulumi:"key"`

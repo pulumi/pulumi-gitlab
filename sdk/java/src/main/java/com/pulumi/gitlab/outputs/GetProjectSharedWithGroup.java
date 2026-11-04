@@ -19,11 +19,10 @@ public final class GetProjectSharedWithGroup {
     /**
      * @return The human-readable access level name of the shared group (e.g. `developer`, `maintainer`). Computed from `groupAccessLevel`.
      * 
-     * @deprecated
-     * Use `groupAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `groupAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `groupAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     private String groupAccessLevelName;
     /**
      * @return The full path of the group shared with.
@@ -52,11 +51,10 @@ public final class GetProjectSharedWithGroup {
     /**
      * @return The human-readable access level name of the shared group (e.g. `developer`, `maintainer`). Computed from `groupAccessLevel`.
      * 
-     * @deprecated
-     * Use `groupAccessLevel` instead, to be removed in 20.0.
+     * @deprecated Use `groupAccessLevel` instead, to be removed in 20.0.
      * 
      */
-    @Deprecated /* Use `groupAccessLevel` instead, to be removed in 20.0. */
+    @Deprecated
     public String groupAccessLevelName() {
         return this.groupAccessLevelName;
     }

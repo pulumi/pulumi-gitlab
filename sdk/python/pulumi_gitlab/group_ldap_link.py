@@ -452,6 +452,26 @@ class GroupLdapLink(pulumi.CustomResource):
         __props__.__dict__["member_role_id"] = member_role_id
         return GroupLdapLink(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cn: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            group_access: pulumi.Input[Optional[_builtins.str]] = None,
+            ldap_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            member_role_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cn"] = cn
+        __props__["filter"] = filter
+        __props__["force"] = force
+        __props__["group"] = group
+        __props__["groupAccess"] = group_access
+        __props__["ldapProvider"] = ldap_provider
+        __props__["memberRoleId"] = member_role_id
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/groupLdapLink:GroupLdapLink', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cn(self) -> pulumi.Output[_builtins.str]:

@@ -141,6 +141,12 @@ func (ProjectComplianceFrameworksState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectComplianceFrameworksState)(nil)).Elem()
 }
 
+// ProjectComplianceFrameworksExists checks whether an existing ProjectComplianceFrameworks resource with the given ID exists.
+func ProjectComplianceFrameworksExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectComplianceFrameworksState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectComplianceFrameworks:ProjectComplianceFrameworks", id, state, "", opts...)
+}
+
 type projectComplianceFrameworksArgs struct {
 	// Globally unique IDs of the compliance frameworks to assign to the project.
 	ComplianceFrameworkIds []string `pulumi:"complianceFrameworkIds"`

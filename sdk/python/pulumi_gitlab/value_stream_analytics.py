@@ -393,6 +393,20 @@ class ValueStreamAnalytics(pulumi.CustomResource):
         __props__.__dict__["stages"] = stages
         return ValueStreamAnalytics(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            group_full_path: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_full_path: pulumi.Input[Optional[_builtins.str]] = None,
+            stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ValueStreamAnalyticsStageArgs', 'ValueStreamAnalyticsStageArgsDict', 'outputs.ValueStreamAnalyticsStage']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["groupFullPath"] = group_full_path
+        __props__["name"] = name
+        __props__["projectFullPath"] = project_full_path
+        __props__["stages"] = stages
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/valueStreamAnalytics:ValueStreamAnalytics', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="groupFullPath")
     def group_full_path(self) -> pulumi.Output[Optional[_builtins.str]]:

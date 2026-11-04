@@ -740,6 +740,40 @@ class ApplicationAppearance(pulumi.CustomResource):
         __props__.__dict__["title"] = title
         return ApplicationAppearance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            email_header_and_footer_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            footer_message: pulumi.Input[Optional[_builtins.str]] = None,
+            header_message: pulumi.Input[Optional[_builtins.str]] = None,
+            keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            member_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+            message_background_color: pulumi.Input[Optional[_builtins.str]] = None,
+            message_font_color: pulumi.Input[Optional[_builtins.str]] = None,
+            new_project_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+            profile_image_guidelines: pulumi.Input[Optional[_builtins.str]] = None,
+            pwa_description: pulumi.Input[Optional[_builtins.str]] = None,
+            pwa_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pwa_short_name: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["emailHeaderAndFooterEnabled"] = email_header_and_footer_enabled
+        __props__["footerMessage"] = footer_message
+        __props__["headerMessage"] = header_message
+        __props__["keepSettingsOnDestroy"] = keep_settings_on_destroy
+        __props__["memberGuidelines"] = member_guidelines
+        __props__["messageBackgroundColor"] = message_background_color
+        __props__["messageFontColor"] = message_font_color
+        __props__["newProjectGuidelines"] = new_project_guidelines
+        __props__["profileImageGuidelines"] = profile_image_guidelines
+        __props__["pwaDescription"] = pwa_description
+        __props__["pwaName"] = pwa_name
+        __props__["pwaShortName"] = pwa_short_name
+        __props__["title"] = title
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/applicationAppearance:ApplicationAppearance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:

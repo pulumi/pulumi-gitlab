@@ -168,6 +168,12 @@ func (ValueStreamAnalyticsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*valueStreamAnalyticsState)(nil)).Elem()
 }
 
+// ValueStreamAnalyticsExists checks whether an existing ValueStreamAnalytics resource with the given ID exists.
+func ValueStreamAnalyticsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ValueStreamAnalyticsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/valueStreamAnalytics:ValueStreamAnalytics", id, state, "", opts...)
+}
+
 type valueStreamAnalyticsArgs struct {
 	// Full path of the group the value stream is created in. **One of `groupFullPath` OR `projectFullPath` is required.**
 	GroupFullPath *string `pulumi:"groupFullPath"`

@@ -164,6 +164,12 @@ func (ProjectTagState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectTagState)(nil)).Elem()
 }
 
+// ProjectTagExists checks whether an existing ProjectTag resource with the given ID exists.
+func ProjectTagExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectTagState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectTag:ProjectTag", id, state, "", opts...)
+}
+
 type projectTagArgs struct {
 	// The message of the annotated tag.
 	Message *string `pulumi:"message"`

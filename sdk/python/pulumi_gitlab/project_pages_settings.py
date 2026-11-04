@@ -379,6 +379,24 @@ class ProjectPagesSettings(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return ProjectPagesSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectPagesSettingsDeploymentArgs', 'ProjectPagesSettingsDeploymentArgsDict', 'outputs.ProjectPagesSettingsDeployment']]]]] = None,
+            force_https: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_unique_domain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deployments"] = deployments
+        __props__["forceHttps"] = force_https
+        __props__["isUniqueDomainEnabled"] = is_unique_domain_enabled
+        __props__["keepSettingsOnDestroy"] = keep_settings_on_destroy
+        __props__["project"] = project
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectPagesSettings:ProjectPagesSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def deployments(self) -> pulumi.Output[Sequence['outputs.ProjectPagesSettingsDeployment']]:

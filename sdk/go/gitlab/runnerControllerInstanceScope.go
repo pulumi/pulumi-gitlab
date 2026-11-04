@@ -112,6 +112,12 @@ func (RunnerControllerInstanceScopeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*runnerControllerInstanceScopeState)(nil)).Elem()
 }
 
+// RunnerControllerInstanceScopeExists checks whether an existing RunnerControllerInstanceScope resource with the given ID exists.
+func RunnerControllerInstanceScopeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RunnerControllerInstanceScopeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/runnerControllerInstanceScope:RunnerControllerInstanceScope", id, state, "", opts...)
+}
+
 type runnerControllerInstanceScopeArgs struct {
 	// The ID of the runner controller.
 	RunnerControllerId int `pulumi:"runnerControllerId"`

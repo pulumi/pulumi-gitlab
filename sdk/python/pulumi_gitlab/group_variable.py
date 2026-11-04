@@ -573,6 +573,32 @@ class GroupVariable(pulumi.CustomResource):
         __props__.__dict__["variable_type"] = variable_type
         return GroupVariable(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            masked: pulumi.Input[Optional[_builtins.bool]] = None,
+            protected: pulumi.Input[Optional[_builtins.bool]] = None,
+            raw: pulumi.Input[Optional[_builtins.bool]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None,
+            variable_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["environmentScope"] = environment_scope
+        __props__["group"] = group
+        __props__["hidden"] = hidden
+        __props__["key"] = key
+        __props__["masked"] = masked
+        __props__["protected"] = protected
+        __props__["raw"] = raw
+        __props__["value"] = value
+        __props__["variableType"] = variable_type
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/groupVariable:GroupVariable', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:

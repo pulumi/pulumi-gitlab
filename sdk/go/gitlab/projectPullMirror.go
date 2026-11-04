@@ -245,6 +245,12 @@ func (ProjectPullMirrorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectPullMirrorState)(nil)).Elem()
 }
 
+// ProjectPullMirrorExists checks whether an existing ProjectPullMirror resource with the given ID exists.
+func ProjectPullMirrorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectPullMirrorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectPullMirror:ProjectPullMirror", id, state, "", opts...)
+}
+
 type projectPullMirrorArgs struct {
 	// Authentication password or token for the remote repository.
 	AuthPassword *string `pulumi:"authPassword"`

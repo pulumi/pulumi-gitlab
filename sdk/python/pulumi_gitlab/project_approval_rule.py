@@ -672,6 +672,32 @@ class ProjectApprovalRule(pulumi.CustomResource):
         __props__.__dict__["user_ids"] = user_ids
         return ProjectApprovalRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            applies_to_all_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+            approvals_required: pulumi.Input[Optional[_builtins.int]] = None,
+            disable_importing_default_any_approver_rule_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protected_branch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            report_type: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_type: pulumi.Input[Optional[_builtins.str]] = None,
+            user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appliesToAllProtectedBranches"] = applies_to_all_protected_branches
+        __props__["approvalsRequired"] = approvals_required
+        __props__["disableImportingDefaultAnyApproverRuleOnCreate"] = disable_importing_default_any_approver_rule_on_create
+        __props__["groupIds"] = group_ids
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["protectedBranchIds"] = protected_branch_ids
+        __props__["reportType"] = report_type
+        __props__["ruleType"] = rule_type
+        __props__["userIds"] = user_ids
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectApprovalRule:ProjectApprovalRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appliesToAllProtectedBranches")
     def applies_to_all_protected_branches(self) -> pulumi.Output[_builtins.bool]:

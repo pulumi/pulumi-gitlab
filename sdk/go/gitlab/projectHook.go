@@ -376,6 +376,12 @@ func (ProjectHookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectHookState)(nil)).Elem()
 }
 
+// ProjectHookExists checks whether an existing ProjectHook resource with the given ID exists.
+func ProjectHookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectHookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectHook:ProjectHook", id, state, "", opts...)
+}
+
 type projectHookArgs struct {
 	// Filter push events by branch. Valid values are: `wildcard`, `regex`, `allBranches`.
 	BranchFilterStrategy *string `pulumi:"branchFilterStrategy"`

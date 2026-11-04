@@ -185,6 +185,12 @@ func (GroupIntegrationDatadogState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupIntegrationDatadogState)(nil)).Elem()
 }
 
+// GroupIntegrationDatadogExists checks whether an existing GroupIntegrationDatadog resource with the given ID exists.
+func GroupIntegrationDatadogExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupIntegrationDatadogState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupIntegrationDatadog:GroupIntegrationDatadog", id, state, "", opts...)
+}
+
 type groupIntegrationDatadogArgs struct {
 	// API key used for authentication with Datadog.
 	ApiKey string `pulumi:"apiKey"`

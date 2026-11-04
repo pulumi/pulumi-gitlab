@@ -152,6 +152,12 @@ func (AdminRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*adminRoleState)(nil)).Elem()
 }
 
+// AdminRoleExists checks whether an existing AdminRole resource with the given ID exists.
+func AdminRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AdminRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/adminRole:AdminRole", id, state, "", opts...)
+}
+
 type adminRoleArgs struct {
 	// Description for the admin role.
 	Description *string `pulumi:"description"`

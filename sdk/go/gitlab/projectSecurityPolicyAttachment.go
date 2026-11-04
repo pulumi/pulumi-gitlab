@@ -187,6 +187,12 @@ func (ProjectSecurityPolicyAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectSecurityPolicyAttachmentState)(nil)).Elem()
 }
 
+// ProjectSecurityPolicyAttachmentExists checks whether an existing ProjectSecurityPolicyAttachment resource with the given ID exists.
+func ProjectSecurityPolicyAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectSecurityPolicyAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectSecurityPolicyAttachment:ProjectSecurityPolicyAttachment", id, state, "", opts...)
+}
+
 type projectSecurityPolicyAttachmentArgs struct {
 	// The ID or Full Path of the security policy project.
 	PolicyProject string `pulumi:"policyProject"`

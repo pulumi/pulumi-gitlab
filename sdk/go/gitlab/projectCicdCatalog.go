@@ -127,6 +127,12 @@ func (ProjectCicdCatalogState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectCicdCatalogState)(nil)).Elem()
 }
 
+// ProjectCicdCatalogExists checks whether an existing ProjectCicdCatalog resource with the given ID exists.
+func ProjectCicdCatalogExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectCicdCatalogState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectCicdCatalog:ProjectCicdCatalog", id, state, "", opts...)
+}
+
 type projectCicdCatalogArgs struct {
 	// Whether the project should be enabled as a CI/CD Catalog resource.
 	Enabled bool `pulumi:"enabled"`

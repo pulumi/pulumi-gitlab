@@ -285,6 +285,18 @@ class ProjectCicdCatalog(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return ProjectCicdCatalog(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enabled"] = enabled
+        __props__["keepSettingsOnDestroy"] = keep_settings_on_destroy
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectCicdCatalog:ProjectCicdCatalog', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[_builtins.bool]:

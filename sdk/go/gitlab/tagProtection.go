@@ -143,6 +143,12 @@ func (TagProtectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tagProtectionState)(nil)).Elem()
 }
 
+// TagProtectionExists checks whether an existing TagProtection resource with the given ID exists.
+func TagProtectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TagProtectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/tagProtection:TagProtection", id, state, "", opts...)
+}
+
 type tagProtectionArgs struct {
 	// Array of access levels/user(s)/group(s) allowed to create protected tags.
 	AllowedToCreates []TagProtectionAllowedToCreate `pulumi:"allowedToCreates"`

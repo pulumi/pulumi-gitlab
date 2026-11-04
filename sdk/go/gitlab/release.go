@@ -218,6 +218,12 @@ func (ReleaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*releaseState)(nil)).Elem()
 }
 
+// ReleaseExists checks whether an existing Release resource with the given ID exists.
+func ReleaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReleaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/release:Release", id, state, "", opts...)
+}
+
 type releaseArgs struct {
 	// The release assets.
 	Assets *ReleaseAssets `pulumi:"assets"`

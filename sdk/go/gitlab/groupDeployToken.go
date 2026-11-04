@@ -191,6 +191,12 @@ func (GroupDeployTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupDeployTokenState)(nil)).Elem()
 }
 
+// GroupDeployTokenExists checks whether an existing GroupDeployToken resource with the given ID exists.
+func GroupDeployTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupDeployTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupDeployToken:GroupDeployToken", id, state, "", opts...)
+}
+
 type groupDeployTokenArgs struct {
 	// Time the token expires in RFC3339 format. Not set by default.
 	ExpiresAt *string `pulumi:"expiresAt"`

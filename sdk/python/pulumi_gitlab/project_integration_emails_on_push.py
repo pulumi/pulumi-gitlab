@@ -549,6 +549,36 @@ class ProjectIntegrationEmailsOnPush(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return ProjectIntegrationEmailsOnPush(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_diffs: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            recipients: pulumi.Input[Optional[_builtins.str]] = None,
+            send_from_committer_email: pulumi.Input[Optional[_builtins.bool]] = None,
+            slug: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["branchesToBeNotified"] = branches_to_be_notified
+        __props__["createdAt"] = created_at
+        __props__["disableDiffs"] = disable_diffs
+        __props__["project"] = project
+        __props__["pushEvents"] = push_events
+        __props__["recipients"] = recipients
+        __props__["sendFromCommitterEmail"] = send_from_committer_email
+        __props__["slug"] = slug
+        __props__["tagPushEvents"] = tag_push_events
+        __props__["title"] = title
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectIntegrationEmailsOnPush:ProjectIntegrationEmailsOnPush', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

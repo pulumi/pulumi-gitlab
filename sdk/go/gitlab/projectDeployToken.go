@@ -191,6 +191,12 @@ func (ProjectDeployTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectDeployTokenState)(nil)).Elem()
 }
 
+// ProjectDeployTokenExists checks whether an existing ProjectDeployToken resource with the given ID exists.
+func ProjectDeployTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectDeployTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectDeployToken:ProjectDeployToken", id, state, "", opts...)
+}
+
 type projectDeployTokenArgs struct {
 	// Time the token expires in RFC3339 format. Not set by default.
 	ExpiresAt *string `pulumi:"expiresAt"`

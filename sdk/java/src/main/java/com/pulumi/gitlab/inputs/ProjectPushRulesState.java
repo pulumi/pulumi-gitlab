@@ -33,14 +33,14 @@ public final class ProjectPushRulesState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+     * All branch names must match this regex, e.g. `(feature|hotfix)&#92;/*`.
      * 
      */
     @Import(name="branchNameRegex")
     private @Nullable Output<String> branchNameRegex;
 
     /**
-     * @return All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+     * @return All branch names must match this regex, e.g. `(feature|hotfix)&#92;/*`.
      * 
      */
     public Optional<Output<String>> branchNameRegex() {
@@ -78,14 +78,14 @@ public final class ProjectPushRulesState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
+     * No commit message is allowed to match this regex, e.g. `ssh&#92;:&#92;/&#92;/`.
      * 
      */
     @Import(name="commitMessageNegativeRegex")
     private @Nullable Output<String> commitMessageNegativeRegex;
 
     /**
-     * @return No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
+     * @return No commit message is allowed to match this regex, e.g. `ssh&#92;:&#92;/&#92;/`.
      * 
      */
     public Optional<Output<String>> commitMessageNegativeRegex() {
@@ -93,14 +93,14 @@ public final class ProjectPushRulesState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     * All commit messages must match this regex, e.g. `Fixed &#92;d+&#92;..*`.
      * 
      */
     @Import(name="commitMessageRegex")
     private @Nullable Output<String> commitMessageRegex;
 
     /**
-     * @return All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     * @return All commit messages must match this regex, e.g. `Fixed &#92;d+&#92;..*`.
      * 
      */
     public Optional<Output<String>> commitMessageRegex() {
@@ -286,7 +286,7 @@ public final class ProjectPushRulesState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param branchNameRegex All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+         * @param branchNameRegex All branch names must match this regex, e.g. `(feature|hotfix)&#92;/*`.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class ProjectPushRulesState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param branchNameRegex All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+         * @param branchNameRegex All branch names must match this regex, e.g. `(feature|hotfix)&#92;/*`.
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class ProjectPushRulesState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param commitMessageNegativeRegex No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
+         * @param commitMessageNegativeRegex No commit message is allowed to match this regex, e.g. `ssh&#92;:&#92;/&#92;/`.
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class ProjectPushRulesState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param commitMessageNegativeRegex No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
+         * @param commitMessageNegativeRegex No commit message is allowed to match this regex, e.g. `ssh&#92;:&#92;/&#92;/`.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class ProjectPushRulesState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param commitMessageRegex All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+         * @param commitMessageRegex All commit messages must match this regex, e.g. `Fixed &#92;d+&#92;..*`.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class ProjectPushRulesState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param commitMessageRegex All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+         * @param commitMessageRegex All commit messages must match this regex, e.g. `Fixed &#92;d+&#92;..*`.
          * 
          * @return builder
          * 

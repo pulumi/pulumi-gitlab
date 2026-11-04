@@ -149,6 +149,12 @@ func (ProjectMembershipState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectMembershipState)(nil)).Elem()
 }
 
+// ProjectMembershipExists checks whether an existing ProjectMembership resource with the given ID exists.
+func ProjectMembershipExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectMembershipState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectMembership:ProjectMembership", id, state, "", opts...)
+}
+
 type projectMembershipArgs struct {
 	// The access level for the member. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`
 	AccessLevel string `pulumi:"accessLevel"`

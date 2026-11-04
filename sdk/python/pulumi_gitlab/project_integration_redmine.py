@@ -371,6 +371,22 @@ class ProjectIntegrationRedmine(pulumi.CustomResource):
         __props__.__dict__["use_inherited_settings"] = use_inherited_settings
         return ProjectIntegrationRedmine(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            issues_url: pulumi.Input[Optional[_builtins.str]] = None,
+            new_issue_url: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_url: pulumi.Input[Optional[_builtins.str]] = None,
+            use_inherited_settings: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["issuesUrl"] = issues_url
+        __props__["newIssueUrl"] = new_issue_url
+        __props__["project"] = project
+        __props__["projectUrl"] = project_url
+        __props__["useInheritedSettings"] = use_inherited_settings
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectIntegrationRedmine:ProjectIntegrationRedmine', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="issuesUrl")
     def issues_url(self) -> pulumi.Output[_builtins.str]:

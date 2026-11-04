@@ -18,7 +18,7 @@ public final class GetClusterAgentsResult {
      */
     private List<GetClusterAgentsClusterAgent> clusterAgents;
     /**
-     * @return The ID of this data source. In the format \n\n
+     * @return The ID of this data source. In the format &#92;n&#92;n
      * 
      */
     private String id;
@@ -37,7 +37,7 @@ public final class GetClusterAgentsResult {
         return this.clusterAgents;
     }
     /**
-     * @return The ID of this data source. In the format \n\n
+     * @return The ID of this data source. In the format &#92;n&#92;n
      * 
      */
     public String id() {

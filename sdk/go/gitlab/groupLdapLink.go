@@ -159,6 +159,12 @@ func (GroupLdapLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupLdapLinkState)(nil)).Elem()
 }
 
+// GroupLdapLinkExists checks whether an existing GroupLdapLink resource with the given ID exists.
+func GroupLdapLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupLdapLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupLdapLink:GroupLdapLink", id, state, "", opts...)
+}
+
 type groupLdapLinkArgs struct {
 	// The CN of the LDAP group to link with. Required if `filter` is not provided.
 	Cn *string `pulumi:"cn"`

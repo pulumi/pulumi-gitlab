@@ -204,6 +204,12 @@ func (ProjectMilestoneState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectMilestoneState)(nil)).Elem()
 }
 
+// ProjectMilestoneExists checks whether an existing ProjectMilestone resource with the given ID exists.
+func ProjectMilestoneExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectMilestoneState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectMilestone:ProjectMilestone", id, state, "", opts...)
+}
+
 type projectMilestoneArgs struct {
 	// The description of the milestone.
 	Description *string `pulumi:"description"`

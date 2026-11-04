@@ -204,6 +204,12 @@ func (ProjectPushRulesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectPushRulesState)(nil)).Elem()
 }
 
+// ProjectPushRulesExists checks whether an existing ProjectPushRules resource with the given ID exists.
+func ProjectPushRulesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectPushRulesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectPushRules:ProjectPushRules", id, state, "", opts...)
+}
+
 type projectPushRulesArgs struct {
 	// All commit author emails must match this regex, e.g. `@my-company.com$`.
 	AuthorEmailRegex *string `pulumi:"authorEmailRegex"`

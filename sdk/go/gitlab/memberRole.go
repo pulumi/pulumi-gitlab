@@ -181,6 +181,12 @@ func (MemberRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*memberRoleState)(nil)).Elem()
 }
 
+// MemberRoleExists checks whether an existing MemberRole resource with the given ID exists.
+func MemberRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MemberRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/memberRole:MemberRole", id, state, "", opts...)
+}
+
 type memberRoleArgs struct {
 	// The base access level for the custom role. Valid values are: `DEVELOPER`, `GUEST`, `MAINTAINER`, `MINIMAL_ACCESS`, `OWNER`, `REPORTER`, `SECURITY_MANAGER`
 	BaseAccessLevel string `pulumi:"baseAccessLevel"`

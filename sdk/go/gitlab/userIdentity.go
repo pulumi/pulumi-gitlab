@@ -143,6 +143,12 @@ func (UserIdentityState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userIdentityState)(nil)).Elem()
 }
 
+// UserIdentityExists checks whether an existing UserIdentity resource with the given ID exists.
+func UserIdentityExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserIdentityState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/userIdentity:UserIdentity", id, state, "", opts...)
+}
+
 type userIdentityArgs struct {
 	// The external provider name.
 	ExternalProvider string `pulumi:"externalProvider"`

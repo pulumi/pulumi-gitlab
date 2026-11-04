@@ -746,6 +746,40 @@ class ProjectIntegrationTelegram(pulumi.CustomResource):
         __props__.__dict__["wiki_page_events"] = wiki_page_events
         return ProjectIntegrationTelegram(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            branches_to_be_notified: pulumi.Input[Optional[_builtins.str]] = None,
+            confidential_issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            confidential_note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            issues_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_requests_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            note_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            notify_only_broken_pipelines: pulumi.Input[Optional[_builtins.bool]] = None,
+            pipeline_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            room: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["branchesToBeNotified"] = branches_to_be_notified
+        __props__["confidentialIssuesEvents"] = confidential_issues_events
+        __props__["confidentialNoteEvents"] = confidential_note_events
+        __props__["issuesEvents"] = issues_events
+        __props__["mergeRequestsEvents"] = merge_requests_events
+        __props__["noteEvents"] = note_events
+        __props__["notifyOnlyBrokenPipelines"] = notify_only_broken_pipelines
+        __props__["pipelineEvents"] = pipeline_events
+        __props__["project"] = project
+        __props__["pushEvents"] = push_events
+        __props__["room"] = room
+        __props__["tagPushEvents"] = tag_push_events
+        __props__["token"] = token
+        __props__["wikiPageEvents"] = wiki_page_events
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectIntegrationTelegram:ProjectIntegrationTelegram', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="branchesToBeNotified")
     def branches_to_be_notified(self) -> pulumi.Output[_builtins.str]:

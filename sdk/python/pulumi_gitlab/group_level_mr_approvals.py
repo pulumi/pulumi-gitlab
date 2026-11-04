@@ -458,6 +458,26 @@ class GroupLevelMrApprovals(pulumi.CustomResource):
         __props__.__dict__["retain_approvals_on_push"] = retain_approvals_on_push
         return GroupLevelMrApprovals(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_committer_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_overrides_to_approver_list_per_merge_request: pulumi.Input[Optional[_builtins.bool]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            keep_settings_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            require_reauthentication_to_approve: pulumi.Input[Optional[_builtins.bool]] = None,
+            retain_approvals_on_push: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowAuthorApproval"] = allow_author_approval
+        __props__["allowCommitterApproval"] = allow_committer_approval
+        __props__["allowOverridesToApproverListPerMergeRequest"] = allow_overrides_to_approver_list_per_merge_request
+        __props__["group"] = group
+        __props__["keepSettingsOnDestroy"] = keep_settings_on_destroy
+        __props__["requireReauthenticationToApprove"] = require_reauthentication_to_approve
+        __props__["retainApprovalsOnPush"] = retain_approvals_on_push
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/groupLevelMrApprovals:GroupLevelMrApprovals', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowAuthorApproval")
     def allow_author_approval(self) -> pulumi.Output[_builtins.bool]:

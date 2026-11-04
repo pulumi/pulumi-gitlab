@@ -190,6 +190,12 @@ func (ProjectJobTokenScopesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectJobTokenScopesState)(nil)).Elem()
 }
 
+// ProjectJobTokenScopesExists checks whether an existing ProjectJobTokenScopes resource with the given ID exists.
+func ProjectJobTokenScopesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectJobTokenScopesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectJobTokenScopes:ProjectJobTokenScopes", id, state, "", opts...)
+}
+
 type projectJobTokenScopesArgs struct {
 	// Enable the given inbound allowlist. If false, will allow any project or group regardless of the values in `targetProjectIds` or `targetGroupIds`. Deleting the associated `ProjectJobTokenScopes` resource will reset `Enabled` on the group to `true`.
 	Enabled *bool `pulumi:"enabled"`

@@ -259,6 +259,12 @@ func (IntegrationSlackState) ElementType() reflect.Type {
 	return reflect.TypeOf((*integrationSlackState)(nil)).Elem()
 }
 
+// IntegrationSlackExists checks whether an existing IntegrationSlack resource with the given ID exists.
+func IntegrationSlackExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IntegrationSlackState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/integrationSlack:IntegrationSlack", id, state, "", opts...)
+}
+
 type integrationSlackArgs struct {
 	// Branches to send notifications for. Valid options are "all", "default", "protected", and "default*and*protected".
 	BranchesToBeNotified *string `pulumi:"branchesToBeNotified"`

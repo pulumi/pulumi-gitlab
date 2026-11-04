@@ -54,10 +54,10 @@ import javax.annotation.Nullable;
  *         var sample = new ProjectPushRules("sample", ProjectPushRulesArgs.builder()
  *             .project("42")
  *             .authorEmailRegex("}{@literal @}{@code gitlab.com$")
- *             .branchNameRegex("(feat|fix)\\/*")
+ *             .branchNameRegex("(feat|fix)}&#92;&#92;{@code /*")
  *             .commitCommitterCheck(true)
  *             .commitCommitterNameCheck(true)
- *             .commitMessageNegativeRegex("ssh\\:\\/\\/")
+ *             .commitMessageNegativeRegex("ssh}&#92;&#92;{@code :}&#92;&#92;{@code /}&#92;&#92;{@code /")
  *             .commitMessageRegex("(feat|fix):.*")
  *             .denyDeleteTag(false)
  *             .fileNameRegex("(jar|exe)$")
@@ -102,14 +102,14 @@ public class ProjectPushRules extends com.pulumi.resources.CustomResource {
         return this.authorEmailRegex;
     }
     /**
-     * All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+     * All branch names must match this regex, e.g. `(feature|hotfix)&#92;/*`.
      * 
      */
     @Export(name="branchNameRegex", refs={String.class}, tree="[0]")
     private Output<String> branchNameRegex;
 
     /**
-     * @return All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+     * @return All branch names must match this regex, e.g. `(feature|hotfix)&#92;/*`.
      * 
      */
     public Output<String> branchNameRegex() {
@@ -144,28 +144,28 @@ public class ProjectPushRules extends com.pulumi.resources.CustomResource {
         return this.commitCommitterNameCheck;
     }
     /**
-     * No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
+     * No commit message is allowed to match this regex, e.g. `ssh&#92;:&#92;/&#92;/`.
      * 
      */
     @Export(name="commitMessageNegativeRegex", refs={String.class}, tree="[0]")
     private Output<String> commitMessageNegativeRegex;
 
     /**
-     * @return No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
+     * @return No commit message is allowed to match this regex, e.g. `ssh&#92;:&#92;/&#92;/`.
      * 
      */
     public Output<String> commitMessageNegativeRegex() {
         return this.commitMessageNegativeRegex;
     }
     /**
-     * All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     * All commit messages must match this regex, e.g. `Fixed &#92;d+&#92;..*`.
      * 
      */
     @Export(name="commitMessageRegex", refs={String.class}, tree="[0]")
     private Output<String> commitMessageRegex;
 
     /**
-     * @return All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     * @return All commit messages must match this regex, e.g. `Fixed &#92;d+&#92;..*`.
      * 
      */
     public Output<String> commitMessageRegex() {

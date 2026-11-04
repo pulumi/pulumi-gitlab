@@ -182,6 +182,12 @@ func (PipelineScheduleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineScheduleState)(nil)).Elem()
 }
 
+// PipelineScheduleExists checks whether an existing PipelineSchedule resource with the given ID exists.
+func PipelineScheduleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PipelineScheduleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/pipelineSchedule:PipelineSchedule", id, state, "", opts...)
+}
+
 type pipelineScheduleArgs struct {
 	// The activation of pipeline schedule. If false is set, the pipeline schedule will deactivated initially.
 	Active *bool `pulumi:"active"`

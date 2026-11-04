@@ -257,6 +257,12 @@ func (GroupServiceAccountAccessTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupServiceAccountAccessTokenState)(nil)).Elem()
 }
 
+// GroupServiceAccountAccessTokenExists checks whether an existing GroupServiceAccountAccessToken resource with the given ID exists.
+func GroupServiceAccountAccessTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupServiceAccountAccessTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupServiceAccountAccessToken:GroupServiceAccountAccessToken", id, state, "", opts...)
+}
+
 type groupServiceAccountAccessTokenArgs struct {
 	// The description of the group service account access token.
 	Description *string `pulumi:"description"`

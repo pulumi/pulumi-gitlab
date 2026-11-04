@@ -13,7 +13,7 @@ namespace Pulumi.GitLab
     {
         /// <summary>
         /// The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.
-        /// 	
+        /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
         /// 
         /// ## Example Usage
@@ -44,7 +44,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.
-        /// 	
+        /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
         /// 
         /// ## Example Usage
@@ -75,7 +75,7 @@ namespace Pulumi.GitLab
 
         /// <summary>
         /// The `gitlab.getGroupSamlLinks` data source retrieves all SAML links for a specified group.
-        /// 	
+        /// 
         /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/saml/#saml-group-links)
         /// 
         /// ## Example Usage

@@ -165,6 +165,12 @@ func (ComplianceFrameworkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*complianceFrameworkState)(nil)).Elem()
 }
 
+// ComplianceFrameworkExists checks whether an existing ComplianceFramework resource with the given ID exists.
+func ComplianceFrameworkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ComplianceFrameworkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/complianceFramework:ComplianceFramework", id, state, "", opts...)
+}
+
 type complianceFrameworkArgs struct {
 	// New color representation of the compliance framework in hex format. e.g. #FCA121.
 	Color string `pulumi:"color"`

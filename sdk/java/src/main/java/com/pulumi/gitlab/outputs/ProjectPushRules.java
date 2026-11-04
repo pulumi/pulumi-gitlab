@@ -19,7 +19,7 @@ public final class ProjectPushRules {
      */
     private @Nullable String authorEmailRegex;
     /**
-     * @return All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+     * @return All branch names must match this regex, e.g. `(feature|hotfix)&#92;/*`.
      * 
      */
     private @Nullable String branchNameRegex;
@@ -34,12 +34,12 @@ public final class ProjectPushRules {
      */
     private @Nullable Boolean commitCommitterNameCheck;
     /**
-     * @return No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
+     * @return No commit message is allowed to match this regex, e.g. `ssh&#92;:&#92;/&#92;/`.
      * 
      */
     private @Nullable String commitMessageNegativeRegex;
     /**
-     * @return All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     * @return All commit messages must match this regex, e.g. `Fixed &#92;d+&#92;..*`.
      * 
      */
     private @Nullable String commitMessageRegex;
@@ -88,7 +88,7 @@ public final class ProjectPushRules {
         return Optional.ofNullable(this.authorEmailRegex);
     }
     /**
-     * @return All branch names must match this regex, e.g. `(feature|hotfix)\/*`.
+     * @return All branch names must match this regex, e.g. `(feature|hotfix)&#92;/*`.
      * 
      */
     public Optional<String> branchNameRegex() {
@@ -109,14 +109,14 @@ public final class ProjectPushRules {
         return Optional.ofNullable(this.commitCommitterNameCheck);
     }
     /**
-     * @return No commit message is allowed to match this regex, e.g. `ssh\:\/\/`.
+     * @return No commit message is allowed to match this regex, e.g. `ssh&#92;:&#92;/&#92;/`.
      * 
      */
     public Optional<String> commitMessageNegativeRegex() {
         return Optional.ofNullable(this.commitMessageNegativeRegex);
     }
     /**
-     * @return All commit messages must match this regex, e.g. `Fixed \d+\..*`.
+     * @return All commit messages must match this regex, e.g. `Fixed &#92;d+&#92;..*`.
      * 
      */
     public Optional<String> commitMessageRegex() {

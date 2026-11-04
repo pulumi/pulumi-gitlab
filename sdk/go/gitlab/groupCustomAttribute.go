@@ -126,6 +126,12 @@ func (GroupCustomAttributeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupCustomAttributeState)(nil)).Elem()
 }
 
+// GroupCustomAttributeExists checks whether an existing GroupCustomAttribute resource with the given ID exists.
+func GroupCustomAttributeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupCustomAttributeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupCustomAttribute:GroupCustomAttribute", id, state, "", opts...)
+}
+
 type groupCustomAttributeArgs struct {
 	// The id of the group.
 	Group int `pulumi:"group"`

@@ -126,6 +126,12 @@ func (UserCustomAttributeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userCustomAttributeState)(nil)).Elem()
 }
 
+// UserCustomAttributeExists checks whether an existing UserCustomAttribute resource with the given ID exists.
+func UserCustomAttributeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserCustomAttributeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/userCustomAttribute:UserCustomAttribute", id, state, "", opts...)
+}
+
 type userCustomAttributeArgs struct {
 	// Key for the Custom Attribute.
 	Key string `pulumi:"key"`

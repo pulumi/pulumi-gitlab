@@ -504,6 +504,30 @@ class ProjectPushMirror(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return ProjectPushMirror(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_method: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            host_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            keep_divergent_refs: pulumi.Input[Optional[_builtins.bool]] = None,
+            mirror_branch_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            mirror_id: pulumi.Input[Optional[_builtins.int]] = None,
+            only_protected_branches: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authMethod"] = auth_method
+        __props__["enabled"] = enabled
+        __props__["hostKeys"] = host_keys
+        __props__["keepDivergentRefs"] = keep_divergent_refs
+        __props__["mirrorBranchRegex"] = mirror_branch_regex
+        __props__["mirrorId"] = mirror_id
+        __props__["onlyProtectedBranches"] = only_protected_branches
+        __props__["project"] = project
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectPushMirror:ProjectPushMirror', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> pulumi.Output[_builtins.str]:

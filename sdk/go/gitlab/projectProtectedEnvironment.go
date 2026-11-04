@@ -238,6 +238,12 @@ func (ProjectProtectedEnvironmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectProtectedEnvironmentState)(nil)).Elem()
 }
 
+// ProjectProtectedEnvironmentExists checks whether an existing ProjectProtectedEnvironment resource with the given ID exists.
+func ProjectProtectedEnvironmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectProtectedEnvironmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectProtectedEnvironment:ProjectProtectedEnvironment", id, state, "", opts...)
+}
+
 type projectProtectedEnvironmentArgs struct {
 	// Array of approval rules to deploy, with each described by a hash. Elements in the `approvalRules` should be one of `userId`, `groupId` or `accessLevel`.
 	ApprovalRules []ProjectProtectedEnvironmentApprovalRule `pulumi:"approvalRules"`

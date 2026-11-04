@@ -175,6 +175,12 @@ func (ProjectJobTokenScopeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectJobTokenScopeState)(nil)).Elem()
 }
 
+// ProjectJobTokenScopeExists checks whether an existing ProjectJobTokenScope resource with the given ID exists.
+func ProjectJobTokenScopeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectJobTokenScopeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectJobTokenScope:ProjectJobTokenScope", id, state, "", opts...)
+}
+
 type projectJobTokenScopeArgs struct {
 	// The ID or full path of the project.
 	Project string `pulumi:"project"`

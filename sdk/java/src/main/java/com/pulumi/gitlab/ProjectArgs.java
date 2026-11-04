@@ -1139,22 +1139,20 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      * 
-     * @deprecated
-     * The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource&#39;s `secretPushProtectionEnabled` attribute instead.
+     * @deprecated The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource&#39;s `secretPushProtectionEnabled` attribute instead.
      * 
      */
-    @Deprecated /* The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead. */
+    @Deprecated
     @Import(name="preReceiveSecretDetectionEnabled")
     private @Nullable Output<Boolean> preReceiveSecretDetectionEnabled;
 
     /**
      * @return Whether Secret Push Detection is enabled. Requires GitLab Ultimate.
      * 
-     * @deprecated
-     * The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource&#39;s `secretPushProtectionEnabled` attribute instead.
+     * @deprecated The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource&#39;s `secretPushProtectionEnabled` attribute instead.
      * 
      */
-    @Deprecated /* The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead. */
+    @Deprecated
     public Optional<Output<Boolean>> preReceiveSecretDetectionEnabled() {
         return Optional.ofNullable(this.preReceiveSecretDetectionEnabled);
     }
@@ -1207,22 +1205,20 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * If true, jobs can be viewed by non-project members.
      * 
-     * @deprecated
-     * The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
+     * @deprecated The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider. */
+    @Deprecated
     @Import(name="publicBuilds")
     private @Nullable Output<Boolean> publicBuilds;
 
     /**
      * @return If true, jobs can be viewed by non-project members.
      * 
-     * @deprecated
-     * The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
+     * @deprecated The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
      * 
      */
-    @Deprecated /* The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider. */
+    @Deprecated
     public Optional<Output<Boolean>> publicBuilds() {
         return Optional.ofNullable(this.publicBuilds);
     }
@@ -1245,22 +1241,20 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Push rules for the project. Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
      * 
-     * @deprecated
-     * Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
+     * @deprecated Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
      * 
      */
-    @Deprecated /* Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead. */
+    @Deprecated
     @Import(name="pushRules")
     private @Nullable Output<ProjectPushRulesArgs> pushRules;
 
     /**
      * @return Push rules for the project. Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
      * 
-     * @deprecated
-     * Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
+     * @deprecated Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
      * 
      */
-    @Deprecated /* Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead. */
+    @Deprecated
     public Optional<Output<ProjectPushRulesArgs>> pushRules() {
         return Optional.ofNullable(this.pushRules);
     }
@@ -3304,11 +3298,10 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource&#39;s `secretPushProtectionEnabled` attribute instead.
+         * @deprecated The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource&#39;s `secretPushProtectionEnabled` attribute instead.
          * 
          */
-        @Deprecated /* The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead. */
+        @Deprecated
         public Builder preReceiveSecretDetectionEnabled(@Nullable Output<Boolean> preReceiveSecretDetectionEnabled) {
             $.preReceiveSecretDetectionEnabled = preReceiveSecretDetectionEnabled;
             return this;
@@ -3319,11 +3312,10 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource&#39;s `secretPushProtectionEnabled` attribute instead.
+         * @deprecated The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource&#39;s `secretPushProtectionEnabled` attribute instead.
          * 
          */
-        @Deprecated /* The `preReceiveSecretDetectionEnabled` attribute is deprecated. Use the `gitlab.ProjectSecuritySettings` resource's `secretPushProtectionEnabled` attribute instead. */
+        @Deprecated
         public Builder preReceiveSecretDetectionEnabled(Boolean preReceiveSecretDetectionEnabled) {
             return preReceiveSecretDetectionEnabled(Output.of(preReceiveSecretDetectionEnabled));
         }
@@ -3396,11 +3388,10 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
+         * @deprecated The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
          * 
          */
-        @Deprecated /* The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider. */
+        @Deprecated
         public Builder publicBuilds(@Nullable Output<Boolean> publicBuilds) {
             $.publicBuilds = publicBuilds;
             return this;
@@ -3411,11 +3402,10 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
+         * @deprecated The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider.
          * 
          */
-        @Deprecated /* The `publicBuilds` attribute has been deprecated in favor of `publicJobs` and will be removed in the next major version of the provider. */
+        @Deprecated
         public Builder publicBuilds(Boolean publicBuilds) {
             return publicBuilds(Output.of(publicBuilds));
         }
@@ -3446,11 +3436,10 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
+         * @deprecated Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
          * 
          */
-        @Deprecated /* Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead. */
+        @Deprecated
         public Builder pushRules(@Nullable Output<ProjectPushRulesArgs> pushRules) {
             $.pushRules = pushRules;
             return this;
@@ -3461,11 +3450,10 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
+         * @deprecated Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead.
          * 
          */
-        @Deprecated /* Deprecated, to be removed in 20.0. Use `gitlab.ProjectPushRules` instead. */
+        @Deprecated
         public Builder pushRules(ProjectPushRulesArgs pushRules) {
             return pushRules(Output.of(pushRules));
         }

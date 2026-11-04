@@ -403,6 +403,24 @@ class ProjectExternalStatusCheck(pulumi.CustomResource):
         __props__.__dict__["shared_secret"] = shared_secret
         return ProjectExternalStatusCheck(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            external_url: pulumi.Input[Optional[_builtins.str]] = None,
+            hmac: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.int]] = None,
+            protected_branch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            shared_secret: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["externalUrl"] = external_url
+        __props__["hmac"] = hmac
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["protectedBranchIds"] = protected_branch_ids
+        __props__["sharedSecret"] = shared_secret
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectExternalStatusCheck:ProjectExternalStatusCheck', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="externalUrl")
     def external_url(self) -> pulumi.Output[_builtins.str]:

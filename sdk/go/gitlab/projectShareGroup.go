@@ -132,6 +132,12 @@ func (ProjectShareGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectShareGroupState)(nil)).Elem()
 }
 
+// ProjectShareGroupExists checks whether an existing ProjectShareGroup resource with the given ID exists.
+func ProjectShareGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectShareGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectShareGroup:ProjectShareGroup", id, state, "", opts...)
+}
+
 type projectShareGroupArgs struct {
 	// Share expiration date. Format: `YYYY-MM-DD`
 	ExpiresAt *string `pulumi:"expiresAt"`

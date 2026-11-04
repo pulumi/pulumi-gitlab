@@ -425,6 +425,26 @@ class ProjectServiceAccount(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return ProjectServiceAccount(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_wait_for_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeouts: pulumi.Input[Optional[Union['ProjectServiceAccountTimeoutsArgs', 'ProjectServiceAccountTimeoutsArgsDict', 'outputs.ProjectServiceAccountTimeouts']]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["email"] = email
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["serviceAccountId"] = service_account_id
+        __props__["skipWaitForDeletion"] = skip_wait_for_deletion
+        __props__["timeouts"] = timeouts
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectServiceAccount:ProjectServiceAccount', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def email(self) -> pulumi.Output[_builtins.str]:

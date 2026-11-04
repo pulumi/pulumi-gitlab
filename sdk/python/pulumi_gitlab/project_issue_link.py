@@ -440,6 +440,24 @@ class ProjectIssueLink(pulumi.CustomResource):
         __props__.__dict__["target_project_id"] = target_project_id
         return ProjectIssueLink(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            issue_iid: pulumi.Input[Optional[_builtins.int]] = None,
+            issue_link_id: pulumi.Input[Optional[_builtins.int]] = None,
+            link_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            target_issue_iid: pulumi.Input[Optional[_builtins.int]] = None,
+            target_project_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["issueIid"] = issue_iid
+        __props__["issueLinkId"] = issue_link_id
+        __props__["linkType"] = link_type
+        __props__["project"] = project
+        __props__["targetIssueIid"] = target_issue_iid
+        __props__["targetProjectId"] = target_project_id
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectIssueLink:ProjectIssueLink', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="issueIid")
     def issue_iid(self) -> pulumi.Output[_builtins.int]:

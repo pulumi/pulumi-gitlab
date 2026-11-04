@@ -733,6 +733,44 @@ class ProjectCluster(pulumi.CustomResource):
         __props__.__dict__["provider_type"] = provider_type
         return ProjectCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            environment_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes_api_url: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes_authorization_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes_token: pulumi.Input[Optional[_builtins.str]] = None,
+            managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            management_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            platform_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterType"] = cluster_type
+        __props__["createdAt"] = created_at
+        __props__["domain"] = domain
+        __props__["enabled"] = enabled
+        __props__["environmentScope"] = environment_scope
+        __props__["kubernetesApiUrl"] = kubernetes_api_url
+        __props__["kubernetesAuthorizationType"] = kubernetes_authorization_type
+        __props__["kubernetesCaCert"] = kubernetes_ca_cert
+        __props__["kubernetesNamespace"] = kubernetes_namespace
+        __props__["kubernetesToken"] = kubernetes_token
+        __props__["managed"] = managed
+        __props__["managementProjectId"] = management_project_id
+        __props__["name"] = name
+        __props__["platformType"] = platform_type
+        __props__["project"] = project
+        __props__["providerType"] = provider_type
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectCluster:ProjectCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> pulumi.Output[_builtins.str]:

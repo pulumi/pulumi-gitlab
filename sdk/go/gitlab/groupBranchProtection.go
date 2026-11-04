@@ -179,6 +179,12 @@ func (GroupBranchProtectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupBranchProtectionState)(nil)).Elem()
 }
 
+// GroupBranchProtectionExists checks whether an existing GroupBranchProtection resource with the given ID exists.
+func GroupBranchProtectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupBranchProtectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/groupBranchProtection:GroupBranchProtection", id, state, "", opts...)
+}
+
 type groupBranchProtectionArgs struct {
 	// Can be set to true to allow users with push access to force push.
 	AllowForcePush *bool `pulumi:"allowForcePush"`

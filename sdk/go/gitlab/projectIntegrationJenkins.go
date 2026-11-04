@@ -183,6 +183,12 @@ func (ProjectIntegrationJenkinsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIntegrationJenkinsState)(nil)).Elem()
 }
 
+// ProjectIntegrationJenkinsExists checks whether an existing ProjectIntegrationJenkins resource with the given ID exists.
+func ProjectIntegrationJenkinsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIntegrationJenkinsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIntegrationJenkins:ProjectIntegrationJenkins", id, state, "", opts...)
+}
+
 type projectIntegrationJenkinsArgs struct {
 	// Enable SSL verification. Defaults to `true` (enabled).
 	EnableSslVerification *bool `pulumi:"enableSslVerification"`

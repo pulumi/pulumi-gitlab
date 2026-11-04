@@ -436,6 +436,26 @@ class ProjectContainerTagProtection(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return ProjectContainerTagProtection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            immutable: pulumi.Input[Optional[_builtins.bool]] = None,
+            minimum_access_level_for_delete: pulumi.Input[Optional[_builtins.str]] = None,
+            minimum_access_level_for_push: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protection_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            tag_name_regex: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['ProjectContainerTagProtectionTimeoutsArgs', 'ProjectContainerTagProtectionTimeoutsArgsDict', 'outputs.ProjectContainerTagProtectionTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["immutable"] = immutable
+        __props__["minimumAccessLevelForDelete"] = minimum_access_level_for_delete
+        __props__["minimumAccessLevelForPush"] = minimum_access_level_for_push
+        __props__["project"] = project
+        __props__["protectionRuleId"] = protection_rule_id
+        __props__["tagNameRegex"] = tag_name_regex
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/projectContainerTagProtection:ProjectContainerTagProtection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def immutable(self) -> pulumi.Output[_builtins.bool]:

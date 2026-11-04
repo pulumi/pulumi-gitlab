@@ -690,6 +690,36 @@ class UserRunner(pulumi.CustomResource):
         __props__.__dict__["untagged"] = untagged
         return UserRunner(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.int]] = None,
+            locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            maintenance_note: pulumi.Input[Optional[_builtins.str]] = None,
+            maximum_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_id: pulumi.Input[Optional[_builtins.int]] = None,
+            runner_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            untagged: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessLevel"] = access_level
+        __props__["description"] = description
+        __props__["groupId"] = group_id
+        __props__["locked"] = locked
+        __props__["maintenanceNote"] = maintenance_note
+        __props__["maximumTimeout"] = maximum_timeout
+        __props__["paused"] = paused
+        __props__["projectId"] = project_id
+        __props__["runnerType"] = runner_type
+        __props__["tagLists"] = tag_lists
+        __props__["token"] = token
+        __props__["untagged"] = untagged
+        return pulumi.runtime.exists_resource(None, 'gitlab:index/userRunner:UserRunner', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Output[_builtins.str]:

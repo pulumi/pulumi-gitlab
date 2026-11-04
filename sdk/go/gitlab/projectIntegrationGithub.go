@@ -173,6 +173,12 @@ func (ProjectIntegrationGithubState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectIntegrationGithubState)(nil)).Elem()
 }
 
+// ProjectIntegrationGithubExists checks whether an existing ProjectIntegrationGithub resource with the given ID exists.
+func ProjectIntegrationGithubExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectIntegrationGithubState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectIntegrationGithub:ProjectIntegrationGithub", id, state, "", opts...)
+}
+
 type projectIntegrationGithubArgs struct {
 	// ID of the project you want to activate the integration on.
 	Project string `pulumi:"project"`

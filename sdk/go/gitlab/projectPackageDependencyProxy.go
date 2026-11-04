@@ -157,6 +157,12 @@ func (ProjectPackageDependencyProxyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectPackageDependencyProxyState)(nil)).Elem()
 }
 
+// ProjectPackageDependencyProxyExists checks whether an existing ProjectPackageDependencyProxy resource with the given ID exists.
+func ProjectPackageDependencyProxyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectPackageDependencyProxyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectPackageDependencyProxy:ProjectPackageDependencyProxy", id, state, "", opts...)
+}
+
 type projectPackageDependencyProxyArgs struct {
 	// Indicates whether the dependency proxy is enabled for packages.
 	Enabled *bool `pulumi:"enabled"`

@@ -208,6 +208,12 @@ func (ProjectAccessTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectAccessTokenState)(nil)).Elem()
 }
 
+// ProjectAccessTokenExists checks whether an existing ProjectAccessToken resource with the given ID exists.
+func ProjectAccessTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectAccessTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("gitlab:index/projectAccessToken:ProjectAccessToken", id, state, "", opts...)
+}
+
 type projectAccessTokenArgs struct {
 	// The access level for the project access token. Valid values are: `no one`, `minimal`, `guest`, `planner`, `reporter`, `securityManager`, `developer`, `maintainer`, `owner`. Default is `maintainer`.
 	AccessLevel *string `pulumi:"accessLevel"`
