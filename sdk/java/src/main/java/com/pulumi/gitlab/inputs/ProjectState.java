@@ -522,6 +522,51 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates if GitLab Duo SAST false positive detection is enabled.
+     * 
+     */
+    @Import(name="duoSastFpDetectionEnabled")
+    private @Nullable Output<Boolean> duoSastFpDetectionEnabled;
+
+    /**
+     * @return Indicates if GitLab Duo SAST false positive detection is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> duoSastFpDetectionEnabled() {
+        return Optional.ofNullable(this.duoSastFpDetectionEnabled);
+    }
+
+    /**
+     * Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled.
+     * 
+     */
+    @Import(name="duoSastVrWorkflowEnabled")
+    private @Nullable Output<Boolean> duoSastVrWorkflowEnabled;
+
+    /**
+     * @return Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> duoSastVrWorkflowEnabled() {
+        return Optional.ofNullable(this.duoSastVrWorkflowEnabled);
+    }
+
+    /**
+     * If true, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role.
+     * 
+     */
+    @Import(name="duoSecretDetectionFpEnabled")
+    private @Nullable Output<Boolean> duoSecretDetectionFpEnabled;
+
+    /**
+     * @return If true, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role.
+     * 
+     */
+    public Optional<Output<Boolean>> duoSecretDetectionFpEnabled() {
+        return Optional.ofNullable(this.duoSecretDetectionFpEnabled);
+    }
+
+    /**
      * Enable email notifications.
      * 
      */
@@ -939,6 +984,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> mergeRequestsTemplate() {
         return Optional.ofNullable(this.mergeRequestsTemplate);
+    }
+
+    /**
+     * Merge train enforcement level. Valid values are `allowBypass`, `enforceForAllUsers`, `enforceWithOwnerOverride`.
+     * Has no effect unless `mergeTrainsEnabled` is set to `true`. Premium and Ultimate only.
+     * Requires GitLab 19.3 or later; older instances ignore the attribute on write and omit it on read,
+     * so setting it there surfaces as a permanent difference on every plan.
+     * 
+     */
+    @Import(name="mergeTrainEnforcement")
+    private @Nullable Output<String> mergeTrainEnforcement;
+
+    /**
+     * @return Merge train enforcement level. Valid values are `allowBypass`, `enforceForAllUsers`, `enforceWithOwnerOverride`.
+     * Has no effect unless `mergeTrainsEnabled` is set to `true`. Premium and Ultimate only.
+     * Requires GitLab 19.3 or later; older instances ignore the attribute on write and omit it on read,
+     * so setting it there surfaces as a permanent difference on every plan.
+     * 
+     */
+    public Optional<Output<String>> mergeTrainEnforcement() {
+        return Optional.ofNullable(this.mergeTrainEnforcement);
     }
 
     /**
@@ -1485,6 +1551,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Experimental: enable or disable the Service Desk feature. Requires incoming emails to be enabled on the GitLab instance; setting this to `true` without incoming emails enabled will cause a perpetual plan difference on this attribute.
+     * 
+     */
+    @Import(name="serviceDeskEnabled")
+    private @Nullable Output<Boolean> serviceDeskEnabled;
+
+    /**
+     * @return Experimental: enable or disable the Service Desk feature. Requires incoming emails to be enabled on the GitLab instance; setting this to `true` without incoming emails enabled will cause a perpetual plan difference on this attribute.
+     * 
+     */
+    public Optional<Output<Boolean>> serviceDeskEnabled() {
+        return Optional.ofNullable(this.serviceDeskEnabled);
+    }
+
+    /**
      * Enable shared runners for this project.
      * 
      */
@@ -1738,6 +1819,9 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.containerRegistryAccessLevel = $.containerRegistryAccessLevel;
         this.defaultBranch = $.defaultBranch;
         this.description = $.description;
+        this.duoSastFpDetectionEnabled = $.duoSastFpDetectionEnabled;
+        this.duoSastVrWorkflowEnabled = $.duoSastVrWorkflowEnabled;
+        this.duoSecretDetectionFpEnabled = $.duoSecretDetectionFpEnabled;
         this.emailsEnabled = $.emailsEnabled;
         this.emptyRepo = $.emptyRepo;
         this.environmentsAccessLevel = $.environmentsAccessLevel;
@@ -1766,6 +1850,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.mergeRequestTitleRegexDescription = $.mergeRequestTitleRegexDescription;
         this.mergeRequestsAccessLevel = $.mergeRequestsAccessLevel;
         this.mergeRequestsTemplate = $.mergeRequestsTemplate;
+        this.mergeTrainEnforcement = $.mergeTrainEnforcement;
         this.mergeTrainsEnabled = $.mergeTrainsEnabled;
         this.mergeTrainsSkipTrainAllowed = $.mergeTrainsSkipTrainAllowed;
         this.modelExperimentsAccessLevel = $.modelExperimentsAccessLevel;
@@ -1801,6 +1886,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         this.reviewerAssignmentStrategy = $.reviewerAssignmentStrategy;
         this.runnersToken = $.runnersToken;
         this.securityAndComplianceAccessLevel = $.securityAndComplianceAccessLevel;
+        this.serviceDeskEnabled = $.serviceDeskEnabled;
         this.sharedRunnersEnabled = $.sharedRunnersEnabled;
         this.skipWaitForDefaultBranchProtection = $.skipWaitForDefaultBranchProtection;
         this.snippetsAccessLevel = $.snippetsAccessLevel;
@@ -2545,6 +2631,69 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param duoSastFpDetectionEnabled Indicates if GitLab Duo SAST false positive detection is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duoSastFpDetectionEnabled(@Nullable Output<Boolean> duoSastFpDetectionEnabled) {
+            $.duoSastFpDetectionEnabled = duoSastFpDetectionEnabled;
+            return this;
+        }
+
+        /**
+         * @param duoSastFpDetectionEnabled Indicates if GitLab Duo SAST false positive detection is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duoSastFpDetectionEnabled(Boolean duoSastFpDetectionEnabled) {
+            return duoSastFpDetectionEnabled(Output.of(duoSastFpDetectionEnabled));
+        }
+
+        /**
+         * @param duoSastVrWorkflowEnabled Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duoSastVrWorkflowEnabled(@Nullable Output<Boolean> duoSastVrWorkflowEnabled) {
+            $.duoSastVrWorkflowEnabled = duoSastVrWorkflowEnabled;
+            return this;
+        }
+
+        /**
+         * @param duoSastVrWorkflowEnabled Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duoSastVrWorkflowEnabled(Boolean duoSastVrWorkflowEnabled) {
+            return duoSastVrWorkflowEnabled(Output.of(duoSastVrWorkflowEnabled));
+        }
+
+        /**
+         * @param duoSecretDetectionFpEnabled If true, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duoSecretDetectionFpEnabled(@Nullable Output<Boolean> duoSecretDetectionFpEnabled) {
+            $.duoSecretDetectionFpEnabled = duoSecretDetectionFpEnabled;
+            return this;
+        }
+
+        /**
+         * @param duoSecretDetectionFpEnabled If true, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duoSecretDetectionFpEnabled(Boolean duoSecretDetectionFpEnabled) {
+            return duoSecretDetectionFpEnabled(Output.of(duoSecretDetectionFpEnabled));
+        }
+
+        /**
          * @param emailsEnabled Enable email notifications.
          * 
          * @return builder
@@ -3130,6 +3279,33 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mergeRequestsTemplate(String mergeRequestsTemplate) {
             return mergeRequestsTemplate(Output.of(mergeRequestsTemplate));
+        }
+
+        /**
+         * @param mergeTrainEnforcement Merge train enforcement level. Valid values are `allowBypass`, `enforceForAllUsers`, `enforceWithOwnerOverride`.
+         * Has no effect unless `mergeTrainsEnabled` is set to `true`. Premium and Ultimate only.
+         * Requires GitLab 19.3 or later; older instances ignore the attribute on write and omit it on read,
+         * so setting it there surfaces as a permanent difference on every plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mergeTrainEnforcement(@Nullable Output<String> mergeTrainEnforcement) {
+            $.mergeTrainEnforcement = mergeTrainEnforcement;
+            return this;
+        }
+
+        /**
+         * @param mergeTrainEnforcement Merge train enforcement level. Valid values are `allowBypass`, `enforceForAllUsers`, `enforceWithOwnerOverride`.
+         * Has no effect unless `mergeTrainsEnabled` is set to `true`. Premium and Ultimate only.
+         * Requires GitLab 19.3 or later; older instances ignore the attribute on write and omit it on read,
+         * so setting it there surfaces as a permanent difference on every plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mergeTrainEnforcement(String mergeTrainEnforcement) {
+            return mergeTrainEnforcement(Output.of(mergeTrainEnforcement));
         }
 
         /**
@@ -3883,6 +4059,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder securityAndComplianceAccessLevel(String securityAndComplianceAccessLevel) {
             return securityAndComplianceAccessLevel(Output.of(securityAndComplianceAccessLevel));
+        }
+
+        /**
+         * @param serviceDeskEnabled Experimental: enable or disable the Service Desk feature. Requires incoming emails to be enabled on the GitLab instance; setting this to `true` without incoming emails enabled will cause a perpetual plan difference on this attribute.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceDeskEnabled(@Nullable Output<Boolean> serviceDeskEnabled) {
+            $.serviceDeskEnabled = serviceDeskEnabled;
+            return this;
+        }
+
+        /**
+         * @param serviceDeskEnabled Experimental: enable or disable the Service Desk feature. Requires incoming emails to be enabled on the GitLab instance; setting this to `true` without incoming emails enabled will cause a perpetual plan difference on this attribute.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceDeskEnabled(Boolean serviceDeskEnabled) {
+            return serviceDeskEnabled(Output.of(serviceDeskEnabled));
         }
 
         /**

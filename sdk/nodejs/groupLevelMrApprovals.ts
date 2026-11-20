@@ -31,7 +31,6 @@ import * as utilities from "./utilities";
  *     allowCommitterApproval: true,
  *     allowOverridesToApproverListPerMergeRequest: true,
  *     retainApprovalsOnPush: true,
- *     selectiveCodeOwnerRemovals: false,
  *     requireReauthenticationToApprove: true,
  * });
  * ```

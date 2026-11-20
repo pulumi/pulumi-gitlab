@@ -123,7 +123,7 @@ def get_group_service_account(group: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_group(id="foo/bar/baz")
+    example = gitlab.get_group(full_path="foo/bar/baz")
     # Basic example
     example_get_group_service_account = gitlab.get_group_service_account(service_account_id="1",
         group=example.id)
@@ -160,7 +160,7 @@ def get_group_service_account_output(group: pulumi.Input[Optional[_builtins.str]
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_group(id="foo/bar/baz")
+    example = gitlab.get_group(full_path="foo/bar/baz")
     # Basic example
     example_get_group_service_account = gitlab.get_group_service_account(service_account_id="1",
         group=example.id)

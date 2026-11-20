@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  *
  * const example = new gitlab.ProjectWikiPage("example", {
  *     project: "12345",
- *     slug: "test-wiki-page",
  *     title: "Test Wiki Page",
  *     content: `This is a test content for the wiki page.
  * And this is a second line of content.

@@ -33,7 +33,7 @@ import (
 //			example, err := gitlab.NewPipelineSchedule(ctx, "example", &gitlab.PipelineScheduleArgs{
 //				Project:     pulumi.String("12345"),
 //				Description: pulumi.String("Used to schedule builds"),
-//				Ref:         pulumi.String("master"),
+//				Ref:         pulumi.String("refs/heads/main"),
 //				Cron:        pulumi.String("0 1 * * *"),
 //			})
 //			if err != nil {

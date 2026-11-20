@@ -11,6 +11,7 @@ import com.pulumi.gitlab.InstanceServiceAccountArgs;
 import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.InstanceServiceAccountState;
 import com.pulumi.gitlab.outputs.InstanceServiceAccountTimeouts;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -59,6 +60,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // create a service account that is internal, so it can access internal projects
+ *         // (for example when a pipeline it triggers references an internal project via `include` or `component`)
+ *         var exampleInternalSa = new InstanceServiceAccount("exampleInternalSa", InstanceServiceAccountArgs.builder()
+ *             .name("example-internal-name")
+ *             .username("example-internal-username")
+ *             .isExternal(false)
+ *             .build());
+ * 
  *         var exampleToken = new PersonalAccessToken("exampleToken", PersonalAccessTokenArgs.builder()
  *             .userId(exampleSa.serviceAccountId())
  *             .name("Example personal access token for a service account")
@@ -99,6 +108,20 @@ public class InstanceServiceAccount extends com.pulumi.resources.CustomResource 
      */
     public Output<String> email() {
         return this.email;
+    }
+    /**
+     * Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+     * 
+     */
+    @Export(name="isExternal", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isExternal;
+
+    /**
+     * @return Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+     * 
+     */
+    public Output<Boolean> isExternal() {
+        return this.isExternal;
     }
     /**
      * The name of the user. If not set, uses Service account user.

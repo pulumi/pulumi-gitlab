@@ -116,6 +116,15 @@ import javax.annotation.Nullable;
  *             .description("An example group with a default branch name")
  *             .build());
  * 
+ *         // Group with GitLab Duo turned off for all subgroups and projects
+ *         var example_six = new Group("example-six", GroupArgs.builder()
+ *             .name("example-six")
+ *             .path("example-six")
+ *             .description("An example group with GitLab Duo turned off")
+ *             .duoFeaturesEnabled(false)
+ *             .lockDuoFeaturesEnabled(true)
+ *             .build());
+ * 
  *     }}{@code
  * }}{@code
  * }
@@ -309,6 +318,20 @@ public class Group extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+     * 
+     */
+    @Export(name="duoFeaturesEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> duoFeaturesEnabled;
+
+    /**
+     * @return Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+     * 
+     */
+    public Output<Boolean> duoFeaturesEnabled() {
+        return this.duoFeaturesEnabled;
+    }
+    /**
      * Enable email notifications.
      * 
      */
@@ -321,6 +344,34 @@ public class Group extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> emailsEnabled() {
         return this.emailsEnabled;
+    }
+    /**
+     * Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+     * 
+     */
+    @Export(name="enabledGitAccessProtocol", refs={String.class}, tree="[0]")
+    private Output<String> enabledGitAccessProtocol;
+
+    /**
+     * @return Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+     * 
+     */
+    public Output<String> enabledGitAccessProtocol() {
+        return this.enabledGitAccessProtocol;
+    }
+    /**
+     * Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group&#39;s value. GitLab returns this value only when AI features are available for the group.
+     * 
+     */
+    @Export(name="experimentFeaturesEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> experimentFeaturesEnabled;
+
+    /**
+     * @return Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group&#39;s value. GitLab returns this value only when AI features are available for the group.
+     * 
+     */
+    public Output<Boolean> experimentFeaturesEnabled() {
+        return this.experimentFeaturesEnabled;
     }
     /**
      * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -391,6 +442,48 @@ public class Group extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> lfsEnabled() {
         return this.lfsEnabled;
+    }
+    /**
+     * Enforce the `duoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+     * 
+     */
+    @Export(name="lockDuoFeaturesEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> lockDuoFeaturesEnabled;
+
+    /**
+     * @return Enforce the `duoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+     * 
+     */
+    public Output<Boolean> lockDuoFeaturesEnabled() {
+        return this.lockDuoFeaturesEnabled;
+    }
+    /**
+     * Indicates if math rendering limits are locked for all descendent groups.
+     * 
+     */
+    @Export(name="lockMathRenderingLimitsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> lockMathRenderingLimitsEnabled;
+
+    /**
+     * @return Indicates if math rendering limits are locked for all descendent groups.
+     * 
+     */
+    public Output<Boolean> lockMathRenderingLimitsEnabled() {
+        return this.lockMathRenderingLimitsEnabled;
+    }
+    /**
+     * Indicates if math rendering limits are used for this group.
+     * 
+     */
+    @Export(name="mathRenderingLimitsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> mathRenderingLimitsEnabled;
+
+    /**
+     * @return Indicates if math rendering limits are used for this group.
+     * 
+     */
+    public Output<Boolean> mathRenderingLimitsEnabled() {
+        return this.mathRenderingLimitsEnabled;
     }
     /**
      * The maximum file size in megabytes for individual job artifacts.

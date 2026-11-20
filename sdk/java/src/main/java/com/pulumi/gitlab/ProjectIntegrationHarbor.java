@@ -56,6 +56,8 @@ import javax.annotation.Nullable;
  *             .project(awesomeProject.id())
  *             .url("http://harbor.example.com")
  *             .projectName("my_project_name")
+ *             .username("my_username")
+ *             .password("my_password")
  *             .build());
  * 
  *     }

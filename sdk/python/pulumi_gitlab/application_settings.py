@@ -25,6 +25,7 @@ class ApplicationSettingsArgs:
                  admin_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  after_sign_out_path: pulumi.Input[Optional[_builtins.str]] = None,
                  after_sign_up_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_action_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -45,6 +46,8 @@ class ApplicationSettingsArgs:
                  auto_ban_user_on_excessive_projects_download: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_devops_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autocomplete_users_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 autocomplete_users_unauthenticated_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  automatic_purchased_storage_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
                  bulk_import_concurrent_pipeline_batch_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  bulk_import_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -52,12 +55,16 @@ class ApplicationSettingsArgs:
                  can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
                  check_namespace_plan: pulumi.Input[Optional[_builtins.bool]] = None,
                  ci_job_live_trace_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_lint_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
                  ci_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
                  ci_max_total_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  commit_email_hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  concurrent_bitbucket_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  concurrent_bitbucket_server_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  concurrent_github_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_pull_request_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_relation_batch_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_relation_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  container_expiration_policies_enable_historic_entries: pulumi.Input[Optional[_builtins.bool]] = None,
                  container_registry_cleanup_tags_service_max_list_size: pulumi.Input[Optional[_builtins.int]] = None,
                  container_registry_delete_tags_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
@@ -148,6 +155,7 @@ class ApplicationSettingsArgs:
                  first_day_of_week: pulumi.Input[Optional[_builtins.int]] = None,
                  geo_node_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
                  geo_status_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 git_push_pipeline_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  git_rate_limit_users_alertlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  git_rate_limit_users_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  git_two_factor_session_expiry: pulumi.Input[Optional[_builtins.int]] = None,
@@ -161,7 +169,11 @@ class ApplicationSettingsArgs:
                  grafana_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  grafana_url: pulumi.Input[Optional[_builtins.str]] = None,
                  gravatar_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_download_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_import_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  group_owners_can_manage_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_secrets_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  help_page_hide_commercial_content: pulumi.Input[Optional[_builtins.bool]] = None,
                  help_page_support_url: pulumi.Input[Optional[_builtins.str]] = None,
                  help_page_text: pulumi.Input[Optional[_builtins.str]] = None,
@@ -171,6 +183,7 @@ class ApplicationSettingsArgs:
                  housekeeping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  housekeeping_optimize_repository_period: pulumi.Input[Optional[_builtins.int]] = None,
                  html_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 import_jobs_concurrency_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  import_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  in_product_marketing_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  inactive_projects_delete_after_months: pulumi.Input[Optional[_builtins.int]] = None,
@@ -183,6 +196,8 @@ class ApplicationSettingsArgs:
                  jira_connect_application_key: pulumi.Input[Optional[_builtins.str]] = None,
                  jira_connect_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
                  jira_connect_public_key_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 job_play_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
+                 job_retry_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
                  keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
                  kroki_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  kroki_formats: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
@@ -200,6 +215,8 @@ class ApplicationSettingsArgs:
                  max_attachment_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_decompressed_archive_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_github_response_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_http_response_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  max_import_remote_file_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_import_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_login_attempts: pulumi.Input[Optional[_builtins.int]] = None,
@@ -217,6 +234,7 @@ class ApplicationSettingsArgs:
                  mirror_capacity_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  mirror_max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  mirror_max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 notes_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  notify_on_unknown_sign_in: pulumi.Input[Optional[_builtins.bool]] = None,
                  npm_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
                  nuget_skip_metadata_url_validation: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -234,14 +252,21 @@ class ApplicationSettingsArgs:
                  password_uppercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  performance_bar_allowed_group_path: pulumi.Input[Optional[_builtins.str]] = None,
                  personal_access_token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_cancel_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
                  pipeline_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+                 pipeline_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 pipeline_retry_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
                  plantuml_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  plantuml_url: pulumi.Input[Optional[_builtins.str]] = None,
                  polling_interval_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
                  prevent_merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
                  prevent_merge_requests_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_download_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  project_export_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_import_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  project_jobs_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_secrets_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  projects_api_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
                  prometheus_metrics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  protected_ci_variables: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -250,6 +275,7 @@ class ApplicationSettingsArgs:
                  pypi_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
                  rate_limiting_response_text: pulumi.Input[Optional[_builtins.str]] = None,
                  raw_blob_request_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 raw_blob_request_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
                  recaptcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  recaptcha_private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  recaptcha_site_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -265,6 +291,11 @@ class ApplicationSettingsArgs:
                  require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
                  restricted_visibility_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 runner_jobs_endpoints_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 runner_jobs_patch_trace_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 runner_jobs_request_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 scan_execution_policies_action_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 scan_execution_policies_schedule_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
                  secret_push_protection_available: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -305,26 +336,60 @@ class ApplicationSettingsArgs:
                  static_objects_external_storage_auth_token: pulumi.Input[Optional[_builtins.str]] = None,
                  static_objects_external_storage_url: pulumi.Input[Optional[_builtins.str]] = None,
                  suggest_pipeline_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  terminal_max_session_time: pulumi.Input[Optional[_builtins.int]] = None,
                  terms: pulumi.Input[Optional[_builtins.str]] = None,
                  throttle_authenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_dependency_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_dependency_proxy_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_dependency_proxy_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_deprecated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_deprecated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_deprecated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_files_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_files_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_files_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_http_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_git_http_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_http_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_git_lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_git_lfs_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_git_lfs_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_mcp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_mcp_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_mcp_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_incident_management_notification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_incident_management_notification_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_incident_management_notification_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_protected_paths_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_protected_paths_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_protected_paths_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_unauthenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_deprecated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_deprecated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_deprecated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_files_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_files_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_files_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_git_http_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_git_http_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_git_http_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_unauthenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_unauthenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -344,8 +409,19 @@ class ApplicationSettingsArgs:
                  user_defaults_to_private_profile: pulumi.Input[Optional[_builtins.bool]] = None,
                  user_oauth_applications: pulumi.Input[Optional[_builtins.bool]] = None,
                  user_show_add_ssh_key_message: pulumi.Input[Optional[_builtins.bool]] = None,
+                 users_api_limit_followers: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_following: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_gpg_key: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_gpg_keys: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_ssh_key: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_ssh_keys: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_get_by_id_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_get_by_id_limit_allowlist_raw: pulumi.Input[Optional[_builtins.str]] = None,
                  valid_runner_registrars: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version_check_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 web_hook_event_resend_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 web_hook_test_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  web_ide_clientside_preview_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  whats_new_variant: pulumi.Input[Optional[_builtins.str]] = None,
                  wiki_page_max_content_bytes: pulumi.Input[Optional[_builtins.int]] = None):
@@ -356,6 +432,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.bool] admin_mode: Require administrators to enable Admin Mode by re-authenticating for administrative tasks.
         :param pulumi.Input[_builtins.str] after_sign_out_path: Where to redirect users after logout.
         :param pulumi.Input[_builtins.str] after_sign_up_text: Text shown to the user after signing up.
+        :param pulumi.Input[_builtins.int] ai_action_api_rate_limit: Maximum number of requests allowed to the aiAction GraphQL mutation per user per eight hours. Default: 160. Set to 0 to disable the rate limit. Introduced in GitLab 17.2.
         :param pulumi.Input[_builtins.str] akismet_api_key: API key for Akismet spam protection.
         :param pulumi.Input[_builtins.bool] akismet_enabled: (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
         :param pulumi.Input[_builtins.bool] allow_account_deletion: Set to true to allow users to delete their accounts. Premium and Ultimate only.
@@ -376,6 +453,8 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.bool] auto_ban_user_on_excessive_projects_download: When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Self-managed, Ultimate only.
         :param pulumi.Input[_builtins.str] auto_devops_domain: Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
+        :param pulumi.Input[_builtins.int] autocomplete_users_limit: Maximum number of authenticated requests per minute to the GET /autocomplete/users endpoint.
+        :param pulumi.Input[_builtins.int] autocomplete_users_unauthenticated_limit: Maximum number of unauthenticated requests per minute to the GET /autocomplete/users endpoint.
         :param pulumi.Input[_builtins.bool] automatic_purchased_storage_allocation: Enabling this permits automatic allocation of purchased storage in a namespace.
         :param pulumi.Input[_builtins.int] bulk_import_concurrent_pipeline_batch_limit: Maximum simultaneous Direct Transfer batches to process.
         :param pulumi.Input[_builtins.bool] bulk_import_enabled: Enable migrating GitLab groups by direct transfer.
@@ -383,12 +462,16 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.bool] can_create_group: Indicates whether users can create top-level groups.
         :param pulumi.Input[_builtins.bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
         :param pulumi.Input[_builtins.bool] ci_job_live_trace_enabled: Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+        :param pulumi.Input[_builtins.int] ci_lint_limit_per_user: Maximum number of CI Lint requests per minute per user. Disabled by default.
         :param pulumi.Input[_builtins.int] ci_max_includes: The maximum number of includes per pipeline.
         :param pulumi.Input[_builtins.int] ci_max_total_yaml_size_bytes: The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
         :param pulumi.Input[_builtins.str] commit_email_hostname: Custom hostname (for private commit emails).
         :param pulumi.Input[_builtins.int] concurrent_bitbucket_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Cloud importer.
         :param pulumi.Input[_builtins.int] concurrent_bitbucket_server_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Server importer.
         :param pulumi.Input[_builtins.int] concurrent_github_import_jobs_limit: Maximum number of simultaneous import jobs for the GitHub importer.
+        :param pulumi.Input[_builtins.int] concurrent_pull_request_import_jobs_limit: Maximum number of simultaneous pull request import jobs for the GitHub, Bitbucket Cloud, and Bitbucket Server importers. Default is 200. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.int] concurrent_relation_batch_export_limit: Maximum number of simultaneous batch export jobs to process. Introduced in GitLab 17.6.
+        :param pulumi.Input[_builtins.int] concurrent_relation_export_limit: Maximum number of simultaneous project file exports to process. Default: 25. Introduced in GitLab 19.4 with a feature flag named limit*concurrent*project_exports. Disabled by default.
         :param pulumi.Input[_builtins.bool] container_expiration_policies_enable_historic_entries: Enable cleanup policies for all projects.
         :param pulumi.Input[_builtins.int] container_registry_cleanup_tags_service_max_list_size: The maximum number of tags that can be deleted in a single execution of cleanup policies.
         :param pulumi.Input[_builtins.int] container_registry_delete_tags_service_timeout: The maximum time, in seconds, that the cleanup process can take to delete a batch of tags for cleanup policies.
@@ -479,6 +562,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         :param pulumi.Input[_builtins.str] geo_node_allowed_ips: Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[_builtins.int] geo_status_timeout: The amount of seconds after which a request to get a secondary node status times out.
+        :param pulumi.Input[_builtins.int] git_push_pipeline_limit: Set the maximum number of tag or branch pipelines that can be triggered by a single Git push. For more information about this limit, see number of pipelines per Git push.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] git_rate_limit_users_alertlists: List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
         :param pulumi.Input[_builtins.int] git_two_factor_session_expiry: Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
@@ -492,7 +576,11 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.bool] grafana_enabled: Enable Grafana.
         :param pulumi.Input[_builtins.str] grafana_url: Grafana URL.
         :param pulumi.Input[_builtins.bool] gravatar_enabled: Enable Gravatar.
+        :param pulumi.Input[_builtins.int] group_download_export_limit: Maximum number of group export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] group_export_limit: Maximum number of group exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] group_import_limit: Maximum number of group imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] group_owners_can_manage_default_branch_protection: Prevent overrides of default branch protection.
+        :param pulumi.Input[_builtins.int] group_secrets_limit: Maximum number of secrets allowed per group in Secrets Manager. Default: 500. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
         :param pulumi.Input[_builtins.bool] help_page_hide_commercial_content: Hide marketing-related entries from help.
         :param pulumi.Input[_builtins.str] help_page_support_url: Alternate support URL for help page and help dropdown.
         :param pulumi.Input[_builtins.str] help_page_text: Custom text displayed on the help page.
@@ -502,6 +590,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.bool] housekeeping_enabled: Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
         :param pulumi.Input[_builtins.int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git-repack is run.
         :param pulumi.Input[_builtins.bool] html_emails_enabled: Enable HTML emails.
+        :param pulumi.Input[_builtins.int] import_jobs_concurrency_limit: Maximum number of concurrently running jobs for each import worker type (project and group file base import, Direct Transfer, and GitHub, Bitbucket Cloud, and Bitbucket Server importer stages). Applied independently per worker type. Default is 100. Introduced in GitLab 19.1.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[_builtins.bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
         :param pulumi.Input[_builtins.int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
@@ -514,6 +603,8 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.str] jira_connect_application_key: ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
         :param pulumi.Input[_builtins.str] jira_connect_proxy_url: URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
         :param pulumi.Input[_builtins.bool] jira_connect_public_key_storage_enabled: Enable public key storage for the GitLab for Jira Cloud app.
+        :param pulumi.Input[_builtins.int] job_play_limit_per_user_project: Maximum number of manual job runs per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_play. Disabled by default.
+        :param pulumi.Input[_builtins.int] job_retry_limit_per_user_project: Maximum number of job retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_retry. Disabled by default.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[_builtins.bool] kroki_enabled: (If enabled, requires: kroki_url) Enable Kroki integration.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]] kroki_formats: Configuration for formats supported by the Kroki instance.
@@ -531,6 +622,8 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.int] max_attachment_size: Limit attachment size in MB.
         :param pulumi.Input[_builtins.int] max_decompressed_archive_size: Maximum decompressed archive size in bytes.
         :param pulumi.Input[_builtins.int] max_export_size: Maximum export size in MB. 0 for unlimited.
+        :param pulumi.Input[_builtins.int] max_github_response_size_limit: Maximum allowed GitHub API response size in MB. 0 for unlimited.
+        :param pulumi.Input[_builtins.int] max_http_response_size_limit: Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4.
         :param pulumi.Input[_builtins.int] max_import_remote_file_size: Maximum remote file size for imports from external object storages.
         :param pulumi.Input[_builtins.int] max_import_size: Maximum import size in MB. 0 for unlimited.
         :param pulumi.Input[_builtins.int] max_login_attempts: Maximum number of sign-in attempts before locking out the user.
@@ -548,6 +641,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.int] mirror_capacity_threshold: Minimum capacity to be available before scheduling more mirrors preemptively.
         :param pulumi.Input[_builtins.int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[_builtins.int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
+        :param pulumi.Input[_builtins.int] notes_create_limit: Maximum number of notes (comments) a user can create per minute. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] notify_on_unknown_sign_in: Enable sending notification if sign in from unknown IP address happens
         :param pulumi.Input[_builtins.bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
         :param pulumi.Input[_builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package.
@@ -565,14 +659,21 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.bool] password_uppercase_required: Indicates whether passwords require at least one uppercase letter.
         :param pulumi.Input[_builtins.str] performance_bar_allowed_group_path: Path of the group that is allowed to toggle the performance bar.
         :param pulumi.Input[_builtins.str] personal_access_token_prefix: Prefix for all generated personal access tokens.
+        :param pulumi.Input[_builtins.int] pipeline_cancel_limit_per_user_project: Maximum number of pipeline cancellations per minute per user per project. Introduced in GitLab 19.5.
         :param pulumi.Input[_builtins.int] pipeline_limit_per_project_user_sha: Maximum number of pipeline creation requests per minute per user and commit.
+        :param pulumi.Input[_builtins.int] pipeline_limit_per_user: Maximum number of pipeline creation requests per minute per user.
+        :param pulumi.Input[_builtins.int] pipeline_retry_limit_per_user_project: Maximum number of pipeline retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*pipeline_retry. Disabled by default.
         :param pulumi.Input[_builtins.bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration.
         :param pulumi.Input[_builtins.str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[_builtins.float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
         :param pulumi.Input[_builtins.bool] prevent_merge_requests_author_approval: Prevent approval by merge request creator (author).
         :param pulumi.Input[_builtins.bool] prevent_merge_requests_committers_approval: Prevent approval by committers to merge requests.
+        :param pulumi.Input[_builtins.int] project_download_export_limit: Maximum number of project export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] project_export_enabled: Enable project export.
+        :param pulumi.Input[_builtins.int] project_export_limit: Maximum number of project exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] project_import_limit: Maximum number of project imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.int] project_jobs_api_rate_limit: Maximum authenticated requests to /project/:id/jobs per minute.
+        :param pulumi.Input[_builtins.int] project_secrets_limit: Maximum number of secrets allowed per project in Secrets Manager. Default: 100. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
         :param pulumi.Input[_builtins.int] projects_api_rate_limit_unauthenticated: Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
         :param pulumi.Input[_builtins.bool] prometheus_metrics_enabled: Enable Prometheus metrics.
         :param pulumi.Input[_builtins.bool] protected_ci_variables: CI/CD variables are protected by default.
@@ -581,6 +682,7 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.bool] pypi_package_requests_forwarding: Use pypi.org as a default remote repository when the package is not found in the GitLab Package Registry for PyPI.
         :param pulumi.Input[_builtins.str] rate_limiting_response_text: When rate limiting is enabled via the throttle_* settings, send this plain text response when a rate limit is exceeded. ‘Retry later’ is sent if this is blank.
         :param pulumi.Input[_builtins.int] raw_blob_request_limit: Max number of requests per minute for each raw path. To disable throttling set to 0.
+        :param pulumi.Input[_builtins.int] raw_blob_request_limit_unauthenticated: Maximum number of unauthenticated requests per minute across all raw paths in a project (default is 800). Set to 0 to disable throttling.
         :param pulumi.Input[_builtins.bool] recaptcha_enabled: (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
         :param pulumi.Input[_builtins.str] recaptcha_private_key: Private key for reCAPTCHA.
         :param pulumi.Input[_builtins.str] recaptcha_site_key: Site key for reCAPTCHA.
@@ -596,6 +698,11 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.bool] require_two_factor_authentication: (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
         :param pulumi.Input[_builtins.int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
+        :param pulumi.Input[_builtins.int] runner_jobs_endpoints_api_limit: Maximum number of requests per minute per job token for requests to /jobs/* requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        :param pulumi.Input[_builtins.int] runner_jobs_patch_trace_api_limit: Maximum number of requests per minute per runner token for requests to the PATCH /jobs/:id/trace runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        :param pulumi.Input[_builtins.int] runner_jobs_request_api_limit: Maximum number of requests per minute per runner token for requests to the /jobs/request runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        :param pulumi.Input[_builtins.int] scan_execution_policies_action_limit: Maximum number of actions per scan execution policy. Default: 0. Maximum: 20.
+        :param pulumi.Input[_builtins.int] scan_execution_policies_schedule_limit: Maximum number of type: schedule rules per scan execution policy. Default: 0. Maximum: 20.
         :param pulumi.Input[_builtins.int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         :param pulumi.Input[_builtins.int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
         :param pulumi.Input[_builtins.bool] secret_push_protection_available: Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
@@ -636,26 +743,60 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.str] static_objects_external_storage_auth_token: Authentication token for the external storage linked in static*objects*external*storage*url.
         :param pulumi.Input[_builtins.str] static_objects_external_storage_url: URL to an external storage for repository static objects.
         :param pulumi.Input[_builtins.bool] suggest_pipeline_enabled: Enable pipeline suggestion banner.
+        :param pulumi.Input[_builtins.int] tags_create_limit: Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL tagCreate mutation, tag creation in the UI, and the /tag quick action. Default: 100. Set to 0 to disable the rate limit. Introduced in GitLab 19.4.
         :param pulumi.Input[_builtins.int] terminal_max_session_time: Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
         :param pulumi.Input[_builtins.str] terms: (Required by: enforce_terms) Markdown content for the ToS.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_api_enabled: (If enabled, requires: throttle*authenticated*api*period*in*seconds and throttle*authenticated*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_authenticated_api_period_in_seconds: Rate limit period (in seconds).
         :param pulumi.Input[_builtins.int] throttle_authenticated_api_requests_per_period: Maximum requests per period per user.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_dependency_proxy_enabled: If true, enforces the authenticated dependency proxy request rate limit. Default value: false. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_dependency_proxy_period_in_seconds: Rate limit period in seconds. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 15. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_dependency_proxy_requests_per_period: Maximum requests per period per user. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 1000. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_deprecated_api_enabled: (If enabled, requires: throttle*authenticated*deprecated*api*period*in*seconds and throttle*authenticated*deprecated*api*requests*per*period) Enable authenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_deprecated_api_period_in_seconds: Rate limit period (in seconds) for authenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_deprecated_api_requests_per_period: Maximum authenticated deprecated API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_files_api_enabled: (If enabled, requires: throttle*authenticated*files*api*period*in*seconds and throttle*authenticated*files*api*requests*per*period) Enable authenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_files_api_period_in_seconds: Rate limit period (in seconds) for authenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_files_api_requests_per_period: Maximum authenticated Files API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_git_http_enabled: If true, enforces the authenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_git_http_period_in_seconds: Rate limit period in seconds. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_git_http_requests_per_period: Maximum requests per period per user. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_git_lfs_enabled: Enable authenticated Git LFS request rate limit.
         :param pulumi.Input[_builtins.int] throttle_authenticated_git_lfs_period_in_seconds: Rate limit period (in seconds).
         :param pulumi.Input[_builtins.int] throttle_authenticated_git_lfs_requests_per_period: Maximum requests per period per user.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_mcp_enabled: (If enabled, requires: throttle*authenticated*mcp*period*in*seconds and throttle*authenticated*mcp*requests*per*period) If true, enforces the rate limit on requests to the MCP Server endpoint, /api/v4/mcp, for any HTTP method. Does not apply to other MCP endpoints. Introduced in GitLab 19.5.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_mcp_period_in_seconds: Rate limit period in seconds. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_mcp_requests_per_period: Maximum requests per period per user. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_packages_api_enabled: (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_authenticated_packages_api_period_in_seconds: Rate limit period (in seconds). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_authenticated_packages_api_requests_per_period: Maximum requests per period per user. View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_web_enabled: (If enabled, requires: throttle*authenticated*web*period*in*seconds and throttle*authenticated*web*requests*per*period) Enable authenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_authenticated_web_period_in_seconds: Rate limit period (in seconds).
         :param pulumi.Input[_builtins.int] throttle_authenticated_web_requests_per_period: Maximum requests per period per user.
+        :param pulumi.Input[_builtins.bool] throttle_incident_management_notification_enabled: If true, enforces the inbound incident management alert notification rate limit, per project. Default value: false.
+        :param pulumi.Input[_builtins.int] throttle_incident_management_notification_per_period: Maximum inbound incident management alert notifications per period, per project. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+        :param pulumi.Input[_builtins.int] throttle_incident_management_notification_period_in_seconds: Rate limit period in seconds. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+        :param pulumi.Input[_builtins.bool] throttle_protected_paths_enabled: (If enabled, requires: throttle*protected*paths*period*in*seconds and throttle*protected*paths*requests*per*period) Enable rate limiting for protected paths (for example, sign-in and password reset). Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_protected_paths_period_in_seconds: Rate limit period (in seconds) for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_protected_paths_requests_per_period: Maximum requests per period per IP for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] throttle_unauthenticated_api_enabled: (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_api_period_in_seconds: Rate limit period in seconds.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_api_requests_per_period: Max requests per period per IP.
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_deprecated_api_enabled: (If enabled, requires: throttle*unauthenticated*deprecated*api*period*in*seconds and throttle*unauthenticated*deprecated*api*requests*per*period) Enable unauthenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_deprecated_api_period_in_seconds: Rate limit period (in seconds) for unauthenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_deprecated_api_requests_per_period: Maximum unauthenticated deprecated API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_enabled: (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*enabled or throttle*unauthenticated*api*enabled instead.) (**If enabled, requires**: throttle*unauthenticated*period*in*seconds and throttle*unauthenticated*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_files_api_enabled: (If enabled, requires: throttle*unauthenticated*files*api*period*in*seconds and throttle*unauthenticated*files*api*requests*per*period) Enable unauthenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_files_api_period_in_seconds: Rate limit period (in seconds) for unauthenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_files_api_requests_per_period: Maximum unauthenticated Files API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_git_http_enabled: If true, enforces the unauthenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 17.0.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_git_http_period_in_seconds: Rate limit period in seconds. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_git_http_requests_per_period: Maximum requests per period per IP. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
         :param pulumi.Input[_builtins.bool] throttle_unauthenticated_packages_api_enabled: (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_packages_api_period_in_seconds: Rate limit period (in seconds). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_packages_api_requests_per_period: Maximum requests per period per user. View Package Registry rate limits for more details.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_period_in_seconds: (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*period*in*seconds or throttle*unauthenticated*api*period*in*seconds instead.) Rate limit period in seconds.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_requests_per_period: (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*requests*per*period or throttle*unauthenticated*api*requests*per*period instead.) Maximum requests per period per IP.
         :param pulumi.Input[_builtins.bool] throttle_unauthenticated_web_enabled: (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_web_period_in_seconds: Rate limit period in seconds.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_web_requests_per_period: Max requests per period per IP.
@@ -675,8 +816,19 @@ class ApplicationSettingsArgs:
         :param pulumi.Input[_builtins.bool] user_defaults_to_private_profile: Newly created users have private profile by default.
         :param pulumi.Input[_builtins.bool] user_oauth_applications: Allow users to register any application to use GitLab as an OAuth provider.
         :param pulumi.Input[_builtins.bool] user_show_add_ssh_key_message: When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
+        :param pulumi.Input[_builtins.int] users_api_limit_followers: Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_following: Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_gpg_key: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_gpg_keys: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_ssh_key: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_ssh_keys: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_status: Maximum number of requests per minute, per user or IP address. Default: 240. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_get_by_id_limit: Maximum number of requests per minute per user to the GET /users/:id API endpoint. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.str] users_get_by_id_limit_allowlist_raw: Usernames excluded from the users*get*by*id*limit rate limit, separated by newlines, commas or whitespace. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valid_runner_registrars: List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
         :param pulumi.Input[_builtins.bool] version_check_enabled: Let GitLab inform you when an update is available.
+        :param pulumi.Input[_builtins.int] web_hook_event_resend_limit: Maximum number of webhook event resend requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+        :param pulumi.Input[_builtins.int] web_hook_test_limit: Maximum number of webhook test requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
         :param pulumi.Input[_builtins.bool] web_ide_clientside_preview_enabled: Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
         :param pulumi.Input[_builtins.str] whats_new_variant: What's new variant, possible values: all*tiers, current*tier, and disabled.
         :param pulumi.Input[_builtins.int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
@@ -689,6 +841,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "after_sign_out_path", after_sign_out_path)
         if after_sign_up_text is not None:
             pulumi.set(__self__, "after_sign_up_text", after_sign_up_text)
+        if ai_action_api_rate_limit is not None:
+            pulumi.set(__self__, "ai_action_api_rate_limit", ai_action_api_rate_limit)
         if akismet_api_key is not None:
             pulumi.set(__self__, "akismet_api_key", akismet_api_key)
         if akismet_enabled is not None:
@@ -729,6 +883,10 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "auto_devops_domain", auto_devops_domain)
         if auto_devops_enabled is not None:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+        if autocomplete_users_limit is not None:
+            pulumi.set(__self__, "autocomplete_users_limit", autocomplete_users_limit)
+        if autocomplete_users_unauthenticated_limit is not None:
+            pulumi.set(__self__, "autocomplete_users_unauthenticated_limit", autocomplete_users_unauthenticated_limit)
         if automatic_purchased_storage_allocation is not None:
             pulumi.set(__self__, "automatic_purchased_storage_allocation", automatic_purchased_storage_allocation)
         if bulk_import_concurrent_pipeline_batch_limit is not None:
@@ -743,6 +901,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "check_namespace_plan", check_namespace_plan)
         if ci_job_live_trace_enabled is not None:
             pulumi.set(__self__, "ci_job_live_trace_enabled", ci_job_live_trace_enabled)
+        if ci_lint_limit_per_user is not None:
+            pulumi.set(__self__, "ci_lint_limit_per_user", ci_lint_limit_per_user)
         if ci_max_includes is not None:
             pulumi.set(__self__, "ci_max_includes", ci_max_includes)
         if ci_max_total_yaml_size_bytes is not None:
@@ -755,6 +915,12 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "concurrent_bitbucket_server_import_jobs_limit", concurrent_bitbucket_server_import_jobs_limit)
         if concurrent_github_import_jobs_limit is not None:
             pulumi.set(__self__, "concurrent_github_import_jobs_limit", concurrent_github_import_jobs_limit)
+        if concurrent_pull_request_import_jobs_limit is not None:
+            pulumi.set(__self__, "concurrent_pull_request_import_jobs_limit", concurrent_pull_request_import_jobs_limit)
+        if concurrent_relation_batch_export_limit is not None:
+            pulumi.set(__self__, "concurrent_relation_batch_export_limit", concurrent_relation_batch_export_limit)
+        if concurrent_relation_export_limit is not None:
+            pulumi.set(__self__, "concurrent_relation_export_limit", concurrent_relation_export_limit)
         if container_expiration_policies_enable_historic_entries is not None:
             pulumi.set(__self__, "container_expiration_policies_enable_historic_entries", container_expiration_policies_enable_historic_entries)
         if container_registry_cleanup_tags_service_max_list_size is not None:
@@ -935,6 +1101,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "geo_node_allowed_ips", geo_node_allowed_ips)
         if geo_status_timeout is not None:
             pulumi.set(__self__, "geo_status_timeout", geo_status_timeout)
+        if git_push_pipeline_limit is not None:
+            pulumi.set(__self__, "git_push_pipeline_limit", git_push_pipeline_limit)
         if git_rate_limit_users_alertlists is not None:
             pulumi.set(__self__, "git_rate_limit_users_alertlists", git_rate_limit_users_alertlists)
         if git_rate_limit_users_allowlists is not None:
@@ -961,8 +1129,16 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "grafana_url", grafana_url)
         if gravatar_enabled is not None:
             pulumi.set(__self__, "gravatar_enabled", gravatar_enabled)
+        if group_download_export_limit is not None:
+            pulumi.set(__self__, "group_download_export_limit", group_download_export_limit)
+        if group_export_limit is not None:
+            pulumi.set(__self__, "group_export_limit", group_export_limit)
+        if group_import_limit is not None:
+            pulumi.set(__self__, "group_import_limit", group_import_limit)
         if group_owners_can_manage_default_branch_protection is not None:
             pulumi.set(__self__, "group_owners_can_manage_default_branch_protection", group_owners_can_manage_default_branch_protection)
+        if group_secrets_limit is not None:
+            pulumi.set(__self__, "group_secrets_limit", group_secrets_limit)
         if help_page_hide_commercial_content is not None:
             pulumi.set(__self__, "help_page_hide_commercial_content", help_page_hide_commercial_content)
         if help_page_support_url is not None:
@@ -981,6 +1157,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "housekeeping_optimize_repository_period", housekeeping_optimize_repository_period)
         if html_emails_enabled is not None:
             pulumi.set(__self__, "html_emails_enabled", html_emails_enabled)
+        if import_jobs_concurrency_limit is not None:
+            pulumi.set(__self__, "import_jobs_concurrency_limit", import_jobs_concurrency_limit)
         if import_sources is not None:
             pulumi.set(__self__, "import_sources", import_sources)
         if in_product_marketing_emails_enabled is not None:
@@ -1005,6 +1183,10 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "jira_connect_proxy_url", jira_connect_proxy_url)
         if jira_connect_public_key_storage_enabled is not None:
             pulumi.set(__self__, "jira_connect_public_key_storage_enabled", jira_connect_public_key_storage_enabled)
+        if job_play_limit_per_user_project is not None:
+            pulumi.set(__self__, "job_play_limit_per_user_project", job_play_limit_per_user_project)
+        if job_retry_limit_per_user_project is not None:
+            pulumi.set(__self__, "job_retry_limit_per_user_project", job_retry_limit_per_user_project)
         if keep_latest_artifact is not None:
             pulumi.set(__self__, "keep_latest_artifact", keep_latest_artifact)
         if kroki_enabled is not None:
@@ -1039,6 +1221,10 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "max_decompressed_archive_size", max_decompressed_archive_size)
         if max_export_size is not None:
             pulumi.set(__self__, "max_export_size", max_export_size)
+        if max_github_response_size_limit is not None:
+            pulumi.set(__self__, "max_github_response_size_limit", max_github_response_size_limit)
+        if max_http_response_size_limit is not None:
+            pulumi.set(__self__, "max_http_response_size_limit", max_http_response_size_limit)
         if max_import_remote_file_size is not None:
             pulumi.set(__self__, "max_import_remote_file_size", max_import_remote_file_size)
         if max_import_size is not None:
@@ -1073,6 +1259,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "mirror_max_capacity", mirror_max_capacity)
         if mirror_max_delay is not None:
             pulumi.set(__self__, "mirror_max_delay", mirror_max_delay)
+        if notes_create_limit is not None:
+            pulumi.set(__self__, "notes_create_limit", notes_create_limit)
         if notify_on_unknown_sign_in is not None:
             pulumi.set(__self__, "notify_on_unknown_sign_in", notify_on_unknown_sign_in)
         if npm_package_requests_forwarding is not None:
@@ -1107,8 +1295,14 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "performance_bar_allowed_group_path", performance_bar_allowed_group_path)
         if personal_access_token_prefix is not None:
             pulumi.set(__self__, "personal_access_token_prefix", personal_access_token_prefix)
+        if pipeline_cancel_limit_per_user_project is not None:
+            pulumi.set(__self__, "pipeline_cancel_limit_per_user_project", pipeline_cancel_limit_per_user_project)
         if pipeline_limit_per_project_user_sha is not None:
             pulumi.set(__self__, "pipeline_limit_per_project_user_sha", pipeline_limit_per_project_user_sha)
+        if pipeline_limit_per_user is not None:
+            pulumi.set(__self__, "pipeline_limit_per_user", pipeline_limit_per_user)
+        if pipeline_retry_limit_per_user_project is not None:
+            pulumi.set(__self__, "pipeline_retry_limit_per_user_project", pipeline_retry_limit_per_user_project)
         if plantuml_enabled is not None:
             pulumi.set(__self__, "plantuml_enabled", plantuml_enabled)
         if plantuml_url is not None:
@@ -1119,10 +1313,18 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "prevent_merge_requests_author_approval", prevent_merge_requests_author_approval)
         if prevent_merge_requests_committers_approval is not None:
             pulumi.set(__self__, "prevent_merge_requests_committers_approval", prevent_merge_requests_committers_approval)
+        if project_download_export_limit is not None:
+            pulumi.set(__self__, "project_download_export_limit", project_download_export_limit)
         if project_export_enabled is not None:
             pulumi.set(__self__, "project_export_enabled", project_export_enabled)
+        if project_export_limit is not None:
+            pulumi.set(__self__, "project_export_limit", project_export_limit)
+        if project_import_limit is not None:
+            pulumi.set(__self__, "project_import_limit", project_import_limit)
         if project_jobs_api_rate_limit is not None:
             pulumi.set(__self__, "project_jobs_api_rate_limit", project_jobs_api_rate_limit)
+        if project_secrets_limit is not None:
+            pulumi.set(__self__, "project_secrets_limit", project_secrets_limit)
         if projects_api_rate_limit_unauthenticated is not None:
             pulumi.set(__self__, "projects_api_rate_limit_unauthenticated", projects_api_rate_limit_unauthenticated)
         if prometheus_metrics_enabled is not None:
@@ -1139,6 +1341,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "rate_limiting_response_text", rate_limiting_response_text)
         if raw_blob_request_limit is not None:
             pulumi.set(__self__, "raw_blob_request_limit", raw_blob_request_limit)
+        if raw_blob_request_limit_unauthenticated is not None:
+            pulumi.set(__self__, "raw_blob_request_limit_unauthenticated", raw_blob_request_limit_unauthenticated)
         if recaptcha_enabled is not None:
             pulumi.set(__self__, "recaptcha_enabled", recaptcha_enabled)
         if recaptcha_private_key is not None:
@@ -1169,6 +1373,16 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "restricted_visibility_levels", restricted_visibility_levels)
         if rsa_key_restriction is not None:
             pulumi.set(__self__, "rsa_key_restriction", rsa_key_restriction)
+        if runner_jobs_endpoints_api_limit is not None:
+            pulumi.set(__self__, "runner_jobs_endpoints_api_limit", runner_jobs_endpoints_api_limit)
+        if runner_jobs_patch_trace_api_limit is not None:
+            pulumi.set(__self__, "runner_jobs_patch_trace_api_limit", runner_jobs_patch_trace_api_limit)
+        if runner_jobs_request_api_limit is not None:
+            pulumi.set(__self__, "runner_jobs_request_api_limit", runner_jobs_request_api_limit)
+        if scan_execution_policies_action_limit is not None:
+            pulumi.set(__self__, "scan_execution_policies_action_limit", scan_execution_policies_action_limit)
+        if scan_execution_policies_schedule_limit is not None:
+            pulumi.set(__self__, "scan_execution_policies_schedule_limit", scan_execution_policies_schedule_limit)
         if search_rate_limit is not None:
             pulumi.set(__self__, "search_rate_limit", search_rate_limit)
         if search_rate_limit_unauthenticated is not None:
@@ -1249,6 +1463,8 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "static_objects_external_storage_url", static_objects_external_storage_url)
         if suggest_pipeline_enabled is not None:
             pulumi.set(__self__, "suggest_pipeline_enabled", suggest_pipeline_enabled)
+        if tags_create_limit is not None:
+            pulumi.set(__self__, "tags_create_limit", tags_create_limit)
         if terminal_max_session_time is not None:
             pulumi.set(__self__, "terminal_max_session_time", terminal_max_session_time)
         if terms is not None:
@@ -1259,12 +1475,42 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "throttle_authenticated_api_period_in_seconds", throttle_authenticated_api_period_in_seconds)
         if throttle_authenticated_api_requests_per_period is not None:
             pulumi.set(__self__, "throttle_authenticated_api_requests_per_period", throttle_authenticated_api_requests_per_period)
+        if throttle_authenticated_dependency_proxy_enabled is not None:
+            pulumi.set(__self__, "throttle_authenticated_dependency_proxy_enabled", throttle_authenticated_dependency_proxy_enabled)
+        if throttle_authenticated_dependency_proxy_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_authenticated_dependency_proxy_period_in_seconds", throttle_authenticated_dependency_proxy_period_in_seconds)
+        if throttle_authenticated_dependency_proxy_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_authenticated_dependency_proxy_requests_per_period", throttle_authenticated_dependency_proxy_requests_per_period)
+        if throttle_authenticated_deprecated_api_enabled is not None:
+            pulumi.set(__self__, "throttle_authenticated_deprecated_api_enabled", throttle_authenticated_deprecated_api_enabled)
+        if throttle_authenticated_deprecated_api_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_authenticated_deprecated_api_period_in_seconds", throttle_authenticated_deprecated_api_period_in_seconds)
+        if throttle_authenticated_deprecated_api_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_authenticated_deprecated_api_requests_per_period", throttle_authenticated_deprecated_api_requests_per_period)
+        if throttle_authenticated_files_api_enabled is not None:
+            pulumi.set(__self__, "throttle_authenticated_files_api_enabled", throttle_authenticated_files_api_enabled)
+        if throttle_authenticated_files_api_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_authenticated_files_api_period_in_seconds", throttle_authenticated_files_api_period_in_seconds)
+        if throttle_authenticated_files_api_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_authenticated_files_api_requests_per_period", throttle_authenticated_files_api_requests_per_period)
+        if throttle_authenticated_git_http_enabled is not None:
+            pulumi.set(__self__, "throttle_authenticated_git_http_enabled", throttle_authenticated_git_http_enabled)
+        if throttle_authenticated_git_http_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_authenticated_git_http_period_in_seconds", throttle_authenticated_git_http_period_in_seconds)
+        if throttle_authenticated_git_http_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_authenticated_git_http_requests_per_period", throttle_authenticated_git_http_requests_per_period)
         if throttle_authenticated_git_lfs_enabled is not None:
             pulumi.set(__self__, "throttle_authenticated_git_lfs_enabled", throttle_authenticated_git_lfs_enabled)
         if throttle_authenticated_git_lfs_period_in_seconds is not None:
             pulumi.set(__self__, "throttle_authenticated_git_lfs_period_in_seconds", throttle_authenticated_git_lfs_period_in_seconds)
         if throttle_authenticated_git_lfs_requests_per_period is not None:
             pulumi.set(__self__, "throttle_authenticated_git_lfs_requests_per_period", throttle_authenticated_git_lfs_requests_per_period)
+        if throttle_authenticated_mcp_enabled is not None:
+            pulumi.set(__self__, "throttle_authenticated_mcp_enabled", throttle_authenticated_mcp_enabled)
+        if throttle_authenticated_mcp_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_authenticated_mcp_period_in_seconds", throttle_authenticated_mcp_period_in_seconds)
+        if throttle_authenticated_mcp_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_authenticated_mcp_requests_per_period", throttle_authenticated_mcp_requests_per_period)
         if throttle_authenticated_packages_api_enabled is not None:
             pulumi.set(__self__, "throttle_authenticated_packages_api_enabled", throttle_authenticated_packages_api_enabled)
         if throttle_authenticated_packages_api_period_in_seconds is not None:
@@ -1277,18 +1523,63 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "throttle_authenticated_web_period_in_seconds", throttle_authenticated_web_period_in_seconds)
         if throttle_authenticated_web_requests_per_period is not None:
             pulumi.set(__self__, "throttle_authenticated_web_requests_per_period", throttle_authenticated_web_requests_per_period)
+        if throttle_incident_management_notification_enabled is not None:
+            pulumi.set(__self__, "throttle_incident_management_notification_enabled", throttle_incident_management_notification_enabled)
+        if throttle_incident_management_notification_per_period is not None:
+            pulumi.set(__self__, "throttle_incident_management_notification_per_period", throttle_incident_management_notification_per_period)
+        if throttle_incident_management_notification_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_incident_management_notification_period_in_seconds", throttle_incident_management_notification_period_in_seconds)
+        if throttle_protected_paths_enabled is not None:
+            pulumi.set(__self__, "throttle_protected_paths_enabled", throttle_protected_paths_enabled)
+        if throttle_protected_paths_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_protected_paths_period_in_seconds", throttle_protected_paths_period_in_seconds)
+        if throttle_protected_paths_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_protected_paths_requests_per_period", throttle_protected_paths_requests_per_period)
         if throttle_unauthenticated_api_enabled is not None:
             pulumi.set(__self__, "throttle_unauthenticated_api_enabled", throttle_unauthenticated_api_enabled)
         if throttle_unauthenticated_api_period_in_seconds is not None:
             pulumi.set(__self__, "throttle_unauthenticated_api_period_in_seconds", throttle_unauthenticated_api_period_in_seconds)
         if throttle_unauthenticated_api_requests_per_period is not None:
             pulumi.set(__self__, "throttle_unauthenticated_api_requests_per_period", throttle_unauthenticated_api_requests_per_period)
+        if throttle_unauthenticated_deprecated_api_enabled is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_deprecated_api_enabled", throttle_unauthenticated_deprecated_api_enabled)
+        if throttle_unauthenticated_deprecated_api_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_deprecated_api_period_in_seconds", throttle_unauthenticated_deprecated_api_period_in_seconds)
+        if throttle_unauthenticated_deprecated_api_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_deprecated_api_requests_per_period", throttle_unauthenticated_deprecated_api_requests_per_period)
+        if throttle_unauthenticated_enabled is not None:
+            warnings.warn("""Use throttle_unauthenticated_web_enabled or throttle_unauthenticated_api_enabled instead. (Deprecated in GitLab 14.3)""", DeprecationWarning)
+            pulumi.log.warn("""throttle_unauthenticated_enabled is deprecated: Use throttle_unauthenticated_web_enabled or throttle_unauthenticated_api_enabled instead. (Deprecated in GitLab 14.3)""")
+        if throttle_unauthenticated_enabled is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_enabled", throttle_unauthenticated_enabled)
+        if throttle_unauthenticated_files_api_enabled is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_files_api_enabled", throttle_unauthenticated_files_api_enabled)
+        if throttle_unauthenticated_files_api_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_files_api_period_in_seconds", throttle_unauthenticated_files_api_period_in_seconds)
+        if throttle_unauthenticated_files_api_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_files_api_requests_per_period", throttle_unauthenticated_files_api_requests_per_period)
+        if throttle_unauthenticated_git_http_enabled is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_git_http_enabled", throttle_unauthenticated_git_http_enabled)
+        if throttle_unauthenticated_git_http_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_git_http_period_in_seconds", throttle_unauthenticated_git_http_period_in_seconds)
+        if throttle_unauthenticated_git_http_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_git_http_requests_per_period", throttle_unauthenticated_git_http_requests_per_period)
         if throttle_unauthenticated_packages_api_enabled is not None:
             pulumi.set(__self__, "throttle_unauthenticated_packages_api_enabled", throttle_unauthenticated_packages_api_enabled)
         if throttle_unauthenticated_packages_api_period_in_seconds is not None:
             pulumi.set(__self__, "throttle_unauthenticated_packages_api_period_in_seconds", throttle_unauthenticated_packages_api_period_in_seconds)
         if throttle_unauthenticated_packages_api_requests_per_period is not None:
             pulumi.set(__self__, "throttle_unauthenticated_packages_api_requests_per_period", throttle_unauthenticated_packages_api_requests_per_period)
+        if throttle_unauthenticated_period_in_seconds is not None:
+            warnings.warn("""Use throttle_unauthenticated_web_period_in_seconds or throttle_unauthenticated_api_period_in_seconds instead. (Deprecated in GitLab 14.3)""", DeprecationWarning)
+            pulumi.log.warn("""throttle_unauthenticated_period_in_seconds is deprecated: Use throttle_unauthenticated_web_period_in_seconds or throttle_unauthenticated_api_period_in_seconds instead. (Deprecated in GitLab 14.3)""")
+        if throttle_unauthenticated_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_period_in_seconds", throttle_unauthenticated_period_in_seconds)
+        if throttle_unauthenticated_requests_per_period is not None:
+            warnings.warn("""Use throttle_unauthenticated_web_requests_per_period or throttle_unauthenticated_api_requests_per_period instead. (Deprecated in GitLab 14.3)""", DeprecationWarning)
+            pulumi.log.warn("""throttle_unauthenticated_requests_per_period is deprecated: Use throttle_unauthenticated_web_requests_per_period or throttle_unauthenticated_api_requests_per_period instead. (Deprecated in GitLab 14.3)""")
+        if throttle_unauthenticated_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_requests_per_period", throttle_unauthenticated_requests_per_period)
         if throttle_unauthenticated_web_enabled is not None:
             pulumi.set(__self__, "throttle_unauthenticated_web_enabled", throttle_unauthenticated_web_enabled)
         if throttle_unauthenticated_web_period_in_seconds is not None:
@@ -1327,10 +1618,32 @@ class ApplicationSettingsArgs:
             pulumi.set(__self__, "user_oauth_applications", user_oauth_applications)
         if user_show_add_ssh_key_message is not None:
             pulumi.set(__self__, "user_show_add_ssh_key_message", user_show_add_ssh_key_message)
+        if users_api_limit_followers is not None:
+            pulumi.set(__self__, "users_api_limit_followers", users_api_limit_followers)
+        if users_api_limit_following is not None:
+            pulumi.set(__self__, "users_api_limit_following", users_api_limit_following)
+        if users_api_limit_gpg_key is not None:
+            pulumi.set(__self__, "users_api_limit_gpg_key", users_api_limit_gpg_key)
+        if users_api_limit_gpg_keys is not None:
+            pulumi.set(__self__, "users_api_limit_gpg_keys", users_api_limit_gpg_keys)
+        if users_api_limit_ssh_key is not None:
+            pulumi.set(__self__, "users_api_limit_ssh_key", users_api_limit_ssh_key)
+        if users_api_limit_ssh_keys is not None:
+            pulumi.set(__self__, "users_api_limit_ssh_keys", users_api_limit_ssh_keys)
+        if users_api_limit_status is not None:
+            pulumi.set(__self__, "users_api_limit_status", users_api_limit_status)
+        if users_get_by_id_limit is not None:
+            pulumi.set(__self__, "users_get_by_id_limit", users_get_by_id_limit)
+        if users_get_by_id_limit_allowlist_raw is not None:
+            pulumi.set(__self__, "users_get_by_id_limit_allowlist_raw", users_get_by_id_limit_allowlist_raw)
         if valid_runner_registrars is not None:
             pulumi.set(__self__, "valid_runner_registrars", valid_runner_registrars)
         if version_check_enabled is not None:
             pulumi.set(__self__, "version_check_enabled", version_check_enabled)
+        if web_hook_event_resend_limit is not None:
+            pulumi.set(__self__, "web_hook_event_resend_limit", web_hook_event_resend_limit)
+        if web_hook_test_limit is not None:
+            pulumi.set(__self__, "web_hook_test_limit", web_hook_test_limit)
         if web_ide_clientside_preview_enabled is not None:
             pulumi.set(__self__, "web_ide_clientside_preview_enabled", web_ide_clientside_preview_enabled)
         if whats_new_variant is not None:
@@ -1385,6 +1698,18 @@ class ApplicationSettingsArgs:
     @after_sign_up_text.setter
     def after_sign_up_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "after_sign_up_text", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiActionApiRateLimit")
+    def ai_action_api_rate_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests allowed to the aiAction GraphQL mutation per user per eight hours. Default: 160. Set to 0 to disable the rate limit. Introduced in GitLab 17.2.
+        """
+        return pulumi.get(self, "ai_action_api_rate_limit")
+
+    @ai_action_api_rate_limit.setter
+    def ai_action_api_rate_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "ai_action_api_rate_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="akismetApiKey")
@@ -1627,6 +1952,30 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "auto_devops_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="autocompleteUsersLimit")
+    def autocomplete_users_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of authenticated requests per minute to the GET /autocomplete/users endpoint.
+        """
+        return pulumi.get(self, "autocomplete_users_limit")
+
+    @autocomplete_users_limit.setter
+    def autocomplete_users_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "autocomplete_users_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autocompleteUsersUnauthenticatedLimit")
+    def autocomplete_users_unauthenticated_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of unauthenticated requests per minute to the GET /autocomplete/users endpoint.
+        """
+        return pulumi.get(self, "autocomplete_users_unauthenticated_limit")
+
+    @autocomplete_users_unauthenticated_limit.setter
+    def autocomplete_users_unauthenticated_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "autocomplete_users_unauthenticated_limit", value)
+
+    @_builtins.property
     @pulumi.getter(name="automaticPurchasedStorageAllocation")
     def automatic_purchased_storage_allocation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -1711,6 +2060,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "ci_job_live_trace_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="ciLintLimitPerUser")
+    def ci_lint_limit_per_user(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of CI Lint requests per minute per user. Disabled by default.
+        """
+        return pulumi.get(self, "ci_lint_limit_per_user")
+
+    @ci_lint_limit_per_user.setter
+    def ci_lint_limit_per_user(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "ci_lint_limit_per_user", value)
+
+    @_builtins.property
     @pulumi.getter(name="ciMaxIncludes")
     def ci_max_includes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -1781,6 +2142,42 @@ class ApplicationSettingsArgs:
     @concurrent_github_import_jobs_limit.setter
     def concurrent_github_import_jobs_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "concurrent_github_import_jobs_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="concurrentPullRequestImportJobsLimit")
+    def concurrent_pull_request_import_jobs_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of simultaneous pull request import jobs for the GitHub, Bitbucket Cloud, and Bitbucket Server importers. Default is 200. Introduced in GitLab 19.4.
+        """
+        return pulumi.get(self, "concurrent_pull_request_import_jobs_limit")
+
+    @concurrent_pull_request_import_jobs_limit.setter
+    def concurrent_pull_request_import_jobs_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "concurrent_pull_request_import_jobs_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="concurrentRelationBatchExportLimit")
+    def concurrent_relation_batch_export_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of simultaneous batch export jobs to process. Introduced in GitLab 17.6.
+        """
+        return pulumi.get(self, "concurrent_relation_batch_export_limit")
+
+    @concurrent_relation_batch_export_limit.setter
+    def concurrent_relation_batch_export_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "concurrent_relation_batch_export_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="concurrentRelationExportLimit")
+    def concurrent_relation_export_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of simultaneous project file exports to process. Default: 25. Introduced in GitLab 19.4 with a feature flag named limit*concurrent*project_exports. Disabled by default.
+        """
+        return pulumi.get(self, "concurrent_relation_export_limit")
+
+    @concurrent_relation_export_limit.setter
+    def concurrent_relation_export_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "concurrent_relation_export_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="containerExpirationPoliciesEnableHistoricEntries")
@@ -2863,6 +3260,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "geo_status_timeout", value)
 
     @_builtins.property
+    @pulumi.getter(name="gitPushPipelineLimit")
+    def git_push_pipeline_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Set the maximum number of tag or branch pipelines that can be triggered by a single Git push. For more information about this limit, see number of pipelines per Git push.
+        """
+        return pulumi.get(self, "git_push_pipeline_limit")
+
+    @git_push_pipeline_limit.setter
+    def git_push_pipeline_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "git_push_pipeline_limit", value)
+
+    @_builtins.property
     @pulumi.getter(name="gitRateLimitUsersAlertlists")
     def git_rate_limit_users_alertlists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
@@ -3019,6 +3428,42 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "gravatar_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="groupDownloadExportLimit")
+    def group_download_export_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of group export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "group_download_export_limit")
+
+    @group_download_export_limit.setter
+    def group_download_export_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "group_download_export_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupExportLimit")
+    def group_export_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of group exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "group_export_limit")
+
+    @group_export_limit.setter
+    def group_export_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "group_export_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupImportLimit")
+    def group_import_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of group imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "group_import_limit")
+
+    @group_import_limit.setter
+    def group_import_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "group_import_limit", value)
+
+    @_builtins.property
     @pulumi.getter(name="groupOwnersCanManageDefaultBranchProtection")
     def group_owners_can_manage_default_branch_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -3029,6 +3474,18 @@ class ApplicationSettingsArgs:
     @group_owners_can_manage_default_branch_protection.setter
     def group_owners_can_manage_default_branch_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "group_owners_can_manage_default_branch_protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupSecretsLimit")
+    def group_secrets_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of secrets allowed per group in Secrets Manager. Default: 500. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+        """
+        return pulumi.get(self, "group_secrets_limit")
+
+    @group_secrets_limit.setter
+    def group_secrets_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "group_secrets_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="helpPageHideCommercialContent")
@@ -3137,6 +3594,18 @@ class ApplicationSettingsArgs:
     @html_emails_enabled.setter
     def html_emails_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "html_emails_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="importJobsConcurrencyLimit")
+    def import_jobs_concurrency_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of concurrently running jobs for each import worker type (project and group file base import, Direct Transfer, and GitHub, Bitbucket Cloud, and Bitbucket Server importer stages). Applied independently per worker type. Default is 100. Introduced in GitLab 19.1.
+        """
+        return pulumi.get(self, "import_jobs_concurrency_limit")
+
+    @import_jobs_concurrency_limit.setter
+    def import_jobs_concurrency_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "import_jobs_concurrency_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="importSources")
@@ -3281,6 +3750,30 @@ class ApplicationSettingsArgs:
     @jira_connect_public_key_storage_enabled.setter
     def jira_connect_public_key_storage_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "jira_connect_public_key_storage_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jobPlayLimitPerUserProject")
+    def job_play_limit_per_user_project(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of manual job runs per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_play. Disabled by default.
+        """
+        return pulumi.get(self, "job_play_limit_per_user_project")
+
+    @job_play_limit_per_user_project.setter
+    def job_play_limit_per_user_project(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "job_play_limit_per_user_project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jobRetryLimitPerUserProject")
+    def job_retry_limit_per_user_project(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of job retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_retry. Disabled by default.
+        """
+        return pulumi.get(self, "job_retry_limit_per_user_project")
+
+    @job_retry_limit_per_user_project.setter
+    def job_retry_limit_per_user_project(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "job_retry_limit_per_user_project", value)
 
     @_builtins.property
     @pulumi.getter(name="keepLatestArtifact")
@@ -3487,6 +3980,30 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "max_export_size", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxGithubResponseSizeLimit")
+    def max_github_response_size_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum allowed GitHub API response size in MB. 0 for unlimited.
+        """
+        return pulumi.get(self, "max_github_response_size_limit")
+
+    @max_github_response_size_limit.setter
+    def max_github_response_size_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_github_response_size_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxHttpResponseSizeLimit")
+    def max_http_response_size_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4.
+        """
+        return pulumi.get(self, "max_http_response_size_limit")
+
+    @max_http_response_size_limit.setter
+    def max_http_response_size_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_http_response_size_limit", value)
+
+    @_builtins.property
     @pulumi.getter(name="maxImportRemoteFileSize")
     def max_import_remote_file_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -3689,6 +4206,18 @@ class ApplicationSettingsArgs:
     @mirror_max_delay.setter
     def mirror_max_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mirror_max_delay", value)
+
+    @_builtins.property
+    @pulumi.getter(name="notesCreateLimit")
+    def notes_create_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of notes (comments) a user can create per minute. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "notes_create_limit")
+
+    @notes_create_limit.setter
+    def notes_create_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "notes_create_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyOnUnknownSignIn")
@@ -3895,6 +4424,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "personal_access_token_prefix", value)
 
     @_builtins.property
+    @pulumi.getter(name="pipelineCancelLimitPerUserProject")
+    def pipeline_cancel_limit_per_user_project(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of pipeline cancellations per minute per user per project. Introduced in GitLab 19.5.
+        """
+        return pulumi.get(self, "pipeline_cancel_limit_per_user_project")
+
+    @pipeline_cancel_limit_per_user_project.setter
+    def pipeline_cancel_limit_per_user_project(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "pipeline_cancel_limit_per_user_project", value)
+
+    @_builtins.property
     @pulumi.getter(name="pipelineLimitPerProjectUserSha")
     def pipeline_limit_per_project_user_sha(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -3905,6 +4446,30 @@ class ApplicationSettingsArgs:
     @pipeline_limit_per_project_user_sha.setter
     def pipeline_limit_per_project_user_sha(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pipeline_limit_per_project_user_sha", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineLimitPerUser")
+    def pipeline_limit_per_user(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of pipeline creation requests per minute per user.
+        """
+        return pulumi.get(self, "pipeline_limit_per_user")
+
+    @pipeline_limit_per_user.setter
+    def pipeline_limit_per_user(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "pipeline_limit_per_user", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineRetryLimitPerUserProject")
+    def pipeline_retry_limit_per_user_project(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of pipeline retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*pipeline_retry. Disabled by default.
+        """
+        return pulumi.get(self, "pipeline_retry_limit_per_user_project")
+
+    @pipeline_retry_limit_per_user_project.setter
+    def pipeline_retry_limit_per_user_project(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "pipeline_retry_limit_per_user_project", value)
 
     @_builtins.property
     @pulumi.getter(name="plantumlEnabled")
@@ -3967,6 +4532,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "prevent_merge_requests_committers_approval", value)
 
     @_builtins.property
+    @pulumi.getter(name="projectDownloadExportLimit")
+    def project_download_export_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of project export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "project_download_export_limit")
+
+    @project_download_export_limit.setter
+    def project_download_export_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "project_download_export_limit", value)
+
+    @_builtins.property
     @pulumi.getter(name="projectExportEnabled")
     def project_export_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -3979,6 +4556,30 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "project_export_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="projectExportLimit")
+    def project_export_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of project exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "project_export_limit")
+
+    @project_export_limit.setter
+    def project_export_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "project_export_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectImportLimit")
+    def project_import_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of project imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "project_import_limit")
+
+    @project_import_limit.setter
+    def project_import_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "project_import_limit", value)
+
+    @_builtins.property
     @pulumi.getter(name="projectJobsApiRateLimit")
     def project_jobs_api_rate_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -3989,6 +4590,18 @@ class ApplicationSettingsArgs:
     @project_jobs_api_rate_limit.setter
     def project_jobs_api_rate_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "project_jobs_api_rate_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectSecretsLimit")
+    def project_secrets_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of secrets allowed per project in Secrets Manager. Default: 100. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+        """
+        return pulumi.get(self, "project_secrets_limit")
+
+    @project_secrets_limit.setter
+    def project_secrets_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "project_secrets_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="projectsApiRateLimitUnauthenticated")
@@ -4085,6 +4698,18 @@ class ApplicationSettingsArgs:
     @raw_blob_request_limit.setter
     def raw_blob_request_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "raw_blob_request_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rawBlobRequestLimitUnauthenticated")
+    def raw_blob_request_limit_unauthenticated(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of unauthenticated requests per minute across all raw paths in a project (default is 800). Set to 0 to disable throttling.
+        """
+        return pulumi.get(self, "raw_blob_request_limit_unauthenticated")
+
+    @raw_blob_request_limit_unauthenticated.setter
+    def raw_blob_request_limit_unauthenticated(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "raw_blob_request_limit_unauthenticated", value)
 
     @_builtins.property
     @pulumi.getter(name="recaptchaEnabled")
@@ -4265,6 +4890,66 @@ class ApplicationSettingsArgs:
     @rsa_key_restriction.setter
     def rsa_key_restriction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rsa_key_restriction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="runnerJobsEndpointsApiLimit")
+    def runner_jobs_endpoints_api_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute per job token for requests to /jobs/* requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        """
+        return pulumi.get(self, "runner_jobs_endpoints_api_limit")
+
+    @runner_jobs_endpoints_api_limit.setter
+    def runner_jobs_endpoints_api_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "runner_jobs_endpoints_api_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="runnerJobsPatchTraceApiLimit")
+    def runner_jobs_patch_trace_api_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute per runner token for requests to the PATCH /jobs/:id/trace runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        """
+        return pulumi.get(self, "runner_jobs_patch_trace_api_limit")
+
+    @runner_jobs_patch_trace_api_limit.setter
+    def runner_jobs_patch_trace_api_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "runner_jobs_patch_trace_api_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="runnerJobsRequestApiLimit")
+    def runner_jobs_request_api_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute per runner token for requests to the /jobs/request runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        """
+        return pulumi.get(self, "runner_jobs_request_api_limit")
+
+    @runner_jobs_request_api_limit.setter
+    def runner_jobs_request_api_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "runner_jobs_request_api_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scanExecutionPoliciesActionLimit")
+    def scan_execution_policies_action_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of actions per scan execution policy. Default: 0. Maximum: 20.
+        """
+        return pulumi.get(self, "scan_execution_policies_action_limit")
+
+    @scan_execution_policies_action_limit.setter
+    def scan_execution_policies_action_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "scan_execution_policies_action_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scanExecutionPoliciesScheduleLimit")
+    def scan_execution_policies_schedule_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of type: schedule rules per scan execution policy. Default: 0. Maximum: 20.
+        """
+        return pulumi.get(self, "scan_execution_policies_schedule_limit")
+
+    @scan_execution_policies_schedule_limit.setter
+    def scan_execution_policies_schedule_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "scan_execution_policies_schedule_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="searchRateLimit")
@@ -4747,6 +5432,18 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "suggest_pipeline_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="tagsCreateLimit")
+    def tags_create_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL tagCreate mutation, tag creation in the UI, and the /tag quick action. Default: 100. Set to 0 to disable the rate limit. Introduced in GitLab 19.4.
+        """
+        return pulumi.get(self, "tags_create_limit")
+
+    @tags_create_limit.setter
+    def tags_create_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "tags_create_limit", value)
+
+    @_builtins.property
     @pulumi.getter(name="terminalMaxSessionTime")
     def terminal_max_session_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -4807,6 +5504,150 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "throttle_authenticated_api_requests_per_period", value)
 
     @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDependencyProxyEnabled")
+    def throttle_authenticated_dependency_proxy_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, enforces the authenticated dependency proxy request rate limit. Default value: false. Introduced in GitLab 19.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_dependency_proxy_enabled")
+
+    @throttle_authenticated_dependency_proxy_enabled.setter
+    def throttle_authenticated_dependency_proxy_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_authenticated_dependency_proxy_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDependencyProxyPeriodInSeconds")
+    def throttle_authenticated_dependency_proxy_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period in seconds. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 15. Introduced in GitLab 19.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_dependency_proxy_period_in_seconds")
+
+    @throttle_authenticated_dependency_proxy_period_in_seconds.setter
+    def throttle_authenticated_dependency_proxy_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_dependency_proxy_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDependencyProxyRequestsPerPeriod")
+    def throttle_authenticated_dependency_proxy_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum requests per period per user. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 1000. Introduced in GitLab 19.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_dependency_proxy_requests_per_period")
+
+    @throttle_authenticated_dependency_proxy_requests_per_period.setter
+    def throttle_authenticated_dependency_proxy_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_dependency_proxy_requests_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDeprecatedApiEnabled")
+    def throttle_authenticated_deprecated_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (If enabled, requires: throttle*authenticated*deprecated*api*period*in*seconds and throttle*authenticated*deprecated*api*requests*per*period) Enable authenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_deprecated_api_enabled")
+
+    @throttle_authenticated_deprecated_api_enabled.setter
+    def throttle_authenticated_deprecated_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_authenticated_deprecated_api_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDeprecatedApiPeriodInSeconds")
+    def throttle_authenticated_deprecated_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period (in seconds) for authenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_deprecated_api_period_in_seconds")
+
+    @throttle_authenticated_deprecated_api_period_in_seconds.setter
+    def throttle_authenticated_deprecated_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_deprecated_api_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDeprecatedApiRequestsPerPeriod")
+    def throttle_authenticated_deprecated_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum authenticated deprecated API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_deprecated_api_requests_per_period")
+
+    @throttle_authenticated_deprecated_api_requests_per_period.setter
+    def throttle_authenticated_deprecated_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_deprecated_api_requests_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedFilesApiEnabled")
+    def throttle_authenticated_files_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (If enabled, requires: throttle*authenticated*files*api*period*in*seconds and throttle*authenticated*files*api*requests*per*period) Enable authenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_files_api_enabled")
+
+    @throttle_authenticated_files_api_enabled.setter
+    def throttle_authenticated_files_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_authenticated_files_api_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedFilesApiPeriodInSeconds")
+    def throttle_authenticated_files_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period (in seconds) for authenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_files_api_period_in_seconds")
+
+    @throttle_authenticated_files_api_period_in_seconds.setter
+    def throttle_authenticated_files_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_files_api_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedFilesApiRequestsPerPeriod")
+    def throttle_authenticated_files_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum authenticated Files API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_files_api_requests_per_period")
+
+    @throttle_authenticated_files_api_requests_per_period.setter
+    def throttle_authenticated_files_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_files_api_requests_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedGitHttpEnabled")
+    def throttle_authenticated_git_http_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, enforces the authenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_git_http_enabled")
+
+    @throttle_authenticated_git_http_enabled.setter
+    def throttle_authenticated_git_http_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_authenticated_git_http_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedGitHttpPeriodInSeconds")
+    def throttle_authenticated_git_http_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period in seconds. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_git_http_period_in_seconds")
+
+    @throttle_authenticated_git_http_period_in_seconds.setter
+    def throttle_authenticated_git_http_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_git_http_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedGitHttpRequestsPerPeriod")
+    def throttle_authenticated_git_http_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum requests per period per user. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_git_http_requests_per_period")
+
+    @throttle_authenticated_git_http_requests_per_period.setter
+    def throttle_authenticated_git_http_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_git_http_requests_per_period", value)
+
+    @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedGitLfsEnabled")
     def throttle_authenticated_git_lfs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -4841,6 +5682,42 @@ class ApplicationSettingsArgs:
     @throttle_authenticated_git_lfs_requests_per_period.setter
     def throttle_authenticated_git_lfs_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_git_lfs_requests_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedMcpEnabled")
+    def throttle_authenticated_mcp_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (If enabled, requires: throttle*authenticated*mcp*period*in*seconds and throttle*authenticated*mcp*requests*per*period) If true, enforces the rate limit on requests to the MCP Server endpoint, /api/v4/mcp, for any HTTP method. Does not apply to other MCP endpoints. Introduced in GitLab 19.5.
+        """
+        return pulumi.get(self, "throttle_authenticated_mcp_enabled")
+
+    @throttle_authenticated_mcp_enabled.setter
+    def throttle_authenticated_mcp_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_authenticated_mcp_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedMcpPeriodInSeconds")
+    def throttle_authenticated_mcp_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period in seconds. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+        """
+        return pulumi.get(self, "throttle_authenticated_mcp_period_in_seconds")
+
+    @throttle_authenticated_mcp_period_in_seconds.setter
+    def throttle_authenticated_mcp_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_mcp_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedMcpRequestsPerPeriod")
+    def throttle_authenticated_mcp_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum requests per period per user. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+        """
+        return pulumi.get(self, "throttle_authenticated_mcp_requests_per_period")
+
+    @throttle_authenticated_mcp_requests_per_period.setter
+    def throttle_authenticated_mcp_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_mcp_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedPackagesApiEnabled")
@@ -4915,6 +5792,78 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "throttle_authenticated_web_requests_per_period", value)
 
     @_builtins.property
+    @pulumi.getter(name="throttleIncidentManagementNotificationEnabled")
+    def throttle_incident_management_notification_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, enforces the inbound incident management alert notification rate limit, per project. Default value: false.
+        """
+        return pulumi.get(self, "throttle_incident_management_notification_enabled")
+
+    @throttle_incident_management_notification_enabled.setter
+    def throttle_incident_management_notification_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_incident_management_notification_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleIncidentManagementNotificationPerPeriod")
+    def throttle_incident_management_notification_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum inbound incident management alert notifications per period, per project. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+        """
+        return pulumi.get(self, "throttle_incident_management_notification_per_period")
+
+    @throttle_incident_management_notification_per_period.setter
+    def throttle_incident_management_notification_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_incident_management_notification_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleIncidentManagementNotificationPeriodInSeconds")
+    def throttle_incident_management_notification_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period in seconds. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+        """
+        return pulumi.get(self, "throttle_incident_management_notification_period_in_seconds")
+
+    @throttle_incident_management_notification_period_in_seconds.setter
+    def throttle_incident_management_notification_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_incident_management_notification_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleProtectedPathsEnabled")
+    def throttle_protected_paths_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (If enabled, requires: throttle*protected*paths*period*in*seconds and throttle*protected*paths*requests*per*period) Enable rate limiting for protected paths (for example, sign-in and password reset). Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_protected_paths_enabled")
+
+    @throttle_protected_paths_enabled.setter
+    def throttle_protected_paths_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_protected_paths_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleProtectedPathsPeriodInSeconds")
+    def throttle_protected_paths_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period (in seconds) for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_protected_paths_period_in_seconds")
+
+    @throttle_protected_paths_period_in_seconds.setter
+    def throttle_protected_paths_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_protected_paths_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleProtectedPathsRequestsPerPeriod")
+    def throttle_protected_paths_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum requests per period per IP for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_protected_paths_requests_per_period")
+
+    @throttle_protected_paths_requests_per_period.setter
+    def throttle_protected_paths_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_protected_paths_requests_per_period", value)
+
+    @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedApiEnabled")
     def throttle_unauthenticated_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -4951,6 +5900,127 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "throttle_unauthenticated_api_requests_per_period", value)
 
     @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedDeprecatedApiEnabled")
+    def throttle_unauthenticated_deprecated_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (If enabled, requires: throttle*unauthenticated*deprecated*api*period*in*seconds and throttle*unauthenticated*deprecated*api*requests*per*period) Enable unauthenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_deprecated_api_enabled")
+
+    @throttle_unauthenticated_deprecated_api_enabled.setter
+    def throttle_unauthenticated_deprecated_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_unauthenticated_deprecated_api_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedDeprecatedApiPeriodInSeconds")
+    def throttle_unauthenticated_deprecated_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period (in seconds) for unauthenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_deprecated_api_period_in_seconds")
+
+    @throttle_unauthenticated_deprecated_api_period_in_seconds.setter
+    def throttle_unauthenticated_deprecated_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_deprecated_api_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedDeprecatedApiRequestsPerPeriod")
+    def throttle_unauthenticated_deprecated_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum unauthenticated deprecated API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_deprecated_api_requests_per_period")
+
+    @throttle_unauthenticated_deprecated_api_requests_per_period.setter
+    def throttle_unauthenticated_deprecated_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_deprecated_api_requests_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedEnabled")
+    @_utilities.deprecated("""Use throttle_unauthenticated_web_enabled or throttle_unauthenticated_api_enabled instead. (Deprecated in GitLab 14.3)""")
+    def throttle_unauthenticated_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*enabled or throttle*unauthenticated*api*enabled instead.) (**If enabled, requires**: throttle*unauthenticated*period*in*seconds and throttle*unauthenticated*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
+        """
+        return pulumi.get(self, "throttle_unauthenticated_enabled")
+
+    @throttle_unauthenticated_enabled.setter
+    def throttle_unauthenticated_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_unauthenticated_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedFilesApiEnabled")
+    def throttle_unauthenticated_files_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (If enabled, requires: throttle*unauthenticated*files*api*period*in*seconds and throttle*unauthenticated*files*api*requests*per*period) Enable unauthenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_files_api_enabled")
+
+    @throttle_unauthenticated_files_api_enabled.setter
+    def throttle_unauthenticated_files_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_unauthenticated_files_api_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedFilesApiPeriodInSeconds")
+    def throttle_unauthenticated_files_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period (in seconds) for unauthenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_files_api_period_in_seconds")
+
+    @throttle_unauthenticated_files_api_period_in_seconds.setter
+    def throttle_unauthenticated_files_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_files_api_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedFilesApiRequestsPerPeriod")
+    def throttle_unauthenticated_files_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum unauthenticated Files API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_files_api_requests_per_period")
+
+    @throttle_unauthenticated_files_api_requests_per_period.setter
+    def throttle_unauthenticated_files_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_files_api_requests_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedGitHttpEnabled")
+    def throttle_unauthenticated_git_http_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, enforces the unauthenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 17.0.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_git_http_enabled")
+
+    @throttle_unauthenticated_git_http_enabled.setter
+    def throttle_unauthenticated_git_http_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_unauthenticated_git_http_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedGitHttpPeriodInSeconds")
+    def throttle_unauthenticated_git_http_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period in seconds. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_git_http_period_in_seconds")
+
+    @throttle_unauthenticated_git_http_period_in_seconds.setter
+    def throttle_unauthenticated_git_http_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_git_http_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedGitHttpRequestsPerPeriod")
+    def throttle_unauthenticated_git_http_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum requests per period per IP. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_git_http_requests_per_period")
+
+    @throttle_unauthenticated_git_http_requests_per_period.setter
+    def throttle_unauthenticated_git_http_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_git_http_requests_per_period", value)
+
+    @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedPackagesApiEnabled")
     def throttle_unauthenticated_packages_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -4985,6 +6055,32 @@ class ApplicationSettingsArgs:
     @throttle_unauthenticated_packages_api_requests_per_period.setter
     def throttle_unauthenticated_packages_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_unauthenticated_packages_api_requests_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedPeriodInSeconds")
+    @_utilities.deprecated("""Use throttle_unauthenticated_web_period_in_seconds or throttle_unauthenticated_api_period_in_seconds instead. (Deprecated in GitLab 14.3)""")
+    def throttle_unauthenticated_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*period*in*seconds or throttle*unauthenticated*api*period*in*seconds instead.) Rate limit period in seconds.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_period_in_seconds")
+
+    @throttle_unauthenticated_period_in_seconds.setter
+    def throttle_unauthenticated_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedRequestsPerPeriod")
+    @_utilities.deprecated("""Use throttle_unauthenticated_web_requests_per_period or throttle_unauthenticated_api_requests_per_period instead. (Deprecated in GitLab 14.3)""")
+    def throttle_unauthenticated_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*requests*per*period or throttle*unauthenticated*api*requests*per*period instead.) Maximum requests per period per IP.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_requests_per_period")
+
+    @throttle_unauthenticated_requests_per_period.setter
+    def throttle_unauthenticated_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedWebEnabled")
@@ -5215,6 +6311,114 @@ class ApplicationSettingsArgs:
         pulumi.set(self, "user_show_add_ssh_key_message", value)
 
     @_builtins.property
+    @pulumi.getter(name="usersApiLimitFollowers")
+    def users_api_limit_followers(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_followers")
+
+    @users_api_limit_followers.setter
+    def users_api_limit_followers(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_api_limit_followers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitFollowing")
+    def users_api_limit_following(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_following")
+
+    @users_api_limit_following.setter
+    def users_api_limit_following(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_api_limit_following", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitGpgKey")
+    def users_api_limit_gpg_key(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_gpg_key")
+
+    @users_api_limit_gpg_key.setter
+    def users_api_limit_gpg_key(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_api_limit_gpg_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitGpgKeys")
+    def users_api_limit_gpg_keys(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_gpg_keys")
+
+    @users_api_limit_gpg_keys.setter
+    def users_api_limit_gpg_keys(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_api_limit_gpg_keys", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitSshKey")
+    def users_api_limit_ssh_key(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_ssh_key")
+
+    @users_api_limit_ssh_key.setter
+    def users_api_limit_ssh_key(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_api_limit_ssh_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitSshKeys")
+    def users_api_limit_ssh_keys(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_ssh_keys")
+
+    @users_api_limit_ssh_keys.setter
+    def users_api_limit_ssh_keys(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_api_limit_ssh_keys", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitStatus")
+    def users_api_limit_status(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 240. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_status")
+
+    @users_api_limit_status.setter
+    def users_api_limit_status(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_api_limit_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersGetByIdLimit")
+    def users_get_by_id_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute per user to the GET /users/:id API endpoint. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "users_get_by_id_limit")
+
+    @users_get_by_id_limit.setter
+    def users_get_by_id_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_get_by_id_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersGetByIdLimitAllowlistRaw")
+    def users_get_by_id_limit_allowlist_raw(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Usernames excluded from the users*get*by*id*limit rate limit, separated by newlines, commas or whitespace. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "users_get_by_id_limit_allowlist_raw")
+
+    @users_get_by_id_limit_allowlist_raw.setter
+    def users_get_by_id_limit_allowlist_raw(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "users_get_by_id_limit_allowlist_raw", value)
+
+    @_builtins.property
     @pulumi.getter(name="validRunnerRegistrars")
     def valid_runner_registrars(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -5237,6 +6441,30 @@ class ApplicationSettingsArgs:
     @version_check_enabled.setter
     def version_check_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "version_check_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="webHookEventResendLimit")
+    def web_hook_event_resend_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of webhook event resend requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+        """
+        return pulumi.get(self, "web_hook_event_resend_limit")
+
+    @web_hook_event_resend_limit.setter
+    def web_hook_event_resend_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "web_hook_event_resend_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="webHookTestLimit")
+    def web_hook_test_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of webhook test requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+        """
+        return pulumi.get(self, "web_hook_test_limit")
+
+    @web_hook_test_limit.setter
+    def web_hook_test_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "web_hook_test_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="webIdeClientsidePreviewEnabled")
@@ -5282,6 +6510,7 @@ class _ApplicationSettingsState:
                  admin_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  after_sign_out_path: pulumi.Input[Optional[_builtins.str]] = None,
                  after_sign_up_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_action_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -5302,6 +6531,8 @@ class _ApplicationSettingsState:
                  auto_ban_user_on_excessive_projects_download: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_devops_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autocomplete_users_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 autocomplete_users_unauthenticated_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  automatic_purchased_storage_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
                  bulk_import_concurrent_pipeline_batch_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  bulk_import_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -5309,12 +6540,16 @@ class _ApplicationSettingsState:
                  can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
                  check_namespace_plan: pulumi.Input[Optional[_builtins.bool]] = None,
                  ci_job_live_trace_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_lint_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
                  ci_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
                  ci_max_total_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  commit_email_hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  concurrent_bitbucket_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  concurrent_bitbucket_server_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  concurrent_github_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_pull_request_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_relation_batch_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_relation_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  container_expiration_policies_enable_historic_entries: pulumi.Input[Optional[_builtins.bool]] = None,
                  container_registry_cleanup_tags_service_max_list_size: pulumi.Input[Optional[_builtins.int]] = None,
                  container_registry_delete_tags_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
@@ -5405,6 +6640,7 @@ class _ApplicationSettingsState:
                  first_day_of_week: pulumi.Input[Optional[_builtins.int]] = None,
                  geo_node_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
                  geo_status_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 git_push_pipeline_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  git_rate_limit_users_alertlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  git_rate_limit_users_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  git_two_factor_session_expiry: pulumi.Input[Optional[_builtins.int]] = None,
@@ -5420,7 +6656,11 @@ class _ApplicationSettingsState:
                  grafana_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  grafana_url: pulumi.Input[Optional[_builtins.str]] = None,
                  gravatar_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_download_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_import_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  group_owners_can_manage_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_secrets_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  help_page_hide_commercial_content: pulumi.Input[Optional[_builtins.bool]] = None,
                  help_page_support_url: pulumi.Input[Optional[_builtins.str]] = None,
                  help_page_text: pulumi.Input[Optional[_builtins.str]] = None,
@@ -5430,6 +6670,7 @@ class _ApplicationSettingsState:
                  housekeeping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  housekeeping_optimize_repository_period: pulumi.Input[Optional[_builtins.int]] = None,
                  html_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 import_jobs_concurrency_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  import_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  in_product_marketing_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  inactive_projects_delete_after_months: pulumi.Input[Optional[_builtins.int]] = None,
@@ -5442,6 +6683,8 @@ class _ApplicationSettingsState:
                  jira_connect_application_key: pulumi.Input[Optional[_builtins.str]] = None,
                  jira_connect_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
                  jira_connect_public_key_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 job_play_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
+                 job_retry_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
                  keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
                  kroki_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  kroki_formats: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
@@ -5459,6 +6702,8 @@ class _ApplicationSettingsState:
                  max_attachment_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_decompressed_archive_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_github_response_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_http_response_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  max_import_remote_file_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_import_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_login_attempts: pulumi.Input[Optional[_builtins.int]] = None,
@@ -5476,6 +6721,7 @@ class _ApplicationSettingsState:
                  mirror_capacity_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  mirror_max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  mirror_max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 notes_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  notify_on_unknown_sign_in: pulumi.Input[Optional[_builtins.bool]] = None,
                  npm_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
                  nuget_skip_metadata_url_validation: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -5493,14 +6739,21 @@ class _ApplicationSettingsState:
                  password_uppercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  performance_bar_allowed_group_path: pulumi.Input[Optional[_builtins.str]] = None,
                  personal_access_token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_cancel_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
                  pipeline_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+                 pipeline_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 pipeline_retry_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
                  plantuml_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  plantuml_url: pulumi.Input[Optional[_builtins.str]] = None,
                  polling_interval_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
                  prevent_merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
                  prevent_merge_requests_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_download_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  project_export_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_import_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  project_jobs_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_secrets_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  projects_api_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
                  prometheus_metrics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  protected_ci_variables: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -5509,6 +6762,7 @@ class _ApplicationSettingsState:
                  pypi_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
                  rate_limiting_response_text: pulumi.Input[Optional[_builtins.str]] = None,
                  raw_blob_request_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 raw_blob_request_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
                  recaptcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  recaptcha_private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  recaptcha_site_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -5524,6 +6778,11 @@ class _ApplicationSettingsState:
                  require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
                  restricted_visibility_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 runner_jobs_endpoints_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 runner_jobs_patch_trace_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 runner_jobs_request_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 scan_execution_policies_action_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 scan_execution_policies_schedule_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
                  secret_push_protection_available: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -5564,26 +6823,60 @@ class _ApplicationSettingsState:
                  static_objects_external_storage_auth_token: pulumi.Input[Optional[_builtins.str]] = None,
                  static_objects_external_storage_url: pulumi.Input[Optional[_builtins.str]] = None,
                  suggest_pipeline_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  terminal_max_session_time: pulumi.Input[Optional[_builtins.int]] = None,
                  terms: pulumi.Input[Optional[_builtins.str]] = None,
                  throttle_authenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_dependency_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_dependency_proxy_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_dependency_proxy_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_deprecated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_deprecated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_deprecated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_files_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_files_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_files_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_http_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_git_http_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_http_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_git_lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_git_lfs_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_git_lfs_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_mcp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_mcp_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_mcp_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_incident_management_notification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_incident_management_notification_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_incident_management_notification_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_protected_paths_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_protected_paths_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_protected_paths_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_unauthenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_deprecated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_deprecated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_deprecated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_files_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_files_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_files_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_git_http_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_git_http_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_git_http_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_unauthenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_unauthenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -5603,8 +6896,19 @@ class _ApplicationSettingsState:
                  user_defaults_to_private_profile: pulumi.Input[Optional[_builtins.bool]] = None,
                  user_oauth_applications: pulumi.Input[Optional[_builtins.bool]] = None,
                  user_show_add_ssh_key_message: pulumi.Input[Optional[_builtins.bool]] = None,
+                 users_api_limit_followers: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_following: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_gpg_key: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_gpg_keys: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_ssh_key: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_ssh_keys: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_get_by_id_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_get_by_id_limit_allowlist_raw: pulumi.Input[Optional[_builtins.str]] = None,
                  valid_runner_registrars: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version_check_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 web_hook_event_resend_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 web_hook_test_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  web_ide_clientside_preview_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  whats_new_variant: pulumi.Input[Optional[_builtins.str]] = None,
                  wiki_page_max_content_bytes: pulumi.Input[Optional[_builtins.int]] = None):
@@ -5615,6 +6919,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.bool] admin_mode: Require administrators to enable Admin Mode by re-authenticating for administrative tasks.
         :param pulumi.Input[_builtins.str] after_sign_out_path: Where to redirect users after logout.
         :param pulumi.Input[_builtins.str] after_sign_up_text: Text shown to the user after signing up.
+        :param pulumi.Input[_builtins.int] ai_action_api_rate_limit: Maximum number of requests allowed to the aiAction GraphQL mutation per user per eight hours. Default: 160. Set to 0 to disable the rate limit. Introduced in GitLab 17.2.
         :param pulumi.Input[_builtins.str] akismet_api_key: API key for Akismet spam protection.
         :param pulumi.Input[_builtins.bool] akismet_enabled: (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
         :param pulumi.Input[_builtins.bool] allow_account_deletion: Set to true to allow users to delete their accounts. Premium and Ultimate only.
@@ -5635,6 +6940,8 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.bool] auto_ban_user_on_excessive_projects_download: When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Self-managed, Ultimate only.
         :param pulumi.Input[_builtins.str] auto_devops_domain: Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
+        :param pulumi.Input[_builtins.int] autocomplete_users_limit: Maximum number of authenticated requests per minute to the GET /autocomplete/users endpoint.
+        :param pulumi.Input[_builtins.int] autocomplete_users_unauthenticated_limit: Maximum number of unauthenticated requests per minute to the GET /autocomplete/users endpoint.
         :param pulumi.Input[_builtins.bool] automatic_purchased_storage_allocation: Enabling this permits automatic allocation of purchased storage in a namespace.
         :param pulumi.Input[_builtins.int] bulk_import_concurrent_pipeline_batch_limit: Maximum simultaneous Direct Transfer batches to process.
         :param pulumi.Input[_builtins.bool] bulk_import_enabled: Enable migrating GitLab groups by direct transfer.
@@ -5642,12 +6949,16 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.bool] can_create_group: Indicates whether users can create top-level groups.
         :param pulumi.Input[_builtins.bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
         :param pulumi.Input[_builtins.bool] ci_job_live_trace_enabled: Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+        :param pulumi.Input[_builtins.int] ci_lint_limit_per_user: Maximum number of CI Lint requests per minute per user. Disabled by default.
         :param pulumi.Input[_builtins.int] ci_max_includes: The maximum number of includes per pipeline.
         :param pulumi.Input[_builtins.int] ci_max_total_yaml_size_bytes: The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
         :param pulumi.Input[_builtins.str] commit_email_hostname: Custom hostname (for private commit emails).
         :param pulumi.Input[_builtins.int] concurrent_bitbucket_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Cloud importer.
         :param pulumi.Input[_builtins.int] concurrent_bitbucket_server_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Server importer.
         :param pulumi.Input[_builtins.int] concurrent_github_import_jobs_limit: Maximum number of simultaneous import jobs for the GitHub importer.
+        :param pulumi.Input[_builtins.int] concurrent_pull_request_import_jobs_limit: Maximum number of simultaneous pull request import jobs for the GitHub, Bitbucket Cloud, and Bitbucket Server importers. Default is 200. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.int] concurrent_relation_batch_export_limit: Maximum number of simultaneous batch export jobs to process. Introduced in GitLab 17.6.
+        :param pulumi.Input[_builtins.int] concurrent_relation_export_limit: Maximum number of simultaneous project file exports to process. Default: 25. Introduced in GitLab 19.4 with a feature flag named limit*concurrent*project_exports. Disabled by default.
         :param pulumi.Input[_builtins.bool] container_expiration_policies_enable_historic_entries: Enable cleanup policies for all projects.
         :param pulumi.Input[_builtins.int] container_registry_cleanup_tags_service_max_list_size: The maximum number of tags that can be deleted in a single execution of cleanup policies.
         :param pulumi.Input[_builtins.int] container_registry_delete_tags_service_timeout: The maximum time, in seconds, that the cleanup process can take to delete a batch of tags for cleanup policies.
@@ -5738,6 +7049,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         :param pulumi.Input[_builtins.str] geo_node_allowed_ips: Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[_builtins.int] geo_status_timeout: The amount of seconds after which a request to get a secondary node status times out.
+        :param pulumi.Input[_builtins.int] git_push_pipeline_limit: Set the maximum number of tag or branch pipelines that can be triggered by a single Git push. For more information about this limit, see number of pipelines per Git push.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] git_rate_limit_users_alertlists: List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
         :param pulumi.Input[_builtins.int] git_two_factor_session_expiry: Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
@@ -5753,7 +7065,11 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.bool] grafana_enabled: Enable Grafana.
         :param pulumi.Input[_builtins.str] grafana_url: Grafana URL.
         :param pulumi.Input[_builtins.bool] gravatar_enabled: Enable Gravatar.
+        :param pulumi.Input[_builtins.int] group_download_export_limit: Maximum number of group export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] group_export_limit: Maximum number of group exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] group_import_limit: Maximum number of group imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] group_owners_can_manage_default_branch_protection: Prevent overrides of default branch protection.
+        :param pulumi.Input[_builtins.int] group_secrets_limit: Maximum number of secrets allowed per group in Secrets Manager. Default: 500. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
         :param pulumi.Input[_builtins.bool] help_page_hide_commercial_content: Hide marketing-related entries from help.
         :param pulumi.Input[_builtins.str] help_page_support_url: Alternate support URL for help page and help dropdown.
         :param pulumi.Input[_builtins.str] help_page_text: Custom text displayed on the help page.
@@ -5763,6 +7079,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.bool] housekeeping_enabled: Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
         :param pulumi.Input[_builtins.int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git-repack is run.
         :param pulumi.Input[_builtins.bool] html_emails_enabled: Enable HTML emails.
+        :param pulumi.Input[_builtins.int] import_jobs_concurrency_limit: Maximum number of concurrently running jobs for each import worker type (project and group file base import, Direct Transfer, and GitHub, Bitbucket Cloud, and Bitbucket Server importer stages). Applied independently per worker type. Default is 100. Introduced in GitLab 19.1.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[_builtins.bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
         :param pulumi.Input[_builtins.int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
@@ -5775,6 +7092,8 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.str] jira_connect_application_key: ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
         :param pulumi.Input[_builtins.str] jira_connect_proxy_url: URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
         :param pulumi.Input[_builtins.bool] jira_connect_public_key_storage_enabled: Enable public key storage for the GitLab for Jira Cloud app.
+        :param pulumi.Input[_builtins.int] job_play_limit_per_user_project: Maximum number of manual job runs per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_play. Disabled by default.
+        :param pulumi.Input[_builtins.int] job_retry_limit_per_user_project: Maximum number of job retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_retry. Disabled by default.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[_builtins.bool] kroki_enabled: (If enabled, requires: kroki_url) Enable Kroki integration.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]] kroki_formats: Configuration for formats supported by the Kroki instance.
@@ -5792,6 +7111,8 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.int] max_attachment_size: Limit attachment size in MB.
         :param pulumi.Input[_builtins.int] max_decompressed_archive_size: Maximum decompressed archive size in bytes.
         :param pulumi.Input[_builtins.int] max_export_size: Maximum export size in MB. 0 for unlimited.
+        :param pulumi.Input[_builtins.int] max_github_response_size_limit: Maximum allowed GitHub API response size in MB. 0 for unlimited.
+        :param pulumi.Input[_builtins.int] max_http_response_size_limit: Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4.
         :param pulumi.Input[_builtins.int] max_import_remote_file_size: Maximum remote file size for imports from external object storages.
         :param pulumi.Input[_builtins.int] max_import_size: Maximum import size in MB. 0 for unlimited.
         :param pulumi.Input[_builtins.int] max_login_attempts: Maximum number of sign-in attempts before locking out the user.
@@ -5809,6 +7130,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.int] mirror_capacity_threshold: Minimum capacity to be available before scheduling more mirrors preemptively.
         :param pulumi.Input[_builtins.int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[_builtins.int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
+        :param pulumi.Input[_builtins.int] notes_create_limit: Maximum number of notes (comments) a user can create per minute. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] notify_on_unknown_sign_in: Enable sending notification if sign in from unknown IP address happens
         :param pulumi.Input[_builtins.bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
         :param pulumi.Input[_builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package.
@@ -5826,14 +7148,21 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.bool] password_uppercase_required: Indicates whether passwords require at least one uppercase letter.
         :param pulumi.Input[_builtins.str] performance_bar_allowed_group_path: Path of the group that is allowed to toggle the performance bar.
         :param pulumi.Input[_builtins.str] personal_access_token_prefix: Prefix for all generated personal access tokens.
+        :param pulumi.Input[_builtins.int] pipeline_cancel_limit_per_user_project: Maximum number of pipeline cancellations per minute per user per project. Introduced in GitLab 19.5.
         :param pulumi.Input[_builtins.int] pipeline_limit_per_project_user_sha: Maximum number of pipeline creation requests per minute per user and commit.
+        :param pulumi.Input[_builtins.int] pipeline_limit_per_user: Maximum number of pipeline creation requests per minute per user.
+        :param pulumi.Input[_builtins.int] pipeline_retry_limit_per_user_project: Maximum number of pipeline retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*pipeline_retry. Disabled by default.
         :param pulumi.Input[_builtins.bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration.
         :param pulumi.Input[_builtins.str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[_builtins.float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
         :param pulumi.Input[_builtins.bool] prevent_merge_requests_author_approval: Prevent approval by merge request creator (author).
         :param pulumi.Input[_builtins.bool] prevent_merge_requests_committers_approval: Prevent approval by committers to merge requests.
+        :param pulumi.Input[_builtins.int] project_download_export_limit: Maximum number of project export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] project_export_enabled: Enable project export.
+        :param pulumi.Input[_builtins.int] project_export_limit: Maximum number of project exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] project_import_limit: Maximum number of project imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.int] project_jobs_api_rate_limit: Maximum authenticated requests to /project/:id/jobs per minute.
+        :param pulumi.Input[_builtins.int] project_secrets_limit: Maximum number of secrets allowed per project in Secrets Manager. Default: 100. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
         :param pulumi.Input[_builtins.int] projects_api_rate_limit_unauthenticated: Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
         :param pulumi.Input[_builtins.bool] prometheus_metrics_enabled: Enable Prometheus metrics.
         :param pulumi.Input[_builtins.bool] protected_ci_variables: CI/CD variables are protected by default.
@@ -5842,6 +7171,7 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.bool] pypi_package_requests_forwarding: Use pypi.org as a default remote repository when the package is not found in the GitLab Package Registry for PyPI.
         :param pulumi.Input[_builtins.str] rate_limiting_response_text: When rate limiting is enabled via the throttle_* settings, send this plain text response when a rate limit is exceeded. ‘Retry later’ is sent if this is blank.
         :param pulumi.Input[_builtins.int] raw_blob_request_limit: Max number of requests per minute for each raw path. To disable throttling set to 0.
+        :param pulumi.Input[_builtins.int] raw_blob_request_limit_unauthenticated: Maximum number of unauthenticated requests per minute across all raw paths in a project (default is 800). Set to 0 to disable throttling.
         :param pulumi.Input[_builtins.bool] recaptcha_enabled: (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
         :param pulumi.Input[_builtins.str] recaptcha_private_key: Private key for reCAPTCHA.
         :param pulumi.Input[_builtins.str] recaptcha_site_key: Site key for reCAPTCHA.
@@ -5857,6 +7187,11 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.bool] require_two_factor_authentication: (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
         :param pulumi.Input[_builtins.int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
+        :param pulumi.Input[_builtins.int] runner_jobs_endpoints_api_limit: Maximum number of requests per minute per job token for requests to /jobs/* requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        :param pulumi.Input[_builtins.int] runner_jobs_patch_trace_api_limit: Maximum number of requests per minute per runner token for requests to the PATCH /jobs/:id/trace runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        :param pulumi.Input[_builtins.int] runner_jobs_request_api_limit: Maximum number of requests per minute per runner token for requests to the /jobs/request runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        :param pulumi.Input[_builtins.int] scan_execution_policies_action_limit: Maximum number of actions per scan execution policy. Default: 0. Maximum: 20.
+        :param pulumi.Input[_builtins.int] scan_execution_policies_schedule_limit: Maximum number of type: schedule rules per scan execution policy. Default: 0. Maximum: 20.
         :param pulumi.Input[_builtins.int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         :param pulumi.Input[_builtins.int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
         :param pulumi.Input[_builtins.bool] secret_push_protection_available: Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
@@ -5897,26 +7232,60 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.str] static_objects_external_storage_auth_token: Authentication token for the external storage linked in static*objects*external*storage*url.
         :param pulumi.Input[_builtins.str] static_objects_external_storage_url: URL to an external storage for repository static objects.
         :param pulumi.Input[_builtins.bool] suggest_pipeline_enabled: Enable pipeline suggestion banner.
+        :param pulumi.Input[_builtins.int] tags_create_limit: Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL tagCreate mutation, tag creation in the UI, and the /tag quick action. Default: 100. Set to 0 to disable the rate limit. Introduced in GitLab 19.4.
         :param pulumi.Input[_builtins.int] terminal_max_session_time: Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
         :param pulumi.Input[_builtins.str] terms: (Required by: enforce_terms) Markdown content for the ToS.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_api_enabled: (If enabled, requires: throttle*authenticated*api*period*in*seconds and throttle*authenticated*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_authenticated_api_period_in_seconds: Rate limit period (in seconds).
         :param pulumi.Input[_builtins.int] throttle_authenticated_api_requests_per_period: Maximum requests per period per user.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_dependency_proxy_enabled: If true, enforces the authenticated dependency proxy request rate limit. Default value: false. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_dependency_proxy_period_in_seconds: Rate limit period in seconds. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 15. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_dependency_proxy_requests_per_period: Maximum requests per period per user. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 1000. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_deprecated_api_enabled: (If enabled, requires: throttle*authenticated*deprecated*api*period*in*seconds and throttle*authenticated*deprecated*api*requests*per*period) Enable authenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_deprecated_api_period_in_seconds: Rate limit period (in seconds) for authenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_deprecated_api_requests_per_period: Maximum authenticated deprecated API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_files_api_enabled: (If enabled, requires: throttle*authenticated*files*api*period*in*seconds and throttle*authenticated*files*api*requests*per*period) Enable authenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_files_api_period_in_seconds: Rate limit period (in seconds) for authenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_files_api_requests_per_period: Maximum authenticated Files API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_git_http_enabled: If true, enforces the authenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_git_http_period_in_seconds: Rate limit period in seconds. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_git_http_requests_per_period: Maximum requests per period per user. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_git_lfs_enabled: Enable authenticated Git LFS request rate limit.
         :param pulumi.Input[_builtins.int] throttle_authenticated_git_lfs_period_in_seconds: Rate limit period (in seconds).
         :param pulumi.Input[_builtins.int] throttle_authenticated_git_lfs_requests_per_period: Maximum requests per period per user.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_mcp_enabled: (If enabled, requires: throttle*authenticated*mcp*period*in*seconds and throttle*authenticated*mcp*requests*per*period) If true, enforces the rate limit on requests to the MCP Server endpoint, /api/v4/mcp, for any HTTP method. Does not apply to other MCP endpoints. Introduced in GitLab 19.5.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_mcp_period_in_seconds: Rate limit period in seconds. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_mcp_requests_per_period: Maximum requests per period per user. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_packages_api_enabled: (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_authenticated_packages_api_period_in_seconds: Rate limit period (in seconds). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_authenticated_packages_api_requests_per_period: Maximum requests per period per user. View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_web_enabled: (If enabled, requires: throttle*authenticated*web*period*in*seconds and throttle*authenticated*web*requests*per*period) Enable authenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_authenticated_web_period_in_seconds: Rate limit period (in seconds).
         :param pulumi.Input[_builtins.int] throttle_authenticated_web_requests_per_period: Maximum requests per period per user.
+        :param pulumi.Input[_builtins.bool] throttle_incident_management_notification_enabled: If true, enforces the inbound incident management alert notification rate limit, per project. Default value: false.
+        :param pulumi.Input[_builtins.int] throttle_incident_management_notification_per_period: Maximum inbound incident management alert notifications per period, per project. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+        :param pulumi.Input[_builtins.int] throttle_incident_management_notification_period_in_seconds: Rate limit period in seconds. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+        :param pulumi.Input[_builtins.bool] throttle_protected_paths_enabled: (If enabled, requires: throttle*protected*paths*period*in*seconds and throttle*protected*paths*requests*per*period) Enable rate limiting for protected paths (for example, sign-in and password reset). Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_protected_paths_period_in_seconds: Rate limit period (in seconds) for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_protected_paths_requests_per_period: Maximum requests per period per IP for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] throttle_unauthenticated_api_enabled: (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_api_period_in_seconds: Rate limit period in seconds.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_api_requests_per_period: Max requests per period per IP.
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_deprecated_api_enabled: (If enabled, requires: throttle*unauthenticated*deprecated*api*period*in*seconds and throttle*unauthenticated*deprecated*api*requests*per*period) Enable unauthenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_deprecated_api_period_in_seconds: Rate limit period (in seconds) for unauthenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_deprecated_api_requests_per_period: Maximum unauthenticated deprecated API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_enabled: (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*enabled or throttle*unauthenticated*api*enabled instead.) (**If enabled, requires**: throttle*unauthenticated*period*in*seconds and throttle*unauthenticated*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_files_api_enabled: (If enabled, requires: throttle*unauthenticated*files*api*period*in*seconds and throttle*unauthenticated*files*api*requests*per*period) Enable unauthenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_files_api_period_in_seconds: Rate limit period (in seconds) for unauthenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_files_api_requests_per_period: Maximum unauthenticated Files API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_git_http_enabled: If true, enforces the unauthenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 17.0.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_git_http_period_in_seconds: Rate limit period in seconds. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_git_http_requests_per_period: Maximum requests per period per IP. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
         :param pulumi.Input[_builtins.bool] throttle_unauthenticated_packages_api_enabled: (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_packages_api_period_in_seconds: Rate limit period (in seconds). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_packages_api_requests_per_period: Maximum requests per period per user. View Package Registry rate limits for more details.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_period_in_seconds: (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*period*in*seconds or throttle*unauthenticated*api*period*in*seconds instead.) Rate limit period in seconds.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_requests_per_period: (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*requests*per*period or throttle*unauthenticated*api*requests*per*period instead.) Maximum requests per period per IP.
         :param pulumi.Input[_builtins.bool] throttle_unauthenticated_web_enabled: (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_web_period_in_seconds: Rate limit period in seconds.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_web_requests_per_period: Max requests per period per IP.
@@ -5936,8 +7305,19 @@ class _ApplicationSettingsState:
         :param pulumi.Input[_builtins.bool] user_defaults_to_private_profile: Newly created users have private profile by default.
         :param pulumi.Input[_builtins.bool] user_oauth_applications: Allow users to register any application to use GitLab as an OAuth provider.
         :param pulumi.Input[_builtins.bool] user_show_add_ssh_key_message: When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
+        :param pulumi.Input[_builtins.int] users_api_limit_followers: Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_following: Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_gpg_key: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_gpg_keys: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_ssh_key: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_ssh_keys: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_status: Maximum number of requests per minute, per user or IP address. Default: 240. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_get_by_id_limit: Maximum number of requests per minute per user to the GET /users/:id API endpoint. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.str] users_get_by_id_limit_allowlist_raw: Usernames excluded from the users*get*by*id*limit rate limit, separated by newlines, commas or whitespace. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valid_runner_registrars: List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
         :param pulumi.Input[_builtins.bool] version_check_enabled: Let GitLab inform you when an update is available.
+        :param pulumi.Input[_builtins.int] web_hook_event_resend_limit: Maximum number of webhook event resend requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+        :param pulumi.Input[_builtins.int] web_hook_test_limit: Maximum number of webhook test requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
         :param pulumi.Input[_builtins.bool] web_ide_clientside_preview_enabled: Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
         :param pulumi.Input[_builtins.str] whats_new_variant: What's new variant, possible values: all*tiers, current*tier, and disabled.
         :param pulumi.Input[_builtins.int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
@@ -5950,6 +7330,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "after_sign_out_path", after_sign_out_path)
         if after_sign_up_text is not None:
             pulumi.set(__self__, "after_sign_up_text", after_sign_up_text)
+        if ai_action_api_rate_limit is not None:
+            pulumi.set(__self__, "ai_action_api_rate_limit", ai_action_api_rate_limit)
         if akismet_api_key is not None:
             pulumi.set(__self__, "akismet_api_key", akismet_api_key)
         if akismet_enabled is not None:
@@ -5990,6 +7372,10 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "auto_devops_domain", auto_devops_domain)
         if auto_devops_enabled is not None:
             pulumi.set(__self__, "auto_devops_enabled", auto_devops_enabled)
+        if autocomplete_users_limit is not None:
+            pulumi.set(__self__, "autocomplete_users_limit", autocomplete_users_limit)
+        if autocomplete_users_unauthenticated_limit is not None:
+            pulumi.set(__self__, "autocomplete_users_unauthenticated_limit", autocomplete_users_unauthenticated_limit)
         if automatic_purchased_storage_allocation is not None:
             pulumi.set(__self__, "automatic_purchased_storage_allocation", automatic_purchased_storage_allocation)
         if bulk_import_concurrent_pipeline_batch_limit is not None:
@@ -6004,6 +7390,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "check_namespace_plan", check_namespace_plan)
         if ci_job_live_trace_enabled is not None:
             pulumi.set(__self__, "ci_job_live_trace_enabled", ci_job_live_trace_enabled)
+        if ci_lint_limit_per_user is not None:
+            pulumi.set(__self__, "ci_lint_limit_per_user", ci_lint_limit_per_user)
         if ci_max_includes is not None:
             pulumi.set(__self__, "ci_max_includes", ci_max_includes)
         if ci_max_total_yaml_size_bytes is not None:
@@ -6016,6 +7404,12 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "concurrent_bitbucket_server_import_jobs_limit", concurrent_bitbucket_server_import_jobs_limit)
         if concurrent_github_import_jobs_limit is not None:
             pulumi.set(__self__, "concurrent_github_import_jobs_limit", concurrent_github_import_jobs_limit)
+        if concurrent_pull_request_import_jobs_limit is not None:
+            pulumi.set(__self__, "concurrent_pull_request_import_jobs_limit", concurrent_pull_request_import_jobs_limit)
+        if concurrent_relation_batch_export_limit is not None:
+            pulumi.set(__self__, "concurrent_relation_batch_export_limit", concurrent_relation_batch_export_limit)
+        if concurrent_relation_export_limit is not None:
+            pulumi.set(__self__, "concurrent_relation_export_limit", concurrent_relation_export_limit)
         if container_expiration_policies_enable_historic_entries is not None:
             pulumi.set(__self__, "container_expiration_policies_enable_historic_entries", container_expiration_policies_enable_historic_entries)
         if container_registry_cleanup_tags_service_max_list_size is not None:
@@ -6196,6 +7590,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "geo_node_allowed_ips", geo_node_allowed_ips)
         if geo_status_timeout is not None:
             pulumi.set(__self__, "geo_status_timeout", geo_status_timeout)
+        if git_push_pipeline_limit is not None:
+            pulumi.set(__self__, "git_push_pipeline_limit", git_push_pipeline_limit)
         if git_rate_limit_users_alertlists is not None:
             pulumi.set(__self__, "git_rate_limit_users_alertlists", git_rate_limit_users_alertlists)
         if git_rate_limit_users_allowlists is not None:
@@ -6226,8 +7622,16 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "grafana_url", grafana_url)
         if gravatar_enabled is not None:
             pulumi.set(__self__, "gravatar_enabled", gravatar_enabled)
+        if group_download_export_limit is not None:
+            pulumi.set(__self__, "group_download_export_limit", group_download_export_limit)
+        if group_export_limit is not None:
+            pulumi.set(__self__, "group_export_limit", group_export_limit)
+        if group_import_limit is not None:
+            pulumi.set(__self__, "group_import_limit", group_import_limit)
         if group_owners_can_manage_default_branch_protection is not None:
             pulumi.set(__self__, "group_owners_can_manage_default_branch_protection", group_owners_can_manage_default_branch_protection)
+        if group_secrets_limit is not None:
+            pulumi.set(__self__, "group_secrets_limit", group_secrets_limit)
         if help_page_hide_commercial_content is not None:
             pulumi.set(__self__, "help_page_hide_commercial_content", help_page_hide_commercial_content)
         if help_page_support_url is not None:
@@ -6246,6 +7650,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "housekeeping_optimize_repository_period", housekeeping_optimize_repository_period)
         if html_emails_enabled is not None:
             pulumi.set(__self__, "html_emails_enabled", html_emails_enabled)
+        if import_jobs_concurrency_limit is not None:
+            pulumi.set(__self__, "import_jobs_concurrency_limit", import_jobs_concurrency_limit)
         if import_sources is not None:
             pulumi.set(__self__, "import_sources", import_sources)
         if in_product_marketing_emails_enabled is not None:
@@ -6270,6 +7676,10 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "jira_connect_proxy_url", jira_connect_proxy_url)
         if jira_connect_public_key_storage_enabled is not None:
             pulumi.set(__self__, "jira_connect_public_key_storage_enabled", jira_connect_public_key_storage_enabled)
+        if job_play_limit_per_user_project is not None:
+            pulumi.set(__self__, "job_play_limit_per_user_project", job_play_limit_per_user_project)
+        if job_retry_limit_per_user_project is not None:
+            pulumi.set(__self__, "job_retry_limit_per_user_project", job_retry_limit_per_user_project)
         if keep_latest_artifact is not None:
             pulumi.set(__self__, "keep_latest_artifact", keep_latest_artifact)
         if kroki_enabled is not None:
@@ -6304,6 +7714,10 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "max_decompressed_archive_size", max_decompressed_archive_size)
         if max_export_size is not None:
             pulumi.set(__self__, "max_export_size", max_export_size)
+        if max_github_response_size_limit is not None:
+            pulumi.set(__self__, "max_github_response_size_limit", max_github_response_size_limit)
+        if max_http_response_size_limit is not None:
+            pulumi.set(__self__, "max_http_response_size_limit", max_http_response_size_limit)
         if max_import_remote_file_size is not None:
             pulumi.set(__self__, "max_import_remote_file_size", max_import_remote_file_size)
         if max_import_size is not None:
@@ -6338,6 +7752,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "mirror_max_capacity", mirror_max_capacity)
         if mirror_max_delay is not None:
             pulumi.set(__self__, "mirror_max_delay", mirror_max_delay)
+        if notes_create_limit is not None:
+            pulumi.set(__self__, "notes_create_limit", notes_create_limit)
         if notify_on_unknown_sign_in is not None:
             pulumi.set(__self__, "notify_on_unknown_sign_in", notify_on_unknown_sign_in)
         if npm_package_requests_forwarding is not None:
@@ -6372,8 +7788,14 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "performance_bar_allowed_group_path", performance_bar_allowed_group_path)
         if personal_access_token_prefix is not None:
             pulumi.set(__self__, "personal_access_token_prefix", personal_access_token_prefix)
+        if pipeline_cancel_limit_per_user_project is not None:
+            pulumi.set(__self__, "pipeline_cancel_limit_per_user_project", pipeline_cancel_limit_per_user_project)
         if pipeline_limit_per_project_user_sha is not None:
             pulumi.set(__self__, "pipeline_limit_per_project_user_sha", pipeline_limit_per_project_user_sha)
+        if pipeline_limit_per_user is not None:
+            pulumi.set(__self__, "pipeline_limit_per_user", pipeline_limit_per_user)
+        if pipeline_retry_limit_per_user_project is not None:
+            pulumi.set(__self__, "pipeline_retry_limit_per_user_project", pipeline_retry_limit_per_user_project)
         if plantuml_enabled is not None:
             pulumi.set(__self__, "plantuml_enabled", plantuml_enabled)
         if plantuml_url is not None:
@@ -6384,10 +7806,18 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "prevent_merge_requests_author_approval", prevent_merge_requests_author_approval)
         if prevent_merge_requests_committers_approval is not None:
             pulumi.set(__self__, "prevent_merge_requests_committers_approval", prevent_merge_requests_committers_approval)
+        if project_download_export_limit is not None:
+            pulumi.set(__self__, "project_download_export_limit", project_download_export_limit)
         if project_export_enabled is not None:
             pulumi.set(__self__, "project_export_enabled", project_export_enabled)
+        if project_export_limit is not None:
+            pulumi.set(__self__, "project_export_limit", project_export_limit)
+        if project_import_limit is not None:
+            pulumi.set(__self__, "project_import_limit", project_import_limit)
         if project_jobs_api_rate_limit is not None:
             pulumi.set(__self__, "project_jobs_api_rate_limit", project_jobs_api_rate_limit)
+        if project_secrets_limit is not None:
+            pulumi.set(__self__, "project_secrets_limit", project_secrets_limit)
         if projects_api_rate_limit_unauthenticated is not None:
             pulumi.set(__self__, "projects_api_rate_limit_unauthenticated", projects_api_rate_limit_unauthenticated)
         if prometheus_metrics_enabled is not None:
@@ -6404,6 +7834,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "rate_limiting_response_text", rate_limiting_response_text)
         if raw_blob_request_limit is not None:
             pulumi.set(__self__, "raw_blob_request_limit", raw_blob_request_limit)
+        if raw_blob_request_limit_unauthenticated is not None:
+            pulumi.set(__self__, "raw_blob_request_limit_unauthenticated", raw_blob_request_limit_unauthenticated)
         if recaptcha_enabled is not None:
             pulumi.set(__self__, "recaptcha_enabled", recaptcha_enabled)
         if recaptcha_private_key is not None:
@@ -6434,6 +7866,16 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "restricted_visibility_levels", restricted_visibility_levels)
         if rsa_key_restriction is not None:
             pulumi.set(__self__, "rsa_key_restriction", rsa_key_restriction)
+        if runner_jobs_endpoints_api_limit is not None:
+            pulumi.set(__self__, "runner_jobs_endpoints_api_limit", runner_jobs_endpoints_api_limit)
+        if runner_jobs_patch_trace_api_limit is not None:
+            pulumi.set(__self__, "runner_jobs_patch_trace_api_limit", runner_jobs_patch_trace_api_limit)
+        if runner_jobs_request_api_limit is not None:
+            pulumi.set(__self__, "runner_jobs_request_api_limit", runner_jobs_request_api_limit)
+        if scan_execution_policies_action_limit is not None:
+            pulumi.set(__self__, "scan_execution_policies_action_limit", scan_execution_policies_action_limit)
+        if scan_execution_policies_schedule_limit is not None:
+            pulumi.set(__self__, "scan_execution_policies_schedule_limit", scan_execution_policies_schedule_limit)
         if search_rate_limit is not None:
             pulumi.set(__self__, "search_rate_limit", search_rate_limit)
         if search_rate_limit_unauthenticated is not None:
@@ -6514,6 +7956,8 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "static_objects_external_storage_url", static_objects_external_storage_url)
         if suggest_pipeline_enabled is not None:
             pulumi.set(__self__, "suggest_pipeline_enabled", suggest_pipeline_enabled)
+        if tags_create_limit is not None:
+            pulumi.set(__self__, "tags_create_limit", tags_create_limit)
         if terminal_max_session_time is not None:
             pulumi.set(__self__, "terminal_max_session_time", terminal_max_session_time)
         if terms is not None:
@@ -6524,12 +7968,42 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "throttle_authenticated_api_period_in_seconds", throttle_authenticated_api_period_in_seconds)
         if throttle_authenticated_api_requests_per_period is not None:
             pulumi.set(__self__, "throttle_authenticated_api_requests_per_period", throttle_authenticated_api_requests_per_period)
+        if throttle_authenticated_dependency_proxy_enabled is not None:
+            pulumi.set(__self__, "throttle_authenticated_dependency_proxy_enabled", throttle_authenticated_dependency_proxy_enabled)
+        if throttle_authenticated_dependency_proxy_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_authenticated_dependency_proxy_period_in_seconds", throttle_authenticated_dependency_proxy_period_in_seconds)
+        if throttle_authenticated_dependency_proxy_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_authenticated_dependency_proxy_requests_per_period", throttle_authenticated_dependency_proxy_requests_per_period)
+        if throttle_authenticated_deprecated_api_enabled is not None:
+            pulumi.set(__self__, "throttle_authenticated_deprecated_api_enabled", throttle_authenticated_deprecated_api_enabled)
+        if throttle_authenticated_deprecated_api_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_authenticated_deprecated_api_period_in_seconds", throttle_authenticated_deprecated_api_period_in_seconds)
+        if throttle_authenticated_deprecated_api_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_authenticated_deprecated_api_requests_per_period", throttle_authenticated_deprecated_api_requests_per_period)
+        if throttle_authenticated_files_api_enabled is not None:
+            pulumi.set(__self__, "throttle_authenticated_files_api_enabled", throttle_authenticated_files_api_enabled)
+        if throttle_authenticated_files_api_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_authenticated_files_api_period_in_seconds", throttle_authenticated_files_api_period_in_seconds)
+        if throttle_authenticated_files_api_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_authenticated_files_api_requests_per_period", throttle_authenticated_files_api_requests_per_period)
+        if throttle_authenticated_git_http_enabled is not None:
+            pulumi.set(__self__, "throttle_authenticated_git_http_enabled", throttle_authenticated_git_http_enabled)
+        if throttle_authenticated_git_http_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_authenticated_git_http_period_in_seconds", throttle_authenticated_git_http_period_in_seconds)
+        if throttle_authenticated_git_http_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_authenticated_git_http_requests_per_period", throttle_authenticated_git_http_requests_per_period)
         if throttle_authenticated_git_lfs_enabled is not None:
             pulumi.set(__self__, "throttle_authenticated_git_lfs_enabled", throttle_authenticated_git_lfs_enabled)
         if throttle_authenticated_git_lfs_period_in_seconds is not None:
             pulumi.set(__self__, "throttle_authenticated_git_lfs_period_in_seconds", throttle_authenticated_git_lfs_period_in_seconds)
         if throttle_authenticated_git_lfs_requests_per_period is not None:
             pulumi.set(__self__, "throttle_authenticated_git_lfs_requests_per_period", throttle_authenticated_git_lfs_requests_per_period)
+        if throttle_authenticated_mcp_enabled is not None:
+            pulumi.set(__self__, "throttle_authenticated_mcp_enabled", throttle_authenticated_mcp_enabled)
+        if throttle_authenticated_mcp_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_authenticated_mcp_period_in_seconds", throttle_authenticated_mcp_period_in_seconds)
+        if throttle_authenticated_mcp_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_authenticated_mcp_requests_per_period", throttle_authenticated_mcp_requests_per_period)
         if throttle_authenticated_packages_api_enabled is not None:
             pulumi.set(__self__, "throttle_authenticated_packages_api_enabled", throttle_authenticated_packages_api_enabled)
         if throttle_authenticated_packages_api_period_in_seconds is not None:
@@ -6542,18 +8016,63 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "throttle_authenticated_web_period_in_seconds", throttle_authenticated_web_period_in_seconds)
         if throttle_authenticated_web_requests_per_period is not None:
             pulumi.set(__self__, "throttle_authenticated_web_requests_per_period", throttle_authenticated_web_requests_per_period)
+        if throttle_incident_management_notification_enabled is not None:
+            pulumi.set(__self__, "throttle_incident_management_notification_enabled", throttle_incident_management_notification_enabled)
+        if throttle_incident_management_notification_per_period is not None:
+            pulumi.set(__self__, "throttle_incident_management_notification_per_period", throttle_incident_management_notification_per_period)
+        if throttle_incident_management_notification_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_incident_management_notification_period_in_seconds", throttle_incident_management_notification_period_in_seconds)
+        if throttle_protected_paths_enabled is not None:
+            pulumi.set(__self__, "throttle_protected_paths_enabled", throttle_protected_paths_enabled)
+        if throttle_protected_paths_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_protected_paths_period_in_seconds", throttle_protected_paths_period_in_seconds)
+        if throttle_protected_paths_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_protected_paths_requests_per_period", throttle_protected_paths_requests_per_period)
         if throttle_unauthenticated_api_enabled is not None:
             pulumi.set(__self__, "throttle_unauthenticated_api_enabled", throttle_unauthenticated_api_enabled)
         if throttle_unauthenticated_api_period_in_seconds is not None:
             pulumi.set(__self__, "throttle_unauthenticated_api_period_in_seconds", throttle_unauthenticated_api_period_in_seconds)
         if throttle_unauthenticated_api_requests_per_period is not None:
             pulumi.set(__self__, "throttle_unauthenticated_api_requests_per_period", throttle_unauthenticated_api_requests_per_period)
+        if throttle_unauthenticated_deprecated_api_enabled is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_deprecated_api_enabled", throttle_unauthenticated_deprecated_api_enabled)
+        if throttle_unauthenticated_deprecated_api_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_deprecated_api_period_in_seconds", throttle_unauthenticated_deprecated_api_period_in_seconds)
+        if throttle_unauthenticated_deprecated_api_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_deprecated_api_requests_per_period", throttle_unauthenticated_deprecated_api_requests_per_period)
+        if throttle_unauthenticated_enabled is not None:
+            warnings.warn("""Use throttle_unauthenticated_web_enabled or throttle_unauthenticated_api_enabled instead. (Deprecated in GitLab 14.3)""", DeprecationWarning)
+            pulumi.log.warn("""throttle_unauthenticated_enabled is deprecated: Use throttle_unauthenticated_web_enabled or throttle_unauthenticated_api_enabled instead. (Deprecated in GitLab 14.3)""")
+        if throttle_unauthenticated_enabled is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_enabled", throttle_unauthenticated_enabled)
+        if throttle_unauthenticated_files_api_enabled is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_files_api_enabled", throttle_unauthenticated_files_api_enabled)
+        if throttle_unauthenticated_files_api_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_files_api_period_in_seconds", throttle_unauthenticated_files_api_period_in_seconds)
+        if throttle_unauthenticated_files_api_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_files_api_requests_per_period", throttle_unauthenticated_files_api_requests_per_period)
+        if throttle_unauthenticated_git_http_enabled is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_git_http_enabled", throttle_unauthenticated_git_http_enabled)
+        if throttle_unauthenticated_git_http_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_git_http_period_in_seconds", throttle_unauthenticated_git_http_period_in_seconds)
+        if throttle_unauthenticated_git_http_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_git_http_requests_per_period", throttle_unauthenticated_git_http_requests_per_period)
         if throttle_unauthenticated_packages_api_enabled is not None:
             pulumi.set(__self__, "throttle_unauthenticated_packages_api_enabled", throttle_unauthenticated_packages_api_enabled)
         if throttle_unauthenticated_packages_api_period_in_seconds is not None:
             pulumi.set(__self__, "throttle_unauthenticated_packages_api_period_in_seconds", throttle_unauthenticated_packages_api_period_in_seconds)
         if throttle_unauthenticated_packages_api_requests_per_period is not None:
             pulumi.set(__self__, "throttle_unauthenticated_packages_api_requests_per_period", throttle_unauthenticated_packages_api_requests_per_period)
+        if throttle_unauthenticated_period_in_seconds is not None:
+            warnings.warn("""Use throttle_unauthenticated_web_period_in_seconds or throttle_unauthenticated_api_period_in_seconds instead. (Deprecated in GitLab 14.3)""", DeprecationWarning)
+            pulumi.log.warn("""throttle_unauthenticated_period_in_seconds is deprecated: Use throttle_unauthenticated_web_period_in_seconds or throttle_unauthenticated_api_period_in_seconds instead. (Deprecated in GitLab 14.3)""")
+        if throttle_unauthenticated_period_in_seconds is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_period_in_seconds", throttle_unauthenticated_period_in_seconds)
+        if throttle_unauthenticated_requests_per_period is not None:
+            warnings.warn("""Use throttle_unauthenticated_web_requests_per_period or throttle_unauthenticated_api_requests_per_period instead. (Deprecated in GitLab 14.3)""", DeprecationWarning)
+            pulumi.log.warn("""throttle_unauthenticated_requests_per_period is deprecated: Use throttle_unauthenticated_web_requests_per_period or throttle_unauthenticated_api_requests_per_period instead. (Deprecated in GitLab 14.3)""")
+        if throttle_unauthenticated_requests_per_period is not None:
+            pulumi.set(__self__, "throttle_unauthenticated_requests_per_period", throttle_unauthenticated_requests_per_period)
         if throttle_unauthenticated_web_enabled is not None:
             pulumi.set(__self__, "throttle_unauthenticated_web_enabled", throttle_unauthenticated_web_enabled)
         if throttle_unauthenticated_web_period_in_seconds is not None:
@@ -6592,10 +8111,32 @@ class _ApplicationSettingsState:
             pulumi.set(__self__, "user_oauth_applications", user_oauth_applications)
         if user_show_add_ssh_key_message is not None:
             pulumi.set(__self__, "user_show_add_ssh_key_message", user_show_add_ssh_key_message)
+        if users_api_limit_followers is not None:
+            pulumi.set(__self__, "users_api_limit_followers", users_api_limit_followers)
+        if users_api_limit_following is not None:
+            pulumi.set(__self__, "users_api_limit_following", users_api_limit_following)
+        if users_api_limit_gpg_key is not None:
+            pulumi.set(__self__, "users_api_limit_gpg_key", users_api_limit_gpg_key)
+        if users_api_limit_gpg_keys is not None:
+            pulumi.set(__self__, "users_api_limit_gpg_keys", users_api_limit_gpg_keys)
+        if users_api_limit_ssh_key is not None:
+            pulumi.set(__self__, "users_api_limit_ssh_key", users_api_limit_ssh_key)
+        if users_api_limit_ssh_keys is not None:
+            pulumi.set(__self__, "users_api_limit_ssh_keys", users_api_limit_ssh_keys)
+        if users_api_limit_status is not None:
+            pulumi.set(__self__, "users_api_limit_status", users_api_limit_status)
+        if users_get_by_id_limit is not None:
+            pulumi.set(__self__, "users_get_by_id_limit", users_get_by_id_limit)
+        if users_get_by_id_limit_allowlist_raw is not None:
+            pulumi.set(__self__, "users_get_by_id_limit_allowlist_raw", users_get_by_id_limit_allowlist_raw)
         if valid_runner_registrars is not None:
             pulumi.set(__self__, "valid_runner_registrars", valid_runner_registrars)
         if version_check_enabled is not None:
             pulumi.set(__self__, "version_check_enabled", version_check_enabled)
+        if web_hook_event_resend_limit is not None:
+            pulumi.set(__self__, "web_hook_event_resend_limit", web_hook_event_resend_limit)
+        if web_hook_test_limit is not None:
+            pulumi.set(__self__, "web_hook_test_limit", web_hook_test_limit)
         if web_ide_clientside_preview_enabled is not None:
             pulumi.set(__self__, "web_ide_clientside_preview_enabled", web_ide_clientside_preview_enabled)
         if whats_new_variant is not None:
@@ -6650,6 +8191,18 @@ class _ApplicationSettingsState:
     @after_sign_up_text.setter
     def after_sign_up_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "after_sign_up_text", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aiActionApiRateLimit")
+    def ai_action_api_rate_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests allowed to the aiAction GraphQL mutation per user per eight hours. Default: 160. Set to 0 to disable the rate limit. Introduced in GitLab 17.2.
+        """
+        return pulumi.get(self, "ai_action_api_rate_limit")
+
+    @ai_action_api_rate_limit.setter
+    def ai_action_api_rate_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "ai_action_api_rate_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="akismetApiKey")
@@ -6892,6 +8445,30 @@ class _ApplicationSettingsState:
         pulumi.set(self, "auto_devops_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="autocompleteUsersLimit")
+    def autocomplete_users_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of authenticated requests per minute to the GET /autocomplete/users endpoint.
+        """
+        return pulumi.get(self, "autocomplete_users_limit")
+
+    @autocomplete_users_limit.setter
+    def autocomplete_users_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "autocomplete_users_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autocompleteUsersUnauthenticatedLimit")
+    def autocomplete_users_unauthenticated_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of unauthenticated requests per minute to the GET /autocomplete/users endpoint.
+        """
+        return pulumi.get(self, "autocomplete_users_unauthenticated_limit")
+
+    @autocomplete_users_unauthenticated_limit.setter
+    def autocomplete_users_unauthenticated_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "autocomplete_users_unauthenticated_limit", value)
+
+    @_builtins.property
     @pulumi.getter(name="automaticPurchasedStorageAllocation")
     def automatic_purchased_storage_allocation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -6976,6 +8553,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "ci_job_live_trace_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="ciLintLimitPerUser")
+    def ci_lint_limit_per_user(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of CI Lint requests per minute per user. Disabled by default.
+        """
+        return pulumi.get(self, "ci_lint_limit_per_user")
+
+    @ci_lint_limit_per_user.setter
+    def ci_lint_limit_per_user(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "ci_lint_limit_per_user", value)
+
+    @_builtins.property
     @pulumi.getter(name="ciMaxIncludes")
     def ci_max_includes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -7046,6 +8635,42 @@ class _ApplicationSettingsState:
     @concurrent_github_import_jobs_limit.setter
     def concurrent_github_import_jobs_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "concurrent_github_import_jobs_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="concurrentPullRequestImportJobsLimit")
+    def concurrent_pull_request_import_jobs_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of simultaneous pull request import jobs for the GitHub, Bitbucket Cloud, and Bitbucket Server importers. Default is 200. Introduced in GitLab 19.4.
+        """
+        return pulumi.get(self, "concurrent_pull_request_import_jobs_limit")
+
+    @concurrent_pull_request_import_jobs_limit.setter
+    def concurrent_pull_request_import_jobs_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "concurrent_pull_request_import_jobs_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="concurrentRelationBatchExportLimit")
+    def concurrent_relation_batch_export_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of simultaneous batch export jobs to process. Introduced in GitLab 17.6.
+        """
+        return pulumi.get(self, "concurrent_relation_batch_export_limit")
+
+    @concurrent_relation_batch_export_limit.setter
+    def concurrent_relation_batch_export_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "concurrent_relation_batch_export_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="concurrentRelationExportLimit")
+    def concurrent_relation_export_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of simultaneous project file exports to process. Default: 25. Introduced in GitLab 19.4 with a feature flag named limit*concurrent*project_exports. Disabled by default.
+        """
+        return pulumi.get(self, "concurrent_relation_export_limit")
+
+    @concurrent_relation_export_limit.setter
+    def concurrent_relation_export_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "concurrent_relation_export_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="containerExpirationPoliciesEnableHistoricEntries")
@@ -8126,6 +9751,18 @@ class _ApplicationSettingsState:
     @geo_status_timeout.setter
     def geo_status_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "geo_status_timeout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gitPushPipelineLimit")
+    def git_push_pipeline_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Set the maximum number of tag or branch pipelines that can be triggered by a single Git push. For more information about this limit, see number of pipelines per Git push.
+        """
+        return pulumi.get(self, "git_push_pipeline_limit")
+
+    @git_push_pipeline_limit.setter
+    def git_push_pipeline_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "git_push_pipeline_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="gitRateLimitUsersAlertlists")
@@ -8308,6 +9945,42 @@ class _ApplicationSettingsState:
         pulumi.set(self, "gravatar_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="groupDownloadExportLimit")
+    def group_download_export_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of group export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "group_download_export_limit")
+
+    @group_download_export_limit.setter
+    def group_download_export_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "group_download_export_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupExportLimit")
+    def group_export_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of group exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "group_export_limit")
+
+    @group_export_limit.setter
+    def group_export_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "group_export_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupImportLimit")
+    def group_import_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of group imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "group_import_limit")
+
+    @group_import_limit.setter
+    def group_import_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "group_import_limit", value)
+
+    @_builtins.property
     @pulumi.getter(name="groupOwnersCanManageDefaultBranchProtection")
     def group_owners_can_manage_default_branch_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -8318,6 +9991,18 @@ class _ApplicationSettingsState:
     @group_owners_can_manage_default_branch_protection.setter
     def group_owners_can_manage_default_branch_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "group_owners_can_manage_default_branch_protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupSecretsLimit")
+    def group_secrets_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of secrets allowed per group in Secrets Manager. Default: 500. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+        """
+        return pulumi.get(self, "group_secrets_limit")
+
+    @group_secrets_limit.setter
+    def group_secrets_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "group_secrets_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="helpPageHideCommercialContent")
@@ -8426,6 +10111,18 @@ class _ApplicationSettingsState:
     @html_emails_enabled.setter
     def html_emails_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "html_emails_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="importJobsConcurrencyLimit")
+    def import_jobs_concurrency_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of concurrently running jobs for each import worker type (project and group file base import, Direct Transfer, and GitHub, Bitbucket Cloud, and Bitbucket Server importer stages). Applied independently per worker type. Default is 100. Introduced in GitLab 19.1.
+        """
+        return pulumi.get(self, "import_jobs_concurrency_limit")
+
+    @import_jobs_concurrency_limit.setter
+    def import_jobs_concurrency_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "import_jobs_concurrency_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="importSources")
@@ -8570,6 +10267,30 @@ class _ApplicationSettingsState:
     @jira_connect_public_key_storage_enabled.setter
     def jira_connect_public_key_storage_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "jira_connect_public_key_storage_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jobPlayLimitPerUserProject")
+    def job_play_limit_per_user_project(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of manual job runs per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_play. Disabled by default.
+        """
+        return pulumi.get(self, "job_play_limit_per_user_project")
+
+    @job_play_limit_per_user_project.setter
+    def job_play_limit_per_user_project(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "job_play_limit_per_user_project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="jobRetryLimitPerUserProject")
+    def job_retry_limit_per_user_project(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of job retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_retry. Disabled by default.
+        """
+        return pulumi.get(self, "job_retry_limit_per_user_project")
+
+    @job_retry_limit_per_user_project.setter
+    def job_retry_limit_per_user_project(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "job_retry_limit_per_user_project", value)
 
     @_builtins.property
     @pulumi.getter(name="keepLatestArtifact")
@@ -8776,6 +10497,30 @@ class _ApplicationSettingsState:
         pulumi.set(self, "max_export_size", value)
 
     @_builtins.property
+    @pulumi.getter(name="maxGithubResponseSizeLimit")
+    def max_github_response_size_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum allowed GitHub API response size in MB. 0 for unlimited.
+        """
+        return pulumi.get(self, "max_github_response_size_limit")
+
+    @max_github_response_size_limit.setter
+    def max_github_response_size_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_github_response_size_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxHttpResponseSizeLimit")
+    def max_http_response_size_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4.
+        """
+        return pulumi.get(self, "max_http_response_size_limit")
+
+    @max_http_response_size_limit.setter
+    def max_http_response_size_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_http_response_size_limit", value)
+
+    @_builtins.property
     @pulumi.getter(name="maxImportRemoteFileSize")
     def max_import_remote_file_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -8978,6 +10723,18 @@ class _ApplicationSettingsState:
     @mirror_max_delay.setter
     def mirror_max_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mirror_max_delay", value)
+
+    @_builtins.property
+    @pulumi.getter(name="notesCreateLimit")
+    def notes_create_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of notes (comments) a user can create per minute. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "notes_create_limit")
+
+    @notes_create_limit.setter
+    def notes_create_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "notes_create_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyOnUnknownSignIn")
@@ -9184,6 +10941,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "personal_access_token_prefix", value)
 
     @_builtins.property
+    @pulumi.getter(name="pipelineCancelLimitPerUserProject")
+    def pipeline_cancel_limit_per_user_project(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of pipeline cancellations per minute per user per project. Introduced in GitLab 19.5.
+        """
+        return pulumi.get(self, "pipeline_cancel_limit_per_user_project")
+
+    @pipeline_cancel_limit_per_user_project.setter
+    def pipeline_cancel_limit_per_user_project(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "pipeline_cancel_limit_per_user_project", value)
+
+    @_builtins.property
     @pulumi.getter(name="pipelineLimitPerProjectUserSha")
     def pipeline_limit_per_project_user_sha(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -9194,6 +10963,30 @@ class _ApplicationSettingsState:
     @pipeline_limit_per_project_user_sha.setter
     def pipeline_limit_per_project_user_sha(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pipeline_limit_per_project_user_sha", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineLimitPerUser")
+    def pipeline_limit_per_user(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of pipeline creation requests per minute per user.
+        """
+        return pulumi.get(self, "pipeline_limit_per_user")
+
+    @pipeline_limit_per_user.setter
+    def pipeline_limit_per_user(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "pipeline_limit_per_user", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineRetryLimitPerUserProject")
+    def pipeline_retry_limit_per_user_project(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of pipeline retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*pipeline_retry. Disabled by default.
+        """
+        return pulumi.get(self, "pipeline_retry_limit_per_user_project")
+
+    @pipeline_retry_limit_per_user_project.setter
+    def pipeline_retry_limit_per_user_project(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "pipeline_retry_limit_per_user_project", value)
 
     @_builtins.property
     @pulumi.getter(name="plantumlEnabled")
@@ -9256,6 +11049,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "prevent_merge_requests_committers_approval", value)
 
     @_builtins.property
+    @pulumi.getter(name="projectDownloadExportLimit")
+    def project_download_export_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of project export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "project_download_export_limit")
+
+    @project_download_export_limit.setter
+    def project_download_export_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "project_download_export_limit", value)
+
+    @_builtins.property
     @pulumi.getter(name="projectExportEnabled")
     def project_export_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -9268,6 +11073,30 @@ class _ApplicationSettingsState:
         pulumi.set(self, "project_export_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="projectExportLimit")
+    def project_export_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of project exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "project_export_limit")
+
+    @project_export_limit.setter
+    def project_export_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "project_export_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectImportLimit")
+    def project_import_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of project imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "project_import_limit")
+
+    @project_import_limit.setter
+    def project_import_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "project_import_limit", value)
+
+    @_builtins.property
     @pulumi.getter(name="projectJobsApiRateLimit")
     def project_jobs_api_rate_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -9278,6 +11107,18 @@ class _ApplicationSettingsState:
     @project_jobs_api_rate_limit.setter
     def project_jobs_api_rate_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "project_jobs_api_rate_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectSecretsLimit")
+    def project_secrets_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of secrets allowed per project in Secrets Manager. Default: 100. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+        """
+        return pulumi.get(self, "project_secrets_limit")
+
+    @project_secrets_limit.setter
+    def project_secrets_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "project_secrets_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="projectsApiRateLimitUnauthenticated")
@@ -9374,6 +11215,18 @@ class _ApplicationSettingsState:
     @raw_blob_request_limit.setter
     def raw_blob_request_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "raw_blob_request_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rawBlobRequestLimitUnauthenticated")
+    def raw_blob_request_limit_unauthenticated(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of unauthenticated requests per minute across all raw paths in a project (default is 800). Set to 0 to disable throttling.
+        """
+        return pulumi.get(self, "raw_blob_request_limit_unauthenticated")
+
+    @raw_blob_request_limit_unauthenticated.setter
+    def raw_blob_request_limit_unauthenticated(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "raw_blob_request_limit_unauthenticated", value)
 
     @_builtins.property
     @pulumi.getter(name="recaptchaEnabled")
@@ -9554,6 +11407,66 @@ class _ApplicationSettingsState:
     @rsa_key_restriction.setter
     def rsa_key_restriction(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rsa_key_restriction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="runnerJobsEndpointsApiLimit")
+    def runner_jobs_endpoints_api_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute per job token for requests to /jobs/* requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        """
+        return pulumi.get(self, "runner_jobs_endpoints_api_limit")
+
+    @runner_jobs_endpoints_api_limit.setter
+    def runner_jobs_endpoints_api_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "runner_jobs_endpoints_api_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="runnerJobsPatchTraceApiLimit")
+    def runner_jobs_patch_trace_api_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute per runner token for requests to the PATCH /jobs/:id/trace runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        """
+        return pulumi.get(self, "runner_jobs_patch_trace_api_limit")
+
+    @runner_jobs_patch_trace_api_limit.setter
+    def runner_jobs_patch_trace_api_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "runner_jobs_patch_trace_api_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="runnerJobsRequestApiLimit")
+    def runner_jobs_request_api_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute per runner token for requests to the /jobs/request runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        """
+        return pulumi.get(self, "runner_jobs_request_api_limit")
+
+    @runner_jobs_request_api_limit.setter
+    def runner_jobs_request_api_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "runner_jobs_request_api_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scanExecutionPoliciesActionLimit")
+    def scan_execution_policies_action_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of actions per scan execution policy. Default: 0. Maximum: 20.
+        """
+        return pulumi.get(self, "scan_execution_policies_action_limit")
+
+    @scan_execution_policies_action_limit.setter
+    def scan_execution_policies_action_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "scan_execution_policies_action_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scanExecutionPoliciesScheduleLimit")
+    def scan_execution_policies_schedule_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of type: schedule rules per scan execution policy. Default: 0. Maximum: 20.
+        """
+        return pulumi.get(self, "scan_execution_policies_schedule_limit")
+
+    @scan_execution_policies_schedule_limit.setter
+    def scan_execution_policies_schedule_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "scan_execution_policies_schedule_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="searchRateLimit")
@@ -10036,6 +11949,18 @@ class _ApplicationSettingsState:
         pulumi.set(self, "suggest_pipeline_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="tagsCreateLimit")
+    def tags_create_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL tagCreate mutation, tag creation in the UI, and the /tag quick action. Default: 100. Set to 0 to disable the rate limit. Introduced in GitLab 19.4.
+        """
+        return pulumi.get(self, "tags_create_limit")
+
+    @tags_create_limit.setter
+    def tags_create_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "tags_create_limit", value)
+
+    @_builtins.property
     @pulumi.getter(name="terminalMaxSessionTime")
     def terminal_max_session_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -10096,6 +12021,150 @@ class _ApplicationSettingsState:
         pulumi.set(self, "throttle_authenticated_api_requests_per_period", value)
 
     @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDependencyProxyEnabled")
+    def throttle_authenticated_dependency_proxy_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, enforces the authenticated dependency proxy request rate limit. Default value: false. Introduced in GitLab 19.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_dependency_proxy_enabled")
+
+    @throttle_authenticated_dependency_proxy_enabled.setter
+    def throttle_authenticated_dependency_proxy_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_authenticated_dependency_proxy_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDependencyProxyPeriodInSeconds")
+    def throttle_authenticated_dependency_proxy_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period in seconds. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 15. Introduced in GitLab 19.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_dependency_proxy_period_in_seconds")
+
+    @throttle_authenticated_dependency_proxy_period_in_seconds.setter
+    def throttle_authenticated_dependency_proxy_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_dependency_proxy_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDependencyProxyRequestsPerPeriod")
+    def throttle_authenticated_dependency_proxy_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum requests per period per user. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 1000. Introduced in GitLab 19.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_dependency_proxy_requests_per_period")
+
+    @throttle_authenticated_dependency_proxy_requests_per_period.setter
+    def throttle_authenticated_dependency_proxy_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_dependency_proxy_requests_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDeprecatedApiEnabled")
+    def throttle_authenticated_deprecated_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (If enabled, requires: throttle*authenticated*deprecated*api*period*in*seconds and throttle*authenticated*deprecated*api*requests*per*period) Enable authenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_deprecated_api_enabled")
+
+    @throttle_authenticated_deprecated_api_enabled.setter
+    def throttle_authenticated_deprecated_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_authenticated_deprecated_api_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDeprecatedApiPeriodInSeconds")
+    def throttle_authenticated_deprecated_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period (in seconds) for authenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_deprecated_api_period_in_seconds")
+
+    @throttle_authenticated_deprecated_api_period_in_seconds.setter
+    def throttle_authenticated_deprecated_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_deprecated_api_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDeprecatedApiRequestsPerPeriod")
+    def throttle_authenticated_deprecated_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum authenticated deprecated API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_deprecated_api_requests_per_period")
+
+    @throttle_authenticated_deprecated_api_requests_per_period.setter
+    def throttle_authenticated_deprecated_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_deprecated_api_requests_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedFilesApiEnabled")
+    def throttle_authenticated_files_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (If enabled, requires: throttle*authenticated*files*api*period*in*seconds and throttle*authenticated*files*api*requests*per*period) Enable authenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_files_api_enabled")
+
+    @throttle_authenticated_files_api_enabled.setter
+    def throttle_authenticated_files_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_authenticated_files_api_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedFilesApiPeriodInSeconds")
+    def throttle_authenticated_files_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period (in seconds) for authenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_files_api_period_in_seconds")
+
+    @throttle_authenticated_files_api_period_in_seconds.setter
+    def throttle_authenticated_files_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_files_api_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedFilesApiRequestsPerPeriod")
+    def throttle_authenticated_files_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum authenticated Files API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_files_api_requests_per_period")
+
+    @throttle_authenticated_files_api_requests_per_period.setter
+    def throttle_authenticated_files_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_files_api_requests_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedGitHttpEnabled")
+    def throttle_authenticated_git_http_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, enforces the authenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_git_http_enabled")
+
+    @throttle_authenticated_git_http_enabled.setter
+    def throttle_authenticated_git_http_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_authenticated_git_http_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedGitHttpPeriodInSeconds")
+    def throttle_authenticated_git_http_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period in seconds. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_git_http_period_in_seconds")
+
+    @throttle_authenticated_git_http_period_in_seconds.setter
+    def throttle_authenticated_git_http_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_git_http_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedGitHttpRequestsPerPeriod")
+    def throttle_authenticated_git_http_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum requests per period per user. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_git_http_requests_per_period")
+
+    @throttle_authenticated_git_http_requests_per_period.setter
+    def throttle_authenticated_git_http_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_git_http_requests_per_period", value)
+
+    @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedGitLfsEnabled")
     def throttle_authenticated_git_lfs_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -10130,6 +12199,42 @@ class _ApplicationSettingsState:
     @throttle_authenticated_git_lfs_requests_per_period.setter
     def throttle_authenticated_git_lfs_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_authenticated_git_lfs_requests_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedMcpEnabled")
+    def throttle_authenticated_mcp_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (If enabled, requires: throttle*authenticated*mcp*period*in*seconds and throttle*authenticated*mcp*requests*per*period) If true, enforces the rate limit on requests to the MCP Server endpoint, /api/v4/mcp, for any HTTP method. Does not apply to other MCP endpoints. Introduced in GitLab 19.5.
+        """
+        return pulumi.get(self, "throttle_authenticated_mcp_enabled")
+
+    @throttle_authenticated_mcp_enabled.setter
+    def throttle_authenticated_mcp_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_authenticated_mcp_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedMcpPeriodInSeconds")
+    def throttle_authenticated_mcp_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period in seconds. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+        """
+        return pulumi.get(self, "throttle_authenticated_mcp_period_in_seconds")
+
+    @throttle_authenticated_mcp_period_in_seconds.setter
+    def throttle_authenticated_mcp_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_mcp_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedMcpRequestsPerPeriod")
+    def throttle_authenticated_mcp_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum requests per period per user. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+        """
+        return pulumi.get(self, "throttle_authenticated_mcp_requests_per_period")
+
+    @throttle_authenticated_mcp_requests_per_period.setter
+    def throttle_authenticated_mcp_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_authenticated_mcp_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedPackagesApiEnabled")
@@ -10204,6 +12309,78 @@ class _ApplicationSettingsState:
         pulumi.set(self, "throttle_authenticated_web_requests_per_period", value)
 
     @_builtins.property
+    @pulumi.getter(name="throttleIncidentManagementNotificationEnabled")
+    def throttle_incident_management_notification_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, enforces the inbound incident management alert notification rate limit, per project. Default value: false.
+        """
+        return pulumi.get(self, "throttle_incident_management_notification_enabled")
+
+    @throttle_incident_management_notification_enabled.setter
+    def throttle_incident_management_notification_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_incident_management_notification_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleIncidentManagementNotificationPerPeriod")
+    def throttle_incident_management_notification_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum inbound incident management alert notifications per period, per project. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+        """
+        return pulumi.get(self, "throttle_incident_management_notification_per_period")
+
+    @throttle_incident_management_notification_per_period.setter
+    def throttle_incident_management_notification_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_incident_management_notification_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleIncidentManagementNotificationPeriodInSeconds")
+    def throttle_incident_management_notification_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period in seconds. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+        """
+        return pulumi.get(self, "throttle_incident_management_notification_period_in_seconds")
+
+    @throttle_incident_management_notification_period_in_seconds.setter
+    def throttle_incident_management_notification_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_incident_management_notification_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleProtectedPathsEnabled")
+    def throttle_protected_paths_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (If enabled, requires: throttle*protected*paths*period*in*seconds and throttle*protected*paths*requests*per*period) Enable rate limiting for protected paths (for example, sign-in and password reset). Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_protected_paths_enabled")
+
+    @throttle_protected_paths_enabled.setter
+    def throttle_protected_paths_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_protected_paths_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleProtectedPathsPeriodInSeconds")
+    def throttle_protected_paths_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period (in seconds) for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_protected_paths_period_in_seconds")
+
+    @throttle_protected_paths_period_in_seconds.setter
+    def throttle_protected_paths_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_protected_paths_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleProtectedPathsRequestsPerPeriod")
+    def throttle_protected_paths_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum requests per period per IP for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_protected_paths_requests_per_period")
+
+    @throttle_protected_paths_requests_per_period.setter
+    def throttle_protected_paths_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_protected_paths_requests_per_period", value)
+
+    @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedApiEnabled")
     def throttle_unauthenticated_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -10240,6 +12417,127 @@ class _ApplicationSettingsState:
         pulumi.set(self, "throttle_unauthenticated_api_requests_per_period", value)
 
     @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedDeprecatedApiEnabled")
+    def throttle_unauthenticated_deprecated_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (If enabled, requires: throttle*unauthenticated*deprecated*api*period*in*seconds and throttle*unauthenticated*deprecated*api*requests*per*period) Enable unauthenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_deprecated_api_enabled")
+
+    @throttle_unauthenticated_deprecated_api_enabled.setter
+    def throttle_unauthenticated_deprecated_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_unauthenticated_deprecated_api_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedDeprecatedApiPeriodInSeconds")
+    def throttle_unauthenticated_deprecated_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period (in seconds) for unauthenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_deprecated_api_period_in_seconds")
+
+    @throttle_unauthenticated_deprecated_api_period_in_seconds.setter
+    def throttle_unauthenticated_deprecated_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_deprecated_api_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedDeprecatedApiRequestsPerPeriod")
+    def throttle_unauthenticated_deprecated_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum unauthenticated deprecated API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_deprecated_api_requests_per_period")
+
+    @throttle_unauthenticated_deprecated_api_requests_per_period.setter
+    def throttle_unauthenticated_deprecated_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_deprecated_api_requests_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedEnabled")
+    @_utilities.deprecated("""Use throttle_unauthenticated_web_enabled or throttle_unauthenticated_api_enabled instead. (Deprecated in GitLab 14.3)""")
+    def throttle_unauthenticated_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*enabled or throttle*unauthenticated*api*enabled instead.) (**If enabled, requires**: throttle*unauthenticated*period*in*seconds and throttle*unauthenticated*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
+        """
+        return pulumi.get(self, "throttle_unauthenticated_enabled")
+
+    @throttle_unauthenticated_enabled.setter
+    def throttle_unauthenticated_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_unauthenticated_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedFilesApiEnabled")
+    def throttle_unauthenticated_files_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (If enabled, requires: throttle*unauthenticated*files*api*period*in*seconds and throttle*unauthenticated*files*api*requests*per*period) Enable unauthenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_files_api_enabled")
+
+    @throttle_unauthenticated_files_api_enabled.setter
+    def throttle_unauthenticated_files_api_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_unauthenticated_files_api_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedFilesApiPeriodInSeconds")
+    def throttle_unauthenticated_files_api_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period (in seconds) for unauthenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_files_api_period_in_seconds")
+
+    @throttle_unauthenticated_files_api_period_in_seconds.setter
+    def throttle_unauthenticated_files_api_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_files_api_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedFilesApiRequestsPerPeriod")
+    def throttle_unauthenticated_files_api_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum unauthenticated Files API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_files_api_requests_per_period")
+
+    @throttle_unauthenticated_files_api_requests_per_period.setter
+    def throttle_unauthenticated_files_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_files_api_requests_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedGitHttpEnabled")
+    def throttle_unauthenticated_git_http_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, enforces the unauthenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 17.0.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_git_http_enabled")
+
+    @throttle_unauthenticated_git_http_enabled.setter
+    def throttle_unauthenticated_git_http_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "throttle_unauthenticated_git_http_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedGitHttpPeriodInSeconds")
+    def throttle_unauthenticated_git_http_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rate limit period in seconds. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_git_http_period_in_seconds")
+
+    @throttle_unauthenticated_git_http_period_in_seconds.setter
+    def throttle_unauthenticated_git_http_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_git_http_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedGitHttpRequestsPerPeriod")
+    def throttle_unauthenticated_git_http_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum requests per period per IP. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_git_http_requests_per_period")
+
+    @throttle_unauthenticated_git_http_requests_per_period.setter
+    def throttle_unauthenticated_git_http_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_git_http_requests_per_period", value)
+
+    @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedPackagesApiEnabled")
     def throttle_unauthenticated_packages_api_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -10274,6 +12572,32 @@ class _ApplicationSettingsState:
     @throttle_unauthenticated_packages_api_requests_per_period.setter
     def throttle_unauthenticated_packages_api_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "throttle_unauthenticated_packages_api_requests_per_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedPeriodInSeconds")
+    @_utilities.deprecated("""Use throttle_unauthenticated_web_period_in_seconds or throttle_unauthenticated_api_period_in_seconds instead. (Deprecated in GitLab 14.3)""")
+    def throttle_unauthenticated_period_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*period*in*seconds or throttle*unauthenticated*api*period*in*seconds instead.) Rate limit period in seconds.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_period_in_seconds")
+
+    @throttle_unauthenticated_period_in_seconds.setter
+    def throttle_unauthenticated_period_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_period_in_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedRequestsPerPeriod")
+    @_utilities.deprecated("""Use throttle_unauthenticated_web_requests_per_period or throttle_unauthenticated_api_requests_per_period instead. (Deprecated in GitLab 14.3)""")
+    def throttle_unauthenticated_requests_per_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*requests*per*period or throttle*unauthenticated*api*requests*per*period instead.) Maximum requests per period per IP.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_requests_per_period")
+
+    @throttle_unauthenticated_requests_per_period.setter
+    def throttle_unauthenticated_requests_per_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "throttle_unauthenticated_requests_per_period", value)
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedWebEnabled")
@@ -10504,6 +12828,114 @@ class _ApplicationSettingsState:
         pulumi.set(self, "user_show_add_ssh_key_message", value)
 
     @_builtins.property
+    @pulumi.getter(name="usersApiLimitFollowers")
+    def users_api_limit_followers(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_followers")
+
+    @users_api_limit_followers.setter
+    def users_api_limit_followers(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_api_limit_followers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitFollowing")
+    def users_api_limit_following(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_following")
+
+    @users_api_limit_following.setter
+    def users_api_limit_following(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_api_limit_following", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitGpgKey")
+    def users_api_limit_gpg_key(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_gpg_key")
+
+    @users_api_limit_gpg_key.setter
+    def users_api_limit_gpg_key(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_api_limit_gpg_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitGpgKeys")
+    def users_api_limit_gpg_keys(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_gpg_keys")
+
+    @users_api_limit_gpg_keys.setter
+    def users_api_limit_gpg_keys(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_api_limit_gpg_keys", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitSshKey")
+    def users_api_limit_ssh_key(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_ssh_key")
+
+    @users_api_limit_ssh_key.setter
+    def users_api_limit_ssh_key(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_api_limit_ssh_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitSshKeys")
+    def users_api_limit_ssh_keys(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_ssh_keys")
+
+    @users_api_limit_ssh_keys.setter
+    def users_api_limit_ssh_keys(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_api_limit_ssh_keys", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitStatus")
+    def users_api_limit_status(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 240. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_status")
+
+    @users_api_limit_status.setter
+    def users_api_limit_status(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_api_limit_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersGetByIdLimit")
+    def users_get_by_id_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of requests per minute per user to the GET /users/:id API endpoint. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "users_get_by_id_limit")
+
+    @users_get_by_id_limit.setter
+    def users_get_by_id_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "users_get_by_id_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="usersGetByIdLimitAllowlistRaw")
+    def users_get_by_id_limit_allowlist_raw(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Usernames excluded from the users*get*by*id*limit rate limit, separated by newlines, commas or whitespace. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "users_get_by_id_limit_allowlist_raw")
+
+    @users_get_by_id_limit_allowlist_raw.setter
+    def users_get_by_id_limit_allowlist_raw(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "users_get_by_id_limit_allowlist_raw", value)
+
+    @_builtins.property
     @pulumi.getter(name="validRunnerRegistrars")
     def valid_runner_registrars(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -10526,6 +12958,30 @@ class _ApplicationSettingsState:
     @version_check_enabled.setter
     def version_check_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "version_check_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="webHookEventResendLimit")
+    def web_hook_event_resend_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of webhook event resend requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+        """
+        return pulumi.get(self, "web_hook_event_resend_limit")
+
+    @web_hook_event_resend_limit.setter
+    def web_hook_event_resend_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "web_hook_event_resend_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="webHookTestLimit")
+    def web_hook_test_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of webhook test requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+        """
+        return pulumi.get(self, "web_hook_test_limit")
+
+    @web_hook_test_limit.setter
+    def web_hook_test_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "web_hook_test_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="webIdeClientsidePreviewEnabled")
@@ -10574,6 +13030,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  admin_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  after_sign_out_path: pulumi.Input[Optional[_builtins.str]] = None,
                  after_sign_up_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_action_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -10594,6 +13051,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  auto_ban_user_on_excessive_projects_download: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_devops_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autocomplete_users_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 autocomplete_users_unauthenticated_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  automatic_purchased_storage_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
                  bulk_import_concurrent_pipeline_batch_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  bulk_import_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -10601,12 +13060,16 @@ class ApplicationSettings(pulumi.CustomResource):
                  can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
                  check_namespace_plan: pulumi.Input[Optional[_builtins.bool]] = None,
                  ci_job_live_trace_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_lint_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
                  ci_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
                  ci_max_total_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  commit_email_hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  concurrent_bitbucket_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  concurrent_bitbucket_server_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  concurrent_github_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_pull_request_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_relation_batch_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_relation_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  container_expiration_policies_enable_historic_entries: pulumi.Input[Optional[_builtins.bool]] = None,
                  container_registry_cleanup_tags_service_max_list_size: pulumi.Input[Optional[_builtins.int]] = None,
                  container_registry_delete_tags_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
@@ -10697,6 +13160,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  first_day_of_week: pulumi.Input[Optional[_builtins.int]] = None,
                  geo_node_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
                  geo_status_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 git_push_pipeline_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  git_rate_limit_users_alertlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  git_rate_limit_users_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  git_two_factor_session_expiry: pulumi.Input[Optional[_builtins.int]] = None,
@@ -10710,7 +13174,11 @@ class ApplicationSettings(pulumi.CustomResource):
                  grafana_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  grafana_url: pulumi.Input[Optional[_builtins.str]] = None,
                  gravatar_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_download_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_import_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  group_owners_can_manage_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_secrets_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  help_page_hide_commercial_content: pulumi.Input[Optional[_builtins.bool]] = None,
                  help_page_support_url: pulumi.Input[Optional[_builtins.str]] = None,
                  help_page_text: pulumi.Input[Optional[_builtins.str]] = None,
@@ -10720,6 +13188,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  housekeeping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  housekeeping_optimize_repository_period: pulumi.Input[Optional[_builtins.int]] = None,
                  html_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 import_jobs_concurrency_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  import_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  in_product_marketing_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  inactive_projects_delete_after_months: pulumi.Input[Optional[_builtins.int]] = None,
@@ -10732,6 +13201,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  jira_connect_application_key: pulumi.Input[Optional[_builtins.str]] = None,
                  jira_connect_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
                  jira_connect_public_key_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 job_play_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
+                 job_retry_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
                  keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
                  kroki_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  kroki_formats: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
@@ -10749,6 +13220,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  max_attachment_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_decompressed_archive_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_github_response_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_http_response_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  max_import_remote_file_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_import_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_login_attempts: pulumi.Input[Optional[_builtins.int]] = None,
@@ -10766,6 +13239,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  mirror_capacity_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  mirror_max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  mirror_max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 notes_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  notify_on_unknown_sign_in: pulumi.Input[Optional[_builtins.bool]] = None,
                  npm_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
                  nuget_skip_metadata_url_validation: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -10783,14 +13257,21 @@ class ApplicationSettings(pulumi.CustomResource):
                  password_uppercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  performance_bar_allowed_group_path: pulumi.Input[Optional[_builtins.str]] = None,
                  personal_access_token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_cancel_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
                  pipeline_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+                 pipeline_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 pipeline_retry_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
                  plantuml_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  plantuml_url: pulumi.Input[Optional[_builtins.str]] = None,
                  polling_interval_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
                  prevent_merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
                  prevent_merge_requests_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_download_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  project_export_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_import_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  project_jobs_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_secrets_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  projects_api_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
                  prometheus_metrics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  protected_ci_variables: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -10799,6 +13280,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  pypi_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
                  rate_limiting_response_text: pulumi.Input[Optional[_builtins.str]] = None,
                  raw_blob_request_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 raw_blob_request_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
                  recaptcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  recaptcha_private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  recaptcha_site_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -10814,6 +13296,11 @@ class ApplicationSettings(pulumi.CustomResource):
                  require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
                  restricted_visibility_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 runner_jobs_endpoints_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 runner_jobs_patch_trace_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 runner_jobs_request_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 scan_execution_policies_action_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 scan_execution_policies_schedule_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
                  secret_push_protection_available: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -10854,26 +13341,60 @@ class ApplicationSettings(pulumi.CustomResource):
                  static_objects_external_storage_auth_token: pulumi.Input[Optional[_builtins.str]] = None,
                  static_objects_external_storage_url: pulumi.Input[Optional[_builtins.str]] = None,
                  suggest_pipeline_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  terminal_max_session_time: pulumi.Input[Optional[_builtins.int]] = None,
                  terms: pulumi.Input[Optional[_builtins.str]] = None,
                  throttle_authenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_dependency_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_dependency_proxy_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_dependency_proxy_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_deprecated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_deprecated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_deprecated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_files_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_files_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_files_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_http_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_git_http_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_http_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_git_lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_git_lfs_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_git_lfs_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_mcp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_mcp_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_mcp_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_incident_management_notification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_incident_management_notification_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_incident_management_notification_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_protected_paths_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_protected_paths_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_protected_paths_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_unauthenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_deprecated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_deprecated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_deprecated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_files_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_files_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_files_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_git_http_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_git_http_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_git_http_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_unauthenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_unauthenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -10893,8 +13414,19 @@ class ApplicationSettings(pulumi.CustomResource):
                  user_defaults_to_private_profile: pulumi.Input[Optional[_builtins.bool]] = None,
                  user_oauth_applications: pulumi.Input[Optional[_builtins.bool]] = None,
                  user_show_add_ssh_key_message: pulumi.Input[Optional[_builtins.bool]] = None,
+                 users_api_limit_followers: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_following: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_gpg_key: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_gpg_keys: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_ssh_key: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_ssh_keys: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_get_by_id_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_get_by_id_limit_allowlist_raw: pulumi.Input[Optional[_builtins.str]] = None,
                  valid_runner_registrars: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version_check_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 web_hook_event_resend_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 web_hook_test_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  web_ide_clientside_preview_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  whats_new_variant: pulumi.Input[Optional[_builtins.str]] = None,
                  wiki_page_max_content_bytes: pulumi.Input[Optional[_builtins.int]] = None,
@@ -10915,26 +13447,6 @@ class ApplicationSettings(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # Set the default branch
-        default_branch = gitlab.ApplicationSettings("default_branch", default_branch_name="main")
-        # Set the 2FA settings
-        two_factor = gitlab.ApplicationSettings("two_factor",
-            require_two_factor_authentication=True,
-            two_factor_grace_period=24)
-        # Example Allow custom integrations
-        allow_custom_integrations = gitlab.ApplicationSettings("allow_custom_integrations",
-            allow_all_integrations=False,
-            allowed_integrations=["jira"])
-        # Example allowing all integrations:
-        allow_all_integrations = gitlab.ApplicationSettings("allow_all_integrations", allow_all_integrations=True)
-        ```
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -10942,6 +13454,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] admin_mode: Require administrators to enable Admin Mode by re-authenticating for administrative tasks.
         :param pulumi.Input[_builtins.str] after_sign_out_path: Where to redirect users after logout.
         :param pulumi.Input[_builtins.str] after_sign_up_text: Text shown to the user after signing up.
+        :param pulumi.Input[_builtins.int] ai_action_api_rate_limit: Maximum number of requests allowed to the aiAction GraphQL mutation per user per eight hours. Default: 160. Set to 0 to disable the rate limit. Introduced in GitLab 17.2.
         :param pulumi.Input[_builtins.str] akismet_api_key: API key for Akismet spam protection.
         :param pulumi.Input[_builtins.bool] akismet_enabled: (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
         :param pulumi.Input[_builtins.bool] allow_account_deletion: Set to true to allow users to delete their accounts. Premium and Ultimate only.
@@ -10962,6 +13475,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_ban_user_on_excessive_projects_download: When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Self-managed, Ultimate only.
         :param pulumi.Input[_builtins.str] auto_devops_domain: Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
+        :param pulumi.Input[_builtins.int] autocomplete_users_limit: Maximum number of authenticated requests per minute to the GET /autocomplete/users endpoint.
+        :param pulumi.Input[_builtins.int] autocomplete_users_unauthenticated_limit: Maximum number of unauthenticated requests per minute to the GET /autocomplete/users endpoint.
         :param pulumi.Input[_builtins.bool] automatic_purchased_storage_allocation: Enabling this permits automatic allocation of purchased storage in a namespace.
         :param pulumi.Input[_builtins.int] bulk_import_concurrent_pipeline_batch_limit: Maximum simultaneous Direct Transfer batches to process.
         :param pulumi.Input[_builtins.bool] bulk_import_enabled: Enable migrating GitLab groups by direct transfer.
@@ -10969,12 +13484,16 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] can_create_group: Indicates whether users can create top-level groups.
         :param pulumi.Input[_builtins.bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
         :param pulumi.Input[_builtins.bool] ci_job_live_trace_enabled: Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+        :param pulumi.Input[_builtins.int] ci_lint_limit_per_user: Maximum number of CI Lint requests per minute per user. Disabled by default.
         :param pulumi.Input[_builtins.int] ci_max_includes: The maximum number of includes per pipeline.
         :param pulumi.Input[_builtins.int] ci_max_total_yaml_size_bytes: The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
         :param pulumi.Input[_builtins.str] commit_email_hostname: Custom hostname (for private commit emails).
         :param pulumi.Input[_builtins.int] concurrent_bitbucket_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Cloud importer.
         :param pulumi.Input[_builtins.int] concurrent_bitbucket_server_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Server importer.
         :param pulumi.Input[_builtins.int] concurrent_github_import_jobs_limit: Maximum number of simultaneous import jobs for the GitHub importer.
+        :param pulumi.Input[_builtins.int] concurrent_pull_request_import_jobs_limit: Maximum number of simultaneous pull request import jobs for the GitHub, Bitbucket Cloud, and Bitbucket Server importers. Default is 200. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.int] concurrent_relation_batch_export_limit: Maximum number of simultaneous batch export jobs to process. Introduced in GitLab 17.6.
+        :param pulumi.Input[_builtins.int] concurrent_relation_export_limit: Maximum number of simultaneous project file exports to process. Default: 25. Introduced in GitLab 19.4 with a feature flag named limit*concurrent*project_exports. Disabled by default.
         :param pulumi.Input[_builtins.bool] container_expiration_policies_enable_historic_entries: Enable cleanup policies for all projects.
         :param pulumi.Input[_builtins.int] container_registry_cleanup_tags_service_max_list_size: The maximum number of tags that can be deleted in a single execution of cleanup policies.
         :param pulumi.Input[_builtins.int] container_registry_delete_tags_service_timeout: The maximum time, in seconds, that the cleanup process can take to delete a batch of tags for cleanup policies.
@@ -11065,6 +13584,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         :param pulumi.Input[_builtins.str] geo_node_allowed_ips: Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[_builtins.int] geo_status_timeout: The amount of seconds after which a request to get a secondary node status times out.
+        :param pulumi.Input[_builtins.int] git_push_pipeline_limit: Set the maximum number of tag or branch pipelines that can be triggered by a single Git push. For more information about this limit, see number of pipelines per Git push.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] git_rate_limit_users_alertlists: List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
         :param pulumi.Input[_builtins.int] git_two_factor_session_expiry: Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
@@ -11078,7 +13598,11 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] grafana_enabled: Enable Grafana.
         :param pulumi.Input[_builtins.str] grafana_url: Grafana URL.
         :param pulumi.Input[_builtins.bool] gravatar_enabled: Enable Gravatar.
+        :param pulumi.Input[_builtins.int] group_download_export_limit: Maximum number of group export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] group_export_limit: Maximum number of group exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] group_import_limit: Maximum number of group imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] group_owners_can_manage_default_branch_protection: Prevent overrides of default branch protection.
+        :param pulumi.Input[_builtins.int] group_secrets_limit: Maximum number of secrets allowed per group in Secrets Manager. Default: 500. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
         :param pulumi.Input[_builtins.bool] help_page_hide_commercial_content: Hide marketing-related entries from help.
         :param pulumi.Input[_builtins.str] help_page_support_url: Alternate support URL for help page and help dropdown.
         :param pulumi.Input[_builtins.str] help_page_text: Custom text displayed on the help page.
@@ -11088,6 +13612,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] housekeeping_enabled: Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
         :param pulumi.Input[_builtins.int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git-repack is run.
         :param pulumi.Input[_builtins.bool] html_emails_enabled: Enable HTML emails.
+        :param pulumi.Input[_builtins.int] import_jobs_concurrency_limit: Maximum number of concurrently running jobs for each import worker type (project and group file base import, Direct Transfer, and GitHub, Bitbucket Cloud, and Bitbucket Server importer stages). Applied independently per worker type. Default is 100. Introduced in GitLab 19.1.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[_builtins.bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
         :param pulumi.Input[_builtins.int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
@@ -11100,6 +13625,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] jira_connect_application_key: ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
         :param pulumi.Input[_builtins.str] jira_connect_proxy_url: URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
         :param pulumi.Input[_builtins.bool] jira_connect_public_key_storage_enabled: Enable public key storage for the GitLab for Jira Cloud app.
+        :param pulumi.Input[_builtins.int] job_play_limit_per_user_project: Maximum number of manual job runs per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_play. Disabled by default.
+        :param pulumi.Input[_builtins.int] job_retry_limit_per_user_project: Maximum number of job retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_retry. Disabled by default.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[_builtins.bool] kroki_enabled: (If enabled, requires: kroki_url) Enable Kroki integration.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]] kroki_formats: Configuration for formats supported by the Kroki instance.
@@ -11117,6 +13644,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_attachment_size: Limit attachment size in MB.
         :param pulumi.Input[_builtins.int] max_decompressed_archive_size: Maximum decompressed archive size in bytes.
         :param pulumi.Input[_builtins.int] max_export_size: Maximum export size in MB. 0 for unlimited.
+        :param pulumi.Input[_builtins.int] max_github_response_size_limit: Maximum allowed GitHub API response size in MB. 0 for unlimited.
+        :param pulumi.Input[_builtins.int] max_http_response_size_limit: Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4.
         :param pulumi.Input[_builtins.int] max_import_remote_file_size: Maximum remote file size for imports from external object storages.
         :param pulumi.Input[_builtins.int] max_import_size: Maximum import size in MB. 0 for unlimited.
         :param pulumi.Input[_builtins.int] max_login_attempts: Maximum number of sign-in attempts before locking out the user.
@@ -11134,6 +13663,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] mirror_capacity_threshold: Minimum capacity to be available before scheduling more mirrors preemptively.
         :param pulumi.Input[_builtins.int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[_builtins.int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
+        :param pulumi.Input[_builtins.int] notes_create_limit: Maximum number of notes (comments) a user can create per minute. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] notify_on_unknown_sign_in: Enable sending notification if sign in from unknown IP address happens
         :param pulumi.Input[_builtins.bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
         :param pulumi.Input[_builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package.
@@ -11151,14 +13681,21 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] password_uppercase_required: Indicates whether passwords require at least one uppercase letter.
         :param pulumi.Input[_builtins.str] performance_bar_allowed_group_path: Path of the group that is allowed to toggle the performance bar.
         :param pulumi.Input[_builtins.str] personal_access_token_prefix: Prefix for all generated personal access tokens.
+        :param pulumi.Input[_builtins.int] pipeline_cancel_limit_per_user_project: Maximum number of pipeline cancellations per minute per user per project. Introduced in GitLab 19.5.
         :param pulumi.Input[_builtins.int] pipeline_limit_per_project_user_sha: Maximum number of pipeline creation requests per minute per user and commit.
+        :param pulumi.Input[_builtins.int] pipeline_limit_per_user: Maximum number of pipeline creation requests per minute per user.
+        :param pulumi.Input[_builtins.int] pipeline_retry_limit_per_user_project: Maximum number of pipeline retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*pipeline_retry. Disabled by default.
         :param pulumi.Input[_builtins.bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration.
         :param pulumi.Input[_builtins.str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[_builtins.float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
         :param pulumi.Input[_builtins.bool] prevent_merge_requests_author_approval: Prevent approval by merge request creator (author).
         :param pulumi.Input[_builtins.bool] prevent_merge_requests_committers_approval: Prevent approval by committers to merge requests.
+        :param pulumi.Input[_builtins.int] project_download_export_limit: Maximum number of project export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] project_export_enabled: Enable project export.
+        :param pulumi.Input[_builtins.int] project_export_limit: Maximum number of project exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] project_import_limit: Maximum number of project imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.int] project_jobs_api_rate_limit: Maximum authenticated requests to /project/:id/jobs per minute.
+        :param pulumi.Input[_builtins.int] project_secrets_limit: Maximum number of secrets allowed per project in Secrets Manager. Default: 100. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
         :param pulumi.Input[_builtins.int] projects_api_rate_limit_unauthenticated: Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
         :param pulumi.Input[_builtins.bool] prometheus_metrics_enabled: Enable Prometheus metrics.
         :param pulumi.Input[_builtins.bool] protected_ci_variables: CI/CD variables are protected by default.
@@ -11167,6 +13704,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] pypi_package_requests_forwarding: Use pypi.org as a default remote repository when the package is not found in the GitLab Package Registry for PyPI.
         :param pulumi.Input[_builtins.str] rate_limiting_response_text: When rate limiting is enabled via the throttle_* settings, send this plain text response when a rate limit is exceeded. ‘Retry later’ is sent if this is blank.
         :param pulumi.Input[_builtins.int] raw_blob_request_limit: Max number of requests per minute for each raw path. To disable throttling set to 0.
+        :param pulumi.Input[_builtins.int] raw_blob_request_limit_unauthenticated: Maximum number of unauthenticated requests per minute across all raw paths in a project (default is 800). Set to 0 to disable throttling.
         :param pulumi.Input[_builtins.bool] recaptcha_enabled: (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
         :param pulumi.Input[_builtins.str] recaptcha_private_key: Private key for reCAPTCHA.
         :param pulumi.Input[_builtins.str] recaptcha_site_key: Site key for reCAPTCHA.
@@ -11182,6 +13720,11 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] require_two_factor_authentication: (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
         :param pulumi.Input[_builtins.int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
+        :param pulumi.Input[_builtins.int] runner_jobs_endpoints_api_limit: Maximum number of requests per minute per job token for requests to /jobs/* requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        :param pulumi.Input[_builtins.int] runner_jobs_patch_trace_api_limit: Maximum number of requests per minute per runner token for requests to the PATCH /jobs/:id/trace runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        :param pulumi.Input[_builtins.int] runner_jobs_request_api_limit: Maximum number of requests per minute per runner token for requests to the /jobs/request runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        :param pulumi.Input[_builtins.int] scan_execution_policies_action_limit: Maximum number of actions per scan execution policy. Default: 0. Maximum: 20.
+        :param pulumi.Input[_builtins.int] scan_execution_policies_schedule_limit: Maximum number of type: schedule rules per scan execution policy. Default: 0. Maximum: 20.
         :param pulumi.Input[_builtins.int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         :param pulumi.Input[_builtins.int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
         :param pulumi.Input[_builtins.bool] secret_push_protection_available: Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
@@ -11222,26 +13765,60 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] static_objects_external_storage_auth_token: Authentication token for the external storage linked in static*objects*external*storage*url.
         :param pulumi.Input[_builtins.str] static_objects_external_storage_url: URL to an external storage for repository static objects.
         :param pulumi.Input[_builtins.bool] suggest_pipeline_enabled: Enable pipeline suggestion banner.
+        :param pulumi.Input[_builtins.int] tags_create_limit: Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL tagCreate mutation, tag creation in the UI, and the /tag quick action. Default: 100. Set to 0 to disable the rate limit. Introduced in GitLab 19.4.
         :param pulumi.Input[_builtins.int] terminal_max_session_time: Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
         :param pulumi.Input[_builtins.str] terms: (Required by: enforce_terms) Markdown content for the ToS.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_api_enabled: (If enabled, requires: throttle*authenticated*api*period*in*seconds and throttle*authenticated*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_authenticated_api_period_in_seconds: Rate limit period (in seconds).
         :param pulumi.Input[_builtins.int] throttle_authenticated_api_requests_per_period: Maximum requests per period per user.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_dependency_proxy_enabled: If true, enforces the authenticated dependency proxy request rate limit. Default value: false. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_dependency_proxy_period_in_seconds: Rate limit period in seconds. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 15. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_dependency_proxy_requests_per_period: Maximum requests per period per user. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 1000. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_deprecated_api_enabled: (If enabled, requires: throttle*authenticated*deprecated*api*period*in*seconds and throttle*authenticated*deprecated*api*requests*per*period) Enable authenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_deprecated_api_period_in_seconds: Rate limit period (in seconds) for authenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_deprecated_api_requests_per_period: Maximum authenticated deprecated API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_files_api_enabled: (If enabled, requires: throttle*authenticated*files*api*period*in*seconds and throttle*authenticated*files*api*requests*per*period) Enable authenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_files_api_period_in_seconds: Rate limit period (in seconds) for authenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_files_api_requests_per_period: Maximum authenticated Files API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_git_http_enabled: If true, enforces the authenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_git_http_period_in_seconds: Rate limit period in seconds. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_git_http_requests_per_period: Maximum requests per period per user. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_git_lfs_enabled: Enable authenticated Git LFS request rate limit.
         :param pulumi.Input[_builtins.int] throttle_authenticated_git_lfs_period_in_seconds: Rate limit period (in seconds).
         :param pulumi.Input[_builtins.int] throttle_authenticated_git_lfs_requests_per_period: Maximum requests per period per user.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_mcp_enabled: (If enabled, requires: throttle*authenticated*mcp*period*in*seconds and throttle*authenticated*mcp*requests*per*period) If true, enforces the rate limit on requests to the MCP Server endpoint, /api/v4/mcp, for any HTTP method. Does not apply to other MCP endpoints. Introduced in GitLab 19.5.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_mcp_period_in_seconds: Rate limit period in seconds. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_mcp_requests_per_period: Maximum requests per period per user. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_packages_api_enabled: (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_authenticated_packages_api_period_in_seconds: Rate limit period (in seconds). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_authenticated_packages_api_requests_per_period: Maximum requests per period per user. View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_web_enabled: (If enabled, requires: throttle*authenticated*web*period*in*seconds and throttle*authenticated*web*requests*per*period) Enable authenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_authenticated_web_period_in_seconds: Rate limit period (in seconds).
         :param pulumi.Input[_builtins.int] throttle_authenticated_web_requests_per_period: Maximum requests per period per user.
+        :param pulumi.Input[_builtins.bool] throttle_incident_management_notification_enabled: If true, enforces the inbound incident management alert notification rate limit, per project. Default value: false.
+        :param pulumi.Input[_builtins.int] throttle_incident_management_notification_per_period: Maximum inbound incident management alert notifications per period, per project. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+        :param pulumi.Input[_builtins.int] throttle_incident_management_notification_period_in_seconds: Rate limit period in seconds. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+        :param pulumi.Input[_builtins.bool] throttle_protected_paths_enabled: (If enabled, requires: throttle*protected*paths*period*in*seconds and throttle*protected*paths*requests*per*period) Enable rate limiting for protected paths (for example, sign-in and password reset). Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_protected_paths_period_in_seconds: Rate limit period (in seconds) for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_protected_paths_requests_per_period: Maximum requests per period per IP for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] throttle_unauthenticated_api_enabled: (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_api_period_in_seconds: Rate limit period in seconds.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_api_requests_per_period: Max requests per period per IP.
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_deprecated_api_enabled: (If enabled, requires: throttle*unauthenticated*deprecated*api*period*in*seconds and throttle*unauthenticated*deprecated*api*requests*per*period) Enable unauthenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_deprecated_api_period_in_seconds: Rate limit period (in seconds) for unauthenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_deprecated_api_requests_per_period: Maximum unauthenticated deprecated API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_enabled: (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*enabled or throttle*unauthenticated*api*enabled instead.) (**If enabled, requires**: throttle*unauthenticated*period*in*seconds and throttle*unauthenticated*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_files_api_enabled: (If enabled, requires: throttle*unauthenticated*files*api*period*in*seconds and throttle*unauthenticated*files*api*requests*per*period) Enable unauthenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_files_api_period_in_seconds: Rate limit period (in seconds) for unauthenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_files_api_requests_per_period: Maximum unauthenticated Files API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_git_http_enabled: If true, enforces the unauthenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 17.0.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_git_http_period_in_seconds: Rate limit period in seconds. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_git_http_requests_per_period: Maximum requests per period per IP. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
         :param pulumi.Input[_builtins.bool] throttle_unauthenticated_packages_api_enabled: (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_packages_api_period_in_seconds: Rate limit period (in seconds). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_packages_api_requests_per_period: Maximum requests per period per user. View Package Registry rate limits for more details.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_period_in_seconds: (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*period*in*seconds or throttle*unauthenticated*api*period*in*seconds instead.) Rate limit period in seconds.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_requests_per_period: (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*requests*per*period or throttle*unauthenticated*api*requests*per*period instead.) Maximum requests per period per IP.
         :param pulumi.Input[_builtins.bool] throttle_unauthenticated_web_enabled: (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_web_period_in_seconds: Rate limit period in seconds.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_web_requests_per_period: Max requests per period per IP.
@@ -11261,8 +13838,19 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] user_defaults_to_private_profile: Newly created users have private profile by default.
         :param pulumi.Input[_builtins.bool] user_oauth_applications: Allow users to register any application to use GitLab as an OAuth provider.
         :param pulumi.Input[_builtins.bool] user_show_add_ssh_key_message: When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
+        :param pulumi.Input[_builtins.int] users_api_limit_followers: Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_following: Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_gpg_key: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_gpg_keys: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_ssh_key: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_ssh_keys: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_status: Maximum number of requests per minute, per user or IP address. Default: 240. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_get_by_id_limit: Maximum number of requests per minute per user to the GET /users/:id API endpoint. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.str] users_get_by_id_limit_allowlist_raw: Usernames excluded from the users*get*by*id*limit rate limit, separated by newlines, commas or whitespace. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valid_runner_registrars: List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
         :param pulumi.Input[_builtins.bool] version_check_enabled: Let GitLab inform you when an update is available.
+        :param pulumi.Input[_builtins.int] web_hook_event_resend_limit: Maximum number of webhook event resend requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+        :param pulumi.Input[_builtins.int] web_hook_test_limit: Maximum number of webhook test requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
         :param pulumi.Input[_builtins.bool] web_ide_clientside_preview_enabled: Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
         :param pulumi.Input[_builtins.str] whats_new_variant: What's new variant, possible values: all*tiers, current*tier, and disabled.
         :param pulumi.Input[_builtins.int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
@@ -11289,26 +13877,6 @@ class ApplicationSettings(pulumi.CustomResource):
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gitlab as gitlab
-
-        # Set the default branch
-        default_branch = gitlab.ApplicationSettings("default_branch", default_branch_name="main")
-        # Set the 2FA settings
-        two_factor = gitlab.ApplicationSettings("two_factor",
-            require_two_factor_authentication=True,
-            two_factor_grace_period=24)
-        # Example Allow custom integrations
-        allow_custom_integrations = gitlab.ApplicationSettings("allow_custom_integrations",
-            allow_all_integrations=False,
-            allowed_integrations=["jira"])
-        # Example allowing all integrations:
-        allow_all_integrations = gitlab.ApplicationSettings("allow_all_integrations", allow_all_integrations=True)
-        ```
-
 
         :param str resource_name: The name of the resource.
         :param ApplicationSettingsArgs args: The arguments to use to populate this resource's properties.
@@ -11329,6 +13897,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  admin_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  after_sign_out_path: pulumi.Input[Optional[_builtins.str]] = None,
                  after_sign_up_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_action_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -11349,6 +13918,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  auto_ban_user_on_excessive_projects_download: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_devops_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autocomplete_users_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 autocomplete_users_unauthenticated_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  automatic_purchased_storage_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
                  bulk_import_concurrent_pipeline_batch_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  bulk_import_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -11356,12 +13927,16 @@ class ApplicationSettings(pulumi.CustomResource):
                  can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
                  check_namespace_plan: pulumi.Input[Optional[_builtins.bool]] = None,
                  ci_job_live_trace_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ci_lint_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
                  ci_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
                  ci_max_total_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  commit_email_hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  concurrent_bitbucket_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  concurrent_bitbucket_server_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  concurrent_github_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_pull_request_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_relation_batch_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 concurrent_relation_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  container_expiration_policies_enable_historic_entries: pulumi.Input[Optional[_builtins.bool]] = None,
                  container_registry_cleanup_tags_service_max_list_size: pulumi.Input[Optional[_builtins.int]] = None,
                  container_registry_delete_tags_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
@@ -11452,6 +14027,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  first_day_of_week: pulumi.Input[Optional[_builtins.int]] = None,
                  geo_node_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
                  geo_status_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 git_push_pipeline_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  git_rate_limit_users_alertlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  git_rate_limit_users_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  git_two_factor_session_expiry: pulumi.Input[Optional[_builtins.int]] = None,
@@ -11465,7 +14041,11 @@ class ApplicationSettings(pulumi.CustomResource):
                  grafana_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  grafana_url: pulumi.Input[Optional[_builtins.str]] = None,
                  gravatar_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_download_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_import_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  group_owners_can_manage_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_secrets_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  help_page_hide_commercial_content: pulumi.Input[Optional[_builtins.bool]] = None,
                  help_page_support_url: pulumi.Input[Optional[_builtins.str]] = None,
                  help_page_text: pulumi.Input[Optional[_builtins.str]] = None,
@@ -11475,6 +14055,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  housekeeping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  housekeeping_optimize_repository_period: pulumi.Input[Optional[_builtins.int]] = None,
                  html_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 import_jobs_concurrency_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  import_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  in_product_marketing_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  inactive_projects_delete_after_months: pulumi.Input[Optional[_builtins.int]] = None,
@@ -11487,6 +14068,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  jira_connect_application_key: pulumi.Input[Optional[_builtins.str]] = None,
                  jira_connect_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
                  jira_connect_public_key_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 job_play_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
+                 job_retry_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
                  keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
                  kroki_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  kroki_formats: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
@@ -11504,6 +14087,8 @@ class ApplicationSettings(pulumi.CustomResource):
                  max_attachment_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_decompressed_archive_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_github_response_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_http_response_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  max_import_remote_file_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_import_size: pulumi.Input[Optional[_builtins.int]] = None,
                  max_login_attempts: pulumi.Input[Optional[_builtins.int]] = None,
@@ -11521,6 +14106,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  mirror_capacity_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  mirror_max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  mirror_max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 notes_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  notify_on_unknown_sign_in: pulumi.Input[Optional[_builtins.bool]] = None,
                  npm_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
                  nuget_skip_metadata_url_validation: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -11538,14 +14124,21 @@ class ApplicationSettings(pulumi.CustomResource):
                  password_uppercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  performance_bar_allowed_group_path: pulumi.Input[Optional[_builtins.str]] = None,
                  personal_access_token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_cancel_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
                  pipeline_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+                 pipeline_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 pipeline_retry_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
                  plantuml_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  plantuml_url: pulumi.Input[Optional[_builtins.str]] = None,
                  polling_interval_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
                  prevent_merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
                  prevent_merge_requests_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_download_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  project_export_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_import_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  project_jobs_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_secrets_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  projects_api_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
                  prometheus_metrics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  protected_ci_variables: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -11554,6 +14147,7 @@ class ApplicationSettings(pulumi.CustomResource):
                  pypi_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
                  rate_limiting_response_text: pulumi.Input[Optional[_builtins.str]] = None,
                  raw_blob_request_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 raw_blob_request_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
                  recaptcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  recaptcha_private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  recaptcha_site_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -11569,6 +14163,11 @@ class ApplicationSettings(pulumi.CustomResource):
                  require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
                  restricted_visibility_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+                 runner_jobs_endpoints_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 runner_jobs_patch_trace_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 runner_jobs_request_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 scan_execution_policies_action_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 scan_execution_policies_schedule_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
                  secret_push_protection_available: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -11609,26 +14208,60 @@ class ApplicationSettings(pulumi.CustomResource):
                  static_objects_external_storage_auth_token: pulumi.Input[Optional[_builtins.str]] = None,
                  static_objects_external_storage_url: pulumi.Input[Optional[_builtins.str]] = None,
                  suggest_pipeline_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  terminal_max_session_time: pulumi.Input[Optional[_builtins.int]] = None,
                  terms: pulumi.Input[Optional[_builtins.str]] = None,
                  throttle_authenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_dependency_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_dependency_proxy_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_dependency_proxy_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_deprecated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_deprecated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_deprecated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_files_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_files_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_files_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_http_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_git_http_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_git_http_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_git_lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_git_lfs_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_git_lfs_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_mcp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_authenticated_mcp_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_authenticated_mcp_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_authenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_authenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_incident_management_notification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_incident_management_notification_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_incident_management_notification_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_protected_paths_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_protected_paths_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_protected_paths_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_unauthenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_deprecated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_deprecated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_deprecated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_files_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_files_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_files_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_git_http_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 throttle_unauthenticated_git_http_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_git_http_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_unauthenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 throttle_unauthenticated_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  throttle_unauthenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  throttle_unauthenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -11648,8 +14281,19 @@ class ApplicationSettings(pulumi.CustomResource):
                  user_defaults_to_private_profile: pulumi.Input[Optional[_builtins.bool]] = None,
                  user_oauth_applications: pulumi.Input[Optional[_builtins.bool]] = None,
                  user_show_add_ssh_key_message: pulumi.Input[Optional[_builtins.bool]] = None,
+                 users_api_limit_followers: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_following: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_gpg_key: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_gpg_keys: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_ssh_key: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_ssh_keys: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_api_limit_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_get_by_id_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 users_get_by_id_limit_allowlist_raw: pulumi.Input[Optional[_builtins.str]] = None,
                  valid_runner_registrars: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version_check_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 web_hook_event_resend_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 web_hook_test_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  web_ide_clientside_preview_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  whats_new_variant: pulumi.Input[Optional[_builtins.str]] = None,
                  wiki_page_max_content_bytes: pulumi.Input[Optional[_builtins.int]] = None,
@@ -11666,6 +14310,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["admin_mode"] = admin_mode
             __props__.__dict__["after_sign_out_path"] = after_sign_out_path
             __props__.__dict__["after_sign_up_text"] = after_sign_up_text
+            __props__.__dict__["ai_action_api_rate_limit"] = ai_action_api_rate_limit
             __props__.__dict__["akismet_api_key"] = None if akismet_api_key is None else pulumi.Output.secret(akismet_api_key)
             __props__.__dict__["akismet_enabled"] = akismet_enabled
             __props__.__dict__["allow_account_deletion"] = allow_account_deletion
@@ -11686,6 +14331,8 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["auto_ban_user_on_excessive_projects_download"] = auto_ban_user_on_excessive_projects_download
             __props__.__dict__["auto_devops_domain"] = auto_devops_domain
             __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
+            __props__.__dict__["autocomplete_users_limit"] = autocomplete_users_limit
+            __props__.__dict__["autocomplete_users_unauthenticated_limit"] = autocomplete_users_unauthenticated_limit
             __props__.__dict__["automatic_purchased_storage_allocation"] = automatic_purchased_storage_allocation
             __props__.__dict__["bulk_import_concurrent_pipeline_batch_limit"] = bulk_import_concurrent_pipeline_batch_limit
             __props__.__dict__["bulk_import_enabled"] = bulk_import_enabled
@@ -11693,12 +14340,16 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["can_create_group"] = can_create_group
             __props__.__dict__["check_namespace_plan"] = check_namespace_plan
             __props__.__dict__["ci_job_live_trace_enabled"] = ci_job_live_trace_enabled
+            __props__.__dict__["ci_lint_limit_per_user"] = ci_lint_limit_per_user
             __props__.__dict__["ci_max_includes"] = ci_max_includes
             __props__.__dict__["ci_max_total_yaml_size_bytes"] = ci_max_total_yaml_size_bytes
             __props__.__dict__["commit_email_hostname"] = commit_email_hostname
             __props__.__dict__["concurrent_bitbucket_import_jobs_limit"] = concurrent_bitbucket_import_jobs_limit
             __props__.__dict__["concurrent_bitbucket_server_import_jobs_limit"] = concurrent_bitbucket_server_import_jobs_limit
             __props__.__dict__["concurrent_github_import_jobs_limit"] = concurrent_github_import_jobs_limit
+            __props__.__dict__["concurrent_pull_request_import_jobs_limit"] = concurrent_pull_request_import_jobs_limit
+            __props__.__dict__["concurrent_relation_batch_export_limit"] = concurrent_relation_batch_export_limit
+            __props__.__dict__["concurrent_relation_export_limit"] = concurrent_relation_export_limit
             __props__.__dict__["container_expiration_policies_enable_historic_entries"] = container_expiration_policies_enable_historic_entries
             __props__.__dict__["container_registry_cleanup_tags_service_max_list_size"] = container_registry_cleanup_tags_service_max_list_size
             __props__.__dict__["container_registry_delete_tags_service_timeout"] = container_registry_delete_tags_service_timeout
@@ -11789,6 +14440,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["first_day_of_week"] = first_day_of_week
             __props__.__dict__["geo_node_allowed_ips"] = geo_node_allowed_ips
             __props__.__dict__["geo_status_timeout"] = geo_status_timeout
+            __props__.__dict__["git_push_pipeline_limit"] = git_push_pipeline_limit
             __props__.__dict__["git_rate_limit_users_alertlists"] = git_rate_limit_users_alertlists
             __props__.__dict__["git_rate_limit_users_allowlists"] = git_rate_limit_users_allowlists
             __props__.__dict__["git_two_factor_session_expiry"] = git_two_factor_session_expiry
@@ -11802,7 +14454,11 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["grafana_enabled"] = grafana_enabled
             __props__.__dict__["grafana_url"] = grafana_url
             __props__.__dict__["gravatar_enabled"] = gravatar_enabled
+            __props__.__dict__["group_download_export_limit"] = group_download_export_limit
+            __props__.__dict__["group_export_limit"] = group_export_limit
+            __props__.__dict__["group_import_limit"] = group_import_limit
             __props__.__dict__["group_owners_can_manage_default_branch_protection"] = group_owners_can_manage_default_branch_protection
+            __props__.__dict__["group_secrets_limit"] = group_secrets_limit
             __props__.__dict__["help_page_hide_commercial_content"] = help_page_hide_commercial_content
             __props__.__dict__["help_page_support_url"] = help_page_support_url
             __props__.__dict__["help_page_text"] = help_page_text
@@ -11812,6 +14468,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["housekeeping_enabled"] = housekeeping_enabled
             __props__.__dict__["housekeeping_optimize_repository_period"] = housekeeping_optimize_repository_period
             __props__.__dict__["html_emails_enabled"] = html_emails_enabled
+            __props__.__dict__["import_jobs_concurrency_limit"] = import_jobs_concurrency_limit
             __props__.__dict__["import_sources"] = import_sources
             __props__.__dict__["in_product_marketing_emails_enabled"] = in_product_marketing_emails_enabled
             __props__.__dict__["inactive_projects_delete_after_months"] = inactive_projects_delete_after_months
@@ -11824,6 +14481,8 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["jira_connect_application_key"] = jira_connect_application_key
             __props__.__dict__["jira_connect_proxy_url"] = jira_connect_proxy_url
             __props__.__dict__["jira_connect_public_key_storage_enabled"] = jira_connect_public_key_storage_enabled
+            __props__.__dict__["job_play_limit_per_user_project"] = job_play_limit_per_user_project
+            __props__.__dict__["job_retry_limit_per_user_project"] = job_retry_limit_per_user_project
             __props__.__dict__["keep_latest_artifact"] = keep_latest_artifact
             __props__.__dict__["kroki_enabled"] = kroki_enabled
             __props__.__dict__["kroki_formats"] = kroki_formats
@@ -11841,6 +14500,8 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["max_attachment_size"] = max_attachment_size
             __props__.__dict__["max_decompressed_archive_size"] = max_decompressed_archive_size
             __props__.__dict__["max_export_size"] = max_export_size
+            __props__.__dict__["max_github_response_size_limit"] = max_github_response_size_limit
+            __props__.__dict__["max_http_response_size_limit"] = max_http_response_size_limit
             __props__.__dict__["max_import_remote_file_size"] = max_import_remote_file_size
             __props__.__dict__["max_import_size"] = max_import_size
             __props__.__dict__["max_login_attempts"] = max_login_attempts
@@ -11858,6 +14519,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["mirror_capacity_threshold"] = mirror_capacity_threshold
             __props__.__dict__["mirror_max_capacity"] = mirror_max_capacity
             __props__.__dict__["mirror_max_delay"] = mirror_max_delay
+            __props__.__dict__["notes_create_limit"] = notes_create_limit
             __props__.__dict__["notify_on_unknown_sign_in"] = notify_on_unknown_sign_in
             __props__.__dict__["npm_package_requests_forwarding"] = npm_package_requests_forwarding
             __props__.__dict__["nuget_skip_metadata_url_validation"] = nuget_skip_metadata_url_validation
@@ -11875,14 +14537,21 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["password_uppercase_required"] = password_uppercase_required
             __props__.__dict__["performance_bar_allowed_group_path"] = performance_bar_allowed_group_path
             __props__.__dict__["personal_access_token_prefix"] = personal_access_token_prefix
+            __props__.__dict__["pipeline_cancel_limit_per_user_project"] = pipeline_cancel_limit_per_user_project
             __props__.__dict__["pipeline_limit_per_project_user_sha"] = pipeline_limit_per_project_user_sha
+            __props__.__dict__["pipeline_limit_per_user"] = pipeline_limit_per_user
+            __props__.__dict__["pipeline_retry_limit_per_user_project"] = pipeline_retry_limit_per_user_project
             __props__.__dict__["plantuml_enabled"] = plantuml_enabled
             __props__.__dict__["plantuml_url"] = plantuml_url
             __props__.__dict__["polling_interval_multiplier"] = polling_interval_multiplier
             __props__.__dict__["prevent_merge_requests_author_approval"] = prevent_merge_requests_author_approval
             __props__.__dict__["prevent_merge_requests_committers_approval"] = prevent_merge_requests_committers_approval
+            __props__.__dict__["project_download_export_limit"] = project_download_export_limit
             __props__.__dict__["project_export_enabled"] = project_export_enabled
+            __props__.__dict__["project_export_limit"] = project_export_limit
+            __props__.__dict__["project_import_limit"] = project_import_limit
             __props__.__dict__["project_jobs_api_rate_limit"] = project_jobs_api_rate_limit
+            __props__.__dict__["project_secrets_limit"] = project_secrets_limit
             __props__.__dict__["projects_api_rate_limit_unauthenticated"] = projects_api_rate_limit_unauthenticated
             __props__.__dict__["prometheus_metrics_enabled"] = prometheus_metrics_enabled
             __props__.__dict__["protected_ci_variables"] = protected_ci_variables
@@ -11891,6 +14560,7 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["pypi_package_requests_forwarding"] = pypi_package_requests_forwarding
             __props__.__dict__["rate_limiting_response_text"] = rate_limiting_response_text
             __props__.__dict__["raw_blob_request_limit"] = raw_blob_request_limit
+            __props__.__dict__["raw_blob_request_limit_unauthenticated"] = raw_blob_request_limit_unauthenticated
             __props__.__dict__["recaptcha_enabled"] = recaptcha_enabled
             __props__.__dict__["recaptcha_private_key"] = None if recaptcha_private_key is None else pulumi.Output.secret(recaptcha_private_key)
             __props__.__dict__["recaptcha_site_key"] = None if recaptcha_site_key is None else pulumi.Output.secret(recaptcha_site_key)
@@ -11906,6 +14576,11 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["require_two_factor_authentication"] = require_two_factor_authentication
             __props__.__dict__["restricted_visibility_levels"] = restricted_visibility_levels
             __props__.__dict__["rsa_key_restriction"] = rsa_key_restriction
+            __props__.__dict__["runner_jobs_endpoints_api_limit"] = runner_jobs_endpoints_api_limit
+            __props__.__dict__["runner_jobs_patch_trace_api_limit"] = runner_jobs_patch_trace_api_limit
+            __props__.__dict__["runner_jobs_request_api_limit"] = runner_jobs_request_api_limit
+            __props__.__dict__["scan_execution_policies_action_limit"] = scan_execution_policies_action_limit
+            __props__.__dict__["scan_execution_policies_schedule_limit"] = scan_execution_policies_schedule_limit
             __props__.__dict__["search_rate_limit"] = search_rate_limit
             __props__.__dict__["search_rate_limit_unauthenticated"] = search_rate_limit_unauthenticated
             __props__.__dict__["secret_push_protection_available"] = secret_push_protection_available
@@ -11946,26 +14621,60 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["static_objects_external_storage_auth_token"] = None if static_objects_external_storage_auth_token is None else pulumi.Output.secret(static_objects_external_storage_auth_token)
             __props__.__dict__["static_objects_external_storage_url"] = None if static_objects_external_storage_url is None else pulumi.Output.secret(static_objects_external_storage_url)
             __props__.__dict__["suggest_pipeline_enabled"] = suggest_pipeline_enabled
+            __props__.__dict__["tags_create_limit"] = tags_create_limit
             __props__.__dict__["terminal_max_session_time"] = terminal_max_session_time
             __props__.__dict__["terms"] = terms
             __props__.__dict__["throttle_authenticated_api_enabled"] = throttle_authenticated_api_enabled
             __props__.__dict__["throttle_authenticated_api_period_in_seconds"] = throttle_authenticated_api_period_in_seconds
             __props__.__dict__["throttle_authenticated_api_requests_per_period"] = throttle_authenticated_api_requests_per_period
+            __props__.__dict__["throttle_authenticated_dependency_proxy_enabled"] = throttle_authenticated_dependency_proxy_enabled
+            __props__.__dict__["throttle_authenticated_dependency_proxy_period_in_seconds"] = throttle_authenticated_dependency_proxy_period_in_seconds
+            __props__.__dict__["throttle_authenticated_dependency_proxy_requests_per_period"] = throttle_authenticated_dependency_proxy_requests_per_period
+            __props__.__dict__["throttle_authenticated_deprecated_api_enabled"] = throttle_authenticated_deprecated_api_enabled
+            __props__.__dict__["throttle_authenticated_deprecated_api_period_in_seconds"] = throttle_authenticated_deprecated_api_period_in_seconds
+            __props__.__dict__["throttle_authenticated_deprecated_api_requests_per_period"] = throttle_authenticated_deprecated_api_requests_per_period
+            __props__.__dict__["throttle_authenticated_files_api_enabled"] = throttle_authenticated_files_api_enabled
+            __props__.__dict__["throttle_authenticated_files_api_period_in_seconds"] = throttle_authenticated_files_api_period_in_seconds
+            __props__.__dict__["throttle_authenticated_files_api_requests_per_period"] = throttle_authenticated_files_api_requests_per_period
+            __props__.__dict__["throttle_authenticated_git_http_enabled"] = throttle_authenticated_git_http_enabled
+            __props__.__dict__["throttle_authenticated_git_http_period_in_seconds"] = throttle_authenticated_git_http_period_in_seconds
+            __props__.__dict__["throttle_authenticated_git_http_requests_per_period"] = throttle_authenticated_git_http_requests_per_period
             __props__.__dict__["throttle_authenticated_git_lfs_enabled"] = throttle_authenticated_git_lfs_enabled
             __props__.__dict__["throttle_authenticated_git_lfs_period_in_seconds"] = throttle_authenticated_git_lfs_period_in_seconds
             __props__.__dict__["throttle_authenticated_git_lfs_requests_per_period"] = throttle_authenticated_git_lfs_requests_per_period
+            __props__.__dict__["throttle_authenticated_mcp_enabled"] = throttle_authenticated_mcp_enabled
+            __props__.__dict__["throttle_authenticated_mcp_period_in_seconds"] = throttle_authenticated_mcp_period_in_seconds
+            __props__.__dict__["throttle_authenticated_mcp_requests_per_period"] = throttle_authenticated_mcp_requests_per_period
             __props__.__dict__["throttle_authenticated_packages_api_enabled"] = throttle_authenticated_packages_api_enabled
             __props__.__dict__["throttle_authenticated_packages_api_period_in_seconds"] = throttle_authenticated_packages_api_period_in_seconds
             __props__.__dict__["throttle_authenticated_packages_api_requests_per_period"] = throttle_authenticated_packages_api_requests_per_period
             __props__.__dict__["throttle_authenticated_web_enabled"] = throttle_authenticated_web_enabled
             __props__.__dict__["throttle_authenticated_web_period_in_seconds"] = throttle_authenticated_web_period_in_seconds
             __props__.__dict__["throttle_authenticated_web_requests_per_period"] = throttle_authenticated_web_requests_per_period
+            __props__.__dict__["throttle_incident_management_notification_enabled"] = throttle_incident_management_notification_enabled
+            __props__.__dict__["throttle_incident_management_notification_per_period"] = throttle_incident_management_notification_per_period
+            __props__.__dict__["throttle_incident_management_notification_period_in_seconds"] = throttle_incident_management_notification_period_in_seconds
+            __props__.__dict__["throttle_protected_paths_enabled"] = throttle_protected_paths_enabled
+            __props__.__dict__["throttle_protected_paths_period_in_seconds"] = throttle_protected_paths_period_in_seconds
+            __props__.__dict__["throttle_protected_paths_requests_per_period"] = throttle_protected_paths_requests_per_period
             __props__.__dict__["throttle_unauthenticated_api_enabled"] = throttle_unauthenticated_api_enabled
             __props__.__dict__["throttle_unauthenticated_api_period_in_seconds"] = throttle_unauthenticated_api_period_in_seconds
             __props__.__dict__["throttle_unauthenticated_api_requests_per_period"] = throttle_unauthenticated_api_requests_per_period
+            __props__.__dict__["throttle_unauthenticated_deprecated_api_enabled"] = throttle_unauthenticated_deprecated_api_enabled
+            __props__.__dict__["throttle_unauthenticated_deprecated_api_period_in_seconds"] = throttle_unauthenticated_deprecated_api_period_in_seconds
+            __props__.__dict__["throttle_unauthenticated_deprecated_api_requests_per_period"] = throttle_unauthenticated_deprecated_api_requests_per_period
+            __props__.__dict__["throttle_unauthenticated_enabled"] = throttle_unauthenticated_enabled
+            __props__.__dict__["throttle_unauthenticated_files_api_enabled"] = throttle_unauthenticated_files_api_enabled
+            __props__.__dict__["throttle_unauthenticated_files_api_period_in_seconds"] = throttle_unauthenticated_files_api_period_in_seconds
+            __props__.__dict__["throttle_unauthenticated_files_api_requests_per_period"] = throttle_unauthenticated_files_api_requests_per_period
+            __props__.__dict__["throttle_unauthenticated_git_http_enabled"] = throttle_unauthenticated_git_http_enabled
+            __props__.__dict__["throttle_unauthenticated_git_http_period_in_seconds"] = throttle_unauthenticated_git_http_period_in_seconds
+            __props__.__dict__["throttle_unauthenticated_git_http_requests_per_period"] = throttle_unauthenticated_git_http_requests_per_period
             __props__.__dict__["throttle_unauthenticated_packages_api_enabled"] = throttle_unauthenticated_packages_api_enabled
             __props__.__dict__["throttle_unauthenticated_packages_api_period_in_seconds"] = throttle_unauthenticated_packages_api_period_in_seconds
             __props__.__dict__["throttle_unauthenticated_packages_api_requests_per_period"] = throttle_unauthenticated_packages_api_requests_per_period
+            __props__.__dict__["throttle_unauthenticated_period_in_seconds"] = throttle_unauthenticated_period_in_seconds
+            __props__.__dict__["throttle_unauthenticated_requests_per_period"] = throttle_unauthenticated_requests_per_period
             __props__.__dict__["throttle_unauthenticated_web_enabled"] = throttle_unauthenticated_web_enabled
             __props__.__dict__["throttle_unauthenticated_web_period_in_seconds"] = throttle_unauthenticated_web_period_in_seconds
             __props__.__dict__["throttle_unauthenticated_web_requests_per_period"] = throttle_unauthenticated_web_requests_per_period
@@ -11985,8 +14694,19 @@ class ApplicationSettings(pulumi.CustomResource):
             __props__.__dict__["user_defaults_to_private_profile"] = user_defaults_to_private_profile
             __props__.__dict__["user_oauth_applications"] = user_oauth_applications
             __props__.__dict__["user_show_add_ssh_key_message"] = user_show_add_ssh_key_message
+            __props__.__dict__["users_api_limit_followers"] = users_api_limit_followers
+            __props__.__dict__["users_api_limit_following"] = users_api_limit_following
+            __props__.__dict__["users_api_limit_gpg_key"] = users_api_limit_gpg_key
+            __props__.__dict__["users_api_limit_gpg_keys"] = users_api_limit_gpg_keys
+            __props__.__dict__["users_api_limit_ssh_key"] = users_api_limit_ssh_key
+            __props__.__dict__["users_api_limit_ssh_keys"] = users_api_limit_ssh_keys
+            __props__.__dict__["users_api_limit_status"] = users_api_limit_status
+            __props__.__dict__["users_get_by_id_limit"] = users_get_by_id_limit
+            __props__.__dict__["users_get_by_id_limit_allowlist_raw"] = users_get_by_id_limit_allowlist_raw
             __props__.__dict__["valid_runner_registrars"] = valid_runner_registrars
             __props__.__dict__["version_check_enabled"] = version_check_enabled
+            __props__.__dict__["web_hook_event_resend_limit"] = web_hook_event_resend_limit
+            __props__.__dict__["web_hook_test_limit"] = web_hook_test_limit
             __props__.__dict__["web_ide_clientside_preview_enabled"] = web_ide_clientside_preview_enabled
             __props__.__dict__["whats_new_variant"] = whats_new_variant
             __props__.__dict__["wiki_page_max_content_bytes"] = wiki_page_max_content_bytes
@@ -12008,6 +14728,7 @@ class ApplicationSettings(pulumi.CustomResource):
             admin_mode: pulumi.Input[Optional[_builtins.bool]] = None,
             after_sign_out_path: pulumi.Input[Optional[_builtins.str]] = None,
             after_sign_up_text: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_action_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
             akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
             akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -12028,6 +14749,8 @@ class ApplicationSettings(pulumi.CustomResource):
             auto_ban_user_on_excessive_projects_download: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_devops_domain: pulumi.Input[Optional[_builtins.str]] = None,
             auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            autocomplete_users_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            autocomplete_users_unauthenticated_limit: pulumi.Input[Optional[_builtins.int]] = None,
             automatic_purchased_storage_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
             bulk_import_concurrent_pipeline_batch_limit: pulumi.Input[Optional[_builtins.int]] = None,
             bulk_import_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -12035,12 +14758,16 @@ class ApplicationSettings(pulumi.CustomResource):
             can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
             check_namespace_plan: pulumi.Input[Optional[_builtins.bool]] = None,
             ci_job_live_trace_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ci_lint_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
             ci_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
             ci_max_total_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
             commit_email_hostname: pulumi.Input[Optional[_builtins.str]] = None,
             concurrent_bitbucket_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
             concurrent_bitbucket_server_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
             concurrent_github_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            concurrent_pull_request_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            concurrent_relation_batch_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            concurrent_relation_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
             container_expiration_policies_enable_historic_entries: pulumi.Input[Optional[_builtins.bool]] = None,
             container_registry_cleanup_tags_service_max_list_size: pulumi.Input[Optional[_builtins.int]] = None,
             container_registry_delete_tags_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
@@ -12131,6 +14858,7 @@ class ApplicationSettings(pulumi.CustomResource):
             first_day_of_week: pulumi.Input[Optional[_builtins.int]] = None,
             geo_node_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
             geo_status_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            git_push_pipeline_limit: pulumi.Input[Optional[_builtins.int]] = None,
             git_rate_limit_users_alertlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
             git_rate_limit_users_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             git_two_factor_session_expiry: pulumi.Input[Optional[_builtins.int]] = None,
@@ -12146,7 +14874,11 @@ class ApplicationSettings(pulumi.CustomResource):
             grafana_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             grafana_url: pulumi.Input[Optional[_builtins.str]] = None,
             gravatar_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_download_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            group_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            group_import_limit: pulumi.Input[Optional[_builtins.int]] = None,
             group_owners_can_manage_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_secrets_limit: pulumi.Input[Optional[_builtins.int]] = None,
             help_page_hide_commercial_content: pulumi.Input[Optional[_builtins.bool]] = None,
             help_page_support_url: pulumi.Input[Optional[_builtins.str]] = None,
             help_page_text: pulumi.Input[Optional[_builtins.str]] = None,
@@ -12156,6 +14888,7 @@ class ApplicationSettings(pulumi.CustomResource):
             housekeeping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             housekeeping_optimize_repository_period: pulumi.Input[Optional[_builtins.int]] = None,
             html_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            import_jobs_concurrency_limit: pulumi.Input[Optional[_builtins.int]] = None,
             import_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             in_product_marketing_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             inactive_projects_delete_after_months: pulumi.Input[Optional[_builtins.int]] = None,
@@ -12168,6 +14901,8 @@ class ApplicationSettings(pulumi.CustomResource):
             jira_connect_application_key: pulumi.Input[Optional[_builtins.str]] = None,
             jira_connect_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
             jira_connect_public_key_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            job_play_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
+            job_retry_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
             keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
             kroki_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             kroki_formats: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
@@ -12185,6 +14920,8 @@ class ApplicationSettings(pulumi.CustomResource):
             max_attachment_size: pulumi.Input[Optional[_builtins.int]] = None,
             max_decompressed_archive_size: pulumi.Input[Optional[_builtins.int]] = None,
             max_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+            max_github_response_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            max_http_response_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
             max_import_remote_file_size: pulumi.Input[Optional[_builtins.int]] = None,
             max_import_size: pulumi.Input[Optional[_builtins.int]] = None,
             max_login_attempts: pulumi.Input[Optional[_builtins.int]] = None,
@@ -12202,6 +14939,7 @@ class ApplicationSettings(pulumi.CustomResource):
             mirror_capacity_threshold: pulumi.Input[Optional[_builtins.int]] = None,
             mirror_max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
             mirror_max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            notes_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
             notify_on_unknown_sign_in: pulumi.Input[Optional[_builtins.bool]] = None,
             npm_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
             nuget_skip_metadata_url_validation: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -12219,14 +14957,21 @@ class ApplicationSettings(pulumi.CustomResource):
             password_uppercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
             performance_bar_allowed_group_path: pulumi.Input[Optional[_builtins.str]] = None,
             personal_access_token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline_cancel_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
             pipeline_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+            pipeline_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+            pipeline_retry_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
             plantuml_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             plantuml_url: pulumi.Input[Optional[_builtins.str]] = None,
             polling_interval_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
             prevent_merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
             prevent_merge_requests_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_download_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
             project_export_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            project_import_limit: pulumi.Input[Optional[_builtins.int]] = None,
             project_jobs_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            project_secrets_limit: pulumi.Input[Optional[_builtins.int]] = None,
             projects_api_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
             prometheus_metrics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             protected_ci_variables: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -12235,6 +14980,7 @@ class ApplicationSettings(pulumi.CustomResource):
             pypi_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
             rate_limiting_response_text: pulumi.Input[Optional[_builtins.str]] = None,
             raw_blob_request_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            raw_blob_request_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
             recaptcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             recaptcha_private_key: pulumi.Input[Optional[_builtins.str]] = None,
             recaptcha_site_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -12250,6 +14996,11 @@ class ApplicationSettings(pulumi.CustomResource):
             require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
             restricted_visibility_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+            runner_jobs_endpoints_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            runner_jobs_patch_trace_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            runner_jobs_request_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            scan_execution_policies_action_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            scan_execution_policies_schedule_limit: pulumi.Input[Optional[_builtins.int]] = None,
             search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
             search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
             secret_push_protection_available: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -12290,26 +15041,60 @@ class ApplicationSettings(pulumi.CustomResource):
             static_objects_external_storage_auth_token: pulumi.Input[Optional[_builtins.str]] = None,
             static_objects_external_storage_url: pulumi.Input[Optional[_builtins.str]] = None,
             suggest_pipeline_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
             terminal_max_session_time: pulumi.Input[Optional[_builtins.int]] = None,
             terms: pulumi.Input[Optional[_builtins.str]] = None,
             throttle_authenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             throttle_authenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_authenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_dependency_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_authenticated_dependency_proxy_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_dependency_proxy_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_deprecated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_authenticated_deprecated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_deprecated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_files_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_authenticated_files_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_files_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_git_http_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_authenticated_git_http_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_git_http_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_authenticated_git_lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             throttle_authenticated_git_lfs_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_authenticated_git_lfs_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_mcp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_authenticated_mcp_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_mcp_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_authenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             throttle_authenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_authenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_authenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             throttle_authenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_authenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_incident_management_notification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_incident_management_notification_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_incident_management_notification_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_protected_paths_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_protected_paths_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_protected_paths_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_unauthenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             throttle_unauthenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_unauthenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_deprecated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_unauthenticated_deprecated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_deprecated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_unauthenticated_files_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_unauthenticated_files_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_files_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_git_http_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_unauthenticated_git_http_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_git_http_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_unauthenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             throttle_unauthenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_unauthenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_unauthenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             throttle_unauthenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_unauthenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -12329,8 +15114,19 @@ class ApplicationSettings(pulumi.CustomResource):
             user_defaults_to_private_profile: pulumi.Input[Optional[_builtins.bool]] = None,
             user_oauth_applications: pulumi.Input[Optional[_builtins.bool]] = None,
             user_show_add_ssh_key_message: pulumi.Input[Optional[_builtins.bool]] = None,
+            users_api_limit_followers: pulumi.Input[Optional[_builtins.int]] = None,
+            users_api_limit_following: pulumi.Input[Optional[_builtins.int]] = None,
+            users_api_limit_gpg_key: pulumi.Input[Optional[_builtins.int]] = None,
+            users_api_limit_gpg_keys: pulumi.Input[Optional[_builtins.int]] = None,
+            users_api_limit_ssh_key: pulumi.Input[Optional[_builtins.int]] = None,
+            users_api_limit_ssh_keys: pulumi.Input[Optional[_builtins.int]] = None,
+            users_api_limit_status: pulumi.Input[Optional[_builtins.int]] = None,
+            users_get_by_id_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            users_get_by_id_limit_allowlist_raw: pulumi.Input[Optional[_builtins.str]] = None,
             valid_runner_registrars: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             version_check_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            web_hook_event_resend_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            web_hook_test_limit: pulumi.Input[Optional[_builtins.int]] = None,
             web_ide_clientside_preview_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             whats_new_variant: pulumi.Input[Optional[_builtins.str]] = None,
             wiki_page_max_content_bytes: pulumi.Input[Optional[_builtins.int]] = None) -> 'ApplicationSettings':
@@ -12345,6 +15141,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] admin_mode: Require administrators to enable Admin Mode by re-authenticating for administrative tasks.
         :param pulumi.Input[_builtins.str] after_sign_out_path: Where to redirect users after logout.
         :param pulumi.Input[_builtins.str] after_sign_up_text: Text shown to the user after signing up.
+        :param pulumi.Input[_builtins.int] ai_action_api_rate_limit: Maximum number of requests allowed to the aiAction GraphQL mutation per user per eight hours. Default: 160. Set to 0 to disable the rate limit. Introduced in GitLab 17.2.
         :param pulumi.Input[_builtins.str] akismet_api_key: API key for Akismet spam protection.
         :param pulumi.Input[_builtins.bool] akismet_enabled: (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
         :param pulumi.Input[_builtins.bool] allow_account_deletion: Set to true to allow users to delete their accounts. Premium and Ultimate only.
@@ -12365,6 +15162,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_ban_user_on_excessive_projects_download: When enabled, users will get automatically banned from the application when they download more than the maximum number of unique projects in the time period specified by max*number*of*repository*downloads and max*number*of*repository*downloads*within*time_period respectively. Self-managed, Ultimate only.
         :param pulumi.Input[_builtins.str] auto_devops_domain: Specify a domain to use by default for every project’s Auto Review Apps and Auto Deploy stages.
         :param pulumi.Input[_builtins.bool] auto_devops_enabled: Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
+        :param pulumi.Input[_builtins.int] autocomplete_users_limit: Maximum number of authenticated requests per minute to the GET /autocomplete/users endpoint.
+        :param pulumi.Input[_builtins.int] autocomplete_users_unauthenticated_limit: Maximum number of unauthenticated requests per minute to the GET /autocomplete/users endpoint.
         :param pulumi.Input[_builtins.bool] automatic_purchased_storage_allocation: Enabling this permits automatic allocation of purchased storage in a namespace.
         :param pulumi.Input[_builtins.int] bulk_import_concurrent_pipeline_batch_limit: Maximum simultaneous Direct Transfer batches to process.
         :param pulumi.Input[_builtins.bool] bulk_import_enabled: Enable migrating GitLab groups by direct transfer.
@@ -12372,12 +15171,16 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] can_create_group: Indicates whether users can create top-level groups.
         :param pulumi.Input[_builtins.bool] check_namespace_plan: Enabling this makes only licensed EE features available to projects if the project namespace’s plan includes the feature or if the project is public.
         :param pulumi.Input[_builtins.bool] ci_job_live_trace_enabled: Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
+        :param pulumi.Input[_builtins.int] ci_lint_limit_per_user: Maximum number of CI Lint requests per minute per user. Disabled by default.
         :param pulumi.Input[_builtins.int] ci_max_includes: The maximum number of includes per pipeline.
         :param pulumi.Input[_builtins.int] ci_max_total_yaml_size_bytes: The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
         :param pulumi.Input[_builtins.str] commit_email_hostname: Custom hostname (for private commit emails).
         :param pulumi.Input[_builtins.int] concurrent_bitbucket_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Cloud importer.
         :param pulumi.Input[_builtins.int] concurrent_bitbucket_server_import_jobs_limit: Maximum number of simultaneous import jobs for the Bitbucket Server importer.
         :param pulumi.Input[_builtins.int] concurrent_github_import_jobs_limit: Maximum number of simultaneous import jobs for the GitHub importer.
+        :param pulumi.Input[_builtins.int] concurrent_pull_request_import_jobs_limit: Maximum number of simultaneous pull request import jobs for the GitHub, Bitbucket Cloud, and Bitbucket Server importers. Default is 200. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.int] concurrent_relation_batch_export_limit: Maximum number of simultaneous batch export jobs to process. Introduced in GitLab 17.6.
+        :param pulumi.Input[_builtins.int] concurrent_relation_export_limit: Maximum number of simultaneous project file exports to process. Default: 25. Introduced in GitLab 19.4 with a feature flag named limit*concurrent*project_exports. Disabled by default.
         :param pulumi.Input[_builtins.bool] container_expiration_policies_enable_historic_entries: Enable cleanup policies for all projects.
         :param pulumi.Input[_builtins.int] container_registry_cleanup_tags_service_max_list_size: The maximum number of tags that can be deleted in a single execution of cleanup policies.
         :param pulumi.Input[_builtins.int] container_registry_delete_tags_service_timeout: The maximum time, in seconds, that the cleanup process can take to delete a batch of tags for cleanup policies.
@@ -12468,6 +15271,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] first_day_of_week: Start day of the week for calendar views and date pickers. Valid values are 0 for Sunday, 1 for Monday, and 6 for Saturday.
         :param pulumi.Input[_builtins.str] geo_node_allowed_ips: Comma-separated list of IPs and CIDRs of allowed secondary nodes. For example, 1.1.1.1, 2.2.2.0/24.
         :param pulumi.Input[_builtins.int] geo_status_timeout: The amount of seconds after which a request to get a secondary node status times out.
+        :param pulumi.Input[_builtins.int] git_push_pipeline_limit: Set the maximum number of tag or branch pipelines that can be triggered by a single Git push. For more information about this limit, see number of pipelines per Git push.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] git_rate_limit_users_alertlists: List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] git_rate_limit_users_allowlists: List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
         :param pulumi.Input[_builtins.int] git_two_factor_session_expiry: Maximum duration (in minutes) of a session for Git operations when 2FA is enabled.
@@ -12483,7 +15287,11 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] grafana_enabled: Enable Grafana.
         :param pulumi.Input[_builtins.str] grafana_url: Grafana URL.
         :param pulumi.Input[_builtins.bool] gravatar_enabled: Enable Gravatar.
+        :param pulumi.Input[_builtins.int] group_download_export_limit: Maximum number of group export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] group_export_limit: Maximum number of group exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] group_import_limit: Maximum number of group imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] group_owners_can_manage_default_branch_protection: Prevent overrides of default branch protection.
+        :param pulumi.Input[_builtins.int] group_secrets_limit: Maximum number of secrets allowed per group in Secrets Manager. Default: 500. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
         :param pulumi.Input[_builtins.bool] help_page_hide_commercial_content: Hide marketing-related entries from help.
         :param pulumi.Input[_builtins.str] help_page_support_url: Alternate support URL for help page and help dropdown.
         :param pulumi.Input[_builtins.str] help_page_text: Custom text displayed on the help page.
@@ -12493,6 +15301,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] housekeeping_enabled: Enable or disable Git housekeeping. If enabled, requires housekeeping*optimize*repository_period.
         :param pulumi.Input[_builtins.int] housekeeping_optimize_repository_period: Number of Git pushes after which an incremental git-repack is run.
         :param pulumi.Input[_builtins.bool] html_emails_enabled: Enable HTML emails.
+        :param pulumi.Input[_builtins.int] import_jobs_concurrency_limit: Maximum number of concurrently running jobs for each import worker type (project and group file base import, Direct Transfer, and GitHub, Bitbucket Cloud, and Bitbucket Server importer stages). Applied independently per worker type. Default is 100. Introduced in GitLab 19.1.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] import_sources: Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
         :param pulumi.Input[_builtins.bool] in_product_marketing_emails_enabled: Enable in-product marketing emails.
         :param pulumi.Input[_builtins.int] inactive_projects_delete_after_months: If delete*inactive*projects is true, the time (in months) to wait before deleting inactive projects.
@@ -12505,6 +15314,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] jira_connect_application_key: ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app.
         :param pulumi.Input[_builtins.str] jira_connect_proxy_url: URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app.
         :param pulumi.Input[_builtins.bool] jira_connect_public_key_storage_enabled: Enable public key storage for the GitLab for Jira Cloud app.
+        :param pulumi.Input[_builtins.int] job_play_limit_per_user_project: Maximum number of manual job runs per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_play. Disabled by default.
+        :param pulumi.Input[_builtins.int] job_retry_limit_per_user_project: Maximum number of job retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_retry. Disabled by default.
         :param pulumi.Input[_builtins.bool] keep_latest_artifact: Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
         :param pulumi.Input[_builtins.bool] kroki_enabled: (If enabled, requires: kroki_url) Enable Kroki integration.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.bool]]] kroki_formats: Configuration for formats supported by the Kroki instance.
@@ -12522,6 +15333,8 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_attachment_size: Limit attachment size in MB.
         :param pulumi.Input[_builtins.int] max_decompressed_archive_size: Maximum decompressed archive size in bytes.
         :param pulumi.Input[_builtins.int] max_export_size: Maximum export size in MB. 0 for unlimited.
+        :param pulumi.Input[_builtins.int] max_github_response_size_limit: Maximum allowed GitHub API response size in MB. 0 for unlimited.
+        :param pulumi.Input[_builtins.int] max_http_response_size_limit: Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4.
         :param pulumi.Input[_builtins.int] max_import_remote_file_size: Maximum remote file size for imports from external object storages.
         :param pulumi.Input[_builtins.int] max_import_size: Maximum import size in MB. 0 for unlimited.
         :param pulumi.Input[_builtins.int] max_login_attempts: Maximum number of sign-in attempts before locking out the user.
@@ -12539,6 +15352,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] mirror_capacity_threshold: Minimum capacity to be available before scheduling more mirrors preemptively.
         :param pulumi.Input[_builtins.int] mirror_max_capacity: Maximum number of mirrors that can be synchronizing at the same time.
         :param pulumi.Input[_builtins.int] mirror_max_delay: Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
+        :param pulumi.Input[_builtins.int] notes_create_limit: Maximum number of notes (comments) a user can create per minute. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] notify_on_unknown_sign_in: Enable sending notification if sign in from unknown IP address happens
         :param pulumi.Input[_builtins.bool] npm_package_requests_forwarding: Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
         :param pulumi.Input[_builtins.bool] nuget_skip_metadata_url_validation: Indicates whether to skip metadata URL validation for the NuGet package.
@@ -12556,14 +15370,21 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] password_uppercase_required: Indicates whether passwords require at least one uppercase letter.
         :param pulumi.Input[_builtins.str] performance_bar_allowed_group_path: Path of the group that is allowed to toggle the performance bar.
         :param pulumi.Input[_builtins.str] personal_access_token_prefix: Prefix for all generated personal access tokens.
+        :param pulumi.Input[_builtins.int] pipeline_cancel_limit_per_user_project: Maximum number of pipeline cancellations per minute per user per project. Introduced in GitLab 19.5.
         :param pulumi.Input[_builtins.int] pipeline_limit_per_project_user_sha: Maximum number of pipeline creation requests per minute per user and commit.
+        :param pulumi.Input[_builtins.int] pipeline_limit_per_user: Maximum number of pipeline creation requests per minute per user.
+        :param pulumi.Input[_builtins.int] pipeline_retry_limit_per_user_project: Maximum number of pipeline retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*pipeline_retry. Disabled by default.
         :param pulumi.Input[_builtins.bool] plantuml_enabled: (If enabled, requires: plantuml_url) Enable PlantUML integration.
         :param pulumi.Input[_builtins.str] plantuml_url: The PlantUML instance URL for integration.
         :param pulumi.Input[_builtins.float] polling_interval_multiplier: Interval multiplier used by endpoints that perform polling. Set to 0 to disable polling.
         :param pulumi.Input[_builtins.bool] prevent_merge_requests_author_approval: Prevent approval by merge request creator (author).
         :param pulumi.Input[_builtins.bool] prevent_merge_requests_committers_approval: Prevent approval by committers to merge requests.
+        :param pulumi.Input[_builtins.int] project_download_export_limit: Maximum number of project export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] project_export_enabled: Enable project export.
+        :param pulumi.Input[_builtins.int] project_export_limit: Maximum number of project exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] project_import_limit: Maximum number of project imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.int] project_jobs_api_rate_limit: Maximum authenticated requests to /project/:id/jobs per minute.
+        :param pulumi.Input[_builtins.int] project_secrets_limit: Maximum number of secrets allowed per project in Secrets Manager. Default: 100. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
         :param pulumi.Input[_builtins.int] projects_api_rate_limit_unauthenticated: Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
         :param pulumi.Input[_builtins.bool] prometheus_metrics_enabled: Enable Prometheus metrics.
         :param pulumi.Input[_builtins.bool] protected_ci_variables: CI/CD variables are protected by default.
@@ -12572,6 +15393,7 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] pypi_package_requests_forwarding: Use pypi.org as a default remote repository when the package is not found in the GitLab Package Registry for PyPI.
         :param pulumi.Input[_builtins.str] rate_limiting_response_text: When rate limiting is enabled via the throttle_* settings, send this plain text response when a rate limit is exceeded. ‘Retry later’ is sent if this is blank.
         :param pulumi.Input[_builtins.int] raw_blob_request_limit: Max number of requests per minute for each raw path. To disable throttling set to 0.
+        :param pulumi.Input[_builtins.int] raw_blob_request_limit_unauthenticated: Maximum number of unauthenticated requests per minute across all raw paths in a project (default is 800). Set to 0 to disable throttling.
         :param pulumi.Input[_builtins.bool] recaptcha_enabled: (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
         :param pulumi.Input[_builtins.str] recaptcha_private_key: Private key for reCAPTCHA.
         :param pulumi.Input[_builtins.str] recaptcha_site_key: Site key for reCAPTCHA.
@@ -12587,6 +15409,11 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] require_two_factor_authentication: (If enabled, requires: two*factor*grace_period) Require all users to set up Two-factor authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] restricted_visibility_levels: Selected levels cannot be used by non-Administrator users for groups, projects or snippets. Can take private, internal and public as a parameter. Null means there is no restriction.
         :param pulumi.Input[_builtins.int] rsa_key_restriction: The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
+        :param pulumi.Input[_builtins.int] runner_jobs_endpoints_api_limit: Maximum number of requests per minute per job token for requests to /jobs/* requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        :param pulumi.Input[_builtins.int] runner_jobs_patch_trace_api_limit: Maximum number of requests per minute per runner token for requests to the PATCH /jobs/:id/trace runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        :param pulumi.Input[_builtins.int] runner_jobs_request_api_limit: Maximum number of requests per minute per runner token for requests to the /jobs/request runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        :param pulumi.Input[_builtins.int] scan_execution_policies_action_limit: Maximum number of actions per scan execution policy. Default: 0. Maximum: 20.
+        :param pulumi.Input[_builtins.int] scan_execution_policies_schedule_limit: Maximum number of type: schedule rules per scan execution policy. Default: 0. Maximum: 20.
         :param pulumi.Input[_builtins.int] search_rate_limit: Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
         :param pulumi.Input[_builtins.int] search_rate_limit_unauthenticated: Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
         :param pulumi.Input[_builtins.bool] secret_push_protection_available: Allow projects to enable secret push protection. This does not enable secret push protection. Ultimate only.
@@ -12627,26 +15454,60 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] static_objects_external_storage_auth_token: Authentication token for the external storage linked in static*objects*external*storage*url.
         :param pulumi.Input[_builtins.str] static_objects_external_storage_url: URL to an external storage for repository static objects.
         :param pulumi.Input[_builtins.bool] suggest_pipeline_enabled: Enable pipeline suggestion banner.
+        :param pulumi.Input[_builtins.int] tags_create_limit: Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL tagCreate mutation, tag creation in the UI, and the /tag quick action. Default: 100. Set to 0 to disable the rate limit. Introduced in GitLab 19.4.
         :param pulumi.Input[_builtins.int] terminal_max_session_time: Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
         :param pulumi.Input[_builtins.str] terms: (Required by: enforce_terms) Markdown content for the ToS.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_api_enabled: (If enabled, requires: throttle*authenticated*api*period*in*seconds and throttle*authenticated*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_authenticated_api_period_in_seconds: Rate limit period (in seconds).
         :param pulumi.Input[_builtins.int] throttle_authenticated_api_requests_per_period: Maximum requests per period per user.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_dependency_proxy_enabled: If true, enforces the authenticated dependency proxy request rate limit. Default value: false. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_dependency_proxy_period_in_seconds: Rate limit period in seconds. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 15. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_dependency_proxy_requests_per_period: Maximum requests per period per user. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 1000. Introduced in GitLab 19.4.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_deprecated_api_enabled: (If enabled, requires: throttle*authenticated*deprecated*api*period*in*seconds and throttle*authenticated*deprecated*api*requests*per*period) Enable authenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_deprecated_api_period_in_seconds: Rate limit period (in seconds) for authenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_deprecated_api_requests_per_period: Maximum authenticated deprecated API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_files_api_enabled: (If enabled, requires: throttle*authenticated*files*api*period*in*seconds and throttle*authenticated*files*api*requests*per*period) Enable authenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_files_api_period_in_seconds: Rate limit period (in seconds) for authenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_files_api_requests_per_period: Maximum authenticated Files API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_git_http_enabled: If true, enforces the authenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_git_http_period_in_seconds: Rate limit period in seconds. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_git_http_requests_per_period: Maximum requests per period per user. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_git_lfs_enabled: Enable authenticated Git LFS request rate limit.
         :param pulumi.Input[_builtins.int] throttle_authenticated_git_lfs_period_in_seconds: Rate limit period (in seconds).
         :param pulumi.Input[_builtins.int] throttle_authenticated_git_lfs_requests_per_period: Maximum requests per period per user.
+        :param pulumi.Input[_builtins.bool] throttle_authenticated_mcp_enabled: (If enabled, requires: throttle*authenticated*mcp*period*in*seconds and throttle*authenticated*mcp*requests*per*period) If true, enforces the rate limit on requests to the MCP Server endpoint, /api/v4/mcp, for any HTTP method. Does not apply to other MCP endpoints. Introduced in GitLab 19.5.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_mcp_period_in_seconds: Rate limit period in seconds. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+        :param pulumi.Input[_builtins.int] throttle_authenticated_mcp_requests_per_period: Maximum requests per period per user. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_packages_api_enabled: (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_authenticated_packages_api_period_in_seconds: Rate limit period (in seconds). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_authenticated_packages_api_requests_per_period: Maximum requests per period per user. View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.bool] throttle_authenticated_web_enabled: (If enabled, requires: throttle*authenticated*web*period*in*seconds and throttle*authenticated*web*requests*per*period) Enable authenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_authenticated_web_period_in_seconds: Rate limit period (in seconds).
         :param pulumi.Input[_builtins.int] throttle_authenticated_web_requests_per_period: Maximum requests per period per user.
+        :param pulumi.Input[_builtins.bool] throttle_incident_management_notification_enabled: If true, enforces the inbound incident management alert notification rate limit, per project. Default value: false.
+        :param pulumi.Input[_builtins.int] throttle_incident_management_notification_per_period: Maximum inbound incident management alert notifications per period, per project. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+        :param pulumi.Input[_builtins.int] throttle_incident_management_notification_period_in_seconds: Rate limit period in seconds. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+        :param pulumi.Input[_builtins.bool] throttle_protected_paths_enabled: (If enabled, requires: throttle*protected*paths*period*in*seconds and throttle*protected*paths*requests*per*period) Enable rate limiting for protected paths (for example, sign-in and password reset). Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_protected_paths_period_in_seconds: Rate limit period (in seconds) for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_protected_paths_requests_per_period: Maximum requests per period per IP for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[_builtins.bool] throttle_unauthenticated_api_enabled: (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_api_period_in_seconds: Rate limit period in seconds.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_api_requests_per_period: Max requests per period per IP.
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_deprecated_api_enabled: (If enabled, requires: throttle*unauthenticated*deprecated*api*period*in*seconds and throttle*unauthenticated*deprecated*api*requests*per*period) Enable unauthenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_deprecated_api_period_in_seconds: Rate limit period (in seconds) for unauthenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_deprecated_api_requests_per_period: Maximum unauthenticated deprecated API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_enabled: (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*enabled or throttle*unauthenticated*api*enabled instead.) (**If enabled, requires**: throttle*unauthenticated*period*in*seconds and throttle*unauthenticated*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_files_api_enabled: (If enabled, requires: throttle*unauthenticated*files*api*period*in*seconds and throttle*unauthenticated*files*api*requests*per*period) Enable unauthenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_files_api_period_in_seconds: Rate limit period (in seconds) for unauthenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_files_api_requests_per_period: Maximum unauthenticated Files API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.bool] throttle_unauthenticated_git_http_enabled: If true, enforces the unauthenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 17.0.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_git_http_period_in_seconds: Rate limit period in seconds. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_git_http_requests_per_period: Maximum requests per period per IP. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
         :param pulumi.Input[_builtins.bool] throttle_unauthenticated_packages_api_enabled: (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_packages_api_period_in_seconds: Rate limit period (in seconds). View Package Registry rate limits for more details.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_packages_api_requests_per_period: Maximum requests per period per user. View Package Registry rate limits for more details.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_period_in_seconds: (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*period*in*seconds or throttle*unauthenticated*api*period*in*seconds instead.) Rate limit period in seconds.
+        :param pulumi.Input[_builtins.int] throttle_unauthenticated_requests_per_period: (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*requests*per*period or throttle*unauthenticated*api*requests*per*period instead.) Maximum requests per period per IP.
         :param pulumi.Input[_builtins.bool] throttle_unauthenticated_web_enabled: (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_web_period_in_seconds: Rate limit period in seconds.
         :param pulumi.Input[_builtins.int] throttle_unauthenticated_web_requests_per_period: Max requests per period per IP.
@@ -12666,8 +15527,19 @@ class ApplicationSettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] user_defaults_to_private_profile: Newly created users have private profile by default.
         :param pulumi.Input[_builtins.bool] user_oauth_applications: Allow users to register any application to use GitLab as an OAuth provider.
         :param pulumi.Input[_builtins.bool] user_show_add_ssh_key_message: When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
+        :param pulumi.Input[_builtins.int] users_api_limit_followers: Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_following: Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_gpg_key: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_gpg_keys: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_ssh_key: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_ssh_keys: Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_api_limit_status: Maximum number of requests per minute, per user or IP address. Default: 240. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        :param pulumi.Input[_builtins.int] users_get_by_id_limit: Maximum number of requests per minute per user to the GET /users/:id API endpoint. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        :param pulumi.Input[_builtins.str] users_get_by_id_limit_allowlist_raw: Usernames excluded from the users*get*by*id*limit rate limit, separated by newlines, commas or whitespace. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valid_runner_registrars: List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
         :param pulumi.Input[_builtins.bool] version_check_enabled: Let GitLab inform you when an update is available.
+        :param pulumi.Input[_builtins.int] web_hook_event_resend_limit: Maximum number of webhook event resend requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+        :param pulumi.Input[_builtins.int] web_hook_test_limit: Maximum number of webhook test requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
         :param pulumi.Input[_builtins.bool] web_ide_clientside_preview_enabled: Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
         :param pulumi.Input[_builtins.str] whats_new_variant: What's new variant, possible values: all*tiers, current*tier, and disabled.
         :param pulumi.Input[_builtins.int] wiki_page_max_content_bytes: Maximum wiki page content size in bytes. The minimum value is 1024 bytes.
@@ -12680,6 +15552,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["admin_mode"] = admin_mode
         __props__.__dict__["after_sign_out_path"] = after_sign_out_path
         __props__.__dict__["after_sign_up_text"] = after_sign_up_text
+        __props__.__dict__["ai_action_api_rate_limit"] = ai_action_api_rate_limit
         __props__.__dict__["akismet_api_key"] = akismet_api_key
         __props__.__dict__["akismet_enabled"] = akismet_enabled
         __props__.__dict__["allow_account_deletion"] = allow_account_deletion
@@ -12700,6 +15573,8 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["auto_ban_user_on_excessive_projects_download"] = auto_ban_user_on_excessive_projects_download
         __props__.__dict__["auto_devops_domain"] = auto_devops_domain
         __props__.__dict__["auto_devops_enabled"] = auto_devops_enabled
+        __props__.__dict__["autocomplete_users_limit"] = autocomplete_users_limit
+        __props__.__dict__["autocomplete_users_unauthenticated_limit"] = autocomplete_users_unauthenticated_limit
         __props__.__dict__["automatic_purchased_storage_allocation"] = automatic_purchased_storage_allocation
         __props__.__dict__["bulk_import_concurrent_pipeline_batch_limit"] = bulk_import_concurrent_pipeline_batch_limit
         __props__.__dict__["bulk_import_enabled"] = bulk_import_enabled
@@ -12707,12 +15582,16 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["can_create_group"] = can_create_group
         __props__.__dict__["check_namespace_plan"] = check_namespace_plan
         __props__.__dict__["ci_job_live_trace_enabled"] = ci_job_live_trace_enabled
+        __props__.__dict__["ci_lint_limit_per_user"] = ci_lint_limit_per_user
         __props__.__dict__["ci_max_includes"] = ci_max_includes
         __props__.__dict__["ci_max_total_yaml_size_bytes"] = ci_max_total_yaml_size_bytes
         __props__.__dict__["commit_email_hostname"] = commit_email_hostname
         __props__.__dict__["concurrent_bitbucket_import_jobs_limit"] = concurrent_bitbucket_import_jobs_limit
         __props__.__dict__["concurrent_bitbucket_server_import_jobs_limit"] = concurrent_bitbucket_server_import_jobs_limit
         __props__.__dict__["concurrent_github_import_jobs_limit"] = concurrent_github_import_jobs_limit
+        __props__.__dict__["concurrent_pull_request_import_jobs_limit"] = concurrent_pull_request_import_jobs_limit
+        __props__.__dict__["concurrent_relation_batch_export_limit"] = concurrent_relation_batch_export_limit
+        __props__.__dict__["concurrent_relation_export_limit"] = concurrent_relation_export_limit
         __props__.__dict__["container_expiration_policies_enable_historic_entries"] = container_expiration_policies_enable_historic_entries
         __props__.__dict__["container_registry_cleanup_tags_service_max_list_size"] = container_registry_cleanup_tags_service_max_list_size
         __props__.__dict__["container_registry_delete_tags_service_timeout"] = container_registry_delete_tags_service_timeout
@@ -12803,6 +15682,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["first_day_of_week"] = first_day_of_week
         __props__.__dict__["geo_node_allowed_ips"] = geo_node_allowed_ips
         __props__.__dict__["geo_status_timeout"] = geo_status_timeout
+        __props__.__dict__["git_push_pipeline_limit"] = git_push_pipeline_limit
         __props__.__dict__["git_rate_limit_users_alertlists"] = git_rate_limit_users_alertlists
         __props__.__dict__["git_rate_limit_users_allowlists"] = git_rate_limit_users_allowlists
         __props__.__dict__["git_two_factor_session_expiry"] = git_two_factor_session_expiry
@@ -12818,7 +15698,11 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["grafana_enabled"] = grafana_enabled
         __props__.__dict__["grafana_url"] = grafana_url
         __props__.__dict__["gravatar_enabled"] = gravatar_enabled
+        __props__.__dict__["group_download_export_limit"] = group_download_export_limit
+        __props__.__dict__["group_export_limit"] = group_export_limit
+        __props__.__dict__["group_import_limit"] = group_import_limit
         __props__.__dict__["group_owners_can_manage_default_branch_protection"] = group_owners_can_manage_default_branch_protection
+        __props__.__dict__["group_secrets_limit"] = group_secrets_limit
         __props__.__dict__["help_page_hide_commercial_content"] = help_page_hide_commercial_content
         __props__.__dict__["help_page_support_url"] = help_page_support_url
         __props__.__dict__["help_page_text"] = help_page_text
@@ -12828,6 +15712,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["housekeeping_enabled"] = housekeeping_enabled
         __props__.__dict__["housekeeping_optimize_repository_period"] = housekeeping_optimize_repository_period
         __props__.__dict__["html_emails_enabled"] = html_emails_enabled
+        __props__.__dict__["import_jobs_concurrency_limit"] = import_jobs_concurrency_limit
         __props__.__dict__["import_sources"] = import_sources
         __props__.__dict__["in_product_marketing_emails_enabled"] = in_product_marketing_emails_enabled
         __props__.__dict__["inactive_projects_delete_after_months"] = inactive_projects_delete_after_months
@@ -12840,6 +15725,8 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["jira_connect_application_key"] = jira_connect_application_key
         __props__.__dict__["jira_connect_proxy_url"] = jira_connect_proxy_url
         __props__.__dict__["jira_connect_public_key_storage_enabled"] = jira_connect_public_key_storage_enabled
+        __props__.__dict__["job_play_limit_per_user_project"] = job_play_limit_per_user_project
+        __props__.__dict__["job_retry_limit_per_user_project"] = job_retry_limit_per_user_project
         __props__.__dict__["keep_latest_artifact"] = keep_latest_artifact
         __props__.__dict__["kroki_enabled"] = kroki_enabled
         __props__.__dict__["kroki_formats"] = kroki_formats
@@ -12857,6 +15744,8 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["max_attachment_size"] = max_attachment_size
         __props__.__dict__["max_decompressed_archive_size"] = max_decompressed_archive_size
         __props__.__dict__["max_export_size"] = max_export_size
+        __props__.__dict__["max_github_response_size_limit"] = max_github_response_size_limit
+        __props__.__dict__["max_http_response_size_limit"] = max_http_response_size_limit
         __props__.__dict__["max_import_remote_file_size"] = max_import_remote_file_size
         __props__.__dict__["max_import_size"] = max_import_size
         __props__.__dict__["max_login_attempts"] = max_login_attempts
@@ -12874,6 +15763,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["mirror_capacity_threshold"] = mirror_capacity_threshold
         __props__.__dict__["mirror_max_capacity"] = mirror_max_capacity
         __props__.__dict__["mirror_max_delay"] = mirror_max_delay
+        __props__.__dict__["notes_create_limit"] = notes_create_limit
         __props__.__dict__["notify_on_unknown_sign_in"] = notify_on_unknown_sign_in
         __props__.__dict__["npm_package_requests_forwarding"] = npm_package_requests_forwarding
         __props__.__dict__["nuget_skip_metadata_url_validation"] = nuget_skip_metadata_url_validation
@@ -12891,14 +15781,21 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["password_uppercase_required"] = password_uppercase_required
         __props__.__dict__["performance_bar_allowed_group_path"] = performance_bar_allowed_group_path
         __props__.__dict__["personal_access_token_prefix"] = personal_access_token_prefix
+        __props__.__dict__["pipeline_cancel_limit_per_user_project"] = pipeline_cancel_limit_per_user_project
         __props__.__dict__["pipeline_limit_per_project_user_sha"] = pipeline_limit_per_project_user_sha
+        __props__.__dict__["pipeline_limit_per_user"] = pipeline_limit_per_user
+        __props__.__dict__["pipeline_retry_limit_per_user_project"] = pipeline_retry_limit_per_user_project
         __props__.__dict__["plantuml_enabled"] = plantuml_enabled
         __props__.__dict__["plantuml_url"] = plantuml_url
         __props__.__dict__["polling_interval_multiplier"] = polling_interval_multiplier
         __props__.__dict__["prevent_merge_requests_author_approval"] = prevent_merge_requests_author_approval
         __props__.__dict__["prevent_merge_requests_committers_approval"] = prevent_merge_requests_committers_approval
+        __props__.__dict__["project_download_export_limit"] = project_download_export_limit
         __props__.__dict__["project_export_enabled"] = project_export_enabled
+        __props__.__dict__["project_export_limit"] = project_export_limit
+        __props__.__dict__["project_import_limit"] = project_import_limit
         __props__.__dict__["project_jobs_api_rate_limit"] = project_jobs_api_rate_limit
+        __props__.__dict__["project_secrets_limit"] = project_secrets_limit
         __props__.__dict__["projects_api_rate_limit_unauthenticated"] = projects_api_rate_limit_unauthenticated
         __props__.__dict__["prometheus_metrics_enabled"] = prometheus_metrics_enabled
         __props__.__dict__["protected_ci_variables"] = protected_ci_variables
@@ -12907,6 +15804,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["pypi_package_requests_forwarding"] = pypi_package_requests_forwarding
         __props__.__dict__["rate_limiting_response_text"] = rate_limiting_response_text
         __props__.__dict__["raw_blob_request_limit"] = raw_blob_request_limit
+        __props__.__dict__["raw_blob_request_limit_unauthenticated"] = raw_blob_request_limit_unauthenticated
         __props__.__dict__["recaptcha_enabled"] = recaptcha_enabled
         __props__.__dict__["recaptcha_private_key"] = recaptcha_private_key
         __props__.__dict__["recaptcha_site_key"] = recaptcha_site_key
@@ -12922,6 +15820,11 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["require_two_factor_authentication"] = require_two_factor_authentication
         __props__.__dict__["restricted_visibility_levels"] = restricted_visibility_levels
         __props__.__dict__["rsa_key_restriction"] = rsa_key_restriction
+        __props__.__dict__["runner_jobs_endpoints_api_limit"] = runner_jobs_endpoints_api_limit
+        __props__.__dict__["runner_jobs_patch_trace_api_limit"] = runner_jobs_patch_trace_api_limit
+        __props__.__dict__["runner_jobs_request_api_limit"] = runner_jobs_request_api_limit
+        __props__.__dict__["scan_execution_policies_action_limit"] = scan_execution_policies_action_limit
+        __props__.__dict__["scan_execution_policies_schedule_limit"] = scan_execution_policies_schedule_limit
         __props__.__dict__["search_rate_limit"] = search_rate_limit
         __props__.__dict__["search_rate_limit_unauthenticated"] = search_rate_limit_unauthenticated
         __props__.__dict__["secret_push_protection_available"] = secret_push_protection_available
@@ -12962,26 +15865,60 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["static_objects_external_storage_auth_token"] = static_objects_external_storage_auth_token
         __props__.__dict__["static_objects_external_storage_url"] = static_objects_external_storage_url
         __props__.__dict__["suggest_pipeline_enabled"] = suggest_pipeline_enabled
+        __props__.__dict__["tags_create_limit"] = tags_create_limit
         __props__.__dict__["terminal_max_session_time"] = terminal_max_session_time
         __props__.__dict__["terms"] = terms
         __props__.__dict__["throttle_authenticated_api_enabled"] = throttle_authenticated_api_enabled
         __props__.__dict__["throttle_authenticated_api_period_in_seconds"] = throttle_authenticated_api_period_in_seconds
         __props__.__dict__["throttle_authenticated_api_requests_per_period"] = throttle_authenticated_api_requests_per_period
+        __props__.__dict__["throttle_authenticated_dependency_proxy_enabled"] = throttle_authenticated_dependency_proxy_enabled
+        __props__.__dict__["throttle_authenticated_dependency_proxy_period_in_seconds"] = throttle_authenticated_dependency_proxy_period_in_seconds
+        __props__.__dict__["throttle_authenticated_dependency_proxy_requests_per_period"] = throttle_authenticated_dependency_proxy_requests_per_period
+        __props__.__dict__["throttle_authenticated_deprecated_api_enabled"] = throttle_authenticated_deprecated_api_enabled
+        __props__.__dict__["throttle_authenticated_deprecated_api_period_in_seconds"] = throttle_authenticated_deprecated_api_period_in_seconds
+        __props__.__dict__["throttle_authenticated_deprecated_api_requests_per_period"] = throttle_authenticated_deprecated_api_requests_per_period
+        __props__.__dict__["throttle_authenticated_files_api_enabled"] = throttle_authenticated_files_api_enabled
+        __props__.__dict__["throttle_authenticated_files_api_period_in_seconds"] = throttle_authenticated_files_api_period_in_seconds
+        __props__.__dict__["throttle_authenticated_files_api_requests_per_period"] = throttle_authenticated_files_api_requests_per_period
+        __props__.__dict__["throttle_authenticated_git_http_enabled"] = throttle_authenticated_git_http_enabled
+        __props__.__dict__["throttle_authenticated_git_http_period_in_seconds"] = throttle_authenticated_git_http_period_in_seconds
+        __props__.__dict__["throttle_authenticated_git_http_requests_per_period"] = throttle_authenticated_git_http_requests_per_period
         __props__.__dict__["throttle_authenticated_git_lfs_enabled"] = throttle_authenticated_git_lfs_enabled
         __props__.__dict__["throttle_authenticated_git_lfs_period_in_seconds"] = throttle_authenticated_git_lfs_period_in_seconds
         __props__.__dict__["throttle_authenticated_git_lfs_requests_per_period"] = throttle_authenticated_git_lfs_requests_per_period
+        __props__.__dict__["throttle_authenticated_mcp_enabled"] = throttle_authenticated_mcp_enabled
+        __props__.__dict__["throttle_authenticated_mcp_period_in_seconds"] = throttle_authenticated_mcp_period_in_seconds
+        __props__.__dict__["throttle_authenticated_mcp_requests_per_period"] = throttle_authenticated_mcp_requests_per_period
         __props__.__dict__["throttle_authenticated_packages_api_enabled"] = throttle_authenticated_packages_api_enabled
         __props__.__dict__["throttle_authenticated_packages_api_period_in_seconds"] = throttle_authenticated_packages_api_period_in_seconds
         __props__.__dict__["throttle_authenticated_packages_api_requests_per_period"] = throttle_authenticated_packages_api_requests_per_period
         __props__.__dict__["throttle_authenticated_web_enabled"] = throttle_authenticated_web_enabled
         __props__.__dict__["throttle_authenticated_web_period_in_seconds"] = throttle_authenticated_web_period_in_seconds
         __props__.__dict__["throttle_authenticated_web_requests_per_period"] = throttle_authenticated_web_requests_per_period
+        __props__.__dict__["throttle_incident_management_notification_enabled"] = throttle_incident_management_notification_enabled
+        __props__.__dict__["throttle_incident_management_notification_per_period"] = throttle_incident_management_notification_per_period
+        __props__.__dict__["throttle_incident_management_notification_period_in_seconds"] = throttle_incident_management_notification_period_in_seconds
+        __props__.__dict__["throttle_protected_paths_enabled"] = throttle_protected_paths_enabled
+        __props__.__dict__["throttle_protected_paths_period_in_seconds"] = throttle_protected_paths_period_in_seconds
+        __props__.__dict__["throttle_protected_paths_requests_per_period"] = throttle_protected_paths_requests_per_period
         __props__.__dict__["throttle_unauthenticated_api_enabled"] = throttle_unauthenticated_api_enabled
         __props__.__dict__["throttle_unauthenticated_api_period_in_seconds"] = throttle_unauthenticated_api_period_in_seconds
         __props__.__dict__["throttle_unauthenticated_api_requests_per_period"] = throttle_unauthenticated_api_requests_per_period
+        __props__.__dict__["throttle_unauthenticated_deprecated_api_enabled"] = throttle_unauthenticated_deprecated_api_enabled
+        __props__.__dict__["throttle_unauthenticated_deprecated_api_period_in_seconds"] = throttle_unauthenticated_deprecated_api_period_in_seconds
+        __props__.__dict__["throttle_unauthenticated_deprecated_api_requests_per_period"] = throttle_unauthenticated_deprecated_api_requests_per_period
+        __props__.__dict__["throttle_unauthenticated_enabled"] = throttle_unauthenticated_enabled
+        __props__.__dict__["throttle_unauthenticated_files_api_enabled"] = throttle_unauthenticated_files_api_enabled
+        __props__.__dict__["throttle_unauthenticated_files_api_period_in_seconds"] = throttle_unauthenticated_files_api_period_in_seconds
+        __props__.__dict__["throttle_unauthenticated_files_api_requests_per_period"] = throttle_unauthenticated_files_api_requests_per_period
+        __props__.__dict__["throttle_unauthenticated_git_http_enabled"] = throttle_unauthenticated_git_http_enabled
+        __props__.__dict__["throttle_unauthenticated_git_http_period_in_seconds"] = throttle_unauthenticated_git_http_period_in_seconds
+        __props__.__dict__["throttle_unauthenticated_git_http_requests_per_period"] = throttle_unauthenticated_git_http_requests_per_period
         __props__.__dict__["throttle_unauthenticated_packages_api_enabled"] = throttle_unauthenticated_packages_api_enabled
         __props__.__dict__["throttle_unauthenticated_packages_api_period_in_seconds"] = throttle_unauthenticated_packages_api_period_in_seconds
         __props__.__dict__["throttle_unauthenticated_packages_api_requests_per_period"] = throttle_unauthenticated_packages_api_requests_per_period
+        __props__.__dict__["throttle_unauthenticated_period_in_seconds"] = throttle_unauthenticated_period_in_seconds
+        __props__.__dict__["throttle_unauthenticated_requests_per_period"] = throttle_unauthenticated_requests_per_period
         __props__.__dict__["throttle_unauthenticated_web_enabled"] = throttle_unauthenticated_web_enabled
         __props__.__dict__["throttle_unauthenticated_web_period_in_seconds"] = throttle_unauthenticated_web_period_in_seconds
         __props__.__dict__["throttle_unauthenticated_web_requests_per_period"] = throttle_unauthenticated_web_requests_per_period
@@ -13001,8 +15938,19 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__.__dict__["user_defaults_to_private_profile"] = user_defaults_to_private_profile
         __props__.__dict__["user_oauth_applications"] = user_oauth_applications
         __props__.__dict__["user_show_add_ssh_key_message"] = user_show_add_ssh_key_message
+        __props__.__dict__["users_api_limit_followers"] = users_api_limit_followers
+        __props__.__dict__["users_api_limit_following"] = users_api_limit_following
+        __props__.__dict__["users_api_limit_gpg_key"] = users_api_limit_gpg_key
+        __props__.__dict__["users_api_limit_gpg_keys"] = users_api_limit_gpg_keys
+        __props__.__dict__["users_api_limit_ssh_key"] = users_api_limit_ssh_key
+        __props__.__dict__["users_api_limit_ssh_keys"] = users_api_limit_ssh_keys
+        __props__.__dict__["users_api_limit_status"] = users_api_limit_status
+        __props__.__dict__["users_get_by_id_limit"] = users_get_by_id_limit
+        __props__.__dict__["users_get_by_id_limit_allowlist_raw"] = users_get_by_id_limit_allowlist_raw
         __props__.__dict__["valid_runner_registrars"] = valid_runner_registrars
         __props__.__dict__["version_check_enabled"] = version_check_enabled
+        __props__.__dict__["web_hook_event_resend_limit"] = web_hook_event_resend_limit
+        __props__.__dict__["web_hook_test_limit"] = web_hook_test_limit
         __props__.__dict__["web_ide_clientside_preview_enabled"] = web_ide_clientside_preview_enabled
         __props__.__dict__["whats_new_variant"] = whats_new_variant
         __props__.__dict__["wiki_page_max_content_bytes"] = wiki_page_max_content_bytes
@@ -13015,6 +15963,7 @@ class ApplicationSettings(pulumi.CustomResource):
             admin_mode: pulumi.Input[Optional[_builtins.bool]] = None,
             after_sign_out_path: pulumi.Input[Optional[_builtins.str]] = None,
             after_sign_up_text: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_action_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
             akismet_api_key: pulumi.Input[Optional[_builtins.str]] = None,
             akismet_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             allow_account_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -13035,6 +15984,8 @@ class ApplicationSettings(pulumi.CustomResource):
             auto_ban_user_on_excessive_projects_download: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_devops_domain: pulumi.Input[Optional[_builtins.str]] = None,
             auto_devops_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            autocomplete_users_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            autocomplete_users_unauthenticated_limit: pulumi.Input[Optional[_builtins.int]] = None,
             automatic_purchased_storage_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
             bulk_import_concurrent_pipeline_batch_limit: pulumi.Input[Optional[_builtins.int]] = None,
             bulk_import_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -13042,12 +15993,16 @@ class ApplicationSettings(pulumi.CustomResource):
             can_create_group: pulumi.Input[Optional[_builtins.bool]] = None,
             check_namespace_plan: pulumi.Input[Optional[_builtins.bool]] = None,
             ci_job_live_trace_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ci_lint_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
             ci_max_includes: pulumi.Input[Optional[_builtins.int]] = None,
             ci_max_total_yaml_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
             commit_email_hostname: pulumi.Input[Optional[_builtins.str]] = None,
             concurrent_bitbucket_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
             concurrent_bitbucket_server_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
             concurrent_github_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            concurrent_pull_request_import_jobs_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            concurrent_relation_batch_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            concurrent_relation_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
             container_expiration_policies_enable_historic_entries: pulumi.Input[Optional[_builtins.bool]] = None,
             container_registry_cleanup_tags_service_max_list_size: pulumi.Input[Optional[_builtins.int]] = None,
             container_registry_delete_tags_service_timeout: pulumi.Input[Optional[_builtins.int]] = None,
@@ -13138,6 +16093,7 @@ class ApplicationSettings(pulumi.CustomResource):
             first_day_of_week: pulumi.Input[Optional[_builtins.int]] = None,
             geo_node_allowed_ips: pulumi.Input[Optional[_builtins.str]] = None,
             geo_status_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            git_push_pipeline_limit: pulumi.Input[Optional[_builtins.int]] = None,
             git_rate_limit_users_alertlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
             git_rate_limit_users_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             git_two_factor_session_expiry: pulumi.Input[Optional[_builtins.int]] = None,
@@ -13153,7 +16109,11 @@ class ApplicationSettings(pulumi.CustomResource):
             grafana_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             grafana_url: pulumi.Input[Optional[_builtins.str]] = None,
             gravatar_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_download_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            group_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            group_import_limit: pulumi.Input[Optional[_builtins.int]] = None,
             group_owners_can_manage_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_secrets_limit: pulumi.Input[Optional[_builtins.int]] = None,
             help_page_hide_commercial_content: pulumi.Input[Optional[_builtins.bool]] = None,
             help_page_support_url: pulumi.Input[Optional[_builtins.str]] = None,
             help_page_text: pulumi.Input[Optional[_builtins.str]] = None,
@@ -13163,6 +16123,7 @@ class ApplicationSettings(pulumi.CustomResource):
             housekeeping_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             housekeeping_optimize_repository_period: pulumi.Input[Optional[_builtins.int]] = None,
             html_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            import_jobs_concurrency_limit: pulumi.Input[Optional[_builtins.int]] = None,
             import_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             in_product_marketing_emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             inactive_projects_delete_after_months: pulumi.Input[Optional[_builtins.int]] = None,
@@ -13175,6 +16136,8 @@ class ApplicationSettings(pulumi.CustomResource):
             jira_connect_application_key: pulumi.Input[Optional[_builtins.str]] = None,
             jira_connect_proxy_url: pulumi.Input[Optional[_builtins.str]] = None,
             jira_connect_public_key_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            job_play_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
+            job_retry_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
             keep_latest_artifact: pulumi.Input[Optional[_builtins.bool]] = None,
             kroki_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             kroki_formats: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.bool]]]] = None,
@@ -13192,6 +16155,8 @@ class ApplicationSettings(pulumi.CustomResource):
             max_attachment_size: pulumi.Input[Optional[_builtins.int]] = None,
             max_decompressed_archive_size: pulumi.Input[Optional[_builtins.int]] = None,
             max_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+            max_github_response_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            max_http_response_size_limit: pulumi.Input[Optional[_builtins.int]] = None,
             max_import_remote_file_size: pulumi.Input[Optional[_builtins.int]] = None,
             max_import_size: pulumi.Input[Optional[_builtins.int]] = None,
             max_login_attempts: pulumi.Input[Optional[_builtins.int]] = None,
@@ -13209,6 +16174,7 @@ class ApplicationSettings(pulumi.CustomResource):
             mirror_capacity_threshold: pulumi.Input[Optional[_builtins.int]] = None,
             mirror_max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
             mirror_max_delay: pulumi.Input[Optional[_builtins.int]] = None,
+            notes_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
             notify_on_unknown_sign_in: pulumi.Input[Optional[_builtins.bool]] = None,
             npm_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
             nuget_skip_metadata_url_validation: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -13226,14 +16192,21 @@ class ApplicationSettings(pulumi.CustomResource):
             password_uppercase_required: pulumi.Input[Optional[_builtins.bool]] = None,
             performance_bar_allowed_group_path: pulumi.Input[Optional[_builtins.str]] = None,
             personal_access_token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline_cancel_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
             pipeline_limit_per_project_user_sha: pulumi.Input[Optional[_builtins.int]] = None,
+            pipeline_limit_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+            pipeline_retry_limit_per_user_project: pulumi.Input[Optional[_builtins.int]] = None,
             plantuml_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             plantuml_url: pulumi.Input[Optional[_builtins.str]] = None,
             polling_interval_multiplier: pulumi.Input[Optional[_builtins.float]] = None,
             prevent_merge_requests_author_approval: pulumi.Input[Optional[_builtins.bool]] = None,
             prevent_merge_requests_committers_approval: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_download_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
             project_export_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_export_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            project_import_limit: pulumi.Input[Optional[_builtins.int]] = None,
             project_jobs_api_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            project_secrets_limit: pulumi.Input[Optional[_builtins.int]] = None,
             projects_api_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
             prometheus_metrics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             protected_ci_variables: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -13242,6 +16215,7 @@ class ApplicationSettings(pulumi.CustomResource):
             pypi_package_requests_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
             rate_limiting_response_text: pulumi.Input[Optional[_builtins.str]] = None,
             raw_blob_request_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            raw_blob_request_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
             recaptcha_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             recaptcha_private_key: pulumi.Input[Optional[_builtins.str]] = None,
             recaptcha_site_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -13257,6 +16231,11 @@ class ApplicationSettings(pulumi.CustomResource):
             require_two_factor_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
             restricted_visibility_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             rsa_key_restriction: pulumi.Input[Optional[_builtins.int]] = None,
+            runner_jobs_endpoints_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            runner_jobs_patch_trace_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            runner_jobs_request_api_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            scan_execution_policies_action_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            scan_execution_policies_schedule_limit: pulumi.Input[Optional[_builtins.int]] = None,
             search_rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
             search_rate_limit_unauthenticated: pulumi.Input[Optional[_builtins.int]] = None,
             secret_push_protection_available: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -13297,26 +16276,60 @@ class ApplicationSettings(pulumi.CustomResource):
             static_objects_external_storage_auth_token: pulumi.Input[Optional[_builtins.str]] = None,
             static_objects_external_storage_url: pulumi.Input[Optional[_builtins.str]] = None,
             suggest_pipeline_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags_create_limit: pulumi.Input[Optional[_builtins.int]] = None,
             terminal_max_session_time: pulumi.Input[Optional[_builtins.int]] = None,
             terms: pulumi.Input[Optional[_builtins.str]] = None,
             throttle_authenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             throttle_authenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_authenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_dependency_proxy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_authenticated_dependency_proxy_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_dependency_proxy_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_deprecated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_authenticated_deprecated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_deprecated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_files_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_authenticated_files_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_files_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_git_http_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_authenticated_git_http_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_git_http_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_authenticated_git_lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             throttle_authenticated_git_lfs_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_authenticated_git_lfs_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_mcp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_authenticated_mcp_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_authenticated_mcp_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_authenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             throttle_authenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_authenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_authenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             throttle_authenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_authenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_incident_management_notification_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_incident_management_notification_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_incident_management_notification_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_protected_paths_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_protected_paths_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_protected_paths_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_unauthenticated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             throttle_unauthenticated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_unauthenticated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_deprecated_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_unauthenticated_deprecated_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_deprecated_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_unauthenticated_files_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_unauthenticated_files_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_files_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_git_http_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            throttle_unauthenticated_git_http_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_git_http_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_unauthenticated_packages_api_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             throttle_unauthenticated_packages_api_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_unauthenticated_packages_api_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            throttle_unauthenticated_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_unauthenticated_web_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             throttle_unauthenticated_web_period_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             throttle_unauthenticated_web_requests_per_period: pulumi.Input[Optional[_builtins.int]] = None,
@@ -13336,8 +16349,19 @@ class ApplicationSettings(pulumi.CustomResource):
             user_defaults_to_private_profile: pulumi.Input[Optional[_builtins.bool]] = None,
             user_oauth_applications: pulumi.Input[Optional[_builtins.bool]] = None,
             user_show_add_ssh_key_message: pulumi.Input[Optional[_builtins.bool]] = None,
+            users_api_limit_followers: pulumi.Input[Optional[_builtins.int]] = None,
+            users_api_limit_following: pulumi.Input[Optional[_builtins.int]] = None,
+            users_api_limit_gpg_key: pulumi.Input[Optional[_builtins.int]] = None,
+            users_api_limit_gpg_keys: pulumi.Input[Optional[_builtins.int]] = None,
+            users_api_limit_ssh_key: pulumi.Input[Optional[_builtins.int]] = None,
+            users_api_limit_ssh_keys: pulumi.Input[Optional[_builtins.int]] = None,
+            users_api_limit_status: pulumi.Input[Optional[_builtins.int]] = None,
+            users_get_by_id_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            users_get_by_id_limit_allowlist_raw: pulumi.Input[Optional[_builtins.str]] = None,
             valid_runner_registrars: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             version_check_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            web_hook_event_resend_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            web_hook_test_limit: pulumi.Input[Optional[_builtins.int]] = None,
             web_ide_clientside_preview_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             whats_new_variant: pulumi.Input[Optional[_builtins.str]] = None,
             wiki_page_max_content_bytes: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
@@ -13346,6 +16370,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__["adminMode"] = admin_mode
         __props__["afterSignOutPath"] = after_sign_out_path
         __props__["afterSignUpText"] = after_sign_up_text
+        __props__["aiActionApiRateLimit"] = ai_action_api_rate_limit
         __props__["akismetApiKey"] = akismet_api_key
         __props__["akismetEnabled"] = akismet_enabled
         __props__["allowAccountDeletion"] = allow_account_deletion
@@ -13366,6 +16391,8 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__["autoBanUserOnExcessiveProjectsDownload"] = auto_ban_user_on_excessive_projects_download
         __props__["autoDevopsDomain"] = auto_devops_domain
         __props__["autoDevopsEnabled"] = auto_devops_enabled
+        __props__["autocompleteUsersLimit"] = autocomplete_users_limit
+        __props__["autocompleteUsersUnauthenticatedLimit"] = autocomplete_users_unauthenticated_limit
         __props__["automaticPurchasedStorageAllocation"] = automatic_purchased_storage_allocation
         __props__["bulkImportConcurrentPipelineBatchLimit"] = bulk_import_concurrent_pipeline_batch_limit
         __props__["bulkImportEnabled"] = bulk_import_enabled
@@ -13373,12 +16400,16 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__["canCreateGroup"] = can_create_group
         __props__["checkNamespacePlan"] = check_namespace_plan
         __props__["ciJobLiveTraceEnabled"] = ci_job_live_trace_enabled
+        __props__["ciLintLimitPerUser"] = ci_lint_limit_per_user
         __props__["ciMaxIncludes"] = ci_max_includes
         __props__["ciMaxTotalYamlSizeBytes"] = ci_max_total_yaml_size_bytes
         __props__["commitEmailHostname"] = commit_email_hostname
         __props__["concurrentBitbucketImportJobsLimit"] = concurrent_bitbucket_import_jobs_limit
         __props__["concurrentBitbucketServerImportJobsLimit"] = concurrent_bitbucket_server_import_jobs_limit
         __props__["concurrentGithubImportJobsLimit"] = concurrent_github_import_jobs_limit
+        __props__["concurrentPullRequestImportJobsLimit"] = concurrent_pull_request_import_jobs_limit
+        __props__["concurrentRelationBatchExportLimit"] = concurrent_relation_batch_export_limit
+        __props__["concurrentRelationExportLimit"] = concurrent_relation_export_limit
         __props__["containerExpirationPoliciesEnableHistoricEntries"] = container_expiration_policies_enable_historic_entries
         __props__["containerRegistryCleanupTagsServiceMaxListSize"] = container_registry_cleanup_tags_service_max_list_size
         __props__["containerRegistryDeleteTagsServiceTimeout"] = container_registry_delete_tags_service_timeout
@@ -13469,6 +16500,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__["firstDayOfWeek"] = first_day_of_week
         __props__["geoNodeAllowedIps"] = geo_node_allowed_ips
         __props__["geoStatusTimeout"] = geo_status_timeout
+        __props__["gitPushPipelineLimit"] = git_push_pipeline_limit
         __props__["gitRateLimitUsersAlertlists"] = git_rate_limit_users_alertlists
         __props__["gitRateLimitUsersAllowlists"] = git_rate_limit_users_allowlists
         __props__["gitTwoFactorSessionExpiry"] = git_two_factor_session_expiry
@@ -13484,7 +16516,11 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__["grafanaEnabled"] = grafana_enabled
         __props__["grafanaUrl"] = grafana_url
         __props__["gravatarEnabled"] = gravatar_enabled
+        __props__["groupDownloadExportLimit"] = group_download_export_limit
+        __props__["groupExportLimit"] = group_export_limit
+        __props__["groupImportLimit"] = group_import_limit
         __props__["groupOwnersCanManageDefaultBranchProtection"] = group_owners_can_manage_default_branch_protection
+        __props__["groupSecretsLimit"] = group_secrets_limit
         __props__["helpPageHideCommercialContent"] = help_page_hide_commercial_content
         __props__["helpPageSupportUrl"] = help_page_support_url
         __props__["helpPageText"] = help_page_text
@@ -13494,6 +16530,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__["housekeepingEnabled"] = housekeeping_enabled
         __props__["housekeepingOptimizeRepositoryPeriod"] = housekeeping_optimize_repository_period
         __props__["htmlEmailsEnabled"] = html_emails_enabled
+        __props__["importJobsConcurrencyLimit"] = import_jobs_concurrency_limit
         __props__["importSources"] = import_sources
         __props__["inProductMarketingEmailsEnabled"] = in_product_marketing_emails_enabled
         __props__["inactiveProjectsDeleteAfterMonths"] = inactive_projects_delete_after_months
@@ -13506,6 +16543,8 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__["jiraConnectApplicationKey"] = jira_connect_application_key
         __props__["jiraConnectProxyUrl"] = jira_connect_proxy_url
         __props__["jiraConnectPublicKeyStorageEnabled"] = jira_connect_public_key_storage_enabled
+        __props__["jobPlayLimitPerUserProject"] = job_play_limit_per_user_project
+        __props__["jobRetryLimitPerUserProject"] = job_retry_limit_per_user_project
         __props__["keepLatestArtifact"] = keep_latest_artifact
         __props__["krokiEnabled"] = kroki_enabled
         __props__["krokiFormats"] = kroki_formats
@@ -13523,6 +16562,8 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__["maxAttachmentSize"] = max_attachment_size
         __props__["maxDecompressedArchiveSize"] = max_decompressed_archive_size
         __props__["maxExportSize"] = max_export_size
+        __props__["maxGithubResponseSizeLimit"] = max_github_response_size_limit
+        __props__["maxHttpResponseSizeLimit"] = max_http_response_size_limit
         __props__["maxImportRemoteFileSize"] = max_import_remote_file_size
         __props__["maxImportSize"] = max_import_size
         __props__["maxLoginAttempts"] = max_login_attempts
@@ -13540,6 +16581,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__["mirrorCapacityThreshold"] = mirror_capacity_threshold
         __props__["mirrorMaxCapacity"] = mirror_max_capacity
         __props__["mirrorMaxDelay"] = mirror_max_delay
+        __props__["notesCreateLimit"] = notes_create_limit
         __props__["notifyOnUnknownSignIn"] = notify_on_unknown_sign_in
         __props__["npmPackageRequestsForwarding"] = npm_package_requests_forwarding
         __props__["nugetSkipMetadataUrlValidation"] = nuget_skip_metadata_url_validation
@@ -13557,14 +16599,21 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__["passwordUppercaseRequired"] = password_uppercase_required
         __props__["performanceBarAllowedGroupPath"] = performance_bar_allowed_group_path
         __props__["personalAccessTokenPrefix"] = personal_access_token_prefix
+        __props__["pipelineCancelLimitPerUserProject"] = pipeline_cancel_limit_per_user_project
         __props__["pipelineLimitPerProjectUserSha"] = pipeline_limit_per_project_user_sha
+        __props__["pipelineLimitPerUser"] = pipeline_limit_per_user
+        __props__["pipelineRetryLimitPerUserProject"] = pipeline_retry_limit_per_user_project
         __props__["plantumlEnabled"] = plantuml_enabled
         __props__["plantumlUrl"] = plantuml_url
         __props__["pollingIntervalMultiplier"] = polling_interval_multiplier
         __props__["preventMergeRequestsAuthorApproval"] = prevent_merge_requests_author_approval
         __props__["preventMergeRequestsCommittersApproval"] = prevent_merge_requests_committers_approval
+        __props__["projectDownloadExportLimit"] = project_download_export_limit
         __props__["projectExportEnabled"] = project_export_enabled
+        __props__["projectExportLimit"] = project_export_limit
+        __props__["projectImportLimit"] = project_import_limit
         __props__["projectJobsApiRateLimit"] = project_jobs_api_rate_limit
+        __props__["projectSecretsLimit"] = project_secrets_limit
         __props__["projectsApiRateLimitUnauthenticated"] = projects_api_rate_limit_unauthenticated
         __props__["prometheusMetricsEnabled"] = prometheus_metrics_enabled
         __props__["protectedCiVariables"] = protected_ci_variables
@@ -13573,6 +16622,7 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__["pypiPackageRequestsForwarding"] = pypi_package_requests_forwarding
         __props__["rateLimitingResponseText"] = rate_limiting_response_text
         __props__["rawBlobRequestLimit"] = raw_blob_request_limit
+        __props__["rawBlobRequestLimitUnauthenticated"] = raw_blob_request_limit_unauthenticated
         __props__["recaptchaEnabled"] = recaptcha_enabled
         __props__["recaptchaPrivateKey"] = recaptcha_private_key
         __props__["recaptchaSiteKey"] = recaptcha_site_key
@@ -13588,6 +16638,11 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__["requireTwoFactorAuthentication"] = require_two_factor_authentication
         __props__["restrictedVisibilityLevels"] = restricted_visibility_levels
         __props__["rsaKeyRestriction"] = rsa_key_restriction
+        __props__["runnerJobsEndpointsApiLimit"] = runner_jobs_endpoints_api_limit
+        __props__["runnerJobsPatchTraceApiLimit"] = runner_jobs_patch_trace_api_limit
+        __props__["runnerJobsRequestApiLimit"] = runner_jobs_request_api_limit
+        __props__["scanExecutionPoliciesActionLimit"] = scan_execution_policies_action_limit
+        __props__["scanExecutionPoliciesScheduleLimit"] = scan_execution_policies_schedule_limit
         __props__["searchRateLimit"] = search_rate_limit
         __props__["searchRateLimitUnauthenticated"] = search_rate_limit_unauthenticated
         __props__["secretPushProtectionAvailable"] = secret_push_protection_available
@@ -13628,26 +16683,60 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__["staticObjectsExternalStorageAuthToken"] = static_objects_external_storage_auth_token
         __props__["staticObjectsExternalStorageUrl"] = static_objects_external_storage_url
         __props__["suggestPipelineEnabled"] = suggest_pipeline_enabled
+        __props__["tagsCreateLimit"] = tags_create_limit
         __props__["terminalMaxSessionTime"] = terminal_max_session_time
         __props__["terms"] = terms
         __props__["throttleAuthenticatedApiEnabled"] = throttle_authenticated_api_enabled
         __props__["throttleAuthenticatedApiPeriodInSeconds"] = throttle_authenticated_api_period_in_seconds
         __props__["throttleAuthenticatedApiRequestsPerPeriod"] = throttle_authenticated_api_requests_per_period
+        __props__["throttleAuthenticatedDependencyProxyEnabled"] = throttle_authenticated_dependency_proxy_enabled
+        __props__["throttleAuthenticatedDependencyProxyPeriodInSeconds"] = throttle_authenticated_dependency_proxy_period_in_seconds
+        __props__["throttleAuthenticatedDependencyProxyRequestsPerPeriod"] = throttle_authenticated_dependency_proxy_requests_per_period
+        __props__["throttleAuthenticatedDeprecatedApiEnabled"] = throttle_authenticated_deprecated_api_enabled
+        __props__["throttleAuthenticatedDeprecatedApiPeriodInSeconds"] = throttle_authenticated_deprecated_api_period_in_seconds
+        __props__["throttleAuthenticatedDeprecatedApiRequestsPerPeriod"] = throttle_authenticated_deprecated_api_requests_per_period
+        __props__["throttleAuthenticatedFilesApiEnabled"] = throttle_authenticated_files_api_enabled
+        __props__["throttleAuthenticatedFilesApiPeriodInSeconds"] = throttle_authenticated_files_api_period_in_seconds
+        __props__["throttleAuthenticatedFilesApiRequestsPerPeriod"] = throttle_authenticated_files_api_requests_per_period
+        __props__["throttleAuthenticatedGitHttpEnabled"] = throttle_authenticated_git_http_enabled
+        __props__["throttleAuthenticatedGitHttpPeriodInSeconds"] = throttle_authenticated_git_http_period_in_seconds
+        __props__["throttleAuthenticatedGitHttpRequestsPerPeriod"] = throttle_authenticated_git_http_requests_per_period
         __props__["throttleAuthenticatedGitLfsEnabled"] = throttle_authenticated_git_lfs_enabled
         __props__["throttleAuthenticatedGitLfsPeriodInSeconds"] = throttle_authenticated_git_lfs_period_in_seconds
         __props__["throttleAuthenticatedGitLfsRequestsPerPeriod"] = throttle_authenticated_git_lfs_requests_per_period
+        __props__["throttleAuthenticatedMcpEnabled"] = throttle_authenticated_mcp_enabled
+        __props__["throttleAuthenticatedMcpPeriodInSeconds"] = throttle_authenticated_mcp_period_in_seconds
+        __props__["throttleAuthenticatedMcpRequestsPerPeriod"] = throttle_authenticated_mcp_requests_per_period
         __props__["throttleAuthenticatedPackagesApiEnabled"] = throttle_authenticated_packages_api_enabled
         __props__["throttleAuthenticatedPackagesApiPeriodInSeconds"] = throttle_authenticated_packages_api_period_in_seconds
         __props__["throttleAuthenticatedPackagesApiRequestsPerPeriod"] = throttle_authenticated_packages_api_requests_per_period
         __props__["throttleAuthenticatedWebEnabled"] = throttle_authenticated_web_enabled
         __props__["throttleAuthenticatedWebPeriodInSeconds"] = throttle_authenticated_web_period_in_seconds
         __props__["throttleAuthenticatedWebRequestsPerPeriod"] = throttle_authenticated_web_requests_per_period
+        __props__["throttleIncidentManagementNotificationEnabled"] = throttle_incident_management_notification_enabled
+        __props__["throttleIncidentManagementNotificationPerPeriod"] = throttle_incident_management_notification_per_period
+        __props__["throttleIncidentManagementNotificationPeriodInSeconds"] = throttle_incident_management_notification_period_in_seconds
+        __props__["throttleProtectedPathsEnabled"] = throttle_protected_paths_enabled
+        __props__["throttleProtectedPathsPeriodInSeconds"] = throttle_protected_paths_period_in_seconds
+        __props__["throttleProtectedPathsRequestsPerPeriod"] = throttle_protected_paths_requests_per_period
         __props__["throttleUnauthenticatedApiEnabled"] = throttle_unauthenticated_api_enabled
         __props__["throttleUnauthenticatedApiPeriodInSeconds"] = throttle_unauthenticated_api_period_in_seconds
         __props__["throttleUnauthenticatedApiRequestsPerPeriod"] = throttle_unauthenticated_api_requests_per_period
+        __props__["throttleUnauthenticatedDeprecatedApiEnabled"] = throttle_unauthenticated_deprecated_api_enabled
+        __props__["throttleUnauthenticatedDeprecatedApiPeriodInSeconds"] = throttle_unauthenticated_deprecated_api_period_in_seconds
+        __props__["throttleUnauthenticatedDeprecatedApiRequestsPerPeriod"] = throttle_unauthenticated_deprecated_api_requests_per_period
+        __props__["throttleUnauthenticatedEnabled"] = throttle_unauthenticated_enabled
+        __props__["throttleUnauthenticatedFilesApiEnabled"] = throttle_unauthenticated_files_api_enabled
+        __props__["throttleUnauthenticatedFilesApiPeriodInSeconds"] = throttle_unauthenticated_files_api_period_in_seconds
+        __props__["throttleUnauthenticatedFilesApiRequestsPerPeriod"] = throttle_unauthenticated_files_api_requests_per_period
+        __props__["throttleUnauthenticatedGitHttpEnabled"] = throttle_unauthenticated_git_http_enabled
+        __props__["throttleUnauthenticatedGitHttpPeriodInSeconds"] = throttle_unauthenticated_git_http_period_in_seconds
+        __props__["throttleUnauthenticatedGitHttpRequestsPerPeriod"] = throttle_unauthenticated_git_http_requests_per_period
         __props__["throttleUnauthenticatedPackagesApiEnabled"] = throttle_unauthenticated_packages_api_enabled
         __props__["throttleUnauthenticatedPackagesApiPeriodInSeconds"] = throttle_unauthenticated_packages_api_period_in_seconds
         __props__["throttleUnauthenticatedPackagesApiRequestsPerPeriod"] = throttle_unauthenticated_packages_api_requests_per_period
+        __props__["throttleUnauthenticatedPeriodInSeconds"] = throttle_unauthenticated_period_in_seconds
+        __props__["throttleUnauthenticatedRequestsPerPeriod"] = throttle_unauthenticated_requests_per_period
         __props__["throttleUnauthenticatedWebEnabled"] = throttle_unauthenticated_web_enabled
         __props__["throttleUnauthenticatedWebPeriodInSeconds"] = throttle_unauthenticated_web_period_in_seconds
         __props__["throttleUnauthenticatedWebRequestsPerPeriod"] = throttle_unauthenticated_web_requests_per_period
@@ -13667,8 +16756,19 @@ class ApplicationSettings(pulumi.CustomResource):
         __props__["userDefaultsToPrivateProfile"] = user_defaults_to_private_profile
         __props__["userOauthApplications"] = user_oauth_applications
         __props__["userShowAddSshKeyMessage"] = user_show_add_ssh_key_message
+        __props__["usersApiLimitFollowers"] = users_api_limit_followers
+        __props__["usersApiLimitFollowing"] = users_api_limit_following
+        __props__["usersApiLimitGpgKey"] = users_api_limit_gpg_key
+        __props__["usersApiLimitGpgKeys"] = users_api_limit_gpg_keys
+        __props__["usersApiLimitSshKey"] = users_api_limit_ssh_key
+        __props__["usersApiLimitSshKeys"] = users_api_limit_ssh_keys
+        __props__["usersApiLimitStatus"] = users_api_limit_status
+        __props__["usersGetByIdLimit"] = users_get_by_id_limit
+        __props__["usersGetByIdLimitAllowlistRaw"] = users_get_by_id_limit_allowlist_raw
         __props__["validRunnerRegistrars"] = valid_runner_registrars
         __props__["versionCheckEnabled"] = version_check_enabled
+        __props__["webHookEventResendLimit"] = web_hook_event_resend_limit
+        __props__["webHookTestLimit"] = web_hook_test_limit
         __props__["webIdeClientsidePreviewEnabled"] = web_ide_clientside_preview_enabled
         __props__["whatsNewVariant"] = whats_new_variant
         __props__["wikiPageMaxContentBytes"] = wiki_page_max_content_bytes
@@ -13705,6 +16805,14 @@ class ApplicationSettings(pulumi.CustomResource):
         Text shown to the user after signing up.
         """
         return pulumi.get(self, "after_sign_up_text")
+
+    @_builtins.property
+    @pulumi.getter(name="aiActionApiRateLimit")
+    def ai_action_api_rate_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of requests allowed to the aiAction GraphQL mutation per user per eight hours. Default: 160. Set to 0 to disable the rate limit. Introduced in GitLab 17.2.
+        """
+        return pulumi.get(self, "ai_action_api_rate_limit")
 
     @_builtins.property
     @pulumi.getter(name="akismetApiKey")
@@ -13867,6 +16975,22 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "auto_devops_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="autocompleteUsersLimit")
+    def autocomplete_users_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of authenticated requests per minute to the GET /autocomplete/users endpoint.
+        """
+        return pulumi.get(self, "autocomplete_users_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="autocompleteUsersUnauthenticatedLimit")
+    def autocomplete_users_unauthenticated_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of unauthenticated requests per minute to the GET /autocomplete/users endpoint.
+        """
+        return pulumi.get(self, "autocomplete_users_unauthenticated_limit")
+
+    @_builtins.property
     @pulumi.getter(name="automaticPurchasedStorageAllocation")
     def automatic_purchased_storage_allocation(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -13923,6 +17047,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "ci_job_live_trace_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="ciLintLimitPerUser")
+    def ci_lint_limit_per_user(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of CI Lint requests per minute per user. Disabled by default.
+        """
+        return pulumi.get(self, "ci_lint_limit_per_user")
+
+    @_builtins.property
     @pulumi.getter(name="ciMaxIncludes")
     def ci_max_includes(self) -> pulumi.Output[_builtins.int]:
         """
@@ -13969,6 +17101,30 @@ class ApplicationSettings(pulumi.CustomResource):
         Maximum number of simultaneous import jobs for the GitHub importer.
         """
         return pulumi.get(self, "concurrent_github_import_jobs_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="concurrentPullRequestImportJobsLimit")
+    def concurrent_pull_request_import_jobs_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of simultaneous pull request import jobs for the GitHub, Bitbucket Cloud, and Bitbucket Server importers. Default is 200. Introduced in GitLab 19.4.
+        """
+        return pulumi.get(self, "concurrent_pull_request_import_jobs_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="concurrentRelationBatchExportLimit")
+    def concurrent_relation_batch_export_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of simultaneous batch export jobs to process. Introduced in GitLab 17.6.
+        """
+        return pulumi.get(self, "concurrent_relation_batch_export_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="concurrentRelationExportLimit")
+    def concurrent_relation_export_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of simultaneous project file exports to process. Default: 25. Introduced in GitLab 19.4 with a feature flag named limit*concurrent*project_exports. Disabled by default.
+        """
+        return pulumi.get(self, "concurrent_relation_export_limit")
 
     @_builtins.property
     @pulumi.getter(name="containerExpirationPoliciesEnableHistoricEntries")
@@ -14691,6 +17847,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "geo_status_timeout")
 
     @_builtins.property
+    @pulumi.getter(name="gitPushPipelineLimit")
+    def git_push_pipeline_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Set the maximum number of tag or branch pipelines that can be triggered by a single Git push. For more information about this limit, see number of pipelines per Git push.
+        """
+        return pulumi.get(self, "git_push_pipeline_limit")
+
+    @_builtins.property
     @pulumi.getter(name="gitRateLimitUsersAlertlists")
     def git_rate_limit_users_alertlists(self) -> pulumi.Output[Sequence[_builtins.int]]:
         """
@@ -14811,12 +17975,44 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "gravatar_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="groupDownloadExportLimit")
+    def group_download_export_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of group export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "group_download_export_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="groupExportLimit")
+    def group_export_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of group exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "group_export_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="groupImportLimit")
+    def group_import_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of group imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "group_import_limit")
+
+    @_builtins.property
     @pulumi.getter(name="groupOwnersCanManageDefaultBranchProtection")
     def group_owners_can_manage_default_branch_protection(self) -> pulumi.Output[_builtins.bool]:
         """
         Prevent overrides of default branch protection.
         """
         return pulumi.get(self, "group_owners_can_manage_default_branch_protection")
+
+    @_builtins.property
+    @pulumi.getter(name="groupSecretsLimit")
+    def group_secrets_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of secrets allowed per group in Secrets Manager. Default: 500. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+        """
+        return pulumi.get(self, "group_secrets_limit")
 
     @_builtins.property
     @pulumi.getter(name="helpPageHideCommercialContent")
@@ -14889,6 +18085,14 @@ class ApplicationSettings(pulumi.CustomResource):
         Enable HTML emails.
         """
         return pulumi.get(self, "html_emails_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="importJobsConcurrencyLimit")
+    def import_jobs_concurrency_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of concurrently running jobs for each import worker type (project and group file base import, Direct Transfer, and GitHub, Bitbucket Cloud, and Bitbucket Server importer stages). Applied independently per worker type. Default is 100. Introduced in GitLab 19.1.
+        """
+        return pulumi.get(self, "import_jobs_concurrency_limit")
 
     @_builtins.property
     @pulumi.getter(name="importSources")
@@ -14985,6 +18189,22 @@ class ApplicationSettings(pulumi.CustomResource):
         Enable public key storage for the GitLab for Jira Cloud app.
         """
         return pulumi.get(self, "jira_connect_public_key_storage_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="jobPlayLimitPerUserProject")
+    def job_play_limit_per_user_project(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of manual job runs per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_play. Disabled by default.
+        """
+        return pulumi.get(self, "job_play_limit_per_user_project")
+
+    @_builtins.property
+    @pulumi.getter(name="jobRetryLimitPerUserProject")
+    def job_retry_limit_per_user_project(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of job retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_retry. Disabled by default.
+        """
+        return pulumi.get(self, "job_retry_limit_per_user_project")
 
     @_builtins.property
     @pulumi.getter(name="keepLatestArtifact")
@@ -15123,6 +18343,22 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "max_export_size")
 
     @_builtins.property
+    @pulumi.getter(name="maxGithubResponseSizeLimit")
+    def max_github_response_size_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum allowed GitHub API response size in MB. 0 for unlimited.
+        """
+        return pulumi.get(self, "max_github_response_size_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="maxHttpResponseSizeLimit")
+    def max_http_response_size_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4.
+        """
+        return pulumi.get(self, "max_http_response_size_limit")
+
+    @_builtins.property
     @pulumi.getter(name="maxImportRemoteFileSize")
     def max_import_remote_file_size(self) -> pulumi.Output[_builtins.int]:
         """
@@ -15257,6 +18493,14 @@ class ApplicationSettings(pulumi.CustomResource):
         Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
         """
         return pulumi.get(self, "mirror_max_delay")
+
+    @_builtins.property
+    @pulumi.getter(name="notesCreateLimit")
+    def notes_create_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of notes (comments) a user can create per minute. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "notes_create_limit")
 
     @_builtins.property
     @pulumi.getter(name="notifyOnUnknownSignIn")
@@ -15395,12 +18639,36 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "personal_access_token_prefix")
 
     @_builtins.property
+    @pulumi.getter(name="pipelineCancelLimitPerUserProject")
+    def pipeline_cancel_limit_per_user_project(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of pipeline cancellations per minute per user per project. Introduced in GitLab 19.5.
+        """
+        return pulumi.get(self, "pipeline_cancel_limit_per_user_project")
+
+    @_builtins.property
     @pulumi.getter(name="pipelineLimitPerProjectUserSha")
     def pipeline_limit_per_project_user_sha(self) -> pulumi.Output[_builtins.int]:
         """
         Maximum number of pipeline creation requests per minute per user and commit.
         """
         return pulumi.get(self, "pipeline_limit_per_project_user_sha")
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineLimitPerUser")
+    def pipeline_limit_per_user(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of pipeline creation requests per minute per user.
+        """
+        return pulumi.get(self, "pipeline_limit_per_user")
+
+    @_builtins.property
+    @pulumi.getter(name="pipelineRetryLimitPerUserProject")
+    def pipeline_retry_limit_per_user_project(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of pipeline retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*pipeline_retry. Disabled by default.
+        """
+        return pulumi.get(self, "pipeline_retry_limit_per_user_project")
 
     @_builtins.property
     @pulumi.getter(name="plantumlEnabled")
@@ -15443,6 +18711,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "prevent_merge_requests_committers_approval")
 
     @_builtins.property
+    @pulumi.getter(name="projectDownloadExportLimit")
+    def project_download_export_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of project export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "project_download_export_limit")
+
+    @_builtins.property
     @pulumi.getter(name="projectExportEnabled")
     def project_export_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -15451,12 +18727,36 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "project_export_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="projectExportLimit")
+    def project_export_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of project exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "project_export_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="projectImportLimit")
+    def project_import_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of project imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "project_import_limit")
+
+    @_builtins.property
     @pulumi.getter(name="projectJobsApiRateLimit")
     def project_jobs_api_rate_limit(self) -> pulumi.Output[_builtins.int]:
         """
         Maximum authenticated requests to /project/:id/jobs per minute.
         """
         return pulumi.get(self, "project_jobs_api_rate_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="projectSecretsLimit")
+    def project_secrets_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of secrets allowed per project in Secrets Manager. Default: 100. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+        """
+        return pulumi.get(self, "project_secrets_limit")
 
     @_builtins.property
     @pulumi.getter(name="projectsApiRateLimitUnauthenticated")
@@ -15521,6 +18821,14 @@ class ApplicationSettings(pulumi.CustomResource):
         Max number of requests per minute for each raw path. To disable throttling set to 0.
         """
         return pulumi.get(self, "raw_blob_request_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="rawBlobRequestLimitUnauthenticated")
+    def raw_blob_request_limit_unauthenticated(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of unauthenticated requests per minute across all raw paths in a project (default is 800). Set to 0 to disable throttling.
+        """
+        return pulumi.get(self, "raw_blob_request_limit_unauthenticated")
 
     @_builtins.property
     @pulumi.getter(name="recaptchaEnabled")
@@ -15641,6 +18949,46 @@ class ApplicationSettings(pulumi.CustomResource):
         The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
         """
         return pulumi.get(self, "rsa_key_restriction")
+
+    @_builtins.property
+    @pulumi.getter(name="runnerJobsEndpointsApiLimit")
+    def runner_jobs_endpoints_api_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of requests per minute per job token for requests to /jobs/* requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        """
+        return pulumi.get(self, "runner_jobs_endpoints_api_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="runnerJobsPatchTraceApiLimit")
+    def runner_jobs_patch_trace_api_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of requests per minute per runner token for requests to the PATCH /jobs/:id/trace runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        """
+        return pulumi.get(self, "runner_jobs_patch_trace_api_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="runnerJobsRequestApiLimit")
+    def runner_jobs_request_api_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of requests per minute per runner token for requests to the /jobs/request runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+        """
+        return pulumi.get(self, "runner_jobs_request_api_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="scanExecutionPoliciesActionLimit")
+    def scan_execution_policies_action_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of actions per scan execution policy. Default: 0. Maximum: 20.
+        """
+        return pulumi.get(self, "scan_execution_policies_action_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="scanExecutionPoliciesScheduleLimit")
+    def scan_execution_policies_schedule_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of type: schedule rules per scan execution policy. Default: 0. Maximum: 20.
+        """
+        return pulumi.get(self, "scan_execution_policies_schedule_limit")
 
     @_builtins.property
     @pulumi.getter(name="searchRateLimit")
@@ -15963,6 +19311,14 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "suggest_pipeline_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="tagsCreateLimit")
+    def tags_create_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL tagCreate mutation, tag creation in the UI, and the /tag quick action. Default: 100. Set to 0 to disable the rate limit. Introduced in GitLab 19.4.
+        """
+        return pulumi.get(self, "tags_create_limit")
+
+    @_builtins.property
     @pulumi.getter(name="terminalMaxSessionTime")
     def terminal_max_session_time(self) -> pulumi.Output[_builtins.int]:
         """
@@ -16003,6 +19359,102 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "throttle_authenticated_api_requests_per_period")
 
     @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDependencyProxyEnabled")
+    def throttle_authenticated_dependency_proxy_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        If true, enforces the authenticated dependency proxy request rate limit. Default value: false. Introduced in GitLab 19.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_dependency_proxy_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDependencyProxyPeriodInSeconds")
+    def throttle_authenticated_dependency_proxy_period_in_seconds(self) -> pulumi.Output[_builtins.int]:
+        """
+        Rate limit period in seconds. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 15. Introduced in GitLab 19.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_dependency_proxy_period_in_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDependencyProxyRequestsPerPeriod")
+    def throttle_authenticated_dependency_proxy_requests_per_period(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum requests per period per user. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 1000. Introduced in GitLab 19.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_dependency_proxy_requests_per_period")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDeprecatedApiEnabled")
+    def throttle_authenticated_deprecated_api_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        (If enabled, requires: throttle*authenticated*deprecated*api*period*in*seconds and throttle*authenticated*deprecated*api*requests*per*period) Enable authenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_deprecated_api_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDeprecatedApiPeriodInSeconds")
+    def throttle_authenticated_deprecated_api_period_in_seconds(self) -> pulumi.Output[_builtins.int]:
+        """
+        Rate limit period (in seconds) for authenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_deprecated_api_period_in_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedDeprecatedApiRequestsPerPeriod")
+    def throttle_authenticated_deprecated_api_requests_per_period(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum authenticated deprecated API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_deprecated_api_requests_per_period")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedFilesApiEnabled")
+    def throttle_authenticated_files_api_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        (If enabled, requires: throttle*authenticated*files*api*period*in*seconds and throttle*authenticated*files*api*requests*per*period) Enable authenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_files_api_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedFilesApiPeriodInSeconds")
+    def throttle_authenticated_files_api_period_in_seconds(self) -> pulumi.Output[_builtins.int]:
+        """
+        Rate limit period (in seconds) for authenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_files_api_period_in_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedFilesApiRequestsPerPeriod")
+    def throttle_authenticated_files_api_requests_per_period(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum authenticated Files API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_authenticated_files_api_requests_per_period")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedGitHttpEnabled")
+    def throttle_authenticated_git_http_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        If true, enforces the authenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_git_http_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedGitHttpPeriodInSeconds")
+    def throttle_authenticated_git_http_period_in_seconds(self) -> pulumi.Output[_builtins.int]:
+        """
+        Rate limit period in seconds. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_git_http_period_in_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedGitHttpRequestsPerPeriod")
+    def throttle_authenticated_git_http_requests_per_period(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum requests per period per user. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+        """
+        return pulumi.get(self, "throttle_authenticated_git_http_requests_per_period")
+
+    @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedGitLfsEnabled")
     def throttle_authenticated_git_lfs_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -16025,6 +19477,30 @@ class ApplicationSettings(pulumi.CustomResource):
         Maximum requests per period per user.
         """
         return pulumi.get(self, "throttle_authenticated_git_lfs_requests_per_period")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedMcpEnabled")
+    def throttle_authenticated_mcp_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        (If enabled, requires: throttle*authenticated*mcp*period*in*seconds and throttle*authenticated*mcp*requests*per*period) If true, enforces the rate limit on requests to the MCP Server endpoint, /api/v4/mcp, for any HTTP method. Does not apply to other MCP endpoints. Introduced in GitLab 19.5.
+        """
+        return pulumi.get(self, "throttle_authenticated_mcp_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedMcpPeriodInSeconds")
+    def throttle_authenticated_mcp_period_in_seconds(self) -> pulumi.Output[_builtins.int]:
+        """
+        Rate limit period in seconds. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+        """
+        return pulumi.get(self, "throttle_authenticated_mcp_period_in_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleAuthenticatedMcpRequestsPerPeriod")
+    def throttle_authenticated_mcp_requests_per_period(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum requests per period per user. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+        """
+        return pulumi.get(self, "throttle_authenticated_mcp_requests_per_period")
 
     @_builtins.property
     @pulumi.getter(name="throttleAuthenticatedPackagesApiEnabled")
@@ -16075,6 +19551,54 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "throttle_authenticated_web_requests_per_period")
 
     @_builtins.property
+    @pulumi.getter(name="throttleIncidentManagementNotificationEnabled")
+    def throttle_incident_management_notification_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        If true, enforces the inbound incident management alert notification rate limit, per project. Default value: false.
+        """
+        return pulumi.get(self, "throttle_incident_management_notification_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleIncidentManagementNotificationPerPeriod")
+    def throttle_incident_management_notification_per_period(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum inbound incident management alert notifications per period, per project. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+        """
+        return pulumi.get(self, "throttle_incident_management_notification_per_period")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleIncidentManagementNotificationPeriodInSeconds")
+    def throttle_incident_management_notification_period_in_seconds(self) -> pulumi.Output[_builtins.int]:
+        """
+        Rate limit period in seconds. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+        """
+        return pulumi.get(self, "throttle_incident_management_notification_period_in_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleProtectedPathsEnabled")
+    def throttle_protected_paths_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        (If enabled, requires: throttle*protected*paths*period*in*seconds and throttle*protected*paths*requests*per*period) Enable rate limiting for protected paths (for example, sign-in and password reset). Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_protected_paths_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleProtectedPathsPeriodInSeconds")
+    def throttle_protected_paths_period_in_seconds(self) -> pulumi.Output[_builtins.int]:
+        """
+        Rate limit period (in seconds) for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_protected_paths_period_in_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleProtectedPathsRequestsPerPeriod")
+    def throttle_protected_paths_requests_per_period(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum requests per period per IP for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_protected_paths_requests_per_period")
+
+    @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedApiEnabled")
     def throttle_unauthenticated_api_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -16099,6 +19623,87 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "throttle_unauthenticated_api_requests_per_period")
 
     @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedDeprecatedApiEnabled")
+    def throttle_unauthenticated_deprecated_api_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        (If enabled, requires: throttle*unauthenticated*deprecated*api*period*in*seconds and throttle*unauthenticated*deprecated*api*requests*per*period) Enable unauthenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_deprecated_api_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedDeprecatedApiPeriodInSeconds")
+    def throttle_unauthenticated_deprecated_api_period_in_seconds(self) -> pulumi.Output[_builtins.int]:
+        """
+        Rate limit period (in seconds) for unauthenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_deprecated_api_period_in_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedDeprecatedApiRequestsPerPeriod")
+    def throttle_unauthenticated_deprecated_api_requests_per_period(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum unauthenticated deprecated API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_deprecated_api_requests_per_period")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedEnabled")
+    @_utilities.deprecated("""Use throttle_unauthenticated_web_enabled or throttle_unauthenticated_api_enabled instead. (Deprecated in GitLab 14.3)""")
+    def throttle_unauthenticated_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*enabled or throttle*unauthenticated*api*enabled instead.) (**If enabled, requires**: throttle*unauthenticated*period*in*seconds and throttle*unauthenticated*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
+        """
+        return pulumi.get(self, "throttle_unauthenticated_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedFilesApiEnabled")
+    def throttle_unauthenticated_files_api_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        (If enabled, requires: throttle*unauthenticated*files*api*period*in*seconds and throttle*unauthenticated*files*api*requests*per*period) Enable unauthenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_files_api_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedFilesApiPeriodInSeconds")
+    def throttle_unauthenticated_files_api_period_in_seconds(self) -> pulumi.Output[_builtins.int]:
+        """
+        Rate limit period (in seconds) for unauthenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_files_api_period_in_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedFilesApiRequestsPerPeriod")
+    def throttle_unauthenticated_files_api_requests_per_period(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum unauthenticated Files API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_files_api_requests_per_period")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedGitHttpEnabled")
+    def throttle_unauthenticated_git_http_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        If true, enforces the unauthenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 17.0.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_git_http_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedGitHttpPeriodInSeconds")
+    def throttle_unauthenticated_git_http_period_in_seconds(self) -> pulumi.Output[_builtins.int]:
+        """
+        Rate limit period in seconds. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_git_http_period_in_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedGitHttpRequestsPerPeriod")
+    def throttle_unauthenticated_git_http_requests_per_period(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum requests per period per IP. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_git_http_requests_per_period")
+
+    @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedPackagesApiEnabled")
     def throttle_unauthenticated_packages_api_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -16121,6 +19726,24 @@ class ApplicationSettings(pulumi.CustomResource):
         Maximum requests per period per user. View Package Registry rate limits for more details.
         """
         return pulumi.get(self, "throttle_unauthenticated_packages_api_requests_per_period")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedPeriodInSeconds")
+    @_utilities.deprecated("""Use throttle_unauthenticated_web_period_in_seconds or throttle_unauthenticated_api_period_in_seconds instead. (Deprecated in GitLab 14.3)""")
+    def throttle_unauthenticated_period_in_seconds(self) -> pulumi.Output[_builtins.int]:
+        """
+        (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*period*in*seconds or throttle*unauthenticated*api*period*in*seconds instead.) Rate limit period in seconds.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_period_in_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleUnauthenticatedRequestsPerPeriod")
+    @_utilities.deprecated("""Use throttle_unauthenticated_web_requests_per_period or throttle_unauthenticated_api_requests_per_period instead. (Deprecated in GitLab 14.3)""")
+    def throttle_unauthenticated_requests_per_period(self) -> pulumi.Output[_builtins.int]:
+        """
+        (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*requests*per*period or throttle*unauthenticated*api*requests*per*period instead.) Maximum requests per period per IP.
+        """
+        return pulumi.get(self, "throttle_unauthenticated_requests_per_period")
 
     @_builtins.property
     @pulumi.getter(name="throttleUnauthenticatedWebEnabled")
@@ -16275,6 +19898,78 @@ class ApplicationSettings(pulumi.CustomResource):
         return pulumi.get(self, "user_show_add_ssh_key_message")
 
     @_builtins.property
+    @pulumi.getter(name="usersApiLimitFollowers")
+    def users_api_limit_followers(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_followers")
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitFollowing")
+    def users_api_limit_following(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_following")
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitGpgKey")
+    def users_api_limit_gpg_key(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_gpg_key")
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitGpgKeys")
+    def users_api_limit_gpg_keys(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_gpg_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitSshKey")
+    def users_api_limit_ssh_key(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_ssh_key")
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitSshKeys")
+    def users_api_limit_ssh_keys(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_ssh_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="usersApiLimitStatus")
+    def users_api_limit_status(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of requests per minute, per user or IP address. Default: 240. Set to 0 to disable limits. Introduced in GitLab 17.10.
+        """
+        return pulumi.get(self, "users_api_limit_status")
+
+    @_builtins.property
+    @pulumi.getter(name="usersGetByIdLimit")
+    def users_get_by_id_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of requests per minute per user to the GET /users/:id API endpoint. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "users_get_by_id_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="usersGetByIdLimitAllowlistRaw")
+    def users_get_by_id_limit_allowlist_raw(self) -> pulumi.Output[_builtins.str]:
+        """
+        Usernames excluded from the users*get*by*id*limit rate limit, separated by newlines, commas or whitespace. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+        """
+        return pulumi.get(self, "users_get_by_id_limit_allowlist_raw")
+
+    @_builtins.property
     @pulumi.getter(name="validRunnerRegistrars")
     def valid_runner_registrars(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
@@ -16289,6 +19984,22 @@ class ApplicationSettings(pulumi.CustomResource):
         Let GitLab inform you when an update is available.
         """
         return pulumi.get(self, "version_check_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="webHookEventResendLimit")
+    def web_hook_event_resend_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of webhook event resend requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+        """
+        return pulumi.get(self, "web_hook_event_resend_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="webHookTestLimit")
+    def web_hook_test_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum number of webhook test requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+        """
+        return pulumi.get(self, "web_hook_test_limit")
 
     @_builtins.property
     @pulumi.getter(name="webIdeClientsidePreviewEnabled")

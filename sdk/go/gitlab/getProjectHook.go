@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := gitlab.GetProject(ctx, &gitlab.LookupProjectArgs{
-//				Id: pulumi.StringRef("foo/bar/baz"),
+//				PathWithNamespace: pulumi.StringRef("foo/bar/baz"),
 //			}, nil)
 //			if err != nil {
 //				return err

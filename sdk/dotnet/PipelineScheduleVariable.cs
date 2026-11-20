@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
     ///     {
     ///         Project = "12345",
     ///         Description = "Used to schedule builds",
-    ///         Ref = "master",
+    ///         Ref = "refs/heads/main",
     ///         Cron = "0 1 * * *",
     ///     });
     /// 

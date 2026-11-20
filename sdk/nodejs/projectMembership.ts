@@ -94,7 +94,7 @@ export class ProjectMembership extends pulumi.CustomResource {
      */
     declare public readonly memberRoleId: pulumi.Output<number | undefined>;
     /**
-     * The ID or URL-encoded path of the project.
+     * The ID or full path of the project. Do not URL-encode the path.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
@@ -159,7 +159,7 @@ export interface ProjectMembershipState {
      */
     memberRoleId?: pulumi.Input<number | undefined>;
     /**
-     * The ID or URL-encoded path of the project.
+     * The ID or full path of the project. Do not URL-encode the path.
      */
     project?: pulumi.Input<string | undefined>;
     /**
@@ -185,7 +185,7 @@ export interface ProjectMembershipArgs {
      */
     memberRoleId?: pulumi.Input<number | undefined>;
     /**
-     * The ID or URL-encoded path of the project.
+     * The ID or full path of the project. Do not URL-encode the path.
      */
     project: pulumi.Input<string>;
     /**

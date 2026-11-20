@@ -9,6 +9,10 @@ import * as utilities from "./utilities";
  *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_level_variables/)
  *
+ * Use `valueWo` with an ephemeral input and `valueWoVersion` to keep credentials out of pulumi preview and state. Write-only arguments require Terraform 1.11 or later. Change the version marker to update the value; changes to the value alone do not produce a plan difference. Every update sends the configured value, including updates to other attributes when the version marker is unchanged. Value drift outside Terraform is not detected in this mode.
+ *
+ * Switching from `value` to `valueWo` removes the value from subsequent state snapshots, but does not remove it from historical states or saved plans. Rotate the old credential and manage retained artifacts separately. Importing a non-hidden variable with the ordinary import ID reads its value into state; use hidden variables when importing secret credentials. Hidden visibility is selected at creation and cannot be enabled in place.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -107,9 +111,18 @@ export class ProjectVariable extends pulumi.CustomResource {
      */
     declare public readonly raw: pulumi.Output<boolean>;
     /**
-     * The value of the variable.
+     * The value of the variable. Exactly one of `value` or `valueWo` must be specified. This attribute persists the value in state.
      */
-    declare public readonly value: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `valueWo` must be specified. Change `valueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+     */
+    declare public readonly valueWo: pulumi.Output<string | undefined>;
+    /**
+     * Non-empty change marker for `valueWo`, stored in state. Change this string to publish a new value. Every update sends `valueWo`, even when this marker is unchanged.
+     */
+    declare public readonly valueWoVersion: pulumi.Output<string | undefined>;
     /**
      * The type of a variable. Valid values are: `envVar`, `file`.
      */
@@ -137,6 +150,8 @@ export class ProjectVariable extends pulumi.CustomResource {
             resourceInputs["protected"] = state?.protected;
             resourceInputs["raw"] = state?.raw;
             resourceInputs["value"] = state?.value;
+            resourceInputs["valueWo"] = state?.valueWo;
+            resourceInputs["valueWoVersion"] = state?.valueWoVersion;
             resourceInputs["variableType"] = state?.variableType;
         } else {
             const args = argsOrState as ProjectVariableArgs | undefined;
@@ -145,9 +160,6 @@ export class ProjectVariable extends pulumi.CustomResource {
             }
             if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
-            }
-            if (args?.value === undefined && !opts.urn) {
-                throw new Error("Missing required property 'value'");
             }
             resourceInputs["description"] = args?.description;
             resourceInputs["environmentScope"] = args?.environmentScope;
@@ -158,9 +170,13 @@ export class ProjectVariable extends pulumi.CustomResource {
             resourceInputs["protected"] = args?.protected;
             resourceInputs["raw"] = args?.raw;
             resourceInputs["value"] = args?.value;
+            resourceInputs["valueWo"] = args?.valueWo ? pulumi.secret(args.valueWo) : undefined;
+            resourceInputs["valueWoVersion"] = args?.valueWoVersion;
             resourceInputs["variableType"] = args?.variableType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["valueWo"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ProjectVariable.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -202,9 +218,18 @@ export interface ProjectVariableState {
      */
     raw?: pulumi.Input<boolean | undefined>;
     /**
-     * The value of the variable.
+     * The value of the variable. Exactly one of `value` or `valueWo` must be specified. This attribute persists the value in state.
      */
     value?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `valueWo` must be specified. Change `valueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+     */
+    valueWo?: pulumi.Input<string | undefined>;
+    /**
+     * Non-empty change marker for `valueWo`, stored in state. Change this string to publish a new value. Every update sends `valueWo`, even when this marker is unchanged.
+     */
+    valueWoVersion?: pulumi.Input<string | undefined>;
     /**
      * The type of a variable. Valid values are: `envVar`, `file`.
      */
@@ -248,9 +273,18 @@ export interface ProjectVariableArgs {
      */
     raw?: pulumi.Input<boolean | undefined>;
     /**
-     * The value of the variable.
+     * The value of the variable. Exactly one of `value` or `valueWo` must be specified. This attribute persists the value in state.
      */
-    value: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `valueWo` must be specified. Change `valueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+     */
+    valueWo?: pulumi.Input<string | undefined>;
+    /**
+     * Non-empty change marker for `valueWo`, stored in state. Change this string to publish a new value. Every update sends `valueWo`, even when this marker is unchanged.
+     */
+    valueWoVersion?: pulumi.Input<string | undefined>;
     /**
      * The type of a variable. Valid values are: `envVar`, `file`.
      */

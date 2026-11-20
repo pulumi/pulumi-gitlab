@@ -53,20 +53,6 @@ import * as utilities from "./utilities";
  * }, {
  *     dependsOn: [exampleProjectMembership],
  * });
- * const listSyntax = new gitlab.ProjectIssueBoard("list_syntax", {
- *     project: example.id,
- *     name: "Test Issue Board with list syntax",
- *     lists: [
- *         {
- *             assigneeId: exampleUser.id.apply(x =>Number(x)),
- *         },
- *         {
- *             milestoneId: exampleProjectMilestone.milestoneId,
- *         },
- *     ],
- * }, {
- *     dependsOn: [exampleProjectMembership],
- * });
  * ```
  *
  * ## Import

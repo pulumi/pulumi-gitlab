@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getProject({
- *     id: "foo/bar/baz",
+ *     pathWithNamespace: "foo/bar/baz",
  * });
  * const examples = example.then(example => gitlab.getProjectHooks({
  *     project: example.id,
@@ -71,7 +71,7 @@ export interface GetProjectHooksResult {
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getProject({
- *     id: "foo/bar/baz",
+ *     pathWithNamespace: "foo/bar/baz",
  * });
  * const examples = example.then(example => gitlab.getProjectHooks({
  *     project: example.id,

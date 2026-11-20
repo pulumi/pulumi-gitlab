@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * Generates a GitLab security policy YAML document from structured configuration.
  * This data source performs pure transformation without any API calls.
  *
- * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+ * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/user/application_security/policies/scan_execution_policies/)
  *
  * ## Example Usage
  *
@@ -36,8 +36,9 @@ import * as utilities from "./utilities";
  * // for how to link a security policy project to a project or group.
  * const policy = new gitlab.RepositoryFile("policy", {
  *     project: "1234",
- *     ref: "main",
+ *     branch: "main",
  *     filePath: ".gitlab/security-policies/policy.yml",
+ *     encoding: "text",
  *     content: scan.then(scan => scan.yaml),
  * });
  * ```
@@ -81,7 +82,7 @@ export interface GetSecurityPolicyDocumentResult {
  * Generates a GitLab security policy YAML document from structured configuration.
  * This data source performs pure transformation without any API calls.
  *
- * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+ * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/user/application_security/policies/scan_execution_policies/)
  *
  * ## Example Usage
  *
@@ -107,8 +108,9 @@ export interface GetSecurityPolicyDocumentResult {
  * // for how to link a security policy project to a project or group.
  * const policy = new gitlab.RepositoryFile("policy", {
  *     project: "1234",
- *     ref: "main",
+ *     branch: "main",
  *     filePath: ".gitlab/security-policies/policy.yml",
+ *     encoding: "text",
  *     content: scan.then(scan => scan.yaml),
  * });
  * ```

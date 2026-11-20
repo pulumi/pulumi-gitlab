@@ -66,7 +66,8 @@ import javax.annotation.Nullable;
  *         // Group to assign the service account to. Can be the same top-level group resource as above, or a subgroup of that group.
  *         var exampleSubgroup = new Group("exampleSubgroup", GroupArgs.builder()
  *             .name("subgroup")
- *             .path("example/subgroup")
+ *             .path("subgroup")
+ *             .parentId(example.id())
  *             .description("An example subgroup")
  *             .build());
  * 

@@ -314,18 +314,6 @@ class ProjectIssueBoard(pulumi.CustomResource):
                 },
             ],
             opts = pulumi.ResourceOptions(depends_on=[example_project_membership]))
-        list_syntax = gitlab.ProjectIssueBoard("list_syntax",
-            project=example.id,
-            name="Test Issue Board with list syntax",
-            lists=[
-                {
-                    "assignee_id": example_user.id.apply(lambda x: int(x)),
-                },
-                {
-                    "milestone_id": example_project_milestone.milestone_id,
-                },
-            ],
-            opts = pulumi.ResourceOptions(depends_on=[example_project_membership]))
         ```
 
         ## Import
@@ -391,18 +379,6 @@ class ProjectIssueBoard(pulumi.CustomResource):
         this = gitlab.ProjectIssueBoard("this",
             project=example.id,
             name="Test Issue Board",
-            lists=[
-                {
-                    "assignee_id": example_user.id.apply(lambda x: int(x)),
-                },
-                {
-                    "milestone_id": example_project_milestone.milestone_id,
-                },
-            ],
-            opts = pulumi.ResourceOptions(depends_on=[example_project_membership]))
-        list_syntax = gitlab.ProjectIssueBoard("list_syntax",
-            project=example.id,
-            name="Test Issue Board with list syntax",
             lists=[
                 {
                     "assignee_id": example_user.id.apply(lambda x: int(x)),

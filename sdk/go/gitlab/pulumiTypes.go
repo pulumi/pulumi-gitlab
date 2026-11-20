@@ -7792,6 +7792,324 @@ func (o ReleaseLinksPtrOutput) Self() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type RepositoryFilesFile struct {
+	// File content.
+	Content string `pulumi:"content"`
+	// The file content encoding. Valid values are: `base64`, `text`. Defaults to `text`.
+	Encoding *string `pulumi:"encoding"`
+	// Enables or disables the execute flag on the file. Defaults to `false`.
+	ExecuteFilemode *bool `pulumi:"executeFilemode"`
+	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
+	FilePath string `pulumi:"filePath"`
+}
+
+// RepositoryFilesFileInput is an input type that accepts RepositoryFilesFileArgs and RepositoryFilesFileOutput values.
+// You can construct a concrete instance of `RepositoryFilesFileInput` via:
+//
+//	RepositoryFilesFileArgs{...}
+type RepositoryFilesFileInput interface {
+	pulumi.Input
+
+	ToRepositoryFilesFileOutput() RepositoryFilesFileOutput
+	ToRepositoryFilesFileOutputWithContext(context.Context) RepositoryFilesFileOutput
+}
+
+type RepositoryFilesFileArgs struct {
+	// File content.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The file content encoding. Valid values are: `base64`, `text`. Defaults to `text`.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// Enables or disables the execute flag on the file. Defaults to `false`.
+	ExecuteFilemode pulumi.BoolPtrInput `pulumi:"executeFilemode"`
+	// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
+	FilePath pulumi.StringInput `pulumi:"filePath"`
+}
+
+func (RepositoryFilesFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryFilesFile)(nil)).Elem()
+}
+
+func (i RepositoryFilesFileArgs) ToRepositoryFilesFileOutput() RepositoryFilesFileOutput {
+	return i.ToRepositoryFilesFileOutputWithContext(context.Background())
+}
+
+func (i RepositoryFilesFileArgs) ToRepositoryFilesFileOutputWithContext(ctx context.Context) RepositoryFilesFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryFilesFileOutput)
+}
+
+// RepositoryFilesFileArrayInput is an input type that accepts RepositoryFilesFileArray and RepositoryFilesFileArrayOutput values.
+// You can construct a concrete instance of `RepositoryFilesFileArrayInput` via:
+//
+//	RepositoryFilesFileArray{ RepositoryFilesFileArgs{...} }
+type RepositoryFilesFileArrayInput interface {
+	pulumi.Input
+
+	ToRepositoryFilesFileArrayOutput() RepositoryFilesFileArrayOutput
+	ToRepositoryFilesFileArrayOutputWithContext(context.Context) RepositoryFilesFileArrayOutput
+}
+
+type RepositoryFilesFileArray []RepositoryFilesFileInput
+
+func (RepositoryFilesFileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryFilesFile)(nil)).Elem()
+}
+
+func (i RepositoryFilesFileArray) ToRepositoryFilesFileArrayOutput() RepositoryFilesFileArrayOutput {
+	return i.ToRepositoryFilesFileArrayOutputWithContext(context.Background())
+}
+
+func (i RepositoryFilesFileArray) ToRepositoryFilesFileArrayOutputWithContext(ctx context.Context) RepositoryFilesFileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryFilesFileArrayOutput)
+}
+
+type RepositoryFilesFileOutput struct{ *pulumi.OutputState }
+
+func (RepositoryFilesFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryFilesFile)(nil)).Elem()
+}
+
+func (o RepositoryFilesFileOutput) ToRepositoryFilesFileOutput() RepositoryFilesFileOutput {
+	return o
+}
+
+func (o RepositoryFilesFileOutput) ToRepositoryFilesFileOutputWithContext(ctx context.Context) RepositoryFilesFileOutput {
+	return o
+}
+
+// File content.
+func (o RepositoryFilesFileOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v RepositoryFilesFile) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The file content encoding. Valid values are: `base64`, `text`. Defaults to `text`.
+func (o RepositoryFilesFileOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryFilesFile) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+// Enables or disables the execute flag on the file. Defaults to `false`.
+func (o RepositoryFilesFileOutput) ExecuteFilemode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RepositoryFilesFile) *bool { return v.ExecuteFilemode }).(pulumi.BoolPtrOutput)
+}
+
+// The full path of the file. It must be relative to the root of the project without a leading slash `/` or `./`.
+func (o RepositoryFilesFileOutput) FilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v RepositoryFilesFile) string { return v.FilePath }).(pulumi.StringOutput)
+}
+
+type RepositoryFilesFileArrayOutput struct{ *pulumi.OutputState }
+
+func (RepositoryFilesFileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryFilesFile)(nil)).Elem()
+}
+
+func (o RepositoryFilesFileArrayOutput) ToRepositoryFilesFileArrayOutput() RepositoryFilesFileArrayOutput {
+	return o
+}
+
+func (o RepositoryFilesFileArrayOutput) ToRepositoryFilesFileArrayOutputWithContext(ctx context.Context) RepositoryFilesFileArrayOutput {
+	return o
+}
+
+func (o RepositoryFilesFileArrayOutput) Index(i pulumi.IntInput) RepositoryFilesFileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryFilesFile {
+		return vs[0].([]RepositoryFilesFile)[vs[1].(int)]
+	}).(RepositoryFilesFileOutput)
+}
+
+type RepositoryFilesTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// RepositoryFilesTimeoutsInput is an input type that accepts RepositoryFilesTimeoutsArgs and RepositoryFilesTimeoutsOutput values.
+// You can construct a concrete instance of `RepositoryFilesTimeoutsInput` via:
+//
+//	RepositoryFilesTimeoutsArgs{...}
+type RepositoryFilesTimeoutsInput interface {
+	pulumi.Input
+
+	ToRepositoryFilesTimeoutsOutput() RepositoryFilesTimeoutsOutput
+	ToRepositoryFilesTimeoutsOutputWithContext(context.Context) RepositoryFilesTimeoutsOutput
+}
+
+type RepositoryFilesTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (RepositoryFilesTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryFilesTimeouts)(nil)).Elem()
+}
+
+func (i RepositoryFilesTimeoutsArgs) ToRepositoryFilesTimeoutsOutput() RepositoryFilesTimeoutsOutput {
+	return i.ToRepositoryFilesTimeoutsOutputWithContext(context.Background())
+}
+
+func (i RepositoryFilesTimeoutsArgs) ToRepositoryFilesTimeoutsOutputWithContext(ctx context.Context) RepositoryFilesTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryFilesTimeoutsOutput)
+}
+
+func (i RepositoryFilesTimeoutsArgs) ToRepositoryFilesTimeoutsPtrOutput() RepositoryFilesTimeoutsPtrOutput {
+	return i.ToRepositoryFilesTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryFilesTimeoutsArgs) ToRepositoryFilesTimeoutsPtrOutputWithContext(ctx context.Context) RepositoryFilesTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryFilesTimeoutsOutput).ToRepositoryFilesTimeoutsPtrOutputWithContext(ctx)
+}
+
+// RepositoryFilesTimeoutsPtrInput is an input type that accepts RepositoryFilesTimeoutsArgs, RepositoryFilesTimeoutsPtr and RepositoryFilesTimeoutsPtrOutput values.
+// You can construct a concrete instance of `RepositoryFilesTimeoutsPtrInput` via:
+//
+//	        RepositoryFilesTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryFilesTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryFilesTimeoutsPtrOutput() RepositoryFilesTimeoutsPtrOutput
+	ToRepositoryFilesTimeoutsPtrOutputWithContext(context.Context) RepositoryFilesTimeoutsPtrOutput
+}
+
+type repositoryFilesTimeoutsPtrType RepositoryFilesTimeoutsArgs
+
+func RepositoryFilesTimeoutsPtr(v *RepositoryFilesTimeoutsArgs) RepositoryFilesTimeoutsPtrInput {
+	return (*repositoryFilesTimeoutsPtrType)(v)
+}
+
+func (*repositoryFilesTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryFilesTimeouts)(nil)).Elem()
+}
+
+func (i *repositoryFilesTimeoutsPtrType) ToRepositoryFilesTimeoutsPtrOutput() RepositoryFilesTimeoutsPtrOutput {
+	return i.ToRepositoryFilesTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryFilesTimeoutsPtrType) ToRepositoryFilesTimeoutsPtrOutputWithContext(ctx context.Context) RepositoryFilesTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryFilesTimeoutsPtrOutput)
+}
+
+type RepositoryFilesTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (RepositoryFilesTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryFilesTimeouts)(nil)).Elem()
+}
+
+func (o RepositoryFilesTimeoutsOutput) ToRepositoryFilesTimeoutsOutput() RepositoryFilesTimeoutsOutput {
+	return o
+}
+
+func (o RepositoryFilesTimeoutsOutput) ToRepositoryFilesTimeoutsOutputWithContext(ctx context.Context) RepositoryFilesTimeoutsOutput {
+	return o
+}
+
+func (o RepositoryFilesTimeoutsOutput) ToRepositoryFilesTimeoutsPtrOutput() RepositoryFilesTimeoutsPtrOutput {
+	return o.ToRepositoryFilesTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryFilesTimeoutsOutput) ToRepositoryFilesTimeoutsPtrOutputWithContext(ctx context.Context) RepositoryFilesTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryFilesTimeouts) *RepositoryFilesTimeouts {
+		return &v
+	}).(RepositoryFilesTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RepositoryFilesTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryFilesTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o RepositoryFilesTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryFilesTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o RepositoryFilesTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryFilesTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RepositoryFilesTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryFilesTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryFilesTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryFilesTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryFilesTimeouts)(nil)).Elem()
+}
+
+func (o RepositoryFilesTimeoutsPtrOutput) ToRepositoryFilesTimeoutsPtrOutput() RepositoryFilesTimeoutsPtrOutput {
+	return o
+}
+
+func (o RepositoryFilesTimeoutsPtrOutput) ToRepositoryFilesTimeoutsPtrOutputWithContext(ctx context.Context) RepositoryFilesTimeoutsPtrOutput {
+	return o
+}
+
+func (o RepositoryFilesTimeoutsPtrOutput) Elem() RepositoryFilesTimeoutsOutput {
+	return o.ApplyT(func(v *RepositoryFilesTimeouts) RepositoryFilesTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryFilesTimeouts
+		return ret
+	}).(RepositoryFilesTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RepositoryFilesTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryFilesTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o RepositoryFilesTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryFilesTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o RepositoryFilesTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryFilesTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o RepositoryFilesTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryFilesTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type TagProtectionAllowedToCreate struct {
 	// Access levels allowed to create protected tags. Valid values are: `no one`, `developer`, `maintainer`, `admin`.
 	AccessLevel *string `pulumi:"accessLevel"`
@@ -7928,7 +8246,7 @@ func (o TagProtectionAllowedToCreateArrayOutput) Index(i pulumi.IntInput) TagPro
 type ValueStreamAnalyticsStage struct {
 	// Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.
 	Custom *bool `pulumi:"custom"`
-	// End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+	// End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_APPROVED_AT`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`, `PLAN_STAGE_START`
 	EndEventIdentifier *string `pulumi:"endEventIdentifier"`
 	// Label ID associated with the end event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
 	EndEventLabelId *string `pulumi:"endEventLabelId"`
@@ -7938,7 +8256,7 @@ type ValueStreamAnalyticsStage struct {
 	Id *string `pulumi:"id"`
 	// The name of the value stream stage.
 	Name string `pulumi:"name"`
-	// Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+	// Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_APPROVED_AT`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`, `PLAN_STAGE_START`
 	StartEventIdentifier *string `pulumi:"startEventIdentifier"`
 	// Label ID associated with the start event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
 	StartEventLabelId *string `pulumi:"startEventLabelId"`
@@ -7958,7 +8276,7 @@ type ValueStreamAnalyticsStageInput interface {
 type ValueStreamAnalyticsStageArgs struct {
 	// Boolean whether the stage is customized. If false, it assigns a built-in default stage by name.
 	Custom pulumi.BoolPtrInput `pulumi:"custom"`
-	// End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+	// End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_APPROVED_AT`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`, `PLAN_STAGE_START`
 	EndEventIdentifier pulumi.StringPtrInput `pulumi:"endEventIdentifier"`
 	// Label ID associated with the end event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
 	EndEventLabelId pulumi.StringPtrInput `pulumi:"endEventLabelId"`
@@ -7968,7 +8286,7 @@ type ValueStreamAnalyticsStageArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The name of the value stream stage.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+	// Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_APPROVED_AT`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`, `PLAN_STAGE_START`
 	StartEventIdentifier pulumi.StringPtrInput `pulumi:"startEventIdentifier"`
 	// Label ID associated with the start event identifier. In the format of `gid://gitlab/GroupLabel/<id>` or `gid://gitlab/ProjectLabel/<id>`
 	StartEventLabelId pulumi.StringPtrInput `pulumi:"startEventLabelId"`
@@ -8030,7 +8348,7 @@ func (o ValueStreamAnalyticsStageOutput) Custom() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ValueStreamAnalyticsStage) *bool { return v.Custom }).(pulumi.BoolPtrOutput)
 }
 
-// End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+// End event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_APPROVED_AT`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`, `PLAN_STAGE_START`
 func (o ValueStreamAnalyticsStageOutput) EndEventIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ValueStreamAnalyticsStage) *string { return v.EndEventIdentifier }).(pulumi.StringPtrOutput)
 }
@@ -8055,7 +8373,7 @@ func (o ValueStreamAnalyticsStageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ValueStreamAnalyticsStage) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`
+// Start event identifier. Valid values are: `CODE_STAGE_START`, `ISSUE_CLOSED`, `ISSUE_CREATED`, `ISSUE_DEPLOYED_TO_PRODUCTION`, `ISSUE_FIRST_ADDED_TO_BOARD`, `ISSUE_FIRST_ADDED_TO_ITERATION`, `ISSUE_FIRST_ASSIGNED_AT`, `ISSUE_FIRST_ASSOCIATED_WITH_MILESTONE`, `ISSUE_FIRST_MENTIONED_IN_COMMIT`, `ISSUE_LABEL_ADDED`, `ISSUE_LABEL_REMOVED`, `ISSUE_LAST_EDITED`, `ISSUE_STAGE_END`, `MERGE_REQUEST_CLOSED`, `MERGE_REQUEST_CREATED`, `MERGE_REQUEST_FIRST_ASSIGNED_AT`, `MERGE_REQUEST_FIRST_COMMIT_AT`, `MERGE_REQUEST_FIRST_DEPLOYED_TO_PRODUCTION`, `MERGE_REQUEST_LABEL_ADDED`, `MERGE_REQUEST_LABEL_REMOVED`, `MERGE_REQUEST_LAST_APPROVED_AT`, `MERGE_REQUEST_LAST_BUILD_FINISHED`, `MERGE_REQUEST_LAST_BUILD_STARTED`, `MERGE_REQUEST_LAST_EDITED`, `MERGE_REQUEST_MERGED`, `MERGE_REQUEST_REVIEWER_FIRST_ASSIGNED`, `MERGE_REQUEST_PLAN_STAGE_START`, `PLAN_STAGE_START`
 func (o ValueStreamAnalyticsStageOutput) StartEventIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ValueStreamAnalyticsStage) *string { return v.StartEventIdentifier }).(pulumi.StringPtrOutput)
 }
@@ -21980,6 +22298,8 @@ type GetProjectsProject struct {
 	MergeRequestsEnabled bool `pulumi:"mergeRequestsEnabled"`
 	// Default description template for new merge requests.
 	MergeRequestsTemplate string `pulumi:"mergeRequestsTemplate"`
+	// Merge train enforcement level. Valid values are `allowBypass`, `enforceForAllUsers`, `enforceWithOwnerOverride`. Introduced in GitLab 19.3. Premium and Ultimate only.
+	MergeTrainEnforcement string `pulumi:"mergeTrainEnforcement"`
 	// Enable or disable merge trains.
 	MergeTrainsEnabled bool `pulumi:"mergeTrainsEnabled"`
 	// Allows merge train merge requests to be merged without waiting for pipelines to finish.
@@ -22322,6 +22642,8 @@ type GetProjectsProjectArgs struct {
 	MergeRequestsEnabled pulumi.BoolInput `pulumi:"mergeRequestsEnabled"`
 	// Default description template for new merge requests.
 	MergeRequestsTemplate pulumi.StringInput `pulumi:"mergeRequestsTemplate"`
+	// Merge train enforcement level. Valid values are `allowBypass`, `enforceForAllUsers`, `enforceWithOwnerOverride`. Introduced in GitLab 19.3. Premium and Ultimate only.
+	MergeTrainEnforcement pulumi.StringInput `pulumi:"mergeTrainEnforcement"`
 	// Enable or disable merge trains.
 	MergeTrainsEnabled pulumi.BoolInput `pulumi:"mergeTrainsEnabled"`
 	// Allows merge train merge requests to be merged without waiting for pipelines to finish.
@@ -22946,6 +23268,11 @@ func (o GetProjectsProjectOutput) MergeRequestsEnabled() pulumi.BoolOutput {
 // Default description template for new merge requests.
 func (o GetProjectsProjectOutput) MergeRequestsTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.MergeRequestsTemplate }).(pulumi.StringOutput)
+}
+
+// Merge train enforcement level. Valid values are `allowBypass`, `enforceForAllUsers`, `enforceWithOwnerOverride`. Introduced in GitLab 19.3. Premium and Ultimate only.
+func (o GetProjectsProjectOutput) MergeTrainEnforcement() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.MergeTrainEnforcement }).(pulumi.StringOutput)
 }
 
 // Enable or disable merge trains.
@@ -27159,6 +27486,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseCommitPtrInput)(nil)).Elem(), ReleaseCommitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseLinksInput)(nil)).Elem(), ReleaseLinksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseLinksPtrInput)(nil)).Elem(), ReleaseLinksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryFilesFileInput)(nil)).Elem(), RepositoryFilesFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryFilesFileArrayInput)(nil)).Elem(), RepositoryFilesFileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryFilesTimeoutsInput)(nil)).Elem(), RepositoryFilesTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryFilesTimeoutsPtrInput)(nil)).Elem(), RepositoryFilesTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagProtectionAllowedToCreateInput)(nil)).Elem(), TagProtectionAllowedToCreateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TagProtectionAllowedToCreateArrayInput)(nil)).Elem(), TagProtectionAllowedToCreateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValueStreamAnalyticsStageInput)(nil)).Elem(), ValueStreamAnalyticsStageArgs{})
@@ -27478,6 +27809,10 @@ func init() {
 	pulumi.RegisterOutputType(ReleaseCommitPtrOutput{})
 	pulumi.RegisterOutputType(ReleaseLinksOutput{})
 	pulumi.RegisterOutputType(ReleaseLinksPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryFilesFileOutput{})
+	pulumi.RegisterOutputType(RepositoryFilesFileArrayOutput{})
+	pulumi.RegisterOutputType(RepositoryFilesTimeoutsOutput{})
+	pulumi.RegisterOutputType(RepositoryFilesTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(TagProtectionAllowedToCreateOutput{})
 	pulumi.RegisterOutputType(TagProtectionAllowedToCreateArrayOutput{})
 	pulumi.RegisterOutputType(ValueStreamAnalyticsStageOutput{})

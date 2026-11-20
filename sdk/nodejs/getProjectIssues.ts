@@ -17,11 +17,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const foo = gitlab.getProject({
- *     id: "foo/bar/baz",
+ * const example = gitlab.getProject({
+ *     pathWithNamespace: "foo/bar/baz",
  * });
- * const allWithFoo = foo.then(foo => gitlab.getProjectIssues({
- *     project: foo.id,
+ * const allWithFoo = example.then(example => gitlab.getProjectIssues({
+ *     project: example.id,
  *     search: "foo",
  * }));
  * ```
@@ -296,11 +296,11 @@ export interface GetProjectIssuesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gitlab from "@pulumi/gitlab";
  *
- * const foo = gitlab.getProject({
- *     id: "foo/bar/baz",
+ * const example = gitlab.getProject({
+ *     pathWithNamespace: "foo/bar/baz",
  * });
- * const allWithFoo = foo.then(foo => gitlab.getProjectIssues({
- *     project: foo.id,
+ * const allWithFoo = example.then(example => gitlab.getProjectIssues({
+ *     project: example.id,
  *     search: "foo",
  * }));
  * ```

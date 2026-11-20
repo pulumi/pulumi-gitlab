@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getGroup({
- *     id: "foo/bar/baz",
+ *     fullPath: "foo/bar/baz",
  * });
  * const examples = example.then(example => gitlab.getGroupHooks({
  *     group: example.id,
@@ -71,7 +71,7 @@ export interface GetGroupHooksResult {
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getGroup({
- *     id: "foo/bar/baz",
+ *     fullPath: "foo/bar/baz",
  * });
  * const examples = example.then(example => gitlab.getGroupHooks({
  *     group: example.id,

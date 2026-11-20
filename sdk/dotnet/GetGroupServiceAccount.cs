@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetGroup.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         FullPath = "foo/bar/baz",
         ///     });
         /// 
         ///     // Basic example
@@ -61,7 +61,7 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetGroup.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         FullPath = "foo/bar/baz",
         ///     });
         /// 
         ///     // Basic example
@@ -94,7 +94,7 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetGroup.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         FullPath = "foo/bar/baz",
         ///     });
         /// 
         ///     // Basic example

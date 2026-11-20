@@ -42,6 +42,8 @@ import (
 //				Project:     awesomeProject.ID(),
 //				Url:         pulumi.String("http://harbor.example.com"),
 //				ProjectName: pulumi.String("my_project_name"),
+//				Username:    pulumi.String("my_username"),
+//				Password:    pulumi.String("my_password"),
 //			})
 //			if err != nil {
 //				return err

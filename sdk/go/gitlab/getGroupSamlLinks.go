@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := gitlab.GetGroup(ctx, &gitlab.LookupGroupArgs{
-//				Id: "foo/bar/baz",
+//				FullPath: pulumi.StringRef("foo/bar/baz"),
 //			}, nil)
 //			if err != nil {
 //				return err

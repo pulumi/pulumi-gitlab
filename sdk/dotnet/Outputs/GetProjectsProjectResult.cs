@@ -338,6 +338,10 @@ namespace Pulumi.GitLab.Outputs
         /// </summary>
         public readonly string MergeRequestsTemplate;
         /// <summary>
+        /// Merge train enforcement level. Valid values are `AllowBypass`, `EnforceForAllUsers`, `EnforceWithOwnerOverride`. Introduced in GitLab 19.3. Premium and Ultimate only.
+        /// </summary>
+        public readonly string MergeTrainEnforcement;
+        /// <summary>
         /// Enable or disable merge trains.
         /// </summary>
         public readonly bool MergeTrainsEnabled;
@@ -778,6 +782,8 @@ namespace Pulumi.GitLab.Outputs
 
             string mergeRequestsTemplate,
 
+            string mergeTrainEnforcement,
+
             bool mergeTrainsEnabled,
 
             bool mergeTrainsSkipTrainAllowed,
@@ -997,6 +1003,7 @@ namespace Pulumi.GitLab.Outputs
             MergeRequestsAccessLevel = mergeRequestsAccessLevel;
             MergeRequestsEnabled = mergeRequestsEnabled;
             MergeRequestsTemplate = mergeRequestsTemplate;
+            MergeTrainEnforcement = mergeTrainEnforcement;
             MergeTrainsEnabled = mergeTrainsEnabled;
             MergeTrainsSkipTrainAllowed = mergeTrainsSkipTrainAllowed;
             Mirror = mirror;

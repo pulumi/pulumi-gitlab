@@ -96,7 +96,7 @@ def get_group_service_account_access_tokens(group: Optional[_builtins.str] = Non
 
     > **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-personal-access-tokens-for-a-group-service-account)
 
     ## Example Usage
 
@@ -104,7 +104,7 @@ def get_group_service_account_access_tokens(group: Optional[_builtins.str] = Non
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_group(id="foo/bar/baz")
+    example = gitlab.get_group(full_path="foo/bar/baz")
     # List all access tokens for a group service account
     example_get_group_service_account_access_tokens = gitlab.get_group_service_account_access_tokens(group=example.id,
         service_account_id=123)
@@ -137,7 +137,7 @@ def get_group_service_account_access_tokens_output(group: pulumi.Input[Optional[
 
     > **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
 
-    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+    **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-personal-access-tokens-for-a-group-service-account)
 
     ## Example Usage
 
@@ -145,7 +145,7 @@ def get_group_service_account_access_tokens_output(group: pulumi.Input[Optional[
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_group(id="foo/bar/baz")
+    example = gitlab.get_group(full_path="foo/bar/baz")
     # List all access tokens for a group service account
     example_get_group_service_account_access_tokens = gitlab.get_group_service_account_access_tokens(group=example.id,
         service_account_id=123)

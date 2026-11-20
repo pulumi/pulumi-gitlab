@@ -122,14 +122,14 @@ public class ProjectMembership extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memberRoleId);
     }
     /**
-     * The ID or URL-encoded path of the project.
+     * The ID or full path of the project. Do not URL-encode the path.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The ID or URL-encoded path of the project.
+     * @return The ID or full path of the project. Do not URL-encode the path.
      * 
      */
     public Output<String> project() {

@@ -435,7 +435,7 @@ def get_project_hook(hook_id: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_project(id="foo/bar/baz")
+    example = gitlab.get_project(path_with_namespace="foo/bar/baz")
     example_get_project_hook = gitlab.get_project_hook(project=example.id,
         hook_id=1)
     ```
@@ -497,7 +497,7 @@ def get_project_hook_output(hook_id: pulumi.Input[Optional[_builtins.int]] = Non
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_project(id="foo/bar/baz")
+    example = gitlab.get_project(path_with_namespace="foo/bar/baz")
     example_get_project_hook = gitlab.get_project_hook(project=example.id,
         hook_id=1)
     ```

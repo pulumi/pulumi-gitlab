@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getGroup({
- *     id: "foo/bar/baz",
+ *     fullPath: "foo/bar/baz",
  * });
  * // Basic example
  * const exampleGetGroupServiceAccount = example.then(example => gitlab.getGroupServiceAccount({
@@ -88,7 +88,7 @@ export interface GetGroupServiceAccountResult {
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getGroup({
- *     id: "foo/bar/baz",
+ *     fullPath: "foo/bar/baz",
  * });
  * // Basic example
  * const exampleGetGroupServiceAccount = example.then(example => gitlab.getGroupServiceAccount({

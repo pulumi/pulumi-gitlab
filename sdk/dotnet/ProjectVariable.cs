@@ -14,6 +14,10 @@ namespace Pulumi.GitLab
     /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_level_variables/)
     /// 
+    /// Use `ValueWo` with an ephemeral input and `ValueWoVersion` to keep credentials out of pulumi preview and state. Write-only arguments require Terraform 1.11 or later. Change the version marker to update the value; changes to the value alone do not produce a plan difference. Every update sends the configured value, including updates to other attributes when the version marker is unchanged. Value drift outside Terraform is not detected in this mode.
+    /// 
+    /// Switching from `Value` to `ValueWo` removes the value from subsequent state snapshots, but does not remove it from historical states or saved plans. Rotate the old credential and manage retained artifacts separately. Importing a non-hidden variable with the ordinary import ID reads its value into state; use hidden variables when importing secret credentials. Hidden visibility is selected at creation and cannot be enabled in place.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -99,10 +103,23 @@ namespace Pulumi.GitLab
         public Output<bool> Raw { get; private set; } = null!;
 
         /// <summary>
-        /// The value of the variable.
+        /// The value of the variable. Exactly one of `Value` or `ValueWo` must be specified. This attribute persists the value in state.
         /// </summary>
         [Output("value")]
-        public Output<string> Value { get; private set; } = null!;
+        public Output<string?> Value { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `Value` or `ValueWo` must be specified. Change `ValueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+        /// </summary>
+        [Output("valueWo")]
+        public Output<string?> ValueWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Non-empty change marker for `ValueWo`, stored in state. Change this string to publish a new value. Every update sends `ValueWo`, even when this marker is unchanged.
+        /// </summary>
+        [Output("valueWoVersion")]
+        public Output<string?> ValueWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// The type of a variable. Valid values are: `EnvVar`, `File`.
@@ -133,6 +150,10 @@ namespace Pulumi.GitLab
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "valueWo",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -205,10 +226,33 @@ namespace Pulumi.GitLab
         public Input<bool>? Raw { get; set; }
 
         /// <summary>
-        /// The value of the variable.
+        /// The value of the variable. Exactly one of `Value` or `ValueWo` must be specified. This attribute persists the value in state.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
+
+        [Input("valueWo")]
+        private Input<string>? _valueWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `Value` or `ValueWo` must be specified. Change `ValueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+        /// </summary>
+        public Input<string>? ValueWo
+        {
+            get => _valueWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _valueWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Non-empty change marker for `ValueWo`, stored in state. Change this string to publish a new value. Every update sends `ValueWo`, even when this marker is unchanged.
+        /// </summary>
+        [Input("valueWoVersion")]
+        public Input<string>? ValueWoVersion { get; set; }
 
         /// <summary>
         /// The type of a variable. Valid values are: `EnvVar`, `File`.
@@ -273,10 +317,33 @@ namespace Pulumi.GitLab
         public Input<bool>? Raw { get; set; }
 
         /// <summary>
-        /// The value of the variable.
+        /// The value of the variable. Exactly one of `Value` or `ValueWo` must be specified. This attribute persists the value in state.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
+
+        [Input("valueWo")]
+        private Input<string>? _valueWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `Value` or `ValueWo` must be specified. Change `ValueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+        /// </summary>
+        public Input<string>? ValueWo
+        {
+            get => _valueWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _valueWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Non-empty change marker for `ValueWo`, stored in state. Change this string to publish a new value. Every update sends `ValueWo`, even when this marker is unchanged.
+        /// </summary>
+        [Input("valueWoVersion")]
+        public Input<string>? ValueWoVersion { get; set; }
 
         /// <summary>
         /// The type of a variable. Valid values are: `EnvVar`, `File`.

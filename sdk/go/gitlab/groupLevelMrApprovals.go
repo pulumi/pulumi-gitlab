@@ -49,7 +49,6 @@ import (
 //				AllowCommitterApproval: pulumi.Bool(true),
 //				AllowOverridesToApproverListPerMergeRequest: pulumi.Bool(true),
 //				RetainApprovalsOnPush:                       pulumi.Bool(true),
-//				SelectiveCodeOwnerRemovals:                  false,
 //				RequireReauthenticationToApprove:            pulumi.Bool(true),
 //			})
 //			if err != nil {

@@ -52,6 +52,10 @@ export interface GetInstanceServiceAccountResult {
      */
     readonly id: string;
     /**
+     * Whether the service account is an external user.
+     */
+    readonly isExternal: boolean;
+    /**
      * The name of the user.
      */
     readonly name: string;

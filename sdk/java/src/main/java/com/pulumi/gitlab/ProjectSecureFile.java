@@ -70,15 +70,6 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .build());
  * 
- *         var disablePollForMetadata = new ProjectSecureFile("disablePollForMetadata", ProjectSecureFileArgs.builder()
- *             .name("my-secure-file")
- *             .project(thisProject.id())
- *             .content(StdFunctions.file(FileArgs.builder()
- *                 .input("example.txt")
- *                 .build()).result())
- *             .pollForMetadataDurationInSeconds(0)
- *             .build());
- * 
  *     }
  * }
  * }

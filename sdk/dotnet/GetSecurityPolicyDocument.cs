@@ -15,7 +15,7 @@ namespace Pulumi.GitLab
         /// Generates a GitLab security policy YAML document from structured configuration.
         /// This data source performs pure transformation without any API calls.
         /// 
-        /// **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+        /// **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/user/application_security/policies/scan_execution_policies/)
         /// 
         /// ## Example Usage
         /// 
@@ -60,8 +60,9 @@ namespace Pulumi.GitLab
         ///     var policy = new GitLab.RepositoryFile("policy", new()
         ///     {
         ///         Project = "1234",
-        ///         Ref = "main",
+        ///         Branch = "main",
         ///         FilePath = ".gitlab/security-policies/policy.yml",
+        ///         Encoding = "text",
         ///         Content = scan.Apply(getSecurityPolicyDocumentResult =&gt; getSecurityPolicyDocumentResult.Yaml),
         ///     });
         /// 
@@ -75,7 +76,7 @@ namespace Pulumi.GitLab
         /// Generates a GitLab security policy YAML document from structured configuration.
         /// This data source performs pure transformation without any API calls.
         /// 
-        /// **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+        /// **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/user/application_security/policies/scan_execution_policies/)
         /// 
         /// ## Example Usage
         /// 
@@ -120,8 +121,9 @@ namespace Pulumi.GitLab
         ///     var policy = new GitLab.RepositoryFile("policy", new()
         ///     {
         ///         Project = "1234",
-        ///         Ref = "main",
+        ///         Branch = "main",
         ///         FilePath = ".gitlab/security-policies/policy.yml",
+        ///         Encoding = "text",
         ///         Content = scan.Apply(getSecurityPolicyDocumentResult =&gt; getSecurityPolicyDocumentResult.Yaml),
         ///     });
         /// 
@@ -135,7 +137,7 @@ namespace Pulumi.GitLab
         /// Generates a GitLab security policy YAML document from structured configuration.
         /// This data source performs pure transformation without any API calls.
         /// 
-        /// **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+        /// **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/user/application_security/policies/scan_execution_policies/)
         /// 
         /// ## Example Usage
         /// 
@@ -180,8 +182,9 @@ namespace Pulumi.GitLab
         ///     var policy = new GitLab.RepositoryFile("policy", new()
         ///     {
         ///         Project = "1234",
-        ///         Ref = "main",
+        ///         Branch = "main",
         ///         FilePath = ".gitlab/security-policies/policy.yml",
+        ///         Encoding = "text",
         ///         Content = scan.Apply(getSecurityPolicyDocumentResult =&gt; getSecurityPolicyDocumentResult.Yaml),
         ///     });
         /// 

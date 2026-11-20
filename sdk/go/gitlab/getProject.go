@@ -208,6 +208,8 @@ type LookupProjectResult struct {
 	MergeRequestsEnabled bool `pulumi:"mergeRequestsEnabled"`
 	// Default description template for new merge requests.
 	MergeRequestsTemplate string `pulumi:"mergeRequestsTemplate"`
+	// Merge train enforcement level. Valid values are `allowBypass`, `enforceForAllUsers`, `enforceWithOwnerOverride`. Introduced in GitLab 19.3. Premium and Ultimate only.
+	MergeTrainEnforcement string `pulumi:"mergeTrainEnforcement"`
 	// Enable or disable merge trains.
 	MergeTrainsEnabled bool `pulumi:"mergeTrainsEnabled"`
 	// Allows merge train merge requests to be merged without waiting for pipelines to finish.
@@ -815,6 +817,11 @@ func (o LookupProjectResultOutput) MergeRequestsEnabled() pulumi.BoolOutput {
 // Default description template for new merge requests.
 func (o LookupProjectResultOutput) MergeRequestsTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.MergeRequestsTemplate }).(pulumi.StringOutput)
+}
+
+// Merge train enforcement level. Valid values are `allowBypass`, `enforceForAllUsers`, `enforceWithOwnerOverride`. Introduced in GitLab 19.3. Premium and Ultimate only.
+func (o LookupProjectResultOutput) MergeTrainEnforcement() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.MergeTrainEnforcement }).(pulumi.StringOutput)
 }
 
 // Enable or disable merge trains.

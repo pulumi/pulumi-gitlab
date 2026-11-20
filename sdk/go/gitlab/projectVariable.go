@@ -16,6 +16,10 @@ import (
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_level_variables/)
 //
+// Use `valueWo` with an ephemeral input and `valueWoVersion` to keep credentials out of pulumi preview and state. Write-only arguments require Terraform 1.11 or later. Change the version marker to update the value; changes to the value alone do not produce a plan difference. Every update sends the configured value, including updates to other attributes when the version marker is unchanged. Value drift outside Terraform is not detected in this mode.
+//
+// Switching from `value` to `valueWo` removes the value from subsequent state snapshots, but does not remove it from historical states or saved plans. Rotate the old credential and manage retained artifacts separately. Importing a non-hidden variable with the ordinary import ID reads its value into state; use hidden variables when importing secret credentials. Hidden visibility is selected at creation and cannot be enabled in place.
+//
 // ## Example Usage
 //
 // ```go
@@ -75,8 +79,13 @@ type ProjectVariable struct {
 	Protected pulumi.BoolOutput `pulumi:"protected"`
 	// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
 	Raw pulumi.BoolOutput `pulumi:"raw"`
-	// The value of the variable.
-	Value pulumi.StringOutput `pulumi:"value"`
+	// The value of the variable. Exactly one of `value` or `valueWo` must be specified. This attribute persists the value in state.
+	Value pulumi.StringPtrOutput `pulumi:"value"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `valueWo` must be specified. Change `valueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+	ValueWo pulumi.StringPtrOutput `pulumi:"valueWo"`
+	// Non-empty change marker for `valueWo`, stored in state. Change this string to publish a new value. Every update sends `valueWo`, even when this marker is unchanged.
+	ValueWoVersion pulumi.StringPtrOutput `pulumi:"valueWoVersion"`
 	// The type of a variable. Valid values are: `envVar`, `file`.
 	VariableType pulumi.StringOutput `pulumi:"variableType"`
 }
@@ -94,9 +103,13 @@ func NewProjectVariable(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.Value == nil {
-		return nil, errors.New("invalid value for required argument 'Value'")
+	if args.ValueWo != nil {
+		args.ValueWo = pulumi.ToSecret(args.ValueWo).(pulumi.StringPtrInput)
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"valueWo",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectVariable
 	err := ctx.RegisterResource("gitlab:index/projectVariable:ProjectVariable", name, args, &resource, opts...)
@@ -136,8 +149,13 @@ type projectVariableState struct {
 	Protected *bool `pulumi:"protected"`
 	// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
 	Raw *bool `pulumi:"raw"`
-	// The value of the variable.
+	// The value of the variable. Exactly one of `value` or `valueWo` must be specified. This attribute persists the value in state.
 	Value *string `pulumi:"value"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `valueWo` must be specified. Change `valueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+	ValueWo *string `pulumi:"valueWo"`
+	// Non-empty change marker for `valueWo`, stored in state. Change this string to publish a new value. Every update sends `valueWo`, even when this marker is unchanged.
+	ValueWoVersion *string `pulumi:"valueWoVersion"`
 	// The type of a variable. Valid values are: `envVar`, `file`.
 	VariableType *string `pulumi:"variableType"`
 }
@@ -159,8 +177,13 @@ type ProjectVariableState struct {
 	Protected pulumi.BoolPtrInput
 	// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
 	Raw pulumi.BoolPtrInput
-	// The value of the variable.
+	// The value of the variable. Exactly one of `value` or `valueWo` must be specified. This attribute persists the value in state.
 	Value pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `valueWo` must be specified. Change `valueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+	ValueWo pulumi.StringPtrInput
+	// Non-empty change marker for `valueWo`, stored in state. Change this string to publish a new value. Every update sends `valueWo`, even when this marker is unchanged.
+	ValueWoVersion pulumi.StringPtrInput
 	// The type of a variable. Valid values are: `envVar`, `file`.
 	VariableType pulumi.StringPtrInput
 }
@@ -192,8 +215,13 @@ type projectVariableArgs struct {
 	Protected *bool `pulumi:"protected"`
 	// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
 	Raw *bool `pulumi:"raw"`
-	// The value of the variable.
-	Value string `pulumi:"value"`
+	// The value of the variable. Exactly one of `value` or `valueWo` must be specified. This attribute persists the value in state.
+	Value *string `pulumi:"value"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `valueWo` must be specified. Change `valueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+	ValueWo *string `pulumi:"valueWo"`
+	// Non-empty change marker for `valueWo`, stored in state. Change this string to publish a new value. Every update sends `valueWo`, even when this marker is unchanged.
+	ValueWoVersion *string `pulumi:"valueWoVersion"`
 	// The type of a variable. Valid values are: `envVar`, `file`.
 	VariableType *string `pulumi:"variableType"`
 }
@@ -216,8 +244,13 @@ type ProjectVariableArgs struct {
 	Protected pulumi.BoolPtrInput
 	// Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
 	Raw pulumi.BoolPtrInput
-	// The value of the variable.
-	Value pulumi.StringInput
+	// The value of the variable. Exactly one of `value` or `valueWo` must be specified. This attribute persists the value in state.
+	Value pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `valueWo` must be specified. Change `valueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+	ValueWo pulumi.StringPtrInput
+	// Non-empty change marker for `valueWo`, stored in state. Change this string to publish a new value. Every update sends `valueWo`, even when this marker is unchanged.
+	ValueWoVersion pulumi.StringPtrInput
 	// The type of a variable. Valid values are: `envVar`, `file`.
 	VariableType pulumi.StringPtrInput
 }
@@ -349,9 +382,20 @@ func (o ProjectVariableOutput) Raw() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectVariable) pulumi.BoolOutput { return v.Raw }).(pulumi.BoolOutput)
 }
 
-// The value of the variable.
-func (o ProjectVariableOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v *ProjectVariable) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+// The value of the variable. Exactly one of `value` or `valueWo` must be specified. This attribute persists the value in state.
+func (o ProjectVariableOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.StringPtrOutput { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `valueWo` must be specified. Change `valueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+func (o ProjectVariableOutput) ValueWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.StringPtrOutput { return v.ValueWo }).(pulumi.StringPtrOutput)
+}
+
+// Non-empty change marker for `valueWo`, stored in state. Change this string to publish a new value. Every update sends `valueWo`, even when this marker is unchanged.
+func (o ProjectVariableOutput) ValueWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectVariable) pulumi.StringPtrOutput { return v.ValueWoVersion }).(pulumi.StringPtrOutput)
 }
 
 // The type of a variable. Valid values are: `envVar`, `file`.

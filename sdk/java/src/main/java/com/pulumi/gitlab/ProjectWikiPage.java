@@ -44,7 +44,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new ProjectWikiPage("example", ProjectWikiPageArgs.builder()
  *             .project("12345")
- *             .slug("test-wiki-page")
  *             .title("Test Wiki Page")
  *             .content("""
  * This is a test content for the wiki page.

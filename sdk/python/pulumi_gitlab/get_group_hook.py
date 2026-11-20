@@ -447,7 +447,7 @@ def get_group_hook(group: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_group(id="foo/bar/baz")
+    example = gitlab.get_group(full_path="foo/bar/baz")
     example_get_group_hook = gitlab.get_group_hook(group=example.id,
         hook_id=1)
     ```
@@ -510,7 +510,7 @@ def get_group_hook_output(group: pulumi.Input[Optional[_builtins.str]] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_group(id="foo/bar/baz")
+    example = gitlab.get_group(full_path="foo/bar/baz")
     example_get_group_hook = gitlab.get_group_hook(group=example.id,
         hook_id=1)
     ```

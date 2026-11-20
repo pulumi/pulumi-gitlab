@@ -32,7 +32,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gitlab.NewProjectWikiPage(ctx, "example", &gitlab.ProjectWikiPageArgs{
 //				Project: pulumi.String("12345"),
-//				Slug:    "test-wiki-page",
 //				Title:   pulumi.String("Test Wiki Page"),
 //				Content: pulumi.String("This is a test content for the wiki page.\nAnd this is a second line of content.\n"),
 //			})

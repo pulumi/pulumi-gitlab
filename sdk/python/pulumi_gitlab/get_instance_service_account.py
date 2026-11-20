@@ -26,13 +26,16 @@ class GetInstanceServiceAccountResult:
     """
     A collection of values returned by getInstanceServiceAccount.
     """
-    def __init__(__self__, email=None, id=None, name=None, service_account_id=None, username=None):
+    def __init__(__self__, email=None, id=None, is_external=None, name=None, service_account_id=None, username=None):
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         pulumi.set(__self__, "email", email)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if is_external and not isinstance(is_external, bool):
+            raise TypeError("Expected argument 'is_external' to be a bool")
+        pulumi.set(__self__, "is_external", is_external)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -58,6 +61,14 @@ class GetInstanceServiceAccountResult:
         The ID of this Terraform resource. This matches the service account id.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isExternal")
+    def is_external(self) -> _builtins.bool:
+        """
+        Whether the service account is an external user.
+        """
+        return pulumi.get(self, "is_external")
 
     @_builtins.property
     @pulumi.getter
@@ -92,6 +103,7 @@ class AwaitableGetInstanceServiceAccountResult(GetInstanceServiceAccountResult):
         return GetInstanceServiceAccountResult(
             email=self.email,
             id=self.id,
+            is_external=self.is_external,
             name=self.name,
             service_account_id=self.service_account_id,
             username=self.username)
@@ -126,6 +138,7 @@ def get_instance_service_account(service_account_id: Optional[_builtins.str] = N
     return AwaitableGetInstanceServiceAccountResult(
         email=pulumi.get(__ret__, 'email'),
         id=pulumi.get(__ret__, 'id'),
+        is_external=pulumi.get(__ret__, 'is_external'),
         name=pulumi.get(__ret__, 'name'),
         service_account_id=pulumi.get(__ret__, 'service_account_id'),
         username=pulumi.get(__ret__, 'username'))
@@ -157,6 +170,7 @@ def get_instance_service_account_output(service_account_id: pulumi.Input[Optiona
     return __ret__.apply(lambda __response__: GetInstanceServiceAccountResult(
         email=pulumi.get(__response__, 'email'),
         id=pulumi.get(__response__, 'id'),
+        is_external=pulumi.get(__response__, 'is_external'),
         name=pulumi.get(__response__, 'name'),
         service_account_id=pulumi.get(__response__, 'service_account_id'),
         username=pulumi.get(__response__, 'username')))

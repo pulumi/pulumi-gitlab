@@ -268,7 +268,9 @@ class ProjectIntegrationHarbor(pulumi.CustomResource):
         harbor = gitlab.ProjectIntegrationHarbor("harbor",
             project=awesome_project.id,
             url="http://harbor.example.com",
-            project_name="my_project_name")
+            project_name="my_project_name",
+            username="my_username",
+            password="my_password")
         ```
 
         ## Import
@@ -317,7 +319,9 @@ class ProjectIntegrationHarbor(pulumi.CustomResource):
         harbor = gitlab.ProjectIntegrationHarbor("harbor",
             project=awesome_project.id,
             url="http://harbor.example.com",
-            project_name="my_project_name")
+            project_name="my_project_name",
+            username="my_username",
+            password="my_password")
         ```
 
         ## Import

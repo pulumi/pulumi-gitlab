@@ -53,6 +53,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Group{}
 	case "gitlab:index/groupAccessToken:GroupAccessToken":
 		r = &GroupAccessToken{}
+	case "gitlab:index/groupApplication:GroupApplication":
+		r = &GroupApplication{}
 	case "gitlab:index/groupBadge:GroupBadge":
 		r = &GroupBadge{}
 	case "gitlab:index/groupBranchProtection:GroupBranchProtection":
@@ -271,6 +273,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ReleaseLink{}
 	case "gitlab:index/repositoryFile:RepositoryFile":
 		r = &RepositoryFile{}
+	case "gitlab:index/repositoryFiles:RepositoryFiles":
+		r = &RepositoryFiles{}
 	case "gitlab:index/runnerController:RunnerController":
 		r = &RunnerController{}
 	case "gitlab:index/runnerControllerInstanceScope:RunnerControllerInstanceScope":
@@ -414,6 +418,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/groupAccessToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/groupApplication",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -959,6 +968,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gitlab",
 		"index/repositoryFile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gitlab",
+		"index/repositoryFiles",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

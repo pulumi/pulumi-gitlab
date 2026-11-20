@@ -75,7 +75,7 @@ type ProjectMembership struct {
 	ExpiresAt pulumi.StringPtrOutput `pulumi:"expiresAt"`
 	// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
 	MemberRoleId pulumi.IntPtrOutput `pulumi:"memberRoleId"`
-	// The ID or URL-encoded path of the project.
+	// The ID or full path of the project. Do not URL-encode the path.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The id of the user.
 	UserId pulumi.IntOutput `pulumi:"userId"`
@@ -126,7 +126,7 @@ type projectMembershipState struct {
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
 	MemberRoleId *int `pulumi:"memberRoleId"`
-	// The ID or URL-encoded path of the project.
+	// The ID or full path of the project. Do not URL-encode the path.
 	Project *string `pulumi:"project"`
 	// The id of the user.
 	UserId *int `pulumi:"userId"`
@@ -139,7 +139,7 @@ type ProjectMembershipState struct {
 	ExpiresAt pulumi.StringPtrInput
 	// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
 	MemberRoleId pulumi.IntPtrInput
-	// The ID or URL-encoded path of the project.
+	// The ID or full path of the project. Do not URL-encode the path.
 	Project pulumi.StringPtrInput
 	// The id of the user.
 	UserId pulumi.IntPtrInput
@@ -162,7 +162,7 @@ type projectMembershipArgs struct {
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
 	MemberRoleId *int `pulumi:"memberRoleId"`
-	// The ID or URL-encoded path of the project.
+	// The ID or full path of the project. Do not URL-encode the path.
 	Project string `pulumi:"project"`
 	// The id of the user.
 	UserId int `pulumi:"userId"`
@@ -176,7 +176,7 @@ type ProjectMembershipArgs struct {
 	ExpiresAt pulumi.StringPtrInput
 	// The ID of a custom member role. Not including the member role ID will cause the role to update the membership to the base role if the custom role is current set. Only available for Ultimate instances.
 	MemberRoleId pulumi.IntPtrInput
-	// The ID or URL-encoded path of the project.
+	// The ID or full path of the project. Do not URL-encode the path.
 	Project pulumi.StringInput
 	// The id of the user.
 	UserId pulumi.IntInput
@@ -284,7 +284,7 @@ func (o ProjectMembershipOutput) MemberRoleId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProjectMembership) pulumi.IntPtrOutput { return v.MemberRoleId }).(pulumi.IntPtrOutput)
 }
 
-// The ID or URL-encoded path of the project.
+// The ID or full path of the project. Do not URL-encode the path.
 func (o ProjectMembershipOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectMembership) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

@@ -123,7 +123,7 @@ def get_project_service_account(project: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_project(id="foo/bar")
+    example = gitlab.get_project(path_with_namespace="foo/bar")
     # Basic example
     example_get_project_service_account = gitlab.get_project_service_account(service_account_id="1",
         project=example.id)
@@ -160,7 +160,7 @@ def get_project_service_account_output(project: pulumi.Input[Optional[_builtins.
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_project(id="foo/bar")
+    example = gitlab.get_project(path_with_namespace="foo/bar")
     # Basic example
     example_get_project_service_account = gitlab.get_project_service_account(service_account_id="1",
         project=example.id)

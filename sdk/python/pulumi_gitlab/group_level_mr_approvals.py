@@ -297,7 +297,6 @@ class GroupLevelMrApprovals(pulumi.CustomResource):
             allow_committer_approval=True,
             allow_overrides_to_approver_list_per_merge_request=True,
             retain_approvals_on_push=True,
-            selective_code_owner_removals=False,
             require_reauthentication_to_approve=True)
         ```
 
@@ -356,7 +355,6 @@ class GroupLevelMrApprovals(pulumi.CustomResource):
             allow_committer_approval=True,
             allow_overrides_to_approver_list_per_merge_request=True,
             retain_approvals_on_push=True,
-            selective_code_owner_removals=False,
             require_reauthentication_to_approve=True)
         ```
 

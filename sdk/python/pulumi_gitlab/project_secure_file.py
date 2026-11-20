@@ -242,11 +242,6 @@ class ProjectSecureFile(pulumi.CustomResource):
             name="my-secure-file",
             project=this_project.id,
             content=std.file(input="example.txt").result)
-        disable_poll_for_metadata = gitlab.ProjectSecureFile("disable_poll_for_metadata",
-            name="my-secure-file",
-            project=this_project.id,
-            content=std.file(input="example.txt").result,
-            poll_for_metadata_duration_in_seconds=0)
         ```
 
         ## Import
@@ -298,11 +293,6 @@ class ProjectSecureFile(pulumi.CustomResource):
             name="my-secure-file",
             project=this_project.id,
             content=std.file(input="example.txt").result)
-        disable_poll_for_metadata = gitlab.ProjectSecureFile("disable_poll_for_metadata",
-            name="my-secure-file",
-            project=this_project.id,
-            content=std.file(input="example.txt").result,
-            poll_for_metadata_duration_in_seconds=0)
         ```
 
         ## Import

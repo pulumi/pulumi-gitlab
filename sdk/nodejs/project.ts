@@ -49,6 +49,14 @@ import * as utilities from "./utilities";
  *     mergeMethod: "ff",
  *     automaticRebaseEnabled: true,
  * });
+ * // Project where every merge request has to go through the merge train
+ * // NOTE: `merge_train_enforcement` requires GitLab 19.3 or later and a Premium or Ultimate license.
+ * const example_merge_train_enforcement = new gitlab.Project("example-merge-train-enforcement", {
+ *     name: "example-merge-train-enforcement",
+ *     mergePipelinesEnabled: true,
+ *     mergeTrainsEnabled: true,
+ *     mergeTrainEnforcement: "enforce_for_all_users",
+ * });
  * // Create a project for a given user (requires admin access)
  * const peterParker = gitlab.getUser({
  *     username: "peter_parker",
@@ -64,24 +72,11 @@ import * as utilities from "./utilities";
  *     description: "This is a fork",
  *     forkedFromProjectId: example.id.apply(x =>Number(x)),
  * });
- * // Fork a project and setup a pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
- * const forkWithMirror = new gitlab.Project("fork_with_mirror", {
- *     name: "my-fork",
- *     description: "This is a fork",
- *     forkedFromProjectId: example.id.apply(x =>Number(x)),
- *     importUrl: example.httpUrlToRepo,
- *     mirror: true,
- * });
  * // Create a project by importing it from a public project
+ * // To set up a pull mirror, use the `gitlab_project_pull_mirror` resource.
  * const importPublic = new gitlab.Project("import_public", {
  *     name: "import-from-public-project",
  *     importUrl: "https://gitlab.example.com/repo.git",
- * });
- * // Create a project by importing it from a public project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
- * const importPublicWithMirror = new gitlab.Project("import_public_with_mirror", {
- *     name: "import-from-public-project",
- *     importUrl: "https://gitlab.example.com/repo.git",
- *     mirror: true,
  * });
  * // Create a project by importing it from a private project
  * const importPrivate = new gitlab.Project("import_private", {
@@ -89,14 +84,6 @@ import * as utilities from "./utilities";
  *     importUrl: "https://gitlab.example.com/repo.git",
  *     importUrlUsername: "user",
  *     importUrlPassword: "pass",
- * });
- * // Create a project by importing it from a private project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
- * const importPrivateWithMirror = new gitlab.Project("import_private_with_mirror", {
- *     name: "import-from-public-project",
- *     importUrl: "https://gitlab.example.com/repo.git",
- *     importUrlUsername: "user",
- *     importUrlPassword: "pass",
- *     mirror: true,
  * });
  * // Create a project by importing it from a private project and provide credentials in `import_url`
  * // NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
@@ -297,6 +284,18 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * Indicates if GitLab Duo SAST false positive detection is enabled.
+     */
+    declare public readonly duoSastFpDetectionEnabled: pulumi.Output<boolean>;
+    /**
+     * Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled.
+     */
+    declare public readonly duoSastVrWorkflowEnabled: pulumi.Output<boolean>;
+    /**
+     * If true, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role.
+     */
+    declare public readonly duoSecretDetectionFpEnabled: pulumi.Output<boolean>;
+    /**
      * Enable email notifications.
      */
     declare public readonly emailsEnabled: pulumi.Output<boolean>;
@@ -408,6 +407,13 @@ export class Project extends pulumi.CustomResource {
      * Sets the template for new merge requests in the project.
      */
     declare public readonly mergeRequestsTemplate: pulumi.Output<string | undefined>;
+    /**
+     * Merge train enforcement level. Valid values are `allowBypass`, `enforceForAllUsers`, `enforceWithOwnerOverride`.
+     * Has no effect unless `mergeTrainsEnabled` is set to `true`. Premium and Ultimate only.
+     * Requires GitLab 19.3 or later; older instances ignore the attribute on write and omit it on read,
+     * so setting it there surfaces as a permanent difference on every plan.
+     */
+    declare public readonly mergeTrainEnforcement: pulumi.Output<string>;
     /**
      * Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
      */
@@ -555,6 +561,10 @@ export class Project extends pulumi.CustomResource {
      */
     declare public readonly securityAndComplianceAccessLevel: pulumi.Output<string>;
     /**
+     * Experimental: enable or disable the Service Desk feature. Requires incoming emails to be enabled on the GitLab instance; setting this to `true` without incoming emails enabled will cause a perpetual plan difference on this attribute.
+     */
+    declare public readonly serviceDeskEnabled: pulumi.Output<boolean>;
+    /**
      * Enable shared runners for this project.
      */
     declare public readonly sharedRunnersEnabled: pulumi.Output<boolean>;
@@ -661,6 +671,9 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["containerRegistryAccessLevel"] = state?.containerRegistryAccessLevel;
             resourceInputs["defaultBranch"] = state?.defaultBranch;
             resourceInputs["description"] = state?.description;
+            resourceInputs["duoSastFpDetectionEnabled"] = state?.duoSastFpDetectionEnabled;
+            resourceInputs["duoSastVrWorkflowEnabled"] = state?.duoSastVrWorkflowEnabled;
+            resourceInputs["duoSecretDetectionFpEnabled"] = state?.duoSecretDetectionFpEnabled;
             resourceInputs["emailsEnabled"] = state?.emailsEnabled;
             resourceInputs["emptyRepo"] = state?.emptyRepo;
             resourceInputs["environmentsAccessLevel"] = state?.environmentsAccessLevel;
@@ -689,6 +702,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["mergeRequestTitleRegexDescription"] = state?.mergeRequestTitleRegexDescription;
             resourceInputs["mergeRequestsAccessLevel"] = state?.mergeRequestsAccessLevel;
             resourceInputs["mergeRequestsTemplate"] = state?.mergeRequestsTemplate;
+            resourceInputs["mergeTrainEnforcement"] = state?.mergeTrainEnforcement;
             resourceInputs["mergeTrainsEnabled"] = state?.mergeTrainsEnabled;
             resourceInputs["mergeTrainsSkipTrainAllowed"] = state?.mergeTrainsSkipTrainAllowed;
             resourceInputs["modelExperimentsAccessLevel"] = state?.modelExperimentsAccessLevel;
@@ -724,6 +738,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["reviewerAssignmentStrategy"] = state?.reviewerAssignmentStrategy;
             resourceInputs["runnersToken"] = state?.runnersToken;
             resourceInputs["securityAndComplianceAccessLevel"] = state?.securityAndComplianceAccessLevel;
+            resourceInputs["serviceDeskEnabled"] = state?.serviceDeskEnabled;
             resourceInputs["sharedRunnersEnabled"] = state?.sharedRunnersEnabled;
             resourceInputs["skipWaitForDefaultBranchProtection"] = state?.skipWaitForDefaultBranchProtection;
             resourceInputs["snippetsAccessLevel"] = state?.snippetsAccessLevel;
@@ -772,6 +787,9 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["containerRegistryAccessLevel"] = args?.containerRegistryAccessLevel;
             resourceInputs["defaultBranch"] = args?.defaultBranch;
             resourceInputs["description"] = args?.description;
+            resourceInputs["duoSastFpDetectionEnabled"] = args?.duoSastFpDetectionEnabled;
+            resourceInputs["duoSastVrWorkflowEnabled"] = args?.duoSastVrWorkflowEnabled;
+            resourceInputs["duoSecretDetectionFpEnabled"] = args?.duoSecretDetectionFpEnabled;
             resourceInputs["emailsEnabled"] = args?.emailsEnabled;
             resourceInputs["environmentsAccessLevel"] = args?.environmentsAccessLevel;
             resourceInputs["externalAuthorizationClassificationLabel"] = args?.externalAuthorizationClassificationLabel;
@@ -798,6 +816,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["mergeRequestTitleRegexDescription"] = args?.mergeRequestTitleRegexDescription;
             resourceInputs["mergeRequestsAccessLevel"] = args?.mergeRequestsAccessLevel;
             resourceInputs["mergeRequestsTemplate"] = args?.mergeRequestsTemplate;
+            resourceInputs["mergeTrainEnforcement"] = args?.mergeTrainEnforcement;
             resourceInputs["mergeTrainsEnabled"] = args?.mergeTrainsEnabled;
             resourceInputs["mergeTrainsSkipTrainAllowed"] = args?.mergeTrainsSkipTrainAllowed;
             resourceInputs["modelExperimentsAccessLevel"] = args?.modelExperimentsAccessLevel;
@@ -831,6 +850,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["resourceGroupDefaultProcessMode"] = args?.resourceGroupDefaultProcessMode;
             resourceInputs["reviewerAssignmentStrategy"] = args?.reviewerAssignmentStrategy;
             resourceInputs["securityAndComplianceAccessLevel"] = args?.securityAndComplianceAccessLevel;
+            resourceInputs["serviceDeskEnabled"] = args?.serviceDeskEnabled;
             resourceInputs["sharedRunnersEnabled"] = args?.sharedRunnersEnabled;
             resourceInputs["skipWaitForDefaultBranchProtection"] = args?.skipWaitForDefaultBranchProtection;
             resourceInputs["snippetsAccessLevel"] = args?.snippetsAccessLevel;
@@ -998,6 +1018,18 @@ export interface ProjectState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * Indicates if GitLab Duo SAST false positive detection is enabled.
+     */
+    duoSastFpDetectionEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled.
+     */
+    duoSastVrWorkflowEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * If true, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role.
+     */
+    duoSecretDetectionFpEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * Enable email notifications.
      */
     emailsEnabled?: pulumi.Input<boolean | undefined>;
@@ -1109,6 +1141,13 @@ export interface ProjectState {
      * Sets the template for new merge requests in the project.
      */
     mergeRequestsTemplate?: pulumi.Input<string | undefined>;
+    /**
+     * Merge train enforcement level. Valid values are `allowBypass`, `enforceForAllUsers`, `enforceWithOwnerOverride`.
+     * Has no effect unless `mergeTrainsEnabled` is set to `true`. Premium and Ultimate only.
+     * Requires GitLab 19.3 or later; older instances ignore the attribute on write and omit it on read,
+     * so setting it there surfaces as a permanent difference on every plan.
+     */
+    mergeTrainEnforcement?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
      */
@@ -1255,6 +1294,10 @@ export interface ProjectState {
      * Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
      */
     securityAndComplianceAccessLevel?: pulumi.Input<string | undefined>;
+    /**
+     * Experimental: enable or disable the Service Desk feature. Requires incoming emails to be enabled on the GitLab instance; setting this to `true` without incoming emails enabled will cause a perpetual plan difference on this attribute.
+     */
+    serviceDeskEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable shared runners for this project.
      */
@@ -1453,6 +1496,18 @@ export interface ProjectArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * Indicates if GitLab Duo SAST false positive detection is enabled.
+     */
+    duoSastFpDetectionEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled.
+     */
+    duoSastVrWorkflowEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * If true, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role.
+     */
+    duoSecretDetectionFpEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * Enable email notifications.
      */
     emailsEnabled?: pulumi.Input<boolean | undefined>;
@@ -1556,6 +1611,13 @@ export interface ProjectArgs {
      * Sets the template for new merge requests in the project.
      */
     mergeRequestsTemplate?: pulumi.Input<string | undefined>;
+    /**
+     * Merge train enforcement level. Valid values are `allowBypass`, `enforceForAllUsers`, `enforceWithOwnerOverride`.
+     * Has no effect unless `mergeTrainsEnabled` is set to `true`. Premium and Ultimate only.
+     * Requires GitLab 19.3 or later; older instances ignore the attribute on write and omit it on read,
+     * so setting it there surfaces as a permanent difference on every plan.
+     */
+    mergeTrainEnforcement?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable merge trains. Requires `mergePipelinesEnabled` to be set to `true` to take effect.
      */
@@ -1694,6 +1756,10 @@ export interface ProjectArgs {
      * Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
      */
     securityAndComplianceAccessLevel?: pulumi.Input<string | undefined>;
+    /**
+     * Experimental: enable or disable the Service Desk feature. Requires incoming emails to be enabled on the GitLab instance; setting this to `true` without incoming emails enabled will cause a perpetual plan difference on this attribute.
+     */
+    serviceDeskEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable shared runners for this project.
      */

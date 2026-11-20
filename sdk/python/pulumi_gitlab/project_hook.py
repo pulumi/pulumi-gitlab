@@ -46,8 +46,12 @@ class ProjectHookArgs:
                  resource_access_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_deploy_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  signing_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 signing_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 signing_token_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  url_variables: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectHookUrlVariableArgs']]]] = None,
                  vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  wiki_page_events: pulumi.Input[Optional[_builtins.bool]] = None):
@@ -78,9 +82,15 @@ class ProjectHookArgs:
         :param pulumi.Input[_builtins.bool] releases_events: Invoke the hook for release events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] resource_access_token_events: Invoke the hook for project access token expiry events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] resource_deploy_token_events: Invoke the hook for resource deploy token events. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signing_token_wo`. This attribute persists the value in state.
+        :param pulumi.Input[_builtins.str] signing_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signing_token`. Change `signing_token_wo_version` to update the remote value.
+        :param pulumi.Input[_builtins.str] signing_token_wo_version: Non-empty change marker for `signing_token_wo`, stored in state. Change this string to publish a new signing token. Every update sends `signing_token_wo`, even when this marker is unchanged.
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
+        :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `token_wo`. This attribute persists the value in state.
+        :param pulumi.Input[_builtins.str] token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `token_wo_version` to update the remote value.
+        :param pulumi.Input[_builtins.str] token_wo_version: Non-empty change marker for `token_wo`, stored in state. Change this string to publish a new token. Every update sends `token_wo`, even when this marker is unchanged.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectHookUrlVariableArgs']]] url_variables: Array of sensitive portions of the webhook URL to mask.
         :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] wiki_page_events: Invoke the hook for wiki page events. Defaults to `false`.
@@ -133,10 +143,18 @@ class ProjectHookArgs:
             pulumi.set(__self__, "resource_deploy_token_events", resource_deploy_token_events)
         if signing_token is not None:
             pulumi.set(__self__, "signing_token", signing_token)
+        if signing_token_wo is not None:
+            pulumi.set(__self__, "signing_token_wo", signing_token_wo)
+        if signing_token_wo_version is not None:
+            pulumi.set(__self__, "signing_token_wo_version", signing_token_wo_version)
         if tag_push_events is not None:
             pulumi.set(__self__, "tag_push_events", tag_push_events)
         if token is not None:
             pulumi.set(__self__, "token", token)
+        if token_wo is not None:
+            pulumi.set(__self__, "token_wo", token_wo)
+        if token_wo_version is not None:
+            pulumi.set(__self__, "token_wo_version", token_wo_version)
         if url_variables is not None:
             pulumi.set(__self__, "url_variables", url_variables)
         if vulnerability_events is not None:
@@ -436,13 +454,38 @@ class ProjectHookArgs:
     @pulumi.getter(name="signingToken")
     def signing_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signing_token_wo`. This attribute persists the value in state.
         """
         return pulumi.get(self, "signing_token")
 
     @signing_token.setter
     def signing_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "signing_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signingTokenWo")
+    def signing_token_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signing_token`. Change `signing_token_wo_version` to update the remote value.
+        """
+        return pulumi.get(self, "signing_token_wo")
+
+    @signing_token_wo.setter
+    def signing_token_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "signing_token_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signingTokenWoVersion")
+    def signing_token_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Non-empty change marker for `signing_token_wo`, stored in state. Change this string to publish a new signing token. Every update sends `signing_token_wo`, even when this marker is unchanged.
+        """
+        return pulumi.get(self, "signing_token_wo_version")
+
+    @signing_token_wo_version.setter
+    def signing_token_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "signing_token_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
@@ -460,13 +503,38 @@ class ProjectHookArgs:
     @pulumi.getter
     def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A token to present when invoking the hook. The token is not available for imported resources.
+        A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `token_wo`. This attribute persists the value in state.
         """
         return pulumi.get(self, "token")
 
     @token.setter
     def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenWo")
+    def token_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `token_wo_version` to update the remote value.
+        """
+        return pulumi.get(self, "token_wo")
+
+    @token_wo.setter
+    def token_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "token_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenWoVersion")
+    def token_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Non-empty change marker for `token_wo`, stored in state. Change this string to publish a new token. Every update sends `token_wo`, even when this marker is unchanged.
+        """
+        return pulumi.get(self, "token_wo_version")
+
+    @token_wo_version.setter
+    def token_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "token_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="urlVariables")
@@ -538,8 +606,12 @@ class _ProjectHookState:
                  resource_deploy_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  signing_token: pulumi.Input[Optional[_builtins.str]] = None,
                  signing_token_present: pulumi.Input[Optional[_builtins.bool]] = None,
+                 signing_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 signing_token_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  url_variables: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectHookUrlVariableArgs']]]] = None,
                  vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -575,10 +647,16 @@ class _ProjectHookState:
         :param pulumi.Input[_builtins.bool] repository_update_events: Invoke the hook for repository update events.
         :param pulumi.Input[_builtins.bool] resource_access_token_events: Invoke the hook for project access token expiry events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] resource_deploy_token_events: Invoke the hook for resource deploy token events. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signing_token_wo`. This attribute persists the value in state.
         :param pulumi.Input[_builtins.bool] signing_token_present: Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
+        :param pulumi.Input[_builtins.str] signing_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signing_token`. Change `signing_token_wo_version` to update the remote value.
+        :param pulumi.Input[_builtins.str] signing_token_wo_version: Non-empty change marker for `signing_token_wo`, stored in state. Change this string to publish a new signing token. Every update sends `signing_token_wo`, even when this marker is unchanged.
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
+        :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `token_wo`. This attribute persists the value in state.
+        :param pulumi.Input[_builtins.str] token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `token_wo_version` to update the remote value.
+        :param pulumi.Input[_builtins.str] token_wo_version: Non-empty change marker for `token_wo`, stored in state. Change this string to publish a new token. Every update sends `token_wo`, even when this marker is unchanged.
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectHookUrlVariableArgs']]] url_variables: Array of sensitive portions of the webhook URL to mask.
         :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
@@ -644,10 +722,18 @@ class _ProjectHookState:
             pulumi.set(__self__, "signing_token", signing_token)
         if signing_token_present is not None:
             pulumi.set(__self__, "signing_token_present", signing_token_present)
+        if signing_token_wo is not None:
+            pulumi.set(__self__, "signing_token_wo", signing_token_wo)
+        if signing_token_wo_version is not None:
+            pulumi.set(__self__, "signing_token_wo_version", signing_token_wo_version)
         if tag_push_events is not None:
             pulumi.set(__self__, "tag_push_events", tag_push_events)
         if token is not None:
             pulumi.set(__self__, "token", token)
+        if token_wo is not None:
+            pulumi.set(__self__, "token_wo", token_wo)
+        if token_wo_version is not None:
+            pulumi.set(__self__, "token_wo_version", token_wo_version)
         if url is not None:
             pulumi.set(__self__, "url", url)
         if url_variables is not None:
@@ -997,7 +1083,7 @@ class _ProjectHookState:
     @pulumi.getter(name="signingToken")
     def signing_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signing_token_wo`. This attribute persists the value in state.
         """
         return pulumi.get(self, "signing_token")
 
@@ -1018,6 +1104,31 @@ class _ProjectHookState:
         pulumi.set(self, "signing_token_present", value)
 
     @_builtins.property
+    @pulumi.getter(name="signingTokenWo")
+    def signing_token_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signing_token`. Change `signing_token_wo_version` to update the remote value.
+        """
+        return pulumi.get(self, "signing_token_wo")
+
+    @signing_token_wo.setter
+    def signing_token_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "signing_token_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signingTokenWoVersion")
+    def signing_token_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Non-empty change marker for `signing_token_wo`, stored in state. Change this string to publish a new signing token. Every update sends `signing_token_wo`, even when this marker is unchanged.
+        """
+        return pulumi.get(self, "signing_token_wo_version")
+
+    @signing_token_wo_version.setter
+    def signing_token_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "signing_token_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="tagPushEvents")
     def tag_push_events(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -1033,13 +1144,38 @@ class _ProjectHookState:
     @pulumi.getter
     def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A token to present when invoking the hook. The token is not available for imported resources.
+        A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `token_wo`. This attribute persists the value in state.
         """
         return pulumi.get(self, "token")
 
     @token.setter
     def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenWo")
+    def token_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `token_wo_version` to update the remote value.
+        """
+        return pulumi.get(self, "token_wo")
+
+    @token_wo.setter
+    def token_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "token_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenWoVersion")
+    def token_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Non-empty change marker for `token_wo`, stored in state. Change this string to publish a new token. Every update sends `token_wo`, even when this marker is unchanged.
+        """
+        return pulumi.get(self, "token_wo_version")
+
+    @token_wo_version.setter
+    def token_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "token_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1120,8 +1256,12 @@ class ProjectHook(pulumi.CustomResource):
                  resource_access_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_deploy_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  signing_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 signing_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 signing_token_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict', 'outputs.ProjectHookUrlVariable']]]]] = None,
                  vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1131,6 +1271,8 @@ class ProjectHook(pulumi.CustomResource):
         The `ProjectHook` resource manages the lifecycle of a project hook.
 
         > Note that `push_events` defaults to `true`.
+
+        Use `token_wo` and `signing_token_wo` with an ephemeral input, together with `token_wo_version` and `signing_token_wo_version`, to keep the hook secrets out of pulumi preview and state. Write-only arguments require Terraform 1.11 or later. Change the version marker to update the value; changes to the value alone do not produce a plan difference. Every update sends the configured value, including updates to other attributes when the version marker is unchanged.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/)
 
@@ -1216,9 +1358,15 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] releases_events: Invoke the hook for release events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] resource_access_token_events: Invoke the hook for project access token expiry events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] resource_deploy_token_events: Invoke the hook for resource deploy token events. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signing_token_wo`. This attribute persists the value in state.
+        :param pulumi.Input[_builtins.str] signing_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signing_token`. Change `signing_token_wo_version` to update the remote value.
+        :param pulumi.Input[_builtins.str] signing_token_wo_version: Non-empty change marker for `signing_token_wo`, stored in state. Change this string to publish a new signing token. Every update sends `signing_token_wo`, even when this marker is unchanged.
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
+        :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `token_wo`. This attribute persists the value in state.
+        :param pulumi.Input[_builtins.str] token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `token_wo_version` to update the remote value.
+        :param pulumi.Input[_builtins.str] token_wo_version: Non-empty change marker for `token_wo`, stored in state. Change this string to publish a new token. Every update sends `token_wo`, even when this marker is unchanged.
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict', 'outputs.ProjectHookUrlVariable']]]] url_variables: Array of sensitive portions of the webhook URL to mask.
         :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
@@ -1234,6 +1382,8 @@ class ProjectHook(pulumi.CustomResource):
         The `ProjectHook` resource manages the lifecycle of a project hook.
 
         > Note that `push_events` defaults to `true`.
+
+        Use `token_wo` and `signing_token_wo` with an ephemeral input, together with `token_wo_version` and `signing_token_wo_version`, to keep the hook secrets out of pulumi preview and state. Write-only arguments require Terraform 1.11 or later. Change the version marker to update the value; changes to the value alone do not produce a plan difference. Every update sends the configured value, including updates to other attributes when the version marker is unchanged.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/)
 
@@ -1333,8 +1483,12 @@ class ProjectHook(pulumi.CustomResource):
                  resource_access_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_deploy_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  signing_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 signing_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 signing_token_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict', 'outputs.ProjectHookUrlVariable']]]]] = None,
                  vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1374,8 +1528,12 @@ class ProjectHook(pulumi.CustomResource):
             __props__.__dict__["resource_access_token_events"] = resource_access_token_events
             __props__.__dict__["resource_deploy_token_events"] = resource_deploy_token_events
             __props__.__dict__["signing_token"] = None if signing_token is None else pulumi.Output.secret(signing_token)
+            __props__.__dict__["signing_token_wo"] = None if signing_token_wo is None else pulumi.Output.secret(signing_token_wo)
+            __props__.__dict__["signing_token_wo_version"] = signing_token_wo_version
             __props__.__dict__["tag_push_events"] = tag_push_events
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
+            __props__.__dict__["token_wo"] = None if token_wo is None else pulumi.Output.secret(token_wo)
+            __props__.__dict__["token_wo_version"] = token_wo_version
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
@@ -1388,7 +1546,7 @@ class ProjectHook(pulumi.CustomResource):
             __props__.__dict__["project_id"] = None
             __props__.__dict__["repository_update_events"] = None
             __props__.__dict__["signing_token_present"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["signingToken", "token"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["signingToken", "signingTokenWo", "token", "tokenWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ProjectHook, __self__).__init__(
             'gitlab:index/projectHook:ProjectHook',
@@ -1430,8 +1588,12 @@ class ProjectHook(pulumi.CustomResource):
             resource_deploy_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
             signing_token: pulumi.Input[Optional[_builtins.str]] = None,
             signing_token_present: pulumi.Input[Optional[_builtins.bool]] = None,
+            signing_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            signing_token_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
             tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
             token: pulumi.Input[Optional[_builtins.str]] = None,
+            token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            token_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
             url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict', 'outputs.ProjectHookUrlVariable']]]]] = None,
             vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1471,10 +1633,16 @@ class ProjectHook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] repository_update_events: Invoke the hook for repository update events.
         :param pulumi.Input[_builtins.bool] resource_access_token_events: Invoke the hook for project access token expiry events. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] resource_deploy_token_events: Invoke the hook for resource deploy token events. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        :param pulumi.Input[_builtins.str] signing_token: Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signing_token_wo`. This attribute persists the value in state.
         :param pulumi.Input[_builtins.bool] signing_token_present: Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
+        :param pulumi.Input[_builtins.str] signing_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signing_token`. Change `signing_token_wo_version` to update the remote value.
+        :param pulumi.Input[_builtins.str] signing_token_wo_version: Non-empty change marker for `signing_token_wo`, stored in state. Change this string to publish a new signing token. Every update sends `signing_token_wo`, even when this marker is unchanged.
         :param pulumi.Input[_builtins.bool] tag_push_events: Invoke the hook for tag push events. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources.
+        :param pulumi.Input[_builtins.str] token: A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `token_wo`. This attribute persists the value in state.
+        :param pulumi.Input[_builtins.str] token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `token_wo_version` to update the remote value.
+        :param pulumi.Input[_builtins.str] token_wo_version: Non-empty change marker for `token_wo`, stored in state. Change this string to publish a new token. Every update sends `token_wo`, even when this marker is unchanged.
         :param pulumi.Input[_builtins.str] url: The url of the hook to invoke. Forces re-creation to preserve `token`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict', 'outputs.ProjectHookUrlVariable']]]] url_variables: Array of sensitive portions of the webhook URL to mask.
         :param pulumi.Input[_builtins.bool] vulnerability_events: Invoke the hook for vulnerability events. Defaults to `false`.
@@ -1514,8 +1682,12 @@ class ProjectHook(pulumi.CustomResource):
         __props__.__dict__["resource_deploy_token_events"] = resource_deploy_token_events
         __props__.__dict__["signing_token"] = signing_token
         __props__.__dict__["signing_token_present"] = signing_token_present
+        __props__.__dict__["signing_token_wo"] = signing_token_wo
+        __props__.__dict__["signing_token_wo_version"] = signing_token_wo_version
         __props__.__dict__["tag_push_events"] = tag_push_events
         __props__.__dict__["token"] = token
+        __props__.__dict__["token_wo"] = token_wo
+        __props__.__dict__["token_wo_version"] = token_wo_version
         __props__.__dict__["url"] = url
         __props__.__dict__["url_variables"] = url_variables
         __props__.__dict__["vulnerability_events"] = vulnerability_events
@@ -1555,8 +1727,12 @@ class ProjectHook(pulumi.CustomResource):
             resource_deploy_token_events: pulumi.Input[Optional[_builtins.bool]] = None,
             signing_token: pulumi.Input[Optional[_builtins.str]] = None,
             signing_token_present: pulumi.Input[Optional[_builtins.bool]] = None,
+            signing_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            signing_token_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
             tag_push_events: pulumi.Input[Optional[_builtins.bool]] = None,
             token: pulumi.Input[Optional[_builtins.str]] = None,
+            token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            token_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
             url_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectHookUrlVariableArgs', 'ProjectHookUrlVariableArgsDict', 'outputs.ProjectHookUrlVariable']]]]] = None,
             vulnerability_events: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1592,8 +1768,12 @@ class ProjectHook(pulumi.CustomResource):
         __props__["resourceDeployTokenEvents"] = resource_deploy_token_events
         __props__["signingToken"] = signing_token
         __props__["signingTokenPresent"] = signing_token_present
+        __props__["signingTokenWo"] = signing_token_wo
+        __props__["signingTokenWoVersion"] = signing_token_wo_version
         __props__["tagPushEvents"] = tag_push_events
         __props__["token"] = token
+        __props__["tokenWo"] = token_wo
+        __props__["tokenWoVersion"] = token_wo_version
         __props__["url"] = url
         __props__["urlVariables"] = url_variables
         __props__["vulnerabilityEvents"] = vulnerability_events
@@ -1828,7 +2008,7 @@ class ProjectHook(pulumi.CustomResource):
     @pulumi.getter(name="signingToken")
     def signing_token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhook_signing_token`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signing_token_wo`. This attribute persists the value in state.
         """
         return pulumi.get(self, "signing_token")
 
@@ -1839,6 +2019,23 @@ class ProjectHook(pulumi.CustomResource):
         Whether a `signing_token` is configured server-side. Reflects the value returned by the GitLab API.
         """
         return pulumi.get(self, "signing_token_present")
+
+    @_builtins.property
+    @pulumi.getter(name="signingTokenWo")
+    def signing_token_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signing_token`. Change `signing_token_wo_version` to update the remote value.
+        """
+        return pulumi.get(self, "signing_token_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="signingTokenWoVersion")
+    def signing_token_wo_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Non-empty change marker for `signing_token_wo`, stored in state. Change this string to publish a new signing token. Every update sends `signing_token_wo`, even when this marker is unchanged.
+        """
+        return pulumi.get(self, "signing_token_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="tagPushEvents")
@@ -1852,9 +2049,26 @@ class ProjectHook(pulumi.CustomResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[_builtins.str]:
         """
-        A token to present when invoking the hook. The token is not available for imported resources.
+        A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `token_wo`. This attribute persists the value in state.
         """
         return pulumi.get(self, "token")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenWo")
+    def token_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `token_wo_version` to update the remote value.
+        """
+        return pulumi.get(self, "token_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenWoVersion")
+    def token_wo_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Non-empty change marker for `token_wo`, stored in state. Change this string to publish a new token. Every update sends `token_wo`, even when this marker is unchanged.
+        """
+        return pulumi.get(self, "token_wo_version")
 
     @_builtins.property
     @pulumi.getter

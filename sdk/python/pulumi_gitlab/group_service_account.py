@@ -272,7 +272,8 @@ class GroupServiceAccount(pulumi.CustomResource):
         # Group to assign the service account to. Can be the same top-level group resource as above, or a subgroup of that group.
         example_subgroup = gitlab.Group("example_subgroup",
             name="subgroup",
-            path="example/subgroup",
+            path="subgroup",
+            parent_id=example.id.apply(lambda x: int(x)),
             description="An example subgroup")
         # To assign the service account to a group
         example_membership = gitlab.GroupMembership("example_membership",
@@ -333,7 +334,8 @@ class GroupServiceAccount(pulumi.CustomResource):
         # Group to assign the service account to. Can be the same top-level group resource as above, or a subgroup of that group.
         example_subgroup = gitlab.Group("example_subgroup",
             name="subgroup",
-            path="example/subgroup",
+            path="subgroup",
+            parent_id=example.id.apply(lambda x: int(x)),
             description="An example subgroup")
         # To assign the service account to a group
         example_membership = gitlab.GroupMembership("example_membership",

@@ -22,6 +22,7 @@ __all__ = ['InstanceServiceAccountArgs', 'InstanceServiceAccount']
 class InstanceServiceAccountArgs:
     def __init__(__self__, *,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_external: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  timeouts: pulumi.Input[Optional['InstanceServiceAccountTimeoutsArgs']] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None):
@@ -29,11 +30,14 @@ class InstanceServiceAccountArgs:
         The set of arguments for constructing a InstanceServiceAccount resource.
 
         :param pulumi.Input[_builtins.str] email: The email of the user account. If not set, generates a no-reply email address.
+        :param pulumi.Input[_builtins.bool] is_external: Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not set, uses Service account user.
         :param pulumi.Input[_builtins.str] username: The username of the user account. If not set, generates a name prepended with service*account*.
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
+        if is_external is not None:
+            pulumi.set(__self__, "is_external", is_external)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if timeouts is not None:
@@ -52,6 +56,18 @@ class InstanceServiceAccountArgs:
     @email.setter
     def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isExternal")
+    def is_external(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+        """
+        return pulumi.get(self, "is_external")
+
+    @is_external.setter
+    def is_external(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "is_external", value)
 
     @_builtins.property
     @pulumi.getter
@@ -91,6 +107,7 @@ class InstanceServiceAccountArgs:
 class _InstanceServiceAccountState:
     def __init__(__self__, *,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_external: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  timeouts: pulumi.Input[Optional['InstanceServiceAccountTimeoutsArgs']] = None,
@@ -99,12 +116,15 @@ class _InstanceServiceAccountState:
         Input properties used for looking up and filtering InstanceServiceAccount resources.
 
         :param pulumi.Input[_builtins.str] email: The email of the user account. If not set, generates a no-reply email address.
+        :param pulumi.Input[_builtins.bool] is_external: Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not set, uses Service account user.
         :param pulumi.Input[_builtins.str] service_account_id: The service account id.
         :param pulumi.Input[_builtins.str] username: The username of the user account. If not set, generates a name prepended with service*account*.
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
+        if is_external is not None:
+            pulumi.set(__self__, "is_external", is_external)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if service_account_id is not None:
@@ -125,6 +145,18 @@ class _InstanceServiceAccountState:
     @email.setter
     def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isExternal")
+    def is_external(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+        """
+        return pulumi.get(self, "is_external")
+
+    @is_external.setter
+    def is_external(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "is_external", value)
 
     @_builtins.property
     @pulumi.getter
@@ -179,6 +211,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_external: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  timeouts: pulumi.Input[Optional[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict', 'outputs.InstanceServiceAccountTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
@@ -204,6 +237,12 @@ class InstanceServiceAccount(pulumi.CustomResource):
             timeouts={
                 "delete": "3m",
             })
+        # create a service account that is internal, so it can access internal projects
+        # (for example when a pipeline it triggers references an internal project via `include` or `component`)
+        example_internal_sa = gitlab.InstanceServiceAccount("example_internal_sa",
+            name="example-internal-name",
+            username="example-internal-username",
+            is_external=False)
         example_token = gitlab.PersonalAccessToken("example_token",
             user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example personal access token for a service account",
@@ -227,6 +266,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] email: The email of the user account. If not set, generates a no-reply email address.
+        :param pulumi.Input[_builtins.bool] is_external: Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not set, uses Service account user.
         :param pulumi.Input[_builtins.str] username: The username of the user account. If not set, generates a name prepended with service*account*.
         """
@@ -257,6 +297,12 @@ class InstanceServiceAccount(pulumi.CustomResource):
             timeouts={
                 "delete": "3m",
             })
+        # create a service account that is internal, so it can access internal projects
+        # (for example when a pipeline it triggers references an internal project via `include` or `component`)
+        example_internal_sa = gitlab.InstanceServiceAccount("example_internal_sa",
+            name="example-internal-name",
+            username="example-internal-username",
+            is_external=False)
         example_token = gitlab.PersonalAccessToken("example_token",
             user_id=example_sa.service_account_id.apply(lambda x: int(x)),
             name="Example personal access token for a service account",
@@ -293,6 +339,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_external: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  timeouts: pulumi.Input[Optional[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict', 'outputs.InstanceServiceAccountTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
@@ -306,6 +353,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
             __props__ = InstanceServiceAccountArgs.__new__(InstanceServiceAccountArgs)
 
             __props__.__dict__["email"] = email
+            __props__.__dict__["is_external"] = is_external
             __props__.__dict__["name"] = name
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["username"] = username
@@ -321,6 +369,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             email: pulumi.Input[Optional[_builtins.str]] = None,
+            is_external: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
             timeouts: pulumi.Input[Optional[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict', 'outputs.InstanceServiceAccountTimeouts']]] = None,
@@ -333,6 +382,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] email: The email of the user account. If not set, generates a no-reply email address.
+        :param pulumi.Input[_builtins.bool] is_external: Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
         :param pulumi.Input[_builtins.str] name: The name of the user. If not set, uses Service account user.
         :param pulumi.Input[_builtins.str] service_account_id: The service account id.
         :param pulumi.Input[_builtins.str] username: The username of the user account. If not set, generates a name prepended with service*account*.
@@ -342,6 +392,7 @@ class InstanceServiceAccount(pulumi.CustomResource):
         __props__ = _InstanceServiceAccountState.__new__(_InstanceServiceAccountState)
 
         __props__.__dict__["email"] = email
+        __props__.__dict__["is_external"] = is_external
         __props__.__dict__["name"] = name
         __props__.__dict__["service_account_id"] = service_account_id
         __props__.__dict__["timeouts"] = timeouts
@@ -352,12 +403,14 @@ class InstanceServiceAccount(pulumi.CustomResource):
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             email: pulumi.Input[Optional[_builtins.str]] = None,
+            is_external: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
             timeouts: pulumi.Input[Optional[Union['InstanceServiceAccountTimeoutsArgs', 'InstanceServiceAccountTimeoutsArgsDict', 'outputs.InstanceServiceAccountTimeouts']]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["email"] = email
+        __props__["isExternal"] = is_external
         __props__["name"] = name
         __props__["serviceAccountId"] = service_account_id
         __props__["timeouts"] = timeouts
@@ -371,6 +424,14 @@ class InstanceServiceAccount(pulumi.CustomResource):
         The email of the user account. If not set, generates a no-reply email address.
         """
         return pulumi.get(self, "email")
+
+    @_builtins.property
+    @pulumi.getter(name="isExternal")
+    def is_external(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+        """
+        return pulumi.get(self, "is_external")
 
     @_builtins.property
     @pulumi.getter

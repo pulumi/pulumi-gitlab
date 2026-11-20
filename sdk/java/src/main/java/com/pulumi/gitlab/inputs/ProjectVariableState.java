@@ -137,18 +137,50 @@ public final class ProjectVariableState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The value of the variable.
+     * The value of the variable. Exactly one of `value` or `valueWo` must be specified. This attribute persists the value in state.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of the variable.
+     * @return The value of the variable. Exactly one of `value` or `valueWo` must be specified. This attribute persists the value in state.
      * 
      */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `valueWo` must be specified. Change `valueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+     * 
+     */
+    @Import(name="valueWo")
+    private @Nullable Output<String> valueWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `valueWo` must be specified. Change `valueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+     * 
+     */
+    public Optional<Output<String>> valueWo() {
+        return Optional.ofNullable(this.valueWo);
+    }
+
+    /**
+     * Non-empty change marker for `valueWo`, stored in state. Change this string to publish a new value. Every update sends `valueWo`, even when this marker is unchanged.
+     * 
+     */
+    @Import(name="valueWoVersion")
+    private @Nullable Output<String> valueWoVersion;
+
+    /**
+     * @return Non-empty change marker for `valueWo`, stored in state. Change this string to publish a new value. Every update sends `valueWo`, even when this marker is unchanged.
+     * 
+     */
+    public Optional<Output<String>> valueWoVersion() {
+        return Optional.ofNullable(this.valueWoVersion);
     }
 
     /**
@@ -178,6 +210,8 @@ public final class ProjectVariableState extends com.pulumi.resources.ResourceArg
         this.protected_ = $.protected_;
         this.raw = $.raw;
         this.value = $.value;
+        this.valueWo = $.valueWo;
+        this.valueWoVersion = $.valueWoVersion;
         this.variableType = $.variableType;
     }
 
@@ -368,7 +402,7 @@ public final class ProjectVariableState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param value The value of the variable.
+         * @param value The value of the variable. Exactly one of `value` or `valueWo` must be specified. This attribute persists the value in state.
          * 
          * @return builder
          * 
@@ -379,13 +413,57 @@ public final class ProjectVariableState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param value The value of the variable.
+         * @param value The value of the variable. Exactly one of `value` or `valueWo` must be specified. This attribute persists the value in state.
          * 
          * @return builder
          * 
          */
         public Builder value(String value) {
             return value(Output.of(value));
+        }
+
+        /**
+         * @param valueWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `valueWo` must be specified. Change `valueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valueWo(@Nullable Output<String> valueWo) {
+            $.valueWo = valueWo;
+            return this;
+        }
+
+        /**
+         * @param valueWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `valueWo` must be specified. Change `valueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valueWo(String valueWo) {
+            return valueWo(Output.of(valueWo));
+        }
+
+        /**
+         * @param valueWoVersion Non-empty change marker for `valueWo`, stored in state. Change this string to publish a new value. Every update sends `valueWo`, even when this marker is unchanged.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valueWoVersion(@Nullable Output<String> valueWoVersion) {
+            $.valueWoVersion = valueWoVersion;
+            return this;
+        }
+
+        /**
+         * @param valueWoVersion Non-empty change marker for `valueWo`, stored in state. Change this string to publish a new value. Every update sends `valueWo`, even when this marker is unchanged.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valueWoVersion(String valueWoVersion) {
+            return valueWoVersion(Output.of(valueWoVersion));
         }
 
         /**

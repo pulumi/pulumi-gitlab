@@ -446,6 +446,11 @@ public final class GetProjectResult {
      */
     private String mergeRequestsTemplate;
     /**
+     * @return Merge train enforcement level. Valid values are `allowBypass`, `enforceForAllUsers`, `enforceWithOwnerOverride`. Introduced in GitLab 19.3. Premium and Ultimate only.
+     * 
+     */
+    private String mergeTrainEnforcement;
+    /**
      * @return Enable or disable merge trains.
      * 
      */
@@ -1407,6 +1412,13 @@ public final class GetProjectResult {
         return this.mergeRequestsTemplate;
     }
     /**
+     * @return Merge train enforcement level. Valid values are `allowBypass`, `enforceForAllUsers`, `enforceWithOwnerOverride`. Introduced in GitLab 19.3. Premium and Ultimate only.
+     * 
+     */
+    public String mergeTrainEnforcement() {
+        return this.mergeTrainEnforcement;
+    }
+    /**
      * @return Enable or disable merge trains.
      * 
      */
@@ -2011,6 +2023,7 @@ public final class GetProjectResult {
         private String mergeRequestsAccessLevel;
         private Boolean mergeRequestsEnabled;
         private String mergeRequestsTemplate;
+        private String mergeTrainEnforcement;
         private Boolean mergeTrainsEnabled;
         private Boolean mergeTrainsSkipTrainAllowed;
         private Boolean mirror;
@@ -2165,6 +2178,7 @@ public final class GetProjectResult {
     	      this.mergeRequestsAccessLevel = defaults.mergeRequestsAccessLevel;
     	      this.mergeRequestsEnabled = defaults.mergeRequestsEnabled;
     	      this.mergeRequestsTemplate = defaults.mergeRequestsTemplate;
+    	      this.mergeTrainEnforcement = defaults.mergeTrainEnforcement;
     	      this.mergeTrainsEnabled = defaults.mergeTrainsEnabled;
     	      this.mergeTrainsSkipTrainAllowed = defaults.mergeTrainsSkipTrainAllowed;
     	      this.mirror = defaults.mirror;
@@ -2901,6 +2915,14 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
+        public Builder mergeTrainEnforcement(String mergeTrainEnforcement) {
+            if (mergeTrainEnforcement == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "mergeTrainEnforcement");
+            }
+            this.mergeTrainEnforcement = mergeTrainEnforcement;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mergeTrainsEnabled(Boolean mergeTrainsEnabled) {
             if (mergeTrainsEnabled == null) {
               throw new MissingRequiredPropertyException("GetProjectResult", "mergeTrainsEnabled");
@@ -3564,6 +3586,7 @@ public final class GetProjectResult {
             _resultValue.mergeRequestsAccessLevel = mergeRequestsAccessLevel;
             _resultValue.mergeRequestsEnabled = mergeRequestsEnabled;
             _resultValue.mergeRequestsTemplate = mergeRequestsTemplate;
+            _resultValue.mergeTrainEnforcement = mergeTrainEnforcement;
             _resultValue.mergeTrainsEnabled = mergeTrainsEnabled;
             _resultValue.mergeTrainsSkipTrainAllowed = mergeTrainsSkipTrainAllowed;
             _resultValue.mirror = mirror;

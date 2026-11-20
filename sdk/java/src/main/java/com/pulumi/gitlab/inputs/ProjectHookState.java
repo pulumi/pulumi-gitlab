@@ -441,14 +441,14 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signingTokenWo`. This attribute persists the value in state.
      * 
      */
     @Import(name="signingToken")
     private @Nullable Output<String> signingToken;
 
     /**
-     * @return Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * @return Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signingTokenWo`. This attribute persists the value in state.
      * 
      */
     public Optional<Output<String>> signingToken() {
@@ -471,6 +471,38 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signingToken`. Change `signingTokenWoVersion` to update the remote value.
+     * 
+     */
+    @Import(name="signingTokenWo")
+    private @Nullable Output<String> signingTokenWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signingToken`. Change `signingTokenWoVersion` to update the remote value.
+     * 
+     */
+    public Optional<Output<String>> signingTokenWo() {
+        return Optional.ofNullable(this.signingTokenWo);
+    }
+
+    /**
+     * Non-empty change marker for `signingTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `signingTokenWo`, even when this marker is unchanged.
+     * 
+     */
+    @Import(name="signingTokenWoVersion")
+    private @Nullable Output<String> signingTokenWoVersion;
+
+    /**
+     * @return Non-empty change marker for `signingTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `signingTokenWo`, even when this marker is unchanged.
+     * 
+     */
+    public Optional<Output<String>> signingTokenWoVersion() {
+        return Optional.ofNullable(this.signingTokenWoVersion);
+    }
+
+    /**
      * Invoke the hook for tag push events. Defaults to `false`.
      * 
      */
@@ -486,18 +518,50 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A token to present when invoking the hook. The token is not available for imported resources.
+     * A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `tokenWo`. This attribute persists the value in state.
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return A token to present when invoking the hook. The token is not available for imported resources.
+     * @return A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `tokenWo`. This attribute persists the value in state.
      * 
      */
     public Optional<Output<String>> token() {
         return Optional.ofNullable(this.token);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `tokenWoVersion` to update the remote value.
+     * 
+     */
+    @Import(name="tokenWo")
+    private @Nullable Output<String> tokenWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `tokenWoVersion` to update the remote value.
+     * 
+     */
+    public Optional<Output<String>> tokenWo() {
+        return Optional.ofNullable(this.tokenWo);
+    }
+
+    /**
+     * Non-empty change marker for `tokenWo`, stored in state. Change this string to publish a new token. Every update sends `tokenWo`, even when this marker is unchanged.
+     * 
+     */
+    @Import(name="tokenWoVersion")
+    private @Nullable Output<String> tokenWoVersion;
+
+    /**
+     * @return Non-empty change marker for `tokenWo`, stored in state. Change this string to publish a new token. Every update sends `tokenWo`, even when this marker is unchanged.
+     * 
+     */
+    public Optional<Output<String>> tokenWoVersion() {
+        return Optional.ofNullable(this.tokenWoVersion);
     }
 
     /**
@@ -593,8 +657,12 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
         this.resourceDeployTokenEvents = $.resourceDeployTokenEvents;
         this.signingToken = $.signingToken;
         this.signingTokenPresent = $.signingTokenPresent;
+        this.signingTokenWo = $.signingTokenWo;
+        this.signingTokenWoVersion = $.signingTokenWoVersion;
         this.tagPushEvents = $.tagPushEvents;
         this.token = $.token;
+        this.tokenWo = $.tokenWo;
+        this.tokenWoVersion = $.tokenWoVersion;
         this.url = $.url;
         this.urlVariables = $.urlVariables;
         this.vulnerabilityEvents = $.vulnerabilityEvents;
@@ -1218,7 +1286,7 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param signingToken Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+         * @param signingToken Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signingTokenWo`. This attribute persists the value in state.
          * 
          * @return builder
          * 
@@ -1229,7 +1297,7 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param signingToken Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+         * @param signingToken Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signingTokenWo`. This attribute persists the value in state.
          * 
          * @return builder
          * 
@@ -1260,6 +1328,50 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param signingTokenWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signingToken`. Change `signingTokenWoVersion` to update the remote value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingTokenWo(@Nullable Output<String> signingTokenWo) {
+            $.signingTokenWo = signingTokenWo;
+            return this;
+        }
+
+        /**
+         * @param signingTokenWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signingToken`. Change `signingTokenWoVersion` to update the remote value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingTokenWo(String signingTokenWo) {
+            return signingTokenWo(Output.of(signingTokenWo));
+        }
+
+        /**
+         * @param signingTokenWoVersion Non-empty change marker for `signingTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `signingTokenWo`, even when this marker is unchanged.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingTokenWoVersion(@Nullable Output<String> signingTokenWoVersion) {
+            $.signingTokenWoVersion = signingTokenWoVersion;
+            return this;
+        }
+
+        /**
+         * @param signingTokenWoVersion Non-empty change marker for `signingTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `signingTokenWo`, even when this marker is unchanged.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signingTokenWoVersion(String signingTokenWoVersion) {
+            return signingTokenWoVersion(Output.of(signingTokenWoVersion));
+        }
+
+        /**
          * @param tagPushEvents Invoke the hook for tag push events. Defaults to `false`.
          * 
          * @return builder
@@ -1281,7 +1393,7 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param token A token to present when invoking the hook. The token is not available for imported resources.
+         * @param token A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `tokenWo`. This attribute persists the value in state.
          * 
          * @return builder
          * 
@@ -1292,13 +1404,57 @@ public final class ProjectHookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param token A token to present when invoking the hook. The token is not available for imported resources.
+         * @param token A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `tokenWo`. This attribute persists the value in state.
          * 
          * @return builder
          * 
          */
         public Builder token(String token) {
             return token(Output.of(token));
+        }
+
+        /**
+         * @param tokenWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `tokenWoVersion` to update the remote value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenWo(@Nullable Output<String> tokenWo) {
+            $.tokenWo = tokenWo;
+            return this;
+        }
+
+        /**
+         * @param tokenWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `tokenWoVersion` to update the remote value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenWo(String tokenWo) {
+            return tokenWo(Output.of(tokenWo));
+        }
+
+        /**
+         * @param tokenWoVersion Non-empty change marker for `tokenWo`, stored in state. Change this string to publish a new token. Every update sends `tokenWo`, even when this marker is unchanged.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenWoVersion(@Nullable Output<String> tokenWoVersion) {
+            $.tokenWoVersion = tokenWoVersion;
+            return this;
+        }
+
+        /**
+         * @param tokenWoVersion Non-empty change marker for `tokenWo`, stored in state. Change this string to publish a new token. Every update sends `tokenWo`, even when this marker is unchanged.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenWoVersion(String tokenWoVersion) {
+            return tokenWoVersion(Output.of(tokenWoVersion));
         }
 
         /**

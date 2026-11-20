@@ -63,14 +63,14 @@ public final class ProjectMembershipArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID or URL-encoded path of the project.
+     * The ID or full path of the project. Do not URL-encode the path.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The ID or URL-encoded path of the project.
+     * @return The ID or full path of the project. Do not URL-encode the path.
      * 
      */
     public Output<String> project() {
@@ -184,7 +184,7 @@ public final class ProjectMembershipArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project The ID or URL-encoded path of the project.
+         * @param project The ID or full path of the project. Do not URL-encode the path.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ProjectMembershipArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project The ID or URL-encoded path of the project.
+         * @param project The ID or full path of the project. Do not URL-encode the path.
          * 
          * @return builder
          * 

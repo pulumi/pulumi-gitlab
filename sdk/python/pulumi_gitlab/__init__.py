@@ -103,6 +103,7 @@ from .get_users import *
 from .global_level_notifications import *
 from .group import *
 from .group_access_token import *
+from .group_application import *
 from .group_badge import *
 from .group_branch_protection import *
 from .group_cluster import *
@@ -213,6 +214,7 @@ from .provider import *
 from .release import *
 from .release_link import *
 from .repository_file import *
+from .repository_files import *
 from .runner_controller import *
 from .runner_controller_instance_scope import *
 from .runner_controller_runner_scope import *
@@ -369,6 +371,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/groupAccessToken:GroupAccessToken": "GroupAccessToken"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/groupApplication",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/groupApplication:GroupApplication": "GroupApplication"
   }
  },
  {
@@ -1241,6 +1251,14 @@ _utilities.register(
   "fqn": "pulumi_gitlab",
   "classes": {
    "gitlab:index/repositoryFile:RepositoryFile": "RepositoryFile"
+  }
+ },
+ {
+  "pkg": "gitlab",
+  "mod": "index/repositoryFiles",
+  "fqn": "pulumi_gitlab",
+  "classes": {
+   "gitlab:index/repositoryFiles:RepositoryFiles": "RepositoryFiles"
   }
  },
  {

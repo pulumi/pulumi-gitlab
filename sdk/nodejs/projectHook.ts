@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  *
  * > Note that `pushEvents` defaults to `true`.
  *
+ * Use `tokenWo` and `signingTokenWo` with an ephemeral input, together with `tokenWoVersion` and `signingTokenWoVersion`, to keep the hook secrets out of pulumi preview and state. Write-only arguments require Terraform 1.11 or later. Change the version marker to update the value; changes to the value alone do not produce a plan difference. Every update sends the configured value, including updates to other attributes when the version marker is unchanged.
+ *
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/)
  *
  * ## Example Usage
@@ -224,7 +226,7 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     declare public readonly resourceDeployTokenEvents: pulumi.Output<boolean>;
     /**
-     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signingTokenWo`. This attribute persists the value in state.
      */
     declare public readonly signingToken: pulumi.Output<string | undefined>;
     /**
@@ -232,13 +234,31 @@ export class ProjectHook extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly signingTokenPresent: pulumi.Output<boolean>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signingToken`. Change `signingTokenWoVersion` to update the remote value.
+     */
+    declare public readonly signingTokenWo: pulumi.Output<string | undefined>;
+    /**
+     * Non-empty change marker for `signingTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `signingTokenWo`, even when this marker is unchanged.
+     */
+    declare public readonly signingTokenWoVersion: pulumi.Output<string | undefined>;
+    /**
      * Invoke the hook for tag push events. Defaults to `false`.
      */
     declare public readonly tagPushEvents: pulumi.Output<boolean>;
     /**
-     * A token to present when invoking the hook. The token is not available for imported resources.
+     * A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `tokenWo`. This attribute persists the value in state.
      */
     declare public readonly token: pulumi.Output<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `tokenWoVersion` to update the remote value.
+     */
+    declare public readonly tokenWo: pulumi.Output<string | undefined>;
+    /**
+     * Non-empty change marker for `tokenWo`, stored in state. Change this string to publish a new token. Every update sends `tokenWo`, even when this marker is unchanged.
+     */
+    declare public readonly tokenWoVersion: pulumi.Output<string | undefined>;
     /**
      * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
@@ -299,8 +319,12 @@ export class ProjectHook extends pulumi.CustomResource {
             resourceInputs["resourceDeployTokenEvents"] = state?.resourceDeployTokenEvents;
             resourceInputs["signingToken"] = state?.signingToken;
             resourceInputs["signingTokenPresent"] = state?.signingTokenPresent;
+            resourceInputs["signingTokenWo"] = state?.signingTokenWo;
+            resourceInputs["signingTokenWoVersion"] = state?.signingTokenWoVersion;
             resourceInputs["tagPushEvents"] = state?.tagPushEvents;
             resourceInputs["token"] = state?.token;
+            resourceInputs["tokenWo"] = state?.tokenWo;
+            resourceInputs["tokenWoVersion"] = state?.tokenWoVersion;
             resourceInputs["url"] = state?.url;
             resourceInputs["urlVariables"] = state?.urlVariables;
             resourceInputs["vulnerabilityEvents"] = state?.vulnerabilityEvents;
@@ -337,8 +361,12 @@ export class ProjectHook extends pulumi.CustomResource {
             resourceInputs["resourceAccessTokenEvents"] = args?.resourceAccessTokenEvents;
             resourceInputs["resourceDeployTokenEvents"] = args?.resourceDeployTokenEvents;
             resourceInputs["signingToken"] = args?.signingToken ? pulumi.secret(args.signingToken) : undefined;
+            resourceInputs["signingTokenWo"] = args?.signingTokenWo ? pulumi.secret(args.signingTokenWo) : undefined;
+            resourceInputs["signingTokenWoVersion"] = args?.signingTokenWoVersion;
             resourceInputs["tagPushEvents"] = args?.tagPushEvents;
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
+            resourceInputs["tokenWo"] = args?.tokenWo ? pulumi.secret(args.tokenWo) : undefined;
+            resourceInputs["tokenWoVersion"] = args?.tokenWoVersion;
             resourceInputs["url"] = args?.url;
             resourceInputs["urlVariables"] = args?.urlVariables;
             resourceInputs["vulnerabilityEvents"] = args?.vulnerabilityEvents;
@@ -351,7 +379,7 @@ export class ProjectHook extends pulumi.CustomResource {
             resourceInputs["signingTokenPresent"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["signingToken", "token"] };
+        const secretOpts = { additionalSecretOutputs: ["signingToken", "signingTokenWo", "token", "tokenWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(ProjectHook.__pulumiType, name, resourceInputs, opts);
     }
@@ -474,7 +502,7 @@ export interface ProjectHookState {
      */
     resourceDeployTokenEvents?: pulumi.Input<boolean | undefined>;
     /**
-     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signingTokenWo`. This attribute persists the value in state.
      */
     signingToken?: pulumi.Input<string | undefined>;
     /**
@@ -482,13 +510,31 @@ export interface ProjectHookState {
      */
     signingTokenPresent?: pulumi.Input<boolean | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signingToken`. Change `signingTokenWoVersion` to update the remote value.
+     */
+    signingTokenWo?: pulumi.Input<string | undefined>;
+    /**
+     * Non-empty change marker for `signingTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `signingTokenWo`, even when this marker is unchanged.
+     */
+    signingTokenWoVersion?: pulumi.Input<string | undefined>;
+    /**
      * Invoke the hook for tag push events. Defaults to `false`.
      */
     tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
-     * A token to present when invoking the hook. The token is not available for imported resources.
+     * A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `tokenWo`. This attribute persists the value in state.
      */
     token?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `tokenWoVersion` to update the remote value.
+     */
+    tokenWo?: pulumi.Input<string | undefined>;
+    /**
+     * Non-empty change marker for `tokenWo`, stored in state. Change this string to publish a new token. Every update sends `tokenWo`, even when this marker is unchanged.
+     */
+    tokenWoVersion?: pulumi.Input<string | undefined>;
     /**
      * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */
@@ -604,17 +650,35 @@ export interface ProjectHookArgs {
      */
     resourceDeployTokenEvents?: pulumi.Input<boolean | undefined>;
     /**
-     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+     * Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signingTokenWo`. This attribute persists the value in state.
      */
     signingToken?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signingToken`. Change `signingTokenWoVersion` to update the remote value.
+     */
+    signingTokenWo?: pulumi.Input<string | undefined>;
+    /**
+     * Non-empty change marker for `signingTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `signingTokenWo`, even when this marker is unchanged.
+     */
+    signingTokenWoVersion?: pulumi.Input<string | undefined>;
     /**
      * Invoke the hook for tag push events. Defaults to `false`.
      */
     tagPushEvents?: pulumi.Input<boolean | undefined>;
     /**
-     * A token to present when invoking the hook. The token is not available for imported resources.
+     * A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `tokenWo`. This attribute persists the value in state.
      */
     token?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `tokenWoVersion` to update the remote value.
+     */
+    tokenWo?: pulumi.Input<string | undefined>;
+    /**
+     * Non-empty change marker for `tokenWo`, stored in state. Change this string to publish a new token. Every update sends `tokenWo`, even when this marker is unchanged.
+     */
+    tokenWoVersion?: pulumi.Input<string | undefined>;
     /**
      * The url of the hook to invoke. Forces re-creation to preserve `token`.
      */

@@ -26,14 +26,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.GetProject.Invoke(new()
+        ///     var example = GitLab.GetProject.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         PathWithNamespace = "foo/bar/baz",
         ///     });
         /// 
         ///     var allWithFoo = GitLab.GetProjectIssues.Invoke(new()
         ///     {
-        ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Id),
+        ///         Project = example.Apply(getProjectResult =&gt; getProjectResult.Id),
         ///         Search = "foo",
         ///     });
         /// 
@@ -58,14 +58,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.GetProject.Invoke(new()
+        ///     var example = GitLab.GetProject.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         PathWithNamespace = "foo/bar/baz",
         ///     });
         /// 
         ///     var allWithFoo = GitLab.GetProjectIssues.Invoke(new()
         ///     {
-        ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Id),
+        ///         Project = example.Apply(getProjectResult =&gt; getProjectResult.Id),
         ///         Search = "foo",
         ///     });
         /// 
@@ -90,14 +90,14 @@ namespace Pulumi.GitLab
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = GitLab.GetProject.Invoke(new()
+        ///     var example = GitLab.GetProject.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         PathWithNamespace = "foo/bar/baz",
         ///     });
         /// 
         ///     var allWithFoo = GitLab.GetProjectIssues.Invoke(new()
         ///     {
-        ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Id),
+        ///         Project = example.Apply(getProjectResult =&gt; getProjectResult.Id),
         ///         Search = "foo",
         ///     });
         /// 
