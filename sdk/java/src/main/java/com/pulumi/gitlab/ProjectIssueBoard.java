@@ -96,20 +96,6 @@ import javax.annotation.Nullable;
  *                 .dependsOn(exampleProjectMembership)
  *                 .build());
  * 
- *         var listSyntax = new ProjectIssueBoard("listSyntax", ProjectIssueBoardArgs.builder()
- *             .project(example.id())
- *             .name("Test Issue Board with list syntax")
- *             .lists(            
- *                 ProjectIssueBoardListArgs.builder()
- *                     .assigneeId(exampleUser.id())
- *                     .build(),
- *                 ProjectIssueBoardListArgs.builder()
- *                     .milestoneId(exampleProjectMilestone.milestoneId())
- *                     .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(exampleProjectMembership)
- *                 .build());
- * 
  *     }}{@code
  * }}{@code
  * }

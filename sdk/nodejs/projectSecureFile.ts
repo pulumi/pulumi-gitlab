@@ -33,14 +33,6 @@ import * as utilities from "./utilities";
  *         input: "example.txt",
  *     }).then(invoke => invoke.result),
  * });
- * const disablePollForMetadata = new gitlab.ProjectSecureFile("disable_poll_for_metadata", {
- *     name: "my-secure-file",
- *     project: thisProject.id,
- *     content: std.file({
- *         input: "example.txt",
- *     }).then(invoke => invoke.result),
- *     pollForMetadataDurationInSeconds: 0,
- * });
  * ```
  *
  * ## Import

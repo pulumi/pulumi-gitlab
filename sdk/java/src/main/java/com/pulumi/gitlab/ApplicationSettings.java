@@ -36,57 +36,6 @@ import javax.annotation.Nullable;
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
  * 
- * ## Example Usage
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gitlab.ApplicationSettings;
- * import com.pulumi.gitlab.ApplicationSettingsArgs;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Set the default branch
- *         var defaultBranch = new ApplicationSettings("defaultBranch", ApplicationSettingsArgs.builder()
- *             .defaultBranchName("main")
- *             .build());
- * 
- *         // Set the 2FA settings
- *         var twoFactor = new ApplicationSettings("twoFactor", ApplicationSettingsArgs.builder()
- *             .requireTwoFactorAuthentication(true)
- *             .twoFactorGracePeriod(24)
- *             .build());
- * 
- *         // Example Allow custom integrations
- *         var allowCustomIntegrations = new ApplicationSettings("allowCustomIntegrations", ApplicationSettingsArgs.builder()
- *             .allowAllIntegrations(false)
- *             .allowedIntegrations("jira")
- *             .build());
- * 
- *         // Example allowing all integrations:
- *         var allowAllIntegrations = new ApplicationSettings("allowAllIntegrations", ApplicationSettingsArgs.builder()
- *             .allowAllIntegrations(true)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
  */
 @ResourceType(type="gitlab:index/applicationSettings:ApplicationSettings")
 public class ApplicationSettings extends com.pulumi.resources.CustomResource {
@@ -145,6 +94,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<String> afterSignUpText() {
         return this.afterSignUpText;
+    }
+    /**
+     * Maximum number of requests allowed to the aiAction GraphQL mutation per user per eight hours. Default: 160. Set to 0 to disable the rate limit. Introduced in GitLab 17.2.
+     * 
+     */
+    @Export(name="aiActionApiRateLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> aiActionApiRateLimit;
+
+    /**
+     * @return Maximum number of requests allowed to the aiAction GraphQL mutation per user per eight hours. Default: 160. Set to 0 to disable the rate limit. Introduced in GitLab 17.2.
+     * 
+     */
+    public Output<Integer> aiActionApiRateLimit() {
+        return this.aiActionApiRateLimit;
     }
     /**
      * API key for Akismet spam protection.
@@ -427,6 +390,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.autoDevopsEnabled;
     }
     /**
+     * Maximum number of authenticated requests per minute to the GET /autocomplete/users endpoint.
+     * 
+     */
+    @Export(name="autocompleteUsersLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> autocompleteUsersLimit;
+
+    /**
+     * @return Maximum number of authenticated requests per minute to the GET /autocomplete/users endpoint.
+     * 
+     */
+    public Output<Integer> autocompleteUsersLimit() {
+        return this.autocompleteUsersLimit;
+    }
+    /**
+     * Maximum number of unauthenticated requests per minute to the GET /autocomplete/users endpoint.
+     * 
+     */
+    @Export(name="autocompleteUsersUnauthenticatedLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> autocompleteUsersUnauthenticatedLimit;
+
+    /**
+     * @return Maximum number of unauthenticated requests per minute to the GET /autocomplete/users endpoint.
+     * 
+     */
+    public Output<Integer> autocompleteUsersUnauthenticatedLimit() {
+        return this.autocompleteUsersUnauthenticatedLimit;
+    }
+    /**
      * Enabling this permits automatic allocation of purchased storage in a namespace.
      * 
      */
@@ -525,6 +516,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.ciJobLiveTraceEnabled;
     }
     /**
+     * Maximum number of CI Lint requests per minute per user. Disabled by default.
+     * 
+     */
+    @Export(name="ciLintLimitPerUser", refs={Integer.class}, tree="[0]")
+    private Output<Integer> ciLintLimitPerUser;
+
+    /**
+     * @return Maximum number of CI Lint requests per minute per user. Disabled by default.
+     * 
+     */
+    public Output<Integer> ciLintLimitPerUser() {
+        return this.ciLintLimitPerUser;
+    }
+    /**
      * The maximum number of includes per pipeline.
      * 
      */
@@ -607,6 +612,48 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> concurrentGithubImportJobsLimit() {
         return this.concurrentGithubImportJobsLimit;
+    }
+    /**
+     * Maximum number of simultaneous pull request import jobs for the GitHub, Bitbucket Cloud, and Bitbucket Server importers. Default is 200. Introduced in GitLab 19.4.
+     * 
+     */
+    @Export(name="concurrentPullRequestImportJobsLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> concurrentPullRequestImportJobsLimit;
+
+    /**
+     * @return Maximum number of simultaneous pull request import jobs for the GitHub, Bitbucket Cloud, and Bitbucket Server importers. Default is 200. Introduced in GitLab 19.4.
+     * 
+     */
+    public Output<Integer> concurrentPullRequestImportJobsLimit() {
+        return this.concurrentPullRequestImportJobsLimit;
+    }
+    /**
+     * Maximum number of simultaneous batch export jobs to process. Introduced in GitLab 17.6.
+     * 
+     */
+    @Export(name="concurrentRelationBatchExportLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> concurrentRelationBatchExportLimit;
+
+    /**
+     * @return Maximum number of simultaneous batch export jobs to process. Introduced in GitLab 17.6.
+     * 
+     */
+    public Output<Integer> concurrentRelationBatchExportLimit() {
+        return this.concurrentRelationBatchExportLimit;
+    }
+    /**
+     * Maximum number of simultaneous project file exports to process. Default: 25. Introduced in GitLab 19.4 with a feature flag named limit*concurrent*project_exports. Disabled by default.
+     * 
+     */
+    @Export(name="concurrentRelationExportLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> concurrentRelationExportLimit;
+
+    /**
+     * @return Maximum number of simultaneous project file exports to process. Default: 25. Introduced in GitLab 19.4 with a feature flag named limit*concurrent*project_exports. Disabled by default.
+     * 
+     */
+    public Output<Integer> concurrentRelationExportLimit() {
+        return this.concurrentRelationExportLimit;
     }
     /**
      * Enable cleanup policies for all projects.
@@ -1869,6 +1916,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.geoStatusTimeout;
     }
     /**
+     * Set the maximum number of tag or branch pipelines that can be triggered by a single Git push. For more information about this limit, see number of pipelines per Git push.
+     * 
+     */
+    @Export(name="gitPushPipelineLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> gitPushPipelineLimit;
+
+    /**
+     * @return Set the maximum number of tag or branch pipelines that can be triggered by a single Git push. For more information about this limit, see number of pipelines per Git push.
+     * 
+     */
+    public Output<Integer> gitPushPipelineLimit() {
+        return this.gitPushPipelineLimit;
+    }
+    /**
      * List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
      * 
      */
@@ -2079,6 +2140,48 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.gravatarEnabled;
     }
     /**
+     * Maximum number of group export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="groupDownloadExportLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> groupDownloadExportLimit;
+
+    /**
+     * @return Maximum number of group export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> groupDownloadExportLimit() {
+        return this.groupDownloadExportLimit;
+    }
+    /**
+     * Maximum number of group exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="groupExportLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> groupExportLimit;
+
+    /**
+     * @return Maximum number of group exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> groupExportLimit() {
+        return this.groupExportLimit;
+    }
+    /**
+     * Maximum number of group imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="groupImportLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> groupImportLimit;
+
+    /**
+     * @return Maximum number of group imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> groupImportLimit() {
+        return this.groupImportLimit;
+    }
+    /**
      * Prevent overrides of default branch protection.
      * 
      */
@@ -2091,6 +2194,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> groupOwnersCanManageDefaultBranchProtection() {
         return this.groupOwnersCanManageDefaultBranchProtection;
+    }
+    /**
+     * Maximum number of secrets allowed per group in Secrets Manager. Default: 500. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+     * 
+     */
+    @Export(name="groupSecretsLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> groupSecretsLimit;
+
+    /**
+     * @return Maximum number of secrets allowed per group in Secrets Manager. Default: 500. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+     * 
+     */
+    public Output<Integer> groupSecretsLimit() {
+        return this.groupSecretsLimit;
     }
     /**
      * Hide marketing-related entries from help.
@@ -2217,6 +2334,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> htmlEmailsEnabled() {
         return this.htmlEmailsEnabled;
+    }
+    /**
+     * Maximum number of concurrently running jobs for each import worker type (project and group file base import, Direct Transfer, and GitHub, Bitbucket Cloud, and Bitbucket Server importer stages). Applied independently per worker type. Default is 100. Introduced in GitLab 19.1.
+     * 
+     */
+    @Export(name="importJobsConcurrencyLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> importJobsConcurrencyLimit;
+
+    /**
+     * @return Maximum number of concurrently running jobs for each import worker type (project and group file base import, Direct Transfer, and GitHub, Bitbucket Cloud, and Bitbucket Server importer stages). Applied independently per worker type. Default is 100. Introduced in GitLab 19.1.
+     * 
+     */
+    public Output<Integer> importJobsConcurrencyLimit() {
+        return this.importJobsConcurrencyLimit;
     }
     /**
      * Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `gitlab.Project`, `gitea`, `manifest`
@@ -2385,6 +2516,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> jiraConnectPublicKeyStorageEnabled() {
         return this.jiraConnectPublicKeyStorageEnabled;
+    }
+    /**
+     * Maximum number of manual job runs per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_play. Disabled by default.
+     * 
+     */
+    @Export(name="jobPlayLimitPerUserProject", refs={Integer.class}, tree="[0]")
+    private Output<Integer> jobPlayLimitPerUserProject;
+
+    /**
+     * @return Maximum number of manual job runs per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_play. Disabled by default.
+     * 
+     */
+    public Output<Integer> jobPlayLimitPerUserProject() {
+        return this.jobPlayLimitPerUserProject;
+    }
+    /**
+     * Maximum number of job retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_retry. Disabled by default.
+     * 
+     */
+    @Export(name="jobRetryLimitPerUserProject", refs={Integer.class}, tree="[0]")
+    private Output<Integer> jobRetryLimitPerUserProject;
+
+    /**
+     * @return Maximum number of job retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_retry. Disabled by default.
+     * 
+     */
+    public Output<Integer> jobRetryLimitPerUserProject() {
+        return this.jobRetryLimitPerUserProject;
     }
     /**
      * Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
@@ -2625,6 +2784,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.maxExportSize;
     }
     /**
+     * Maximum allowed GitHub API response size in MB. 0 for unlimited.
+     * 
+     */
+    @Export(name="maxGithubResponseSizeLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxGithubResponseSizeLimit;
+
+    /**
+     * @return Maximum allowed GitHub API response size in MB. 0 for unlimited.
+     * 
+     */
+    public Output<Integer> maxGithubResponseSizeLimit() {
+        return this.maxGithubResponseSizeLimit;
+    }
+    /**
+     * Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4.
+     * 
+     */
+    @Export(name="maxHttpResponseSizeLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxHttpResponseSizeLimit;
+
+    /**
+     * @return Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4.
+     * 
+     */
+    public Output<Integer> maxHttpResponseSizeLimit() {
+        return this.maxHttpResponseSizeLimit;
+    }
+    /**
      * Maximum remote file size for imports from external object storages.
      * 
      */
@@ -2861,6 +3048,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> mirrorMaxDelay() {
         return this.mirrorMaxDelay;
+    }
+    /**
+     * Maximum number of notes (comments) a user can create per minute. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="notesCreateLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> notesCreateLimit;
+
+    /**
+     * @return Maximum number of notes (comments) a user can create per minute. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> notesCreateLimit() {
+        return this.notesCreateLimit;
     }
     /**
      * Enable sending notification if sign in from unknown IP address happens
@@ -3101,6 +3302,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.personalAccessTokenPrefix;
     }
     /**
+     * Maximum number of pipeline cancellations per minute per user per project. Introduced in GitLab 19.5.
+     * 
+     */
+    @Export(name="pipelineCancelLimitPerUserProject", refs={Integer.class}, tree="[0]")
+    private Output<Integer> pipelineCancelLimitPerUserProject;
+
+    /**
+     * @return Maximum number of pipeline cancellations per minute per user per project. Introduced in GitLab 19.5.
+     * 
+     */
+    public Output<Integer> pipelineCancelLimitPerUserProject() {
+        return this.pipelineCancelLimitPerUserProject;
+    }
+    /**
      * Maximum number of pipeline creation requests per minute per user and commit.
      * 
      */
@@ -3113,6 +3328,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> pipelineLimitPerProjectUserSha() {
         return this.pipelineLimitPerProjectUserSha;
+    }
+    /**
+     * Maximum number of pipeline creation requests per minute per user.
+     * 
+     */
+    @Export(name="pipelineLimitPerUser", refs={Integer.class}, tree="[0]")
+    private Output<Integer> pipelineLimitPerUser;
+
+    /**
+     * @return Maximum number of pipeline creation requests per minute per user.
+     * 
+     */
+    public Output<Integer> pipelineLimitPerUser() {
+        return this.pipelineLimitPerUser;
+    }
+    /**
+     * Maximum number of pipeline retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*pipeline_retry. Disabled by default.
+     * 
+     */
+    @Export(name="pipelineRetryLimitPerUserProject", refs={Integer.class}, tree="[0]")
+    private Output<Integer> pipelineRetryLimitPerUserProject;
+
+    /**
+     * @return Maximum number of pipeline retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*pipeline_retry. Disabled by default.
+     * 
+     */
+    public Output<Integer> pipelineRetryLimitPerUserProject() {
+        return this.pipelineRetryLimitPerUserProject;
     }
     /**
      * (If enabled, requires: plantuml_url) Enable PlantUML integration.
@@ -3185,6 +3428,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.preventMergeRequestsCommittersApproval;
     }
     /**
+     * Maximum number of project export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="projectDownloadExportLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> projectDownloadExportLimit;
+
+    /**
+     * @return Maximum number of project export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> projectDownloadExportLimit() {
+        return this.projectDownloadExportLimit;
+    }
+    /**
      * Enable project export.
      * 
      */
@@ -3199,6 +3456,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.projectExportEnabled;
     }
     /**
+     * Maximum number of project exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="projectExportLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> projectExportLimit;
+
+    /**
+     * @return Maximum number of project exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> projectExportLimit() {
+        return this.projectExportLimit;
+    }
+    /**
+     * Maximum number of project imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="projectImportLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> projectImportLimit;
+
+    /**
+     * @return Maximum number of project imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> projectImportLimit() {
+        return this.projectImportLimit;
+    }
+    /**
      * Maximum authenticated requests to /project/:id/jobs per minute.
      * 
      */
@@ -3211,6 +3496,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> projectJobsApiRateLimit() {
         return this.projectJobsApiRateLimit;
+    }
+    /**
+     * Maximum number of secrets allowed per project in Secrets Manager. Default: 100. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+     * 
+     */
+    @Export(name="projectSecretsLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> projectSecretsLimit;
+
+    /**
+     * @return Maximum number of secrets allowed per project in Secrets Manager. Default: 100. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+     * 
+     */
+    public Output<Integer> projectSecretsLimit() {
+        return this.projectSecretsLimit;
     }
     /**
      * Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
@@ -3323,6 +3622,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> rawBlobRequestLimit() {
         return this.rawBlobRequestLimit;
+    }
+    /**
+     * Maximum number of unauthenticated requests per minute across all raw paths in a project (default is 800). Set to 0 to disable throttling.
+     * 
+     */
+    @Export(name="rawBlobRequestLimitUnauthenticated", refs={Integer.class}, tree="[0]")
+    private Output<Integer> rawBlobRequestLimitUnauthenticated;
+
+    /**
+     * @return Maximum number of unauthenticated requests per minute across all raw paths in a project (default is 800). Set to 0 to disable throttling.
+     * 
+     */
+    public Output<Integer> rawBlobRequestLimitUnauthenticated() {
+        return this.rawBlobRequestLimitUnauthenticated;
     }
     /**
      * (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
@@ -3533,6 +3846,76 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> rsaKeyRestriction() {
         return this.rsaKeyRestriction;
+    }
+    /**
+     * Maximum number of requests per minute per job token for requests to /jobs/* requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. Introduced in GitLab 18.5.
+     * 
+     */
+    @Export(name="runnerJobsEndpointsApiLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> runnerJobsEndpointsApiLimit;
+
+    /**
+     * @return Maximum number of requests per minute per job token for requests to /jobs/* requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. Introduced in GitLab 18.5.
+     * 
+     */
+    public Output<Integer> runnerJobsEndpointsApiLimit() {
+        return this.runnerJobsEndpointsApiLimit;
+    }
+    /**
+     * Maximum number of requests per minute per runner token for requests to the PATCH /jobs/:id/trace runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+     * 
+     */
+    @Export(name="runnerJobsPatchTraceApiLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> runnerJobsPatchTraceApiLimit;
+
+    /**
+     * @return Maximum number of requests per minute per runner token for requests to the PATCH /jobs/:id/trace runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+     * 
+     */
+    public Output<Integer> runnerJobsPatchTraceApiLimit() {
+        return this.runnerJobsPatchTraceApiLimit;
+    }
+    /**
+     * Maximum number of requests per minute per runner token for requests to the /jobs/request runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+     * 
+     */
+    @Export(name="runnerJobsRequestApiLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> runnerJobsRequestApiLimit;
+
+    /**
+     * @return Maximum number of requests per minute per runner token for requests to the /jobs/request runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+     * 
+     */
+    public Output<Integer> runnerJobsRequestApiLimit() {
+        return this.runnerJobsRequestApiLimit;
+    }
+    /**
+     * Maximum number of actions per scan execution policy. Default: 0. Maximum: 20.
+     * 
+     */
+    @Export(name="scanExecutionPoliciesActionLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> scanExecutionPoliciesActionLimit;
+
+    /**
+     * @return Maximum number of actions per scan execution policy. Default: 0. Maximum: 20.
+     * 
+     */
+    public Output<Integer> scanExecutionPoliciesActionLimit() {
+        return this.scanExecutionPoliciesActionLimit;
+    }
+    /**
+     * Maximum number of type: schedule rules per scan execution policy. Default: 0. Maximum: 20.
+     * 
+     */
+    @Export(name="scanExecutionPoliciesScheduleLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> scanExecutionPoliciesScheduleLimit;
+
+    /**
+     * @return Maximum number of type: schedule rules per scan execution policy. Default: 0. Maximum: 20.
+     * 
+     */
+    public Output<Integer> scanExecutionPoliciesScheduleLimit() {
+        return this.scanExecutionPoliciesScheduleLimit;
     }
     /**
      * Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
@@ -4095,6 +4478,20 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.suggestPipelineEnabled;
     }
     /**
+     * Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL tagCreate mutation, tag creation in the UI, and the /tag quick action. Default: 100. Set to 0 to disable the rate limit. Introduced in GitLab 19.4.
+     * 
+     */
+    @Export(name="tagsCreateLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> tagsCreateLimit;
+
+    /**
+     * @return Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL tagCreate mutation, tag creation in the UI, and the /tag quick action. Default: 100. Set to 0 to disable the rate limit. Introduced in GitLab 19.4.
+     * 
+     */
+    public Output<Integer> tagsCreateLimit() {
+        return this.tagsCreateLimit;
+    }
+    /**
      * Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
      * 
      */
@@ -4165,6 +4562,174 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.throttleAuthenticatedApiRequestsPerPeriod;
     }
     /**
+     * If true, enforces the authenticated dependency proxy request rate limit. Default value: false. Introduced in GitLab 19.4.
+     * 
+     */
+    @Export(name="throttleAuthenticatedDependencyProxyEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> throttleAuthenticatedDependencyProxyEnabled;
+
+    /**
+     * @return If true, enforces the authenticated dependency proxy request rate limit. Default value: false. Introduced in GitLab 19.4.
+     * 
+     */
+    public Output<Boolean> throttleAuthenticatedDependencyProxyEnabled() {
+        return this.throttleAuthenticatedDependencyProxyEnabled;
+    }
+    /**
+     * Rate limit period in seconds. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 15. Introduced in GitLab 19.4.
+     * 
+     */
+    @Export(name="throttleAuthenticatedDependencyProxyPeriodInSeconds", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleAuthenticatedDependencyProxyPeriodInSeconds;
+
+    /**
+     * @return Rate limit period in seconds. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 15. Introduced in GitLab 19.4.
+     * 
+     */
+    public Output<Integer> throttleAuthenticatedDependencyProxyPeriodInSeconds() {
+        return this.throttleAuthenticatedDependencyProxyPeriodInSeconds;
+    }
+    /**
+     * Maximum requests per period per user. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 1000. Introduced in GitLab 19.4.
+     * 
+     */
+    @Export(name="throttleAuthenticatedDependencyProxyRequestsPerPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleAuthenticatedDependencyProxyRequestsPerPeriod;
+
+    /**
+     * @return Maximum requests per period per user. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 1000. Introduced in GitLab 19.4.
+     * 
+     */
+    public Output<Integer> throttleAuthenticatedDependencyProxyRequestsPerPeriod() {
+        return this.throttleAuthenticatedDependencyProxyRequestsPerPeriod;
+    }
+    /**
+     * (If enabled, requires: throttle*authenticated*deprecated*api*period*in*seconds and throttle*authenticated*deprecated*api*requests*per*period) Enable authenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="throttleAuthenticatedDeprecatedApiEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> throttleAuthenticatedDeprecatedApiEnabled;
+
+    /**
+     * @return (If enabled, requires: throttle*authenticated*deprecated*api*period*in*seconds and throttle*authenticated*deprecated*api*requests*per*period) Enable authenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Boolean> throttleAuthenticatedDeprecatedApiEnabled() {
+        return this.throttleAuthenticatedDeprecatedApiEnabled;
+    }
+    /**
+     * Rate limit period (in seconds) for authenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="throttleAuthenticatedDeprecatedApiPeriodInSeconds", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleAuthenticatedDeprecatedApiPeriodInSeconds;
+
+    /**
+     * @return Rate limit period (in seconds) for authenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> throttleAuthenticatedDeprecatedApiPeriodInSeconds() {
+        return this.throttleAuthenticatedDeprecatedApiPeriodInSeconds;
+    }
+    /**
+     * Maximum authenticated deprecated API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="throttleAuthenticatedDeprecatedApiRequestsPerPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleAuthenticatedDeprecatedApiRequestsPerPeriod;
+
+    /**
+     * @return Maximum authenticated deprecated API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> throttleAuthenticatedDeprecatedApiRequestsPerPeriod() {
+        return this.throttleAuthenticatedDeprecatedApiRequestsPerPeriod;
+    }
+    /**
+     * (If enabled, requires: throttle*authenticated*files*api*period*in*seconds and throttle*authenticated*files*api*requests*per*period) Enable authenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="throttleAuthenticatedFilesApiEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> throttleAuthenticatedFilesApiEnabled;
+
+    /**
+     * @return (If enabled, requires: throttle*authenticated*files*api*period*in*seconds and throttle*authenticated*files*api*requests*per*period) Enable authenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Boolean> throttleAuthenticatedFilesApiEnabled() {
+        return this.throttleAuthenticatedFilesApiEnabled;
+    }
+    /**
+     * Rate limit period (in seconds) for authenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="throttleAuthenticatedFilesApiPeriodInSeconds", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleAuthenticatedFilesApiPeriodInSeconds;
+
+    /**
+     * @return Rate limit period (in seconds) for authenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> throttleAuthenticatedFilesApiPeriodInSeconds() {
+        return this.throttleAuthenticatedFilesApiPeriodInSeconds;
+    }
+    /**
+     * Maximum authenticated Files API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="throttleAuthenticatedFilesApiRequestsPerPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleAuthenticatedFilesApiRequestsPerPeriod;
+
+    /**
+     * @return Maximum authenticated Files API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> throttleAuthenticatedFilesApiRequestsPerPeriod() {
+        return this.throttleAuthenticatedFilesApiRequestsPerPeriod;
+    }
+    /**
+     * If true, enforces the authenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+     * 
+     */
+    @Export(name="throttleAuthenticatedGitHttpEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> throttleAuthenticatedGitHttpEnabled;
+
+    /**
+     * @return If true, enforces the authenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+     * 
+     */
+    public Output<Boolean> throttleAuthenticatedGitHttpEnabled() {
+        return this.throttleAuthenticatedGitHttpEnabled;
+    }
+    /**
+     * Rate limit period in seconds. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+     * 
+     */
+    @Export(name="throttleAuthenticatedGitHttpPeriodInSeconds", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleAuthenticatedGitHttpPeriodInSeconds;
+
+    /**
+     * @return Rate limit period in seconds. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+     * 
+     */
+    public Output<Integer> throttleAuthenticatedGitHttpPeriodInSeconds() {
+        return this.throttleAuthenticatedGitHttpPeriodInSeconds;
+    }
+    /**
+     * Maximum requests per period per user. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+     * 
+     */
+    @Export(name="throttleAuthenticatedGitHttpRequestsPerPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleAuthenticatedGitHttpRequestsPerPeriod;
+
+    /**
+     * @return Maximum requests per period per user. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+     * 
+     */
+    public Output<Integer> throttleAuthenticatedGitHttpRequestsPerPeriod() {
+        return this.throttleAuthenticatedGitHttpRequestsPerPeriod;
+    }
+    /**
      * Enable authenticated Git LFS request rate limit.
      * 
      */
@@ -4205,6 +4770,48 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> throttleAuthenticatedGitLfsRequestsPerPeriod() {
         return this.throttleAuthenticatedGitLfsRequestsPerPeriod;
+    }
+    /**
+     * (If enabled, requires: throttle*authenticated*mcp*period*in*seconds and throttle*authenticated*mcp*requests*per*period) If true, enforces the rate limit on requests to the MCP Server endpoint, /api/v4/mcp, for any HTTP method. Does not apply to other MCP endpoints. Introduced in GitLab 19.5.
+     * 
+     */
+    @Export(name="throttleAuthenticatedMcpEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> throttleAuthenticatedMcpEnabled;
+
+    /**
+     * @return (If enabled, requires: throttle*authenticated*mcp*period*in*seconds and throttle*authenticated*mcp*requests*per*period) If true, enforces the rate limit on requests to the MCP Server endpoint, /api/v4/mcp, for any HTTP method. Does not apply to other MCP endpoints. Introduced in GitLab 19.5.
+     * 
+     */
+    public Output<Boolean> throttleAuthenticatedMcpEnabled() {
+        return this.throttleAuthenticatedMcpEnabled;
+    }
+    /**
+     * Rate limit period in seconds. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+     * 
+     */
+    @Export(name="throttleAuthenticatedMcpPeriodInSeconds", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleAuthenticatedMcpPeriodInSeconds;
+
+    /**
+     * @return Rate limit period in seconds. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+     * 
+     */
+    public Output<Integer> throttleAuthenticatedMcpPeriodInSeconds() {
+        return this.throttleAuthenticatedMcpPeriodInSeconds;
+    }
+    /**
+     * Maximum requests per period per user. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+     * 
+     */
+    @Export(name="throttleAuthenticatedMcpRequestsPerPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleAuthenticatedMcpRequestsPerPeriod;
+
+    /**
+     * @return Maximum requests per period per user. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+     * 
+     */
+    public Output<Integer> throttleAuthenticatedMcpRequestsPerPeriod() {
+        return this.throttleAuthenticatedMcpRequestsPerPeriod;
     }
     /**
      * (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
@@ -4291,6 +4898,90 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.throttleAuthenticatedWebRequestsPerPeriod;
     }
     /**
+     * If true, enforces the inbound incident management alert notification rate limit, per project. Default value: false.
+     * 
+     */
+    @Export(name="throttleIncidentManagementNotificationEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> throttleIncidentManagementNotificationEnabled;
+
+    /**
+     * @return If true, enforces the inbound incident management alert notification rate limit, per project. Default value: false.
+     * 
+     */
+    public Output<Boolean> throttleIncidentManagementNotificationEnabled() {
+        return this.throttleIncidentManagementNotificationEnabled;
+    }
+    /**
+     * Maximum inbound incident management alert notifications per period, per project. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+     * 
+     */
+    @Export(name="throttleIncidentManagementNotificationPerPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleIncidentManagementNotificationPerPeriod;
+
+    /**
+     * @return Maximum inbound incident management alert notifications per period, per project. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+     * 
+     */
+    public Output<Integer> throttleIncidentManagementNotificationPerPeriod() {
+        return this.throttleIncidentManagementNotificationPerPeriod;
+    }
+    /**
+     * Rate limit period in seconds. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+     * 
+     */
+    @Export(name="throttleIncidentManagementNotificationPeriodInSeconds", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleIncidentManagementNotificationPeriodInSeconds;
+
+    /**
+     * @return Rate limit period in seconds. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+     * 
+     */
+    public Output<Integer> throttleIncidentManagementNotificationPeriodInSeconds() {
+        return this.throttleIncidentManagementNotificationPeriodInSeconds;
+    }
+    /**
+     * (If enabled, requires: throttle*protected*paths*period*in*seconds and throttle*protected*paths*requests*per*period) Enable rate limiting for protected paths (for example, sign-in and password reset). Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="throttleProtectedPathsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> throttleProtectedPathsEnabled;
+
+    /**
+     * @return (If enabled, requires: throttle*protected*paths*period*in*seconds and throttle*protected*paths*requests*per*period) Enable rate limiting for protected paths (for example, sign-in and password reset). Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Boolean> throttleProtectedPathsEnabled() {
+        return this.throttleProtectedPathsEnabled;
+    }
+    /**
+     * Rate limit period (in seconds) for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="throttleProtectedPathsPeriodInSeconds", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleProtectedPathsPeriodInSeconds;
+
+    /**
+     * @return Rate limit period (in seconds) for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> throttleProtectedPathsPeriodInSeconds() {
+        return this.throttleProtectedPathsPeriodInSeconds;
+    }
+    /**
+     * Maximum requests per period per IP for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="throttleProtectedPathsRequestsPerPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleProtectedPathsRequestsPerPeriod;
+
+    /**
+     * @return Maximum requests per period per IP for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> throttleProtectedPathsRequestsPerPeriod() {
+        return this.throttleProtectedPathsRequestsPerPeriod;
+    }
+    /**
      * (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
      * 
      */
@@ -4333,6 +5024,149 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.throttleUnauthenticatedApiRequestsPerPeriod;
     }
     /**
+     * (If enabled, requires: throttle*unauthenticated*deprecated*api*period*in*seconds and throttle*unauthenticated*deprecated*api*requests*per*period) Enable unauthenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="throttleUnauthenticatedDeprecatedApiEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> throttleUnauthenticatedDeprecatedApiEnabled;
+
+    /**
+     * @return (If enabled, requires: throttle*unauthenticated*deprecated*api*period*in*seconds and throttle*unauthenticated*deprecated*api*requests*per*period) Enable unauthenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Boolean> throttleUnauthenticatedDeprecatedApiEnabled() {
+        return this.throttleUnauthenticatedDeprecatedApiEnabled;
+    }
+    /**
+     * Rate limit period (in seconds) for unauthenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="throttleUnauthenticatedDeprecatedApiPeriodInSeconds", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleUnauthenticatedDeprecatedApiPeriodInSeconds;
+
+    /**
+     * @return Rate limit period (in seconds) for unauthenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> throttleUnauthenticatedDeprecatedApiPeriodInSeconds() {
+        return this.throttleUnauthenticatedDeprecatedApiPeriodInSeconds;
+    }
+    /**
+     * Maximum unauthenticated deprecated API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="throttleUnauthenticatedDeprecatedApiRequestsPerPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleUnauthenticatedDeprecatedApiRequestsPerPeriod;
+
+    /**
+     * @return Maximum unauthenticated deprecated API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> throttleUnauthenticatedDeprecatedApiRequestsPerPeriod() {
+        return this.throttleUnauthenticatedDeprecatedApiRequestsPerPeriod;
+    }
+    /**
+     * (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*enabled or throttle*unauthenticated*api*enabled instead.) (**If enabled, requires**: throttle*unauthenticated*period*in*seconds and throttle*unauthenticated*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
+     * 
+     * @deprecated Use throttleUnauthenticatedWebEnabled or throttleUnauthenticatedApiEnabled instead. (Deprecated in GitLab 14.3)
+     * 
+     */
+    @Deprecated
+    @Export(name="throttleUnauthenticatedEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> throttleUnauthenticatedEnabled;
+
+    /**
+     * @return (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*enabled or throttle*unauthenticated*api*enabled instead.) (**If enabled, requires**: throttle*unauthenticated*period*in*seconds and throttle*unauthenticated*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
+     * 
+     */
+    public Output<Boolean> throttleUnauthenticatedEnabled() {
+        return this.throttleUnauthenticatedEnabled;
+    }
+    /**
+     * (If enabled, requires: throttle*unauthenticated*files*api*period*in*seconds and throttle*unauthenticated*files*api*requests*per*period) Enable unauthenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="throttleUnauthenticatedFilesApiEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> throttleUnauthenticatedFilesApiEnabled;
+
+    /**
+     * @return (If enabled, requires: throttle*unauthenticated*files*api*period*in*seconds and throttle*unauthenticated*files*api*requests*per*period) Enable unauthenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Boolean> throttleUnauthenticatedFilesApiEnabled() {
+        return this.throttleUnauthenticatedFilesApiEnabled;
+    }
+    /**
+     * Rate limit period (in seconds) for unauthenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="throttleUnauthenticatedFilesApiPeriodInSeconds", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleUnauthenticatedFilesApiPeriodInSeconds;
+
+    /**
+     * @return Rate limit period (in seconds) for unauthenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> throttleUnauthenticatedFilesApiPeriodInSeconds() {
+        return this.throttleUnauthenticatedFilesApiPeriodInSeconds;
+    }
+    /**
+     * Maximum unauthenticated Files API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="throttleUnauthenticatedFilesApiRequestsPerPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleUnauthenticatedFilesApiRequestsPerPeriod;
+
+    /**
+     * @return Maximum unauthenticated Files API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> throttleUnauthenticatedFilesApiRequestsPerPeriod() {
+        return this.throttleUnauthenticatedFilesApiRequestsPerPeriod;
+    }
+    /**
+     * If true, enforces the unauthenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 17.0.
+     * 
+     */
+    @Export(name="throttleUnauthenticatedGitHttpEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> throttleUnauthenticatedGitHttpEnabled;
+
+    /**
+     * @return If true, enforces the unauthenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 17.0.
+     * 
+     */
+    public Output<Boolean> throttleUnauthenticatedGitHttpEnabled() {
+        return this.throttleUnauthenticatedGitHttpEnabled;
+    }
+    /**
+     * Rate limit period in seconds. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+     * 
+     */
+    @Export(name="throttleUnauthenticatedGitHttpPeriodInSeconds", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleUnauthenticatedGitHttpPeriodInSeconds;
+
+    /**
+     * @return Rate limit period in seconds. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+     * 
+     */
+    public Output<Integer> throttleUnauthenticatedGitHttpPeriodInSeconds() {
+        return this.throttleUnauthenticatedGitHttpPeriodInSeconds;
+    }
+    /**
+     * Maximum requests per period per IP. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+     * 
+     */
+    @Export(name="throttleUnauthenticatedGitHttpRequestsPerPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleUnauthenticatedGitHttpRequestsPerPeriod;
+
+    /**
+     * @return Maximum requests per period per IP. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+     * 
+     */
+    public Output<Integer> throttleUnauthenticatedGitHttpRequestsPerPeriod() {
+        return this.throttleUnauthenticatedGitHttpRequestsPerPeriod;
+    }
+    /**
      * (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
      * 
      */
@@ -4373,6 +5207,40 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> throttleUnauthenticatedPackagesApiRequestsPerPeriod() {
         return this.throttleUnauthenticatedPackagesApiRequestsPerPeriod;
+    }
+    /**
+     * (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*period*in*seconds or throttle*unauthenticated*api*period*in*seconds instead.) Rate limit period in seconds.
+     * 
+     * @deprecated Use throttleUnauthenticatedWebPeriodInSeconds or throttleUnauthenticatedApiPeriodInSeconds instead. (Deprecated in GitLab 14.3)
+     * 
+     */
+    @Deprecated
+    @Export(name="throttleUnauthenticatedPeriodInSeconds", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleUnauthenticatedPeriodInSeconds;
+
+    /**
+     * @return (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*period*in*seconds or throttle*unauthenticated*api*period*in*seconds instead.) Rate limit period in seconds.
+     * 
+     */
+    public Output<Integer> throttleUnauthenticatedPeriodInSeconds() {
+        return this.throttleUnauthenticatedPeriodInSeconds;
+    }
+    /**
+     * (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*requests*per*period or throttle*unauthenticated*api*requests*per*period instead.) Maximum requests per period per IP.
+     * 
+     * @deprecated Use throttleUnauthenticatedWebRequestsPerPeriod or throttleUnauthenticatedApiRequestsPerPeriod instead. (Deprecated in GitLab 14.3)
+     * 
+     */
+    @Deprecated
+    @Export(name="throttleUnauthenticatedRequestsPerPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> throttleUnauthenticatedRequestsPerPeriod;
+
+    /**
+     * @return (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*requests*per*period or throttle*unauthenticated*api*requests*per*period instead.) Maximum requests per period per IP.
+     * 
+     */
+    public Output<Integer> throttleUnauthenticatedRequestsPerPeriod() {
+        return this.throttleUnauthenticatedRequestsPerPeriod;
     }
     /**
      * (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
@@ -4641,6 +5509,132 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
         return this.userShowAddSshKeyMessage;
     }
     /**
+     * Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+     * 
+     */
+    @Export(name="usersApiLimitFollowers", refs={Integer.class}, tree="[0]")
+    private Output<Integer> usersApiLimitFollowers;
+
+    /**
+     * @return Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+     * 
+     */
+    public Output<Integer> usersApiLimitFollowers() {
+        return this.usersApiLimitFollowers;
+    }
+    /**
+     * Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+     * 
+     */
+    @Export(name="usersApiLimitFollowing", refs={Integer.class}, tree="[0]")
+    private Output<Integer> usersApiLimitFollowing;
+
+    /**
+     * @return Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+     * 
+     */
+    public Output<Integer> usersApiLimitFollowing() {
+        return this.usersApiLimitFollowing;
+    }
+    /**
+     * Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+     * 
+     */
+    @Export(name="usersApiLimitGpgKey", refs={Integer.class}, tree="[0]")
+    private Output<Integer> usersApiLimitGpgKey;
+
+    /**
+     * @return Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+     * 
+     */
+    public Output<Integer> usersApiLimitGpgKey() {
+        return this.usersApiLimitGpgKey;
+    }
+    /**
+     * Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+     * 
+     */
+    @Export(name="usersApiLimitGpgKeys", refs={Integer.class}, tree="[0]")
+    private Output<Integer> usersApiLimitGpgKeys;
+
+    /**
+     * @return Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+     * 
+     */
+    public Output<Integer> usersApiLimitGpgKeys() {
+        return this.usersApiLimitGpgKeys;
+    }
+    /**
+     * Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+     * 
+     */
+    @Export(name="usersApiLimitSshKey", refs={Integer.class}, tree="[0]")
+    private Output<Integer> usersApiLimitSshKey;
+
+    /**
+     * @return Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+     * 
+     */
+    public Output<Integer> usersApiLimitSshKey() {
+        return this.usersApiLimitSshKey;
+    }
+    /**
+     * Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+     * 
+     */
+    @Export(name="usersApiLimitSshKeys", refs={Integer.class}, tree="[0]")
+    private Output<Integer> usersApiLimitSshKeys;
+
+    /**
+     * @return Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+     * 
+     */
+    public Output<Integer> usersApiLimitSshKeys() {
+        return this.usersApiLimitSshKeys;
+    }
+    /**
+     * Maximum number of requests per minute, per user or IP address. Default: 240. Set to 0 to disable limits. Introduced in GitLab 17.10.
+     * 
+     */
+    @Export(name="usersApiLimitStatus", refs={Integer.class}, tree="[0]")
+    private Output<Integer> usersApiLimitStatus;
+
+    /**
+     * @return Maximum number of requests per minute, per user or IP address. Default: 240. Set to 0 to disable limits. Introduced in GitLab 17.10.
+     * 
+     */
+    public Output<Integer> usersApiLimitStatus() {
+        return this.usersApiLimitStatus;
+    }
+    /**
+     * Maximum number of requests per minute per user to the GET /users/:id API endpoint. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="usersGetByIdLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> usersGetByIdLimit;
+
+    /**
+     * @return Maximum number of requests per minute per user to the GET /users/:id API endpoint. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<Integer> usersGetByIdLimit() {
+        return this.usersGetByIdLimit;
+    }
+    /**
+     * Usernames excluded from the users*get*by*id*limit rate limit, separated by newlines, commas or whitespace. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    @Export(name="usersGetByIdLimitAllowlistRaw", refs={String.class}, tree="[0]")
+    private Output<String> usersGetByIdLimitAllowlistRaw;
+
+    /**
+     * @return Usernames excluded from the users*get*by*id*limit rate limit, separated by newlines, commas or whitespace. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+     * 
+     */
+    public Output<String> usersGetByIdLimitAllowlistRaw() {
+        return this.usersGetByIdLimitAllowlistRaw;
+    }
+    /**
      * List of types which are allowed to register a GitLab Runner. Can be [], [&#39;group&#39;], [&#39;project&#39;] or [&#39;group&#39;, &#39;project&#39;].
      * 
      */
@@ -4667,6 +5661,34 @@ public class ApplicationSettings extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> versionCheckEnabled() {
         return this.versionCheckEnabled;
+    }
+    /**
+     * Maximum number of webhook event resend requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+     * 
+     */
+    @Export(name="webHookEventResendLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> webHookEventResendLimit;
+
+    /**
+     * @return Maximum number of webhook event resend requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+     * 
+     */
+    public Output<Integer> webHookEventResendLimit() {
+        return this.webHookEventResendLimit;
+    }
+    /**
+     * Maximum number of webhook test requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+     * 
+     */
+    @Export(name="webHookTestLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> webHookTestLimit;
+
+    /**
+     * @return Maximum number of webhook test requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+     * 
+     */
+    public Output<Integer> webHookTestLimit() {
+        return this.webHookTestLimit;
     }
     /**
      * Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).

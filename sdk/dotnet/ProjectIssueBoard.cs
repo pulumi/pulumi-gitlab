@@ -77,29 +77,6 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
-    ///     var listSyntax = new GitLab.ProjectIssueBoard("list_syntax", new()
-    ///     {
-    ///         Project = example.Id,
-    ///         Name = "Test Issue Board with list syntax",
-    ///         Lists = new[]
-    ///         {
-    ///             new GitLab.Inputs.ProjectIssueBoardListArgs
-    ///             {
-    ///                 AssigneeId = exampleUser.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
-    ///             },
-    ///             new GitLab.Inputs.ProjectIssueBoardListArgs
-    ///             {
-    ///                 MilestoneId = exampleProjectMilestone.MilestoneId,
-    ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             exampleProjectMembership,
-    ///         },
-    ///     });
-    /// 
     /// });
     /// ```
     /// 

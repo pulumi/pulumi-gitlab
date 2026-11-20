@@ -44,7 +44,8 @@ namespace Pulumi.GitLab
     ///     var exampleSubgroup = new GitLab.Group("example_subgroup", new()
     ///     {
     ///         Name = "subgroup",
-    ///         Path = "example/subgroup",
+    ///         Path = "subgroup",
+    ///         ParentId = example.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Description = "An example subgroup",
     ///     });
     /// 

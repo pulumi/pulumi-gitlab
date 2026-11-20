@@ -62,7 +62,6 @@ import javax.annotation.Nullable;
  *             .allowCommitterApproval(true)
  *             .allowOverridesToApproverListPerMergeRequest(true)
  *             .retainApprovalsOnPush(true)
- *             .selectiveCodeOwnerRemovals(false)
  *             .requireReauthenticationToApprove(true)
  *             .build());
  * 

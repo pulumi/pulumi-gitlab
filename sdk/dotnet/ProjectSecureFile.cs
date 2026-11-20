@@ -49,17 +49,6 @@ namespace Pulumi.GitLab
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
-    ///     var disablePollForMetadata = new GitLab.ProjectSecureFile("disable_poll_for_metadata", new()
-    ///     {
-    ///         Name = "my-secure-file",
-    ///         Project = thisProject.Id,
-    ///         Content = Std.File.Invoke(new()
-    ///         {
-    ///             Input = "example.txt",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         PollForMetadataDurationInSeconds = 0,
-    ///     });
-    /// 
     /// });
     /// ```
     /// 

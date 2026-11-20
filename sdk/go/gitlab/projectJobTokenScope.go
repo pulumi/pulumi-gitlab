@@ -43,18 +43,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			allowedProjectIds := []int{
-//				123,
-//				456,
-//				789,
+//			allowedProjectIds := []string{
+//				"123",
+//				"456",
+//				"789",
 //			}
-//			allowedGroupIds := []int{
-//				123,
-//				456,
-//				789,
+//			allowedGroupIds := []string{
+//				"123",
+//				"456",
+//				"789",
 //			}
 //			deploymentProject, err := gitlab.GetProject(ctx, &gitlab.LookupProjectArgs{
-//				Name: "example-project",
+//				PathWithNamespace: pulumi.StringRef("example-group/example-project"),
 //			}, nil)
 //			if err != nil {
 //				return err

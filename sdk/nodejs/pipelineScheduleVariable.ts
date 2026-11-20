@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * const example = new gitlab.PipelineSchedule("example", {
  *     project: "12345",
  *     description: "Used to schedule builds",
- *     ref: "master",
+ *     ref: "refs/heads/main",
  *     cron: "0 1 * * *",
  * });
  * const examplePipelineScheduleVariable = new gitlab.PipelineScheduleVariable("example", {

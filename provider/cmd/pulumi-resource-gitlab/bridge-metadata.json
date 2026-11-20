@@ -195,6 +195,15 @@
                     }
                 }
             },
+            "gitlab_group_application": {
+                "current": "gitlab:index/groupApplication:GroupApplication",
+                "majorVersion": 10,
+                "fields": {
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "gitlab_group_badge": {
                 "current": "gitlab:index/groupBadge:GroupBadge",
                 "majorVersion": 10
@@ -870,6 +879,15 @@
             "gitlab_repository_file": {
                 "current": "gitlab:index/repositoryFile:RepositoryFile",
                 "majorVersion": 10
+            },
+            "gitlab_repository_files": {
+                "current": "gitlab:index/repositoryFiles:RepositoryFiles",
+                "majorVersion": 10,
+                "fields": {
+                    "file": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "gitlab_runner_controller": {
                 "current": "gitlab:index/runnerController:RunnerController",
@@ -1938,6 +1956,7 @@
             "gitlab_deploy_key_enable": {},
             "gitlab_global_level_notifications": {},
             "gitlab_group_access_token": {},
+            "gitlab_group_application": {},
             "gitlab_group_badge": {},
             "gitlab_group_branch_protection": {},
             "gitlab_group_dependency_proxy": {},
@@ -2030,6 +2049,7 @@
             "gitlab_project_wiki_page": {},
             "gitlab_release": {},
             "gitlab_release_link": {},
+            "gitlab_repository_files": {},
             "gitlab_runner_controller": {},
             "gitlab_runner_controller_instance_scope": {},
             "gitlab_runner_controller_runner_scope": {},
@@ -2062,6 +2082,7 @@
             "gitlab:index/globalLevelNotifications:GlobalLevelNotifications": 1,
             "gitlab:index/group:Group": 0,
             "gitlab:index/groupAccessToken:GroupAccessToken": 1,
+            "gitlab:index/groupApplication:GroupApplication": 1,
             "gitlab:index/groupBadge:GroupBadge": 1,
             "gitlab:index/groupBranchProtection:GroupBranchProtection": 1,
             "gitlab:index/groupCluster:GroupCluster": 0,
@@ -2171,6 +2192,7 @@
             "gitlab:index/release:Release": 1,
             "gitlab:index/releaseLink:ReleaseLink": 1,
             "gitlab:index/repositoryFile:RepositoryFile": 0,
+            "gitlab:index/repositoryFiles:RepositoryFiles": 1,
             "gitlab:index/runnerController:RunnerController": 1,
             "gitlab:index/runnerControllerInstanceScope:RunnerControllerInstanceScope": 1,
             "gitlab:index/runnerControllerRunnerScope:RunnerControllerRunnerScope": 1,

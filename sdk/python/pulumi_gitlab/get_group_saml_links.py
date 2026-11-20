@@ -87,7 +87,7 @@ def get_group_saml_links(group: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_group(id="foo/bar/baz")
+    example = gitlab.get_group(full_path="foo/bar/baz")
     example_get_group_saml_links = gitlab.get_group_saml_links(group=example.id)
     ```
 
@@ -116,7 +116,7 @@ def get_group_saml_links_output(group: pulumi.Input[Optional[_builtins.str]] = N
     import pulumi
     import pulumi_gitlab as gitlab
 
-    example = gitlab.get_group(id="foo/bar/baz")
+    example = gitlab.get_group(full_path="foo/bar/baz")
     example_get_group_saml_links = gitlab.get_group_saml_links(group=example.id)
     ```
 

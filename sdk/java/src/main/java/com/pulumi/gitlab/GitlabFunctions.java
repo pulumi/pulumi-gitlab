@@ -2661,7 +2661,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
@@ -2709,7 +2709,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
@@ -2757,7 +2757,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
@@ -2805,7 +2805,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
@@ -2853,7 +2853,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetGroupHook = GitlabFunctions.getGroupHook(GetGroupHookArgs.builder()
@@ -2901,7 +2901,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
@@ -2948,7 +2948,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
@@ -2995,7 +2995,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
@@ -3042,7 +3042,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
@@ -3089,7 +3089,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getGroupHooks(GetGroupHooksArgs.builder()
@@ -4084,7 +4084,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetGroupSamlLinks = GitlabFunctions.getGroupSamlLinks(GetGroupSamlLinksArgs.builder()
@@ -4131,7 +4131,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetGroupSamlLinks = GitlabFunctions.getGroupSamlLinks(GetGroupSamlLinksArgs.builder()
@@ -4178,7 +4178,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetGroupSamlLinks = GitlabFunctions.getGroupSamlLinks(GetGroupSamlLinksArgs.builder()
@@ -4225,7 +4225,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetGroupSamlLinks = GitlabFunctions.getGroupSamlLinks(GetGroupSamlLinksArgs.builder()
@@ -4272,7 +4272,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetGroupSamlLinks = GitlabFunctions.getGroupSamlLinks(GetGroupSamlLinksArgs.builder()
@@ -4319,7 +4319,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         // Basic example
@@ -4368,7 +4368,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         // Basic example
@@ -4417,7 +4417,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         // Basic example
@@ -4466,7 +4466,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         // Basic example
@@ -4515,7 +4515,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getGroup(GetGroupArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .fullPath("foo/bar/baz")
      *             .build());
      * 
      *         // Basic example
@@ -4540,7 +4540,7 @@ public final class GitlabFunctions {
      * 
      * &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-personal-access-tokens-for-a-group-service-account)
      * 
      * ## Example Usage
      * 
@@ -4555,7 +4555,7 @@ public final class GitlabFunctions {
      * 
      * &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-personal-access-tokens-for-a-group-service-account)
      * 
      * ## Example Usage
      * 
@@ -4570,7 +4570,7 @@ public final class GitlabFunctions {
      * 
      * &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-personal-access-tokens-for-a-group-service-account)
      * 
      * ## Example Usage
      * 
@@ -4585,7 +4585,7 @@ public final class GitlabFunctions {
      * 
      * &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-personal-access-tokens-for-a-group-service-account)
      * 
      * ## Example Usage
      * 
@@ -4600,7 +4600,7 @@ public final class GitlabFunctions {
      * 
      * &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
      * 
-     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+     * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-personal-access-tokens-for-a-group-service-account)
      * 
      * ## Example Usage
      * 
@@ -8227,7 +8227,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
@@ -8275,7 +8275,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
@@ -8323,7 +8323,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
@@ -8371,7 +8371,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
@@ -8419,7 +8419,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var exampleGetProjectHook = GitlabFunctions.getProjectHook(GetProjectHookArgs.builder()
@@ -8467,7 +8467,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getProjectHooks(GetProjectHooksArgs.builder()
@@ -8514,7 +8514,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getProjectHooks(GetProjectHooksArgs.builder()
@@ -8561,7 +8561,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getProjectHooks(GetProjectHooksArgs.builder()
@@ -8608,7 +8608,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getProjectHooks(GetProjectHooksArgs.builder()
@@ -8655,7 +8655,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar/baz")
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var examples = GitlabFunctions.getProjectHooks(GetProjectHooksArgs.builder()
@@ -9416,12 +9416,12 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar/baz")
+     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var allWithFoo = GitlabFunctions.getProjectIssues(GetProjectIssuesArgs.builder()
-     *             .project(foo.id())
+     *             .project(example.id())
      *             .search("foo")
      *             .build());
      * 
@@ -9464,12 +9464,12 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar/baz")
+     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var allWithFoo = GitlabFunctions.getProjectIssues(GetProjectIssuesArgs.builder()
-     *             .project(foo.id())
+     *             .project(example.id())
      *             .search("foo")
      *             .build());
      * 
@@ -9512,12 +9512,12 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar/baz")
+     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var allWithFoo = GitlabFunctions.getProjectIssues(GetProjectIssuesArgs.builder()
-     *             .project(foo.id())
+     *             .project(example.id())
      *             .search("foo")
      *             .build());
      * 
@@ -9560,12 +9560,12 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar/baz")
+     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var allWithFoo = GitlabFunctions.getProjectIssues(GetProjectIssuesArgs.builder()
-     *             .project(foo.id())
+     *             .project(example.id())
      *             .search("foo")
      *             .build());
      * 
@@ -9608,12 +9608,12 @@ public final class GitlabFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar/baz")
+     *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
+     *             .pathWithNamespace("foo/bar/baz")
      *             .build());
      * 
      *         final var allWithFoo = GitlabFunctions.getProjectIssues(GetProjectIssuesArgs.builder()
-     *             .project(foo.id())
+     *             .project(example.id())
      *             .search("foo")
      *             .build());
      * 
@@ -11227,7 +11227,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar")
+     *             .pathWithNamespace("foo/bar")
      *             .build());
      * 
      *         // Basic example
@@ -11276,7 +11276,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar")
+     *             .pathWithNamespace("foo/bar")
      *             .build());
      * 
      *         // Basic example
@@ -11325,7 +11325,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar")
+     *             .pathWithNamespace("foo/bar")
      *             .build());
      * 
      *         // Basic example
@@ -11374,7 +11374,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar")
+     *             .pathWithNamespace("foo/bar")
      *             .build());
      * 
      *         // Basic example
@@ -11423,7 +11423,7 @@ public final class GitlabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GitlabFunctions.getProject(GetProjectArgs.builder()
-     *             .id("foo/bar")
+     *             .pathWithNamespace("foo/bar")
      *             .build());
      * 
      *         // Basic example
@@ -14360,7 +14360,7 @@ public final class GitlabFunctions {
      * Generates a GitLab security policy YAML document from structured configuration.
      * This data source performs pure transformation without any API calls.
      * 
-     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/user/application_security/policies/scan_execution_policies/)
      * 
      * ## Example Usage
      * 
@@ -14410,8 +14410,9 @@ public final class GitlabFunctions {
      *         // for how to link a security policy project to a project or group.
      *         var policy = new RepositoryFile("policy", RepositoryFileArgs.builder()
      *             .project("1234")
-     *             .ref("main")
+     *             .branch("main")
      *             .filePath(".gitlab/security-policies/policy.yml")
+     *             .encoding("text")
      *             .content(scan.yaml())
      *             .build());
      * 
@@ -14428,7 +14429,7 @@ public final class GitlabFunctions {
      * Generates a GitLab security policy YAML document from structured configuration.
      * This data source performs pure transformation without any API calls.
      * 
-     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/user/application_security/policies/scan_execution_policies/)
      * 
      * ## Example Usage
      * 
@@ -14478,8 +14479,9 @@ public final class GitlabFunctions {
      *         // for how to link a security policy project to a project or group.
      *         var policy = new RepositoryFile("policy", RepositoryFileArgs.builder()
      *             .project("1234")
-     *             .ref("main")
+     *             .branch("main")
      *             .filePath(".gitlab/security-policies/policy.yml")
+     *             .encoding("text")
      *             .content(scan.yaml())
      *             .build());
      * 
@@ -14496,7 +14498,7 @@ public final class GitlabFunctions {
      * Generates a GitLab security policy YAML document from structured configuration.
      * This data source performs pure transformation without any API calls.
      * 
-     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/user/application_security/policies/scan_execution_policies/)
      * 
      * ## Example Usage
      * 
@@ -14546,8 +14548,9 @@ public final class GitlabFunctions {
      *         // for how to link a security policy project to a project or group.
      *         var policy = new RepositoryFile("policy", RepositoryFileArgs.builder()
      *             .project("1234")
-     *             .ref("main")
+     *             .branch("main")
      *             .filePath(".gitlab/security-policies/policy.yml")
+     *             .encoding("text")
      *             .content(scan.yaml())
      *             .build());
      * 
@@ -14564,7 +14567,7 @@ public final class GitlabFunctions {
      * Generates a GitLab security policy YAML document from structured configuration.
      * This data source performs pure transformation without any API calls.
      * 
-     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/user/application_security/policies/scan_execution_policies/)
      * 
      * ## Example Usage
      * 
@@ -14614,8 +14617,9 @@ public final class GitlabFunctions {
      *         // for how to link a security policy project to a project or group.
      *         var policy = new RepositoryFile("policy", RepositoryFileArgs.builder()
      *             .project("1234")
-     *             .ref("main")
+     *             .branch("main")
      *             .filePath(".gitlab/security-policies/policy.yml")
+     *             .encoding("text")
      *             .content(scan.yaml())
      *             .build());
      * 
@@ -14632,7 +14636,7 @@ public final class GitlabFunctions {
      * Generates a GitLab security policy YAML document from structured configuration.
      * This data source performs pure transformation without any API calls.
      * 
-     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/user/application_security/policies/scan_execution_policies/)
      * 
      * ## Example Usage
      * 
@@ -14682,8 +14686,9 @@ public final class GitlabFunctions {
      *         // for how to link a security policy project to a project or group.
      *         var policy = new RepositoryFile("policy", RepositoryFileArgs.builder()
      *             .project("1234")
-     *             .ref("main")
+     *             .branch("main")
      *             .filePath(".gitlab/security-policies/policy.yml")
+     *             .encoding("text")
      *             .content(scan.yaml())
      *             .build());
      * 
@@ -14700,7 +14705,7 @@ public final class GitlabFunctions {
      * Generates a GitLab security policy YAML document from structured configuration.
      * This data source performs pure transformation without any API calls.
      * 
-     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/user/application_security/policies/scan_execution_policies/)
      * 
      * ## Example Usage
      * 
@@ -14750,8 +14755,9 @@ public final class GitlabFunctions {
      *         // for how to link a security policy project to a project or group.
      *         var policy = new RepositoryFile("policy", RepositoryFileArgs.builder()
      *             .project("1234")
-     *             .ref("main")
+     *             .branch("main")
      *             .filePath(".gitlab/security-policies/policy.yml")
+     *             .encoding("text")
      *             .content(scan.yaml())
      *             .build());
      * 
@@ -14768,7 +14774,7 @@ public final class GitlabFunctions {
      * Generates a GitLab security policy YAML document from structured configuration.
      * This data source performs pure transformation without any API calls.
      * 
-     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/ee/user/application_security/policies/scan_execution_policies/)
+     * **Upstream API**: [GitLab Security Policies Documentation](https://docs.gitlab.com/user/application_security/policies/scan_execution_policies/)
      * 
      * ## Example Usage
      * 
@@ -14818,8 +14824,9 @@ public final class GitlabFunctions {
      *         // for how to link a security policy project to a project or group.
      *         var policy = new RepositoryFile("policy", RepositoryFileArgs.builder()
      *             .project("1234")
-     *             .ref("main")
+     *             .branch("main")
      *             .filePath(".gitlab/security-policies/policy.yml")
+     *             .encoding("text")
      *             .content(scan.yaml())
      *             .build());
      * 

@@ -115,6 +115,17 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Group with GitLab Duo turned off for all subgroups and projects
+//			_, err = gitlab.NewGroup(ctx, "example-six", &gitlab.GroupArgs{
+//				Name:                   pulumi.String("example-six"),
+//				Path:                   pulumi.String("example-six"),
+//				Description:            pulumi.String("An example group with GitLab Duo turned off"),
+//				DuoFeaturesEnabled:     pulumi.Bool(false),
+//				LockDuoFeaturesEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -162,8 +173,14 @@ type Group struct {
 	DefaultBranchProtectionDefaults GroupDefaultBranchProtectionDefaultsOutput `pulumi:"defaultBranchProtectionDefaults"`
 	// The group's description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+	DuoFeaturesEnabled pulumi.BoolOutput `pulumi:"duoFeaturesEnabled"`
 	// Enable email notifications.
 	EmailsEnabled pulumi.BoolOutput `pulumi:"emailsEnabled"`
+	// Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+	EnabledGitAccessProtocol pulumi.StringOutput `pulumi:"enabledGitAccessProtocol"`
+	// Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
+	ExperimentFeaturesEnabled pulumi.BoolOutput `pulumi:"experimentFeaturesEnabled"`
 	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit pulumi.IntOutput `pulumi:"extraSharedRunnersMinutesLimit"`
 	// The full name of the group.
@@ -174,6 +191,12 @@ type Group struct {
 	IpRestrictionRanges pulumi.StringArrayOutput `pulumi:"ipRestrictionRanges"`
 	// Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled pulumi.BoolOutput `pulumi:"lfsEnabled"`
+	// Enforce the `duoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+	LockDuoFeaturesEnabled pulumi.BoolOutput `pulumi:"lockDuoFeaturesEnabled"`
+	// Indicates if math rendering limits are locked for all descendent groups.
+	LockMathRenderingLimitsEnabled pulumi.BoolOutput `pulumi:"lockMathRenderingLimitsEnabled"`
+	// Indicates if math rendering limits are used for this group.
+	MathRenderingLimitsEnabled pulumi.BoolOutput `pulumi:"mathRenderingLimitsEnabled"`
 	// The maximum file size in megabytes for individual job artifacts.
 	MaxArtifactsSize pulumi.IntOutput `pulumi:"maxArtifactsSize"`
 	// Users cannot be added to projects in this group.
@@ -287,8 +310,14 @@ type groupState struct {
 	DefaultBranchProtectionDefaults *GroupDefaultBranchProtectionDefaults `pulumi:"defaultBranchProtectionDefaults"`
 	// The group's description.
 	Description *string `pulumi:"description"`
+	// Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+	DuoFeaturesEnabled *bool `pulumi:"duoFeaturesEnabled"`
 	// Enable email notifications.
 	EmailsEnabled *bool `pulumi:"emailsEnabled"`
+	// Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+	EnabledGitAccessProtocol *string `pulumi:"enabledGitAccessProtocol"`
+	// Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
+	ExperimentFeaturesEnabled *bool `pulumi:"experimentFeaturesEnabled"`
 	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit *int `pulumi:"extraSharedRunnersMinutesLimit"`
 	// The full name of the group.
@@ -299,6 +328,12 @@ type groupState struct {
 	IpRestrictionRanges []string `pulumi:"ipRestrictionRanges"`
 	// Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
+	// Enforce the `duoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+	LockDuoFeaturesEnabled *bool `pulumi:"lockDuoFeaturesEnabled"`
+	// Indicates if math rendering limits are locked for all descendent groups.
+	LockMathRenderingLimitsEnabled *bool `pulumi:"lockMathRenderingLimitsEnabled"`
+	// Indicates if math rendering limits are used for this group.
+	MathRenderingLimitsEnabled *bool `pulumi:"mathRenderingLimitsEnabled"`
 	// The maximum file size in megabytes for individual job artifacts.
 	MaxArtifactsSize *int `pulumi:"maxArtifactsSize"`
 	// Users cannot be added to projects in this group.
@@ -376,8 +411,14 @@ type GroupState struct {
 	DefaultBranchProtectionDefaults GroupDefaultBranchProtectionDefaultsPtrInput
 	// The group's description.
 	Description pulumi.StringPtrInput
+	// Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+	DuoFeaturesEnabled pulumi.BoolPtrInput
 	// Enable email notifications.
 	EmailsEnabled pulumi.BoolPtrInput
+	// Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+	EnabledGitAccessProtocol pulumi.StringPtrInput
+	// Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
+	ExperimentFeaturesEnabled pulumi.BoolPtrInput
 	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit pulumi.IntPtrInput
 	// The full name of the group.
@@ -388,6 +429,12 @@ type GroupState struct {
 	IpRestrictionRanges pulumi.StringArrayInput
 	// Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled pulumi.BoolPtrInput
+	// Enforce the `duoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+	LockDuoFeaturesEnabled pulumi.BoolPtrInput
+	// Indicates if math rendering limits are locked for all descendent groups.
+	LockMathRenderingLimitsEnabled pulumi.BoolPtrInput
+	// Indicates if math rendering limits are used for this group.
+	MathRenderingLimitsEnabled pulumi.BoolPtrInput
 	// The maximum file size in megabytes for individual job artifacts.
 	MaxArtifactsSize pulumi.IntPtrInput
 	// Users cannot be added to projects in this group.
@@ -473,14 +520,26 @@ type groupArgs struct {
 	DefaultBranchProtectionDefaults *GroupDefaultBranchProtectionDefaults `pulumi:"defaultBranchProtectionDefaults"`
 	// The group's description.
 	Description *string `pulumi:"description"`
+	// Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+	DuoFeaturesEnabled *bool `pulumi:"duoFeaturesEnabled"`
 	// Enable email notifications.
 	EmailsEnabled *bool `pulumi:"emailsEnabled"`
+	// Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+	EnabledGitAccessProtocol *string `pulumi:"enabledGitAccessProtocol"`
+	// Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
+	ExperimentFeaturesEnabled *bool `pulumi:"experimentFeaturesEnabled"`
 	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit *int `pulumi:"extraSharedRunnersMinutesLimit"`
 	// A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
 	IpRestrictionRanges []string `pulumi:"ipRestrictionRanges"`
 	// Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled *bool `pulumi:"lfsEnabled"`
+	// Enforce the `duoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+	LockDuoFeaturesEnabled *bool `pulumi:"lockDuoFeaturesEnabled"`
+	// Indicates if math rendering limits are locked for all descendent groups.
+	LockMathRenderingLimitsEnabled *bool `pulumi:"lockMathRenderingLimitsEnabled"`
+	// Indicates if math rendering limits are used for this group.
+	MathRenderingLimitsEnabled *bool `pulumi:"mathRenderingLimitsEnabled"`
 	// The maximum file size in megabytes for individual job artifacts.
 	MaxArtifactsSize *int `pulumi:"maxArtifactsSize"`
 	// Users cannot be added to projects in this group.
@@ -553,14 +612,26 @@ type GroupArgs struct {
 	DefaultBranchProtectionDefaults GroupDefaultBranchProtectionDefaultsPtrInput
 	// The group's description.
 	Description pulumi.StringPtrInput
+	// Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+	DuoFeaturesEnabled pulumi.BoolPtrInput
 	// Enable email notifications.
 	EmailsEnabled pulumi.BoolPtrInput
+	// Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+	EnabledGitAccessProtocol pulumi.StringPtrInput
+	// Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
+	ExperimentFeaturesEnabled pulumi.BoolPtrInput
 	// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
 	ExtraSharedRunnersMinutesLimit pulumi.IntPtrInput
 	// A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
 	IpRestrictionRanges pulumi.StringArrayInput
 	// Enable/disable Large File Storage (LFS) for the projects in this group.
 	LfsEnabled pulumi.BoolPtrInput
+	// Enforce the `duoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+	LockDuoFeaturesEnabled pulumi.BoolPtrInput
+	// Indicates if math rendering limits are locked for all descendent groups.
+	LockMathRenderingLimitsEnabled pulumi.BoolPtrInput
+	// Indicates if math rendering limits are used for this group.
+	MathRenderingLimitsEnabled pulumi.BoolPtrInput
 	// The maximum file size in megabytes for individual job artifacts.
 	MaxArtifactsSize pulumi.IntPtrInput
 	// Users cannot be added to projects in this group.
@@ -756,9 +827,24 @@ func (o GroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+func (o GroupOutput) DuoFeaturesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.DuoFeaturesEnabled }).(pulumi.BoolOutput)
+}
+
 // Enable email notifications.
 func (o GroupOutput) EmailsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.EmailsEnabled }).(pulumi.BoolOutput)
+}
+
+// Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+func (o GroupOutput) EnabledGitAccessProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.EnabledGitAccessProtocol }).(pulumi.StringOutput)
+}
+
+// Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
+func (o GroupOutput) ExperimentFeaturesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.ExperimentFeaturesEnabled }).(pulumi.BoolOutput)
 }
 
 // Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -784,6 +870,21 @@ func (o GroupOutput) IpRestrictionRanges() pulumi.StringArrayOutput {
 // Enable/disable Large File Storage (LFS) for the projects in this group.
 func (o GroupOutput) LfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.LfsEnabled }).(pulumi.BoolOutput)
+}
+
+// Enforce the `duoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+func (o GroupOutput) LockDuoFeaturesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.LockDuoFeaturesEnabled }).(pulumi.BoolOutput)
+}
+
+// Indicates if math rendering limits are locked for all descendent groups.
+func (o GroupOutput) LockMathRenderingLimitsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.LockMathRenderingLimitsEnabled }).(pulumi.BoolOutput)
+}
+
+// Indicates if math rendering limits are used for this group.
+func (o GroupOutput) MathRenderingLimitsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.MathRenderingLimitsEnabled }).(pulumi.BoolOutput)
 }
 
 // The maximum file size in megabytes for individual job artifacts.

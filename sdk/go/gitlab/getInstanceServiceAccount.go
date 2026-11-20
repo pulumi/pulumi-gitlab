@@ -64,6 +64,8 @@ type LookupInstanceServiceAccountResult struct {
 	Email string `pulumi:"email"`
 	// The ID of this Terraform resource. This matches the service account id.
 	Id string `pulumi:"id"`
+	// Whether the service account is an external user.
+	IsExternal bool `pulumi:"isExternal"`
 	// The name of the user.
 	Name string `pulumi:"name"`
 	// The service account id.
@@ -110,6 +112,11 @@ func (o LookupInstanceServiceAccountResultOutput) Email() pulumi.StringOutput {
 // The ID of this Terraform resource. This matches the service account id.
 func (o LookupInstanceServiceAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceServiceAccountResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether the service account is an external user.
+func (o LookupInstanceServiceAccountResultOutput) IsExternal() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceServiceAccountResult) bool { return v.IsExternal }).(pulumi.BoolOutput)
 }
 
 // The name of the user.

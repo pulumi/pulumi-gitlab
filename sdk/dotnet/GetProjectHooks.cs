@@ -28,7 +28,7 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetProject.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         PathWithNamespace = "foo/bar/baz",
         ///     });
         /// 
         ///     var examples = GitLab.GetProjectHooks.Invoke(new()
@@ -59,7 +59,7 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetProject.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         PathWithNamespace = "foo/bar/baz",
         ///     });
         /// 
         ///     var examples = GitLab.GetProjectHooks.Invoke(new()
@@ -90,7 +90,7 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetProject.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         PathWithNamespace = "foo/bar/baz",
         ///     });
         /// 
         ///     var examples = GitLab.GetProjectHooks.Invoke(new()

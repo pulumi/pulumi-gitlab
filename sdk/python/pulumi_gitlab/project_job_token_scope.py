@@ -159,16 +159,16 @@ class ProjectJobTokenScope(pulumi.CustomResource):
             project="gitlab-org/gitlab",
             target_project_id=123)
         allowed_project_ids = [
-            123,
-            456,
-            789,
+            "123",
+            "456",
+            "789",
         ]
         allowed_group_ids = [
-            123,
-            456,
-            789,
+            "123",
+            "456",
+            "789",
         ]
-        deployment_project = gitlab.get_project(name="example-project")
+        deployment_project = gitlab.get_project(path_with_namespace="example-group/example-project")
         allowed_project: list[gitlab.ProjectJobTokenScope] = []
         for allowed_project_range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=allowed_project_ids).result)]:
             allowed_project.append(gitlab.ProjectJobTokenScope(f"allowed_project-{allowed_project_range['key']}",
@@ -234,16 +234,16 @@ class ProjectJobTokenScope(pulumi.CustomResource):
             project="gitlab-org/gitlab",
             target_project_id=123)
         allowed_project_ids = [
-            123,
-            456,
-            789,
+            "123",
+            "456",
+            "789",
         ]
         allowed_group_ids = [
-            123,
-            456,
-            789,
+            "123",
+            "456",
+            "789",
         ]
-        deployment_project = gitlab.get_project(name="example-project")
+        deployment_project = gitlab.get_project(path_with_namespace="example-group/example-project")
         allowed_project: list[gitlab.ProjectJobTokenScope] = []
         for allowed_project_range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=allowed_project_ids).result)]:
             allowed_project.append(gitlab.ProjectJobTokenScope(f"allowed_project-{allowed_project_range['key']}",

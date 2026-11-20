@@ -12,12 +12,18 @@ import com.pulumi.gitlab.Utilities;
 import com.pulumi.gitlab.inputs.ProjectVariableState;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * The `gitlab.ProjectVariable` resource allows creating and managing a GitLab project level variable.
  * 
  * **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_level_variables/)
+ * 
+ * Use `valueWo` with an ephemeral input and `valueWoVersion` to keep credentials out of pulumi preview and state. Write-only arguments require Terraform 1.11 or later. Change the version marker to update the value; changes to the value alone do not produce a plan difference. Every update sends the configured value, including updates to other attributes when the version marker is unchanged. Value drift outside Terraform is not detected in this mode.
+ * 
+ * Switching from `value` to `valueWo` removes the value from subsequent state snapshots, but does not remove it from historical states or saved plans. Rotate the old credential and manage retained artifacts separately. Importing a non-hidden variable with the ordinary import ID reads its value into state; use hidden variables when importing secret credentials. Hidden visibility is selected at creation and cannot be enabled in place.
  * 
  * ## Example Usage
  * 
@@ -183,18 +189,48 @@ public class ProjectVariable extends com.pulumi.resources.CustomResource {
         return this.raw;
     }
     /**
-     * The value of the variable.
+     * The value of the variable. Exactly one of `value` or `valueWo` must be specified. This attribute persists the value in state.
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
-    private Output<String> value;
+    private Output</* @Nullable */ String> value;
 
     /**
-     * @return The value of the variable.
+     * @return The value of the variable. Exactly one of `value` or `valueWo` must be specified. This attribute persists the value in state.
      * 
      */
-    public Output<String> value() {
-        return this.value;
+    public Output<Optional<String>> value() {
+        return Codegen.optional(this.value);
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `valueWo` must be specified. Change `valueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+     * 
+     */
+    @Export(name="valueWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> valueWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `valueWo` must be specified. Change `valueWoVersion` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+     * 
+     */
+    public Output<Optional<String>> valueWo() {
+        return Codegen.optional(this.valueWo);
+    }
+    /**
+     * Non-empty change marker for `valueWo`, stored in state. Change this string to publish a new value. Every update sends `valueWo`, even when this marker is unchanged.
+     * 
+     */
+    @Export(name="valueWoVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> valueWoVersion;
+
+    /**
+     * @return Non-empty change marker for `valueWo`, stored in state. Change this string to publish a new value. Every update sends `valueWo`, even when this marker is unchanged.
+     * 
+     */
+    public Output<Optional<String>> valueWoVersion() {
+        return Codegen.optional(this.valueWoVersion);
     }
     /**
      * The type of a variable. Valid values are: `envVar`, `file`.
@@ -250,6 +286,9 @@ public class ProjectVariable extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "valueWo"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

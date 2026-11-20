@@ -63,21 +63,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			invokeFile1, err := std.File(ctx, &std.FileArgs{
-//				Input: "example.txt",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gitlab.NewProjectSecureFile(ctx, "disable_poll_for_metadata", &gitlab.ProjectSecureFileArgs{
-//				Name:                             pulumi.String("my-secure-file"),
-//				Project:                          thisProject.ID(),
-//				Content:                          pulumi.String(invokeFile1.Result),
-//				PollForMetadataDurationInSeconds: 0,
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			return nil
 //		})
 //	}

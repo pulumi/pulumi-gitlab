@@ -108,6 +108,16 @@ namespace Pulumi.GitLab
     ///         Description = "An example group with a default branch name",
     ///     });
     /// 
+    ///     // Group with GitLab Duo turned off for all subgroups and projects
+    ///     var example_six = new GitLab.Group("example-six", new()
+    ///     {
+    ///         Name = "example-six",
+    ///         Path = "example-six",
+    ///         Description = "An example group with GitLab Duo turned off",
+    ///         DuoFeaturesEnabled = false,
+    ///         LockDuoFeaturesEnabled = true,
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -200,10 +210,28 @@ namespace Pulumi.GitLab
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        /// </summary>
+        [Output("duoFeaturesEnabled")]
+        public Output<bool> DuoFeaturesEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Enable email notifications.
         /// </summary>
         [Output("emailsEnabled")]
         public Output<bool> EmailsEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `Ssh`, `Http`, `All`.
+        /// </summary>
+        [Output("enabledGitAccessProtocol")]
+        public Output<string> EnabledGitAccessProtocol { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
+        /// </summary>
+        [Output("experimentFeaturesEnabled")]
+        public Output<bool> ExperimentFeaturesEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -234,6 +262,24 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("lfsEnabled")]
         public Output<bool> LfsEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Enforce the `DuoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        /// </summary>
+        [Output("lockDuoFeaturesEnabled")]
+        public Output<bool> LockDuoFeaturesEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates if math rendering limits are locked for all descendent groups.
+        /// </summary>
+        [Output("lockMathRenderingLimitsEnabled")]
+        public Output<bool> LockMathRenderingLimitsEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates if math rendering limits are used for this group.
+        /// </summary>
+        [Output("mathRenderingLimitsEnabled")]
+        public Output<bool> MathRenderingLimitsEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The maximum file size in megabytes for individual job artifacts.
@@ -502,10 +548,28 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        /// </summary>
+        [Input("duoFeaturesEnabled")]
+        public Input<bool>? DuoFeaturesEnabled { get; set; }
+
+        /// <summary>
         /// Enable email notifications.
         /// </summary>
         [Input("emailsEnabled")]
         public Input<bool>? EmailsEnabled { get; set; }
+
+        /// <summary>
+        /// Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `Ssh`, `Http`, `All`.
+        /// </summary>
+        [Input("enabledGitAccessProtocol")]
+        public Input<string>? EnabledGitAccessProtocol { get; set; }
+
+        /// <summary>
+        /// Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
+        /// </summary>
+        [Input("experimentFeaturesEnabled")]
+        public Input<bool>? ExperimentFeaturesEnabled { get; set; }
 
         /// <summary>
         /// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -530,6 +594,24 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("lfsEnabled")]
         public Input<bool>? LfsEnabled { get; set; }
+
+        /// <summary>
+        /// Enforce the `DuoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        /// </summary>
+        [Input("lockDuoFeaturesEnabled")]
+        public Input<bool>? LockDuoFeaturesEnabled { get; set; }
+
+        /// <summary>
+        /// Indicates if math rendering limits are locked for all descendent groups.
+        /// </summary>
+        [Input("lockMathRenderingLimitsEnabled")]
+        public Input<bool>? LockMathRenderingLimitsEnabled { get; set; }
+
+        /// <summary>
+        /// Indicates if math rendering limits are used for this group.
+        /// </summary>
+        [Input("mathRenderingLimitsEnabled")]
+        public Input<bool>? MathRenderingLimitsEnabled { get; set; }
 
         /// <summary>
         /// The maximum file size in megabytes for individual job artifacts.
@@ -750,10 +832,28 @@ namespace Pulumi.GitLab
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        /// </summary>
+        [Input("duoFeaturesEnabled")]
+        public Input<bool>? DuoFeaturesEnabled { get; set; }
+
+        /// <summary>
         /// Enable email notifications.
         /// </summary>
         [Input("emailsEnabled")]
         public Input<bool>? EmailsEnabled { get; set; }
+
+        /// <summary>
+        /// Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `Ssh`, `Http`, `All`.
+        /// </summary>
+        [Input("enabledGitAccessProtocol")]
+        public Input<string>? EnabledGitAccessProtocol { get; set; }
+
+        /// <summary>
+        /// Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
+        /// </summary>
+        [Input("experimentFeaturesEnabled")]
+        public Input<bool>? ExperimentFeaturesEnabled { get; set; }
 
         /// <summary>
         /// Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
@@ -790,6 +890,24 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("lfsEnabled")]
         public Input<bool>? LfsEnabled { get; set; }
+
+        /// <summary>
+        /// Enforce the `DuoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        /// </summary>
+        [Input("lockDuoFeaturesEnabled")]
+        public Input<bool>? LockDuoFeaturesEnabled { get; set; }
+
+        /// <summary>
+        /// Indicates if math rendering limits are locked for all descendent groups.
+        /// </summary>
+        [Input("lockMathRenderingLimitsEnabled")]
+        public Input<bool>? LockMathRenderingLimitsEnabled { get; set; }
+
+        /// <summary>
+        /// Indicates if math rendering limits are used for this group.
+        /// </summary>
+        [Input("mathRenderingLimitsEnabled")]
+        public Input<bool>? MathRenderingLimitsEnabled { get; set; }
 
         /// <summary>
         /// The maximum file size in megabytes for individual job artifacts.

@@ -53,7 +53,8 @@ import (
 //			// Group to assign the service account to. Can be the same top-level group resource as above, or a subgroup of that group.
 //			exampleSubgroup, err := gitlab.NewGroup(ctx, "example_subgroup", &gitlab.GroupArgs{
 //				Name:        pulumi.String("subgroup"),
-//				Path:        pulumi.String("example/subgroup"),
+//				Path:        pulumi.String("subgroup"),
+//				ParentId:    example.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Description: pulumi.String("An example subgroup"),
 //			})
 //			if err != nil {

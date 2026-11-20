@@ -16,6 +16,8 @@ import (
 //
 // > Note that `pushEvents` defaults to `true`.
 //
+// Use `tokenWo` and `signingTokenWo` with an ephemeral input, together with `tokenWoVersion` and `signingTokenWoVersion`, to keep the hook secrets out of pulumi preview and state. Write-only arguments require Terraform 1.11 or later. Change the version marker to update the value; changes to the value alone do not produce a plan difference. Every update sends the configured value, including updates to other attributes when the version marker is unchanged.
+//
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/)
 //
 // ## Example Usage
@@ -158,14 +160,24 @@ type ProjectHook struct {
 	ResourceAccessTokenEvents pulumi.BoolOutput `pulumi:"resourceAccessTokenEvents"`
 	// Invoke the hook for resource deploy token events. Defaults to `false`.
 	ResourceDeployTokenEvents pulumi.BoolOutput `pulumi:"resourceDeployTokenEvents"`
-	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signingTokenWo`. This attribute persists the value in state.
 	SigningToken pulumi.StringPtrOutput `pulumi:"signingToken"`
 	// Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
 	SigningTokenPresent pulumi.BoolOutput `pulumi:"signingTokenPresent"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signingToken`. Change `signingTokenWoVersion` to update the remote value.
+	SigningTokenWo pulumi.StringPtrOutput `pulumi:"signingTokenWo"`
+	// Non-empty change marker for `signingTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `signingTokenWo`, even when this marker is unchanged.
+	SigningTokenWoVersion pulumi.StringPtrOutput `pulumi:"signingTokenWoVersion"`
 	// Invoke the hook for tag push events. Defaults to `false`.
 	TagPushEvents pulumi.BoolOutput `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook. The token is not available for imported resources.
+	// A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `tokenWo`. This attribute persists the value in state.
 	Token pulumi.StringOutput `pulumi:"token"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `tokenWoVersion` to update the remote value.
+	TokenWo pulumi.StringPtrOutput `pulumi:"tokenWo"`
+	// Non-empty change marker for `tokenWo`, stored in state. Change this string to publish a new token. Every update sends `tokenWo`, even when this marker is unchanged.
+	TokenWoVersion pulumi.StringPtrOutput `pulumi:"tokenWoVersion"`
 	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Array of sensitive portions of the webhook URL to mask.
@@ -192,12 +204,20 @@ func NewProjectHook(ctx *pulumi.Context,
 	if args.SigningToken != nil {
 		args.SigningToken = pulumi.ToSecret(args.SigningToken).(pulumi.StringPtrInput)
 	}
+	if args.SigningTokenWo != nil {
+		args.SigningTokenWo = pulumi.ToSecret(args.SigningTokenWo).(pulumi.StringPtrInput)
+	}
 	if args.Token != nil {
 		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
 	}
+	if args.TokenWo != nil {
+		args.TokenWo = pulumi.ToSecret(args.TokenWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"signingToken",
+		"signingTokenWo",
 		"token",
+		"tokenWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -279,14 +299,24 @@ type projectHookState struct {
 	ResourceAccessTokenEvents *bool `pulumi:"resourceAccessTokenEvents"`
 	// Invoke the hook for resource deploy token events. Defaults to `false`.
 	ResourceDeployTokenEvents *bool `pulumi:"resourceDeployTokenEvents"`
-	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signingTokenWo`. This attribute persists the value in state.
 	SigningToken *string `pulumi:"signingToken"`
 	// Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
 	SigningTokenPresent *bool `pulumi:"signingTokenPresent"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signingToken`. Change `signingTokenWoVersion` to update the remote value.
+	SigningTokenWo *string `pulumi:"signingTokenWo"`
+	// Non-empty change marker for `signingTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `signingTokenWo`, even when this marker is unchanged.
+	SigningTokenWoVersion *string `pulumi:"signingTokenWoVersion"`
 	// Invoke the hook for tag push events. Defaults to `false`.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook. The token is not available for imported resources.
+	// A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `tokenWo`. This attribute persists the value in state.
 	Token *string `pulumi:"token"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `tokenWoVersion` to update the remote value.
+	TokenWo *string `pulumi:"tokenWo"`
+	// Non-empty change marker for `tokenWo`, stored in state. Change this string to publish a new token. Every update sends `tokenWo`, even when this marker is unchanged.
+	TokenWoVersion *string `pulumi:"tokenWoVersion"`
 	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url *string `pulumi:"url"`
 	// Array of sensitive portions of the webhook URL to mask.
@@ -354,14 +384,24 @@ type ProjectHookState struct {
 	ResourceAccessTokenEvents pulumi.BoolPtrInput
 	// Invoke the hook for resource deploy token events. Defaults to `false`.
 	ResourceDeployTokenEvents pulumi.BoolPtrInput
-	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signingTokenWo`. This attribute persists the value in state.
 	SigningToken pulumi.StringPtrInput
 	// Whether a `signingToken` is configured server-side. Reflects the value returned by the GitLab API.
 	SigningTokenPresent pulumi.BoolPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signingToken`. Change `signingTokenWoVersion` to update the remote value.
+	SigningTokenWo pulumi.StringPtrInput
+	// Non-empty change marker for `signingTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `signingTokenWo`, even when this marker is unchanged.
+	SigningTokenWoVersion pulumi.StringPtrInput
 	// Invoke the hook for tag push events. Defaults to `false`.
 	TagPushEvents pulumi.BoolPtrInput
-	// A token to present when invoking the hook. The token is not available for imported resources.
+	// A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `tokenWo`. This attribute persists the value in state.
 	Token pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `tokenWoVersion` to update the remote value.
+	TokenWo pulumi.StringPtrInput
+	// Non-empty change marker for `tokenWo`, stored in state. Change this string to publish a new token. Every update sends `tokenWo`, even when this marker is unchanged.
+	TokenWoVersion pulumi.StringPtrInput
 	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url pulumi.StringPtrInput
 	// Array of sensitive portions of the webhook URL to mask.
@@ -429,12 +469,22 @@ type projectHookArgs struct {
 	ResourceAccessTokenEvents *bool `pulumi:"resourceAccessTokenEvents"`
 	// Invoke the hook for resource deploy token events. Defaults to `false`.
 	ResourceDeployTokenEvents *bool `pulumi:"resourceDeployTokenEvents"`
-	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signingTokenWo`. This attribute persists the value in state.
 	SigningToken *string `pulumi:"signingToken"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signingToken`. Change `signingTokenWoVersion` to update the remote value.
+	SigningTokenWo *string `pulumi:"signingTokenWo"`
+	// Non-empty change marker for `signingTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `signingTokenWo`, even when this marker is unchanged.
+	SigningTokenWoVersion *string `pulumi:"signingTokenWoVersion"`
 	// Invoke the hook for tag push events. Defaults to `false`.
 	TagPushEvents *bool `pulumi:"tagPushEvents"`
-	// A token to present when invoking the hook. The token is not available for imported resources.
+	// A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `tokenWo`. This attribute persists the value in state.
 	Token *string `pulumi:"token"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `tokenWoVersion` to update the remote value.
+	TokenWo *string `pulumi:"tokenWo"`
+	// Non-empty change marker for `tokenWo`, stored in state. Change this string to publish a new token. Every update sends `tokenWo`, even when this marker is unchanged.
+	TokenWoVersion *string `pulumi:"tokenWoVersion"`
 	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url string `pulumi:"url"`
 	// Array of sensitive portions of the webhook URL to mask.
@@ -493,12 +543,22 @@ type ProjectHookArgs struct {
 	ResourceAccessTokenEvents pulumi.BoolPtrInput
 	// Invoke the hook for resource deploy token events. Defaults to `false`.
 	ResourceDeployTokenEvents pulumi.BoolPtrInput
-	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+	// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signingTokenWo`. This attribute persists the value in state.
 	SigningToken pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signingToken`. Change `signingTokenWoVersion` to update the remote value.
+	SigningTokenWo pulumi.StringPtrInput
+	// Non-empty change marker for `signingTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `signingTokenWo`, even when this marker is unchanged.
+	SigningTokenWoVersion pulumi.StringPtrInput
 	// Invoke the hook for tag push events. Defaults to `false`.
 	TagPushEvents pulumi.BoolPtrInput
-	// A token to present when invoking the hook. The token is not available for imported resources.
+	// A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `tokenWo`. This attribute persists the value in state.
 	Token pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `tokenWoVersion` to update the remote value.
+	TokenWo pulumi.StringPtrInput
+	// Non-empty change marker for `tokenWo`, stored in state. Change this string to publish a new token. Every update sends `tokenWo`, even when this marker is unchanged.
+	TokenWoVersion pulumi.StringPtrInput
 	// The url of the hook to invoke. Forces re-creation to preserve `token`.
 	Url pulumi.StringInput
 	// Array of sensitive portions of the webhook URL to mask.
@@ -736,7 +796,7 @@ func (o ProjectHookOutput) ResourceDeployTokenEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.ResourceDeployTokenEvents }).(pulumi.BoolOutput)
 }
 
-// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `webhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `signingTokenWo`. This attribute persists the value in state.
 func (o ProjectHookOutput) SigningToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.StringPtrOutput { return v.SigningToken }).(pulumi.StringPtrOutput)
 }
@@ -746,14 +806,36 @@ func (o ProjectHookOutput) SigningTokenPresent() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.SigningTokenPresent }).(pulumi.BoolOutput)
 }
 
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `signingToken`. Change `signingTokenWoVersion` to update the remote value.
+func (o ProjectHookOutput) SigningTokenWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.StringPtrOutput { return v.SigningTokenWo }).(pulumi.StringPtrOutput)
+}
+
+// Non-empty change marker for `signingTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `signingTokenWo`, even when this marker is unchanged.
+func (o ProjectHookOutput) SigningTokenWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.StringPtrOutput { return v.SigningTokenWoVersion }).(pulumi.StringPtrOutput)
+}
+
 // Invoke the hook for tag push events. Defaults to `false`.
 func (o ProjectHookOutput) TagPushEvents() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.BoolOutput { return v.TagPushEvents }).(pulumi.BoolOutput)
 }
 
-// A token to present when invoking the hook. The token is not available for imported resources.
+// A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `tokenWo`. This attribute persists the value in state.
 func (o ProjectHookOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectHook) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `token`. Change `tokenWoVersion` to update the remote value.
+func (o ProjectHookOutput) TokenWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.StringPtrOutput { return v.TokenWo }).(pulumi.StringPtrOutput)
+}
+
+// Non-empty change marker for `tokenWo`, stored in state. Change this string to publish a new token. Every update sends `tokenWo`, even when this marker is unchanged.
+func (o ProjectHookOutput) TokenWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectHook) pulumi.StringPtrOutput { return v.TokenWoVersion }).(pulumi.StringPtrOutput)
 }
 
 // The url of the hook to invoke. Forces re-creation to preserve `token`.

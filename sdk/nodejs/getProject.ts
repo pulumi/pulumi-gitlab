@@ -375,6 +375,10 @@ export interface GetProjectResult {
      */
     readonly mergeRequestsTemplate: string;
     /**
+     * Merge train enforcement level. Valid values are `allowBypass`, `enforceForAllUsers`, `enforceWithOwnerOverride`. Introduced in GitLab 19.3. Premium and Ultimate only.
+     */
+    readonly mergeTrainEnforcement: string;
+    /**
      * Enable or disable merge trains.
      */
     readonly mergeTrainsEnabled: boolean;

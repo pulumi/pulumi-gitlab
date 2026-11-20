@@ -56,17 +56,17 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var allowedProjectIds =         
- *             123,
- *             456,
- *             789;
+ *             "123",
+ *             "456",
+ *             "789";
  * 
  *         final var allowedGroupIds =         
- *             123,
- *             456,
- *             789;
+ *             "123",
+ *             "456",
+ *             "789";
  * 
  *         final var deploymentProject = GitlabFunctions.getProject(GetProjectArgs.builder()
- *             .name("example-project")
+ *             .pathWithNamespace("example-group/example-project")
  *             .build());
  * 
  *         for (var range : KeyedValue.of(com.pulumi.std.StdFunctions(com.pulumi.std.inputs.TosetArgs.builder()

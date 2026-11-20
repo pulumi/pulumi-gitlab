@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getProject({
- *     id: "foo/bar",
+ *     pathWithNamespace: "foo/bar",
  * });
  * // Basic example
  * const exampleGetProjectServiceAccount = example.then(example => gitlab.getProjectServiceAccount({
@@ -88,7 +88,7 @@ export interface GetProjectServiceAccountResult {
  * import * as gitlab from "@pulumi/gitlab";
  *
  * const example = gitlab.getProject({
- *     id: "foo/bar",
+ *     pathWithNamespace: "foo/bar",
  * });
  * // Basic example
  * const exampleGetProjectServiceAccount = example.then(example => gitlab.getProjectServiceAccount({

@@ -38,6 +38,15 @@ namespace Pulumi.GitLab
     ///         },
     ///     });
     /// 
+    ///     // create a service account that is internal, so it can access internal projects
+    ///     // (for example when a pipeline it triggers references an internal project via `include` or `component`)
+    ///     var exampleInternalSa = new GitLab.InstanceServiceAccount("example_internal_sa", new()
+    ///     {
+    ///         Name = "example-internal-name",
+    ///         Username = "example-internal-username",
+    ///         IsExternal = false,
+    ///     });
+    /// 
     ///     var exampleToken = new GitLab.PersonalAccessToken("example_token", new()
     ///     {
     ///         UserId = exampleSa.ServiceAccountId.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
@@ -72,6 +81,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `False` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `Include` or `Component`.
+        /// </summary>
+        [Output("isExternal")]
+        public Output<bool> IsExternal { get; private set; } = null!;
 
         /// <summary>
         /// The name of the user. If not set, uses Service account user.
@@ -147,6 +162,12 @@ namespace Pulumi.GitLab
         public Input<string>? Email { get; set; }
 
         /// <summary>
+        /// Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `False` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `Include` or `Component`.
+        /// </summary>
+        [Input("isExternal")]
+        public Input<bool>? IsExternal { get; set; }
+
+        /// <summary>
         /// The name of the user. If not set, uses Service account user.
         /// </summary>
         [Input("name")]
@@ -174,6 +195,12 @@ namespace Pulumi.GitLab
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
+
+        /// <summary>
+        /// Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `False` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `Include` or `Component`.
+        /// </summary>
+        [Input("isExternal")]
+        public Input<bool>? IsExternal { get; set; }
 
         /// <summary>
         /// The name of the user. If not set, uses Service account user.

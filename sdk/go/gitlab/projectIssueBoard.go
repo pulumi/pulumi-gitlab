@@ -83,23 +83,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gitlab.NewProjectIssueBoard(ctx, "list_syntax", &gitlab.ProjectIssueBoardArgs{
-//				Project: example.ID(),
-//				Name:    pulumi.String("Test Issue Board with list syntax"),
-//				Lists: gitlab.ProjectIssueBoardListArray{
-//					&gitlab.ProjectIssueBoardListArgs{
-//						AssigneeId: exampleUser.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
-//					},
-//					&gitlab.ProjectIssueBoardListArgs{
-//						MilestoneId: exampleProjectMilestone.MilestoneId,
-//					},
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				exampleProjectMembership,
-//			}))
-//			if err != nil {
-//				return err
-//			}
 //			return nil
 //		})
 //	}

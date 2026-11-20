@@ -6,6 +6,7 @@ package com.pulumi.gitlab;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gitlab.inputs.InstanceServiceAccountTimeoutsArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +30,21 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<String>> email() {
         return Optional.ofNullable(this.email);
+    }
+
+    /**
+     * Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+     * 
+     */
+    @Import(name="isExternal")
+    private @Nullable Output<Boolean> isExternal;
+
+    /**
+     * @return Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+     * 
+     */
+    public Optional<Output<Boolean>> isExternal() {
+        return Optional.ofNullable(this.isExternal);
     }
 
     /**
@@ -72,6 +88,7 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
 
     private InstanceServiceAccountArgs(InstanceServiceAccountArgs $) {
         this.email = $.email;
+        this.isExternal = $.isExternal;
         this.name = $.name;
         this.timeouts = $.timeouts;
         this.username = $.username;
@@ -114,6 +131,27 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
          */
         public Builder email(String email) {
             return email(Output.of(email));
+        }
+
+        /**
+         * @param isExternal Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isExternal(@Nullable Output<Boolean> isExternal) {
+            $.isExternal = isExternal;
+            return this;
+        }
+
+        /**
+         * @param isExternal Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isExternal(Boolean isExternal) {
+            return isExternal(Output.of(isExternal));
         }
 
         /**

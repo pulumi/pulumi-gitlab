@@ -507,6 +507,7 @@ class ProjectIntegrationTelegram(pulumi.CustomResource):
             description="My awesome project.",
             visibility_level="public")
         default = gitlab.ProjectIntegrationTelegram("default",
+            project=awesome_project.id,
             token="123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11",
             room="-1000000000000000",
             notify_only_broken_pipelines=False,
@@ -574,6 +575,7 @@ class ProjectIntegrationTelegram(pulumi.CustomResource):
             description="My awesome project.",
             visibility_level="public")
         default = gitlab.ProjectIntegrationTelegram("default",
+            project=awesome_project.id,
             token="123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11",
             room="-1000000000000000",
             notify_only_broken_pipelines=False,

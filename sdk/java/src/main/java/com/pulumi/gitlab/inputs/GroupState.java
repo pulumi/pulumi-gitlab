@@ -207,6 +207,21 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+     * 
+     */
+    @Import(name="duoFeaturesEnabled")
+    private @Nullable Output<Boolean> duoFeaturesEnabled;
+
+    /**
+     * @return Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+     * 
+     */
+    public Optional<Output<Boolean>> duoFeaturesEnabled() {
+        return Optional.ofNullable(this.duoFeaturesEnabled);
+    }
+
+    /**
      * Enable email notifications.
      * 
      */
@@ -219,6 +234,36 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> emailsEnabled() {
         return Optional.ofNullable(this.emailsEnabled);
+    }
+
+    /**
+     * Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+     * 
+     */
+    @Import(name="enabledGitAccessProtocol")
+    private @Nullable Output<String> enabledGitAccessProtocol;
+
+    /**
+     * @return Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+     * 
+     */
+    public Optional<Output<String>> enabledGitAccessProtocol() {
+        return Optional.ofNullable(this.enabledGitAccessProtocol);
+    }
+
+    /**
+     * Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group&#39;s value. GitLab returns this value only when AI features are available for the group.
+     * 
+     */
+    @Import(name="experimentFeaturesEnabled")
+    private @Nullable Output<Boolean> experimentFeaturesEnabled;
+
+    /**
+     * @return Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group&#39;s value. GitLab returns this value only when AI features are available for the group.
+     * 
+     */
+    public Optional<Output<Boolean>> experimentFeaturesEnabled() {
+        return Optional.ofNullable(this.experimentFeaturesEnabled);
     }
 
     /**
@@ -294,6 +339,51 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> lfsEnabled() {
         return Optional.ofNullable(this.lfsEnabled);
+    }
+
+    /**
+     * Enforce the `duoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+     * 
+     */
+    @Import(name="lockDuoFeaturesEnabled")
+    private @Nullable Output<Boolean> lockDuoFeaturesEnabled;
+
+    /**
+     * @return Enforce the `duoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+     * 
+     */
+    public Optional<Output<Boolean>> lockDuoFeaturesEnabled() {
+        return Optional.ofNullable(this.lockDuoFeaturesEnabled);
+    }
+
+    /**
+     * Indicates if math rendering limits are locked for all descendent groups.
+     * 
+     */
+    @Import(name="lockMathRenderingLimitsEnabled")
+    private @Nullable Output<Boolean> lockMathRenderingLimitsEnabled;
+
+    /**
+     * @return Indicates if math rendering limits are locked for all descendent groups.
+     * 
+     */
+    public Optional<Output<Boolean>> lockMathRenderingLimitsEnabled() {
+        return Optional.ofNullable(this.lockMathRenderingLimitsEnabled);
+    }
+
+    /**
+     * Indicates if math rendering limits are used for this group.
+     * 
+     */
+    @Import(name="mathRenderingLimitsEnabled")
+    private @Nullable Output<Boolean> mathRenderingLimitsEnabled;
+
+    /**
+     * @return Indicates if math rendering limits are used for this group.
+     * 
+     */
+    public Optional<Output<Boolean>> mathRenderingLimitsEnabled() {
+        return Optional.ofNullable(this.mathRenderingLimitsEnabled);
     }
 
     /**
@@ -671,12 +761,18 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         this.defaultBranchProtection = $.defaultBranchProtection;
         this.defaultBranchProtectionDefaults = $.defaultBranchProtectionDefaults;
         this.description = $.description;
+        this.duoFeaturesEnabled = $.duoFeaturesEnabled;
         this.emailsEnabled = $.emailsEnabled;
+        this.enabledGitAccessProtocol = $.enabledGitAccessProtocol;
+        this.experimentFeaturesEnabled = $.experimentFeaturesEnabled;
         this.extraSharedRunnersMinutesLimit = $.extraSharedRunnersMinutesLimit;
         this.fullName = $.fullName;
         this.fullPath = $.fullPath;
         this.ipRestrictionRanges = $.ipRestrictionRanges;
         this.lfsEnabled = $.lfsEnabled;
+        this.lockDuoFeaturesEnabled = $.lockDuoFeaturesEnabled;
+        this.lockMathRenderingLimitsEnabled = $.lockMathRenderingLimitsEnabled;
+        this.mathRenderingLimitsEnabled = $.mathRenderingLimitsEnabled;
         this.maxArtifactsSize = $.maxArtifactsSize;
         this.membershipLock = $.membershipLock;
         this.mentionsDisabled = $.mentionsDisabled;
@@ -990,6 +1086,27 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param duoFeaturesEnabled Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duoFeaturesEnabled(@Nullable Output<Boolean> duoFeaturesEnabled) {
+            $.duoFeaturesEnabled = duoFeaturesEnabled;
+            return this;
+        }
+
+        /**
+         * @param duoFeaturesEnabled Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duoFeaturesEnabled(Boolean duoFeaturesEnabled) {
+            return duoFeaturesEnabled(Output.of(duoFeaturesEnabled));
+        }
+
+        /**
          * @param emailsEnabled Enable email notifications.
          * 
          * @return builder
@@ -1008,6 +1125,48 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder emailsEnabled(Boolean emailsEnabled) {
             return emailsEnabled(Output.of(emailsEnabled));
+        }
+
+        /**
+         * @param enabledGitAccessProtocol Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabledGitAccessProtocol(@Nullable Output<String> enabledGitAccessProtocol) {
+            $.enabledGitAccessProtocol = enabledGitAccessProtocol;
+            return this;
+        }
+
+        /**
+         * @param enabledGitAccessProtocol Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabledGitAccessProtocol(String enabledGitAccessProtocol) {
+            return enabledGitAccessProtocol(Output.of(enabledGitAccessProtocol));
+        }
+
+        /**
+         * @param experimentFeaturesEnabled Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group&#39;s value. GitLab returns this value only when AI features are available for the group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder experimentFeaturesEnabled(@Nullable Output<Boolean> experimentFeaturesEnabled) {
+            $.experimentFeaturesEnabled = experimentFeaturesEnabled;
+            return this;
+        }
+
+        /**
+         * @param experimentFeaturesEnabled Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group&#39;s value. GitLab returns this value only when AI features are available for the group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder experimentFeaturesEnabled(Boolean experimentFeaturesEnabled) {
+            return experimentFeaturesEnabled(Output.of(experimentFeaturesEnabled));
         }
 
         /**
@@ -1123,6 +1282,69 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder lfsEnabled(Boolean lfsEnabled) {
             return lfsEnabled(Output.of(lfsEnabled));
+        }
+
+        /**
+         * @param lockDuoFeaturesEnabled Enforce the `duoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lockDuoFeaturesEnabled(@Nullable Output<Boolean> lockDuoFeaturesEnabled) {
+            $.lockDuoFeaturesEnabled = lockDuoFeaturesEnabled;
+            return this;
+        }
+
+        /**
+         * @param lockDuoFeaturesEnabled Enforce the `duoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lockDuoFeaturesEnabled(Boolean lockDuoFeaturesEnabled) {
+            return lockDuoFeaturesEnabled(Output.of(lockDuoFeaturesEnabled));
+        }
+
+        /**
+         * @param lockMathRenderingLimitsEnabled Indicates if math rendering limits are locked for all descendent groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lockMathRenderingLimitsEnabled(@Nullable Output<Boolean> lockMathRenderingLimitsEnabled) {
+            $.lockMathRenderingLimitsEnabled = lockMathRenderingLimitsEnabled;
+            return this;
+        }
+
+        /**
+         * @param lockMathRenderingLimitsEnabled Indicates if math rendering limits are locked for all descendent groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lockMathRenderingLimitsEnabled(Boolean lockMathRenderingLimitsEnabled) {
+            return lockMathRenderingLimitsEnabled(Output.of(lockMathRenderingLimitsEnabled));
+        }
+
+        /**
+         * @param mathRenderingLimitsEnabled Indicates if math rendering limits are used for this group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mathRenderingLimitsEnabled(@Nullable Output<Boolean> mathRenderingLimitsEnabled) {
+            $.mathRenderingLimitsEnabled = mathRenderingLimitsEnabled;
+            return this;
+        }
+
+        /**
+         * @param mathRenderingLimitsEnabled Indicates if math rendering limits are used for this group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mathRenderingLimitsEnabled(Boolean mathRenderingLimitsEnabled) {
+            return mathRenderingLimitsEnabled(Output.of(mathRenderingLimitsEnabled));
         }
 
         /**

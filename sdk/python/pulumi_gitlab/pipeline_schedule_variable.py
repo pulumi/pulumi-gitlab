@@ -216,7 +216,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         example = gitlab.PipelineSchedule("example",
             project="12345",
             description="Used to schedule builds",
-            ref="master",
+            ref="refs/heads/main",
             cron="0 1 * * *")
         example_pipeline_schedule_variable = gitlab.PipelineScheduleVariable("example",
             project=example.project,
@@ -266,7 +266,7 @@ class PipelineScheduleVariable(pulumi.CustomResource):
         example = gitlab.PipelineSchedule("example",
             project="12345",
             description="Used to schedule builds",
-            ref="master",
+            ref="refs/heads/main",
             cron="0 1 * * *")
         example_pipeline_schedule_variable = gitlab.PipelineScheduleVariable("example",
             project=example.project,

@@ -27,7 +27,6 @@ namespace Pulumi.GitLab
     ///     var example = new GitLab.ProjectWikiPage("example", new()
     ///     {
     ///         Project = "12345",
-    ///         Slug = "test-wiki-page",
     ///         Title = "Test Wiki Page",
     ///         Content = @"This is a test content for the wiki page.
     /// And this is a second line of content.

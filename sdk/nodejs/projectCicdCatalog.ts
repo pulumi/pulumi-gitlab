@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * > If `keepSettingsOnDestroy` is set to false, destroying the resource will revert the catalog status to the value that was present when the resource was first created.
  * You will need to apply the resource with the new setting before destroying the resource.
  *
- * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/ee/api/graphql/reference/#mutationcatalogresourcescreate)
+ * **Upstream API**: [GitLab GraphQL API docs](https://docs.gitlab.com/api/graphql/reference/#mutationcatalogresourcescreate)
  *
  * ## Example Usage
  *

@@ -78,7 +78,7 @@ namespace Pulumi.GitLab
         public Output<int?> MemberRoleId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID or URL-encoded path of the project.
+        /// The ID or full path of the project. Do not URL-encode the path.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.GitLab
         public Input<int>? MemberRoleId { get; set; }
 
         /// <summary>
-        /// The ID or URL-encoded path of the project.
+        /// The ID or full path of the project. Do not URL-encode the path.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.GitLab
         public Input<int>? MemberRoleId { get; set; }
 
         /// <summary>
-        /// The ID or URL-encoded path of the project.
+        /// The ID or full path of the project. Do not URL-encode the path.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

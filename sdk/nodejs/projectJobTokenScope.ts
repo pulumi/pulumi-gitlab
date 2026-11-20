@@ -25,17 +25,17 @@ import * as utilities from "./utilities";
  *         targetProjectId: 123,
  *     });
  *     const allowedProjectIds = [
- *         123,
- *         456,
- *         789,
+ *         "123",
+ *         "456",
+ *         "789",
  *     ];
  *     const allowedGroupIds = [
- *         123,
- *         456,
- *         789,
+ *         "123",
+ *         "456",
+ *         "789",
  *     ];
  *     const deploymentProject = await gitlab.getProject({
- *         name: "example-project",
+ *         pathWithNamespace: "example-group/example-project",
  *     });
  *     const allowedProject: gitlab.ProjectJobTokenScope[] = [];
  *     for (const range of std.toset({

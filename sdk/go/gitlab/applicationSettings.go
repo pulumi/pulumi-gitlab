@@ -27,58 +27,6 @@ import (
 // > Requires at administrative privileges on GitLab.
 //
 // **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/settings/)
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gitlab/sdk/v10/go/gitlab"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Set the default branch
-//			_, err := gitlab.NewApplicationSettings(ctx, "default_branch", &gitlab.ApplicationSettingsArgs{
-//				DefaultBranchName: pulumi.String("main"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Set the 2FA settings
-//			_, err = gitlab.NewApplicationSettings(ctx, "two_factor", &gitlab.ApplicationSettingsArgs{
-//				RequireTwoFactorAuthentication: pulumi.Bool(true),
-//				TwoFactorGracePeriod:           pulumi.Int(24),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Example Allow custom integrations
-//			_, err = gitlab.NewApplicationSettings(ctx, "allow_custom_integrations", &gitlab.ApplicationSettingsArgs{
-//				AllowAllIntegrations: pulumi.Bool(false),
-//				AllowedIntegrations: pulumi.StringArray{
-//					pulumi.String("jira"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Example allowing all integrations:
-//			_, err = gitlab.NewApplicationSettings(ctx, "allow_all_integrations", &gitlab.ApplicationSettingsArgs{
-//				AllowAllIntegrations: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ApplicationSettings struct {
 	pulumi.CustomResourceState
 
@@ -90,6 +38,8 @@ type ApplicationSettings struct {
 	AfterSignOutPath pulumi.StringOutput `pulumi:"afterSignOutPath"`
 	// Text shown to the user after signing up.
 	AfterSignUpText pulumi.StringOutput `pulumi:"afterSignUpText"`
+	// Maximum number of requests allowed to the aiAction GraphQL mutation per user per eight hours. Default: 160. Set to 0 to disable the rate limit. Introduced in GitLab 17.2.
+	AiActionApiRateLimit pulumi.IntOutput `pulumi:"aiActionApiRateLimit"`
 	// API key for Akismet spam protection.
 	AkismetApiKey pulumi.StringOutput `pulumi:"akismetApiKey"`
 	// (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
@@ -130,6 +80,10 @@ type ApplicationSettings struct {
 	AutoDevopsDomain pulumi.StringOutput `pulumi:"autoDevopsDomain"`
 	// Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
 	AutoDevopsEnabled pulumi.BoolOutput `pulumi:"autoDevopsEnabled"`
+	// Maximum number of authenticated requests per minute to the GET /autocomplete/users endpoint.
+	AutocompleteUsersLimit pulumi.IntOutput `pulumi:"autocompleteUsersLimit"`
+	// Maximum number of unauthenticated requests per minute to the GET /autocomplete/users endpoint.
+	AutocompleteUsersUnauthenticatedLimit pulumi.IntOutput `pulumi:"autocompleteUsersUnauthenticatedLimit"`
 	// Enabling this permits automatic allocation of purchased storage in a namespace.
 	AutomaticPurchasedStorageAllocation pulumi.BoolOutput `pulumi:"automaticPurchasedStorageAllocation"`
 	// Maximum simultaneous Direct Transfer batches to process.
@@ -144,6 +98,8 @@ type ApplicationSettings struct {
 	CheckNamespacePlan pulumi.BoolOutput `pulumi:"checkNamespacePlan"`
 	// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
 	CiJobLiveTraceEnabled pulumi.BoolOutput `pulumi:"ciJobLiveTraceEnabled"`
+	// Maximum number of CI Lint requests per minute per user. Disabled by default.
+	CiLintLimitPerUser pulumi.IntOutput `pulumi:"ciLintLimitPerUser"`
 	// The maximum number of includes per pipeline.
 	CiMaxIncludes pulumi.IntOutput `pulumi:"ciMaxIncludes"`
 	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
@@ -156,6 +112,12 @@ type ApplicationSettings struct {
 	ConcurrentBitbucketServerImportJobsLimit pulumi.IntOutput `pulumi:"concurrentBitbucketServerImportJobsLimit"`
 	// Maximum number of simultaneous import jobs for the GitHub importer.
 	ConcurrentGithubImportJobsLimit pulumi.IntOutput `pulumi:"concurrentGithubImportJobsLimit"`
+	// Maximum number of simultaneous pull request import jobs for the GitHub, Bitbucket Cloud, and Bitbucket Server importers. Default is 200. Introduced in GitLab 19.4.
+	ConcurrentPullRequestImportJobsLimit pulumi.IntOutput `pulumi:"concurrentPullRequestImportJobsLimit"`
+	// Maximum number of simultaneous batch export jobs to process. Introduced in GitLab 17.6.
+	ConcurrentRelationBatchExportLimit pulumi.IntOutput `pulumi:"concurrentRelationBatchExportLimit"`
+	// Maximum number of simultaneous project file exports to process. Default: 25. Introduced in GitLab 19.4 with a feature flag named limit*concurrent*project_exports. Disabled by default.
+	ConcurrentRelationExportLimit pulumi.IntOutput `pulumi:"concurrentRelationExportLimit"`
 	// Enable cleanup policies for all projects.
 	ContainerExpirationPoliciesEnableHistoricEntries pulumi.BoolOutput `pulumi:"containerExpirationPoliciesEnableHistoricEntries"`
 	// The maximum number of tags that can be deleted in a single execution of cleanup policies.
@@ -336,6 +298,8 @@ type ApplicationSettings struct {
 	GeoNodeAllowedIps pulumi.StringOutput `pulumi:"geoNodeAllowedIps"`
 	// The amount of seconds after which a request to get a secondary node status times out.
 	GeoStatusTimeout pulumi.IntOutput `pulumi:"geoStatusTimeout"`
+	// Set the maximum number of tag or branch pipelines that can be triggered by a single Git push. For more information about this limit, see number of pipelines per Git push.
+	GitPushPipelineLimit pulumi.IntOutput `pulumi:"gitPushPipelineLimit"`
 	// List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
 	GitRateLimitUsersAlertlists pulumi.IntArrayOutput `pulumi:"gitRateLimitUsersAlertlists"`
 	// List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
@@ -366,8 +330,16 @@ type ApplicationSettings struct {
 	GrafanaUrl pulumi.StringOutput `pulumi:"grafanaUrl"`
 	// Enable Gravatar.
 	GravatarEnabled pulumi.BoolOutput `pulumi:"gravatarEnabled"`
+	// Maximum number of group export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	GroupDownloadExportLimit pulumi.IntOutput `pulumi:"groupDownloadExportLimit"`
+	// Maximum number of group exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	GroupExportLimit pulumi.IntOutput `pulumi:"groupExportLimit"`
+	// Maximum number of group imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	GroupImportLimit pulumi.IntOutput `pulumi:"groupImportLimit"`
 	// Prevent overrides of default branch protection.
 	GroupOwnersCanManageDefaultBranchProtection pulumi.BoolOutput `pulumi:"groupOwnersCanManageDefaultBranchProtection"`
+	// Maximum number of secrets allowed per group in Secrets Manager. Default: 500. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+	GroupSecretsLimit pulumi.IntOutput `pulumi:"groupSecretsLimit"`
 	// Hide marketing-related entries from help.
 	HelpPageHideCommercialContent pulumi.BoolOutput `pulumi:"helpPageHideCommercialContent"`
 	// Alternate support URL for help page and help dropdown.
@@ -386,6 +358,8 @@ type ApplicationSettings struct {
 	HousekeepingOptimizeRepositoryPeriod pulumi.IntOutput `pulumi:"housekeepingOptimizeRepositoryPeriod"`
 	// Enable HTML emails.
 	HtmlEmailsEnabled pulumi.BoolOutput `pulumi:"htmlEmailsEnabled"`
+	// Maximum number of concurrently running jobs for each import worker type (project and group file base import, Direct Transfer, and GitHub, Bitbucket Cloud, and Bitbucket Server importer stages). Applied independently per worker type. Default is 100. Introduced in GitLab 19.1.
+	ImportJobsConcurrencyLimit pulumi.IntOutput `pulumi:"importJobsConcurrencyLimit"`
 	// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
 	ImportSources pulumi.StringArrayOutput `pulumi:"importSources"`
 	// Enable in-product marketing emails.
@@ -410,6 +384,10 @@ type ApplicationSettings struct {
 	JiraConnectProxyUrl pulumi.StringOutput `pulumi:"jiraConnectProxyUrl"`
 	// Enable public key storage for the GitLab for Jira Cloud app.
 	JiraConnectPublicKeyStorageEnabled pulumi.BoolOutput `pulumi:"jiraConnectPublicKeyStorageEnabled"`
+	// Maximum number of manual job runs per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_play. Disabled by default.
+	JobPlayLimitPerUserProject pulumi.IntOutput `pulumi:"jobPlayLimitPerUserProject"`
+	// Maximum number of job retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_retry. Disabled by default.
+	JobRetryLimitPerUserProject pulumi.IntOutput `pulumi:"jobRetryLimitPerUserProject"`
 	// Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
 	KeepLatestArtifact pulumi.BoolOutput `pulumi:"keepLatestArtifact"`
 	// (If enabled, requires: kroki_url) Enable Kroki integration.
@@ -444,6 +422,10 @@ type ApplicationSettings struct {
 	MaxDecompressedArchiveSize pulumi.IntOutput `pulumi:"maxDecompressedArchiveSize"`
 	// Maximum export size in MB. 0 for unlimited.
 	MaxExportSize pulumi.IntOutput `pulumi:"maxExportSize"`
+	// Maximum allowed GitHub API response size in MB. 0 for unlimited.
+	MaxGithubResponseSizeLimit pulumi.IntOutput `pulumi:"maxGithubResponseSizeLimit"`
+	// Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4.
+	MaxHttpResponseSizeLimit pulumi.IntOutput `pulumi:"maxHttpResponseSizeLimit"`
 	// Maximum remote file size for imports from external object storages.
 	MaxImportRemoteFileSize pulumi.IntOutput `pulumi:"maxImportRemoteFileSize"`
 	// Maximum import size in MB. 0 for unlimited.
@@ -478,6 +460,8 @@ type ApplicationSettings struct {
 	MirrorMaxCapacity pulumi.IntOutput `pulumi:"mirrorMaxCapacity"`
 	// Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
 	MirrorMaxDelay pulumi.IntOutput `pulumi:"mirrorMaxDelay"`
+	// Maximum number of notes (comments) a user can create per minute. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	NotesCreateLimit pulumi.IntOutput `pulumi:"notesCreateLimit"`
 	// Enable sending notification if sign in from unknown IP address happens
 	NotifyOnUnknownSignIn pulumi.BoolOutput `pulumi:"notifyOnUnknownSignIn"`
 	// Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
@@ -512,8 +496,14 @@ type ApplicationSettings struct {
 	PerformanceBarAllowedGroupPath pulumi.StringOutput `pulumi:"performanceBarAllowedGroupPath"`
 	// Prefix for all generated personal access tokens.
 	PersonalAccessTokenPrefix pulumi.StringOutput `pulumi:"personalAccessTokenPrefix"`
+	// Maximum number of pipeline cancellations per minute per user per project. Introduced in GitLab 19.5.
+	PipelineCancelLimitPerUserProject pulumi.IntOutput `pulumi:"pipelineCancelLimitPerUserProject"`
 	// Maximum number of pipeline creation requests per minute per user and commit.
 	PipelineLimitPerProjectUserSha pulumi.IntOutput `pulumi:"pipelineLimitPerProjectUserSha"`
+	// Maximum number of pipeline creation requests per minute per user.
+	PipelineLimitPerUser pulumi.IntOutput `pulumi:"pipelineLimitPerUser"`
+	// Maximum number of pipeline retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*pipeline_retry. Disabled by default.
+	PipelineRetryLimitPerUserProject pulumi.IntOutput `pulumi:"pipelineRetryLimitPerUserProject"`
 	// (If enabled, requires: plantuml_url) Enable PlantUML integration.
 	PlantumlEnabled pulumi.BoolOutput `pulumi:"plantumlEnabled"`
 	// The PlantUML instance URL for integration.
@@ -524,10 +514,18 @@ type ApplicationSettings struct {
 	PreventMergeRequestsAuthorApproval pulumi.BoolOutput `pulumi:"preventMergeRequestsAuthorApproval"`
 	// Prevent approval by committers to merge requests.
 	PreventMergeRequestsCommittersApproval pulumi.BoolOutput `pulumi:"preventMergeRequestsCommittersApproval"`
+	// Maximum number of project export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ProjectDownloadExportLimit pulumi.IntOutput `pulumi:"projectDownloadExportLimit"`
 	// Enable project export.
 	ProjectExportEnabled pulumi.BoolOutput `pulumi:"projectExportEnabled"`
+	// Maximum number of project exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ProjectExportLimit pulumi.IntOutput `pulumi:"projectExportLimit"`
+	// Maximum number of project imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ProjectImportLimit pulumi.IntOutput `pulumi:"projectImportLimit"`
 	// Maximum authenticated requests to /project/:id/jobs per minute.
 	ProjectJobsApiRateLimit pulumi.IntOutput `pulumi:"projectJobsApiRateLimit"`
+	// Maximum number of secrets allowed per project in Secrets Manager. Default: 100. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+	ProjectSecretsLimit pulumi.IntOutput `pulumi:"projectSecretsLimit"`
 	// Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
 	ProjectsApiRateLimitUnauthenticated pulumi.IntOutput `pulumi:"projectsApiRateLimitUnauthenticated"`
 	// Enable Prometheus metrics.
@@ -544,6 +542,8 @@ type ApplicationSettings struct {
 	RateLimitingResponseText pulumi.StringOutput `pulumi:"rateLimitingResponseText"`
 	// Max number of requests per minute for each raw path. To disable throttling set to 0.
 	RawBlobRequestLimit pulumi.IntOutput `pulumi:"rawBlobRequestLimit"`
+	// Maximum number of unauthenticated requests per minute across all raw paths in a project (default is 800). Set to 0 to disable throttling.
+	RawBlobRequestLimitUnauthenticated pulumi.IntOutput `pulumi:"rawBlobRequestLimitUnauthenticated"`
 	// (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
 	RecaptchaEnabled pulumi.BoolOutput `pulumi:"recaptchaEnabled"`
 	// Private key for reCAPTCHA.
@@ -574,6 +574,16 @@ type ApplicationSettings struct {
 	RestrictedVisibilityLevels pulumi.StringArrayOutput `pulumi:"restrictedVisibilityLevels"`
 	// The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
 	RsaKeyRestriction pulumi.IntOutput `pulumi:"rsaKeyRestriction"`
+	// Maximum number of requests per minute per job token for requests to /jobs/* requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. Introduced in GitLab 18.5.
+	RunnerJobsEndpointsApiLimit pulumi.IntOutput `pulumi:"runnerJobsEndpointsApiLimit"`
+	// Maximum number of requests per minute per runner token for requests to the PATCH /jobs/:id/trace runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+	RunnerJobsPatchTraceApiLimit pulumi.IntOutput `pulumi:"runnerJobsPatchTraceApiLimit"`
+	// Maximum number of requests per minute per runner token for requests to the /jobs/request runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+	RunnerJobsRequestApiLimit pulumi.IntOutput `pulumi:"runnerJobsRequestApiLimit"`
+	// Maximum number of actions per scan execution policy. Default: 0. Maximum: 20.
+	ScanExecutionPoliciesActionLimit pulumi.IntOutput `pulumi:"scanExecutionPoliciesActionLimit"`
+	// Maximum number of type: schedule rules per scan execution policy. Default: 0. Maximum: 20.
+	ScanExecutionPoliciesScheduleLimit pulumi.IntOutput `pulumi:"scanExecutionPoliciesScheduleLimit"`
 	// Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
 	SearchRateLimit pulumi.IntOutput `pulumi:"searchRateLimit"`
 	// Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
@@ -654,6 +664,8 @@ type ApplicationSettings struct {
 	StaticObjectsExternalStorageUrl pulumi.StringPtrOutput `pulumi:"staticObjectsExternalStorageUrl"`
 	// Enable pipeline suggestion banner.
 	SuggestPipelineEnabled pulumi.BoolOutput `pulumi:"suggestPipelineEnabled"`
+	// Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL tagCreate mutation, tag creation in the UI, and the /tag quick action. Default: 100. Set to 0 to disable the rate limit. Introduced in GitLab 19.4.
+	TagsCreateLimit pulumi.IntOutput `pulumi:"tagsCreateLimit"`
 	// Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
 	TerminalMaxSessionTime pulumi.IntOutput `pulumi:"terminalMaxSessionTime"`
 	// (Required by: enforce_terms) Markdown content for the ToS.
@@ -664,12 +676,42 @@ type ApplicationSettings struct {
 	ThrottleAuthenticatedApiPeriodInSeconds pulumi.IntOutput `pulumi:"throttleAuthenticatedApiPeriodInSeconds"`
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedApiRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleAuthenticatedApiRequestsPerPeriod"`
+	// If true, enforces the authenticated dependency proxy request rate limit. Default value: false. Introduced in GitLab 19.4.
+	ThrottleAuthenticatedDependencyProxyEnabled pulumi.BoolOutput `pulumi:"throttleAuthenticatedDependencyProxyEnabled"`
+	// Rate limit period in seconds. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 15. Introduced in GitLab 19.4.
+	ThrottleAuthenticatedDependencyProxyPeriodInSeconds pulumi.IntOutput `pulumi:"throttleAuthenticatedDependencyProxyPeriodInSeconds"`
+	// Maximum requests per period per user. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 1000. Introduced in GitLab 19.4.
+	ThrottleAuthenticatedDependencyProxyRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleAuthenticatedDependencyProxyRequestsPerPeriod"`
+	// (If enabled, requires: throttle*authenticated*deprecated*api*period*in*seconds and throttle*authenticated*deprecated*api*requests*per*period) Enable authenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedDeprecatedApiEnabled pulumi.BoolOutput `pulumi:"throttleAuthenticatedDeprecatedApiEnabled"`
+	// Rate limit period (in seconds) for authenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedDeprecatedApiPeriodInSeconds pulumi.IntOutput `pulumi:"throttleAuthenticatedDeprecatedApiPeriodInSeconds"`
+	// Maximum authenticated deprecated API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedDeprecatedApiRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleAuthenticatedDeprecatedApiRequestsPerPeriod"`
+	// (If enabled, requires: throttle*authenticated*files*api*period*in*seconds and throttle*authenticated*files*api*requests*per*period) Enable authenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedFilesApiEnabled pulumi.BoolOutput `pulumi:"throttleAuthenticatedFilesApiEnabled"`
+	// Rate limit period (in seconds) for authenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedFilesApiPeriodInSeconds pulumi.IntOutput `pulumi:"throttleAuthenticatedFilesApiPeriodInSeconds"`
+	// Maximum authenticated Files API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedFilesApiRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleAuthenticatedFilesApiRequestsPerPeriod"`
+	// If true, enforces the authenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+	ThrottleAuthenticatedGitHttpEnabled pulumi.BoolOutput `pulumi:"throttleAuthenticatedGitHttpEnabled"`
+	// Rate limit period in seconds. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+	ThrottleAuthenticatedGitHttpPeriodInSeconds pulumi.IntOutput `pulumi:"throttleAuthenticatedGitHttpPeriodInSeconds"`
+	// Maximum requests per period per user. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+	ThrottleAuthenticatedGitHttpRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleAuthenticatedGitHttpRequestsPerPeriod"`
 	// Enable authenticated Git LFS request rate limit.
 	ThrottleAuthenticatedGitLfsEnabled pulumi.BoolOutput `pulumi:"throttleAuthenticatedGitLfsEnabled"`
 	// Rate limit period (in seconds).
 	ThrottleAuthenticatedGitLfsPeriodInSeconds pulumi.IntOutput `pulumi:"throttleAuthenticatedGitLfsPeriodInSeconds"`
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedGitLfsRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleAuthenticatedGitLfsRequestsPerPeriod"`
+	// (If enabled, requires: throttle*authenticated*mcp*period*in*seconds and throttle*authenticated*mcp*requests*per*period) If true, enforces the rate limit on requests to the MCP Server endpoint, /api/v4/mcp, for any HTTP method. Does not apply to other MCP endpoints. Introduced in GitLab 19.5.
+	ThrottleAuthenticatedMcpEnabled pulumi.BoolOutput `pulumi:"throttleAuthenticatedMcpEnabled"`
+	// Rate limit period in seconds. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+	ThrottleAuthenticatedMcpPeriodInSeconds pulumi.IntOutput `pulumi:"throttleAuthenticatedMcpPeriodInSeconds"`
+	// Maximum requests per period per user. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+	ThrottleAuthenticatedMcpRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleAuthenticatedMcpRequestsPerPeriod"`
 	// (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 	ThrottleAuthenticatedPackagesApiEnabled pulumi.BoolOutput `pulumi:"throttleAuthenticatedPackagesApiEnabled"`
 	// Rate limit period (in seconds). View Package Registry rate limits for more details.
@@ -682,18 +724,60 @@ type ApplicationSettings struct {
 	ThrottleAuthenticatedWebPeriodInSeconds pulumi.IntOutput `pulumi:"throttleAuthenticatedWebPeriodInSeconds"`
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedWebRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleAuthenticatedWebRequestsPerPeriod"`
+	// If true, enforces the inbound incident management alert notification rate limit, per project. Default value: false.
+	ThrottleIncidentManagementNotificationEnabled pulumi.BoolOutput `pulumi:"throttleIncidentManagementNotificationEnabled"`
+	// Maximum inbound incident management alert notifications per period, per project. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+	ThrottleIncidentManagementNotificationPerPeriod pulumi.IntOutput `pulumi:"throttleIncidentManagementNotificationPerPeriod"`
+	// Rate limit period in seconds. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+	ThrottleIncidentManagementNotificationPeriodInSeconds pulumi.IntOutput `pulumi:"throttleIncidentManagementNotificationPeriodInSeconds"`
+	// (If enabled, requires: throttle*protected*paths*period*in*seconds and throttle*protected*paths*requests*per*period) Enable rate limiting for protected paths (for example, sign-in and password reset). Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleProtectedPathsEnabled pulumi.BoolOutput `pulumi:"throttleProtectedPathsEnabled"`
+	// Rate limit period (in seconds) for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleProtectedPathsPeriodInSeconds pulumi.IntOutput `pulumi:"throttleProtectedPathsPeriodInSeconds"`
+	// Maximum requests per period per IP for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleProtectedPathsRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleProtectedPathsRequestsPerPeriod"`
 	// (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
 	ThrottleUnauthenticatedApiEnabled pulumi.BoolOutput `pulumi:"throttleUnauthenticatedApiEnabled"`
 	// Rate limit period in seconds.
 	ThrottleUnauthenticatedApiPeriodInSeconds pulumi.IntOutput `pulumi:"throttleUnauthenticatedApiPeriodInSeconds"`
 	// Max requests per period per IP.
 	ThrottleUnauthenticatedApiRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleUnauthenticatedApiRequestsPerPeriod"`
+	// (If enabled, requires: throttle*unauthenticated*deprecated*api*period*in*seconds and throttle*unauthenticated*deprecated*api*requests*per*period) Enable unauthenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedDeprecatedApiEnabled pulumi.BoolOutput `pulumi:"throttleUnauthenticatedDeprecatedApiEnabled"`
+	// Rate limit period (in seconds) for unauthenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedDeprecatedApiPeriodInSeconds pulumi.IntOutput `pulumi:"throttleUnauthenticatedDeprecatedApiPeriodInSeconds"`
+	// Maximum unauthenticated deprecated API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedDeprecatedApiRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleUnauthenticatedDeprecatedApiRequestsPerPeriod"`
+	// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*enabled or throttle*unauthenticated*api*enabled instead.) (**If enabled, requires**: throttle*unauthenticated*period*in*seconds and throttle*unauthenticated*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
+	//
+	// Deprecated: Use throttleUnauthenticatedWebEnabled or throttleUnauthenticatedApiEnabled instead. (Deprecated in GitLab 14.3)
+	ThrottleUnauthenticatedEnabled pulumi.BoolOutput `pulumi:"throttleUnauthenticatedEnabled"`
+	// (If enabled, requires: throttle*unauthenticated*files*api*period*in*seconds and throttle*unauthenticated*files*api*requests*per*period) Enable unauthenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedFilesApiEnabled pulumi.BoolOutput `pulumi:"throttleUnauthenticatedFilesApiEnabled"`
+	// Rate limit period (in seconds) for unauthenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedFilesApiPeriodInSeconds pulumi.IntOutput `pulumi:"throttleUnauthenticatedFilesApiPeriodInSeconds"`
+	// Maximum unauthenticated Files API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedFilesApiRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleUnauthenticatedFilesApiRequestsPerPeriod"`
+	// If true, enforces the unauthenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 17.0.
+	ThrottleUnauthenticatedGitHttpEnabled pulumi.BoolOutput `pulumi:"throttleUnauthenticatedGitHttpEnabled"`
+	// Rate limit period in seconds. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+	ThrottleUnauthenticatedGitHttpPeriodInSeconds pulumi.IntOutput `pulumi:"throttleUnauthenticatedGitHttpPeriodInSeconds"`
+	// Maximum requests per period per IP. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+	ThrottleUnauthenticatedGitHttpRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleUnauthenticatedGitHttpRequestsPerPeriod"`
 	// (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 	ThrottleUnauthenticatedPackagesApiEnabled pulumi.BoolOutput `pulumi:"throttleUnauthenticatedPackagesApiEnabled"`
 	// Rate limit period (in seconds). View Package Registry rate limits for more details.
 	ThrottleUnauthenticatedPackagesApiPeriodInSeconds pulumi.IntOutput `pulumi:"throttleUnauthenticatedPackagesApiPeriodInSeconds"`
 	// Maximum requests per period per user. View Package Registry rate limits for more details.
 	ThrottleUnauthenticatedPackagesApiRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleUnauthenticatedPackagesApiRequestsPerPeriod"`
+	// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*period*in*seconds or throttle*unauthenticated*api*period*in*seconds instead.) Rate limit period in seconds.
+	//
+	// Deprecated: Use throttleUnauthenticatedWebPeriodInSeconds or throttleUnauthenticatedApiPeriodInSeconds instead. (Deprecated in GitLab 14.3)
+	ThrottleUnauthenticatedPeriodInSeconds pulumi.IntOutput `pulumi:"throttleUnauthenticatedPeriodInSeconds"`
+	// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*requests*per*period or throttle*unauthenticated*api*requests*per*period instead.) Maximum requests per period per IP.
+	//
+	// Deprecated: Use throttleUnauthenticatedWebRequestsPerPeriod or throttleUnauthenticatedApiRequestsPerPeriod instead. (Deprecated in GitLab 14.3)
+	ThrottleUnauthenticatedRequestsPerPeriod pulumi.IntOutput `pulumi:"throttleUnauthenticatedRequestsPerPeriod"`
 	// (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
 	ThrottleUnauthenticatedWebEnabled pulumi.BoolOutput `pulumi:"throttleUnauthenticatedWebEnabled"`
 	// Rate limit period in seconds.
@@ -732,10 +816,32 @@ type ApplicationSettings struct {
 	UserOauthApplications pulumi.BoolOutput `pulumi:"userOauthApplications"`
 	// When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
 	UserShowAddSshKeyMessage pulumi.BoolOutput `pulumi:"userShowAddSshKeyMessage"`
+	// Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitFollowers pulumi.IntOutput `pulumi:"usersApiLimitFollowers"`
+	// Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitFollowing pulumi.IntOutput `pulumi:"usersApiLimitFollowing"`
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitGpgKey pulumi.IntOutput `pulumi:"usersApiLimitGpgKey"`
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitGpgKeys pulumi.IntOutput `pulumi:"usersApiLimitGpgKeys"`
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitSshKey pulumi.IntOutput `pulumi:"usersApiLimitSshKey"`
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitSshKeys pulumi.IntOutput `pulumi:"usersApiLimitSshKeys"`
+	// Maximum number of requests per minute, per user or IP address. Default: 240. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitStatus pulumi.IntOutput `pulumi:"usersApiLimitStatus"`
+	// Maximum number of requests per minute per user to the GET /users/:id API endpoint. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	UsersGetByIdLimit pulumi.IntOutput `pulumi:"usersGetByIdLimit"`
+	// Usernames excluded from the users*get*by*id*limit rate limit, separated by newlines, commas or whitespace. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	UsersGetByIdLimitAllowlistRaw pulumi.StringOutput `pulumi:"usersGetByIdLimitAllowlistRaw"`
 	// List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
 	ValidRunnerRegistrars pulumi.StringArrayOutput `pulumi:"validRunnerRegistrars"`
 	// Let GitLab inform you when an update is available.
 	VersionCheckEnabled pulumi.BoolOutput `pulumi:"versionCheckEnabled"`
+	// Maximum number of webhook event resend requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+	WebHookEventResendLimit pulumi.IntOutput `pulumi:"webHookEventResendLimit"`
+	// Maximum number of webhook test requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+	WebHookTestLimit pulumi.IntOutput `pulumi:"webHookTestLimit"`
 	// Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
 	WebIdeClientsidePreviewEnabled pulumi.BoolOutput `pulumi:"webIdeClientsidePreviewEnabled"`
 	// What's new variant, possible values: all*tiers, current*tier, and disabled.
@@ -853,6 +959,8 @@ type applicationSettingsState struct {
 	AfterSignOutPath *string `pulumi:"afterSignOutPath"`
 	// Text shown to the user after signing up.
 	AfterSignUpText *string `pulumi:"afterSignUpText"`
+	// Maximum number of requests allowed to the aiAction GraphQL mutation per user per eight hours. Default: 160. Set to 0 to disable the rate limit. Introduced in GitLab 17.2.
+	AiActionApiRateLimit *int `pulumi:"aiActionApiRateLimit"`
 	// API key for Akismet spam protection.
 	AkismetApiKey *string `pulumi:"akismetApiKey"`
 	// (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
@@ -893,6 +1001,10 @@ type applicationSettingsState struct {
 	AutoDevopsDomain *string `pulumi:"autoDevopsDomain"`
 	// Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
+	// Maximum number of authenticated requests per minute to the GET /autocomplete/users endpoint.
+	AutocompleteUsersLimit *int `pulumi:"autocompleteUsersLimit"`
+	// Maximum number of unauthenticated requests per minute to the GET /autocomplete/users endpoint.
+	AutocompleteUsersUnauthenticatedLimit *int `pulumi:"autocompleteUsersUnauthenticatedLimit"`
 	// Enabling this permits automatic allocation of purchased storage in a namespace.
 	AutomaticPurchasedStorageAllocation *bool `pulumi:"automaticPurchasedStorageAllocation"`
 	// Maximum simultaneous Direct Transfer batches to process.
@@ -907,6 +1019,8 @@ type applicationSettingsState struct {
 	CheckNamespacePlan *bool `pulumi:"checkNamespacePlan"`
 	// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
 	CiJobLiveTraceEnabled *bool `pulumi:"ciJobLiveTraceEnabled"`
+	// Maximum number of CI Lint requests per minute per user. Disabled by default.
+	CiLintLimitPerUser *int `pulumi:"ciLintLimitPerUser"`
 	// The maximum number of includes per pipeline.
 	CiMaxIncludes *int `pulumi:"ciMaxIncludes"`
 	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
@@ -919,6 +1033,12 @@ type applicationSettingsState struct {
 	ConcurrentBitbucketServerImportJobsLimit *int `pulumi:"concurrentBitbucketServerImportJobsLimit"`
 	// Maximum number of simultaneous import jobs for the GitHub importer.
 	ConcurrentGithubImportJobsLimit *int `pulumi:"concurrentGithubImportJobsLimit"`
+	// Maximum number of simultaneous pull request import jobs for the GitHub, Bitbucket Cloud, and Bitbucket Server importers. Default is 200. Introduced in GitLab 19.4.
+	ConcurrentPullRequestImportJobsLimit *int `pulumi:"concurrentPullRequestImportJobsLimit"`
+	// Maximum number of simultaneous batch export jobs to process. Introduced in GitLab 17.6.
+	ConcurrentRelationBatchExportLimit *int `pulumi:"concurrentRelationBatchExportLimit"`
+	// Maximum number of simultaneous project file exports to process. Default: 25. Introduced in GitLab 19.4 with a feature flag named limit*concurrent*project_exports. Disabled by default.
+	ConcurrentRelationExportLimit *int `pulumi:"concurrentRelationExportLimit"`
 	// Enable cleanup policies for all projects.
 	ContainerExpirationPoliciesEnableHistoricEntries *bool `pulumi:"containerExpirationPoliciesEnableHistoricEntries"`
 	// The maximum number of tags that can be deleted in a single execution of cleanup policies.
@@ -1099,6 +1219,8 @@ type applicationSettingsState struct {
 	GeoNodeAllowedIps *string `pulumi:"geoNodeAllowedIps"`
 	// The amount of seconds after which a request to get a secondary node status times out.
 	GeoStatusTimeout *int `pulumi:"geoStatusTimeout"`
+	// Set the maximum number of tag or branch pipelines that can be triggered by a single Git push. For more information about this limit, see number of pipelines per Git push.
+	GitPushPipelineLimit *int `pulumi:"gitPushPipelineLimit"`
 	// List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
 	GitRateLimitUsersAlertlists []int `pulumi:"gitRateLimitUsersAlertlists"`
 	// List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
@@ -1129,8 +1251,16 @@ type applicationSettingsState struct {
 	GrafanaUrl *string `pulumi:"grafanaUrl"`
 	// Enable Gravatar.
 	GravatarEnabled *bool `pulumi:"gravatarEnabled"`
+	// Maximum number of group export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	GroupDownloadExportLimit *int `pulumi:"groupDownloadExportLimit"`
+	// Maximum number of group exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	GroupExportLimit *int `pulumi:"groupExportLimit"`
+	// Maximum number of group imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	GroupImportLimit *int `pulumi:"groupImportLimit"`
 	// Prevent overrides of default branch protection.
 	GroupOwnersCanManageDefaultBranchProtection *bool `pulumi:"groupOwnersCanManageDefaultBranchProtection"`
+	// Maximum number of secrets allowed per group in Secrets Manager. Default: 500. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+	GroupSecretsLimit *int `pulumi:"groupSecretsLimit"`
 	// Hide marketing-related entries from help.
 	HelpPageHideCommercialContent *bool `pulumi:"helpPageHideCommercialContent"`
 	// Alternate support URL for help page and help dropdown.
@@ -1149,6 +1279,8 @@ type applicationSettingsState struct {
 	HousekeepingOptimizeRepositoryPeriod *int `pulumi:"housekeepingOptimizeRepositoryPeriod"`
 	// Enable HTML emails.
 	HtmlEmailsEnabled *bool `pulumi:"htmlEmailsEnabled"`
+	// Maximum number of concurrently running jobs for each import worker type (project and group file base import, Direct Transfer, and GitHub, Bitbucket Cloud, and Bitbucket Server importer stages). Applied independently per worker type. Default is 100. Introduced in GitLab 19.1.
+	ImportJobsConcurrencyLimit *int `pulumi:"importJobsConcurrencyLimit"`
 	// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
 	ImportSources []string `pulumi:"importSources"`
 	// Enable in-product marketing emails.
@@ -1173,6 +1305,10 @@ type applicationSettingsState struct {
 	JiraConnectProxyUrl *string `pulumi:"jiraConnectProxyUrl"`
 	// Enable public key storage for the GitLab for Jira Cloud app.
 	JiraConnectPublicKeyStorageEnabled *bool `pulumi:"jiraConnectPublicKeyStorageEnabled"`
+	// Maximum number of manual job runs per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_play. Disabled by default.
+	JobPlayLimitPerUserProject *int `pulumi:"jobPlayLimitPerUserProject"`
+	// Maximum number of job retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_retry. Disabled by default.
+	JobRetryLimitPerUserProject *int `pulumi:"jobRetryLimitPerUserProject"`
 	// Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
 	KeepLatestArtifact *bool `pulumi:"keepLatestArtifact"`
 	// (If enabled, requires: kroki_url) Enable Kroki integration.
@@ -1207,6 +1343,10 @@ type applicationSettingsState struct {
 	MaxDecompressedArchiveSize *int `pulumi:"maxDecompressedArchiveSize"`
 	// Maximum export size in MB. 0 for unlimited.
 	MaxExportSize *int `pulumi:"maxExportSize"`
+	// Maximum allowed GitHub API response size in MB. 0 for unlimited.
+	MaxGithubResponseSizeLimit *int `pulumi:"maxGithubResponseSizeLimit"`
+	// Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4.
+	MaxHttpResponseSizeLimit *int `pulumi:"maxHttpResponseSizeLimit"`
 	// Maximum remote file size for imports from external object storages.
 	MaxImportRemoteFileSize *int `pulumi:"maxImportRemoteFileSize"`
 	// Maximum import size in MB. 0 for unlimited.
@@ -1241,6 +1381,8 @@ type applicationSettingsState struct {
 	MirrorMaxCapacity *int `pulumi:"mirrorMaxCapacity"`
 	// Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
 	MirrorMaxDelay *int `pulumi:"mirrorMaxDelay"`
+	// Maximum number of notes (comments) a user can create per minute. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	NotesCreateLimit *int `pulumi:"notesCreateLimit"`
 	// Enable sending notification if sign in from unknown IP address happens
 	NotifyOnUnknownSignIn *bool `pulumi:"notifyOnUnknownSignIn"`
 	// Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
@@ -1275,8 +1417,14 @@ type applicationSettingsState struct {
 	PerformanceBarAllowedGroupPath *string `pulumi:"performanceBarAllowedGroupPath"`
 	// Prefix for all generated personal access tokens.
 	PersonalAccessTokenPrefix *string `pulumi:"personalAccessTokenPrefix"`
+	// Maximum number of pipeline cancellations per minute per user per project. Introduced in GitLab 19.5.
+	PipelineCancelLimitPerUserProject *int `pulumi:"pipelineCancelLimitPerUserProject"`
 	// Maximum number of pipeline creation requests per minute per user and commit.
 	PipelineLimitPerProjectUserSha *int `pulumi:"pipelineLimitPerProjectUserSha"`
+	// Maximum number of pipeline creation requests per minute per user.
+	PipelineLimitPerUser *int `pulumi:"pipelineLimitPerUser"`
+	// Maximum number of pipeline retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*pipeline_retry. Disabled by default.
+	PipelineRetryLimitPerUserProject *int `pulumi:"pipelineRetryLimitPerUserProject"`
 	// (If enabled, requires: plantuml_url) Enable PlantUML integration.
 	PlantumlEnabled *bool `pulumi:"plantumlEnabled"`
 	// The PlantUML instance URL for integration.
@@ -1287,10 +1435,18 @@ type applicationSettingsState struct {
 	PreventMergeRequestsAuthorApproval *bool `pulumi:"preventMergeRequestsAuthorApproval"`
 	// Prevent approval by committers to merge requests.
 	PreventMergeRequestsCommittersApproval *bool `pulumi:"preventMergeRequestsCommittersApproval"`
+	// Maximum number of project export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ProjectDownloadExportLimit *int `pulumi:"projectDownloadExportLimit"`
 	// Enable project export.
 	ProjectExportEnabled *bool `pulumi:"projectExportEnabled"`
+	// Maximum number of project exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ProjectExportLimit *int `pulumi:"projectExportLimit"`
+	// Maximum number of project imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ProjectImportLimit *int `pulumi:"projectImportLimit"`
 	// Maximum authenticated requests to /project/:id/jobs per minute.
 	ProjectJobsApiRateLimit *int `pulumi:"projectJobsApiRateLimit"`
+	// Maximum number of secrets allowed per project in Secrets Manager. Default: 100. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+	ProjectSecretsLimit *int `pulumi:"projectSecretsLimit"`
 	// Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
 	ProjectsApiRateLimitUnauthenticated *int `pulumi:"projectsApiRateLimitUnauthenticated"`
 	// Enable Prometheus metrics.
@@ -1307,6 +1463,8 @@ type applicationSettingsState struct {
 	RateLimitingResponseText *string `pulumi:"rateLimitingResponseText"`
 	// Max number of requests per minute for each raw path. To disable throttling set to 0.
 	RawBlobRequestLimit *int `pulumi:"rawBlobRequestLimit"`
+	// Maximum number of unauthenticated requests per minute across all raw paths in a project (default is 800). Set to 0 to disable throttling.
+	RawBlobRequestLimitUnauthenticated *int `pulumi:"rawBlobRequestLimitUnauthenticated"`
 	// (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
 	RecaptchaEnabled *bool `pulumi:"recaptchaEnabled"`
 	// Private key for reCAPTCHA.
@@ -1337,6 +1495,16 @@ type applicationSettingsState struct {
 	RestrictedVisibilityLevels []string `pulumi:"restrictedVisibilityLevels"`
 	// The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
 	RsaKeyRestriction *int `pulumi:"rsaKeyRestriction"`
+	// Maximum number of requests per minute per job token for requests to /jobs/* requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. Introduced in GitLab 18.5.
+	RunnerJobsEndpointsApiLimit *int `pulumi:"runnerJobsEndpointsApiLimit"`
+	// Maximum number of requests per minute per runner token for requests to the PATCH /jobs/:id/trace runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+	RunnerJobsPatchTraceApiLimit *int `pulumi:"runnerJobsPatchTraceApiLimit"`
+	// Maximum number of requests per minute per runner token for requests to the /jobs/request runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+	RunnerJobsRequestApiLimit *int `pulumi:"runnerJobsRequestApiLimit"`
+	// Maximum number of actions per scan execution policy. Default: 0. Maximum: 20.
+	ScanExecutionPoliciesActionLimit *int `pulumi:"scanExecutionPoliciesActionLimit"`
+	// Maximum number of type: schedule rules per scan execution policy. Default: 0. Maximum: 20.
+	ScanExecutionPoliciesScheduleLimit *int `pulumi:"scanExecutionPoliciesScheduleLimit"`
 	// Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
 	SearchRateLimit *int `pulumi:"searchRateLimit"`
 	// Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
@@ -1417,6 +1585,8 @@ type applicationSettingsState struct {
 	StaticObjectsExternalStorageUrl *string `pulumi:"staticObjectsExternalStorageUrl"`
 	// Enable pipeline suggestion banner.
 	SuggestPipelineEnabled *bool `pulumi:"suggestPipelineEnabled"`
+	// Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL tagCreate mutation, tag creation in the UI, and the /tag quick action. Default: 100. Set to 0 to disable the rate limit. Introduced in GitLab 19.4.
+	TagsCreateLimit *int `pulumi:"tagsCreateLimit"`
 	// Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
 	TerminalMaxSessionTime *int `pulumi:"terminalMaxSessionTime"`
 	// (Required by: enforce_terms) Markdown content for the ToS.
@@ -1427,12 +1597,42 @@ type applicationSettingsState struct {
 	ThrottleAuthenticatedApiPeriodInSeconds *int `pulumi:"throttleAuthenticatedApiPeriodInSeconds"`
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedApiRequestsPerPeriod *int `pulumi:"throttleAuthenticatedApiRequestsPerPeriod"`
+	// If true, enforces the authenticated dependency proxy request rate limit. Default value: false. Introduced in GitLab 19.4.
+	ThrottleAuthenticatedDependencyProxyEnabled *bool `pulumi:"throttleAuthenticatedDependencyProxyEnabled"`
+	// Rate limit period in seconds. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 15. Introduced in GitLab 19.4.
+	ThrottleAuthenticatedDependencyProxyPeriodInSeconds *int `pulumi:"throttleAuthenticatedDependencyProxyPeriodInSeconds"`
+	// Maximum requests per period per user. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 1000. Introduced in GitLab 19.4.
+	ThrottleAuthenticatedDependencyProxyRequestsPerPeriod *int `pulumi:"throttleAuthenticatedDependencyProxyRequestsPerPeriod"`
+	// (If enabled, requires: throttle*authenticated*deprecated*api*period*in*seconds and throttle*authenticated*deprecated*api*requests*per*period) Enable authenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedDeprecatedApiEnabled *bool `pulumi:"throttleAuthenticatedDeprecatedApiEnabled"`
+	// Rate limit period (in seconds) for authenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedDeprecatedApiPeriodInSeconds *int `pulumi:"throttleAuthenticatedDeprecatedApiPeriodInSeconds"`
+	// Maximum authenticated deprecated API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedDeprecatedApiRequestsPerPeriod *int `pulumi:"throttleAuthenticatedDeprecatedApiRequestsPerPeriod"`
+	// (If enabled, requires: throttle*authenticated*files*api*period*in*seconds and throttle*authenticated*files*api*requests*per*period) Enable authenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedFilesApiEnabled *bool `pulumi:"throttleAuthenticatedFilesApiEnabled"`
+	// Rate limit period (in seconds) for authenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedFilesApiPeriodInSeconds *int `pulumi:"throttleAuthenticatedFilesApiPeriodInSeconds"`
+	// Maximum authenticated Files API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedFilesApiRequestsPerPeriod *int `pulumi:"throttleAuthenticatedFilesApiRequestsPerPeriod"`
+	// If true, enforces the authenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+	ThrottleAuthenticatedGitHttpEnabled *bool `pulumi:"throttleAuthenticatedGitHttpEnabled"`
+	// Rate limit period in seconds. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+	ThrottleAuthenticatedGitHttpPeriodInSeconds *int `pulumi:"throttleAuthenticatedGitHttpPeriodInSeconds"`
+	// Maximum requests per period per user. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+	ThrottleAuthenticatedGitHttpRequestsPerPeriod *int `pulumi:"throttleAuthenticatedGitHttpRequestsPerPeriod"`
 	// Enable authenticated Git LFS request rate limit.
 	ThrottleAuthenticatedGitLfsEnabled *bool `pulumi:"throttleAuthenticatedGitLfsEnabled"`
 	// Rate limit period (in seconds).
 	ThrottleAuthenticatedGitLfsPeriodInSeconds *int `pulumi:"throttleAuthenticatedGitLfsPeriodInSeconds"`
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedGitLfsRequestsPerPeriod *int `pulumi:"throttleAuthenticatedGitLfsRequestsPerPeriod"`
+	// (If enabled, requires: throttle*authenticated*mcp*period*in*seconds and throttle*authenticated*mcp*requests*per*period) If true, enforces the rate limit on requests to the MCP Server endpoint, /api/v4/mcp, for any HTTP method. Does not apply to other MCP endpoints. Introduced in GitLab 19.5.
+	ThrottleAuthenticatedMcpEnabled *bool `pulumi:"throttleAuthenticatedMcpEnabled"`
+	// Rate limit period in seconds. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+	ThrottleAuthenticatedMcpPeriodInSeconds *int `pulumi:"throttleAuthenticatedMcpPeriodInSeconds"`
+	// Maximum requests per period per user. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+	ThrottleAuthenticatedMcpRequestsPerPeriod *int `pulumi:"throttleAuthenticatedMcpRequestsPerPeriod"`
 	// (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 	ThrottleAuthenticatedPackagesApiEnabled *bool `pulumi:"throttleAuthenticatedPackagesApiEnabled"`
 	// Rate limit period (in seconds). View Package Registry rate limits for more details.
@@ -1445,18 +1645,60 @@ type applicationSettingsState struct {
 	ThrottleAuthenticatedWebPeriodInSeconds *int `pulumi:"throttleAuthenticatedWebPeriodInSeconds"`
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedWebRequestsPerPeriod *int `pulumi:"throttleAuthenticatedWebRequestsPerPeriod"`
+	// If true, enforces the inbound incident management alert notification rate limit, per project. Default value: false.
+	ThrottleIncidentManagementNotificationEnabled *bool `pulumi:"throttleIncidentManagementNotificationEnabled"`
+	// Maximum inbound incident management alert notifications per period, per project. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+	ThrottleIncidentManagementNotificationPerPeriod *int `pulumi:"throttleIncidentManagementNotificationPerPeriod"`
+	// Rate limit period in seconds. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+	ThrottleIncidentManagementNotificationPeriodInSeconds *int `pulumi:"throttleIncidentManagementNotificationPeriodInSeconds"`
+	// (If enabled, requires: throttle*protected*paths*period*in*seconds and throttle*protected*paths*requests*per*period) Enable rate limiting for protected paths (for example, sign-in and password reset). Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleProtectedPathsEnabled *bool `pulumi:"throttleProtectedPathsEnabled"`
+	// Rate limit period (in seconds) for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleProtectedPathsPeriodInSeconds *int `pulumi:"throttleProtectedPathsPeriodInSeconds"`
+	// Maximum requests per period per IP for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleProtectedPathsRequestsPerPeriod *int `pulumi:"throttleProtectedPathsRequestsPerPeriod"`
 	// (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
 	ThrottleUnauthenticatedApiEnabled *bool `pulumi:"throttleUnauthenticatedApiEnabled"`
 	// Rate limit period in seconds.
 	ThrottleUnauthenticatedApiPeriodInSeconds *int `pulumi:"throttleUnauthenticatedApiPeriodInSeconds"`
 	// Max requests per period per IP.
 	ThrottleUnauthenticatedApiRequestsPerPeriod *int `pulumi:"throttleUnauthenticatedApiRequestsPerPeriod"`
+	// (If enabled, requires: throttle*unauthenticated*deprecated*api*period*in*seconds and throttle*unauthenticated*deprecated*api*requests*per*period) Enable unauthenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedDeprecatedApiEnabled *bool `pulumi:"throttleUnauthenticatedDeprecatedApiEnabled"`
+	// Rate limit period (in seconds) for unauthenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedDeprecatedApiPeriodInSeconds *int `pulumi:"throttleUnauthenticatedDeprecatedApiPeriodInSeconds"`
+	// Maximum unauthenticated deprecated API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedDeprecatedApiRequestsPerPeriod *int `pulumi:"throttleUnauthenticatedDeprecatedApiRequestsPerPeriod"`
+	// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*enabled or throttle*unauthenticated*api*enabled instead.) (**If enabled, requires**: throttle*unauthenticated*period*in*seconds and throttle*unauthenticated*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
+	//
+	// Deprecated: Use throttleUnauthenticatedWebEnabled or throttleUnauthenticatedApiEnabled instead. (Deprecated in GitLab 14.3)
+	ThrottleUnauthenticatedEnabled *bool `pulumi:"throttleUnauthenticatedEnabled"`
+	// (If enabled, requires: throttle*unauthenticated*files*api*period*in*seconds and throttle*unauthenticated*files*api*requests*per*period) Enable unauthenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedFilesApiEnabled *bool `pulumi:"throttleUnauthenticatedFilesApiEnabled"`
+	// Rate limit period (in seconds) for unauthenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedFilesApiPeriodInSeconds *int `pulumi:"throttleUnauthenticatedFilesApiPeriodInSeconds"`
+	// Maximum unauthenticated Files API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedFilesApiRequestsPerPeriod *int `pulumi:"throttleUnauthenticatedFilesApiRequestsPerPeriod"`
+	// If true, enforces the unauthenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 17.0.
+	ThrottleUnauthenticatedGitHttpEnabled *bool `pulumi:"throttleUnauthenticatedGitHttpEnabled"`
+	// Rate limit period in seconds. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+	ThrottleUnauthenticatedGitHttpPeriodInSeconds *int `pulumi:"throttleUnauthenticatedGitHttpPeriodInSeconds"`
+	// Maximum requests per period per IP. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+	ThrottleUnauthenticatedGitHttpRequestsPerPeriod *int `pulumi:"throttleUnauthenticatedGitHttpRequestsPerPeriod"`
 	// (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 	ThrottleUnauthenticatedPackagesApiEnabled *bool `pulumi:"throttleUnauthenticatedPackagesApiEnabled"`
 	// Rate limit period (in seconds). View Package Registry rate limits for more details.
 	ThrottleUnauthenticatedPackagesApiPeriodInSeconds *int `pulumi:"throttleUnauthenticatedPackagesApiPeriodInSeconds"`
 	// Maximum requests per period per user. View Package Registry rate limits for more details.
 	ThrottleUnauthenticatedPackagesApiRequestsPerPeriod *int `pulumi:"throttleUnauthenticatedPackagesApiRequestsPerPeriod"`
+	// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*period*in*seconds or throttle*unauthenticated*api*period*in*seconds instead.) Rate limit period in seconds.
+	//
+	// Deprecated: Use throttleUnauthenticatedWebPeriodInSeconds or throttleUnauthenticatedApiPeriodInSeconds instead. (Deprecated in GitLab 14.3)
+	ThrottleUnauthenticatedPeriodInSeconds *int `pulumi:"throttleUnauthenticatedPeriodInSeconds"`
+	// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*requests*per*period or throttle*unauthenticated*api*requests*per*period instead.) Maximum requests per period per IP.
+	//
+	// Deprecated: Use throttleUnauthenticatedWebRequestsPerPeriod or throttleUnauthenticatedApiRequestsPerPeriod instead. (Deprecated in GitLab 14.3)
+	ThrottleUnauthenticatedRequestsPerPeriod *int `pulumi:"throttleUnauthenticatedRequestsPerPeriod"`
 	// (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
 	ThrottleUnauthenticatedWebEnabled *bool `pulumi:"throttleUnauthenticatedWebEnabled"`
 	// Rate limit period in seconds.
@@ -1495,10 +1737,32 @@ type applicationSettingsState struct {
 	UserOauthApplications *bool `pulumi:"userOauthApplications"`
 	// When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
 	UserShowAddSshKeyMessage *bool `pulumi:"userShowAddSshKeyMessage"`
+	// Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitFollowers *int `pulumi:"usersApiLimitFollowers"`
+	// Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitFollowing *int `pulumi:"usersApiLimitFollowing"`
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitGpgKey *int `pulumi:"usersApiLimitGpgKey"`
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitGpgKeys *int `pulumi:"usersApiLimitGpgKeys"`
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitSshKey *int `pulumi:"usersApiLimitSshKey"`
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitSshKeys *int `pulumi:"usersApiLimitSshKeys"`
+	// Maximum number of requests per minute, per user or IP address. Default: 240. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitStatus *int `pulumi:"usersApiLimitStatus"`
+	// Maximum number of requests per minute per user to the GET /users/:id API endpoint. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	UsersGetByIdLimit *int `pulumi:"usersGetByIdLimit"`
+	// Usernames excluded from the users*get*by*id*limit rate limit, separated by newlines, commas or whitespace. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	UsersGetByIdLimitAllowlistRaw *string `pulumi:"usersGetByIdLimitAllowlistRaw"`
 	// List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
 	ValidRunnerRegistrars []string `pulumi:"validRunnerRegistrars"`
 	// Let GitLab inform you when an update is available.
 	VersionCheckEnabled *bool `pulumi:"versionCheckEnabled"`
+	// Maximum number of webhook event resend requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+	WebHookEventResendLimit *int `pulumi:"webHookEventResendLimit"`
+	// Maximum number of webhook test requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+	WebHookTestLimit *int `pulumi:"webHookTestLimit"`
 	// Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
 	WebIdeClientsidePreviewEnabled *bool `pulumi:"webIdeClientsidePreviewEnabled"`
 	// What's new variant, possible values: all*tiers, current*tier, and disabled.
@@ -1516,6 +1780,8 @@ type ApplicationSettingsState struct {
 	AfterSignOutPath pulumi.StringPtrInput
 	// Text shown to the user after signing up.
 	AfterSignUpText pulumi.StringPtrInput
+	// Maximum number of requests allowed to the aiAction GraphQL mutation per user per eight hours. Default: 160. Set to 0 to disable the rate limit. Introduced in GitLab 17.2.
+	AiActionApiRateLimit pulumi.IntPtrInput
 	// API key for Akismet spam protection.
 	AkismetApiKey pulumi.StringPtrInput
 	// (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
@@ -1556,6 +1822,10 @@ type ApplicationSettingsState struct {
 	AutoDevopsDomain pulumi.StringPtrInput
 	// Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
 	AutoDevopsEnabled pulumi.BoolPtrInput
+	// Maximum number of authenticated requests per minute to the GET /autocomplete/users endpoint.
+	AutocompleteUsersLimit pulumi.IntPtrInput
+	// Maximum number of unauthenticated requests per minute to the GET /autocomplete/users endpoint.
+	AutocompleteUsersUnauthenticatedLimit pulumi.IntPtrInput
 	// Enabling this permits automatic allocation of purchased storage in a namespace.
 	AutomaticPurchasedStorageAllocation pulumi.BoolPtrInput
 	// Maximum simultaneous Direct Transfer batches to process.
@@ -1570,6 +1840,8 @@ type ApplicationSettingsState struct {
 	CheckNamespacePlan pulumi.BoolPtrInput
 	// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
 	CiJobLiveTraceEnabled pulumi.BoolPtrInput
+	// Maximum number of CI Lint requests per minute per user. Disabled by default.
+	CiLintLimitPerUser pulumi.IntPtrInput
 	// The maximum number of includes per pipeline.
 	CiMaxIncludes pulumi.IntPtrInput
 	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
@@ -1582,6 +1854,12 @@ type ApplicationSettingsState struct {
 	ConcurrentBitbucketServerImportJobsLimit pulumi.IntPtrInput
 	// Maximum number of simultaneous import jobs for the GitHub importer.
 	ConcurrentGithubImportJobsLimit pulumi.IntPtrInput
+	// Maximum number of simultaneous pull request import jobs for the GitHub, Bitbucket Cloud, and Bitbucket Server importers. Default is 200. Introduced in GitLab 19.4.
+	ConcurrentPullRequestImportJobsLimit pulumi.IntPtrInput
+	// Maximum number of simultaneous batch export jobs to process. Introduced in GitLab 17.6.
+	ConcurrentRelationBatchExportLimit pulumi.IntPtrInput
+	// Maximum number of simultaneous project file exports to process. Default: 25. Introduced in GitLab 19.4 with a feature flag named limit*concurrent*project_exports. Disabled by default.
+	ConcurrentRelationExportLimit pulumi.IntPtrInput
 	// Enable cleanup policies for all projects.
 	ContainerExpirationPoliciesEnableHistoricEntries pulumi.BoolPtrInput
 	// The maximum number of tags that can be deleted in a single execution of cleanup policies.
@@ -1762,6 +2040,8 @@ type ApplicationSettingsState struct {
 	GeoNodeAllowedIps pulumi.StringPtrInput
 	// The amount of seconds after which a request to get a secondary node status times out.
 	GeoStatusTimeout pulumi.IntPtrInput
+	// Set the maximum number of tag or branch pipelines that can be triggered by a single Git push. For more information about this limit, see number of pipelines per Git push.
+	GitPushPipelineLimit pulumi.IntPtrInput
 	// List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
 	GitRateLimitUsersAlertlists pulumi.IntArrayInput
 	// List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
@@ -1792,8 +2072,16 @@ type ApplicationSettingsState struct {
 	GrafanaUrl pulumi.StringPtrInput
 	// Enable Gravatar.
 	GravatarEnabled pulumi.BoolPtrInput
+	// Maximum number of group export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	GroupDownloadExportLimit pulumi.IntPtrInput
+	// Maximum number of group exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	GroupExportLimit pulumi.IntPtrInput
+	// Maximum number of group imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	GroupImportLimit pulumi.IntPtrInput
 	// Prevent overrides of default branch protection.
 	GroupOwnersCanManageDefaultBranchProtection pulumi.BoolPtrInput
+	// Maximum number of secrets allowed per group in Secrets Manager. Default: 500. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+	GroupSecretsLimit pulumi.IntPtrInput
 	// Hide marketing-related entries from help.
 	HelpPageHideCommercialContent pulumi.BoolPtrInput
 	// Alternate support URL for help page and help dropdown.
@@ -1812,6 +2100,8 @@ type ApplicationSettingsState struct {
 	HousekeepingOptimizeRepositoryPeriod pulumi.IntPtrInput
 	// Enable HTML emails.
 	HtmlEmailsEnabled pulumi.BoolPtrInput
+	// Maximum number of concurrently running jobs for each import worker type (project and group file base import, Direct Transfer, and GitHub, Bitbucket Cloud, and Bitbucket Server importer stages). Applied independently per worker type. Default is 100. Introduced in GitLab 19.1.
+	ImportJobsConcurrencyLimit pulumi.IntPtrInput
 	// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
 	ImportSources pulumi.StringArrayInput
 	// Enable in-product marketing emails.
@@ -1836,6 +2126,10 @@ type ApplicationSettingsState struct {
 	JiraConnectProxyUrl pulumi.StringPtrInput
 	// Enable public key storage for the GitLab for Jira Cloud app.
 	JiraConnectPublicKeyStorageEnabled pulumi.BoolPtrInput
+	// Maximum number of manual job runs per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_play. Disabled by default.
+	JobPlayLimitPerUserProject pulumi.IntPtrInput
+	// Maximum number of job retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_retry. Disabled by default.
+	JobRetryLimitPerUserProject pulumi.IntPtrInput
 	// Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
 	KeepLatestArtifact pulumi.BoolPtrInput
 	// (If enabled, requires: kroki_url) Enable Kroki integration.
@@ -1870,6 +2164,10 @@ type ApplicationSettingsState struct {
 	MaxDecompressedArchiveSize pulumi.IntPtrInput
 	// Maximum export size in MB. 0 for unlimited.
 	MaxExportSize pulumi.IntPtrInput
+	// Maximum allowed GitHub API response size in MB. 0 for unlimited.
+	MaxGithubResponseSizeLimit pulumi.IntPtrInput
+	// Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4.
+	MaxHttpResponseSizeLimit pulumi.IntPtrInput
 	// Maximum remote file size for imports from external object storages.
 	MaxImportRemoteFileSize pulumi.IntPtrInput
 	// Maximum import size in MB. 0 for unlimited.
@@ -1904,6 +2202,8 @@ type ApplicationSettingsState struct {
 	MirrorMaxCapacity pulumi.IntPtrInput
 	// Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
 	MirrorMaxDelay pulumi.IntPtrInput
+	// Maximum number of notes (comments) a user can create per minute. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	NotesCreateLimit pulumi.IntPtrInput
 	// Enable sending notification if sign in from unknown IP address happens
 	NotifyOnUnknownSignIn pulumi.BoolPtrInput
 	// Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
@@ -1938,8 +2238,14 @@ type ApplicationSettingsState struct {
 	PerformanceBarAllowedGroupPath pulumi.StringPtrInput
 	// Prefix for all generated personal access tokens.
 	PersonalAccessTokenPrefix pulumi.StringPtrInput
+	// Maximum number of pipeline cancellations per minute per user per project. Introduced in GitLab 19.5.
+	PipelineCancelLimitPerUserProject pulumi.IntPtrInput
 	// Maximum number of pipeline creation requests per minute per user and commit.
 	PipelineLimitPerProjectUserSha pulumi.IntPtrInput
+	// Maximum number of pipeline creation requests per minute per user.
+	PipelineLimitPerUser pulumi.IntPtrInput
+	// Maximum number of pipeline retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*pipeline_retry. Disabled by default.
+	PipelineRetryLimitPerUserProject pulumi.IntPtrInput
 	// (If enabled, requires: plantuml_url) Enable PlantUML integration.
 	PlantumlEnabled pulumi.BoolPtrInput
 	// The PlantUML instance URL for integration.
@@ -1950,10 +2256,18 @@ type ApplicationSettingsState struct {
 	PreventMergeRequestsAuthorApproval pulumi.BoolPtrInput
 	// Prevent approval by committers to merge requests.
 	PreventMergeRequestsCommittersApproval pulumi.BoolPtrInput
+	// Maximum number of project export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ProjectDownloadExportLimit pulumi.IntPtrInput
 	// Enable project export.
 	ProjectExportEnabled pulumi.BoolPtrInput
+	// Maximum number of project exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ProjectExportLimit pulumi.IntPtrInput
+	// Maximum number of project imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ProjectImportLimit pulumi.IntPtrInput
 	// Maximum authenticated requests to /project/:id/jobs per minute.
 	ProjectJobsApiRateLimit pulumi.IntPtrInput
+	// Maximum number of secrets allowed per project in Secrets Manager. Default: 100. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+	ProjectSecretsLimit pulumi.IntPtrInput
 	// Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
 	ProjectsApiRateLimitUnauthenticated pulumi.IntPtrInput
 	// Enable Prometheus metrics.
@@ -1970,6 +2284,8 @@ type ApplicationSettingsState struct {
 	RateLimitingResponseText pulumi.StringPtrInput
 	// Max number of requests per minute for each raw path. To disable throttling set to 0.
 	RawBlobRequestLimit pulumi.IntPtrInput
+	// Maximum number of unauthenticated requests per minute across all raw paths in a project (default is 800). Set to 0 to disable throttling.
+	RawBlobRequestLimitUnauthenticated pulumi.IntPtrInput
 	// (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
 	RecaptchaEnabled pulumi.BoolPtrInput
 	// Private key for reCAPTCHA.
@@ -2000,6 +2316,16 @@ type ApplicationSettingsState struct {
 	RestrictedVisibilityLevels pulumi.StringArrayInput
 	// The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
 	RsaKeyRestriction pulumi.IntPtrInput
+	// Maximum number of requests per minute per job token for requests to /jobs/* requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. Introduced in GitLab 18.5.
+	RunnerJobsEndpointsApiLimit pulumi.IntPtrInput
+	// Maximum number of requests per minute per runner token for requests to the PATCH /jobs/:id/trace runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+	RunnerJobsPatchTraceApiLimit pulumi.IntPtrInput
+	// Maximum number of requests per minute per runner token for requests to the /jobs/request runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+	RunnerJobsRequestApiLimit pulumi.IntPtrInput
+	// Maximum number of actions per scan execution policy. Default: 0. Maximum: 20.
+	ScanExecutionPoliciesActionLimit pulumi.IntPtrInput
+	// Maximum number of type: schedule rules per scan execution policy. Default: 0. Maximum: 20.
+	ScanExecutionPoliciesScheduleLimit pulumi.IntPtrInput
 	// Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
 	SearchRateLimit pulumi.IntPtrInput
 	// Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
@@ -2080,6 +2406,8 @@ type ApplicationSettingsState struct {
 	StaticObjectsExternalStorageUrl pulumi.StringPtrInput
 	// Enable pipeline suggestion banner.
 	SuggestPipelineEnabled pulumi.BoolPtrInput
+	// Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL tagCreate mutation, tag creation in the UI, and the /tag quick action. Default: 100. Set to 0 to disable the rate limit. Introduced in GitLab 19.4.
+	TagsCreateLimit pulumi.IntPtrInput
 	// Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
 	TerminalMaxSessionTime pulumi.IntPtrInput
 	// (Required by: enforce_terms) Markdown content for the ToS.
@@ -2090,12 +2418,42 @@ type ApplicationSettingsState struct {
 	ThrottleAuthenticatedApiPeriodInSeconds pulumi.IntPtrInput
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedApiRequestsPerPeriod pulumi.IntPtrInput
+	// If true, enforces the authenticated dependency proxy request rate limit. Default value: false. Introduced in GitLab 19.4.
+	ThrottleAuthenticatedDependencyProxyEnabled pulumi.BoolPtrInput
+	// Rate limit period in seconds. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 15. Introduced in GitLab 19.4.
+	ThrottleAuthenticatedDependencyProxyPeriodInSeconds pulumi.IntPtrInput
+	// Maximum requests per period per user. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 1000. Introduced in GitLab 19.4.
+	ThrottleAuthenticatedDependencyProxyRequestsPerPeriod pulumi.IntPtrInput
+	// (If enabled, requires: throttle*authenticated*deprecated*api*period*in*seconds and throttle*authenticated*deprecated*api*requests*per*period) Enable authenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedDeprecatedApiEnabled pulumi.BoolPtrInput
+	// Rate limit period (in seconds) for authenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedDeprecatedApiPeriodInSeconds pulumi.IntPtrInput
+	// Maximum authenticated deprecated API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedDeprecatedApiRequestsPerPeriod pulumi.IntPtrInput
+	// (If enabled, requires: throttle*authenticated*files*api*period*in*seconds and throttle*authenticated*files*api*requests*per*period) Enable authenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedFilesApiEnabled pulumi.BoolPtrInput
+	// Rate limit period (in seconds) for authenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedFilesApiPeriodInSeconds pulumi.IntPtrInput
+	// Maximum authenticated Files API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedFilesApiRequestsPerPeriod pulumi.IntPtrInput
+	// If true, enforces the authenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+	ThrottleAuthenticatedGitHttpEnabled pulumi.BoolPtrInput
+	// Rate limit period in seconds. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+	ThrottleAuthenticatedGitHttpPeriodInSeconds pulumi.IntPtrInput
+	// Maximum requests per period per user. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+	ThrottleAuthenticatedGitHttpRequestsPerPeriod pulumi.IntPtrInput
 	// Enable authenticated Git LFS request rate limit.
 	ThrottleAuthenticatedGitLfsEnabled pulumi.BoolPtrInput
 	// Rate limit period (in seconds).
 	ThrottleAuthenticatedGitLfsPeriodInSeconds pulumi.IntPtrInput
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedGitLfsRequestsPerPeriod pulumi.IntPtrInput
+	// (If enabled, requires: throttle*authenticated*mcp*period*in*seconds and throttle*authenticated*mcp*requests*per*period) If true, enforces the rate limit on requests to the MCP Server endpoint, /api/v4/mcp, for any HTTP method. Does not apply to other MCP endpoints. Introduced in GitLab 19.5.
+	ThrottleAuthenticatedMcpEnabled pulumi.BoolPtrInput
+	// Rate limit period in seconds. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+	ThrottleAuthenticatedMcpPeriodInSeconds pulumi.IntPtrInput
+	// Maximum requests per period per user. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+	ThrottleAuthenticatedMcpRequestsPerPeriod pulumi.IntPtrInput
 	// (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 	ThrottleAuthenticatedPackagesApiEnabled pulumi.BoolPtrInput
 	// Rate limit period (in seconds). View Package Registry rate limits for more details.
@@ -2108,18 +2466,60 @@ type ApplicationSettingsState struct {
 	ThrottleAuthenticatedWebPeriodInSeconds pulumi.IntPtrInput
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedWebRequestsPerPeriod pulumi.IntPtrInput
+	// If true, enforces the inbound incident management alert notification rate limit, per project. Default value: false.
+	ThrottleIncidentManagementNotificationEnabled pulumi.BoolPtrInput
+	// Maximum inbound incident management alert notifications per period, per project. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+	ThrottleIncidentManagementNotificationPerPeriod pulumi.IntPtrInput
+	// Rate limit period in seconds. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+	ThrottleIncidentManagementNotificationPeriodInSeconds pulumi.IntPtrInput
+	// (If enabled, requires: throttle*protected*paths*period*in*seconds and throttle*protected*paths*requests*per*period) Enable rate limiting for protected paths (for example, sign-in and password reset). Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleProtectedPathsEnabled pulumi.BoolPtrInput
+	// Rate limit period (in seconds) for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleProtectedPathsPeriodInSeconds pulumi.IntPtrInput
+	// Maximum requests per period per IP for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleProtectedPathsRequestsPerPeriod pulumi.IntPtrInput
 	// (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
 	ThrottleUnauthenticatedApiEnabled pulumi.BoolPtrInput
 	// Rate limit period in seconds.
 	ThrottleUnauthenticatedApiPeriodInSeconds pulumi.IntPtrInput
 	// Max requests per period per IP.
 	ThrottleUnauthenticatedApiRequestsPerPeriod pulumi.IntPtrInput
+	// (If enabled, requires: throttle*unauthenticated*deprecated*api*period*in*seconds and throttle*unauthenticated*deprecated*api*requests*per*period) Enable unauthenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedDeprecatedApiEnabled pulumi.BoolPtrInput
+	// Rate limit period (in seconds) for unauthenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedDeprecatedApiPeriodInSeconds pulumi.IntPtrInput
+	// Maximum unauthenticated deprecated API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedDeprecatedApiRequestsPerPeriod pulumi.IntPtrInput
+	// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*enabled or throttle*unauthenticated*api*enabled instead.) (**If enabled, requires**: throttle*unauthenticated*period*in*seconds and throttle*unauthenticated*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
+	//
+	// Deprecated: Use throttleUnauthenticatedWebEnabled or throttleUnauthenticatedApiEnabled instead. (Deprecated in GitLab 14.3)
+	ThrottleUnauthenticatedEnabled pulumi.BoolPtrInput
+	// (If enabled, requires: throttle*unauthenticated*files*api*period*in*seconds and throttle*unauthenticated*files*api*requests*per*period) Enable unauthenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedFilesApiEnabled pulumi.BoolPtrInput
+	// Rate limit period (in seconds) for unauthenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedFilesApiPeriodInSeconds pulumi.IntPtrInput
+	// Maximum unauthenticated Files API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedFilesApiRequestsPerPeriod pulumi.IntPtrInput
+	// If true, enforces the unauthenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 17.0.
+	ThrottleUnauthenticatedGitHttpEnabled pulumi.BoolPtrInput
+	// Rate limit period in seconds. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+	ThrottleUnauthenticatedGitHttpPeriodInSeconds pulumi.IntPtrInput
+	// Maximum requests per period per IP. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+	ThrottleUnauthenticatedGitHttpRequestsPerPeriod pulumi.IntPtrInput
 	// (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 	ThrottleUnauthenticatedPackagesApiEnabled pulumi.BoolPtrInput
 	// Rate limit period (in seconds). View Package Registry rate limits for more details.
 	ThrottleUnauthenticatedPackagesApiPeriodInSeconds pulumi.IntPtrInput
 	// Maximum requests per period per user. View Package Registry rate limits for more details.
 	ThrottleUnauthenticatedPackagesApiRequestsPerPeriod pulumi.IntPtrInput
+	// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*period*in*seconds or throttle*unauthenticated*api*period*in*seconds instead.) Rate limit period in seconds.
+	//
+	// Deprecated: Use throttleUnauthenticatedWebPeriodInSeconds or throttleUnauthenticatedApiPeriodInSeconds instead. (Deprecated in GitLab 14.3)
+	ThrottleUnauthenticatedPeriodInSeconds pulumi.IntPtrInput
+	// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*requests*per*period or throttle*unauthenticated*api*requests*per*period instead.) Maximum requests per period per IP.
+	//
+	// Deprecated: Use throttleUnauthenticatedWebRequestsPerPeriod or throttleUnauthenticatedApiRequestsPerPeriod instead. (Deprecated in GitLab 14.3)
+	ThrottleUnauthenticatedRequestsPerPeriod pulumi.IntPtrInput
 	// (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
 	ThrottleUnauthenticatedWebEnabled pulumi.BoolPtrInput
 	// Rate limit period in seconds.
@@ -2158,10 +2558,32 @@ type ApplicationSettingsState struct {
 	UserOauthApplications pulumi.BoolPtrInput
 	// When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
 	UserShowAddSshKeyMessage pulumi.BoolPtrInput
+	// Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitFollowers pulumi.IntPtrInput
+	// Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitFollowing pulumi.IntPtrInput
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitGpgKey pulumi.IntPtrInput
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitGpgKeys pulumi.IntPtrInput
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitSshKey pulumi.IntPtrInput
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitSshKeys pulumi.IntPtrInput
+	// Maximum number of requests per minute, per user or IP address. Default: 240. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitStatus pulumi.IntPtrInput
+	// Maximum number of requests per minute per user to the GET /users/:id API endpoint. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	UsersGetByIdLimit pulumi.IntPtrInput
+	// Usernames excluded from the users*get*by*id*limit rate limit, separated by newlines, commas or whitespace. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	UsersGetByIdLimitAllowlistRaw pulumi.StringPtrInput
 	// List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
 	ValidRunnerRegistrars pulumi.StringArrayInput
 	// Let GitLab inform you when an update is available.
 	VersionCheckEnabled pulumi.BoolPtrInput
+	// Maximum number of webhook event resend requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+	WebHookEventResendLimit pulumi.IntPtrInput
+	// Maximum number of webhook test requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+	WebHookTestLimit pulumi.IntPtrInput
 	// Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
 	WebIdeClientsidePreviewEnabled pulumi.BoolPtrInput
 	// What's new variant, possible values: all*tiers, current*tier, and disabled.
@@ -2189,6 +2611,8 @@ type applicationSettingsArgs struct {
 	AfterSignOutPath *string `pulumi:"afterSignOutPath"`
 	// Text shown to the user after signing up.
 	AfterSignUpText *string `pulumi:"afterSignUpText"`
+	// Maximum number of requests allowed to the aiAction GraphQL mutation per user per eight hours. Default: 160. Set to 0 to disable the rate limit. Introduced in GitLab 17.2.
+	AiActionApiRateLimit *int `pulumi:"aiActionApiRateLimit"`
 	// API key for Akismet spam protection.
 	AkismetApiKey *string `pulumi:"akismetApiKey"`
 	// (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
@@ -2229,6 +2653,10 @@ type applicationSettingsArgs struct {
 	AutoDevopsDomain *string `pulumi:"autoDevopsDomain"`
 	// Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
 	AutoDevopsEnabled *bool `pulumi:"autoDevopsEnabled"`
+	// Maximum number of authenticated requests per minute to the GET /autocomplete/users endpoint.
+	AutocompleteUsersLimit *int `pulumi:"autocompleteUsersLimit"`
+	// Maximum number of unauthenticated requests per minute to the GET /autocomplete/users endpoint.
+	AutocompleteUsersUnauthenticatedLimit *int `pulumi:"autocompleteUsersUnauthenticatedLimit"`
 	// Enabling this permits automatic allocation of purchased storage in a namespace.
 	AutomaticPurchasedStorageAllocation *bool `pulumi:"automaticPurchasedStorageAllocation"`
 	// Maximum simultaneous Direct Transfer batches to process.
@@ -2243,6 +2671,8 @@ type applicationSettingsArgs struct {
 	CheckNamespacePlan *bool `pulumi:"checkNamespacePlan"`
 	// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
 	CiJobLiveTraceEnabled *bool `pulumi:"ciJobLiveTraceEnabled"`
+	// Maximum number of CI Lint requests per minute per user. Disabled by default.
+	CiLintLimitPerUser *int `pulumi:"ciLintLimitPerUser"`
 	// The maximum number of includes per pipeline.
 	CiMaxIncludes *int `pulumi:"ciMaxIncludes"`
 	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
@@ -2255,6 +2685,12 @@ type applicationSettingsArgs struct {
 	ConcurrentBitbucketServerImportJobsLimit *int `pulumi:"concurrentBitbucketServerImportJobsLimit"`
 	// Maximum number of simultaneous import jobs for the GitHub importer.
 	ConcurrentGithubImportJobsLimit *int `pulumi:"concurrentGithubImportJobsLimit"`
+	// Maximum number of simultaneous pull request import jobs for the GitHub, Bitbucket Cloud, and Bitbucket Server importers. Default is 200. Introduced in GitLab 19.4.
+	ConcurrentPullRequestImportJobsLimit *int `pulumi:"concurrentPullRequestImportJobsLimit"`
+	// Maximum number of simultaneous batch export jobs to process. Introduced in GitLab 17.6.
+	ConcurrentRelationBatchExportLimit *int `pulumi:"concurrentRelationBatchExportLimit"`
+	// Maximum number of simultaneous project file exports to process. Default: 25. Introduced in GitLab 19.4 with a feature flag named limit*concurrent*project_exports. Disabled by default.
+	ConcurrentRelationExportLimit *int `pulumi:"concurrentRelationExportLimit"`
 	// Enable cleanup policies for all projects.
 	ContainerExpirationPoliciesEnableHistoricEntries *bool `pulumi:"containerExpirationPoliciesEnableHistoricEntries"`
 	// The maximum number of tags that can be deleted in a single execution of cleanup policies.
@@ -2435,6 +2871,8 @@ type applicationSettingsArgs struct {
 	GeoNodeAllowedIps *string `pulumi:"geoNodeAllowedIps"`
 	// The amount of seconds after which a request to get a secondary node status times out.
 	GeoStatusTimeout *int `pulumi:"geoStatusTimeout"`
+	// Set the maximum number of tag or branch pipelines that can be triggered by a single Git push. For more information about this limit, see number of pipelines per Git push.
+	GitPushPipelineLimit *int `pulumi:"gitPushPipelineLimit"`
 	// List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
 	GitRateLimitUsersAlertlists []int `pulumi:"gitRateLimitUsersAlertlists"`
 	// List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
@@ -2461,8 +2899,16 @@ type applicationSettingsArgs struct {
 	GrafanaUrl *string `pulumi:"grafanaUrl"`
 	// Enable Gravatar.
 	GravatarEnabled *bool `pulumi:"gravatarEnabled"`
+	// Maximum number of group export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	GroupDownloadExportLimit *int `pulumi:"groupDownloadExportLimit"`
+	// Maximum number of group exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	GroupExportLimit *int `pulumi:"groupExportLimit"`
+	// Maximum number of group imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	GroupImportLimit *int `pulumi:"groupImportLimit"`
 	// Prevent overrides of default branch protection.
 	GroupOwnersCanManageDefaultBranchProtection *bool `pulumi:"groupOwnersCanManageDefaultBranchProtection"`
+	// Maximum number of secrets allowed per group in Secrets Manager. Default: 500. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+	GroupSecretsLimit *int `pulumi:"groupSecretsLimit"`
 	// Hide marketing-related entries from help.
 	HelpPageHideCommercialContent *bool `pulumi:"helpPageHideCommercialContent"`
 	// Alternate support URL for help page and help dropdown.
@@ -2481,6 +2927,8 @@ type applicationSettingsArgs struct {
 	HousekeepingOptimizeRepositoryPeriod *int `pulumi:"housekeepingOptimizeRepositoryPeriod"`
 	// Enable HTML emails.
 	HtmlEmailsEnabled *bool `pulumi:"htmlEmailsEnabled"`
+	// Maximum number of concurrently running jobs for each import worker type (project and group file base import, Direct Transfer, and GitHub, Bitbucket Cloud, and Bitbucket Server importer stages). Applied independently per worker type. Default is 100. Introduced in GitLab 19.1.
+	ImportJobsConcurrencyLimit *int `pulumi:"importJobsConcurrencyLimit"`
 	// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
 	ImportSources []string `pulumi:"importSources"`
 	// Enable in-product marketing emails.
@@ -2505,6 +2953,10 @@ type applicationSettingsArgs struct {
 	JiraConnectProxyUrl *string `pulumi:"jiraConnectProxyUrl"`
 	// Enable public key storage for the GitLab for Jira Cloud app.
 	JiraConnectPublicKeyStorageEnabled *bool `pulumi:"jiraConnectPublicKeyStorageEnabled"`
+	// Maximum number of manual job runs per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_play. Disabled by default.
+	JobPlayLimitPerUserProject *int `pulumi:"jobPlayLimitPerUserProject"`
+	// Maximum number of job retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_retry. Disabled by default.
+	JobRetryLimitPerUserProject *int `pulumi:"jobRetryLimitPerUserProject"`
 	// Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
 	KeepLatestArtifact *bool `pulumi:"keepLatestArtifact"`
 	// (If enabled, requires: kroki_url) Enable Kroki integration.
@@ -2539,6 +2991,10 @@ type applicationSettingsArgs struct {
 	MaxDecompressedArchiveSize *int `pulumi:"maxDecompressedArchiveSize"`
 	// Maximum export size in MB. 0 for unlimited.
 	MaxExportSize *int `pulumi:"maxExportSize"`
+	// Maximum allowed GitHub API response size in MB. 0 for unlimited.
+	MaxGithubResponseSizeLimit *int `pulumi:"maxGithubResponseSizeLimit"`
+	// Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4.
+	MaxHttpResponseSizeLimit *int `pulumi:"maxHttpResponseSizeLimit"`
 	// Maximum remote file size for imports from external object storages.
 	MaxImportRemoteFileSize *int `pulumi:"maxImportRemoteFileSize"`
 	// Maximum import size in MB. 0 for unlimited.
@@ -2573,6 +3029,8 @@ type applicationSettingsArgs struct {
 	MirrorMaxCapacity *int `pulumi:"mirrorMaxCapacity"`
 	// Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
 	MirrorMaxDelay *int `pulumi:"mirrorMaxDelay"`
+	// Maximum number of notes (comments) a user can create per minute. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	NotesCreateLimit *int `pulumi:"notesCreateLimit"`
 	// Enable sending notification if sign in from unknown IP address happens
 	NotifyOnUnknownSignIn *bool `pulumi:"notifyOnUnknownSignIn"`
 	// Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
@@ -2607,8 +3065,14 @@ type applicationSettingsArgs struct {
 	PerformanceBarAllowedGroupPath *string `pulumi:"performanceBarAllowedGroupPath"`
 	// Prefix for all generated personal access tokens.
 	PersonalAccessTokenPrefix *string `pulumi:"personalAccessTokenPrefix"`
+	// Maximum number of pipeline cancellations per minute per user per project. Introduced in GitLab 19.5.
+	PipelineCancelLimitPerUserProject *int `pulumi:"pipelineCancelLimitPerUserProject"`
 	// Maximum number of pipeline creation requests per minute per user and commit.
 	PipelineLimitPerProjectUserSha *int `pulumi:"pipelineLimitPerProjectUserSha"`
+	// Maximum number of pipeline creation requests per minute per user.
+	PipelineLimitPerUser *int `pulumi:"pipelineLimitPerUser"`
+	// Maximum number of pipeline retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*pipeline_retry. Disabled by default.
+	PipelineRetryLimitPerUserProject *int `pulumi:"pipelineRetryLimitPerUserProject"`
 	// (If enabled, requires: plantuml_url) Enable PlantUML integration.
 	PlantumlEnabled *bool `pulumi:"plantumlEnabled"`
 	// The PlantUML instance URL for integration.
@@ -2619,10 +3083,18 @@ type applicationSettingsArgs struct {
 	PreventMergeRequestsAuthorApproval *bool `pulumi:"preventMergeRequestsAuthorApproval"`
 	// Prevent approval by committers to merge requests.
 	PreventMergeRequestsCommittersApproval *bool `pulumi:"preventMergeRequestsCommittersApproval"`
+	// Maximum number of project export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ProjectDownloadExportLimit *int `pulumi:"projectDownloadExportLimit"`
 	// Enable project export.
 	ProjectExportEnabled *bool `pulumi:"projectExportEnabled"`
+	// Maximum number of project exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ProjectExportLimit *int `pulumi:"projectExportLimit"`
+	// Maximum number of project imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ProjectImportLimit *int `pulumi:"projectImportLimit"`
 	// Maximum authenticated requests to /project/:id/jobs per minute.
 	ProjectJobsApiRateLimit *int `pulumi:"projectJobsApiRateLimit"`
+	// Maximum number of secrets allowed per project in Secrets Manager. Default: 100. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+	ProjectSecretsLimit *int `pulumi:"projectSecretsLimit"`
 	// Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
 	ProjectsApiRateLimitUnauthenticated *int `pulumi:"projectsApiRateLimitUnauthenticated"`
 	// Enable Prometheus metrics.
@@ -2639,6 +3111,8 @@ type applicationSettingsArgs struct {
 	RateLimitingResponseText *string `pulumi:"rateLimitingResponseText"`
 	// Max number of requests per minute for each raw path. To disable throttling set to 0.
 	RawBlobRequestLimit *int `pulumi:"rawBlobRequestLimit"`
+	// Maximum number of unauthenticated requests per minute across all raw paths in a project (default is 800). Set to 0 to disable throttling.
+	RawBlobRequestLimitUnauthenticated *int `pulumi:"rawBlobRequestLimitUnauthenticated"`
 	// (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
 	RecaptchaEnabled *bool `pulumi:"recaptchaEnabled"`
 	// Private key for reCAPTCHA.
@@ -2669,6 +3143,16 @@ type applicationSettingsArgs struct {
 	RestrictedVisibilityLevels []string `pulumi:"restrictedVisibilityLevels"`
 	// The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
 	RsaKeyRestriction *int `pulumi:"rsaKeyRestriction"`
+	// Maximum number of requests per minute per job token for requests to /jobs/* requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. Introduced in GitLab 18.5.
+	RunnerJobsEndpointsApiLimit *int `pulumi:"runnerJobsEndpointsApiLimit"`
+	// Maximum number of requests per minute per runner token for requests to the PATCH /jobs/:id/trace runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+	RunnerJobsPatchTraceApiLimit *int `pulumi:"runnerJobsPatchTraceApiLimit"`
+	// Maximum number of requests per minute per runner token for requests to the /jobs/request runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+	RunnerJobsRequestApiLimit *int `pulumi:"runnerJobsRequestApiLimit"`
+	// Maximum number of actions per scan execution policy. Default: 0. Maximum: 20.
+	ScanExecutionPoliciesActionLimit *int `pulumi:"scanExecutionPoliciesActionLimit"`
+	// Maximum number of type: schedule rules per scan execution policy. Default: 0. Maximum: 20.
+	ScanExecutionPoliciesScheduleLimit *int `pulumi:"scanExecutionPoliciesScheduleLimit"`
 	// Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
 	SearchRateLimit *int `pulumi:"searchRateLimit"`
 	// Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
@@ -2749,6 +3233,8 @@ type applicationSettingsArgs struct {
 	StaticObjectsExternalStorageUrl *string `pulumi:"staticObjectsExternalStorageUrl"`
 	// Enable pipeline suggestion banner.
 	SuggestPipelineEnabled *bool `pulumi:"suggestPipelineEnabled"`
+	// Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL tagCreate mutation, tag creation in the UI, and the /tag quick action. Default: 100. Set to 0 to disable the rate limit. Introduced in GitLab 19.4.
+	TagsCreateLimit *int `pulumi:"tagsCreateLimit"`
 	// Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
 	TerminalMaxSessionTime *int `pulumi:"terminalMaxSessionTime"`
 	// (Required by: enforce_terms) Markdown content for the ToS.
@@ -2759,12 +3245,42 @@ type applicationSettingsArgs struct {
 	ThrottleAuthenticatedApiPeriodInSeconds *int `pulumi:"throttleAuthenticatedApiPeriodInSeconds"`
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedApiRequestsPerPeriod *int `pulumi:"throttleAuthenticatedApiRequestsPerPeriod"`
+	// If true, enforces the authenticated dependency proxy request rate limit. Default value: false. Introduced in GitLab 19.4.
+	ThrottleAuthenticatedDependencyProxyEnabled *bool `pulumi:"throttleAuthenticatedDependencyProxyEnabled"`
+	// Rate limit period in seconds. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 15. Introduced in GitLab 19.4.
+	ThrottleAuthenticatedDependencyProxyPeriodInSeconds *int `pulumi:"throttleAuthenticatedDependencyProxyPeriodInSeconds"`
+	// Maximum requests per period per user. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 1000. Introduced in GitLab 19.4.
+	ThrottleAuthenticatedDependencyProxyRequestsPerPeriod *int `pulumi:"throttleAuthenticatedDependencyProxyRequestsPerPeriod"`
+	// (If enabled, requires: throttle*authenticated*deprecated*api*period*in*seconds and throttle*authenticated*deprecated*api*requests*per*period) Enable authenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedDeprecatedApiEnabled *bool `pulumi:"throttleAuthenticatedDeprecatedApiEnabled"`
+	// Rate limit period (in seconds) for authenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedDeprecatedApiPeriodInSeconds *int `pulumi:"throttleAuthenticatedDeprecatedApiPeriodInSeconds"`
+	// Maximum authenticated deprecated API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedDeprecatedApiRequestsPerPeriod *int `pulumi:"throttleAuthenticatedDeprecatedApiRequestsPerPeriod"`
+	// (If enabled, requires: throttle*authenticated*files*api*period*in*seconds and throttle*authenticated*files*api*requests*per*period) Enable authenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedFilesApiEnabled *bool `pulumi:"throttleAuthenticatedFilesApiEnabled"`
+	// Rate limit period (in seconds) for authenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedFilesApiPeriodInSeconds *int `pulumi:"throttleAuthenticatedFilesApiPeriodInSeconds"`
+	// Maximum authenticated Files API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedFilesApiRequestsPerPeriod *int `pulumi:"throttleAuthenticatedFilesApiRequestsPerPeriod"`
+	// If true, enforces the authenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+	ThrottleAuthenticatedGitHttpEnabled *bool `pulumi:"throttleAuthenticatedGitHttpEnabled"`
+	// Rate limit period in seconds. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+	ThrottleAuthenticatedGitHttpPeriodInSeconds *int `pulumi:"throttleAuthenticatedGitHttpPeriodInSeconds"`
+	// Maximum requests per period per user. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+	ThrottleAuthenticatedGitHttpRequestsPerPeriod *int `pulumi:"throttleAuthenticatedGitHttpRequestsPerPeriod"`
 	// Enable authenticated Git LFS request rate limit.
 	ThrottleAuthenticatedGitLfsEnabled *bool `pulumi:"throttleAuthenticatedGitLfsEnabled"`
 	// Rate limit period (in seconds).
 	ThrottleAuthenticatedGitLfsPeriodInSeconds *int `pulumi:"throttleAuthenticatedGitLfsPeriodInSeconds"`
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedGitLfsRequestsPerPeriod *int `pulumi:"throttleAuthenticatedGitLfsRequestsPerPeriod"`
+	// (If enabled, requires: throttle*authenticated*mcp*period*in*seconds and throttle*authenticated*mcp*requests*per*period) If true, enforces the rate limit on requests to the MCP Server endpoint, /api/v4/mcp, for any HTTP method. Does not apply to other MCP endpoints. Introduced in GitLab 19.5.
+	ThrottleAuthenticatedMcpEnabled *bool `pulumi:"throttleAuthenticatedMcpEnabled"`
+	// Rate limit period in seconds. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+	ThrottleAuthenticatedMcpPeriodInSeconds *int `pulumi:"throttleAuthenticatedMcpPeriodInSeconds"`
+	// Maximum requests per period per user. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+	ThrottleAuthenticatedMcpRequestsPerPeriod *int `pulumi:"throttleAuthenticatedMcpRequestsPerPeriod"`
 	// (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 	ThrottleAuthenticatedPackagesApiEnabled *bool `pulumi:"throttleAuthenticatedPackagesApiEnabled"`
 	// Rate limit period (in seconds). View Package Registry rate limits for more details.
@@ -2777,18 +3293,60 @@ type applicationSettingsArgs struct {
 	ThrottleAuthenticatedWebPeriodInSeconds *int `pulumi:"throttleAuthenticatedWebPeriodInSeconds"`
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedWebRequestsPerPeriod *int `pulumi:"throttleAuthenticatedWebRequestsPerPeriod"`
+	// If true, enforces the inbound incident management alert notification rate limit, per project. Default value: false.
+	ThrottleIncidentManagementNotificationEnabled *bool `pulumi:"throttleIncidentManagementNotificationEnabled"`
+	// Maximum inbound incident management alert notifications per period, per project. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+	ThrottleIncidentManagementNotificationPerPeriod *int `pulumi:"throttleIncidentManagementNotificationPerPeriod"`
+	// Rate limit period in seconds. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+	ThrottleIncidentManagementNotificationPeriodInSeconds *int `pulumi:"throttleIncidentManagementNotificationPeriodInSeconds"`
+	// (If enabled, requires: throttle*protected*paths*period*in*seconds and throttle*protected*paths*requests*per*period) Enable rate limiting for protected paths (for example, sign-in and password reset). Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleProtectedPathsEnabled *bool `pulumi:"throttleProtectedPathsEnabled"`
+	// Rate limit period (in seconds) for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleProtectedPathsPeriodInSeconds *int `pulumi:"throttleProtectedPathsPeriodInSeconds"`
+	// Maximum requests per period per IP for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleProtectedPathsRequestsPerPeriod *int `pulumi:"throttleProtectedPathsRequestsPerPeriod"`
 	// (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
 	ThrottleUnauthenticatedApiEnabled *bool `pulumi:"throttleUnauthenticatedApiEnabled"`
 	// Rate limit period in seconds.
 	ThrottleUnauthenticatedApiPeriodInSeconds *int `pulumi:"throttleUnauthenticatedApiPeriodInSeconds"`
 	// Max requests per period per IP.
 	ThrottleUnauthenticatedApiRequestsPerPeriod *int `pulumi:"throttleUnauthenticatedApiRequestsPerPeriod"`
+	// (If enabled, requires: throttle*unauthenticated*deprecated*api*period*in*seconds and throttle*unauthenticated*deprecated*api*requests*per*period) Enable unauthenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedDeprecatedApiEnabled *bool `pulumi:"throttleUnauthenticatedDeprecatedApiEnabled"`
+	// Rate limit period (in seconds) for unauthenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedDeprecatedApiPeriodInSeconds *int `pulumi:"throttleUnauthenticatedDeprecatedApiPeriodInSeconds"`
+	// Maximum unauthenticated deprecated API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedDeprecatedApiRequestsPerPeriod *int `pulumi:"throttleUnauthenticatedDeprecatedApiRequestsPerPeriod"`
+	// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*enabled or throttle*unauthenticated*api*enabled instead.) (**If enabled, requires**: throttle*unauthenticated*period*in*seconds and throttle*unauthenticated*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
+	//
+	// Deprecated: Use throttleUnauthenticatedWebEnabled or throttleUnauthenticatedApiEnabled instead. (Deprecated in GitLab 14.3)
+	ThrottleUnauthenticatedEnabled *bool `pulumi:"throttleUnauthenticatedEnabled"`
+	// (If enabled, requires: throttle*unauthenticated*files*api*period*in*seconds and throttle*unauthenticated*files*api*requests*per*period) Enable unauthenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedFilesApiEnabled *bool `pulumi:"throttleUnauthenticatedFilesApiEnabled"`
+	// Rate limit period (in seconds) for unauthenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedFilesApiPeriodInSeconds *int `pulumi:"throttleUnauthenticatedFilesApiPeriodInSeconds"`
+	// Maximum unauthenticated Files API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedFilesApiRequestsPerPeriod *int `pulumi:"throttleUnauthenticatedFilesApiRequestsPerPeriod"`
+	// If true, enforces the unauthenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 17.0.
+	ThrottleUnauthenticatedGitHttpEnabled *bool `pulumi:"throttleUnauthenticatedGitHttpEnabled"`
+	// Rate limit period in seconds. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+	ThrottleUnauthenticatedGitHttpPeriodInSeconds *int `pulumi:"throttleUnauthenticatedGitHttpPeriodInSeconds"`
+	// Maximum requests per period per IP. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+	ThrottleUnauthenticatedGitHttpRequestsPerPeriod *int `pulumi:"throttleUnauthenticatedGitHttpRequestsPerPeriod"`
 	// (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 	ThrottleUnauthenticatedPackagesApiEnabled *bool `pulumi:"throttleUnauthenticatedPackagesApiEnabled"`
 	// Rate limit period (in seconds). View Package Registry rate limits for more details.
 	ThrottleUnauthenticatedPackagesApiPeriodInSeconds *int `pulumi:"throttleUnauthenticatedPackagesApiPeriodInSeconds"`
 	// Maximum requests per period per user. View Package Registry rate limits for more details.
 	ThrottleUnauthenticatedPackagesApiRequestsPerPeriod *int `pulumi:"throttleUnauthenticatedPackagesApiRequestsPerPeriod"`
+	// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*period*in*seconds or throttle*unauthenticated*api*period*in*seconds instead.) Rate limit period in seconds.
+	//
+	// Deprecated: Use throttleUnauthenticatedWebPeriodInSeconds or throttleUnauthenticatedApiPeriodInSeconds instead. (Deprecated in GitLab 14.3)
+	ThrottleUnauthenticatedPeriodInSeconds *int `pulumi:"throttleUnauthenticatedPeriodInSeconds"`
+	// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*requests*per*period or throttle*unauthenticated*api*requests*per*period instead.) Maximum requests per period per IP.
+	//
+	// Deprecated: Use throttleUnauthenticatedWebRequestsPerPeriod or throttleUnauthenticatedApiRequestsPerPeriod instead. (Deprecated in GitLab 14.3)
+	ThrottleUnauthenticatedRequestsPerPeriod *int `pulumi:"throttleUnauthenticatedRequestsPerPeriod"`
 	// (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
 	ThrottleUnauthenticatedWebEnabled *bool `pulumi:"throttleUnauthenticatedWebEnabled"`
 	// Rate limit period in seconds.
@@ -2827,10 +3385,32 @@ type applicationSettingsArgs struct {
 	UserOauthApplications *bool `pulumi:"userOauthApplications"`
 	// When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
 	UserShowAddSshKeyMessage *bool `pulumi:"userShowAddSshKeyMessage"`
+	// Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitFollowers *int `pulumi:"usersApiLimitFollowers"`
+	// Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitFollowing *int `pulumi:"usersApiLimitFollowing"`
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitGpgKey *int `pulumi:"usersApiLimitGpgKey"`
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitGpgKeys *int `pulumi:"usersApiLimitGpgKeys"`
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitSshKey *int `pulumi:"usersApiLimitSshKey"`
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitSshKeys *int `pulumi:"usersApiLimitSshKeys"`
+	// Maximum number of requests per minute, per user or IP address. Default: 240. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitStatus *int `pulumi:"usersApiLimitStatus"`
+	// Maximum number of requests per minute per user to the GET /users/:id API endpoint. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	UsersGetByIdLimit *int `pulumi:"usersGetByIdLimit"`
+	// Usernames excluded from the users*get*by*id*limit rate limit, separated by newlines, commas or whitespace. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	UsersGetByIdLimitAllowlistRaw *string `pulumi:"usersGetByIdLimitAllowlistRaw"`
 	// List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
 	ValidRunnerRegistrars []string `pulumi:"validRunnerRegistrars"`
 	// Let GitLab inform you when an update is available.
 	VersionCheckEnabled *bool `pulumi:"versionCheckEnabled"`
+	// Maximum number of webhook event resend requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+	WebHookEventResendLimit *int `pulumi:"webHookEventResendLimit"`
+	// Maximum number of webhook test requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+	WebHookTestLimit *int `pulumi:"webHookTestLimit"`
 	// Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
 	WebIdeClientsidePreviewEnabled *bool `pulumi:"webIdeClientsidePreviewEnabled"`
 	// What's new variant, possible values: all*tiers, current*tier, and disabled.
@@ -2849,6 +3429,8 @@ type ApplicationSettingsArgs struct {
 	AfterSignOutPath pulumi.StringPtrInput
 	// Text shown to the user after signing up.
 	AfterSignUpText pulumi.StringPtrInput
+	// Maximum number of requests allowed to the aiAction GraphQL mutation per user per eight hours. Default: 160. Set to 0 to disable the rate limit. Introduced in GitLab 17.2.
+	AiActionApiRateLimit pulumi.IntPtrInput
 	// API key for Akismet spam protection.
 	AkismetApiKey pulumi.StringPtrInput
 	// (If enabled, requires: akismet*api*key) Enable or disable Akismet spam protection.
@@ -2889,6 +3471,10 @@ type ApplicationSettingsArgs struct {
 	AutoDevopsDomain pulumi.StringPtrInput
 	// Enable Auto DevOps for projects by default. It automatically builds, tests, and deploys applications based on a predefined CI/CD configuration.
 	AutoDevopsEnabled pulumi.BoolPtrInput
+	// Maximum number of authenticated requests per minute to the GET /autocomplete/users endpoint.
+	AutocompleteUsersLimit pulumi.IntPtrInput
+	// Maximum number of unauthenticated requests per minute to the GET /autocomplete/users endpoint.
+	AutocompleteUsersUnauthenticatedLimit pulumi.IntPtrInput
 	// Enabling this permits automatic allocation of purchased storage in a namespace.
 	AutomaticPurchasedStorageAllocation pulumi.BoolPtrInput
 	// Maximum simultaneous Direct Transfer batches to process.
@@ -2903,6 +3489,8 @@ type ApplicationSettingsArgs struct {
 	CheckNamespacePlan pulumi.BoolPtrInput
 	// Turns on incremental logging for job logs. When turned on, archived job logs are incrementally uploaded to object storage. Object storage must be configured.
 	CiJobLiveTraceEnabled pulumi.BoolPtrInput
+	// Maximum number of CI Lint requests per minute per user. Disabled by default.
+	CiLintLimitPerUser pulumi.IntPtrInput
 	// The maximum number of includes per pipeline.
 	CiMaxIncludes pulumi.IntPtrInput
 	// The maximum amount of memory, in bytes, that can be allocated for the pipeline configuration, with all included YAML configuration files.
@@ -2915,6 +3503,12 @@ type ApplicationSettingsArgs struct {
 	ConcurrentBitbucketServerImportJobsLimit pulumi.IntPtrInput
 	// Maximum number of simultaneous import jobs for the GitHub importer.
 	ConcurrentGithubImportJobsLimit pulumi.IntPtrInput
+	// Maximum number of simultaneous pull request import jobs for the GitHub, Bitbucket Cloud, and Bitbucket Server importers. Default is 200. Introduced in GitLab 19.4.
+	ConcurrentPullRequestImportJobsLimit pulumi.IntPtrInput
+	// Maximum number of simultaneous batch export jobs to process. Introduced in GitLab 17.6.
+	ConcurrentRelationBatchExportLimit pulumi.IntPtrInput
+	// Maximum number of simultaneous project file exports to process. Default: 25. Introduced in GitLab 19.4 with a feature flag named limit*concurrent*project_exports. Disabled by default.
+	ConcurrentRelationExportLimit pulumi.IntPtrInput
 	// Enable cleanup policies for all projects.
 	ContainerExpirationPoliciesEnableHistoricEntries pulumi.BoolPtrInput
 	// The maximum number of tags that can be deleted in a single execution of cleanup policies.
@@ -3095,6 +3689,8 @@ type ApplicationSettingsArgs struct {
 	GeoNodeAllowedIps pulumi.StringPtrInput
 	// The amount of seconds after which a request to get a secondary node status times out.
 	GeoStatusTimeout pulumi.IntPtrInput
+	// Set the maximum number of tag or branch pipelines that can be triggered by a single Git push. For more information about this limit, see number of pipelines per Git push.
+	GitPushPipelineLimit pulumi.IntPtrInput
 	// List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
 	GitRateLimitUsersAlertlists pulumi.IntArrayInput
 	// List of usernames excluded from Git anti-abuse rate limits. Maximum: 100 usernames. Self-managed, Ultimate only.
@@ -3121,8 +3717,16 @@ type ApplicationSettingsArgs struct {
 	GrafanaUrl pulumi.StringPtrInput
 	// Enable Gravatar.
 	GravatarEnabled pulumi.BoolPtrInput
+	// Maximum number of group export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	GroupDownloadExportLimit pulumi.IntPtrInput
+	// Maximum number of group exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	GroupExportLimit pulumi.IntPtrInput
+	// Maximum number of group imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	GroupImportLimit pulumi.IntPtrInput
 	// Prevent overrides of default branch protection.
 	GroupOwnersCanManageDefaultBranchProtection pulumi.BoolPtrInput
+	// Maximum number of secrets allowed per group in Secrets Manager. Default: 500. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+	GroupSecretsLimit pulumi.IntPtrInput
 	// Hide marketing-related entries from help.
 	HelpPageHideCommercialContent pulumi.BoolPtrInput
 	// Alternate support URL for help page and help dropdown.
@@ -3141,6 +3745,8 @@ type ApplicationSettingsArgs struct {
 	HousekeepingOptimizeRepositoryPeriod pulumi.IntPtrInput
 	// Enable HTML emails.
 	HtmlEmailsEnabled pulumi.BoolPtrInput
+	// Maximum number of concurrently running jobs for each import worker type (project and group file base import, Direct Transfer, and GitHub, Bitbucket Cloud, and Bitbucket Server importer stages). Applied independently per worker type. Default is 100. Introduced in GitLab 19.1.
+	ImportJobsConcurrencyLimit pulumi.IntPtrInput
 	// Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
 	ImportSources pulumi.StringArrayInput
 	// Enable in-product marketing emails.
@@ -3165,6 +3771,10 @@ type ApplicationSettingsArgs struct {
 	JiraConnectProxyUrl pulumi.StringPtrInput
 	// Enable public key storage for the GitLab for Jira Cloud app.
 	JiraConnectPublicKeyStorageEnabled pulumi.BoolPtrInput
+	// Maximum number of manual job runs per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_play. Disabled by default.
+	JobPlayLimitPerUserProject pulumi.IntPtrInput
+	// Maximum number of job retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_retry. Disabled by default.
+	JobRetryLimitPerUserProject pulumi.IntPtrInput
 	// Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
 	KeepLatestArtifact pulumi.BoolPtrInput
 	// (If enabled, requires: kroki_url) Enable Kroki integration.
@@ -3199,6 +3809,10 @@ type ApplicationSettingsArgs struct {
 	MaxDecompressedArchiveSize pulumi.IntPtrInput
 	// Maximum export size in MB. 0 for unlimited.
 	MaxExportSize pulumi.IntPtrInput
+	// Maximum allowed GitHub API response size in MB. 0 for unlimited.
+	MaxGithubResponseSizeLimit pulumi.IntPtrInput
+	// Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4.
+	MaxHttpResponseSizeLimit pulumi.IntPtrInput
 	// Maximum remote file size for imports from external object storages.
 	MaxImportRemoteFileSize pulumi.IntPtrInput
 	// Maximum import size in MB. 0 for unlimited.
@@ -3233,6 +3847,8 @@ type ApplicationSettingsArgs struct {
 	MirrorMaxCapacity pulumi.IntPtrInput
 	// Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
 	MirrorMaxDelay pulumi.IntPtrInput
+	// Maximum number of notes (comments) a user can create per minute. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	NotesCreateLimit pulumi.IntPtrInput
 	// Enable sending notification if sign in from unknown IP address happens
 	NotifyOnUnknownSignIn pulumi.BoolPtrInput
 	// Use npmjs.org as a default remote repository when the package is not found in the GitLab Package Registry for npm.
@@ -3267,8 +3883,14 @@ type ApplicationSettingsArgs struct {
 	PerformanceBarAllowedGroupPath pulumi.StringPtrInput
 	// Prefix for all generated personal access tokens.
 	PersonalAccessTokenPrefix pulumi.StringPtrInput
+	// Maximum number of pipeline cancellations per minute per user per project. Introduced in GitLab 19.5.
+	PipelineCancelLimitPerUserProject pulumi.IntPtrInput
 	// Maximum number of pipeline creation requests per minute per user and commit.
 	PipelineLimitPerProjectUserSha pulumi.IntPtrInput
+	// Maximum number of pipeline creation requests per minute per user.
+	PipelineLimitPerUser pulumi.IntPtrInput
+	// Maximum number of pipeline retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*pipeline_retry. Disabled by default.
+	PipelineRetryLimitPerUserProject pulumi.IntPtrInput
 	// (If enabled, requires: plantuml_url) Enable PlantUML integration.
 	PlantumlEnabled pulumi.BoolPtrInput
 	// The PlantUML instance URL for integration.
@@ -3279,10 +3901,18 @@ type ApplicationSettingsArgs struct {
 	PreventMergeRequestsAuthorApproval pulumi.BoolPtrInput
 	// Prevent approval by committers to merge requests.
 	PreventMergeRequestsCommittersApproval pulumi.BoolPtrInput
+	// Maximum number of project export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ProjectDownloadExportLimit pulumi.IntPtrInput
 	// Enable project export.
 	ProjectExportEnabled pulumi.BoolPtrInput
+	// Maximum number of project exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ProjectExportLimit pulumi.IntPtrInput
+	// Maximum number of project imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ProjectImportLimit pulumi.IntPtrInput
 	// Maximum authenticated requests to /project/:id/jobs per minute.
 	ProjectJobsApiRateLimit pulumi.IntPtrInput
+	// Maximum number of secrets allowed per project in Secrets Manager. Default: 100. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+	ProjectSecretsLimit pulumi.IntPtrInput
 	// Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
 	ProjectsApiRateLimitUnauthenticated pulumi.IntPtrInput
 	// Enable Prometheus metrics.
@@ -3299,6 +3929,8 @@ type ApplicationSettingsArgs struct {
 	RateLimitingResponseText pulumi.StringPtrInput
 	// Max number of requests per minute for each raw path. To disable throttling set to 0.
 	RawBlobRequestLimit pulumi.IntPtrInput
+	// Maximum number of unauthenticated requests per minute across all raw paths in a project (default is 800). Set to 0 to disable throttling.
+	RawBlobRequestLimitUnauthenticated pulumi.IntPtrInput
 	// (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
 	RecaptchaEnabled pulumi.BoolPtrInput
 	// Private key for reCAPTCHA.
@@ -3329,6 +3961,16 @@ type ApplicationSettingsArgs struct {
 	RestrictedVisibilityLevels pulumi.StringArrayInput
 	// The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
 	RsaKeyRestriction pulumi.IntPtrInput
+	// Maximum number of requests per minute per job token for requests to /jobs/* requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. Introduced in GitLab 18.5.
+	RunnerJobsEndpointsApiLimit pulumi.IntPtrInput
+	// Maximum number of requests per minute per runner token for requests to the PATCH /jobs/:id/trace runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+	RunnerJobsPatchTraceApiLimit pulumi.IntPtrInput
+	// Maximum number of requests per minute per runner token for requests to the /jobs/request runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+	RunnerJobsRequestApiLimit pulumi.IntPtrInput
+	// Maximum number of actions per scan execution policy. Default: 0. Maximum: 20.
+	ScanExecutionPoliciesActionLimit pulumi.IntPtrInput
+	// Maximum number of type: schedule rules per scan execution policy. Default: 0. Maximum: 20.
+	ScanExecutionPoliciesScheduleLimit pulumi.IntPtrInput
 	// Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
 	SearchRateLimit pulumi.IntPtrInput
 	// Max number of requests per minute for performing a search while unauthenticated. To disable throttling set to 0.
@@ -3409,6 +4051,8 @@ type ApplicationSettingsArgs struct {
 	StaticObjectsExternalStorageUrl pulumi.StringPtrInput
 	// Enable pipeline suggestion banner.
 	SuggestPipelineEnabled pulumi.BoolPtrInput
+	// Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL tagCreate mutation, tag creation in the UI, and the /tag quick action. Default: 100. Set to 0 to disable the rate limit. Introduced in GitLab 19.4.
+	TagsCreateLimit pulumi.IntPtrInput
 	// Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
 	TerminalMaxSessionTime pulumi.IntPtrInput
 	// (Required by: enforce_terms) Markdown content for the ToS.
@@ -3419,12 +4063,42 @@ type ApplicationSettingsArgs struct {
 	ThrottleAuthenticatedApiPeriodInSeconds pulumi.IntPtrInput
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedApiRequestsPerPeriod pulumi.IntPtrInput
+	// If true, enforces the authenticated dependency proxy request rate limit. Default value: false. Introduced in GitLab 19.4.
+	ThrottleAuthenticatedDependencyProxyEnabled pulumi.BoolPtrInput
+	// Rate limit period in seconds. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 15. Introduced in GitLab 19.4.
+	ThrottleAuthenticatedDependencyProxyPeriodInSeconds pulumi.IntPtrInput
+	// Maximum requests per period per user. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 1000. Introduced in GitLab 19.4.
+	ThrottleAuthenticatedDependencyProxyRequestsPerPeriod pulumi.IntPtrInput
+	// (If enabled, requires: throttle*authenticated*deprecated*api*period*in*seconds and throttle*authenticated*deprecated*api*requests*per*period) Enable authenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedDeprecatedApiEnabled pulumi.BoolPtrInput
+	// Rate limit period (in seconds) for authenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedDeprecatedApiPeriodInSeconds pulumi.IntPtrInput
+	// Maximum authenticated deprecated API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedDeprecatedApiRequestsPerPeriod pulumi.IntPtrInput
+	// (If enabled, requires: throttle*authenticated*files*api*period*in*seconds and throttle*authenticated*files*api*requests*per*period) Enable authenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedFilesApiEnabled pulumi.BoolPtrInput
+	// Rate limit period (in seconds) for authenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedFilesApiPeriodInSeconds pulumi.IntPtrInput
+	// Maximum authenticated Files API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleAuthenticatedFilesApiRequestsPerPeriod pulumi.IntPtrInput
+	// If true, enforces the authenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+	ThrottleAuthenticatedGitHttpEnabled pulumi.BoolPtrInput
+	// Rate limit period in seconds. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+	ThrottleAuthenticatedGitHttpPeriodInSeconds pulumi.IntPtrInput
+	// Maximum requests per period per user. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+	ThrottleAuthenticatedGitHttpRequestsPerPeriod pulumi.IntPtrInput
 	// Enable authenticated Git LFS request rate limit.
 	ThrottleAuthenticatedGitLfsEnabled pulumi.BoolPtrInput
 	// Rate limit period (in seconds).
 	ThrottleAuthenticatedGitLfsPeriodInSeconds pulumi.IntPtrInput
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedGitLfsRequestsPerPeriod pulumi.IntPtrInput
+	// (If enabled, requires: throttle*authenticated*mcp*period*in*seconds and throttle*authenticated*mcp*requests*per*period) If true, enforces the rate limit on requests to the MCP Server endpoint, /api/v4/mcp, for any HTTP method. Does not apply to other MCP endpoints. Introduced in GitLab 19.5.
+	ThrottleAuthenticatedMcpEnabled pulumi.BoolPtrInput
+	// Rate limit period in seconds. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+	ThrottleAuthenticatedMcpPeriodInSeconds pulumi.IntPtrInput
+	// Maximum requests per period per user. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+	ThrottleAuthenticatedMcpRequestsPerPeriod pulumi.IntPtrInput
 	// (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 	ThrottleAuthenticatedPackagesApiEnabled pulumi.BoolPtrInput
 	// Rate limit period (in seconds). View Package Registry rate limits for more details.
@@ -3437,18 +4111,60 @@ type ApplicationSettingsArgs struct {
 	ThrottleAuthenticatedWebPeriodInSeconds pulumi.IntPtrInput
 	// Maximum requests per period per user.
 	ThrottleAuthenticatedWebRequestsPerPeriod pulumi.IntPtrInput
+	// If true, enforces the inbound incident management alert notification rate limit, per project. Default value: false.
+	ThrottleIncidentManagementNotificationEnabled pulumi.BoolPtrInput
+	// Maximum inbound incident management alert notifications per period, per project. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+	ThrottleIncidentManagementNotificationPerPeriod pulumi.IntPtrInput
+	// Rate limit period in seconds. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+	ThrottleIncidentManagementNotificationPeriodInSeconds pulumi.IntPtrInput
+	// (If enabled, requires: throttle*protected*paths*period*in*seconds and throttle*protected*paths*requests*per*period) Enable rate limiting for protected paths (for example, sign-in and password reset). Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleProtectedPathsEnabled pulumi.BoolPtrInput
+	// Rate limit period (in seconds) for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleProtectedPathsPeriodInSeconds pulumi.IntPtrInput
+	// Maximum requests per period per IP for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleProtectedPathsRequestsPerPeriod pulumi.IntPtrInput
 	// (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
 	ThrottleUnauthenticatedApiEnabled pulumi.BoolPtrInput
 	// Rate limit period in seconds.
 	ThrottleUnauthenticatedApiPeriodInSeconds pulumi.IntPtrInput
 	// Max requests per period per IP.
 	ThrottleUnauthenticatedApiRequestsPerPeriod pulumi.IntPtrInput
+	// (If enabled, requires: throttle*unauthenticated*deprecated*api*period*in*seconds and throttle*unauthenticated*deprecated*api*requests*per*period) Enable unauthenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedDeprecatedApiEnabled pulumi.BoolPtrInput
+	// Rate limit period (in seconds) for unauthenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedDeprecatedApiPeriodInSeconds pulumi.IntPtrInput
+	// Maximum unauthenticated deprecated API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedDeprecatedApiRequestsPerPeriod pulumi.IntPtrInput
+	// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*enabled or throttle*unauthenticated*api*enabled instead.) (**If enabled, requires**: throttle*unauthenticated*period*in*seconds and throttle*unauthenticated*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
+	//
+	// Deprecated: Use throttleUnauthenticatedWebEnabled or throttleUnauthenticatedApiEnabled instead. (Deprecated in GitLab 14.3)
+	ThrottleUnauthenticatedEnabled pulumi.BoolPtrInput
+	// (If enabled, requires: throttle*unauthenticated*files*api*period*in*seconds and throttle*unauthenticated*files*api*requests*per*period) Enable unauthenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedFilesApiEnabled pulumi.BoolPtrInput
+	// Rate limit period (in seconds) for unauthenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedFilesApiPeriodInSeconds pulumi.IntPtrInput
+	// Maximum unauthenticated Files API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	ThrottleUnauthenticatedFilesApiRequestsPerPeriod pulumi.IntPtrInput
+	// If true, enforces the unauthenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 17.0.
+	ThrottleUnauthenticatedGitHttpEnabled pulumi.BoolPtrInput
+	// Rate limit period in seconds. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+	ThrottleUnauthenticatedGitHttpPeriodInSeconds pulumi.IntPtrInput
+	// Maximum requests per period per IP. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+	ThrottleUnauthenticatedGitHttpRequestsPerPeriod pulumi.IntPtrInput
 	// (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
 	ThrottleUnauthenticatedPackagesApiEnabled pulumi.BoolPtrInput
 	// Rate limit period (in seconds). View Package Registry rate limits for more details.
 	ThrottleUnauthenticatedPackagesApiPeriodInSeconds pulumi.IntPtrInput
 	// Maximum requests per period per user. View Package Registry rate limits for more details.
 	ThrottleUnauthenticatedPackagesApiRequestsPerPeriod pulumi.IntPtrInput
+	// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*period*in*seconds or throttle*unauthenticated*api*period*in*seconds instead.) Rate limit period in seconds.
+	//
+	// Deprecated: Use throttleUnauthenticatedWebPeriodInSeconds or throttleUnauthenticatedApiPeriodInSeconds instead. (Deprecated in GitLab 14.3)
+	ThrottleUnauthenticatedPeriodInSeconds pulumi.IntPtrInput
+	// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*requests*per*period or throttle*unauthenticated*api*requests*per*period instead.) Maximum requests per period per IP.
+	//
+	// Deprecated: Use throttleUnauthenticatedWebRequestsPerPeriod or throttleUnauthenticatedApiRequestsPerPeriod instead. (Deprecated in GitLab 14.3)
+	ThrottleUnauthenticatedRequestsPerPeriod pulumi.IntPtrInput
 	// (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
 	ThrottleUnauthenticatedWebEnabled pulumi.BoolPtrInput
 	// Rate limit period in seconds.
@@ -3487,10 +4203,32 @@ type ApplicationSettingsArgs struct {
 	UserOauthApplications pulumi.BoolPtrInput
 	// When set to false disable the You won't be able to pull or push project code via SSH warning shown to users with no uploaded SSH key.
 	UserShowAddSshKeyMessage pulumi.BoolPtrInput
+	// Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitFollowers pulumi.IntPtrInput
+	// Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitFollowing pulumi.IntPtrInput
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitGpgKey pulumi.IntPtrInput
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitGpgKeys pulumi.IntPtrInput
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitSshKey pulumi.IntPtrInput
+	// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitSshKeys pulumi.IntPtrInput
+	// Maximum number of requests per minute, per user or IP address. Default: 240. Set to 0 to disable limits. Introduced in GitLab 17.10.
+	UsersApiLimitStatus pulumi.IntPtrInput
+	// Maximum number of requests per minute per user to the GET /users/:id API endpoint. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	UsersGetByIdLimit pulumi.IntPtrInput
+	// Usernames excluded from the users*get*by*id*limit rate limit, separated by newlines, commas or whitespace. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+	UsersGetByIdLimitAllowlistRaw pulumi.StringPtrInput
 	// List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
 	ValidRunnerRegistrars pulumi.StringArrayInput
 	// Let GitLab inform you when an update is available.
 	VersionCheckEnabled pulumi.BoolPtrInput
+	// Maximum number of webhook event resend requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+	WebHookEventResendLimit pulumi.IntPtrInput
+	// Maximum number of webhook test requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+	WebHookTestLimit pulumi.IntPtrInput
 	// Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).
 	WebIdeClientsidePreviewEnabled pulumi.BoolPtrInput
 	// What's new variant, possible values: all*tiers, current*tier, and disabled.
@@ -3606,6 +4344,11 @@ func (o ApplicationSettingsOutput) AfterSignUpText() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringOutput { return v.AfterSignUpText }).(pulumi.StringOutput)
 }
 
+// Maximum number of requests allowed to the aiAction GraphQL mutation per user per eight hours. Default: 160. Set to 0 to disable the rate limit. Introduced in GitLab 17.2.
+func (o ApplicationSettingsOutput) AiActionApiRateLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.AiActionApiRateLimit }).(pulumi.IntOutput)
+}
+
 // API key for Akismet spam protection.
 func (o ApplicationSettingsOutput) AkismetApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringOutput { return v.AkismetApiKey }).(pulumi.StringOutput)
@@ -3706,6 +4449,16 @@ func (o ApplicationSettingsOutput) AutoDevopsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.AutoDevopsEnabled }).(pulumi.BoolOutput)
 }
 
+// Maximum number of authenticated requests per minute to the GET /autocomplete/users endpoint.
+func (o ApplicationSettingsOutput) AutocompleteUsersLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.AutocompleteUsersLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of unauthenticated requests per minute to the GET /autocomplete/users endpoint.
+func (o ApplicationSettingsOutput) AutocompleteUsersUnauthenticatedLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.AutocompleteUsersUnauthenticatedLimit }).(pulumi.IntOutput)
+}
+
 // Enabling this permits automatic allocation of purchased storage in a namespace.
 func (o ApplicationSettingsOutput) AutomaticPurchasedStorageAllocation() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.AutomaticPurchasedStorageAllocation }).(pulumi.BoolOutput)
@@ -3741,6 +4494,11 @@ func (o ApplicationSettingsOutput) CiJobLiveTraceEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.CiJobLiveTraceEnabled }).(pulumi.BoolOutput)
 }
 
+// Maximum number of CI Lint requests per minute per user. Disabled by default.
+func (o ApplicationSettingsOutput) CiLintLimitPerUser() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.CiLintLimitPerUser }).(pulumi.IntOutput)
+}
+
 // The maximum number of includes per pipeline.
 func (o ApplicationSettingsOutput) CiMaxIncludes() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.CiMaxIncludes }).(pulumi.IntOutput)
@@ -3769,6 +4527,21 @@ func (o ApplicationSettingsOutput) ConcurrentBitbucketServerImportJobsLimit() pu
 // Maximum number of simultaneous import jobs for the GitHub importer.
 func (o ApplicationSettingsOutput) ConcurrentGithubImportJobsLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ConcurrentGithubImportJobsLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of simultaneous pull request import jobs for the GitHub, Bitbucket Cloud, and Bitbucket Server importers. Default is 200. Introduced in GitLab 19.4.
+func (o ApplicationSettingsOutput) ConcurrentPullRequestImportJobsLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ConcurrentPullRequestImportJobsLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of simultaneous batch export jobs to process. Introduced in GitLab 17.6.
+func (o ApplicationSettingsOutput) ConcurrentRelationBatchExportLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ConcurrentRelationBatchExportLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of simultaneous project file exports to process. Default: 25. Introduced in GitLab 19.4 with a feature flag named limit*concurrent*project_exports. Disabled by default.
+func (o ApplicationSettingsOutput) ConcurrentRelationExportLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ConcurrentRelationExportLimit }).(pulumi.IntOutput)
 }
 
 // Enable cleanup policies for all projects.
@@ -4231,6 +5004,11 @@ func (o ApplicationSettingsOutput) GeoStatusTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.GeoStatusTimeout }).(pulumi.IntOutput)
 }
 
+// Set the maximum number of tag or branch pipelines that can be triggered by a single Git push. For more information about this limit, see number of pipelines per Git push.
+func (o ApplicationSettingsOutput) GitPushPipelineLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.GitPushPipelineLimit }).(pulumi.IntOutput)
+}
+
 // List of user IDs that are emailed when the Git abuse rate limit is exceeded. Maximum: 100 user IDs. Self-managed, Ultimate only.
 func (o ApplicationSettingsOutput) GitRateLimitUsersAlertlists() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntArrayOutput { return v.GitRateLimitUsersAlertlists }).(pulumi.IntArrayOutput)
@@ -4306,9 +5084,29 @@ func (o ApplicationSettingsOutput) GravatarEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.GravatarEnabled }).(pulumi.BoolOutput)
 }
 
+// Maximum number of group export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) GroupDownloadExportLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.GroupDownloadExportLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of group exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) GroupExportLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.GroupExportLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of group imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) GroupImportLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.GroupImportLimit }).(pulumi.IntOutput)
+}
+
 // Prevent overrides of default branch protection.
 func (o ApplicationSettingsOutput) GroupOwnersCanManageDefaultBranchProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.GroupOwnersCanManageDefaultBranchProtection }).(pulumi.BoolOutput)
+}
+
+// Maximum number of secrets allowed per group in Secrets Manager. Default: 500. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+func (o ApplicationSettingsOutput) GroupSecretsLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.GroupSecretsLimit }).(pulumi.IntOutput)
 }
 
 // Hide marketing-related entries from help.
@@ -4354,6 +5152,11 @@ func (o ApplicationSettingsOutput) HousekeepingOptimizeRepositoryPeriod() pulumi
 // Enable HTML emails.
 func (o ApplicationSettingsOutput) HtmlEmailsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.HtmlEmailsEnabled }).(pulumi.BoolOutput)
+}
+
+// Maximum number of concurrently running jobs for each import worker type (project and group file base import, Direct Transfer, and GitHub, Bitbucket Cloud, and Bitbucket Server importer stages). Applied independently per worker type. Default is 100. Introduced in GitLab 19.1.
+func (o ApplicationSettingsOutput) ImportJobsConcurrencyLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ImportJobsConcurrencyLimit }).(pulumi.IntOutput)
 }
 
 // Sources to allow project import from. Valid values are: `github`, `bitbucket`, `bitbucketServer`, `fogbugz`, `git`, `Project`, `gitea`, `manifest`
@@ -4414,6 +5217,16 @@ func (o ApplicationSettingsOutput) JiraConnectProxyUrl() pulumi.StringOutput {
 // Enable public key storage for the GitLab for Jira Cloud app.
 func (o ApplicationSettingsOutput) JiraConnectPublicKeyStorageEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.JiraConnectPublicKeyStorageEnabled }).(pulumi.BoolOutput)
+}
+
+// Maximum number of manual job runs per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_play. Disabled by default.
+func (o ApplicationSettingsOutput) JobPlayLimitPerUserProject() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.JobPlayLimitPerUserProject }).(pulumi.IntOutput)
+}
+
+// Maximum number of job retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*job_retry. Disabled by default.
+func (o ApplicationSettingsOutput) JobRetryLimitPerUserProject() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.JobRetryLimitPerUserProject }).(pulumi.IntOutput)
 }
 
 // Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time.
@@ -4501,6 +5314,16 @@ func (o ApplicationSettingsOutput) MaxExportSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.MaxExportSize }).(pulumi.IntOutput)
 }
 
+// Maximum allowed GitHub API response size in MB. 0 for unlimited.
+func (o ApplicationSettingsOutput) MaxGithubResponseSizeLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.MaxGithubResponseSizeLimit }).(pulumi.IntOutput)
+}
+
+// Maximum allowed size in MiB for HTTP responses from outbound requests. 0 for unlimited. Applicable for integrations, importers, and webhooks. Introduced in GitLab 18.4.
+func (o ApplicationSettingsOutput) MaxHttpResponseSizeLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.MaxHttpResponseSizeLimit }).(pulumi.IntOutput)
+}
+
 // Maximum remote file size for imports from external object storages.
 func (o ApplicationSettingsOutput) MaxImportRemoteFileSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.MaxImportRemoteFileSize }).(pulumi.IntOutput)
@@ -4584,6 +5407,11 @@ func (o ApplicationSettingsOutput) MirrorMaxCapacity() pulumi.IntOutput {
 // Maximum time (in minutes) between updates that a mirror can have when scheduled to synchronize.
 func (o ApplicationSettingsOutput) MirrorMaxDelay() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.MirrorMaxDelay }).(pulumi.IntOutput)
+}
+
+// Maximum number of notes (comments) a user can create per minute. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) NotesCreateLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.NotesCreateLimit }).(pulumi.IntOutput)
 }
 
 // Enable sending notification if sign in from unknown IP address happens
@@ -4671,9 +5499,24 @@ func (o ApplicationSettingsOutput) PersonalAccessTokenPrefix() pulumi.StringOutp
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringOutput { return v.PersonalAccessTokenPrefix }).(pulumi.StringOutput)
 }
 
+// Maximum number of pipeline cancellations per minute per user per project. Introduced in GitLab 19.5.
+func (o ApplicationSettingsOutput) PipelineCancelLimitPerUserProject() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.PipelineCancelLimitPerUserProject }).(pulumi.IntOutput)
+}
+
 // Maximum number of pipeline creation requests per minute per user and commit.
 func (o ApplicationSettingsOutput) PipelineLimitPerProjectUserSha() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.PipelineLimitPerProjectUserSha }).(pulumi.IntOutput)
+}
+
+// Maximum number of pipeline creation requests per minute per user.
+func (o ApplicationSettingsOutput) PipelineLimitPerUser() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.PipelineLimitPerUser }).(pulumi.IntOutput)
+}
+
+// Maximum number of pipeline retries per minute per user per project. Introduced in GitLab 19.5 with a feature flag named rate*limit*pipeline_retry. Disabled by default.
+func (o ApplicationSettingsOutput) PipelineRetryLimitPerUserProject() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.PipelineRetryLimitPerUserProject }).(pulumi.IntOutput)
 }
 
 // (If enabled, requires: plantuml_url) Enable PlantUML integration.
@@ -4701,14 +5544,34 @@ func (o ApplicationSettingsOutput) PreventMergeRequestsCommittersApproval() pulu
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.PreventMergeRequestsCommittersApproval }).(pulumi.BoolOutput)
 }
 
+// Maximum number of project export downloads per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ProjectDownloadExportLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ProjectDownloadExportLimit }).(pulumi.IntOutput)
+}
+
 // Enable project export.
 func (o ApplicationSettingsOutput) ProjectExportEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ProjectExportEnabled }).(pulumi.BoolOutput)
 }
 
+// Maximum number of project exports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ProjectExportLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ProjectExportLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of project imports per minute per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ProjectImportLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ProjectImportLimit }).(pulumi.IntOutput)
+}
+
 // Maximum authenticated requests to /project/:id/jobs per minute.
 func (o ApplicationSettingsOutput) ProjectJobsApiRateLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ProjectJobsApiRateLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of secrets allowed per project in Secrets Manager. Default: 100. To disable the limit, set to 0. Ultimate only. Introduced in GitLab 18.9.
+func (o ApplicationSettingsOutput) ProjectSecretsLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ProjectSecretsLimit }).(pulumi.IntOutput)
 }
 
 // Max number of requests per 10 minutes per IP address for unauthenticated requests to the list all projects API. To disable throttling set to 0.
@@ -4749,6 +5612,11 @@ func (o ApplicationSettingsOutput) RateLimitingResponseText() pulumi.StringOutpu
 // Max number of requests per minute for each raw path. To disable throttling set to 0.
 func (o ApplicationSettingsOutput) RawBlobRequestLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.RawBlobRequestLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of unauthenticated requests per minute across all raw paths in a project (default is 800). Set to 0 to disable throttling.
+func (o ApplicationSettingsOutput) RawBlobRequestLimitUnauthenticated() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.RawBlobRequestLimitUnauthenticated }).(pulumi.IntOutput)
 }
 
 // (If enabled, requires: recaptcha*private*key and recaptcha*site*key) Enable reCAPTCHA.
@@ -4824,6 +5692,31 @@ func (o ApplicationSettingsOutput) RestrictedVisibilityLevels() pulumi.StringArr
 // The minimum allowed bit length of an uploaded RSA key. 0 means no restriction. -1 disables RSA keys.
 func (o ApplicationSettingsOutput) RsaKeyRestriction() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.RsaKeyRestriction }).(pulumi.IntOutput)
+}
+
+// Maximum number of requests per minute per job token for requests to /jobs/* requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. Introduced in GitLab 18.5.
+func (o ApplicationSettingsOutput) RunnerJobsEndpointsApiLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.RunnerJobsEndpointsApiLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of requests per minute per runner token for requests to the PATCH /jobs/:id/trace runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+func (o ApplicationSettingsOutput) RunnerJobsPatchTraceApiLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.RunnerJobsPatchTraceApiLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of requests per minute per runner token for requests to the /jobs/request runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. Introduced in GitLab 18.5.
+func (o ApplicationSettingsOutput) RunnerJobsRequestApiLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.RunnerJobsRequestApiLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of actions per scan execution policy. Default: 0. Maximum: 20.
+func (o ApplicationSettingsOutput) ScanExecutionPoliciesActionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ScanExecutionPoliciesActionLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of type: schedule rules per scan execution policy. Default: 0. Maximum: 20.
+func (o ApplicationSettingsOutput) ScanExecutionPoliciesScheduleLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ScanExecutionPoliciesScheduleLimit }).(pulumi.IntOutput)
 }
 
 // Max number of requests per minute for performing a search while authenticated. To disable throttling set to 0.
@@ -5026,6 +5919,11 @@ func (o ApplicationSettingsOutput) SuggestPipelineEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.SuggestPipelineEnabled }).(pulumi.BoolOutput)
 }
 
+// Maximum number of tag creation requests allowed per 30 minutes per project. Applies to the REST API endpoint for creating a tag, the GraphQL tagCreate mutation, tag creation in the UI, and the /tag quick action. Default: 100. Set to 0 to disable the rate limit. Introduced in GitLab 19.4.
+func (o ApplicationSettingsOutput) TagsCreateLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.TagsCreateLimit }).(pulumi.IntOutput)
+}
+
 // Maximum time for web terminal websocket connection (in seconds). Set to 0 for unlimited time.
 func (o ApplicationSettingsOutput) TerminalMaxSessionTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.TerminalMaxSessionTime }).(pulumi.IntOutput)
@@ -5051,6 +5949,74 @@ func (o ApplicationSettingsOutput) ThrottleAuthenticatedApiRequestsPerPeriod() p
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleAuthenticatedApiRequestsPerPeriod }).(pulumi.IntOutput)
 }
 
+// If true, enforces the authenticated dependency proxy request rate limit. Default value: false. Introduced in GitLab 19.4.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedDependencyProxyEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ThrottleAuthenticatedDependencyProxyEnabled }).(pulumi.BoolOutput)
+}
+
+// Rate limit period in seconds. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 15. Introduced in GitLab 19.4.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedDependencyProxyPeriodInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput {
+		return v.ThrottleAuthenticatedDependencyProxyPeriodInSeconds
+	}).(pulumi.IntOutput)
+}
+
+// Maximum requests per period per user. throttle*authenticated*dependency*proxy*enabled must be true. Default value: 1000. Introduced in GitLab 19.4.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedDependencyProxyRequestsPerPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput {
+		return v.ThrottleAuthenticatedDependencyProxyRequestsPerPeriod
+	}).(pulumi.IntOutput)
+}
+
+// (If enabled, requires: throttle*authenticated*deprecated*api*period*in*seconds and throttle*authenticated*deprecated*api*requests*per*period) Enable authenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedDeprecatedApiEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ThrottleAuthenticatedDeprecatedApiEnabled }).(pulumi.BoolOutput)
+}
+
+// Rate limit period (in seconds) for authenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedDeprecatedApiPeriodInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput {
+		return v.ThrottleAuthenticatedDeprecatedApiPeriodInSeconds
+	}).(pulumi.IntOutput)
+}
+
+// Maximum authenticated deprecated API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedDeprecatedApiRequestsPerPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput {
+		return v.ThrottleAuthenticatedDeprecatedApiRequestsPerPeriod
+	}).(pulumi.IntOutput)
+}
+
+// (If enabled, requires: throttle*authenticated*files*api*period*in*seconds and throttle*authenticated*files*api*requests*per*period) Enable authenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedFilesApiEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ThrottleAuthenticatedFilesApiEnabled }).(pulumi.BoolOutput)
+}
+
+// Rate limit period (in seconds) for authenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedFilesApiPeriodInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleAuthenticatedFilesApiPeriodInSeconds }).(pulumi.IntOutput)
+}
+
+// Maximum authenticated Files API requests per period per user. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedFilesApiRequestsPerPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleAuthenticatedFilesApiRequestsPerPeriod }).(pulumi.IntOutput)
+}
+
+// If true, enforces the authenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedGitHttpEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ThrottleAuthenticatedGitHttpEnabled }).(pulumi.BoolOutput)
+}
+
+// Rate limit period in seconds. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedGitHttpPeriodInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleAuthenticatedGitHttpPeriodInSeconds }).(pulumi.IntOutput)
+}
+
+// Maximum requests per period per user. throttle*authenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 18.1 behind the feature flag git*authenticated*http_limit, enabled by default in GitLab 18.3; the flag was removed in GitLab 18.4.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedGitHttpRequestsPerPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleAuthenticatedGitHttpRequestsPerPeriod }).(pulumi.IntOutput)
+}
+
 // Enable authenticated Git LFS request rate limit.
 func (o ApplicationSettingsOutput) ThrottleAuthenticatedGitLfsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ThrottleAuthenticatedGitLfsEnabled }).(pulumi.BoolOutput)
@@ -5064,6 +6030,21 @@ func (o ApplicationSettingsOutput) ThrottleAuthenticatedGitLfsPeriodInSeconds() 
 // Maximum requests per period per user.
 func (o ApplicationSettingsOutput) ThrottleAuthenticatedGitLfsRequestsPerPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleAuthenticatedGitLfsRequestsPerPeriod }).(pulumi.IntOutput)
+}
+
+// (If enabled, requires: throttle*authenticated*mcp*period*in*seconds and throttle*authenticated*mcp*requests*per*period) If true, enforces the rate limit on requests to the MCP Server endpoint, /api/v4/mcp, for any HTTP method. Does not apply to other MCP endpoints. Introduced in GitLab 19.5.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedMcpEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ThrottleAuthenticatedMcpEnabled }).(pulumi.BoolOutput)
+}
+
+// Rate limit period in seconds. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedMcpPeriodInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleAuthenticatedMcpPeriodInSeconds }).(pulumi.IntOutput)
+}
+
+// Maximum requests per period per user. throttle*authenticated*mcp_enabled must be true. Introduced in GitLab 19.5.
+func (o ApplicationSettingsOutput) ThrottleAuthenticatedMcpRequestsPerPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleAuthenticatedMcpRequestsPerPeriod }).(pulumi.IntOutput)
 }
 
 // (If enabled, requires: throttle*authenticated*packages*api*period*in*seconds and throttle*authenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
@@ -5100,6 +6081,40 @@ func (o ApplicationSettingsOutput) ThrottleAuthenticatedWebRequestsPerPeriod() p
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleAuthenticatedWebRequestsPerPeriod }).(pulumi.IntOutput)
 }
 
+// If true, enforces the inbound incident management alert notification rate limit, per project. Default value: false.
+func (o ApplicationSettingsOutput) ThrottleIncidentManagementNotificationEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ThrottleIncidentManagementNotificationEnabled }).(pulumi.BoolOutput)
+}
+
+// Maximum inbound incident management alert notifications per period, per project. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+func (o ApplicationSettingsOutput) ThrottleIncidentManagementNotificationPerPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput {
+		return v.ThrottleIncidentManagementNotificationPerPeriod
+	}).(pulumi.IntOutput)
+}
+
+// Rate limit period in seconds. throttle*incident*management*notification*enabled must be true. Default value: 3600.
+func (o ApplicationSettingsOutput) ThrottleIncidentManagementNotificationPeriodInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput {
+		return v.ThrottleIncidentManagementNotificationPeriodInSeconds
+	}).(pulumi.IntOutput)
+}
+
+// (If enabled, requires: throttle*protected*paths*period*in*seconds and throttle*protected*paths*requests*per*period) Enable rate limiting for protected paths (for example, sign-in and password reset). Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ThrottleProtectedPathsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ThrottleProtectedPathsEnabled }).(pulumi.BoolOutput)
+}
+
+// Rate limit period (in seconds) for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ThrottleProtectedPathsPeriodInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleProtectedPathsPeriodInSeconds }).(pulumi.IntOutput)
+}
+
+// Maximum requests per period per IP for protected paths. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ThrottleProtectedPathsRequestsPerPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleProtectedPathsRequestsPerPeriod }).(pulumi.IntOutput)
+}
+
 // (If enabled, requires: throttle*unauthenticated*api*period*in*seconds and throttle*unauthenticated*api*requests*per*period) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
 func (o ApplicationSettingsOutput) ThrottleUnauthenticatedApiEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ThrottleUnauthenticatedApiEnabled }).(pulumi.BoolOutput)
@@ -5113,6 +6128,66 @@ func (o ApplicationSettingsOutput) ThrottleUnauthenticatedApiPeriodInSeconds() p
 // Max requests per period per IP.
 func (o ApplicationSettingsOutput) ThrottleUnauthenticatedApiRequestsPerPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleUnauthenticatedApiRequestsPerPeriod }).(pulumi.IntOutput)
+}
+
+// (If enabled, requires: throttle*unauthenticated*deprecated*api*period*in*seconds and throttle*unauthenticated*deprecated*api*requests*per*period) Enable unauthenticated deprecated API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ThrottleUnauthenticatedDeprecatedApiEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ThrottleUnauthenticatedDeprecatedApiEnabled }).(pulumi.BoolOutput)
+}
+
+// Rate limit period (in seconds) for unauthenticated deprecated API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ThrottleUnauthenticatedDeprecatedApiPeriodInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput {
+		return v.ThrottleUnauthenticatedDeprecatedApiPeriodInSeconds
+	}).(pulumi.IntOutput)
+}
+
+// Maximum unauthenticated deprecated API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ThrottleUnauthenticatedDeprecatedApiRequestsPerPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput {
+		return v.ThrottleUnauthenticatedDeprecatedApiRequestsPerPeriod
+	}).(pulumi.IntOutput)
+}
+
+// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*enabled or throttle*unauthenticated*api*enabled instead.) (**If enabled, requires**: throttle*unauthenticated*period*in*seconds and throttle*unauthenticated*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
+//
+// Deprecated: Use throttleUnauthenticatedWebEnabled or throttleUnauthenticatedApiEnabled instead. (Deprecated in GitLab 14.3)
+func (o ApplicationSettingsOutput) ThrottleUnauthenticatedEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ThrottleUnauthenticatedEnabled }).(pulumi.BoolOutput)
+}
+
+// (If enabled, requires: throttle*unauthenticated*files*api*period*in*seconds and throttle*unauthenticated*files*api*requests*per*period) Enable unauthenticated Files API request rate limit. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ThrottleUnauthenticatedFilesApiEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ThrottleUnauthenticatedFilesApiEnabled }).(pulumi.BoolOutput)
+}
+
+// Rate limit period (in seconds) for unauthenticated Files API requests. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ThrottleUnauthenticatedFilesApiPeriodInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleUnauthenticatedFilesApiPeriodInSeconds }).(pulumi.IntOutput)
+}
+
+// Maximum unauthenticated Files API requests per period per IP. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) ThrottleUnauthenticatedFilesApiRequestsPerPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput {
+		return v.ThrottleUnauthenticatedFilesApiRequestsPerPeriod
+	}).(pulumi.IntOutput)
+}
+
+// If true, enforces the unauthenticated Git HTTP request rate limit. Default value: false. Introduced in GitLab 17.0.
+func (o ApplicationSettingsOutput) ThrottleUnauthenticatedGitHttpEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.ThrottleUnauthenticatedGitHttpEnabled }).(pulumi.BoolOutput)
+}
+
+// Rate limit period in seconds. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+func (o ApplicationSettingsOutput) ThrottleUnauthenticatedGitHttpPeriodInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleUnauthenticatedGitHttpPeriodInSeconds }).(pulumi.IntOutput)
+}
+
+// Maximum requests per period per IP. throttle*unauthenticated*git*http*enabled must be true. Default value: 3600. Introduced in GitLab 17.0.
+func (o ApplicationSettingsOutput) ThrottleUnauthenticatedGitHttpRequestsPerPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput {
+		return v.ThrottleUnauthenticatedGitHttpRequestsPerPeriod
+	}).(pulumi.IntOutput)
 }
 
 // (If enabled, requires: throttle*unauthenticated*packages*api*period*in*seconds and throttle*unauthenticated*packages*api*requests*per*period) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View Package Registry rate limits for more details.
@@ -5132,6 +6207,20 @@ func (o ApplicationSettingsOutput) ThrottleUnauthenticatedPackagesApiRequestsPer
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput {
 		return v.ThrottleUnauthenticatedPackagesApiRequestsPerPeriod
 	}).(pulumi.IntOutput)
+}
+
+// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*period*in*seconds or throttle*unauthenticated*api*period*in*seconds instead.) Rate limit period in seconds.
+//
+// Deprecated: Use throttleUnauthenticatedWebPeriodInSeconds or throttleUnauthenticatedApiPeriodInSeconds instead. (Deprecated in GitLab 14.3)
+func (o ApplicationSettingsOutput) ThrottleUnauthenticatedPeriodInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleUnauthenticatedPeriodInSeconds }).(pulumi.IntOutput)
+}
+
+// (Deprecated in GitLab 14.3. Use throttle*unauthenticated*web*requests*per*period or throttle*unauthenticated*api*requests*per*period instead.) Maximum requests per period per IP.
+//
+// Deprecated: Use throttleUnauthenticatedWebRequestsPerPeriod or throttleUnauthenticatedApiRequestsPerPeriod instead. (Deprecated in GitLab 14.3)
+func (o ApplicationSettingsOutput) ThrottleUnauthenticatedRequestsPerPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.ThrottleUnauthenticatedRequestsPerPeriod }).(pulumi.IntOutput)
 }
 
 // (If enabled, requires: throttle*unauthenticated*web*period*in*seconds and throttle*unauthenticated*web*requests*per*period) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots).
@@ -5229,6 +6318,51 @@ func (o ApplicationSettingsOutput) UserShowAddSshKeyMessage() pulumi.BoolOutput 
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.UserShowAddSshKeyMessage }).(pulumi.BoolOutput)
 }
 
+// Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+func (o ApplicationSettingsOutput) UsersApiLimitFollowers() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.UsersApiLimitFollowers }).(pulumi.IntOutput)
+}
+
+// Maximum number of requests per minute, per user or IP address. Default: 100. Set to 0 to disable limits. Introduced in GitLab 17.10.
+func (o ApplicationSettingsOutput) UsersApiLimitFollowing() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.UsersApiLimitFollowing }).(pulumi.IntOutput)
+}
+
+// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+func (o ApplicationSettingsOutput) UsersApiLimitGpgKey() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.UsersApiLimitGpgKey }).(pulumi.IntOutput)
+}
+
+// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+func (o ApplicationSettingsOutput) UsersApiLimitGpgKeys() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.UsersApiLimitGpgKeys }).(pulumi.IntOutput)
+}
+
+// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+func (o ApplicationSettingsOutput) UsersApiLimitSshKey() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.UsersApiLimitSshKey }).(pulumi.IntOutput)
+}
+
+// Maximum number of requests per minute, per user or IP address. Default: 120. Set to 0 to disable limits. Introduced in GitLab 17.10.
+func (o ApplicationSettingsOutput) UsersApiLimitSshKeys() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.UsersApiLimitSshKeys }).(pulumi.IntOutput)
+}
+
+// Maximum number of requests per minute, per user or IP address. Default: 240. Set to 0 to disable limits. Introduced in GitLab 17.10.
+func (o ApplicationSettingsOutput) UsersApiLimitStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.UsersApiLimitStatus }).(pulumi.IntOutput)
+}
+
+// Maximum number of requests per minute per user to the GET /users/:id API endpoint. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) UsersGetByIdLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.UsersGetByIdLimit }).(pulumi.IntOutput)
+}
+
+// Usernames excluded from the users*get*by*id*limit rate limit, separated by newlines, commas or whitespace. Not documented in the GitLab API reference, but accepted by PUT /application/settings.
+func (o ApplicationSettingsOutput) UsersGetByIdLimitAllowlistRaw() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringOutput { return v.UsersGetByIdLimitAllowlistRaw }).(pulumi.StringOutput)
+}
+
 // List of types which are allowed to register a GitLab Runner. Can be [], ['group'], ['project'] or ['group', 'project'].
 func (o ApplicationSettingsOutput) ValidRunnerRegistrars() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.StringArrayOutput { return v.ValidRunnerRegistrars }).(pulumi.StringArrayOutput)
@@ -5237,6 +6371,16 @@ func (o ApplicationSettingsOutput) ValidRunnerRegistrars() pulumi.StringArrayOut
 // Let GitLab inform you when an update is available.
 func (o ApplicationSettingsOutput) VersionCheckEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationSettings) pulumi.BoolOutput { return v.VersionCheckEnabled }).(pulumi.BoolOutput)
+}
+
+// Maximum number of webhook event resend requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+func (o ApplicationSettingsOutput) WebHookEventResendLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.WebHookEventResendLimit }).(pulumi.IntOutput)
+}
+
+// Maximum number of webhook test requests per minute, per user, for a given project or group. Default: 5. Set to 0 to disable limits. Introduced in GitLab 19.3.
+func (o ApplicationSettingsOutput) WebHookTestLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationSettings) pulumi.IntOutput { return v.WebHookTestLimit }).(pulumi.IntOutput)
 }
 
 // Live Preview (allow live previews of JavaScript projects in the Web IDE using CodeSandbox Live Preview).

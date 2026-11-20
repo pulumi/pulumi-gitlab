@@ -18,7 +18,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-personal-access-tokens-for-a-group-service-account)
         /// 
         /// ## Example Usage
         /// 
@@ -32,7 +32,7 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetGroup.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         FullPath = "foo/bar/baz",
         ///     });
         /// 
         ///     // List all access tokens for a group service account
@@ -66,7 +66,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-personal-access-tokens-for-a-group-service-account)
         /// 
         /// ## Example Usage
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetGroup.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         FullPath = "foo/bar/baz",
         ///     });
         /// 
         ///     // List all access tokens for a group service account
@@ -114,7 +114,7 @@ namespace Pulumi.GitLab
         /// 
         /// &gt; **Permissions:** You must have administrator access or be an Owner of the group to list the tokens of a service account.
         /// 
-        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/personal_access_tokens/#list-all-personal-access-tokens)
+        /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/service_accounts/#list-all-personal-access-tokens-for-a-group-service-account)
         /// 
         /// ## Example Usage
         /// 
@@ -128,7 +128,7 @@ namespace Pulumi.GitLab
         /// {
         ///     var example = GitLab.GetGroup.Invoke(new()
         ///     {
-        ///         Id = "foo/bar/baz",
+        ///         FullPath = "foo/bar/baz",
         ///     });
         /// 
         ///     // List all access tokens for a group service account

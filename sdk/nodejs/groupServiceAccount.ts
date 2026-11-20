@@ -32,7 +32,8 @@ import * as utilities from "./utilities";
  * // Group to assign the service account to. Can be the same top-level group resource as above, or a subgroup of that group.
  * const exampleSubgroup = new gitlab.Group("example_subgroup", {
  *     name: "subgroup",
- *     path: "example/subgroup",
+ *     path: "subgroup",
+ *     parentId: example.id.apply(x =>Number(x)),
  *     description: "An example subgroup",
  * });
  * // To assign the service account to a group

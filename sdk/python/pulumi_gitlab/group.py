@@ -33,10 +33,16 @@ class GroupArgs:
                  default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
                  default_branch_protection_defaults: pulumi.Input[Optional['GroupDefaultBranchProtectionDefaultsArgs']] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_git_access_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  extra_shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  ip_restriction_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_math_rendering_limits_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 math_rendering_limits_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
                  membership_lock: pulumi.Input[Optional[_builtins.bool]] = None,
                  mentions_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -73,10 +79,16 @@ class GroupArgs:
         :param pulumi.Input[_builtins.int] default_branch_protection: See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[_builtins.str] description: The group's description.
+        :param pulumi.Input[_builtins.bool] duo_features_enabled: Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
+        :param pulumi.Input[_builtins.str] enabled_git_access_protocol: Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+        :param pulumi.Input[_builtins.bool] experiment_features_enabled: Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
         :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[_builtins.bool] lock_duo_features_enabled: Enforce the `duo_features_enabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        :param pulumi.Input[_builtins.bool] lock_math_rendering_limits_enabled: Indicates if math rendering limits are locked for all descendent groups.
+        :param pulumi.Input[_builtins.bool] math_rendering_limits_enabled: Indicates if math rendering limits are used for this group.
         :param pulumi.Input[_builtins.int] max_artifacts_size: The maximum file size in megabytes for individual job artifacts.
         :param pulumi.Input[_builtins.bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[_builtins.bool] mentions_disabled: Disable the capability of a group from getting mentioned.
@@ -125,14 +137,26 @@ class GroupArgs:
             pulumi.set(__self__, "default_branch_protection_defaults", default_branch_protection_defaults)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if duo_features_enabled is not None:
+            pulumi.set(__self__, "duo_features_enabled", duo_features_enabled)
         if emails_enabled is not None:
             pulumi.set(__self__, "emails_enabled", emails_enabled)
+        if enabled_git_access_protocol is not None:
+            pulumi.set(__self__, "enabled_git_access_protocol", enabled_git_access_protocol)
+        if experiment_features_enabled is not None:
+            pulumi.set(__self__, "experiment_features_enabled", experiment_features_enabled)
         if extra_shared_runners_minutes_limit is not None:
             pulumi.set(__self__, "extra_shared_runners_minutes_limit", extra_shared_runners_minutes_limit)
         if ip_restriction_ranges is not None:
             pulumi.set(__self__, "ip_restriction_ranges", ip_restriction_ranges)
         if lfs_enabled is not None:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if lock_duo_features_enabled is not None:
+            pulumi.set(__self__, "lock_duo_features_enabled", lock_duo_features_enabled)
+        if lock_math_rendering_limits_enabled is not None:
+            pulumi.set(__self__, "lock_math_rendering_limits_enabled", lock_math_rendering_limits_enabled)
+        if math_rendering_limits_enabled is not None:
+            pulumi.set(__self__, "math_rendering_limits_enabled", math_rendering_limits_enabled)
         if max_artifacts_size is not None:
             pulumi.set(__self__, "max_artifacts_size", max_artifacts_size)
         if membership_lock is not None:
@@ -322,6 +346,18 @@ class GroupArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="duoFeaturesEnabled")
+    def duo_features_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        """
+        return pulumi.get(self, "duo_features_enabled")
+
+    @duo_features_enabled.setter
+    def duo_features_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "duo_features_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="emailsEnabled")
     def emails_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -332,6 +368,30 @@ class GroupArgs:
     @emails_enabled.setter
     def emails_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "emails_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enabledGitAccessProtocol")
+    def enabled_git_access_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+        """
+        return pulumi.get(self, "enabled_git_access_protocol")
+
+    @enabled_git_access_protocol.setter
+    def enabled_git_access_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "enabled_git_access_protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="experimentFeaturesEnabled")
+    def experiment_features_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
+        """
+        return pulumi.get(self, "experiment_features_enabled")
+
+    @experiment_features_enabled.setter
+    def experiment_features_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "experiment_features_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="extraSharedRunnersMinutesLimit")
@@ -368,6 +428,42 @@ class GroupArgs:
     @lfs_enabled.setter
     def lfs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lfs_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lockDuoFeaturesEnabled")
+    def lock_duo_features_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enforce the `duo_features_enabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        """
+        return pulumi.get(self, "lock_duo_features_enabled")
+
+    @lock_duo_features_enabled.setter
+    def lock_duo_features_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "lock_duo_features_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lockMathRenderingLimitsEnabled")
+    def lock_math_rendering_limits_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates if math rendering limits are locked for all descendent groups.
+        """
+        return pulumi.get(self, "lock_math_rendering_limits_enabled")
+
+    @lock_math_rendering_limits_enabled.setter
+    def lock_math_rendering_limits_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "lock_math_rendering_limits_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mathRenderingLimitsEnabled")
+    def math_rendering_limits_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates if math rendering limits are used for this group.
+        """
+        return pulumi.get(self, "math_rendering_limits_enabled")
+
+    @math_rendering_limits_enabled.setter
+    def math_rendering_limits_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "math_rendering_limits_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maxArtifactsSize")
@@ -637,12 +733,18 @@ class _GroupState:
                  default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
                  default_branch_protection_defaults: pulumi.Input[Optional['GroupDefaultBranchProtectionDefaultsArgs']] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_git_access_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  extra_shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  full_name: pulumi.Input[Optional[_builtins.str]] = None,
                  full_path: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_restriction_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_math_rendering_limits_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 math_rendering_limits_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
                  membership_lock: pulumi.Input[Optional[_builtins.bool]] = None,
                  mentions_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -682,12 +784,18 @@ class _GroupState:
         :param pulumi.Input[_builtins.int] default_branch_protection: See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input['GroupDefaultBranchProtectionDefaultsArgs'] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[_builtins.str] description: The group's description.
+        :param pulumi.Input[_builtins.bool] duo_features_enabled: Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
+        :param pulumi.Input[_builtins.str] enabled_git_access_protocol: Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+        :param pulumi.Input[_builtins.bool] experiment_features_enabled: Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
         :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[_builtins.str] full_name: The full name of the group.
         :param pulumi.Input[_builtins.str] full_path: The full path of the group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[_builtins.bool] lock_duo_features_enabled: Enforce the `duo_features_enabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        :param pulumi.Input[_builtins.bool] lock_math_rendering_limits_enabled: Indicates if math rendering limits are locked for all descendent groups.
+        :param pulumi.Input[_builtins.bool] math_rendering_limits_enabled: Indicates if math rendering limits are used for this group.
         :param pulumi.Input[_builtins.int] max_artifacts_size: The maximum file size in megabytes for individual job artifacts.
         :param pulumi.Input[_builtins.bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[_builtins.bool] mentions_disabled: Disable the capability of a group from getting mentioned.
@@ -740,8 +848,14 @@ class _GroupState:
             pulumi.set(__self__, "default_branch_protection_defaults", default_branch_protection_defaults)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if duo_features_enabled is not None:
+            pulumi.set(__self__, "duo_features_enabled", duo_features_enabled)
         if emails_enabled is not None:
             pulumi.set(__self__, "emails_enabled", emails_enabled)
+        if enabled_git_access_protocol is not None:
+            pulumi.set(__self__, "enabled_git_access_protocol", enabled_git_access_protocol)
+        if experiment_features_enabled is not None:
+            pulumi.set(__self__, "experiment_features_enabled", experiment_features_enabled)
         if extra_shared_runners_minutes_limit is not None:
             pulumi.set(__self__, "extra_shared_runners_minutes_limit", extra_shared_runners_minutes_limit)
         if full_name is not None:
@@ -752,6 +866,12 @@ class _GroupState:
             pulumi.set(__self__, "ip_restriction_ranges", ip_restriction_ranges)
         if lfs_enabled is not None:
             pulumi.set(__self__, "lfs_enabled", lfs_enabled)
+        if lock_duo_features_enabled is not None:
+            pulumi.set(__self__, "lock_duo_features_enabled", lock_duo_features_enabled)
+        if lock_math_rendering_limits_enabled is not None:
+            pulumi.set(__self__, "lock_math_rendering_limits_enabled", lock_math_rendering_limits_enabled)
+        if math_rendering_limits_enabled is not None:
+            pulumi.set(__self__, "math_rendering_limits_enabled", math_rendering_limits_enabled)
         if max_artifacts_size is not None:
             pulumi.set(__self__, "max_artifacts_size", max_artifacts_size)
         if membership_lock is not None:
@@ -947,6 +1067,18 @@ class _GroupState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="duoFeaturesEnabled")
+    def duo_features_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        """
+        return pulumi.get(self, "duo_features_enabled")
+
+    @duo_features_enabled.setter
+    def duo_features_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "duo_features_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="emailsEnabled")
     def emails_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -957,6 +1089,30 @@ class _GroupState:
     @emails_enabled.setter
     def emails_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "emails_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enabledGitAccessProtocol")
+    def enabled_git_access_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+        """
+        return pulumi.get(self, "enabled_git_access_protocol")
+
+    @enabled_git_access_protocol.setter
+    def enabled_git_access_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "enabled_git_access_protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="experimentFeaturesEnabled")
+    def experiment_features_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
+        """
+        return pulumi.get(self, "experiment_features_enabled")
+
+    @experiment_features_enabled.setter
+    def experiment_features_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "experiment_features_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="extraSharedRunnersMinutesLimit")
@@ -1017,6 +1173,42 @@ class _GroupState:
     @lfs_enabled.setter
     def lfs_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lfs_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lockDuoFeaturesEnabled")
+    def lock_duo_features_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enforce the `duo_features_enabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        """
+        return pulumi.get(self, "lock_duo_features_enabled")
+
+    @lock_duo_features_enabled.setter
+    def lock_duo_features_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "lock_duo_features_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lockMathRenderingLimitsEnabled")
+    def lock_math_rendering_limits_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates if math rendering limits are locked for all descendent groups.
+        """
+        return pulumi.get(self, "lock_math_rendering_limits_enabled")
+
+    @lock_math_rendering_limits_enabled.setter
+    def lock_math_rendering_limits_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "lock_math_rendering_limits_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mathRenderingLimitsEnabled")
+    def math_rendering_limits_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates if math rendering limits are used for this group.
+        """
+        return pulumi.get(self, "math_rendering_limits_enabled")
+
+    @math_rendering_limits_enabled.setter
+    def math_rendering_limits_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "math_rendering_limits_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maxArtifactsSize")
@@ -1324,10 +1516,16 @@ class Group(pulumi.CustomResource):
                  default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
                  default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict', 'outputs.GroupDefaultBranchProtectionDefaults']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_git_access_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  extra_shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  ip_restriction_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_math_rendering_limits_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 math_rendering_limits_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
                  membership_lock: pulumi.Input[Optional[_builtins.bool]] = None,
                  mentions_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1415,6 +1613,13 @@ class Group(pulumi.CustomResource):
             path="example",
             default_branch="develop",
             description="An example group with a default branch name")
+        # Group with GitLab Duo turned off for all subgroups and projects
+        example_six = gitlab.Group("example-six",
+            name="example-six",
+            path="example-six",
+            description="An example group with GitLab Duo turned off",
+            duo_features_enabled=False,
+            lock_duo_features_enabled=True)
         ```
 
         ## Import
@@ -1444,10 +1649,16 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] default_branch_protection: See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict', 'outputs.GroupDefaultBranchProtectionDefaults']] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[_builtins.str] description: The group's description.
+        :param pulumi.Input[_builtins.bool] duo_features_enabled: Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
+        :param pulumi.Input[_builtins.str] enabled_git_access_protocol: Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+        :param pulumi.Input[_builtins.bool] experiment_features_enabled: Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
         :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[_builtins.bool] lock_duo_features_enabled: Enforce the `duo_features_enabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        :param pulumi.Input[_builtins.bool] lock_math_rendering_limits_enabled: Indicates if math rendering limits are locked for all descendent groups.
+        :param pulumi.Input[_builtins.bool] math_rendering_limits_enabled: Indicates if math rendering limits are used for this group.
         :param pulumi.Input[_builtins.int] max_artifacts_size: The maximum file size in megabytes for individual job artifacts.
         :param pulumi.Input[_builtins.bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[_builtins.bool] mentions_disabled: Disable the capability of a group from getting mentioned.
@@ -1541,6 +1752,13 @@ class Group(pulumi.CustomResource):
             path="example",
             default_branch="develop",
             description="An example group with a default branch name")
+        # Group with GitLab Duo turned off for all subgroups and projects
+        example_six = gitlab.Group("example-six",
+            name="example-six",
+            path="example-six",
+            description="An example group with GitLab Duo turned off",
+            duo_features_enabled=False,
+            lock_duo_features_enabled=True)
         ```
 
         ## Import
@@ -1583,10 +1801,16 @@ class Group(pulumi.CustomResource):
                  default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
                  default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict', 'outputs.GroupDefaultBranchProtectionDefaults']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled_git_access_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  extra_shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  ip_restriction_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lock_math_rendering_limits_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 math_rendering_limits_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
                  membership_lock: pulumi.Input[Optional[_builtins.bool]] = None,
                  mentions_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1629,10 +1853,16 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["default_branch_protection"] = default_branch_protection
             __props__.__dict__["default_branch_protection_defaults"] = default_branch_protection_defaults
             __props__.__dict__["description"] = description
+            __props__.__dict__["duo_features_enabled"] = duo_features_enabled
             __props__.__dict__["emails_enabled"] = emails_enabled
+            __props__.__dict__["enabled_git_access_protocol"] = enabled_git_access_protocol
+            __props__.__dict__["experiment_features_enabled"] = experiment_features_enabled
             __props__.__dict__["extra_shared_runners_minutes_limit"] = extra_shared_runners_minutes_limit
             __props__.__dict__["ip_restriction_ranges"] = ip_restriction_ranges
             __props__.__dict__["lfs_enabled"] = lfs_enabled
+            __props__.__dict__["lock_duo_features_enabled"] = lock_duo_features_enabled
+            __props__.__dict__["lock_math_rendering_limits_enabled"] = lock_math_rendering_limits_enabled
+            __props__.__dict__["math_rendering_limits_enabled"] = math_rendering_limits_enabled
             __props__.__dict__["max_artifacts_size"] = max_artifacts_size
             __props__.__dict__["membership_lock"] = membership_lock
             __props__.__dict__["mentions_disabled"] = mentions_disabled
@@ -1686,12 +1916,18 @@ class Group(pulumi.CustomResource):
             default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
             default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict', 'outputs.GroupDefaultBranchProtectionDefaults']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled_git_access_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            experiment_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             extra_shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
             full_name: pulumi.Input[Optional[_builtins.str]] = None,
             full_path: pulumi.Input[Optional[_builtins.str]] = None,
             ip_restriction_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            lock_duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            lock_math_rendering_limits_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            math_rendering_limits_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
             membership_lock: pulumi.Input[Optional[_builtins.bool]] = None,
             mentions_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1735,12 +1971,18 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] default_branch_protection: See https://docs.gitlab.com/api/groups/#options-for-default*branch*protection. Valid values are: `0`, `1`, `2`, `3`, `4`.
         :param pulumi.Input[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict', 'outputs.GroupDefaultBranchProtectionDefaults']] default_branch_protection_defaults: The default branch protection defaults
         :param pulumi.Input[_builtins.str] description: The group's description.
+        :param pulumi.Input[_builtins.bool] duo_features_enabled: Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
+        :param pulumi.Input[_builtins.str] enabled_git_access_protocol: Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+        :param pulumi.Input[_builtins.bool] experiment_features_enabled: Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
         :param pulumi.Input[_builtins.int] extra_shared_runners_minutes_limit: Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
         :param pulumi.Input[_builtins.str] full_name: The full name of the group.
         :param pulumi.Input[_builtins.str] full_path: The full path of the group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_restriction_ranges: A list of IP addresses or subnet masks to restrict group access. Will be concatenated together into a comma separated string. Only allowed on top level groups.
         :param pulumi.Input[_builtins.bool] lfs_enabled: Enable/disable Large File Storage (LFS) for the projects in this group.
+        :param pulumi.Input[_builtins.bool] lock_duo_features_enabled: Enforce the `duo_features_enabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        :param pulumi.Input[_builtins.bool] lock_math_rendering_limits_enabled: Indicates if math rendering limits are locked for all descendent groups.
+        :param pulumi.Input[_builtins.bool] math_rendering_limits_enabled: Indicates if math rendering limits are used for this group.
         :param pulumi.Input[_builtins.int] max_artifacts_size: The maximum file size in megabytes for individual job artifacts.
         :param pulumi.Input[_builtins.bool] membership_lock: Users cannot be added to projects in this group.
         :param pulumi.Input[_builtins.bool] mentions_disabled: Disable the capability of a group from getting mentioned.
@@ -1782,12 +2024,18 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["default_branch_protection"] = default_branch_protection
         __props__.__dict__["default_branch_protection_defaults"] = default_branch_protection_defaults
         __props__.__dict__["description"] = description
+        __props__.__dict__["duo_features_enabled"] = duo_features_enabled
         __props__.__dict__["emails_enabled"] = emails_enabled
+        __props__.__dict__["enabled_git_access_protocol"] = enabled_git_access_protocol
+        __props__.__dict__["experiment_features_enabled"] = experiment_features_enabled
         __props__.__dict__["extra_shared_runners_minutes_limit"] = extra_shared_runners_minutes_limit
         __props__.__dict__["full_name"] = full_name
         __props__.__dict__["full_path"] = full_path
         __props__.__dict__["ip_restriction_ranges"] = ip_restriction_ranges
         __props__.__dict__["lfs_enabled"] = lfs_enabled
+        __props__.__dict__["lock_duo_features_enabled"] = lock_duo_features_enabled
+        __props__.__dict__["lock_math_rendering_limits_enabled"] = lock_math_rendering_limits_enabled
+        __props__.__dict__["math_rendering_limits_enabled"] = math_rendering_limits_enabled
         __props__.__dict__["max_artifacts_size"] = max_artifacts_size
         __props__.__dict__["membership_lock"] = membership_lock
         __props__.__dict__["mentions_disabled"] = mentions_disabled
@@ -1829,12 +2077,18 @@ class Group(pulumi.CustomResource):
             default_branch_protection: pulumi.Input[Optional[_builtins.int]] = None,
             default_branch_protection_defaults: pulumi.Input[Optional[Union['GroupDefaultBranchProtectionDefaultsArgs', 'GroupDefaultBranchProtectionDefaultsArgsDict', 'outputs.GroupDefaultBranchProtectionDefaults']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled_git_access_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            experiment_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             extra_shared_runners_minutes_limit: pulumi.Input[Optional[_builtins.int]] = None,
             full_name: pulumi.Input[Optional[_builtins.str]] = None,
             full_path: pulumi.Input[Optional[_builtins.str]] = None,
             ip_restriction_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             lfs_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            lock_duo_features_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            lock_math_rendering_limits_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            math_rendering_limits_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             max_artifacts_size: pulumi.Input[Optional[_builtins.int]] = None,
             membership_lock: pulumi.Input[Optional[_builtins.bool]] = None,
             mentions_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1872,12 +2126,18 @@ class Group(pulumi.CustomResource):
         __props__["defaultBranchProtection"] = default_branch_protection
         __props__["defaultBranchProtectionDefaults"] = default_branch_protection_defaults
         __props__["description"] = description
+        __props__["duoFeaturesEnabled"] = duo_features_enabled
         __props__["emailsEnabled"] = emails_enabled
+        __props__["enabledGitAccessProtocol"] = enabled_git_access_protocol
+        __props__["experimentFeaturesEnabled"] = experiment_features_enabled
         __props__["extraSharedRunnersMinutesLimit"] = extra_shared_runners_minutes_limit
         __props__["fullName"] = full_name
         __props__["fullPath"] = full_path
         __props__["ipRestrictionRanges"] = ip_restriction_ranges
         __props__["lfsEnabled"] = lfs_enabled
+        __props__["lockDuoFeaturesEnabled"] = lock_duo_features_enabled
+        __props__["lockMathRenderingLimitsEnabled"] = lock_math_rendering_limits_enabled
+        __props__["mathRenderingLimitsEnabled"] = math_rendering_limits_enabled
         __props__["maxArtifactsSize"] = max_artifacts_size
         __props__["membershipLock"] = membership_lock
         __props__["mentionsDisabled"] = mentions_disabled
@@ -2002,12 +2262,36 @@ class Group(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="duoFeaturesEnabled")
+    def duo_features_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        """
+        return pulumi.get(self, "duo_features_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="emailsEnabled")
     def emails_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Enable email notifications.
         """
         return pulumi.get(self, "emails_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledGitAccessProtocol")
+    def enabled_git_access_protocol(self) -> pulumi.Output[_builtins.str]:
+        """
+        Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+        """
+        return pulumi.get(self, "enabled_git_access_protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="experimentFeaturesEnabled")
+    def experiment_features_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
+        """
+        return pulumi.get(self, "experiment_features_enabled")
 
     @_builtins.property
     @pulumi.getter(name="extraSharedRunnersMinutesLimit")
@@ -2048,6 +2332,30 @@ class Group(pulumi.CustomResource):
         Enable/disable Large File Storage (LFS) for the projects in this group.
         """
         return pulumi.get(self, "lfs_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="lockDuoFeaturesEnabled")
+    def lock_duo_features_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Enforce the `duo_features_enabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+        """
+        return pulumi.get(self, "lock_duo_features_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="lockMathRenderingLimitsEnabled")
+    def lock_math_rendering_limits_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates if math rendering limits are locked for all descendent groups.
+        """
+        return pulumi.get(self, "lock_math_rendering_limits_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="mathRenderingLimitsEnabled")
+    def math_rendering_limits_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates if math rendering limits are used for this group.
+        """
+        return pulumi.get(self, "math_rendering_limits_enabled")
 
     @_builtins.property
     @pulumi.getter(name="maxArtifactsSize")

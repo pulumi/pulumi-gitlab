@@ -5,6 +5,7 @@ package com.pulumi.gitlab.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -20,6 +21,11 @@ public final class GetInstanceServiceAccountResult {
      * 
      */
     private String id;
+    /**
+     * @return Whether the service account is an external user.
+     * 
+     */
+    private Boolean isExternal;
     /**
      * @return The name of the user.
      * 
@@ -50,6 +56,13 @@ public final class GetInstanceServiceAccountResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Whether the service account is an external user.
+     * 
+     */
+    public Boolean isExternal() {
+        return this.isExternal;
     }
     /**
      * @return The name of the user.
@@ -84,6 +97,7 @@ public final class GetInstanceServiceAccountResult {
     public static final class Builder {
         private String email;
         private String id;
+        private Boolean isExternal;
         private String name;
         private String serviceAccountId;
         private String username;
@@ -92,6 +106,7 @@ public final class GetInstanceServiceAccountResult {
     	      Objects.requireNonNull(defaults);
     	      this.email = defaults.email;
     	      this.id = defaults.id;
+    	      this.isExternal = defaults.isExternal;
     	      this.name = defaults.name;
     	      this.serviceAccountId = defaults.serviceAccountId;
     	      this.username = defaults.username;
@@ -111,6 +126,14 @@ public final class GetInstanceServiceAccountResult {
               throw new MissingRequiredPropertyException("GetInstanceServiceAccountResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isExternal(Boolean isExternal) {
+            if (isExternal == null) {
+              throw new MissingRequiredPropertyException("GetInstanceServiceAccountResult", "isExternal");
+            }
+            this.isExternal = isExternal;
             return this;
         }
         @CustomType.Setter
@@ -141,6 +164,7 @@ public final class GetInstanceServiceAccountResult {
             final var _resultValue = new GetInstanceServiceAccountResult();
             _resultValue.email = email;
             _resultValue.id = id;
+            _resultValue.isExternal = isExternal;
             _resultValue.name = name;
             _resultValue.serviceAccountId = serviceAccountId;
             _resultValue.username = username;

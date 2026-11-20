@@ -76,6 +76,14 @@ import * as utilities from "./utilities";
  *     defaultBranch: "develop",
  *     description: "An example group with a default branch name",
  * });
+ * // Group with GitLab Duo turned off for all subgroups and projects
+ * const example_six = new gitlab.Group("example-six", {
+ *     name: "example-six",
+ *     path: "example-six",
+ *     description: "An example group with GitLab Duo turned off",
+ *     duoFeaturesEnabled: false,
+ *     lockDuoFeaturesEnabled: true,
+ * });
  * ```
  *
  * ## Import
@@ -181,9 +189,21 @@ export class Group extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+     */
+    declare public readonly duoFeaturesEnabled: pulumi.Output<boolean>;
+    /**
      * Enable email notifications.
      */
     declare public readonly emailsEnabled: pulumi.Output<boolean>;
+    /**
+     * Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+     */
+    declare public readonly enabledGitAccessProtocol: pulumi.Output<string>;
+    /**
+     * Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
+     */
+    declare public readonly experimentFeaturesEnabled: pulumi.Output<boolean>;
     /**
      * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      */
@@ -204,6 +224,18 @@ export class Group extends pulumi.CustomResource {
      * Enable/disable Large File Storage (LFS) for the projects in this group.
      */
     declare public readonly lfsEnabled: pulumi.Output<boolean>;
+    /**
+     * Enforce the `duoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+     */
+    declare public readonly lockDuoFeaturesEnabled: pulumi.Output<boolean>;
+    /**
+     * Indicates if math rendering limits are locked for all descendent groups.
+     */
+    declare public readonly lockMathRenderingLimitsEnabled: pulumi.Output<boolean>;
+    /**
+     * Indicates if math rendering limits are used for this group.
+     */
+    declare public readonly mathRenderingLimitsEnabled: pulumi.Output<boolean>;
     /**
      * The maximum file size in megabytes for individual job artifacts.
      */
@@ -326,12 +358,18 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["defaultBranchProtection"] = state?.defaultBranchProtection;
             resourceInputs["defaultBranchProtectionDefaults"] = state?.defaultBranchProtectionDefaults;
             resourceInputs["description"] = state?.description;
+            resourceInputs["duoFeaturesEnabled"] = state?.duoFeaturesEnabled;
             resourceInputs["emailsEnabled"] = state?.emailsEnabled;
+            resourceInputs["enabledGitAccessProtocol"] = state?.enabledGitAccessProtocol;
+            resourceInputs["experimentFeaturesEnabled"] = state?.experimentFeaturesEnabled;
             resourceInputs["extraSharedRunnersMinutesLimit"] = state?.extraSharedRunnersMinutesLimit;
             resourceInputs["fullName"] = state?.fullName;
             resourceInputs["fullPath"] = state?.fullPath;
             resourceInputs["ipRestrictionRanges"] = state?.ipRestrictionRanges;
             resourceInputs["lfsEnabled"] = state?.lfsEnabled;
+            resourceInputs["lockDuoFeaturesEnabled"] = state?.lockDuoFeaturesEnabled;
+            resourceInputs["lockMathRenderingLimitsEnabled"] = state?.lockMathRenderingLimitsEnabled;
+            resourceInputs["mathRenderingLimitsEnabled"] = state?.mathRenderingLimitsEnabled;
             resourceInputs["maxArtifactsSize"] = state?.maxArtifactsSize;
             resourceInputs["membershipLock"] = state?.membershipLock;
             resourceInputs["mentionsDisabled"] = state?.mentionsDisabled;
@@ -372,10 +410,16 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["defaultBranchProtection"] = args?.defaultBranchProtection;
             resourceInputs["defaultBranchProtectionDefaults"] = args?.defaultBranchProtectionDefaults;
             resourceInputs["description"] = args?.description;
+            resourceInputs["duoFeaturesEnabled"] = args?.duoFeaturesEnabled;
             resourceInputs["emailsEnabled"] = args?.emailsEnabled;
+            resourceInputs["enabledGitAccessProtocol"] = args?.enabledGitAccessProtocol;
+            resourceInputs["experimentFeaturesEnabled"] = args?.experimentFeaturesEnabled;
             resourceInputs["extraSharedRunnersMinutesLimit"] = args?.extraSharedRunnersMinutesLimit;
             resourceInputs["ipRestrictionRanges"] = args?.ipRestrictionRanges;
             resourceInputs["lfsEnabled"] = args?.lfsEnabled;
+            resourceInputs["lockDuoFeaturesEnabled"] = args?.lockDuoFeaturesEnabled;
+            resourceInputs["lockMathRenderingLimitsEnabled"] = args?.lockMathRenderingLimitsEnabled;
+            resourceInputs["mathRenderingLimitsEnabled"] = args?.mathRenderingLimitsEnabled;
             resourceInputs["maxArtifactsSize"] = args?.maxArtifactsSize;
             resourceInputs["membershipLock"] = args?.membershipLock;
             resourceInputs["mentionsDisabled"] = args?.mentionsDisabled;
@@ -466,9 +510,21 @@ export interface GroupState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+     */
+    duoFeaturesEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * Enable email notifications.
      */
     emailsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+     */
+    enabledGitAccessProtocol?: pulumi.Input<string | undefined>;
+    /**
+     * Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
+     */
+    experimentFeaturesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      */
@@ -489,6 +545,18 @@ export interface GroupState {
      * Enable/disable Large File Storage (LFS) for the projects in this group.
      */
     lfsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enforce the `duoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+     */
+    lockDuoFeaturesEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Indicates if math rendering limits are locked for all descendent groups.
+     */
+    lockMathRenderingLimitsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Indicates if math rendering limits are used for this group.
+     */
+    mathRenderingLimitsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum file size in megabytes for individual job artifacts.
      */
@@ -638,9 +706,21 @@ export interface GroupArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * Enable GitLab Duo features for the group. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+     */
+    duoFeaturesEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * Enable email notifications.
      */
     emailsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enabled protocols for Git access. Only available for top-level groups, and only a group Owner or an administrator can set or read it. If the protocols are restricted at the instance level, GitLab returns the instance setting instead. Valid values are `ssh`, `http`, `all`.
+     */
+    enabledGitAccessProtocol?: pulumi.Input<string | undefined>;
+    /**
+     * Enable experiment features for this group. Premium and Ultimate only. Only supported for top-level groups on GitLab.com: on GitLab Self-Managed, GitLab returns the instance setting instead of the group's value. GitLab returns this value only when AI features are available for the group.
+     */
+    experimentFeaturesEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Available in Self-Managed, Premium and Ultimate plans. Can be set by administrators only. Additional CI/CD minutes for this group.
      */
@@ -653,6 +733,18 @@ export interface GroupArgs {
      * Enable/disable Large File Storage (LFS) for the projects in this group.
      */
     lfsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enforce the `duoFeaturesEnabled` setting for all subgroups and projects. Premium and Ultimate with GitLab Duo only. GitLab returns this value only when AI features are available for the group and the user is a group Owner or an administrator.
+     */
+    lockDuoFeaturesEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Indicates if math rendering limits are locked for all descendent groups.
+     */
+    lockMathRenderingLimitsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Indicates if math rendering limits are used for this group.
+     */
+    mathRenderingLimitsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum file size in megabytes for individual job artifacts.
      */

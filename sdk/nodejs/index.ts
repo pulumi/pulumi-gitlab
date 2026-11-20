@@ -490,6 +490,11 @@ export type GroupAccessToken = import("./groupAccessToken").GroupAccessToken;
 export const GroupAccessToken: typeof import("./groupAccessToken").GroupAccessToken = null as any;
 utilities.lazyLoad(exports, ["GroupAccessToken"], () => require("./groupAccessToken"));
 
+export { GroupApplicationArgs, GroupApplicationState } from "./groupApplication";
+export type GroupApplication = import("./groupApplication").GroupApplication;
+export const GroupApplication: typeof import("./groupApplication").GroupApplication = null as any;
+utilities.lazyLoad(exports, ["GroupApplication"], () => require("./groupApplication"));
+
 export { GroupBadgeArgs, GroupBadgeState } from "./groupBadge";
 export type GroupBadge = import("./groupBadge").GroupBadge;
 export const GroupBadge: typeof import("./groupBadge").GroupBadge = null as any;
@@ -1038,6 +1043,11 @@ export type RepositoryFile = import("./repositoryFile").RepositoryFile;
 export const RepositoryFile: typeof import("./repositoryFile").RepositoryFile = null as any;
 utilities.lazyLoad(exports, ["RepositoryFile"], () => require("./repositoryFile"));
 
+export { RepositoryFilesArgs, RepositoryFilesState } from "./repositoryFiles";
+export type RepositoryFiles = import("./repositoryFiles").RepositoryFiles;
+export const RepositoryFiles: typeof import("./repositoryFiles").RepositoryFiles = null as any;
+utilities.lazyLoad(exports, ["RepositoryFiles"], () => require("./repositoryFiles"));
+
 export { RunnerControllerArgs, RunnerControllerState } from "./runnerController";
 export type RunnerController = import("./runnerController").RunnerController;
 export const RunnerController: typeof import("./runnerController").RunnerController = null as any;
@@ -1169,6 +1179,8 @@ const _module = {
                 return new Group(name, <any>undefined, { urn })
             case "gitlab:index/groupAccessToken:GroupAccessToken":
                 return new GroupAccessToken(name, <any>undefined, { urn })
+            case "gitlab:index/groupApplication:GroupApplication":
+                return new GroupApplication(name, <any>undefined, { urn })
             case "gitlab:index/groupBadge:GroupBadge":
                 return new GroupBadge(name, <any>undefined, { urn })
             case "gitlab:index/groupBranchProtection:GroupBranchProtection":
@@ -1387,6 +1399,8 @@ const _module = {
                 return new ReleaseLink(name, <any>undefined, { urn })
             case "gitlab:index/repositoryFile:RepositoryFile":
                 return new RepositoryFile(name, <any>undefined, { urn })
+            case "gitlab:index/repositoryFiles:RepositoryFiles":
+                return new RepositoryFiles(name, <any>undefined, { urn })
             case "gitlab:index/runnerController:RunnerController":
                 return new RunnerController(name, <any>undefined, { urn })
             case "gitlab:index/runnerControllerInstanceScope:RunnerControllerInstanceScope":
@@ -1442,6 +1456,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/deployKeyEnable", _module
 pulumi.runtime.registerResourceModule("gitlab", "index/globalLevelNotifications", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/group", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupAccessToken", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/groupApplication", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupBadge", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupBranchProtection", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/groupCluster", _module)
@@ -1551,6 +1566,7 @@ pulumi.runtime.registerResourceModule("gitlab", "index/projectWikiPage", _module
 pulumi.runtime.registerResourceModule("gitlab", "index/release", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/releaseLink", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/repositoryFile", _module)
+pulumi.runtime.registerResourceModule("gitlab", "index/repositoryFiles", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/runnerController", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/runnerControllerInstanceScope", _module)
 pulumi.runtime.registerResourceModule("gitlab", "index/runnerControllerRunnerScope", _module)

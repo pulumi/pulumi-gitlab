@@ -28,6 +28,13 @@ import * as utilities from "./utilities";
  *         "delete": "3m",
  *     },
  * });
+ * // create a service account that is internal, so it can access internal projects
+ * // (for example when a pipeline it triggers references an internal project via `include` or `component`)
+ * const exampleInternalSa = new gitlab.InstanceServiceAccount("example_internal_sa", {
+ *     name: "example-internal-name",
+ *     username: "example-internal-username",
+ *     isExternal: false,
+ * });
  * const exampleToken = new gitlab.PersonalAccessToken("example_token", {
  *     userId: exampleSa.serviceAccountId.apply(x =>Number(x)),
  *     name: "Example personal access token for a service account",
@@ -92,6 +99,10 @@ export class InstanceServiceAccount extends pulumi.CustomResource {
      */
     declare public readonly email: pulumi.Output<string>;
     /**
+     * Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+     */
+    declare public readonly isExternal: pulumi.Output<boolean>;
+    /**
      * The name of the user. If not set, uses Service account user.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -119,6 +130,7 @@ export class InstanceServiceAccount extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceServiceAccountState | undefined;
             resourceInputs["email"] = state?.email;
+            resourceInputs["isExternal"] = state?.isExternal;
             resourceInputs["name"] = state?.name;
             resourceInputs["serviceAccountId"] = state?.serviceAccountId;
             resourceInputs["timeouts"] = state?.timeouts;
@@ -126,6 +138,7 @@ export class InstanceServiceAccount extends pulumi.CustomResource {
         } else {
             const args = argsOrState as InstanceServiceAccountArgs | undefined;
             resourceInputs["email"] = args?.email;
+            resourceInputs["isExternal"] = args?.isExternal;
             resourceInputs["name"] = args?.name;
             resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["username"] = args?.username;
@@ -144,6 +157,10 @@ export interface InstanceServiceAccountState {
      * The email of the user account. If not set, generates a no-reply email address.
      */
     email?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+     */
+    isExternal?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the user. If not set, uses Service account user.
      */
@@ -167,6 +184,10 @@ export interface InstanceServiceAccountArgs {
      * The email of the user account. If not set, generates a no-reply email address.
      */
     email?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+     */
+    isExternal?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the user. If not set, uses Service account user.
      */

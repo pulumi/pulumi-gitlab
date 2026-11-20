@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *         var example = new PipelineSchedule("example", PipelineScheduleArgs.builder()
  *             .project("12345")
  *             .description("Used to schedule builds")
- *             .ref("master")
+ *             .ref("refs/heads/main")
  *             .cron("0 1 * * *")
  *             .build());
  * 

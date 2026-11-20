@@ -14,6 +14,8 @@ namespace Pulumi.GitLab
     /// 
     /// &gt; Note that `PushEvents` defaults to `True`.
     /// 
+    /// Use `TokenWo` and `SigningTokenWo` with an ephemeral input, together with `TokenWoVersion` and `SigningTokenWoVersion`, to keep the hook secrets out of pulumi preview and state. Write-only arguments require Terraform 1.11 or later. Change the version marker to update the value; changes to the value alone do not produce a plan difference. Every update sends the configured value, including updates to other attributes when the version marker is unchanged.
+    /// 
     /// **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_webhooks/)
     /// 
     /// ## Example Usage
@@ -265,7 +267,7 @@ namespace Pulumi.GitLab
         public Output<bool> ResourceDeployTokenEvents { get; private set; } = null!;
 
         /// <summary>
-        /// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `WebhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        /// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `WebhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `SigningTokenWo`. This attribute persists the value in state.
         /// </summary>
         [Output("signingToken")]
         public Output<string?> SigningToken { get; private set; } = null!;
@@ -277,16 +279,42 @@ namespace Pulumi.GitLab
         public Output<bool> SigningTokenPresent { get; private set; } = null!;
 
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `SigningToken`. Change `SigningTokenWoVersion` to update the remote value.
+        /// </summary>
+        [Output("signingTokenWo")]
+        public Output<string?> SigningTokenWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Non-empty change marker for `SigningTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `SigningTokenWo`, even when this marker is unchanged.
+        /// </summary>
+        [Output("signingTokenWoVersion")]
+        public Output<string?> SigningTokenWoVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Invoke the hook for tag push events. Defaults to `False`.
         /// </summary>
         [Output("tagPushEvents")]
         public Output<bool> TagPushEvents { get; private set; } = null!;
 
         /// <summary>
-        /// A token to present when invoking the hook. The token is not available for imported resources.
+        /// A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `TokenWo`. This attribute persists the value in state.
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `Token`. Change `TokenWoVersion` to update the remote value.
+        /// </summary>
+        [Output("tokenWo")]
+        public Output<string?> TokenWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Non-empty change marker for `TokenWo`, stored in state. Change this string to publish a new token. Every update sends `TokenWo`, even when this marker is unchanged.
+        /// </summary>
+        [Output("tokenWoVersion")]
+        public Output<string?> TokenWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// The url of the hook to invoke. Forces re-creation to preserve `Token`.
@@ -338,7 +366,9 @@ namespace Pulumi.GitLab
                 AdditionalSecretOutputs =
                 {
                     "signingToken",
+                    "signingTokenWo",
                     "token",
+                    "tokenWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -511,7 +541,7 @@ namespace Pulumi.GitLab
         private Input<string>? _signingToken;
 
         /// <summary>
-        /// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `WebhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        /// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `WebhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `SigningTokenWo`. This attribute persists the value in state.
         /// </summary>
         public Input<string>? SigningToken
         {
@@ -523,6 +553,29 @@ namespace Pulumi.GitLab
             }
         }
 
+        [Input("signingTokenWo")]
+        private Input<string>? _signingTokenWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `SigningToken`. Change `SigningTokenWoVersion` to update the remote value.
+        /// </summary>
+        public Input<string>? SigningTokenWo
+        {
+            get => _signingTokenWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _signingTokenWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Non-empty change marker for `SigningTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `SigningTokenWo`, even when this marker is unchanged.
+        /// </summary>
+        [Input("signingTokenWoVersion")]
+        public Input<string>? SigningTokenWoVersion { get; set; }
+
         /// <summary>
         /// Invoke the hook for tag push events. Defaults to `False`.
         /// </summary>
@@ -533,7 +586,7 @@ namespace Pulumi.GitLab
         private Input<string>? _token;
 
         /// <summary>
-        /// A token to present when invoking the hook. The token is not available for imported resources.
+        /// A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `TokenWo`. This attribute persists the value in state.
         /// </summary>
         public Input<string>? Token
         {
@@ -544,6 +597,29 @@ namespace Pulumi.GitLab
                 _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("tokenWo")]
+        private Input<string>? _tokenWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `Token`. Change `TokenWoVersion` to update the remote value.
+        /// </summary>
+        public Input<string>? TokenWo
+        {
+            get => _tokenWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tokenWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Non-empty change marker for `TokenWo`, stored in state. Change this string to publish a new token. Every update sends `TokenWo`, even when this marker is unchanged.
+        /// </summary>
+        [Input("tokenWoVersion")]
+        public Input<string>? TokenWoVersion { get; set; }
 
         /// <summary>
         /// The url of the hook to invoke. Forces re-creation to preserve `Token`.
@@ -761,7 +837,7 @@ namespace Pulumi.GitLab
         private Input<string>? _signingToken;
 
         /// <summary>
-        /// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `WebhookSigningToken`, on by default). Write-only — the value is never returned by the API and is not available for imported resources.
+        /// Secret used to sign webhook payloads (HMAC-SHA256, sent as the `X-Gitlab-Signature` header). Requires GitLab 19.0 or later (feature flag `WebhookSigningToken`, on by default). The value is never returned by the API and is not available for imported resources. Conflicts with `SigningTokenWo`. This attribute persists the value in state.
         /// </summary>
         public Input<string>? SigningToken
         {
@@ -779,6 +855,29 @@ namespace Pulumi.GitLab
         [Input("signingTokenPresent")]
         public Input<bool>? SigningTokenPresent { get; set; }
 
+        [Input("signingTokenWo")]
+        private Input<string>? _signingTokenWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only secret used to sign webhook payloads, omitted from Terraform plan and state. Requires Terraform 1.11 or later and GitLab 19.0 or later. Conflicts with `SigningToken`. Change `SigningTokenWoVersion` to update the remote value.
+        /// </summary>
+        public Input<string>? SigningTokenWo
+        {
+            get => _signingTokenWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _signingTokenWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Non-empty change marker for `SigningTokenWo`, stored in state. Change this string to publish a new signing token. Every update sends `SigningTokenWo`, even when this marker is unchanged.
+        /// </summary>
+        [Input("signingTokenWoVersion")]
+        public Input<string>? SigningTokenWoVersion { get; set; }
+
         /// <summary>
         /// Invoke the hook for tag push events. Defaults to `False`.
         /// </summary>
@@ -789,7 +888,7 @@ namespace Pulumi.GitLab
         private Input<string>? _token;
 
         /// <summary>
-        /// A token to present when invoking the hook. The token is not available for imported resources.
+        /// A token to present when invoking the hook. The token is not available for imported resources. Conflicts with `TokenWo`. This attribute persists the value in state.
         /// </summary>
         public Input<string>? Token
         {
@@ -800,6 +899,29 @@ namespace Pulumi.GitLab
                 _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("tokenWo")]
+        private Input<string>? _tokenWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only token to present when invoking the hook, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Conflicts with `Token`. Change `TokenWoVersion` to update the remote value.
+        /// </summary>
+        public Input<string>? TokenWo
+        {
+            get => _tokenWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tokenWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Non-empty change marker for `TokenWo`, stored in state. Change this string to publish a new token. Every update sends `TokenWo`, even when this marker is unchanged.
+        /// </summary>
+        [Input("tokenWoVersion")]
+        public Input<string>? TokenWoVersion { get; set; }
 
         /// <summary>
         /// The url of the hook to invoke. Forces re-creation to preserve `Token`.

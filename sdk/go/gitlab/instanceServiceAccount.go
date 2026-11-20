@@ -43,6 +43,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// create a service account that is internal, so it can access internal projects
+//			// (for example when a pipeline it triggers references an internal project via `include` or `component`)
+//			_, err = gitlab.NewInstanceServiceAccount(ctx, "example_internal_sa", &gitlab.InstanceServiceAccountArgs{
+//				Name:       pulumi.String("example-internal-name"),
+//				Username:   pulumi.String("example-internal-username"),
+//				IsExternal: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = gitlab.NewPersonalAccessToken(ctx, "example_token", &gitlab.PersonalAccessTokenArgs{
 //				UserId:    exampleSa.ServiceAccountId,
 //				Name:      pulumi.String("Example personal access token for a service account"),
@@ -76,6 +86,8 @@ type InstanceServiceAccount struct {
 
 	// The email of the user account. If not set, generates a no-reply email address.
 	Email pulumi.StringOutput `pulumi:"email"`
+	// Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+	IsExternal pulumi.BoolOutput `pulumi:"isExternal"`
 	// The name of the user. If not set, uses Service account user.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The service account id.
@@ -117,6 +129,8 @@ func GetInstanceServiceAccount(ctx *pulumi.Context,
 type instanceServiceAccountState struct {
 	// The email of the user account. If not set, generates a no-reply email address.
 	Email *string `pulumi:"email"`
+	// Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+	IsExternal *bool `pulumi:"isExternal"`
 	// The name of the user. If not set, uses Service account user.
 	Name *string `pulumi:"name"`
 	// The service account id.
@@ -129,6 +143,8 @@ type instanceServiceAccountState struct {
 type InstanceServiceAccountState struct {
 	// The email of the user account. If not set, generates a no-reply email address.
 	Email pulumi.StringPtrInput
+	// Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+	IsExternal pulumi.BoolPtrInput
 	// The name of the user. If not set, uses Service account user.
 	Name pulumi.StringPtrInput
 	// The service account id.
@@ -151,6 +167,8 @@ func InstanceServiceAccountExists(ctx *pulumi.Context,
 type instanceServiceAccountArgs struct {
 	// The email of the user account. If not set, generates a no-reply email address.
 	Email *string `pulumi:"email"`
+	// Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+	IsExternal *bool `pulumi:"isExternal"`
 	// The name of the user. If not set, uses Service account user.
 	Name     *string                         `pulumi:"name"`
 	Timeouts *InstanceServiceAccountTimeouts `pulumi:"timeouts"`
@@ -162,6 +180,8 @@ type instanceServiceAccountArgs struct {
 type InstanceServiceAccountArgs struct {
 	// The email of the user account. If not set, generates a no-reply email address.
 	Email pulumi.StringPtrInput
+	// Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+	IsExternal pulumi.BoolPtrInput
 	// The name of the user. If not set, uses Service account user.
 	Name     pulumi.StringPtrInput
 	Timeouts InstanceServiceAccountTimeoutsPtrInput
@@ -259,6 +279,11 @@ func (o InstanceServiceAccountOutput) ToInstanceServiceAccountOutputWithContext(
 // The email of the user account. If not set, generates a no-reply email address.
 func (o InstanceServiceAccountOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceServiceAccount) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// Whether the service account is an external user. If not set, uses the GitLab default (service accounts are external by default). Set to `false` to allow the service account to access internal projects, for example when a pipeline triggered by the service account references an internal project via `include` or `component`.
+func (o InstanceServiceAccountOutput) IsExternal() pulumi.BoolOutput {
+	return o.ApplyT(func(v *InstanceServiceAccount) pulumi.BoolOutput { return v.IsExternal }).(pulumi.BoolOutput)
 }
 
 // The name of the user. If not set, uses Service account user.

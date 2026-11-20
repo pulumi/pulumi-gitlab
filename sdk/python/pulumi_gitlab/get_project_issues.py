@@ -412,8 +412,8 @@ def get_project_issues(assignee_id: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_gitlab as gitlab
 
-    foo = gitlab.get_project(id="foo/bar/baz")
-    all_with_foo = gitlab.get_project_issues(project=foo.id,
+    example = gitlab.get_project(path_with_namespace="foo/bar/baz")
+    all_with_foo = gitlab.get_project_issues(project=example.id,
         search="foo")
     ```
 
@@ -542,8 +542,8 @@ def get_project_issues_output(assignee_id: pulumi.Input[Optional[Optional[_built
     import pulumi
     import pulumi_gitlab as gitlab
 
-    foo = gitlab.get_project(id="foo/bar/baz")
-    all_with_foo = gitlab.get_project_issues(project=foo.id,
+    example = gitlab.get_project(path_with_namespace="foo/bar/baz")
+    all_with_foo = gitlab.get_project_issues(project=example.id,
         search="foo")
     ```
 

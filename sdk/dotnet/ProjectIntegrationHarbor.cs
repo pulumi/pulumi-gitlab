@@ -36,6 +36,8 @@ namespace Pulumi.GitLab
     ///         Project = awesomeProject.Id,
     ///         Url = "http://harbor.example.com",
     ///         ProjectName = "my_project_name",
+    ///         Username = "my_username",
+    ///         Password = "my_password",
     ///     });
     /// 
     /// });

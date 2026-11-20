@@ -21,31 +21,35 @@ class ProjectVariableArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
-                 value: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  environment_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  hidden: pulumi.Input[Optional[_builtins.bool]] = None,
                  masked: pulumi.Input[Optional[_builtins.bool]] = None,
                  protected: pulumi.Input[Optional[_builtins.bool]] = None,
                  raw: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  variable_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectVariable resource.
 
         :param pulumi.Input[_builtins.str] key: The name of the variable.
         :param pulumi.Input[_builtins.str] project: The name or id of the project.
-        :param pulumi.Input[_builtins.str] value: The value of the variable.
         :param pulumi.Input[_builtins.str] description: The description of the variable.
         :param pulumi.Input[_builtins.str] environment_scope: The environment scope of the variable. Defaults to all environment (`*`). Note that in Community Editions of Gitlab, values other than `*` will cause inconsistent plans.
         :param pulumi.Input[_builtins.bool] hidden: If set to `true`, the value of the variable will be hidden in the CI/CD User Interface. The value must meet the [hidden requirements](https://docs.gitlab.com/ci/variables/#hide-a-cicd-variable).
         :param pulumi.Input[_builtins.bool] masked: If set to `true`, the value of the variable will be masked in job logs. The value must meet the [masking requirements](https://docs.gitlab.com/ci/variables/#mask-a-cicd-variable).
         :param pulumi.Input[_builtins.bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         :param pulumi.Input[_builtins.bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
+        :param pulumi.Input[_builtins.str] value: The value of the variable. Exactly one of `value` or `value_wo` must be specified. This attribute persists the value in state.
+        :param pulumi.Input[_builtins.str] value_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `value_wo` must be specified. Change `value_wo_version` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+        :param pulumi.Input[_builtins.str] value_wo_version: Non-empty change marker for `value_wo`, stored in state. Change this string to publish a new value. Every update sends `value_wo`, even when this marker is unchanged.
         :param pulumi.Input[_builtins.str] variable_type: The type of a variable. Valid values are: `env_var`, `file`.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "value", value)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if environment_scope is not None:
@@ -58,6 +62,12 @@ class ProjectVariableArgs:
             pulumi.set(__self__, "protected", protected)
         if raw is not None:
             pulumi.set(__self__, "raw", raw)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+        if value_wo is not None:
+            pulumi.set(__self__, "value_wo", value_wo)
+        if value_wo_version is not None:
+            pulumi.set(__self__, "value_wo_version", value_wo_version)
         if variable_type is not None:
             pulumi.set(__self__, "variable_type", variable_type)
 
@@ -84,18 +94,6 @@ class ProjectVariableArgs:
     @project.setter
     def project(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "project", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[_builtins.str]:
-        """
-        The value of the variable.
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "value", value)
 
     @_builtins.property
     @pulumi.getter
@@ -170,6 +168,43 @@ class ProjectVariableArgs:
         pulumi.set(self, "raw", value)
 
     @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The value of the variable. Exactly one of `value` or `value_wo` must be specified. This attribute persists the value in state.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="valueWo")
+    def value_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `value_wo` must be specified. Change `value_wo_version` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+        """
+        return pulumi.get(self, "value_wo")
+
+    @value_wo.setter
+    def value_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="valueWoVersion")
+    def value_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Non-empty change marker for `value_wo`, stored in state. Change this string to publish a new value. Every update sends `value_wo`, even when this marker is unchanged.
+        """
+        return pulumi.get(self, "value_wo_version")
+
+    @value_wo_version.setter
+    def value_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="variableType")
     def variable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -194,6 +229,8 @@ class _ProjectVariableState:
                  protected: pulumi.Input[Optional[_builtins.bool]] = None,
                  raw: pulumi.Input[Optional[_builtins.bool]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  variable_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectVariable resources.
@@ -206,7 +243,10 @@ class _ProjectVariableState:
         :param pulumi.Input[_builtins.str] project: The name or id of the project.
         :param pulumi.Input[_builtins.bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         :param pulumi.Input[_builtins.bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
-        :param pulumi.Input[_builtins.str] value: The value of the variable.
+        :param pulumi.Input[_builtins.str] value: The value of the variable. Exactly one of `value` or `value_wo` must be specified. This attribute persists the value in state.
+        :param pulumi.Input[_builtins.str] value_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `value_wo` must be specified. Change `value_wo_version` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+        :param pulumi.Input[_builtins.str] value_wo_version: Non-empty change marker for `value_wo`, stored in state. Change this string to publish a new value. Every update sends `value_wo`, even when this marker is unchanged.
         :param pulumi.Input[_builtins.str] variable_type: The type of a variable. Valid values are: `env_var`, `file`.
         """
         if description is not None:
@@ -227,6 +267,10 @@ class _ProjectVariableState:
             pulumi.set(__self__, "raw", raw)
         if value is not None:
             pulumi.set(__self__, "value", value)
+        if value_wo is not None:
+            pulumi.set(__self__, "value_wo", value_wo)
+        if value_wo_version is not None:
+            pulumi.set(__self__, "value_wo_version", value_wo_version)
         if variable_type is not None:
             pulumi.set(__self__, "variable_type", variable_type)
 
@@ -330,13 +374,38 @@ class _ProjectVariableState:
     @pulumi.getter
     def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The value of the variable.
+        The value of the variable. Exactly one of `value` or `value_wo` must be specified. This attribute persists the value in state.
         """
         return pulumi.get(self, "value")
 
     @value.setter
     def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="valueWo")
+    def value_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `value_wo` must be specified. Change `value_wo_version` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+        """
+        return pulumi.get(self, "value_wo")
+
+    @value_wo.setter
+    def value_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="valueWoVersion")
+    def value_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Non-empty change marker for `value_wo`, stored in state. Change this string to publish a new value. Every update sends `value_wo`, even when this marker is unchanged.
+        """
+        return pulumi.get(self, "value_wo_version")
+
+    @value_wo_version.setter
+    def value_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="variableType")
@@ -366,12 +435,18 @@ class ProjectVariable(pulumi.CustomResource):
                  protected: pulumi.Input[Optional[_builtins.bool]] = None,
                  raw: pulumi.Input[Optional[_builtins.bool]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  variable_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `ProjectVariable` resource allows creating and managing a GitLab project level variable.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_level_variables/)
+
+        Use `value_wo` with an ephemeral input and `value_wo_version` to keep credentials out of pulumi preview and state. Write-only arguments require Terraform 1.11 or later. Change the version marker to update the value; changes to the value alone do not produce a plan difference. Every update sends the configured value, including updates to other attributes when the version marker is unchanged. Value drift outside Terraform is not detected in this mode.
+
+        Switching from `value` to `value_wo` removes the value from subsequent state snapshots, but does not remove it from historical states or saved plans. Rotate the old credential and manage retained artifacts separately. Importing a non-hidden variable with the ordinary import ID reads its value into state; use hidden variables when importing secret credentials. Hidden visibility is selected at creation and cannot be enabled in place.
 
         ## Example Usage
 
@@ -409,7 +484,10 @@ class ProjectVariable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The name or id of the project.
         :param pulumi.Input[_builtins.bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         :param pulumi.Input[_builtins.bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
-        :param pulumi.Input[_builtins.str] value: The value of the variable.
+        :param pulumi.Input[_builtins.str] value: The value of the variable. Exactly one of `value` or `value_wo` must be specified. This attribute persists the value in state.
+        :param pulumi.Input[_builtins.str] value_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `value_wo` must be specified. Change `value_wo_version` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+        :param pulumi.Input[_builtins.str] value_wo_version: Non-empty change marker for `value_wo`, stored in state. Change this string to publish a new value. Every update sends `value_wo`, even when this marker is unchanged.
         :param pulumi.Input[_builtins.str] variable_type: The type of a variable. Valid values are: `env_var`, `file`.
         """
         ...
@@ -422,6 +500,10 @@ class ProjectVariable(pulumi.CustomResource):
         The `ProjectVariable` resource allows creating and managing a GitLab project level variable.
 
         **Upstream API**: [GitLab REST API docs](https://docs.gitlab.com/api/project_level_variables/)
+
+        Use `value_wo` with an ephemeral input and `value_wo_version` to keep credentials out of pulumi preview and state. Write-only arguments require Terraform 1.11 or later. Change the version marker to update the value; changes to the value alone do not produce a plan difference. Every update sends the configured value, including updates to other attributes when the version marker is unchanged. Value drift outside Terraform is not detected in this mode.
+
+        Switching from `value` to `value_wo` removes the value from subsequent state snapshots, but does not remove it from historical states or saved plans. Rotate the old credential and manage retained artifacts separately. Importing a non-hidden variable with the ordinary import ID reads its value into state; use hidden variables when importing secret credentials. Hidden visibility is selected at creation and cannot be enabled in place.
 
         ## Example Usage
 
@@ -473,6 +555,8 @@ class ProjectVariable(pulumi.CustomResource):
                  protected: pulumi.Input[Optional[_builtins.bool]] = None,
                  raw: pulumi.Input[Optional[_builtins.bool]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  variable_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -495,10 +579,12 @@ class ProjectVariable(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["protected"] = protected
             __props__.__dict__["raw"] = raw
-            if value is None and not opts.urn:
-                raise TypeError("Missing required property 'value'")
             __props__.__dict__["value"] = value
+            __props__.__dict__["value_wo"] = None if value_wo is None else pulumi.Output.secret(value_wo)
+            __props__.__dict__["value_wo_version"] = value_wo_version
             __props__.__dict__["variable_type"] = variable_type
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["valueWo"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ProjectVariable, __self__).__init__(
             'gitlab:index/projectVariable:ProjectVariable',
             resource_name,
@@ -518,6 +604,8 @@ class ProjectVariable(pulumi.CustomResource):
             protected: pulumi.Input[Optional[_builtins.bool]] = None,
             raw: pulumi.Input[Optional[_builtins.bool]] = None,
             value: pulumi.Input[Optional[_builtins.str]] = None,
+            value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            value_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
             variable_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectVariable':
         """
         Get an existing ProjectVariable resource's state with the given name, id, and optional extra
@@ -534,7 +622,10 @@ class ProjectVariable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The name or id of the project.
         :param pulumi.Input[_builtins.bool] protected: If set to `true`, the variable will be passed only to pipelines running on protected branches and tags.
         :param pulumi.Input[_builtins.bool] raw: Whether the variable is treated as a raw string. When true, variables in the value are not expanded.
-        :param pulumi.Input[_builtins.str] value: The value of the variable.
+        :param pulumi.Input[_builtins.str] value: The value of the variable. Exactly one of `value` or `value_wo` must be specified. This attribute persists the value in state.
+        :param pulumi.Input[_builtins.str] value_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `value_wo` must be specified. Change `value_wo_version` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+        :param pulumi.Input[_builtins.str] value_wo_version: Non-empty change marker for `value_wo`, stored in state. Change this string to publish a new value. Every update sends `value_wo`, even when this marker is unchanged.
         :param pulumi.Input[_builtins.str] variable_type: The type of a variable. Valid values are: `env_var`, `file`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -550,6 +641,8 @@ class ProjectVariable(pulumi.CustomResource):
         __props__.__dict__["protected"] = protected
         __props__.__dict__["raw"] = raw
         __props__.__dict__["value"] = value
+        __props__.__dict__["value_wo"] = value_wo
+        __props__.__dict__["value_wo_version"] = value_wo_version
         __props__.__dict__["variable_type"] = variable_type
         return ProjectVariable(resource_name, opts=opts, __props__=__props__)
 
@@ -565,6 +658,8 @@ class ProjectVariable(pulumi.CustomResource):
             protected: pulumi.Input[Optional[_builtins.bool]] = None,
             raw: pulumi.Input[Optional[_builtins.bool]] = None,
             value: pulumi.Input[Optional[_builtins.str]] = None,
+            value_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            value_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
             variable_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["description"] = description
@@ -576,6 +671,8 @@ class ProjectVariable(pulumi.CustomResource):
         __props__["protected"] = protected
         __props__["raw"] = raw
         __props__["value"] = value
+        __props__["valueWo"] = value_wo
+        __props__["valueWoVersion"] = value_wo_version
         __props__["variableType"] = variable_type
         return pulumi.runtime.exists_resource(None, 'gitlab:index/projectVariable:ProjectVariable', id, __props__, opts or pulumi.ResourceOptions())
 
@@ -645,11 +742,28 @@ class ProjectVariable(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> pulumi.Output[_builtins.str]:
+    def value(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The value of the variable.
+        The value of the variable. Exactly one of `value` or `value_wo` must be specified. This attribute persists the value in state.
         """
         return pulumi.get(self, "value")
+
+    @_builtins.property
+    @pulumi.getter(name="valueWo")
+    def value_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only value, omitted from Terraform plan and state. Requires Terraform 1.11 or later. Exactly one of `value` or `value_wo` must be specified. Change `value_wo_version` to update the remote value; changes made outside Terraform cannot be detected in this mode.
+        """
+        return pulumi.get(self, "value_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="valueWoVersion")
+    def value_wo_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Non-empty change marker for `value_wo`, stored in state. Change this string to publish a new value. Every update sends `value_wo`, even when this marker is unchanged.
+        """
+        return pulumi.get(self, "value_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="variableType")

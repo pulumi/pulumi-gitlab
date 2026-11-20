@@ -53,6 +53,9 @@ class ProjectArgs:
                  container_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duo_sast_fp_detection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 duo_sast_vr_workflow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 duo_secret_detection_fp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  environments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  external_authorization_classification_label: pulumi.Input[Optional[_builtins.str]] = None,
@@ -79,6 +82,7 @@ class ProjectArgs:
                  merge_request_title_regex_description: pulumi.Input[Optional[_builtins.str]] = None,
                  merge_requests_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  merge_requests_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_train_enforcement: pulumi.Input[Optional[_builtins.str]] = None,
                  merge_trains_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  merge_trains_skip_train_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
                  model_experiments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -112,6 +116,7 @@ class ProjectArgs:
                  resource_group_default_process_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  reviewer_assignment_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_desk_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  skip_wait_for_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  snippets_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -162,6 +167,9 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] default_branch: The default branch for the project.
         :param pulumi.Input[_builtins.str] description: A description of the project.
+        :param pulumi.Input[_builtins.bool] duo_sast_fp_detection_enabled: Indicates if GitLab Duo SAST false positive detection is enabled.
+        :param pulumi.Input[_builtins.bool] duo_sast_vr_workflow_enabled: Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled.
+        :param pulumi.Input[_builtins.bool] duo_secret_detection_fp_enabled: If true, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[_builtins.str] environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] external_authorization_classification_label: The classification label for the project.
@@ -188,6 +196,10 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.str] merge_request_title_regex_description: Set the description shown to users when a merge request title does not match `merge_request_title_regex`.
         :param pulumi.Input[_builtins.str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
+        :param pulumi.Input[_builtins.str] merge_train_enforcement: Merge train enforcement level. Valid values are `allow_bypass`, `enforce_for_all_users`, `enforce_with_owner_override`.
+               Has no effect unless `merge_trains_enabled` is set to `true`. Premium and Ultimate only.
+               Requires GitLab 19.3 or later; older instances ignore the attribute on write and omit it on read,
+               so setting it there surfaces as a permanent difference on every plan.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] merge_trains_skip_train_allowed: Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.str] model_experiments_access_level: Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
@@ -221,6 +233,7 @@ class ProjectArgs:
         :param pulumi.Input[_builtins.str] resource_group_default_process_mode: The default resource group process mode for the project.
         :param pulumi.Input[_builtins.str] reviewer_assignment_strategy: Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `code_owners`, `dap_powered`. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[_builtins.bool] service_desk_enabled: Experimental: enable or disable the Service Desk feature. Requires incoming emails to be enabled on the GitLab instance; setting this to `true` without incoming emails enabled will cause a perpetual plan difference on this attribute.
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[_builtins.bool] skip_wait_for_default_branch_protection: If `true`, the default behavior to wait for the default branch protection to be created is skipped.
                This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
@@ -302,6 +315,12 @@ class ProjectArgs:
             pulumi.set(__self__, "default_branch", default_branch)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if duo_sast_fp_detection_enabled is not None:
+            pulumi.set(__self__, "duo_sast_fp_detection_enabled", duo_sast_fp_detection_enabled)
+        if duo_sast_vr_workflow_enabled is not None:
+            pulumi.set(__self__, "duo_sast_vr_workflow_enabled", duo_sast_vr_workflow_enabled)
+        if duo_secret_detection_fp_enabled is not None:
+            pulumi.set(__self__, "duo_secret_detection_fp_enabled", duo_secret_detection_fp_enabled)
         if emails_enabled is not None:
             pulumi.set(__self__, "emails_enabled", emails_enabled)
         if environments_access_level is not None:
@@ -354,6 +373,8 @@ class ProjectArgs:
             pulumi.set(__self__, "merge_requests_access_level", merge_requests_access_level)
         if merge_requests_template is not None:
             pulumi.set(__self__, "merge_requests_template", merge_requests_template)
+        if merge_train_enforcement is not None:
+            pulumi.set(__self__, "merge_train_enforcement", merge_train_enforcement)
         if merge_trains_enabled is not None:
             pulumi.set(__self__, "merge_trains_enabled", merge_trains_enabled)
         if merge_trains_skip_train_allowed is not None:
@@ -429,6 +450,8 @@ class ProjectArgs:
             pulumi.set(__self__, "reviewer_assignment_strategy", reviewer_assignment_strategy)
         if security_and_compliance_access_level is not None:
             pulumi.set(__self__, "security_and_compliance_access_level", security_and_compliance_access_level)
+        if service_desk_enabled is not None:
+            pulumi.set(__self__, "service_desk_enabled", service_desk_enabled)
         if shared_runners_enabled is not None:
             pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
         if skip_wait_for_default_branch_protection is not None:
@@ -842,6 +865,42 @@ class ProjectArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="duoSastFpDetectionEnabled")
+    def duo_sast_fp_detection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates if GitLab Duo SAST false positive detection is enabled.
+        """
+        return pulumi.get(self, "duo_sast_fp_detection_enabled")
+
+    @duo_sast_fp_detection_enabled.setter
+    def duo_sast_fp_detection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "duo_sast_fp_detection_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="duoSastVrWorkflowEnabled")
+    def duo_sast_vr_workflow_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled.
+        """
+        return pulumi.get(self, "duo_sast_vr_workflow_enabled")
+
+    @duo_sast_vr_workflow_enabled.setter
+    def duo_sast_vr_workflow_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "duo_sast_vr_workflow_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="duoSecretDetectionFpEnabled")
+    def duo_secret_detection_fp_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role.
+        """
+        return pulumi.get(self, "duo_secret_detection_fp_enabled")
+
+    @duo_secret_detection_fp_enabled.setter
+    def duo_secret_detection_fp_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "duo_secret_detection_fp_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="emailsEnabled")
     def emails_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -1152,6 +1211,21 @@ class ProjectArgs:
     @merge_requests_template.setter
     def merge_requests_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_requests_template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mergeTrainEnforcement")
+    def merge_train_enforcement(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Merge train enforcement level. Valid values are `allow_bypass`, `enforce_for_all_users`, `enforce_with_owner_override`.
+        Has no effect unless `merge_trains_enabled` is set to `true`. Premium and Ultimate only.
+        Requires GitLab 19.3 or later; older instances ignore the attribute on write and omit it on read,
+        so setting it there surfaces as a permanent difference on every plan.
+        """
+        return pulumi.get(self, "merge_train_enforcement")
+
+    @merge_train_enforcement.setter
+    def merge_train_enforcement(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "merge_train_enforcement", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeTrainsEnabled")
@@ -1553,6 +1627,18 @@ class ProjectArgs:
         pulumi.set(self, "security_and_compliance_access_level", value)
 
     @_builtins.property
+    @pulumi.getter(name="serviceDeskEnabled")
+    def service_desk_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Experimental: enable or disable the Service Desk feature. Requires incoming emails to be enabled on the GitLab instance; setting this to `true` without incoming emails enabled will cause a perpetual plan difference on this attribute.
+        """
+        return pulumi.get(self, "service_desk_enabled")
+
+    @service_desk_enabled.setter
+    def service_desk_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "service_desk_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="sharedRunnersEnabled")
     def shared_runners_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -1737,6 +1823,9 @@ class _ProjectState:
                  container_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duo_sast_fp_detection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 duo_sast_vr_workflow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 duo_secret_detection_fp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  empty_repo: pulumi.Input[Optional[_builtins.bool]] = None,
                  environments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1765,6 +1854,7 @@ class _ProjectState:
                  merge_request_title_regex_description: pulumi.Input[Optional[_builtins.str]] = None,
                  merge_requests_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  merge_requests_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_train_enforcement: pulumi.Input[Optional[_builtins.str]] = None,
                  merge_trains_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  merge_trains_skip_train_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
                  model_experiments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1800,6 +1890,7 @@ class _ProjectState:
                  reviewer_assignment_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  runners_token: pulumi.Input[Optional[_builtins.str]] = None,
                  security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_desk_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  skip_wait_for_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  snippets_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1853,6 +1944,9 @@ class _ProjectState:
         :param pulumi.Input[_builtins.str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] default_branch: The default branch for the project.
         :param pulumi.Input[_builtins.str] description: A description of the project.
+        :param pulumi.Input[_builtins.bool] duo_sast_fp_detection_enabled: Indicates if GitLab Duo SAST false positive detection is enabled.
+        :param pulumi.Input[_builtins.bool] duo_sast_vr_workflow_enabled: Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled.
+        :param pulumi.Input[_builtins.bool] duo_secret_detection_fp_enabled: If true, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[_builtins.bool] empty_repo: Whether the project is empty.
         :param pulumi.Input[_builtins.str] environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
@@ -1881,6 +1975,10 @@ class _ProjectState:
         :param pulumi.Input[_builtins.str] merge_request_title_regex_description: Set the description shown to users when a merge request title does not match `merge_request_title_regex`.
         :param pulumi.Input[_builtins.str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
+        :param pulumi.Input[_builtins.str] merge_train_enforcement: Merge train enforcement level. Valid values are `allow_bypass`, `enforce_for_all_users`, `enforce_with_owner_override`.
+               Has no effect unless `merge_trains_enabled` is set to `true`. Premium and Ultimate only.
+               Requires GitLab 19.3 or later; older instances ignore the attribute on write and omit it on read,
+               so setting it there surfaces as a permanent difference on every plan.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] merge_trains_skip_train_allowed: Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.str] model_experiments_access_level: Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
@@ -1916,6 +2014,7 @@ class _ProjectState:
         :param pulumi.Input[_builtins.str] reviewer_assignment_strategy: Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `code_owners`, `dap_powered`. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[_builtins.str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[_builtins.bool] service_desk_enabled: Experimental: enable or disable the Service Desk feature. Requires incoming emails to be enabled on the GitLab instance; setting this to `true` without incoming emails enabled will cause a perpetual plan difference on this attribute.
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[_builtins.bool] skip_wait_for_default_branch_protection: If `true`, the default behavior to wait for the default branch protection to be created is skipped.
                This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
@@ -2001,6 +2100,12 @@ class _ProjectState:
             pulumi.set(__self__, "default_branch", default_branch)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if duo_sast_fp_detection_enabled is not None:
+            pulumi.set(__self__, "duo_sast_fp_detection_enabled", duo_sast_fp_detection_enabled)
+        if duo_sast_vr_workflow_enabled is not None:
+            pulumi.set(__self__, "duo_sast_vr_workflow_enabled", duo_sast_vr_workflow_enabled)
+        if duo_secret_detection_fp_enabled is not None:
+            pulumi.set(__self__, "duo_secret_detection_fp_enabled", duo_secret_detection_fp_enabled)
         if emails_enabled is not None:
             pulumi.set(__self__, "emails_enabled", emails_enabled)
         if empty_repo is not None:
@@ -2057,6 +2162,8 @@ class _ProjectState:
             pulumi.set(__self__, "merge_requests_access_level", merge_requests_access_level)
         if merge_requests_template is not None:
             pulumi.set(__self__, "merge_requests_template", merge_requests_template)
+        if merge_train_enforcement is not None:
+            pulumi.set(__self__, "merge_train_enforcement", merge_train_enforcement)
         if merge_trains_enabled is not None:
             pulumi.set(__self__, "merge_trains_enabled", merge_trains_enabled)
         if merge_trains_skip_train_allowed is not None:
@@ -2136,6 +2243,8 @@ class _ProjectState:
             pulumi.set(__self__, "runners_token", runners_token)
         if security_and_compliance_access_level is not None:
             pulumi.set(__self__, "security_and_compliance_access_level", security_and_compliance_access_level)
+        if service_desk_enabled is not None:
+            pulumi.set(__self__, "service_desk_enabled", service_desk_enabled)
         if shared_runners_enabled is not None:
             pulumi.set(__self__, "shared_runners_enabled", shared_runners_enabled)
         if skip_wait_for_default_branch_protection is not None:
@@ -2565,6 +2674,42 @@ class _ProjectState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="duoSastFpDetectionEnabled")
+    def duo_sast_fp_detection_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates if GitLab Duo SAST false positive detection is enabled.
+        """
+        return pulumi.get(self, "duo_sast_fp_detection_enabled")
+
+    @duo_sast_fp_detection_enabled.setter
+    def duo_sast_fp_detection_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "duo_sast_fp_detection_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="duoSastVrWorkflowEnabled")
+    def duo_sast_vr_workflow_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled.
+        """
+        return pulumi.get(self, "duo_sast_vr_workflow_enabled")
+
+    @duo_sast_vr_workflow_enabled.setter
+    def duo_sast_vr_workflow_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "duo_sast_vr_workflow_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="duoSecretDetectionFpEnabled")
+    def duo_secret_detection_fp_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role.
+        """
+        return pulumi.get(self, "duo_secret_detection_fp_enabled")
+
+    @duo_secret_detection_fp_enabled.setter
+    def duo_secret_detection_fp_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "duo_secret_detection_fp_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="emailsEnabled")
     def emails_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -2899,6 +3044,21 @@ class _ProjectState:
     @merge_requests_template.setter
     def merge_requests_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "merge_requests_template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mergeTrainEnforcement")
+    def merge_train_enforcement(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Merge train enforcement level. Valid values are `allow_bypass`, `enforce_for_all_users`, `enforce_with_owner_override`.
+        Has no effect unless `merge_trains_enabled` is set to `true`. Premium and Ultimate only.
+        Requires GitLab 19.3 or later; older instances ignore the attribute on write and omit it on read,
+        so setting it there surfaces as a permanent difference on every plan.
+        """
+        return pulumi.get(self, "merge_train_enforcement")
+
+    @merge_train_enforcement.setter
+    def merge_train_enforcement(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "merge_train_enforcement", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeTrainsEnabled")
@@ -3324,6 +3484,18 @@ class _ProjectState:
         pulumi.set(self, "security_and_compliance_access_level", value)
 
     @_builtins.property
+    @pulumi.getter(name="serviceDeskEnabled")
+    def service_desk_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Experimental: enable or disable the Service Desk feature. Requires incoming emails to be enabled on the GitLab instance; setting this to `true` without incoming emails enabled will cause a perpetual plan difference on this attribute.
+        """
+        return pulumi.get(self, "service_desk_enabled")
+
+    @service_desk_enabled.setter
+    def service_desk_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "service_desk_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="sharedRunnersEnabled")
     def shared_runners_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -3534,6 +3706,9 @@ class Project(pulumi.CustomResource):
                  container_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duo_sast_fp_detection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 duo_sast_vr_workflow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 duo_secret_detection_fp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  environments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  external_authorization_classification_label: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3560,6 +3735,7 @@ class Project(pulumi.CustomResource):
                  merge_request_title_regex_description: pulumi.Input[Optional[_builtins.str]] = None,
                  merge_requests_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  merge_requests_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_train_enforcement: pulumi.Input[Optional[_builtins.str]] = None,
                  merge_trains_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  merge_trains_skip_train_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
                  model_experiments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3593,6 +3769,7 @@ class Project(pulumi.CustomResource):
                  resource_group_default_process_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  reviewer_assignment_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_desk_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  skip_wait_for_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  snippets_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3646,6 +3823,13 @@ class Project(pulumi.CustomResource):
             name="example-automatic-rebase",
             merge_method="ff",
             automatic_rebase_enabled=True)
+        # Project where every merge request has to go through the merge train
+        # NOTE: `merge_train_enforcement` requires GitLab 19.3 or later and a Premium or Ultimate license.
+        example_merge_train_enforcement = gitlab.Project("example-merge-train-enforcement",
+            name="example-merge-train-enforcement",
+            merge_pipelines_enabled=True,
+            merge_trains_enabled=True,
+            merge_train_enforcement="enforce_for_all_users")
         # Create a project for a given user (requires admin access)
         peter_parker = gitlab.get_user(username="peter_parker")
         peters_repo = gitlab.Project("peters_repo",
@@ -3657,35 +3841,17 @@ class Project(pulumi.CustomResource):
             name="my-fork",
             description="This is a fork",
             forked_from_project_id=example.id.apply(lambda x: int(x)))
-        # Fork a project and setup a pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
-        fork_with_mirror = gitlab.Project("fork_with_mirror",
-            name="my-fork",
-            description="This is a fork",
-            forked_from_project_id=example.id.apply(lambda x: int(x)),
-            import_url=example.http_url_to_repo,
-            mirror=True)
         # Create a project by importing it from a public project
+        # To set up a pull mirror, use the `gitlab_project_pull_mirror` resource.
         import_public = gitlab.Project("import_public",
             name="import-from-public-project",
             import_url="https://gitlab.example.com/repo.git")
-        # Create a project by importing it from a public project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
-        import_public_with_mirror = gitlab.Project("import_public_with_mirror",
-            name="import-from-public-project",
-            import_url="https://gitlab.example.com/repo.git",
-            mirror=True)
         # Create a project by importing it from a private project
         import_private = gitlab.Project("import_private",
             name="import-from-public-project",
             import_url="https://gitlab.example.com/repo.git",
             import_url_username="user",
             import_url_password="pass")
-        # Create a project by importing it from a private project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
-        import_private_with_mirror = gitlab.Project("import_private_with_mirror",
-            name="import-from-public-project",
-            import_url="https://gitlab.example.com/repo.git",
-            import_url_username="user",
-            import_url_password="pass",
-            mirror=True)
         # Create a project by importing it from a private project and provide credentials in `import_url`
         # NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
         #       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
@@ -3747,6 +3913,9 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] default_branch: The default branch for the project.
         :param pulumi.Input[_builtins.str] description: A description of the project.
+        :param pulumi.Input[_builtins.bool] duo_sast_fp_detection_enabled: Indicates if GitLab Duo SAST false positive detection is enabled.
+        :param pulumi.Input[_builtins.bool] duo_sast_vr_workflow_enabled: Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled.
+        :param pulumi.Input[_builtins.bool] duo_secret_detection_fp_enabled: If true, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[_builtins.str] environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] external_authorization_classification_label: The classification label for the project.
@@ -3773,6 +3942,10 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] merge_request_title_regex_description: Set the description shown to users when a merge request title does not match `merge_request_title_regex`.
         :param pulumi.Input[_builtins.str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
+        :param pulumi.Input[_builtins.str] merge_train_enforcement: Merge train enforcement level. Valid values are `allow_bypass`, `enforce_for_all_users`, `enforce_with_owner_override`.
+               Has no effect unless `merge_trains_enabled` is set to `true`. Premium and Ultimate only.
+               Requires GitLab 19.3 or later; older instances ignore the attribute on write and omit it on read,
+               so setting it there surfaces as a permanent difference on every plan.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] merge_trains_skip_train_allowed: Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.str] model_experiments_access_level: Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
@@ -3806,6 +3979,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_default_process_mode: The default resource group process mode for the project.
         :param pulumi.Input[_builtins.str] reviewer_assignment_strategy: Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `code_owners`, `dap_powered`. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[_builtins.bool] service_desk_enabled: Experimental: enable or disable the Service Desk feature. Requires incoming emails to be enabled on the GitLab instance; setting this to `true` without incoming emails enabled will cause a perpetual plan difference on this attribute.
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[_builtins.bool] skip_wait_for_default_branch_protection: If `true`, the default behavior to wait for the default branch protection to be created is skipped.
                This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
@@ -3869,6 +4043,13 @@ class Project(pulumi.CustomResource):
             name="example-automatic-rebase",
             merge_method="ff",
             automatic_rebase_enabled=True)
+        # Project where every merge request has to go through the merge train
+        # NOTE: `merge_train_enforcement` requires GitLab 19.3 or later and a Premium or Ultimate license.
+        example_merge_train_enforcement = gitlab.Project("example-merge-train-enforcement",
+            name="example-merge-train-enforcement",
+            merge_pipelines_enabled=True,
+            merge_trains_enabled=True,
+            merge_train_enforcement="enforce_for_all_users")
         # Create a project for a given user (requires admin access)
         peter_parker = gitlab.get_user(username="peter_parker")
         peters_repo = gitlab.Project("peters_repo",
@@ -3880,35 +4061,17 @@ class Project(pulumi.CustomResource):
             name="my-fork",
             description="This is a fork",
             forked_from_project_id=example.id.apply(lambda x: int(x)))
-        # Fork a project and setup a pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
-        fork_with_mirror = gitlab.Project("fork_with_mirror",
-            name="my-fork",
-            description="This is a fork",
-            forked_from_project_id=example.id.apply(lambda x: int(x)),
-            import_url=example.http_url_to_repo,
-            mirror=True)
         # Create a project by importing it from a public project
+        # To set up a pull mirror, use the `gitlab_project_pull_mirror` resource.
         import_public = gitlab.Project("import_public",
             name="import-from-public-project",
             import_url="https://gitlab.example.com/repo.git")
-        # Create a project by importing it from a public project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
-        import_public_with_mirror = gitlab.Project("import_public_with_mirror",
-            name="import-from-public-project",
-            import_url="https://gitlab.example.com/repo.git",
-            mirror=True)
         # Create a project by importing it from a private project
         import_private = gitlab.Project("import_private",
             name="import-from-public-project",
             import_url="https://gitlab.example.com/repo.git",
             import_url_username="user",
             import_url_password="pass")
-        # Create a project by importing it from a private project and setup the pull mirror (Deprecated, use gitlab_project_pull_mirror instead)
-        import_private_with_mirror = gitlab.Project("import_private_with_mirror",
-            name="import-from-public-project",
-            import_url="https://gitlab.example.com/repo.git",
-            import_url_username="user",
-            import_url_password="pass",
-            mirror=True)
         # Create a project by importing it from a private project and provide credentials in `import_url`
         # NOTE: only use this if you really must, use `import_url_username` and `import_url_password` whenever possible
         #       GitLab API will always return the `import_url` without credentials, therefore you must ignore the `import_url` for changes:
@@ -3980,6 +4143,9 @@ class Project(pulumi.CustomResource):
                  container_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  default_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duo_sast_fp_detection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 duo_sast_vr_workflow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 duo_secret_detection_fp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  environments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  external_authorization_classification_label: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4006,6 +4172,7 @@ class Project(pulumi.CustomResource):
                  merge_request_title_regex_description: pulumi.Input[Optional[_builtins.str]] = None,
                  merge_requests_access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  merge_requests_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 merge_train_enforcement: pulumi.Input[Optional[_builtins.str]] = None,
                  merge_trains_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  merge_trains_skip_train_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
                  model_experiments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4039,6 +4206,7 @@ class Project(pulumi.CustomResource):
                  resource_group_default_process_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  reviewer_assignment_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_desk_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  skip_wait_for_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  snippets_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4092,6 +4260,9 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["container_registry_access_level"] = container_registry_access_level
             __props__.__dict__["default_branch"] = default_branch
             __props__.__dict__["description"] = description
+            __props__.__dict__["duo_sast_fp_detection_enabled"] = duo_sast_fp_detection_enabled
+            __props__.__dict__["duo_sast_vr_workflow_enabled"] = duo_sast_vr_workflow_enabled
+            __props__.__dict__["duo_secret_detection_fp_enabled"] = duo_secret_detection_fp_enabled
             __props__.__dict__["emails_enabled"] = emails_enabled
             __props__.__dict__["environments_access_level"] = environments_access_level
             __props__.__dict__["external_authorization_classification_label"] = external_authorization_classification_label
@@ -4118,6 +4289,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["merge_request_title_regex_description"] = merge_request_title_regex_description
             __props__.__dict__["merge_requests_access_level"] = merge_requests_access_level
             __props__.__dict__["merge_requests_template"] = merge_requests_template
+            __props__.__dict__["merge_train_enforcement"] = merge_train_enforcement
             __props__.__dict__["merge_trains_enabled"] = merge_trains_enabled
             __props__.__dict__["merge_trains_skip_train_allowed"] = merge_trains_skip_train_allowed
             __props__.__dict__["model_experiments_access_level"] = model_experiments_access_level
@@ -4151,6 +4323,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["resource_group_default_process_mode"] = resource_group_default_process_mode
             __props__.__dict__["reviewer_assignment_strategy"] = reviewer_assignment_strategy
             __props__.__dict__["security_and_compliance_access_level"] = security_and_compliance_access_level
+            __props__.__dict__["service_desk_enabled"] = service_desk_enabled
             __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
             __props__.__dict__["skip_wait_for_default_branch_protection"] = skip_wait_for_default_branch_protection
             __props__.__dict__["snippets_access_level"] = snippets_access_level
@@ -4215,6 +4388,9 @@ class Project(pulumi.CustomResource):
             container_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
             default_branch: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            duo_sast_fp_detection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            duo_sast_vr_workflow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            duo_secret_detection_fp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             empty_repo: pulumi.Input[Optional[_builtins.bool]] = None,
             environments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4243,6 +4419,7 @@ class Project(pulumi.CustomResource):
             merge_request_title_regex_description: pulumi.Input[Optional[_builtins.str]] = None,
             merge_requests_access_level: pulumi.Input[Optional[_builtins.str]] = None,
             merge_requests_template: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_train_enforcement: pulumi.Input[Optional[_builtins.str]] = None,
             merge_trains_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             merge_trains_skip_train_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
             model_experiments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4278,6 +4455,7 @@ class Project(pulumi.CustomResource):
             reviewer_assignment_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             runners_token: pulumi.Input[Optional[_builtins.str]] = None,
             security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            service_desk_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             skip_wait_for_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             snippets_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4335,6 +4513,9 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] container_registry_access_level: Set visibility of container registry, for this project. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] default_branch: The default branch for the project.
         :param pulumi.Input[_builtins.str] description: A description of the project.
+        :param pulumi.Input[_builtins.bool] duo_sast_fp_detection_enabled: Indicates if GitLab Duo SAST false positive detection is enabled.
+        :param pulumi.Input[_builtins.bool] duo_sast_vr_workflow_enabled: Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled.
+        :param pulumi.Input[_builtins.bool] duo_secret_detection_fp_enabled: If true, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role.
         :param pulumi.Input[_builtins.bool] emails_enabled: Enable email notifications.
         :param pulumi.Input[_builtins.bool] empty_repo: Whether the project is empty.
         :param pulumi.Input[_builtins.str] environments_access_level: Set the environments access level. Valid values are `disabled`, `private`, `enabled`.
@@ -4363,6 +4544,10 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] merge_request_title_regex_description: Set the description shown to users when a merge request title does not match `merge_request_title_regex`.
         :param pulumi.Input[_builtins.str] merge_requests_access_level: Set the merge requests access level. Valid values are `disabled`, `private`, `enabled`.
         :param pulumi.Input[_builtins.str] merge_requests_template: Sets the template for new merge requests in the project.
+        :param pulumi.Input[_builtins.str] merge_train_enforcement: Merge train enforcement level. Valid values are `allow_bypass`, `enforce_for_all_users`, `enforce_with_owner_override`.
+               Has no effect unless `merge_trains_enabled` is set to `true`. Premium and Ultimate only.
+               Requires GitLab 19.3 or later; older instances ignore the attribute on write and omit it on read,
+               so setting it there surfaces as a permanent difference on every plan.
         :param pulumi.Input[_builtins.bool] merge_trains_enabled: Enable or disable merge trains. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.bool] merge_trains_skip_train_allowed: Allows merge train merge requests to be merged without waiting for pipelines to finish. Requires `merge_pipelines_enabled` to be set to `true` to take effect.
         :param pulumi.Input[_builtins.str] model_experiments_access_level: Set visibility of machine learning model experiments. Valid values are `disabled`, `private`, `enabled`.
@@ -4398,6 +4583,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] reviewer_assignment_strategy: Set the strategy used to automatically assign reviewers to merge requests. Valid values are `disabled`, `code_owners`, `dap_powered`. Premium and Ultimate only.
         :param pulumi.Input[_builtins.str] runners_token: Registration token to use during runner setup.
         :param pulumi.Input[_builtins.str] security_and_compliance_access_level: Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
+        :param pulumi.Input[_builtins.bool] service_desk_enabled: Experimental: enable or disable the Service Desk feature. Requires incoming emails to be enabled on the GitLab instance; setting this to `true` without incoming emails enabled will cause a perpetual plan difference on this attribute.
         :param pulumi.Input[_builtins.bool] shared_runners_enabled: Enable shared runners for this project.
         :param pulumi.Input[_builtins.bool] skip_wait_for_default_branch_protection: If `true`, the default behavior to wait for the default branch protection to be created is skipped.
                This is necessary if the current user is not an admin and the default branch protection is disabled on an instance-level.
@@ -4454,6 +4640,9 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["container_registry_access_level"] = container_registry_access_level
         __props__.__dict__["default_branch"] = default_branch
         __props__.__dict__["description"] = description
+        __props__.__dict__["duo_sast_fp_detection_enabled"] = duo_sast_fp_detection_enabled
+        __props__.__dict__["duo_sast_vr_workflow_enabled"] = duo_sast_vr_workflow_enabled
+        __props__.__dict__["duo_secret_detection_fp_enabled"] = duo_secret_detection_fp_enabled
         __props__.__dict__["emails_enabled"] = emails_enabled
         __props__.__dict__["empty_repo"] = empty_repo
         __props__.__dict__["environments_access_level"] = environments_access_level
@@ -4482,6 +4671,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["merge_request_title_regex_description"] = merge_request_title_regex_description
         __props__.__dict__["merge_requests_access_level"] = merge_requests_access_level
         __props__.__dict__["merge_requests_template"] = merge_requests_template
+        __props__.__dict__["merge_train_enforcement"] = merge_train_enforcement
         __props__.__dict__["merge_trains_enabled"] = merge_trains_enabled
         __props__.__dict__["merge_trains_skip_train_allowed"] = merge_trains_skip_train_allowed
         __props__.__dict__["model_experiments_access_level"] = model_experiments_access_level
@@ -4517,6 +4707,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["reviewer_assignment_strategy"] = reviewer_assignment_strategy
         __props__.__dict__["runners_token"] = runners_token
         __props__.__dict__["security_and_compliance_access_level"] = security_and_compliance_access_level
+        __props__.__dict__["service_desk_enabled"] = service_desk_enabled
         __props__.__dict__["shared_runners_enabled"] = shared_runners_enabled
         __props__.__dict__["skip_wait_for_default_branch_protection"] = skip_wait_for_default_branch_protection
         __props__.__dict__["snippets_access_level"] = snippets_access_level
@@ -4569,6 +4760,9 @@ class Project(pulumi.CustomResource):
             container_registry_access_level: pulumi.Input[Optional[_builtins.str]] = None,
             default_branch: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            duo_sast_fp_detection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            duo_sast_vr_workflow_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            duo_secret_detection_fp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             emails_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             empty_repo: pulumi.Input[Optional[_builtins.bool]] = None,
             environments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4597,6 +4791,7 @@ class Project(pulumi.CustomResource):
             merge_request_title_regex_description: pulumi.Input[Optional[_builtins.str]] = None,
             merge_requests_access_level: pulumi.Input[Optional[_builtins.str]] = None,
             merge_requests_template: pulumi.Input[Optional[_builtins.str]] = None,
+            merge_train_enforcement: pulumi.Input[Optional[_builtins.str]] = None,
             merge_trains_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             merge_trains_skip_train_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
             model_experiments_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4632,6 +4827,7 @@ class Project(pulumi.CustomResource):
             reviewer_assignment_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             runners_token: pulumi.Input[Optional[_builtins.str]] = None,
             security_and_compliance_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            service_desk_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             shared_runners_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             skip_wait_for_default_branch_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             snippets_access_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4680,6 +4876,9 @@ class Project(pulumi.CustomResource):
         __props__["containerRegistryAccessLevel"] = container_registry_access_level
         __props__["defaultBranch"] = default_branch
         __props__["description"] = description
+        __props__["duoSastFpDetectionEnabled"] = duo_sast_fp_detection_enabled
+        __props__["duoSastVrWorkflowEnabled"] = duo_sast_vr_workflow_enabled
+        __props__["duoSecretDetectionFpEnabled"] = duo_secret_detection_fp_enabled
         __props__["emailsEnabled"] = emails_enabled
         __props__["emptyRepo"] = empty_repo
         __props__["environmentsAccessLevel"] = environments_access_level
@@ -4708,6 +4907,7 @@ class Project(pulumi.CustomResource):
         __props__["mergeRequestTitleRegexDescription"] = merge_request_title_regex_description
         __props__["mergeRequestsAccessLevel"] = merge_requests_access_level
         __props__["mergeRequestsTemplate"] = merge_requests_template
+        __props__["mergeTrainEnforcement"] = merge_train_enforcement
         __props__["mergeTrainsEnabled"] = merge_trains_enabled
         __props__["mergeTrainsSkipTrainAllowed"] = merge_trains_skip_train_allowed
         __props__["modelExperimentsAccessLevel"] = model_experiments_access_level
@@ -4743,6 +4943,7 @@ class Project(pulumi.CustomResource):
         __props__["reviewerAssignmentStrategy"] = reviewer_assignment_strategy
         __props__["runnersToken"] = runners_token
         __props__["securityAndComplianceAccessLevel"] = security_and_compliance_access_level
+        __props__["serviceDeskEnabled"] = service_desk_enabled
         __props__["sharedRunnersEnabled"] = shared_runners_enabled
         __props__["skipWaitForDefaultBranchProtection"] = skip_wait_for_default_branch_protection
         __props__["snippetsAccessLevel"] = snippets_access_level
@@ -5027,6 +5228,30 @@ class Project(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="duoSastFpDetectionEnabled")
+    def duo_sast_fp_detection_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates if GitLab Duo SAST false positive detection is enabled.
+        """
+        return pulumi.get(self, "duo_sast_fp_detection_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="duoSastVrWorkflowEnabled")
+    def duo_sast_vr_workflow_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled.
+        """
+        return pulumi.get(self, "duo_sast_vr_workflow_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="duoSecretDetectionFpEnabled")
+    def duo_secret_detection_fp_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        If true, turns on secret detection false positive detection. Requires the Security Manager, Maintainer, or Owner role.
+        """
+        return pulumi.get(self, "duo_secret_detection_fp_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="emailsEnabled")
     def emails_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -5249,6 +5474,17 @@ class Project(pulumi.CustomResource):
         Sets the template for new merge requests in the project.
         """
         return pulumi.get(self, "merge_requests_template")
+
+    @_builtins.property
+    @pulumi.getter(name="mergeTrainEnforcement")
+    def merge_train_enforcement(self) -> pulumi.Output[_builtins.str]:
+        """
+        Merge train enforcement level. Valid values are `allow_bypass`, `enforce_for_all_users`, `enforce_with_owner_override`.
+        Has no effect unless `merge_trains_enabled` is set to `true`. Premium and Ultimate only.
+        Requires GitLab 19.3 or later; older instances ignore the attribute on write and omit it on read,
+        so setting it there surfaces as a permanent difference on every plan.
+        """
+        return pulumi.get(self, "merge_train_enforcement")
 
     @_builtins.property
     @pulumi.getter(name="mergeTrainsEnabled")
@@ -5532,6 +5768,14 @@ class Project(pulumi.CustomResource):
         Set the security and compliance access level. Valid values are `disabled`, `private`, `enabled`.
         """
         return pulumi.get(self, "security_and_compliance_access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDeskEnabled")
+    def service_desk_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Experimental: enable or disable the Service Desk feature. Requires incoming emails to be enabled on the GitLab instance; setting this to `true` without incoming emails enabled will cause a perpetual plan difference on this attribute.
+        """
+        return pulumi.get(self, "service_desk_enabled")
 
     @_builtins.property
     @pulumi.getter(name="sharedRunnersEnabled")

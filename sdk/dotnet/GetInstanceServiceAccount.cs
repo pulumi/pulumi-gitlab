@@ -138,6 +138,10 @@ namespace Pulumi.GitLab
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Whether the service account is an external user.
+        /// </summary>
+        public readonly bool IsExternal;
+        /// <summary>
         /// The name of the user.
         /// </summary>
         public readonly string Name;
@@ -156,6 +160,8 @@ namespace Pulumi.GitLab
 
             string id,
 
+            bool isExternal,
+
             string name,
 
             string serviceAccountId,
@@ -164,6 +170,7 @@ namespace Pulumi.GitLab
         {
             Email = email;
             Id = id;
+            IsExternal = isExternal;
             Name = name;
             ServiceAccountId = serviceAccountId;
             Username = username;

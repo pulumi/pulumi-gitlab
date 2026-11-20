@@ -43,7 +43,6 @@ namespace Pulumi.GitLab
     ///         AllowCommitterApproval = true,
     ///         AllowOverridesToApproverListPerMergeRequest = true,
     ///         RetainApprovalsOnPush = true,
-    ///         SelectiveCodeOwnerRemovals = false,
     ///         RequireReauthenticationToApprove = true,
     ///     });
     /// 

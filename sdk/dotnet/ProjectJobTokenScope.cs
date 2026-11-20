@@ -37,21 +37,21 @@ namespace Pulumi.GitLab
     /// 
     ///     var allowedProjectIds = new[]
     ///     {
-    ///         123,
-    ///         456,
-    ///         789,
+    ///         "123",
+    ///         "456",
+    ///         "789",
     ///     };
     /// 
     ///     var allowedGroupIds = new[]
     ///     {
-    ///         123,
-    ///         456,
-    ///         789,
+    ///         "123",
+    ///         "456",
+    ///         "789",
     ///     };
     /// 
     ///     var deploymentProject = await GitLab.GetProject.InvokeAsync(new()
     ///     {
-    ///         Name = "example-project",
+    ///         PathWithNamespace = "example-group/example-project",
     ///     });
     /// 
     ///     var allowedProject = new List&lt;GitLab.ProjectJobTokenScope&gt;();
